@@ -3,3 +3,10 @@ This is a project where I disassemble and document Super Mario All-Stars.
 Certain banks are currently missing. Those banks are graphics and will be added in the final step.
 
 There are plans to make this disassembly assemble-able in either xkas or asar. This will happen once the disassembly is considered complete.
+
+Game codes are located in the following banks:
+$008000-$02FFFF: Presents screen, hall screen, game select screen
+$038000-$0CFFFF: Super Mario Bros. 1
+$0D8000-$10FFFF: Super Mario Bros. The Lost Levels
+$118000-$15FFFF: Super Mario Bros. 2
+$208000-$2AFFFF: Super Mario Bros. 3
