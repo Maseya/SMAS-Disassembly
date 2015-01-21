@@ -1,3 +1,5 @@
+;Super Mario Bros. 2
+
 DATA_138000:        dw $F000
                     dw $F800
                     dw $F000

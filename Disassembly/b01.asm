@@ -1,3 +1,6 @@
+;The Presents screen, the Hall screen and the game selection
+;as well as other miscellaneous stuff like setting up the SPC-700
+
 DATA_018000:        db $00,$00,$00,$00,$00,$00,$00,$00 ;Graphics. 
                     db $00,$00,$00,$00,$00,$00,$00,$00
                     db $00,$00,$00,$00,$00,$00,$00,$00

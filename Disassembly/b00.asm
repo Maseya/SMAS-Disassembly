@@ -1,3 +1,6 @@
+;The Presents screen, the Hall screen and the game selection
+;as well as other miscellaneous stuff like setting up the SPC-700
+
 CODE_008000:        78            SEI                       ; Set interput flag
 CODE_008001:        9C 00 42      STZ $4200                 ; Disable NMI, IRQ, and joypad read
 CODE_008004:        9C 0C 42      STZ $420C                 ; HDMA Disabled

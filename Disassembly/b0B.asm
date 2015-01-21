@@ -1,3 +1,6 @@
+;Super Mario Bros. 1
+;Has some SPC data too
+
 DATA_0B8000:        db $70,$00,$00,$3C,$00,$40,$1B,$40 ;Pointers to sample data of piano and
                     db $36,$40,$51,$40,$36,$40,$51,$40 ;menu music
                     db $6C,$40,$4D,$41,$68,$41,$88,$42

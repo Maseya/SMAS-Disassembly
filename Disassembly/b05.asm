@@ -1,4 +1,6 @@
-;Bank 5. It's dedicated to the SMB1 backgrounds.
+;Super Mario Bros. 1
+;It's dedicated to the SMB1 backgrounds.
+
 CODE_058000:        9C DC 0E      STZ $0EDC                 ;
 CODE_058003:        8B            PHB                       ;\
 CODE_058004:        A9 7E         LDA #$7E                  ; |

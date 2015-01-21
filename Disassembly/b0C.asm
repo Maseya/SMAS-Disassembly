@@ -1,3 +1,6 @@
+;Super Mario Bros. 1
+;Has some SPC data too
+
 DATA_0C8000:        db $6D,$34,$00,$C0,$24,$C2,$C5,$C6 ;SMB3 SPC-700 data?
                     db $00,$CC,$54,$DE,$E8,$CE,$7E,$D3
                     db $75,$C1,$05,$D6,$B7,$D7,$88,$D8

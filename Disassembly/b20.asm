@@ -1,3 +1,5 @@
+;Super Mario Bros. 3
+
 CODE_208000:        4C 16 A1      JMP CODE_20A116           ; Entry point of SMB3's game start routine (includes piracy check)
 
 CODE_208003:        4C 00 F0      JMP CODE_20F000           ;Entry point of SMB3's NMI

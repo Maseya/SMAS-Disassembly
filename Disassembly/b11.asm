@@ -1,3 +1,5 @@
+;Super Mario Bros. 2
+
 CODE_118000:        4C 3C 80      JMP CODE_11803C
 
 CODE_118003:        4C C2 91      JMP CODE_1191C2           

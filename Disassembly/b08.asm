@@ -1,3 +1,5 @@
+;Super Mario Bros. 1
+
 DATA_088000:        db $FF,$FF,$00,$00,$FF,$FF,$00,$00 ;Graphics.
                     db $00,$00,$FF,$00,$00,$00,$FF,$00
                     db $00,$00,$FF,$00,$00,$00,$FF,$00

@@ -1,3 +1,5 @@
+;Super Mario Bros. 2
+
 DATA_148000:        db $1C,$DC,$9C,$5C,$1C,$DC,$9C
 
 DATA_148007:        db $1C,$DC,$9C,$5C,$1C,$DC,$9C

@@ -1,3 +1,5 @@
+;Super Mario Bros. 2
+
 CODE_128000:        64 F6         STZ $F6                   
 CODE_128002:        64 FA         STZ $FA                   
 CODE_128004:        64 F8         STZ $F8                   

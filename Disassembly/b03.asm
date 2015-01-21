@@ -1,4 +1,6 @@
-CODE_038000:        4C 15 80      JMP CODE_038015           ;Jump to the main game I guess?
+;Super Mario Bros. 1
+
+CODE_038000:        4C 15 80      JMP CODE_038015           ;Jump to the main game: SMB1
 
 CODE_038003:        4C 08 83      JMP CODE_038308           ;Jump to NMI data of SMB1
 

@@ -1,3 +1,5 @@
+;Super Mario Bros. 1
+
 CODE_048000:        0B            PHD                       ;\
 CODE_048001:        A9 24         LDA #$24                  ; |
 CODE_048003:        85 00         STA $00                   ; |(BG1 and half of BG2 tilemap)
