@@ -486,8 +486,8 @@ CODE_04860A:        BD F6 0F      LDA $0FF6,x               ;
 CODE_04860D:        29 10         AND #$10                  ;
 CODE_04860F:        F0 18         BEQ CODE_048629           ;
 CODE_048611:        EE 80 16      INC $1680                 ;
-CODE_048614:        A9 43         LDA #$43                  ;
-CODE_048616:        8D 00 16      STA $1600                 ;
+CODE_048614:        A9 43         LDA #$43                  ;\Pause sound
+CODE_048616:        8D 00 16      STA $1600                 ;/
 CODE_048619:        CE 9A 0B      DEC $0B9A                 ;
 CODE_04861C:        CE 9A 0B      DEC $0B9A                 ;
 CODE_04861F:        AD 9A 0B      LDA $0B9A                 ;
@@ -520,8 +520,8 @@ CODE_048653:        AC 53 07      LDY $0753                 ;
 CODE_048656:        B9 F6 0F      LDA $0FF6,y               ;
 CODE_048659:        29 2C         AND #$2C                  ;
 CODE_04865B:        F0 10         BEQ CODE_04866D           ;
-CODE_04865D:        A9 01         LDA #$01                  ;
-CODE_04865F:        8D 03 16      STA $1603                 ;
+CODE_04865D:        A9 01         LDA #$01                  ;\
+CODE_04865F:        8D 03 16      STA $1603                 ;/Coin sound
 CODE_048662:        9C 78 0B      STZ $0B78                 ;
 CODE_048665:        AD 06 0F      LDA $0F06                 ;
 CODE_048668:        49 10         EOR #$10                  ;
@@ -549,8 +549,8 @@ CODE_048696:        A2 00         LDX #$00                  ;
 CODE_048698:        B9 F6 0F      LDA $0FF6,y               ;
 CODE_04869B:        29 10         AND #$10                  ;
 CODE_04869D:        F0 38         BEQ CODE_0486D7           ;
-CODE_04869F:        A9 29         LDA #$29                  ;
-CODE_0486A1:        8D 03 16      STA $1603                 ;
+CODE_04869F:        A9 29         LDA #$29                  ;\
+CODE_0486A1:        8D 03 16      STA $1603                 ;/Correct sound
 CODE_0486A4:        9C 5B 07      STZ $075B                 ;
 CODE_0486A7:        9C 5E 07      STZ $075E                 ;
 CODE_0486AA:        9C 60 07      STZ $0760                 ;
@@ -1411,8 +1411,8 @@ CODE_048FA8:        95 BC         STA $BC,x                 ;
 CODE_048FAA:        95 10         STA $10,x                 ;
 CODE_048FAC:        A9 90         LDA #$90                  ;
 CODE_048FAE:        9D 38 02      STA $0238,x               ;
-CODE_048FB1:        A9 31         LDA #$31                  ;
-CODE_048FB3:        95 1C         STA $1C,x                 ;
+CODE_048FB1:        A9 31         LDA #$31                  ;\
+CODE_048FB3:        95 1C         STA $1C,x                 ;/Sprite to generate: Star Flag
 CODE_048FB5:        EE E7 0E      INC $0EE7                 ;
 CODE_048FB8:        A5 07         LDA $07                   ;
 CODE_048FBA:        F0 03         BEQ CODE_048FBF           ;
@@ -6948,8 +6948,8 @@ CODE_04F320:        8D B4 0D      STA $0DB4                 ;
 CODE_04F323:        8D B8 0D      STA $0DB8                 ;
 CODE_04F326:        8D CC 0D      STA $0DCC                 ;
 CODE_04F329:        8D D0 0D      STA $0DD0                 ;
-CODE_04F32C:        A9 09         LDA #$09                  ;
-CODE_04F32E:        8D 00 16      STA $1600                 ;
+CODE_04F32C:        A9 09         LDA #$09                  ;\SMW cape dive sound
+CODE_04F32E:        8D 00 16      STA $1600                 ;/
 CODE_04F331:        60            RTS                       ;
 
 CODE_04F332:        8D B0 0D      STA $0DB0                 ;
@@ -6963,8 +6963,8 @@ CODE_04F342:        8D B0 0D      STA $0DB0                 ;
 CODE_04F345:        8D B4 0D      STA $0DB4                 ;
 CODE_04F348:        8D C8 0D      STA $0DC8                 ;
 CODE_04F34B:        8D D0 0D      STA $0DD0                 ;
-CODE_04F34E:        A9 09         LDA #$09                  ;
-CODE_04F350:        8D 00 16      STA $1600                 ;
+CODE_04F34E:        A9 09         LDA #$09                  ;\
+CODE_04F350:        8D 00 16      STA $1600                 ;/SMW cape dive sound
 CODE_04F353:        60            RTS                       ;
 
 CODE_04F354:        8D B0 0D      STA $0DB0                 ;
@@ -6976,8 +6976,8 @@ CODE_04F360:        60            RTS                       ;
 CODE_04F361:        8D B0 0D      STA $0DB0                 ;
 CODE_04F364:        8D C8 0D      STA $0DC8                 ;
 CODE_04F367:        8D CC 0D      STA $0DCC                 ;
-CODE_04F36A:        A9 09         LDA #$09                  ;
-CODE_04F36C:        8D 00 16      STA $1600                 ;
+CODE_04F36A:        A9 09         LDA #$09                  ;\
+CODE_04F36C:        8D 00 16      STA $1600                 ;/SMW cape dive sound
 CODE_04F36F:        60            RTS                       ;
 
 CODE_04F370:        8D C8 0D      STA $0DC8                 ;
@@ -7034,8 +7034,8 @@ CODE_04F3F0:        AD 9F 0B      LDA $0B9F                 ;
 CODE_04F3F3:        C9 44         CMP #$44                  ;
 CODE_04F3F5:        90 15         BCC CODE_04F40C           ;
 CODE_04F3F7:        D0 05         BNE CODE_04F3FE           ;
-CODE_04F3F9:        A9 08         LDA #$08                  ;
-CODE_04F3FB:        8D 00 16      STA $1600                 ;
+CODE_04F3F9:        A9 08         LDA #$08                  ;\
+CODE_04F3FB:        8D 00 16      STA $1600                 ;/Reset highscore sound
 CODE_04F3FE:        A9 45         LDA #$45                  ;
 CODE_04F400:        8D 9F 0B      STA $0B9F                 ;
 CODE_04F403:        20 12 F4      JSR CODE_04F412           ;
@@ -7279,8 +7279,8 @@ CODE_04F636:        9C 1D 04      STZ $041D                 ;
 CODE_04F639:        AD A4 0B      LDA $0BA4                 ;
 CODE_04F63C:        C9 01         CMP #$01                  ;
 CODE_04F63E:        D0 1A         BNE CODE_04F65A           ;
-CODE_04F640:        A9 20         LDA #$20                  ;
-CODE_04F642:        8D 00 16      STA $1600                 ;
+CODE_04F640:        A9 20         LDA #$20                  ;\SMW Yoshi spit out enemy sound
+CODE_04F642:        8D 00 16      STA $1600                 ;/
 CODE_04F645:        8D A4 0B      STA $0BA4                 ;
 CODE_04F648:        80 10         BRA CODE_04F65A           ;
 
@@ -7497,8 +7497,8 @@ CODE_04F838:        AD A0 0B      LDA $0BA0                 ;
 CODE_04F83B:        29 0F         AND #$0F                  ;
 CODE_04F83D:        C9 0F         CMP #$0F                  ;
 CODE_04F83F:        D0 05         BNE CODE_04F846           ;
-CODE_04F841:        A9 0E         LDA #$0E                  ;
-CODE_04F843:        8D 00 16      STA $1600                 ;
+CODE_04F841:        A9 0E         LDA #$0E                  ;\Swimming sound
+CODE_04F843:        8D 00 16      STA $1600                 ;/
 CODE_04F846:        AD A0 0B      LDA $0BA0                 ;
 CODE_04F849:        29 08         AND #$08                  ;
 CODE_04F84B:        0A            ASL A                     ;
@@ -7548,8 +7548,8 @@ CODE_04F8AD:        90 0B         BCC CODE_04F8BA           ;
 CODE_04F8AF:        48            PHA                       ;
 CODE_04F8B0:        29 0F         AND #$0F                  ;
 CODE_04F8B2:        D0 05         BNE CODE_04F8B9           ;
-CODE_04F8B4:        A9 0E         LDA #$0E                  ;
-CODE_04F8B6:        8D 00 16      STA $1600                 ;
+CODE_04F8B4:        A9 0E         LDA #$0E                  ;\Swimming sound
+CODE_04F8B6:        8D 00 16      STA $1600                 ;/
 CODE_04F8B9:        68            PLA                       ;
 CODE_04F8BA:        4A            LSR A                     ;
 CODE_04F8BB:        4A            LSR A                     ;
@@ -7564,8 +7564,8 @@ CODE_04F8C8:        C9 02         CMP #$02                  ;
 CODE_04F8CA:        D0 0D         BNE CODE_04F8D9           ;
 CODE_04F8CC:        AD A4 0B      LDA $0BA4                 ;
 CODE_04F8CF:        D0 08         BNE CODE_04F8D9           ;
-CODE_04F8D1:        A9 2B         LDA #$2B                  ;
-CODE_04F8D3:        8D 00 16      STA $1600                 ;
+CODE_04F8D1:        A9 2B         LDA #$2B                  ;\
+CODE_04F8D3:        8D 00 16      STA $1600                 ;/SMB2 pick up vegetable sound
 CODE_04F8D6:        8D A4 0B      STA $0BA4                 ;
 CODE_04F8D9:        4C D5 F9      JMP CODE_04F9D5           ;
 
@@ -7871,8 +7871,8 @@ CODE_04FB9F:        8D 74 0D      STA $0D74                 ;
 CODE_04FBA2:        FA            PLX                       ;
 CODE_04FBA3:        60            RTS                       ;
 
-CODE_04FBA4:        A9 0F         LDA #$0F                  ;
-CODE_04FBA6:        8D 00 16      STA $1600                 ;
+CODE_04FBA4:        A9 0F         LDA #$0F                  ;\
+CODE_04FBA6:        8D 00 16      STA $1600                 ;/SMW hit during cape flight sound
 CODE_04FBA9:        AD 54 07      LDA $0754                 ;
 CODE_04FBAC:        49 01         EOR #$01                  ;
 CODE_04FBAE:        0A            ASL A                     ;

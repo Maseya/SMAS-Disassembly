@@ -1,5 +1,4 @@
 ;Super Mario Bros. 1
-;It's dedicated to the SMB1 backgrounds.
 
 CODE_058000:        9C DC 0E      STZ $0EDC                 ;
 CODE_058003:        8B            PHB                       ;\
@@ -846,7 +845,7 @@ CODE_058736:        AD 1F 87      LDA $871F                 ; |
 CODE_058739:        9F 01 D0 7E   STA $7ED001,x             ; |
 CODE_05873D:        AD 20 87      LDA $8720                 ; |
 CODE_058740:        9F 10 D0 7E   STA $7ED010,x             ; |
-CODE_058744:        AD 21 87      LDA $8721                 ; |Why waste cycles, Nintendo?
+CODE_058744:        AD 21 87      LDA $8721                 ; |
 CODE_058747:        9F 11 D0 7E   STA $7ED011,x             ; |
 CODE_05874B:        AD 22 87      LDA $8722                 ; |
 CODE_05874E:        9F 20 D0 7E   STA $7ED020,x             ; |
@@ -865,7 +864,7 @@ CODE_058769:        AD 1E 87      LDA $871E                 ;\
 CODE_05876C:        9F 10 D0 7E   STA $7ED010,x             ; |
 CODE_058770:        AD 1F 87      LDA $871F                 ; |
 CODE_058773:        9F 11 D0 7E   STA $7ED011,x             ; |
-CODE_058777:        AD 20 87      LDA $8720                 ; |Why waste cycles, Nintendo?
+CODE_058777:        AD 20 87      LDA $8720                 ; |
 CODE_05877A:        9F 20 D0 7E   STA $7ED020,x             ; |
 CODE_05877E:        AD 21 87      LDA $8721                 ; |
 CODE_058781:        9F 21 D0 7E   STA $7ED021,x             ;/
@@ -4250,8 +4249,8 @@ CODE_05CCE3:        C8            INY                       ;
 CODE_05CCE4:        B9 AF CC      LDA $CCAF,y               ;
 CODE_05CCE7:        9D 3D 04      STA $043D,x               ;
 CODE_05CCEA:        9C CB 06      STZ $06CB                 ;
-CODE_05CCED:        A9 08         LDA #$08                  ;
-CODE_05CCEF:        9D 90 04      STA $0490,x               ;
+CODE_05CCED:        A9 08         LDA #$08                  ;\Set clipping?
+CODE_05CCEF:        9D 90 04      STA $0490,x               ;/
 CODE_05CCF2:        A9 01         LDA #$01                  ;
 CODE_05CCF4:        95 BC         STA $BC,x                 ;
 CODE_05CCF6:        95 10         STA $10,x                 ;
@@ -4737,10 +4736,10 @@ CODE_05D191:        AD 4B 01      LDA $014B                 ;
 CODE_05D194:        C9 06         CMP #$06                  ;
 CODE_05D196:        D0 12         BNE CODE_05D1AA           ;
 CODE_05D198:        EE 4B 01      INC $014B                 ;
-CODE_05D19B:        A9 28         LDA #$28                  ;
-CODE_05D19D:        8D 4C 0F      STA $0F4C                 ;
-CODE_05D1A0:        A9 3A         LDA #$3A                  ;
-CODE_05D1A2:        8D 00 16      STA $1600                 ;
+CODE_05D19B:        A9 28         LDA #$28                  ;\Freeze bowser's animation
+CODE_05D19D:        8D 4C 0F      STA $0F4C                 ;/
+CODE_05D1A0:        A9 3A         LDA #$3A                  ;\Bowser breathe fire sound
+CODE_05D1A2:        8D 00 16      STA $1600                 ;/
 CODE_05D1A5:        20 B1 CC      JSR CODE_05CCB1           ;
 CODE_05D1A8:        80 03         BRA CODE_05D1AD           ;
 
@@ -5115,10 +5114,10 @@ CODE_05D4D8:        69 00         ADC #$00                  ;
 CODE_05D4DA:        8D FB 02      STA $02FB                 ;
 CODE_05D4DD:        A9 04         LDA #$04                  ;
 CODE_05D4DF:        85 96         STA $96                   ;
-CODE_05D4E1:        A9 25         LDA #$25                  ;
-CODE_05D4E3:        8D 00 16      STA $1600                 ;
-CODE_05D4E6:        A9 20         LDA #$20                  ;
-CODE_05D4E8:        8D 03 16      STA $1603                 ;
+CODE_05D4E1:        A9 25         LDA #$25                  ;\
+CODE_05D4E3:        8D 00 16      STA $1600                 ;/Bowser lands in lava sound impact
+CODE_05D4E6:        A9 20         LDA #$20                  ;\
+CODE_05D4E8:        8D 03 16      STA $1603                 ;/Bowser lands in lava sound
 CODE_05D4EB:        20 F2 D4      JSR CODE_05D4F2           ;
 CODE_05D4EE:        4C BF E3      JMP CODE_05E3BF           ;
 
@@ -6021,8 +6020,8 @@ CODE_05DE31:        20 31 E2      JSR CODE_05E231           ;Clear windowing HDM
 CODE_05DE34:        20 CE E1      JSR CODE_05E1CE           ;
 CODE_05DE37:        20 65 DE      JSR CODE_05DE65           ;
 CODE_05DE3A:        20 D4 DD      JSR CODE_05DDD4           ;
-CODE_05DE3D:        A9 01         LDA #$01                  ;
-CODE_05DE3F:        8D 76 07      STA $0776                 ;
+CODE_05DE3D:        A9 01         LDA #$01                  ;\Set paused flag
+CODE_05DE3F:        8D 76 07      STA $0776                 ;/
 CODE_05DE42:        9C 77 0B      STZ $0B77                 ;
 CODE_05DE45:        9C 78 0B      STZ $0B78                 ;
 CODE_05DE48:        9C 8A 0F      STZ $0F8A                 ;
@@ -6097,8 +6096,8 @@ CODE_05DED0:        90 05         BCC CODE_05DED7           ;
 CODE_05DED2:        CE 77 0B      DEC $0B77                 ;
 CODE_05DED5:        80 36         BRA CODE_05DF0D           ;
 
-CODE_05DED7:        A9 01         LDA #$01                  ;
-CODE_05DED9:        8D 03 16      STA $1603                 ;
+CODE_05DED7:        A9 01         LDA #$01                  ;\Coin sound
+CODE_05DED9:        8D 03 16      STA $1603                 ;/
 CODE_05DEDC:        9C 78 0B      STZ $0B78                 ;
 CODE_05DEDF:        80 2C         BRA CODE_05DF0D           ;
 
@@ -6108,8 +6107,8 @@ CODE_05DEE7:        10 05         BPL CODE_05DEEE           ;
 CODE_05DEE9:        EE 77 0B      INC $0B77                 ;
 CODE_05DEEC:        80 1F         BRA CODE_05DF0D           ;
 
-CODE_05DEEE:        A9 01         LDA #$01                  ;
-CODE_05DEF0:        8D 03 16      STA $1603                 ;
+CODE_05DEEE:        A9 01         LDA #$01                  ;\Coin sound
+CODE_05DEF0:        8D 03 16      STA $1603                 ;/
 CODE_05DEF3:        9C 78 0B      STZ $0B78                 ;
 CODE_05DEF6:        80 15         BRA CODE_05DF0D           ;
 
@@ -6118,8 +6117,8 @@ CODE_05DEFB:        AD 77 0B      LDA $0B77                 ;
 CODE_05DEFE:        C9 03         CMP #$03                  ;
 CODE_05DF00:        90 03         BCC CODE_05DF05           ;
 CODE_05DF02:        9C 77 0B      STZ $0B77                 ;
-CODE_05DF05:        A9 01         LDA #$01                  ;
-CODE_05DF07:        8D 03 16      STA $1603                 ;
+CODE_05DF05:        A9 01         LDA #$01                  ;\Coin sound
+CODE_05DF07:        8D 03 16      STA $1603                 ;/
 CODE_05DF0A:        9C 78 0B      STZ $0B78                 ;
 CODE_05DF0D:        A9 4C         LDA #$4C                  ;
 CODE_05DF0F:        8D 00 08      STA $0800                 ;
@@ -6152,8 +6151,8 @@ CODE_05DF4B:        A9 30         LDA #$30                  ;
 CODE_05DF4D:        8D 8A 0F      STA $0F8A                 ;
 CODE_05DF50:        A9 02         LDA #$02                  ;
 CODE_05DF52:        8D 75 0B      STA $0B75                 ;
-CODE_05DF55:        A9 3B         LDA #$3B                  ;
-CODE_05DF57:        8D 00 16      STA $1600                 ;
+CODE_05DF55:        A9 3B         LDA #$3B                  ;\
+CODE_05DF57:        8D 00 16      STA $1600                 ;/Save and continue/quit sound
 CODE_05DF5A:        AD 77 0B      LDA $0B77                 ;
 CODE_05DF5D:        C9 02         CMP #$02                  ;
 CODE_05DF5F:        D0 1B         BNE CODE_05DF7C           ;
@@ -6167,14 +6166,14 @@ CODE_05DF6D:        A9 10         LDA #$10                  ;
 CODE_05DF6F:        8D 6B 0B      STA $0B6B                 ;
 CODE_05DF72:        A9 02         LDA #$02                  ;
 CODE_05DF74:        8D 75 0B      STA $0B75                 ;
-CODE_05DF77:        A9 43         LDA #$43                  ;
-CODE_05DF79:        8D 00 16      STA $1600                 ;
+CODE_05DF77:        A9 43         LDA #$43                  ;\
+CODE_05DF79:        8D 00 16      STA $1600                 ;/Pause sound
 CODE_05DF7C:        AD 80 16      LDA $1680                 ;
 CODE_05DF7F:        F0 19         BEQ CODE_05DF9A           ;
 CODE_05DF81:        AD 77 0B      LDA $0B77                 ;
 CODE_05DF84:        C9 02         CMP #$02                  ;
 CODE_05DF86:        F0 12         BEQ CODE_05DF9A           ;
-CODE_05DF88:        9C 76 07      STZ $0776                 ;
+CODE_05DF88:        9C 76 07      STZ $0776                 ;Clear paused flag
 CODE_05DF8B:        A9 0E         LDA #$0E                  ;
 CODE_05DF8D:        8D 72 07      STA $0772                 ;
 CODE_05DF90:        AE 77 0B      LDX $0B77                 ;
@@ -6384,7 +6383,7 @@ CODE_05E17E:        80 2B         BRA CODE_05E1AB           ;
 CODE_05E180:        9C 75 0B      STZ $0B75                 ;Pause window state to zero
 CODE_05E183:        A9 0F         LDA #$0F                  ;\
 CODE_05E185:        8D 01 12      STA $1201                 ;/Set brightness to max
-CODE_05E188:        9C 76 07      STZ $0776                 ;
+CODE_05E188:        9C 76 07      STZ $0776                 ;Clear paused flag
 CODE_05E18B:        AD 06 12      LDA $1206                 ;\
 CODE_05E18E:        49 03         EOR #$03                  ; |reverse window mask settings
 CODE_05E190:        8D 06 12      STA $1206                 ;/
@@ -6733,8 +6732,8 @@ CODE_05E5C7:        D0 68         BNE CODE_05E631           ;
 CODE_05E5C9:        A5 0F         LDA $0F                   ;
 CODE_05E5CB:        C9 08         CMP #$08                  ;
 CODE_05E5CD:        D0 05         BNE CODE_05E5D4           ;
-CODE_05E5CF:        A9 18         LDA #$18                  ;
-CODE_05E5D1:        8D 03 16      STA $1603                 ;
+CODE_05E5CF:        A9 18         LDA #$18                  ;\Lightning sound
+CODE_05E5D1:        8D 03 16      STA $1603                 ;/
 CODE_05E5D4:        A9 11         LDA #$11                  ;
 CODE_05E5D6:        8D B8 0E      STA $0EB8                 ;
 CODE_05E5D9:        A9 1F         LDA #$1F                  ;
@@ -7326,10 +7325,10 @@ CODE_05EB59:        6B            RTL                       ;
 CODE_05EB5A:        8B            PHB                       ;
 CODE_05EB5B:        4B            PHK                       ;
 CODE_05EB5C:        AB            PLB                       ;
-CODE_05EB5D:        AD FC 07      LDA $07FC                 ;
-CODE_05EB60:        8F F8 1F 70   STA $701FF8               ;
-CODE_05EB64:        AD 5F 07      LDA $075F                 ;
-CODE_05EB67:        8F F9 1F 70   STA $701FF9               ;
+CODE_05EB5D:        AD FC 07      LDA $07FC                 ;\ 
+CODE_05EB60:        8F F8 1F 70   STA $701FF8               ;/ Set more difficult quest flag in SRAM
+CODE_05EB64:        AD 5F 07      LDA $075F                 ;\
+CODE_05EB67:        8F F9 1F 70   STA $701FF9               ;/ Set current world in SRAM
 CODE_05EB6B:        A9 01         LDA #$01                  ;
 CODE_05EB6D:        8D 0B 0F      STA $0F0B                 ;
 CODE_05EB70:        A9 01         LDA #$01                  ;

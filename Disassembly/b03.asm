@@ -34,66 +34,66 @@ CODE_038045:        A9 03         LDA #$03                  ;
 CODE_038047:        8D 0B 0F      STA $0F0B                 ;
 CODE_03804A:        9C 8E 02      STZ $028E                 ;
 CODE_03804D:        9C 67 0E      STZ $0E67                 ;
-CODE_038050:        AF 09 00 70   LDA $700009               ;
-CODE_038054:        8D 24 0E      STA $0E24                 ;
-CODE_038057:        8F 01 FB 7F   STA $7FFB01               ;
-CODE_03805B:        AF 08 00 70   LDA $700008               ;
-CODE_03805F:        8D 5F 07      STA $075F                 ;
-CODE_038062:        8F 00 FB 7F   STA $7FFB00               ;
-CODE_038066:        0A            ASL A                     ;
-CODE_038067:        0A            ASL A                     ;
-CODE_038068:        18            CLC                       ;
-CODE_038069:        6F 09 00 70   ADC $700009               ;
-CODE_03806D:        AA            TAX                       ;
-CODE_03806E:        BF 72 D2 05   LDA $05D272,x             ;
-CODE_038072:        8F 09 00 70   STA $700009               ;
-CODE_038076:        8F 02 FB 7F   STA $7FFB02               ;
-CODE_03807A:        8D 60 07      STA $0760                 ;
-CODE_03807D:        A9 03         LDA #$03                  ;
-CODE_03807F:        8D 01 21      STA $2101                 ;
-CODE_038082:        A9 01         LDA #$01                  ;
-CODE_038084:        8D 07 21      STA $2107                 ;
-CODE_038087:        A9 09         LDA #$09                  ;
-CODE_038089:        8D 08 21      STA $2108                 ;
-CODE_03808C:        A9 59         LDA #$59                  ;
-CODE_03808E:        8D 09 21      STA $2109                 ;
-CODE_038091:        9C 0A 21      STZ $210A                 ;
-CODE_038094:        A9 11         LDA #$11                  ;
-CODE_038096:        8D 0B 21      STA $210B                 ;
-CODE_038099:        A9 05         LDA #$05                  ;
-CODE_03809B:        8D 0C 21      STA $210C                 ;
-CODE_03809E:        9C 33 21      STZ $2133                 ;
-CODE_0380A1:        9C 81 16      STZ $1681                 ;
-CODE_0380A4:        9C 70 07      STZ $0770                 ;
+CODE_038050:        AF 09 00 70   LDA $700009               ;\Load the current level number loaded from save
+CODE_038054:        8D 24 0E      STA $0E24                 ; |Should be 0, because you can't specify which level you want to load in SMB1.
+CODE_038057:        8F 01 FB 7F   STA $7FFB01               ;/
+CODE_03805B:        AF 08 00 70   LDA $700008               ;\Load the current world number loaded from save
+CODE_03805F:        8D 5F 07      STA $075F                 ; |
+CODE_038062:        8F 00 FB 7F   STA $7FFB00               ;/|
+CODE_038066:        0A            ASL A                     ; | Current world number * 4 + current level number
+CODE_038067:        0A            ASL A                     ; |
+CODE_038068:        18            CLC                       ; |
+CODE_038069:        6F 09 00 70   ADC $700009               ;/
+CODE_03806D:        AA            TAX                       ;Into X
+CODE_03806E:        BF 72 D2 05   LDA $05D272,x             ;\Load from level table
+CODE_038072:        8F 09 00 70   STA $700009               ; |Store into current level number loaded from save
+CODE_038076:        8F 02 FB 7F   STA $7FFB02               ;/|And some other address
+CODE_03807A:        8D 60 07      STA $0760                 ;/ And into current level
+CODE_03807D:        A9 03         LDA #$03                  ;\OBJ size: 8x8 and 16x16 sprites
+CODE_03807F:        8D 01 21      STA $2101                 ;/OBJ VRAM: $C000
+CODE_038082:        A9 01         LDA #$01                  ;\BG1 Tilemap address: $0000
+CODE_038084:        8D 07 21      STA $2107                 ;/Enable BG1 tilemap horizontal mirroring
+CODE_038087:        A9 09         LDA #$09                  ;\BG2 Tilemap address: $1000
+CODE_038089:        8D 08 21      STA $2108                 ;/Enable BG2 tilemap horizontal mirroring
+CODE_03808C:        A9 59         LDA #$59                  ;\BG3 Tilemap address: $B000
+CODE_03808E:        8D 09 21      STA $2109                 ;/Enable BG3 tilemap horizontal mirroring
+CODE_038091:        9C 0A 21      STZ $210A                 ;no BG4, but set it just in case.
+CODE_038094:        A9 11         LDA #$11                  ;\BG1 and 2 gfx address: $2000
+CODE_038096:        8D 0B 21      STA $210B                 ;/
+CODE_038099:        A9 05         LDA #$05                  ;\BG3 and 4 gfx address: $A000
+CODE_03809B:        8D 0C 21      STA $210C                 ;/
+CODE_03809E:        9C 33 21      STZ $2133                 ;Nothing special about screen mode/video select
+CODE_0380A1:        9C 81 16      STZ $1681                 ;unused?
+CODE_0380A4:        9C 70 07      STZ $0770                 ;Set level mode to Title Screen
 CODE_0380A7:        9C 72 07      STZ $0772                 ;
 CODE_0380AA:        A9 00         LDA #$00                  ;
 CODE_0380AC:        8F FF FF 7F   STA $7FFFFF               ;
-CODE_0380B0:        22 C4 FD 04   JSL CODE_04FDC4           ;
-CODE_0380B4:        A9 09         LDA #$09                  ;
-CODE_0380B6:        8D 0D 12      STA $120D                 ;
-CODE_0380B9:        9C 7E 0E      STZ $0E7E                 ;
-CODE_0380BC:        A9 10         LDA #$10                  ;
-CODE_0380BE:        8D 0B 12      STA $120B                 ;
-CODE_0380C1:        9C 0C 12      STZ $120C                 ;
-CODE_0380C4:        9C 04 12      STZ $1204                 ;
-CODE_0380C7:        9C 05 12      STZ $1205                 ;
-CODE_0380CA:        9C 06 12      STZ $1206                 ;
-CODE_0380CD:        9C 09 12      STZ $1209                 ;
-CODE_0380D0:        A9 20         LDA #$20                  ;
-CODE_0380D2:        8D 0A 12      STA $120A                 ;
-CODE_0380D5:        A9 20         LDA #$20                  ;
-CODE_0380D7:        8D E0 0E      STA $0EE0                 ;
-CODE_0380DA:        A9 40         LDA #$40                  ;
-CODE_0380DC:        8D E1 0E      STA $0EE1                 ;
-CODE_0380DF:        A9 80         LDA #$80                  ;
-CODE_0380E1:        8D E2 0E      STA $0EE2                 ;
-CODE_0380E4:        9C 03 12      STZ $1203                 ;
-CODE_0380E7:        A9 80         LDA #$80                  ;
-CODE_0380E9:        8D 01 12      STA $1201                 ;
-CODE_0380EC:        9C 54 01      STZ $0154                 ;
+CODE_0380B0:        22 C4 FD 04   JSL CODE_04FDC4           ;Reset scroll registers
+CODE_0380B4:        A9 09         LDA #$09                  ;\Game mode and character size
+CODE_0380B6:        8D 0D 12      STA $120D                 ;/Mode 1 with mode 1 bg3 priority bit enabled
+CODE_0380B9:        9C 7E 0E      STZ $0E7E                 ;No screen pixelation/mosaic
+CODE_0380BC:        A9 10         LDA #$10                  ;\
+CODE_0380BE:        8D 0B 12      STA $120B                 ;/Main screen designation
+CODE_0380C1:        9C 0C 12      STZ $120C                 ;Sub screen designation
+CODE_0380C4:        9C 04 12      STZ $1204                 ;Window mask settings for BG1 and 2
+CODE_0380C7:        9C 05 12      STZ $1205                 ;Window mask settings for BG3 and 4
+CODE_0380CA:        9C 06 12      STZ $1206                 ;Window mask settings for OAM and color window
+CODE_0380CD:        9C 09 12      STZ $1209                 ;Color addition select
+CODE_0380D0:        A9 20         LDA #$20                  ;\CGADSUB settings
+CODE_0380D2:        8D 0A 12      STA $120A                 ;/
+CODE_0380D5:        A9 20         LDA #$20                  ;\
+CODE_0380D7:        8D E0 0E      STA $0EE0                 ; |
+CODE_0380DA:        A9 40         LDA #$40                  ; |Set fixed color
+CODE_0380DC:        8D E1 0E      STA $0EE1                 ; |
+CODE_0380DF:        A9 80         LDA #$80                  ; |
+CODE_0380E1:        8D E2 0E      STA $0EE2                 ;/
+CODE_0380E4:        9C 03 12      STZ $1203                 ;HDMA enable: none
+CODE_0380E7:        A9 80         LDA #$80                  ;\Enable f-blank
+CODE_0380E9:        8D 01 12      STA $1201                 ;/
+CODE_0380EC:        9C 54 01      STZ $0154                 ;Reset lag thing.
 CODE_0380EF:        9C E5 15      STZ $15E5                 ;
-CODE_0380F2:        9C 7F 0E      STZ $0E7F                 ;
-CODE_0380F5:        9C 76 07      STZ $0776                 ;
+CODE_0380F2:        9C 7F 0E      STZ $0E7F                 ;Related to when fading in and out
+CODE_0380F5:        9C 76 07      STZ $0776                 ;Clear pause flag
 CODE_0380F8:        8D 22 07      STA $0722                 ;
 CODE_0380FB:        9C 67 0E      STZ $0E67                 ;
 CODE_0380FE:        64 BA         STZ $BA                   ;
@@ -240,9 +240,9 @@ CODE_038262:        F0 05         BEQ CODE_038269           ;
 CODE_038264:        20 96 C2      JSR CODE_03C296           ;
 CODE_038267:        80 6B         BRA CODE_0382D4           ;
 
-CODE_038269:        AD 76 07      LDA $0776                 ;
-CODE_03826C:        4A            LSR A                     ;
-CODE_03826D:        B0 5E         BCS CODE_0382CD           ;
+CODE_038269:        AD 76 07      LDA $0776                 ;\
+CODE_03826C:        4A            LSR A                     ; |Branch if paused
+CODE_03826D:        B0 5E         BCS CODE_0382CD           ;/
 CODE_03826F:        0B            PHD                       ;
 CODE_038270:        A9 07         LDA #$07                  ;
 CODE_038272:        EB            XBA                       ;
@@ -576,9 +576,9 @@ CODE_03856A:        D0 52         BNE CODE_0385BE           ;
 CODE_03856C:        AD 01 12      LDA $1201                 ;
 CODE_03856F:        C9 0F         CMP #$0F                  ;
 CODE_038571:        D0 4B         BNE CODE_0385BE           ;
-CODE_038573:        AD 77 07      LDA $0777                 ;
-CODE_038576:        F0 04         BEQ CODE_03857C           ;
-CODE_038578:        CE 77 07      DEC $0777                 ;
+CODE_038573:        AD 77 07      LDA $0777                 ;\
+CODE_038576:        F0 04         BEQ CODE_03857C           ; |Branch if Timer to disable start button = 0
+CODE_038578:        CE 77 07      DEC $0777                 ;/Otherwise, keep decreasing
 CODE_03857B:        60            RTS                       ;
 
 CODE_03857C:        A5 0F         LDA $0F                   ;
@@ -858,8 +858,8 @@ CODE_0387F0:        EE 5D 07      INC $075D                 ;
 CODE_0387F3:        EE 64 07      INC $0764                 ;
 CODE_0387F6:        EE 57 07      INC $0757                 ;
 CODE_0387F9:        EE 70 07      INC $0770                 ;
-CODE_0387FC:        AD FC 07      LDA $07FC                 ;
-CODE_0387FF:        8D 6A 07      STA $076A                 ;
+CODE_0387FC:        AD FC 07      LDA $07FC                 ;"More difficult quest" flag. Sets $076A too and shows star next to world
+CODE_0387FF:        8D 6A 07      STA $076A                 ;"More difficult quest" flag
 CODE_038802:        9C 72 07      STZ $0772                 ;
 CODE_038805:        9C B2 07      STZ $07B2                 ;
 CODE_038808:        A2 0B         LDX #$0B                  ;
@@ -920,11 +920,11 @@ CODE_03887D:        8D 0A 17      STA $170A                 ;
 CODE_038880:        E2 20         SEP #$20                  ;
 CODE_038882:        60            RTS                       ;
 
-CODE_038883:        AE 17 07      LDX $0717                 ;
-CODE_038886:        AD 18 07      LDA $0718                 ;
-CODE_038889:        D0 19         BNE CODE_0388A4           ;
-CODE_03888B:        E8            INX                       ;
-CODE_03888C:        EE 17 07      INC $0717                 ;
+CODE_038883:        AE 17 07      LDX $0717                 ;\ Current demo action in X
+CODE_038886:        AD 18 07      LDA $0718                 ; |
+CODE_038889:        D0 19         BNE CODE_0388A4           ; |If timer isn't 0 yet, branch
+CODE_03888B:        E8            INX                       ; |
+CODE_03888C:        EE 17 07      INC $0717                 ; |
 CODE_03888F:        38            SEC                       ;
 CODE_038890:        AD FB 07      LDA $07FB                 ;
 CODE_038893:        F0 06         BEQ CODE_03889B           ;
@@ -1446,7 +1446,7 @@ CODE_038CE7:        69 0C 00      ADC #$000C                ;
 CODE_038CEA:        8D 00 17      STA $1700                 ;
 CODE_038CED:        AA            TAX                       ;
 CODE_038CEE:        E2 20         SEP #$20                  ;
-CODE_038CF0:        AD FC 07      LDA $07FC                 ;
+CODE_038CF0:        AD FC 07      LDA $07FC                 ;"More difficult quest" flag. Sets 076A too and shows star next to world
 CODE_038CF3:        F0 05         BEQ CODE_038CFA           ;
 CODE_038CF5:        A9 2A         LDA #$2A                  ;
 CODE_038CF7:        9D FA 16      STA $16FA,x               ;
@@ -1532,7 +1532,7 @@ CODE_038DB7:        A9 02         LDA #$02                  ;
 CODE_038DB9:        8D 7F 0E      STA $0E7F                 ;
 CODE_038DBC:        9C 4F 0E      STZ $0E4F                 ;
 CODE_038DBF:        9C 01 12      STZ $1201                 ;
-CODE_038DC2:        9C 7E 0E      STZ $0E7E                 ;
+CODE_038DC2:        9C 7E 0E      STZ $0E7E                 ;No screen pixelation/mosaic
 CODE_038DC5:        9C 74 07      STZ $0774                 ;
 CODE_038DC8:        60            RTS                       ;
 
@@ -1840,7 +1840,7 @@ CODE_03918E:        AC 5C 07      LDY $075C                 ;
 CODE_039191:        C8            INY                       ;
 CODE_039192:        98            TYA                       ;
 CODE_039193:        9D 32 17      STA $1732,x               ;
-CODE_039196:        AD FC 07      LDA $07FC                 ;
+CODE_039196:        AD FC 07      LDA $07FC                 ;"More difficult quest" flag. Sets 076A too and shows star next to world
 CODE_039199:        F0 05         BEQ CODE_0391A0           ;
 CODE_03919B:        A9 2A         LDA #$2A                  ;
 CODE_03919D:        9D 2C 17      STA $172C,x               ;
@@ -2777,7 +2777,7 @@ CODE_039E74:        8D 04 13      STA $1304                 ;
 CODE_039E77:        A9 0B         LDA #$0B                  ;
 CODE_039E79:        8D 1E 07      STA $071E                 ;
 CODE_039E7C:        22 41 C0 04   JSL CODE_04C041           ;
-CODE_039E80:        AD 6A 07      LDA $076A                 ;
+CODE_039E80:        AD 6A 07      LDA $076A                 ;"More difficult quest" flag
 CODE_039E83:        D0 10         BNE CODE_039E95           ;
 CODE_039E85:        AD 5F 07      LDA $075F                 ;
 CODE_039E88:        C9 04         CMP #$04                  ;
@@ -2886,8 +2886,8 @@ CODE_039F6B:        9C 26 0B      STZ $0B26                 ;
 CODE_039F6E:        9C 27 0B      STZ $0B27                 ;
 CODE_039F71:        9C 28 0B      STZ $0B28                 ;
 CODE_039F74:        9C 29 0B      STZ $0B29                 ;
-CODE_039F77:        AD FC 07      LDA $07FC                 ;
-CODE_039F7A:        8D 6A 07      STA $076A                 ;
+CODE_039F77:        AD FC 07      LDA $07FC                 ;"More difficult quest" flag. Sets $076A too and shows star next to world
+CODE_039F7A:        8D 6A 07      STA $076A                 ;"More difficult quest" flag
 CODE_039F7D:        A2 40         LDX #$40                  ;
 CODE_039F7F:        9E 00 0F      STZ $0F00,x               ;
 CODE_039F82:        E8            INX                       ;
@@ -2899,8 +2899,8 @@ CODE_039F8B:        8D 0B 0F      STA $0F0B                 ;
 CODE_039F8E:        D0 11         BNE CODE_039FA1           ;
 CODE_039F90:        AF 05 FB 7F   LDA $7FFB05               ;
 CODE_039F94:        8D FB 07      STA $07FB                 ;
-CODE_039F97:        8D 6A 07      STA $076A                 ;
-CODE_039F9A:        8D FC 07      STA $07FC                 ;
+CODE_039F97:        8D 6A 07      STA $076A                 ;"More difficult quest" flag
+CODE_039F9A:        8D FC 07      STA $07FC                 ;"More difficult quest" flag. Sets 076A too and shows star next to world.
 CODE_039F9D:        22 94 C9 05   JSL CODE_05C994           ;
 CODE_039FA1:        60            RTS                       ;
 
@@ -3158,8 +3158,8 @@ PNTR_03A1EB:        dw CODE_03A22A
 
 CODE_03A1EF:        20 2B A2      JSR CODE_03A22B           ;
 CODE_03A1F2:        90 10         BCC CODE_03A204           ;
-CODE_03A1F4:        AD 5F 07      LDA $075F                 ;
-CODE_03A1F7:        8D FD 07      STA $07FD                 ;
+CODE_03A1F4:        AD 5F 07      LDA $075F                 ;\Residual from NES: store world number into secret continue function variable
+CODE_03A1F7:        8D FD 07      STA $07FD                 ;/
 CODE_03A1FA:        9C 72 07      STZ $0772                 ;
 CODE_03A1FD:        9C B0 07      STZ $07B0                 ;
 CODE_03A200:        9C 70 07      STZ $0770                 ;
@@ -3198,7 +3198,7 @@ CODE_03A248:        AD 80 07      LDA $0780                 ;
 CODE_03A24B:        8D 56 07      STA $0756                 ;
 CODE_03A24E:        68            PLA                       ;
 CODE_03A24F:        8D 80 07      STA $0780                 ;
-CODE_03A252:        AD FC 07      LDA $07FC                 ;
+CODE_03A252:        AD FC 07      LDA $07FC                 ;"More difficult quest" flag. Sets 076A too and shows star next to world
 CODE_03A255:        48            PHA                       ;
 CODE_03A256:        AD 81 07      LDA $0781                 ;
 CODE_03A259:        8D FC 07      STA $07FC                 ;
@@ -3912,7 +3912,7 @@ CODE_03A86F:        E8            INX                       ;Else set warp zone 
 CODE_03A870:        8A            TXA                       ;\
 CODE_03A871:        8D D6 06      STA $06D6                 ;/Store warpzone config
 CODE_03A874:        20 FC 90      JSR CODE_0390FC           ;Routine to write the "Welcome to warpzone" message
-CODE_03A877:        A9 0D         LDA #$0D                  ;\Destroy all pirahna plants
+CODE_03A877:        A9 0D         LDA #$0D                  ;\Destroy all piranha plants
 CODE_03A879:        20 85 A8      JSR CODE_03A885           ;/
 CODE_03A87C:        AD 23 07      LDA $0723                 ;\
 CODE_03A87F:        49 01         EOR #$01                  ; |Flip scroll enabled flag on or off
@@ -4108,27 +4108,27 @@ CODE_03AA01:        C8            INY                       ;
 CODE_03AA02:        98            TYA                       ;
 CODE_03AA03:        48            PHA                       ;Preserve A
 CODE_03AA04:        AD 60 07      LDA $0760                 ;\
-CODE_03AA07:        0D 5F 07      ORA $075F                 ; |If 1-1, pirahna plants do not appear
+CODE_03AA07:        0D 5F 07      ORA $075F                 ; |If 1-1, piranha plants do not appear
 CODE_03AA0A:        F0 2D         BEQ CODE_03AA39           ;/
 CODE_03AA0C:        BC 00 13      LDY $1300,x               ;
 CODE_03AA0F:        F0 28         BEQ CODE_03AA39           ;
-CODE_03AA11:        20 6B AA      JSR CODE_03AA6B           ;\Get free sprite slot for the pirahna plant
+CODE_03AA11:        20 6B AA      JSR CODE_03AA6B           ;\Get free sprite slot for the piranha plant
 CODE_03AA14:        B0 23         BCS CODE_03AA39           ;/If none, skip
 CODE_03AA16:        20 E0 AC      JSR CODE_03ACE0           ;\Get Xpos of screen ((AND #$F0>>4)<<4)
 CODE_03AA19:        18            CLC                       ; |
 CODE_03AA1A:        69 08         ADC #$08                  ; |Add 8 pixels to it
-CODE_03AA1C:        9D 1A 02      STA $021A,x               ; |Store to pirahna plant xpos
+CODE_03AA1C:        9D 1A 02      STA $021A,x               ; |Store into Sprite X-Position
 CODE_03AA1F:        AD 25 07      LDA $0725                 ; |
 CODE_03AA22:        69 00         ADC #$00                  ; |Handle page boundary accordingly
 CODE_03AA24:        95 79         STA $79,x                 ;/
 CODE_03AA26:        A9 01         LDA #$01                  ;\
 CODE_03AA28:        95 BC         STA $BC,x                 ; |Sprite is onscreen in a normal way
 CODE_03AA2A:        95 10         STA $10,x                 ;/
-CODE_03AA2C:        20 E8 AC      JSR CODE_03ACE8           ;\Store ypos
-CODE_03AA2F:        9D 38 02      STA $0238,x               ;/
-CODE_03AA32:        A9 0D         LDA #$0D                  ;\Which sprite to create: pirahna plant
-CODE_03AA34:        95 1C         STA $1C,x                 ;/
-CODE_03AA36:        20 99 CB      JSR CODE_03CB99           ;Run pirahna plant code?
+CODE_03AA2C:        20 E8 AC      JSR CODE_03ACE8           ;\ (A << 4) + $20
+CODE_03AA2F:        9D 38 02      STA $0238,x               ;/Store ypos
+CODE_03AA32:        A9 0D         LDA #$0D                  ;\
+CODE_03AA34:        95 1C         STA $1C,x                 ;/Sprite to generate: Piranha plant
+CODE_03AA36:        20 99 CB      JSR CODE_03CB99           ;Run piranha plant code?
 CODE_03AA39:        68            PLA                       ;Recover A
 CODE_03AA3A:        A8            TAY                       ;
 CODE_03AA3B:        A6 07         LDX $07                   ;
@@ -4158,7 +4158,7 @@ CODE_03AA66:        E0 08         CPX #$08                  ;
 CODE_03AA68:        D0 F6         BNE CODE_03AA60           ;
 CODE_03AA6A:        60            RTS                       ;
 
-CODE_03AA6B:        A2 08         LDX #$08                  ;\ Routine only used by pirahna plant
+CODE_03AA6B:        A2 08         LDX #$08                  ;\ Routine only used by piranha plant
 CODE_03AA6D:        18            CLC                       ; |
 CODE_03AA6E:        B5 10         LDA $10,x                 ; |
 CODE_03AA70:        F0 05         BEQ CODE_03AA77           ; |Get free sprite slot (check for an off-screen sprite)
@@ -4329,7 +4329,7 @@ CODE_03ABAE:        30 05         BMI CODE_03ABB5           ;
 CODE_03ABB0:        A9 6E         LDA #$6E                  ;
 CODE_03ABB2:        20 78 AC      JSR CODE_03AC78           ;
 CODE_03ABB5:        AE 6A 02      LDX $026A                 ;
-CODE_03ABB8:        20 E8 AC      JSR CODE_03ACE8           ;
+CODE_03ABB8:        20 E8 AC      JSR CODE_03ACE8           ; (A << 4) + $20
 CODE_03ABBB:        9D 77 02      STA $0277,x               ;
 CODE_03ABBE:        AD 25 07      LDA $0725                 ;
 CODE_03ABC1:        9D 6B 02      STA $026B,x               ;
@@ -4348,11 +4348,11 @@ CODE_03ABDB:        20 E0 AC      JSR CODE_03ACE0           ;
 CODE_03ABDE:        9D 1A 02      STA $021A,x               ;
 CODE_03ABE1:        AD 25 07      LDA $0725                 ;
 CODE_03ABE4:        95 79         STA $79,x                 ;
-CODE_03ABE6:        20 E8 AC      JSR CODE_03ACE8           ;
+CODE_03ABE6:        20 E8 AC      JSR CODE_03ACE8           ;(A << 4) + $20
 CODE_03ABE9:        9D 38 02      STA $0238,x               ;
 CODE_03ABEC:        95 5E         STA $5E,x                 ;
-CODE_03ABEE:        A9 32         LDA #$32                  ;
-CODE_03ABF0:        95 1C         STA $1C,x                 ;
+CODE_03ABEE:        A9 32         LDA #$32                  ;\
+CODE_03ABF0:        95 1C         STA $1C,x                 ;/Sprite to generate: springboard
 CODE_03ABF2:        A0 01         LDY #$01                  ;
 CODE_03ABF4:        94 BC         STY $BC,x                 ;
 CODE_03ABF6:        F6 10         INC $10,x                 ;
@@ -4811,8 +4811,8 @@ CODE_03AF88:        D0 1C         BNE CODE_03AFA6           ;
 CODE_03AF8A:        AD 37 02      LDA $0237                 ;
 CODE_03AF8D:        C9 B0         CMP #$B0                  ;
 CODE_03AF8F:        D0 05         BNE CODE_03AF96           ;
-CODE_03AF91:        A9 04         LDA #$04                  ;
-CODE_03AF93:        8D 00 16      STA $1600                 ;
+CODE_03AF91:        A9 04         LDA #$04                  ;\
+CODE_03AF93:        8D 00 16      STA $1600                 ;/Enter pipe/hurt sound
 CODE_03AF96:        8D 4E 0E      STA $0E4E                 ;
 CODE_03AF99:        A9 FF         LDA #$FF                  ;
 CODE_03AF9B:        20 2B B2      JSR CODE_03B22B           ;
@@ -6051,8 +6051,8 @@ CODE_03B9D2:        D0 0D         BNE CODE_03B9E1           ;
 CODE_03B9D4:        AD DB 06      LDA $06DB                 ;
 CODE_03B9D7:        85 A0         STA $A0                   ;
 CODE_03B9D9:        9C 0E 07      STZ $070E                 ;
-CODE_03B9DC:        A9 08         LDA #$08                  ;
-CODE_03B9DE:        8D 03 16      STA $1603                 ;
+CODE_03B9DC:        A9 08         LDA #$08                  ;\Springboard sound
+CODE_03B9DE:        8D 03 16      STA $1603                 ;/
 CODE_03B9E1:        20 39 FD      JSR CODE_03FD39           ;
 CODE_03B9E4:        20 EF EE      JSR CODE_03EEEF           ;
 CODE_03B9E7:        20 03 DC      JSR CODE_03DC03           ;
@@ -6065,14 +6065,14 @@ CODE_03B9F6:        8D 8E 07      STA $078E                 ;
 CODE_03B9F9:        EE 0E 07      INC $070E                 ;
 CODE_03B9FC:        60            RTS                       ;
 
-CODE_03B9FD:        A9 2F         LDA #$2F                  ;\Spawn a vine
-CODE_03B9FF:        95 1C         STA $1C,x                 ;/
+CODE_03B9FD:        A9 2F         LDA #$2F                  ;\
+CODE_03B9FF:        95 1C         STA $1C,x                 ;/Sprite to generate: Vine
 CODE_03BA01:        A9 01         LDA #$01                  ;\
 CODE_03BA03:        95 10         STA $10,x                 ;/Sprite on screen
 CODE_03BA05:        B9 85 00      LDA $0085,y               ;\Spawn in current screen of course
 CODE_03BA08:        95 79         STA $79,x                 ;/
 CODE_03BA0A:        B9 26 02      LDA $0226,y               ;\Spawn at the brick
-CODE_03BA0D:        9D 1A 02      STA $021A,x               ;/
+CODE_03BA0D:        9D 1A 02      STA $021A,x               ;/Store into Sprite X-Position
 CODE_03BA10:        B9 44 02      LDA $0244,y               ;\
 CODE_03BA13:        D0 02         BNE CODE_03BA17           ; |If brick position is at the very top
 CODE_03BA15:        A9 F0         LDA #$F0                  ; |Spawn vine from the very bottom
@@ -6181,8 +6181,8 @@ CODE_03BAF1:        4A            LSR A                     ;
 CODE_03BAF2:        95 29         STA $29,x                 ;
 CODE_03BAF4:        A9 09         LDA #$09                  ;
 CODE_03BAF6:        9D 90 04      STA $0490,x               ;
-CODE_03BAF9:        A9 33         LDA #$33                  ;
-CODE_03BAFB:        95 1C         STA $1C,x                 ;
+CODE_03BAF9:        A9 33         LDA #$33                  ;\
+CODE_03BAFB:        95 1C         STA $1C,x                 ;/Sprite to generate: Bullet bill
 CODE_03BAFD:        80 13         BRA CODE_03BB12           ;
 
 CODE_03BAFF:        B5 1C         LDA $1C,x                 ;
@@ -6223,8 +6223,8 @@ CODE_03BB42:        A9 01         LDA #$01                  ;
 CODE_03BB44:        95 29         STA $29,x                 ;
 CODE_03BB46:        A9 0A         LDA #$0A                  ;
 CODE_03BB48:        9D 92 07      STA $0792,x               ;
-CODE_03BB4B:        A9 4A         LDA #$4A                  ;
-CODE_03BB4D:        8D 03 16      STA $1603                 ;
+CODE_03BB4B:        A9 4A         LDA #$4A                  ;\Bullet bill sound
+CODE_03BB4D:        8D 03 16      STA $1603                 ;/
 CODE_03BB50:        20 7B C2      JSR CODE_03C27B           ;
 CODE_03BB53:        AD D1 03      LDA $03D1                 ;
 CODE_03BB56:        29 F0         AND #$F0                  ;
@@ -6471,8 +6471,8 @@ CODE_03BD40:        C9 64         CMP #$64                  ;
 CODE_03BD42:        D0 0C         BNE CODE_03BD50           ;
 CODE_03BD44:        9C 5E 07      STZ $075E                 ;
 CODE_03BD47:        22 96 85 04   JSL CODE_048596           ;Increase lives by one
-CODE_03BD4B:        A9 05         LDA #$05                  ;
-CODE_03BD4D:        8D 03 16      STA $1603                 ;
+CODE_03BD4B:        A9 05         LDA #$05                  ;\
+CODE_03BD4D:        8D 03 16      STA $1603                 ;/1-up sound
 CODE_03BD50:        A9 02         LDA #$02                  ;
 CODE_03BD52:        8D 49 01      STA $0149                 ;
 CODE_03BD55:        AE 53 07      LDX $0753                 ;
@@ -6520,8 +6520,8 @@ CODE_03BDB4:        4A            LSR A                     ;
 CODE_03BDB5:        8D 0C 02      STA $020C                 ;
 CODE_03BDB8:        A9 30         LDA #$30                  ;
 CODE_03BDBA:        8D 60 02      STA $0260                 ;
-CODE_03BDBD:        A9 02         LDA #$02                  ;
-CODE_03BDBF:        8D 03 16      STA $1603                 ;
+CODE_03BDBD:        A9 02         LDA #$02                  ;\Item out of [?] box sound
+CODE_03BDBF:        8D 03 16      STA $1603                 ;/
 CODE_03BDC2:        60            RTS                       ;
 
 CODE_03BDC3:        A2 09         LDX #$09                  ;
@@ -6756,10 +6756,10 @@ CODE_03BFA0:        60            RTS                       ;
 CODE_03BFA1:        20 C6 BF      JSR CODE_03BFC6           ;
 CODE_03BFA4:        A9 01         LDA #$01                  ;
 CODE_03BFA6:        9D EE 03      STA $03EE,x               ;
-CODE_03BFA9:        AD 03 16      LDA $1603                 ;
-CODE_03BFAC:        D0 05         BNE CODE_03BFB3           ;
-CODE_03BFAE:        A9 07         LDA #$07                  ;
-CODE_03BFB0:        8D 03 16      STA $1603                 ;
+CODE_03BFA9:        AD 03 16      LDA $1603                 ;\ 
+CODE_03BFAC:        D0 05         BNE CODE_03BFB3           ; |If there's no SFX playing already
+CODE_03BFAE:        A9 07         LDA #$07                  ; |Shatter bricks sound
+CODE_03BFB0:        8D 03 16      STA $1603                 ;/
 CODE_03BFB3:        20 ED BF      JSR CODE_03BFED           ;
 CODE_03BFB6:        A9 FE         LDA #$FE                  ;
 CODE_03BFB8:        85 A0         STA $A0                   ;
@@ -6782,8 +6782,8 @@ CODE_03BFD6:        C9 E9         CMP #$E9                  ;
 CODE_03BFD8:        D0 12         BNE CODE_03BFEC           ;
 CODE_03BFDA:        A9 00         LDA #$00                  ;
 CODE_03BFDC:        91 06         STA ($06),y               ;
-CODE_03BFDE:        A9 01         LDA #$01                  ;
-CODE_03BFE0:        8D 03 16      STA $1603                 ;
+CODE_03BFDE:        A9 01         LDA #$01                  ;\
+CODE_03BFE0:        8D 03 16      STA $1603                 ;/Coin sound
 CODE_03BFE3:        20 73 93      JSR CODE_039373           ;
 CODE_03BFE6:        AE F0 03      LDX $03F0                 ;
 CODE_03BFE9:        20 73 BC      JSR CODE_03BC73           ;
@@ -7361,8 +7361,8 @@ CODE_03C468:        C9 00         CMP #$00                  ;
 CODE_03C46A:        D0 36         BNE CODE_03C4A2           ;
 CODE_03C46C:        AD DB 0E      LDA $0EDB                 ;
 CODE_03C46F:        D0 1E         BNE CODE_03C48F           ;
-CODE_03C471:        A9 29         LDA #$29                  ;
-CODE_03C473:        8D 03 16      STA $1603                 ;
+CODE_03C471:        A9 29         LDA #$29                  ;\
+CODE_03C473:        8D 03 16      STA $1603                 ;/"Correct" sound
 CODE_03C476:        AD 5F 07      LDA $075F                 ;
 CODE_03C479:        C9 06         CMP #$06                  ;
 CODE_03C47B:        D0 3F         BNE CODE_03C4BC           ;
@@ -7371,8 +7371,8 @@ CODE_03C480:        80 0D         BRA CODE_03C48F           ;
 
 CODE_03C482:        AD DB 0E      LDA $0EDB                 ;
 CODE_03C485:        D0 08         BNE CODE_03C48F           ;
-CODE_03C487:        A9 2A         LDA #$2A                  ;
-CODE_03C489:        8D 03 16      STA $1603                 ;
+CODE_03C487:        A9 2A         LDA #$2A                  ;\
+CODE_03C489:        8D 03 16      STA $1603                 ;/"Incorrect" sound
 CODE_03C48C:        8D DB 0E      STA $0EDB                 ;
 CODE_03C48F:        EE DA 06      INC $06DA                 ;
 CODE_03C492:        AD DA 06      LDA $06DA                 ;
@@ -7388,8 +7388,8 @@ CODE_03C4A5:        C9 06         CMP #$06                  ;
 CODE_03C4A7:        F0 D9         BEQ CODE_03C482           ;
 CODE_03C4A9:        AD DB 0E      LDA $0EDB                 ;
 CODE_03C4AC:        D0 08         BNE CODE_03C4B6           ;
-CODE_03C4AE:        A9 2A         LDA #$2A                  ;
-CODE_03C4B0:        8D 03 16      STA $1603                 ;
+CODE_03C4AE:        A9 2A         LDA #$2A                  ;\
+CODE_03C4B0:        8D 03 16      STA $1603                 ;/"Incorrect" sound
 CODE_03C4B3:        8D DB 0E      STA $0EDB                 ;
 CODE_03C4B6:        20 F5 C3      JSR CODE_03C3F5           ;
 CODE_03C4B9:        20 6B D5      JSR CODE_03D56B           ;
@@ -7406,11 +7406,12 @@ CODE_03C4D2:        74 29         STZ $29,x                 ;
 CODE_03C4D4:        9C CD 06      STZ $06CD                 ;
 CODE_03C4D7:        4C CA C5      JMP CODE_03C5CA           ;
 
-CODE_03C4DA:        AC 39 07      LDY $0739                 ;
-CODE_03C4DD:        B7 FD         LDA [$FD],y               ;
-CODE_03C4DF:        C9 FF         CMP #$FF                  ;
-CODE_03C4E1:        D0 03         BNE CODE_03C4E6           ;
-CODE_03C4E3:        4C B6 C5      JMP CODE_03C5B6           ;
+;Process sprite data from $FD
+CODE_03C4DA:        AC 39 07      LDY $0739                 ;\ Get offset of enemy sprite data
+CODE_03C4DD:        B7 FD         LDA [$FD],y               ; |Check first byte
+CODE_03C4DF:        C9 FF         CMP #$FF                  ; |If end of data, continue
+CODE_03C4E1:        D0 03         BNE CODE_03C4E6           ;/
+CODE_03C4E3:        4C B6 C5      JMP CODE_03C5B6           ;else, jump
 
 CODE_03C4E6:        29 0F         AND #$0F                  ;
 CODE_03C4E8:        C9 0E         CMP #$0E                  ;
@@ -7501,7 +7502,7 @@ CODE_03C592:        C9 3F         CMP #$3F                  ;
 CODE_03C594:        90 3A         BCC CODE_03C5D0           ;
 CODE_03C596:        C9 06         CMP #$06                  ;
 CODE_03C598:        D0 07         BNE CODE_03C5A1           ;
-CODE_03C59A:        AC 6A 07      LDY $076A                 ;
+CODE_03C59A:        AC 6A 07      LDY $076A                 ;"More difficult quest" flag
 CODE_03C59D:        F0 02         BEQ CODE_03C5A1           ;
 CODE_03C59F:        A9 02         LDA #$02                  ;
 CODE_03C5A1:        95 1C         STA $1C,x                 ;
@@ -7594,7 +7595,7 @@ PNTR_03C62F:        dw CODE_03C6D3            ;00 - Green Koopa
                     dw CODE_03C738            ;0A - Green Cheep-Cheep
                     dw CODE_03C738            ;0B - Red Cheep-Cheep 
                     dw CODE_03C6A4            ;0C - Podoboo
-                    dw CODE_03CB99            ;0D - Pirahna Plant
+                    dw CODE_03CB99            ;0D - piranha Plant
                     dw CODE_03CBF2            ;0E - Green Paratroopa
                     dw CODE_03C70B            ;0F - Red Vertical Flying Paratroopa
                     dw CODE_03C700            ;10 - Green Horizontal Flying Paratroopa
@@ -7627,12 +7628,12 @@ PNTR_03C62F:        dw CODE_03C6D3            ;00 - Green Koopa
                     dw CODE_03CC6F            ;2B - Short Lift (Up)
                     dw CODE_03CC7B            ;2C - Short Lift (Down)
                     dw CODE_03C918            ;2D - Bowser
-                    dw CODE_03BD9B            ;2E - ???
-                    dw CODE_03B9FD            ;2F - Vine???
-                    dw CODE_03C69D            ;30 - Nothing
-                    dw CODE_03C69D            ;31 - ???
-                    dw CODE_03C69D            ;32 - ???
-                    dw CODE_03C69D            ;33 - ???
+                    dw CODE_03BD9B            ;2E - Powerup Object
+                    dw CODE_03B9FD            ;2F - Vine
+                    dw CODE_03C69D            ;30 - Flagpole
+                    dw CODE_03C69D            ;31 - Star Flag
+                    dw CODE_03C69D            ;32 - Springboard
+                    dw CODE_03C69D            ;33 - Bullet Bill (Just shot)
                     dw CODE_03C69D            ;34 - Warp Zone
                     dw CODE_03C6C0            ;35 - Toad (World 1-7), Princess (World 8)
                     dw CODE_03CCA7            ;36 - ??? what is this i dont even?
@@ -7761,8 +7762,8 @@ CODE_03C792:        CA            DEX                       ;
 CODE_03C793:        10 F9         BPL CODE_03C78E           ;
 CODE_03C795:        30 0E         BMI CODE_03C7A5           ;
 CODE_03C797:        74 29         STZ $29,x                 ;
-CODE_03C799:        A9 11         LDA #$11                  ;
-CODE_03C79B:        95 1C         STA $1C,x                 ;
+CODE_03C799:        A9 11         LDA #$11                  ;\
+CODE_03C79B:        95 1C         STA $1C,x                 ;/Sprite to generate: Lakitu
 CODE_03C79D:        20 4E C7      JSR CODE_03C74E           ;
 CODE_03C7A0:        A9 20         LDA #$20                  ;
 CODE_03C7A2:        20 E8 C9      JSR CODE_03C9E8           ;
@@ -7833,6 +7834,7 @@ DATA_03C814:        db $28,$38,$28,$38,$28    ;Castle firebar rotation speed dat
 DATA_03C819:        db $00,$00,$10,$10,$00    ;When bit 4 is set, the firebar will rotate C-Clockwise
                                               ;Same format as above
 
+;Firebar
 CODE_03C81E:        20 46 C9      JSR CODE_03C946           ;Find a free sprite slot and place the sprite in the level.
 CODE_03C821:        74 5E         STZ $5E,x                 ;No sprite horizontal speed.
 CODE_03C823:        B5 1C         LDA $1C,x                 ;\Load sprite number
@@ -7948,8 +7950,7 @@ CODE_03C912:        A9 F8         LDA #$F8                  ;
 CODE_03C914:        9D 38 02      STA $0238,x               ;
 CODE_03C917:        60            RTS                       ;
 
-;Find a free sprite slot and place the sprite in the level.
-CODE_03C918:        20 46 C9      JSR CODE_03C946           ;
+CODE_03C918:        20 46 C9      JSR CODE_03C946           ;Find a free sprite slot and place the sprite in the level.
 CODE_03C91B:        8E 68 03      STX $0368                 ;
 CODE_03C91E:        9C 63 03      STZ $0363                 ;
 CODE_03C921:        9C 69 03      STZ $0369                 ;
@@ -8029,7 +8030,7 @@ CODE_03C9C5:        9C 4C 0F      STZ $0F4C                 ;Zero out how long b
 CODE_03C9C8:        9C 4D 0F      STZ $0F4D                 ;
 CODE_03C9CB:        9C 4B 01      STZ $014B                 ;
 CODE_03C9CE:        A9 17         LDA #$17                  ;\Play fire sound effect
-CODE_03C9D0:        8D 03 16      STA $1603                 ;/(note: NOT fire -breath-)
+CODE_03C9D0:        8D 03 16      STA $1603                 ;/(note: NOT fire breath from bowser)
 CODE_03C9D3:        A9 08         LDA #$08                  ;
 CODE_03C9D5:        9D 90 04      STA $0490,x               ;
 CODE_03C9D8:        A9 01         LDA #$01                  ;
@@ -8138,20 +8139,20 @@ CODE_03CAB6:        A5 5C         LDA $5C                   ;
 CODE_03CAB8:        D0 54         BNE CODE_03CB0E           ;
 CODE_03CABA:        E0 03         CPX #$03                  ;
 CODE_03CABC:        B0 63         BCS CODE_03CB21           ;
-CODE_03CABE:        A0 00         LDY #$00                  ;
-CODE_03CAC0:        BD B7 07      LDA $07B7,x               ;
-CODE_03CAC3:        C9 AA         CMP #$AA                  ;
-CODE_03CAC5:        90 01         BCC CODE_03CAC8           ;
-CODE_03CAC7:        C8            INY                       ;
-CODE_03CAC8:        AD 5F 07      LDA $075F                 ;
-CODE_03CACB:        C9 01         CMP #$01                  ;
-CODE_03CACD:        F0 01         BEQ CODE_03CAD0           ;
-CODE_03CACF:        C8            INY                       ;
-CODE_03CAD0:        98            TYA                       ;
-CODE_03CAD1:        29 01         AND #$01                  ;
-CODE_03CAD3:        A8            TAY                       ;
-CODE_03CAD4:        B9 AF CA      LDA $CAAF,y               ;
-CODE_03CAD7:        95 1C         STA $1C,x                 ;
+CODE_03CABE:        A0 00         LDY #$00                  ;\
+CODE_03CAC0:        BD B7 07      LDA $07B7,x               ; |if RNG == $AA-$FF, y = 0
+CODE_03CAC3:        C9 AA         CMP #$AA                  ; |else y = 1
+CODE_03CAC5:        90 01         BCC CODE_03CAC8           ; |if world == 2, y = 0
+CODE_03CAC7:        C8            INY                       ; |else y = 1
+CODE_03CAC8:        AD 5F 07      LDA $075F                 ; |
+CODE_03CACB:        C9 01         CMP #$01                  ; |
+CODE_03CACD:        F0 01         BEQ CODE_03CAD0           ; |
+CODE_03CACF:        C8            INY                       ; |
+CODE_03CAD0:        98            TYA                       ; |
+CODE_03CAD1:        29 01         AND #$01                  ; |
+CODE_03CAD3:        A8            TAY                       ;/
+CODE_03CAD4:        B9 AF CA      LDA $CAAF,y               ;\
+CODE_03CAD7:        95 1C         STA $1C,x                 ;/Sprite to generate: Red or Green swimming cheep-cheep depending on above pseudocode
 CODE_03CAD9:        AD DD 06      LDA $06DD                 ;
 CODE_03CADC:        C9 FF         CMP #$FF                  ;
 CODE_03CADE:        D0 03         BNE CODE_03CAE3           ;
@@ -8187,8 +8188,8 @@ CODE_03CB1D:        C9 08         CMP #$08                  ;
 CODE_03CB1F:        D0 EF         BNE CODE_03CB10           ;
 CODE_03CB21:        60            RTS                       ;
 
-CODE_03CB22:        A9 09         LDA #$09                  ;
-CODE_03CB24:        8D 03 16      STA $1603                 ;
+CODE_03CB22:        A9 09         LDA #$09                  ;\
+CODE_03CB24:        8D 03 16      STA $1603                 ;/Quake sound?
 CODE_03CB27:        A9 08         LDA #$08                  ;
 CODE_03CB29:        D0 AC         BNE CODE_03CAD7           ;
 CODE_03CB2B:        A0 00         LDY #$00                  ;
@@ -8199,7 +8200,7 @@ CODE_03CB31:        C9 04         CMP #$04                  ;
 CODE_03CB33:        B0 0B         BCS CODE_03CB40           ;
 CODE_03CB35:        48            PHA                       ;
 CODE_03CB36:        A0 06         LDY #$06                  ;
-CODE_03CB38:        AD 6A 07      LDA $076A                 ;
+CODE_03CB38:        AD 6A 07      LDA $076A                 ;"More difficult quest" flag
 CODE_03CB3B:        F0 02         BEQ CODE_03CB3F           ;
 CODE_03CB3D:        A0 02         LDY #$02                  ;
 CODE_03CB3F:        68            PLA                       ;
@@ -8484,7 +8485,7 @@ PNTR_03CD48:        dw CODE_03CF08            ;00 - Green koopa
                     dw CODE_03D0E9            ;0A - Green cheep-cheep (slow)
                     dw CODE_03D0E9            ;0B - Red cheep-cheep (fast)
                     dw CODE_03CE1A            ;0C - Podoboo
-                    dw CODE_03D891            ;0D - Pirahna plant
+                    dw CODE_03D891            ;0D - piranha plant
                     dw CODE_03CF8A            ;0E - Green paratroopa (leaping)
                     dw CODE_03CF90            ;0F - Red paratroopa (down & up)
                     dw CODE_03CFB9            ;10 - Green paratroopa (left & right)
@@ -8730,7 +8731,7 @@ CODE_03CF64:        A8            TAY                       ;
 CODE_03CF65:        C8            INY                       ;
 CODE_03CF66:        94 47         STY $47,x                 ;
 CODE_03CF68:        88            DEY                       ;
-CODE_03CF69:        AD 6A 07      LDA $076A                 ;
+CODE_03CF69:        AD 6A 07      LDA $076A                 ;"More difficult quest" flag
 CODE_03CF6C:        F0 02         BEQ CODE_03CF70           ;
 CODE_03CF6E:        C8            INY                       ;
 CODE_03CF6F:        C8            INY                       ;
@@ -8830,13 +8831,11 @@ CODE_03D019:        68            PLA                       ;
 CODE_03D01A:        95 5E         STA $5E,x                 ;
 CODE_03D01C:        60            RTS                       ;
 
-
 DATA_03D01D:        db $3F,$03
 
-
-CODE_03D01F:        B5 29         LDA $29,x                 ;0 S:01FF P:EnvMXdIzc HC:0870 VC:000 FC:00 I:00
-CODE_03D021:        29 20         AND #$20                  ;0 S:01FF P:EnvMXdIzc HC:0886 VC:000 FC:00 I:00
-CODE_03D023:        D0 53         BNE CODE_03D078           ;0 S:01FF P:EnvMXdIzc HC:0902 VC:000 FC:00 I:00
+CODE_03D01F:        B5 29         LDA $29,x                 ;
+CODE_03D021:        29 20         AND #$20                  ;
+CODE_03D023:        D0 53         BNE CODE_03D078           ;
 CODE_03D025:        AC CC 06      LDY $06CC                 ;
 CODE_03D028:        BD B8 07      LDA $07B8,x               ;
 CODE_03D02B:        39 1D D0      AND $D01D,y               ;
@@ -8870,13 +8869,13 @@ CODE_03D063:        69 00         ADC #$00                  ;
 CODE_03D065:        95 79         STA $79,x                 ;
 CODE_03D067:        60            RTS                       ;
 
-CODE_03D068:        BD 1A 02      LDA $021A,x               ;
-CODE_03D06B:        38            SEC                       ;
-CODE_03D06C:        F5 5E         SBC $5E,x                 ;
-CODE_03D06E:        9D 1A 02      STA $021A,x               ;
-CODE_03D071:        B5 79         LDA $79,x                 ;
-CODE_03D073:        E9 00         SBC #$00                  ;
-CODE_03D075:        95 79         STA $79,x                 ;
+CODE_03D068:        BD 1A 02      LDA $021A,x               ;\
+CODE_03D06B:        38            SEC                       ; |
+CODE_03D06C:        F5 5E         SBC $5E,x                 ; | Subtract sprite X position with sprite X speed
+CODE_03D06E:        9D 1A 02      STA $021A,x               ; |
+CODE_03D071:        B5 79         LDA $79,x                 ; |
+CODE_03D073:        E9 00         SBC #$00                  ; |
+CODE_03D075:        95 79         STA $79,x                 ;/
 CODE_03D077:        60            RTS                       ;
 
 CODE_03D078:        4C 3A C1      JMP CODE_03C13A           ;
@@ -9457,8 +9456,8 @@ CODE_03D528:        A2 18         LDX #$18                  ;
 CODE_03D52A:        20 F3 93      JSR CODE_0393F3           ;
 CODE_03D52D:        A6 9E         LDX $9E                   ;
 CODE_03D52F:        20 B2 93      JSR CODE_0393B2           ;
-CODE_03D532:        A9 16         LDA #$16                  ;
-CODE_03D534:        8D 03 16      STA $1603                 ;
+CODE_03D532:        A9 16         LDA #$16                  ;\
+CODE_03D534:        8D 03 16      STA $1603                 ;/Bowser bridge crumbling sound
 CODE_03D537:        AD 69 03      LDA $0369                 ;
 CODE_03D53A:        D0 0A         BNE CODE_03D546           ;
 CODE_03D53C:        A9 08         LDA #$08                  ;
@@ -9635,8 +9634,8 @@ CODE_03D6B8:        80 02         BRA CODE_03D6BC           ;
 CODE_03D6BA:        A9 04         LDA #$04                  ;\"fake" bowser battle music
 CODE_03D6BC:        8D 02 16      STA $1602                 ;/
 CODE_03D6BF:        85 97         STA $97                   ;
-CODE_03D6C1:        A9 2D         LDA #$2D                  ;
-CODE_03D6C3:        95 1C         STA $1C,x                 ;
+CODE_03D6C1:        A9 2D         LDA #$2D                  ;\
+CODE_03D6C3:        95 1C         STA $1C,x                 ;/Sprite to generate: Bowser
 CODE_03D6C5:        A9 20         LDA #$20                  ;
 CODE_03D6C7:        9D 57 02      STA $0257,x               ;
 CODE_03D6CA:        68            PLA                       ;
@@ -9771,13 +9770,13 @@ CODE_03D7E2:        AD 43 21      LDA $2143                 ;
 CODE_03D7E5:        29 7F         AND #$7F                  ;
 CODE_03D7E7:        C9 4B         CMP #$4B                  ;
 CODE_03D7E9:        F0 05         BEQ CODE_03D7F0           ;
-CODE_03D7EB:        A9 4B         LDA #$4B                  ;
-CODE_03D7ED:        8D 03 16      STA $1603                 ;
+CODE_03D7EB:        A9 4B         LDA #$4B                  ;\
+CODE_03D7ED:        8D 03 16      STA $1603                 ;/Timer to score conversion sound
 CODE_03D7F0:        EE 46 07      INC $0746                 ;
 CODE_03D7F3:        60            RTS                       ;
 
-CODE_03D7F4:        A9 4C         LDA #$4C                  ;
-CODE_03D7F6:        8D 03 16      STA $1603                 ;
+CODE_03D7F4:        A9 4C         LDA #$4C                  ;\SMAS menu 'zooming' sound (after pressing start in hall screen)
+CODE_03D7F6:        8D 03 16      STA $1603                 ;/
 CODE_03D7F9:        8D 1A 0E      STA $0E1A                 ;
 CODE_03D7FC:        80 F2         BRA CODE_03D7F0           ;
 
@@ -10298,7 +10297,7 @@ CODE_03DC05:        C9 14         CMP #$14                  ; | If cheep-cheep, 
 CODE_03DC07:        F0 58         BEQ CODE_03DC61           ;/
 CODE_03DC09:        AD 1C 07      LDA $071C                 ;Get horizontal coordinate of left side of screen
 CODE_03DC0C:        B4 1C         LDY $1C,x                 ;\
-CODE_03DC0E:        C0 05         CPY #$05                  ; | Check for hammer bros and pirahna plant sprites
+CODE_03DC0E:        C0 05         CPY #$05                  ; | Check for hammer bros and piranha plant sprites
 CODE_03DC10:        F0 04         BEQ CODE_03DC16           ; | Add 56 pixels if those.
 CODE_03DC12:        C0 0D         CPY #$0D                  ; |
 CODE_03DC14:        D0 02         BNE CODE_03DC18           ; |
@@ -10397,11 +10396,12 @@ CODE_03DCC8:        10 BB         BPL CODE_03DC85           ;
 CODE_03DCCA:        A6 9E         LDX $9E                   ;
 CODE_03DCCC:        60            RTS                       ;
 
-DATA_03DCCD:        db $06,$00,$02,$12,$11,$07,$05,$2D
+DATA_03DCCD:        db $06,$00,$02,$12,$11,$07,$05,$2D      ;Sprite to generate when you kill Bowser with fireballs. 
+                                                            ;In this order: Goomba, Green Koopa, Red Koopa, Spiny, Lakitu, Blooper, Hammer Bros., Bowser
 
 CODE_03DCD5:        20 39 FD      JSR CODE_03FD39           ;
-CODE_03DCD8:        A9 03         LDA #$03                  ;
-CODE_03DCDA:        8D 00 16      STA $1600                 ;
+CODE_03DCD8:        A9 03         LDA #$03                  ;\
+CODE_03DCDA:        8D 00 16      STA $1600                 ;/Shell kick sound
 CODE_03DCDD:        A6 01         LDX $01                   ;
 CODE_03DCDF:        B5 10         LDA $10,x                 ;
 CODE_03DCE1:        10 0B         BPL CODE_03DCEE           ;
@@ -10443,9 +10443,9 @@ CODE_03DD2C:        95 5E         STA $5E,x                 ;
 CODE_03DD2E:        8D CB 06      STA $06CB                 ;
 CODE_03DD31:        A9 FE         LDA #$FE                  ;
 CODE_03DD33:        95 A1         STA $A1,x                 ;
-CODE_03DD35:        AC 5F 07      LDY $075F                 ;
-CODE_03DD38:        B9 CD DC      LDA $DCCD,y               ;
-CODE_03DD3B:        95 1C         STA $1C,x                 ;
+CODE_03DD35:        AC 5F 07      LDY $075F                 ;\
+CODE_03DD38:        B9 CD DC      LDA $DCCD,y               ; |
+CODE_03DD3B:        95 1C         STA $1C,x                 ;/Sprite to generate: Bowser killed sprite depending on the world
 CODE_03DD3D:        8E FC 02      STX $02FC                 ;
 CODE_03DD40:        EE FC 02      INC $02FC                 ;
 CODE_03DD43:        C9 2D         CMP #$2D                  ;
@@ -10503,8 +10503,8 @@ CODE_03DDAA:        20 7E E0      JSR CODE_03E07E           ;
 CODE_03DDAD:        AD 00 16      LDA $1600                 ;
 CODE_03DDB0:        C9 03         CMP #$03                  ;
 CODE_03DDB2:        F0 09         BEQ CODE_03DDBD           ;
-CODE_03DDB4:        A9 03         LDA #$03                  ;
-CODE_03DDB6:        8D 00 16      STA $1600                 ;
+CODE_03DDB4:        A9 03         LDA #$03                  ;\Shell kick sound
+CODE_03DDB6:        8D 00 16      STA $1600                 ;/
 CODE_03DDB9:        22 B1 D2 05   JSL CODE_05D2B1           ;
 CODE_03DDBD:        60            RTS                       ;
 
@@ -10655,8 +10655,8 @@ CODE_03DEDF:        90 34         BCC CODE_03DF15           ;
 CODE_03DEE1:        B5 1C         LDA $1C,x                 ;
 CODE_03DEE3:        C9 06         CMP #$06                  ;
 CODE_03DEE5:        F0 2D         BEQ CODE_03DF14           ;
-CODE_03DEE7:        A9 03         LDA #$03                  ;
-CODE_03DEE9:        8D 00 16      STA $1600                 ;
+CODE_03DEE7:        A9 03         LDA #$03                  ;\Shell kick sound
+CODE_03DEE9:        8D 00 16      STA $1600                 ;/
 CODE_03DEEC:        22 B1 D2 05   JSL CODE_05D2B1           ;
 CODE_03DEF0:        9E 40 0F      STZ $0F40,x               ;
 CODE_03DEF3:        B5 29         LDA $29,x                 ;
@@ -10709,8 +10709,8 @@ CODE_03DF55:        F0 25         BEQ CODE_03DF7C           ;
 CODE_03DF57:        8D 56 07      STA $0756                 ;
 CODE_03DF5A:        A9 08         LDA #$08                  ;
 CODE_03DF5C:        8D AE 07      STA $07AE                 ;
-CODE_03DF5F:        A9 04         LDA #$04                  ;
-CODE_03DF61:        8D 00 16      STA $1600                 ;
+CODE_03DF5F:        A9 04         LDA #$04                  ;\
+CODE_03DF61:        8D 00 16      STA $1600                 ;/Enter pipe/hurt sound
 CODE_03DF64:        22 88 9A 04   JSL CODE_049A88           ;
 CODE_03DF68:        A9 0A         LDA #$0A                  ;
 CODE_03DF6A:        A0 01         LDY #$01                  ;
@@ -10746,8 +10746,8 @@ DATA_03DFA2:        db $02,$06,$05,$06
 CODE_03DFA6:        B5 1C         LDA $1C,x                 ;
 CODE_03DFA8:        C9 12         CMP #$12                  ;
 CODE_03DFAA:        F0 A1         BEQ CODE_03DF4D           ;
-CODE_03DFAC:        A9 02         LDA #$02                  ;
-CODE_03DFAE:        8D 00 16      STA $1600                 ;
+CODE_03DFAC:        A9 02         LDA #$02                  ;\Jump on enemy sound
+CODE_03DFAE:        8D 00 16      STA $1600                 ;/
 CODE_03DFB1:        B5 1C         LDA $1C,x                 ;
 CODE_03DFB3:        A0 00         LDY #$00                  ;
 CODE_03DFB5:        C9 14         CMP #$14                  ;
@@ -10805,7 +10805,7 @@ CODE_03E01C:        18            CLC                       ;
 CODE_03E01D:        6D 9D 07      ADC $079D                 ;
 CODE_03E020:        20 7E E0      JSR CODE_03E07E           ;
 CODE_03E023:        EE 9D 07      INC $079D                 ;
-CODE_03E026:        AC 6A 07      LDY $076A                 ;
+CODE_03E026:        AC 6A 07      LDY $076A                 ;"More difficult quest" flag
 CODE_03E029:        B9 10 E0      LDA $E010,y               ;
 CODE_03E02C:        9D A2 07      STA $07A2,x               ;
 CODE_03E02F:        A9 FB         LDA #$FB                  ;
@@ -11003,8 +11003,8 @@ CODE_03E1AA:        18            CLC                       ;
 CODE_03E1AB:        69 12         ADC #$12                  ;
 CODE_03E1AD:        C9 1A         CMP #$1A                  ;
 CODE_03E1AF:        90 02         BCC CODE_03E1B3           ;
-CODE_03E1B1:        A9 00         LDA #$00                  ;
-CODE_03E1B3:        8D 00 16      STA $1600                 ;
+CODE_03E1B1:        A9 00         LDA #$00                  ;\
+CODE_03E1B3:        8D 00 16      STA $1600                 ;/No sound
 CODE_03E1B6:        60            RTS                       ;
 
 CODE_03E1B7:        98            TYA                       ;
@@ -11372,8 +11372,8 @@ CODE_03E486:        AD 56 02      LDA $0256                 ;
 CODE_03E489:        F0 0E         BEQ CODE_03E499           ;
 CODE_03E48B:        A4 9A         LDY $9A                   ;
 CODE_03E48D:        D0 0A         BNE CODE_03E499           ;
-CODE_03E48F:        A0 04         LDY #$04                  ;
-CODE_03E491:        8C 00 16      STY $1600                 ;
+CODE_03E48F:        A0 04         LDY #$04                  ;\
+CODE_03E491:        8C 00 16      STY $1600                 ;/Enter pipe/hurt sound
 CODE_03E494:        84 9A         STY $9A                   ;
 CODE_03E496:        9C AF 07      STZ $07AF                 ;
 CODE_03E499:        29 CF         AND #$CF                  ;
@@ -11632,8 +11632,8 @@ CODE_03E6A4:        EE 57 07      INC $0757                 ;
 CODE_03E6A7:        A9 F3         LDA #$F3                  ;
 CODE_03E6A9:        8D 02 16      STA $1602                 ;
 CODE_03E6AC:        8D 1A 0E      STA $0E1A                 ;
-CODE_03E6AF:        A9 04         LDA #$04                  ;
-CODE_03E6B1:        8D 00 16      STA $1600                 ;
+CODE_03E6AF:        A9 04         LDA #$04                  ;\
+CODE_03E6B1:        8D 00 16      STA $1600                 ;/Enter pipe/hurt sound
 CODE_03E6B4:        60            RTS                       ;
 
 CODE_03E6B5:        A9 00         LDA #$00                  ;
@@ -11896,8 +11896,8 @@ CODE_03E89A:        0A            ASL A                     ;
 CODE_03E89B:        90 0D         BCC CODE_03E8AA           ;
 CODE_03E89D:        E0 09         CPX #$09                  ;
 CODE_03E89F:        F0 09         BEQ CODE_03E8AA           ;
-CODE_03E8A1:        A9 01         LDA #$01                  ;
-CODE_03E8A3:        8D 00 16      STA $1600                 ;
+CODE_03E8A1:        A9 01         LDA #$01                  ;\Hit hard block sound
+CODE_03E8A3:        8D 00 16      STA $1600                 ;/
 CODE_03E8A6:        22 B1 D2 05   JSL CODE_05D2B1           ;
 CODE_03E8AA:        B5 1C         LDA $1C,x                 ;
 CODE_03E8AC:        C9 05         CMP #$05                  ;
@@ -12009,8 +12009,8 @@ CODE_03E977:        60            RTS                       ;
 
 CODE_03E978:        A9 80         LDA #$80                  ;
 CODE_03E97A:        95 33         STA $33,x                 ;
-CODE_03E97C:        A9 01         LDA #$01                  ;
-CODE_03E97E:        8D 00 16      STA $1600                 ;
+CODE_03E97C:        A9 01         LDA #$01                  ;\
+CODE_03E97E:        8D 00 16      STA $1600                 ;/Hit hard block sound
 CODE_03E981:        60            RTS                       ;
 
 DATA_03E982:        db $02,$08
@@ -13716,7 +13716,7 @@ CODE_03F920:        FA            PLX                       ;
 CODE_03F921:        60            RTS                       ;
 
 CODE_03F922:        9C 85 0E      STZ $0E85                 ;
-CODE_03F925:        AD FC 07      LDA $07FC                 ;
+CODE_03F925:        AD FC 07      LDA $07FC                 ;"More difficult quest" flag. Sets 076A too and shows star next to world
 CODE_03F928:        F0 09         BEQ CODE_03F933           ;
 CODE_03F92A:        DA            PHX                       ;
 CODE_03F92B:        BB            TYX                       ;
