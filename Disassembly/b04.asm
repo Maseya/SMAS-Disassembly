@@ -4846,8 +4846,8 @@ DATA_04D776:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ; empty
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF
 
-CODE_04D800:        AD A5 0B      LDA $0BA5                 ;
-CODE_04D803:        D0 54         BNE CODE_04D859           ;
+CODE_04D800:        AD A5 0B      LDA $0BA5                 ;\If skip player animations flag is set, return
+CODE_04D803:        D0 54         BNE CODE_04D859           ;/
 CODE_04D805:        AD D5 06      LDA $06D5                 ;
 CODE_04D808:        C9 18         CMP #$18                  ;
 CODE_04D80A:        F0 04         BEQ CODE_04D810           ;

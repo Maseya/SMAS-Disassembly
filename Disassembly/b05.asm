@@ -7333,7 +7333,7 @@ CODE_05EB6B:        A9 01         LDA #$01                  ;
 CODE_05EB6D:        8D 0B 0F      STA $0F0B                 ;
 CODE_05EB70:        A9 01         LDA #$01                  ;
 CODE_05EB72:        8D FC 07      STA $07FC                 ;
-CODE_05EB75:        8D 5D 07      STA $075D                 ;
+CODE_05EB75:        8D 5D 07      STA $075D                 ;Enable hidden 1-up flag
 CODE_05EB78:        8D FB 07      STA $07FB                 ;
 CODE_05EB7B:        8D 6A 07      STA $076A                 ;
 CODE_05EB7E:        8F 05 FB 7F   STA $7FFB05               ;

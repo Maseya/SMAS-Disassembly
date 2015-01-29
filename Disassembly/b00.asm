@@ -1614,8 +1614,8 @@ CODE_008DC0:        E5 00         SBC $00                   ;
 CODE_008DC2:        9F 10 00 70   STA $700010,x             ;
 CODE_008DC6:        A5 D0         LDA $D0                   ;
 CODE_008DC8:        29 03 00      AND #$0003                ;
-CODE_008DCB:        C9 03 00      CMP #$0003                ;\Wait, what?
-CODE_008DCE:        D0 00         BNE CODE_008DD0           ;/
+CODE_008DCB:        C9 03 00      CMP #$0003                ;
+CODE_008DCE:        D0 00         BNE CODE_008DD0           ;
 CODE_008DD0:        E8            INX                       ;
 CODE_008DD1:        E8            INX                       ;
 CODE_008DD2:        60            RTS                       ;

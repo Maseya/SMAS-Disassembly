@@ -39,7 +39,7 @@ CODE_038054:        8D 24 0E      STA $0E24                 ; |Should be 0, beca
 CODE_038057:        8F 01 FB 7F   STA $7FFB01               ;/
 CODE_03805B:        AF 08 00 70   LDA $700008               ;\Load the current world number loaded from save
 CODE_03805F:        8D 5F 07      STA $075F                 ; |
-CODE_038062:        8F 00 FB 7F   STA $7FFB00               ;/|
+CODE_038062:        8F 00 FB 7F   STA $7FFB00               ;/|Store into world number to load from the title screen
 CODE_038066:        0A            ASL A                     ; | Current world number * 4 + current level number
 CODE_038067:        0A            ASL A                     ; |
 CODE_038068:        18            CLC                       ; |
@@ -479,7 +479,7 @@ CODE_038490:        AD E1 0E      LDA $0EE1                 ;\$7E:0EE1: Direct c
 CODE_038493:        85 32         STA $32                   ;/
 CODE_038495:        AD E2 0E      LDA $0EE2                 ;\$7E:0EE2: Direct color register
 CODE_038498:        85 32         STA $32                   ;/
-CODE_03849A:        AD 0D 12      LDA $120D                 ;\$7E:120D: Game mode
+CODE_03849A:        AD 0D 12      LDA $120D                 ;\$7E:120D: Screen mode
 CODE_03849D:        85 05         STA $05                   ;/
 CODE_03849F:        AD 7E 0E      LDA $0E7E                 ;\$7E:0E7E: Screen pixelation/Mosaic
 CODE_0384A2:        85 06         STA $06                   ;/
@@ -554,20 +554,20 @@ CODE_038543:        AB            PLB                       ;\Recover program ba
 CODE_038544:        6B            RTL                       ;/
 
 CODE_038545:        AD 70 07      LDA $0770                 ;\
-CODE_038548:        0A            ASL A                     ; |Set up 'playing modes' (RAM $7E:0770)
+CODE_038548:        0A            ASL A                     ; |Set up 'operation modes' (RAM $7E:0770)
 CODE_038549:        AA            TAX                       ; |see pointers below for effects
 CODE_03854A:        7C 4D 85      JMP (PNTR_03854D,x)       ;/
 
 PNTR_03854D:        dw CODE_03868D            ;$00 Title screen
                     dw CODE_03AD60            ;$01 Normal playing and controls
-                    dw CODE_0388BB            ;$02 Saved a toad at end of castle
-                    dw CODE_03A0A8
+                    dw CODE_0388BB            ;$02 Defeated Bowser
+                    dw CODE_03A0A8            ;$03 Game Over
 
-CODE_038555:        AD 70 07      LDA $0770
-CODE_038558:        C9 02         CMP #$02                  ;
-CODE_03855A:        F0 1F         BEQ CODE_03857B           ;
-CODE_03855C:        C9 01         CMP #$01                  ;
-CODE_03855E:        D0 5E         BNE CODE_0385BE           ;
+CODE_038555:        AD 70 07      LDA $0770                 ;\
+CODE_038558:        C9 02         CMP #$02                  ; |Branch if operation mode is Defeated Bowser
+CODE_03855A:        F0 1F         BEQ CODE_03857B           ;/
+CODE_03855C:        C9 01         CMP #$01                  ;\
+CODE_03855E:        D0 5E         BNE CODE_0385BE           ;/Branch if operation mode is Main
 CODE_038560:        AD 72 07      LDA $0772                 ;
 CODE_038563:        C9 03         CMP #$03                  ;
 CODE_038565:        D0 57         BNE CODE_0385BE           ;
@@ -705,6 +705,7 @@ CODE_038686:        8D C9 08      STA $08C9                 ;
 CODE_038689:        8D CD 08      STA $08CD                 ;
 CODE_03868C:        60            RTS                       ;
 
+;Title screen operation mode
 CODE_03868D:        AD 72 07      LDA $0772                 ;
 CODE_038690:        0A            ASL A                     ;
 CODE_038691:        AA            TAX                       ;
@@ -712,7 +713,7 @@ CODE_038692:        FC AC 86      JSR (PNTR_0386AC,x)       ;
 CODE_038695:        AF F2 1F 70   LDA $701FF2               ;
 CODE_038699:        F0 0D         BEQ CODE_0386A8           ;
 CODE_03869B:        9C 00 16      STZ $1600                 ;\
-CODE_03869E:        9C 01 16      STZ $1601                 ; |Clear sound registers
+CODE_03869E:        9C 01 16      STZ $1601                 ; |Clear sound registers so no sound plays during title screen
 CODE_0386A1:        9C 02 16      STZ $1602                 ; |
 CODE_0386A4:        9C 03 16      STZ $1603                 ;/
 CODE_0386A7:        60            RTS                       ;
@@ -854,7 +855,7 @@ CODE_0387E4:        A9 01         LDA #$01                  ;
 CODE_0387E6:        8D 67 0E      STA $0E67                 ;
 CODE_0387E9:        20 10 F7      JSR CODE_03F710           ;
 CODE_0387EC:        22 0B C0 04   JSL CODE_04C00B           ;
-CODE_0387F0:        EE 5D 07      INC $075D                 ;
+CODE_0387F0:        EE 5D 07      INC $075D                 ;Enable hidden 1-up flag
 CODE_0387F3:        EE 64 07      INC $0764                 ;
 CODE_0387F6:        EE 57 07      INC $0757                 ;
 CODE_0387F9:        EE 70 07      INC $0770                 ;
@@ -945,6 +946,7 @@ CODE_0388B6:        CE 18 07      DEC $0718                 ;
 CODE_0388B9:        18            CLC                       ;
 CODE_0388BA:        60            RTS                       ;
 
+;Defeated Bowser operation mode
 CODE_0388BB:        20 D0 88      JSR CODE_0388D0           ;Princess/toad saved sequence activator
 CODE_0388BE:        AD 72 07      LDA $0772                 ;
 CODE_0388C1:        F0 07         BEQ CODE_0388CA           ;
@@ -964,12 +966,14 @@ CODE_0388DF:        0A            ASL A                     ;
 CODE_0388E0:        AA            TAX                       ;
 CODE_0388E1:        7C EC 88      JMP (PNTR_0388EC,x)       ;
 
+;Victory commands for world 8
 CODE_0388E4:        AD 72 07      LDA $0772                 ;
 CODE_0388E7:        0A            ASL A                     ;
 CODE_0388E8:        AA            TAX                       ;
 CODE_0388E9:        7C FA 88      JMP (PNTR_0388FA,x)       ;
 
-PNTR_0388EC:        dw CODE_03D4D0
+;Bowser victory pointers
+PNTR_0388EC:        dw CODE_03D4D0                          ;$00 - Collapse bridge if necessary
                     dw CODE_0389D2
                     dw CODE_0389EA
                     dw CODE_038A55
@@ -977,7 +981,8 @@ PNTR_0388EC:        dw CODE_03D4D0
                     dw CODE_038993
                     dw CODE_038AD4
 
-PNTR_0388FA:        dw CODE_03D4D0
+;Bowser victory pointers - World 8
+PNTR_0388FA:        dw CODE_03D4D0                          ;$00 - Collapse bridge if necessary
                     dw CODE_0389CC
                     dw CODE_0389EA
                     dw CODE_038918
@@ -1003,19 +1008,19 @@ CODE_038925:        EE 72 07      INC $0772                 ;
 CODE_038928:        EE 72 07      INC $0772                 ;
 CODE_03892B:        60            RTS                       ;
 
-CODE_03892C:        9C F4 0F      STZ $0FF4                 ;
-CODE_03892F:        9C F6 0F      STZ $0FF6                 ;
-CODE_038932:        9C F5 0F      STZ $0FF5                 ;
-CODE_038935:        9C F7 0F      STZ $0FF7                 ;
-CODE_038938:        9C F8 0F      STZ $0FF8                 ;
-CODE_03893B:        9C F9 0F      STZ $0FF9                 ;
-CODE_03893E:        9C FA 0F      STZ $0FFA                 ;
-CODE_038941:        9C FB 0F      STZ $0FFB                 ;
-CODE_038944:        A9 02         LDA #$02                  ;
-CODE_038946:        8D 8F 07      STA $078F                 ;
+CODE_03892C:        9C F4 0F      STZ $0FF4                 ;\
+CODE_03892F:        9C F6 0F      STZ $0FF6                 ; |
+CODE_038932:        9C F5 0F      STZ $0FF5                 ; |
+CODE_038935:        9C F7 0F      STZ $0FF7                 ; |Zero out all controller data
+CODE_038938:        9C F8 0F      STZ $0FF8                 ; |
+CODE_03893B:        9C F9 0F      STZ $0FF9                 ; |
+CODE_03893E:        9C FA 0F      STZ $0FFA                 ; |
+CODE_038941:        9C FB 0F      STZ $0FFB                 ;/
+CODE_038944:        A9 02         LDA #$02                  ;\
+CODE_038946:        8D 8F 07      STA $078F                 ;/End of level timer to score conversion speed
 CODE_038949:        20 70 AD      JSR CODE_03AD70           ;
-CODE_03894C:        AD 54 07      LDA $0754                 ;
-CODE_03894F:        D0 03         BNE CODE_038954           ;
+CODE_03894C:        AD 54 07      LDA $0754                 ;\
+CODE_03894F:        D0 03         BNE CODE_038954           ;/Return if small mario
 CODE_038951:        EE 72 07      INC $0772                 ;
 CODE_038954:        60            RTS                       ;
 
@@ -3011,10 +3016,11 @@ CODE_03A09F:        8D 5B 07      STA $075B                 ;
 CODE_03A0A2:        20 2B A2      JSR CODE_03A22B           ;
 CODE_03A0A5:        4C 04 A2      JMP CODE_03A204           ;
 
-CODE_03A0A8:        AD 72 07      LDA $0772                 ;\
-CODE_03A0AB:        0A            ASL A                     ; |Some sort of a game mode?
-CODE_03A0AC:        AA            TAX                       ; |
-CODE_03A0AD:        7C B0 A0      JMP (PNTR_03A0B0,x)       ;/
+;Game Over operation mode
+CODE_03A0A8:        AD 72 07      LDA $0772                 ;
+CODE_03A0AB:        0A            ASL A                     ;
+CODE_03A0AC:        AA            TAX                       ;
+CODE_03A0AD:        7C B0 A0      JMP (PNTR_03A0B0,x)       ;
 
 PNTR_03A0B0:        dw CODE_03A0B6 ;$00
                     dw CODE_038C18 ;$01
@@ -3138,7 +3144,7 @@ CODE_03A1BF:        A0 11         LDY #$11                  ;
 CODE_03A1C1:        99 CE 07      STA $07CE,y               ;
 CODE_03A1C4:        88            DEY                       ;
 CODE_03A1C5:        10 FA         BPL CODE_03A1C1           ;
-CODE_03A1C7:        EE 5D 07      INC $075D                 ;
+CODE_03A1C7:        EE 5D 07      INC $075D                 ;Enable hidden 1-up flag
 CODE_03A1CA:        AD 06 0F      LDA $0F06                 ;
 CODE_03A1CD:        F0 0F         BEQ CODE_03A1DE           ;
 CODE_03A1CF:        22 03 8F 00   JSL CODE_008F03           ;
@@ -3198,7 +3204,7 @@ CODE_03A248:        AD 80 07      LDA $0780                 ;
 CODE_03A24B:        8D 56 07      STA $0756                 ;
 CODE_03A24E:        68            PLA                       ;
 CODE_03A24F:        8D 80 07      STA $0780                 ;
-CODE_03A252:        AD FC 07      LDA $07FC                 ;"More difficult quest" flag. Sets 076A too and shows star next to world
+CODE_03A252:        AD FC 07      LDA $07FC                 ;"More difficult quest" flag
 CODE_03A255:        48            PHA                       ;
 CODE_03A256:        AD 81 07      LDA $0781                 ;
 CODE_03A259:        8D FC 07      STA $07FC                 ;
@@ -3814,6 +3820,7 @@ CODE_03A7C1:        B9 CA A7      LDA $A7CA,y               ;
 CODE_03A7C4:        85 05         STA $05                   ;
 CODE_03A7C6:        6C 04 00      JMP ($0004)               ;
 
+;Level object pointers
 PNTR_03A7C9:        dw CODE_03A9F7
                     dw CODE_03A8AF
                     dw CODE_03AB63
@@ -4098,9 +4105,10 @@ DATA_03A9E3:        db $19,$18,$00,$00,$19,$22,$21,$20
                     db $19,$25,$24,$23,$15,$14,$19,$18
                     db $17,$16,$19,$18
 
-CODE_03A9F7:        20 4D AA      JSR CODE_03AA4D           ;
-CODE_03A9FA:        A5 00         LDA $00                   ;
-CODE_03A9FC:        F0 04         BEQ CODE_03AA02           ;
+;Generate pipe
+CODE_03A9F7:        20 4D AA      JSR CODE_03AA4D           ;Get pipe height
+CODE_03A9FA:        A5 00         LDA $00                   ;\
+CODE_03A9FC:        F0 04         BEQ CODE_03AA02           ;/Branch if warp pipe
 CODE_03A9FE:        C8            INY                       ;
 CODE_03A9FF:        C8            INY                       ;
 CODE_03AA00:        C8            INY                       ;
@@ -4149,19 +4157,19 @@ CODE_03AA58:        85 06         STA $06                   ;
 CODE_03AA5A:        BC 00 13      LDY $1300,x               ;
 CODE_03AA5D:        60            RTS                       ;
 
-CODE_03AA5E:        A2 00         LDX #$00                  ;
-CODE_03AA60:        18            CLC                       ;
-CODE_03AA61:        B5 10         LDA $10,x                 ;
-CODE_03AA63:        F0 05         BEQ CODE_03AA6A           ;
-CODE_03AA65:        E8            INX                       ;
-CODE_03AA66:        E0 08         CPX #$08                  ;
-CODE_03AA68:        D0 F6         BNE CODE_03AA60           ;
-CODE_03AA6A:        60            RTS                       ;
+CODE_03AA5E:        A2 00         LDX #$00                  ;\ Get free sprite slot (begin-end)
+CODE_03AA60:        18            CLC                       ; |
+CODE_03AA61:        B5 10         LDA $10,x                 ; |
+CODE_03AA63:        F0 05         BEQ CODE_03AA6A           ; |
+CODE_03AA65:        E8            INX                       ; |
+CODE_03AA66:        E0 08         CPX #$08                  ; |
+CODE_03AA68:        D0 F6         BNE CODE_03AA60           ; |
+CODE_03AA6A:        60            RTS                       ;/
 
 CODE_03AA6B:        A2 08         LDX #$08                  ;\ Routine only used by piranha plant
 CODE_03AA6D:        18            CLC                       ; |
 CODE_03AA6E:        B5 10         LDA $10,x                 ; |
-CODE_03AA70:        F0 05         BEQ CODE_03AA77           ; |Get free sprite slot (check for an off-screen sprite)
+CODE_03AA70:        F0 05         BEQ CODE_03AA77           ; |Get free sprite slot (end-begin)
 CODE_03AA72:        CA            DEX                       ; |Index = $FF if none
 CODE_03AA73:        E0 FF         CPX #$FF                  ; |
 CODE_03AA75:        D0 F6         BNE CODE_03AA6D           ; |
@@ -4235,7 +4243,7 @@ CODE_03AAED:        A9 29         LDA #$29                  ;
 CODE_03AAEF:        20 78 AC      JSR CODE_03AC78           ;
 CODE_03AAF2:        A9 64         LDA #$64                  ;
 CODE_03AAF4:        8D AB 06      STA $06AB                 ;
-CODE_03AAF7:        20 E0 AC      JSR CODE_03ACE0           ;
+CODE_03AAF7:        20 E0 AC      JSR CODE_03ACE0           ;Turn current screen x-coordinate (16x16) to pixel coordinate
 CODE_03AAFA:        38            SEC                       ;
 CODE_03AAFB:        E9 08         SBC #$08                  ;
 CODE_03AAFD:        8D 1F 02      STA $021F                 ;
@@ -4333,7 +4341,7 @@ CODE_03ABB8:        20 E8 AC      JSR CODE_03ACE8           ; (A << 4) + $20
 CODE_03ABBB:        9D 77 02      STA $0277,x               ;
 CODE_03ABBE:        AD 25 07      LDA $0725                 ;
 CODE_03ABC1:        9D 6B 02      STA $026B,x               ;
-CODE_03ABC4:        20 E0 AC      JSR CODE_03ACE0           ;
+CODE_03ABC4:        20 E0 AC      JSR CODE_03ACE0           ;Turn current screen x-coordinate (16x16) to pixel coordinate
 CODE_03ABC7:        9D 71 02      STA $0271,x               ;
 CODE_03ABCA:        E8            INX                       ;
 CODE_03ABCB:        E0 06         CPX #$06                  ;
@@ -4342,12 +4350,13 @@ CODE_03ABCF:        A2 00         LDX #$00                  ;
 CODE_03ABD1:        8E 6A 02      STX $026A                 ;
 CODE_03ABD4:        60            RTS                       ;
 
+;Springboard object
 CODE_03ABD5:        20 C2 AC      JSR CODE_03ACC2           ;
-CODE_03ABD8:        20 5E AA      JSR CODE_03AA5E           ;
-CODE_03ABDB:        20 E0 AC      JSR CODE_03ACE0           ;
-CODE_03ABDE:        9D 1A 02      STA $021A,x               ;
-CODE_03ABE1:        AD 25 07      LDA $0725                 ;
-CODE_03ABE4:        95 79         STA $79,x                 ;
+CODE_03ABD8:        20 5E AA      JSR CODE_03AA5E           ;Get free sprite slot (begin-end)
+CODE_03ABDB:        20 E0 AC      JSR CODE_03ACE0           ;\Turn current screen x-coordinate (16x16) to pixel coordinate
+CODE_03ABDE:        9D 1A 02      STA $021A,x               ;/Store into sprite X-pos, low byte
+CODE_03ABE1:        AD 25 07      LDA $0725                 ;\Store screen number number into sprite X-pos, high byte
+CODE_03ABE4:        95 79         STA $79,x                 ;/
 CODE_03ABE6:        20 E8 AC      JSR CODE_03ACE8           ;(A << 4) + $20
 CODE_03ABE9:        9D 38 02      STA $0238,x               ;
 CODE_03ABEC:        95 5E         STA $5E,x                 ;
@@ -4401,7 +4410,7 @@ CODE_03AC42:        90 2C         BCC CODE_03AC70           ;
 CODE_03AC44:        A5 5C         LDA $5C                   ;
 CODE_03AC46:        D0 28         BNE CODE_03AC70           ;
 CODE_03AC48:        AE 6A 02      LDX $026A                 ;
-CODE_03AC4B:        20 E0 AC      JSR CODE_03ACE0           ;
+CODE_03AC4B:        20 E0 AC      JSR CODE_03ACE0           ;Turn current screen x-coordinate (16x16) to pixel coordinate
 CODE_03AC4E:        38            SEC                       ;
 CODE_03AC4F:        E9 10         SBC #$10                  ;
 CODE_03AC51:        9D 71 02      STA $0271,x               ;
@@ -4483,20 +4492,21 @@ CODE_03ACDD:        A8            TAY                       ;
 CODE_03ACDE:        FA            PLX                       ;
 CODE_03ACDF:        60            RTS                       ;
 
-CODE_03ACE0:        AD 26 07      LDA $0726                 ;
-CODE_03ACE3:        0A            ASL A                     ;
-CODE_03ACE4:        0A            ASL A                     ;
-CODE_03ACE5:        0A            ASL A                     ;
-CODE_03ACE6:        0A            ASL A                     ;
-CODE_03ACE7:        60            RTS                       ;
+;Turn current screen x-coordinate (16x16) to pixel coordinate
+CODE_03ACE0:        AD 26 07      LDA $0726                 ;\
+CODE_03ACE3:        0A            ASL A                     ; | Turn screen X-coordinates from 16x16 to pixel coordinate
+CODE_03ACE4:        0A            ASL A                     ; |
+CODE_03ACE5:        0A            ASL A                     ; |
+CODE_03ACE6:        0A            ASL A                     ; |
+CODE_03ACE7:        60            RTS                       ;/
 
 CODE_03ACE8:        A5 07         LDA $07                   ;
 CODE_03ACEA:        0A            ASL A                     ;
 CODE_03ACEB:        0A            ASL A                     ;
 CODE_03ACEC:        0A            ASL A                     ;
 CODE_03ACED:        0A            ASL A                     ;
-CODE_03ACEE:        18            CLC                       ;
-CODE_03ACEF:        69 20         ADC #$20                  ;
+CODE_03ACEE:        18            CLC                       ;\Account for the statusbar area
+CODE_03ACEF:        69 20         ADC #$20                  ;/
 CODE_03ACF1:        60            RTS                       ;
 
 DATA_03ACF2:        db $00,$D0
@@ -4531,19 +4541,21 @@ CODE_03AD16:        20 B6 AC      JSR CODE_03ACB6           ;
 CODE_03AD19:        AB            PLB                       ;
 CODE_03AD1A:        6B            RTL                       ;
 
-CODE_03AD1B:        8B            PHB                       ;
-CODE_03AD1C:        4B            PHK                       ;
-CODE_03AD1D:        AB            PLB                       ;
-CODE_03AD1E:        20 E0 AC      JSR CODE_03ACE0           ;
-CODE_03AD21:        AB            PLB                       ;
-CODE_03AD22:        6B            RTL                       ;
+;Turn current screen x-coordinate (16x16) to pixel coordinate
+CODE_03AD1B:        8B            PHB                       ;\
+CODE_03AD1C:        4B            PHK                       ; |
+CODE_03AD1D:        AB            PLB                       ; |
+CODE_03AD1E:        20 E0 AC      JSR CODE_03ACE0           ; |Turn current screen x-coordinate (16x16) to pixel coordinate
+CODE_03AD21:        AB            PLB                       ; |
+CODE_03AD22:        6B            RTL                       ;/
 
-CODE_03AD23:        8B            PHB                       ;
-CODE_03AD24:        4B            PHK                       ;
-CODE_03AD25:        AB            PLB                       ;
-CODE_03AD26:        20 5E AA      JSR CODE_03AA5E           ;
-CODE_03AD29:        AB            PLB                       ;
-CODE_03AD2A:        6B            RTL                       ;
+;Get free sprite slot (begin-end)
+CODE_03AD23:        8B            PHB                       ;\
+CODE_03AD24:        4B            PHK                       ; |
+CODE_03AD25:        AB            PLB                       ; |
+CODE_03AD26:        20 5E AA      JSR CODE_03AA5E           ; |Jump to get free sprite slot
+CODE_03AD29:        AB            PLB                       ; |
+CODE_03AD2A:        6B            RTL                       ;/
 
 DATA_03AD2B:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF          ;Mysterious, Empty space
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
@@ -4553,15 +4565,16 @@ DATA_03AD2B:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF          ;Mysterious, Emp
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF
 
+;Main operation mode
 CODE_03AD60:        AD 72 07      LDA $0772                 ;\
 CODE_03AD63:        0A            ASL A                     ; |Get "In-game modes"
 CODE_03AD64:        AA            TAX                       ; |
 CODE_03AD65:        7C 68 AD      JMP (PNTR_03AD68,x)       ;/
 
-PNTR_03AD68:        dw CODE_039E0C ;$00 Screen goes black
-                    dw CODE_038C18 ;$01 "Image before level" mode
-                    dw CODE_039ED8 ;$02 Pause timer, Sprites go disappear
-                    dw CODE_03AD70 ;$03 Normal mode
+PNTR_03AD68:        dw CODE_039E0C                          ;$00 Screen goes black
+                    dw CODE_038C18                          ;$01 "Image before level" mode
+                    dw CODE_039ED8                          ;$02 Pause timer, Sprites go disappear
+                    dw CODE_03AD70                          ;$03 Normal mode
 
 CODE_03AD70:        22 60 C8 05   JSL CODE_05C860           ;
 CODE_03AD74:        A5 28         LDA $28                   ;
@@ -5274,7 +5287,7 @@ CODE_03B351:        AC 5F 07      LDY $075F                 ;
 CODE_03B354:        AD 48 07      LDA $0748                 ;
 CODE_03B357:        D9 23 B3      CMP $B323,y               ;
 CODE_03B35A:        90 03         BCC CODE_03B35F           ;
-CODE_03B35C:        EE 5D 07      INC $075D                 ;
+CODE_03B35C:        EE 5D 07      INC $075D                 ;Enable hidden 1-up flag
 CODE_03B35F:        EE 60 07      INC $0760                 ;
 CODE_03B362:        9C 5B 07      STZ $075B                 ;
 CODE_03B365:        20 2B A2      JSR CODE_03A22B           ;
@@ -5829,22 +5842,22 @@ CODE_03B7EB:        F0 4B         BEQ CODE_03B838           ;
 CODE_03B7ED:        A5 BB         LDA $BB                   ;
 CODE_03B7EF:        C9 02         CMP #$02                  ;
 CODE_03B7F1:        10 45         BPL CODE_03B838           ;
-CODE_03B7F3:        AD 8F 07      LDA $078F                 ;
-CODE_03B7F6:        D0 40         BNE CODE_03B838           ;
-CODE_03B7F8:        AD E9 07      LDA $07E9                 ;
-CODE_03B7FB:        0D EA 07      ORA $07EA                 ;
-CODE_03B7FE:        0D EB 07      ORA $07EB                 ;
-CODE_03B801:        F0 2C         BEQ CODE_03B82F           ;
-CODE_03B803:        AC E9 07      LDY $07E9                 ;
-CODE_03B806:        88            DEY                       ;
-CODE_03B807:        D0 0D         BNE CODE_03B816           ;
-CODE_03B809:        AD EA 07      LDA $07EA                 ;
-CODE_03B80C:        0D EB 07      ORA $07EB                 ;
-CODE_03B80F:        D0 05         BNE CODE_03B816           ;
-CODE_03B811:        A9 FF         LDA #$FF                  ;\Time is running out! sound
-CODE_03B813:        8D 00 16      STA $1600                 ;/
-CODE_03B816:        A9 18         LDA #$18                  ;
-CODE_03B818:        8D 8F 07      STA $078F                 ;
+CODE_03B7F3:        AD 8F 07      LDA $078F                 ;\If timer countdown timer isn't, $00 yet, branch
+CODE_03B7F6:        D0 40         BNE CODE_03B838           ;/
+CODE_03B7F8:        AD E9 07      LDA $07E9                 ;\
+CODE_03B7FB:        0D EA 07      ORA $07EA                 ; |Branch if timer is 000
+CODE_03B7FE:        0D EB 07      ORA $07EB                 ; |
+CODE_03B801:        F0 2C         BEQ CODE_03B82F           ;/
+CODE_03B803:        AC E9 07      LDY $07E9                 ;\
+CODE_03B806:        88            DEY                       ; |
+CODE_03B807:        D0 0D         BNE CODE_03B816           ; |Check hundreds, if not $00, branch
+CODE_03B809:        AD EA 07      LDA $07EA                 ;\|
+CODE_03B80C:        0D EB 07      ORA $07EB                 ; |Check the tens and ones. If not $00, branch
+CODE_03B80F:        D0 05         BNE CODE_03B816           ;/
+CODE_03B811:        A9 FF         LDA #$FF                  ;\
+CODE_03B813:        8D 00 16      STA $1600                 ;/Time is running out! sound
+CODE_03B816:        A9 18         LDA #$18                  ;\
+CODE_03B818:        8D 8F 07      STA $078F                 ;/Control the timer countdown speed
 CODE_03B81B:        A0 23         LDY #$23                  ;
 CODE_03B81D:        A9 FF         LDA #$FF                  ;
 CODE_03B81F:        8D 4A 01      STA $014A                 ;
@@ -9414,24 +9427,25 @@ CODE_03D4CB:        9D 27 03      STA $0327,x               ;
 CODE_03D4CE:        FA            PLX                       ;
 CODE_03D4CF:        60            RTS                       ;
 
-CODE_03D4D0:        AE 68 03      LDX $0368                 ;
-CODE_03D4D3:        B5 1C         LDA $1C,x                 ;
-CODE_03D4D5:        C9 2D         CMP #$2D                  ;
-CODE_03D4D7:        D0 11         BNE CODE_03D4EA           ;
-CODE_03D4D9:        86 9E         STX $9E                   ;
-CODE_03D4DB:        B5 29         LDA $29,x                 ;
-CODE_03D4DD:        F0 24         BEQ CODE_03D503           ;
-CODE_03D4DF:        29 40         AND #$40                  ;
-CODE_03D4E1:        F0 07         BEQ CODE_03D4EA           ;
-CODE_03D4E3:        BD 38 02      LDA $0238,x               ;
-CODE_03D4E6:        C9 E0         CMP #$E0                  ;
-CODE_03D4E8:        90 13         BCC CODE_03D4FD           ;
-CODE_03D4EA:        AD 95 00      LDA $0095                 ;
-CODE_03D4ED:        D0 08         BNE CODE_03D4F7           ;
+;Bridge Collapse command
+CODE_03D4D0:        AE 68 03      LDX $0368                 ;\
+CODE_03D4D3:        B5 1C         LDA $1C,x                 ; |Check if Bowser still exists
+CODE_03D4D5:        C9 2D         CMP #$2D                  ; |(He could've been killed by fireballs)
+CODE_03D4D7:        D0 11         BNE CODE_03D4EA           ;/ If he doesn't exist, skip bridge destruction
+CODE_03D4D9:        86 9E         STX $9E                   ;Store bowser's sprite index into current sprite index
+CODE_03D4DB:        B5 29         LDA $29,x                 ;\
+CODE_03D4DD:        F0 24         BEQ CODE_03D503           ;/If Bowser is in a normal state, destroy bridge
+CODE_03D4DF:        29 40         AND #$40                  ;\
+CODE_03D4E1:        F0 07         BEQ CODE_03D4EA           ;/If Bowser isn't in a defeated state (fall down bridge), remove bridge
+CODE_03D4E3:        BD 38 02      LDA $0238,x               ;\
+CODE_03D4E6:        C9 E0         CMP #$E0                  ; |If Bowser sprite is not low enough yet, branch
+CODE_03D4E8:        90 13         BCC CODE_03D4FD           ;/
+CODE_03D4EA:        AD 95 00      LDA $0095                 ;\Flag to not play music?
+CODE_03D4ED:        D0 08         BNE CODE_03D4F7           ;/
 CODE_03D4EF:        A9 0B         LDA #$0B                  ;\Toad/Princess saved fanfare music
 CODE_03D4F1:        8D 02 16      STA $1602                 ;/
 CODE_03D4F4:        8D 95 00      STA $0095                 ;
-CODE_03D4F7:        EE 72 07      INC $0772                 ;
+CODE_03D4F7:        EE 72 07      INC $0772                 ;Go to next command
 CODE_03D4FA:        4C 6B D5      JMP CODE_03D56B           ;
 
 CODE_03D4FD:        20 3A C1      JSR CODE_03C13A           ;
@@ -9439,8 +9453,8 @@ CODE_03D500:        4C 79 D6      JMP CODE_03D679           ;
 
 CODE_03D503:        CE 64 03      DEC $0364                 ;
 CODE_03D506:        D0 4F         BNE CODE_03D557           ;
-CODE_03D508:        A9 04         LDA #$04                  ;
-CODE_03D50A:        8D 64 03      STA $0364                 ;
+CODE_03D508:        A9 04         LDA #$04                  ;\Amount of delay until the next bridge tile collapses
+CODE_03D50A:        8D 64 03      STA $0364                 ;/
 CODE_03D50D:        AD 63 03      LDA $0363                 ;
 CODE_03D510:        49 01         EOR #$01                  ;
 CODE_03D512:        8D 63 03      STA $0363                 ;
@@ -9742,16 +9756,16 @@ CODE_03D7A9:        8D 49 01      STA $0149                 ;
 CODE_03D7AC:        4C 18 D8      JMP CODE_03D818           ;
 
 CODE_03D7AF:        9C CB 06      STZ $06CB                 ;
-CODE_03D7B2:        AD 46 07      LDA $0746                 ;
-CODE_03D7B5:        C9 05         CMP #$05                  ;
-CODE_03D7B7:        B0 3A         BCS CODE_03D7F3           ;
-CODE_03D7B9:        20 08 9B      JSR CODE_039B08           ;This JSR has a destructive return
+CODE_03D7B2:        AD 46 07      LDA $0746                 ;\
+CODE_03D7B5:        C9 05         CMP #$05                  ; |Flagpole task control
+CODE_03D7B7:        B0 3A         BCS CODE_03D7F3           ;/
+CODE_03D7B9:        20 08 9B      JSR CODE_039B08           ;ExecutePtrShort
 
-PNTR_03D7BC:        dw CODE_03D7F3            ;00 - Nothing
-                    dw CODE_03D7C6            ;01 - 
-                    dw CODE_03D7FE            ;02 - 
-                    dw CODE_03D830            ;03 -
-                    dw CODE_03D883             ;04 - 
+PNTR_03D7BC:        dw CODE_03D7F3                          ;$00 - Nothing
+                    dw CODE_03D7C6                          ;$01 - Check if firework is applicable
+                    dw CODE_03D7FE                          ;$02 - Award points
+                    dw CODE_03D830                          ;$03 - Raise star flag and launch fireworks
+                    dw CODE_03D883                          ;$04 - Delay to level fadeout
 
 CODE_03D7C6:        A0 05         LDY #$05                  ;
 CODE_03D7C8:        AD EB 07      LDA $07EB                 ;
@@ -11627,7 +11641,7 @@ CODE_03E695:        8D 51 07      STA $0751                 ;
 CODE_03E698:        8D 60 07      STA $0760                 ;
 CODE_03E69B:        8D 5C 07      STA $075C                 ;
 CODE_03E69E:        8D 52 07      STA $0752                 ;
-CODE_03E6A1:        EE 5D 07      INC $075D                 ;
+CODE_03E6A1:        EE 5D 07      INC $075D                 ;Enable hidden 1-up flag
 CODE_03E6A4:        EE 57 07      INC $0757                 ;
 CODE_03E6A7:        A9 F3         LDA #$F3                  ;
 CODE_03E6A9:        8D 02 16      STA $1602                 ;
