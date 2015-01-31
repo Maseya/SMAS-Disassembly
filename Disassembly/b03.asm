@@ -3187,42 +3187,44 @@ CODE_03A225:        A9 01         LDA #$01                  ;
 CODE_03A227:        8D 70 07      STA $0770                 ;
 CODE_03A22A:        60            RTS                       ;
 
+;Swap players
+;Output: Carry set = player couldn't be swapped. Carry clear = player could be swapped.
 CODE_03A22B:        38            SEC                       ;
-CODE_03A22C:        AD 7A 07      LDA $077A                 ;
-CODE_03A22F:        F0 4F         BEQ CODE_03A280           ;
-CODE_03A231:        AD 61 07      LDA $0761                 ;
-CODE_03A234:        30 4A         BMI CODE_03A280           ;
-CODE_03A236:        AD 54 07      LDA $0754                 ;
-CODE_03A239:        48            PHA                       ;
-CODE_03A23A:        AD 7F 07      LDA $077F                 ;
-CODE_03A23D:        8D 54 07      STA $0754                 ;
-CODE_03A240:        68            PLA                       ;
-CODE_03A241:        8D 7F 07      STA $077F                 ;
-CODE_03A244:        AD 56 07      LDA $0756                 ;
-CODE_03A247:        48            PHA                       ;
-CODE_03A248:        AD 80 07      LDA $0780                 ;
-CODE_03A24B:        8D 56 07      STA $0756                 ;
-CODE_03A24E:        68            PLA                       ;
-CODE_03A24F:        8D 80 07      STA $0780                 ;
-CODE_03A252:        AD FC 07      LDA $07FC                 ;"More difficult quest" flag
-CODE_03A255:        48            PHA                       ;
-CODE_03A256:        AD 81 07      LDA $0781                 ;
-CODE_03A259:        8D FC 07      STA $07FC                 ;
-CODE_03A25C:        68            PLA                       ;
-CODE_03A25D:        8D 81 07      STA $0781                 ;
-CODE_03A260:        AD 53 07      LDA $0753                 ;
-CODE_03A263:        49 01         EOR #$01                  ;
-CODE_03A265:        8D 53 07      STA $0753                 ;
-CODE_03A268:        8D C2 0E      STA $0EC2                 ;
-CODE_03A26B:        A2 06         LDX #$06                  ;
-CODE_03A26D:        BD 5A 07      LDA $075A,x               ;
-CODE_03A270:        48            PHA                       ;
-CODE_03A271:        BD 61 07      LDA $0761,x               ;
-CODE_03A274:        9D 5A 07      STA $075A,x               ;
-CODE_03A277:        68            PLA                       ;
-CODE_03A278:        9D 61 07      STA $0761,x               ;
-CODE_03A27B:        CA            DEX                       ;
-CODE_03A27C:        10 EF         BPL CODE_03A26D           ;
+CODE_03A22C:        AD 7A 07      LDA $077A                 ;\Branch if single player
+CODE_03A22F:        F0 4F         BEQ CODE_03A280           ;/
+CODE_03A231:        AD 61 07      LDA $0761                 ;\
+CODE_03A234:        30 4A         BMI CODE_03A280           ;/Branch if previous player's extra lives is below 0
+CODE_03A236:        AD 54 07      LDA $0754                 ;\
+CODE_03A239:        48            PHA                       ; |
+CODE_03A23A:        AD 7F 07      LDA $077F                 ; |
+CODE_03A23D:        8D 54 07      STA $0754                 ; |Swap previous player's small flag with current player's
+CODE_03A240:        68            PLA                       ; |
+CODE_03A241:        8D 7F 07      STA $077F                 ;/
+CODE_03A244:        AD 56 07      LDA $0756                 ;\
+CODE_03A247:        48            PHA                       ; |
+CODE_03A248:        AD 80 07      LDA $0780                 ; |
+CODE_03A24B:        8D 56 07      STA $0756                 ; |Swap previous player's powerup with current player's
+CODE_03A24E:        68            PLA                       ; |
+CODE_03A24F:        8D 80 07      STA $0780                 ;/
+CODE_03A252:        AD FC 07      LDA $07FC                 ;\"More difficult quest" flag
+CODE_03A255:        48            PHA                       ; |
+CODE_03A256:        AD 81 07      LDA $0781                 ; |
+CODE_03A259:        8D FC 07      STA $07FC                 ; |Swap "more difficult quest" flag with previous player
+CODE_03A25C:        68            PLA                       ; |
+CODE_03A25D:        8D 81 07      STA $0781                 ;/
+CODE_03A260:        AD 53 07      LDA $0753                 ;\
+CODE_03A263:        49 01         EOR #$01                  ; |Swap current player
+CODE_03A265:        8D 53 07      STA $0753                 ;/
+CODE_03A268:        8D C2 0E      STA $0EC2                 ;And the current player's image
+CODE_03A26B:        A2 06         LDX #$06                  ;\
+CODE_03A26D:        BD 5A 07      LDA $075A,x               ; |Swap things like current player's coins, lives, levels, etc
+CODE_03A270:        48            PHA                       ; |
+CODE_03A271:        BD 61 07      LDA $0761,x               ; |
+CODE_03A274:        9D 5A 07      STA $075A,x               ; |
+CODE_03A277:        68            PLA                       ; |
+CODE_03A278:        9D 61 07      STA $0761,x               ; |
+CODE_03A27B:        CA            DEX                       ; |
+CODE_03A27C:        10 EF         BPL CODE_03A26D           ;/
 CODE_03A27E:        18            CLC                       ;
 CODE_03A27F:        60            RTS                       ;
 
@@ -3231,6 +3233,7 @@ CODE_03A283:        D0 FA         BNE CODE_03A27F           ;
 CODE_03A285:        18            CLC                       ;
 CODE_03A286:        60            RTS                       ;
 
+;Swap player data after level end if a player didn't quit after game-over, and game is not single player.
 CODE_03A287:        8B            PHB                       ;
 CODE_03A288:        4B            PHK                       ;
 CODE_03A289:        AB            PLB                       ;
@@ -3808,27 +3811,27 @@ CODE_03A7AC:        22 15 8E 04   JSL CODE_048E15           ;
 CODE_03A7B0:        E2 10         SEP #$10                  ;
 CODE_03A7B2:        60            RTS                       ;
 
-CODE_03A7B3:        E2 10         SEP #$10                  ;
-CODE_03A7B5:        A5 00         LDA $00                   ;
-CODE_03A7B7:        18            CLC                       ;
-CODE_03A7B8:        65 07         ADC $07                   ;
-CODE_03A7BA:        0A            ASL A                     ;
-CODE_03A7BB:        A8            TAY                       ;
-CODE_03A7BC:        B9 C9 A7      LDA $A7C9,y               ;
-CODE_03A7BF:        85 04         STA $04                   ;
-CODE_03A7C1:        B9 CA A7      LDA $A7CA,y               ;
-CODE_03A7C4:        85 05         STA $05                   ;
-CODE_03A7C6:        6C 04 00      JMP ($0004)               ;
+CODE_03A7B3:        E2 10         SEP #$10                  ;\
+CODE_03A7B5:        A5 00         LDA $00                   ; |
+CODE_03A7B7:        18            CLC                       ; |
+CODE_03A7B8:        65 07         ADC $07                   ; |
+CODE_03A7BA:        0A            ASL A                     ; |
+CODE_03A7BB:        A8            TAY                       ; | Build objects appropriately and place them into the level
+CODE_03A7BC:        B9 C9 A7      LDA $A7C9,y               ; |
+CODE_03A7BF:        85 04         STA $04                   ; |
+CODE_03A7C1:        B9 CA A7      LDA $A7CA,y               ; |
+CODE_03A7C4:        85 05         STA $05                   ; |
+CODE_03A7C6:        6C 04 00      JMP ($0004)               ;/
 
-;Level object pointers
-PNTR_03A7C9:        dw CODE_03A9F7
-                    dw CODE_03A8AF
-                    dw CODE_03AB63
-                    dw CODE_03AB72
-                    dw CODE_03AB2A
+;Pointers to level objects
+PNTR_03A7C9:        dw CODE_03A9F7                          ;Warp pipe
+                    dw CODE_03A8AF                          ;$0733-dependant object. 00 = normal, green platform. 01 = mushroom, 02 = bullet bill cannons
+                    dw CODE_03AB63                          ;Row of bricks
+                    dw CODE_03AB72                          ;Row of stones
+                    dw CODE_03AB2A                          ;
                     dw CODE_03AB83
                     dw CODE_03AB8A
-                    dw CODE_03A9F7
+                    dw CODE_03A9F7                          ;Decoration pipe
                     dw CODE_03AC3F
                     dw CODE_03A978
                     dw CODE_03AAB0
@@ -3937,8 +3940,8 @@ CODE_03A893:        CA            DEX                       ; |
 CODE_03A894:        10 F5         BPL CODE_03A88B           ; |
 CODE_03A896:        60            RTS                       ;/
 
-CODE_03A897:        14 17         TRB $17                   ;
-CODE_03A899:        18            CLC                       ;
+DATA_03A897:        db $14,$17,$18                          ;Generators: Bullet Bill, Flying Cheep-Cheep, Stop Generators
+
 CODE_03A89A:        A6 00         LDX $00                   ;
 CODE_03A89C:        BD 8F A8      LDA $A88F,x               ;
 CODE_03A89F:        A0 09         LDY #$09                  ;
@@ -3946,24 +3949,25 @@ CODE_03A8A1:        88            DEY                       ;
 CODE_03A8A2:        30 07         BMI CODE_03A8AB           ;
 CODE_03A8A4:        D9 1C 00      CMP $001C,y               ;
 CODE_03A8A7:        D0 F8         BNE CODE_03A8A1           ;
-CODE_03A8A9:        A9 00         LDA #$00                  ;
-CODE_03A8AB:        8D CD 06      STA $06CD                 ;
+CODE_03A8A9:        A9 00         LDA #$00                  ;\
+CODE_03A8AB:        8D CD 06      STA $06CD                 ;/Set enemy to generate: nothing
 CODE_03A8AE:        60            RTS                       ;
 
-CODE_03A8AF:        AD 33 07      LDA $0733                 ;
-CODE_03A8B2:        0A            ASL A                     ;
-CODE_03A8B3:        A8            TAY                       ;
-CODE_03A8B4:        B9 C1 A8      LDA $A8C1,y               ;
-CODE_03A8B7:        85 04         STA $04                   ;
-CODE_03A8B9:        B9 C2 A8      LDA $A8C2,y               ;
-CODE_03A8BC:        85 05         STA $05                   ;
-CODE_03A8BE:        6C 04 00      JMP ($0004)               ;
+CODE_03A8AF:        AD 33 07      LDA $0733                 ;\
+CODE_03A8B2:        0A            ASL A                     ; |
+CODE_03A8B3:        A8            TAY                       ; |
+CODE_03A8B4:        B9 C1 A8      LDA $A8C1,y               ; |Execute routines according to area object styles
+CODE_03A8B7:        85 04         STA $04                   ; |
+CODE_03A8B9:        B9 C2 A8      LDA $A8C2,y               ; |
+CODE_03A8BC:        85 05         STA $05                   ; |
+CODE_03A8BE:        6C 04 00      JMP ($0004)               ;/
 
-PNTR_03A8C1:        dw CODE_03A8C7
-                    dw CODE_03A937
-                    dw CODE_03AB99
+;Code for object $01: $0733-dependant object
+PNTR_03A8C1:        dw CODE_03A8C7                          ;Regular
+                    dw CODE_03A937                          ;Mushroom platforms
+                    dw CODE_03AB99                          ;Bullet bill cannons
 
-CODE_03A8C7:        20 C2 AC      JSR CODE_03ACC2           ;
+CODE_03A8C7:        20 C2 AC      JSR CODE_03ACC2           ;Get object attributes from level object pointer
 CODE_03A8CA:        8E CA 0E      STX $0ECA                 ;
 CODE_03A8CD:        BD 00 13      LDA $1300,x               ;
 CODE_03A8D0:        F0 60         BEQ CODE_03A932           ;
@@ -4041,11 +4045,11 @@ CODE_03A963:        9D A1 06      STA $06A1,x               ;
 CODE_03A966:        A9 50         LDA #$50                  ;
 CODE_03A968:        E8            INX                       ;
 CODE_03A969:        A0 0F         LDY #$0F                  ;
-CODE_03A96B:        4C 78 AC      JMP CODE_03AC78           ;
+CODE_03A96B:        4C 78 AC      JMP CODE_03AC78           ;Place tile in Accumulator into level.
 
 CODE_03A96E:        A6 07         LDX $07                   ;
 CODE_03A970:        A0 00         LDY #$00                  ;
-CODE_03A972:        4C 78 AC      JMP CODE_03AC78           ;
+CODE_03A972:        4C 78 AC      JMP CODE_03AC78           ;Place tile in Accumulator into level.
 
 DATA_03A975:        db $42,$41,$43
 
@@ -4060,7 +4064,7 @@ CODE_03A986:        B9 75 A9      LDA $A975,y               ;
 CODE_03A989:        8D A1 06      STA $06A1                 ;
 CODE_03A98C:        60            RTS                       ;
 
-CODE_03A98D:        20 C2 AC      JSR CODE_03ACC2           ;
+CODE_03A98D:        20 C2 AC      JSR CODE_03ACC2           ;Get object attributes from level object pointer
 CODE_03A990:        BC 00 13      LDY $1300,x               ;
 CODE_03A993:        A6 07         LDX $07                   ;
 CODE_03A995:        A9 75         LDA #$75                  ;
@@ -4084,7 +4088,7 @@ CODE_03A9B6:        C9 00         CMP #$00                  ;
 CODE_03A9B8:        F0 08         BEQ CODE_03A9C2           ;
 CODE_03A9BA:        A2 00         LDX #$00                  ;
 CODE_03A9BC:        A4 05         LDY $05                   ;
-CODE_03A9BE:        20 78 AC      JSR CODE_03AC78           ;
+CODE_03A9BE:        20 78 AC      JSR CODE_03AC78           ;Place tile in Accumulator into level.
 CODE_03A9C1:        18            CLC                       ;
 CODE_03A9C2:        A4 06         LDY $06                   ;
 CODE_03A9C4:        B9 E7 A9      LDA $A9E7,y               ;
@@ -4146,11 +4150,11 @@ CODE_03AA43:        E8            INX                       ;
 CODE_03AA44:        B9 F1 A9      LDA $A9F1,y               ;
 CODE_03AA47:        A4 06         LDY $06                   ;
 CODE_03AA49:        88            DEY                       ;
-CODE_03AA4A:        4C 78 AC      JMP CODE_03AC78           ;
+CODE_03AA4A:        4C 78 AC      JMP CODE_03AC78           ;Place tile in Accumulator into level.
 
 CODE_03AA4D:        A0 01         LDY #$01                  ;
 CODE_03AA4F:        20 B6 AC      JSR CODE_03ACB6           ;
-CODE_03AA52:        20 C2 AC      JSR CODE_03ACC2           ;
+CODE_03AA52:        20 C2 AC      JSR CODE_03ACC2           ;Get object attributes from level object pointer
 CODE_03AA55:        98            TYA                       ;
 CODE_03AA56:        29 07         AND #$07                  ;
 CODE_03AA58:        85 06         STA $06                   ;
@@ -4192,7 +4196,7 @@ CODE_03AA94:        4A            LSR A                     ;
 CODE_03AA95:        A8            TAY                       ;
 CODE_03AA96:        B9 7C AA      LDA $AA7C,y               ;
 CODE_03AA99:        A0 01         LDY #$01                  ;
-CODE_03AA9B:        4C 78 AC      JMP CODE_03AC78           ;
+CODE_03AA9B:        4C 78 AC      JMP CODE_03AC78           ;Place tile in Accumulator into level.
 
 CODE_03AA9E:        A9 03         LDA #$03                  ;
 CODE_03AAA0:        80 02         BRA CODE_03AAA4           ;
@@ -4233,7 +4237,7 @@ CODE_03AAD9:        9D A1 06      STA $06A1,x               ;
 CODE_03AADC:        E8            INX                       ;
 CODE_03AADD:        A0 00         LDY #$00                  ;
 CODE_03AADF:        A9 6B         LDA #$6B                  ;
-CODE_03AAE1:        4C 78 AC      JMP CODE_03AC78           ;
+CODE_03AAE1:        4C 78 AC      JMP CODE_03AC78           ;Place tile in Accumulator into level.
 
 CODE_03AAE4:        A9 28         LDA #$28                  ;
 CODE_03AAE6:        8D A1 06      STA $06A1                 ;
@@ -4264,11 +4268,12 @@ CODE_03AB1F:        8D B6 0F      STA $0FB6                 ;
 CODE_03AB22:        8D B7 0F      STA $0FB7                 ;
 CODE_03AB25:        60            RTS                       ;
 
-DATA_03AB26:        db $EA,$E9,$E9,$E9
-
-CODE_03AB2A:        A4 5C         LDY $5C                   ;
-CODE_03AB2C:        B9 26 AB      LDA $AB26,y               ;
-CODE_03AB2F:        4C 77 AB      JMP CODE_03AB77           ;
+DATA_03AB26:        db $EA,$E9,$E9,$E9                      ;Coin map16, depending on $7E005C
+                                                            ;Underwater coin, regular coin, underground coin, castle coin
+;Row of coins
+CODE_03AB2A:        A4 5C         LDY $5C                   ;\
+CODE_03AB2C:        B9 26 AB      LDA $AB26,y               ;/Load coin map16 tile number
+CODE_03AB2F:        4C 77 AB      JMP CODE_03AB77           ;Render
 
 CODE_03AB32:        06 07         ASL $07                   ;
 CODE_03AB34:        08            PHP                       ;
@@ -4284,31 +4289,36 @@ CODE_03AB46:        BE 30 AB      LDX $AB30,y               ;
 CODE_03AB49:        B9 33 AB      LDA $AB33,y               ;
 CODE_03AB4C:        80 07         BRA CODE_03AB55           ;
 
-CODE_03AB4E:        20 C2 AC      JSR CODE_03ACC2           ;
+CODE_03AB4E:        20 C2 AC      JSR CODE_03ACC2           ;Get object attributes from level object pointer
 CODE_03AB51:        A6 07         LDX $07                   ;
 CODE_03AB53:        A9 FC         LDA #$FC                  ;
 CODE_03AB55:        A0 00         LDY #$00                  ;
-CODE_03AB57:        4C 78 AC      JMP CODE_03AC78           ;
+CODE_03AB57:        4C 78 AC      JMP CODE_03AC78           ;Place tile in Accumulator into level.
 
-DATA_03AB5A:        db $71,$64,$64,$6A
+DATA_03AB5A:        db $71,$64,$64,$6A                      ;Stone map16, depending on $5C
+                                                            ;Coral stone, normal stone, underground stone, castle dark brick
 
-DATA_03AB5E:        db $26,$51,$52,$52,$8C 
+DATA_03AB5E:        db $26,$51,$52,$52,$8C                  ;Brick map16, depending on $5C.
+                                                            ;Coral, normal bricks, underground bricks, castle bricks, cloud tiles
 
-CODE_03AB63:        A4 5C         LDY $5C                   ;
-CODE_03AB65:        AD 43 07      LDA $0743                 ;
-CODE_03AB68:        F0 02         BEQ CODE_03AB6C           ;
-CODE_03AB6A:        A0 04         LDY #$04                  ;
-CODE_03AB6C:        B9 5E AB      LDA $AB5E,y               ;
-CODE_03AB6F:        4C 77 AB      JMP CODE_03AB77           ;
+;Row of bricks
+CODE_03AB63:        A4 5C         LDY $5C                   ;\
+CODE_03AB65:        AD 43 07      LDA $0743                 ; |
+CODE_03AB68:        F0 02         BEQ CODE_03AB6C           ; |
+CODE_03AB6A:        A0 04         LDY #$04                  ; |If cloud level, set index to $04
+CODE_03AB6C:        B9 5E AB      LDA $AB5E,y               ;/ Get brick map16 tile number
+CODE_03AB6F:        4C 77 AB      JMP CODE_03AB77           ;Render
 
-CODE_03AB72:        A4 5C         LDY $5C                   ;
-CODE_03AB74:        B9 5A AB      LDA $AB5A,y               ;
-CODE_03AB77:        48            PHA                       ;
-CODE_03AB78:        20 B3 AC      JSR CODE_03ACB3           ;
+;Row of stones
+CODE_03AB72:        A4 5C         LDY $5C                   ;\
+CODE_03AB74:        B9 5A AB      LDA $AB5A,y               ;/Get stone map16 tile number and render
+
+CODE_03AB77:        48            PHA                       ;map16 tile on stack
+CODE_03AB78:        20 B3 AC      JSR CODE_03ACB3           ;check object length
 CODE_03AB7B:        A6 07         LDX $07                   ;
-CODE_03AB7D:        A0 00         LDY #$00                  ;
+CODE_03AB7D:        A0 00         LDY #$00                  ;Set vertical height of 1 block high
 CODE_03AB7F:        68            PLA                       ;
-CODE_03AB80:        4C 78 AC      JMP CODE_03AC78           ;
+CODE_03AB80:        4C 78 AC      JMP CODE_03AC78           ;Place tile in Accumulator into level.
 
 CODE_03AB83:        A4 5C         LDY $5C                   ;
 CODE_03AB85:        B9 5E AB      LDA $AB5E,y               ;
@@ -4317,12 +4327,12 @@ CODE_03AB88:        80 05         BRA CODE_03AB8F           ;
 CODE_03AB8A:        A4 5C         LDY $5C                   ;
 CODE_03AB8C:        B9 5A AB      LDA $AB5A,y               ;
 CODE_03AB8F:        48            PHA                       ;
-CODE_03AB90:        20 C2 AC      JSR CODE_03ACC2           ;
+CODE_03AB90:        20 C2 AC      JSR CODE_03ACC2           ;Get object attributes from level object pointer
 CODE_03AB93:        68            PLA                       ;
 CODE_03AB94:        A6 07         LDX $07                   ;
-CODE_03AB96:        4C 78 AC      JMP CODE_03AC78           ;
+CODE_03AB96:        4C 78 AC      JMP CODE_03AC78           ;Place tile in Accumulator into level.
 
-CODE_03AB99:        20 C2 AC      JSR CODE_03ACC2           ;
+CODE_03AB99:        20 C2 AC      JSR CODE_03ACC2           ;Get object attributes from level object pointer
 CODE_03AB9C:        A6 07         LDX $07                   ;
 CODE_03AB9E:        A9 6C         LDA #$6C                  ;
 CODE_03ABA0:        9D A1 06      STA $06A1,x               ;
@@ -4335,7 +4345,7 @@ CODE_03ABAC:        E8            INX                       ;
 CODE_03ABAD:        88            DEY                       ;
 CODE_03ABAE:        30 05         BMI CODE_03ABB5           ;
 CODE_03ABB0:        A9 6E         LDA #$6E                  ;
-CODE_03ABB2:        20 78 AC      JSR CODE_03AC78           ;
+CODE_03ABB2:        20 78 AC      JSR CODE_03AC78           ;Place tile in Accumulator into level.
 CODE_03ABB5:        AE 6A 02      LDX $026A                 ;
 CODE_03ABB8:        20 E8 AC      JSR CODE_03ACE8           ; (A << 4) + $20
 CODE_03ABBB:        9D 77 02      STA $0277,x               ;
@@ -4351,7 +4361,7 @@ CODE_03ABD1:        8E 6A 02      STX $026A                 ;
 CODE_03ABD4:        60            RTS                       ;
 
 ;Springboard object
-CODE_03ABD5:        20 C2 AC      JSR CODE_03ACC2           ;
+CODE_03ABD5:        20 C2 AC      JSR CODE_03ACC2           ;Get object attributes from level object pointer
 CODE_03ABD8:        20 5E AA      JSR CODE_03AA5E           ;Get free sprite slot (begin-end)
 CODE_03ABDB:        20 E0 AC      JSR CODE_03ACE0           ;\Turn current screen x-coordinate (16x16) to pixel coordinate
 CODE_03ABDE:        9D 1A 02      STA $021A,x               ;/Store into sprite X-pos, low byte
@@ -4393,7 +4403,7 @@ CODE_03AC27:        65 07         ADC $07                   ;
 CODE_03AC29:        A8            TAY                       ;
 CODE_03AC2A:        B9 87 BF      LDA $BF87,y               ;
 CODE_03AC2D:        48            PHA                       ;
-CODE_03AC2E:        20 C2 AC      JSR CODE_03ACC2           ;
+CODE_03AC2E:        20 C2 AC      JSR CODE_03ACC2           ;Get object attributes from level object pointer
 CODE_03AC31:        A6 07         LDX $07                   ;
 CODE_03AC33:        68            PLA                       ;
 CODE_03AC34:        9D A1 06      STA $06A1,x               ;
@@ -4434,45 +4444,57 @@ CODE_03AC70:        A6 5C         LDX $5C                   ;
 CODE_03AC72:        A9 00         LDA #$00                  ;
 CODE_03AC74:        A2 08         LDX #$08                  ;
 CODE_03AC76:        A0 0F         LDY #$0F                  ;
-CODE_03AC78:        8C 35 07      STY $0735                 ;
-CODE_03AC7B:        BC A1 06      LDY $06A1,x               ;
-CODE_03AC7E:        F0 24         BEQ CODE_03ACA4           ;
-CODE_03AC80:        C0 1B         CPY #$1B                  ;
-CODE_03AC82:        F0 23         BEQ CODE_03ACA7           ;
-CODE_03AC84:        C0 1E         CPY #$1E                  ;
-CODE_03AC86:        F0 1F         BEQ CODE_03ACA7           ;
-CODE_03AC88:        C0 E7         CPY #$E7                  ;
-CODE_03AC8A:        F0 18         BEQ CODE_03ACA4           ;
-CODE_03AC8C:        C0 46         CPY #$46                  ;
-CODE_03AC8E:        F0 17         BEQ CODE_03ACA7           ;
-CODE_03AC90:        C0 4A         CPY #$4A                  ;
-CODE_03AC92:        F0 13         BEQ CODE_03ACA7           ;
-CODE_03AC94:        C0 E7         CPY #$E7                  ;
-CODE_03AC96:        B0 0F         BCS CODE_03ACA7           ;
-CODE_03AC98:        C0 57         CPY #$57                  ;
-CODE_03AC9A:        F0 04         BEQ CODE_03ACA0           ;
-CODE_03AC9C:        C0 56         CPY #$56                  ;
-CODE_03AC9E:        D0 04         BNE CODE_03ACA4           ;
-CODE_03ACA0:        C9 50         CMP #$50                  ;
-CODE_03ACA2:        F0 03         BEQ CODE_03ACA7           ;
-CODE_03ACA4:        9D A1 06      STA $06A1,x               ;
-CODE_03ACA7:        E8            INX                       ;
-CODE_03ACA8:        E0 0D         CPX #$0D                  ;
-CODE_03ACAA:        B0 06         BCS CODE_03ACB2           ;
-CODE_03ACAC:        AC 35 07      LDY $0735                 ;
-CODE_03ACAF:        88            DEY                       ;
-CODE_03ACB0:        10 C6         BPL CODE_03AC78           ;
+
+;Place map16 tile into level
+;Input:
+;A: Map16 tile
+;X: Row number (TODO: verify?)
+;Y: Height of the object
+CODE_03AC78:        8C 35 07      STY $0735                 ;Store vertical height of object
+CODE_03AC7B:        BC A1 06      LDY $06A1,x               ;\Get map16 tile of current spot in question of being rendered
+CODE_03AC7E:        F0 24         BEQ CODE_03ACA4           ;/If empty, proceed
+CODE_03AC80:        C0 1B         CPY #$1B                  ;\If middle of green platform, wait until next row
+CODE_03AC82:        F0 23         BEQ CODE_03ACA7           ;/
+CODE_03AC84:        C0 1E         CPY #$1E                  ;\If middle of mushroom platform, wait until next row
+CODE_03AC86:        F0 1F         BEQ CODE_03ACA7           ;/
+CODE_03AC88:        C0 E7         CPY #$E7                  ;\If coin block
+CODE_03AC8A:        F0 18         BEQ CODE_03ACA4           ;/overwrite
+CODE_03AC8C:        C0 46         CPY #$46                  ;\If middle part of green platform's brown base w/ shadow, wait until next row
+CODE_03AC8E:        F0 17         BEQ CODE_03ACA7           ;/
+CODE_03AC90:        C0 4A         CPY #$4A                  ;\If middle part of green platform's brown base, wait until next row
+CODE_03AC92:        F0 13         BEQ CODE_03ACA7           ;/
+CODE_03AC94:        C0 E7         CPY #$E7                  ;\If map16 tile $E8-$FF, wait until next row
+CODE_03AC96:        B0 0F         BCS CODE_03ACA7           ;/($E7 is not included because it's already checked for earlier)
+CODE_03AC98:        C0 57         CPY #$57                  ;\
+CODE_03AC9A:        F0 04         BEQ CODE_03ACA0           ; |If ground tile base, skip ground tile top check
+CODE_03AC9C:        C0 56         CPY #$56                  ; |If ground tile top, overwrite
+CODE_03AC9E:        D0 04         BNE CODE_03ACA4           ;/
+CODE_03ACA0:        C9 50         CMP #$50                  ;\
+CODE_03ACA2:        F0 03         BEQ CODE_03ACA7           ;/If mushroom platform stem, wait until next row
+CODE_03ACA4:        9D A1 06      STA $06A1,x               ;Otherwise, write the map16 tile
+CODE_03ACA7:        E8            INX                       ;Next row
+CODE_03ACA8:        E0 0D         CPX #$0D                  ;\
+CODE_03ACAA:        B0 06         BCS CODE_03ACB2           ;/Stop rendering if at bottom of screen
+CODE_03ACAC:        AC 35 07      LDY $0735                 ;\Decrement object height and stop if we're done rendering all height.
+CODE_03ACAF:        88            DEY                       ; |
+CODE_03ACB0:        10 C6         BPL CODE_03AC78           ;/
 CODE_03ACB2:        60            RTS                       ;
 
-CODE_03ACB3:        20 C2 AC      JSR CODE_03ACC2           ;
-CODE_03ACB6:        BD 00 13      LDA $1300,x               ;
-CODE_03ACB9:        18            CLC                       ;
-CODE_03ACBA:        10 05         BPL CODE_03ACC1           ;
-CODE_03ACBC:        98            TYA                       ;
-CODE_03ACBD:        9D 00 13      STA $1300,x               ;
-CODE_03ACC0:        38            SEC                       ;
+;Check if object is fixed length
+;Output: set carry = object has fixed length, clear carry = object has specified length
+;TODO: verify
+CODE_03ACB3:        20 C2 AC      JSR CODE_03ACC2           ;Get object attributes from level object pointer
+
+CODE_03ACB6:        BD 00 13      LDA $1300,x               ;Check object length buffer
+CODE_03ACB9:        18            CLC                       ;Clear carry
+CODE_03ACBA:        10 05         BPL CODE_03ACC1           ;\if $FF,
+CODE_03ACBC:        98            TYA                       ; | Set specified fixed length in object length buffer?
+CODE_03ACBD:        9D 00 13      STA $1300,x               ;/
+CODE_03ACC0:        38            SEC                       ;Set carry
 CODE_03ACC1:        60            RTS                       ;
 
+;Get object attributes
+;Output: $07 = Row/Y location, Y = ??? TODO: Find out.
 CODE_03ACC2:        DA            PHX                       ;
 CODE_03ACC3:        C2 30         REP #$30                  ;
 CODE_03ACC5:        8A            TXA                       ;
@@ -4481,15 +4503,15 @@ CODE_03ACC9:        0A            ASL A                     ;
 CODE_03ACCA:        AA            TAX                       ;
 CODE_03ACCB:        BC 05 13      LDY $1305,x               ;
 CODE_03ACCE:        E2 20         SEP #$20                  ;
-CODE_03ACD0:        B7 FA         LDA [$FA],y               ;
-CODE_03ACD2:        29 0F         AND #$0F                  ;
-CODE_03ACD4:        85 07         STA $07                   ;
-CODE_03ACD6:        C8            INY                       ;
-CODE_03ACD7:        B7 FA         LDA [$FA],y               ;
-CODE_03ACD9:        29 0F         AND #$0F                  ;
-CODE_03ACDB:        E2 10         SEP #$10                  ;
-CODE_03ACDD:        A8            TAY                       ;
-CODE_03ACDE:        FA            PLX                       ;
+CODE_03ACD0:        B7 FA         LDA [$FA],y               ;\Get first byte of level object
+CODE_03ACD2:        29 0F         AND #$0F                  ; |get Y coordinates
+CODE_03ACD4:        85 07         STA $07                   ;/Save as row location
+CODE_03ACD6:        C8            INY                       ;\
+CODE_03ACD7:        B7 FA         LDA [$FA],y               ; |Get next byte of level object
+CODE_03ACD9:        29 0F         AND #$0F                  ; |
+CODE_03ACDB:        E2 10         SEP #$10                  ; |(object number?)
+CODE_03ACDD:        A8            TAY                       ; |
+CODE_03ACDE:        FA            PLX                       ;/
 CODE_03ACDF:        60            RTS                       ;
 
 ;Turn current screen x-coordinate (16x16) to pixel coordinate
@@ -4527,19 +4549,21 @@ CODE_03AD05:        79 F2 AC      ADC $ACF2,y               ;
 CODE_03AD08:        85 06         STA $06                   ;
 CODE_03AD0A:        60            RTS                       ;
 
-CODE_03AD0B:        8B            PHB                       ;
-CODE_03AD0C:        4B            PHK                       ;
-CODE_03AD0D:        AB            PLB                       ;
-CODE_03AD0E:        20 78 AC      JSR CODE_03AC78           ;
-CODE_03AD11:        AB            PLB                       ;
-CODE_03AD12:        6B            RTL                       ;
+;Place tile into level. See subroutine for i/o
+CODE_03AD0B:        8B            PHB                       ;\
+CODE_03AD0C:        4B            PHK                       ; |
+CODE_03AD0D:        AB            PLB                       ; |
+CODE_03AD0E:        20 78 AC      JSR CODE_03AC78           ; |Place tile in Accumulator into level.
+CODE_03AD11:        AB            PLB                       ; |
+CODE_03AD12:        6B            RTL                       ;/
 
-CODE_03AD13:        8B            PHB                       ;
-CODE_03AD14:        4B            PHK                       ;
-CODE_03AD15:        AB            PLB                       ;
-CODE_03AD16:        20 B6 AC      JSR CODE_03ACB6           ;
-CODE_03AD19:        AB            PLB                       ;
-CODE_03AD1A:        6B            RTL                       ;
+;Check object length attributes
+CODE_03AD13:        8B            PHB                       ;\
+CODE_03AD14:        4B            PHK                       ; |
+CODE_03AD15:        AB            PLB                       ; |
+CODE_03AD16:        20 B6 AC      JSR CODE_03ACB6           ; |Check if object is fixed or varied length
+CODE_03AD19:        AB            PLB                       ; |
+CODE_03AD1A:        6B            RTL                       ;/
 
 ;Turn current screen x-coordinate (16x16) to pixel coordinate
 CODE_03AD1B:        8B            PHB                       ;\
@@ -7318,35 +7342,35 @@ DATA_03C3DF:        db $05,$09,$04,$05,$06,$08,$09,$0A
 DATA_03C34A:        db $40,$B0,$B0,$80,$40,$40,$80,$40
                     db $F0,$F0,$F0
 
-CODE_03C3F5:        A5 78         LDA $78                   ;
-CODE_03C3F7:        38            SEC                       ;
-CODE_03C3F8:        E9 04         SBC #$04                  ;
-CODE_03C3FA:        85 78         STA $78                   ;
-CODE_03C3FC:        AD 25 07      LDA $0725                 ;
-CODE_03C3FF:        38            SEC                       ;
-CODE_03C400:        E9 04         SBC #$04                  ;
-CODE_03C402:        8D 25 07      STA $0725                 ;
-CODE_03C405:        AD 1A 07      LDA $071A                 ;
-CODE_03C408:        38            SEC                       ;
-CODE_03C409:        E9 04         SBC #$04                  ;
-CODE_03C40B:        8D 1A 07      STA $071A                 ;
-CODE_03C40E:        AD 1B 07      LDA $071B                 ;
-CODE_03C411:        38            SEC                       ;
-CODE_03C412:        E9 04         SBC #$04                  ;
-CODE_03C414:        8D 1B 07      STA $071B                 ;
-CODE_03C417:        AD 2A 07      LDA $072A                 ;
-CODE_03C41A:        38            SEC                       ;
-CODE_03C41B:        E9 04         SBC #$04                  ;
-CODE_03C41D:        8D 2A 07      STA $072A                 ;
+CODE_03C3F5:        A5 78         LDA $78                   ;\
+CODE_03C3F7:        38            SEC                       ; |
+CODE_03C3F8:        E9 04         SBC #$04                  ; |Take the player back 4 pages
+CODE_03C3FA:        85 78         STA $78                   ;/
+CODE_03C3FC:        AD 25 07      LDA $0725                 ;\
+CODE_03C3FF:        38            SEC                       ; |Take the screen number back 4 pages
+CODE_03C400:        E9 04         SBC #$04                  ; |
+CODE_03C402:        8D 25 07      STA $0725                 ;/
+CODE_03C405:        AD 1A 07      LDA $071A                 ;\
+CODE_03C408:        38            SEC                       ; |
+CODE_03C409:        E9 04         SBC #$04                  ; | Take coordinates of left side of screen back 4 pages
+CODE_03C40B:        8D 1A 07      STA $071A                 ;/
+CODE_03C40E:        AD 1B 07      LDA $071B                 ;\
+CODE_03C411:        38            SEC                       ; |
+CODE_03C412:        E9 04         SBC #$04                  ; | Take coordinates of right sight of screen back 4 pages
+CODE_03C414:        8D 1B 07      STA $071B                 ;/
+CODE_03C417:        AD 2A 07      LDA $072A                 ;\
+CODE_03C41A:        38            SEC                       ; | Take screen number relative to page skips back 4 pages
+CODE_03C41B:        E9 04         SBC #$04                  ; |
+CODE_03C41D:        8D 2A 07      STA $072A                 ;/
 CODE_03C420:        A9 00         LDA #$00                  ;
 CODE_03C422:        8D 3B 07      STA $073B                 ;
 CODE_03C425:        8D 2B 07      STA $072B                 ;
-CODE_03C428:        8D 39 07      STA $0739                 ;
-CODE_03C42B:        8D 3A 07      STA $073A                 ;
+CODE_03C428:        8D 39 07      STA $0739                 ;Zero out 16-bit enemy data pointer index
+CODE_03C42B:        8D 3A 07      STA $073A                 ;Zero out page of the most recent sprite
 CODE_03C42E:        DA            PHX                       ;
 CODE_03C42F:        BB            TYX                       ;
 CODE_03C430:        BF 00 C0 04   LDA $04C000,x             ;
-CODE_03C434:        8D 2C 07      STA $072C                 ;
+CODE_03C434:        8D 2C 07      STA $072C                 ;Set level object data pointer index according to 
 CODE_03C437:        FA            PLX                       ;
 CODE_03C438:        9C DB 0E      STZ $0EDB                 ;
 CODE_03C43B:        60            RTS                       ;
@@ -7394,11 +7418,11 @@ CODE_03C497:        D0 2B         BNE CODE_03C4C4           ;
 CODE_03C499:        AD D9 06      LDA $06D9                 ;
 CODE_03C49C:        C9 03         CMP #$03                  ;
 CODE_03C49E:        D0 16         BNE CODE_03C4B6           ;
-CODE_03C4A0:        80 1A         BRA CODE_03C4BC           ;
+CODE_03C4A0:        80 1A         BRA CODE_03C4BC           ;Branch if all maze checkpoints taken correctly
 
-CODE_03C4A2:        AD 5F 07      LDA $075F                 ;
-CODE_03C4A5:        C9 06         CMP #$06                  ;
-CODE_03C4A7:        F0 D9         BEQ CODE_03C482           ;
+CODE_03C4A2:        AD 5F 07      LDA $075F                 ;\
+CODE_03C4A5:        C9 06         CMP #$06                  ; | Branch if world 7
+CODE_03C4A7:        F0 D9         BEQ CODE_03C482           ;/
 CODE_03C4A9:        AD DB 0E      LDA $0EDB                 ;
 CODE_03C4AC:        D0 08         BNE CODE_03C4B6           ;
 CODE_03C4AE:        A9 2A         LDA #$2A                  ;\
@@ -7406,10 +7430,10 @@ CODE_03C4B0:        8D 03 16      STA $1603                 ;/"Incorrect" sound
 CODE_03C4B3:        8D DB 0E      STA $0EDB                 ;
 CODE_03C4B6:        20 F5 C3      JSR CODE_03C3F5           ;
 CODE_03C4B9:        20 6B D5      JSR CODE_03D56B           ;
-CODE_03C4BC:        A9 00         LDA #$00                  ;
-CODE_03C4BE:        8D DA 06      STA $06DA                 ;
-CODE_03C4C1:        8D D9 06      STA $06D9                 ;
-CODE_03C4C4:        9C 45 07      STZ $0745                 ;
+CODE_03C4BC:        A9 00         LDA #$00                  ;\
+CODE_03C4BE:        8D DA 06      STA $06DA                 ; | Zero out correct checkpoints counter
+CODE_03C4C1:        8D D9 06      STA $06D9                 ; | The total checkpoints counter
+CODE_03C4C4:        9C 45 07      STZ $0745                 ;/ 
 CODE_03C4C7:        AD CD 06      LDA $06CD                 ;
 CODE_03C4CA:        F0 0E         BEQ CODE_03C4DA           ;
 CODE_03C4CC:        95 1C         STA $1C,x                 ;

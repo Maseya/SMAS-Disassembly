@@ -1,0 +1,36 @@
+SUPER MARIO BROS. 1
+=======================================
+
+;Place map16 tile into level
+;Input:
+;A: Map16 tile
+;X: Row number (TODO: verify?)
+;Y: Height of the object
+JSL $03AD0B
+
+;Check if object is fixed length
+;Input: Y = length
+;Output: set carry = object has fixed length, clear carry = object has specified length
+;TODO: verify
+JSL $03AD13
+
+;Turn current screen x-coordinate (16x16) to pixel coordinate
+;Output: A = pixel coordinate
+JSL $03AD1B
+
+;Get free sprite slot (begin-end)
+;Output: X = sprite index
+JSL $03AD23
+
+;Swap player data after level end if a player didn't quit after game-over, and game is not single player.
+;Output: Carry set = player couldn't be swapped. Carry clear = player could be swapped
+JSL $03A287
+
+SUPER MARIO BROS. 2
+=======================================
+
+SUPER MARIO BROS. TLL
+=======================================
+
+SUPER MARIO BROS. 3
+=======================================

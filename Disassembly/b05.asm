@@ -1,5 +1,6 @@
 ;Super Mario Bros. 1
 
+;Routine to load the entire level's aesthetics. HDMA, layer 3, etc. 
 CODE_058000:        9C DC 0E      STZ $0EDC                 ;
 CODE_058003:        8B            PHB                       ;\
 CODE_058004:        A9 7E         LDA #$7E                  ; |
@@ -1650,7 +1651,7 @@ CODE_058F20:        85 00         STA $00                   ;
 CODE_058F22:        6C 00 00      JMP ($0000)               ;
 
 PNTR_058F25:        dw CODE_0590B6
-                    dw CODE_0590BA            ;Handle HDMA during level loads?
+                    dw CODE_0590BA                          ;Handle HDMA during level loads?
                     dw CODE_0590D2
                     dw CODE_0590E9
                     dw CODE_05910D
@@ -1658,7 +1659,7 @@ PNTR_058F25:        dw CODE_0590B6
                     dw CODE_05905F
                     dw CODE_05903D
                     dw CODE_059004
-                    dw CODE_058FFA
+                    dw CODE_058FFA                          ;Enable Layer 3 image
                     dw CODE_058F97
                     dw CODE_059116
                     dw CODE_058F6F
