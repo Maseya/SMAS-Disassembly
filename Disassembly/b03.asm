@@ -3828,24 +3828,24 @@ PNTR_03A7C9:        dw CODE_03A9F7                          ;Warp pipe
                     dw CODE_03A8AF                          ;$0733-dependant object. 00 = normal, green platform. 01 = mushroom, 02 = bullet bill cannons
                     dw CODE_03AB63                          ;Row of bricks
                     dw CODE_03AB72                          ;Row of stones
-                    dw CODE_03AB2A                          ;
-                    dw CODE_03AB83
-                    dw CODE_03AB8A
+                    dw CODE_03AB2A                          ;Row of coins
+                    dw CODE_03AB83                          ;Column of bricks
+                    dw CODE_03AB8A                          ;Column of stones
                     dw CODE_03A9F7                          ;Decoration pipe
-                    dw CODE_03AC3F
-                    dw CODE_03A978
-                    dw CODE_03AAB0
-                    dw CODE_03AAB4
-                    dw CODE_03AAB8
-                    dw CODE_03AA7E
-                    dw CODE_03AA9E
-                    dw CODE_03AAA2
-                    dw CODE_03A827
-                    dw CODE_03A827
-                    dw CODE_03A827
-                    dw CODE_03A827
-                    dw CODE_03A827
-                    dw CODE_03A827
+                    dw CODE_03AC3F                          ;Hole object
+                    dw CODE_03A978                          ;Pulley rope
+                    dw CODE_03AAB0                          ;Bridge (high)
+                    dw CODE_03AAB4                          ;Bridge (mid)
+                    dw CODE_03AAB8                          ;Bridge (low)
+                    dw CODE_03AA7E                          ;Water/lava pit
+                    dw CODE_03AA9E                          ;Row of Coin Question blocks (high)
+                    dw CODE_03AAA2                          ;Row of Coin Question blocks (low)
+                    dw CODE_03A827                          ;
+                    dw CODE_03A827                          ;
+                    dw CODE_03A827                          ;
+                    dw CODE_03A827                          ;these point to an rts
+                    dw CODE_03A827                          ;
+                    dw CODE_03A827                          ;
                     dw CODE_03AC0F
                     dw CODE_03AC0F
                     dw CODE_03AC0F
@@ -3857,7 +3857,7 @@ PNTR_03A7C9:        dw CODE_03A9F7                          ;Warp pipe
                     dw CODE_03AC18
                     dw CODE_03A98D
                     dw CODE_03AB4E
-                    dw CODE_03ABD5
+                    dw CODE_03ABD5                          ;Springboard object
                     dw CODE_03A9A0
                     dw CODE_03AAE4
                     dw CODE_03AB3F
@@ -4051,17 +4051,18 @@ CODE_03A96E:        A6 07         LDX $07                   ;
 CODE_03A970:        A0 00         LDY #$00                  ;
 CODE_03A972:        4C 78 AC      JMP CODE_03AC78           ;Place tile in Accumulator into level.
 
-DATA_03A975:        db $42,$41,$43
+DATA_03A975:        db $42,$41,$43                          ;Pulley rope map16 tiles: left corner, middle, right corner
 
-CODE_03A978:        20 B3 AC      JSR CODE_03ACB3           ;
-CODE_03A97B:        A0 00         LDY #$00                  ;
-CODE_03A97D:        B0 07         BCS CODE_03A986           ;
-CODE_03A97F:        C8            INY                       ;
-CODE_03A980:        BD 00 13      LDA $1300,x               ;
-CODE_03A983:        D0 01         BNE CODE_03A986           ;
-CODE_03A985:        C8            INY                       ;
-CODE_03A986:        B9 75 A9      LDA $A975,y               ;
-CODE_03A989:        8D A1 06      STA $06A1                 ;
+;Pulley rope
+CODE_03A978:        20 B3 AC      JSR CODE_03ACB3           ;Get length of pulley rope object
+CODE_03A97B:        A0 00         LDY #$00                  ;Initialize tile buffer index
+CODE_03A97D:        B0 07         BCS CODE_03A986           ;If starting, render left corner
+CODE_03A97F:        C8            INY                       ;\
+CODE_03A980:        BD 00 13      LDA $1300,x               ; |
+CODE_03A983:        D0 01         BNE CODE_03A986           ;/If not at the end, render rope
+CODE_03A985:        C8            INY                       ;Otherwise render right corner
+CODE_03A986:        B9 75 A9      LDA $A975,y               ;\
+CODE_03A989:        8D A1 06      STA $06A1                 ;/render
 CODE_03A98C:        60            RTS                       ;
 
 CODE_03A98D:        20 C2 AC      JSR CODE_03ACC2           ;Get object attributes from level object pointer
@@ -4179,65 +4180,73 @@ CODE_03AA73:        E0 FF         CPX #$FF                  ; |
 CODE_03AA75:        D0 F6         BNE CODE_03AA6D           ; |
 CODE_03AA77:        60            RTS                       ;/
 
-DATA_03AA78:        db $86,$87,$00,$88,$8A,$8B
+DATA_03AA78:        db $86,$87,$00,$88                      ;Water/lava pit top tiles: Underwater, normal, cave, castle
 
-CODE_03AA7E:        20 B3 AC      JSR CODE_03ACB3           ;
-CODE_03AA81:        A2 0A         LDX #$0A                  ;
-CODE_03AA83:        A5 5C         LDA $5C                   ;
-CODE_03AA85:        C9 03         CMP #$03                  ;
-CODE_03AA87:        D0 01         BNE CODE_03AA8A           ;
-CODE_03AA89:        E8            INX                       ;
-CODE_03AA8A:        A4 5C         LDY $5C                   ;
-CODE_03AA8C:        B9 78 AA      LDA $AA78,y               ;
-CODE_03AA8F:        9D A1 06      STA $06A1,x               ;
-CODE_03AA92:        E8            INX                       ;
-CODE_03AA93:        98            TYA                       ;
-CODE_03AA94:        4A            LSR A                     ;
-CODE_03AA95:        A8            TAY                       ;
-CODE_03AA96:        B9 7C AA      LDA $AA7C,y               ;
-CODE_03AA99:        A0 01         LDY #$01                  ;
+DATA_03AA7C:        db $8A,$8B                              ;Water/lava pit tiles
+
+;Water/lava pit
+CODE_03AA7E:        20 B3 AC      JSR CODE_03ACB3           ;Get length of object
+CODE_03AA81:        A2 0A         LDX #$0A                  ;Set row to 10
+CODE_03AA83:        A5 5C         LDA $5C                   ;\
+CODE_03AA85:        C9 03         CMP #$03                  ; |
+CODE_03AA87:        D0 01         BNE CODE_03AA8A           ; |
+CODE_03AA89:        E8            INX                       ;/Set row to 11 if castle level
+CODE_03AA8A:        A4 5C         LDY $5C                   ;\
+CODE_03AA8C:        B9 78 AA      LDA $AA78,y               ; |
+CODE_03AA8F:        9D A1 06      STA $06A1,x               ; | Render tile depending on level type
+CODE_03AA92:        E8            INX                       ; |
+CODE_03AA93:        98            TYA                       ; |
+CODE_03AA94:        4A            LSR A                     ; |
+CODE_03AA95:        A8            TAY                       ; |
+CODE_03AA96:        B9 7C AA      LDA $AA7C,y               ;/
+CODE_03AA99:        A0 01         LDY #$01                  ;Height 2
 CODE_03AA9B:        4C 78 AC      JMP CODE_03AC78           ;Place tile in Accumulator into level.
 
-CODE_03AA9E:        A9 03         LDA #$03                  ;
+;Row of Coin Question blocks (high)
+CODE_03AA9E:        A9 03         LDA #$03                  ;Set row
 CODE_03AAA0:        80 02         BRA CODE_03AAA4           ;
 
-CODE_03AAA2:        A9 07         LDA #$07                  ;
+;Row of Coin Question blocks (low)
+CODE_03AAA2:        A9 07         LDA #$07                  ;Set row
 CODE_03AAA4:        48            PHA                       ;
-CODE_03AAA5:        20 B3 AC      JSR CODE_03ACB3           ;
+CODE_03AAA5:        20 B3 AC      JSR CODE_03ACB3           ;Get length of object
 CODE_03AAA8:        68            PLA                       ;
 CODE_03AAA9:        AA            TAX                       ;
-CODE_03AAAA:        A9 E7         LDA #$E7                  ;
+CODE_03AAAA:        A9 E7         LDA #$E7                  ;Coin question block map16
 CODE_03AAAC:        9D A1 06      STA $06A1,x               ;
 CODE_03AAAF:        60            RTS                       ;
 
-CODE_03AAB0:        A9 06         LDA #$06                  ;
+;Bridge (high)
+CODE_03AAB0:        A9 06         LDA #$06                  ;set row
 CODE_03AAB2:        80 06         BRA CODE_03AABA           ;
 
-CODE_03AAB4:        A9 07         LDA #$07                  ;
+;Bridge (mid)
+CODE_03AAB4:        A9 07         LDA #$07                  ;set row
 CODE_03AAB6:        80 02         BRA CODE_03AABA           ;
 
-CODE_03AAB8:        A9 09         LDA #$09                  ;
+;Bridge (low)
+CODE_03AAB8:        A9 09         LDA #$09                  ;set row
 CODE_03AABA:        48            PHA                       ;
-CODE_03AABB:        20 B3 AC      JSR CODE_03ACB3           ;
+CODE_03AABB:        20 B3 AC      JSR CODE_03ACB3           ;Get bridge length
 CODE_03AABE:        BD 00 13      LDA $1300,x               ;
 CODE_03AAC1:        F0 10         BEQ CODE_03AAD3           ;
 CODE_03AAC3:        BD 0F 13      LDA $130F,x               ;
 CODE_03AAC6:        D0 07         BNE CODE_03AACF           ;
 CODE_03AAC8:        FE 0F 13      INC $130F,x               ;
-CODE_03AACB:        A9 0E         LDA #$0E                  ;
+CODE_03AACB:        A9 0E         LDA #$0E                  ;Bridge begin railing tile
 CODE_03AACD:        80 09         BRA CODE_03AAD8           ;
 
-CODE_03AACF:        A9 0D         LDA #$0D                  ;
+CODE_03AACF:        A9 0D         LDA #$0D                  ;Bridge middle railing tile
 CODE_03AAD1:        80 05         BRA CODE_03AAD8           ;
 
 CODE_03AAD3:        9E 0F 13      STZ $130F,x               ;
-CODE_03AAD6:        A9 0F         LDA #$0F                  ;
+CODE_03AAD6:        A9 0F         LDA #$0F                  ;Bridge end railing tile
 CODE_03AAD8:        FA            PLX                       ;
-CODE_03AAD9:        9D A1 06      STA $06A1,x               ;
-CODE_03AADC:        E8            INX                       ;
-CODE_03AADD:        A0 00         LDY #$00                  ;
-CODE_03AADF:        A9 6B         LDA #$6B                  ;
-CODE_03AAE1:        4C 78 AC      JMP CODE_03AC78           ;Place tile in Accumulator into level.
+CODE_03AAD9:        9D A1 06      STA $06A1,x               ;render tile
+CODE_03AADC:        E8            INX                       ;go down once
+CODE_03AADD:        A0 00         LDY #$00                  ;\bridge height is 1
+CODE_03AADF:        A9 6B         LDA #$6B                  ; |Bridge tile
+CODE_03AAE1:        4C 78 AC      JMP CODE_03AC78           ;/Place tile in Accumulator into level.
 
 CODE_03AAE4:        A9 28         LDA #$28                  ;
 CODE_03AAE6:        8D A1 06      STA $06A1                 ;
@@ -4270,7 +4279,7 @@ CODE_03AB25:        60            RTS                       ;
 
 DATA_03AB26:        db $EA,$E9,$E9,$E9                      ;Coin map16, depending on $7E005C
                                                             ;Underwater coin, regular coin, underground coin, castle coin
-;Row of coins
+;Row of coins object
 CODE_03AB2A:        A4 5C         LDY $5C                   ;\
 CODE_03AB2C:        B9 26 AB      LDA $AB26,y               ;/Load coin map16 tile number
 CODE_03AB2F:        4C 77 AB      JMP CODE_03AB77           ;Render
@@ -4309,7 +4318,7 @@ CODE_03AB6A:        A0 04         LDY #$04                  ; |If cloud level, s
 CODE_03AB6C:        B9 5E AB      LDA $AB5E,y               ;/ Get brick map16 tile number
 CODE_03AB6F:        4C 77 AB      JMP CODE_03AB77           ;Render
 
-;Row of stones
+;Row of stones object
 CODE_03AB72:        A4 5C         LDY $5C                   ;\
 CODE_03AB74:        B9 5A AB      LDA $AB5A,y               ;/Get stone map16 tile number and render
 
@@ -4320,12 +4329,15 @@ CODE_03AB7D:        A0 00         LDY #$00                  ;Set vertical height
 CODE_03AB7F:        68            PLA                       ;
 CODE_03AB80:        4C 78 AC      JMP CODE_03AC78           ;Place tile in Accumulator into level.
 
-CODE_03AB83:        A4 5C         LDY $5C                   ;
-CODE_03AB85:        B9 5E AB      LDA $AB5E,y               ;
-CODE_03AB88:        80 05         BRA CODE_03AB8F           ;
+;Column of bricks object
+CODE_03AB83:        A4 5C         LDY $5C                   ;\
+CODE_03AB85:        B9 5E AB      LDA $AB5E,y               ; |Get brick map16 tile depending on area type and render
+CODE_03AB88:        80 05         BRA CODE_03AB8F           ;/ Note that in this column code, there's no cloud area override.
 
-CODE_03AB8A:        A4 5C         LDY $5C                   ;
-CODE_03AB8C:        B9 5A AB      LDA $AB5A,y               ;
+;Column of stones object
+CODE_03AB8A:        A4 5C         LDY $5C                   ;\
+CODE_03AB8C:        B9 5A AB      LDA $AB5A,y               ;/Get stone map16 tile number and render
+
 CODE_03AB8F:        48            PHA                       ;
 CODE_03AB90:        20 C2 AC      JSR CODE_03ACC2           ;Get object attributes from level object pointer
 CODE_03AB93:        68            PLA                       ;
@@ -4415,35 +4427,36 @@ CODE_03AC3B:        E9 00         SBC #$00                  ;
 CODE_03AC3D:        A8            TAY                       ;
 CODE_03AC3E:        60            RTS                       ;
 
-CODE_03AC3F:        20 B3 AC      JSR CODE_03ACB3           ;
-CODE_03AC42:        90 2C         BCC CODE_03AC70           ;
-CODE_03AC44:        A5 5C         LDA $5C                   ;
-CODE_03AC46:        D0 28         BNE CODE_03AC70           ;
-CODE_03AC48:        AE 6A 02      LDX $026A                 ;
-CODE_03AC4B:        20 E0 AC      JSR CODE_03ACE0           ;Turn current screen x-coordinate (16x16) to pixel coordinate
-CODE_03AC4E:        38            SEC                       ;
-CODE_03AC4F:        E9 10         SBC #$10                  ;
-CODE_03AC51:        9D 71 02      STA $0271,x               ;
-CODE_03AC54:        AD 25 07      LDA $0725                 ;
-CODE_03AC57:        E9 00         SBC #$00                  ;
-CODE_03AC59:        9D 6B 02      STA $026B,x               ;
-CODE_03AC5C:        C8            INY                       ;
-CODE_03AC5D:        C8            INY                       ;
-CODE_03AC5E:        98            TYA                       ;
-CODE_03AC5F:        0A            ASL A                     ;
-CODE_03AC60:        0A            ASL A                     ;
-CODE_03AC61:        0A            ASL A                     ;
-CODE_03AC62:        0A            ASL A                     ;
-CODE_03AC63:        9D 77 02      STA $0277,x               ;
-CODE_03AC66:        E8            INX                       ;
-CODE_03AC67:        E0 05         CPX #$05                  ;
-CODE_03AC69:        90 02         BCC CODE_03AC6D           ;
-CODE_03AC6B:        A2 00         LDX #$00                  ;
-CODE_03AC6D:        8E 6A 02      STX $026A                 ;
-CODE_03AC70:        A6 5C         LDX $5C                   ;
-CODE_03AC72:        A9 00         LDA #$00                  ;
-CODE_03AC74:        A2 08         LDX #$08                  ;
-CODE_03AC76:        A0 0F         LDY #$0F                  ;
+;Hole object
+CODE_03AC3F:        20 B3 AC      JSR CODE_03ACB3           ;\
+CODE_03AC42:        90 2C         BCC CODE_03AC70           ;/Skip if length already defined
+CODE_03AC44:        A5 5C         LDA $5C                   ;\
+CODE_03AC46:        D0 28         BNE CODE_03AC70           ;/Branch if not water level.
+CODE_03AC48:        AE 6A 02      LDX $026A                 ;Whirlpool spawning code. Get whirlpool index
+CODE_03AC4B:        20 E0 AC      JSR CODE_03ACE0           ;\Turn current screen x-coordinate (16x16) to pixel coordinate
+CODE_03AC4E:        38            SEC                       ; |
+CODE_03AC4F:        E9 10         SBC #$10                  ; |subtract 10 pixels
+CODE_03AC51:        9D 71 02      STA $0271,x               ;/store as left extent of whirlpool
+CODE_03AC54:        AD 25 07      LDA $0725                 ;\
+CODE_03AC57:        E9 00         SBC #$00                  ; |Get page location
+CODE_03AC59:        9D 6B 02      STA $026B,x               ;/ subtract with carry, store into page of whirlpool
+CODE_03AC5C:        C8            INY                       ;\
+CODE_03AC5D:        C8            INY                       ;/Increment length by 2
+CODE_03AC5E:        98            TYA                       ;\
+CODE_03AC5F:        0A            ASL A                     ; |
+CODE_03AC60:        0A            ASL A                     ; |
+CODE_03AC61:        0A            ASL A                     ; |Multiply by 16 to get size of whirlpool
+CODE_03AC62:        0A            ASL A                     ; |
+CODE_03AC63:        9D 77 02      STA $0277,x               ;/Store into size
+CODE_03AC66:        E8            INX                       ;Increment whirlpool index
+CODE_03AC67:        E0 05         CPX #$05                  ;\
+CODE_03AC69:        90 02         BCC CODE_03AC6D           ;/If we didn't reach 5th whirlpool yet, branch
+CODE_03AC6B:        A2 00         LDX #$00                  ;Otherwise, back at index 0
+CODE_03AC6D:        8E 6A 02      STX $026A                 ;Store whirlpool index
+CODE_03AC70:        A6 5C         LDX $5C                   ;Get map type in x, but it's lost again later?
+CODE_03AC72:        A9 00         LDA #$00                  ;Map16 tile: hole
+CODE_03AC74:        A2 08         LDX #$08                  ;Row number: 9 (bottom)
+CODE_03AC76:        A0 0F         LDY #$0F                  ;Vertical height of object
 
 ;Place map16 tile into level
 ;Input:
@@ -6082,11 +6095,11 @@ CODE_03B9C5:        F0 09         BEQ CODE_03B9D0           ;
 CODE_03B9C7:        25 0D         AND $0D                   ;
 CODE_03B9C9:        D0 05         BNE CODE_03B9D0           ;
 CODE_03B9CB:        A9 F4         LDA #$F4                  ;
-CODE_03B9CD:        8D DB 06      STA $06DB                 ;
+CODE_03B9CD:        8D DB 06      STA $06DB                 ;Springboard launch force
 CODE_03B9D0:        C0 03         CPY #$03                  ;
 CODE_03B9D2:        D0 0D         BNE CODE_03B9E1           ;
-CODE_03B9D4:        AD DB 06      LDA $06DB                 ;
-CODE_03B9D7:        85 A0         STA $A0                   ;
+CODE_03B9D4:        AD DB 06      LDA $06DB                 ;\
+CODE_03B9D7:        85 A0         STA $A0                   ;/Store springboard launch force into player Y speed
 CODE_03B9D9:        9C 0E 07      STZ $070E                 ;
 CODE_03B9DC:        A9 08         LDA #$08                  ;\Springboard sound
 CODE_03B9DE:        8D 03 16      STA $1603                 ;/
@@ -11591,8 +11604,8 @@ CODE_03E601:        20 1A E6      JSR CODE_03E61A           ;
 CODE_03E604:        90 13         BCC CODE_03E619           ;
 CODE_03E606:        A9 70         LDA #$70                  ;
 CODE_03E608:        8D 09 07      STA $0709                 ;
-CODE_03E60B:        A9 F9         LDA #$F9                  ;
-CODE_03E60D:        8D DB 06      STA $06DB                 ;
+CODE_03E60B:        A9 F9         LDA #$F9                  ;\
+CODE_03E60D:        8D DB 06      STA $06DB                 ;/Springboard launch force
 CODE_03E610:        A9 03         LDA #$03                  ;
 CODE_03E612:        8D 8E 07      STA $078E                 ;
 CODE_03E615:        4A            LSR A                     ;
