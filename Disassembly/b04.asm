@@ -5108,10 +5108,10 @@ CODE_04DC3A:        8D 19 02      STA $0219                 ;
 CODE_04DC3D:        FA            PLX                       ;
 CODE_04DC3E:        6B            RTL                       ;
 
-DATA_04DC3F:        db $18,$A0,$08,$01,$28,$10,$03,$00 ;Mario rescued peach movements duration.
-                    db $10,$A0,$08,$01,$28,$1E,$02,$00 ;Note to self: look deeper in this
+DATA_04DC3F:        db $18,$A0,$08,$01,$28,$10,$03,$00      ;Mario rescued peach movements duration.
+                    db $10,$A0,$08,$01,$28,$1E,$02,$00      ;Note to self: look deeper in this
 
-DATA_04DC4F:        db $01,$00,$41,$C1,$C9,$01,$01,$00 ;The movements
+DATA_04DC4F:        db $01,$00,$41,$C1,$C9,$01,$01,$00      ;The movements
                     db $01,$00,$41,$C1,$C9,$01,$01,$00
 
 CODE_04DC5F:        CE 88 0F      DEC $0F88                 ;
@@ -5844,7 +5844,7 @@ DATA_04E2C6:        dw $0041,$00CB,$015D,$01F3
 DATA_04E2E6:        dw $0813,$091E,$0977,$086C
                     dw $08C5,$086C,$08C5,$086C
                     dw $08C5,$086C
-                                         ;Tilemap for Mario and Princess image frames
+                                                       ;Tilemap for Mario and Princess image frames
 DATA_04E2FA:        db $E8,$EC,$A0,$06,$E8,$FC,$A2,$06 ;These tables are for the Princess kiss Mario-
                     db $E8,$0C,$A4,$06,$F8,$EC,$C0,$06 ; Sequence. This is table 0, next one is 1 etc
                     db $F8,$FC,$C2,$06,$F8,$0C,$C4,$06 ;The even-numbered tables are for the Princess
