@@ -229,7 +229,7 @@ CODE_008202:        E2 20         SEP #$20                  ;
 CODE_008204:        AB            PLB                       ;
 CODE_008205:        AB            PLB                       ;
 CODE_008206:        AB            PLB                       ;
-CODE_008207:        22 49 A8 00   JSL CODE_00A849           ;
+CODE_008207:        22 49 A8 00   JSL CODE_00A849           ;Load savegame into RAM $7FFB00 area.
 CODE_00820B:        A9 00         LDA #$00                  ;
 CODE_00820D:        8F F8 1F 70   STA $701FF8               ;
 CODE_008211:        8F F9 1F 70   STA $701FF9               ;
@@ -3945,50 +3945,50 @@ CODE_00A840:        9F 10 00 70   STA $700010,x             ;
 CODE_00A844:        E2 30         SEP #$30                  ;
 CODE_00A846:        4C 1B 8C      JMP CODE_008C1B           ;
 
-CODE_00A849:        8B            PHB                       ;
-CODE_00A84A:        A9 70         LDA #$70                  ;
-CODE_00A84C:        48            PHA                       ;
-CODE_00A84D:        AB            PLB                       ;
-CODE_00A84E:        C2 10         REP #$10                  ;
-CODE_00A850:        A9 20         LDA #$20                  ;
-CODE_00A852:        85 0E         STA $0E                   ;
-CODE_00A854:        A9 01         LDA #$01                  ;
-CODE_00A856:        85 0F         STA $0F                   ;
-CODE_00A858:        A2 00 00      LDX #$0000                ;
-CODE_00A85B:        AC 04 00      LDY $0004                 ;
-CODE_00A85E:        B9 10 00      LDA $0010,y               ;
-CODE_00A861:        9F 00 FB 7F   STA $7FFB00,x             ;
-CODE_00A865:        C8            INY                       ;
-CODE_00A866:        E8            INX                       ;
-CODE_00A867:        E4 0E         CPX $0E                   ;
-CODE_00A869:        D0 F3         BNE CODE_00A85E           ;
-CODE_00A86B:        AD 08 00      LDA $0008                 ;
-CODE_00A86E:        8F 00 FB 7F   STA $7FFB00               ;
-CODE_00A872:        AD 09 00      LDA $0009                 ;
-CODE_00A875:        8F 01 FB 7F   STA $7FFB01               ;
-CODE_00A879:        AF 0F 00 70   LDA $70000F               ;
-CODE_00A87D:        85 00         STA $00                   ;
-CODE_00A87F:        D0 15         BNE CODE_00A896           ;
-CODE_00A881:        AF 0E 00 70   LDA $70000E               ;
-CODE_00A885:        0A            ASL A                     ;
-CODE_00A886:        0A            ASL A                     ;
-CODE_00A887:        05 00         ORA $00                   ;
-CODE_00A889:        EB            XBA                       ;
-CODE_00A88A:        A9 00         LDA #$00                  ;
-CODE_00A88C:        EB            XBA                       ;
-CODE_00A88D:        AA            TAX                       ;
-CODE_00A88E:        BF 90 04 70   LDA $700490,x             ;
-CODE_00A892:        8F 05 FB 7F   STA $7FFB05               ;
-CODE_00A896:        A9 00         LDA #$00                  ;
-CODE_00A898:        EB            XBA                       ;
-CODE_00A899:        AF 0E 00 70   LDA $70000E               ;
-CODE_00A89D:        29 03         AND #$03                  ;
-CODE_00A89F:        0A            ASL A                     ;
-CODE_00A8A0:        0A            ASL A                     ;
-CODE_00A8A1:        AA            TAX                       ;
-CODE_00A8A2:        E2 10         SEP #$10                  ;
-CODE_00A8A4:        AB            PLB                       ;
-CODE_00A8A5:        6B            RTL                       ;
+CODE_00A849:        8B            PHB                       ;\
+CODE_00A84A:        A9 70         LDA #$70                  ; |Program bank: SRAM
+CODE_00A84C:        48            PHA                       ; |
+CODE_00A84D:        AB            PLB                       ;/
+CODE_00A84E:        C2 10         REP #$10                  ;\
+CODE_00A850:        A9 20         LDA #$20                  ; |
+CODE_00A852:        85 0E         STA $0E                   ; |
+CODE_00A854:        A9 01         LDA #$01                  ; |
+CODE_00A856:        85 0F         STA $0F                   ; | 
+CODE_00A858:        A2 00 00      LDX #$0000                ; |
+CODE_00A85B:        AC 04 00      LDY $0004                 ; | Load $120 bytes of saved data from SRAM Offset of last save data accessed
+CODE_00A85E:        B9 10 00      LDA $0010,y               ; | into RAM $7FFB00 whenever you load a game. Doesn't matter which.
+CODE_00A861:        9F 00 FB 7F   STA $7FFB00,x             ; |
+CODE_00A865:        C8            INY                       ; |
+CODE_00A866:        E8            INX                       ; |
+CODE_00A867:        E4 0E         CPX $0E                   ; |
+CODE_00A869:        D0 F3         BNE CODE_00A85E           ;/
+CODE_00A86B:        AD 08 00      LDA $0008                 ;\
+CODE_00A86E:        8F 00 FB 7F   STA $7FFB00               ;/Which world you have loaded, from SRAM into RAM
+CODE_00A872:        AD 09 00      LDA $0009                 ;\
+CODE_00A875:        8F 01 FB 7F   STA $7FFB01               ;/Which level you have loaded, from SRAM into RAM
+CODE_00A879:        AF 0F 00 70   LDA $70000F               ;\
+CODE_00A87D:        85 00         STA $00                   ;/Loaded game into scratch RAM
+CODE_00A87F:        D0 15         BNE CODE_00A896           ;\
+CODE_00A881:        AF 0E 00 70   LDA $70000E               ; |
+CODE_00A885:        0A            ASL A                     ; | If SMB1
+CODE_00A886:        0A            ASL A                     ; | Save slot # << 4
+CODE_00A887:        05 00         ORA $00                   ; | OR $00  (isn't this always 00 because we only get here when it's 00?)
+CODE_00A889:        EB            XBA                       ; | 
+CODE_00A88A:        A9 00         LDA #$00                  ; | Clear high byte, to index.
+CODE_00A88C:        EB            XBA                       ; | 
+CODE_00A88D:        AA            TAX                       ; | (so basically save slot * 4 to index)
+CODE_00A88E:        BF 90 04 70   LDA $700490,x             ;\|
+CODE_00A892:        8F 05 FB 7F   STA $7FFB05               ;/ More difficult quest flag for SMB1
+CODE_00A896:        A9 00         LDA #$00                  ;\
+CODE_00A898:        EB            XBA                       ; |
+CODE_00A899:        AF 0E 00 70   LDA $70000E               ; |
+CODE_00A89D:        29 03         AND #$03                  ; | Loaded save slot * 4 to X index
+CODE_00A89F:        0A            ASL A                     ; | (for what purpose?)
+CODE_00A8A0:        0A            ASL A                     ; |
+CODE_00A8A1:        AA            TAX                       ; |
+CODE_00A8A2:        E2 10         SEP #$10                  ; |
+CODE_00A8A4:        AB            PLB                       ; |
+CODE_00A8A5:        6B            RTL                       ;/
 
 PNTR_00A8A6:        dw CODE_00AA05
                     dw CODE_00AAA1

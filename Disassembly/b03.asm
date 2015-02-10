@@ -994,9 +994,9 @@ PNTR_0388FA:        dw CODE_03D4D0                          ;$00 - Collapse brid
                     dw CODE_03897C
                     dw CODE_038981
                     dw CODE_038985
-                    dw CODE_038AD4
-                    dw CODE_038989
-                    dw CODE_03898E
+                    dw CODE_038AD4                          ;
+                    dw CODE_038989                          ;$0D - Wait until player pushes start button
+                    dw CODE_03898E                          ;$0E - Player chose to continue the game
 
 CODE_038918:        AD 54 07      LDA $0754                 ;
 CODE_03891B:        F0 08         BEQ CODE_038925           ;
@@ -1051,10 +1051,12 @@ CODE_038984:        60            RTS                       ;
 CODE_038985:        EE 72 07      INC $0772                 ;
 CODE_038988:        60            RTS                       ;
 
-CODE_038989:        22 2A 86 04   JSL CODE_04862A           ;
+;Rescued Peach - Operation $0D
+CODE_038989:        22 2A 86 04   JSL CODE_04862A           ;Wait until player pushes the start button
 CODE_03898D:        60            RTS                       ;
 
-CODE_03898E:        22 40 86 04   JSL CODE_048640           ;
+;Rescued Peach - Operation $0E
+CODE_03898E:        22 40 86 04   JSL CODE_048640           ;Player chose to continue the game
 CODE_038992:        60            RTS                       ;
 
 CODE_038993:        AD B1 07      LDA $07B1                 ;
@@ -1211,23 +1213,24 @@ CODE_038AD4:        AD B1 07      LDA $07B1                 ;
 CODE_038AD7:        D0 2E         BNE CODE_038B07           ;
 CODE_038AD9:        AD 80 16      LDA $1680                 ;
 CODE_038ADC:        D0 2A         BNE CODE_038B08           ;
-CODE_038ADE:        AC 5F 07      LDY $075F                 ;
-CODE_038AE1:        C0 07         CPY #$07                  ;
-CODE_038AE3:        B0 23         BCS CODE_038B08           ;
-CODE_038AE5:        A9 00         LDA #$00                  ;
-CODE_038AE7:        8D 60 07      STA $0760                 ;
-CODE_038AEA:        8D 5C 07      STA $075C                 ;
-CODE_038AED:        8D 72 07      STA $0772                 ;
-CODE_038AF0:        EE 5F 07      INC $075F                 ;
-CODE_038AF3:        A9 01         LDA #$01                  ;
-CODE_038AF5:        8D A5 0B      STA $0BA5                 ;
-CODE_038AF8:        20 2B A2      JSR CODE_03A22B           ;
-CODE_038AFB:        22 0B C0 04   JSL CODE_04C00B           ;
-CODE_038AFF:        EE 57 07      INC $0757                 ;
-CODE_038B02:        A9 01         LDA #$01                  ;
-CODE_038B04:        8D 70 07      STA $0770                 ;
+CODE_038ADE:        AC 5F 07      LDY $075F                 ;\
+CODE_038AE1:        C0 07         CPY #$07                  ; |
+CODE_038AE3:        B0 23         BCS CODE_038B08           ;/ If current world is 8 or higher, branch
+CODE_038AE5:        A9 00         LDA #$00                  ;\
+CODE_038AE7:        8D 60 07      STA $0760                 ; |
+CODE_038AEA:        8D 5C 07      STA $075C                 ; |Zero out player's current level number (set it to level 1)
+CODE_038AED:        8D 72 07      STA $0772                 ;/ Set operation mode to 0
+CODE_038AF0:        EE 5F 07      INC $075F                 ;Increase current world by 1
+CODE_038AF3:        A9 01         LDA #$01                  ;\
+CODE_038AF5:        8D A5 0B      STA $0BA5                 ;/Lock animations (for some reason)
+CODE_038AF8:        20 2B A2      JSR CODE_03A22B           ;Swap players if necessary
+CODE_038AFB:        22 0B C0 04   JSL CODE_04C00B           ;Set level number and map type
+CODE_038AFF:        EE 57 07      INC $0757                 ;Increase operation mode to $01 (because it was set to 0 earlier)
+CODE_038B02:        A9 01         LDA #$01                  ;\
+CODE_038B04:        8D 70 07      STA $0770                 ;/Game operation mode = main
 CODE_038B07:        60            RTS                       ;
 
+;Handle new world after rescuing the princess
 CODE_038B08:        4C 04 A2      JMP CODE_03A204           ;
 
 CODE_038B0B:        60            RTS                       ;
@@ -3171,20 +3174,21 @@ CODE_03A1FD:        9C B0 07      STZ $07B0                 ;
 CODE_03A200:        9C 70 07      STZ $0770                 ;
 CODE_03A203:        60            RTS                       ;
 
-CODE_03A204:        22 0B C0 04   JSL CODE_04C00B           ;
-CODE_03A208:        AD 80 16      LDA $1680                 ;
-CODE_03A20B:        D0 0D         BNE CODE_03A21A           ;
-CODE_03A20D:        AD 7A 07      LDA $077A                 ;
-CODE_03A210:        D0 08         BNE CODE_03A21A           ;
-CODE_03A212:        A9 01         LDA #$01                  ;
-CODE_03A214:        8D 54 07      STA $0754                 ;
-CODE_03A217:        9C 56 07      STZ $0756                 ;
-CODE_03A21A:        EE 57 07      INC $0757                 ;
-CODE_03A21D:        9C 47 07      STZ $0747                 ;
-CODE_03A220:        64 0F         STZ $0F                   ;
-CODE_03A222:        9C 72 07      STZ $0772                 ;
-CODE_03A225:        A9 01         LDA #$01                  ;
-CODE_03A227:        8D 70 07      STA $0770                 ;
+;Handle new world after game-over and rescuing the princess
+CODE_03A204:        22 0B C0 04   JSL CODE_04C00B           ;Set level number and map type
+CODE_03A208:        AD 80 16      LDA $1680                 ;\Skip clear powerup if new world from rescuing the princess
+CODE_03A20B:        D0 0D         BNE CODE_03A21A           ;/
+CODE_03A20D:        AD 7A 07      LDA $077A                 ;\Skip clear powerup if 2 players
+CODE_03A210:        D0 08         BNE CODE_03A21A           ;/
+CODE_03A212:        A9 01         LDA #$01                  ;\
+CODE_03A214:        8D 54 07      STA $0754                 ; |Set small player flag
+CODE_03A217:        9C 56 07      STZ $0756                 ;/ Clear powerup
+CODE_03A21A:        EE 57 07      INC $0757                 ;set some timer flag
+CODE_03A21D:        9C 47 07      STZ $0747                 ;Clear everything freezes timer
+CODE_03A220:        64 0F         STZ $0F                   ;set player action to 0
+CODE_03A222:        9C 72 07      STZ $0772                 ;Operation mode task to execute is 0
+CODE_03A225:        A9 01         LDA #$01                  ;\
+CODE_03A227:        8D 70 07      STA $0770                 ;/Operation mode: main
 CODE_03A22A:        60            RTS                       ;
 
 ;Swap players
@@ -4807,24 +4811,24 @@ CODE_03AF1B:        69 00         ADC #$00                  ;
 CODE_03AF1D:        8D 1B 07      STA $071B                 ;
 CODE_03AF20:        60            RTS                       ;
 
-CODE_03AF21:        A5 0F         LDA $0F                   ;
-CODE_03AF23:        0A            ASL A                     ;
-CODE_03AF24:        AA            TAX                       ;
-CODE_03AF25:        7C 28 AF      JMP (PNTR_03AF28,x)       ;
+CODE_03AF21:        A5 0F         LDA $0F                   ;\
+CODE_03AF23:        0A            ASL A                     ; |Player actions
+CODE_03AF24:        AA            TAX                       ; |
+CODE_03AF25:        7C 28 AF      JMP (PNTR_03AF28,x)       ;/
 
-PNTR_03AF28:        dw CODE_039FBD
-                    dw CODE_03B1E3
-                    dw CODE_03B233
-                    dw CODE_03B205
-                    dw CODE_03B309
-                    dw CODE_03B32B
-                    dw CODE_03A060
-                    dw CODE_03AF42
-                    dw CODE_03AFF4
-                    dw CODE_03B26E
-                    dw CODE_03B280
-                    dw CODE_03B2A4
-                    dw CODE_03B2BA
+PNTR_03AF28:        dw CODE_039FBD                          ;$00 - Set up level load game timer
+                    dw CODE_03B1E3                          ;$01 - Autoclimb vine
+                    dw CODE_03B233                          ;$02 - Enter pipe from the side
+                    dw CODE_03B205                          ;$03 - Enter pipe normally
+                    dw CODE_03B309                          ;$04 - Slide on flagpole
+                    dw CODE_03B32B                          ;$05 - Player ends level (where he fades out and stuff)
+                    dw CODE_03A060                          ;$06 - Player loses life
+                    dw CODE_03AF42                          ;$07 - Player enters level
+                    dw CODE_03AFF4                          ;$08 - Regular control routine
+                    dw CODE_03B26E                          ;$09 - Player changes size
+                    dw CODE_03B280                          ;$0A - Player has injury invincibility
+                    dw CODE_03B2A4                          ;$0B - Player dies
+                    dw CODE_03B2BA                          ;$0C - Player obtains fire flower
 
 CODE_03AF42:        AD 52 07      LDA $0752                 ;
 CODE_03AF45:        C9 02         CMP #$02                  ;

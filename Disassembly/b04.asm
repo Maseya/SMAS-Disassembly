@@ -478,40 +478,42 @@ DATA_0485A6:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF
 
-CODE_048600:        AD 80 16      LDA $1680                 ;
-CODE_048603:        30 24         BMI CODE_048629           ;
-CODE_048605:        D0 12         BNE CODE_048619           ;
-CODE_048607:        AE 53 07      LDX $0753                 ;
-CODE_04860A:        BD F6 0F      LDA $0FF6,x               ;
-CODE_04860D:        29 10         AND #$10                  ;
-CODE_04860F:        F0 18         BEQ CODE_048629           ;
-CODE_048611:        EE 80 16      INC $1680                 ;
+CODE_048600:        AD 80 16      LDA $1680                 ;\
+CODE_048603:        30 24         BMI CODE_048629           ; |"pause" flag after rescuing princess
+CODE_048605:        D0 12         BNE CODE_048619           ;/ skip all of these if negative, if 00 check for start button etc
+CODE_048607:        AE 53 07      LDX $0753                 ;\
+CODE_04860A:        BD F6 0F      LDA $0FF6,x               ; |
+CODE_04860D:        29 10         AND #$10                  ; |Check for start button press
+CODE_04860F:        F0 18         BEQ CODE_048629           ; |If pressed, enable "pause" flag after rescuing princess
+CODE_048611:        EE 80 16      INC $1680                 ;/
 CODE_048614:        A9 43         LDA #$43                  ;\Pause sound
 CODE_048616:        8D 00 16      STA $1600                 ;/
-CODE_048619:        CE 9A 0B      DEC $0B9A                 ;
-CODE_04861C:        CE 9A 0B      DEC $0B9A                 ;
-CODE_04861F:        AD 9A 0B      LDA $0B9A                 ;
-CODE_048622:        10 05         BPL CODE_048629           ;
-CODE_048624:        A9 0D         LDA #$0D                  ;
-CODE_048626:        8D 72 07      STA $0772                 ;
+CODE_048619:        CE 9A 0B      DEC $0B9A                 ;\
+CODE_04861C:        CE 9A 0B      DEC $0B9A                 ; | Decrease portrait windowing hdma size until negative values
+CODE_04861F:        AD 9A 0B      LDA $0B9A                 ; |
+CODE_048622:        10 05         BPL CODE_048629           ;/
+CODE_048624:        A9 0D         LDA #$0D                  ;\
+CODE_048626:        8D 72 07      STA $0772                 ;/Rescued peach victory operation mode $0D
 CODE_048629:        6B            RTL                       ;
 
-CODE_04862A:        22 31 DE 05   JSL CODE_05DE31           ;
-CODE_04862E:        22 5A EB 05   JSL CODE_05EB5A           ;
-CODE_048632:        A9 22         LDA #$22                  ;
-CODE_048634:        8D 04 12      STA $1204                 ;
-CODE_048637:        A9 02         LDA #$02                  ;
-CODE_048639:        8D 05 12      STA $1205                 ;
-CODE_04863C:        EE 72 07      INC $0772                 ;
+;Rescued peach - Operation $0D
+CODE_04862A:        22 31 DE 05   JSL CODE_05DE31           ;Show pause window.
+CODE_04862E:        22 5A EB 05   JSL CODE_05EB5A           ;Enable the more difficult quest flag
+CODE_048632:        A9 22         LDA #$22                  ;\
+CODE_048634:        8D 04 12      STA $1204                 ;/Enable window 1 on BG1 and 2
+CODE_048637:        A9 02         LDA #$02                  ;\
+CODE_048639:        8D 05 12      STA $1205                 ;/Enable window 1 on BG3
+CODE_04863C:        EE 72 07      INC $0772                 ;go to operation $0E
 CODE_04863F:        6B            RTL                       ;
 
-CODE_048640:        AD 40 21      LDA $2140                 ;
-CODE_048643:        D0 0A         BNE CODE_04864F           ;
-CODE_048645:        A9 0C         LDA #$0C                  ;
-CODE_048647:        8D 72 07      STA $0772                 ;
-CODE_04864A:        A9 80         LDA #$80                  ;
-CODE_04864C:        8D 80 16      STA $1680                 ;
-CODE_04864F:        6B            RTL                       ;
+;Rescued peach - Operation $0E
+CODE_048640:        AD 40 21      LDA $2140                 ;\
+CODE_048643:        D0 0A         BNE CODE_04864F           ;/If there's something playing in SFX channel 0, skip.
+CODE_048645:        A9 0C         LDA #$0C                  ;\ Operation mode $0C
+CODE_048647:        8D 72 07      STA $0772                 ;/
+CODE_04864A:        A9 80         LDA #$80                  ;\
+CODE_04864C:        8D 80 16      STA $1680                 ;/Set pause flag after rescuing princess to negative. (unpause flag?)
+CODE_04864F:        6B            RTL                       ;return
 
 CODE_048650:        8B            PHB                       ;
 CODE_048651:        4B            PHK                       ;
@@ -3824,8 +3826,7 @@ DATA_04BE89:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;Empty
 DATA_04C000:        db $26,$AC,$26,$26,$26,$72,$72,$72
                     db $13,$59,$8B
 
-;level number and type handler. only run when you beat 8-4?
-
+;level number and map type handler.
 CODE_04C00B:        8B            PHB                       ;\
 CODE_04C00C:        4B            PHK                       ; |Setup program bank
 CODE_04C00D:        AB            PLB                       ;/
