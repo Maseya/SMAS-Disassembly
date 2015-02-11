@@ -1432,8 +1432,8 @@ CODE_008C1A:        60            RTS                       ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CODE_008C1B:        E2 20         SEP #$20                  ;
-CODE_008C1D:        A9 00         LDA #$00                  ;
-CODE_008C1F:        8F 07 00 70   STA $700007               ;
+CODE_008C1D:        A9 00         LDA #$00                  ;\
+CODE_008C1F:        8F 07 00 70   STA $700007               ;/Clear debug mode
 CODE_008C23:        C2 30         REP #$30                  ;
 CODE_008C25:        AF 02 00 70   LDA $700002               ;
 CODE_008C29:        C9 43 97      CMP #$9743                ;

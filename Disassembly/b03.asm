@@ -184,7 +184,7 @@ CODE_0381D8:        6E BD 07      ROR $07BD                 ;
 CODE_0381DB:        22 63 81 04   JSL CODE_048163           ;
 CODE_0381DF:        AF 07 00 70   LDA $700007               ;
 CODE_0381E3:        F0 20         BEQ CODE_038205           ;
-CODE_0381E5:        DA            PHX                       ;
+CODE_0381E5:        DA            PHX                       ;In debug mode
 CODE_0381E6:        AE C3 0E      LDX $0EC3                 ;
 CODE_0381E9:        BD FA 0F      LDA $0FFA,x               ;
 CODE_0381EC:        29 20         AND #$20                  ;
@@ -2983,6 +2983,7 @@ CODE_03A04F:        60            RTS                       ;
 DATA_03A050:        db $56,$40,$65,$70,$66,$40,$66,$40
                     db $66,$40,$66,$60,$65,$70,$00,$00
 
+;Player action - player loses life
 CODE_03A060:        A9 01         LDA #$01                  ;
 CODE_03A062:        8D 7F 0E      STA $0E7F                 ;
 CODE_03A065:        8D 67 0E      STA $0E67                 ;
@@ -4830,6 +4831,7 @@ PNTR_03AF28:        dw CODE_039FBD                          ;$00 - Set up level 
                     dw CODE_03B2A4                          ;$0B - Player dies
                     dw CODE_03B2BA                          ;$0C - Player obtains fire flower
 
+;Player action - player enters level
 CODE_03AF42:        AD 52 07      LDA $0752                 ;
 CODE_03AF45:        C9 02         CMP #$02                  ;
 CODE_03AF47:        F0 3C         BEQ CODE_03AF85           ;
@@ -4911,6 +4913,7 @@ CODE_03AFED:        A9 01         LDA #$01                  ;
 CODE_03AFEF:        8D 7A 0B      STA $0B7A                 ;
 CODE_03AFF2:        80 03         BRA CODE_03AFF7           ;
 
+;Player action - regular control routine
 CODE_03AFF4:        9C 7A 0B      STZ $0B7A                 ;
 CODE_03AFF7:        A5 0F         LDA $0F                   ;
 CODE_03AFF9:        C9 0B         CMP #$0B                  ;
@@ -4941,37 +4944,37 @@ CODE_03B02D:        A4 0C         LDY $0C                   ;
 CODE_03B02F:        F0 04         BEQ CODE_03B035           ;
 CODE_03B031:        64 0C         STZ $0C                   ;
 CODE_03B033:        64 0B         STZ $0B                   ;
-CODE_03B035:        AF 07 00 70   LDA $700007               ;
-CODE_03B039:        D0 03         BNE CODE_03B03E           ;
+CODE_03B035:        AF 07 00 70   LDA $700007               ;\
+CODE_03B039:        D0 03         BNE CODE_03B03E           ;/Branch if debug mode
 CODE_03B03B:        4C 29 B1      JMP CODE_03B129           ;
 
-CODE_03B03E:        DA            PHX                       ;
-CODE_03B03F:        AE C3 0E      LDX $0EC3                 ;
-CODE_03B042:        BD F8 0F      LDA $0FF8,x               ;
-CODE_03B045:        FA            PLX                       ;
-CODE_03B046:        29 C0         AND #$C0                  ;
-CODE_03B048:        F0 16         BEQ CODE_03B060           ;
-CODE_03B04A:        29 80         AND #$80                  ;
-CODE_03B04C:        F0 0A         BEQ CODE_03B058           ;
-CODE_03B04E:        9C 54 07      STZ $0754                 ;
-CODE_03B051:        A9 01         LDA #$01                  ;
-CODE_03B053:        8D 56 07      STA $0756                 ;
+CODE_03B03E:        DA            PHX                       ;\
+CODE_03B03F:        AE C3 0E      LDX $0EC3                 ; |
+CODE_03B042:        BD F8 0F      LDA $0FF8,x               ; |Get controller input
+CODE_03B045:        FA            PLX                       ;/
+CODE_03B046:        29 C0         AND #$C0                  ;\ 
+CODE_03B048:        F0 16         BEQ CODE_03B060           ; |Skip if no input
+CODE_03B04A:        29 80         AND #$80                  ; |
+CODE_03B04C:        F0 0A         BEQ CODE_03B058           ;/ Branch if controller input is $40
+CODE_03B04E:        9C 54 07      STZ $0754                 ;Clear small player flag.  Controller input is $80
+CODE_03B051:        A9 01         LDA #$01                  ;\
+CODE_03B053:        8D 56 07      STA $0756                 ;/Set mushroom powerup
 CODE_03B056:        80 08         BRA CODE_03B060           ;
 
-CODE_03B058:        9C 54 07      STZ $0754                 ;
-CODE_03B05B:        A9 02         LDA #$02                  ;
-CODE_03B05D:        8D 56 07      STA $0756                 ;
-CODE_03B060:        AD F6 0F      LDA $0FF6                 ;
-CODE_03B063:        29 20         AND #$20                  ;
-CODE_03B065:        F0 0E         BEQ CODE_03B075           ;
-CODE_03B067:        4D 73 0E      EOR $0E73                 ;
-CODE_03B06A:        8D 73 0E      STA $0E73                 ;
-CODE_03B06D:        4A            LSR A                     ;
-CODE_03B06E:        4A            LSR A                     ;
-CODE_03B06F:        4A            LSR A                     ;
-CODE_03B070:        4A            LSR A                     ;
-CODE_03B071:        4A            LSR A                     ;
-CODE_03B072:        8D 16 07      STA $0716                 ;
+CODE_03B058:        9C 54 07      STZ $0754                 ;Clear small player flag
+CODE_03B05B:        A9 02         LDA #$02                  ;\
+CODE_03B05D:        8D 56 07      STA $0756                 ;/Set fireflower powerup
+CODE_03B060:        AD F6 0F      LDA $0FF6                 ;\
+CODE_03B063:        29 20         AND #$20                  ; |If select not pressed, branch
+CODE_03B065:        F0 0E         BEQ CODE_03B075           ;/
+CODE_03B067:        4D 73 0E      EOR $0E73                 ;\ Select pressed.
+CODE_03B06A:        8D 73 0E      STA $0E73                 ; | Pass through objects debug mode flag
+CODE_03B06D:        4A            LSR A                     ; |
+CODE_03B06E:        4A            LSR A                     ; |
+CODE_03B06F:        4A            LSR A                     ; |
+CODE_03B070:        4A            LSR A                     ; |
+CODE_03B071:        4A            LSR A                     ;/
+CODE_03B072:        8D 16 07      STA $0716                 ;Disable collision detection
 CODE_03B075:        AD 73 0E      LDA $0E73                 ;
 CODE_03B078:        D0 03         BNE CODE_03B07D           ;
 CODE_03B07A:        4C 29 B1      JMP CODE_03B129           ;
@@ -5142,6 +5145,7 @@ CODE_03B1DC:        20 FD B1      JSR CODE_03B1FD           ;
 CODE_03B1DF:        EE 52 07      INC $0752                 ;
 CODE_03B1E2:        60            RTS                       ;
 
+;Player action - autoclimb vine
 CODE_03B1E3:        A5 BB         LDA $BB                   ;
 CODE_03B1E5:        D0 07         BNE CODE_03B1EE           ;
 CODE_03B1E7:        AD 37 02      LDA $0237                 ;
@@ -5158,6 +5162,7 @@ CODE_03B1FD:        A9 02         LDA #$02                  ;
 CODE_03B1FF:        8D 52 07      STA $0752                 ;
 CODE_03B202:        4C 48 B2      JMP CODE_03B248           ;
 
+;Player action - enter pipe normally
 CODE_03B205:        A9 01         LDA #$01                  ;
 CODE_03B207:        8D 4F 0E      STA $0E4F                 ;
 CODE_03B20A:        8D 18 02      STA $0218                 ;
@@ -5182,6 +5187,7 @@ CODE_03B22C:        6D 37 02      ADC $0237                 ;
 CODE_03B22F:        8D 37 02      STA $0237                 ;
 CODE_03B232:        60            RTS                       ;
 
+;Player action - enter pipe from the side
 CODE_03B233:        A9 01         LDA #$01                  ;
 CODE_03B235:        8D 67 0E      STA $0E67                 ;
 CODE_03B238:        8D 4F 0E      STA $0E4F                 ;
@@ -5210,6 +5216,7 @@ CODE_03B269:        98            TYA                       ;
 CODE_03B26A:        20 EA AF      JSR CODE_03AFEA           ;
 CODE_03B26D:        60            RTS                       ;
 
+;Player action - Player changes size
 CODE_03B26E:        AD 47 07      LDA $0747                 ;
 CODE_03B271:        C9 F8         CMP #$F8                  ;
 CODE_03B273:        D0 03         BNE CODE_03B278           ;
@@ -5220,6 +5227,7 @@ CODE_03B27A:        D0 03         BNE CODE_03B27F           ;
 CODE_03B27C:        20 AE B2      JSR CODE_03B2AE           ;
 CODE_03B27F:        60            RTS                       ;
 
+;Player action - player has injury invincibility
 CODE_03B280:        AD 47 07      LDA $0747                 ;
 CODE_03B283:        C9 F0         CMP #$F0                  ;
 CODE_03B285:        B0 07         BCS CODE_03B28E           ;
@@ -5237,6 +5245,7 @@ CODE_03B29E:        49 01         EOR #$01                  ;
 CODE_03B2A0:        8D 54 07      STA $0754                 ;
 CODE_03B2A3:        60            RTS                       ;
 
+;Player action - player dies
 CODE_03B2A4:        AD 47 07      LDA $0747                 ;
 CODE_03B2A7:        C9 F0         CMP #$F0                  ;
 CODE_03B2A9:        B0 5D         BCS CODE_03B308           ;
@@ -5248,6 +5257,7 @@ CODE_03B2B5:        A9 08         LDA #$08                  ;
 CODE_03B2B7:        85 0F         STA $0F                   ;
 CODE_03B2B9:        60            RTS                       ;
 
+;Player action - player obtains fireflower
 CODE_03B2BA:        AD 47 07      LDA $0747                 ;
 CODE_03B2BD:        C9 C0         CMP #$C0                  ;
 CODE_03B2BF:        F0 39         BEQ CODE_03B2FA           ;
@@ -5293,6 +5303,7 @@ CODE_03B307:        60            RTS                       ;
 
 CODE_03B308:        60            RTS                       ;
 
+;Player action - slide on flagpole
 CODE_03B309:        A5 21         LDA $21                   ;
 CODE_03B30B:        C9 30         CMP #$30                  ;
 CODE_03B30D:        D0 11         BNE CODE_03B320           ;
@@ -5309,6 +5320,7 @@ CODE_03B322:        60            RTS                       ;
 
 DATA_03B323:        db $15,$23,$16,$1B,$17,$18,$23,$63
 
+;Player action - Player ends level (where he fades out and stuff)
 CODE_03B32B:        22 E5 CB 05   JSL CODE_05CBE5           ;
 CODE_03B32F:        F0 0F         BEQ CODE_03B340           ;
 CODE_03B331:        A9 01         LDA #$01                  ;
@@ -7233,7 +7245,7 @@ CODE_03C2CF:        5C 39 81 00   JML CODE_008139           ;
 CODE_03C2D3:        5C DE 80 00   JML CODE_0080DE           ;
 
 CODE_03C2D7:        22 00 80 04   JSL CODE_048000           ;
-CODE_03C2DB:        20 3B C3      JSR CODE_03C33B           ;
+CODE_03C2DB:        20 3B C3      JSR CODE_03C33B           ;Hide all OAM tiles
 CODE_03C2DE:        20 66 C3      JSR CODE_03C366           ;
 CODE_03C2E1:        9C 7F 0E      STZ $0E7F                 ;
 CODE_03C2E4:        A9 01         LDA #$01                  ;
@@ -7258,9 +7270,9 @@ CODE_03C30D:        D0 08         BNE CODE_03C317           ;
 CODE_03C30F:        9C 7F 0E      STZ $0E7F                 ;
 CODE_03C312:        9C 74 07      STZ $0774                 ;
 CODE_03C315:        64 0E         STZ $0E                   ;
-CODE_03C317:        AD 4F 0E      LDA $0E4F                 ;
-CODE_03C31A:        F0 1E         BEQ CODE_03C33A           ;
-CODE_03C31C:        20 3B C3      JSR CODE_03C33B           ;
+CODE_03C317:        AD 4F 0E      LDA $0E4F                 ;\
+CODE_03C31A:        F0 1E         BEQ CODE_03C33A           ;/Skip if no pipe fadeout
+CODE_03C31C:        20 3B C3      JSR CODE_03C33B           ;Hide all OAM tiles
 CODE_03C31F:        AD 01 12      LDA $1201                 ;\ Load brightness
 CODE_03C322:        49 0F         EOR #$0F                  ; |Inverse the last nibble
 CODE_03C324:        0A            ASL A                     ; |\<<4
@@ -7269,40 +7281,40 @@ CODE_03C326:        0A            ASL A                     ; | |
 CODE_03C327:        0A            ASL A                     ; |/
 CODE_03C328:        09 0F         ORA #$0F                  ; | Affect all the layers
 CODE_03C32A:        8D 7E 0E      STA $0E7E                 ;/Store into mosaic register
-CODE_03C32D:        20 54 C3      JSR CODE_03C354           ;
-CODE_03C330:        AD 01 12      LDA $1201                 ;
-CODE_03C333:        C9 0F         CMP #$0F                  ;
-CODE_03C335:        D0 03         BNE CODE_03C33A           ;
-CODE_03C337:        9C 4F 0E      STZ $0E4F                 ;
+CODE_03C32D:        20 54 C3      JSR CODE_03C354           ;Also hide player's OAM tiles for good measure (even though they were hidden already)
+CODE_03C330:        AD 01 12      LDA $1201                 ;\
+CODE_03C333:        C9 0F         CMP #$0F                  ; |
+CODE_03C335:        D0 03         BNE CODE_03C33A           ; | Clear pipe fading flag if brightness is maximum
+CODE_03C337:        9C 4F 0E      STZ $0E4F                 ;/
 CODE_03C33A:        60            RTS                       ;
 
-CODE_03C33B:        DA            PHX                       ;
-CODE_03C33C:        A2 00         LDX #$00                  ;
-CODE_03C33E:        A9 F0         LDA #$F0                  ;
-CODE_03C340:        9D 01 08      STA $0801,x               ;
-CODE_03C343:        9D 01 09      STA $0901,x               ;
-CODE_03C346:        9E 00 0C      STZ $0C00,x               ;
-CODE_03C349:        9E 00 0D      STZ $0D00,x               ;
-CODE_03C34C:        E8            INX                       ;
-CODE_03C34D:        E8            INX                       ;
-CODE_03C34E:        E8            INX                       ;
-CODE_03C34F:        E8            INX                       ;
-CODE_03C350:        D0 EE         BNE CODE_03C340           ;
-CODE_03C352:        FA            PLX                       ;
-CODE_03C353:        60            RTS                       ;
+CODE_03C33B:        DA            PHX                       ;\
+CODE_03C33C:        A2 00         LDX #$00                  ; |
+CODE_03C33E:        A9 F0         LDA #$F0                  ; |
+CODE_03C340:        9D 01 08      STA $0801,x               ; |
+CODE_03C343:        9D 01 09      STA $0901,x               ; |
+CODE_03C346:        9E 00 0C      STZ $0C00,x               ; | Hides all OAM tiles by setting their Y position off-screen
+CODE_03C349:        9E 00 0D      STZ $0D00,x               ; | and also zeroing out something
+CODE_03C34C:        E8            INX                       ; |
+CODE_03C34D:        E8            INX                       ; |
+CODE_03C34E:        E8            INX                       ; |
+CODE_03C34F:        E8            INX                       ; |
+CODE_03C350:        D0 EE         BNE CODE_03C340           ; |
+CODE_03C352:        FA            PLX                       ; |
+CODE_03C353:        60            RTS                       ;/
 
-CODE_03C354:        5A            PHY                       ;
-CODE_03C355:        A0 D0         LDY #$D0                  ;
-CODE_03C357:        A9 F0         LDA #$F0                  ;
-CODE_03C359:        99 01 08      STA $0801,y               ;
-CODE_03C35C:        C8            INY                       ;
-CODE_03C35D:        C8            INY                       ;
-CODE_03C35E:        C8            INY                       ;
-CODE_03C35F:        C8            INY                       ;
-CODE_03C360:        C0 F0         CPY #$F0                  ;
-CODE_03C362:        D0 F5         BNE CODE_03C359           ;
-CODE_03C364:        7A            PLY                       ;
-CODE_03C365:        60            RTS                       ;
+CODE_03C354:        5A            PHY                       ;\
+CODE_03C355:        A0 D0         LDY #$D0                  ; |
+CODE_03C357:        A9 F0         LDA #$F0                  ; |
+CODE_03C359:        99 01 08      STA $0801,y               ; |
+CODE_03C35C:        C8            INY                       ; | Hides player's OAM tiles by setting their Y position off-screen
+CODE_03C35D:        C8            INY                       ; |
+CODE_03C35E:        C8            INY                       ; |
+CODE_03C35F:        C8            INY                       ; |
+CODE_03C360:        C0 F0         CPY #$F0                  ; |
+CODE_03C362:        D0 F5         BNE CODE_03C359           ; |
+CODE_03C364:        7A            PLY                       ; |
+CODE_03C365:        60            RTS                       ;/
 
 CODE_03C366:        22 2E ED 04   JSL CODE_04ED2E           ;
 CODE_03C36A:        9C A5 0B      STZ $0BA5                 ;
