@@ -295,14 +295,14 @@ CODE_0382D8:        9C 54 01      STZ $0154                 ;
 CODE_0382DB:        4C A9 81      JMP CODE_0381A9           ;
 
 DATA_0382DE:        db $02,$B8,$B8,$B8,$B8,$02,$02,$02
-                    db $B8,$B8,$B8,$B8,$B9,$DE,$03,$56 ;Low bytes of VRAM addresses used by the stripe image uploader
+                    db $B8,$B8,$B8,$B8,$B9,$DE,$03,$56      ;Low bytes of VRAM addresses used by the stripe image uploader
                     db $81,$BC,$DB
 
-DATA_0382F1:        db $17,$99,$99,$99,$99,$17,$1A,$1A ;High bytes of VRAM addresses used by the stripe image uploader
-                    db $99,$99,$99,$99,$99,$99,$9A,$9A ;
-                    db $9A,$9A,$9A                     ;
+DATA_0382F1:        db $17,$99,$99,$99,$99,$17,$1A,$1A      ;High bytes of VRAM addresses used by the stripe image uploader
+                    db $99,$99,$99,$99,$99,$99,$9A,$9A      ;
+                    db $9A,$9A,$9A                          ;
 
-DATA_038304:        db $00,$00,$00,$03
+DATA_038304:        dw $0000,$0300
 
 ;SMB1 NMI ROUTINE
 CODE_038308:        8B            PHB                       ;\
@@ -314,77 +314,78 @@ CODE_038311:        D0 02         BNE CODE_038315           ; |the screen is pit
 CODE_038313:        A9 80         LDA #$80                  ; |
 CODE_038315:        8D 00 21      STA $2100                 ;/ Otherwise, normal brightness
 CODE_038318:        9C 0C 42      STZ $420C                 ;Reset HDMA
-CODE_03831B:        AD 54 01      LDA $0154                 ;
-CODE_03831E:        F0 03         BEQ CODE_038323           ;
+CODE_03831B:        AD 54 01      LDA $0154                 ;\
+CODE_03831E:        F0 03         BEQ CODE_038323           ;/Make sure the game runs at normal fps?
 CODE_038320:        4C 48 84      JMP CODE_038448           ;
 
 CODE_038323:        EE 54 01      INC $0154                 ;
-CODE_038326:        AE 73 07      LDX $0773                 ;
-CODE_038329:        BD DE 82      LDA $82DE,x               ;
-CODE_03832C:        85 00         STA $00                   ;
-CODE_03832E:        BD F1 82      LDA $82F1,x               ;
-CODE_038331:        85 01         STA $01                   ;
-CODE_038333:        A9 03         LDA #$03                  ;
-CODE_038335:        85 02         STA $02                   ;
-CODE_038337:        20 BC 9B      JSR CODE_039BBC           ;
-CODE_03833A:        AE 73 07      LDX $0773                 ;
-CODE_03833D:        E0 06         CPX #$06                  ;
-CODE_03833F:        D0 11         BNE CODE_038352           ;
+CODE_038326:        AE 73 07      LDX $0773                 ;\
+CODE_038329:        BD DE 82      LDA $82DE,x               ; |
+CODE_03832C:        85 00         STA $00                   ; |
+CODE_03832E:        BD F1 82      LDA $82F1,x               ; |
+CODE_038331:        85 01         STA $01                   ; | 
+CODE_038333:        A9 03         LDA #$03                  ; |
+CODE_038335:        85 02         STA $02                   ; |
+CODE_038337:        20 BC 9B      JSR CODE_039BBC           ;/ Stripe image uploader
+CODE_03833A:        AE 73 07      LDX $0773                 ;\
+CODE_03833D:        E0 06         CPX #$06                  ; |
+CODE_03833F:        D0 11         BNE CODE_038352           ;/
 CODE_038341:        AD DE 82      LDA $82DE                 ;
 CODE_038344:        85 00         STA $00                   ;
 CODE_038346:        AD F1 82      LDA $82F1                 ;
 CODE_038349:        85 01         STA $01                   ;
 CODE_03834B:        A9 03         LDA #$03                  ;
 CODE_03834D:        85 02         STA $02                   ;
-CODE_03834F:        20 BC 9B      JSR CODE_039BBC           ;
+CODE_03834F:        20 BC 9B      JSR CODE_039BBC           ;Stripe image uploader
 CODE_038352:        0B            PHD                       ;\
 CODE_038353:        A9 43         LDA #$43                  ; |
 CODE_038355:        EB            XBA                       ; |Direct page: $4300
 CODE_038356:        A9 00         LDA #$00                  ; |
 CODE_038358:        5B            TCD                       ;/
 CODE_038359:        C2 10         REP #$10                  ;16-bit XY
-CODE_03835B:        A9 81         LDA #$81                  ;
-CODE_03835D:        8D 15 21      STA $2115                 ;
-CODE_038360:        A0 01 18      LDY #$1801                ;
-CODE_038363:        84 00         STY $00                   ;
-CODE_038365:        AD F9 0E      LDA $0EF9                 ;
+CODE_03835B:        A9 81         LDA #$81                  ;\Address increment mode: after every write to 2119
+CODE_03835D:        8D 15 21      STA $2115                 ;/Also, every 32 bytes. so vertical
+CODE_038360:        A0 01 18      LDY #$1801                ;\2 regs write once
+CODE_038363:        84 00         STY $00                   ;/DMA destination: $2118
+CODE_038365:        AD F9 0E      LDA $0EF9                 ;What is this address?
 CODE_038368:        F0 33         BEQ CODE_03839D           ;
-CODE_03836A:        A9 7F         LDA #$7F                  ;
-CODE_03836C:        85 04         STA $04                   ;
+CODE_03836A:        A9 7F         LDA #$7F                  ;\DMA source bank: $7F
+CODE_03836C:        85 04         STA $04                   ;/
 CODE_03836E:        C2 20         REP #$20                  ;
 CODE_038370:        A0 40 00      LDY #$0040                ;
 CODE_038373:        A2 00 00      LDX #$0000                ;
-CODE_038376:        BF 02 00 7F   LDA $7F0002,x             ;
-CODE_03837A:        8D 16 21      STA $2116                 ;
-CODE_03837D:        8A            TXA                       ;
-CODE_03837E:        18            CLC                       ;
-CODE_03837F:        69 04 00      ADC #$0004                ;
-CODE_038382:        85 02         STA $02                   ;
-CODE_038384:        84 05         STY $05                   ;
-CODE_038386:        8A            TXA                       ;
-CODE_038387:        18            CLC                       ;
-CODE_038388:        69 42 00      ADC #$0042                ;
-CODE_03838B:        AA            TAX                       ;
-CODE_03838C:        A9 01 00      LDA #$0001                ;
-CODE_03838F:        8D 0B 42      STA $420B                 ;
+CODE_038376:        BF 02 00 7F   LDA $7F0002,x             ;\
+CODE_03837A:        8D 16 21      STA $2116                 ;/Set VRAM address
+CODE_03837D:        8A            TXA                       ;\
+CODE_03837E:        18            CLC                       ; |
+CODE_03837F:        69 04 00      ADC #$0004                ; |
+CODE_038382:        85 02         STA $02                   ;/DMA source address: $0000 + 4 something?
+CODE_038384:        84 05         STY $05                   ; DMA size: $0040 bytes
+CODE_038386:        8A            TXA                       ;\
+CODE_038387:        18            CLC                       ; |
+CODE_038388:        69 42 00      ADC #$0042                ; | add $42 bytes
+CODE_03838B:        AA            TAX                       ;/
+CODE_03838C:        A9 01 00      LDA #$0001                ;\Enable DMA
+CODE_03838F:        8D 0B 42      STA $420B                 ;/
 CODE_038392:        BF 02 00 7F   LDA $7F0002,x             ;
 CODE_038396:        10 E2         BPL CODE_03837A           ;
 CODE_038398:        E2 20         SEP #$20                  ;
 CODE_03839A:        9C F9 0E      STZ $0EF9                 ;
-CODE_03839D:        AD D4 0E      LDA $0ED4                 ;
+
+CODE_03839D:        AD D4 0E      LDA $0ED4                 ;What is this address?
 CODE_0383A0:        F0 34         BEQ CODE_0383D6           ;
-CODE_0383A2:        A9 7F         LDA #$7F                  ;
-CODE_0383A4:        85 04         STA $04                   ;
+CODE_0383A2:        A9 7F         LDA #$7F                  ;\
+CODE_0383A4:        85 04         STA $04                   ;/DMA source bank: $7F
 CODE_0383A6:        C2 20         REP #$20                  ;
 CODE_0383A8:        A0 38 00      LDY #$0038                ;
 CODE_0383AB:        A2 00 00      LDX #$0000                ;
-CODE_0383AE:        BF 02 20 7F   LDA $7F2002,x             ;
-CODE_0383B2:        8D 16 21      STA $2116                 ;
+CODE_0383AE:        BF 02 20 7F   LDA $7F2002,x             ;\
+CODE_0383B2:        8D 16 21      STA $2116                 ;/Set VRAM address
 CODE_0383B5:        8A            TXA                       ;
 CODE_0383B6:        18            CLC                       ;
 CODE_0383B7:        69 04 20      ADC #$2004                ;
 CODE_0383BA:        85 02         STA $02                   ;
-CODE_0383BC:        84 05         STY $05                   ;
+CODE_0383BC:        84 05         STY $05                   ;DMA size: $0038 bytes
 CODE_0383BE:        8A            TXA                       ;
 CODE_0383BF:        18            CLC                       ;
 CODE_0383C0:        69 3A 00      ADC #$003A                ;
@@ -396,6 +397,7 @@ CODE_0383CE:        10 E2         BPL CODE_0383B2           ;
 CODE_0383D0:        9C 00 20      STZ $2000                 ;
 CODE_0383D3:        9C D4 0E      STZ $0ED4                 ;
 CODE_0383D6:        E2 30         SEP #$30                  ;
+
 CODE_0383D8:        A9 80         LDA #$80                  ;
 CODE_0383DA:        8D 15 21      STA $2115                 ;
 CODE_0383DD:        20 1D 9B      JSR CODE_039B1D           ;
@@ -403,17 +405,17 @@ CODE_0383E0:        AD 00 12      LDA $1200                 ;
 CODE_0383E3:        F0 2B         BEQ CODE_038410           ;
 CODE_0383E5:        30 24         BMI CODE_03840B           ;
 CODE_0383E7:        C2 10         REP #$10                  ;
-CODE_0383E9:        9C 21 21      STZ $2121                 ;
-CODE_0383EC:        A0 00 22      LDY #$2200                ;
-CODE_0383EF:        84 00         STY $00                   ;
-CODE_0383F1:        A0 00 10      LDY #$1000                ;
-CODE_0383F4:        84 02         STY $02                   ;
-CODE_0383F6:        A9 00         LDA #$00                  ;
-CODE_0383F8:        85 04         STA $04                   ;
-CODE_0383FA:        A0 00 02      LDY #$0200                ;
-CODE_0383FD:        84 05         STY $05                   ;
-CODE_0383FF:        A9 01         LDA #$01                  ;
-CODE_038401:        8D 0B 42      STA $420B                 ;
+CODE_0383E9:        9C 21 21      STZ $2121                 ;CGRAM address: $00
+CODE_0383EC:        A0 00 22      LDY #$2200                ;\
+CODE_0383EF:        84 00         STY $00                   ;/1 reg write once to $2122
+CODE_0383F1:        A0 00 10      LDY #$1000                ;\
+CODE_0383F4:        84 02         STY $02                   ; |
+CODE_0383F6:        A9 00         LDA #$00                  ; | DMA source: $00:1000
+CODE_0383F8:        85 04         STA $04                   ; | Length: 512 bytes
+CODE_0383FA:        A0 00 02      LDY #$0200                ; |
+CODE_0383FD:        84 05         STY $05                   ;/
+CODE_0383FF:        A9 01         LDA #$01                  ;\
+CODE_038401:        8D 0B 42      STA $420B                 ;/Enable HDMA channel 0
 CODE_038404:        E2 10         SEP #$10                  ;
 CODE_038406:        9C 00 12      STZ $1200                 ;
 CODE_038409:        80 05         BRA CODE_038410           ;
@@ -422,9 +424,9 @@ CODE_03840B:        A9 01         LDA #$01                  ;
 CODE_03840D:        8D 00 12      STA $1200                 ;
 CODE_038410:        2B            PLD                       ;
 CODE_038411:        A0 00         LDY #$00                  ;
-CODE_038413:        AE 73 07      LDX $0773                 ;
-CODE_038416:        E0 06         CPX #$06                  ;
-CODE_038418:        D0 02         BNE CODE_03841C           ;
+CODE_038413:        AE 73 07      LDX $0773                 ;\
+CODE_038416:        E0 06         CPX #$06                  ; | Branch if stripe image destination VRAM index is not 6
+CODE_038418:        D0 02         BNE CODE_03841C           ;/
 CODE_03841A:        C8            INY                       ;
 CODE_03841B:        C8            INY                       ;
 CODE_03841C:        C2 20         REP #$20                  ;
@@ -558,10 +560,10 @@ CODE_038548:        0A            ASL A                     ; |Set up 'operation
 CODE_038549:        AA            TAX                       ; |see pointers below for effects
 CODE_03854A:        7C 4D 85      JMP (PNTR_03854D,x)       ;/
 
-PNTR_03854D:        dw CODE_03868D            ;$00 Title screen
-                    dw CODE_03AD60            ;$01 Normal playing and controls
-                    dw CODE_0388BB            ;$02 Defeated Bowser
-                    dw CODE_03A0A8            ;$03 Game Over
+PNTR_03854D:        dw CODE_03868D                          ;$00 Title screen
+                    dw CODE_03AD60                          ;$01 Normal playing and controls
+                    dw CODE_0388BB                          ;$02 Defeated Bowser
+                    dw CODE_03A0A8                          ;$03 Game Over
 
 CODE_038555:        AD 70 07      LDA $0770                 ;\
 CODE_038558:        C9 02         CMP #$02                  ; |Branch if operation mode is Defeated Bowser
@@ -1356,26 +1358,26 @@ CODE_038C12:        99 07 08      STA $0807,y               ;
 CODE_038C15:        A6 9E         LDX $9E                   ;
 CODE_038C17:        60            RTS                       ;
 
-CODE_038C18:        AD 3C 07      LDA $073C                 ;
-CODE_038C1B:        0A            ASL A                     ;
-CODE_038C1C:        AA            TAX                       ;
-CODE_038C1D:        7C 20 8C      JMP (PNTR_038C20,x)       ;
+CODE_038C18:        AD 3C 07      LDA $073C                 ;\
+CODE_038C1B:        0A            ASL A                     ; | Current screen routine to execute
+CODE_038C1C:        AA            TAX                       ; |
+CODE_038C1D:        7C 20 8C      JMP (PNTR_038C20,x)       ;/
 
-PNTR_038C20:        dw CODE_038C3E
-                    dw CODE_038C50
-                    dw CODE_038C83
-                    dw CODE_038C8B
-                    dw CODE_038CFF
-                    dw CODE_039213
-                    dw CODE_038D7B
-                    dw CODE_039213
-                    dw CODE_038E37
-                    dw CODE_038C6F
-                    dw CODE_038C7A
-                    dw CODE_038C7F
-                    dw CODE_038E65
-                    dw CODE_038EF1
-                    dw CODE_038F11
+PNTR_038C20:        dw CODE_038C3E                          ;$00 - 
+                    dw CODE_038C50                          ;$01 - 
+                    dw CODE_038C83                          ;$02 - 
+                    dw CODE_038C8B                          ;$03 - 
+                    dw CODE_038CFF                          ;$04 - 
+                    dw CODE_039213                          ;$05 - 
+                    dw CODE_038D7B                          ;$06 - Display intermediate
+                    dw CODE_039213                          ;$07 - 
+                    dw CODE_038E37                          ;$08 -
+                    dw CODE_038C6F                          ;$09 -
+                    dw CODE_038C7A                          ;$0A -
+                    dw CODE_038C7F                          ;$0B -
+                    dw CODE_038E65                          ;$0C -
+                    dw CODE_038EF1                          ;$0D -
+                    dw CODE_038F11                          ;$0E - Write top score
 
 CODE_038C3E:        AD 70 07      LDA $0770                 ;
 CODE_038C41:        F0 29         BEQ CODE_038C6C           ;
@@ -1385,19 +1387,19 @@ CODE_038C48:        A9 01         LDA #$01                  ;
 CODE_038C4A:        8D 00 12      STA $1200                 ;
 CODE_038C4D:        4C 0D 8F      JMP CODE_038F0D           ;
 
-CODE_038C50:        AD 44 07      LDA $0744                 ;
-CODE_038C53:        48            PHA                       ;
-CODE_038C54:        AD 56 07      LDA $0756                 ;
-CODE_038C57:        48            PHA                       ;
-CODE_038C58:        9C 56 07      STZ $0756                 ;
-CODE_038C5B:        A9 02         LDA #$02                  ;
-CODE_038C5D:        8D 44 07      STA $0744                 ;
+CODE_038C50:        AD 44 07      LDA $0744                 ;\
+CODE_038C53:        48            PHA                       ; | Save background color and current player status
+CODE_038C54:        AD 56 07      LDA $0756                 ; | to stack
+CODE_038C57:        48            PHA                       ;/
+CODE_038C58:        9C 56 07      STZ $0756                 ;Small powerup
+CODE_038C5B:        A9 02         LDA #$02                  ;\
+CODE_038C5D:        8D 44 07      STA $0744                 ;/Set background color
 CODE_038C60:        22 88 9A 04   JSL CODE_049A88           ;
-CODE_038C64:        68            PLA                       ;
-CODE_038C65:        8D 56 07      STA $0756                 ;
-CODE_038C68:        68            PLA                       ;
-CODE_038C69:        8D 44 07      STA $0744                 ;
-CODE_038C6C:        4C 0D 8F      JMP CODE_038F0D           ;
+CODE_038C64:        68            PLA                       ;\
+CODE_038C65:        8D 56 07      STA $0756                 ; | Restore background color and current player powerup
+CODE_038C68:        68            PLA                       ; |
+CODE_038C69:        8D 44 07      STA $0744                 ;/
+CODE_038C6C:        4C 0D 8F      JMP CODE_038F0D           ;To next screen routine
 
 CODE_038C6F:        A5 5C         LDA $5C                   ;
 CODE_038C71:        22 FB C8 05   JSL CODE_05C8FB           ;
@@ -1513,17 +1515,17 @@ CODE_038D74:        60            RTS                       ;
 CODE_038D75:        EE 3C 07      INC $073C                 ;
 CODE_038D78:        4C 0D 8F      JMP CODE_038F0D           ;
 
-CODE_038D7B:        AD 70 07      LDA $0770                 ;
-CODE_038D7E:        F0 49         BEQ CODE_038DC9           ;
-CODE_038D80:        C9 03         CMP #$03                  ;
-CODE_038D82:        F0 4B         BEQ CODE_038DCF           ;
-CODE_038D84:        AD 52 07      LDA $0752                 ;
-CODE_038D87:        D0 40         BNE CODE_038DC9           ;
-CODE_038D89:        A4 5C         LDY $5C                   ;
-CODE_038D8B:        C0 03         CPY #$03                  ;
-CODE_038D8D:        F0 05         BEQ CODE_038D94           ;
-CODE_038D8F:        AD 69 07      LDA $0769                 ;
-CODE_038D92:        D0 35         BNE CODE_038DC9           ;
+CODE_038D7B:        AD 70 07      LDA $0770                 ;\
+CODE_038D7E:        F0 49         BEQ CODE_038DC9           ;/Skip if game operating mode is title screen
+CODE_038D80:        C9 03         CMP #$03                  ;\
+CODE_038D82:        F0 4B         BEQ CODE_038DCF           ;/If game over, display game over instead.
+CODE_038D84:        AD 52 07      LDA $0752                 ;\
+CODE_038D87:        D0 40         BNE CODE_038DC9           ;/Branch if an exit is taken
+CODE_038D89:        A4 5C         LDY $5C                   ;\
+CODE_038D8B:        C0 03         CPY #$03                  ; | Check for castle level
+CODE_038D8D:        F0 05         BEQ CODE_038D94           ;/ If castle, branch
+CODE_038D8F:        AD 69 07      LDA $0769                 ;\
+CODE_038D92:        D0 35         BNE CODE_038DC9           ;/ Go to next screen task if level preview skip flag is set
 CODE_038D94:        20 61 F8      JSR CODE_03F861           ;
 CODE_038D97:        22 E7 92 04   JSL CODE_0492E7           ;
 CODE_038D9B:        A9 01         LDA #$01                  ;
@@ -1697,9 +1699,10 @@ CODE_038F0A:        20 61 88      JSR CODE_038861           ;
 CODE_038F0D:        EE 3C 07      INC $073C                 ;
 CODE_038F10:        60            RTS                       ;
 
+;Write Top Score screen routine task
 CODE_038F11:        A9 FA         LDA #$FA                  ;
 CODE_038F13:        20 64 BD      JSR CODE_03BD64           ;
-CODE_038F16:        EE 72 07      INC $0772                 ;
+CODE_038F16:        EE 72 07      INC $0772                 ; Move to next screen routine task
 CODE_038F19:        60            RTS                       ;
 
 DATA_038F1A:        db $58,$43,$00,$09,$16,$20,$0A,$20
@@ -2468,6 +2471,7 @@ CODE_039BB6:        8E 0B 42      STX $420B                 ;
 CODE_039BB9:        E2 20         SEP #$20                  ;
 CODE_039BBB:        60            RTS                       ;
 
+;Stripe image uploader. $00-02 = 24-bit pointer to stripe image
 CODE_039BBC:        C2 10         REP #$10                  ;Stripe image uploader. Stripe image format:
 CODE_039BBE:        A9 03         LDA #$03                  ;\VVVVVVVV VVVVVVVV DRLLLLLL LLLLLLLL <data bytes>
 CODE_039BC0:        8D 14 43      STA $4314                 ;/DMA source: bank 3
@@ -2685,12 +2689,12 @@ DATA_039D70:        db $D0,$00,$18,$30,$48,$60,$78,$90
                     db $88,$00,$08,$10,$18,$18,$FF,$23
                     db $58
 
-CODE_039D91:        A9 80         LDA #$80                  ;
-CODE_039D93:        8D 01 12      STA $1201                 ;
-CODE_039D96:        A9 FF         LDA #$FF                  ;
-CODE_039D98:        8D 02 11      STA $1102                 ;
-CODE_039D9B:        A9 7F         LDA #$7F                  ;
-CODE_039D9D:        8D 03 11      STA $1103                 ;
+CODE_039D91:        A9 80         LDA #$80                  ;\
+CODE_039D93:        8D 01 12      STA $1201                 ;/F-Blank
+CODE_039D96:        A9 FF         LDA #$FF                  ;\
+CODE_039D98:        8D 02 11      STA $1102                 ; |Palette 8, color 1 = white
+CODE_039D9B:        A9 7F         LDA #$7F                  ; |
+CODE_039D9D:        8D 03 11      STA $1103                 ;/
 CODE_039DA0:        EE 00 12      INC $1200                 ;
 CODE_039DA3:        A9 FF         LDA #$FF                  ;
 CODE_039DA5:        8D 02 17      STA $1702                 ;
@@ -13686,7 +13690,7 @@ CODE_03F85A:        60            RTS                       ;
 
 DATA_03F85B:        db $40,$01,$2E,$60,$FF,$04
 
-CODE_03F861:        20 F3 85      JSR $85F3
+CODE_03F861:        20 F3 85      JSR CODE_0385F3           ;
 CODE_03F864:        A9 D0         LDA #$D0                  ;
 CODE_03F866:        8D D5 06      STA $06D5                 ;
 CODE_03F869:        22 00 D8 04   JSL CODE_04D800           ;

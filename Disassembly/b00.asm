@@ -6047,7 +6047,7 @@ CODE_00BE03:        80 02         BRA CODE_00BE07           ;
 CODE_00BE05:        C6 22         DEC $22                   ; Decrease the timer
 CODE_00BE07:        60            RTS                       ;
 
-DATA_00BE08:        dw $1EDF,$435F,$5FBF,$7FFF
+DATA_00BE08:        dw $1EDF,$435F,$5FBF,$7FFF              ; Palette of the shining ALL*STARS logo
                     dw $5FBF,$435F,$1EDF,$025F
                     dw $025F,$025F,$025F,$025F
                     dw $025F,$025F,$025F
@@ -6393,8 +6393,8 @@ CODE_00C467:        EE 87 0F      INC $0F87                 ;
 CODE_00C46A:        AE 87 0F      LDX $0F87                 ;
 CODE_00C46D:        E0 05         CPX #$05                  ;
 CODE_00C46F:        D0 05         BNE CODE_00C476           ;
-CODE_00C471:        A9 A0         LDA #$A0                  ;
-CODE_00C473:        8D 19 02      STA $0219                 ;
+CODE_00C471:        A9 A0         LDA #$A0                  ;\ Set player X position to A0
+CODE_00C473:        8D 19 02      STA $0219                 ;/ (This happens when the princess hugs the player and gets pushed back 2 pixels or so)
 CODE_00C476:        BF B4 C4 00   LDA $00C4B4,x             ;
 CODE_00C47A:        8D 88 0F      STA $0F88                 ;
 CODE_00C47D:        AD 87 0F      LDA $0F87                 ;
@@ -6406,13 +6406,13 @@ CODE_00C488:        BF 92 C4 00   LDA $00C492,x             ;
 CODE_00C48C:        85 01         STA $01                   ;
 CODE_00C48E:        6C 00 00      JMP ($0000)               ;
 
-PNTR_00C491:        dw CODE_00C49F
-                    dw CODE_00C49F
-                    dw CODE_00C49F
-                    dw CODE_00C4B0
-                    dw CODE_00C4A0
-                    dw CODE_00C49F
-                    dw CODE_00C49F
+PNTR_00C491:        dw CODE_00C49F                          ;
+                    dw CODE_00C49F                          ;
+                    dw CODE_00C49F                          ;
+                    dw CODE_00C4B0                          ;
+                    dw CODE_00C4A0                          ;
+                    dw CODE_00C49F                          ;
+                    dw CODE_00C49F                          ;
 
 CODE_00C49F:        6B            RTL                       ;
 

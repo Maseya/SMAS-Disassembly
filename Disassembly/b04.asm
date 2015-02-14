@@ -2178,10 +2178,10 @@ CODE_049672:        C0 20 00      CPY #$0020                ;
 CODE_049675:        D0 F1         BNE CODE_049668           ;
 CODE_049677:        80 20         BRA CODE_049699           ;
 
-DATA_049679:        dw $772F,$7FFF,$14A5,$57F0 ;\
-                    dw $0340,$0200,$46BF,$365D ; |Bonus room Luigi background palette
-                    dw $25BB,$04EF,$0D73,$4F7F ; |
-                    dw $7F0F,$4E06,$001E,$0012 ;/
+DATA_049679:        dw $772F,$7FFF,$14A5,$57F0              ;\
+                    dw $0340,$0200,$46BF,$365D              ; |Bonus room Luigi background palette
+                    dw $25BB,$04EF,$0D73,$4F7F              ; |
+                    dw $7F0F,$4E06,$001E,$0012              ;/
 
 CODE_049699:        A5 42         LDA $42                   ;
 CODE_04969B:        4A            LSR A                     ;
@@ -2409,22 +2409,25 @@ DATA_0497CD:        dw $0100,$0302,$1004,$1211
                     dw $0100,$1C1B,$2F04,$301E
                     dw $2008,$0B0A,$210C,$0F0E
 
-DATA_0499ED:        dw $7FF8,$7FF8,$0000,$0000
-                    dw $3908,$7FF8,$3908,$3908
+DATA_0499ED:        dw $7FF8,$7FF8,$0000,$0000             ;Background colors, indexed by 0744 or BA
+                    dw $3908,$7FF8,$3908,$3908             ;Light blue x2, black, indigo, light blue, indigo * 2
 
-DATA_0499FD:        dw $0000,$7FFF,$0C63,$0155
+DATA_0499FD:        dw $0000,$7FFF,$0C63,$0155             ;Mario palette
                     dw $1A1C,$1B3E,$2D9C,$3ABF
                     dw $0000,$152F,$0014,$0C19
                     dw $1C9F,$762E,$5D68,$44E6
-                    dw $0000,$7FFF,$0C63,$0155
+					
+                    dw $0000,$7FFF,$0C63,$0155             ;Luigi palette
                     dw $1A1C,$1B3E,$2D9C,$3ABF
                     dw $0000,$152F,$1E60,$3304
                     dw $4388,$7655,$7190,$58CA
-                    dw $0000,$7FFF,$0C63,$0155
+					
+                    dw $0000,$7FFF,$0C63,$0155             ;Fire Mario palette
                     dw $1A1C,$1B3E,$2D9C,$3ABF
                     dw $0000,$152F,$3ED9,$4F5D
                     dw $639F,$0D9F,$001D,$0015
-                    dw $0000,$7FFF,$0C63,$0155
+					
+                    dw $0000,$7FFF,$0C63,$0155             ;Fire Luigi palette
                     dw $1A1C,$1B3E,$2D9C,$3ABF
                     dw $0000,$152F,$3ED9,$4F5D
                     dw $639F,$0352,$02AD,$0208
@@ -2438,22 +2441,22 @@ CODE_049A88:        8B            PHB                       ;
 CODE_049A89:        4B            PHK                       ;
 CODE_049A8A:        AB            PLB                       ;
 CODE_049A8B:        DA            PHX                       ;
-CODE_049A8C:        AD 44 07      LDA $0744                 ;
-CODE_049A8F:        D0 02         BNE CODE_049A93           ;
-CODE_049A91:        A5 BA         LDA $BA                   ;
+CODE_049A8C:        AD 44 07      LDA $0744                 ;\
+CODE_049A8F:        D0 02         BNE CODE_049A93           ;/Branch if background color != 00
+CODE_049A91:        A5 BA         LDA $BA                   ;Get level current background palette and music
 CODE_049A93:        C2 30         REP #$30                  ;
 CODE_049A95:        29 FF 00      AND #$00FF                ;
 CODE_049A98:        0A            ASL A                     ;
 CODE_049A99:        A8            TAY                       ;
-CODE_049A9A:        AD 43 07      LDA $0743                 ;
-CODE_049A9D:        29 FF 00      AND #$00FF                ;
-CODE_049AA0:        F0 15         BEQ CODE_049AB7           ;
-CODE_049AA2:        AD 44 07      LDA $0744                 ;
-CODE_049AA5:        29 04 00      AND #$0004                ;
-CODE_049AA8:        D0 0D         BNE CODE_049AB7           ;
-CODE_049AAA:        AD 5A 07      LDA $075A                 ;
-CODE_049AAD:        29 80 00      AND #$0080                ;
-CODE_049AB0:        D0 05         BNE CODE_049AB7           ;
+CODE_049A9A:        AD 43 07      LDA $0743                 ;\ Bonus game flag
+CODE_049A9D:        29 FF 00      AND #$00FF                ; |
+CODE_049AA0:        F0 15         BEQ CODE_049AB7           ;/ branch if not bonus game
+CODE_049AA2:        AD 44 07      LDA $0744                 ;\
+CODE_049AA5:        29 04 00      AND #$0004                ; | Branch if background color is $04
+CODE_049AA8:        D0 0D         BNE CODE_049AB7           ;/
+CODE_049AAA:        AD 5A 07      LDA $075A                 ;\
+CODE_049AAD:        29 80 00      AND #$0080                ; | Branch if something with lives
+CODE_049AB0:        D0 05         BNE CODE_049AB7           ;/
 CODE_049AB2:        A9 2A 52      LDA #$522A                ;
 CODE_049AB5:        80 03         BRA CODE_049ABA           ;
 
@@ -2601,12 +2604,12 @@ CODE_049BBB:        60            RTS                       ;
 
 CODE_049BBC:        C2 30         REP #$30                  ;
 CODE_049BBE:        A9 04 00      LDA #$0004                ;
-CODE_049BC1:        8D FA 0E      STA $0EFA                 ;
-CODE_049BC4:        A5 BA         LDA $BA                   ;
-CODE_049BC6:        29 FF 00      AND #$00FF                ;
-CODE_049BC9:        C9 03 00      CMP #$0003                ;
-CODE_049BCC:        D0 03         BNE CODE_049BD1           ;
-CODE_049BCE:        0E FA 0E      ASL $0EFA                 ;
+CODE_049BC1:        8D FA 0E      STA $0EFA                 ;something related to how many background tiles you load as you scroll
+CODE_049BC4:        A5 BA         LDA $BA                   ;\
+CODE_049BC6:        29 FF 00      AND #$00FF                ; |
+CODE_049BC9:        C9 03 00      CMP #$0003                ; | Branch if not Black background with castle music
+CODE_049BCC:        D0 03         BNE CODE_049BD1           ;/
+CODE_049BCE:        0E FA 0E      ASL $0EFA                 ;When Black background with castle music, do this
 CODE_049BD1:        AF 00 00 7F   LDA $7F0000               ;
 CODE_049BD5:        A8            TAY                       ;
 CODE_049BD6:        A5 00         LDA $00                   ;
