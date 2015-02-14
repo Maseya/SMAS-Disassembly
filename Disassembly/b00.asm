@@ -6113,6 +6113,12 @@ DATA_00BE26:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; From here on starts duplicate code of $04D800
+;; This is for TLL while the code at $04D800 is for
+;; SMB1.
+;;
+					
 CODE_00C000:        AD A5 0B      LDA $0BA5                 ;
 CODE_00C003:        D0 54         BNE CODE_00C059           ;
 CODE_00C005:        AD D5 06      LDA $06D5                 ;
@@ -6157,28 +6163,29 @@ CODE_00C05A:        9C 4A 0F      STZ $0F4A                 ;
 CODE_00C05D:        A9 35         LDA #$35                  ;
 CODE_00C05F:        6B            RTL                       ;
 
-CODE_00C060:        C2 20         REP #$20                  ;
-CODE_00C062:        A2 1E         LDX #$1E                  ;
-CODE_00C064:        AD 53 07      LDA $0753                 ;
-CODE_00C067:        F0 06         BEQ CODE_00C06F           ;
-CODE_00C069:        BF A3 C0 00   LDA $00C0A3,x             ;
+CODE_00C060:        C2 20         REP #$20                  ;For SMB:TLL
+CODE_00C062:        A2 1E         LDX #$1E                  ;Set loop count
+CODE_00C064:        AD 53 07      LDA $0753                 ;\
+CODE_00C067:        F0 06         BEQ CODE_00C06F           ;/Branch if Mario
+CODE_00C069:        BF A3 C0 00   LDA $00C0A3,x             ;Get Luigi palette data
 CODE_00C06D:        80 04         BRA CODE_00C073           ;
 
-CODE_00C06F:        BF 83 C0 00   LDA $00C083,x             ;
-CODE_00C073:        9D 60 11      STA $1160,x               ;
+CODE_00C06F:        BF 83 C0 00   LDA $00C083,x             ;Get Mario palette data
+CODE_00C073:        9D 60 11      STA $1160,x               ;Write palette data to RAM
 CODE_00C076:        CA            DEX                       ;
 CODE_00C077:        CA            DEX                       ;
 CODE_00C078:        10 EA         BPL CODE_00C064           ;
 CODE_00C07A:        E2 20         SEP #$20                  ;
 CODE_00C07C:        EE 00 12      INC $1200                 ;
-CODE_00C07F:        20 C3 C0      JSR CODE_00C0C3           ;
+CODE_00C07F:        20 C3 C0      JSR CODE_00C0C3           ;Write princess peach thank you message
 CODE_00C082:        6B            RTL                       ;
 
-DATA_00C083:        dw $734E,$7FFF,$14A5,$5D68
+DATA_00C083:        dw $734E,$7FFF,$14A5,$5D68              ;Mario portrait Palette of princess saved sequence
                     dw $762E,$27BF,$31BB,$3ABF
                     dw $0000,$152F,$355D,$525F
                     dw $169B,$1C9F,$0C19,$0C19
-                    dw $734E,$7FFF,$14A5,$5588
+					
+DATA_00C0A3:        dw $734E,$7FFF,$14A5,$5588              ;Luigi portrait Palette of princess saved sequence
                     dw $724D,$27BF,$31BB,$3ABF
                     dw $0000,$152F,$355D,$525F
                     dw $169B,$3303,$1A40,$1C9F
@@ -6191,40 +6198,40 @@ CODE_00C0C7:        A9 FF         LDA #$FF                  ;
 CODE_00C0C9:        8D EE 0E      STA $0EEE                 ;
 CODE_00C0CC:        9C EF 0E      STZ $0EEF                 ;
 CODE_00C0CF:        9C A3 0B      STZ $0BA3                 ;
-CODE_00C0D2:        A9 15         LDA #$15                  ;
-CODE_00C0D4:        8D 0B 12      STA $120B                 ;
-CODE_00C0D7:        A9 02         LDA #$02                  ;
-CODE_00C0D9:        8D 0C 12      STA $120C                 ;
-CODE_00C0DC:        C2 10         REP #$10                  ;
-CODE_00C0DE:        AD 5F 07      LDA $075F                 ;
-CODE_00C0E1:        48            PHA                       ;
-CODE_00C0E2:        AF 0F 00 70   LDA $70000F               ;
-CODE_00C0E6:        D0 0A         BNE CODE_00C0F2           ;
-CODE_00C0E8:        AD FC 07      LDA $07FC                 ;
-CODE_00C0EB:        F0 05         BEQ CODE_00C0F2           ;
-CODE_00C0ED:        A9 0C         LDA #$0C                  ;
-CODE_00C0EF:        8D 5F 07      STA $075F                 ;
-CODE_00C0F2:        A9 00         LDA #$00                  ;
-CODE_00C0F4:        EB            XBA                       ;
-CODE_00C0F5:        AD 53 07      LDA $0753                 ;
-CODE_00C0F8:        0A            ASL A                     ;
-CODE_00C0F9:        0A            ASL A                     ;
-CODE_00C0FA:        85 00         STA $00                   ;
-CODE_00C0FC:        AD 5F 07      LDA $075F                 ;
-CODE_00C0FF:        29 08         AND #$08                  ;
-CODE_00C101:        4A            LSR A                     ;
-CODE_00C102:        4A            LSR A                     ;
-CODE_00C103:        05 00         ORA $00                   ;
-CODE_00C105:        A8            TAY                       ;
-CODE_00C106:        68            PLA                       ;
-CODE_00C107:        8D 5F 07      STA $075F                 ;
-CODE_00C10A:        BE 26 C1      LDX $C126,y               ;
-CODE_00C10D:        9B            TXY                       ;
+CODE_00C0D2:        A9 15         LDA #$15                  ;\
+CODE_00C0D4:        8D 0B 12      STA $120B                 ;/Main Screen designation
+CODE_00C0D7:        A9 02         LDA #$02                  ;\
+CODE_00C0D9:        8D 0C 12      STA $120C                 ;/Sub Screen designation
+CODE_00C0DC:        C2 10         REP #$10                  ;16 bit xy
+CODE_00C0DE:        AD 5F 07      LDA $075F                 ;\
+CODE_00C0E1:        48            PHA                       ;/Push world number onto stack
+CODE_00C0E2:        AF 0F 00 70   LDA $70000F               ;\
+CODE_00C0E6:        D0 0A         BNE CODE_00C0F2           ;/ Branch if loaded game isn't SMB1
+CODE_00C0E8:        AD FC 07      LDA $07FC                 ;\ When SMB1
+CODE_00C0EB:        F0 05         BEQ CODE_00C0F2           ;/ If not more difficult quest flag, branch
+CODE_00C0ED:        A9 0C         LDA #$0C                  ;\
+CODE_00C0EF:        8D 5F 07      STA $075F                 ;/ Set world number to... 0C?
+CODE_00C0F2:        A9 00         LDA #$00                  ;\
+CODE_00C0F4:        EB            XBA                       ;/Clear high byte
+CODE_00C0F5:        AD 53 07      LDA $0753                 ;\
+CODE_00C0F8:        0A            ASL A                     ; | Player << 2
+CODE_00C0F9:        0A            ASL A                     ; | 
+CODE_00C0FA:        85 00         STA $00                   ;/ into $00
+CODE_00C0FC:        AD 5F 07      LDA $075F                 ;\ World number
+CODE_00C0FF:        29 08         AND #$08                  ; | Bit is set when in world D
+CODE_00C101:        4A            LSR A                     ; | >> 2
+CODE_00C102:        4A            LSR A                     ; | 
+CODE_00C103:        05 00         ORA $00                   ; | OR with the player thing
+CODE_00C105:        A8            TAY                       ;/ to index
+CODE_00C106:        68            PLA                       ;\
+CODE_00C107:        8D 5F 07      STA $075F                 ;/restore world number
+CODE_00C10A:        BE 26 C1      LDX $C126,y               ;\
+CODE_00C10D:        9B            TXY                       ;/Get message index
 CODE_00C10E:        AE 00 17      LDX $1700                 ;
 CODE_00C111:        B9 2E C1      LDA $C12E,y               ;
 CODE_00C114:        9D 02 17      STA $1702,x               ;
-CODE_00C117:        1A            INC A                     ;
-CODE_00C118:        F0 04         BEQ CODE_00C11E           ;
+CODE_00C117:        1A            INC A                     ;\ Check if the written byte is FF
+CODE_00C118:        F0 04         BEQ CODE_00C11E           ;/ if so, return
 CODE_00C11A:        E8            INX                       ;
 CODE_00C11B:        C8            INY                       ;
 CODE_00C11C:        80 F3         BRA CODE_00C111           ;
@@ -6235,93 +6242,99 @@ CODE_00C123:        FA            PLX                       ;
 CODE_00C124:        AB            PLB                       ;
 CODE_00C125:        60            RTS                       ;
 
-DATA_00C126:        dw $0000,$00A4,$0156,$01FA
-                    dw $0559,$1100,$201D,$2011
-                    dw $200A,$2017,$2014,$2028
-                    dw $2022,$2018,$201E,$4559
-                    dw $0B00,$2016,$200A,$201B
-                    dw $2012,$2018,$2026,$8559
-                    dw $1500,$201D,$2011,$200E
-                    dw $2028,$2014,$2012,$2017
-                    dw $2010,$200D,$2018,$2016
-                    dw $C559,$1100,$2012,$201C
-                    dw $2028,$201C,$200A,$201F
-                    dw $200E,$200D,$2026,$055A
-                    dw $0D00,$2017,$2018,$2020
-                    dw $2028,$201D,$201B,$2022
-                    dw $455A,$0B00,$200A,$2028
-                    dw $2016,$2018,$201B,$200E
-                    dw $855A,$1100,$200D,$2012
-                    dw $200F,$200F,$2012,$200C
-                    dw $201E,$2015,$201D,$C55A
-                    dw $0F00,$201A,$201E,$200E
-                    dw $201C,$201D,$2029,$2029
-                    dw $2029,$FFFF,$0559,$1100
-                    dw $201D,$2011,$200A,$2017
-                    dw $2014,$2028,$2022,$2018
-                    dw $201E,$4559,$1100,$2016
-                    dw $200A,$201B,$2012,$2018
-                    dw $2028,$200F,$2018,$201B
-                    dw $8559,$1100,$201B,$200E
-                    dw $201C,$201D,$2018,$201B
-                    dw $2012,$2017,$2010,$C559
-                    dw $0F00,$2019,$200E,$200A
-                    dw $200C,$200E,$2028,$201D
-                    dw $2018,$055A,$0500,$2018
-                    dw $201E,$201B,$455A,$0F00
-                    dw $2014,$2012,$2017,$2010
-                    dw $200D,$2018,$2016,$2029
-                    dw $855A,$1100,$2011,$201E
-                    dw $201B,$201B,$200A,$2011
-                    dw $2028,$201D,$2018,$C55A
-                    dw $1100,$2018,$201E,$201B
-                    dw $2028,$2011,$200E,$201B
-                    dw $2018,$202B,$055B,$0B00
-                    dw $2016,$200A,$201B,$2012
-                    dw $2018,$2026,$FFFF,$0559
-                    dw $1100,$201D,$2011,$200A
-                    dw $2017,$2014,$2028,$2022
-                    dw $2018,$201E,$4559,$0B00
-                    dw $2015,$201E,$2012,$2010
-                    dw $2012,$2026,$8559,$1500
-                    dw $201D,$2011,$200E,$2028
-                    dw $2014,$2012,$2017,$2010
-                    dw $200D,$2018,$2016,$C559
-                    dw $1100,$2012,$201C,$2028
-                    dw $201C,$200A,$201F,$200E
-                    dw $200D,$2026,$055A,$0D00
-                    dw $2017,$2018,$2020,$2028
-                    dw $201D,$201B,$2022,$455A
-                    dw $0B00,$200A,$2028,$2016
-                    dw $2018,$201B,$200E,$855A
-                    dw $1100,$200D,$2012,$200F
-                    dw $200F,$2012,$200C,$201E
-                    dw $2015,$201D,$C55A,$0F00
-                    dw $201A,$201E,$200E,$201C
-                    dw $201D,$2029,$2029,$2029
-                    dw $FFFF,$0559,$1100,$201D
-                    dw $2011,$200A,$2017,$2014
-                    dw $2028,$2022,$2018,$201E
-                    dw $4559,$1100,$2015,$201E
-                    dw $2012,$2010,$2012,$2028
-                    dw $200F,$2018,$201B,$8559
-                    dw $1100,$201B,$200E,$201C
-                    dw $201D,$2018,$201B,$2012
-                    dw $2017,$2010,$C559,$0F00
-                    dw $2019,$200E,$200A,$200C
-                    dw $200E,$2028,$201D,$2018
-                    dw $055A,$0500,$2018,$201E
-                    dw $201B,$455A,$0F00,$2014
-                    dw $2012,$2017,$2010,$200D
-                    dw $2018,$2016,$2029,$855A
-                    dw $1100,$2011,$201E,$201B
-                    dw $201B,$200A,$2011,$2028
-                    dw $201D,$2018,$C55A,$1100
-                    dw $2018,$201E,$201B,$2028
-                    dw $2011,$200E,$201B,$2018
-                    dw $202B,$055B,$0B00,$2015
-                    dw $201E,$2012,$2010,$2012
-                    dw $2026,$FFFF
+DATA_00C126:        dw $0000,$00A4,$0156,$01FA              ;Indices to the messages of peach to the player
+
+DATA_00C12E:        db $59,$05,$00,$11,$1D,$20,$11,$20      ; "Thank you Mario! The kingdom is saved!
+                    db $0A,$20,$17,$20,$14,$20,$28,$20      ;  Now try a more difficult quest..." text.
+                    db $22,$20,$18,$20,$1E,$20,$59,$45
+                    db $00,$0B,$16,$20,$0A,$20,$1B,$20      ; Encoded in stripe image.
+                    db $12,$20,$18,$20,$26,$20,$59,$85
+                    db $00,$15,$1D,$20,$11,$20,$0E,$20
+                    db $28,$20,$14,$20,$12,$20,$17,$20
+                    db $10,$20,$0D,$20,$18,$20,$16,$20
+                    db $59,$C5,$00,$11,$12,$20,$1C,$20
+                    db $28,$20,$1C,$20,$0A,$20,$1F,$20
+                    db $0E,$20,$0D,$20,$26,$20,$5A,$05
+                    db $00,$0D,$17,$20,$18,$20,$20,$20
+                    db $28,$20,$1D,$20,$1B,$20,$22,$20
+                    db $5A,$45,$00,$0B,$0A,$20,$28,$20
+                    db $16,$20,$18,$20,$1B,$20,$0E,$20
+                    db $5A,$85,$00,$11,$0D,$20,$12,$20
+                    db $0F,$20,$0F,$20,$12,$20,$0C,$20
+                    db $1E,$20,$15,$20,$1D,$20,$5A,$C5
+                    db $00,$0F,$1A,$20,$1E,$20,$0E,$20
+                    db $1C,$20,$1D,$20,$29,$20,$29,$20
+                    db $29,$20,$FF,$FF
+
+DATA_00C1D2:        db $59,$05,$00,$11,$1D,$20,$11,$20      ; "Thank you Mario for restoring peace to our
+                    db $0A,$20,$17,$20,$14,$20,$28,$20      ;  kingdom. Hurrah to our hero, Mario!" text
+                    db $22,$20,$18,$20,$1E,$20,$59,$45
+                    db $00,$11,$16,$20,$0A,$20,$1B,$20      ; Encoded in stripe image.
+                    db $12,$20,$18,$20,$28,$20,$0F,$20
+                    db $18,$20,$1B,$20,$59,$85,$00,$11
+                    db $1B,$20,$0E,$20,$1C,$20,$1D,$20
+                    db $18,$20,$1B,$20,$12,$20,$17,$20
+                    db $10,$20,$59,$C5,$00,$0F,$19,$20
+                    db $0E,$20,$0A,$20,$0C,$20,$0E,$20
+                    db $28,$20,$1D,$20,$18,$20,$5A,$05
+                    db $00,$05,$18,$20,$1E,$20,$1B,$20
+                    db $5A,$45,$00,$0F,$14,$20,$12,$20
+                    db $17,$20,$10,$20,$0D,$20,$18,$20
+                    db $16,$20,$29,$20,$5A,$85,$00,$11
+                    db $11,$20,$1E,$20,$1B,$20,$1B,$20
+                    db $0A,$20,$11,$20,$28,$20,$1D,$20
+                    db $18,$20,$5A,$C5,$00,$11,$18,$20
+                    db $1E,$20,$1B,$20,$28,$20,$11,$20
+                    db $0E,$20,$1B,$20,$18,$20,$2B,$20
+                    db $5B,$05,$00,$0B,$16,$20,$0A,$20
+                    db $1B,$20,$12,$20,$18,$20,$26,$20
+                    db $FF,$FF
+
+DATA_00C284:        db $59,$05,$00,$11,$1D,$20,$11,$20     ; "Thank you Luigi! The kingdom is saved!
+                    db $0A,$20,$17,$20,$14,$20,$28,$20     ;  Now try a more difficult quest..." text
+                    db $22,$20,$18,$20,$1E,$20,$59,$45
+                    db $00,$0B,$15,$20,$1E,$20,$12,$20     ; Encoded in stripe image.
+                    db $10,$20,$12,$20,$26,$20,$59,$85
+                    db $00,$15,$1D,$20,$11,$20,$0E,$20
+                    db $28,$20,$14,$20,$12,$20,$17,$20
+                    db $10,$20,$0D,$20,$18,$20,$16,$20
+                    db $59,$C5,$00,$11,$12,$20,$1C,$20
+                    db $28,$20,$1C,$20,$0A,$20,$1F,$20
+                    db $0E,$20,$0D,$20,$26,$20,$5A,$05
+                    db $00,$0D,$17,$20,$18,$20,$20,$20
+                    db $28,$20,$1D,$20,$1B,$20,$22,$20
+                    db $5A,$45,$00,$0B,$0A,$20,$28,$20
+                    db $16,$20,$18,$20,$1B,$20,$0E,$20
+                    db $5A,$85,$00,$11,$0D,$20,$12,$20
+                    db $0F,$20,$0F,$20,$12,$20,$0C,$20
+                    db $1E,$20,$15,$20,$1D,$20,$5A,$C5
+                    db $00,$0F,$1A,$20,$1E,$20,$0E,$20
+                    db $1C,$20,$1D,$20,$29,$20,$29,$20
+                    db $29,$20,$FF,$FF
+
+DATA_00C328:        db $59,$05,$00,$11,$1D,$20,$11,$20     ; "Thank you Luigi for restoring peace to our
+                    db $0A,$20,$17,$20,$14,$20,$28,$20     ;  kingdom. Hurrah to our hero, Luigi!" text
+                    db $22,$20,$18,$20,$1E,$20,$59,$45
+                    db $00,$11,$15,$20,$1E,$20,$12,$20     ; Encoded in stripe image.
+                    db $10,$20,$12,$20,$28,$20,$0F,$20
+                    db $18,$20,$1B,$20,$59,$85,$00,$11
+                    db $1B,$20,$0E,$20,$1C,$20,$1D,$20
+                    db $18,$20,$1B,$20,$12,$20,$17,$20
+                    db $10,$20,$59,$C5,$00,$0F,$19,$20
+                    db $0E,$20,$0A,$20,$0C,$20,$0E,$20
+                    db $28,$20,$1D,$20,$18,$20,$5A,$05
+                    db $00,$05,$18,$20,$1E,$20,$1B,$20
+                    db $5A,$45,$00,$0F,$14,$20,$12,$20
+                    db $17,$20,$10,$20,$0D,$20,$18,$20
+                    db $16,$20,$29,$20,$5A,$85,$00,$11
+                    db $11,$20,$1E,$20,$1B,$20,$1B,$20
+                    db $0A,$20,$11,$20,$28,$20,$1D,$20
+                    db $18,$20,$5A,$C5,$00,$11,$18,$20
+                    db $1E,$20,$1B,$20,$28,$20,$11,$20
+                    db $0E,$20,$1B,$20,$18,$20,$2B,$20
+                    db $5B,$05,$00,$0B,$15,$20,$1E,$20
+                    db $12,$20,$10,$20,$12,$20,$26,$20
+                    db $FF,$FF
 
 CODE_00C3DA:        DA            PHX                       ;
 CODE_00C3DB:        AD 85 0F      LDA $0F85                 ;
@@ -7099,7 +7112,6 @@ DATA_00CAC6:        dw $0041,$00CB,$015D,$01F3
                     dw $0289,$0317,$03F6,$04F5
                     dw $05F4,$03F6,$04F5,$05F4
                     dw $03F6,$04F5,$05F4,$065D
-
 
 DATA_00CAE6:        dw $0813,$091E,$0977,$086C
                     dw $08C5,$086C,$08C5,$086C
@@ -9330,6 +9342,10 @@ CODE_00E5BD:        2B            PLD                       ;
 CODE_00E5BE:        A9 15         LDA #$15                  ;
 CODE_00E5C0:        8D 03 16      STA $1603                 ;
 CODE_00E5C3:        60            RTS                       ;
+
+;;
+;; Duplicate code of $04D800 ends here
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 DATA_00E5C4:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF

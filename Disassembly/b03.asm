@@ -3304,14 +3304,14 @@ CODE_03A300:        0A            ASL A                     ;
 CODE_03A301:        AA            TAX                       ;
 CODE_03A302:        7C 05 A3      JMP (PNTR_03A305,x)       ;
 
-PNTR_03A305:        dw CODE_03A315
-                    dw CODE_03922D
-                    dw CODE_03922D
-                    dw CODE_03A436
-                    dw CODE_03A315
-                    dw CODE_03922D
-                    dw CODE_03922D
-                    dw CODE_03A436
+PNTR_03A305:        dw CODE_03A315                          ;Increment column position RAM
+                    dw CODE_03922D                          ;
+                    dw CODE_03922D                          ;
+                    dw CODE_03A436                          ;
+                    dw CODE_03A315                          ;Increment column position RAM
+                    dw CODE_03922D                          ;
+                    dw CODE_03922D                          ;
+                    dw CODE_03A436                          ;
 
 CODE_03A315:        EE 26 07      INC $0726                 ;
 CODE_03A318:        AD 26 07      LDA $0726                 ;
@@ -3787,8 +3787,8 @@ CODE_03A778:        85 9F         STA $9F                   ;
 CODE_03A77A:        E2 10         SEP #$10                  ;
 CODE_03A77C:        60            RTS                       ;
 
-CODE_03A77D:        AC 2C 07      LDY $072C                 ;
-CODE_03A780:        B7 FA         LDA [$FA],y               ;
+CODE_03A77D:        AC 2C 07      LDY $072C                 ;Offset of current level data in index
+CODE_03A780:        B7 FA         LDA [$FA],y               ;Get level data's high nibble (x-coordinate?)
 CODE_03A782:        29 F0         AND #$F0                  ;
 CODE_03A784:        4A            LSR A                     ;
 CODE_03A785:        4A            LSR A                     ;
@@ -3860,8 +3860,8 @@ PNTR_03A7C9:        dw CODE_03A9F7                          ;Warp pipe
                     dw CODE_03AC18
                     dw CODE_03AC15
                     dw CODE_03AC18
-                    dw CODE_03A98D
-                    dw CODE_03AB4E
+                    dw CODE_03A98D                          ;Underwater horizontal pipe
+                    dw CODE_03AB4E                          ;Empty block
                     dw CODE_03ABD5                          ;Springboard object
                     dw CODE_03A9A0
                     dw CODE_03AAE4
@@ -4070,12 +4070,13 @@ CODE_03A986:        B9 75 A9      LDA $A975,y               ;\
 CODE_03A989:        8D A1 06      STA $06A1                 ;/render
 CODE_03A98C:        60            RTS                       ;
 
+;Underwater horizontal pipe
 CODE_03A98D:        20 C2 AC      JSR CODE_03ACC2           ;Get object attributes from level object pointer
 CODE_03A990:        BC 00 13      LDY $1300,x               ;
 CODE_03A993:        A6 07         LDX $07                   ;
-CODE_03A995:        A9 75         LDA #$75                  ;
+CODE_03A995:        A9 75         LDA #$75                  ;Pipe top tile
 CODE_03A997:        9D A1 06      STA $06A1,x               ;
-CODE_03A99A:        A9 76         LDA #$76                  ;
+CODE_03A99A:        A9 76         LDA #$76                  ;Pipe bottom tile
 CODE_03A99C:        9D A2 06      STA $06A2,x               ;
 CODE_03A99F:        60            RTS                       ;
 
@@ -4303,9 +4304,10 @@ CODE_03AB46:        BE 30 AB      LDX $AB30,y               ;
 CODE_03AB49:        B9 33 AB      LDA $AB33,y               ;
 CODE_03AB4C:        80 07         BRA CODE_03AB55           ;
 
+;Empty Block object
 CODE_03AB4E:        20 C2 AC      JSR CODE_03ACC2           ;Get object attributes from level object pointer
 CODE_03AB51:        A6 07         LDX $07                   ;
-CODE_03AB53:        A9 FC         LDA #$FC                  ;
+CODE_03AB53:        A9 FC         LDA #$FC                  ;Empty block map16 tile
 CODE_03AB55:        A0 00         LDY #$00                  ;
 CODE_03AB57:        4C 78 AC      JMP CODE_03AC78           ;Place tile in Accumulator into level.
 

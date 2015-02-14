@@ -4847,6 +4847,13 @@ DATA_04D776:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ; empty
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; From here on starts duplicate code of $00C000
+;; This is for SMB1 while the code at $00C000 is for
+;; The Lost Levels.
+;; Please refer to bank 00 for the comments
+;;
+					
 CODE_04D800:        AD A5 0B      LDA $0BA5                 ;\If skip player animations flag is set, return
 CODE_04D803:        D0 54         BNE CODE_04D859           ;/
 CODE_04D805:        AD D5 06      LDA $06D5                 ;
@@ -4918,59 +4925,59 @@ DATA_04D8A3:        dw $734E,$7FFF,$14A5,$5588 ; Luigi palette of princess kiss 
                     dw $0000,$152F,$355D,$525F
                     dw $169B,$3303,$1A40,$1C9F
 
-CODE_04D8C3:        8B            PHB                       ;
-CODE_04D8C4:        4B            PHK                       ;
-CODE_04D8C5:        AB            PLB                       ;
-CODE_04D8C6:        DA            PHX                       ;
-CODE_04D8C7:        A9 FF         LDA #$FF                  ;
-CODE_04D8C9:        8D EE 0E      STA $0EEE                 ;
-CODE_04D8CC:        9C EF 0E      STZ $0EEF                 ;
-CODE_04D8CF:        9C A3 0B      STZ $0BA3                 ;
-CODE_04D8D2:        A9 15         LDA #$15                  ;
-CODE_04D8D4:        8D 0B 12      STA $120B                 ;
-CODE_04D8D7:        A9 02         LDA #$02                  ;
-CODE_04D8D9:        8D 0C 12      STA $120C                 ;
-CODE_04D8DC:        C2 10         REP #$10                  ;
-CODE_04D8DE:        AD 5F 07      LDA $075F                 ;
-CODE_04D8E1:        48            PHA                       ;
-CODE_04D8E2:        AF 0F 00 70   LDA $70000F               ;
-CODE_04D8E6:        D0 0A         BNE CODE_04D8F2           ;
-CODE_04D8E8:        AD FC 07      LDA $07FC                 ;
-CODE_04D8EB:        F0 05         BEQ CODE_04D8F2           ;
-CODE_04D8ED:        A9 0C         LDA #$0C                  ;
-CODE_04D8EF:        8D 5F 07      STA $075F                 ;
-CODE_04D8F2:        A9 00         LDA #$00                  ;
-CODE_04D8F4:        EB            XBA                       ;
-CODE_04D8F5:        AD 53 07      LDA $0753                 ;
-CODE_04D8F8:        0A            ASL A                     ;
-CODE_04D8F9:        0A            ASL A                     ;
-CODE_04D8FA:        85 00         STA $00                   ;
-CODE_04D8FC:        AD 5F 07      LDA $075F                 ;
-CODE_04D8FF:        29 08         AND #$08                  ;
-CODE_04D901:        4A            LSR A                     ;
-CODE_04D902:        4A            LSR A                     ;
-CODE_04D903:        05 00         ORA $00                   ;
-CODE_04D905:        A8            TAY                       ;
-CODE_04D906:        68            PLA                       ;
-CODE_04D907:        8D 5F 07      STA $075F                 ;
-CODE_04D90A:        BE 26 D9      LDX $D926,y               ;
-CODE_04D90D:        9B            TXY                       ;
-CODE_04D90E:        AE 00 17      LDX $1700                 ;
-CODE_04D911:        B9 2E D9      LDA $D92E,y               ;
-CODE_04D914:        9D 02 17      STA $1702,x               ;
-CODE_04D917:        1A            INC A                     ;
-CODE_04D918:        F0 04         BEQ CODE_04D91E           ;
-CODE_04D91A:        E8            INX                       ;
-CODE_04D91B:        C8            INY                       ;
-CODE_04D91C:        80 F3         BRA CODE_04D911           ;
+CODE_04D8C3:        8B            PHB                       ;\  Upload the stripe image message of princess peach to the player
+CODE_04D8C4:        4B            PHK                       ; | Exact same copy of 00C0C3. Please refer to bank 00.
+CODE_04D8C5:        AB            PLB                       ; |
+CODE_04D8C6:        DA            PHX                       ; |
+CODE_04D8C7:        A9 FF         LDA #$FF                  ; |
+CODE_04D8C9:        8D EE 0E      STA $0EEE                 ; |
+CODE_04D8CC:        9C EF 0E      STZ $0EEF                 ; |
+CODE_04D8CF:        9C A3 0B      STZ $0BA3                 ; |
+CODE_04D8D2:        A9 15         LDA #$15                  ; |
+CODE_04D8D4:        8D 0B 12      STA $120B                 ; |
+CODE_04D8D7:        A9 02         LDA #$02                  ; |
+CODE_04D8D9:        8D 0C 12      STA $120C                 ; |
+CODE_04D8DC:        C2 10         REP #$10                  ; |
+CODE_04D8DE:        AD 5F 07      LDA $075F                 ; |
+CODE_04D8E1:        48            PHA                       ; |
+CODE_04D8E2:        AF 0F 00 70   LDA $70000F               ; |
+CODE_04D8E6:        D0 0A         BNE CODE_04D8F2           ; |
+CODE_04D8E8:        AD FC 07      LDA $07FC                 ; |
+CODE_04D8EB:        F0 05         BEQ CODE_04D8F2           ; |
+CODE_04D8ED:        A9 0C         LDA #$0C                  ; |
+CODE_04D8EF:        8D 5F 07      STA $075F                 ; |
+CODE_04D8F2:        A9 00         LDA #$00                  ; |
+CODE_04D8F4:        EB            XBA                       ; |
+CODE_04D8F5:        AD 53 07      LDA $0753                 ; |
+CODE_04D8F8:        0A            ASL A                     ; |
+CODE_04D8F9:        0A            ASL A                     ; |
+CODE_04D8FA:        85 00         STA $00                   ; |
+CODE_04D8FC:        AD 5F 07      LDA $075F                 ; |
+CODE_04D8FF:        29 08         AND #$08                  ; |
+CODE_04D901:        4A            LSR A                     ; |
+CODE_04D902:        4A            LSR A                     ; |
+CODE_04D903:        05 00         ORA $00                   ; |
+CODE_04D905:        A8            TAY                       ; |
+CODE_04D906:        68            PLA                       ; |
+CODE_04D907:        8D 5F 07      STA $075F                 ; |
+CODE_04D90A:        BE 26 D9      LDX $D926,y               ; |
+CODE_04D90D:        9B            TXY                       ; |
+CODE_04D90E:        AE 00 17      LDX $1700                 ; |
+CODE_04D911:        B9 2E D9      LDA $D92E,y               ; |
+CODE_04D914:        9D 02 17      STA $1702,x               ; |
+CODE_04D917:        1A            INC A                     ; |
+CODE_04D918:        F0 04         BEQ CODE_04D91E           ; |
+CODE_04D91A:        E8            INX                       ; |
+CODE_04D91B:        C8            INY                       ; |
+CODE_04D91C:        80 F3         BRA CODE_04D911           ; |
 
-CODE_04D91E:        8E 00 17      STX $1700                 ;
-CODE_04D921:        E2 10         SEP #$10                  ;
-CODE_04D923:        FA            PLX                       ;
-CODE_04D924:        AB            PLB                       ;
-CODE_04D925:        60            RTS                       ;
+CODE_04D91E:        8E 00 17      STX $1700                 ; |
+CODE_04D921:        E2 10         SEP #$10                  ; |
+CODE_04D923:        FA            PLX                       ; |
+CODE_04D924:        AB            PLB                       ; |
+CODE_04D925:        60            RTS                       ;/
 
-DATA_04D926:        dw $0000,$00A4,$0156,$01FA ;Index for next table. 
+DATA_04D926:        dw $0000,$00A4,$0156,$01FA         ;Indices for next table. 
 
 DATA_04D92E:        db $59,$05,$00,$11,$1D,$20,$11,$20 ; "Thank you Mario! The kingdom is saved!
                     db $0A,$20,$17,$20,$14,$20,$28,$20 ;  Now try a more difficult quest..." text.
@@ -5321,22 +5328,23 @@ CODE_04DE5D:        C9 08         CMP #$08                  ;
 CODE_04DE5F:        90 1E         BCC CODE_04DE7F           ;
 CODE_04DE61:        4C 7F DE      JMP CODE_04DE7F           ;
 
-CODE_04DE64:        AD 5F 07      LDA $075F                 ;
-CODE_04DE67:        48            PHA                       ;
-CODE_04DE68:        AD 24 0E      LDA $0E24                 ;
-CODE_04DE6B:        48            PHA                       ;
-CODE_04DE6C:        AD FC 07      LDA $07FC                 ;
-CODE_04DE6F:        D0 06         BNE CODE_04DE77           ;
-CODE_04DE71:        9C 24 0E      STZ $0E24                 ;
-CODE_04DE74:        9C 5F 07      STZ $075F                 ;
-CODE_04DE77:        68            PLA                       ;
-CODE_04DE78:        8D 24 0E      STA $0E24                 ;
-CODE_04DE7B:        68            PLA                       ;
-CODE_04DE7C:        8D 5F 07      STA $075F                 ;
+
+CODE_04DE64:        AD 5F 07      LDA $075F                 ;\Load current world into stack
+CODE_04DE67:        48            PHA                       ;/
+CODE_04DE68:        AD 24 0E      LDA $0E24                 ;\Load loaded level into stack
+CODE_04DE6B:        48            PHA                       ;/(always 0 because it's impossible to specify the level number
+CODE_04DE6C:        AD FC 07      LDA $07FC                 ;\
+CODE_04DE6F:        D0 06         BNE CODE_04DE77           ;/Branch if more difficult flag is set
+CODE_04DE71:        9C 24 0E      STZ $0E24                 ;set loaded level to 0
+CODE_04DE74:        9C 5F 07      STZ $075F                 ;Set world to 1
+CODE_04DE77:        68            PLA                       ;\
+CODE_04DE78:        8D 24 0E      STA $0E24                 ;/Recover loaded level from stack
+CODE_04DE7B:        68            PLA                       ;\
+CODE_04DE7C:        8D 5F 07      STA $075F                 ;/Recover world from stack
 CODE_04DE7F:        A9 01         LDA #$01                  ;
 CODE_04DE81:        8D 82 0F      STA $0F82                 ;
 CODE_04DE84:        9C 83 0F      STZ $0F83                 ;
-CODE_04DE87:        9C 17 07      STZ $0717                 ;
+CODE_04DE87:        9C 17 07      STZ $0717                 ;Clear current demo action being executed
 CODE_04DE8A:        6B            RTL                       ;
 
 CODE_04DE8B:        AF 0F 00 70   LDA $70000F               ;
@@ -8126,6 +8134,10 @@ CODE_04FDBD:        2B            PLD                       ;
 CODE_04FDBE:        A9 15         LDA #$15                  ;\"Push start" SFX at princess rescued sequence
 CODE_04FDC0:        8D 03 16      STA $1603                 ;/
 CODE_04FDC3:        60            RTS                       ;Return
+
+;;
+;; Duplicate code of $00C000 ends here
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CODE_04FDC4:        9C 3F 07      STZ $073F                 ;Store zero to BG1 X-scrolling
 CODE_04FDC7:        9C 40 07      STZ $0740                 ;Store zero to BG1 Y-scrolling
