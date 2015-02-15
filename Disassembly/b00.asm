@@ -1,6 +1,7 @@
 ;The Presents screen, the Hall screen and the game selection
 ;as well as other miscellaneous stuff like setting up the SPC-700
 
+Reset:
 CODE_008000:        78            SEI                       ; Set interput flag
 CODE_008001:        9C 00 42      STZ $4200                 ; Disable NMI, IRQ, and joypad read
 CODE_008004:        9C 0C 42      STZ $420C                 ; HDMA Disabled
@@ -4657,7 +4658,7 @@ CODE_00AE8E:        A5 06         LDA $06                   ;
 CODE_00AE90:        EB            XBA                       ;
 CODE_00AE91:        9F 02 80 7F   STA $7F8002,x             ;
 CODE_00AE95:        E8            INX                       ;
-CODE_00AE96:        E8            INX      *                 ;
+CODE_00AE96:        E8            INX                       ;
 CODE_00AE97:        AC 1E 02      LDY $021E                 ;
 CODE_00AE9A:        B9 00 04      LDA $0400,y               ;
 CODE_00AE9D:        9F 02 80 7F   STA $7F8002,x             ;
