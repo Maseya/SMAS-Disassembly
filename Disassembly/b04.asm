@@ -2416,17 +2416,17 @@ DATA_0499FD:        dw $0000,$7FFF,$0C63,$0155             ;Mario palette
                     dw $1A1C,$1B3E,$2D9C,$3ABF
                     dw $0000,$152F,$0014,$0C19
                     dw $1C9F,$762E,$5D68,$44E6
-					
+
                     dw $0000,$7FFF,$0C63,$0155             ;Luigi palette
                     dw $1A1C,$1B3E,$2D9C,$3ABF
                     dw $0000,$152F,$1E60,$3304
                     dw $4388,$7655,$7190,$58CA
-					
+
                     dw $0000,$7FFF,$0C63,$0155             ;Fire Mario palette
                     dw $1A1C,$1B3E,$2D9C,$3ABF
                     dw $0000,$152F,$3ED9,$4F5D
                     dw $639F,$0D9F,$001D,$0015
-					
+
                     dw $0000,$7FFF,$0C63,$0155             ;Fire Luigi palette
                     dw $1A1C,$1B3E,$2D9C,$3ABF
                     dw $0000,$152F,$3ED9,$4F5D
@@ -4856,7 +4856,7 @@ DATA_04D776:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ; empty
 ;; The Lost Levels.
 ;; Please refer to bank 00 for the comments
 ;;
-					
+
 CODE_04D800:        AD A5 0B      LDA $0BA5                 ;\If skip player animations flag is set, return
 CODE_04D803:        D0 54         BNE CODE_04D859           ;/
 CODE_04D805:        AD D5 06      LDA $06D5                 ;

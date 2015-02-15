@@ -102,7 +102,7 @@ CODE_038103:        9C F9 0E      STZ $0EF9                 ;
 CODE_038106:        9C D4 0E      STZ $0ED4                 ;
 CODE_038109:        9C 00 12      STZ $1200                 ;
 CODE_03810C:        9C 73 07      STZ $0773                 ;
-CODE_03810F:        9C 8D 02      STZ $028D                 ;
+CODE_03810F:        9C 8D 02      STZ $028D                 ;Clear flag to upload animated graphics
 CODE_038112:        C2 20         REP #$20                  ;
 CODE_038114:        A9 00 00      LDA #$0000                ;
 CODE_038117:        8D 00 10      STA $1000                 ;
@@ -2404,7 +2404,7 @@ CODE_039B16:        B1 04         LDA ($04),y               ; |
 CODE_039B18:        85 07         STA $07                   ; |
 CODE_039B1A:        6C 06 00      JMP ($0006)               ;/
 
-CODE_039B1D:        64 00         STZ $00                   ;Looks like some sort of an OAM update routine.
+CODE_039B1D:        64 00         STZ $00                   ;Bunch of DMA routines
 CODE_039B1F:        C2 20         REP #$20                  ;Direct page = $4300. DMA mode: 1 reg write once
 CODE_039B21:        9C 02 21      STZ $2102                 ;OAM address low byte: 00
 CODE_039B24:        A9 04 00      LDA #$0004                ;\Dest: data for OAM write $2104
@@ -2422,22 +2422,23 @@ CODE_039B3F:        9C 02 21      STZ $2102                 ;/ OAM address: $000
 CODE_039B42:        AD 76 0B      LDA $0B76                 ;
 CODE_039B45:        D0 0D         BNE CODE_039B54           ;
 CODE_039B47:        20 95 9B      JSR CODE_039B95           ;
-CODE_039B4A:        AD 8C 02      LDA $028C                 ;
-CODE_039B4D:        D0 42         BNE CODE_039B91           ;
-CODE_039B4F:        AD 8D 02      LDA $028D                 ;
-CODE_039B52:        F0 3D         BEQ CODE_039B91           ;
+CODE_039B4A:        AD 8C 02      LDA $028C                 ;\Flag to disable animated graphics
+CODE_039B4D:        D0 42         BNE CODE_039B91           ;/
+CODE_039B4F:        AD 8D 02      LDA $028D                 ;\Flag to upload animated graphics
+CODE_039B52:        F0 3D         BEQ CODE_039B91           ;/
+
 CODE_039B54:        C2 20         REP #$20                  ;
-CODE_039B56:        AD 8A 02      LDA $028A                 ;
-CODE_039B59:        8D 16 21      STA $2116                 ;
-CODE_039B5C:        A9 01 18      LDA #$1801                ;
-CODE_039B5F:        85 00         STA $00                   ;
-CODE_039B61:        AD 85 02      LDA $0285                 ;
-CODE_039B64:        85 02         STA $02                   ;
-CODE_039B66:        AC 87 02      LDY $0287                 ;
-CODE_039B69:        84 04         STY $04                   ;
-CODE_039B6B:        AD 88 02      LDA $0288                 ;
-CODE_039B6E:        85 05         STA $05                   ;
-CODE_039B70:        8E 0B 42      STX $420B                 ;
+CODE_039B56:        AD 8A 02      LDA $028A                 ;\
+CODE_039B59:        8D 16 21      STA $2116                 ;/VRAM address
+CODE_039B5C:        A9 01 18      LDA #$1801                ;\2 regs write once
+CODE_039B5F:        85 00         STA $00                   ;/to 2118
+CODE_039B61:        AD 85 02      LDA $0285                 ;\
+CODE_039B64:        85 02         STA $02                   ; |
+CODE_039B66:        AC 87 02      LDY $0287                 ; | DMA source: [$7E0285]
+CODE_039B69:        84 04         STY $04                   ;/
+CODE_039B6B:        AD 88 02      LDA $0288                 ;\DMA size: $0288
+CODE_039B6E:        85 05         STA $05                   ;/
+CODE_039B70:        8E 0B 42      STX $420B                 ;enable DMA
 CODE_039B73:        E2 20         SEP #$20                  ;
 CODE_039B75:        AD 76 0B      LDA $0B76                 ;
 CODE_039B78:        F0 17         BEQ CODE_039B91           ;
@@ -2451,7 +2452,8 @@ CODE_039B88:        AD 8B 02      LDA $028B                 ;
 CODE_039B8B:        18            CLC                       ;
 CODE_039B8C:        69 04         ADC #$04                  ;
 CODE_039B8E:        8D 8B 02      STA $028B                 ;
-CODE_039B91:        9C 8C 02      STZ $028C                 ;
+
+CODE_039B91:        9C 8C 02      STZ $028C                 ;Clear flag so graphics animate again
 CODE_039B94:        60            RTS                       ;
 
 CODE_039B95:        AD 8E 02      LDA $028E                 ;

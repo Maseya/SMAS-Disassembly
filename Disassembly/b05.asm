@@ -1124,7 +1124,6 @@ DATA_058971:        db $00,$00,$90,$91,$92,$93,$00,$00
                     db $00,$A1,$A2,$A3,$A4,$A5,$00,$A6
                     db $A7,$A8,$A9,$AA,$E2,$20
 
-
 CODE_058997:        A6 EB         LDX $EB                   ;
 CODE_058999:        A0 00 00      LDY #$0000                ;
 CODE_05899C:        B9 71 89      LDA $8971,y               ;
@@ -1938,8 +1937,8 @@ DATA_0591CE:        dw $9A2C,$9C2C,$AC14,$A614 ;pointers to various background m
                     dw $A364,$972C,$9564,$94EC ;indexed by $DB's indexes
                     dw $944C,$A4C4,$92A4
 
-DATA_0591E4:        db $00,$00,$00,$11,$00,$00,$00,$1F
-                    db $00,$00,$00,$0C,$00,$12,$00,$00
+DATA_0591E4:        db $00,$00,$00,$11,$00,$00,$00,$1F ;background map16 tiles
+                    db $00,$00,$00,$0C,$00,$12,$00,$00 ;format: TTTTTTTT YXPCCCTT
                     db $08,$00,$00,$00,$00,$00,$04,$00
                     db $10,$00,$00,$00,$0D,$00,$00,$00
                     db $00,$00,$0A,$00,$1E,$00,$00,$00
@@ -1963,7 +1962,7 @@ DATA_0591E4:        db $00,$00,$00,$11,$00,$00,$00,$1F
                     db $00,$00,$1E,$00,$00,$15,$00,$00
                     db $00,$00,$02,$00,$01,$00,$00,$00
 
-DATA_0592A4:        db $24,$00,$24,$00,$24,$00,$24,$00
+DATA_0592A4:        db $24,$00,$24,$00,$24,$00,$24,$00 ;
                     db $24,$00,$E0,$1D,$24,$00,$F0,$1D
                     db $E1,$1D,$24,$00,$F0,$5D,$24,$00
                     db $C2,$1D,$C3,$1D,$D2,$1D,$D3,$1D
@@ -2594,7 +2593,7 @@ DATA_05A4C4:        db $24,$00,$24,$00,$24,$00,$24,$00
                     db $19,$15,$18,$15,$18,$15,$19,$15
                     db $06,$15,$06,$15,$14,$15,$15,$15
 
-DATA_05A614:        db $34,$15,$34,$15,$34,$15,$34,$15
+DATA_05A614:        db $34,$15,$34,$15,$34,$15,$34,$15 ;Castle background map16 tiles
                     db $34,$15,$04,$15,$34,$15,$04,$15
                     db $05,$15,$06,$15,$05,$15,$06,$15
                     db $29,$15,$2A,$15,$19,$15,$1A,$15
@@ -6779,7 +6778,7 @@ CODE_05E631:        4C 3C E4      JMP CODE_05E43C           ;
 
 CODE_05E634:        AD 76 0B      LDA $0B76                 ;
 CODE_05E637:        D0 75         BNE CODE_05E6AE           ;
-CODE_05E639:        9C 8D 02      STZ $028D                 ;
+CODE_05E639:        9C 8D 02      STZ $028D                 ;Flag to upload animated FG
 CODE_05E63C:        A5 09         LDA $09                   ;
 CODE_05E63E:        29 07         AND #$07                  ;
 CODE_05E640:        D0 38         BNE CODE_05E67A           ;
@@ -6808,7 +6807,7 @@ CODE_05E66A:        8D 8A 02      STA $028A                 ;
 CODE_05E66D:        A9 00 06      LDA #$0600                ;
 CODE_05E670:        8D 88 02      STA $0288                 ;
 CODE_05E673:        E2 20         SEP #$20                  ;
-CODE_05E675:        EE 8D 02      INC $028D                 ;
+CODE_05E675:        EE 8D 02      INC $028D                 ;Set flag to upload animated FG
 CODE_05E678:        80 34         BRA CODE_05E6AE           ;
 
 CODE_05E67A:        A5 09         LDA $09                   ;
@@ -6842,150 +6841,195 @@ CODE_05E6B1:        E2 30         SEP #$30                  ;
 CODE_05E6B3:        8B            PHB                       ;
 CODE_05E6B4:        4B            PHK                       ;
 CODE_05E6B5:        AB            PLB                       ;
-CODE_05E6B6:        A5 99         LDA $99                   ;
-CODE_05E6B8:        C9 01         CMP #$01                  ;
-CODE_05E6BA:        D0 0B         BNE CODE_05E6C7           ;
-CODE_05E6BC:        8D F8 02      STA $02F8                 ;
-CODE_05E6BF:        AE 53 07      LDX $0753                 ;
-CODE_05E6C2:        BD AF E6      LDA $E6AF,x               ;
-CODE_05E6C5:        85 99         STA $99                   ;
-CODE_05E6C7:        20 2A E8      JSR CODE_05E82A           ;
-CODE_05E6CA:        A5 99         LDA $99                   ;
-CODE_05E6CC:        0A            ASL A                     ;
-CODE_05E6CD:        AA            TAX                       ;
-CODE_05E6CE:        BD DB E6      LDA $E6DB,x               ;
-CODE_05E6D1:        85 00         STA $00                   ;
-CODE_05E6D3:        BD DC E6      LDA $E6DC,x               ;
-CODE_05E6D6:        85 01         STA $01                   ;
-CODE_05E6D8:        6C 00 00      JMP ($0000)               ;
+CODE_05E6B6:        A5 99         LDA $99                   ;\
+CODE_05E6B8:        C9 01         CMP #$01                  ; | Branch if not bonus room
+CODE_05E6BA:        D0 0B         BNE CODE_05E6C7           ;/
+CODE_05E6BC:        8D F8 02      STA $02F8                 ;Set bonus room flag
+CODE_05E6BF:        AE 53 07      LDX $0753                 ;\
+CODE_05E6C2:        BD AF E6      LDA $E6AF,x               ; | Get Luigi or Mario's bonus room tileset number
+CODE_05E6C5:        85 99         STA $99                   ;/
+CODE_05E6C7:        20 2A E8      JSR CODE_05E82A           ;GFX upload routine
+CODE_05E6CA:        A5 99         LDA $99                   ;\
+CODE_05E6CC:        0A            ASL A                     ; |
+CODE_05E6CD:        AA            TAX                       ; |
+CODE_05E6CE:        BD DB E6      LDA $E6DB,x               ; |
+CODE_05E6D1:        85 00         STA $00                   ; | A routine for each tilemap
+CODE_05E6D3:        BD DC E6      LDA $E6DC,x               ; |
+CODE_05E6D6:        85 01         STA $01                   ; |
+CODE_05E6D8:        6C 00 00      JMP ($0000)               ;/
 
-PNTR_05E6DB:        dw CODE_05E71B
-                    dw CODE_05E73C
-                    dw CODE_05E727
-                    dw CODE_05E73C
-                    dw CODE_05E74F
-                    dw CODE_05E727
-                    dw CODE_05E71B
-                    dw CODE_05E743
-                    dw CODE_05E71B
-                    dw CODE_05E743
-                    dw CODE_05E75B
-                    dw CODE_05E727
-                    dw CODE_05E727
-                    dw CODE_05E71B
-                    dw CODE_05E727
-                    dw CODE_05E71B
-                    dw CODE_05E727
-                    dw CODE_05E71B
-                    dw CODE_05E71B
-                    dw CODE_05E71B
-                    dw CODE_05E71B
-                    dw CODE_05E71B
-                    dw CODE_05E71B
-                    dw CODE_05E71B
-                    dw CODE_05E73C
-                    dw CODE_05E71B
-                    dw CODE_05E71B
-                    dw CODE_05E71B
-                    dw CODE_05E71B
-                    dw CODE_05E71B
-                    dw CODE_05E71B
-                    dw CODE_05E71B
+PNTR_05E6DB:        dw CODE_05E71B                          ;$00 - Unused?
+                    dw CODE_05E73C                          ;$01 - Mario bonus background
+                    dw CODE_05E727                          ;$02 - Hills background & SUPER MARIO BROS banner
+                    dw CODE_05E73C                          ;$03 - Underground background
+                    dw CODE_05E74F                          ;$04 - Castle FG & BG tileset
+                    dw CODE_05E727                          ;$05 - Tall slim hills background
+                    dw CODE_05E71B                          ;$06 - Castle FG & BG tileset
+                    dw CODE_05E743                          ;$07 - Hills background
+                    dw CODE_05E71B                          ;$08 - Underwater BG & FG tileset
+                    dw CODE_05E743                          ;$09 - Hills background & SUPER MARIO BROS banner
+                    dw CODE_05E75B                          ;$0A - Game over screen & Mario bonus room background
+                    dw CODE_05E727                          ;$0B - Starry night background
+                    dw CODE_05E727                          ;$0C - Bowser's Castle (outside) background
+                    dw CODE_05E71B                          ;$0D - Mushrooms background
+                    dw CODE_05E727                          ;$0E - Waterfall background
+                    dw CODE_05E71B                          ;$0F - Underwater ruins background
+                    dw CODE_05E727                          ;$10 - Goomba pillars BG & snow FG
+                    dw CODE_05E71B                          ;$11 - Underground foreground
+                    dw CODE_05E71B                          ;$12 - Snow foreground
+                    dw CODE_05E71B                          ;$13 - Bowser's Castle BG, part 1
+                    dw CODE_05E71B                          ;$14 - Bowser's Castle BG, part 2
+                    dw CODE_05E71B                          ;$15 - Game Over and Time Up text
+                    dw CODE_05E71B                          ;$16 - Starry night background
+                    dw CODE_05E71B                          ;$17 - Grass foreground
+                    dw CODE_05E73C                          ;$18 - Luigi bonus background
+                    dw CODE_05E71B                          ;$19 -
+                    dw CODE_05E71B                          ;$1A -
+                    dw CODE_05E71B                          ;$1B -
+                    dw CODE_05E71B                          ;$1C -
+                    dw CODE_05E71B                          ;$1D -
+                    dw CODE_05E71B                          ;$1E -
+                    dw CODE_05E71B                          ;$1F -
 
-CODE_05E71B:        64 99         STZ $99                   ;
+;Disable graphics animations so that GFX uploads normally
+;without animation interfering
+CODE_05E71B:        64 99         STZ $99                   ;Set GFX to upload to none
 CODE_05E71D:        AB            PLB                       ;
-CODE_05E71E:        9C 8D 02      STZ $028D                 ;
-CODE_05E721:        A9 01         LDA #$01                  ;
-CODE_05E723:        8D 8C 02      STA $028C                 ;
+CODE_05E71E:        9C 8D 02      STZ $028D                 ;Disable flag to upload animated graphics
+CODE_05E721:        A9 01         LDA #$01                  ;\
+CODE_05E723:        8D 8C 02      STA $028C                 ;/Disable graphics animation and stuff
 CODE_05E726:        6B            RTL                       ;
 
-CODE_05E727:        A5 DB         LDA $DB                   ;
-CODE_05E729:        C9 16         CMP #$16                  ;
-CODE_05E72B:        F0 1B         BEQ CODE_05E748           ;
-CODE_05E72D:        C9 14         CMP #$14                  ;
-CODE_05E72F:        F0 17         BEQ CODE_05E748           ;
-CODE_05E731:        C9 0D         CMP #$0D                  ;
-CODE_05E733:        F0 13         BEQ CODE_05E748           ;
-CODE_05E735:        A9 17         LDA #$17                  ;
-CODE_05E737:        20 2A E8      JSR CODE_05E82A           ;
-CODE_05E73A:        80 DF         BRA CODE_05E71B           ;
+;Set grass or snow foreground
+CODE_05E727:        A5 DB         LDA $DB                   ;\
+CODE_05E729:        C9 16         CMP #$16                  ; |If tall slim hills background with snow
+CODE_05E72B:        F0 1B         BEQ CODE_05E748           ;/ get snow foreground
+CODE_05E72D:        C9 14         CMP #$14                  ;\ Same as above
+CODE_05E72F:        F0 17         BEQ CODE_05E748           ;/
+CODE_05E731:        C9 0D         CMP #$0D                  ;\ Same as above
+CODE_05E733:        F0 13         BEQ CODE_05E748           ;/
+CODE_05E735:        A9 17         LDA #$17                  ;\Grass foreground
+CODE_05E737:        20 2A E8      JSR CODE_05E82A           ;/GFX upload routine
+CODE_05E73A:        80 DF         BRA CODE_05E71B           ;finish upload
 
-CODE_05E73C:        A9 11         LDA #$11                  ;
-CODE_05E73E:        20 2A E8      JSR CODE_05E82A           ;
-CODE_05E741:        80 D8         BRA CODE_05E71B           ;
+;Set underground foreground
+CODE_05E73C:        A9 11         LDA #$11                  ;\Underground foreground
+CODE_05E73E:        20 2A E8      JSR CODE_05E82A           ;/GFX upload routine
+CODE_05E741:        80 D8         BRA CODE_05E71B           ;finish upload
 
-CODE_05E743:        A9 16         LDA #$16                  ;
-CODE_05E745:        20 2A E8      JSR CODE_05E82A           ;
-CODE_05E748:        A9 12         LDA #$12                  ;
-CODE_05E74A:        20 2A E8      JSR CODE_05E82A           ;
-CODE_05E74D:        80 CC         BRA CODE_05E71B           ;
+;Set background to starry night and foreground to snow
+CODE_05E743:        A9 16         LDA #$16                  ;\Starry night background
+CODE_05E745:        20 2A E8      JSR CODE_05E82A           ;/GFX upload routine
+CODE_05E748:        A9 12         LDA #$12                  ;\Snow foreground
+CODE_05E74A:        20 2A E8      JSR CODE_05E82A           ;/GFX upload routine
+CODE_05E74D:        80 CC         BRA CODE_05E71B           ;finish upload
 
-CODE_05E74F:        A9 13         LDA #$13                  ;
-CODE_05E751:        20 2A E8      JSR CODE_05E82A           ;
-CODE_05E754:        A9 14         LDA #$14                  ;
-CODE_05E756:        20 2A E8      JSR CODE_05E82A           ;
-CODE_05E759:        80 C0         BRA CODE_05E71B           ;
+;Set Bowser's castle background
+CODE_05E74F:        A9 13         LDA #$13                  ;\Bowser's castle background (1)
+CODE_05E751:        20 2A E8      JSR CODE_05E82A           ;/GFX upload routine
+CODE_05E754:        A9 14         LDA #$14                  ;\Bowser's castle background (2)
+CODE_05E756:        20 2A E8      JSR CODE_05E82A           ;/GFX upload routine
+CODE_05E759:        80 C0         BRA CODE_05E71B           ;finish upload
 
-CODE_05E75B:        A9 15         LDA #$15                  ;
-CODE_05E75D:        20 2A E8      JSR CODE_05E82A           ;
-CODE_05E760:        80 B9         BRA CODE_05E71B           ;
+;Set game over graphics
+CODE_05E75B:        A9 15         LDA #$15                  ;\Game over and time up text
+CODE_05E75D:        20 2A E8      JSR CODE_05E82A           ;/GFX upload routine
+CODE_05E760:        80 B9         BRA CODE_05E71B           ;finish upload
 
-DATA_05E762:        db $00,$00,$08,$00,$06,$00,$09,$00
-                    db $09,$00,$08,$00,$09,$00,$06,$00
-                    db $08,$00,$06,$00,$08,$00,$09,$00
-                    db $08,$00,$08,$00,$08,$00,$09,$00
-                    db $08,$00,$09,$00,$08,$00,$09,$00
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;Tables of pointers to GFX files, their VRAM
+;;address as well as their size.
+;;
+;; Address -  VRAM - Size
+;; $000000 - $0000 - $1000 ; $00 - Unused
+;; $08E000 - $2000 - $1000 ; $01 - Mario bonus background
+;; $06A000 - $2000 - $2000 ; $02 - Hills background & SUPER MARIO BROS. title screen banner
+;; $098000 - $2000 - $1000 ; $03 - Underground background
+;; $09A000 - $2000 - $2000 ; $04 - Castle background & foreground
+;; $089800 - $2C00 - $0800 ; $05 - Tall slim hills background
+;; $09A000 - $2000 - $2000 ; $06 - Castle background & foreground
+;; $06A000 - $2000 - $1000 ; $07 - Hills background
+;; $088000 - $2000 - $1000 ; $08 - Underwater background & foreground
+;; $06A000 - $2000 - $2000 ; $09 - Hills background & SUPER MARIO BROS. title screen banner
+;; $08D000 - $3400 - $2000 ; $0A - Game over screen & Mario bonus room background
+;; $09E000 - $2C00 - $0800 ; $0B - Starry night background
+;; $08A000 - $2800 - $1000 ; $0C - Bowser's Castle background & princess cage
+;; $089000 - $2C00 - $0800 ; $0D - Mushrooms background
+;; $08B000 - $2C00 - $0800 ; $0E - Waterfall background
+;; $099000 - $2000 - $1000 ; $0F - Underwater ruins background
+;; $08B800 - $2C00 - $1000 ; $10 - Goomba pillars background & snow foreground
+;; $09D000 - $3000 - $1000 ; $11 - Underground foreground
+;; $08C000 - $3000 - $1000 ; $12 - Snow foreground
+;; $09E800 - $2000 - $0800 ; $13 - Bowser's Castle background, part 1
+;; $09F000 - $2800 - $0800 ; $14 - Bowser's Castle background, part 2
+;; $09F800 - $2C00 - $0800 ; $15 - Game Over and Time Up text
+;; $09E000 - $2C00 - $0800 ; $16 - Starry night background
+;; $09C000 - $3000 - $1000 ; $17 - Grass foreground
+;; $08F000 - $2000 - $1000 ; $18 - Luigi bonus background
+
+DATA_05E762:        db $00,$00,$08,$00,$06,$00,$09,$00      ;GFX bank bytes. every other byte is not used, so here's a more comprehensive list:
+                    db $09,$00,$08,$00,$09,$00,$06,$00      ; $00,$08,$06,$09,$09,$08,$09,$06
+                    db $08,$00,$06,$00,$08,$00,$09,$00      ; $08,$06,$08,$09,$08,$08,$08,$09
+                    db $08,$00,$08,$00,$08,$00,$09,$00      ; $08,$09,$08,$09,$09,$09,$09,$09
+                    db $08,$00,$09,$00,$08,$00,$09,$00      ; $08
                     db $09,$00,$09,$00,$09,$00,$09,$00
-                    db $08,$00,$00,$00,$00,$E0,$00,$A0
-                    db $00,$80,$00,$A0,$00,$98,$00,$A0
-                    db $00,$A0,$00,$80,$00,$A0,$00,$D0
-                    db $00,$E0,$00,$A0,$00,$90,$00,$B0
-                    db $00,$90,$00,$B8,$00,$D0,$00,$C0
-                    db $00,$E8,$00,$F0,$00,$F8,$00,$E0
-                    db $00,$C0,$00,$F0,$00,$00,$00,$20
-                    db $00,$20,$00,$20,$00,$20,$00,$2C
-                    db $00,$20,$00,$20,$00,$20,$00,$20
-                    db $00,$34,$00,$2C,$00,$28,$00,$2C
-                    db $00,$2C,$00,$20,$00,$2C,$00,$30
-                    db $00,$30,$00,$20,$00,$28,$00,$2C
-                    db $00,$2C,$00,$30,$00,$20,$00,$10
-                    db $00,$10,$00,$20,$00,$10,$00,$20
-                    db $00,$08,$00,$20,$00,$10,$00,$10
-                    db $00,$20,$00,$20,$00,$08,$00,$10
-                    db $00,$08,$00,$08,$00,$10,$00,$10
-                    db $00,$10,$00,$10,$00,$08,$00,$08
-                    db $00,$08,$00,$08,$00,$10,$00,$10
+                    db $08,$00
 
-CODE_05E82A:        0A            ASL A                     ;
-CODE_05E82B:        AA            TAX                       ;
-CODE_05E82C:        BD 62 E7      LDA $E762,x               ;
-CODE_05E82F:        8D 87 02      STA $0287                 ;
-CODE_05E832:        C2 20         REP #$20                  ;
-CODE_05E834:        BD 94 E7      LDA $E794,x               ;
-CODE_05E837:        8D 85 02      STA $0285                 ;
-CODE_05E83A:        BD C6 E7      LDA $E7C6,x               ;
-CODE_05E83D:        8D 8A 02      STA $028A                 ;
-CODE_05E840:        BD F8 E7      LDA $E7F8,x               ;
-CODE_05E843:        8D 88 02      STA $0288                 ;
-CODE_05E846:        E2 20         SEP #$20                  ;
-CODE_05E848:        20 4C E8      JSR CODE_05E84C           ;
+DATA_05E794:        dw $0000,$E000,$A000,$8000              ;GFX address
+                    dw $A000,$9800,$A000,$A000
+                    dw $8000,$A000,$D000,$E000
+                    dw $A000,$9000,$B000,$9000
+                    dw $B800,$D000,$C000,$E800
+                    dw $F000,$F800,$E000,$C000
+                    dw $F000
+
+DATA_05E7C6:        dw $0000,$2000,$2000,$2000              ;GFX VRAM address
+                    dw $2000,$2C00,$2000,$2000
+                    dw $2000,$2000,$3400,$2C00
+                    dw $2800,$2C00,$2C00,$2000
+                    dw $2C00,$3000,$3000,$2000
+                    dw $2800,$2C00,$2C00,$3000
+                    dw $2000
+
+DATA_05E7F8:        dw $1000,$1000,$2000,$1000              ;GFX size
+                    dw $2000,$0800,$2000,$1000
+                    dw $1000,$2000,$2000,$0800
+                    dw $1000,$0800,$0800,$1000
+                    dw $1000,$1000,$1000,$0800
+                    dw $0800,$0800,$0800,$1000
+                    dw $1000
+
+;GFX upload routine. GFX number in A
+CODE_05E82A:        0A            ASL A                     ;\ Routine enters with $7E0099 loaded in accumulator
+CODE_05E82B:        AA            TAX                       ;/ but can also be fixed values. A * 2 to index
+CODE_05E82C:        BD 62 E7      LDA $E762,x               ;\
+CODE_05E82F:        8D 87 02      STA $0287                 ;/Load DMA source bank byte
+CODE_05E832:        C2 20         REP #$20                  ;16-bit A
+CODE_05E834:        BD 94 E7      LDA $E794,x               ;\DMA source address
+CODE_05E837:        8D 85 02      STA $0285                 ;/
+CODE_05E83A:        BD C6 E7      LDA $E7C6,x               ;\
+CODE_05E83D:        8D 8A 02      STA $028A                 ;/DMA VRAM address
+CODE_05E840:        BD F8 E7      LDA $E7F8,x               ;\
+CODE_05E843:        8D 88 02      STA $0288                 ;/DMA size
+CODE_05E846:        E2 20         SEP #$20                  ;8-bit A
+CODE_05E848:        20 4C E8      JSR CODE_05E84C           ;DMA this setup
 CODE_05E84B:        60            RTS                       ;
 
-CODE_05E84C:        A9 80         LDA #$80                  ;
-CODE_05E84E:        8D 15 21      STA $2115                 ;
+CODE_05E84C:        A9 80         LDA #$80                  ;\
+CODE_05E84E:        8D 15 21      STA $2115                 ;/address increment mode
 CODE_05E851:        C2 20         REP #$20                  ;
-CODE_05E853:        AD 8A 02      LDA $028A                 ;
-CODE_05E856:        8D 16 21      STA $2116                 ;
-CODE_05E859:        A9 01 18      LDA #$1801                ;
-CODE_05E85C:        8D 00 43      STA $4300                 ;
-CODE_05E85F:        AD 85 02      LDA $0285                 ;
-CODE_05E862:        8D 02 43      STA $4302                 ;
-CODE_05E865:        AE 87 02      LDX $0287                 ;
-CODE_05E868:        8E 04 43      STX $4304                 ;
-CODE_05E86B:        AD 88 02      LDA $0288                 ;
-CODE_05E86E:        8D 05 43      STA $4305                 ;
-CODE_05E871:        A2 01         LDX #$01                  ;
-CODE_05E873:        8E 0B 42      STX $420B                 ;
+CODE_05E853:        AD 8A 02      LDA $028A                 ;\
+CODE_05E856:        8D 16 21      STA $2116                 ;/DMA VRAM address
+CODE_05E859:        A9 01 18      LDA #$1801                ;\
+CODE_05E85C:        8D 00 43      STA $4300                 ;/2 regs write once for $2118
+CODE_05E85F:        AD 85 02      LDA $0285                 ;\
+CODE_05E862:        8D 02 43      STA $4302                 ;/Set DMA source address
+CODE_05E865:        AE 87 02      LDX $0287                 ;\
+CODE_05E868:        8E 04 43      STX $4304                 ;/DMA source bank
+CODE_05E86B:        AD 88 02      LDA $0288                 ;\
+CODE_05E86E:        8D 05 43      STA $4305                 ;/DMA size
+CODE_05E871:        A2 01         LDX #$01                  ;\
+CODE_05E873:        8E 0B 42      STX $420B                 ;/Enable DMA on channel 0
 CODE_05E876:        E2 20         SEP #$20                  ;
 CODE_05E878:        60            RTS                       ;
 
@@ -6994,14 +7038,14 @@ CODE_05E87A:        4B            PHK                       ;
 CODE_05E87B:        AB            PLB                       ;
 CODE_05E87C:        9C 49 0F      STZ $0F49                 ;
 CODE_05E87F:        DA            PHX                       ;
-CODE_05E880:        A6 9E         LDX $9E                   ;
-CODE_05E882:        B5 1C         LDA $1C,x                 ;
-CODE_05E884:        C9 04         CMP #$04                  ;
-CODE_05E886:        B0 08         BCS CODE_05E890           ;
-CODE_05E888:        B5 29         LDA $29,x                 ;
-CODE_05E88A:        30 08         BMI CODE_05E894           ;
-CODE_05E88C:        29 06         AND #$06                  ;
-CODE_05E88E:        F0 04         BEQ CODE_05E894           ;
+CODE_05E880:        A6 9E         LDX $9E                   ;Get current sprite index
+CODE_05E882:        B5 1C         LDA $1C,x                 ;\
+CODE_05E884:        C9 04         CMP #$04                  ; |Return if not a regular shelled walking sprite
+CODE_05E886:        B0 08         BCS CODE_05E890           ;/
+CODE_05E888:        B5 29         LDA $29,x                 ;\
+CODE_05E88A:        30 08         BMI CODE_05E894           ;/If not kicked, return
+CODE_05E88C:        29 06         AND #$06                  ;\
+CODE_05E88E:        F0 04         BEQ CODE_05E894           ;/If not stunned or upside-down, return
 CODE_05E890:        FA            PLX                       ;
 CODE_05E891:        AB            PLB                       ;
 CODE_05E892:        18            CLC                       ;
@@ -7104,13 +7148,13 @@ CODE_05E95A:        8B            PHB                       ;
 CODE_05E95B:        4B            PHK                       ;
 CODE_05E95C:        AB            PLB                       ;
 CODE_05E95D:        DA            PHX                       ;
-CODE_05E95E:        A6 9E         LDX $9E                   ;
-CODE_05E960:        B5 1C         LDA $1C,x                 ;
-CODE_05E962:        C9 35         CMP #$35                  ;
-CODE_05E964:        D0 48         BNE CODE_05E9AE           ;
-CODE_05E966:        AD 5F 07      LDA $075F                 ;
-CODE_05E969:        C9 07         CMP #$07                  ;
-CODE_05E96B:        F0 41         BEQ CODE_05E9AE           ;
+CODE_05E95E:        A6 9E         LDX $9E                   ;Get current sprite index
+CODE_05E960:        B5 1C         LDA $1C,x                 ;\
+CODE_05E962:        C9 35         CMP #$35                  ; | If not princess peach, branch
+CODE_05E964:        D0 48         BNE CODE_05E9AE           ;/
+CODE_05E966:        AD 5F 07      LDA $075F                 ;\
+CODE_05E969:        C9 07         CMP #$07                  ; | If world 8, return
+CODE_05E96B:        F0 41         BEQ CODE_05E9AE           ;/
 CODE_05E96D:        AD 4A 0F      LDA $0F4A                 ;
 CODE_05E970:        29 1F         AND #$1F                  ;
 CODE_05E972:        BC 46 0B      LDY $0B46,x               ;
@@ -7349,7 +7393,7 @@ CODE_05EB96:        AB            PLB                       ;
 CODE_05EB97:        22 87 A2 03   JSL CODE_03A287           ;
 CODE_05EB9B:        6B            RTL                       ;
 
-DATA_05EB9B:        db $FF,$FF,$FF,$FF,$FF,$FF,$06,$FF
+DATA_05EB9C:        db $FF,$FF,$FF,$FF,$FF,$FF,$06,$FF
                     db $00,$FF,$FF,$06,$00,$01,$FF,$06
                     db $FF,$0F,$FF,$01,$FF,$FF,$FF,$FF
                     db $16,$06,$FF,$0E,$FF,$00,$0A,$FF
@@ -7462,7 +7506,7 @@ CODE_05EE62:        90 F5         BCC CODE_05EE59           ;
 CODE_05EE64:        2B            PLD                       ;
 CODE_05EE65:        6B            RTL                       ;
 
-DATA_05EE66:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
+DATA_05EE66:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;Empty, unused space
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF

@@ -6118,7 +6118,7 @@ DATA_00BE26:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
 ;; This is for TLL while the code at $04D800 is for
 ;; SMB1.
 ;;
-					
+
 CODE_00C000:        AD A5 0B      LDA $0BA5                 ;
 CODE_00C003:        D0 54         BNE CODE_00C059           ;
 CODE_00C005:        AD D5 06      LDA $06D5                 ;
@@ -6184,7 +6184,7 @@ DATA_00C083:        dw $734E,$7FFF,$14A5,$5D68              ;Mario portrait Pale
                     dw $762E,$27BF,$31BB,$3ABF
                     dw $0000,$152F,$355D,$525F
                     dw $169B,$1C9F,$0C19,$0C19
-					
+
 DATA_00C0A3:        dw $734E,$7FFF,$14A5,$5588              ;Luigi portrait Palette of princess saved sequence
                     dw $724D,$27BF,$31BB,$3ABF
                     dw $0000,$152F,$355D,$525F
