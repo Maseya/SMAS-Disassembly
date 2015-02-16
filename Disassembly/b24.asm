@@ -3540,7 +3540,7 @@ CODE_24E6A3:        4A            LSR A
 CODE_24E6A4:        4A            LSR A                     
 CODE_24E6A5:        4A            LSR A                     
 CODE_24E6A6:        18            CLC                       
-CODE_24E6A7:        7F 8D E6 24   ADC DATA_24E68D,x             
+CODE_24E6A7:        7F 8D E6 24   ADC.l DATA_24E68D,x             
 CODE_24E6AB:        AA            TAX                       
 CODE_24E6AC:        CA            DEX                       
 CODE_24E6AD:        8A            TXA                       
@@ -3662,7 +3662,7 @@ CODE_24E7EB:        38            SEC
 CODE_24E7EC:        E9 06         SBC #$06                  
 CODE_24E7EE:        AA            TAX                       
 CODE_24E7EF:        AC 00 07      LDY $0700                 
-CODE_24E7F2:        BF E6 E7 24   LDA DATA_24E7E6,x             
+CODE_24E7F2:        BF E6 E7 24   LDA.l DATA_24E7E6,x             
 CODE_24E7F6:        97 2E         STA [$2E],y               
 CODE_24E7F8:        6B            RTL                       
 
@@ -3701,16 +3701,16 @@ CODE_24E836:        AD 06 07      LDA $0706
 CODE_24E839:        29 0F         AND #$0F                  
 CODE_24E83B:        85 02         STA $02                   
 CODE_24E83D:        AC 00 07      LDY $0700                 
-CODE_24E840:        BF 15 E8 24   LDA DATA_24E815,x             
+CODE_24E840:        BF 15 E8 24   LDA.l DATA_24E815,x             
 CODE_24E844:        97 2E         STA [$2E],y               
 CODE_24E846:        80 06         BRA CODE_24E84E           
 
-CODE_24E848:        BF 19 E8 24   LDA DATA_24E819,x             
+CODE_24E848:        BF 19 E8 24   LDA.l DATA_24E819,x             
 CODE_24E84C:        97 2E         STA [$2E],y               
 CODE_24E84E:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_24E852:        C6 02         DEC $02                   
 CODE_24E854:        D0 F2         BNE CODE_24E848           
-CODE_24E856:        BF 1D E8 24   LDA DATA_24E81D,x             
+CODE_24E856:        BF 1D E8 24   LDA.l DATA_24E81D,x             
 CODE_24E85A:        97 2E         STA [$2E],y               
 CODE_24E85C:        AD 00 07      LDA $0700                 
 CODE_24E85F:        18            CLC                       
@@ -3793,11 +3793,11 @@ CODE_24E8F5:        AC 00 07      LDY $0700
 CODE_24E8F8:        B7 2E         LDA [$2E],y               
 CODE_24E8FA:        C9 80         CMP #$80                  
 CODE_24E8FC:        D0 33         BNE CODE_24E931           
-CODE_24E8FE:        BF CD E8 24   LDA DATA_24E8CD,x             
+CODE_24E8FE:        BF CD E8 24   LDA.l DATA_24E8CD,x             
 CODE_24E902:        97 2E         STA [$2E],y               
 CODE_24E904:        80 06         BRA CODE_24E90C           
 
-CODE_24E906:        BF D1 E8 24   LDA DATA_24E8D1,x             
+CODE_24E906:        BF D1 E8 24   LDA.l DATA_24E8D1,x             
 CODE_24E90A:        97 2E         STA [$2E],y               
 CODE_24E90C:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_24E910:        C6 02         DEC $02                   
@@ -3810,7 +3810,7 @@ CODE_24E91C:        F0 04         BEQ CODE_24E922
 CODE_24E91E:        A9 25         LDA #$25                  
 CODE_24E920:        80 04         BRA CODE_24E926           
 
-CODE_24E922:        BF D5 E8 24   LDA DATA_24E8D5,x             
+CODE_24E922:        BF D5 E8 24   LDA.l DATA_24E8D5,x             
 CODE_24E926:        97 2E         STA [$2E],y               
 CODE_24E928:        20 8D EA      JSR CODE_24EA8D           
 CODE_24E92B:        8A            TXA                       

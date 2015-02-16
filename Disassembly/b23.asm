@@ -265,7 +265,7 @@ CODE_23826E:        6B            RTL
 CODE_23826F:        AD 29 07      LDA $0729                 
 CODE_238272:        22 3A FB 20   JSL CODE_20FB3A           
 
-POINTER_238276:     dl CODE_2382C5
+PNTR_238276:     dl CODE_2382C5
                     dl CODE_238631
                     dl CODE_29AC7A
                     dl CODE_29ADFC
@@ -300,7 +300,7 @@ CODE_2382C4:        6B            RTL
 CODE_2382C5:        AD 28 07      LDA $0728                 
 CODE_2382C8:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_2382CC:     dw CODE_2382D2
+PNTR_2382CC:     dw CODE_2382D2
                     dw CODE_238338
                     dw CODE_2383D1
 
@@ -455,7 +455,7 @@ CODE_23840C:        6B            RTL
 CODE_23840D:        AD 28 07      LDA $0728                 
 CODE_238410:        22 3A FB 20   JSL CODE_20FB3A           
 
-POINTER_238414:     dl CODE_23842F
+PNTR_238414:     dl CODE_23842F
                     dl CODE_238441
                     dl CODE_238606
                     dl CODE_23860B
@@ -869,7 +869,7 @@ CODE_2387B5:        29 04         AND #$04
 CODE_2387B7:        4A            LSR A                     
 CODE_2387B8:        AA            TAX                       
 CODE_2387B9:        C2 20         REP #$20                  
-CODE_2387BB:        BF E0 87 23   LDA DATA_2387E0,x             
+CODE_2387BB:        BF E0 87 23   LDA.l DATA_2387E0,x             
 CODE_2387BF:        8D 00 13      STA $1300                 
 CODE_2387C2:        E2 20         SEP #$20                  
 CODE_2387C4:        A9 01         LDA #$01                  
@@ -958,13 +958,13 @@ CODE_238883:        6B            RTL
 CODE_238884:        AD 28 07      LDA $0728                 
 CODE_238887:        22 3A FB 20   JSL CODE_20FB3A           
 
-POINTER_23888B:     dl CODE_238A0E
+PNTR_23888B:     dl CODE_238A0E
                     dl CODE_238A4E
 
 CODE_238891:        AD 17 04      LDA $0417                 
 CODE_238894:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_238898:     dw CODE_2388A6
+PNTR_238898:     dw CODE_2388A6
                     dw CODE_2388A6
                     dw CODE_238922
                     dw CODE_238922
@@ -1261,13 +1261,13 @@ CODE_238ADD:        AD 29 04      LDA $0429
 CODE_238AE0:        29 FF 00      AND #$00FF                
 CODE_238AE3:        0A            ASL A                     
 CODE_238AE4:        85 D8         STA $D8                   
-CODE_238AE6:        BF 1D C8 29   LDA DATA_29C81D,x             
+CODE_238AE6:        BF 1D C8 29   LDA.l DATA_29C81D,x             
 CODE_238AEA:        29 FF 00      AND #$00FF                
 CODE_238AED:        0A            ASL A                     
 CODE_238AEE:        18            CLC                       
 CODE_238AEF:        65 D8         ADC $D8                   
 CODE_238AF1:        AA            TAX                       
-CODE_238AF2:        BF E3 C7 29   LDA DATA_29C7E3,x             
+CODE_238AF2:        BF E3 C7 29   LDA.l DATA_29C7E3,x             
 CODE_238AF6:        8B            PHB                       
 CODE_238AF7:        AA            TAX                       
 CODE_238AF8:        A0 E0 14      LDY #$14E0                
@@ -1792,7 +1792,7 @@ CODE_238F3D:        48            PHA
 CODE_238F3E:        B7 D8         LDA [$D8],y               
 CODE_238F40:        F0 06         BEQ CODE_238F48           
 CODE_238F42:        68            PLA                       
-CODE_238F43:        BF F9 8E 23   LDA DATA_238EF9,x             
+CODE_238F43:        BF F9 8E 23   LDA.l DATA_238EF9,x             
 CODE_238F47:        48            PHA                       
 CODE_238F48:        68            PLA                       
 CODE_238F49:        FA            PLX                       
@@ -2046,7 +2046,7 @@ CODE_239141:        CA            DEX
 CODE_239142:        8A            TXA                       
 CODE_239143:        22 3A FB 20   JSL CODE_20FB3A           
 
-POINTER_239147:     dl CODE_2392D2
+PNTR_239147:     dl CODE_2392D2
 
 CODE_23914A:        20 4E 91      JSR CODE_23914E
 CODE_23914D:        6B            RTL
@@ -2054,7 +2054,7 @@ CODE_23914D:        6B            RTL
 CODE_23914E:        AD 06 07      LDA $0706                 
 CODE_239151:        22 3A FB 20   JSL CODE_20FB3A           
 
-POINTER_239155:     dl CODE_2391EF
+PNTR_239155:     dl CODE_2391EF
                     dl CODE_23922C
                     dl CODE_23924F
                     dl CODE_23928C
@@ -2331,7 +2331,7 @@ CODE_23934E:        6B            RTL
 CODE_23934F:        AD 34 10      LDA $1034                 
 CODE_239352:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_239356:     dw CODE_23935E
+PNTR_239356:     dw CODE_23935E
                     dw CODE_239362
                     dw CODE_23936B
                     dw CODE_23936F
@@ -2504,7 +2504,7 @@ CODE_2394A1:        6B            RTL
 CODE_2394A2:        AD 40 10      LDA $1040                 
 CODE_2394A5:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_2394A9:     dw CODE_2394BD
+PNTR_2394A9:     dw CODE_2394BD
                     dw CODE_239513
                     dw CODE_2395F5
                     dw CODE_239752
@@ -2839,7 +2839,7 @@ CODE_239771:        60            RTS
 CODE_239772:        AD 59 00      LDA $0059                 
 CODE_239775:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_239779:     dw CODE_23977D
+PNTR_239779:     dw CODE_23977D
                     dw CODE_2397B1
 
 CODE_23977D:        AF 91 39 7E   LDA $7E3991
@@ -3070,15 +3070,15 @@ CODE_239956:        6B            RTL
 CODE_239957:        AD 09 10      LDA $1009                 
 CODE_23995A:        0A            ASL A                     
 CODE_23995B:        AA            TAX                       
-CODE_23995C:        7C 5F 99      JMP (POINTER_23995F,x)             
+CODE_23995C:        7C 5F 99      JMP (PNTR_23995F,x)             
 
-POINTER_23995F:     dw CODE_239963
+PNTR_23995F:     dw CODE_239963
                     dw CODE_23997B
 
 CODE_239963:        AD 0A 10      LDA $100A
 CODE_239966:        22 1F FB 20   JSL CODE_20FB1F
 
-POINTER_23996A:     dw CODE_23996E
+PNTR_23996A:     dw CODE_23996E
                     dw CODE_239972
 
 CODE_23996E:        EE 0A 10      INC $100A                 
@@ -3093,9 +3093,9 @@ CODE_23997B:        22 00 80 2A   JSL CODE_2A8000
 CODE_23997F:        AD 0B 10      LDA $100B                 
 CODE_239982:        0A            ASL A                     
 CODE_239983:        AA            TAX                       
-CODE_239984:        7C 87 99      JMP (POINTER_239987,x)             
+CODE_239984:        7C 87 99      JMP (PNTR_239987,x)             
 
-POINTER_239987:     dw CODE_239993
+PNTR_239987:     dw CODE_239993
                     dw CODE_2399D5
                     dw CODE_239B98
                     dw CODE_239BB5
@@ -3175,7 +3175,7 @@ CODE_239A3B:        60            RTS
 CODE_239A3C:        BD 0C 10      LDA $100C,x               
 CODE_239A3F:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_239A43:     dw CODE_239A4F
+PNTR_239A43:     dw CODE_239A4F
                     dw CODE_239A6F
                     dw CODE_239A7A
                     dw CODE_239ABB
@@ -3425,7 +3425,7 @@ CODE_239C59:        8D DD 09      STA $09DD
 CODE_239C5C:        8D E1 09      STA $09E1                 
 CODE_239C5F:        8D E5 09      STA $09E5                 
 CODE_239C62:        AE F9 1F      LDX $1FF9                 
-CODE_239C65:        BF DB 9B 23   LDA DATA_239BDC-1,x             
+CODE_239C65:        BF DB 9B 23   LDA.l DATA_239BDC-1,x             
 CODE_239C69:        8D D2 09      STA $09D2                 
 CODE_239C6C:        1A            INC A                     
 CODE_239C6D:        8D DE 09      STA $09DE                 
@@ -3530,11 +3530,11 @@ CODE_239D49:        0A            ASL A
 CODE_239D4A:        18            CLC                       
 CODE_239D4B:        65 04         ADC $04                   
 CODE_239D4D:        AA            TAX                       
-CODE_239D4E:        BF FB 82 22   LDA PNTR_2282FB,x             
+CODE_239D4E:        BF FB 82 22   LDA.l PNTR_2282FB,x             
 CODE_239D52:        85 0D         STA $0D                   
-CODE_239D54:        BF FC 82 22   LDA PNTR_2282FB+1,x             
+CODE_239D54:        BF FC 82 22   LDA.l PNTR_2282FB+1,x             
 CODE_239D58:        85 0E         STA $0E                   
-CODE_239D5A:        BF FD 82 22   LDA PNTR_2282FB+2,x             
+CODE_239D5A:        BF FD 82 22   LDA.l PNTR_2282FB+2,x             
 CODE_239D5E:        85 0F         STA $0F                   
 CODE_239D60:        C2 20         REP #$20                  
 CODE_239D62:        A5 00         LDA $00                   
@@ -3614,7 +3614,7 @@ CODE_239DEB:        6B            RTL
 CODE_239DEC:        AD 41 10      LDA $1041                 
 CODE_239DEF:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_239DF3:     dw CODE_239DF9
+PNTR_239DF3:     dw CODE_239DF9
                     dw CODE_239E18
                     dw CODE_239E36
 
@@ -3679,7 +3679,7 @@ CODE_239E75:        6B            RTL
 CODE_239E76:        AD 34 10      LDA $1034                 
 CODE_239E79:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_239E7D:     dw CODE_239E8F
+PNTR_239E7D:     dw CODE_239E8F
                     dw CODE_239E99
                     dw CODE_239EC4
                     dw CODE_239EF0
@@ -4396,7 +4396,7 @@ CODE_23A48A:        A5 0C         LDA $0C
 CODE_23A48C:        C9 03         CMP #$03                  
 CODE_23A48E:        B0 0E         BCS CODE_23A49E                   
 CODE_23A490:        AA            TAX                       
-CODE_23A491:        BF 51 A4 23   LDA DATA_23A451,x             
+CODE_23A491:        BF 51 A4 23   LDA.l DATA_23A451,x             
 CODE_23A495:        22 34 F6 20   JSL CODE_20F634           
 CODE_23A499:        A9 29         LDA #$29                  
 CODE_23A49B:        8D 03 12      STA $1203                 
@@ -4490,7 +4490,7 @@ CODE_23A57F:        CA            DEX
 CODE_23A580:        8A            TXA                       
 CODE_23A581:        22 3A FB 20   JSL CODE_20FB3A           
 
-POINTER_23A585:     dl CODE_23A5FE
+PNTR_23A585:     dl CODE_23A5FE
                     dl CODE_23A603
                     dl CODE_23A608
                     dl CODE_23A920
@@ -4505,7 +4505,7 @@ DATA_23A594:        db $00,$00,$00,$00,$00,$00,$00,$00
                     db $00,$00,$00,$00,$00,$00,$00,$00
                     db $00
     
-POINTER_23A5CD:     dl CODE_23A6C1
+PNTR_23A5CD:     dl CODE_23A6C1
                     dl CODE_23A6C1
                     dl CODE_23A6C1
                     dl CODE_23A728
@@ -4523,7 +4523,7 @@ CODE_23A5EE:        6D 06 07      ADC $0706
 CODE_23A5F1:        AA            TAX                       
 CODE_23A5F2:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_23A5F6:     dw CODE_23A635
+PNTR_23A5F6:     dw CODE_23A635
                     dw CODE_23A63A
                     dw CODE_23A658
                     dw CODE_23A660
@@ -6414,7 +6414,7 @@ CODE_23B456:        E9 A0 01      SBC #$01A0
 CODE_23B459:        85 D8         STA $D8                   
 CODE_23B45B:        E2 20         SEP #$20                  
 CODE_23B45D:        7A            PLY                       
-CODE_23B45E:        BF 9E B4 23   LDA DATA_23B49E,x             
+CODE_23B45E:        BF 9E B4 23   LDA.l DATA_23B49E,x             
 CODE_23B462:        97 D8         STA [$D8],y               
 CODE_23B464:        A5 D9         LDA $D9                   
 CODE_23B466:        18            CLC                       
@@ -8062,7 +8062,7 @@ CODE_23C136:        A5 13         LDA $13
 CODE_23C138:        8D 42 05      STA $0542                 
 CODE_23C13B:        60            RTS                       
 
-POINTER_23C13C:     dw CODE_23C173
+PNTR_23C13C:     dw CODE_23C173
                     dw CODE_23C167
                     dw CODE_23C174
                     dw CODE_23C17B
@@ -8077,9 +8077,9 @@ CODE_23C14E:        AB            PLB
 CODE_23C14F:        AD 45 05      LDA $0545                 
 CODE_23C152:        0A            ASL A                     
 CODE_23C153:        A8            TAY                       
-CODE_23C154:        B9 3C C1      LDA POINTER_23C13C,y               
+CODE_23C154:        B9 3C C1      LDA PNTR_23C13C,y               
 CODE_23C157:        85 00         STA $00                   
-CODE_23C159:        B9 3D C1      LDA POINTER_23C13C+1,y               
+CODE_23C159:        B9 3D C1      LDA PNTR_23C13C+1,y               
 CODE_23C15C:        85 01         STA $01                   
 CODE_23C15E:        A9 00         LDA #$00                  
 CODE_23C160:        8D 45 05      STA $0545                 
@@ -8466,7 +8466,7 @@ CODE_23C48D:        98            TYA
 CODE_23C48E:        29 FF 00      AND #$00FF                
 CODE_23C491:        0A            ASL A                     
 CODE_23C492:        AA            TAX                       
-CODE_23C493:        BF 51 C4 23   LDA DATA_23C451,x             
+CODE_23C493:        BF 51 C4 23   LDA.l DATA_23C451,x             
 CODE_23C497:        8B            PHB                       
 CODE_23C498:        AA            TAX                       
 CODE_23C499:        A0 E0 14      LDY #$14E0                
@@ -8885,15 +8885,15 @@ CODE_23C801:        AA            TAX
 CODE_23C802:        8B            PHB                       
 CODE_23C803:        4B            PHK                       
 CODE_23C804:        AB            PLB                       
-CODE_23C805:        BF 16 C8 23   LDA POINTER_23C816,x             
+CODE_23C805:        BF 16 C8 23   LDA.l PNTR_23C816,x             
 CODE_23C809:        85 00         STA $00                   
-CODE_23C80B:        BF 17 C8 23   LDA POINTER_23C816+1,x             
+CODE_23C80B:        BF 17 C8 23   LDA.l PNTR_23C816+1,x             
 CODE_23C80F:        85 01         STA $01                   
 CODE_23C811:        AB            PLB                       
 CODE_23C812:        FA            PLX                       
 CODE_23C813:        6C 00 00      JMP ($0000)               
 
-POINTER_23C816:     dw CODE_23C834
+PNTR_23C816:     dw CODE_23C834
                     dw CODE_23C85F
                     dw CODE_23C86A
                     dw CODE_23C884
@@ -9132,7 +9132,7 @@ CODE_23C9DB:        F0 0D         BEQ CODE_23C9EA
 CODE_23C9DD:        EE 74 05      INC $0574                 
 CODE_23C9E0:        A0 0A         LDY #$0A                  
 CODE_23C9E2:        24 17         BIT $17                   
-CODE_23C9E4:        50 09         BVC $09                   
+CODE_23C9E4:        50 09         BVC CODE_23C9EF                   
 CODE_23C9E6:        A0 01         LDY #$01                  
 CODE_23C9E8:        D0 05         BNE CODE_23C9EF           
 CODE_23C9EA:        AC B6 06      LDY $06B6                 
@@ -9143,7 +9143,7 @@ CODE_23C9F3:        4C 17 CA      JMP CODE_23CA17
 
 CODE_23C9F6:        A0 18         LDY #$18                  
 CODE_23C9F8:        24 17         BIT $17                   
-CODE_23C9FA:        50 1B         BVC $1B                   
+CODE_23C9FA:        50 1B         BVC CODE_23CA17                   
 CODE_23C9FC:        A5 A6         LDA $A6                   
 CODE_23C9FE:        0D 45 05      ORA $0545                 
 CODE_23CA01:        D0 09         BNE CODE_23CA0C           
@@ -9175,7 +9175,7 @@ CODE_23CA2F:        0A            ASL A
 CODE_23CA30:        0A            ASL A                     
 CODE_23CA31:        A8            TAY                       
 CODE_23CA32:        24 17         BIT $17                   
-CODE_23CA34:        50 04         BVC $04                   
+CODE_23CA34:        50 04         BVC CODE_23CA3A                   
 CODE_23CA36:        C8            INY                       
 CODE_23CA37:        C8            INY                       
 CODE_23CA38:        C8            INY                       
@@ -9709,7 +9709,7 @@ CODE_23CE63:        29 04         AND #$04
 CODE_23CE65:        A8            TAY                       
 CODE_23CE66:        F0 2E         BEQ CODE_23CE96           
 CODE_23CE68:        24 18         BIT $18                   
-CODE_23CE6A:        50 2A         BVC $2A                   
+CODE_23CE6A:        50 2A         BVC CODE_23CE96                   
 CODE_23CE6C:        AD 7A 05      LDA $057A                 
 CODE_23CE6F:        D0 25         BNE CODE_23CE96           
 CODE_23CE71:        20 C4 CE      JSR CODE_23CEC4           
@@ -9847,7 +9847,7 @@ CODE_23CF74:        A5 17         LDA $17
 CODE_23CF76:        29 04         AND #$04                  
 CODE_23CF78:        D0 3A         BNE CODE_23CFB4           
 CODE_23CF7A:        24 18         BIT $18                   
-CODE_23CF7C:        50 0F         BVC $0F                   
+CODE_23CF7C:        50 0F         BVC CODE_23CF8D                   
 CODE_23CF7E:        AD 17 05      LDA $0517                 
 CODE_23CF81:        D0 0A         BNE CODE_23CF8D           
 CODE_23CF83:        A9 12         LDA #$12                  
@@ -10522,7 +10522,7 @@ CODE_23D4D0:        A9 32         LDA #$32
 CODE_23D4D2:        DD 03 06      CMP $0603,x               
 CODE_23D4D5:        D0 25         BNE CODE_23D4FC           
 CODE_23D4D7:        24 18         BIT $18                   
-CODE_23D4D9:        50 21         BVC $21                   
+CODE_23D4D9:        50 21         BVC CODE_23D4FC                   
 CODE_23D4DB:        E0 03         CPX #$03                  
 CODE_23D4DD:        F0 1D         BEQ CODE_23D4FC           
 CODE_23D4DF:        AD 64 05      LDA $0564                 
@@ -10710,14 +10710,14 @@ CODE_23D651:        A8            TAY
 CODE_23D652:        8B            PHB                       
 CODE_23D653:        4B            PHK                       
 CODE_23D654:        AB            PLB                       
-CODE_23D655:        B9 63 D6      LDA POINTER_23D663,y               
+CODE_23D655:        B9 63 D6      LDA PNTR_23D663,y               
 CODE_23D658:        85 00         STA $00                   
-CODE_23D65A:        B9 64 D6      LDA POINTER_23D663+1,y               
+CODE_23D65A:        B9 64 D6      LDA PNTR_23D663+1,y               
 CODE_23D65D:        85 01         STA $01                   
 CODE_23D65F:        AB            PLB                       
 CODE_23D660:        6C 00 00      JMP ($0000)               
 
-POINTER_23D663:     dw CODE_23D67B
+PNTR_23D663:     dw CODE_23D67B
                     dw CODE_23D67E
                     dw CODE_23D68C
                     dw CODE_23D69A
@@ -11324,7 +11324,7 @@ CODE_23DB1E:        A0 00         LDY #$00
 CODE_23DB20:        C9 B5         CMP #$B5                  
 CODE_23DB22:        F0 0A         BEQ CODE_23DB2E           
 CODE_23DB24:        24 0F         BIT $0F                   
-CODE_23DB26:        50 29         BVC $29                   
+CODE_23DB26:        50 29         BVC CODE_23DB51                   
 CODE_23DB28:        A0 03         LDY #$03                  
 CODE_23DB2A:        C9 BF         CMP #$BF                  
 CODE_23DB2C:        D0 23         BNE CODE_23DB51           
@@ -12189,7 +12189,7 @@ CODE_23E1E5:        6B            RTL
 CODE_23E1E6:        AD 75 00      LDA $0075                 
 CODE_23E1E9:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_23E1ED:     dw CODE_23E1FD
+PNTR_23E1ED:     dw CODE_23E1FD
                     dw CODE_23E2AB
 
 DATA_23E1F1:        db $00,$01,$02,$00,$03,$04,$05,$00
@@ -12211,12 +12211,12 @@ CODE_23E217:        09 91         ORA #$91
 CODE_23E219:        8D 2B 19      STA $192B                 
 CODE_23E21C:        EE 75 00      INC $0075                 
 CODE_23E21F:        AE 26 1F      LDX $1F26                 
-CODE_23E222:        BF F1 E1 23   LDA DATA_23E1F1,x             
+CODE_23E222:        BF F1 E1 23   LDA.l DATA_23E1F1,x             
 CODE_23E226:        8D 9A 19      STA $199A                 
 CODE_23E229:        8A            TXA                       
 CODE_23E22A:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_23E22E:     dw CODE_23E24B
+PNTR_23E22E:     dw CODE_23E24B
                     dw CODE_23E24B
                     dw CODE_23E24B
                     dw CODE_23E28E
@@ -12285,7 +12285,7 @@ CODE_23E2AE:        20 00 E0      JSR CODE_23E000
 CODE_23E2B1:        AD 26 1F      LDA $1F26                 
 CODE_23E2B4:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_23E2B8:     dw CODE_23E2D0
+PNTR_23E2B8:     dw CODE_23E2D0
                     dw CODE_23E2D0
                     dw CODE_23E2D0
                     dw CODE_23E2FA
@@ -13619,7 +13619,7 @@ CODE_23EDC3:        0A            ASL A
 CODE_23EDC4:        6D 9A 19      ADC $199A                 
 CODE_23EDC7:        6D CA 18      ADC $18CA                 
 CODE_23EDCA:        AA            TAX                       
-CODE_23EDCB:        BF E6 EC 23   LDA DATA_23ECE6,x             
+CODE_23EDCB:        BF E6 EC 23   LDA.l DATA_23ECE6,x             
 CODE_23EDCF:        FA            PLX                       
 CODE_23EDD0:        22 1F FB 20   JSL CODE_20FB1F           
 
@@ -13712,7 +13712,7 @@ CODE_23EE87:        BD 02 18      LDA $1802,x
 CODE_23EE8A:        F0 EA         BEQ CODE_23EE76           
 CODE_23EE8C:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_23EE90:     dw CODE_23EE76
+PNTR_23EE90:     dw CODE_23EE76
                     dw CODE_23EE98
                     dw CODE_23F605
                     dw CODE_23F69D
@@ -13750,7 +13750,7 @@ CODE_23EEE0:        9D 62 19      STA $1962,x
 CODE_23EEE3:        BD BB 18      LDA $18BB,x               
 CODE_23EEE6:        22 1F FB 20   JSL CODE_20FB1F           
 
-POINTER_23EEEA:     dw CODE_23F129
+PNTR_23EEEA:     dw CODE_23F129
                     dw CODE_23F074
                     dw CODE_23F129
                     dw CODE_23F08E

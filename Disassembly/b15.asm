@@ -140,7 +140,7 @@ CODE_15812F:        8D 05 02      STA $0205
 CODE_158132:        8D 0B 02      STA $020B                 
 CODE_158135:        A9 40         LDA #$40                  
 CODE_158137:        8D 04 02      STA $0204                 
-CODE_15813A:        B9 3C 9B      LDA DATA_119B3C,y               
+CODE_15813A:        B9 3C 9B      LDA.w DATA_119B3C,y               
 CODE_15813D:        8D 30 07      STA $0730                 
 CODE_158140:        60            RTS
                        
@@ -251,9 +251,9 @@ CODE_158236:        84 0F         STY $0F
 CODE_158238:        BD 25 07      LDA $0725,x               
 CODE_15823B:        29 0F         AND #$0F                  
 CODE_15823D:        A8            TAY                       
-CODE_15823E:        B9 1B AB      LDA DATA_11AB1B,y               
+CODE_15823E:        B9 1B AB      LDA.w DATA_11AB1B,y               
 CODE_158241:        8D 3F 07      STA $073F                 
-CODE_158244:        B9 25 AB      LDA DATA_11AB25,y               
+CODE_158244:        B9 25 AB      LDA.w DATA_11AB25,y               
 CODE_158247:        8D 40 07      STA $0740                 
 CODE_15824A:        A9 7F         LDA #$7F                  
 CODE_15824C:        8D 41 07      STA $0741                 
@@ -314,7 +314,7 @@ CODE_1582C3:        B7 C4         LDA [$C4],y
 CODE_1582C5:        29 FF 00      AND #$00FF                
 CODE_1582C8:        C9 FF 00      CMP #$00FF                
 CODE_1582CB:        D0 10         BNE CODE_1582DD           
-CODE_1582CD:        AF 4F 93 15   LDA DATA_15934F               
+CODE_1582CD:        AF 4F 93 15   LDA.l DATA_15934F               
 CODE_1582D1:        85 00         STA $00                   
 CODE_1582D3:        A9 15 00      LDA #$0015                
 CODE_1582D6:        85 02         STA $02                   
@@ -462,10 +462,10 @@ CODE_1583FD:        AA            TAX                      ;  |
 CODE_1583FE:        BF 6B 91 15   LDA.l DATA_15916B,x      ;  | Load which set of Layer 3 Map16 tiles to use (the cloud tiles or the light beams of the shining door) 
 CODE_158402:        0A            ASL A                    ;  | Multiply by 2.
 CODE_158403:        AA            TAX                      ;  |
-CODE_158404:        BF 33 92 15   LDA PNTR_159233,x        ;  | Get low byte of Map16 table.   
+CODE_158404:        BF 33 92 15   LDA.l PNTR_159233,x        ;  | Get low byte of Map16 table.   
 CODE_158408:        8D 44 07      STA $0744                ;  |
 CODE_15840B:        E8            INX                      ;  |
-CODE_15840C:        BF 33 92 15   LDA PNTR_159233,x        ;  | Get high byte of Map16 table.   
+CODE_15840C:        BF 33 92 15   LDA.l PNTR_159233,x        ;  | Get high byte of Map16 table.   
 CODE_158410:        8D 45 07      STA $0745                ;  |
 CODE_158413:        A9 15         LDA #$15                 ;  | Bank number = $15.
 CODE_158415:        8D 46 07      STA $0746                ; /
@@ -762,9 +762,9 @@ CODE_1586F1:        DA            PHX
 CODE_1586F2:        BD 25 07      LDA $0725,x               
 CODE_1586F5:        29 0F         AND #$0F                  
 CODE_1586F7:        A8            TAY                       
-CODE_1586F8:        B9 1B AB      LDA DATA_11AB1B,y               
+CODE_1586F8:        B9 1B AB      LDA.w DATA_11AB1B,y               
 CODE_1586FB:        8D 3F 07      STA $073F                 
-CODE_1586FE:        B9 25 AB      LDA DATA_11AB25,y               
+CODE_1586FE:        B9 25 AB      LDA.w DATA_11AB25,y               
 CODE_158701:        8D 40 07      STA $0740                 
 CODE_158704:        A9 7F         LDA #$7F                  
 CODE_158706:        8D 41 07      STA $0741                 
@@ -855,7 +855,7 @@ CODE_1587BF:        B7 C4         LDA [$C4],y               ; \ Check if tile in
 CODE_1587C1:        29 FF 00      AND #$00FF                ;  |
 CODE_1587C4:        C9 FF 00      CMP #$00FF                ;  |
 CODE_1587C7:        D0 10         BNE CODE_1587D9           ; / If not, branch.
-CODE_1587C9:        AF 4F 93 15   LDA DATA_15934F           ; \ Load value for empty tile.
+CODE_1587C9:        AF 4F 93 15   LDA.l DATA_15934F           ; \ Load value for empty tile.
 CODE_1587CD:        85 00         STA $00                   ;  | ($159351 is empty tile)
 CODE_1587CF:        A9 15 00      LDA #$0015                ;  |
 CODE_1587D2:        85 02         STA $02                   ; /
@@ -1454,7 +1454,7 @@ CODE_1594EB:        6B            RTL
 CODE_1594EC:        8C 13 07      STY $0713                 
 CODE_1594EF:        A6 E9         LDX $E9                   
 CODE_1594F1:        AC 34 05      LDY $0534                 
-CODE_1594F4:        B9 11 AB      LDA DATA_11AB11,y               
+CODE_1594F4:        B9 11 AB      LDA.w DATA_11AB11,y               
 CODE_1594F7:        18            CLC                       
 CODE_1594F8:        7D FB AA      ADC.w DATA_11AAFB,x               
 CODE_1594FB:        85 02         STA $02                   
@@ -1476,10 +1476,10 @@ CODE_159519:        EE 56 07      INC $0756
 CODE_15951C:        AD 43 05      LDA $0543                 
 CODE_15951F:        0A            ASL A                     
 CODE_159520:        AA            TAX                       
-CODE_159521:        BF 0E A9 15   LDA PNTR_15A90E,x             
+CODE_159521:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
 CODE_159525:        85 C4         STA $C4                   
 CODE_159527:        E8            INX                       
-CODE_159528:        BF 0E A9 15   LDA PNTR_15A90E,x             
+CODE_159528:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
 CODE_15952C:        85 C5         STA $C5                   
 CODE_15952E:        A9 15         LDA #$15                  
 CODE_159530:        85 C6         STA $C6                   
@@ -1561,10 +1561,10 @@ CODE_1595D3:        8D 17 07      STA $0717
 CODE_1595D6:        AD 43 05      LDA $0543                 
 CODE_1595D9:        0A            ASL A                     
 CODE_1595DA:        AA            TAX                       
-CODE_1595DB:        BF 0E A9 15   LDA PNTR_15A90E,x             
+CODE_1595DB:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
 CODE_1595DF:        85 C4         STA $C4                   
 CODE_1595E1:        E8            INX                       
-CODE_1595E2:        BF 0E A9 15   LDA PNTR_15A90E,x             
+CODE_1595E2:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
 CODE_1595E6:        85 C5         STA $C5                   
 CODE_1595E8:        AD 56 07      LDA $0756                 
 CODE_1595EB:        29 03         AND #$03                  
@@ -1666,10 +1666,10 @@ CODE_15969B:        82 0F 01      BRL CODE_1597AD
 CODE_15969E:        29 1F         AND #$1F                  
 CODE_1596A0:        0A            ASL A                     
 CODE_1596A1:        AA            TAX                       
-CODE_1596A2:        BF 0E A9 15   LDA PNTR_15A90E,x             
+CODE_1596A2:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
 CODE_1596A6:        85 C4         STA $C4                   
 CODE_1596A8:        E8            INX                       
-CODE_1596A9:        BF 0E A9 15   LDA PNTR_15A90E,x             
+CODE_1596A9:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
 CODE_1596AD:        85 C5         STA $C5                   
 CODE_1596AF:        A9 15         LDA #$15                  
 CODE_1596B1:        85 C6         STA $C6                   
@@ -1705,10 +1705,10 @@ CODE_1596EA:        8D 17 07      STA $0717
 CODE_1596ED:        AD 43 05      LDA $0543                 
 CODE_1596F0:        0A            ASL A                     
 CODE_1596F1:        AA            TAX                       
-CODE_1596F2:        BF 0E A9 15   LDA PNTR_15A90E,x             
+CODE_1596F2:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
 CODE_1596F6:        85 C4         STA $C4                   
 CODE_1596F8:        E8            INX                       
-CODE_1596F9:        BF 0E A9 15   LDA PNTR_15A90E,x             
+CODE_1596F9:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
 CODE_1596FD:        85 C5         STA $C5                   
 CODE_1596FF:        A9 15         LDA #$15                  
 CODE_159701:        85 C6         STA $C6                   
@@ -1998,10 +1998,10 @@ CODE_15993D:        60            RTS
 CODE_15993E:        AD 33 05      LDA $0533                 
 CODE_159941:        0A            ASL A                     
 CODE_159942:        AA            TAX                       
-CODE_159943:        BF F8 B3 15   LDA PNTR_15B3F8,x             
+CODE_159943:        BF F8 B3 15   LDA.l PNTR_15B3F8,x             
 CODE_159947:        85 01         STA $01                   
 CODE_159949:        E8            INX                       
-CODE_15994A:        BF F8 B3 15   LDA PNTR_15B3F8,x             
+CODE_15994A:        BF F8 B3 15   LDA.l PNTR_15B3F8,x             
 CODE_15994E:        85 02         STA $02                   
 CODE_159950:        A9 15         LDA #$15                  
 CODE_159952:        85 03         STA $03                   
@@ -2050,10 +2050,10 @@ CODE_1599A7:        9C 64 07      STZ $0764
 CODE_1599AA:        AD 33 05      LDA $0533                 
 CODE_1599AD:        0A            ASL A                     
 CODE_1599AE:        AA            TAX                       
-CODE_1599AF:        BF A8 B3 15   LDA PNTR_15B3A8,x             
+CODE_1599AF:        BF A8 B3 15   LDA.l PNTR_15B3A8,x             
 CODE_1599B3:        85 01         STA $01                   
 CODE_1599B5:        E8            INX                       
-CODE_1599B6:        BF A8 B3 15   LDA PNTR_15B3A8,x             
+CODE_1599B6:        BF A8 B3 15   LDA.l PNTR_15B3A8,x             
 CODE_1599BA:        85 02         STA $02                   
 CODE_1599BC:        A9 15         LDA #$15                  
 CODE_1599BE:        85 03         STA $03                   
@@ -2106,10 +2106,10 @@ CODE_159A16:        80 03         BRA CODE_159A1B
 CODE_159A18:        AD 43 05      LDA $0543                 
 CODE_159A1B:        0A            ASL A                     
 CODE_159A1C:        AA            TAX                       
-CODE_159A1D:        BF 06 B1 15   LDA PNTR_15B106,x             
+CODE_159A1D:        BF 06 B1 15   LDA.l PNTR_15B106,x             
 CODE_159A21:        85 C4         STA $C4                   
 CODE_159A23:        E8            INX                       
-CODE_159A24:        BF 06 B1 15   LDA PNTR_15B106,x             
+CODE_159A24:        BF 06 B1 15   LDA.l PNTR_15B106,x             
 CODE_159A28:        85 C5         STA $C5                   
 CODE_159A2A:        A9 15         LDA #$15                  
 CODE_159A2C:        85 C6         STA $C6                   
@@ -2237,10 +2237,10 @@ CODE_159B0F:        A0 00         LDY #$00
 CODE_159B11:        AD 6B 07      LDA $076B                 
 CODE_159B14:        0A            ASL A                     
 CODE_159B15:        AA            TAX                       
-CODE_159B16:        BF 40 C4 15   LDA PNTR_15C440,x             
+CODE_159B16:        BF 40 C4 15   LDA.l PNTR_15C440,x             
 CODE_159B1A:        85 05         STA $05                   
 CODE_159B1C:        E8            INX                       
-CODE_159B1D:        BF 40 C4 15   LDA PNTR_15C440,x             
+CODE_159B1D:        BF 40 C4 15   LDA.l PNTR_15C440,x             
 CODE_159B21:        85 06         STA $06                   
 CODE_159B23:        A9 15         LDA #$15                  
 CODE_159B25:        85 07         STA $07                   
@@ -2262,10 +2262,10 @@ CODE_159B42:        6B            RTL
 
 CODE_159B43:        0A            ASL A                     
 CODE_159B44:        AA            TAX                       
-CODE_159B45:        BF 40 C1 15   LDA PNTR_15C140,x             
+CODE_159B45:        BF 40 C1 15   LDA.l PNTR_15C140,x             
 CODE_159B49:        85 05         STA $05                   
 CODE_159B4B:        E8            INX                       
-CODE_159B4C:        BF 40 C1 15   LDA PNTR_15C140,x             
+CODE_159B4C:        BF 40 C1 15   LDA.l PNTR_15C140,x             
 CODE_159B50:        85 06         STA $06                   
 CODE_159B52:        A9 15         LDA #$15                  
 CODE_159B54:        85 07         STA $07                   
@@ -2386,7 +2386,7 @@ CODE_159C31:        F0 04         BEQ CODE_159C37
 CODE_159C33:        A0 00         LDY #$00                  
 CODE_159C35:        80 03         BRA CODE_159C3A           
 CODE_159C37:        AC 34 05      LDY $0534                 
-CODE_159C3A:        B9 11 AB      LDA DATA_11AB11,y               
+CODE_159C3A:        B9 11 AB      LDA.w DATA_11AB11,y               
 CODE_159C3D:        18            CLC                       
 CODE_159C3E:        7D FB AA      ADC.w DATA_11AAFB,x               
 CODE_159C41:        85 C5         STA $C5                   
@@ -2541,7 +2541,7 @@ CODE_159D98:        AD 16 07      LDA $0716
 CODE_159D9B:        38            SEC                       
 CODE_159D9C:        E9 5C         SBC #$5C                  
 CODE_159D9E:        A2 17         LDX #$17                  
-CODE_159DA0:        DF 1B 9D 15   CMP DATA_159D1B,x             
+CODE_159DA0:        DF 1B 9D 15   CMP.l DATA_159D1B,x             
 CODE_159DA4:        F0 03         BEQ CODE_159DA9           
 CODE_159DA6:        CA            DEX                       
 CODE_159DA7:        10 F7         BPL CODE_159DA0           
@@ -2626,7 +2626,7 @@ CODE_159E47:        6B            RTL
 
 CODE_159E48:        8C F5 02      STY $02F5                 
 CODE_159E4B:        AC 34 05      LDY $0534                 
-CODE_159E4E:        B9 11 AB      LDA DATA_11AB11,y               
+CODE_159E4E:        B9 11 AB      LDA.w DATA_11AB11,y               
 CODE_159E51:        18            CLC                       
 CODE_159E52:        7D FB AA      ADC.w DATA_11AAFB,x               
 CODE_159E55:        85 02         STA $02                   
@@ -2646,10 +2646,10 @@ CODE_159E72:        C9 FF         CMP #$FF
 CODE_159E74:        F0 26         BEQ CODE_159E9C           
 CODE_159E76:        0A            ASL A                     
 CODE_159E77:        AA            TAX                       
-CODE_159E78:        BF 66 C4 15   LDA PNTR_15C466,x             
+CODE_159E78:        BF 66 C4 15   LDA.l PNTR_15C466,x             
 CODE_159E7C:        85 C4         STA $C4                   
 CODE_159E7E:        E8            INX                       
-CODE_159E7F:        BF 66 C4 15   LDA PNTR_15C466,x             
+CODE_159E7F:        BF 66 C4 15   LDA.l PNTR_15C466,x             
 CODE_159E83:        85 C5         STA $C5                   
 CODE_159E85:        A9 15         LDA #$15                  
 CODE_159E87:        85 C6         STA $C6                   
@@ -2704,13 +2704,13 @@ CODE_159EDC:        6B            RTL
 
 CODE_159EDD:        64 0F         STZ $0F                   
 CODE_159EDF:        A2 00         LDX #$00                  
-CODE_159EE1:        BF 25 C6 15   LDA PNTR_15C625,x             
+CODE_159EE1:        BF 25 C6 15   LDA.l PNTR_15C625,x             
 CODE_159EE5:        85 04         STA $04                   
 CODE_159EE7:        E8            INX                       
-CODE_159EE8:        BF 25 C6 15   LDA PNTR_15C625,x             
+CODE_159EE8:        BF 25 C6 15   LDA.l PNTR_15C625,x             
 CODE_159EEC:        85 05         STA $05                   
 CODE_159EEE:        E8            INX                       
-CODE_159EEF:        BF 25 C6 15   LDA PNTR_15C625,x             
+CODE_159EEF:        BF 25 C6 15   LDA.l PNTR_15C625,x             
 CODE_159EF3:        85 06         STA $06                   
 CODE_159EF5:        A0 00         LDY #$00                  
 CODE_159EF7:        B7 04         LDA [$04],y               
@@ -2722,10 +2722,10 @@ CODE_159F01:        C8            INY
 CODE_159F02:        B7 04         LDA [$04],y               
 CODE_159F04:        0A            ASL A                     
 CODE_159F05:        AA            TAX                       
-CODE_159F06:        BF 90 C8 15   LDA PNTR_15C890,x             
+CODE_159F06:        BF 90 C8 15   LDA.l PNTR_15C890,x             
 CODE_159F0A:        85 C4         STA $C4                   
 CODE_159F0C:        E8            INX                       
-CODE_159F0D:        BF 90 C8 15   LDA PNTR_15C890,x             
+CODE_159F0D:        BF 90 C8 15   LDA.l PNTR_15C890,x             
 CODE_159F11:        85 C5         STA $C5                   
 CODE_159F13:        A9 15         LDA #$15                  
 CODE_159F15:        85 C6         STA $C6                   
@@ -2735,10 +2735,10 @@ CODE_159F19:        C8            INY
 CODE_159F1A:        B7 04         LDA [$04],y               
 CODE_159F1C:        0A            ASL A                     
 CODE_159F1D:        AA            TAX                       
-CODE_159F1E:        BF B4 C8 15   LDA PNTR_15C8B4,x             
+CODE_159F1E:        BF B4 C8 15   LDA.l PNTR_15C8B4,x             
 CODE_159F22:        85 C4         STA $C4                   
 CODE_159F24:        E8            INX                       
-CODE_159F25:        BF B4 C8 15   LDA PNTR_15C8B4,x             
+CODE_159F25:        BF B4 C8 15   LDA.l PNTR_15C8B4,x             
 CODE_159F29:        85 C5         STA $C5                   
 CODE_159F2B:        A9 15         LDA #$15                  
 CODE_159F2D:        85 C6         STA $C6                   
@@ -3000,14 +3000,14 @@ DATA_15A114:        db $BB,$BC,$BF,$BA,$BD,$BE,$BB,$BC
 
 CODE_15A123:        A2 05         LDX #$05            
 CODE_15A125:        AD 33 05      LDA $0533
-CODE_15A128:        DF EA A0 15   CMP DATA_15A0EA,x             
+CODE_15A128:        DF EA A0 15   CMP.l DATA_15A0EA,x             
 CODE_15A12C:        F0 04         BEQ CODE_15A132           
 CODE_15A12E:        CA            DEX                       
 CODE_15A12F:        10 F7         BPL CODE_15A128           
 CODE_15A131:        6B            RTL                       
 
 CODE_15A132:        AD 34 05      LDA $0534                 
-CODE_15A135:        DF F0 A0 15   CMP DATA_15A0F0,x             
+CODE_15A135:        DF F0 A0 15   CMP.l DATA_15A0F0,x             
 CODE_15A139:        D0 F6         BNE CODE_15A131           
 CODE_15A13B:        64 E9         STZ $E9                   
 CODE_15A13D:        A6 E9         LDX $E9                   
@@ -3021,7 +3021,7 @@ CODE_15A149:        4A            LSR A
 CODE_15A14A:        4A            LSR A                     
 CODE_15A14B:        AA            TAX                       
 CODE_15A14C:        B7 01         LDA [$01],y               
-CODE_15A14E:        DF F6 A0 15   CMP DATA_15A0F6,x             
+CODE_15A14E:        DF F6 A0 15   CMP.l DATA_15A0F6,x             
 CODE_15A152:        D0 12         BNE CODE_15A166           
 CODE_15A154:        A5 E7         LDA $E7                   
 CODE_15A156:        29 01         AND #$01                  
@@ -3044,7 +3044,7 @@ CODE_15A176:        6B            RTL
 
 CODE_15A177:        8C F5 02      STY $02F5                 
 CODE_15A17A:        AC 34 05      LDY $0534                 
-CODE_15A17D:        B9 11 AB      LDA DATA_11AB11,y               
+CODE_15A17D:        B9 11 AB      LDA.w DATA_11AB11,y               
 CODE_15A180:        18            CLC                       
 CODE_15A181:        7D FB AA      ADC.w DATA_11AAFB,x               
 CODE_15A184:        85 02         STA $02                   
@@ -3139,10 +3139,10 @@ DATA_15A230:        db $BA,$BB,$BC,$BD,$BE,$BF,$70,$F5
 
 CODE_15A244:        A2 97         LDX #$97
 CODE_15A246:        AD 33 05      LDA $0533                 
-CODE_15A249:        DF D8 C8 15   CMP DATA_15C8D8,x             
+CODE_15A249:        DF D8 C8 15   CMP.l DATA_15C8D8,x             
 CODE_15A24D:        D0 49         BNE CODE_15A298           
 CODE_15A24F:        AD 34 05      LDA $0534                 
-CODE_15A252:        DF 70 C9 15   CMP DATA_15C970,x             
+CODE_15A252:        DF 70 C9 15   CMP.l DATA_15C970,x             
 CODE_15A256:        D0 40         BNE CODE_15A298           
 CODE_15A258:        8E 19 07      STX $0719                 
 CODE_15A25B:        C2 30         REP #$30                  
@@ -3159,7 +3159,7 @@ CODE_15A26F:        AE 19 07      LDX $0719
 CODE_15A272:        BF 38 CB 15   LDA.l DATA_15CB38,x             
 CODE_15A276:        8D 1A 07      STA $071A                 
 CODE_15A279:        A2 13         LDX #$13                  
-CODE_15A27B:        DF 30 A2 15   CMP DATA_15A230,x             
+CODE_15A27B:        DF 30 A2 15   CMP.l DATA_15A230,x             
 CODE_15A27F:        F0 12         BEQ CODE_15A293           
 CODE_15A281:        CA            DEX                       
 CODE_15A282:        10 F7         BPL CODE_15A27B           
@@ -5857,7 +5857,7 @@ DATA_15D342:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty data.
 
 PNTR_15E000:        dl $000302                              ; 00 - RAM upload table.
                     dl DATA_15E00F                          ; 01 - Border of the 'Super Mario Bros. 2' screen.
-                    dl DATA_15E250                          ; 02 - 'Super Mario Bros. 2' and '©1988-1992 Nintendo.'
+                    dl DATA_15E250                          ; 02 - 'Super Mario Bros. 2' and 'ï¿½1988-1992 Nintendo.'
                     dl DATA_15E41F                          ; 03 - Border of the Game Over screen.
                     dl DATA_15E660                          ;
      

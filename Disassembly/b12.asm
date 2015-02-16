@@ -17,7 +17,7 @@ CODE_12801B:        AD 28 06      LDA $0628
 CODE_12801E:        C9 02         CMP #$02                  
 CODE_128020:        F0 09         BEQ CODE_12802B           
 CODE_128022:        AC C2 06      LDY $06C2                 ; \ Player changing size.
-CODE_128025:        B9 3F 9B      LDA DATA_119B3F,y         ;  | Y = 0 = shrinking, Y = 1 = growing.
+CODE_128025:        B9 3F 9B      LDA.w DATA_119B3F,y         ;  | Y = 0 = shrinking, Y = 1 = growing.
 CODE_128028:        8D E0 1D      STA $1DE0                 ; / Store sound effect appropiate to the change.
 CODE_12802B:        A9 1E         LDA #$1E                  ; \ Amount of time to flash = #$1E.
 CODE_12802D:        85 82         STA $82                   ; /
@@ -123,7 +123,7 @@ CODE_128110:        B4 A8         LDY $A8,x
 CODE_128112:        C0 02         CPY #$02                  
 CODE_128114:        90 1E         BCC CODE_128134           
 CODE_128116:        D6 A8         DEC $A8,x                 
-CODE_128118:        B9 45 9B      LDA DATA_119B45,y               
+CODE_128118:        B9 45 9B      LDA.w DATA_119B45,y               
 CODE_12811B:        85 C7         STA $C7                   
 CODE_12811D:        B5 51         LDA $51,x                 
 CODE_12811F:        C9 06         CMP #$06                  
@@ -131,7 +131,7 @@ CODE_128121:        F0 06         BEQ CODE_128129
 CODE_128123:        B5 90         LDA $90,x                 
 CODE_128125:        C9 32         CMP #$32                  
 CODE_128127:        D0 05         BNE CODE_12812E           
-CODE_128129:        B9 3F 9B      LDA DATA_119B3F,y               
+CODE_128129:        B9 3F 9B      LDA.w DATA_119B3F,y               
 CODE_12812C:        10 03         BPL CODE_128131           
 CODE_12812E:        B9 46 05      LDA $0546,y               
 CODE_128131:        85 82         STA $82                   
@@ -150,12 +150,12 @@ CODE_128141:        A8            TAY                       ;  | That into Y for
 CODE_128142:        C0 02         CPY #$02                  ;  | If going upwards, go to an extra subroutine.
 CODE_128144:        D0 03         BNE CODE_128149           ;  | (Don't branch.)
 CODE_128146:        20 83 81      JSR CODE_128183           ;  | Flip direction every 8 frames.
-CODE_128149:        B9 F1 CB      LDA DATA_11CBF1,y         ;  | Get appropiate Y speed in for climbing.     
+CODE_128149:        B9 F1 CB      LDA.w DATA_11CBF1,y         ;  | Get appropiate Y speed in for climbing.     
 CODE_12814C:        85 46         STA $46                   ; /
 CODE_12814E:        A5 F6         LDA $F6                   ; \ Now do the same horizontally...
 CODE_128150:        29 03         AND #$03                  ;  | (left-right)
 CODE_128152:        A8            TAY                       ;  | Into Y index to get the value for the X speeds.
-CODE_128153:        B9 4D 9B      LDA DATA_119B4D,y         ;  | <- here
+CODE_128153:        B9 4D 9B      LDA.w DATA_119B4D,y         ;  | <- here
 CODE_128156:        85 3C         STA $3C                   ; /
 CODE_128158:        A5 28         LDA $28                   
 CODE_12815A:        18            CLC                       
@@ -193,7 +193,7 @@ CODE_128194:        60            RTS                       ; Return.
 CODE_128195:        22 00 F9 13   JSL CODE_13F900           ; Prepare Map16 tile being touched by player.
 CODE_128199:        A5 00         LDA $00                   ; \ Check if the tile that is being touched is a 'climbing tile'...
 CODE_12819B:        A0 0B         LDY #$0B                  ;  | vines, ladders...
-CODE_12819D:        D9 50 9B      CMP DATA_119B50,y         ;  |
+CODE_12819D:        D9 50 9B      CMP.w DATA_119B50,y         ;  |
 CODE_1281A0:        F0 04         BEQ CODE_1281A6           ;  | If so, return.
 CODE_1281A2:        88            DEY                       ;  | Otherwise, loop.
 CODE_1281A3:        10 F8         BPL CODE_12819D           ;  | When through index, and no match has been found...
@@ -246,10 +246,10 @@ CODE_1281F4:        2A            ROL A                     ;  | Result: 00-7F =
 CODE_1281F5:        29 01         AND #$01                  ;  |
 CODE_1281F7:        A8            TAY                       ; / Into Y.
 CODE_1281F8:        AD 2A 04      LDA $042A                 
-CODE_1281FB:        D9 5C 9B      CMP DATA_119B5C,y               
+CODE_1281FB:        D9 5C 9B      CMP.w DATA_119B5C,y               
 CODE_1281FE:        D0 11         BNE CODE_128211           
 CODE_128200:        AD 2B 04      LDA $042B                 
-CODE_128203:        D9 5E 9B      CMP DATA_119B5E,y               
+CODE_128203:        D9 5E 9B      CMP.w DATA_119B5E,y               
 CODE_128206:        D0 09         BNE CODE_128211           
 CODE_128208:        EE 27 06      INC $0627                 
 CODE_12820B:        A9 03         LDA #$03                  
@@ -259,7 +259,7 @@ CODE_128210:        60            RTS
 CODE_128211:        AD 2A 04      LDA $042A                 
 CODE_128214:        D0 08         BNE CODE_12821E           
 CODE_128216:        AD 2B 04      LDA $042B                 
-CODE_128219:        D9 60 9B      CMP DATA_119B60,y               
+CODE_128219:        D9 60 9B      CMP.w DATA_119B60,y               
 CODE_12821C:        F0 09         BEQ CODE_128227           
 CODE_12821E:        98            TYA                       
 CODE_12821F:        F0 03         BEQ CODE_128224           
@@ -291,7 +291,7 @@ CODE_12824D:        A5 82         LDA $82
 CODE_12824F:        F0 16         BEQ CODE_128267           
 CODE_128251:        E6 85         INC $85                   
 CODE_128253:        A0 04         LDY #$04                  
-CODE_128255:        D9 62 9B      CMP DATA_119B62,y               
+CODE_128255:        D9 62 9B      CMP.w DATA_119B62,y               
 CODE_128258:        D0 09         BNE CODE_128263           
 CODE_12825A:        AD C2 06      LDA $06C2                 
 CODE_12825D:        49 01         EOR #$01                  
@@ -371,7 +371,7 @@ CODE_1282F1:        25 10         AND $10
 CODE_1282F3:        D0 08         BNE CODE_1282FD           
 CODE_1282F5:        A5 3C         LDA $3C                   
 CODE_1282F7:        18            CLC                       
-CODE_1282F8:        79 67 9B      ADC DATA_119B67,y               
+CODE_1282F8:        79 67 9B      ADC.w DATA_119B67,y               
 CODE_1282FB:        85 3C         STA $3C                   
 CODE_1282FD:        A9 00         LDA #$00                  
 CODE_1282FF:        8D CB 04      STA $04CB                 
@@ -433,7 +433,7 @@ CODE_128372:        4A            LSR A
 CODE_128373:        4A            LSR A                     
 CODE_128374:        29 03         AND #$03                  
 CODE_128376:        A8            TAY                       
-CODE_128377:        B9 69 9B      LDA DATA_119B69,y               
+CODE_128377:        B9 69 9B      LDA.w DATA_119B69,y               
 CODE_12837A:        85 46         STA $46                   
 CODE_12837C:        60            RTS
                        
@@ -462,9 +462,9 @@ CODE_1283A7:        0A            ASL A
 CODE_1283A8:        2A            ROL A                     
 CODE_1283A9:        A8            TAY                       
 CODE_1283AA:        A5 3C         LDA $3C                   
-CODE_1283AC:        79 6D 9B      ADC DATA_119B6D,y               
+CODE_1283AC:        79 6D 9B      ADC.w DATA_119B6D,y               
 CODE_1283AF:        AA            TAX                       
-CODE_1283B0:        59 67 9B      EOR DATA_119B67,y               
+CODE_1283B0:        59 67 9B      EOR.w DATA_119B67,y               
 CODE_1283B3:        30 02         BMI CODE_1283B7           
 CODE_1283B5:        A2 00         LDX #$00                  
 CODE_1283B7:        86 3C         STX $3C                   
@@ -507,7 +507,7 @@ CODE_1283FB:        4A            LSR A
 CODE_1283FC:        4A            LSR A                     
 CODE_1283FD:        4A            LSR A                     
 CODE_1283FE:        A8            TAY                       
-CODE_1283FF:        B9 6F 9B      LDA DATA_119B6F,y               
+CODE_1283FF:        B9 6F 9B      LDA.w DATA_119B6F,y               
 CODE_128402:        85 84         STA $84                   
 CODE_128404:        A9 02         LDA #$02                  
 CODE_128406:        8D 8C 07      STA $078C                 
@@ -520,7 +520,7 @@ CODE_128415:        10 04         BPL CODE_12841B
 CODE_128417:        A9 01         LDA #$01                  
 CODE_128419:        85 9B         STA $9B                   
 CODE_12841B:        A4 9B         LDY $9B                   
-CODE_12841D:        B9 79 9B      LDA DATA_119B79,y               
+CODE_12841D:        B9 79 9B      LDA.w DATA_119B79,y               
 CODE_128420:        85 C7         STA $C7                   
 CODE_128422:        60            RTS
                        
@@ -628,7 +628,7 @@ CODE_1284EC:        C9 08         CMP #$08
 CODE_1284EE:        26 01         ROL $01                   
 CODE_1284F0:        D0 14         BNE CODE_128506           
 CODE_1284F2:        A4 9D         LDY $9D                   
-CODE_1284F4:        B9 88 9B      LDA DATA_119B88,y               
+CODE_1284F4:        B9 88 9B      LDA.w DATA_119B88,y               
 CODE_1284F7:        18            CLC                       
 CODE_1284F8:        75 29         ADC $29,x                 
 CODE_1284FA:        95 29         STA $29,x                 
@@ -639,13 +639,13 @@ CODE_128501:        98            TYA
 CODE_128502:        75 15         ADC $15,x                 
 CODE_128504:        95 15         STA $15,x                 
 CODE_128506:        A4 01         LDY $01                   
-CODE_128508:        B9 84 9B      LDA DATA_119B84,y               
+CODE_128508:        B9 84 9B      LDA.w DATA_119B84,y               
 CODE_12850B:        95 47         STA $47,x                 
 CODE_12850D:        A5 01         LDA $01                   
 CODE_12850F:        0A            ASL A                     
 CODE_128510:        05 9D         ORA $9D                   
 CODE_128512:        A8            TAY                       
-CODE_128513:        B9 7C 9B      LDA DATA_119B7C,y               
+CODE_128513:        B9 7C 9B      LDA.w DATA_119B7C,y               
 CODE_128516:        95 3D         STA $3D,x                 
 CODE_128518:        A9 01         LDA #$01                  
 CODE_12851A:        9D 2F 04      STA $042F,x               
@@ -903,7 +903,7 @@ CODE_128706:        A9 20         LDA #$20                  ; \ How long it take
 CODE_128708:        95 86         STA $86,x                 ; /
 CODE_12870A:        A9 06         LDA #$06                  ; \ Actually dig up the darn sand. Sprite number from table will be #$39 (mushroom block)
 CODE_12870C:        95 51         STA $51,x                 ; /
-CODE_12870E:        B9 9F 9B      LDA DATA_119B9F,y         ; \ Get sprite to spawn from table.
+CODE_12870E:        B9 9F 9B      LDA.w DATA_119B9F,y         ; \ Get sprite to spawn from table.
 CODE_128711:        95 90         STA $90,x                 ; /
 CODE_128713:        C9 36         CMP #$36                  
 CODE_128715:        D0 03         BNE CODE_12871A           
@@ -1072,7 +1072,7 @@ CODE_128854:        AE 28 06      LDX $0628
 CODE_128857:        E0 02         CPX #$02                  
 CODE_128859:        F0 0A         BEQ CODE_128865           
 CODE_12885B:        A0 07         LDY #$07                  
-CODE_12885D:        D9 AE 9B      CMP DATA_119BAE,y               
+CODE_12885D:        D9 AE 9B      CMP.w DATA_119BAE,y               
 CODE_128860:        F0 34         BEQ CODE_128896           
 CODE_128862:        88            DEY                       
 CODE_128863:        10 F8         BPL CODE_12885D           
@@ -1437,10 +1437,10 @@ CODE_128B78:        A4 EB         LDY $EB
 CODE_128B7A:        B9 01 00      LDA $0001,y               
 CODE_128B7D:        85 E9         STA $E9                   
 CODE_128B7F:        A5 02         LDA $02                   
-CODE_128B81:        D9 B7 9B      CMP DATA_119BB7,y               
+CODE_128B81:        D9 B7 9B      CMP.w DATA_119BB7,y               
 CODE_128B84:        B0 05         BCS CODE_128B8B                   
 CODE_128B86:        A5 01         LDA $01                   
-CODE_128B88:        D9 B6 9B      CMP DATA_119BB6,y               
+CODE_128B88:        D9 B6 9B      CMP.w DATA_119BB6,y               
 CODE_128B8B:        60            RTS
                        
 CODE_128B8C:        A6 D8         LDX $D8                   
@@ -1480,16 +1480,16 @@ CODE_128BCC:        60            RTS
 CODE_128BCD:        C9 E8         CMP #$E8                  
 CODE_128BCF:        90 FB         BCC CODE_128BCC           
 CODE_128BD1:        A5 5A         LDA $5A                   
-CODE_128BD3:        19 B8 9B      ORA DATA_119BB8,y               
+CODE_128BD3:        19 B8 9B      ORA.w DATA_119BB8,y               
 CODE_128BD6:        85 5A         STA $5A                   
 CODE_128BD8:        A2 00         LDX #$00                  
 CODE_128BDA:        A4 6E         LDY $6E                   
 CODE_128BDC:        A5 3C         LDA $3C                   
-CODE_128BDE:        59 BA 9B      EOR DATA_119BBA,y               
+CODE_128BDE:        59 BA 9B      EOR.w DATA_119BBA,y               
 CODE_128BE1:        10 02         BPL CODE_128BE5           
 CODE_128BE3:        86 3C         STX $3C                   
 CODE_128BE5:        AD CC 04      LDA $04CC                 
-CODE_128BE8:        59 BA 9B      EOR DATA_119BBA,y               
+CODE_128BE8:        59 BA 9B      EOR.w DATA_119BBA,y               
 CODE_128BEB:        10 03         BPL CODE_128BF0           
 CODE_128BED:        8E CC 04      STX $04CC                 
 CODE_128BF0:        8E 07 04      STX $0407                 
@@ -1538,7 +1538,7 @@ CODE_128C43:        BD 02 03      LDA $0302,x
 CODE_128C46:        80 0E         BRA CODE_128C56           
 
 CODE_128C48:        A0 01         LDY #$01                  
-CODE_128C4A:        B9 BD 9B      LDA DATA_119BBD,y               
+CODE_128C4A:        B9 BD 9B      LDA.w DATA_119BBD,y               
 CODE_128C4D:        18            CLC                       
 CODE_128C4E:        7D 02 03      ADC $0302,x               
 CODE_128C51:        29 0F         AND #$0F                  
@@ -1556,9 +1556,9 @@ CODE_128C6A:        0A            ASL A
 CODE_128C6B:        2A            ROL A                     
 CODE_128C6C:        2A            ROL A                     
 CODE_128C6D:        A8            TAY                       
-CODE_128C6E:        B9 64 AD      LDA DATA_11AD64,y         ; \ Prepare pointer for the Layer 1 tilemap, page 0.
+CODE_128C6E:        B9 64 AD      LDA.w DATA_11AD64,y         ; \ Prepare pointer for the Layer 1 tilemap, page 0.
 CODE_128C71:        85 00         STA $00                   ;  |
-CODE_128C73:        B9 68 AD      LDA DATA_11AD68,y         ;  |
+CODE_128C73:        B9 68 AD      LDA.w DATA_11AD68,y         ;  |
 CODE_128C76:        85 01         STA $01                   ; /
 CODE_128C78:        68            PLA                       
 CODE_128C79:        C2 30         REP #$30                  
@@ -1601,7 +1601,7 @@ CODE_128CBB:        4A            LSR A
 CODE_128CBC:        A8            TAY                       
 CODE_128CBD:        BD 03 03      LDA $0303,x               
 CODE_128CC0:        18            CLC                       
-CODE_128CC1:        79 14 9C      ADC DATA_119C14,y               
+CODE_128CC1:        79 14 9C      ADC.w DATA_119C14,y               
 CODE_128CC4:        9D 03 03      STA $0303,x               
 CODE_128CC7:        90 03         BCC CODE_128CCC           
 CODE_128CC9:        FE 02 03      INC $0302,x               
@@ -1610,7 +1610,7 @@ CODE_128CCD:        69 20         ADC #$20
 CODE_128CCF:        9D 0B 03      STA $030B,x               
 CODE_128CD2:        BD 02 03      LDA $0302,x               
 CODE_128CD5:        18            CLC                       
-CODE_128CD6:        79 11 9C      ADC DATA_119C11,y               
+CODE_128CD6:        79 11 9C      ADC.w DATA_119C11,y               
 CODE_128CD9:        C9 04         CMP #$04                  
 CODE_128CDB:        30 1D         BMI CODE_128CFA           
 CODE_128CDD:        C9 08         CMP #$08                  
@@ -1967,7 +1967,7 @@ CODE_128F80:        22 08 F9 14   JSL CODE_14F908
 CODE_128F84:        A9 01         LDA #$01                  ; \ Load border of the 'Super Mario Bros 2.' intro screen.
 CODE_128F86:        85 11         STA $11                   ;  |
 CODE_128F88:        22 08 F9 14   JSL CODE_14F908           ; /
-CODE_128F8C:        A9 02         LDA #$02                  ; \ Load 'Super Mario Bros. 2' and '©1988-1992 Nintendo.'
+CODE_128F8C:        A9 02         LDA #$02                  ; \ Load 'Super Mario Bros. 2' and 'ï¿½1988-1992 Nintendo.'
 CODE_128F8E:        85 11         STA $11                   ;  |
 CODE_128F90:        22 08 F9 14   JSL CODE_14F908           ; /
 CODE_128F94:        22 4E D8 14   JSL CODE_14D84E           
@@ -2138,9 +2138,9 @@ CODE_1290FC:        A6 18         LDX $18
 CODE_1290FE:        CA            DEX                       
 CODE_1290FF:        A9 15         LDA #$15                  ; \ Bank num = $15.
 CODE_129101:        85 05         STA $05                   ;  |
-CODE_129103:        BF 3F E8 15   LDA PNTR_15E83F,x         ;  | Get address of tables...
+CODE_129103:        BF 3F E8 15   LDA.l PNTR_15E83F,x         ;  | Get address of tables...
 CODE_129107:        85 04         STA $04                   ;  | ...which contain the 'Story' data...
-CODE_129109:        BF 50 E8 15   LDA PNTR_15E850,x         ;  | into [$03]
+CODE_129109:        BF 50 E8 15   LDA.l PNTR_15E850,x         ;  | into [$03]
 CODE_12910D:        85 03         STA $03                   ; /
 CODE_12910F:        A0 00         LDY #$00                  
 CODE_129111:        A2 13         LDX #$13                  
@@ -2423,7 +2423,7 @@ CODE_12936B:        85 4F         STA $4F
 CODE_12936D:        60            RTS
                        
 CODE_12936E:        A4 8E         LDY $8E                   
-CODE_129370:        B9 27 A4      LDA DATA_11A427,y               
+CODE_129370:        B9 27 A4      LDA.w DATA_11A427,y               
 CODE_129373:        85 82         STA $82                   
 CODE_129375:        60            RTS
                        
@@ -2441,7 +2441,7 @@ CODE_12938C:        4C 0B 83      JMP CODE_12830B
 CODE_12938F:        60            RTS
                        
 CODE_129390:        A4 8F         LDY $8F                   
-CODE_129392:        B9 31 A4      LDA DATA_11A431,y               
+CODE_129392:        B9 31 A4      LDA.w DATA_11A431,y               
 CODE_129395:        18            CLC                       
 CODE_129396:        65 46         ADC $46                   
 CODE_129398:        85 46         STA $46                   
@@ -2492,7 +2492,7 @@ CODE_1293ED:        C9 E0         CMP #$E0
 CODE_1293EF:        90 0B         BCC CODE_1293FC           
 CODE_1293F1:        4C 80 98      JMP CODE_129880           
 
-CODE_1293F4:        B9 2B A4      LDA DATA_11A42B,y               
+CODE_1293F4:        B9 2B A4      LDA.w DATA_11A42B,y               
 CODE_1293F7:        18            CLC                       
 CODE_1293F8:        65 32         ADC $32                   
 CODE_1293FA:        85 3B         STA $3B                   
@@ -2833,7 +2833,7 @@ CODE_129691:        10 D9         BPL CODE_12966C
 CODE_129693:        60            RTS
                        
 CODE_129694:        A0 1F         LDY #$1F                  
-CODE_129696:        B9 3E AA      LDA DATA_11AA3E,y               
+CODE_129696:        B9 3E AA      LDA.w DATA_11AA3E,y               
 CODE_129699:        99 10 08      STA $0810,y               
 CODE_12969C:        88            DEY                       
 CODE_12969D:        10 F7         BPL CODE_129696           
@@ -3192,14 +3192,14 @@ CODE_12999D:        9D 65 04      STA $0465,x
 CODE_1299A0:        95 47         STA $47,x                 
 CODE_1299A2:        95 3D         STA $3D,x                 
 CODE_1299A4:        B4 90         LDY $90,x                 
-CODE_1299A6:        B9 45 CC      LDA DATA_11CC45,y               
+CODE_1299A6:        B9 45 CC      LDA.w DATA_11CC45,y               
 CODE_1299A9:        29 7F         AND #$7F                  
 CODE_1299AB:        95 65         STA $65,x                 
-CODE_1299AD:        B9 8C CC      LDA DATA_11CC8C,y               
+CODE_1299AD:        B9 8C CC      LDA.w DATA_11CC8C,y               
 CODE_1299B0:        9D 6E 04      STA $046E,x               
-CODE_1299B3:        B9 1A CD      LDA DATA_11CD1A,y               
+CODE_1299B3:        B9 1A CD      LDA.w DATA_11CD1A,y               
 CODE_1299B6:        9D 89 04      STA $0489,x               
-CODE_1299B9:        B9 D3 CC      LDA DATA_11CCD3,y               
+CODE_1299B9:        B9 D3 CC      LDA.w DATA_11CCD3,y               
 CODE_1299BC:        9D 92 04      STA $0492,x               
 CODE_1299BF:        60            RTS
                        
@@ -3234,7 +3234,7 @@ CODE_1299F0:        A9 00         LDA #$00
 CODE_1299F2:        80 06         BRA CODE_1299FA           
 
 CODE_1299F4:        AC 34 05      LDY $0534                 
-CODE_1299F7:        B9 11 AB      LDA DATA_11AB11,y               
+CODE_1299F7:        B9 11 AB      LDA.w DATA_11AB11,y               
 CODE_1299FA:        18            CLC                       
 CODE_1299FB:        7D FB AA      ADC.w DATA_11AAFB,x               
 CODE_1299FE:        85 02         STA $02                   
@@ -3389,18 +3389,18 @@ CODE_129B38:        8D CA 04      STA $04CA
 CODE_129B3B:        8D E0 04      STA $04E0                 
 CODE_129B3E:        8D B8 04      STA $04B8                 
 CODE_129B41:        A0 1B         LDY #$1B                  
-CODE_129B43:        B9 47 AB      LDA DATA_11AB47,y               
+CODE_129B43:        B9 47 AB      LDA.w DATA_11AB47,y               
 CODE_129B46:        99 00 1F      STA $1F00,y               
 CODE_129B49:        88            DEY                       
 CODE_129B4A:        10 F7         BPL CODE_129B43           
 CODE_129B4C:        A4 8F         LDY $8F                   
-CODE_129B4E:        B9 80 97      LDA DATA_119780,y               
+CODE_129B4E:        B9 80 97      LDA.w DATA_119780,y               
 CODE_129B51:        8D 00 1F      STA $1F00                 
-CODE_129B54:        B9 88 97      LDA DATA_119788,y               
+CODE_129B54:        B9 88 97      LDA.w DATA_119788,y               
 CODE_129B57:        8D 07 1F      STA $1F07                 
-CODE_129B5A:        B9 84 97      LDA DATA_119784,y               
+CODE_129B5A:        B9 84 97      LDA.w DATA_119784,y               
 CODE_129B5D:        8D 0E 1F      STA $1F0E                 
-CODE_129B60:        B9 8C 97      LDA DATA_11978C,y               
+CODE_129B60:        B9 8C 97      LDA.w DATA_11978C,y               
 CODE_129B63:        8D 15 1F      STA $1F15                 
 CODE_129B66:        A9 B6         LDA #$B6                  
 CODE_129B68:        8D 85 05      STA $0585                 
@@ -3554,7 +3554,7 @@ CODE_129C99:        6D 00 04      ADC $0400
 CODE_129C9C:        0A            ASL A                     
 CODE_129C9D:        A8            TAY                       
 CODE_129C9E:        C2 20         REP #$20                  
-CODE_129CA0:        B9 23 CC      LDA DATA_11CC23,y               
+CODE_129CA0:        B9 23 CC      LDA.w DATA_11CC23,y               
 CODE_129CA3:        B4 A8         LDY $A8,x                 
 CODE_129CA5:        F0 14         BEQ CODE_129CBB           
 CODE_129CA7:        AC BE 04      LDY $04BE                 
@@ -3660,11 +3660,11 @@ PNTR_129D75:        dw CODE_129E02
 CODE_129D79:        A4 6E         LDY $6E                   
 CODE_129D7B:        AD C1         LDA $04C1                 
 CODE_129D7E:        18            CLC                       
-CODE_129D7F:        79 8F 97      ADC DATA_11978F,y         
+CODE_129D7F:        79 8F 97      ADC.w DATA_11978F,y         
 CODE_129D82:        29 F0         AND #$F0                  
 CODE_129D84:        85 05         STA $05                   
 CODE_129D86:        AD BF 04      LDA $04BF                 
-CODE_129D89:        79 91 97      ADC DATA_119791,y         
+CODE_129D89:        79 91 97      ADC.w DATA_119791,y         
 CODE_129D8C:        85 06         STA $06                   
 CODE_129D8E:        C9 0A         CMP #$0A                  
 CODE_129D90:        B0 2E         BCS CODE_129DC0           
@@ -3748,11 +3748,11 @@ CODE_129E0E:        49 03         EOR #$03
 CODE_129E10:        A8            TAY                       
 CODE_129E11:        A5 CB         LDA $CB                   
 CODE_129E13:        18            CLC                       
-CODE_129E14:        79 8F 97      ADC DATA_11978F,y               
+CODE_129E14:        79 8F 97      ADC.w DATA_11978F,y               
 CODE_129E17:        29 F0         AND #$F0                  
 CODE_129E19:        85 05         STA $05                   
 CODE_129E1B:        A5 CA         LDA $CA                   
-CODE_129E1D:        79 91 97      ADC DATA_119791,y               
+CODE_129E1D:        79 91 97      ADC.w DATA_119791,y               
 CODE_129E20:        85 06         STA $06                   
 CODE_129E22:        C9 0A         CMP #$0A                  
 CODE_129E24:        B0 9A         BCS CODE_129DC0                   
@@ -3942,14 +3942,14 @@ PNTR_129EEC:        dw CODE_129F96                          ; 00 - Heart
                     dw CODE_12ABCA                          ; 46 - Stopwatch
                        
 CODE_129F7A:        B4 90         LDY $90,x                 
-CODE_129F7C:        B9 45 CC      LDA DATA_11CC45,y         
+CODE_129F7C:        B9 45 CC      LDA.w DATA_11CC45,y         
 CODE_129F7F:        29 7F         AND #$7F                  
 CODE_129F81:        95 65         STA $65,x                 
-CODE_129F83:        B9 8C CC      LDA DATA_11CC8C,y         
+CODE_129F83:        B9 8C CC      LDA.w DATA_11CC8C,y         
 CODE_129F86:        9D 6E 04      STA $046E,x               
-CODE_129F89:        B9 1A CD      LDA DATA_11CD1A,y         
+CODE_129F89:        B9 1A CD      LDA.w DATA_11CD1A,y         
 CODE_129F8C:        9D 89 04      STA $0489,x               
-CODE_129F8F:        B9 D3 CC      LDA DATA_11CCD3,y         
+CODE_129F8F:        B9 D3 CC      LDA.w DATA_11CCD3,y         
 CODE_129F92:        9D 92 04      STA $0492,x               
 CODE_129F95:        60            RTS
                        
@@ -3978,7 +3978,7 @@ CODE_129FCD:        20 DA C1      JSR CODE_12C1DA
 CODE_129FD0:        C8            INY                       
 CODE_129FD1:        98            TYA                       
 CODE_129FD2:        95 6F         STA $6F,x                 
-CODE_129FD4:        B9 B0 97      LDA DATA_1197B0,y               
+CODE_129FD4:        B9 B0 97      LDA.w DATA_1197B0,y               
 CODE_129FD7:        95 3D         STA $3D,x                 
 CODE_129FD9:        BD 6E 04      LDA $046E,x               
 CODE_129FDC:        29 40         AND #$40                  
@@ -3989,7 +3989,7 @@ CODE_129FE2:        60            RTS
 CODE_129FE3:        20 96 9F      JSR CODE_129F96           
 CODE_129FE6:        A4 6E         LDY $6E                   
 CODE_129FE8:        AD C1 04      LDA $04C1                 
-CODE_129FEB:        79 93 97      ADC DATA_119793,y               
+CODE_129FEB:        79 93 97      ADC.w DATA_119793,y               
 CODE_129FEE:        95 29         STA $29,x                 
 CODE_129FF0:        AD BF 04      LDA $04BF                 
 CODE_129FF3:        69 00         ADC #$00                  
@@ -4006,7 +4006,7 @@ CODE_12A005:        4A            LSR A
 CODE_12A006:        4A            LSR A                     
 CODE_12A007:        4A            LSR A                     
 CODE_12A008:        A8            TAY                       
-CODE_12A009:        B9 96 97      LDA DATA_119796,y               
+CODE_12A009:        B9 96 97      LDA.w DATA_119796,y               
 CODE_12A00C:        95 47         STA $47,x                 
 CODE_12A00E:        60            RTS
                        
@@ -4354,11 +4354,11 @@ CODE_12A2E0:        A2 00 00      LDX #$0000
 CODE_12A2E3:        A0 20 00      LDY #$0020                
 CODE_12A2E6:        AD 29 04      LDA $0429                 ; \ Get sprite's original X pos...
 CODE_12A2E9:        18            CLC                       ;  | and add the XDisp to it...
-CODE_12A2EA:        7F B7 A2 12   ADC DATA_12A2B7,x         ;  | per tile.
+CODE_12A2EA:        7F B7 A2 12   ADC.l DATA_12A2B7,x         ;  | per tile.
 CODE_12A2EE:        99 00 08      STA $0800,y               ; /
 CODE_12A2F1:        AD 2C 04      LDA $042C                 ; \ Same goes for Y pos...
 CODE_12A2F4:        18            CLC                       ;  | but then with YDisp instead.
-CODE_12A2F5:        7F BB A2 12   ADC DATA_12A2BB,x         ;  |
+CODE_12A2F5:        7F BB A2 12   ADC.l DATA_12A2BB,x         ;  |
 CODE_12A2F9:        99 01 08      STA $0801,y               ; /
 CODE_12A2FC:        BF B3 A2 12   LDA.l DATA_12A2B3,x         ; \ Transfer tilemap. 
 CODE_12A300:        99 02 08      STA $0802,y               ; /
@@ -4391,20 +4391,20 @@ CODE_12A32C:        60            RTS
                        
 CODE_12A32D:        B5 29         LDA $29,x                 
 CODE_12A32F:        18            CLC                       
-CODE_12A330:        79 B6 97      ADC DATA_1197B6,y               
+CODE_12A330:        79 B6 97      ADC.w DATA_1197B6,y               
 CODE_12A333:        85 0C         STA $0C                   
 CODE_12A335:        B5 15         LDA $15,x                 
-CODE_12A337:        79 BF 97      ADC DATA_1197BF,y               
+CODE_12A337:        79 BF 97      ADC.w DATA_1197BF,y               
 CODE_12A33A:        85 0D         STA $0D                   
 CODE_12A33C:        C9 0B         CMP #$0B                  
 CODE_12A33E:        B0 EC         BCS CODE_12A32C                   
 CODE_12A340:        B5 33         LDA $33,x                 
-CODE_12A342:        79 C8 97      ADC DATA_1197C8,y               
+CODE_12A342:        79 C8 97      ADC.w DATA_1197C8,y               
 CODE_12A345:        29 F0         AND #$F0                  
 CODE_12A347:        85 0E         STA $0E                   
 CODE_12A349:        85 0B         STA $0B                   
 CODE_12A34B:        B5 1F         LDA $1F,x                 
-CODE_12A34D:        79 D1 97      ADC DATA_1197D1,y               
+CODE_12A34D:        79 D1 97      ADC.w DATA_1197D1,y               
 CODE_12A350:        85 0F         STA $0F                   
 CODE_12A352:        C9 0A         CMP #$0A                  
 CODE_12A354:        B0 D6         BCS CODE_12A32C                   
@@ -4450,10 +4450,10 @@ CODE_12A395:        64 09         STZ $09
 CODE_12A397:        C8            INY                       
 CODE_12A398:        A9 10         LDA #$10                  
 CODE_12A39A:        85 07         STA $07                   
-CODE_12A39C:        B9 DA 97      LDA DATA_1197DA,y               
+CODE_12A39C:        B9 DA 97      LDA.w DATA_1197DA,y               
 CODE_12A39F:        85 08         STA $08                   
 CODE_12A3A1:        AC 34 05      LDY $0534                 
-CODE_12A3A4:        B9 11 AB      LDA DATA_11AB11,y               
+CODE_12A3A4:        B9 11 AB      LDA.w DATA_11AB11,y               
 CODE_12A3A7:        18            CLC                       
 CODE_12A3A8:        65 08         ADC $08                   
 CODE_12A3AA:        85 08         STA $08                   
@@ -4581,7 +4581,7 @@ CODE_12A497:        4A            LSR A
 CODE_12A498:        4A            LSR A                     
 CODE_12A499:        4A            LSR A                     
 CODE_12A49A:        A8            TAY                       
-CODE_12A49B:        B9 DC 97      LDA DATA_1197DC,y               
+CODE_12A49B:        B9 DC 97      LDA.w DATA_1197DC,y               
 CODE_12A49E:        20 CC A5      JSR CODE_12A5CC           
 CODE_12A4A1:        BD 9B 04      LDA $049B,x               
 CODE_12A4A4:        F0 DC         BEQ CODE_12A482           
@@ -4647,7 +4647,7 @@ CODE_12A525:        A9 1F         LDA #$1F
 CODE_12A527:        85 01         STA $01                   
 CODE_12A529:        5A            PHY                       
 CODE_12A52A:        AC 34 05      LDY $0534                 
-CODE_12A52D:        B9 11 AB      LDA DATA_11AB11,y               
+CODE_12A52D:        B9 11 AB      LDA.w DATA_11AB11,y               
 CODE_12A530:        18            CLC                       
 CODE_12A531:        65 01         ADC $01                   
 CODE_12A533:        85 01         STA $01                   
@@ -4894,7 +4894,7 @@ CODE_12A71C:        F0 02         BEQ CODE_12A720
 CODE_12A71E:        A0 03         LDY #$03                  
 CODE_12A720:        B5 29         LDA $29,x                 
 CODE_12A722:        18            CLC                       
-CODE_12A723:        79 E4 97      ADC DATA_1197E4,y               
+CODE_12A723:        79 E4 97      ADC.w DATA_1197E4,y               
 CODE_12A726:        85 0E         STA $0E                   
 CODE_12A728:        B5 15         LDA $15,x                 
 CODE_12A72A:        69 00         ADC #$00                  
@@ -4905,7 +4905,7 @@ CODE_12A733:        A5 0F         LDA $0F
 CODE_12A735:        ED BF 04      SBC $04BF                 
 CODE_12A738:        F0 07         BEQ CODE_12A741           
 CODE_12A73A:        A5 ED         LDA $ED                   
-CODE_12A73C:        19 E0 97      ORA DATA_1197E0,y               
+CODE_12A73C:        19 E0 97      ORA.w DATA_1197E0,y               
 CODE_12A73F:        85 ED         STA $ED                   
 CODE_12A741:        88            DEY                       
 CODE_12A742:        10 DC         BPL CODE_12A720           
@@ -5031,7 +5031,7 @@ CODE_12A829:        98            TYA
 CODE_12A82A:        E5 02         SBC $02                   
 CODE_12A82C:        30 1D         BMI CODE_12A84B           
 CODE_12A82E:        B4 90         LDY $90,x                 
-CODE_12A830:        B9 8C CC      LDA DATA_11CC8C,y               
+CODE_12A830:        B9 8C CC      LDA.w DATA_11CC8C,y               
 CODE_12A833:        29 08         AND #$08                  
 CODE_12A835:        D0 14         BNE CODE_12A84B           
 CODE_12A837:        B5 A8         LDA $A8,x                 
@@ -5110,7 +5110,7 @@ CODE_12A8C8:        C8            INY
 CODE_12A8C9:        98            TYA                       
 CODE_12A8CA:        95 6F         STA $6F,x                 
 CODE_12A8CC:        B4 90         LDY $90,x                 
-CODE_12A8CE:        B9 45 CC      LDA DATA_11CC45,y               
+CODE_12A8CE:        B9 45 CC      LDA.w DATA_11CC45,y               
 CODE_12A8D1:        29 20         AND #$20                  
 CODE_12A8D3:        D0 3F         BNE CODE_12A914           
 CODE_12A8D5:        B5 65         LDA $65,x                 
@@ -5133,7 +5133,7 @@ CODE_12A8FA:        D0 06         BNE CODE_12A902
 CODE_12A8FC:        B5 5B         LDA $5B,x                 
 CODE_12A8FE:        29 04         AND #$04                  
 CODE_12A900:        D0 05         BNE CODE_12A907           
-CODE_12A902:        B9 45 CC      LDA DATA_11CC45,y               
+CODE_12A902:        B9 45 CC      LDA.w DATA_11CC45,y               
 CODE_12A905:        10 0D         BPL CODE_12A914           
 CODE_12A907:        AD EF 04      LDA $04EF                 
 CODE_12A90A:        D0 08         BNE CODE_12A914           
@@ -5241,9 +5241,9 @@ CODE_12A9D2:        60            RTS
                        
 CODE_12A9D3:        20 96 9F      JSR CODE_129F96           
 CODE_12A9D6:        B4 90         LDY $90,x                 
-CODE_12A9D8:        B9 BA 97      LDA DATA_1197BA,y               
+CODE_12A9D8:        B9 BA 97      LDA.w DATA_1197BA,y               
 CODE_12A9DB:        95 3D         STA $3D,x                 
-CODE_12A9DD:        B9 BC 97      LDA DATA_1197BC,y               
+CODE_12A9DD:        B9 BC 97      LDA.w DATA_1197BC,y               
 CODE_12A9E0:        95 47         STA $47,x                 
 CODE_12A9E2:        60            RTS
                        
@@ -5263,9 +5263,9 @@ CODE_12A9FF:        D0 37         BNE CODE_12AA38
 CODE_12AA01:        20 A7 DD      JSR CODE_12DDA7           
 CODE_12AA04:        BC 77 04      LDY $0477,x               
 CODE_12AA07:        B5 5B         LDA $5B,x                 
-CODE_12AA09:        39 EE 97      AND DATA_1197EE,y               
+CODE_12AA09:        39 EE 97      AND.w DATA_1197EE,y               
 CODE_12AA0C:        F0 21         BEQ CODE_12AA2F           
-CODE_12AA0E:        B9 EE 97      LDA DATA_1197EE,y               
+CODE_12AA0E:        B9 EE 97      LDA.w DATA_1197EE,y               
 CODE_12AA11:        49 0F         EOR #$0F                  
 CODE_12AA13:        35 5B         AND $5B,x                 
 CODE_12AA15:        F0 21         BEQ CODE_12AA38           
@@ -5275,7 +5275,7 @@ CODE_12AA1A:        9D 77 04      STA $0477,x
 CODE_12AA1D:        A8            TAY                       
 CODE_12AA1E:        8A            TXA                       
 CODE_12AA1F:        18            CLC                       
-CODE_12AA20:        79 F0 97      ADC DATA_1197F0,y               
+CODE_12AA20:        79 F0 97      ADC.w DATA_1197F0,y               
 CODE_12AA23:        A8            TAY                       
 CODE_12AA24:        B9 3D 00      LDA $003D,y               
 CODE_12AA27:        49 FF         EOR #$FF                  
@@ -5298,10 +5298,10 @@ CODE_12AA45:        F6 9F         INC $9F,x
 CODE_12AA47:        60            RTS                       
                        
 CODE_12AA48:        20 A7 AA      JSR CODE_12AAA7           
-CODE_12AA4B:        79 F2 97      ADC DATA_1197F2,y               
+CODE_12AA4B:        79 F2 97      ADC.w DATA_1197F2,y               
 CODE_12AA4E:        95 29         STA $29,x                 
 CODE_12AA50:        AD BF 04      LDA $04BF                 
-CODE_12AA53:        79 F4 97      ADC DATA_1197F4,y               
+CODE_12AA53:        79 F4 97      ADC.w DATA_1197F4,y               
 CODE_12AA56:        95 15         STA $15,x                 
 CODE_12AA58:        84 01         STY $01                   
 CODE_12AA5A:        A9 0A         LDA #$0A                  
@@ -5321,7 +5321,7 @@ CODE_12AA78:        60            RTS
 
 CODE_12AA79:        20 A7 AA      JSR CODE_12AAA7           
 CODE_12AA7C:        18            CLC                       
-CODE_12AA7D:        79 F6 97      ADC DATA_1197F6,y               
+CODE_12AA7D:        79 F6 97      ADC.w DATA_1197F6,y               
 CODE_12AA80:        95 29         STA $29,x                 
 CODE_12AA82:        A5 EB         LDA $EB                   
 CODE_12AA84:        F0 05         BEQ CODE_12AA8B           
@@ -5383,7 +5383,7 @@ CODE_12AAF3:        BD 80 04      LDA $0480,x
 CODE_12AAF6:        0A            ASL A                     
 CODE_12AAF7:        8D 12 07      STA $0712                 
 CODE_12AAFA:        B4 90         LDY $90,x                 
-CODE_12AAFC:        B9 3B 99      LDA DATA_11993B,y               
+CODE_12AAFC:        B9 3B 99      LDA.w DATA_11993B,y               
 CODE_12AAFF:        18            CLC                       
 CODE_12AB00:        6D 12 07      ADC $0712                 
 CODE_12AB03:        20 D5 BD      JSR CODE_12BDD5           
@@ -5393,7 +5393,7 @@ CODE_12AB0A:        4C AA A0      JMP CODE_12A0AA
 
 CODE_12AB0D:        B5 5B         LDA $5B,x                 
 CODE_12AB0F:        29 03         AND #$03
-CODE_12AB11:        F0 03         BEQ $03
+CODE_12AB11:        F0 03         BEQ CODE_12AB16
 CODE_12AB13:        20 F9 B1      JSR CODE_12B1F9  
 CODE_12AB16:        4C 97 B4      JMP CODE_12B497               
            
@@ -5439,7 +5439,7 @@ CODE_12AB6A:        95 47         STA $47,x
 CODE_12AB6C:        20 DA C1      JSR CODE_12C1DA           
 CODE_12AB6F:        68            PLA                       
 CODE_12AB70:        C9 25         CMP #$25                  
-CODE_12AB72:        B9 F8 97      LDA DATA_1197F8,y               
+CODE_12AB72:        B9 F8 97      LDA.w DATA_1197F8,y               
 CODE_12AB75:        90 02         BCC CODE_12AB79           
 CODE_12AB77:        A9 00         LDA #$00                  
 CODE_12AB79:        95 3D         STA $3D,x                 
@@ -5786,7 +5786,7 @@ CODE_12AE44:        B4 86         LDY $86,x
 CODE_12AE46:        D0 DD         BNE CODE_12AE25           
 CODE_12AE48:        95 33         STA $33,x                 
 CODE_12AE4A:        B4 B1         LDY $B1,x                 
-CODE_12AE4C:        B9 FA 97      LDA DATA_1197FA,y               
+CODE_12AE4C:        B9 FA 97      LDA.w DATA_1197FA,y               
 CODE_12AE4F:        95 47         STA $47,x                 
 CODE_12AE51:        A9 C0         LDA #$C0                  
 CODE_12AE53:        95 86         STA $86,x                 
@@ -5832,9 +5832,9 @@ CODE_12AEA2:        98            TYA
 CODE_12AEA3:        49 01         EOR #$01                  
 CODE_12AEA5:        9D 77 04      STA $0477,x               
 CODE_12AEA8:        A8            TAY                       
-CODE_12AEA9:        B9 08 98      LDA DATA_119808,y               
+CODE_12AEA9:        B9 08 98      LDA.w DATA_119808,y               
 CODE_12AEAC:        95 47         STA $47,x                 
-CODE_12AEAE:        B9 0A 98      LDA DATA_11980A,y               
+CODE_12AEAE:        B9 0A 98      LDA.w DATA_11980A,y               
 CODE_12AEB1:        95 65         STA $65,x                 
 CODE_12AEB3:        20 DA C1      JSR CODE_12C1DA           
 CODE_12AEB6:        A5 0F         LDA $0F                   
@@ -5909,7 +5909,7 @@ CODE_12AF40:        F0 01         BEQ CODE_12AF43
 CODE_12AF42:        C8            INY                       
 CODE_12AF43:        98            TYA                       
 CODE_12AF44:        95 79         STA $79,x                 
-CODE_12AF46:        B9 0C 98      LDA DATA_11980C,y               
+CODE_12AF46:        B9 0C 98      LDA.w DATA_11980C,y               
 CODE_12AF49:        95 65         STA $65,x                 
 CODE_12AF4B:        A9 02         LDA #$02                  
 CODE_12AF4D:        9D 65 04      STA $0465,x               
@@ -5958,7 +5958,7 @@ CODE_12AFA6:        A9 E0         LDA #$E0
 CODE_12AFA8:        95 47         STA $47,x                 
 CODE_12AFAA:        D0 2F         BNE CODE_12AFDB           
 CODE_12AFAC:        B4 79         LDY $79,x                 
-CODE_12AFAE:        B9 11 98      LDA DATA_119811,y               
+CODE_12AFAE:        B9 11 98      LDA.w DATA_119811,y               
 CODE_12AFB1:        25 10         AND $10                   
 CODE_12AFB3:        D0 0A         BNE CODE_12AFBF           
 CODE_12AFB5:        A5 ED         LDA $ED                   
@@ -6010,7 +6010,7 @@ CODE_12B012:        69 03         ADC #$03
 CODE_12B014:        95 33         STA $33,x                 
 CODE_12B016:        B4 6F         LDY $6F,x                 
 CODE_12B018:        B5 29         LDA $29,x                 
-CODE_12B01A:        79 0E 98      ADC DATA_11980E,y               
+CODE_12B01A:        79 0E 98      ADC.w DATA_11980E,y               
 CODE_12B01D:        95 29         STA $29,x                 
 CODE_12B01F:        20 7A 9F      JSR CODE_129F7A           
 CODE_12B022:        A6 12         LDX $12                   
@@ -6121,7 +6121,7 @@ CODE_12B0F8:        4A            LSR A
 CODE_12B0F9:        4A            LSR A                     
 CODE_12B0FA:        4A            LSR A                     
 CODE_12B0FB:        A8            TAY                       
-CODE_12B0FC:        B9 19 98      LDA DATA_119819,y               
+CODE_12B0FC:        B9 19 98      LDA.w DATA_119819,y               
 CODE_12B0FF:        20 35 B6      JSR CODE_12B635           
 CODE_12B102:        4C 0E B1      JMP CODE_12B10E           
 
@@ -6298,7 +6298,7 @@ CODE_12B25B:        B9 33 00      LDA $0033,y
 CODE_12B25E:        69 00         ADC #$00                  
 CODE_12B260:        95 33         STA $33,x                 
 CODE_12B262:        20 DA C1      JSR CODE_12C1DA           
-CODE_12B265:        B9 1D 98      LDA DATA_11981D,y               
+CODE_12B265:        B9 1D 98      LDA.w DATA_11981D,y               
 CODE_12B268:        95 3D         STA $3D,x                 
 CODE_12B26A:        A9 E0         LDA #$E0                  
 CODE_12B26C:        95 47         STA $47,x                 
@@ -6321,10 +6321,10 @@ CODE_12B288:        38            SEC
 CODE_12B289:        E9 0B         SBC #$0B                  
 CODE_12B28B:        A8            TAY                       
 CODE_12B28C:        AD C1 04      LDA $04C1                 
-CODE_12B28F:        79 1F 98      ADC DATA_11981F,y               
+CODE_12B28F:        79 1F 98      ADC.w DATA_11981F,y               
 CODE_12B292:        95 29         STA $29,x                 
 CODE_12B294:        AD BF 04      LDA $04BF                 
-CODE_12B297:        79 20 98      ADC DATA_119820,y               
+CODE_12B297:        79 20 98      ADC.w DATA_119820,y               
 CODE_12B29A:        95 15         STA $15,x                 
 CODE_12B29C:        60            RTS
                        
@@ -6532,7 +6532,7 @@ CODE_12B435:        0A            ASL A
 CODE_12B436:        2A            ROL A                     
 CODE_12B437:        2A            ROL A                     
 CODE_12B438:        A8            TAY                       
-CODE_12B439:        B9 2C 98      LDA DATA_11982C,y               
+CODE_12B439:        B9 2C 98      LDA.w DATA_11982C,y               
 CODE_12B43C:        D0 22         BNE CODE_12B460           
 CODE_12B43E:        B5 5B         LDA $5B,x                 
 CODE_12B440:        29 04         AND #$04                  
@@ -6822,7 +6822,7 @@ CODE_12B676:        20 35 B3      JSR CODE_12B335
 CODE_12B679:        30 16         BMI CODE_12B691           
 CODE_12B67B:        B4 6F         LDY $6F,x                 
 CODE_12B67D:        A6 00         LDX $00                   
-CODE_12B67F:        B9 2F 98      LDA DATA_11982F,y         ; \ Set X speed.       
+CODE_12B67F:        B9 2F 98      LDA.w DATA_11982F,y         ; \ Set X speed.       
 CODE_12B682:        95 3D         STA $3D,x                 ; /
 CODE_12B684:        A9 00         LDA #$00                  ; \ No Y speed.
 CODE_12B686:        95 47         STA $47,x                 ; /
@@ -6864,7 +6864,7 @@ CODE_12B6C9:        C8            INY
 CODE_12B6CA:        C8            INY                       
 CODE_12B6CB:        C8            INY                       
 CODE_12B6CC:        C8            INY                       
-CODE_12B6CD:        79 32 98      ADC DATA_119832,y               
+CODE_12B6CD:        79 32 98      ADC.w DATA_119832,y               
 CODE_12B6D0:        08            PHP                       
 CODE_12B6D1:        B4 A8         LDY $A8,x                 
 CODE_12B6D3:        18            CLC                       
@@ -7022,7 +7022,7 @@ CODE_12B7FA:        B5 65         LDA $65,x
 CODE_12B7FC:        09 40         ORA #$40                  
 CODE_12B7FE:        95 65         STA $65,x                 
 CODE_12B800:        AC BE 04      LDY $04BE                 
-CODE_12B803:        B9 3C 98      LDA DATA_11983C,y               
+CODE_12B803:        B9 3C 98      LDA.w DATA_11983C,y               
 CODE_12B806:        A0 00         LDY #$00                  
 CODE_12B808:        0A            ASL A                     
 CODE_12B809:        90 03         BCC CODE_12B80E           
@@ -7277,7 +7277,7 @@ CODE_12BA2D:        20 D5 BD      JSR CODE_12BDD5
 CODE_12BA30:        68            PLA                       
 CODE_12BA31:        95 6F         STA $6F,x                 
 CODE_12BA33:        B4 6F         LDY $6F,x                 
-CODE_12BA35:        B9 6C 98      LDA DATA_11986C,y               
+CODE_12BA35:        B9 6C 98      LDA.w DATA_11986C,y               
 CODE_12BA38:        95 3D         STA $3D,x                 
 CODE_12BA3A:        4C AA A0      JMP CODE_12A0AA           
 
@@ -7406,7 +7406,7 @@ CODE_12BB1E:        F0 04         BEQ CODE_12BB24
 CODE_12BB20:        A9 00         LDA #$00                  ; \ Player is not holding anything.
 CODE_12BB22:        85 9C         STA $9C                   ; /
 CODE_12BB24:        B4 90         LDY $90,x                 
-CODE_12BB26:        B9 8C CC      LDA DATA_11CC8C,y               
+CODE_12BB26:        B9 8C CC      LDA.w DATA_11CC8C,y               
 CODE_12BB29:        29 08         AND #$08                  
 CODE_12BB2B:        0A            ASL A                     
 CODE_12BB2C:        D0 0C         BNE CODE_12BB3A           
@@ -7674,7 +7674,7 @@ CODE_12BD24:        A2 14         LDX #$14
 CODE_12BD26:        4C F7 BE      JMP CODE_12BEF7           
 
 CODE_12BD29:        B4 90         LDY $90,x                 
-CODE_12BD2B:        B9 3B 99      LDA DATA_11993B,y               
+CODE_12BD2B:        B9 3B 99      LDA.w DATA_11993B,y               
 CODE_12BD2E:        C9 FF         CMP #$FF                  
 CODE_12BD30:        F0 1C         BEQ CODE_12BD4E           
 CODE_12BD32:        C0 1D         CPY #$1D                  
@@ -7768,7 +7768,7 @@ CODE_12BDCB:        C0 38         CPY #$38
 CODE_12BDCD:        D0 03         BNE CODE_12BDD2           
 CODE_12BDCF:        4C A8 D1      JMP CODE_12D1A8           
 
-CODE_12BDD2:        B9 3B 99      LDA DATA_11993B,y               
+CODE_12BDD2:        B9 3B 99      LDA.w DATA_11993B,y               
 CODE_12BDD5:        85 0F         STA $0F                   
 CODE_12BDD7:        A5 EE         LDA $EE                   
 CODE_12BDD9:        D0 ED         BNE CODE_12BDC8           
@@ -8397,7 +8397,7 @@ CODE_12C2D5:        D0 51         BNE CODE_12C328
 CODE_12C2D7:        AD 87 05      LDA $0587                 
 CODE_12C2DA:        29 07         AND #$07                  
 CODE_12C2DC:        A8            TAY                       
-CODE_12C2DD:        B9 8C 9A      LDA DATA_119A8C,y               
+CODE_12C2DD:        B9 8C 9A      LDA.w DATA_119A8C,y               
 CODE_12C2E0:        95 47         STA $47,x                 
 CODE_12C2E2:        D6 33         DEC $33,x                 
 CODE_12C2E4:        20 35 B3      JSR CODE_12B335           
@@ -8425,7 +8425,7 @@ CODE_12C311:        8D E0 1D      STA $1DE0
 CODE_12C314:        AD 87 05      LDA $0587                 
 CODE_12C317:        29 07         AND #$07                  
 CODE_12C319:        A8            TAY                       
-CODE_12C31A:        B9 84 9A      LDA DATA_119A84,y               
+CODE_12C31A:        B9 84 9A      LDA.w DATA_119A84,y               
 CODE_12C31D:        95 47         STA $47,x                 
 CODE_12C31F:        A9 D0         LDA #$D0                  
 CODE_12C321:        95 3D         STA $3D,x                 
@@ -8539,14 +8539,14 @@ CODE_12C3F8:        A8            TAY
 CODE_12C3F9:        B5 29         LDA $29,x                 
 CODE_12C3FB:        48            PHA                       
 CODE_12C3FC:        18            CLC                       
-CODE_12C3FD:        79 93 9A      ADC DATA_119A93,y               
+CODE_12C3FD:        79 93 9A      ADC.w DATA_119A93,y               
 CODE_12C400:        95 29         STA $29,x                 
 CODE_12C402:        38            SEC                       
 CODE_12C403:        ED C1 04      SBC $04C1                 
 CODE_12C406:        8D 29 04      STA $0429                 
 CODE_12C409:        B5 33         LDA $33,x                 
 CODE_12C40B:        18            CLC                       
-CODE_12C40C:        79 96 9A      ADC DATA_119A96,y               
+CODE_12C40C:        79 96 9A      ADC.w DATA_119A96,y               
 CODE_12C40F:        8D 2C 04      STA $042C                 
 CODE_12C412:        B5 86         LDA $86,x                 
 CODE_12C414:        C9 30         CMP #$30                  
@@ -8558,7 +8558,7 @@ CODE_12C41D:        29 07         AND #$07
 CODE_12C41F:        A8            TAY                       
 CODE_12C420:        AD 2C 04      LDA $042C                 
 CODE_12C423:        38            SEC                       
-CODE_12C424:        F9 9A 9A      SBC DATA_119A9A,y               
+CODE_12C424:        F9 9A 9A      SBC.w DATA_119A9A,y               
 CODE_12C427:        8D 2C 04      STA $042C                 
 CODE_12C42A:        20 F9 A6      JSR CODE_12A6F9           
 CODE_12C42D:        A0 40         LDY #$40                  
@@ -8716,7 +8716,7 @@ CODE_12C559:        29 03         AND #$03
 CODE_12C55B:        A8            TAY                       
 CODE_12C55C:        25 5A         AND $5A                   
 CODE_12C55E:        D0 12         BNE CODE_12C572           
-CODE_12C560:        B9 A2 9A      LDA DATA_119AA2,y               
+CODE_12C560:        B9 A2 9A      LDA.w DATA_119AA2,y               
 CODE_12C563:        D5 3D         CMP $3D,x                 
 CODE_12C565:        F0 08         BEQ CODE_12C56F           
 CODE_12C567:        B5 3D         LDA $3D,x                 
@@ -8755,7 +8755,7 @@ CODE_12C59F:        25 00         AND $00
 CODE_12C5A1:        F0 04         BEQ CODE_12C5A7           
 CODE_12C5A3:        A9 00         LDA #$00                  
 CODE_12C5A5:        F0 0D         BEQ CODE_12C5B4           
-CODE_12C5A7:        B9 A2 9A      LDA DATA_119AA2,y               
+CODE_12C5A7:        B9 A2 9A      LDA.w DATA_119AA2,y               
 CODE_12C5AA:        D5 47         CMP $47,x                 
 CODE_12C5AC:        F0 08         BEQ CODE_12C5B6           
 CODE_12C5AE:        B5 47         LDA $47,x                 
@@ -8837,7 +8837,7 @@ CODE_12C649:        D0 11         BNE CODE_12C65C
 CODE_12C64B:        A9 30         LDA #$30                  
 CODE_12C64D:        95 47         STA $47,x                 
 CODE_12C64F:        20 DA C1      JSR CODE_12C1DA           
-CODE_12C652:        B9 BA 9A      LDA DATA_119ABA,y               
+CODE_12C652:        B9 BA 9A      LDA.w DATA_119ABA,y               
 CODE_12C655:        95 3D         STA $3D,x                 
 CODE_12C657:        F6 B1         INC $B1,x                 
 CODE_12C659:        4C 8E C6      JMP CODE_12C68E           
@@ -8857,9 +8857,9 @@ CODE_12C675:        29 01         AND #$01
 CODE_12C677:        A8            TAY                       
 CODE_12C678:        B5 3D         LDA $3D,x                 
 CODE_12C67A:        18            CLC                       
-CODE_12C67B:        79 B6 9A      ADC DATA_119AB6,y               
+CODE_12C67B:        79 B6 9A      ADC.w DATA_119AB6,y               
 CODE_12C67E:        95 3D         STA $3D,x                 
-CODE_12C680:        D9 B8 9A      CMP DATA_119AB8,y               
+CODE_12C680:        D9 B8 9A      CMP.w DATA_119AB8,y               
 CODE_12C683:        D0 03         BNE CODE_12C688           
 CODE_12C685:        FE 77 04      INC $0477,x               
 CODE_12C688:        20 EA C1      JSR CODE_12C1EA           
@@ -9208,7 +9208,7 @@ CODE_12C947:        8D 14 07      STA $0714
 CODE_12C94A:        AD BF 04      LDA $04BF                 
 CODE_12C94D:        8D 15 07      STA $0715                 
 CODE_12C950:        C2 20         REP #$20                  
-CODE_12C952:        B9 BB 9A      LDA DATA_119ABB,y               
+CODE_12C952:        B9 BB 9A      LDA.w DATA_119ABB,y               
 CODE_12C955:        29 FF 00      AND #$00FF                
 CODE_12C958:        C9 80 00      CMP #$0080                
 CODE_12C95B:        90 03         BCC CODE_12C960           
@@ -9427,7 +9427,7 @@ CODE_12CB2D:        4A            LSR A
 CODE_12CB2E:        4A            LSR A                     
 CODE_12CB2F:        4A            LSR A                     
 CODE_12CB30:        A8            TAY                       
-CODE_12CB31:        B9 BE 9A      LDA DATA_119ABE,y               
+CODE_12CB31:        B9 BE 9A      LDA.w DATA_119ABE,y               
 CODE_12CB34:        6D 29 04      ADC $0429                 
 CODE_12CB37:        69 F0         ADC #$F0                  
 CODE_12CB39:        85 01         STA $01                   
@@ -9458,7 +9458,7 @@ CODE_12CB69:        4A            LSR A
 CODE_12CB6A:        4A            LSR A                     
 CODE_12CB6B:        4A            LSR A                     
 CODE_12CB6C:        A8            TAY                       
-CODE_12CB6D:        B9 BE 9A      LDA DATA_119ABE,y               
+CODE_12CB6D:        B9 BE 9A      LDA.w DATA_119ABE,y               
 CODE_12CB70:        6D 29 04      ADC $0429                 
 CODE_12CB73:        69 F0         ADC #$F0                  
 CODE_12CB75:        85 01         STA $01                   
@@ -9567,7 +9567,7 @@ CODE_12CC51:        AD 1F 02      LDA $021F
 CODE_12CC54:        85 09         STA $09                   
 CODE_12CC56:        64 ED         STZ $ED                   
 CODE_12CC58:        C2 20         REP #$20                  
-CODE_12CC5A:        B9 BE 9A      LDA DATA_119ABE,y               
+CODE_12CC5A:        B9 BE 9A      LDA.w DATA_119ABE,y               
 CODE_12CC5D:        29 FF 00      AND #$00FF                
 CODE_12CC60:        09 00 FF      ORA #$FF00                
 CODE_12CC63:        65 08         ADC $08                   
@@ -9805,7 +9805,7 @@ CODE_12CE44:        38            SEC
 CODE_12CE45:        E9 01         SBC #$01                  
 CODE_12CE47:        99 79 00      STA $0079,y               
 CODE_12CE4A:        A8            TAY                       
-CODE_12CE4B:        B9 E6 9A      LDA DATA_119AE6,y               
+CODE_12CE4B:        B9 E6 9A      LDA.w DATA_119AE6,y               
 CODE_12CE4E:        A4 00         LDY $00                   
 CODE_12CE50:        99 89 04      STA $0489,y               
 CODE_12CE53:        B5 29         LDA $29,x                 
@@ -9876,7 +9876,7 @@ CODE_12CEE6:        AD 1F 02      LDA $021F
 CODE_12CEE9:        8D 15 07      STA $0715                 
 CODE_12CEEC:        AD 29 04      LDA $0429                 
 CODE_12CEEF:        8D 14 07      STA $0714                 
-CODE_12CEF2:        B9 EA 9A      LDA DATA_119AEA,y               
+CODE_12CEF2:        B9 EA 9A      LDA.w DATA_119AEA,y               
 CODE_12CEF5:        20 55 CF      JSR CODE_12CF55           
 CODE_12CEF8:        20 C9 BD      JSR CODE_12BDC9           
 CODE_12CEFB:        B5 79         LDA $79,x                 
@@ -10243,7 +10243,7 @@ CODE_12D22D:        AD 29 04      LDA $0429
 CODE_12D230:        8D 20 07      STA $0720                 
 CODE_12D233:        48            PHA                       
 CODE_12D234:        18            CLC                       
-CODE_12D235:        79 F1 9A      ADC DATA_119AF1,y               
+CODE_12D235:        79 F1 9A      ADC.w DATA_119AF1,y               
 CODE_12D238:        8D 29 04      STA $0429                 
 CODE_12D23B:        B5 9F         LDA $9F,x                 
 CODE_12D23D:        48            PHA                       
@@ -10283,7 +10283,7 @@ CODE_12D286:        8D F7 02      STA $02F7
 CODE_12D289:        68            PLA                       
 CODE_12D28A:        18            CLC                       
 CODE_12D28B:        A4 07         LDY $07                   
-CODE_12D28D:        79 F2 9A      ADC DATA_119AF2,y               
+CODE_12D28D:        79 F2 9A      ADC.w DATA_119AF2,y               
 CODE_12D290:        8D 29 04      STA $0429                 
 CODE_12D293:        AD 18 07      LDA $0718                 
 CODE_12D296:        BC 5C 04      LDY $045C,x               
@@ -10405,9 +10405,9 @@ CODE_12D393:        29 01         AND #$01
 CODE_12D395:        A8            TAY                       
 CODE_12D396:        B5 47         LDA $47,x                 
 CODE_12D398:        18            CLC                       
-CODE_12D399:        79 04 9B      ADC DATA_119B04,y               
+CODE_12D399:        79 04 9B      ADC.w DATA_119B04,y               
 CODE_12D39C:        95 47         STA $47,x                 
-CODE_12D39E:        D9 06 9B      CMP DATA_119B06,y               
+CODE_12D39E:        D9 06 9B      CMP.w DATA_119B06,y               
 CODE_12D3A1:        D0 02         BNE CODE_12D3A5           
 CODE_12D3A3:        F6 79         INC $79,x                 
 CODE_12D3A5:        BD 77 04      LDA $0477,x               
@@ -10415,9 +10415,9 @@ CODE_12D3A8:        29 01         AND #$01
 CODE_12D3AA:        A8            TAY                       
 CODE_12D3AB:        B5 3D         LDA $3D,x                 
 CODE_12D3AD:        18            CLC                       
-CODE_12D3AE:        79 00 9B      ADC DATA_119B00,y               
+CODE_12D3AE:        79 00 9B      ADC.w DATA_119B00,y               
 CODE_12D3B1:        95 3D         STA $3D,x                 
-CODE_12D3B3:        D9 02 9B      CMP DATA_119B02,y               
+CODE_12D3B3:        D9 02 9B      CMP.w DATA_119B02,y               
 CODE_12D3B6:        D0 03         BNE CODE_12D3BB           
 CODE_12D3B8:        FE 77 04      INC $0477,x               
 CODE_12D3BB:        20 09 D2      JSR CODE_12D209           
@@ -10465,12 +10465,12 @@ CODE_12D40F:        0A            ASL A
 CODE_12D410:        0A            ASL A                     
 CODE_12D411:        65 10         ADC $10                   
 CODE_12D413:        AC F9 04      LDY $04F9                 
-CODE_12D416:        39 08 9B      AND DATA_119B08,y               
+CODE_12D416:        39 08 9B      AND.w DATA_119B08,y               
 CODE_12D419:        15 47         ORA $47,x                 
 CODE_12D41B:        D0 16         BNE CODE_12D433           
 CODE_12D41D:        AD 87 05      LDA $0587                 
 CODE_12D420:        29 1F         AND #$1F                  
-CODE_12D422:        19 0C 9B      ORA DATA_119B0C,y               
+CODE_12D422:        19 0C 9B      ORA.w DATA_119B0C,y               
 CODE_12D425:        95 47         STA $47,x                 
 CODE_12D427:        20 CD 9F      JSR CODE_129FCD           
 CODE_12D42A:        AD F9 04      LDA $04F9                 
@@ -10920,10 +10920,10 @@ CODE_12D7E2:        A5 10         LDA $10
 CODE_12D7E4:        29 01         AND #$01                  
 CODE_12D7E6:        D0 0F         BNE CODE_12D7F7           
 CODE_12D7E8:        B5 3D         LDA $3D,x                 
-CODE_12D7EA:        D9 0F 9B      CMP DATA_119B0F,y               
+CODE_12D7EA:        D9 0F 9B      CMP.w DATA_119B0F,y               
 CODE_12D7ED:        F0 08         BEQ CODE_12D7F7           
 CODE_12D7EF:        18            CLC                       
-CODE_12D7F0:        79 11 9B      ADC DATA_119B11,y               
+CODE_12D7F0:        79 11 9B      ADC.w DATA_119B11,y               
 CODE_12D7F3:        95 3D         STA $3D,x                 
 CODE_12D7F5:        F6 9F         INC $9F,x                 
 CODE_12D7F7:        20 AA A0      JSR CODE_12A0AA           
@@ -11034,17 +11034,17 @@ CODE_12D8D9:        29 01         AND #$01
 CODE_12D8DB:        A8            TAY                       
 CODE_12D8DC:        B5 47         LDA $47,x                 
 CODE_12D8DE:        18            CLC                       
-CODE_12D8DF:        79 26 98      ADC DATA_119826,y               
+CODE_12D8DF:        79 26 98      ADC.w DATA_119826,y               
 CODE_12D8E2:        95 47         STA $47,x                 
-CODE_12D8E4:        D9 16 9B      CMP DATA_119B16,y               
+CODE_12D8E4:        D9 16 9B      CMP.w DATA_119B16,y               
 CODE_12D8E7:        D0 02         BNE CODE_12D8EB           
 CODE_12D8E9:        F6 79         INC $79,x                 
 CODE_12D8EB:        20 DA C1      JSR CODE_12C1DA           
 CODE_12D8EE:        B5 3D         LDA $3D,x                 
-CODE_12D8F0:        D9 14 9B      CMP DATA_119B14,y               
+CODE_12D8F0:        D9 14 9B      CMP.w DATA_119B14,y               
 CODE_12D8F3:        F0 06         BEQ CODE_12D8FB           
 CODE_12D8F5:        18            CLC                       
-CODE_12D8F6:        79 22 98      ADC DATA_119822,y               
+CODE_12D8F6:        79 22 98      ADC.w DATA_119822,y               
 CODE_12D8F9:        95 3D         STA $3D,x                 
 CODE_12D8FB:        4C 97 B4      JMP CODE_12B497           
 
@@ -11279,16 +11279,16 @@ CODE_12DB08:        A6 00         LDX $00
 CODE_12DB0A:        AD FA 04      LDA $04FA                 
 CODE_12DB0D:        29 07         AND #$07                  
 CODE_12DB0F:        A8            TAY                       
-CODE_12DB10:        B9 22 9B      LDA DATA_119B22,y               
+CODE_12DB10:        B9 22 9B      LDA.w DATA_119B22,y               
 CODE_12DB13:        95 3D         STA $3D,x                 
 CODE_12DB15:        98            TYA                       
 CODE_12DB16:        29 03         AND #$03                  
 CODE_12DB18:        A8            TAY                       
 CODE_12DB19:        A9 02         LDA #$02                  
 CODE_12DB1B:        95 15         STA $15,x                 
-CODE_12DB1D:        B9 1A 9B      LDA DATA_119B1A,y               
+CODE_12DB1D:        B9 1A 9B      LDA.w DATA_119B1A,y               
 CODE_12DB20:        95 29         STA $29,x                 
-CODE_12DB22:        B9 1E 9B      LDA DATA_119B1E,y               
+CODE_12DB22:        B9 1E 9B      LDA.w DATA_119B1E,y               
 CODE_12DB25:        95 33         STA $33,x                 
 CODE_12DB27:        A9 00         LDA #$00                  
 CODE_12DB29:        95 1F         STA $1F,x                 
@@ -11357,7 +11357,7 @@ CODE_12DBAA:        A6 00         LDX $00
 CODE_12DBAC:        4A            LSR A                     
 CODE_12DBAD:        49 FF         EOR #$FF                  
 CODE_12DBAF:        95 3D         STA $3D,x                 
-CODE_12DBB1:        B9 2A 9B      LDA DATA_119B2A,y               
+CODE_12DBB1:        B9 2A 9B      LDA.w DATA_119B2A,y               
 CODE_12DBB4:        95 47         STA $47,x                 
 CODE_12DBB6:        A9 11         LDA #$11                  
 CODE_12DBB8:        95 90         STA $90,x                 
@@ -11640,7 +11640,7 @@ CODE_12DE07:        B0 1E         BCS CODE_12DE27
 CODE_12DE09:        A5 0D         LDA $0D                   
 CODE_12DE0B:        29 03         AND #$03                  
 CODE_12DE0D:        D0 18         BNE CODE_12DE27           
-CODE_12DE0F:        B9 2F AB      LDA DATA_11AB2F,y               
+CODE_12DE0F:        B9 2F AB      LDA.w DATA_11AB2F,y               
 CODE_12DE12:        95 3C         STA $3C,x                 
 CODE_12DE14:        85 0B         STA $0B                   
 CODE_12DE16:        D0 0F         BNE CODE_12DE27           
@@ -11665,13 +11665,13 @@ CODE_12DE37:        60            RTS
 CODE_12DE38:        A4 08         LDY $08                   
 CODE_12DE3A:        22 00 F9 13   JSL CODE_13F900           
 CODE_12DE3E:        A4 07         LDY $07                   
-CODE_12DE40:        B9 31 AB      LDA DATA_11AB31,y               
+CODE_12DE40:        B9 31 AB      LDA.w DATA_11AB31,y               
 CODE_12DE43:        A8            TAY                       
 CODE_12DE44:        A5 00         LDA $00                   
 CODE_12DE46:        22 9C F9 13   JSL CODE_13F99C           
 CODE_12DE4A:        90 09         BCC CODE_12DE55           
 CODE_12DE4C:        A4 07         LDY $07                   
-CODE_12DE4E:        B9 39 AB      LDA DATA_11AB39,y               
+CODE_12DE4E:        B9 39 AB      LDA.w DATA_11AB39,y               
 CODE_12DE51:        15 5A         ORA $5A,x                 
 CODE_12DE53:        95 5A         STA $5A,x                 
 CODE_12DE55:        E6 07         INC $07                   
@@ -11684,7 +11684,7 @@ CODE_12DE5D:        85 0D         STA $0D
 CODE_12DE5F:        29 F0         AND #$F0                  
 CODE_12DE61:        95 5A         STA $5A,x                 
 CODE_12DE63:        BC 91 04      LDY $0491,x               
-CODE_12DE66:        B9 FD CA      LDA DATA_11CAFD,y               
+CODE_12DE66:        B9 FD CA      LDA.w DATA_11CAFD,y               
 CODE_12DE69:        60            RTS
                        
 CODE_12DE6A:        A9 00         LDA #$00                  
@@ -11977,7 +11977,7 @@ CODE_12E0C6:        AD C3 04      LDA $04C3
 CODE_12E0C9:        18            CLC                       
 CODE_12E0CA:        69 10         ADC #$10                  
 CODE_12E0CC:        8D C3 04      STA $04C3                 
-CODE_12E0CF:        D9 EE CB      CMP DATA_11CBEE,y               
+CODE_12E0CF:        D9 EE CB      CMP.w DATA_11CBEE,y               
 CODE_12E0D2:        90 21         BCC CODE_12E0F5           
 CODE_12E0D4:        22 98 E0 14   JSL CODE_14E098           
 CODE_12E0D8:        60            RTS
@@ -12026,7 +12026,7 @@ CODE_12E12D:        20 FA B9      JSR CODE_12B9FA
 CODE_12E130:        4C 45 E1      JMP CODE_12E145           
 
 CODE_12E133:        20 DA C1      JSR CODE_12C1DA           
-CODE_12E136:        B9 41 AB      LDA DATA_11AB41,y               
+CODE_12E136:        B9 41 AB      LDA.w DATA_11AB41,y               
 CODE_12E139:        95 3D         STA $3D,x                 
 CODE_12E13B:        A9 E0         LDA #$E0                  
 CODE_12E13D:        95 47         STA $47,x                 
@@ -12127,7 +12127,7 @@ CODE_12E202:        0A            ASL A
 CODE_12E203:        2A            ROL A                     
 CODE_12E204:        A8            TAY                       
 CODE_12E205:        A5 0F         LDA $0F                   
-CODE_12E207:        39 43 AB      AND DATA_11AB43,y               
+CODE_12E207:        39 43 AB      AND.w DATA_11AB43,y               
 CODE_12E20A:        F0 1C         BEQ CODE_12E228           
 CODE_12E20C:        A4 12         LDY $12                   
 CODE_12E20E:        B9 47 00      LDA $0047,y               
@@ -12347,7 +12347,7 @@ CODE_12E3B2:        48            PHA
 CODE_12E3B3:        A4 9A         LDY $9A                   
 CODE_12E3B5:        68            PLA                       
 CODE_12E3B6:        38            SEC                       
-CODE_12E3B7:        F9 45 AB      SBC DATA_11AB45,y               
+CODE_12E3B7:        F9 45 AB      SBC.w DATA_11AB45,y               
 CODE_12E3BA:        D5 32         CMP $32,x                 
 CODE_12E3BC:        30 37         BMI CODE_12E3F5           
 CODE_12E3BE:        B5 46         LDA $46,x                 
@@ -12421,7 +12421,7 @@ CODE_12E444:        60            RTS
 CODE_12E445:        22 00 F9 13   JSL CODE_13F900           
 CODE_12E449:        A5 00         LDA $00                   
 CODE_12E44B:        A0 09         LDY #$09                  
-CODE_12E44D:        D9 50 9B      CMP DATA_119B50,y               
+CODE_12E44D:        D9 50 9B      CMP.w DATA_119B50,y               
 CODE_12E450:        F0 04         BEQ CODE_12E456           
 CODE_12E452:        88            DEY                       
 CODE_12E453:        10 F8         BPL CODE_12E44D           
@@ -14654,13 +14654,13 @@ CODE_12F5CA:        8D 85 05      STA $0585
 CODE_12F5CD:        60            RTS
                        
 CODE_12F5CE:        AC 33 05      LDY $0533                 ; \ Get 16-bit address of Layer 1 room data in 16-bit pointer ($D9)
-CODE_12F5D1:        B9 98 D0      LDA DATA_11D098,y         ;  |
+CODE_12F5D1:        B9 98 D0      LDA.w DATA_11D098,y         ;  |
 CODE_12F5D4:        18            CLC                       ;  |
 CODE_12F5D5:        6D 34 05      ADC $0534                 ;  |
 CODE_12F5D8:        A8            TAY                       ;  |
-CODE_12F5D9:        B9 AD D0      LDA DATA_11D0AD,y         ;  |   
+CODE_12F5D9:        B9 AD D0      LDA.w DATA_11D0AD,y         ;  |   
 CODE_12F5DC:        85 D9         STA $D9                   ;  |
-CODE_12F5DE:        B9 7F D1      LDA DATA_11D17F,y         ;  |   
+CODE_12F5DE:        B9 7F D1      LDA.w DATA_11D17F,y         ;  |   
 CODE_12F5E1:        85 DA         STA $DA                   ; /
 CODE_12F5E3:        6B            RTL                       ; Return.
                        
@@ -15164,7 +15164,7 @@ CODE_12F952:        80 07         BRA CODE_12F95B
 
 CODE_12F954:        64 C9         STZ $C9                   
 CODE_12F956:        64 C8         STZ $C8                   
-CODE_12F958:        B9 3C 9B      LDA DATA_119B3C,y               
+CODE_12F958:        B9 3C 9B      LDA.w DATA_119B3C,y               
 CODE_12F95B:        8D 07 05      STA $0507                 
 CODE_12F95E:        60            RTS
                        
@@ -15201,14 +15201,14 @@ CODE_12F995:        9D 5C 04      STA $045C,x
 CODE_12F998:        95 47         STA $47,x                 
 CODE_12F99A:        95 3D         STA $3D,x                 
 CODE_12F99C:        B4 90         LDY $90,x                 
-CODE_12F99E:        B9 45 CC      LDA DATA_11CC45,y               
+CODE_12F99E:        B9 45 CC      LDA.w DATA_11CC45,y               
 CODE_12F9A1:        29 7F         AND #$7F                  
 CODE_12F9A3:        95 65         STA $65,x                 
-CODE_12F9A5:        B9 8C CC      LDA DATA_11CC8C,y               
+CODE_12F9A5:        B9 8C CC      LDA.w DATA_11CC8C,y               
 CODE_12F9A8:        9D 6E 04      STA $046E,x               
-CODE_12F9AB:        B9 1A CD      LDA DATA_11CD1A,y               
+CODE_12F9AB:        B9 1A CD      LDA.w DATA_11CD1A,y               
 CODE_12F9AE:        9D 89 04      STA $0489,x               
-CODE_12F9B1:        B9 D3 CC      LDA DATA_11CCD3,y               
+CODE_12F9B1:        B9 D3 CC      LDA.w DATA_11CCD3,y               
 CODE_12F9B4:        9D 92 04      STA $0492,x               
 CODE_12F9B7:        A9 FF         LDA #$FF                  
 CODE_12F9B9:        9D 41 04      STA $0441,x               
@@ -15223,11 +15223,11 @@ CODE_12F9C7:        0A            ASL A                     ;  |
 CODE_12F9C8:        18            CLC                       ;  |
 CODE_12F9C9:        6D 35 06      ADC $0635                 ;  |
 CODE_12F9CC:        AA            TAX                       ;  |
-CODE_12F9CD:        BF 00 EF 15   LDA PNTR_15EF00,x      ;  | [$02] = Pointer to the miniature level during the 'World x-x' screen.
+CODE_12F9CD:        BF 00 EF 15   LDA.l PNTR_15EF00,x      ;  | [$02] = Pointer to the miniature level during the 'World x-x' screen.
 CODE_12F9D1:        85 02         STA $02                   ;  |
-CODE_12F9D3:        BF 01 EF 15   LDA PNTR_15EF00+1,x    ;  |   
+CODE_12F9D3:        BF 01 EF 15   LDA.l PNTR_15EF00+1,x    ;  |   
 CODE_12F9D7:        85 03         STA $03                   ;  |
-CODE_12F9D9:        BF 02 EF 15   LDA PNTR_15EF00+2,x    ;  |   
+CODE_12F9D9:        BF 02 EF 15   LDA.l PNTR_15EF00+2,x    ;  |   
 CODE_12F9DD:        85 04         STA $04                   ; /
 CODE_12F9DF:        A9 80         LDA #$80                  ; \ Increase VRAM destination by 1 if written to $2119.
 CODE_12F9E1:        8D 15 21      STA $2115                 ; /
@@ -15702,7 +15702,7 @@ CODE_12FDB3:        BF 16 9E 13   LDA.l DATA_139E16,x
 CODE_12FDB7:        85 05         STA $05                   
 CODE_12FDB9:        BF E8 9E 13   LDA.l DATA_139EE8,x             
 CODE_12FDBD:        85 06         STA $06                   
-CODE_12FDBF:        AF 15 9E 13   LDA DATA_139E15               
+CODE_12FDBF:        AF 15 9E 13   LDA.l DATA_139E15               
 CODE_12FDC3:        85 07         STA $07                   
 CODE_12FDC5:        64 E9         STZ $E9                   
 CODE_12FDC7:        64 E6         STZ $E6                   
@@ -15912,7 +15912,7 @@ CODE_12FF64:        10 EB         BPL CODE_12FF51
 CODE_12FF66:        60            RTS
                        
 CODE_12FF67:        C2 20         REP #$20                  
-CODE_12FF69:        AF 80 BF 14   LDA DATA_14BF80               
+CODE_12FF69:        AF 80 BF 14   LDA.l DATA_14BF80               
 CODE_12FF6D:        8D BC 04      STA $04BC                 
 CODE_12FF70:        A2 00         LDX #$00                  
 CODE_12FF72:        BF 80 BF 14   LDA.l DATA_14BF80,x             

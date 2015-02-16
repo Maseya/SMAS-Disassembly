@@ -1917,7 +1917,6 @@ DATA_268C3F:        db $9C,$B8,$26,$4C,$FC,$27,$00,$91
                     db $94,$24,$5C,$9C,$E2,$24,$5F,$A6
                     db $E2
 
-
 CODE_26B028:        A2 00         LDX #$00                  ;0 S:01FF P:EnvMXdIzc HC:62982 VC:000 FC:00 I:00
 CODE_26B02A:        A9 06         LDA #$06                  ;0 S:01FF P:EnvMXdIzc HC:62998 VC:000 FC:00 I:00
 CODE_26B02C:        22 A8 98 20   JSL CODE_2098A8           ;0 S:01FF P:EnvMXdIzc HC:63014 VC:000 FC:00 I:00
@@ -1927,12 +1926,10 @@ CODE_26B036:        D0 F2         BNE CODE_26B02A           ;0 S:01FF P:EnvMXdIz
 CODE_26B038:        22 0B 99 20   JSL CODE_20990B           ;0 S:01FF P:EnvMXdIzc HC:63078 VC:000 FC:00 I:00
 CODE_26B03C:        6B            RTL                       ;0 S:01FF P:EnvMXdIzc HC:63094 VC:000 FC:00 I:00
 
-
 DATA_26B03D:        db $00,$0F,$1E,$2D,$3C,$4B,$5A,$69
 
-
 CODE_26B045:        A5 0E         LDA $0E
-CODE_26B047:        29 E0      AND #$E0
+CODE_26B047:        29 E0         AND #$E0
 CODE_26B049:        4A            LSR A                     ;0 S:01FF P:EnvMXdIzc HC:63206 VC:000 FC:00 I:00
 CODE_26B04A:        4A            LSR A                     ;0 S:01FF P:EnvMXdIzc HC:63222 VC:000 FC:00 I:00
 CODE_26B04B:        4A            LSR A                     ;0 S:01FF P:EnvMXdIzc HC:63238 VC:000 FC:00 I:00
@@ -1951,7 +1948,7 @@ CODE_26B05C:        CA            DEX                       ;0 S:01FF P:EnvMXdIz
 CODE_26B05D:        8A            TXA                       ;0 S:01FF P:EnvMXdIzc HC:63446 VC:000 FC:00 I:00
 CODE_26B05E:        22 3A FB 20   JSL CODE_20FB3A           ;0 S:01FF P:EnvMXdIzc HC:63462 VC:000 FC:00 I:00
 
-DATA_26B0562:    dl CODE_26B1C2
+DATA_26B0562:       dl CODE_26B1C2
 
                     dl CODE_26B1FF
 
@@ -2613,7 +2610,7 @@ DATA_26B4CD:        db $A4,$86,$90
 DATA_26B4D0:        db $A5,$8E,$91
 
 
-CODE_26B4D3:        20 65 B8      JSR $B865
+CODE_26B4D3:        20 65 B8      JSR CODE_26B865
 CODE_26B4D6:        AD 06 07      LDA $0706                 ;0 S:01FF P:EnvMXdIzc HC:62550 VC:000 FC:00 I:00
 CODE_26B4D9:        29 0F         AND #$0F                  ;0 S:01FF P:EnvMXdIzc HC:62566 VC:000 FC:00 I:00
 CODE_26B4DB:        85 04         STA $04                   ;0 S:01FF P:EnvMXdIzc HC:62582 VC:000 FC:00 I:00
@@ -3925,7 +3922,7 @@ CODE_26CCE0:        60            RTS
 CODE_26CCE1:        22 05 F8 25   JSL CODE_25F805           
 CODE_26CCE5:        29 0F         AND #$0F                  
 CODE_26CCE7:        C9 0C         CMP #$0C                  
-CODE_26CCE9:        B0 F6         BCS $F6                   
+CODE_26CCE9:        B0 F6         BCS CODE_26CCE1                   
 CODE_26CCEB:        85 00         STA $00                   
 CODE_26CCED:        22 05 F8 25   JSL CODE_25F805           
 CODE_26CCF1:        29 03         AND #$03                  
@@ -4543,7 +4540,7 @@ CODE_26D1F9:        20 45 F6      JSR CODE_26F645
 CODE_26D1FC:        BD 33 18      LDA $1833,x               
 CODE_26D1FF:        30 04         BMI CODE_26D205           
 CODE_26D201:        C9 40         CMP #$40                  
-CODE_26D203:        B0 11         BCS $11                   
+CODE_26D203:        B0 11         BCS CODE_26D216                   
 CODE_26D205:        BD 33 18      LDA $1833,x               
 CODE_26D208:        10 04         BPL CODE_26D20E           
 CODE_26D20A:        B4 F2         LDY $F2,x                 
@@ -4744,7 +4741,7 @@ CODE_26D383:        A5 15         LDA $15
 CODE_26D385:        89 03         BIT #$03                  
 CODE_26D387:        D0 26         BNE CODE_26D3AF           
 CODE_26D389:        20 8E F0      JSR CODE_26F08E           
-CODE_26D38C:        B0 21         BCS $21                   
+CODE_26D38C:        B0 21         BCS CODE_26D3AF                   
 CODE_26D38E:        A9 00         LDA #$00                  
 CODE_26D390:        99 E0 19      STA $19E0,y               
 CODE_26D393:        A9 04         LDA #$04                  
@@ -4806,7 +4803,7 @@ CODE_26D40E:        29 0F         AND #$0F
 CODE_26D410:        F0 10         BEQ CODE_26D422           
 CODE_26D412:        C9 08         CMP #$08                  
 CODE_26D414:        A0 01         LDY #$01                  
-CODE_26D416:        B0 02         BCS $02                   
+CODE_26D416:        B0 02         BCS CODE_26D41A                   
 CODE_26D418:        A0 FF         LDY #$FF                  
 CODE_26D41A:        98            TYA                       
 CODE_26D41B:        18            CLC                       
@@ -4881,7 +4878,7 @@ CODE_26D4B7:        20 45 F6      JSR CODE_26F645
 CODE_26D4BA:        BD 33 18      LDA $1833,x               
 CODE_26D4BD:        30 04         BMI CODE_26D4C3           
 CODE_26D4BF:        C9 40         CMP #$40                  
-CODE_26D4C1:        B0 06         BCS $06                   
+CODE_26D4C1:        B0 06         BCS CODE_26D4C9                   
 CODE_26D4C3:        FE 33 18      INC $1833,x               
 CODE_26D4C6:        FE 33 18      INC $1833,x               
 CODE_26D4C9:        BD 11 18      LDA $1811,x               
@@ -4902,7 +4899,7 @@ CODE_26D4E9:        9E 0F 19      STZ $190F,x
 CODE_26D4EC:        BD 42 19      LDA $1942,x               
 CODE_26D4EF:        F0 05         BEQ CODE_26D4F6           
 CODE_26D4F1:        E0 02         CPX #$02                  
-CODE_26D4F3:        B0 01         BCS $01                   
+CODE_26D4F3:        B0 01         BCS CODE_26D4F6                   
 CODE_26D4F5:        60            RTS
                        
 CODE_26D4F6:        A0 05         LDY #$05                  
@@ -4946,7 +4943,7 @@ CODE_26D53D:        79 E7 EC      ADC $ECE7,y
 CODE_26D540:        85 01         STA $01                   
 CODE_26D542:        20 C0 D7      JSR CODE_26D7C0           
 CODE_26D545:        A4 0F         LDY $0F                   
-CODE_26D547:        B0 03         BCS $03                   
+CODE_26D547:        B0 03         BCS CODE_26D54C                   
 CODE_26D549:        4C 70 D6      JMP CODE_26D670           
 
 CODE_26D54C:        C0 02         CPY #$02                  
@@ -4959,7 +4956,7 @@ CODE_26D558:        90 03         BCC CODE_26D55D
 CODE_26D55A:        4C F2 D5      JMP CODE_26D5F2           
 
 CODE_26D55D:        E0 02         CPX #$02                  
-CODE_26D55F:        B0 12         BCS $12                   
+CODE_26D55F:        B0 12         BCS CODE_26D573                   
 CODE_26D561:        BD AB 19      LDA $19AB,x               
 CODE_26D564:        F0 0D         BEQ CODE_26D573           
 CODE_26D566:        BD AD 19      LDA $19AD,x               
@@ -4972,11 +4969,11 @@ CODE_26D571:        80 03         BRA CODE_26D576
 CODE_26D573:        BD 11 18      LDA $1811,x               
 CODE_26D576:        29 0F         AND #$0F                  
 CODE_26D578:        C9 09         CMP #$09                  
-CODE_26D57A:        B0 03         BCS $03                   
+CODE_26D57A:        B0 03         BCS CODE_26D57F                   
 CODE_26D57C:        4C 70 D6      JMP CODE_26D670           
 
 CODE_26D57F:        E0 02         CPX #$02                  
-CODE_26D581:        B0 6F         BCS $6F                   
+CODE_26D581:        B0 6F         BCS CODE_26D5F2                   
 CODE_26D583:        BD 33 18      LDA $1833,x               
 CODE_26D586:        10 6A         BPL CODE_26D5F2           
 CODE_26D588:        BD 0F 18      LDA $180F,x               
@@ -5035,7 +5032,7 @@ CODE_26D5FC:        4C 31 D6      JMP CODE_26D631
 CODE_26D5FF:        BD 11 18      LDA $1811,x               
 CODE_26D602:        29 0F         AND #$0F                  
 CODE_26D604:        C9 06         CMP #$06                  
-CODE_26D606:        B0 68         BCS $68                   
+CODE_26D606:        B0 68         BCS CODE_26D670                   
 CODE_26D608:        BD 33 18      LDA $1833,x               
 CODE_26D60B:        30 63         BMI CODE_26D670           
 CODE_26D60D:        A4 02         LDY $02                   
@@ -5084,7 +5081,7 @@ CODE_26D667:        BD 95 18      LDA $1895,x
 CODE_26D66A:        19 05 ED      ORA $ED05,y               
 CODE_26D66D:        9D 95 18      STA $1895,x               
 CODE_26D670:        C0 02         CPY #$02                  
-CODE_26D672:        B0 24         BCS $24                   
+CODE_26D672:        B0 24         BCS CODE_26D698                   
 CODE_26D674:        A4 02         LDY $02                   
 CODE_26D676:        BD 0F 19      LDA $190F,x               
 CODE_26D679:        C9 C0         CMP #$C0                  
@@ -5139,7 +5136,7 @@ CODE_26D6D5:        AD 02 00      LDA $0002
 CODE_26D6D8:        8D 31 1A      STA $1A31                 
 CODE_26D6DB:        CE CA 18      DEC $18CA                 
 CODE_26D6DE:        E0 07         CPX #$07                  
-CODE_26D6E0:        B0 03         BCS $03                   
+CODE_26D6E0:        B0 03         BCS CODE_26D6E5                   
 CODE_26D6E2:        4C 2A ED      JMP CODE_26ED2A           
 
 CODE_26D6E5:        A9 10         LDA #$10                  
@@ -5170,7 +5167,7 @@ CODE_26D722:        D0 1A         BNE CODE_26D73E
 CODE_26D724:        22 05 F8 25   JSL CODE_25F805           
 CODE_26D728:        29 1F         AND #$1F                  
 CODE_26D72A:        CD 3F 1A      CMP $1A3F                 
-CODE_26D72D:        B0 0F         BCS $0F                   
+CODE_26D72D:        B0 0F         BCS CODE_26D73E                   
 CODE_26D72F:        EE 30 1A      INC $1A30                 
 CODE_26D732:        A9 11         LDA #$11                  
 CODE_26D734:        9D BB 18      STA $18BB,x               
@@ -5283,7 +5280,7 @@ CODE_26D800:        BD 42 19      LDA $1942,x
 CODE_26D803:        10 08         BPL CODE_26D80D           
 CODE_26D805:        BD 11 18      LDA $1811,x               
 CODE_26D808:        C9 E0         CMP #$E0                  
-CODE_26D80A:        B0 04         BCS $04                   
+CODE_26D80A:        B0 04         BCS CODE_26D810                   
 CODE_26D80C:        60            RTS
                        
 CODE_26D80D:        F0 01         BEQ CODE_26D810           
@@ -5561,7 +5558,7 @@ CODE_26DA55:        10 03         BPL CODE_26DA5A
 CODE_26DA57:        49 FF         EOR #$FF                  
 CODE_26DA59:        1A            INC A                     
 CODE_26DA5A:        C9 08         CMP #$08                  
-CODE_26DA5C:        B0 03         BCS $03                   
+CODE_26DA5C:        B0 03         BCS CODE_26DA61                   
 CODE_26DA5E:        4C 31 DB      JMP CODE_26DB31           
 
 CODE_26DA61:        A0 00         LDY #$00                  
@@ -5575,7 +5572,7 @@ CODE_26DA6F:        5A            PHY
 CODE_26DA70:        98            TYA                       
 CODE_26DA71:        8D 0F 00      STA $000F                 
 CODE_26DA74:        20 8E F0      JSR CODE_26F08E           
-CODE_26DA77:        B0 58         BCS $58                   
+CODE_26DA77:        B0 58         BCS CODE_26DAD1                   
 CODE_26DA79:        A9 00         LDA #$00                  
 CODE_26DA7B:        99 E0 19      STA $19E0,y               
 CODE_26DA7E:        A9 02         LDA #$02                  
@@ -5671,7 +5668,7 @@ CODE_26DB36:        AD 11 18      LDA $1811
 CODE_26DB39:        C9 F0         CMP #$F0                  
 CODE_26DB3B:        90 4A         BCC CODE_26DB87           
 CODE_26DB3D:        20 8E F0      JSR CODE_26F08E           
-CODE_26DB40:        B0 45         BCS $45                   
+CODE_26DB40:        B0 45         BCS CODE_26DB87                   
 CODE_26DB42:        A9 00         LDA #$00                  
 CODE_26DB44:        99 E0 19      STA $19E0,y               
 CODE_26DB47:        A9 02         LDA #$02                  
@@ -5680,7 +5677,7 @@ CODE_26DB4C:        A9 04         LDA #$04
 CODE_26DB4E:        99 D7 19      STA $19D7,y               
 CODE_26DB51:        AD 22 18      LDA $1822                 
 CODE_26DB54:        CD 23 18      CMP $1823                 
-CODE_26DB57:        B0 05         BCS $05                   
+CODE_26DB57:        B0 05         BCS CODE_26DB5E                   
 CODE_26DB59:        18            CLC                       
 CODE_26DB5A:        69 08         ADC #$08                  
 CODE_26DB5C:        80 03         BRA CODE_26DB61           
@@ -5708,7 +5705,7 @@ CODE_26DB87:        28            PLP
 CODE_26DB88:        A0 00         LDY #$00                  
 CODE_26DB8A:        AD 22 18      LDA $1822                 
 CODE_26DB8D:        CD 23 18      CMP $1823                 
-CODE_26DB90:        B0 01         BCS $01                   
+CODE_26DB90:        B0 01         BCS CODE_26DB93                   
 CODE_26DB92:        C8            INY                       
 CODE_26DB93:        4D 23 18      EOR $1823                 
 CODE_26DB96:        10 0D         BPL CODE_26DBA5           
@@ -5716,7 +5713,7 @@ CODE_26DB98:        A9 EF         LDA #$EF
 CODE_26DB9A:        CD 22 18      CMP $1822                 
 CODE_26DB9D:        90 05         BCC CODE_26DBA4           
 CODE_26DB9F:        CD 23 18      CMP $1823                 
-CODE_26DBA2:        B0 01         BCS $01                   
+CODE_26DBA2:        B0 01         BCS CODE_26DBA5                   
 CODE_26DBA4:        C8            INY                       
 CODE_26DBA5:        B9 19 ED      LDA $ED19,y               
 CODE_26DBA8:        8D 44 18      STA $1844                 
@@ -5847,7 +5844,7 @@ CODE_26DCA0:        AD 00 00      LDA $0000
 CODE_26DCA3:        8D 31 1A      STA $1A31                 
 CODE_26DCA6:        CE CA 18      DEC $18CA                 
 CODE_26DCA9:        E0 05         CPX #$05                  
-CODE_26DCAB:        B0 03         BCS $03                   
+CODE_26DCAB:        B0 03         BCS CODE_26DCB0                   
 CODE_26DCAD:        4C 2A ED      JMP CODE_26ED2A           
 CODE_26DCB0:        AD 0C 19      LDA $190C                 
 CODE_26DCB3:        4A            LSR A                     
@@ -5873,7 +5870,7 @@ CODE_26DCE1:        69 10         ADC #$10
 CODE_26DCE3:        9D 13 18      STA $1813,x               
 CODE_26DCE6:        BD 13 18      LDA $1813,x               
 CODE_26DCE9:        C9 10         CMP #$10                  
-CODE_26DCEB:        B0 05         BCS $05                   
+CODE_26DCEB:        B0 05         BCS CODE_26DCF2                   
 CODE_26DCED:        A9 10         LDA #$10                  
 CODE_26DCEF:        9D 13 18      STA $1813,x               
 CODE_26DCF2:        A9 07         LDA #$07                  
@@ -5992,7 +5989,7 @@ CODE_26DDFE:        C2 30         REP #$30
 CODE_26DE00:        A0 00 00      LDY #$0000                
 CODE_26DE03:        AD 3A 1A      LDA $1A3A                 
 CODE_26DE06:        CD 3C 1A      CMP $1A3C                 
-CODE_26DE09:        B0 06         BCS $06                   
+CODE_26DE09:        B0 06         BCS CODE_26DE11                   
 CODE_26DE0B:        C8            INY                       
 CODE_26DE0C:        9C 3C 1A      STZ $1A3C                 
 CODE_26DE0F:        80 03         BRA CODE_26DE14           
@@ -6017,7 +6014,7 @@ CODE_26DE36:        AD 00 00      LDA $0000
 CODE_26DE39:        8D 31 1A      STA $1A31                 
 CODE_26DE3C:        CE CA 18      DEC $18CA                 
 CODE_26DE3F:        E0 08         CPX #$08                  
-CODE_26DE41:        B0 03         BCS $03                   
+CODE_26DE41:        B0 03         BCS CODE_26DE46                   
 CODE_26DE43:        4C 2A ED      JMP CODE_26ED2A           
 
 CODE_26DE46:        A9 10         LDA #$10                  
@@ -6038,7 +6035,7 @@ CODE_26DE63:        D0 1A         BNE CODE_26DE7F
 CODE_26DE65:        22 05 F8 25   JSL CODE_25F805           
 CODE_26DE69:        29 1F         AND #$1F                  
 CODE_26DE6B:        CD 3F 1A      CMP $1A3F                 
-CODE_26DE6E:        B0 0F         BCS $0F                   
+CODE_26DE6E:        B0 0F         BCS CODE_26DE7F                   
 CODE_26DE70:        EE 30 1A      INC $1A30                 
 CODE_26DE73:        A9 11         LDA #$11                  
 CODE_26DE75:        9D BB 18      STA $18BB,x               
@@ -6111,7 +6108,7 @@ CODE_26DEFB:        F0 2B         BEQ CODE_26DF28
 CODE_26DEFD:        C9 13         CMP #$13                  
 CODE_26DEFF:        F0 27         BEQ CODE_26DF28           
 CODE_26DF01:        C9 10         CMP #$10                  
-CODE_26DF03:        B0 23         BCS $23                   
+CODE_26DF03:        B0 23         BCS CODE_26DF28                   
 CODE_26DF05:        C9 07         CMP #$07                  
 CODE_26DF07:        F0 27         BEQ CODE_26DF30           
 CODE_26DF09:        C9 08         CMP #$08                  
@@ -6175,7 +6172,7 @@ CODE_26DF7D:        20 2D F6      JSR CODE_26F62D
 CODE_26DF80:        BD 35 18      LDA $1835,x               
 CODE_26DF83:        30 04         BMI CODE_26DF89           
 CODE_26DF85:        C9 7D         CMP #$7D                  
-CODE_26DF87:        B0 09         BCS $09                   
+CODE_26DF87:        B0 09         BCS CODE_26DF92                   
 CODE_26DF89:        FE 35 18      INC $1835,x               
 CODE_26DF8C:        FE 35 18      INC $1835,x               
 CODE_26DF8F:        FE 35 18      INC $1835,x               
@@ -6231,7 +6228,7 @@ CODE_26E004:        9D 35 18      STA $1835,x
 CODE_26E007:        20 7C E4      JSR CODE_26E47C           
 CODE_26E00A:        BD BB 18      LDA $18BB,x               
 CODE_26E00D:        C9 10         CMP #$10                  
-CODE_26E00F:        B0 0F         BCS $0F                   
+CODE_26E00F:        B0 0F         BCS CODE_26E020                   
 CODE_26E011:        BC BB 18      LDY $18BB,x               
 CODE_26E014:        BE 81 ED      LDX $ED81,y               
 CODE_26E017:        A5 15         LDA $15                   
@@ -6299,7 +6296,7 @@ CODE_26E09A:        A0 00 00      LDY #$0000
 CODE_26E09D:        A9 00         LDA #$00                  
 CODE_26E09F:        DD 1E 19      CMP $191E,x               
 CODE_26E0A2:        A9 22         LDA #$22                  
-CODE_26E0A4:        B0 02         BCS $02                   
+CODE_26E0A4:        B0 02         BCS CODE_26E0A8                   
 CODE_26E0A6:        A9 12         LDA #$12                  
 CODE_26E0A8:        99 03 08      STA $0803,y               
 CODE_26E0AB:        BD 13 18      LDA $1813,x               
@@ -6429,7 +6426,7 @@ CODE_26E1AE:        20 2D F6      JSR CODE_26F62D
 CODE_26E1B1:        BD 35 18      LDA $1835,x               
 CODE_26E1B4:        30 04         BMI CODE_26E1BA           
 CODE_26E1B6:        C9 40         CMP #$40                  
-CODE_26E1B8:        B0 03         BCS $03                   
+CODE_26E1B8:        B0 03         BCS CODE_26E1BD                   
 CODE_26E1BA:        FE 35 18      INC $1835,x               
 CODE_26E1BD:        20 F4 D7      JSR CODE_26D7F4           
 CODE_26E1C0:        BD 97 18      LDA $1897,x               
@@ -6463,7 +6460,7 @@ CODE_26E201:        4C 5F E3      JMP CODE_26E35F
 
 CODE_26E204:        BD 13 18      LDA $1813,x               
 CODE_26E207:        C9 A0         CMP #$A0                  
-CODE_26E209:        B0 03         BCS $03                   
+CODE_26E209:        B0 03         BCS CODE_26E20E                   
 CODE_26E20B:        4C 96 E2      JMP CODE_26E296           
 
 CODE_26E20E:        BD 44 19      LDA $1944,x               
@@ -6504,7 +6501,7 @@ CODE_26E25B:        BD BB 18      LDA $18BB,x
 CODE_26E25E:        C9 13         CMP #$13                  
 CODE_26E260:        F0 DD         BEQ CODE_26E23F           
 CODE_26E262:        C9 10         CMP #$10                  
-CODE_26E264:        B0 E3         BCS $E3                   
+CODE_26E264:        B0 E3         BCS CODE_26E249                   
 CODE_26E266:        A9 20         LDA #$20                  
 CODE_26E268:        9D 13 18      STA $1813,x               
 CODE_26E26B:        9E 40 1A      STZ $1A40,x               
@@ -6513,7 +6510,7 @@ CODE_26E26E:        C2 30         REP #$30
 CODE_26E270:        A0 00 00      LDY #$0000                
 CODE_26E273:        AD 3A 1A      LDA $1A3A                 
 CODE_26E276:        CD 3C 1A      CMP $1A3C                 
-CODE_26E279:        B0 06         BCS $06                   
+CODE_26E279:        B0 06         BCS CODE_26E281                   
 CODE_26E27B:        C8            INY                       
 CODE_26E27C:        9C 3C 1A      STZ $1A3C                 
 CODE_26E27F:        80 03         BRA CODE_26E284           
@@ -6538,7 +6535,7 @@ CODE_26E2A3:        20 2D F6      JSR CODE_26F62D
 CODE_26E2A6:        BD 35 18      LDA $1835,x               
 CODE_26E2A9:        30 04         BMI CODE_26E2AF           
 CODE_26E2AB:        C9 40         CMP #$40                  
-CODE_26E2AD:        B0 06         BCS $06                   
+CODE_26E2AD:        B0 06         BCS CODE_26E2B5                   
 CODE_26E2AF:        FE 35 18      INC $1835,x               
 CODE_26E2B2:        FE 35 18      INC $1835,x               
 CODE_26E2B5:        20 F4 D7      JSR CODE_26D7F4           
@@ -6552,7 +6549,7 @@ CODE_26E2C7:        20 2D F6      JSR CODE_26F62D
 CODE_26E2CA:        BD 35 18      LDA $1835,x               
 CODE_26E2CD:        30 04         BMI CODE_26E2D3           
 CODE_26E2CF:        C9 40         CMP #$40                  
-CODE_26E2D1:        B0 E2         BCS $E2                   
+CODE_26E2D1:        B0 E2         BCS CODE_26E2B5                   
 CODE_26E2D3:        FE 35 18      INC $1835,x               
 CODE_26E2D6:        FE 35 18      INC $1835,x               
 CODE_26E2D9:        4C 5F E3      JMP CODE_26E35F           
@@ -6800,7 +6797,7 @@ CODE_26E508:        C9 01         CMP #$01
 CODE_26E50A:        D0 3F         BNE CODE_26E54B           
 CODE_26E50C:        BD BB 18      LDA $18BB,x               
 CODE_26E50F:        C9 07         CMP #$07                  
-CODE_26E511:        B0 11         BCS $11                   
+CODE_26E511:        B0 11         BCS CODE_26E524                   
 CODE_26E513:        BD FA 18      LDA $18FA,x               
 CODE_26E516:        C9 C2         CMP #$C2                  
 CODE_26E518:        D0 1E         BNE CODE_26E538           
@@ -6871,12 +6868,12 @@ CODE_26E59C:        BD 44 19      LDA $1944,x
 CODE_26E59F:        F0 08         BEQ CODE_26E5A9           
 CODE_26E5A1:        BD 13 18      LDA $1813,x               
 CODE_26E5A4:        C9 E0         CMP #$E0                  
-CODE_26E5A6:        B0 01         BCS $01                   
+CODE_26E5A6:        B0 01         BCS CODE_26E5A9                   
 CODE_26E5A8:        60            RTS                       
 
 CODE_26E5A9:        BC BB 18      LDY $18BB,x               
 CODE_26E5AC:        C0 07         CPY #$07                  
-CODE_26E5AE:        B0 09         BCS $09                   
+CODE_26E5AE:        B0 09         BCS CODE_26E5B9                   
 CODE_26E5B0:        BD 5A 1A      LDA $1A5A,x               
 CODE_26E5B3:        F0 04         BEQ CODE_26E5B9           
 CODE_26E5B5:        A9 0C         LDA #$0C                  
@@ -6901,7 +6898,7 @@ CODE_26E5DD:        E6 03         INC $03
 CODE_26E5DF:        80 0E         BRA CODE_26E5EF           
 
 CODE_26E5E1:        C9 02         CMP #$02                  
-CODE_26E5E3:        B0 08         BCS $08                   
+CODE_26E5E3:        B0 08         BCS CODE_26E5ED                   
 CODE_26E5E5:        E6 03         INC $03                   
 CODE_26E5E7:        E6 03         INC $03                   
 CODE_26E5E9:        A9 1A         LDA #$1A                  
@@ -7140,7 +7137,7 @@ CODE_26E7D4:        4C A8 E8      JMP CODE_26E8A8
 CODE_26E7D7:        A4 0F         LDY $0F                   
 CODE_26E7D9:        B9 BB 18      LDA $18BB,y               
 CODE_26E7DC:        C9 07         CMP #$07                  
-CODE_26E7DE:        B0 B4         BCS $B4                   
+CODE_26E7DE:        B0 B4         BCS CODE_26E794                   
 CODE_26E7E0:        B9 02 18      LDA $1802,y               
 CODE_26E7E3:        C9 02         CMP #$02                  
 CODE_26E7E5:        F0 2D         BEQ CODE_26E814           
@@ -7308,7 +7305,7 @@ CODE_26E929:        8A            TXA
 CODE_26E92A:        18            CLC                       
 CODE_26E92B:        65 15         ADC $15                   
 CODE_26E92D:        4A            LSR A                     
-CODE_26E92E:        B0 C5         BCS $C5                   
+CODE_26E92E:        B0 C5         BCS CODE_26E8F5                   
 CODE_26E930:        BD BB 18      LDA $18BB,x               
 CODE_26E933:        C9 09         CMP #$09                  
 CODE_26E935:        F0 05         BEQ CODE_26E93C           
@@ -7353,7 +7350,7 @@ CODE_26E98C:        1A            INC A
 CODE_26E98D:        99 2E 19      STA $192E,y               
 CODE_26E990:        AD 2E 19      LDA $192E                 
 CODE_26E993:        C9 05         CMP #$05                  
-CODE_26E995:        B0 07         BCS $07                   
+CODE_26E995:        B0 07         BCS CODE_26E99E                   
 CODE_26E997:        AD 2F 19      LDA $192F                 
 CODE_26E99A:        C9 05         CMP #$05                  
 CODE_26E99C:        90 2A         BCC CODE_26E9C8           
@@ -7678,7 +7675,7 @@ CODE_26EC45:        B9 D5 ED      LDA $EDD5,y
 CODE_26EC48:        9D 46 18      STA $1846,x               
 CODE_26EC4B:        BD BB 18      LDA $18BB,x               
 CODE_26EC4E:        C9 07         CMP #$07                  
-CODE_26EC50:        B0 05         BCS $05                   
+CODE_26EC50:        B0 05         BCS CODE_26EC57                   
 CODE_26EC52:        A9 01         LDA #$01                  
 CODE_26EC54:        9D 5A 1A      STA $1A5A,x               
 CODE_26EC57:        60            RTS                       
@@ -7692,7 +7689,7 @@ CODE_26EC64:        D0 03         BNE CODE_26EC69
 CODE_26EC66:        DE E9 18      DEC $18E9,x               
 CODE_26EC69:        BD E9 18      LDA $18E9,x               
 CODE_26EC6C:        C9 60         CMP #$60                  
-CODE_26EC6E:        B0 15         BCS $15                   
+CODE_26EC6E:        B0 15         BCS CODE_26EC85                   
 CODE_26EC70:        4A            LSR A                     
 CODE_26EC71:        4A            LSR A                     
 CODE_26EC72:        4A            LSR A                     
@@ -7738,7 +7735,7 @@ CODE_26ECCA:        20 2D F6      JSR CODE_26F62D
 CODE_26ECCD:        BD 35 18      LDA $1835,x               
 CODE_26ECD0:        30 04         BMI CODE_26ECD6           
 CODE_26ECD2:        C9 40         CMP #$40                  
-CODE_26ECD4:        B0 06         BCS $06                   
+CODE_26ECD4:        B0 06         BCS CODE_26ECDC                   
 CODE_26ECD6:        FE 35 18      INC $1835,x               
 CODE_26ECD9:        FE 35 18      INC $1835,x               
 CODE_26ECDC:        60            RTS                       
@@ -7884,10 +7881,10 @@ CODE_26EE05:        BD 11 18      LDA $1811,x
 CODE_26EE08:        38            SEC                       
 CODE_26EE09:        FD 3F 19      SBC $193F,x               
 CODE_26EE0C:        C9 80         CMP #$80                  
-CODE_26EE0E:        B0 12         BCS $12                   
+CODE_26EE0E:        B0 12         BCS CODE_26EE22                   
 CODE_26EE10:        A5 08         LDA $08                   
 CODE_26EE12:        C5 0F         CMP $0F                   
-CODE_26EE14:        B0 4E         BCS $4E                   
+CODE_26EE14:        B0 4E         BCS CODE_26EE64                   
 CODE_26EE16:        BD 33 18      LDA $1833,x               
 CODE_26EE19:        30 49         BMI CODE_26EE64           
 CODE_26EE1B:        A9 04         LDA #$04                  
@@ -7956,7 +7953,7 @@ CODE_26EEA3:        4C 2A ED      JMP CODE_26ED2A
 CODE_26EEA6:        C9 50         CMP #$50                  
 CODE_26EEA8:        90 13         BCC CODE_26EEBD           
 CODE_26EEAA:        C9 78         CMP #$78                  
-CODE_26EEAC:        B0 0F         BCS $0F                   
+CODE_26EEAC:        B0 0F         BCS CODE_26EEBD                   
 CODE_26EEAE:        BD E9 18      LDA $18E9,x               
 CODE_26EEB1:        29 08         AND #$08                  
 CODE_26EEB3:        9D 57 18      STA $1857,x               
@@ -8206,7 +8203,7 @@ CODE_26F0C4:        69 20         ADC #$20
 CODE_26F0C6:        85 07         STA $07                   
 CODE_26F0C8:        5A            PHY                       
 CODE_26F0C9:        20 8E F0      JSR CODE_26F08E           
-CODE_26F0CC:        B0 41         BCS $41                   
+CODE_26F0CC:        B0 41         BCS CODE_26F10F                   
 CODE_26F0CE:        A9 00         LDA #$00                  
 CODE_26F0D0:        99 E0 19      STA $19E0,y               
 CODE_26F0D3:        A9 02         LDA #$02                  

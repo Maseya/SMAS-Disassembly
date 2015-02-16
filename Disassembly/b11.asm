@@ -529,11 +529,11 @@ CODE_11854A:        22 EC D8 14   JSL CODE_14D8EC
 CODE_11854E:        80 24         BRA CODE_118574           
 
 CODE_118550:        AC 33 05      LDY $0533                 
-CODE_118553:        B9 98 D0      LDA DATA_11D098,y               
+CODE_118553:        B9 98 D0      LDA.w DATA_11D098,y               
 CODE_118556:        18            CLC                       
 CODE_118557:        6D 34 05      ADC $0534                 
 CODE_11855A:        A8            TAY                       
-CODE_11855B:        B9 52 CF      LDA DATA_11CF52,y               
+CODE_11855B:        B9 52 CF      LDA.w DATA_11CF52,y               
 CODE_11855E:        C9 FF         CMP #$FF                  
 CODE_118560:        D0 04         BNE CODE_118566           
 CODE_118562:        A9 00         LDA #$00                  
@@ -785,7 +785,7 @@ CODE_1187EC:        10 F2         BPL CODE_1187E0
 CODE_1187EE:        AE 35 06      LDX $0635                 
 CODE_1187F1:        AD 33 05      LDA $0533                 
 CODE_1187F4:        38            SEC                       
-CODE_1187F5:        FF B4 C9 11   SBC DATA_11C9B4,x             
+CODE_1187F5:        FF B4 C9 11   SBC.l DATA_11C9B4,x             
 CODE_1187F9:        8D 29 06      STA $0629                 
 CODE_1187FC:        18            CLC                       
 CODE_1187FD:        69 81         ADC #$81                  
@@ -794,7 +794,7 @@ CODE_118802:        A9 0C         LDA #$0C
 CODE_118804:        8D 93 11      STA $1193                 
 CODE_118807:        BF B5 C9 11   LDA.l DATA_11C9B4+1,x             
 CODE_11880B:        38            SEC                       
-CODE_11880C:        FF B4 C9 11   SBC DATA_11C9B4,x             
+CODE_11880C:        FF B4 C9 11   SBC.l DATA_11C9B4,x             
 CODE_118810:        85 03         STA $03                   
 CODE_118812:        A2 00         LDX #$00                  
 CODE_118814:        9B            TXY                       
@@ -1279,11 +1279,11 @@ CODE_118CDF:        64 FE         STZ $FE
 CODE_118CE1:        22 C4 D4 14   JSL CODE_14D4C4           
 CODE_118CE5:        AC 35 06      LDY $0635                 ; \ Store original world number into $0405.
 CODE_118CE8:        8C 05 04      STY $0405                 ; /
-CODE_118CEB:        B9 B4 CD      LDA DATA_11CDB4,y         ; \ Get new world number to warp to.       
+CODE_118CEB:        B9 B4 CD      LDA.w DATA_11CDB4,y         ; \ Get new world number to warp to.       
 CODE_118CEE:        8D 35 06      STA $0635                 ; /
 CODE_118CF1:        A8            TAY                       ; Into Y.
 CODE_118CF2:        A6 8F         LDX $8F                   ; Player number into X.
-CODE_118CF4:        B9 B4 C9      LDA DATA_11C9B4,y         ; \ Get appropiate level number. (x-1)
+CODE_118CF4:        B9 B4 C9      LDA.w DATA_11C9B4,y         ; \ Get appropiate level number. (x-1)
 CODE_118CF7:        8D 33 05      STA $0533                 ;  |
 CODE_118CFA:        8D E8 04      STA $04E8                 ; /
 CODE_118CFD:        98            TYA                       ; World number to warp to into Y.
@@ -1292,11 +1292,11 @@ CODE_118CFF:        E9 03         SBC #$03                  ;  |
 CODE_118D01:        0A            ASL A                     ;  | Multiply by 2 since we're going to read from a 16-bit table.
 CODE_118D02:        A8            TAY                       ; / And back into Y again.
 CODE_118D03:        C2 20         REP #$20                  ; A = 16-bit.
-CODE_118D05:        B9 BB CD      LDA DATA_11CDBB,y         ; \ $11BD-$11C2 = Tilemap of number in 'World X'.
+CODE_118D05:        B9 BB CD      LDA.w DATA_11CDBB,y         ; \ $11BD-$11C2 = Tilemap of number in 'World X'.
 CODE_118D08:        8D BD 11      STA $11BD                 ;  | TTTTTTTT YXPCCCTT format.
-CODE_118D0B:        B9 C3 CD      LDA DATA_11CDC3,y         ;  |
+CODE_118D0B:        B9 C3 CD      LDA.w DATA_11CDC3,y         ;  |
 CODE_118D0E:        8D BF 11      STA $11BF                 ;  |
-CODE_118D11:        B9 CB CD      LDA DATA_11CDCB,y         ;  |   
+CODE_118D11:        B9 CB CD      LDA.w DATA_11CDCB,y         ;  |   
 CODE_118D14:        8D C1 11      STA $11C1                 ; /
 CODE_118D17:        E2 20         SEP #$20                  ; A = 8-bit.
 CODE_118D19:        22 09 80 11   JSL CODE_118009           
@@ -1371,7 +1371,7 @@ CODE_118DE2:        22 68 8A 13   JSL CODE_138A68
 CODE_118DE6:        22 46 88 13   JSL CODE_138846           
 CODE_118DEA:        9C 08 0D      STZ $0D08                 
 CODE_118DED:        AC 35 06      LDY $0635                 
-CODE_118DF0:        B9 B5 C9      LDA DATA_11C9B4+1,y               
+CODE_118DF0:        B9 B5 C9      LDA.w DATA_11C9B4+1,y               
 CODE_118DF3:        38            SEC                       
 CODE_118DF4:        E9 01         SBC #$01                  
 CODE_118DF6:        CD 33 05      CMP $0533                 
@@ -1384,7 +1384,7 @@ CODE_118E03:        22 0F E3 14   JSL CODE_14E30F
 CODE_118E07:        AD 33 05      LDA $0533                 
 CODE_118E0A:        A0 00         LDY #$00                  
 CODE_118E0C:        C8            INY                       
-CODE_118E0D:        D9 B4 C9      CMP DATA_11C9B4,y               
+CODE_118E0D:        D9 B4 C9      CMP.w DATA_11C9B4,y               
 CODE_118E10:        B0 FA         BCS CODE_118E0C                   
 CODE_118E12:        88            DEY                       
 CODE_118E13:        8C 35 06      STY $0635                 
@@ -1392,7 +1392,7 @@ CODE_118E16:        AC 35 06      LDY $0635
 CODE_118E19:        AD 33 05      LDA $0533                 
 CODE_118E1C:        38            SEC       
                 
-CODE_118E1D:        F9 B4 C9      SBC DATA_11C9B4,y               
+CODE_118E1D:        F9 B4 C9      SBC.w DATA_11C9B4,y               
 CODE_118E20:        8D 29 06      STA $0629                 
 CODE_118E23:        22 4E D8 14   JSL CODE_14D84E           
 CODE_118E27:        9C 96 07      STZ $0796                 
@@ -1478,7 +1478,7 @@ CODE_118EF0:        1A            INC A
 CODE_118EF1:        29 03         AND #$03                  
 CODE_118EF3:        AA            TAX                       
 CODE_118EF4:        AD 9A 07      LDA $079A                 
-CODE_118EF7:        DF BA 8E 11   CMP DATA_118EBA,x             
+CODE_118EF7:        DF BA 8E 11   CMP.l DATA_118EBA,x             
 CODE_118EFB:        D0 08         BNE CODE_118F05           
 CODE_118EFD:        A9 42         LDA #$42                  
 CODE_118EFF:        8D E0 1D      STA $1DE0                 
@@ -1573,7 +1573,7 @@ CODE_118FC9:        4A            LSR A
 CODE_118FCA:        4A            LSR A                     
 CODE_118FCB:        29 01         AND #$01                  
 CODE_118FCD:        A8            TAY                       
-CODE_118FCE:        B9 F9 CA      LDA DATA_11CAF9,y               
+CODE_118FCE:        B9 F9 CA      LDA.w DATA_11CAF9,y               
 CODE_118FD1:        85 11         STA $11                   
 CODE_118FD3:        C6 56         DEC $56                   
 CODE_118FD5:        D0 DB         BNE CODE_118FB2           
@@ -1616,7 +1616,7 @@ CODE_119025:        8D 82 07      STA $0782
 CODE_119028:        AD 82 07      LDA $0782                 
 CODE_11902B:        29 01         AND #$01                  
 CODE_11902D:        A8            TAY                       
-CODE_11902E:        B9 F7 CA      LDA DATA_11CAF7,y               
+CODE_11902E:        B9 F7 CA      LDA.w DATA_11CAF7,y               
 CODE_119031:        85 11         STA $11                   
 CODE_119033:        A9 0A         LDA #$0A                  
 CODE_119035:        8D 83 07      STA $0783                 
@@ -2253,7 +2253,7 @@ CODE_11957B:        F0 03         BEQ CODE_119580
 CODE_11957D:        82 27 00      BRL CODE_1195A7
            
 CODE_119580:        2C 12 42      BIT $4212                 
-CODE_119583:        50 FB         BVC $FB                   
+CODE_119583:        50 FB         BVC CODE_119580                   
 CODE_119585:        A5 F3         LDA $F3                   
 CODE_119587:        8D 0D 21      STA $210D                 
 CODE_11958A:        AD 4F 02      LDA $024F                 
@@ -2270,7 +2270,7 @@ CODE_1195A5:        AB            PLB
 CODE_1195A6:        6B            RTL
                        
 CODE_1195A7:        2C 12 42      BIT $4212                 
-CODE_1195AA:        50 FB         BVC $FB                   
+CODE_1195AA:        50 FB         BVC CODE_1195A7                   
 CODE_1195AC:        AD 02 02      LDA $0202                 
 CODE_1195AF:        8D 0F 21      STA $210F                 
 CODE_1195B2:        AD 03 02      LDA $0203                 

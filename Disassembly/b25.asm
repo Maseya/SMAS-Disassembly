@@ -3011,7 +3011,7 @@ DATA_25B5C9:        db $00,$01
 DATA_25B5CB:        db $10,$11 
 
 
-CODE_25B5CD:        22 FB B6 25   JSL $25B6FB               ; A:0000 X:0000 Y:0000 D:0000 DB:00 S:01FF P:EnvMXDIzc HC:738470 VC:000 FC:00 I:00
+CODE_25B5CD:        22 FB B6 25   JSL CODE_25B6FB           ; A:0000 X:0000 Y:0000 D:0000 DB:00 S:01FF P:EnvMXDIzc HC:738470 VC:000 FC:00 I:00
 CODE_25B5D1:        A2 00         LDX #$00                  ;0 S:01FF P:EnvMXDIzc HC:604502 VC:000 FC:00 I:00
 CODE_25B5D3:        AC 00 07      LDY $0700                 ;0 S:01FF P:EnvMXDIzc HC:604518 VC:000 FC:00 I:00
 CODE_25B5D6:        A5 02         LDA $02                   ;0 S:01FF P:EnvMXDIzc HC:604534 VC:000 FC:00 I:00
@@ -3050,7 +3050,7 @@ DATA_25B614:        db $C8,$CF,$D0,$C9,$C5
 DATA_25B619:        db $CA,$CA,$CB,$CB,$C4 
 
 
-CODE_25B61E:        22 FB B6 25   JSL $25B6FB               ;   A:0000 X:0000 Y:0000 D:0000 DB:00 S:01FF P:EnvMXDIzc HC:872454 VC:000 FC:00 I:00
+CODE_25B61E:        22 FB B6 25   JSL CODE_25B6FB           ;   A:0000 X:0000 Y:0000 D:0000 DB:00 S:01FF P:EnvMXDIzc HC:872454 VC:000 FC:00 I:00
 CODE_25B622:        A2 00         LDX #$00                  ;0 S:01FF P:EnvMXDIzc HC:605110 VC:000 FC:00 I:00
 CODE_25B624:        AC 00 07      LDY $0700                 ;0 S:01FF P:EnvMXDIzc HC:605126 VC:000 FC:00 I:00
 CODE_25B627:        A5 02         LDA $02                   ;0 S:01FF P:EnvMXDIzc HC:605142 VC:000 FC:00 I:00
@@ -6974,7 +6974,7 @@ DATA_25F82E:        db $00,$80,$00,$82,$00,$84,$00,$86
                        
 CODE_25F8CE:        8B            PHB
 CODE_25F8CF:        4B            PHK
-CODE_25F8D0:        AB          PLB
+CODE_25F8D0:        AB            PLB
 CODE_25F8D1:        A9 3D         LDA #$3D                  
 CODE_25F8D3:        8D 38 02      STA $0238                 
 CODE_25F8D6:        8D 39 02      STA $0239                 

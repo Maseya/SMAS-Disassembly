@@ -775,7 +775,7 @@ DATA_228CDB:        db $00,$00,$00,$00,$00,$00,$00
                     db $30,$BC,$38,$B8,$30,$BE,$38,$C0
                     db $30,$BE,$78,$C8,$30,$BC,$78,$B0
                     db $40,$D8,$38,$B8,$40,$DA,$38,$C0
-                    db $40,$DA,$78,$C8,$40,$D8
+                    db $40,$DA,$78,$C8,$40,$D8,$78
 
 DATA_229651:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
@@ -1776,9 +1776,9 @@ CODE_22B184:        B5 9E         LDA $9E,x
 CODE_22B186:        10 06         BPL CODE_22B18E           
 CODE_22B188:        C0 08         CPY #$08                  
 CODE_22B18A:        90 0C         BCC CODE_22B198           
-CODE_22B18C:        B0 04         BCS $04                   
+CODE_22B18C:        B0 04         BCS CODE_22B192                   
 CODE_22B18E:        C0 F0         CPY #$F0                  
-CODE_22B190:        B0 06         BCS $06                   
+CODE_22B190:        B0 06         BCS CODE_22B198                   
 CODE_22B192:        B5 A7         LDA $A7,x                 
 CODE_22B194:        29 0C         AND #$0C                  
 CODE_22B196:        F0 03         BEQ CODE_22B19B           
@@ -1791,7 +1791,7 @@ CODE_22B1A3:        B5 8C         LDA $8C,x
 CODE_22B1A5:        10 06         BPL CODE_22B1AD           
 CODE_22B1A7:        C0 08         CPY #$08                  
 CODE_22B1A9:        90 06         BCC CODE_22B1B1           
-CODE_22B1AB:        B0 08         BCS $08                   
+CODE_22B1AB:        B0 08         BCS CODE_22B1B5                   
 CODE_22B1AD:        C0 F0         CPY #$F0                  
 CODE_22B1AF:        90 04         BCC CODE_22B1B5           
 CODE_22B1B1:        22 05 99 27   JSL CODE_279905           
@@ -2094,7 +2094,7 @@ CODE_22B431:        A5 0F         LDA $0F
 CODE_22B433:        18            CLC                       
 CODE_22B434:        69 24         ADC #$24                  
 CODE_22B436:        C9 50         CMP #$50                  
-CODE_22B438:        B0 04         BCS $04                   
+CODE_22B438:        B0 04         BCS CODE_22B43E                   
 CODE_22B43A:        F6 68         INC $68,x                 
 CODE_22B43C:        74 9E         STZ $9E,x                 
 CODE_22B43E:        60            RTS                       
@@ -2102,7 +2102,7 @@ CODE_22B43E:        60            RTS
 CODE_22B43F:        22 E4 A7 27   JSL CODE_27A7E4           
 CODE_22B443:        B5 9E         LDA $9E,x                 
 CODE_22B445:        C9 70         CMP #$70                  
-CODE_22B447:        B0 04         BCS $04                   
+CODE_22B447:        B0 04         BCS CODE_22B44D                   
 CODE_22B449:        69 04         ADC #$04                  
 CODE_22B44B:        95 9E         STA $9E,x                 
 CODE_22B44D:        22 93 8B 27   JSL CODE_278B93           
@@ -2231,7 +2231,7 @@ CODE_22B552:        A5 0F         LDA $0F
 CODE_22B554:        18            CLC
 CODE_22B555:        69 70         ADC #$70
 CODE_22B557:        C9 E8         CMP #$E8                  
-CODE_22B559:        B0 19         BCS $19                   
+CODE_22B559:        B0 19         BCS CODE_22B574                   
 CODE_22B55B:        BD 71 06      LDA $0671,x               
 CODE_22B55E:        38            SEC                       
 CODE_22B55F:        E9 8B         SBC #$8B                  
@@ -2605,7 +2605,7 @@ CODE_22B879:        22 6B 9B 27   JSL CODE_279B6B
 CODE_22B87D:        B5 9E         LDA $9E,x                 
 CODE_22B87F:        30 06         BMI CODE_22B887           
 CODE_22B881:        C9 70         CMP #$70                  
-CODE_22B883:        B0 16         BCS $16                   
+CODE_22B883:        B0 16         BCS CODE_22B89B                   
 CODE_22B885:        90 05         BCC CODE_22B88C           
 CODE_22B887:        49 FF         EOR #$FF                  
 CODE_22B889:        18            CLC                       
@@ -2890,7 +2890,7 @@ CODE_22BACD:        10 03         BPL CODE_22BAD2
 CODE_22BACF:        49 FF         EOR #$FF                  
 CODE_22BAD1:        1A            INC A                     
 CODE_22BAD2:        C9 02         CMP #$02                  
-CODE_22BAD4:        B0 04         BCS $04                   
+CODE_22BAD4:        B0 04         BCS CODE_22BADA                   
 CODE_22BAD6:        22 DB BA 22   JSL CODE_22BADB           
 CODE_22BADA:        6B            RTL                       
 
@@ -2982,7 +2982,7 @@ CODE_22BB98:        10 03         BPL CODE_22BB9D
 CODE_22BB9A:        49 FF         EOR #$FF                  
 CODE_22BB9C:        1A            INC A                     
 CODE_22BB9D:        C9 02         CMP #$02                  
-CODE_22BB9F:        B0 27         BCS $27                   
+CODE_22BB9F:        B0 27         BCS CODE_22BBC8                   
 CODE_22BBA1:        20 A0 CB      JSR CODE_22CBA0           
 CODE_22BBA4:        C2 10         REP #$10                  
 CODE_22BBA6:        B4 C6         LDY $C6,x                 
@@ -3906,7 +3906,7 @@ CODE_22C379:        10 03         BPL CODE_22C37E
 CODE_22C37B:        49 FF         EOR #$FF                  
 CODE_22C37D:        1A            INC A                     
 CODE_22C37E:        C9 02         CMP #$02                  
-CODE_22C380:        B0 07         BCS $07                   
+CODE_22C380:        B0 07         BCS CODE_22C389                   
 CODE_22C382:        20 8B C4      JSR CODE_22C48B           
 CODE_22C385:        22 6F 9B 27   JSL CODE_279B6F           
 CODE_22C389:        6B            RTL                       
@@ -3966,7 +3966,7 @@ CODE_22C3F9:        8A            TXA
 CODE_22C3FA:        18            CLC                       
 CODE_22C3FB:        65 15         ADC $15                   
 CODE_22C3FD:        4A            LSR A                     
-CODE_22C3FE:        B0 01         BCS $01                   
+CODE_22C3FE:        B0 01         BCS CODE_22C401                   
 CODE_22C400:        60            RTS                       
 
 CODE_22C401:        BD 81 06      LDA $0681,x               
@@ -4710,7 +4710,7 @@ CODE_22C9F3:        68            PLA
 CODE_22C9F4:        D5 68         CMP $68,x                 
 CODE_22C9F6:        A5 00         LDA $00                   
 CODE_22C9F8:        FD 21 10      SBC $1021,x               
-CODE_22C9FB:        B0 0E         BCS $0E                   
+CODE_22C9FB:        B0 0E         BCS CODE_22CA0B                   
 CODE_22C9FD:        A9 10         LDA #$10                  
 CODE_22C9FF:        95 9E         STA $9E,x                 
 CODE_22CA01:        22 E4 A7 27   JSL CODE_27A7E4           
@@ -4733,7 +4733,7 @@ CODE_22CA22:        A5 0F         LDA $0F
 CODE_22CA24:        18            CLC                       
 CODE_22CA25:        69 18         ADC #$18                  
 CODE_22CA27:        C9 31         CMP #$31                  
-CODE_22CA29:        B0 E0         BCS $E0                   
+CODE_22CA29:        B0 E0         BCS CODE_22CA0B                   
 CODE_22CA2B:        60            RTS                       
 
 CODE_22CA2C:        B5 5F         LDA $5F,x                 
@@ -4785,7 +4785,7 @@ CODE_22CA8B:        BD 81 06      LDA $0681,x
 CODE_22CA8E:        85 00         STA $00                   
 CODE_22CA90:        B5 83         LDA $83,x                 
 CODE_22CA92:        46 00         LSR $00                   
-CODE_22CA94:        B0 09         BCS $09                   
+CODE_22CA94:        B0 09         BCS CODE_22CA9F                   
 CODE_22CA96:        99 11 08      STA $0811,y               
 CODE_22CA99:        18            CLC                       
 CODE_22CA9A:        69 08         ADC #$08                  
@@ -5370,7 +5370,7 @@ CODE_22CF25:        69 01         ADC #$01
 CODE_22CF27:        A0 FF         LDY #$FF                  
 CODE_22CF29:        E5 03         SBC $03                   
 CODE_22CF2B:        C8            INY                       
-CODE_22CF2C:        B0 FB         BCS $FB                   
+CODE_22CF2C:        B0 FB         BCS CODE_22CF29                   
 CODE_22CF2E:        98            TYA                       
 CODE_22CF2F:        28            PLP                       
 CODE_22CF30:        10 05         BPL CODE_22CF37           
@@ -5385,7 +5385,7 @@ CODE_22CF3E:        A5 0F         LDA $0F
 CODE_22CF40:        69 60         ADC #$60                  
 CODE_22CF42:        C9 C0         CMP #$C0                  
 CODE_22CF44:        A0 00         LDY #$00                  
-CODE_22CF46:        B0 13         BCS $13                   
+CODE_22CF46:        B0 13         BCS CODE_22CF5B                   
 CODE_22CF48:        F6 4D         INC $4D,x                 
 CODE_22CF4A:        BD 18 05      LDA $0518,x               
 CODE_22CF4D:        D0 0B         BNE CODE_22CF5A           
@@ -5410,7 +5410,7 @@ CODE_22CF72:        BD 6A 02      LDA $026A,x
 CODE_22CF75:        EB            XBA                       
 CODE_22CF76:        BD B4 1C      LDA $1CB4,x               
 CODE_22CF79:        C5 00         CMP $00                   
-CODE_22CF7B:        B0 0E         BCS $0E                   
+CODE_22CF7B:        B0 0E         BCS CODE_22CF8B                   
 CODE_22CF7D:        C2 20         REP #$20                  
 CODE_22CF7F:        69 02 00      ADC #$0002                
 CODE_22CF82:        E2 20         SEP #$20                  
@@ -5627,7 +5627,7 @@ CODE_22D129:        BD A0 1C      LDA $1CA0,x
 CODE_22D12C:        18            CLC                       
 CODE_22D12D:        79 8C C4      ADC $C48C,y               
 CODE_22D130:        D5 5F         CMP $5F,x                 
-CODE_22D132:        B0 78         BCS $78                   
+CODE_22D132:        B0 78         BCS CODE_22D1AC                   
 CODE_22D134:        BD 56 02      LDA $0256,x               
 CODE_22D137:        EB            XBA                       
 CODE_22D138:        BD A0 1C      LDA $1CA0,x               
@@ -7993,7 +7993,7 @@ PNTR_22F3BD:        dw CODE_22F421
                     dw CODE_22F421
                     dw CODE_22F420
 
-CODE_22F3CB:        60          RTS
+CODE_22F3CB:        60            RTS
 
 DATA_22F3CC:        db $00,$F4,$F8,$F8,$F8
 
@@ -8025,7 +8025,7 @@ CODE_22F407:        FE 69 06      INC $0669,x
 CODE_22F40A:        BD 69 06      LDA $0669,x               
 CODE_22F40D:        AA            TAX                       
 CODE_22F40E:        DA            PHX                       
-CODE_22F40F:        BF CC F3 22   LDA DATA_22F3CC,x             
+CODE_22F40F:        BF CC F3 22   LDA.l DATA_22F3CC,x             
 CODE_22F413:        A6 9B         LDX $9B                   
 CODE_22F415:        9D 9E 00      STA $009E,x               
 CODE_22F418:        FA            PLX                       

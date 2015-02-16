@@ -3668,7 +3668,7 @@ PNTR_0DA513:        dw CODE_0DA76E
                     dw CODE_0DA58C
 
 
-CODE_0DA581:        22 D9 F2 0F   JSL $0FF2D9
+CODE_0DA581:        22 D9 F2 0F   JSL CODE_0FF2D9
 CODE_0DA585:        60            RTS        
 
 CODE_0DA586:        22 FC F2 0F   JSL CODE_0FF2FC           ;
@@ -11608,7 +11608,7 @@ CODE_0DE660:        60            RTS                       ;
 
 DATA_0DE661:        db $2D,$78,$88,$FF
 
-CODE_0DE665:        20 7C E6      JSR $E67C 
+CODE_0DE665:        20 7C E6      JSR CODE_0DE67C 
 CODE_0DE668:        DD 61 E6      CMP $E661,x               ;
 CODE_0DE66B:        60            RTS                       ;
 

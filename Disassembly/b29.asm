@@ -3562,7 +3562,7 @@ CODE_299C71:        09 10         ORA #$10
 CODE_299C73:        A8            TAY                       
 CODE_299C74:        DA            PHX                       
 CODE_299C75:        BB            TYX                       
-CODE_299C76:        BF 5E AA 27   LDA DATA_27AA5E,x             
+CODE_299C76:        BF 5E AA 27   LDA.l DATA_27AA5E,x             
 CODE_299C7A:        8D 03 1A      STA $1A03                 
 CODE_299C7D:        FA            PLX                       
 CODE_299C7E:        8C 02 1A      STY $1A02                 
@@ -4917,7 +4917,7 @@ CODE_29A85F:        29 04         AND #$04
 CODE_29A861:        4A            LSR A                     
 CODE_29A862:        AA            TAX                       
 CODE_29A863:        C2 20         REP #$20                  
-CODE_29A865:        BF 89 A8 29   LDA DATA_29A889,x             
+CODE_29A865:        BF 89 A8 29   LDA.l DATA_29A889,x             
 CODE_29A869:        8D 00 13      STA $1300                 
 CODE_29A86C:        E2 20         SEP #$20                  
 CODE_29A86E:        A9 01         LDA #$01                  
@@ -6709,11 +6709,11 @@ CODE_29B78A:        B9 1E 05      LDA $051E,y
 CODE_29B78D:        7D F5 E7      ADC $E7F5,x               
 CODE_29B790:        0A            ASL A                     
 CODE_29B791:        AA            TAX                       
-CODE_29B792:        BF 00 82 21   LDA PNTR_218200,x             
+CODE_29B792:        BF 00 82 21   LDA.l PNTR_218200,x             
 CODE_29B796:        18            CLC                       
 CODE_29B797:        69 F0         ADC #$F0                  
 CODE_29B799:        85 2E         STA $2E                   
-CODE_29B79B:        BF 01 82 21   LDA PNTR_218200+1,x             
+CODE_29B79B:        BF 01 82 21   LDA.l PNTR_218200+1,x             
 CODE_29B79F:        69 00         ADC #$00                  
 CODE_29B7A1:        85 2F         STA $2F                   
 CODE_29B7A3:        A5 03         LDA $03                   
@@ -6951,9 +6951,9 @@ CODE_29B977:        B5 45         LDA $45,x
 CODE_29B979:        79 82 E8      ADC $E882,y               
 CODE_29B97C:        0A            ASL A                     
 CODE_29B97D:        AA            TAX                       
-CODE_29B97E:        BF 00 82 21   LDA PNTR_218200,x             
+CODE_29B97E:        BF 00 82 21   LDA.l PNTR_218200,x             
 CODE_29B982:        85 2E         STA $2E                   
-CODE_29B984:        BF 01 82 21   LDA PNTR_218200+1,x             
+CODE_29B984:        BF 01 82 21   LDA.l PNTR_218200+1,x             
 CODE_29B988:        85 2F         STA $2F                   
 CODE_29B98A:        E6 2F         INC $2F                   
 CODE_29B98C:        A5 0F         LDA $0F                   
@@ -7633,9 +7633,9 @@ CODE_29BECD:        4A            LSR A
 CODE_29BECE:        AA            TAX                       
 CODE_29BECF:        A9 7E         LDA #$7E                  
 CODE_29BED1:        85 30         STA $30                   
-CODE_29BED3:        BF 00 82 21   LDA PNTR_218200,x             
+CODE_29BED3:        BF 00 82 21   LDA.l PNTR_218200,x             
 CODE_29BED7:        85 2E         STA $2E                   
-CODE_29BED9:        BF 01 82 21   LDA PNTR_218200+1,x             
+CODE_29BED9:        BF 01 82 21   LDA.l PNTR_218200+1,x             
 CODE_29BEDD:        1A            INC A                     
 CODE_29BEDE:        85 2F         STA $2F                   
 CODE_29BEE0:        A2 07         LDX #$07                  
@@ -7675,7 +7675,7 @@ CODE_29BF15:        C9 67         CMP #$67
 CODE_29BF17:        F0 0A         BEQ CODE_29BF23           
 CODE_29BF19:        C9 EB         CMP #$EB                  
 CODE_29BF1B:        F0 06         BEQ CODE_29BF23           
-CODE_29BF1D:        DF 00 BE 29   CMP DATA_29BE00,x             
+CODE_29BF1D:        DF 00 BE 29   CMP.l DATA_29BE00,x             
 CODE_29BF21:        B0 25         BCS CODE_29BF48                   
 CODE_29BF23:        A2 07         LDX #$07                  
 CODE_29BF25:        DD 90 D7      CMP $D790,x               
@@ -7889,9 +7889,9 @@ CODE_29C09A:        85 30         STA $30
 CODE_29C09C:        B9 45 00      LDA $0045,y               
 CODE_29C09F:        0A            ASL A                     
 CODE_29C0A0:        AA            TAX                       
-CODE_29C0A1:        BF 00 82 21   LDA PNTR_218200,x             
+CODE_29C0A1:        BF 00 82 21   LDA.l PNTR_218200,x             
 CODE_29C0A5:        85 2E         STA $2E                   
-CODE_29C0A7:        BF 01 82 21   LDA PNTR_218200+1,x             
+CODE_29C0A7:        BF 01 82 21   LDA.l PNTR_218200+1,x             
 CODE_29C0AB:        1A            INC A                     
 CODE_29C0AC:        85 2F         STA $2F                   
 CODE_29C0AE:        B9 47 00      LDA $0047,y               
@@ -8795,7 +8795,7 @@ CODE_29C856:        AD 0A 07      LDA $070A
 CODE_29C859:        29 FF 00      AND #$00FF                
 CODE_29C85C:        0A            ASL A                     
 CODE_29C85D:        AA            TAX                       
-CODE_29C85E:        BF 99 C7 29   LDA DATA_29C799,x             
+CODE_29C85E:        BF 99 C7 29   LDA.l DATA_29C799,x             
 CODE_29C862:        29 00 F0      AND #$F000                
 CODE_29C865:        F0 36         BEQ CODE_29C89D           
 CODE_29C867:        C9 00 10      CMP #$1000                
@@ -8853,20 +8853,20 @@ CODE_29C8DE:        A9 1F 00      LDA #$001F
 CODE_29C8E1:        54 00 3C      MVN $3C00                 
 CODE_29C8E4:        AB            PLB                       
 CODE_29C8E5:        FA            PLX                       
-CODE_29C8E6:        BF 99 C7 29   LDA DATA_29C799,x             
+CODE_29C8E6:        BF 99 C7 29   LDA.l DATA_29C799,x             
 CODE_29C8EA:        29 0F 00      AND #$000F                
 CODE_29C8ED:        0A            ASL A                     
 CODE_29C8EE:        AA            TAX                       
 CODE_29C8EF:        DA            PHX                       
 CODE_29C8F0:        8B            PHB                       
-CODE_29C8F1:        BF 25 C8 29   LDA DATA_29C825,x             
+CODE_29C8F1:        BF 25 C8 29   LDA.l DATA_29C825,x             
 CODE_29C8F5:        AA            TAX                       
 CODE_29C8F6:        A0 A0 14      LDY #$14A0                
 CODE_29C8F9:        A9 1F 00      LDA #$001F                
 CODE_29C8FC:        54 00 3C      MVN $3C00                 
 CODE_29C8FF:        AB            PLB                       
 CODE_29C900:        FA            PLX                       
-CODE_29C901:        BF 1F C8 29   LDA DATA_29C81F,x             
+CODE_29C901:        BF 1F C8 29   LDA.l DATA_29C81F,x             
 CODE_29C905:        AA            TAX                       
 CODE_29C906:        BD 20 13      LDA $1320,x               
 CODE_29C909:        80 03         BRA CODE_29C90E           
@@ -9072,7 +9072,7 @@ DATA_29CA84:        dw $8A40
                     dw $8BC0
                     dw $8BE0
 
-CODE_29CAA0:        BF 99 C7 29   LDA DATA_29C799,x             
+CODE_29CAA0:        BF 99 C7 29   LDA.l DATA_29C799,x             
 CODE_29CAA4:        8B            PHB                       
 CODE_29CAA5:        AA            TAX                       
 CODE_29CAA6:        A0 60         LDY #$1360                  
@@ -9086,7 +9086,7 @@ CODE_29CAB8:        3A            DEC A
 CODE_29CAB9:        0A            ASL A                     
 CODE_29CABA:        AA            TAX                       
 CODE_29CABB:        8B            PHB                       
-CODE_29CABC:        BF FF C7 29   LDA DATA_29C7FF,x             
+CODE_29CABC:        BF FF C7 29   LDA.l DATA_29C7FF,x             
 CODE_29CAC0:        AA            TAX                       
 CODE_29CAC1:        A0 10 13      LDY #$1310                  
 CODE_29CAC4:        A9 0F 00      LDA #$000F
@@ -9096,7 +9096,7 @@ CODE_29CACB:        AD 0A 07      LDA $070A
 CODE_29CACE:        29 FF 00      AND #$00FF
 CODE_29CAD1:        0A            ASL A
 CODE_29CAD2:        AA            TAX
-CODE_29CAD3:        BF 63 C9 29   LDA DATA_29C963,x             
+CODE_29CAD3:        BF 63 C9 29   LDA.l DATA_29C963,x             
 CODE_29CAD7:        85 00         STA $00                   
 CODE_29CAD9:        A9 29 00      LDA #$0029                
 CODE_29CADC:        85 02         STA $02                  
@@ -9120,7 +9120,7 @@ CODE_29CB02:        AD C5 02      LDA $02C5
 CODE_29CB05:        29 FF 00      AND #$00FF                  
 CODE_29CB08:        0A            ASL A
 CODE_29CB09:        AA            TAX                       
-CODE_29CB0A:        BF EB C9 29   LDA DATA_29C9EB,x             
+CODE_29CB0A:        BF EB C9 29   LDA.l DATA_29C9EB,x             
 CODE_29CB0E:        8B            PHB                       
 CODE_29CB0F:        AA            TAX                       
 CODE_29CB10:        A0 20 13      LDY #$1320                
@@ -9131,11 +9131,11 @@ CODE_29CB1A:        AD BF 1E      LDA $1EBF
 CODE_29CB1D:        29 FF 00      AND #$00FF                
 CODE_29CB20:        0A            ASL A                     
 CODE_29CB21:        AA            TAX                       
-CODE_29CB22:        BF 1D CA 29   LDA DATA_29CA1D,x             
+CODE_29CB22:        BF 1D CA 29   LDA.l DATA_29CA1D,x             
 CODE_29CB26:        29 FF 00      AND #$00FF                
 CODE_29CB29:        0A            ASL A                     
 CODE_29CB2A:        85 D8         STA $D8                   
-CODE_29CB2C:        BF 1E CA 29   LDA DATA_29CA1D+1,x             
+CODE_29CB2C:        BF 1E CA 29   LDA.l DATA_29CA1D+1,x             
 CODE_29CB30:        29 FF 00      AND #$00FF                
 CODE_29CB33:        0A            ASL A                     
 CODE_29CB34:        85 DA         STA $DA                   
@@ -9148,12 +9148,12 @@ CODE_29CB43:        F0 11         BEQ CODE_29CB56
 CODE_29CB45:        AD 27 07      LDA $0727                 
 CODE_29CB48:        29 FF 00      AND #$00FF                
 CODE_29CB4B:        AA            TAX                       
-CODE_29CB4C:        BF 7D CA 29   LDA DATA_29CA7D,x             
+CODE_29CB4C:        BF 7D CA 29   LDA.l DATA_29CA7D,x             
 CODE_29CB50:        29 FF 00      AND #$00FF                
 CODE_29CB53:        0A            ASL A                     
 CODE_29CB54:        85 DA         STA $DA                   
 CODE_29CB56:        A6 D8         LDX $D8                   
-CODE_29CB58:        BF 84 CA 29   LDA DATA_29CA84,x             
+CODE_29CB58:        BF 84 CA 29   LDA.l DATA_29CA84,x             
 CODE_29CB5C:        AA            TAX                       
 CODE_29CB5D:        8B            PHB                       
 CODE_29CB5E:        AA            TAX                       
@@ -9162,7 +9162,7 @@ CODE_29CB62:        A9 1F 00      LDA #$001F
 CODE_29CB65:        54 00 3C      MVN $3C00                 
 CODE_29CB68:        AB            PLB                       
 CODE_29CB69:        A6 DA         LDX $DA                   
-CODE_29CB6B:        BF 84 CA 29   LDA DATA_29CA84,x             
+CODE_29CB6B:        BF 84 CA 29   LDA.l DATA_29CA84,x             
 CODE_29CB6F:        AA            TAX                       
 CODE_29CB70:        8B            PHB                       
 CODE_29CB71:        AA            TAX                       
@@ -9181,11 +9181,11 @@ CODE_29CB8C:        AD BF 1E      LDA $1EBF
 CODE_29CB8F:        29 FF 00      AND #$00FF                
 CODE_29CB92:        0A            ASL A                     
 CODE_29CB93:        AA            TAX                       
-CODE_29CB94:        BF 1D CA 29   LDA DATA_29CA1D,x             
+CODE_29CB94:        BF 1D CA 29   LDA.l DATA_29CA1D,x             
 CODE_29CB98:        29 FF 00      AND #$00FF                
 CODE_29CB9B:        0A            ASL A                     
 CODE_29CB9C:        85 D8         STA $D8                   
-CODE_29CB9E:        BF 1E CA 29   LDA DATA_29CA1D+1,x             
+CODE_29CB9E:        BF 1E CA 29   LDA.l DATA_29CA1D+1,x             
 CODE_29CBA2:        29 FF 00      AND #$00FF                
 CODE_29CBA5:        0A            ASL A                     
 CODE_29CBA6:        85 DA         STA $DA                   
@@ -9225,7 +9225,7 @@ CODE_29CBF9:        AD 27 07      LDA $0727
 CODE_29CBFC:        29 FF 00      AND #$00FF                
 CODE_29CBFF:        0A            ASL A                     
 CODE_29CC00:        AA            TAX                       
-CODE_29CC01:        BF D3 C7 29   LDA DATA_29C7D3,x             
+CODE_29CC01:        BF D3 C7 29   LDA.l DATA_29C7D3,x             
 CODE_29CC05:        F0 0C         BEQ CODE_29CC13           
 CODE_29CC07:        8B            PHB                       
 CODE_29CC08:        AA            TAX                       
@@ -9268,7 +9268,7 @@ CODE_29CC59:        AD 27 07      LDA $0727
 CODE_29CC5C:        29 FF 00      AND #$00FF                
 CODE_29CC5F:        0A            ASL A                     
 CODE_29CC60:        AA            TAX                       
-CODE_29CC61:        BF BF C7 29   LDA DATA_29C7BF,x             
+CODE_29CC61:        BF BF C7 29   LDA.l DATA_29C7BF,x             
 CODE_29CC65:        8B            PHB                       
 CODE_29CC66:        AA            TAX                       
 CODE_29CC67:        A0 80 13      LDY #$1380                
@@ -9285,13 +9285,13 @@ CODE_29CC83:        BD 47 07      LDA $0747,x
 CODE_29CC86:        29 FF 00      AND #$00FF                
 CODE_29CC89:        0A            ASL A                     
 CODE_29CC8A:        85 D8         STA $D8                   
-CODE_29CC8C:        BF 1D C8 29   LDA DATA_29C81D,x             
+CODE_29CC8C:        BF 1D C8 29   LDA.l DATA_29C81D,x             
 CODE_29CC90:        29 FF 00      AND #$00FF                
 CODE_29CC93:        0A            ASL A                     
 CODE_29CC94:        18            CLC                       
 CODE_29CC95:        65 D8         ADC $D8                   
 CODE_29CC97:        AA            TAX                       
-CODE_29CC98:        BF E3 C7 29   LDA DATA_29C7E3,x             
+CODE_29CC98:        BF E3 C7 29   LDA.l DATA_29C7E3,x             
 CODE_29CC9C:        AA            TAX                       
 CODE_29CC9D:        A0 E0 14      LDY #$14E0                
 CODE_29CCA0:        A9 1F 00      LDA #$001F                
@@ -9392,11 +9392,11 @@ CODE_29CDB9:        0A            ASL A
 CODE_29CDBA:        18            CLC                       
 CODE_29CDBB:        65 D8         ADC $D8                   
 CODE_29CDBD:        AA            TAX                       
-CODE_29CDBE:        BF 77 CD 29   LDA PNTR_29CD77,x             
+CODE_29CDBE:        BF 77 CD 29   LDA.l PNTR_29CD77,x             
 CODE_29CDC2:        85 0D         STA $0D                   
-CODE_29CDC4:        BF 78 CD 29   LDA PNTR_29CD77+1,x             
+CODE_29CDC4:        BF 78 CD 29   LDA.l PNTR_29CD77+1,x             
 CODE_29CDC8:        85 0E         STA $0E                   
-CODE_29CDCA:        BF 79 CD 29   LDA PNTR_29CD77+2,x             
+CODE_29CDCA:        BF 79 CD 29   LDA.l PNTR_29CD77+2,x             
 CODE_29CDCE:        85 0F         STA $0F                   
 CODE_29CDD0:        C2 20         REP #$20                  
 CODE_29CDD2:        A0 1E         LDY #$1E                  
@@ -9504,7 +9504,7 @@ CODE_29CE98:        A5 4D         LDA $4D
 CODE_29CE9A:        29 FF 00      AND #$00FF                
 CODE_29CE9D:        0A            ASL A                     
 CODE_29CE9E:        AA            TAX                       
-CODE_29CE9F:        BF 55 CE 29   LDA DATA_29CE55,x             
+CODE_29CE9F:        BF 55 CE 29   LDA.l DATA_29CE55,x             
 CODE_29CEA3:        AA            TAX                       
 CODE_29CEA4:        A0 00 94      LDY #$9400                
 CODE_29CEA7:        A9 FF 00      LDA #$00FF                
@@ -9522,7 +9522,7 @@ CODE_29CEC6:        A5 4D         LDA $4D
 CODE_29CEC8:        29 FF 00      AND #$00FF                
 CODE_29CECB:        0A            ASL A                     
 CODE_29CECC:        AA            TAX                       
-CODE_29CECD:        BF 75 CE 29   LDA DATA_29CE75,x             
+CODE_29CECD:        BF 75 CE 29   LDA.l DATA_29CE75,x             
 CODE_29CED1:        F0 0C         BEQ CODE_29CEDF           
 CODE_29CED3:        8B            PHB                       
 CODE_29CED4:        AA            TAX                       
@@ -9537,10 +9537,10 @@ CODE_29CEE5:        AA            TAX
 CODE_29CEE6:        AD 26 07      LDA $0726                 
 CODE_29CEE9:        29 FF 00      AND #$00FF                
 CODE_29CEEC:        F0 06         BEQ CODE_29CEF4           
-CODE_29CEEE:        BF 85 CE 29   LDA DATA_29CE85,x             
+CODE_29CEEE:        BF 85 CE 29   LDA.l DATA_29CE85,x             
 CODE_29CEF2:        80 04         BRA CODE_29CEF8           
 
-CODE_29CEF4:        BF 65 CE 29   LDA DATA_29CE65,x             
+CODE_29CEF4:        BF 65 CE 29   LDA.l DATA_29CE65,x             
 CODE_29CEF8:        8B            PHB                       
 CODE_29CEF9:        AA            TAX                       
 CODE_29CEFA:        A0 E0 95      LDY #$95E0                
@@ -9692,7 +9692,7 @@ DATA_29D07A:        dw $8000
 
 CODE_29D09A:        C2 30         REP #$30
 CODE_29D09C:        AE B3 02      LDX $02B3
-CODE_29D09F:        BF 56 D0 29   LDA DATA_29D056,x             
+CODE_29D09F:        BF 56 D0 29   LDA.l DATA_29D056,x             
 CODE_29D0A3:        85 D8         STA $D8                   
 CODE_29D0A5:        A9 29 00      LDA #$0029                
 CODE_29D0A8:        85 DA         STA $DA
@@ -9700,7 +9700,7 @@ CODE_29D0AA:        AD B5 02      LDA $02B5
 CODE_29D0AD:        29 0F 00      AND #$000F
 CODE_29D0B0:        0A            ASL
 CODE_29D0B1:        AA            TAX                       
-CODE_29D0B2:        BF 7A D0 29   LDA DATA_29D07A,x             
+CODE_29D0B2:        BF 7A D0 29   LDA.l DATA_29D07A,x             
 CODE_29D0B6:        85 DB         STA $DB                   
 CODE_29D0B8:        A2 00 00      LDX #$0000
 CODE_29D0BB:        9B            TXY
@@ -9715,28 +9715,28 @@ CODE_29D0C9:        A9 7F         LDA #$7F
 CODE_29D0CB:        48            PHA                       
 CODE_29D0CC:        AB            PLB                       
 CODE_29D0CD:        C2 20         REP #$20                  
-CODE_29D0CF:        BF D6 CF 29   LDA DATA_29CFD6,x             
+CODE_29D0CF:        BF D6 CF 29   LDA.l DATA_29CFD6,x             
 CODE_29D0D3:        25 DB         AND $DB                   
 CODE_29D0D5:        99 00 96      STA $9600,y               
-CODE_29D0D8:        BF E6 CF 29   LDA DATA_29CFE6,x             
+CODE_29D0D8:        BF E6 CF 29   LDA.l DATA_29CFE6,x             
 CODE_29D0DC:        25 DB         AND $DB                   
 CODE_29D0DE:        99 08 96      STA $9608,y               
-CODE_29D0E1:        BF F6 CF 29   LDA DATA_29CFF6,x             
+CODE_29D0E1:        BF F6 CF 29   LDA.l DATA_29CFF6,x             
 CODE_29D0E5:        25 DB         AND $DB                   
 CODE_29D0E7:        99 10 96      STA $9610,y               
-CODE_29D0EA:        BF 06 D0 29   LDA DATA_29D006,x             
+CODE_29D0EA:        BF 06 D0 29   LDA.l DATA_29D006,x             
 CODE_29D0EE:        25 DB         AND $DB                   
 CODE_29D0F0:        99 18 96      STA $9618,y               
-CODE_29D0F3:        BF 16 D0 29   LDA DATA_29D016,x             
+CODE_29D0F3:        BF 16 D0 29   LDA.l DATA_29D016,x             
 CODE_29D0F7:        25 DB         AND $DB                   
 CODE_29D0F9:        99 20 96      STA $9620,y               
-CODE_29D0FC:        BF 26 D0 29   LDA DATA_29D026,x             
+CODE_29D0FC:        BF 26 D0 29   LDA.l DATA_29D026,x             
 CODE_29D100:        25 DB         AND $DB                   
 CODE_29D102:        99 28 96      STA $9628,y               
-CODE_29D105:        BF 36 D0 29   LDA DATA_29D036,x             
+CODE_29D105:        BF 36 D0 29   LDA.l DATA_29D036,x             
 CODE_29D109:        25 DB         AND $DB                   
 CODE_29D10B:        99 30 96      STA $9630,y               
-CODE_29D10E:        BF 46 D0 29   LDA DATA_29D046,x             
+CODE_29D10E:        BF 46 D0 29   LDA.l DATA_29D046,x             
 CODE_29D112:        25 DB         AND $DB                   
 CODE_29D114:        99 38 96      STA $9638,y               
 CODE_29D117:        E8            INX                       
@@ -11215,7 +11215,7 @@ CODE_29DF5D:        18            CLC
 CODE_29DF5E:        69 C0 00      ADC #$00C0                
 CODE_29DF61:        8D 02 08      STA $0802                 
 CODE_29DF64:        E2 20         SEP #$20                  
-CODE_29DF66:        BF 0F DF 29   LDA DATA_29DF0F,x             
+CODE_29DF66:        BF 0F DF 29   LDA.l DATA_29DF0F,x             
 CODE_29DF6A:        0A            ASL A                     
 CODE_29DF6B:        09 21         ORA #$21                  
 CODE_29DF6D:        8D 03 08      STA $0803                 

@@ -3155,9 +3155,9 @@ CODE_14D208:        A4 8F         LDY $8F
 CODE_14D20A:        A9 01         LDA #$01                  
 CODE_14D20C:        9D 0E 03      STA $030E,x               
 CODE_14D20F:        9D 16 03      STA $0316,x               
-CODE_14D212:        B9 F4 C9      LDA DATA_11C9F4,y               
+CODE_14D212:        B9 F4 C9      LDA.w DATA_11C9F4,y               
 CODE_14D215:        9D 0F 03      STA $030F,x               
-CODE_14D218:        B9 F8 C9      LDA DATA_11C9F8,y               
+CODE_14D218:        B9 F8 C9      LDA.w DATA_11C9F8,y               
 CODE_14D21B:        9D 17 03      STA $0317,x               
 CODE_14D21E:        A9 00         LDA #$00                  
 CODE_14D220:        9D 10 03      STA $0310,x               
@@ -3234,7 +3234,7 @@ CODE_14D2B4:        69 04         ADC #$04
 CODE_14D2B6:        99 22 08      STA $0822,y               
 CODE_14D2B9:        AD 33 05      LDA $0533                 
 CODE_14D2BC:        38            SEC                       
-CODE_14D2BD:        FF B4 C9 11   SBC DATA_11C9B4,x             
+CODE_14D2BD:        FF B4 C9 11   SBC.l DATA_11C9B4,x             
 CODE_14D2C1:        18            CLC                       
 CODE_14D2C2:        69 04         ADC #$04                  
 CODE_14D2C4:        99 26 08      STA $0826,y               
@@ -3705,7 +3705,7 @@ CODE_14D8AC:        AA            TAX
 CODE_14D8AD:        C2 20         REP #$20                  
 CODE_14D8AF:        AD 06 02      LDA $0206                 
 CODE_14D8B2:        38            SEC                       
-CODE_14D8B3:        FF 6A D8 14   SBC DATA_14D86A,x             
+CODE_14D8B3:        FF 6A D8 14   SBC.l DATA_14D86A,x             
 CODE_14D8B7:        0A            ASL A                     
 CODE_14D8B8:        85 00         STA $00                   
 CODE_14D8BA:        AD 6B 07      LDA $076B                 
@@ -3714,9 +3714,9 @@ CODE_14D8C0:        AA            TAX
 CODE_14D8C1:        BF 6E D8 14   LDA.l DATA_14D86E,x             
 CODE_14D8C5:        29 FF 00      AND #$00FF                
 CODE_14D8C8:        AA            TAX                       
-CODE_14D8C9:        BF 75 F6 15   LDA PNTR_15F675,x             
+CODE_14D8C9:        BF 75 F6 15   LDA.l PNTR_15F675,x             
 CODE_14D8CD:        85 02         STA $02                   
-CODE_14D8CF:        BF 77 F6 15   LDA PNTR_15F675+2,x             
+CODE_14D8CF:        BF 77 F6 15   LDA.l PNTR_15F675+2,x             
 CODE_14D8D3:        85 04         STA $04                   
 CODE_14D8D5:        A5 02         LDA $02                   
 CODE_14D8D7:        18            CLC                       
@@ -3807,11 +3807,11 @@ CODE_14D984:        0A            ASL A
 CODE_14D985:        18            CLC                       
 CODE_14D986:        6D 35 06      ADC $0635                 
 CODE_14D989:        AA            TAX                       
-CODE_14D98A:        BF 00 EF 15   LDA PNTR_15EF00,x             
+CODE_14D98A:        BF 00 EF 15   LDA.l PNTR_15EF00,x             
 CODE_14D98E:        85 02         STA $02                   
-CODE_14D990:        BF 01 EF 15   LDA PNTR_15EF00+1,x             
+CODE_14D990:        BF 01 EF 15   LDA.l PNTR_15EF00+1,x             
 CODE_14D994:        85 03         STA $03                   
-CODE_14D996:        BF 02 EF 15   LDA PNTR_15EF00+2,x             
+CODE_14D996:        BF 02 EF 15   LDA.l PNTR_15EF00+2,x             
 CODE_14D99A:        85 04         STA $04                   
 CODE_14D99C:        A9 80         LDA #$80                  
 CODE_14D99E:        8D 15 21      STA $2115                 
@@ -4206,9 +4206,9 @@ CODE_14DD0D:        BF 78 DD 14   LDA.l DATA_14DD78,x
 CODE_14DD11:        8D 14 07      STA $0714                 
 CODE_14DD14:        BF 82 DD 14   LDA.l DATA_14DD82,x             
 CODE_14DD18:        8D 16 07      STA $0716                 
-CODE_14DD1B:        AF 80 DD 14   LDA DATA_14DD80               
+CODE_14DD1B:        AF 80 DD 14   LDA.l DATA_14DD80               
 CODE_14DD1F:        8D 18 07      STA $0718                 
-CODE_14DD22:        AF 76 DD 14   LDA DATA_14DD76               
+CODE_14DD22:        AF 76 DD 14   LDA.l DATA_14DD76               
 CODE_14DD26:        AA            TAX                       
 CODE_14DD27:        A9 FF 00      LDA #$00FF                
 CODE_14DD2A:        EC 14 07      CPX $0714                 
@@ -4578,7 +4578,7 @@ CODE_14E099:        A9 11         LDA #$11                  ;  | 16-bit read fro
 CODE_14E09B:        48            PHA                       ;  | ...which is situated in bank 11.
 CODE_14E09C:        AB            PLB                       ; /
 CODE_14E09D:        AC C4 04      LDY $04C4                 ; \ Set the HP count (red hearts) to be equal to the amount of hearts shown (all hearts in total).
-CODE_14E0A0:        B9 EE CB      LDA DATA_11CBEE,y         ;  |
+CODE_14E0A0:        B9 EE CB      LDA.w DATA_11CBEE,y         ;  |
 CODE_14E0A3:        8D C3 04      STA $04C3                 ; /
 CODE_14E0A6:        AB            PLB                       ; Pull original data bank register back.
 CODE_14E0A7:        6B            RTL                       ; Return.
@@ -5011,13 +5011,13 @@ CODE_14E422:        E2 20         SEP #$20                  ;  | A = 8-bit.
 CODE_14E424:        6B            RTL                       ; / Return.
 
 CODE_14E425:        AC 33 05      LDY $0533                 
-CODE_14E428:        B9 98 D0      LDA DATA_11D098,y               
+CODE_14E428:        B9 98 D0      LDA.w DATA_11D098,y               
 CODE_14E42B:        18            CLC                       
 CODE_14E42C:        69 04         ADC #$04                  
 CODE_14E42E:        A8            TAY                       
-CODE_14E42F:        B9 AD D0      LDA DATA_11D0AD,y               
+CODE_14E42F:        B9 AD D0      LDA.w DATA_11D0AD,y               
 CODE_14E432:        85 05         STA $05                   
-CODE_14E434:        B9 7F D1      LDA DATA_11D17F,y               
+CODE_14E434:        B9 7F D1      LDA.w DATA_11D17F,y               
 CODE_14E437:        85 06         STA $06                   
 CODE_14E439:        A9 1A         LDA #$1A                  
 CODE_14E43B:        85 02         STA $02                   
@@ -5087,7 +5087,7 @@ CODE_14E4BA:        6D 00 04      ADC $0400
 CODE_14E4BD:        29 FF 00      AND #$00FF                
 CODE_14E4C0:        0A            ASL A                     
 CODE_14E4C1:        A8            TAY                       
-CODE_14E4C2:        B9 23 CC      LDA DATA_11CC23,y               
+CODE_14E4C2:        B9 23 CC      LDA.w DATA_11CC23,y               
 CODE_14E4C5:        A8            TAY                       
 CODE_14E4C6:        B9 01 08      LDA $0801,y               
 CODE_14E4C9:        29 FF 00      AND #$00FF                
@@ -5365,10 +5365,10 @@ CODE_14E781:        AD 35 05      LDA $0535
 CODE_14E784:        4A            LSR A                     
 CODE_14E785:        4A            LSR A                     
 CODE_14E786:        A8            TAY                       
-CODE_14E787:        B9 30 9B      LDA DATA_119B30,y               
+CODE_14E787:        B9 30 9B      LDA.w DATA_119B30,y               
 CODE_14E78A:        CD 07 02      CMP $0207                 
 CODE_14E78D:        D0 1D         BNE CODE_14E7AC           
-CODE_14E78F:        B9 33 9B      LDA DATA_119B33,y               
+CODE_14E78F:        B9 33 9B      LDA.w DATA_119B33,y               
 CODE_14E792:        CD 06 02      CMP $0206                 
 CODE_14E795:        D0 15         BNE CODE_14E7AC           
 CODE_14E797:        4C 70 EA      JMP CODE_14EA70           
@@ -5395,7 +5395,7 @@ CODE_14E7C3:        0A            ASL A
 CODE_14E7C4:        AA            TAX                       
 CODE_14E7C5:        AD 08 02      LDA $0208                 
 CODE_14E7C8:        38            SEC                       
-CODE_14E7C9:        FF 48 E7 14   SBC DATA_14E748,x             
+CODE_14E7C9:        FF 48 E7 14   SBC.l DATA_14E748,x             
 CODE_14E7CD:        8D 08 02      STA $0208                 
 CODE_14E7D0:        AD 72 07      LDA $0772                 
 CODE_14E7D3:        29 0F 00      AND #$000F                
@@ -5403,7 +5403,7 @@ CODE_14E7D6:        0A            ASL A
 CODE_14E7D7:        AA            TAX                       
 CODE_14E7D8:        AD 0A 02      LDA $020A                 
 CODE_14E7DB:        38            SEC                       
-CODE_14E7DC:        FF 4E E7 14   SBC DATA_14E74E,x             
+CODE_14E7DC:        FF 4E E7 14   SBC.l DATA_14E74E,x             
 CODE_14E7E0:        8D 0A 02      STA $020A                 
 CODE_14E7E3:        E2 20         SEP #$20                  
 CODE_14E7E5:        A5 CB         LDA $CB                   
@@ -5415,14 +5415,14 @@ CODE_14E7EE:        C6 CA         DEC $CA
 CODE_14E7F0:        AE C3 02      LDX $02C3                 
 CODE_14E7F3:        AD BD 02      LDA $02BD                 
 CODE_14E7F6:        38            SEC                       
-CODE_14E7F7:        FF 4C E7 14   SBC DATA_14E74C,x             
+CODE_14E7F7:        FF 4C E7 14   SBC.l DATA_14E74C,x             
 CODE_14E7FB:        8D BD 02      STA $02BD                 
 CODE_14E7FE:        B0 03         BCS CODE_14E803                   
 CODE_14E800:        CE BC 02      DEC $02BC                 
 CODE_14E803:        AE 72 07      LDX $0772                 
 CODE_14E806:        AD 4A 07      LDA $074A                 
 CODE_14E809:        38            SEC                       
-CODE_14E80A:        FF 52 E7 14   SBC DATA_14E752,x             
+CODE_14E80A:        FF 52 E7 14   SBC.l DATA_14E752,x             
 CODE_14E80E:        8D 4A 07      STA $074A                 
 CODE_14E811:        B0 03         BCS CODE_14E816                   
 CODE_14E813:        CE 49 07      DEC $0749                 
@@ -5524,10 +5524,10 @@ CODE_14E8EF:        AD 41 05      LDA $0541
 CODE_14E8F2:        4A            LSR A                     
 CODE_14E8F3:        4A            LSR A                     
 CODE_14E8F4:        A8            TAY                       
-CODE_14E8F5:        B9 36 9B      LDA DATA_119B36,y               
+CODE_14E8F5:        B9 36 9B      LDA.w DATA_119B36,y               
 CODE_14E8F8:        CD 07 02      CMP $0207                 
 CODE_14E8FB:        D0 26         BNE CODE_14E923           
-CODE_14E8FD:        B9 39 9B      LDA DATA_119B39,y               
+CODE_14E8FD:        B9 39 9B      LDA.w DATA_119B39,y               
 CODE_14E900:        CD 06 02      CMP $0206                 
 CODE_14E903:        F0 1B         BEQ CODE_14E920           
 CODE_14E905:        80 1C         BRA CODE_14E923           
@@ -5559,7 +5559,7 @@ CODE_14E93A:        0A            ASL A
 CODE_14E93B:        AA            TAX                       
 CODE_14E93C:        AD 08 02      LDA $0208                 
 CODE_14E93F:        18            CLC                       
-CODE_14E940:        7F 48 E7 14   ADC DATA_14E748,x             
+CODE_14E940:        7F 48 E7 14   ADC.l DATA_14E748,x             
 CODE_14E944:        8D 08 02      STA $0208                 
 CODE_14E947:        AD 72 07      LDA $0772                 
 CODE_14E94A:        29 0F 00      AND #$000F                
@@ -5567,7 +5567,7 @@ CODE_14E94D:        0A            ASL A
 CODE_14E94E:        AA            TAX                       
 CODE_14E94F:        AD 0A 02      LDA $020A                 
 CODE_14E952:        18            CLC                       
-CODE_14E953:        7F 4E E7 14   ADC DATA_14E74E,x             
+CODE_14E953:        7F 4E E7 14   ADC.l DATA_14E74E,x             
 CODE_14E957:        8D 0A 02      STA $020A                 
 CODE_14E95A:        E2 20         SEP #$20                  
 CODE_14E95C:        A5 CB         LDA $CB                   
@@ -5579,14 +5579,14 @@ CODE_14E965:        E6 CA         INC $CA
 CODE_14E967:        AE C3 02      LDX $02C3                 
 CODE_14E96A:        AD BD 02      LDA $02BD                 
 CODE_14E96D:        18            CLC                       
-CODE_14E96E:        7F 4C E7 14   ADC DATA_14E74C,x             
+CODE_14E96E:        7F 4C E7 14   ADC.l DATA_14E74C,x             
 CODE_14E972:        8D BD 02      STA $02BD                 
 CODE_14E975:        90 03         BCC CODE_14E97A           
 CODE_14E977:        EE BC 02      INC $02BC                 
 CODE_14E97A:        AE 72 07      LDX $0772                 
 CODE_14E97D:        AD 4A 07      LDA $074A                 
 CODE_14E980:        18            CLC                       
-CODE_14E981:        7F 52 E7 14   ADC DATA_14E752,x             
+CODE_14E981:        7F 52 E7 14   ADC.l DATA_14E752,x             
 CODE_14E985:        8D 4A 07      STA $074A                 
 CODE_14E988:        90 03         BCC CODE_14E98D           
 CODE_14E98A:        EE 49 07      INC $0749                 
@@ -5866,11 +5866,11 @@ CODE_14EBD5:        8E F5 02      STX $02F5
 CODE_14EBD8:        AE 34 05      LDX $0534                 
 CODE_14EBDB:        BF 11 AB 11   LDA.l DATA_11AB11,x             
 CODE_14EBDF:        18            CLC                       
-CODE_14EBE0:        79 FB AA      ADC DATA_11AAFB,y               
+CODE_14EBE0:        79 FB AA      ADC.w DATA_11AAFB,y               
 CODE_14EBE3:        8D 67 02      STA $0267                 
-CODE_14EBE6:        B9 F0 AA      LDA DATA_11AAF0,y               
+CODE_14EBE6:        B9 F0 AA      LDA.w DATA_11AAF0,y               
 CODE_14EBE9:        8D 66 02      STA $0266                 
-CODE_14EBEC:        B9 06 AB      LDA DATA_11AB06,y               
+CODE_14EBEC:        B9 06 AB      LDA.w DATA_11AB06,y               
 CODE_14EBEF:        8D 68 02      STA $0268                 
 CODE_14EBF2:        AE F5 02      LDX $02F5                 
 CODE_14EBF5:        B5 CE         LDA $CE,x                 
@@ -5968,9 +5968,9 @@ CODE_14ECA8:        0A            ASL A
 CODE_14ECA9:        2A            ROL A                     
 CODE_14ECAA:        2A            ROL A                     
 CODE_14ECAB:        A8            TAY                       
-CODE_14ECAC:        B9 64 AD      LDA DATA_11AD64,y               
+CODE_14ECAC:        B9 64 AD      LDA.w DATA_11AD64,y               
 CODE_14ECAF:        85 00         STA $00                   
-CODE_14ECB1:        B9 68 AD      LDA DATA_11AD68,y               
+CODE_14ECB1:        B9 68 AD      LDA.w DATA_11AD68,y               
 CODE_14ECB4:        85 01         STA $01                   
 CODE_14ECB6:        A9 11         LDA #$11                  
 CODE_14ECB8:        85 02         STA $02                   
@@ -6456,7 +6456,7 @@ CODE_14F0E9:        EE 01 02      INC $0201
 CODE_14F0EC:        9C 07 05      STZ $0507                 
 CODE_14F0EF:        60            RTS                       
 
-CODE_14F0F0:        B9 3C 9B      LDA DATA_119B3C,y               
+CODE_14F0F0:        B9 3C 9B      LDA.w DATA_119B3C,y               
 CODE_14F0F3:        8D 07 05      STA $0507                 
 CODE_14F0F6:        60            RTS                       
 
@@ -6596,11 +6596,11 @@ CODE_14F215:        80 07         BRA CODE_14F21E
 CODE_14F217:        AE 34 05      LDX $0534                 
 CODE_14F21A:        BF 11 AB 11   LDA.l DATA_11AB11,x             
 CODE_14F21E:        18            CLC                       
-CODE_14F21F:        79 FB AA      ADC DATA_11AAFB,y               
+CODE_14F21F:        79 FB AA      ADC.w DATA_11AAFB,y               
 CODE_14F222:        8D 67 02      STA $0267                 
-CODE_14F225:        B9 F0 AA      LDA DATA_11AAF0,y               
+CODE_14F225:        B9 F0 AA      LDA.w DATA_11AAF0,y               
 CODE_14F228:        8D 66 02      STA $0266                 
-CODE_14F22B:        B9 06 AB      LDA DATA_11AB06,y               
+CODE_14F22B:        B9 06 AB      LDA.w DATA_11AB06,y               
 CODE_14F22E:        8D 68 02      STA $0268                 
 CODE_14F231:        AE F5 02      LDX $02F5                 
 CODE_14F234:        B5 CE         LDA $CE,x                 
@@ -6676,9 +6676,9 @@ CODE_14F2BE:        0A            ASL A                     ;  |
 CODE_14F2BF:        2A            ROL A                     ;  |
 CODE_14F2C0:        2A            ROL A                     ;  |
 CODE_14F2C1:        A8            TAY                       ;  |
-CODE_14F2C2:        B9 64 AD      LDA DATA_11AD64,y         ;  | ...and make them determine the index for the M16 tiles.   
+CODE_14F2C2:        B9 64 AD      LDA.w DATA_11AD64,y         ;  | ...and make them determine the index for the M16 tiles.   
 CODE_14F2C5:        85 00         STA $00                   ;  | Per $40 tiles, there is one slot.
-CODE_14F2C7:        B9 68 AD      LDA DATA_11AD68,y         ;  |
+CODE_14F2C7:        B9 68 AD      LDA.w DATA_11AD68,y         ;  |
 CODE_14F2CA:        85 01         STA $01                   ;  |
 CODE_14F2CC:        A9 11         LDA #$11                  ;  |
 CODE_14F2CE:        85 02         STA $02                   ; /
@@ -6881,10 +6881,10 @@ CODE_14F463:        60            RTS
 
 CODE_14F464:        8E 13 07      STX $0713                 
 CODE_14F467:        A2 00         LDX #$00                  ; Take first slot.
-CODE_14F469:        BF C8 A4 15   LDA PNTR_15A4C8,x         ; \ Pointer to tilemap data for Layer 1 Map16...
+CODE_14F469:        BF C8 A4 15   LDA.l PNTR_15A4C8,x         ; \ Pointer to tilemap data for Layer 1 Map16...
 CODE_14F46D:        85 00         STA $00                   ;  | ...page 1...
 CODE_14F46F:        E8            INX                       ;  |
-CODE_14F470:        BF C8 A4 15   LDA PNTR_15A4C8,x         ;  |
+CODE_14F470:        BF C8 A4 15   LDA.l PNTR_15A4C8,x         ;  |
 CODE_14F474:        85 01         STA $01                   ;  |
 CODE_14F476:        A9 15         LDA #$15                  ;  |
 CODE_14F478:        85 02         STA $02                   ; /
@@ -6967,10 +6967,10 @@ CODE_14F565:        AE 4E 07      LDX $074E                 ; \ Load the index t
 CODE_14F568:        BF 00 89 15   LDA.l DATA_158900,x         ;  | Table here determines which cloud image to use.
 CODE_14F56C:        0A            ASL A                     ;  | Multiply by 2 and transferred to X...
 CODE_14F56D:        AA            TAX                       ;  | ... to form an index to the pointer.
-CODE_14F56E:        BF 28 89 15   LDA PNTR_158928,x         ;  | Appropiate addresses of each cloud image...
+CODE_14F56E:        BF 28 89 15   LDA.l PNTR_158928,x         ;  | Appropiate addresses of each cloud image...
 CODE_14F572:        85 08         STA $08                   ;  | ...are found in this pointer...
 CODE_14F574:        E8            INX                       ;  | ...and stored to [$08].
-CODE_14F575:        BF 28 89 15   LDA PNTR_158928,x         ;  |
+CODE_14F575:        BF 28 89 15   LDA.l PNTR_158928,x         ;  |
 CODE_14F579:        85 09         STA $09                   ;  |
 CODE_14F57B:        A9 15         LDA #$15                  ;  | All images can be found in bank 15 only.
 CODE_14F57D:        85 0A         STA $0A                   ; /
@@ -7007,7 +7007,7 @@ CODE_14F5BA:        EE 4E 07      INC $074E
 CODE_14F5BD:        E6 E9         INC $E9                   
 CODE_14F5BF:        A6 EB         LDX $EB                   
 CODE_14F5C1:        A5 E9         LDA $E9                   
-CODE_14F5C3:        DF 36 F5 14   CMP DATA_14F536,x             
+CODE_14F5C3:        DF 36 F5 14   CMP.l DATA_14F536,x             
 CODE_14F5C7:        D0 97         BNE CODE_14F560           
 CODE_14F5C9:        80 03         BRA CODE_14F5CE           
 
@@ -7127,10 +7127,10 @@ CODE_14F6A2:        85 C5         STA $C5                   ;  |
 CODE_14F6A4:        A9 7F         LDA #$7F                  ;  |
 CODE_14F6A6:        85 C6         STA $C6                   ; /
 CODE_14F6A8:        A2 00         LDX #$00                  
-CODE_14F6AA:        BF 33 92 15   LDA PNTR_159233,x             
+CODE_14F6AA:        BF 33 92 15   LDA.l PNTR_159233,x             
 CODE_14F6AE:        85 00         STA $00                   
 CODE_14F6B0:        E8            INX                       
-CODE_14F6B1:        BF 33 92 15   LDA PNTR_159233,x             
+CODE_14F6B1:        BF 33 92 15   LDA.l PNTR_159233,x             
 CODE_14F6B5:        85 01         STA $01                   
 CODE_14F6B7:        A9 15         LDA #$15                  
 CODE_14F6B9:        85 02         STA $02                   
@@ -7230,10 +7230,10 @@ CODE_14F782:        AE 4E 07      LDX $074E                 ; \ Get index to Lay
 CODE_14F785:        BF 00 89 15   LDA.l DATA_158900,x       ;  | Basically, which image to use.
 CODE_14F789:        0A            ASL A                     ;  | That index is used in the next pointer.
 CODE_14F78A:        AA            TAX                       ; /
-CODE_14F78B:        BF 71 93 15   LDA PNTR_159371,x         ; \ [$08] = Layer 3 table.
+CODE_14F78B:        BF 71 93 15   LDA.l PNTR_159371,x         ; \ [$08] = Layer 3 table.
 CODE_14F78F:        85 08         STA $08                   ;  | These only consists of Layer 3 stars.
 CODE_14F791:        E8            INX                       ;  | Much like the horizontal level clouds, the positions of these stars...
-CODE_14F792:        BF 71 93 15   LDA PNTR_159371,x         ;  | ... are seemingly random.
+CODE_14F792:        BF 71 93 15   LDA.l PNTR_159371,x         ;  | ... are seemingly random.
 CODE_14F796:        85 09         STA $09                   ;  | They change every time you enter a level which features these stars.
 CODE_14F798:        A9 15         LDA #$15                  ;  |
 CODE_14F79A:        85 0A         STA $0A                   ; /
@@ -7360,11 +7360,11 @@ CODE_14F90A:        0A            ASL A                     ;  | ...depending on
 CODE_14F90B:        18            CLC                       ;  |
 CODE_14F90C:        65 11         ADC $11                   ;  |
 CODE_14F90E:        AA            TAX                       ;  |
-CODE_14F90F:        BF 00 E0 15   LDA PNTR_15E000,x         ;  | Address goes into pointer [$F0].   
+CODE_14F90F:        BF 00 E0 15   LDA.l PNTR_15E000,x         ;  | Address goes into pointer [$F0].   
 CODE_14F913:        85 F0         STA $F0                   ;  |
-CODE_14F915:        BF 01 E0 15   LDA PNTR_15E000+1,x       ;  |       
+CODE_14F915:        BF 01 E0 15   LDA.l PNTR_15E000+1,x       ;  |       
 CODE_14F919:        85 F1         STA $F1                   ;  |
-CODE_14F91B:        BF 02 E0 15   LDA PNTR_15E000+2,x       ;  |       
+CODE_14F91B:        BF 02 E0 15   LDA.l PNTR_15E000+2,x       ;  |       
 CODE_14F91F:        85 F2         STA $F2                   ;  |
 CODE_14F921:        9C 54 01      STZ $0154                 ;  |
 CODE_14F924:        AD 54 01      LDA $0154                 ;  | Loop forever until NMI is done with uploading the stripe.
