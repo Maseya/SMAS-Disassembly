@@ -1866,17 +1866,19 @@ CODE_05911B:        85 99         STA $99                   ;
 CODE_05911D:        22 B1 E6 05   JSL CODE_05E6B1           ;
 CODE_059121:        60            RTS                       ;
 
-DATA_059122:        dw $0000,$0000,$0009,$0004 ;
-                    dw $0006,$0001,$0004,$0004 ;index to layer 2 background pointer
-                    dw $0001,$0008,$000A,$0001 ;2nd entry is used for 1-1 background afaik
-                    dw $0001,$0001,$0001,$0007
-                    dw $0004,$0004,$0007,$0001
-                    dw $0001,$0001,$0001,$0001
-                    dw $0004,$0002,$0002,$0001
-                    dw $0003,$0003,$0003,$0003
-                    dw $0003,$0005
+DATA_059122:        dw $0000,$0000,$0009,$0004              ;index to layer 2 background pointers
+                    dw $0006,$0001,$0004,$0004              ;this is indexed by $7E00DB
+                    dw $0001,$0008,$000A,$0001              ;
+                    dw $0001,$0001,$0001,$0007              ;See the RAM map for the list of backgrounds
+                    dw $0004,$0004,$0007,$0001              ;
+                    dw $0001,$0001,$0001,$0001              ;
+                    dw $0004,$0002,$0002,$0001              ;
+                    dw $0003,$0003,$0003,$0003              ;
+                    dw $0003,$0005                          ;
 
-CODE_059166:        A5 DB         LDA $DB                   ;\Load background number
+;Routine to build the map16 pages of the layer 2 backgrounds
+;It's actually not for the map16 tilemap which build the backgrounds.
+CODE_059166:        A5 DB         LDA $DB                   ;\ Load background number
 CODE_059168:        0A            ASL A                     ; |to index
 CODE_059169:        AA            TAX                       ; |
 CODE_05916A:        BD 22 91      LDA $9122,x               ; |Load index to layer 2 background pointer

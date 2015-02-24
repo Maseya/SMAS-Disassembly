@@ -1257,7 +1257,7 @@ CODE_048E26:        B7 F3         LDA [$F3],y               ;\Load level objects
 CODE_048E28:        C2 20         REP #$20                  ; |16-bit A
 CODE_048E2A:        29 7F 00      AND #$007F                ; |Filter
 CODE_048E2D:        AA            TAX                       ; |to index
-CODE_048E2E:        E2 20         SEP #$20                  ;/ 8-bit A. was the register width change really needed
+CODE_048E2E:        E2 20         SEP #$20                  ;/ 8-bit A.
 CODE_048E30:        BD 43 8E      LDA $8E43,x               ;\
 CODE_048E33:        85 00         STA $00                   ; |Load indirect pointers for object handling
 CODE_048E35:        BD 44 8E      LDA $8E44,x               ; |
@@ -1267,54 +1267,55 @@ CODE_048E3C:        A6 9E         LDX $9E                   ;Sprite index in X
 CODE_048E3E:        A4 F7         LDY $F7                   ;
 CODE_048E40:        6C 00 00      JMP ($0000)               ;
 
-PNTR_048E43:        dw CODE_048EB5
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EBB
-                    dw CODE_048EA5
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048F44 ;related to castles at level end/begin?
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048FD2
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_04901B
-                    dw CODE_04903E
-                    dw CODE_04907A
-                    dw CODE_0490A0
-                    dw CODE_0490C2
-                    dw CODE_0490EB
-                    dw CODE_049121
-                    dw CODE_04915C
-                    dw CODE_04917E
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_0491B3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
-                    dw CODE_048EA3
+;todo
+PNTR_048E43:        dw CODE_048EB5                          ;$00 - 
+                    dw CODE_048EA3                          ;$01 - 
+                    dw CODE_048EA3                          ;$02 - 
+                    dw CODE_048EA3                          ;$03 - 
+                    dw CODE_048EA3                          ;$04 - 
+                    dw CODE_048EA3                          ;$05 - 
+                    dw CODE_048EA3                          ;$06 - 
+                    dw CODE_048EA3                          ;$07 - 
+                    dw CODE_048EBB                          ;$08 - 
+                    dw CODE_048EA5                          ;$09 - 
+                    dw CODE_048EA3                          ;$0A - 
+                    dw CODE_048EA3                          ;$0B - 
+                    dw CODE_048EA3                          ;$0C - 
+                    dw CODE_048EA3                          ;$0D - 
+                    dw CODE_048EA3                          ;$0E - 
+                    dw CODE_048EA3                          ;$0F - 
+                    dw CODE_048F44                          ;$10 - related to castles at level end/begin?
+                    dw CODE_048EA3                          ;$11 - 
+                    dw CODE_048EA3                          ;$12 - 
+                    dw CODE_048EA3                          ;$13 - 
+                    dw CODE_048FD2                          ;$14 - 
+                    dw CODE_048EA3                          ;$15 - 
+                    dw CODE_048EA3                          ;$16 - 
+                    dw CODE_048EA3                          ;$17 - 
+                    dw CODE_04901B                          ;$18 - Stone Stairs object
+                    dw CODE_04903E                          ;$19 - 
+                    dw CODE_04907A                          ;$1A - 
+                    dw CODE_0490A0                          ;$1B - 
+                    dw CODE_0490C2                          ;$1C - 
+                    dw CODE_0490EB                          ;$1D - 
+                    dw CODE_049121                          ;$1E - 
+                    dw CODE_04915C                          ;$1F - 
+                    dw CODE_04917E                          ;$20 - 
+                    dw CODE_048EA3                          ;$21 - 
+                    dw CODE_048EA3                          ;$22 - 
+                    dw CODE_048EA3                          ;$23 - 
+                    dw CODE_048EA3                          ;$24 - 
+                    dw CODE_048EA3                          ;$25 - 
+                    dw CODE_048EA3                          ;$26 - 
+                    dw CODE_048EA3                          ;$27 - 
+                    dw CODE_0491B3                          ;$28 - 
+                    dw CODE_048EA3                          ;$29 - 
+                    dw CODE_048EA3                          ;$2A - 
+                    dw CODE_048EA3                          ;$2B - 
+                    dw CODE_048EA3                          ;$2C - 
+                    dw CODE_048EA3                          ;$2D - 
+                    dw CODE_048EA3                          ;$2E - 
+                    dw CODE_048EA3                          ;$2F - 
 
 CODE_048EA3:        AB            PLB                       ;
 CODE_048EA4:        6B            RTL                       ;
@@ -1465,6 +1466,7 @@ DATA_049009:        db $07,$07,$06,$05,$04,$03,$02,$01 ;Y-length of the 'cemente
 DATA_049012:        db $03,$03,$04,$05,$06,$07,$08,$09 ;Y-PLACEMENT of the cemented stair blocks relative from the top
                     db $0A                             ;1 Byte more means 16 pixels lower
 
+;Stone Stairs object
 CODE_04901B:        20 C0 91      JSR CODE_0491C0           ;
 CODE_04901E:        22 13 AD 03   JSL CODE_03AD13           ;
 CODE_049022:        90 05         BCC CODE_049029           ;
@@ -2023,7 +2025,7 @@ CODE_049516:        29 01         AND #$01                  ;
 CODE_049518:        8D F6 0E      STA $0EF6                 ;
 CODE_04951B:        9C FC 0E      STZ $0EFC                 ;
 CODE_04951E:        9C F8 0E      STZ $0EF8                 ;
-CODE_049521:        22 00 80 05   JSL CODE_058000           ;
+CODE_049521:        22 00 80 05   JSL CODE_058000           ;Load background, hdma, aesthethics, etc
 CODE_049525:        20 96 9B      JSR CODE_049B96           ;
 CODE_049528:        20 BC 9B      JSR CODE_049BBC           ;
 CODE_04952B:        20 BC 9B      JSR CODE_049BBC           ;
@@ -2031,15 +2033,15 @@ CODE_04952E:        20 BC 9B      JSR CODE_049BBC           ;
 CODE_049531:        20 BC 9B      JSR CODE_049BBC           ;
 CODE_049534:        20 BC 9B      JSR CODE_049BBC           ;
 CODE_049537:        20 BC 9B      JSR CODE_049BBC           ;
-CODE_04953A:        A5 BA         LDA $BA                   ;
-CODE_04953C:        C9 03         CMP #$03                  ;
-CODE_04953E:        F0 23         BEQ CODE_049563           ;
+CODE_04953A:        A5 BA         LDA $BA                   ;\
+CODE_04953C:        C9 03         CMP #$03                  ; | Return if castle
+CODE_04953E:        F0 23         BEQ CODE_049563           ;/
 CODE_049540:        20 BC 9B      JSR CODE_049BBC           ;
 CODE_049543:        20 BC 9B      JSR CODE_049BBC           ;
 CODE_049546:        20 BC 9B      JSR CODE_049BBC           ;
 CODE_049549:        20 BC 9B      JSR CODE_049BBC           ;
-CODE_04954C:        AD D1 0E      LDA $0ED1                 ;
-CODE_04954F:        F0 12         BEQ CODE_049563           ;
+CODE_04954C:        AD D1 0E      LDA $0ED1                 ;\
+CODE_04954F:        F0 12         BEQ CODE_049563           ;/ Return if not starry night background flag.
 CODE_049551:        20 BC 9B      JSR CODE_049BBC           ;
 CODE_049554:        20 BC 9B      JSR CODE_049BBC           ;
 CODE_049557:        20 BC 9B      JSR CODE_049BBC           ;
@@ -2048,7 +2050,7 @@ CODE_04955D:        20 BC 9B      JSR CODE_049BBC           ;
 CODE_049560:        20 BC 9B      JSR CODE_049BBC           ;
 CODE_049563:        60            RTS                       ;
 
-DATA_049564:        db $F8,$00,$20,$F8,$F0,$20,$00
+DATA_049564:        db $F8,$00,$20,$F8,$F0,$20,$00          ;indirect hdma table. points to ram 7F2000 and beyond in continuous mode
 
 CODE_04956B:        8B            PHB                       ;
 CODE_04956C:        4B            PHK                       ;
@@ -2070,16 +2072,16 @@ CODE_04958D:        8D 09 12      STA $1209                 ;
 CODE_049590:        A2 11         LDX #$11                  ;
 CODE_049592:        80 2C         BRA CODE_0495C0           ;
 
-CODE_049594:        C2 20         REP #$20                  ;
-CODE_049596:        A9 42 0F      LDA #$0F42                ;
-CODE_049599:        8D 20 43      STA $4320                 ;
-CODE_04959C:        A9 64 95      LDA #$9564                ;
-CODE_04959F:        8D 22 43      STA $4322                 ;
-CODE_0495A2:        A2 04         LDX #$04                  ;
-CODE_0495A4:        8E 24 43      STX $4324                 ;
-CODE_0495A7:        A0 7F         LDY #$7F                  ;
-CODE_0495A9:        8C 27 43      STY $4327                 ;
-CODE_0495AC:        E2 20         SEP #$20                  ;
+CODE_049594:        C2 20         REP #$20                  ;16-bit A. Start of a DMA code.
+CODE_049596:        A9 42 0F      LDA #$0F42                ;\
+CODE_049599:        8D 20 43      STA $4320                 ; | Indirect HDMA, 1 reg write twice to BG2 horizontal scroll
+CODE_04959C:        A9 64 95      LDA #$9564                ; |
+CODE_04959F:        8D 22 43      STA $4322                 ; |
+CODE_0495A2:        A2 04         LDX #$04                  ; | $049564: Pointer to indirect HDMA pointer table
+CODE_0495A4:        8E 24 43      STX $4324                 ; |
+CODE_0495A7:        A0 7F         LDY #$7F                  ; |
+CODE_0495A9:        8C 27 43      STY $4327                 ; |
+CODE_0495AC:        E2 20         SEP #$20                  ;/
 CODE_0495AE:        9C EC 0E      STZ $0EEC                 ;
 CODE_0495B1:        9C F3 0E      STZ $0EF3                 ;
 CODE_0495B4:        AD 03 12      LDA $1203                 ;
@@ -3862,6 +3864,7 @@ CODE_04C03C:        B9 24 C1      LDA $C124,y               ;\|Load the level nu
 CODE_04C03F:        AB            PLB                       ; |return it
 CODE_04C040:        6B            RTL                       ;/
 
+;Level loading routine: Read level header from object table
 CODE_04C041:        8B            PHB                       ;\
 CODE_04C042:        4B            PHK                       ; |Setup program bank.
 CODE_04C043:        AB            PLB                       ;/

@@ -527,7 +527,7 @@ CODE_038503:        9C 08 42      STZ $4208                 ;/Store zero to h-ti
 CODE_038506:        A2 A1         LDX #$A1                  ;\
 CODE_038508:        8E 00 42      STX $4200                 ;/Enable NMI, IRQ, and auto joypad-read enable, only
 CODE_03850B:        AB            PLB                       ;when IRQ itself is enabled.
-CODE_03850C:        6B            RTL                       ;Return from IRQ
+CODE_03850C:        6B            RTL                       ;Return
 
 CODE_03850D:        8B            PHB                       ;\SMB1 IRQ Routine
 CODE_03850E:        4B            PHK                       ; |Set current program bank
@@ -723,6 +723,7 @@ CODE_0386A7:        60            RTS                       ;
 CODE_0386A8:        9C 02 16      STZ $1602                 ;
 CODE_0386AB:        60            RTS                       ;
 
+;Title screen operation modes
 PNTR_0386AC:        dw CODE_039D91
                     dw CODE_038C18
                     dw CODE_039EBA
@@ -3575,17 +3576,18 @@ CODE_03A5C7:        60            RTS                       ;
 
 DATA_03A5C8:        db $14,$51,$8C,$E7
 
-;Might be another level loading routine?
-
+;Part of level loading routine for objects
+;Parse objects
+;(equivalent of ProcessAreaData in smb1dis.asm)
 CODE_03A5CC:        C2 10         REP #$10                  ;16-bit XY
 CODE_03A5CE:        A2 04 00      LDX #$0004                ;Load 0004 into X
 CODE_03A5D1:        9C 0B 01      STZ $010B                 ;Store zero in 3-byte object flag
 CODE_03A5D4:        86 9E         STX $9E                   ;Store X into $9E: Sprite index
 CODE_03A5D6:        9C 29 07      STZ $0729                 ;
-CODE_03A5D9:        AC 2C 07      LDY $072C                 ;
-CODE_03A5DC:        B7 FA         LDA [$FA],y               ;
-CODE_03A5DE:        C9 FD         CMP #$FD                  ;
-CODE_03A5E0:        F0 63         BEQ CODE_03A645           ;
+CODE_03A5D9:        AC 2C 07      LDY $072C                 ;Offset of level object data
+CODE_03A5DC:        B7 FA         LDA [$FA],y               ;\
+CODE_03A5DE:        C9 FD         CMP #$FD                  ; |If end-of-area, skip all of this
+CODE_03A5E0:        F0 63         BEQ CODE_03A645           ;/
 CODE_03A5E2:        29 0F         AND #$0F                  ;
 CODE_03A5E4:        C9 0F         CMP #$0F                  ;
 CODE_03A5E6:        D0 03         BNE CODE_03A5EB           ;
@@ -3637,7 +3639,7 @@ CODE_03A648:        C2 10         REP #$10                  ;
 CODE_03A64A:        80 06         BRA CODE_03A652           ;
 
 CODE_03A64C:        EE 29 07      INC $0729                 ;
-CODE_03A64F:        20 75 A6      JSR CODE_03A675           ;
+CODE_03A64F:        20 75 A6      JSR CODE_03A675           ;Increase level data index accordingly
 CODE_03A652:        A6 9E         LDX $9E                   ;
 CODE_03A654:        BD 00 13      LDA $1300,x               ;
 CODE_03A657:        30 03         BMI CODE_03A65C           ;
@@ -3657,17 +3659,18 @@ CODE_03A66F:        4C CC A5      JMP CODE_03A5CC           ;
 CODE_03A672:        E2 10         SEP #$10                  ;
 CODE_03A674:        60            RTS                       ;
 
-CODE_03A675:        C2 20         REP #$20                  ;
-CODE_03A677:        EE 2C 07      INC $072C                 ;
-CODE_03A67A:        EE 2C 07      INC $072C                 ;
-CODE_03A67D:        AD 0B 01      LDA $010B                 ;
-CODE_03A680:        29 FF 00      AND #$00FF                ;
-CODE_03A683:        F0 03         BEQ CODE_03A688           ;
-CODE_03A685:        EE 2C 07      INC $072C                 ;
+;Increase level data index accordingly
+CODE_03A675:        C2 20         REP #$20                  ;\
+CODE_03A677:        EE 2C 07      INC $072C                 ; |
+CODE_03A67A:        EE 2C 07      INC $072C                 ; | Increase index to level data by 2. If it's a 3-byte object, increase by 3.
+CODE_03A67D:        AD 0B 01      LDA $010B                 ; |
+CODE_03A680:        29 FF 00      AND #$00FF                ; |
+CODE_03A683:        F0 03         BEQ CODE_03A688           ; |
+CODE_03A685:        EE 2C 07      INC $072C                 ;/
 CODE_03A688:        E2 20         SEP #$20                  ;
 CODE_03A68A:        A9 00         LDA #$00                  ;
 CODE_03A68C:        8D 2B 07      STA $072B                 ;
-CODE_03A68F:        8D 0B 01      STA $010B                 ;
+CODE_03A68F:        8D 0B 01      STA $010B                 ;Clear the 3 byte object flag
 CODE_03A692:        60            RTS                       ;
 
 CODE_03A693:        C2 30         REP #$30                  ;
@@ -3811,12 +3814,12 @@ CODE_03A793:        AD 2C 07      LDA $072C                 ;
 CODE_03A796:        9D 05 13      STA $1305,x               ;
 CODE_03A799:        E2 20         SEP #$20                  ;
 CODE_03A79B:        FA            PLX                       ;
-CODE_03A79C:        A5 F6         LDA $F6                   ;
-CODE_03A79E:        F0 03         BEQ CODE_03A7A3           ;
-CODE_03A7A0:        EE 0B 01      INC $010B                 ;
-CODE_03A7A3:        20 75 A6      JSR CODE_03A675           ;
-CODE_03A7A6:        A5 F6         LDA $F6                   ;
-CODE_03A7A8:        F0 09         BEQ CODE_03A7B3           ;
+CODE_03A79C:        A5 F6         LDA $F6                   ;\
+CODE_03A79E:        F0 03         BEQ CODE_03A7A3           ; | If vertically extendable object
+CODE_03A7A0:        EE 0B 01      INC $010B                 ;/ Set flag for 3 byte object
+CODE_03A7A3:        20 75 A6      JSR CODE_03A675           ;Increase level data index accordingly
+CODE_03A7A6:        A5 F6         LDA $F6                   ;\
+CODE_03A7A8:        F0 09         BEQ CODE_03A7B3           ;/ If vertically extendable objects, branch
 CODE_03A7AA:        A4 F7         LDY $F7                   ;
 CODE_03A7AC:        22 15 8E 04   JSL CODE_048E15           ;
 CODE_03A7B0:        E2 10         SEP #$10                  ;
@@ -3827,7 +3830,7 @@ CODE_03A7B5:        A5 00         LDA $00                   ; |
 CODE_03A7B7:        18            CLC                       ; |
 CODE_03A7B8:        65 07         ADC $07                   ; |
 CODE_03A7BA:        0A            ASL A                     ; |
-CODE_03A7BB:        A8            TAY                       ; | Build objects appropriately and place them into the level
+CODE_03A7BB:        A8            TAY                       ; | Build vertically extendable objects appropriately and place them into the level
 CODE_03A7BC:        B9 C9 A7      LDA $A7C9,y               ; |
 CODE_03A7BF:        85 04         STA $04                   ; |
 CODE_03A7C1:        B9 CA A7      LDA $A7CA,y               ; |
@@ -3835,53 +3838,53 @@ CODE_03A7C4:        85 05         STA $05                   ; |
 CODE_03A7C6:        6C 04 00      JMP ($0004)               ;/
 
 ;Pointers to level objects
-PNTR_03A7C9:        dw CODE_03A9F7                          ;Warp pipe
-                    dw CODE_03A8AF                          ;$0733-dependant object. 00 = normal, green platform. 01 = mushroom, 02 = bullet bill cannons
-                    dw CODE_03AB63                          ;Row of bricks
-                    dw CODE_03AB72                          ;Row of stones
-                    dw CODE_03AB2A                          ;Row of coins
-                    dw CODE_03AB83                          ;Column of bricks
-                    dw CODE_03AB8A                          ;Column of stones
-                    dw CODE_03A9F7                          ;Decoration pipe
-                    dw CODE_03AC3F                          ;Hole object
-                    dw CODE_03A978                          ;Pulley rope
-                    dw CODE_03AAB0                          ;Bridge (high)
-                    dw CODE_03AAB4                          ;Bridge (mid)
-                    dw CODE_03AAB8                          ;Bridge (low)
-                    dw CODE_03AA7E                          ;Water/lava pit
-                    dw CODE_03AA9E                          ;Row of Coin Question blocks (high)
-                    dw CODE_03AAA2                          ;Row of Coin Question blocks (low)
-                    dw CODE_03A827                          ;
-                    dw CODE_03A827                          ;
-                    dw CODE_03A827                          ;
-                    dw CODE_03A827                          ;these point to an rts
-                    dw CODE_03A827                          ;
-                    dw CODE_03A827                          ;
-                    dw CODE_03AC0F
-                    dw CODE_03AC0F
-                    dw CODE_03AC0F
-                    dw CODE_03AC05
-                    dw CODE_03AC18
-                    dw CODE_03AC18
-                    dw CODE_03AC18
-                    dw CODE_03AC15
-                    dw CODE_03AC18
-                    dw CODE_03A98D                          ;Underwater horizontal pipe
-                    dw CODE_03AB4E                          ;Empty block
-                    dw CODE_03ABD5                          ;Springboard object
-                    dw CODE_03A9A0
-                    dw CODE_03AAE4
-                    dw CODE_03AB3F
-                    dw CODE_03AB44
-                    dw CODE_03AB38
-                    dw CODE_03A862
-                    dw CODE_03A87C
-                    dw CODE_03A87C
-                    dw CODE_03A89A
-                    dw CODE_03A89A
-                    dw CODE_03A89A
-                    dw CODE_03A77A
-                    dw CODE_03A828
+PNTR_03A7C9:        dw CODE_03A9F7                          ;$00 - Warp pipe
+                    dw CODE_03A8AF                          ;$01 - $0733-dependant object. 00 = normal, green platform. 01 = mushroom, 02 = bullet bill cannons
+                    dw CODE_03AB63                          ;$02 - Row of bricks
+                    dw CODE_03AB72                          ;$03 - Row of stones
+                    dw CODE_03AB2A                          ;$04 - Row of coins
+                    dw CODE_03AB83                          ;$05 - Column of bricks
+                    dw CODE_03AB8A                          ;$06 - Column of stones
+                    dw CODE_03A9F7                          ;$07 - Decoration pipe
+                    dw CODE_03AC3F                          ;$08 - Hole object
+                    dw CODE_03A978                          ;$09 - Pulley rope
+                    dw CODE_03AAB0                          ;$0A - Bridge (high)
+                    dw CODE_03AAB4                          ;$0B - Bridge (mid)
+                    dw CODE_03AAB8                          ;$0C - Bridge (low)
+                    dw CODE_03AA7E                          ;$0D - Water/lava pit
+                    dw CODE_03AA9E                          ;$0E - Row of Coin Question blocks (high)
+                    dw CODE_03AAA2                          ;$0F - Row of Coin Question blocks (low)
+                    dw CODE_03A827                          ;$10 - 
+                    dw CODE_03A827                          ;$11 - 
+                    dw CODE_03A827                          ;$12 - 
+                    dw CODE_03A827                          ;$13 - these point to an rts
+                    dw CODE_03A827                          ;$14 - 
+                    dw CODE_03A827                          ;$15 - 
+                    dw CODE_03AC0F                          ;$16 - 
+                    dw CODE_03AC0F                          ;$17 - 
+                    dw CODE_03AC0F                          ;$18 - 
+                    dw CODE_03AC05                          ;$19 - 
+                    dw CODE_03AC18                          ;$1A - 
+                    dw CODE_03AC18                          ;$1B - 
+                    dw CODE_03AC18                          ;$1C - 
+                    dw CODE_03AC15                          ;$1D - 
+                    dw CODE_03AC18                          ;$1E - 
+                    dw CODE_03A98D                          ;$1F - Underwater horizontal pipe
+                    dw CODE_03AB4E                          ;$20 - Empty block
+                    dw CODE_03ABD5                          ;$21 - Springboard object
+                    dw CODE_03A9A0                          ;$22 - 
+                    dw CODE_03AAE4                          ;$23 - 
+                    dw CODE_03AB3F                          ;$24 - 
+                    dw CODE_03AB44                          ;$25 - 
+                    dw CODE_03AB38                          ;$26 - 
+                    dw CODE_03A862                          ;$27 - 
+                    dw CODE_03A87C                          ;$28 - 
+                    dw CODE_03A87C                          ;$29 - 
+                    dw CODE_03A89A                          ;$2A - 
+                    dw CODE_03A89A                          ;$2B - 
+                    dw CODE_03A89A                          ;$2C - 
+                    dw CODE_03A77A                          ;$2D - 
+                    dw CODE_03A828                          ;$2E - 
 
 CODE_03A827:        60            RTS                       ;
 
@@ -5381,7 +5384,6 @@ PNTR_03B39D:        dw CODE_03B3A6
                     dw CODE_03B3C3
                     dw CODE_03B3BA
                     dw CODE_03B41F
-
 
 CODE_03B3A5:        60            RTS
 

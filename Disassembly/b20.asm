@@ -71,8 +71,8 @@ CODE_20809C:        8D 00 01      STA $0100
 CODE_20809F:        8D 01 01      STA $0101                 
 CODE_2080A2:        A9 01         LDA #$01                  
 CODE_2080A4:        8D D7 02      STA $02D7                 
-CODE_2080A7:        A9 15         LDA #$15                  
-CODE_2080A9:        8D 02 12      STA $1202                 
+CODE_2080A7:        A9 15         LDA #$15                  ;\
+CODE_2080A9:        8D 02 12      STA $1202                 ;/Title screen music
 CODE_2080AC:        20 FE B0      JSR CODE_20B0FE           
 CODE_2080AF:        AD 2B 07      LDA $072B                 
 CODE_2080B2:        C9 03         CMP #$03                  
@@ -339,8 +339,8 @@ CODE_20833A:        80 07         BRA CODE_208343           ; |
 
 CODE_20833C:        AD 55 1F      LDA $1F55                 ; | If Music box is playing,
 CODE_20833F:        F0 02         BEQ CODE_208343           ; | play music box music (#$0E).
-CODE_208341:        A0 0E         LDY #$0E                  ; | Otherwise play regular overworld music.
-CODE_208343:        8C 02 12      STY $1202                 ;/
+CODE_208341:        A0 0E         LDY #$0E                  ; | 
+CODE_208343:        8C 02 12      STY $1202                 ;/  Otherwise play regular overworld music.
 CODE_208346:        9C F2 05      STZ $05F2                 
 CODE_208349:        A9 EF         LDA #$EF                  
 CODE_20834B:        8D 16 02      STA $0216                 
@@ -596,8 +596,8 @@ CODE_2085BA:        A9 30         LDA #$30
 CODE_2085BC:        8D 50 10      STA $1050                 
 CODE_2085BF:        A9 43         LDA #$43                  
 CODE_2085C1:        8D 03 12      STA $1203                 
-CODE_2085C4:        A9 80         LDA #$80                  
-CODE_2085C6:        8D 02 12      STA $1202                 
+CODE_2085C4:        A9 80         LDA #$80                  ;\
+CODE_2085C6:        8D 02 12      STA $1202                 ;/Fade out music
 CODE_2085C9:        A0 01         LDY #$01                  
 CODE_2085CB:        AD 98 05      LDA $0598                 
 CODE_2085CE:        F0 02         BEQ CODE_2085D2           
@@ -729,8 +729,8 @@ CODE_2086F7:        22 84 BF 29   JSL CODE_29BF84
 CODE_2086FB:        AD 27 07      LDA $0727                 
 CODE_2086FE:        C9 08         CMP #$08                  
 CODE_208700:        D0 0E         BNE CODE_208710           
-CODE_208702:        A9 80         LDA #$80                  
-CODE_208704:        8D 02 12      STA $1202                 
+CODE_208702:        A9 80         LDA #$80                  ;\
+CODE_208704:        8D 02 12      STA $1202                 ;/Fade out music
 CODE_208707:        AD 2A 04      LDA $042A                 
 CODE_20870A:        8D 27 07      STA $0727                 
 CODE_20870D:        4C B9 80      JMP CODE_2080B9           
@@ -864,8 +864,8 @@ CODE_20885E:        22 62 9E 23   JSL CODE_239E62
 CODE_208862:        22 A5 EA 29   JSL CODE_29EAA5           
 CODE_208866:        A5 14         LDA $14                   
 CODE_208868:        F0 F1         BEQ CODE_20885B           
-CODE_20886A:        A9 80         LDA #$80                  
-CODE_20886C:        8D 02 12      STA $1202                 
+CODE_20886A:        A9 80         LDA #$80                  ;\
+CODE_20886C:        8D 02 12      STA $1202                 ;/Fade out music
 CODE_20886F:        22 B6 E2 29   JSL CODE_29E2B6           
 CODE_208873:        4C A5 8F      JMP CODE_208FA5           
 
@@ -1259,8 +1259,8 @@ CODE_208C17:        85 95         STA $95
 CODE_208C19:        85 96         STA $96                   
 CODE_208C1B:        9C 40 10      STZ $1040                 
 CODE_208C1E:        9C 28 10      STZ $1028                 
-CODE_208C21:        A9 0D         LDA #$0D                  
-CODE_208C23:        8D 02 12      STA $1202                 
+CODE_208C21:        A9 0D         LDA #$0D                  ;\
+CODE_208C23:        8D 02 12      STA $1202                 ;/Starman music
 CODE_208C26:        A9 80         LDA #$80                  
 CODE_208C28:        8D 00 42      STA $4200                 
 CODE_208C2B:        20 1F 80      JSR CODE_20801F           
@@ -1634,8 +1634,8 @@ CODE_208F9E:        9D 4A 07      STA $074A,x
 CODE_208FA1:        22 B6 E2 29   JSL CODE_29E2B6           
 CODE_208FA5:        A9 80         LDA #$80                  
 CODE_208FA7:        85 16         STA $16                   
-CODE_208FA9:        A9 80         LDA #$80                  
-CODE_208FAB:        8D 02 12      STA $1202                 
+CODE_208FA9:        A9 80         LDA #$80                  ;\
+CODE_208FAB:        8D 02 12      STA $1202                 ;/Fade out music
 CODE_208FAE:        20 1F 80      JSR CODE_20801F           
 CODE_208FB1:        9C 28 07      STZ $0728                 
 CODE_208FB4:        9C 00 42      STZ $4200                 
@@ -1653,8 +1653,8 @@ CODE_208FD0:        A0 06         LDY #$06
 CODE_208FD2:        20 2D 98      JSR CODE_20982D           
 CODE_208FD5:        9C F2 1C      STZ $1CF2                 
 CODE_208FD8:        A9 80         LDA #$80                  
-CODE_208FDA:        8D 02 12      STA $1202                 
-CODE_208FDD:        AD 13 07      LDA $0713                 
+CODE_208FDA:        8D 02 12      STA $1202                 ;\
+CODE_208FDD:        AD 13 07      LDA $0713                 ;/Fade out music
 CODE_208FE0:        D0 11         BNE CODE_208FF3           
 CODE_208FE2:        AD 8E 07      LDA $078E                 
 CODE_208FE5:        F0 0C         BEQ CODE_208FF3           
@@ -1726,8 +1726,8 @@ CODE_20908E:        20 1F 80      JSR CODE_20801F
 CODE_209091:        22 80 C2 29   JSL CODE_29C280           
 CODE_209095:        A5 14         LDA $14                   
 CODE_209097:        F0 F5         BEQ CODE_20908E           
-CODE_209099:        A9 80         LDA #$80                  
-CODE_20909B:        8D 02 12      STA $1202                 
+CODE_209099:        A9 80         LDA #$80                  ;\
+CODE_20909B:        8D 02 12      STA $1202                 ;/Fade out music
 CODE_20909E:        A9 03         LDA #$03                  
 CODE_2090A0:        8D 0D 02      STA $020D                 
 CODE_2090A3:        20 1F 80      JSR CODE_20801F           
@@ -1831,8 +1831,8 @@ CODE_209195:        AD 8C 07      LDA $078C
 CODE_209198:        D0 05         BNE CODE_20919F           
 CODE_20919A:        DE 36 07      DEC $0736,x               
 CODE_20919D:        30 0B         BMI CODE_2091AA           
-CODE_20919F:        A9 80         LDA #$80                  
-CODE_2091A1:        8D 02 12      STA $1202                 
+CODE_20919F:        A9 80         LDA #$80                  ;\
+CODE_2091A1:        8D 02 12      STA $1202                 ;/Fade out music
 CODE_2091A4:        8C 29 07      STY $0729                 
 CODE_2091A7:        4C E5 80      JMP CODE_2080E5           
 
@@ -1857,8 +1857,8 @@ CODE_2091D6:        85 16         STA $16
 CODE_2091D8:        8D 00 21      STA $2100                 
 CODE_2091DB:        AD 28 07      LDA $0728                 
 CODE_2091DE:        D0 0A         BNE CODE_2091EA           
-CODE_2091E0:        A9 0A         LDA #$0A                  
-CODE_2091E2:        8D 02 12      STA $1202                 
+CODE_2091E0:        A9 0A         LDA #$0A                  ;\
+CODE_2091E2:        8D 02 12      STA $1202                 ;/Game over music
 CODE_2091E5:        A9 A0         LDA #$A0                  
 CODE_2091E7:        8D D8 02      STA $02D8                 
 CODE_2091EA:        C2 20         REP #$20                  
@@ -2096,8 +2096,8 @@ CODE_209438:        D0 DE         BNE CODE_209418
 CODE_20943A:        AD 2B 07      LDA $072B                 
 CODE_20943D:        C9 01         CMP #$01                  
 CODE_20943F:        F0 13         BEQ CODE_209454           
-CODE_209441:        A9 80         LDA #$80                  
-CODE_209443:        8D 02 12      STA $1202                 
+CODE_209441:        A9 80         LDA #$80                  ;\
+CODE_209443:        8D 02 12      STA $1202                 ;/Fade out music
 CODE_209446:        22 B6 E2 29   JSL CODE_29E2B6           
 CODE_20944A:        AD 28 07      LDA $0728                 
 CODE_20944D:        C9 09         CMP #$09                  
@@ -2169,8 +2169,8 @@ CODE_2094FC:        22 90 E1 23   JSL CODE_23E190
 CODE_209500:        AD 14 00      LDA $0014                 
 CODE_209503:        F0 E5         BEQ CODE_2094EA           
 CODE_209505:        22 B6 E2 29   JSL CODE_29E2B6           
-CODE_209509:        A9 80         LDA #$80                  
-CODE_20950B:        8D 02 12      STA $1202                 
+CODE_209509:        A9 80         LDA #$80                  ;\
+CODE_20950B:        8D 02 12      STA $1202                 ;/Fade out music
 CODE_20950E:        A9 80         LDA #$80                  
 CODE_209510:        85 16         STA $16                   
 CODE_209512:        20 1F 80      JSR CODE_20801F           
@@ -3989,8 +3989,8 @@ CODE_20A37D:        8D 00 42      STA $4200
 CODE_20A380:        A9 16         LDA #$16                  
 CODE_20A382:        AC 26 1F      LDY $1F26                 
 CODE_20A385:        F0 02         BEQ CODE_20A389           
-CODE_20A387:        A9 11         LDA #$11                  
-CODE_20A389:        8D 02 12      STA $1202                 
+CODE_20A387:        A9 11         LDA #$11                  ;\
+CODE_20A389:        8D 02 12      STA $1202                 ;/Hammer Bros./Battle mode music
 CODE_20A38C:        20 1F 80      JSR CODE_20801F           
 CODE_20A38F:        22 A9 E0 22   JSL CODE_22E0A9           
 CODE_20A393:        22 B0 CB 26   JSL CODE_26CBB0           

@@ -9113,28 +9113,28 @@ CODE_00E3C8:        C0 BF         CPY #$BF                  ;
 CODE_00E3CA:        D0 F9         BNE CODE_00E3C5           ;
 CODE_00E3CC:        EE 9C 0B      INC $0B9C                 ;
 CODE_00E3CF:        CE A6 0B      DEC $0BA6                 ;
-CODE_00E3D2:        AD 5F 07      LDA $075F                 ;
-CODE_00E3D5:        0A            ASL A                     ;
-CODE_00E3D6:        AA            TAX                       ;
-CODE_00E3D7:        BD E4 E3      LDA $E3E4,x               ;
-CODE_00E3DA:        85 00         STA $00                   ;
-CODE_00E3DC:        BD E5 E3      LDA $E3E5,x               ;
-CODE_00E3DF:        85 01         STA $01                   ;
-CODE_00E3E1:        6C 00 00      JMP ($0000)               ;
+CODE_00E3D2:        AD 5F 07      LDA $075F                 ;\
+CODE_00E3D5:        0A            ASL A                     ; |
+CODE_00E3D6:        AA            TAX                       ; |
+CODE_00E3D7:        BD E4 E3      LDA $E3E4,x               ; | Jump to pointers according to the world number
+CODE_00E3DA:        85 00         STA $00                   ; |
+CODE_00E3DC:        BD E5 E3      LDA $E3E5,x               ; |
+CODE_00E3DF:        85 01         STA $01                   ; |
+CODE_00E3E1:        6C 00 00      JMP ($0000)               ;/
 
-PNTR_00E3E4:        dw CODE_00E3FE
-                    dw CODE_00E426
-                    dw CODE_00E44E
-                    dw CODE_00E47C
-                    dw CODE_00E4AE
-                    dw CODE_00E4D4
-                    dw CODE_00E4EE
-                    dw CODE_00E3FE
-                    dw CODE_00E3FE
-                    dw CODE_00E4AE
-                    dw CODE_00E4D4
-                    dw CODE_00E4EE
-                    dw CODE_00E3FE
+PNTR_00E3E4:        dw CODE_00E3FE                          ;$00 - World 1
+                    dw CODE_00E426                          ;$01 - World 2
+                    dw CODE_00E44E                          ;$02 - World 3
+                    dw CODE_00E47C                          ;$03 - World 4
+                    dw CODE_00E4AE                          ;$04 - World 5
+                    dw CODE_00E4D4                          ;$05 - World 6
+                    dw CODE_00E4EE                          ;$06 - World 7
+                    dw CODE_00E3FE                          ;$07 - World 8
+                    dw CODE_00E3FE                          ;$08 - World 9
+                    dw CODE_00E4AE                          ;$09 - World A
+                    dw CODE_00E4D4                          ;$0A - World B
+                    dw CODE_00E4EE                          ;$0B - World C
+                    dw CODE_00E3FE                          ;$0C - World D
 
 CODE_00E3FE:        AD 1A 02      LDA $021A                 ;
 CODE_00E401:        38            SEC                       ;
