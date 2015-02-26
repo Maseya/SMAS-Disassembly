@@ -71,13 +71,13 @@ CODE_058090:        D0 21         BNE CODE_0580B3           ;
 CODE_058092:        A5 EF         LDA $EF                   ;
 CODE_058094:        C9 3F 00      CMP #$003F                ;
 CODE_058097:        D0 15         BNE CODE_0580AE           ;
-CODE_058099:        EE C0 0E      INC $0EC0                 ;
-CODE_05809C:        EE C0 0E      INC $0EC0                 ;
-CODE_05809F:        AD C0 0E      LDA $0EC0                 ;
-CODE_0580A2:        EB            XBA                       ;
-CODE_0580A3:        AA            TAX                       ;
-CODE_0580A4:        A9 FF FF      LDA #$FFFF                ;
-CODE_0580A7:        9F 00 D0 7E   STA $7ED000,x             ;
+CODE_058099:        EE C0 0E      INC $0EC0                 ;\
+CODE_05809C:        EE C0 0E      INC $0EC0                 ; |
+CODE_05809F:        AD C0 0E      LDA $0EC0                 ; | Increase index to the final background map16 byte written to RAM $7ED000.
+CODE_0580A2:        EB            XBA                       ; |
+CODE_0580A3:        AA            TAX                       ; | And make sure the final bytes are FFFF to mark the end of the map16 tilemap.
+CODE_0580A4:        A9 FF FF      LDA #$FFFF                ; |
+CODE_0580A7:        9F 00 D0 7E   STA $7ED000,x             ;/
 CODE_0580AB:        4C 66 91      JMP CODE_059166           ;
 
 CODE_0580AE:        20 19 8F      JSR CODE_058F19           ;
@@ -94,10 +94,10 @@ CODE_0580C1:        90 06         BCC CODE_0580C9           ;
 CODE_0580C3:        20 85 8E      JSR CODE_058E85           ;
 CODE_0580C6:        4C 5B 80      JMP CODE_05805B           ;
 
-CODE_0580C9:        0A            ASL A                     ;
+CODE_0580C9:        0A            ASL A                     ;A = $EF smaller than #$10
 CODE_0580CA:        AA            TAX                       ;
 CODE_0580CB:        A5 DB         LDA $DB                   ;\
-CODE_0580CD:        0A            ASL A                     ; |background to index
+CODE_0580CD:        0A            ASL A                     ; |background to index. Up to $21 is valid.
 CODE_0580CE:        A8            TAY                       ;/
 CODE_0580CF:        B9 E1 80      LDA $80E1,y               ;\Setup indirect pointer based on background.
 CODE_0580D2:        85 04         STA $04                   ;/
@@ -106,49 +106,51 @@ CODE_0580D7:        85 06         STA $06                   ;/
 CODE_0580D9:        9B            TXY                       ;
 CODE_0580DA:        B7 04         LDA [$04],y               ;
 CODE_0580DC:        85 00         STA $00                   ;
-CODE_0580DE:        6C 00 00      JMP ($0000)               ;Jump to background generation/background loading routines?
+CODE_0580DE:        6C 00 00      JMP ($0000)               ;Jump to background generation/background loading routines
 
-PNTR_0580E1:        dw $8141
-                    dw $8141
-                    dw $812B
-                    dw $8149
-                    dw $812D
-                    dw $8149
-                    dw $8149
-                    dw $8149
-                    dw $8149
-                    dw $81DF
-                    dw $8125
-                    dw $81A7
-                    dw $8149
-                    dw $81A7
-                    dw $8149
-                    dw $81C7
-                    dw $8149
-                    dw $8149
-                    dw $81C7
-                    dw $8149
-                    dw $81A7
-                    dw $81A7
-                    dw $81A7
-                    dw $8149
-                    dw $8149
-                    dw $8169
-                    dw $8169
-                    dw $8149
-                    dw $818F
-                    dw $818F
-                    dw $818F
-                    dw $818F
-                    dw $818F
-                    dw $816F
-                    dw $823F
-                    dw $8244
-                    dw $81F5
-                    dw $82E2
-                    dw $9004
-                    dw $864E
-                    dw $864C
+PNTR_0580E1:        dw $8141                                ;$00 -
+                    dw $8141                                ;$01 -
+                    dw $812B                                ;$02 -
+                    dw $8149                                ;$03 -
+                    dw $812D                                ;$04 -
+                    dw $8149                                ;$05 -
+                    dw $8149                                ;$06 -
+                    dw $8149                                ;$07 -
+                    dw $8149                                ;$08 -
+                    dw $81DF                                ;$09 -
+                    dw $8125                                ;$0A - this points to INSTRUCTION POINTER #0
+                    dw $81A7                                ;$0B -
+                    dw $8149                                ;$0C -
+                    dw $81A7                                ;$0D -
+                    dw $8149                                ;$0E -
+                    dw $81C7                                ;$0F -
+                    dw $8149                                ;$10 -
+                    dw $8149                                ;$11 -
+                    dw $81C7                                ;$12 -
+                    dw $8149                                ;$13 -
+                    dw $81A7                                ;$14 -
+                    dw $81A7                                ;$15 -
+                    dw $81A7                                ;$16 -
+                    dw $8149                                ;$17 -
+                    dw $8149                                ;$18 -
+                    dw $8169                                ;$19 -
+                    dw $8169                                ;$1A -
+                    dw $8149                                ;$1B -
+                    dw $818F                                ;$1C -
+                    dw $818F                                ;$1D -
+                    dw $818F                                ;$1E -
+                    dw $818F                                ;$1F -
+                    dw $818F                                ;$20 -
+                    dw $816F                                ;$21 -
+;*split*
+
+PNTR_058125:        dw $823F                                ;INSTRUCTION POINTER #0: this points to opcode | Related to generating the goomba pillar background
+                    dw $8244                                ;Related to generating the goomba pillar background
+                    dw $81F5                                ;
+                    dw $82E2                                ;
+                    dw $9004                                ;
+                    dw $864E                                ;
+                    dw $864C                                ;
                     dw $8643
                     dw $8639
                     dw $864E
@@ -257,12 +259,15 @@ CODE_05821A:        9F 40 D0 7E   STA $7ED040,x             ;
 CODE_05821E:        C2 20         REP #$20                  ;
 CODE_058220:        4C 5B 80      JMP CODE_05805B           ;
 
-DATA_058223:        db $01,$02,$03,$04,$08,$09,$05,$06 ;
-                    db $10,$11,$17,$18,$1B,$1C,$1F,$20 ;
-                    db $21,$22,$25,$26,$23,$24,$2B,$2C ;
-                    db $2E,$2F,$31,$32,$A0,$0E,$00,$80 ;
-                    db $03,$A0,$00,$00                 ;
+DATA_058223:        db $01,$02,$03,$04,$08,$09,$05,$06      ;
+                    db $10,$11,$17,$18,$1B,$1C,$1F,$20      ;
+                    db $21,$22,$25,$26,$23,$24,$2B,$2C      ;
+                    db $2E,$2F,$31,$32                      ;
 
+CODE_05823F:        A0 0E 00      LDY #$000E                ;
+CODE_058242:        80 03         BRA CODE_058247           ;
+
+CODE_058244:        A0 00 00      LDY #$0000                ;
 CODE_058247:        A6 EB         LDX $EB                   ;
 CODE_058249:        E8            INX                       ;
 CODE_05824A:        E2 20         SEP #$20                  ;
@@ -1625,7 +1630,7 @@ CODE_058ED7:        A5 F1         LDA $F1                   ;
 CODE_058ED9:        10 D0         BPL CODE_058EAB           ;
 CODE_058EDB:        60            RTS                       ;
 
-CODE_058EDC:        9F 00 D0 7E   STA $7ED000,x             ;code which is also used as a table??
+CODE_058EDC:        9F 00 D0 7E   STA $7ED000,x             ;
 CODE_058EE0:        9F 00 D1 7E   STA $7ED100,x             ;
 CODE_058EE4:        9F 00 D2 7E   STA $7ED200,x             ;
 CODE_058EE8:        9F 00 D3 7E   STA $7ED300,x             ;
@@ -1649,19 +1654,20 @@ CODE_058F1D:        BD 25 8F      LDA $8F25,x               ;
 CODE_058F20:        85 00         STA $00                   ;
 CODE_058F22:        6C 00 00      JMP ($0000)               ;
 
-PNTR_058F25:        dw CODE_0590B6
-                    dw CODE_0590BA                          ;Handle HDMA during level loads?
-                    dw CODE_0590D2
-                    dw CODE_0590E9
-                    dw CODE_05910D
-                    dw CODE_059099
-                    dw CODE_05905F
-                    dw CODE_05903D
-                    dw CODE_059004
-                    dw CODE_058FFA                          ;Enable Layer 3 image
-                    dw CODE_058F97
-                    dw CODE_059116
-                    dw CODE_058F6F
+;Pointers to various background and HDMA routines.
+PNTR_058F25:        dw CODE_0590B6                          ;$00 - Increase index to background map16 tilemap's latest written tile by 1
+                    dw CODE_0590BA                          ;$01 - Handle HDMA gradient. Underwater levels use below pointer.
+                    dw CODE_0590D2                          ;$02 - Enable underwater HDMA gradient
+                    dw CODE_0590E9                          ;$03 - 
+                    dw CODE_05910D                          ;$04 - 
+                    dw CODE_059099                          ;$05 - Related to background map16 tilemap generation
+                    dw CODE_05905F                          ;$06 - Fill background with repetitive rock pattern of cave background
+                    dw CODE_05903D                          ;$07 - Fill top 3 rows with blank tiles for underwater levels
+                    dw CODE_059004                          ;$08 - Generate the rocks of the waterfall background
+                    dw CODE_058FFA                          ;$09 - Enable Layer 3 image
+                    dw CODE_058F97                          ;$0A - Generate the waterfall of the waterfall background
+                    dw CODE_059116                          ;$0B - Load tilemap-specific graphics?
+                    dw CODE_058F6F                          ;$0C - Generate Goomba pillar background's sand
 
 DATA_058F3F:        db $0C,$0D,$0E,$0F,$0C,$0D,$0E,$0F
                     db $0C,$0D,$0E,$0F,$0C,$0D,$0E,$0F
@@ -1756,23 +1762,25 @@ CODE_059037:        E0 00 10      CPX #$1000                ;
 CODE_05903A:        90 CB         BCC CODE_059007           ;
 CODE_05903C:        60            RTS                       ;
 
-CODE_05903D:        A2 00 00      LDX #$0000                ;
-CODE_059040:        A9 02 02      LDA #$0202                ;
-CODE_059043:        20 DC 8E      JSR CODE_058EDC           ;
-CODE_059046:        E8            INX                       ;
-CODE_059047:        E8            INX                       ;
-CODE_059048:        E0 20 00      CPX #$0020                ;
-CODE_05904B:        D0 F6         BNE CODE_059043           ;
-CODE_05904D:        A9 01 01      LDA #$0101                ;
-CODE_059050:        20 DC 8E      JSR CODE_058EDC           ;
-CODE_059053:        E8            INX                       ;
-CODE_059054:        E8            INX                       ;
-CODE_059055:        E0 30 00      CPX #$0030                ;
-CODE_059058:        D0 F6         BNE CODE_059050           ;
+;Part of underwater background generation routine
+CODE_05903D:        A2 00 00      LDX #$0000                ;\
+CODE_059040:        A9 02 02      LDA #$0202                ; |
+CODE_059043:        20 DC 8E      JSR CODE_058EDC           ; |
+CODE_059046:        E8            INX                       ; | Fill the top 2 rows with blank tiles
+CODE_059047:        E8            INX                       ; |
+CODE_059048:        E0 20 00      CPX #$0020                ; |
+CODE_05904B:        D0 F6         BNE CODE_059043           ;/
+CODE_05904D:        A9 01 01      LDA #$0101                ;\
+CODE_059050:        20 DC 8E      JSR CODE_058EDC           ; |
+CODE_059053:        E8            INX                       ; |
+CODE_059054:        E8            INX                       ; | Fill the 3rd row with some transition tile into the water.
+CODE_059055:        E0 30 00      CPX #$0030                ; |
+CODE_059058:        D0 F6         BNE CODE_059050           ;/
 CODE_05905A:        60            RTS                       ;
 
-DATA_05905B:        db $03,$05,$1D,$02        ;BG map16 tiles to fill the entire cave BG with (the repetetive rocks)
+DATA_05905B:        db $03,$05,$1D,$02        ;BG map16 tiles to fill the entire cave BG with (the repetitive rocks)
 
+;Part of underground background generation routine
 CODE_05905F:        A2 00 00      LDX #$0000                ;
 CODE_059062:        E2 20         SEP #$20                  ;
 CODE_059064:        AD 5B 90      LDA $905B                 ;
@@ -1800,23 +1808,23 @@ CODE_059096:        C2 20         REP #$20                  ;
 CODE_059098:        60            RTS                       ;
 
 CODE_059099:        E2 20         SEP #$20                  ;
-CODE_05909B:        A5 5C         LDA $5C                   ;
-CODE_05909D:        C9 02         CMP #$02                  ;
-CODE_05909F:        F0 04         BEQ CODE_0590A5           ;
-CODE_0590A1:        A9 5F         LDA #$5F                  ;
-CODE_0590A3:        80 02         BRA CODE_0590A7           ;
+CODE_05909B:        A5 5C         LDA $5C                   ;\
+CODE_05909D:        C9 02         CMP #$02                  ; |If map type is underground, branch
+CODE_05909F:        F0 04         BEQ CODE_0590A5           ;/
+CODE_0590A1:        A9 5F         LDA #$5F                  ;\Executes when castle level
+CODE_0590A3:        80 02         BRA CODE_0590A7           ;/Fill the background's top area with black map16 tiles.
 
-CODE_0590A5:        A9 00         LDA #$00                  ;
-CODE_0590A7:        A2 00 00      LDX #$0000                ;
-CODE_0590AA:        20 DC 8E      JSR CODE_058EDC           ;
-CODE_0590AD:        E8            INX                       ;
-CODE_0590AE:        E0 20 00      CPX #$0020                ;
-CODE_0590B1:        D0 F7         BNE CODE_0590AA           ;
-CODE_0590B3:        C2 20         REP #$20                  ;
-CODE_0590B5:        60            RTS                       ;
+CODE_0590A5:        A9 00         LDA #$00                  ;Load background black map16 tile.
+CODE_0590A7:        A2 00 00      LDX #$0000                ;\
+CODE_0590AA:        20 DC 8E      JSR CODE_058EDC           ; |
+CODE_0590AD:        E8            INX                       ; |Fill the background's top 2 rows with black tiles loaded in accumulator
+CODE_0590AE:        E0 20 00      CPX #$0020                ; |
+CODE_0590B1:        D0 F7         BNE CODE_0590AA           ; |
+CODE_0590B3:        C2 20         REP #$20                  ; |
+CODE_0590B5:        60            RTS                       ;/
 
-CODE_0590B6:        EE C0 0E      INC $0EC0                 ;
-CODE_0590B9:        60            RTS                       ;
+CODE_0590B6:        EE C0 0E      INC $0EC0                 ;\ Increase index to the latest background map16 byte written to RAM $7ED000.
+CODE_0590B9:        60            RTS                       ;/
 
 CODE_0590BA:        E2 30         SEP #$30                  ;\ Enable HDMA depending on $F1: HDMA gradient type
 CODE_0590BC:        A5 F1         LDA $F1                   ; |
@@ -1830,11 +1838,11 @@ CODE_0590CB:        22 5E 82 04   JSL CODE_04825E           ; |<-- HDMA enable r
 CODE_0590CF:        C2 30         REP #$30                  ; |
 CODE_0590D1:        60            RTS                       ;/
 
-CODE_0590D2:        E2 30         SEP #$30                  ;
-CODE_0590D4:        A9 02         LDA #$02                  ;
-CODE_0590D6:        22 5E 82 04   JSL CODE_04825E           ;
-CODE_0590DA:        C2 30         REP #$30                  ;
-CODE_0590DC:        60            RTS                       ;
+CODE_0590D2:        E2 30         SEP #$30                  ;\
+CODE_0590D4:        A9 02         LDA #$02                  ; |
+CODE_0590D6:        22 5E 82 04   JSL CODE_04825E           ; |Enable underwater HDMA gradient (without the up/down movement, just the color definition)
+CODE_0590DA:        C2 30         REP #$30                  ; |
+CODE_0590DC:        60            RTS                       ;/
 
 DATA_0590DD:        db $0F,$20,$1B,$37,$58,$C9,$1F,$29
                     db $1C,$38,$57,$CA
