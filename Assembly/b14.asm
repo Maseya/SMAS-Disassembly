@@ -4680,7 +4680,7 @@ CODE_14E165:        LSR A
 CODE_14E166:        LSR A                     
 CODE_14E167:        TAY                       
 CODE_14E168:        LDA $85                   
-CODE_14E16A:        AND $CC1B,y               
+CODE_14E16A:        AND.w DATA_11CC1B,y               
 CODE_14E16D:        BNE CODE_14E179           
 CODE_14E16F:        RTL                       
 
@@ -5038,10 +5038,10 @@ CODE_14E452:        BPL CODE_14E482
 CODE_14E454:        LDX #$07                  
 CODE_14E456:        LDY #$0F                  
 CODE_14E458:        LDA $04E8                 
-CODE_14E45B:        CMP $CE48,y               
+CODE_14E45B:        CMP.w DATA_11CE48,y               
 CODE_14E45E:        BNE CODE_14E468           
 CODE_14E460:        LDA $04E9                 
-CODE_14E463:        CMP $CE58,y               
+CODE_14E463:        CMP.w DATA_11CE58,y               
 CODE_14E466:        BEQ CODE_14E46E           
 CODE_14E468:        DEY                       
 CODE_14E469:        BPL CODE_14E458           
@@ -5164,7 +5164,7 @@ CODE_14E5CC:        ROR A
 CODE_14E5CD:        ROR A                     
 CODE_14E5CE:        XBA                       
 CODE_14E5CF:        CLC                       
-CODE_14E5D0:        ADC $CC03,x               
+CODE_14E5D0:        ADC.w DATA_11CC03,x               
 CODE_14E5D3:        PHA                       
 CODE_14E5D4:        AND #$000F                
 CODE_14E5D7:        STA $0714                 
@@ -5180,7 +5180,7 @@ CODE_14E5EC:        ROR A
 CODE_14E5ED:        ROR A                     
 CODE_14E5EE:        XBA                       
 CODE_14E5EF:        CLC                       
-CODE_14E5F0:        ADC $CC04,x               
+CODE_14E5F0:        ADC.w DATA_11CC03+1,x               
 CODE_14E5F3:        PHA                       
 CODE_14E5F4:        AND #$000F                
 CODE_14E5F7:        STA $0714                 

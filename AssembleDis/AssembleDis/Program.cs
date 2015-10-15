@@ -44,9 +44,13 @@ namespace AssembleDis
                 //([0-9A-F][0-9A-F] [0-9A-F][0-9A-F] [0-9A-F][0-9A-F] [0-9A-F][0-9A-F] )(.*?)(CMP|CP[XY]|LD[AXY]|ST[AXY]|ORA|AND|ADC|SBC)( DATA| PNTR)
                 //\1\2\3.l\4
 
-                //Find a ,y addressing mode with labeland force to be 16-bit
+                //Find a ,y addressing mode with label and force to be 16-bit
                 //LDA DATA_11(.*,y)
                 //LDA.w DATA_11\1
+
+                //Find all ROM accesses (ctrl+f in notepad++)
+                //       (CMP|CP[XY]|LD[AXY]|ORA|AND|EOR|ADC|SBC|BIT|TSB|TRB)( \$)([8-9A-F][0-9A-F]{3})
+                //replace with             $1 DATA_05$3
 
             }
 

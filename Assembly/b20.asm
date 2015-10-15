@@ -226,7 +226,7 @@ CODE_20821F:        DEC A
 CODE_208220:        DEC A                     
 CODE_208221:        TAY                       
 CODE_208222:        LDA $1D00,x               
-CODE_208225:        AND $8000,y               
+CODE_208225:        AND.w DATA_218000,y               
 CODE_208228:        STA $1D00,x               
 CODE_20822B:        STA $1D40,x               
 CODE_20822E:        DEY                       
@@ -328,7 +328,7 @@ CODE_20831E:        JSL CODE_238036
 CODE_208322:        LDA #$00                  
 CODE_208324:        JSR CODE_209610           
 CODE_208327:        LDX $0727                 ;\ data bank: $21
-CODE_20832A:        LDY $CA0B,x               ; | Load overworld music
+CODE_20832A:        LDY.w DATA_21CA0B,x       ; | Load overworld music
 CODE_20832D:        CPX #$04                  ; |
 CODE_20832F:        BNE CODE_20833C           ; | If world isn't world 5, branch
 CODE_208331:        LDX $0726                 ; |
@@ -717,9 +717,9 @@ CODE_2086E0:        LDA #$00
 CODE_2086E2:        STA $1F26                 
 CODE_2086E5:        ASL A                     
 CODE_2086E6:        TAX                       
-CODE_2086E7:        LDA $A381,x               
+CODE_2086E7:        LDA.w DATA_21A381,x               
 CODE_2086EA:        STA $2B                   
-CODE_2086EC:        LDA $A382,x               
+CODE_2086EC:        LDA.w DATA_21A381+1,x               
 CODE_2086EF:        STA $2C                   
 CODE_2086F1:        LDA #$21                  
 CODE_2086F3:        STA $2D                   
@@ -736,7 +736,7 @@ CODE_20870A:        STA $0727
 CODE_20870D:        JMP CODE_2080B9           
 
 CODE_208710:        LDY $070A                 
-CODE_208713:        LDA $C975,y               
+CODE_208713:        LDA.w DATA_21C975,y               
 CODE_208716:        STA $0739                 
 CODE_208719:        CPY #$07                  
 CODE_20871B:        BNE CODE_20873C           
@@ -1017,7 +1017,7 @@ CODE_2089C6:        LDA $05F2
 CODE_2089C9:        BNE CODE_2089D9           
 CODE_2089CB:        LDA $0414                 
 CODE_2089CE:        BNE CODE_2089D9           
-CODE_2089D0:        LDA $C976                 
+CODE_2089D0:        LDA.w DATA_21C976                 
 CODE_2089D3:        STA $0739                 
 CODE_2089D6:        JMP CODE_208A48           
 
@@ -1090,15 +1090,15 @@ CODE_208A7C:        STA $105F
 CODE_208A7F:        LDA $0425                 
 CODE_208A82:        BEQ CODE_208A94           
 CODE_208A84:        LDY $0376                 
-CODE_208A87:        LDA $823C,y               
+CODE_208A87:        LDA.w DATA_21823C,y               
 CODE_208A8A:        STA $2E                   
-CODE_208A8C:        LDA $824C,y               
+CODE_208A8C:        LDA.w DATA_21824C,y               
 CODE_208A8F:        STA $2F                   
 CODE_208A91:        JMP CODE_208A9E           
 
-CODE_208A94:        LDA $8200                 
+CODE_208A94:        LDA.w DATA_218200                 
 CODE_208A97:        STA $2E                   
-CODE_208A99:        LDA $8201                 
+CODE_208A99:        LDA.w DATA_218200+1                 
 CODE_208A9C:        STA $2F                   
 CODE_208A9E:        STZ $1044                 
 CODE_208AA1:        LDA $0216                 
@@ -1110,23 +1110,23 @@ CODE_208AAB:        STA $2E
 CODE_208AAD:        INC $1044                 
 CODE_208AB0:        LDY #$04                  
 CODE_208AB2:        LDA $0216                 
-CODE_208AB5:        CMP $CDDE,y               
+CODE_208AB5:        CMP.w DATA_21CDDE,y               
 CODE_208AB8:        BEQ CODE_208ABD           
 CODE_208ABA:        DEY                       
 CODE_208ABB:        BPL CODE_208AB2           
 CODE_208ABD:        STY $1060                 
-CODE_208AC0:        LDA $CDE3,y               
+CODE_208AC0:        LDA.w DATA_21CDE3,y               
 CODE_208AC3:        STA $1047                 
 CODE_208AC6:        STA $1048                 
 CODE_208AC9:        STA $1049                 
 CODE_208ACC:        STA $104A                 
-CODE_208ACF:        LDA $CDE8,y               
+CODE_208ACF:        LDA.w DATA_21CDE8,y               
 CODE_208AD2:        STA $104B                 
-CODE_208AD5:        LDA $CDF2,y               
+CODE_208AD5:        LDA.w DATA_21CDF2,y               
 CODE_208AD8:        STA $104D                 
-CODE_208ADB:        LDA $CDED,y               
+CODE_208ADB:        LDA.w DATA_21CDED,y               
 CODE_208ADE:        STA $104C                 
-CODE_208AE1:        LDA $CDF7,y               
+CODE_208AE1:        LDA.w DATA_21CDF7,y               
 CODE_208AE4:        STA $104E                 
 CODE_208AE7:        STZ $104F                 
 CODE_208AEA:        LDA #$03                  
@@ -1363,7 +1363,7 @@ CODE_208D10:        STA $4200
 CODE_208D13:        LDY $070A                 
 CODE_208D16:        CPY #$05                  
 CODE_208D18:        BNE CODE_208D20           
-CODE_208D1A:        LDA $C98E                 
+CODE_208D1A:        LDA.w DATA_21C98E                 
 CODE_208D1D:        STA $1E9F                 
 CODE_208D20:        LDA $034D                 
 CODE_208D23:        BEQ CODE_208D29           
@@ -1393,7 +1393,7 @@ CODE_208D5C:        BNE CODE_208D62
 CODE_208D5E:        LDA #$00                  
 CODE_208D60:        STA $1B                   
 CODE_208D62:        TAY                       
-CODE_208D63:        LDA $C98F,y               
+CODE_208D63:        LDA DATA_21C98F,y               
 CODE_208D66:        STA $0245                 
 CODE_208D69:        STZ $0243                 
 CODE_208D6C:        JSR CODE_20A07B           
@@ -1435,7 +1435,7 @@ CODE_208DB6:        LSR A
 CODE_208DB7:        LSR A                     
 CODE_208DB8:        LSR A                     
 CODE_208DB9:        TAX                       
-CODE_208DBA:        LDA $C9DF,x               
+CODE_208DBA:        LDA.w DATA_21C9DF,x               
 CODE_208DBD:        CMP $0245                 
 CODE_208DC0:        BEQ CODE_208DC5           
 CODE_208DC2:        STZ $0243                 
@@ -2068,7 +2068,7 @@ CODE_2093F5:        DEC A
 CODE_2093F6:        TAX                       
 CODE_2093F7:        SEP #$20                  
 CODE_2093F9:        LDA $1D00,y               
-CODE_2093FC:        AND $8000,x               
+CODE_2093FC:        AND.w DATA_218000,x               
 CODE_2093FF:        STA $1D00,y               
 CODE_209402:        DEX                       
 CODE_209403:        DEY                       
@@ -2268,7 +2268,7 @@ CODE_2095DF:        LDX #$02
 CODE_2095E1:        LDY #$0D                  
 CODE_2095E3:        LDA $1F17,y               
 CODE_2095E6:        BEQ CODE_2095F2           
-CODE_2095E8:        CMP $CDDB,x               
+CODE_2095E8:        CMP.w DATA_21CDDB,x               
 CODE_2095EB:        BNE CODE_2095F2           
 CODE_2095ED:        LDA #$00                  
 CODE_2095EF:        STA $1F17,y               
@@ -2475,15 +2475,15 @@ CODE_209787:        STA $30
 CODE_209789:        LDA $0425                 
 CODE_20978C:        BEQ CODE_20979E           
 CODE_20978E:        LDY $0376                 
-CODE_209791:        LDA $823C,y               
+CODE_209791:        LDA.w DATA_21823C,y               
 CODE_209794:        STA $2E                   
-CODE_209796:        LDA $824C,y               
+CODE_209796:        LDA.w DATA_21824C,y               
 CODE_209799:        STA $2F                   
 CODE_20979B:        JMP CODE_2097A8           
 
-CODE_20979E:        LDA $8200                 
+CODE_20979E:        LDA.w DATA_218200                 
 CODE_2097A1:        STA $2E                   
-CODE_2097A3:        LDA $8201                 
+CODE_2097A3:        LDA.w DATA_218200+1                 
 CODE_2097A6:        STA $2F                   
 CODE_2097A8:        LDA $1051                 
 CODE_2097AB:        AND #$08                  
@@ -2492,12 +2492,12 @@ CODE_2097AF:        INC $2F
 CODE_2097B1:        LDA $070A                 
 CODE_2097B4:        ASL A                     
 CODE_2097B5:        TAY                       
-CODE_2097B6:        LDA $CE5A,y               
+CODE_2097B6:        LDA.w DATA_21CE5A,y               
 CODE_2097B9:        STA $0C                   
-CODE_2097BB:        LDA $CE5B,y               
+CODE_2097BB:        LDA.w DATA_21CE5B,y               
 CODE_2097BE:        STA $0D                   
 CODE_2097C0:        LDY $070A                 
-CODE_2097C3:        LDA $CE80,y               
+CODE_2097C3:        LDA.w DATA_21CE80,y               
 CODE_2097C6:        STA $0E                   
 CODE_2097C8:        LDY $1054                 
 CODE_2097CB:        LDA [$2E],y               
@@ -2688,12 +2688,12 @@ CODE_20994F:        LSR A
 CODE_209950:        LSR A                     
 CODE_209951:        LSR A                     
 CODE_209952:        TAX                       
-CODE_209953:        LDA $CE2A,x               
+CODE_209953:        LDA.w DATA_21CE2A,x               
 CODE_209956:        STA $55                   
-CODE_209958:        LDA $CE32,x               
+CODE_209958:        LDA.w DATA_21CE32,x               
 CODE_20995B:        STA $70                   
 CODE_20995D:        STZ $43                   
-CODE_20995F:        LDA $CE3A,x               
+CODE_20995F:        LDA.w DATA_21CE3A,x               
 CODE_209962:        STA $0216                 
 CODE_209965:        LSR A                     
 CODE_209966:        LSR A                     
@@ -2805,7 +2805,7 @@ CODE_209A3A:        ROL A
 CODE_209A3B:        ROL A                     
 CODE_209A3C:        ROL A                     
 CODE_209A3D:        TAX                       
-CODE_209A3E:        LDA $CE42,x               
+CODE_209A3E:        LDA.w DATA_21CE42,x               
 CODE_209A41:        STA $05EE                 
 CODE_209A44:        BNE CODE_209A49           
 CODE_209A46:        INC $05F3                 
@@ -2827,7 +2827,7 @@ CODE_209A68:        BRA CODE_209A72
 CODE_209A6A:        LDA [$2B],y               
 CODE_209A6C:        AND #$0F                  
 CODE_209A6E:        TAX                       
-CODE_209A6F:        LDA $CE46,x               
+CODE_209A6F:        LDA.w DATA_21CE46,x               
 CODE_209A72:        STA $1061                 
 CODE_209A75:        STA $1062                 
 CODE_209A78:        LDA $2142                 
@@ -2964,9 +2964,9 @@ CODE_209B81:        BEQ CODE_209B92
 CODE_209B83:        TXA                       
 CODE_209B84:        LSR A                     
 CODE_209B85:        TAX                       
-CODE_209B86:        LDA $823C,x               
+CODE_209B86:        LDA.w DATA_21823C,x               
 CODE_209B89:        STA $2E                   
-CODE_209B8B:        LDA $824C,x               
+CODE_209B8B:        LDA.w DATA_21824C,x               
 CODE_209B8E:        STA $2F                   
 CODE_209B90:        BRA CODE_209BB2           
 
@@ -2976,9 +2976,9 @@ CODE_209B96:        DEX
 CODE_209B97:        DEX                       
 CODE_209B98:        LDA #$7E                  
 CODE_209B9A:        STA $0030                 
-CODE_209B9D:        LDA $8200,x               
+CODE_209B9D:        LDA.w DATA_218200,x               
 CODE_209BA0:        STA $2E                   
-CODE_209BA2:        LDA $8201,x               
+CODE_209BA2:        LDA.w DATA_218201,x               
 CODE_209BA5:        STA $2F                   
 CODE_209BA7:        INC A                     
 CODE_209BA8:        STA $04                   
@@ -3026,7 +3026,7 @@ CODE_209BE9:        AND #$07
 CODE_209BEB:        TAX                       
 CODE_209BEC:        LDY $0C                   
 CODE_209BEE:        LDA $1E04,y               
-CODE_209BF1:        ORA $CE52,x               
+CODE_209BF1:        ORA.w DATA_21CE52,x               
 CODE_209BF4:        STA $1E04,y               
 CODE_209BF7:        PLA                       
 CODE_209BF8:        STA $0C                   
@@ -3116,16 +3116,16 @@ CODE_209CCF:        JSL CODE_29E953
 CODE_209CD3:        LDX $25                   
 CODE_209CD5:        LDA $26,x                 
 CODE_209CD7:        CLC                       
-CODE_209CD8:        ADC $CE95,x               
+CODE_209CD8:        ADC.w DATA_21CE95,x               
 CODE_209CDB:        STA $26,x                 
 CODE_209CDD:        LDX $25                   
 CODE_209CDF:        LDA $26,x                 
 CODE_209CE1:        AND #$08                  
-CODE_209CE3:        CMP $CE97,x               
+CODE_209CE3:        CMP.w DATA_21CE97,x               
 CODE_209CE6:        BNE CODE_209CF0           
 CODE_209CE8:        LDA $23,x                 
 CODE_209CEA:        CLC                       
-CODE_209CEB:        ADC $CE93,x               
+CODE_209CEB:        ADC.w DATA_21CE93,x               
 CODE_209CEE:        STA $23,x                 
 CODE_209CF0:        DEC $0612                 
 CODE_209CF3:        BNE CODE_209CCC           
@@ -3250,14 +3250,14 @@ CODE_209DD7:        BCS CODE_209DDE
 CODE_209DD9:        LDA #$01                  
 CODE_209DDB:        STA $0707                 
 CODE_209DDE:        LDY $070A                 
-CODE_209DE1:        LDA $CE80,y               
+CODE_209DE1:        LDA.w DATA_21CE80,y               
 CODE_209DE4:        STA $08                   
 CODE_209DE6:        LDA $070A                 
 CODE_209DE9:        ASL A                     
 CODE_209DEA:        TAY                       
-CODE_209DEB:        LDA $CE5A,y               
+CODE_209DEB:        LDA.w DATA_21CE5A,y               
 CODE_209DEE:        STA $06                   
-CODE_209DF0:        LDX $CE5B,y               
+CODE_209DF0:        LDX.w DATA_21CE5B,y               
 CODE_209DF3:        STX $07                   
 CODE_209DF5:        LDX $25                   
 CODE_209DF7:        LDA $23,x                 
@@ -3269,7 +3269,7 @@ CODE_209DFE:        TAY
 CODE_209DFF:        LDA #$7E                  
 CODE_209E01:        STA $0F                   
 CODE_209E03:        REP #$20                  
-CODE_209E05:        LDA $8200,y               
+CODE_209E05:        LDA.w DATA_218200,y               
 CODE_209E08:        STA $0D                   
 CODE_209E0A:        LDA #$001A                
 CODE_209E0D:        STA $00                   
@@ -3365,9 +3365,9 @@ CODE_209EAE:        LDX $25
 CODE_209EB0:        LDA $23,x                 
 CODE_209EB2:        AND #$0F                  
 CODE_209EB4:        TAY                       
-CODE_209EB5:        LDA $823C,y               
+CODE_209EB5:        LDA.w DATA_21823C,y               
 CODE_209EB8:        STA $2E                   
-CODE_209EBA:        LDA $824C,y               
+CODE_209EBA:        LDA.w DATA_21824C,y               
 CODE_209EBD:        STA $2F                   
 CODE_209EBF:        REP #$20                  
 CODE_209EC1:        LDA $23,x                 
@@ -3441,14 +3441,14 @@ CODE_209F35:        RTS
 CODE_209F36:        RTS                       
 
 CODE_209F37:        LDY $070A                 
-CODE_209F3A:        LDA $CE80,y               
+CODE_209F3A:        LDA.w DATA_21CE80,y               
 CODE_209F3D:        STA $0E                   
 CODE_209F3F:        LDA $070A                 
 CODE_209F42:        ASL A                     
 CODE_209F43:        TAX                       
-CODE_209F44:        LDA $CE5A,x               
+CODE_209F44:        LDA.w DATA_21CE5A,x               
 CODE_209F47:        STA $0C                   
-CODE_209F49:        LDA $CE5B,x               
+CODE_209F49:        LDA.w DATA_21CE5B,x               
 CODE_209F4C:        STA $0D                   
 CODE_209F4E:        LDY $0A                   
 CODE_209F50:        RTL                       
@@ -3472,10 +3472,10 @@ CODE_209F6D:        LDA $0D
 CODE_209F6F:        PHA                       
 CODE_209F70:        JSL CODE_209FC1           
 CODE_209F74:        STA $0D                   
-CODE_209F76:        LDA $823C,y               
+CODE_209F76:        LDA.w DATA_21823C,y               
 CODE_209F79:        STA $2E                   
 CODE_209F7B:        STA $D8                   
-CODE_209F7D:        LDA $824C,y               
+CODE_209F7D:        LDA.w DATA_21824C,y               
 CODE_209F80:        STA $2F                   
 CODE_209F82:        CLC                       
 CODE_209F83:        ADC #$20                  
@@ -3502,9 +3502,9 @@ CODE_209FA4:        PHX
 CODE_209FA5:        LDA $070A                 
 CODE_209FA8:        ASL A                     
 CODE_209FA9:        TAX                       
-CODE_209FAA:        LDA $AB57,x               
+CODE_209FAA:        LDA.w DATA_21AB57,x               
 CODE_209FAD:        STA $DB                   
-CODE_209FAF:        LDA $AB58,x               
+CODE_209FAF:        LDA.w DATA_21AB58,x               
 CODE_209FB2:        STA $DC                   
 CODE_209FB4:        LDA [$2E],y               
 CODE_209FB6:        TAY                       
@@ -3518,7 +3518,7 @@ CODE_209FC0:        RTL
 CODE_209FC1:        CPY #$00                  
 CODE_209FC3:        BMI CODE_209FD3           
 CODE_209FC5:        CLC                       
-CODE_209FC6:        ADC $CEB2,y               
+CODE_209FC6:        ADC.w DATA_21CEB2,y               
 CODE_209FC9:        BCS CODE_209FCF                   
 CODE_209FCB:        CMP #$F0                  
 CODE_209FCD:        BCC CODE_209FD3           
@@ -3530,7 +3530,7 @@ CODE_209FD3:        RTL
 CODE_209FD4:        CPY #$00                  
 CODE_209FD6:        BMI CODE_209FDF           
 CODE_209FD8:        SEC                       
-CODE_209FD9:        SBC $CEB2,y               
+CODE_209FD9:        SBC.w DATA_21CEB2,y               
 CODE_209FDC:        BCS CODE_209FDF                   
 CODE_209FDE:        DEY                       
 CODE_209FDF:        RTL                       
@@ -3548,13 +3548,13 @@ CODE_209FEE:        LDA $0E
 CODE_209FF0:        AND #$0F                  
 CODE_209FF2:        ASL A                     
 CODE_209FF3:        TAX                       
-CODE_209FF4:        LDA $8200,x               
+CODE_209FF4:        LDA.w DATA_218200,x               
 CODE_209FF7:        STA $2E                   
-CODE_209FF9:        LDA $8201,x               
+CODE_209FF9:        LDA.w DATA_218201,x               
 CODE_209FFC:        STA $2F                   
-CODE_209FFE:        LDA $821E,x               
+CODE_209FFE:        LDA.w DATA_21821E,x               
 CODE_20A001:        STA $D8                   
-CODE_20A003:        LDA $821F,x               
+CODE_20A003:        LDA.w DATA_21821F,x               
 CODE_20A006:        STA $D9                   
 CODE_20A008:        LDA #$7E                  
 CODE_20A00A:        STA $DA                   
@@ -3572,9 +3572,9 @@ CODE_20A01F:        BEQ CODE_20A037
 CODE_20A021:        LDA $070A                 
 CODE_20A024:        ASL A                     
 CODE_20A025:        TAX                       
-CODE_20A026:        LDA $AB57,x               
+CODE_20A026:        LDA.w DATA_21AB57,x               
 CODE_20A029:        STA $DB                   
-CODE_20A02B:        LDA $AB58,x               
+CODE_20A02B:        LDA.w DATA_21AB58,x               
 CODE_20A02E:        STA $DC                   
 CODE_20A030:        LDA [$2E],y               
 CODE_20A032:        TAY                       
@@ -3603,9 +3603,9 @@ CODE_20A058:        BCC CODE_20A074
 CODE_20A05A:        TYA                       
 CODE_20A05B:        ASL A                     
 CODE_20A05C:        TAX                       
-CODE_20A05D:        LDA $AAD0,x               
+CODE_20A05D:        LDA.w DATA_21AAD0,x               
 CODE_20A060:        STA $02                   
-CODE_20A062:        LDA $AAD1,x               
+CODE_20A062:        LDA.w DATA_21AAD1,x               
 CODE_20A065:        STA $03                   
 CODE_20A067:        LDX $00                   
 CODE_20A069:        LDA $01                   
@@ -3626,11 +3626,11 @@ CODE_20A084:        LDA #$FF
 CODE_20A086:        STA $0243                 
 CODE_20A089:        RTS                       
 CODE_20A08A:        LDX $0245                 
-CODE_20A08D:        LDA $CA14,x               
+CODE_20A08D:        LDA.w DATA_21CA14,x               
 CODE_20A090:        STA $0242                 
-CODE_20A093:        LDA $CA19,x               
+CODE_20A093:        LDA.w DATA_21CA19,x               
 CODE_20A096:        STA $0241                 
-CODE_20A099:        LDA $CA1E,x               
+CODE_20A099:        LDA.w DATA_21CA1E,x               
 CODE_20A09C:        STA $0240                 
 CODE_20A09F:        LDA $0243                 
 CODE_20A0A2:        ASL A                     
@@ -3640,11 +3640,11 @@ CODE_20A0A6:        LDA #$0200
 CODE_20A0A9:        STA $02CA                 
 CODE_20A0AC:        LDA $0240                 
 CODE_20A0AF:        CLC                       
-CODE_20A0B0:        ADC $E925,y               
+CODE_20A0B0:        ADC.w DATA_21E925,y               
 CODE_20A0B3:        STA $0240                 
 CODE_20A0B6:        LDA #$2800                
 CODE_20A0B9:        CLC                       
-CODE_20A0BA:        ADC $E935,y               
+CODE_20A0BA:        ADC.w DATA_21E935,y               
 CODE_20A0BD:        STA $023E                 
 CODE_20A0C0:        SEP #$20                  
 CODE_20A0C2:        INC $0243                 
@@ -3657,11 +3657,11 @@ CODE_20A0CF:        LDA #$FF
 CODE_20A0D1:        STA $0243                 
 CODE_20A0D4:        RTS                       
 CODE_20A0D5:        LDX $0246                 
-CODE_20A0D8:        LDA $CA23,x               
+CODE_20A0D8:        LDA.w DATA_21CA23,x               
 CODE_20A0DB:        STA $0242                 
-CODE_20A0DE:        LDA $CA26,x               
+CODE_20A0DE:        LDA.w DATA_21CA26,x               
 CODE_20A0E1:        STA $0241                 
-CODE_20A0E4:        LDA $CA29,x               
+CODE_20A0E4:        LDA.w DATA_21CA29,x               
 CODE_20A0E7:        STA $0240                 
 CODE_20A0EA:        LDA $0243                 
 CODE_20A0ED:        ASL A                     
@@ -3672,11 +3672,11 @@ CODE_20A0F2:        LDA #$0400
 CODE_20A0F5:        STA $02CA                 
 CODE_20A0F8:        LDA $0240                 
 CODE_20A0FB:        CLC                       
-CODE_20A0FC:        ADC $E925,y               
+CODE_20A0FC:        ADC.w DATA_21E925,y               
 CODE_20A0FF:        STA $0240                 
 CODE_20A102:        LDA #$2800                
 CODE_20A105:        CLC                       
-CODE_20A106:        ADC $E935,y               
+CODE_20A106:        ADC.w DATA_21E935,y               
 CODE_20A109:        STA $023E                 
 CODE_20A10C:        SEP #$20                  
 CODE_20A10E:        INC $0243                 
@@ -3705,7 +3705,7 @@ CODE_20A141:        PHD
 CODE_20A142:        LDA #$2100                
 CODE_20A145:        TCD                       
 CODE_20A146:        SEP #$30                  
-CODE_20A148:        LDA #$21                  
+CODE_20A148:        LDA #$21                  ;Data bank: $21
 CODE_20A14A:        PHA                       
 CODE_20A14B:        PLB                       
 CODE_20A14C:        LDA #$03                  
@@ -3956,14 +3956,14 @@ CODE_20A325:        LDY #$9D
 CODE_20A327:        STA ($00),y               
 CODE_20A329:        DEY                       
 CODE_20A32A:        BPL CODE_20A327           
-CODE_20A32C:        LDA $A381                 
+CODE_20A32C:        LDA.w DATA_21A381                 
 CODE_20A32F:        STA $2B                   
-CODE_20A331:        LDA $A382                 
+CODE_20A331:        LDA.w DATA_21A382                 
 CODE_20A334:        STA $2C                   
 CODE_20A336:        LDA #$21                  
 CODE_20A338:        STA $2D                   
 CODE_20A33A:        LDY $070A                 
-CODE_20A33D:        LDA $C975,y               
+CODE_20A33D:        LDA.w DATA_21C975,y               
 CODE_20A340:        STA $0739                 
 CODE_20A343:        STZ $1CF2                 
 CODE_20A346:        JSL CODE_209C00           
@@ -4634,7 +4634,7 @@ CODE_20AE68:        BNE CODE_20AE87
 CODE_20AE6A:        LDA $0727                 
 CODE_20AE6D:        AND #$00FF                
 CODE_20AE70:        TAY                       
-CODE_20AE71:        LDA $AC69,y               
+CODE_20AE71:        LDA.w DATA_21AC69,y               
 CODE_20AE74:        AND #$00FF                
 CODE_20AE77:        TAX                       
 CODE_20AE78:        TYA                       
@@ -5835,21 +5835,21 @@ CODE_20B8E7:        INC $072B
 CODE_20B8EA:        LDA $0727                 
 CODE_20B8ED:        ASL A                     
 CODE_20B8EE:        TAX                       
-CODE_20B8EF:        LDA $E3AD,x               
+CODE_20B8EF:        LDA.w DATA_21E3AD,x               
 CODE_20B8F2:        STA $0A                   
-CODE_20B8F4:        LDA $E3AE,x               
+CODE_20B8F4:        LDA.w DATA_21E3AE,x               
 CODE_20B8F7:        STA $0B                   
-CODE_20B8F9:        LDA $E3BD,x               
+CODE_20B8F9:        LDA.w DATA_21E3BD,x               
 CODE_20B8FC:        STA $0C                   
-CODE_20B8FE:        LDA $E3BE,x               
+CODE_20B8FE:        LDA.w DATA_21E3BE,x               
 CODE_20B901:        STA $0D                   
-CODE_20B903:        LDA $E3CD,x               
+CODE_20B903:        LDA.w DATA_21E3CD,x               
 CODE_20B906:        STA $0E                   
-CODE_20B908:        LDA $E3CE,x               
+CODE_20B908:        LDA.w DATA_21E3CE,x               
 CODE_20B90B:        STA $0F                   
-CODE_20B90D:        LDA $E3DD,x               
+CODE_20B90D:        LDA.w DATA_21E3DD,x               
 CODE_20B910:        STA $08                   
-CODE_20B912:        LDA $E3DE,x               
+CODE_20B912:        LDA.w DATA_21E3DE,x               
 CODE_20B915:        STA $09                   
 CODE_20B917:        LDY #$08                  
 CODE_20B919:        LDA ($0A),y               
@@ -6358,13 +6358,13 @@ CODE_20BD9C:        BEQ CODE_20BDA9
 CODE_20BD9E:        LDY $8F,x                 
 CODE_20BDA0:        BEQ CODE_20BDA4           
 CODE_20BDA2:        LDY #$01                  
-CODE_20BDA4:        LDA $BB34,y               
+CODE_20BDA4:        LDA.w DATA_21BB34,y               
 CODE_20BDA7:        STA $8D,x                 
 CODE_20BDA9:        LDA $B8,x                 
 CODE_20BDAB:        AND #$04                  
 CODE_20BDAD:        BEQ CODE_20BDCA           
 CODE_20BDAF:        LDY $8F,x                 
-CODE_20BDB1:        LDA $BB31,y               
+CODE_20BDB1:        LDA.w DATA_21BB31,y               
 CODE_20BDB4:        STA $8D,x                 
 CODE_20BDB6:        LDA $BA,x                 
 CODE_20BDB8:        AND #$04                  
@@ -6429,7 +6429,7 @@ CODE_20BE27:        BEQ CODE_20BE3D
 CODE_20BE29:        LSR A                     
 CODE_20BE2A:        LSR A                     
 CODE_20BE2B:        TAY                       
-CODE_20BE2C:        LDA $BB3D,y               
+CODE_20BE2C:        LDA.w DATA_21BB3D,y               
 CODE_20BE2F:        STA $8D                   
 CODE_20BE31:        LDY #$00                  
 CODE_20BE33:        CMP #$11                  
@@ -6447,7 +6447,7 @@ CODE_20BE49:        LDY $89,x
 CODE_20BE4B:        LDA $83,x                 
 CODE_20BE4D:        BEQ CODE_20BE51           
 CODE_20BE4F:        LDY #$00                  
-CODE_20BE51:        LDA $BB39,y               
+CODE_20BE51:        LDA.w DATA_21BB39,y               
 CODE_20BE54:        STA $8D,x                 
 CODE_20BE56:        LDA $00                   
 CODE_20BE58:        BEQ CODE_20BE5E           
@@ -7800,13 +7800,13 @@ CODE_20C93C:        LDA $0717
 CODE_20C93F:        STA $1DA1,x               
 CODE_20C942:        REP #$20                  
 CODE_20C944:        LDX #$08                  
-CODE_20C946:        LDA $E43C,x               
+CODE_20C946:        LDA.w DATA_21E43C,x               
 CODE_20C949:        STA $1EED,x               
-CODE_20C94C:        LDA $E484,x               
+CODE_20C94C:        LDA.w DATA_21E484,x               
 CODE_20C94F:        STA $1F09,x               
-CODE_20C952:        LDA $E4CC,x               
+CODE_20C952:        LDA.w DATA_21E4CC,x               
 CODE_20C955:        STA $1EFB,x               
-CODE_20C958:        LDA $E514,x               
+CODE_20C958:        LDA.w DATA_21E514,x               
 CODE_20C95B:        STA $1F17,x               
 CODE_20C95E:        DEX                       
 CODE_20C95F:        DEX                       
@@ -8557,7 +8557,7 @@ CODE_20D0A4:        LSR A
 CODE_20D0A5:        LSR A                     
 CODE_20D0A6:        LSR A                     
 CODE_20D0A7:        TAX                       
-CODE_20D0A8:        LDA $C9DF,x               
+CODE_20D0A8:        LDA.w DATA_21C9DF,x               
 CODE_20D0AB:        CMP $0245                 
 CODE_20D0AE:        BEQ CODE_20D0B3           
 CODE_20D0B0:        STZ $0243                 
@@ -8671,19 +8671,19 @@ CODE_20D167:        LDA #$22
 CODE_20D169:        PHA                       
 CODE_20D16A:        PLB                       
 CODE_20D16B:        LDX $4D                   
-CODE_20D16D:        LDA $923E,x               
+CODE_20D16D:        LDA.w DATA_21923E,x               
 CODE_20D170:        XBA                       
-CODE_20D171:        LDA $9246,x               
+CODE_20D171:        LDA.w DATA_219246,x               
 CODE_20D174:        REP #$10                  
 CODE_20D176:        TAX                       
 CODE_20D177:        LDY #$0000                
-CODE_20D17A:        LDA $9256,x               
+CODE_20D17A:        LDA.w DATA_219256,x               
 CODE_20D17D:        CMP #$FF                  
 CODE_20D17F:        BEQ CODE_20D1C5           
 CODE_20D181:        STA $0800,y               
 CODE_20D184:        STA $0804,y               
 CODE_20D187:        INX                       
-CODE_20D188:        LDA $9256,x               
+CODE_20D188:        LDA.w DATA_219256,x               
 CODE_20D18B:        SEC                       
 CODE_20D18C:        SBC #$10                  
 CODE_20D18E:        STA $0801,y               
@@ -8691,12 +8691,12 @@ CODE_20D191:        CLC
 CODE_20D192:        ADC #$08                  
 CODE_20D194:        STA $0805,y               
 CODE_20D197:        INX                       
-CODE_20D198:        LDA $9256,x               
+CODE_20D198:        LDA.w DATA_219256,x               
 CODE_20D19B:        STA $0802,y               
 CODE_20D19E:        INC A                     
 CODE_20D19F:        STA $0806,y               
 CODE_20D1A2:        INX                       
-CODE_20D1A3:        LDA $9256,x               
+CODE_20D1A3:        LDA.w DATA_219256,x               
 CODE_20D1A6:        STA $0803,y               
 CODE_20D1A9:        STA $0807,y               
 CODE_20D1AC:        INX                       
@@ -9495,7 +9495,7 @@ CODE_20E0DC:        TAY
 CODE_20E0DD:        LDA [$04],y               
 CODE_20E0DF:        AND #$00FF                
 CODE_20E0E2:        TAX                       
-CODE_20E0E3:        LDA $89E7,x               
+CODE_20E0E3:        LDA.w DATA_2189E7,x               
 CODE_20E0E6:        CLC                       
 CODE_20E0E7:        ADC $00                   
 CODE_20E0E9:        STA $0220                 
@@ -9503,7 +9503,7 @@ CODE_20E0EC:        INY
 CODE_20E0ED:        LDA [$04],y               
 CODE_20E0EF:        AND #$00FF                
 CODE_20E0F2:        TAX                       
-CODE_20E0F3:        LDA $89E7,x               
+CODE_20E0F3:        LDA.w DATA_2189E7,x               
 CODE_20E0F6:        CLC                       
 CODE_20E0F7:        ADC $00                   
 CODE_20E0F9:        STA $0222                 
@@ -9511,7 +9511,7 @@ CODE_20E0FC:        INY
 CODE_20E0FD:        LDA [$04],y               
 CODE_20E0FF:        AND #$00FF                
 CODE_20E102:        TAX                       
-CODE_20E103:        LDA $89E7,x               
+CODE_20E103:        LDA.w DATA_2189E7,x               
 CODE_20E106:        CLC                       
 CODE_20E107:        ADC $00                   
 CODE_20E109:        STA $0224                 
@@ -9519,7 +9519,7 @@ CODE_20E10C:        INY
 CODE_20E10D:        LDA [$04],y               
 CODE_20E10F:        AND #$00FF                
 CODE_20E112:        TAX                       
-CODE_20E113:        LDA $89E7,x               
+CODE_20E113:        LDA.w DATA_2189E7,x               
 CODE_20E116:        CLC                       
 CODE_20E117:        ADC $00                   
 CODE_20E119:        STA $0226                 
@@ -9527,7 +9527,7 @@ CODE_20E11C:        INY
 CODE_20E11D:        LDA [$04],y               
 CODE_20E11F:        AND #$00FF                
 CODE_20E122:        TAX                       
-CODE_20E123:        LDA $89E7,x               
+CODE_20E123:        LDA.w DATA_2189E7,x               
 CODE_20E126:        CLC                       
 CODE_20E127:        ADC $00                   
 CODE_20E129:        STA $0228                 
@@ -9535,7 +9535,7 @@ CODE_20E12C:        INY
 CODE_20E12D:        LDA [$04],y               
 CODE_20E12F:        AND #$00FF                
 CODE_20E132:        TAX                       
-CODE_20E133:        LDA $89E7,x               
+CODE_20E133:        LDA.w DATA_2189E7,x               
 CODE_20E136:        CLC                       
 CODE_20E137:        ADC $00                   
 CODE_20E139:        STA $022A                 
@@ -9565,7 +9565,7 @@ CODE_20E16F:        TAY
 CODE_20E170:        LDA [$04],y               
 CODE_20E172:        AND #$00FF                
 CODE_20E175:        TAX                       
-CODE_20E176:        LDA $89E7,x               
+CODE_20E176:        LDA.w DATA_2189E7,x               
 CODE_20E179:        CLC                       
 CODE_20E17A:        ADC $00                   
 CODE_20E17C:        STA $022C                 
@@ -9573,7 +9573,7 @@ CODE_20E17F:        INY
 CODE_20E180:        LDA [$04],y               
 CODE_20E182:        AND #$00FF                
 CODE_20E185:        TAX                       
-CODE_20E186:        LDA $89E7,x               
+CODE_20E186:        LDA.w DATA_2189E7,x               
 CODE_20E189:        CLC                       
 CODE_20E18A:        ADC $00                   
 CODE_20E18C:        STA $022E                 
@@ -9581,7 +9581,7 @@ CODE_20E18F:        INY
 CODE_20E190:        LDA [$04],y               
 CODE_20E192:        AND #$00FF                
 CODE_20E195:        TAX                       
-CODE_20E196:        LDA $89E7,x               
+CODE_20E196:        LDA.w DATA_2189E7,x               
 CODE_20E199:        CLC                       
 CODE_20E19A:        ADC $00                   
 CODE_20E19C:        STA $0230                 
@@ -9589,7 +9589,7 @@ CODE_20E19F:        INY
 CODE_20E1A0:        LDA [$04],y               
 CODE_20E1A2:        AND #$00FF                
 CODE_20E1A5:        TAX                       
-CODE_20E1A6:        LDA $89E7,x               
+CODE_20E1A6:        LDA.w DATA_2189E7,x               
 CODE_20E1A9:        CLC                       
 CODE_20E1AA:        ADC $00                   
 CODE_20E1AC:        STA $0232                 
@@ -9597,7 +9597,7 @@ CODE_20E1AF:        INY
 CODE_20E1B0:        LDA [$04],y               
 CODE_20E1B2:        AND #$00FF                
 CODE_20E1B5:        TAX                       
-CODE_20E1B6:        LDA $89E7,x               
+CODE_20E1B6:        LDA.w DATA_2189E7,x               
 CODE_20E1B9:        CLC                       
 CODE_20E1BA:        ADC $00                   
 CODE_20E1BC:        STA $0234                 
@@ -9605,7 +9605,7 @@ CODE_20E1BF:        INY
 CODE_20E1C0:        LDA [$04],y               
 CODE_20E1C2:        AND #$00FF                
 CODE_20E1C5:        TAX                       
-CODE_20E1C6:        LDA $89E7,x               
+CODE_20E1C6:        LDA.w DATA_2189E7,x               
 CODE_20E1C9:        CLC                       
 CODE_20E1CA:        ADC $00                   
 CODE_20E1CC:        STA $0236                 
@@ -10280,7 +10280,7 @@ CODE_20E820:        LDA #$01
 CODE_20E822:        STA $052A                 
 CODE_20E825:        LSR A                     
 CODE_20E826:        STA $0528                 
-CODE_20E829:        LDA $8AA7,y               
+CODE_20E829:        LDA.w DATA_218AA7,y               
 CODE_20E82C:        STA $0529                 
 CODE_20E82F:        LDA #$14                  
 CODE_20E831:        STA $037B                 
@@ -10292,11 +10292,11 @@ CODE_20E83D:        BMI CODE_20E84D
 CODE_20E83F:        LDA $0783                 
 CODE_20E842:        AND #$0F                  
 CODE_20E844:        TAY                       
-CODE_20E845:        LDA $8A97,y               
+CODE_20E845:        LDA.w DATA_218A97,y               
 CODE_20E848:        CLC                       
-CODE_20E849:        ADC $8A8D,x               
+CODE_20E849:        ADC.w DATA_218A8D,x               
 CODE_20E84C:        TAX                       
-CODE_20E84D:        LDA $8A7E,x               
+CODE_20E84D:        LDA.w DATA_218A7E,x               
 CODE_20E850:        TAX                       
 CODE_20E851:        INX                       
 CODE_20E852:        RTL                       
@@ -10369,7 +10369,7 @@ CODE_20E8D5:        SBC $00
 CODE_20E8D7:        TAX                       
 CODE_20E8D8:        AND #$01                  
 CODE_20E8DA:        PHP                       
-CODE_20E8DB:        LDA $E974,x               
+CODE_20E8DB:        LDA.w DATA_21E974,x               
 CODE_20E8DE:        STA $BC                   
 CODE_20E8E0:        PLP                       
 CODE_20E8E1:        LDA $BB                   
@@ -10478,7 +10478,7 @@ CODE_20E9B7:        CMP #$0F
 CODE_20E9B9:        BMI CODE_20E9BE           
 CODE_20E9BB:        INC $055A                 
 CODE_20E9BE:        LDY $BB                   
-CODE_20E9C0:        LDA $E9E5,y               
+CODE_20E9C0:        LDA.w DATA_21E9E5,y               
 CODE_20E9C3:        STA $BC                   
 CODE_20E9C5:        JSL CODE_20E237           
 CODE_20E9C9:        RTS                       
@@ -10526,7 +10526,7 @@ CODE_20EA1C:        STA $70
 CODE_20EA1E:        BCC CODE_20EA22           
 CODE_20EA20:        INC $55                   
 CODE_20EA22:        LDY $BB                   
-CODE_20EA24:        LDA $E9E5,y               
+CODE_20EA24:        LDA.w DATA_21E9E5,y               
 CODE_20EA27:        STA $BC                   
 CODE_20EA29:        JSL CODE_20E237           
 CODE_20EA2D:        JSR CODE_20EADC           
@@ -10619,10 +10619,10 @@ CODE_20EADC:        LDY #$40
 CODE_20EADE:        LDX $BB                   
 CODE_20EAE0:        LDA $BD                   
 CODE_20EAE2:        PHP                       
-CODE_20EAE3:        LDA $8AB1,x               
+CODE_20EAE3:        LDA.w DATA_218AB1,x               
 CODE_20EAE6:        PLP                       
 CODE_20EAE7:        BNE CODE_20EAEC           
-CODE_20EAE9:        LDA $8AAA,x               
+CODE_20EAE9:        LDA.w DATA_218AAA,x               
 CODE_20EAEC:        CLC                       
 CODE_20EAED:        ADC $79                   
 CODE_20EAEF:        STA $0800,y               
@@ -10633,7 +10633,7 @@ CODE_20EAF8:        STA $0808,y
 CODE_20EAFB:        STA $080C,y               
 CODE_20EAFE:        LDA $55                   
 CODE_20EB00:        STA $00                   
-CODE_20EB02:        LDA $8AB8,x               
+CODE_20EB02:        LDA.w DATA_218AB8,x               
 CODE_20EB05:        BPL CODE_20EB09           
 CODE_20EB07:        DEC $00                   
 CODE_20EB09:        CLC                       
@@ -10681,12 +10681,12 @@ CODE_20EB62:        AND #$02
 CODE_20EB64:        BEQ CODE_20EB72           
 CODE_20EB66:        JSL CODE_23DEA3           
 CODE_20EB6A:        LDY $BB                   
-CODE_20EB6C:        LDA $99C7,y               
+CODE_20EB6C:        LDA.w DATA_2199C7,y               
 CODE_20EB6F:        JMP CODE_20EBA7           
 CODE_20EB72:        LDA $BD                   
 CODE_20EB74:        AND #$01                  
 CODE_20EB76:        TAY                       
-CODE_20EB77:        LDA $8ABF,y               
+CODE_20EB77:        LDA.w DATA_218ABF,y               
 CODE_20EB7A:        ORA $BD                   
 CODE_20EB7C:        STA $BD                   
 CODE_20EB7E:        JSL CODE_23DE53           
@@ -10702,14 +10702,14 @@ CODE_20EB91:        LDY $BB
 CODE_20EB93:        BEQ CODE_20EB97           
 CODE_20EB95:        LDY #$01                  
 CODE_20EB97:        CLC                       
-CODE_20EB98:        ADC $E9A4,y               
+CODE_20EB98:        ADC.w DATA_21E9A4,y               
 CODE_20EB9B:        BNE CODE_20EBA7           
 CODE_20EB9D:        LDA $BB                   
 CODE_20EB9F:        ASL A                     
 CODE_20EBA0:        ASL A                     
 CODE_20EBA1:        ORA $00                   
 CODE_20EBA3:        TAY                       
-CODE_20EBA4:        LDA $E958,y               
+CODE_20EBA4:        LDA.w DATA_21E958,y               
 CODE_20EBA7:        STA $BC                   
 CODE_20EBA9:        JSL CODE_20E237           
 CODE_20EBAD:        RTS                       
@@ -10775,7 +10775,7 @@ CODE_20EC20:        LDY #$00
 CODE_20EC22:        LDA $15                   
 CODE_20EC24:        LSR A                     
 CODE_20EC25:        BCC CODE_20EC56           
-CODE_20EC27:        LDA $8AC5,y               
+CODE_20EC27:        LDA.w DATA_218AC5,y               
 CODE_20EC2A:        STA $25                   
 CODE_20EC2C:        LDA $0210                 
 CODE_20EC2F:        LDX $12                   
@@ -10783,10 +10783,10 @@ CODE_20EC31:        BNE CODE_20EC37
 CODE_20EC33:        CMP #$80                  
 CODE_20EC35:        BCC CODE_20EC56           
 CODE_20EC37:        CLC                       
-CODE_20EC38:        ADC $8AC7,y               
+CODE_20EC38:        ADC.w DATA_218AC7,y               
 CODE_20EC3B:        STA $0210                 
 CODE_20EC3E:        STA $0212                 
-CODE_20EC41:        LDA $8AC9,y               
+CODE_20EC41:        LDA.w DATA_218AC9,y               
 CODE_20EC44:        ADC $12                   
 CODE_20EC46:        STA $12                   
 CODE_20EC48:        STA $0211                 
@@ -10844,7 +10844,7 @@ CODE_20ECB6:        INC $0377
 CODE_20ECB9:        JSL CODE_23C227           
 CODE_20ECBD:        BRA CODE_20ECE8           
 
-CODE_20ECBF:        LDA $8ACB,x               
+CODE_20ECBF:        LDA.w DATA_218ACB,x               
 CODE_20ECC2:        STA $09                   
 CODE_20ECC4:        LDA #$08                  
 CODE_20ECC6:        STA $0A                   
@@ -10886,7 +10886,7 @@ CODE_20ED0D:        LDX #$00
 CODE_20ED0F:        CPY #$02                  
 CODE_20ED11:        BMI CODE_20ED2F           
 CODE_20ED13:        LDX #$12                  
-CODE_20ED15:        LDA $8ADD,y               
+CODE_20ED15:        LDA.w DATA_218ADD,y               
 CODE_20ED18:        BPL CODE_20ED27           
 CODE_20ED1A:        LDA $82                   
 CODE_20ED1C:        CMP #$68                  
@@ -10899,7 +10899,7 @@ CODE_20ED27:        LDA $82
 CODE_20ED29:        CMP #$38                  
 CODE_20ED2B:        LDA #$00                  
 CODE_20ED2D:        BCS CODE_20ED32                   
-CODE_20ED2F:        LDA $8ADD,y               
+CODE_20ED2F:        LDA.w DATA_218ADD,y               
 CODE_20ED32:        CLC                       
 CODE_20ED33:        ADC $5E,x                 
 CODE_20ED35:        AND #$FE                  
@@ -10916,7 +10916,7 @@ CODE_20ED48:        ORA #$08
 CODE_20ED4A:        STA $5E                   
 CODE_20ED4C:        LDA #$01                  
 CODE_20ED4E:        STA $25                   
-CODE_20ED50:        LDA $8ADD,y               
+CODE_20ED50:        LDA.w DATA_218ADD,y               
 CODE_20ED53:        BPL CODE_20ED5A           
 CODE_20ED55:        DEC $25                   
 CODE_20ED57:        DEC $0542                 
@@ -10952,9 +10952,9 @@ CODE_20ED9A:        ASL A
 CODE_20ED9B:        ASL A                     
 CODE_20ED9C:        LDX #$01                  
 CODE_20ED9E:        TAY                       
-CODE_20ED9F:        LDA $8ACD,y               
+CODE_20ED9F:        LDA.w DATA_218ACD,y               
 CODE_20EDA2:        STA $09                   
-CODE_20EDA4:        LDA $8ACE,y               
+CODE_20EDA4:        LDA.w DATA_218ACE,y               
 CODE_20EDA7:        STA $0A                   
 CODE_20EDA9:        JSL CODE_23D2B6           
 CODE_20EDAD:        STA $00                   
@@ -10995,7 +10995,7 @@ CODE_20EDE9:        LDA $5E
 CODE_20EDEB:        CLC                       
 CODE_20EDEC:        ADC #$10                  
 CODE_20EDEE:        STA $5E                   
-CODE_20EDF0:        LDA $8AE1,y               
+CODE_20EDF0:        LDA.w DATA_218AE1,y               
 CODE_20EDF3:        STA $0377                 
 CODE_20EDF6:        JSL CODE_23C227           
 CODE_20EDFA:        RTS                       
@@ -11126,7 +11126,7 @@ CODE_20EEF1:        RTS
 CODE_20EEF2:        LDA $0571                 
 CODE_20EEF5:        AND #$01                  
 CODE_20EEF7:        TAY                       
-CODE_20EEF8:        LDA $8AC1,y               
+CODE_20EEF8:        LDA.w DATA_218AC1,y               
 CODE_20EEFB:        STA $8B                   
 CODE_20EEFD:        JSL CODE_23DE53           
 CODE_20EF01:        DEC $70                   
@@ -11144,7 +11144,7 @@ CODE_20EF14:        RTS
 CODE_20EF15:        LDA $0571                 
 CODE_20EF18:        AND #$01                  
 CODE_20EF1A:        TAY                       
-CODE_20EF1B:        LDA $8AC3,y               
+CODE_20EF1B:        LDA.w DATA_218AC3,y               
 CODE_20EF1E:        STA $9D                   
 CODE_20EF20:        JSL CODE_23DEA3           
 CODE_20EF24:        JSL CODE_23DDBB           
@@ -11163,7 +11163,7 @@ CODE_20EF3C:        AND #$0C
 CODE_20EF3E:        LSR A                     
 CODE_20EF3F:        LSR A                     
 CODE_20EF40:        TAY                       
-CODE_20EF41:        LDA $8AE5,y               
+CODE_20EF41:        LDA.w DATA_218AE5,y               
 CODE_20EF44:        STA $01                   
 CODE_20EF46:        REP #$10                  
 CODE_20EF48:        LDY $C4                   
@@ -11870,13 +11870,13 @@ CODE_20F5AB:        ASL A
 CODE_20F5AC:        TAX                       
 CODE_20F5AD:        LDY $1600                 
 CODE_20F5B0:        REP #$20                  
-CODE_20F5B2:        LDA $CF0D,x               
+CODE_20F5B2:        LDA.w DATA_21CF0D,x               
 CODE_20F5B5:        STA $1606,y               
-CODE_20F5B8:        LDA $CF15,x               
+CODE_20F5B8:        LDA.w DATA_21CF15,x               
 CODE_20F5BB:        STA $1608,y               
-CODE_20F5BE:        LDA $CF1D,x               
+CODE_20F5BE:        LDA.w DATA_21CF1D,x               
 CODE_20F5C1:        STA $160E,y               
-CODE_20F5C4:        LDA $CF25,x               
+CODE_20F5C4:        LDA.w DATA_21CF25,x               
 CODE_20F5C7:        STA $1610,y               
 CODE_20F5CA:        SEP #$20                  
 CODE_20F5CC:        LDX $0726                 
@@ -11887,9 +11887,9 @@ CODE_20F5D5:        STX $02
 CODE_20F5D7:        SEC                       
 CODE_20F5D8:        SBC $02                   
 CODE_20F5DA:        TAX                       
-CODE_20F5DB:        LDA $CF2D,x               
+CODE_20F5DB:        LDA.w DATA_21CF2D,x               
 CODE_20F5DE:        STA $1603,y               
-CODE_20F5E1:        LDA $CF30,x               
+CODE_20F5E1:        LDA.w DATA_21CF30,x               
 CODE_20F5E4:        STA $160B,y               
 CODE_20F5E7:        LDA #$0F                  
 CODE_20F5E9:        STA $1602,y               
@@ -12130,7 +12130,7 @@ CODE_20F814:        STA $05
 CODE_20F816:        SEP #$20                  
 CODE_20F818:        LDA #$37                  
 CODE_20F81A:        STA $04                   
-CODE_20F81C:        LDA $CA3E,x               
+CODE_20F81C:        LDA.w DATA_21CA3E,x               
 CODE_20F81F:        STA $03                   
 CODE_20F821:        LDA #$40                  
 CODE_20F823:        STA $02                   
@@ -12167,7 +12167,7 @@ CODE_20F860:        LSR A
 CODE_20F861:        TAX                       
 CODE_20F862:        LDA #$36                  
 CODE_20F864:        STA $04                   
-CODE_20F866:        LDA $CA2C,x               
+CODE_20F866:        LDA.w DATA_21CA2C,x               
 CODE_20F869:        STA $03                   
 CODE_20F86B:        STZ $02                   
 CODE_20F86D:        LDY #$80                  
@@ -12178,7 +12178,7 @@ CODE_20F876:        REP #$20
 CODE_20F878:        LDA #$2DC0                
 CODE_20F87B:        STA $2116                 
 CODE_20F87E:        SEP #$20                  
-CODE_20F880:        LDA $CA30,x               
+CODE_20F880:        LDA.w DATA_21CA30,x               
 CODE_20F883:        STA $03                   
 CODE_20F885:        LDA #$80                  
 CODE_20F887:        STA $02                   
@@ -12200,9 +12200,9 @@ CODE_20F8AC:        STA $2116
 CODE_20F8AF:        SEP #$20                  
 CODE_20F8B1:        LDA #$31                  
 CODE_20F8B3:        STA $04                   
-CODE_20F8B5:        LDA $CA34,x               
+CODE_20F8B5:        LDA.w DATA_21CA34,x               
 CODE_20F8B8:        STA $03                   
-CODE_20F8BA:        LDA $CA39,x               
+CODE_20F8BA:        LDA.w DATA_21CA39,x               
 CODE_20F8BD:        STA $02                   
 CODE_20F8BF:        LDY #$80                  
 CODE_20F8C1:        STY $05                   
@@ -12244,7 +12244,7 @@ CODE_20F90F:        ADC $0004
 CODE_20F912:        TAX                       
 CODE_20F913:        LDA #$38                  
 CODE_20F915:        STA $04                   
-CODE_20F917:        LDA $CA40,x               
+CODE_20F917:        LDA.w DATA_21CA40,x               
 CODE_20F91A:        STA $03                   
 CODE_20F91C:        STZ $02                   
 CODE_20F91E:        LDA #$01                  
@@ -12348,9 +12348,9 @@ CODE_20F9CC:        SEP #$20
 CODE_20F9CE:        LDX $02D2                 
 CODE_20F9D1:        LDA #$33                  
 CODE_20F9D3:        STA $04                   
-CODE_20F9D5:        LDA $CA48,x               
+CODE_20F9D5:        LDA.w DATA_21CA48,x               
 CODE_20F9D8:        STA $03                   
-CODE_20F9DA:        LDA $CA4C,x               
+CODE_20F9DA:        LDA.w DATA_21CA4C,x               
 CODE_20F9DD:        STA $02                   
 CODE_20F9DF:        LDY #$80                  
 CODE_20F9E1:        STY $05                   
@@ -12450,13 +12450,13 @@ CODE_20FAD5:        RTS
 
 CODE_20FAD6:        LDY #$04                  
 CODE_20FAD8:        LDA $0216                 
-CODE_20FADB:        CMP $CF33,y               
+CODE_20FADB:        CMP.w DATA_21CF33,y               
 CODE_20FADE:        BEQ CODE_20FAE3           
 CODE_20FAE0:        DEY                       
 CODE_20FAE1:        BPL CODE_20FADB           
-CODE_20FAE3:        LDA $CF38,y               
+CODE_20FAE3:        LDA.w DATA_21CF38,y               
 CODE_20FAE6:        STA $01                   
-CODE_20FAE8:        LDA $CF3D,y               
+CODE_20FAE8:        LDA.w DATA_21CF3D,y               
 CODE_20FAEB:        STA $00                   
 CODE_20FAED:        REP #$10                  
 CODE_20FAEF:        LDY #$0300                

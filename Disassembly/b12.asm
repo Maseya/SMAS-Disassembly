@@ -163,7 +163,7 @@ CODE_12815B:        69 04         ADC #$04
 CODE_12815D:        29 0F         AND #$0F                  
 CODE_12815F:        C9 08         CMP #$08                  
 CODE_128161:        B0 1B         BCS CODE_12817E                   
-CODE_128163:        AC 08 CB      LDY $CB08                 
+CODE_128163:        AC 08 CB      LDY.w DATA_11CB08                 
 CODE_128166:        A5 46         LDA $46                   
 CODE_128168:        30 01         BMI CODE_12816B           
 CODE_12816A:        C8            INY                       
@@ -581,7 +581,7 @@ CODE_12848D:        A5 9D         LDA $9D
 CODE_12848F:        0A            ASL A                     
 CODE_128490:        05 9A         ORA $9A                   
 CODE_128492:        AA            TAX                       
-CODE_128493:        BC 03 CB      LDY $CB03,x               
+CODE_128493:        BC 03 CB      LDY.w DATA_11CB03,x               
 CODE_128496:        AE 2D 04      LDX $042D                 
 CODE_128499:        A9 36         LDA #$36                  
 CODE_12849B:        D5 90         CMP $90,x                 
@@ -819,7 +819,7 @@ CODE_128665:        E6 07         INC $07
 CODE_128667:        E6 08         INC $08                   
 CODE_128669:        60            RTS
                        
-CODE_12866A:        AC 07 CB      LDY $CB07                 
+CODE_12866A:        AC 07 CB      LDY.w DATA_11CB07                 
 CODE_12866D:        A5 10         LDA $10                   
 CODE_12866F:        4A            LSR A                     
 CODE_128670:        B0 01         BCS CODE_128673          
@@ -4613,7 +4613,7 @@ CODE_12A4DA:        49 04         EOR #$04
 CODE_12A4DC:        A6 EB         LDX $EB                   
 CODE_12A4DE:        D0 01         BNE CODE_12A4E1           
 CODE_12A4E0:        0A            ASL A                     
-CODE_12A4E1:        BE 40 CE      LDX $CE40,y               
+CODE_12A4E1:        BE 40 CE      LDX.w DATA_11CE40,y               
 CODE_12A4E4:        1D 4E 14      ORA $144E,x               
 CODE_12A4E7:        9D 4E 14      STA $144E,x               
 CODE_12A4EA:        A6 12         LDX $12                   
@@ -14035,12 +14035,12 @@ CODE_12F0D2:        E9 10         SBC #$10
 CODE_12F0D4:        A8            TAY                       
 CODE_12F0D5:        A2 03         LDX #$03                  
 CODE_12F0D7:        B7 01         LDA [$01],y               
-CODE_12F0D9:        DD 31 B7      CMP $B731,x               
+CODE_12F0D9:        DD 31 B7      CMP.w DATA_11B731,x               
 CODE_12F0DC:        F0 19         BEQ CODE_12F0F7           
 CODE_12F0DE:        A2 03         LDX #$03                  
 CODE_12F0E0:        AC C7 02      LDY $02C7                 
 CODE_12F0E3:        B7 01         LDA [$01],y               
-CODE_12F0E5:        DD 31 B7      CMP $B731,x               
+CODE_12F0E5:        DD 31 B7      CMP.w DATA_11B731,x               
 CODE_12F0E8:        D0 0A         BNE CODE_12F0F4           
 CODE_12F0EA:        BD 35 B7      LDA.w DATA_11B735,x               
 CODE_12F0ED:        97 01         STA [$01],y               
@@ -14067,14 +14067,14 @@ CODE_12F10D:        E9 10         SBC #$10
 CODE_12F10F:        A8            TAY                       
 CODE_12F110:        A2 03         LDX #$03                  
 CODE_12F112:        B7 01         LDA [$01],y               
-CODE_12F114:        DD 39 B7      CMP $B739,x               
+CODE_12F114:        DD 39 B7      CMP.w DATA_11B739,x               
 CODE_12F117:        F0 1C         BEQ CODE_12F135           
 CODE_12F119:        CA            DEX                       
 CODE_12F11A:        10 F8         BPL CODE_12F114           
 CODE_12F11C:        A2 03         LDX #$03                  
 CODE_12F11E:        AC C7 02      LDY $02C7                 
 CODE_12F121:        B7 01         LDA [$01],y               
-CODE_12F123:        DD 39 B7      CMP $B739,x               
+CODE_12F123:        DD 39 B7      CMP.w DATA_11B739,x               
 CODE_12F126:        D0 0A         BNE CODE_12F132           
 CODE_12F128:        BD 3D B7      LDA.w DATA_11B73D,x               
 CODE_12F12B:        97 01         STA [$01],y               

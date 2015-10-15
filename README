@@ -10,3 +10,7 @@ $038000-$0CFFFF: Super Mario Bros. 1
 $0D8000-$10FFFF: Super Mario Bros. The Lost Levels
 $118000-$15FFFF: Super Mario Bros. 2
 $208000-$2AFFFF: Super Mario Bros. 3
+
+Note to self:
+
+Regex for finding ROM access: (AND|LD[AXY]|ORA|ADC|SBC|EOR|TSB|TRB|JSR|JMP) \$([8-F][0-9A-F]{3})

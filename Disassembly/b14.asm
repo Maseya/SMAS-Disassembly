@@ -4680,7 +4680,7 @@ CODE_14E165:        4A            LSR A
 CODE_14E166:        4A            LSR A                     
 CODE_14E167:        A8            TAY                       
 CODE_14E168:        A5 85         LDA $85                   
-CODE_14E16A:        39 1B CC      AND $CC1B,y               
+CODE_14E16A:        39 1B CC      AND.w DATA_11CC1B,y               
 CODE_14E16D:        D0 0A         BNE CODE_14E179           
 CODE_14E16F:        6B            RTL                       
 
@@ -5038,10 +5038,10 @@ CODE_14E452:        10 2E         BPL CODE_14E482
 CODE_14E454:        A2 07         LDX #$07                  
 CODE_14E456:        A0 0F         LDY #$0F                  
 CODE_14E458:        AD E8 04      LDA $04E8                 
-CODE_14E45B:        D9 48 CE      CMP $CE48,y               
+CODE_14E45B:        D9 48 CE      CMP.w DATA_11CE48,y               
 CODE_14E45E:        D0 08         BNE CODE_14E468           
 CODE_14E460:        AD E9 04      LDA $04E9                 
-CODE_14E463:        D9 58 CE      CMP $CE58,y               
+CODE_14E463:        D9 58 CE      CMP.w DATA_11CE58,y               
 CODE_14E466:        F0 06         BEQ CODE_14E46E           
 CODE_14E468:        88            DEY                       
 CODE_14E469:        10 ED         BPL CODE_14E458           
@@ -5164,7 +5164,7 @@ CODE_14E5CC:        6A            ROR A
 CODE_14E5CD:        6A            ROR A                     
 CODE_14E5CE:        EB            XBA                       
 CODE_14E5CF:        18            CLC                       
-CODE_14E5D0:        7D 03 CC      ADC $CC03,x               
+CODE_14E5D0:        7D 03 CC      ADC.w DATA_11CC03,x               
 CODE_14E5D3:        48            PHA                       
 CODE_14E5D4:        29 0F 00      AND #$000F                
 CODE_14E5D7:        8D 14 07      STA $0714                 
@@ -5180,7 +5180,7 @@ CODE_14E5EC:        6A            ROR A
 CODE_14E5ED:        6A            ROR A                     
 CODE_14E5EE:        EB            XBA                       
 CODE_14E5EF:        18            CLC                       
-CODE_14E5F0:        7D 04 CC      ADC $CC04,x               
+CODE_14E5F0:        7D 04 CC      ADC.w DATA_11CC03+1,x               
 CODE_14E5F3:        48            PHA                       
 CODE_14E5F4:        29 0F 00      AND #$000F                
 CODE_14E5F7:        8D 14 07      STA $0714                 

@@ -1,20 +1,22 @@
+;Builder ASM file.
+
 ORG $008000
-incsrc b00.asm
+incsrc b00.asm ;Finished
 
 ORG $018000
-incsrc b01.asm
+incsrc b01.asm ;Finished
 
 ORG $028000
-incsrc b02.asm
+incsrc b02.asm ;Finished
 
 ORG $038000
-incsrc b03.asm
+incsrc b03.asm ;Finished
 
 ORG $048000
-incsrc b04.asm
+incsrc b04.asm ;Finished
 
 ORG $058000
-incsrc b05.asm
+incsrc b05.asm ;Finished
 
 ORG $068000
 incsrc b06.asm

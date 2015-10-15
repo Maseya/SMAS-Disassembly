@@ -163,7 +163,7 @@ CODE_12815B:        ADC #$04
 CODE_12815D:        AND #$0F                  
 CODE_12815F:        CMP #$08                  
 CODE_128161:        BCS CODE_12817E                   
-CODE_128163:        LDY $CB08                 
+CODE_128163:        LDY.w DATA_11CB08                 
 CODE_128166:        LDA $46                   
 CODE_128168:        BMI CODE_12816B           
 CODE_12816A:        INY                       
@@ -581,7 +581,7 @@ CODE_12848D:        LDA $9D
 CODE_12848F:        ASL A                     
 CODE_128490:        ORA $9A                   
 CODE_128492:        TAX                       
-CODE_128493:        LDY $CB03,x               
+CODE_128493:        LDY.w DATA_11CB03,x               
 CODE_128496:        LDX $042D                 
 CODE_128499:        LDA #$36                  
 CODE_12849B:        CMP $90,x                 
@@ -819,7 +819,7 @@ CODE_128665:        INC $07
 CODE_128667:        INC $08                   
 CODE_128669:        RTS
                        
-CODE_12866A:        LDY $CB07                 
+CODE_12866A:        LDY.w DATA_11CB07                 
 CODE_12866D:        LDA $10                   
 CODE_12866F:        LSR A                     
 CODE_128670:        BCS CODE_128673          
@@ -4613,7 +4613,7 @@ CODE_12A4DA:        EOR #$04
 CODE_12A4DC:        LDX $EB                   
 CODE_12A4DE:        BNE CODE_12A4E1           
 CODE_12A4E0:        ASL A                     
-CODE_12A4E1:        LDX $CE40,y               
+CODE_12A4E1:        LDX.w DATA_11CE40,y               
 CODE_12A4E4:        ORA $144E,x               
 CODE_12A4E7:        STA $144E,x               
 CODE_12A4EA:        LDX $12                   
@@ -14035,12 +14035,12 @@ CODE_12F0D2:        SBC #$10
 CODE_12F0D4:        TAY                       
 CODE_12F0D5:        LDX #$03                  
 CODE_12F0D7:        LDA [$01],y               
-CODE_12F0D9:        CMP $B731,x               
+CODE_12F0D9:        CMP.w DATA_11B731,x               
 CODE_12F0DC:        BEQ CODE_12F0F7           
 CODE_12F0DE:        LDX #$03                  
 CODE_12F0E0:        LDY $02C7                 
 CODE_12F0E3:        LDA [$01],y               
-CODE_12F0E5:        CMP $B731,x               
+CODE_12F0E5:        CMP.w DATA_11B731,x               
 CODE_12F0E8:        BNE CODE_12F0F4           
 CODE_12F0EA:        LDA.w DATA_11B735,x               
 CODE_12F0ED:        STA [$01],y               
@@ -14067,14 +14067,14 @@ CODE_12F10D:        SBC #$10
 CODE_12F10F:        TAY                       
 CODE_12F110:        LDX #$03                  
 CODE_12F112:        LDA [$01],y               
-CODE_12F114:        CMP $B739,x               
+CODE_12F114:        CMP.w DATA_11B739,x               
 CODE_12F117:        BEQ CODE_12F135           
 CODE_12F119:        DEX                       
 CODE_12F11A:        BPL CODE_12F114           
 CODE_12F11C:        LDX #$03                  
 CODE_12F11E:        LDY $02C7                 
 CODE_12F121:        LDA [$01],y               
-CODE_12F123:        CMP $B739,x               
+CODE_12F123:        CMP.w DATA_11B739,x               
 CODE_12F126:        BNE CODE_12F132           
 CODE_12F128:        LDA.w DATA_11B73D,x               
 CODE_12F12B:        STA [$01],y               
