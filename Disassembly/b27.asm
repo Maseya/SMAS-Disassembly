@@ -3413,7 +3413,6 @@ CODE_279D68:        E2 10         SEP #$10
 CODE_279D6A:        FA            PLX                       
 CODE_279D6B:        DC 00 00      JML [$0000]               
 
-
 CODE_279D6E:        DA            PHX                       
 CODE_279D6F:        BC 71 06      LDY $0671,x               
 CODE_279D72:        B9 AF B1      LDA $B1AF,y               

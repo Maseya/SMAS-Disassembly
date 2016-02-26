@@ -1,4 +1,4 @@
-;Not GFX data. Find out what this is.
+;Not GFX data. Seems to be SPC-700 data
 DATA_3B8000:        db $CC,$C8,$03,$EB,$26,$F0,$05,$2D
                     db $3F,$A9,$13,$AE,$CD,$00,$C9,$CA
                     db $03,$C9,$F1,$03,$C4,$06,$60,$1C
