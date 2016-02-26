@@ -50,7 +50,7 @@ namespace AssembleDis
 
                 //Find all ROM accesses (ctrl+f in notepad++)
                 //       (CMP|CP[XY]|LD[AXY]|ORA|AND|EOR|ADC|SBC|BIT|TSB|TRB)( \$)([8-9A-F][0-9A-F]{3})
-                //replace with             $1 DATA_05$3
+                //replace with             $1.w DATA_05$3
 
             }
 

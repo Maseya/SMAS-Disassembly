@@ -3207,7 +3207,6 @@ CODE_279BB1:        SEP #$10                  ; |
 CODE_279BB3:        PLX                       ; |
 CODE_279BB4:        JML [$0000]               ;/
 
-
 CODE_279BB7:        LDY $0671,x               ;\
 CODE_279BBA:        LDA $B263,y               ; |$21:B263, NOT bank $27
 CODE_279BBD:        AND #$07                  ; |

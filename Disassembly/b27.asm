@@ -3207,7 +3207,6 @@ CODE_279BB1:        E2 10         SEP #$10                  ; |
 CODE_279BB3:        FA            PLX                       ; |
 CODE_279BB4:        DC 00 00      JML [$0000]               ;/
 
-
 CODE_279BB7:        BC 71 06      LDY $0671,x               ;\
 CODE_279BBA:        B9 63 B2      LDA $B263,y               ; |$21:B263, NOT bank $27
 CODE_279BBD:        29 07         AND #$07                  ; |

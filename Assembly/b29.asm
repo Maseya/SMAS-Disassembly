@@ -6709,11 +6709,11 @@ CODE_29B78A:        LDA $051E,y
 CODE_29B78D:        ADC $E7F5,x               
 CODE_29B790:        ASL A                     
 CODE_29B791:        TAX                       
-CODE_29B792:        LDA.l PNTR_218200,x             
+CODE_29B792:        LDA.l DATA_218200,x             
 CODE_29B796:        CLC                       
 CODE_29B797:        ADC #$F0                  
 CODE_29B799:        STA $2E                   
-CODE_29B79B:        LDA.l PNTR_218200+1,x             
+CODE_29B79B:        LDA.l DATA_218200+1,x             
 CODE_29B79F:        ADC #$00                  
 CODE_29B7A1:        STA $2F                   
 CODE_29B7A3:        LDA $03                   
@@ -6951,9 +6951,9 @@ CODE_29B977:        LDA $45,x
 CODE_29B979:        ADC $E882,y               
 CODE_29B97C:        ASL A                     
 CODE_29B97D:        TAX                       
-CODE_29B97E:        LDA.l PNTR_218200,x             
+CODE_29B97E:        LDA.l DATA_218200,x             
 CODE_29B982:        STA $2E                   
-CODE_29B984:        LDA.l PNTR_218200+1,x             
+CODE_29B984:        LDA.l DATA_218200+1,x             
 CODE_29B988:        STA $2F                   
 CODE_29B98A:        INC $2F                   
 CODE_29B98C:        LDA $0F                   
@@ -7633,9 +7633,9 @@ CODE_29BECD:        LSR A
 CODE_29BECE:        TAX                       
 CODE_29BECF:        LDA #$7E                  
 CODE_29BED1:        STA $30                   
-CODE_29BED3:        LDA.l PNTR_218200,x             
+CODE_29BED3:        LDA.l DATA_218200,x             
 CODE_29BED7:        STA $2E                   
-CODE_29BED9:        LDA.l PNTR_218200+1,x             
+CODE_29BED9:        LDA.l DATA_218200+1,x             
 CODE_29BEDD:        INC A                     
 CODE_29BEDE:        STA $2F                   
 CODE_29BEE0:        LDX #$07                  
@@ -7889,9 +7889,9 @@ CODE_29C09A:        STA $30
 CODE_29C09C:        LDA $0045,y               
 CODE_29C09F:        ASL A                     
 CODE_29C0A0:        TAX                       
-CODE_29C0A1:        LDA.l PNTR_218200,x             
+CODE_29C0A1:        LDA.l DATA_218200,x             
 CODE_29C0A5:        STA $2E                   
-CODE_29C0A7:        LDA.l PNTR_218200+1,x             
+CODE_29C0A7:        LDA.l DATA_218200+1,x             
 CODE_29C0AB:        INC A                     
 CODE_29C0AC:        STA $2F                   
 CODE_29C0AE:        LDA $0047,y               
