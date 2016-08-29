@@ -3413,7 +3413,6 @@ CODE_279D68:        SEP #$10
 CODE_279D6A:        PLX                       
 CODE_279D6B:        JML [$0000]               
 
-
 CODE_279D6E:        PHX                       
 CODE_279D6F:        LDY $0671,x               
 CODE_279D72:        LDA $B1AF,y               

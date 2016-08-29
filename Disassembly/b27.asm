@@ -9657,8 +9657,8 @@ CODE_27D35A:        D0 19         BNE CODE_27D375
 CODE_27D35C:        EE BE 07      INC $07BE                 
 CODE_27D35F:        A9 01         LDA #$01                  
 CODE_27D361:        8D D9 02      STA $02D9                 
-CODE_27D364:        A9 0B         LDA #$0B                  
-CODE_27D366:        8D 02 12      STA $1202                 
+CODE_27D364:        A9 0B         LDA #$0B                  ;\ Doomship wand obtained music
+CODE_27D366:        8D 02 12      STA $1202                 ;/
 CODE_27D369:        A9 60         LDA #$60                  
 CODE_27D36B:        8D E3 02      STA $02E3                 
 CODE_27D36E:        A9 01         LDA #$01                  

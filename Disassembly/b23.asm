@@ -3619,18 +3619,18 @@ PNTR_239DF3:     dw CODE_239DF9
                     dw CODE_239E18
                     dw CODE_239E36
 
-CODE_239DF9:        AD 42 07      LDA $0742                 
-CODE_239DFC:        D0 11         BNE CODE_239E0F           
-CODE_239DFE:        A0 11         LDY #$11                  
-CODE_239E00:        B9 1C 9A      LDA $9A1C,y               
-CODE_239E03:        99 84 1E      STA $1E84,y               
-CODE_239E06:        88            DEY                       
-CODE_239E07:        10 F7         BPL CODE_239E00           
-CODE_239E09:        20 E6 9F      JSR CODE_239FE6           
-CODE_239E0C:        EE 42 07      INC $0742                 
+CODE_239DF9:        AD 42 07      LDA $0742                 ;Flag to shuffle N-Space cards
+CODE_239DFC:        D0 11         BNE CODE_239E0F           ;0 means N-Spade was cleared and it's time to shuffle
+CODE_239DFE:        A0 11         LDY #$11                  ;\
+CODE_239E00:        B9 1C 9A      LDA $9A1C,y               ; |
+CODE_239E03:        99 84 1E      STA $1E84,y               ; | Load set of cards
+CODE_239E06:        88            DEY                       ; |
+CODE_239E07:        10 F7         BPL CODE_239E00           ; |
+CODE_239E09:        20 E6 9F      JSR CODE_239FE6           ;/ Shuffle them
+CODE_239E0C:        EE 42 07      INC $0742                 ;Set flag to keep the cards
 CODE_239E0F:        EE 41 10      INC $1041                 
-CODE_239E12:        A9 11         LDA #$11                  
-CODE_239E14:        8D 28 10      STA $1028                 
+CODE_239E12:        A9 11         LDA #$11                  ; N-Spade cursor position
+CODE_239E14:        8D 28 10      STA $1028                 ;
 CODE_239E17:        60            RTS                       
 
 CODE_239E18:        AC 28 10      LDY $1028                 
@@ -3767,7 +3767,7 @@ CODE_239F35:        A9 06         LDA #$06
 CODE_239F37:        8D 34 10      STA $1034                 
 CODE_239F3A:        A9 40         LDA #$40                  
 CODE_239F3C:        8D 2B 10      STA $102B                 
-CODE_239F3F:        9C 42 07      STZ $0742                 
+CODE_239F3F:        9C 42 07      STZ $0742                 ;Set the N-Space cards to shuffle again.
 CODE_239F42:        9C 41 07      STZ $0741                 
 CODE_239F45:        60            RTS                       
 
@@ -3845,37 +3845,37 @@ CODE_239FE0:        A9 04         LDA #$04
 CODE_239FE2:        8D 2D 10      STA $102D                 
 CODE_239FE5:        60            RTS                       
 
-CODE_239FE6:        A9 02         LDA #$02                  
-CODE_239FE8:        85 0A         STA $0A                   
-CODE_239FEA:        22 03 E1 22   JSL CODE_22E103           
-CODE_239FEE:        29 1F         AND #$1F                  
-CODE_239FF0:        A8            TAY                       
-CODE_239FF1:        AD 92 1E      LDA $1E92                 
-CODE_239FF4:        85 0B         STA $0B                   
-CODE_239FF6:        A2 0D         LDX #$0D                  
-CODE_239FF8:        BD 84 1E      LDA $1E84,x               
-CODE_239FFB:        9D 85 1E      STA $1E85,x               
-CODE_239FFE:        CA            DEX                       
-CODE_239FFF:        10 F7         BPL CODE_239FF8           
-CODE_23A001:        A5 0B         LDA $0B                   
-CODE_23A003:        8D 84 1E      STA $1E84                 
-CODE_23A006:        88            DEY                       
-CODE_23A007:        10 E8         BPL CODE_239FF1           
-CODE_23A009:        A2 00         LDX #$00                  
-CODE_23A00B:        BD 84 1E      LDA $1E84,x               
-CODE_23A00E:        85 0B         STA $0B                   
-CODE_23A010:        BD 89 1E      LDA $1E89,x               
-CODE_23A013:        9D 84 1E      STA $1E84,x               
-CODE_23A016:        BD 8E 1E      LDA $1E8E,x               
-CODE_23A019:        9D 89 1E      STA $1E89,x               
-CODE_23A01C:        A5 0B         LDA $0B                   
-CODE_23A01E:        9D 8E 1E      STA $1E8E,x               
-CODE_23A021:        CA            DEX                       
-CODE_23A022:        CA            DEX                       
-CODE_23A023:        10 E6         BPL CODE_23A00B           
-CODE_23A025:        C6 0A         DEC $0A                   
-CODE_23A027:        10 C1         BPL CODE_239FEA           
-CODE_23A029:        60            RTS                       
+CODE_239FE6:        A9 02         LDA #$02                  ;Shuffle cards thrice. The cards are stored in $1E84 as 18 cards
+CODE_239FE8:        85 0A         STA $0A                   ;
+CODE_239FEA:        22 03 E1 22   JSL CODE_22E103           ;\ Random number generation
+CODE_239FEE:        29 1F         AND #$1F                  ; | The amount of time card-shifting should be performed. Always 00 or 02.
+CODE_239FF0:        A8            TAY                       ;/
+CODE_239FF1:        AD 92 1E      LDA $1E92                 ;\ Store card #15 in $0B
+CODE_239FF4:        85 0B         STA $0B                   ; |
+CODE_239FF6:        A2 0D         LDX #$0D                  ; | Shift the cards one time to the right. Kinda like ROR
+CODE_239FF8:        BD 84 1E      LDA $1E84,x               ; |
+CODE_239FFB:        9D 85 1E      STA $1E85,x               ; |
+CODE_239FFE:        CA            DEX                       ; |
+CODE_239FFF:        10 F7         BPL CODE_239FF8           ; |
+CODE_23A001:        A5 0B         LDA $0B                   ; | Store card #15 as card #00
+CODE_23A003:        8D 84 1E      STA $1E84                 ;/|
+CODE_23A006:        88            DEY                       ; |
+CODE_23A007:        10 E8         BPL CODE_239FF1           ;/  Depending on the RNG output from earlier, repeat card-shifting.
+CODE_23A009:        A2 00         LDX #$00                  ;\
+CODE_23A00B:        BD 84 1E      LDA $1E84,x               ; | Store card #00 in $0B
+CODE_23A00E:        85 0B         STA $0B                   ; |
+CODE_23A010:        BD 89 1E      LDA $1E89,x               ; | Swap card 5 with 0, 6 with 1, etc. until card 10
+CODE_23A013:        9D 84 1E      STA $1E84,x               ; |
+CODE_23A016:        BD 8E 1E      LDA $1E8E,x               ; |
+CODE_23A019:        9D 89 1E      STA $1E89,x               ; |
+CODE_23A01C:        A5 0B         LDA $0B                   ; | Store card #00 as card #11
+CODE_23A01E:        9D 8E 1E      STA $1E8E,x               ;/|
+CODE_23A021:        CA            DEX                       ; |
+CODE_23A022:        CA            DEX                       ; |
+CODE_23A023:        10 E6         BPL CODE_23A00B           ;/ This branch never gets taken as X always will become FE after the card-swapping.
+CODE_23A025:        C6 0A         DEC $0A                   ;
+CODE_23A027:        10 C1         BPL CODE_239FEA           ;Repeat the whole shuffling process
+CODE_23A029:        60            RTS                       ;One quirk about this routine is that cards 16 17 and 18 are untouched.
 
 CODE_23A02A:        C2 20         REP #$20                  
 CODE_23A02C:        A0 3A         LDY #$3A                  
@@ -10568,8 +10568,8 @@ CODE_23D530:        A9 0B         LDA #$0B
 CODE_23D532:        8D 00 12      STA $1200                 
 CODE_23D535:        A9 84         LDA #$84                  
 CODE_23D537:        8D 67 05      STA $0567                 
-CODE_23D53A:        A9 04         LDA #$04                  
-CODE_23D53C:        8D 02 12      STA $1202                 
+CODE_23D53A:        A9 04         LDA #$04                  ; \
+CODE_23D53C:        8D 02 12      STA $1202                 ; / P-switch music
 CODE_23D53F:        4C 45 D5      JMP CODE_23D545           
 
 CODE_23D542:        20 67 D5      JSR CODE_23D567           

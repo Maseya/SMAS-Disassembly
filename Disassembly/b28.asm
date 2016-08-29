@@ -3036,8 +3036,8 @@ CODE_289AC7:        9D 18 05      STA $0518,x
 CODE_289ACA:        D0 EF         BNE CODE_289ABB           
 CODE_289ACC:        BD 18 05      LDA $0518,x               
 CODE_289ACF:        D0 0F         BNE CODE_289AE0           
-CODE_289AD1:        A9 0F         LDA #$0F                  
-CODE_289AD3:        8D 02 12      STA $1202                 
+CODE_289AD1:        A9 0F         LDA #$0F                  ; \ Falling from doomship music
+CODE_289AD3:        8D 02 12      STA $1202                 ; /
 CODE_289AD6:        20 38 9B      JSR CODE_289B38           
 CODE_289AD9:        A9 FF         LDA #$FF                  
 CODE_289ADB:        9D 18 05      STA $0518,x               
@@ -7770,8 +7770,8 @@ CODE_28CE20:        8D 1A 02      STA $021A
 CODE_28CE23:        9C 1B 02      STZ $021B                 
 CODE_28CE26:        A9 0C         LDA #$0C                  
 CODE_28CE28:        8D 02 12      STA $1202                 
-CODE_28CE2B:        A9 05         LDA #$05                  
-CODE_28CE2D:        8D 00 12      STA $1200                 
+CODE_28CE2B:        A9 05         LDA #$05                  ; \
+CODE_28CE2D:        8D 00 12      STA $1200                 ; / Course clear sound effect (SMW midway point sound)
 CODE_28CE30:        A9 A8         LDA #$A8                  
 CODE_28CE32:        8D E3 02      STA $02E3                 
 CODE_28CE35:        A9 00         LDA #$00                  
@@ -7780,8 +7780,8 @@ CODE_28CE3A:        20 EF CC      JSR CODE_28CCEF
 CODE_28CE3D:        B9 9E 1D      LDA $1D9E,y               
 CODE_28CE40:        F0 2E         BEQ CODE_28CE70           
 CODE_28CE42:        48            PHA                       
-CODE_28CE43:        A9 07         LDA #$07                  
-CODE_28CE45:        8D 02 12      STA $1202                 
+CODE_28CE43:        A9 07         LDA #$07                  ; \ Course clear! music (when all 3 cards are collected but unequal)
+CODE_28CE45:        8D 02 12      STA $1202                 ; /
 CODE_28CE48:        68            PLA                       
 CODE_28CE49:        D9 9C 1D      CMP $1D9C,y               
 CODE_28CE4C:        D0 22         BNE CODE_28CE70           
@@ -7791,10 +7791,10 @@ CODE_28CE53:        95 68         STA $68,x
 CODE_28CE55:        A9 01         LDA #$01                  
 CODE_28CE57:        95 A7         STA $A7,x                 
 CODE_28CE59:        4E F3 05      LSR $05F3                 
-CODE_28CE5C:        A9 0B         LDA #$0B                  
-CODE_28CE5E:        8D 02 12      STA $1202                 
-CODE_28CE61:        A9 29         LDA #$29                  
-CODE_28CE63:        8D 00 12      STA $1200                 
+CODE_28CE5C:        A9 0B         LDA #$0B                  ; \ Course clear! music (when all 3 cards match)
+CODE_28CE5E:        8D 02 12      STA $1202                 ; /
+CODE_28CE61:        A9 29         LDA #$29                  ; \ Bang + firework explosion sound
+CODE_28CE63:        8D 00 12      STA $1200                 ; /
 CODE_28CE66:        A9 E0         LDA #$E0                  
 CODE_28CE68:        8D E3 02      STA $02E3                 
 CODE_28CE6B:        A9 00         LDA #$00                  
@@ -8737,8 +8737,8 @@ CODE_28D708:        90 19         BCC CODE_28D723
 CODE_28D70A:        F6 68         INC $68,x                 
 CODE_28D70C:        A9 1E         LDA #$1E                  
 CODE_28D70E:        8D FB 1C      STA $1CFB                 
-CODE_28D711:        A9 0B         LDA #$0B                  
-CODE_28D713:        8D 02 12      STA $1202                 
+CODE_28D711:        A9 0B         LDA #$0B                  ; \
+CODE_28D713:        8D 02 12      STA $1202                 ; / Boom-boom orb obtained music
 CODE_28D716:        A9 50         LDA #$50                  
 CODE_28D718:        8D E3 02      STA $02E3                 
 CODE_28D71B:        A9 01         LDA #$01                  

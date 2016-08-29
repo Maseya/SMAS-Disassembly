@@ -1260,7 +1260,7 @@ CODE_208C19:        85 96         STA $96
 CODE_208C1B:        9C 40 10      STZ $1040                 
 CODE_208C1E:        9C 28 10      STZ $1028                 
 CODE_208C21:        A9 0D         LDA #$0D                  ;\
-CODE_208C23:        8D 02 12      STA $1202                 ;/Starman music
+CODE_208C23:        8D 02 12      STA $1202                 ;/N-Spade/Spade music
 CODE_208C26:        A9 80         LDA #$80                  
 CODE_208C28:        8D 00 42      STA $4200                 
 CODE_208C2B:        20 1F 80      JSR CODE_20801F           
@@ -2827,7 +2827,7 @@ CODE_209A68:        80 08         BRA CODE_209A72
 CODE_209A6A:        B7 2B         LDA [$2B],y               
 CODE_209A6C:        29 0F         AND #$0F                  
 CODE_209A6E:        AA            TAX                       
-CODE_209A6F:        BD 46 CE      LDA.w DATA_21CE46,x               
+CODE_209A6F:        BD 46 CE      LDA.w DATA_21CE46,x       ; Level music table        
 CODE_209A72:        8D 61 10      STA $1061                 
 CODE_209A75:        8D 62 10      STA $1062                 
 CODE_209A78:        AD 42 21      LDA $2142                 

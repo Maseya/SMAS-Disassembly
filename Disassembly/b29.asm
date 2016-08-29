@@ -5090,8 +5090,8 @@ CODE_29A9DC:        A5 57         LDA $57
 CODE_29A9DE:        D0 0A         BNE CODE_29A9EA           
 CODE_29A9E0:        EE 2E 07      INC $072E                 
 CODE_29A9E3:        A9 02         LDA #$02                  
-CODE_29A9E5:        A9 43         LDA #$43                  
-CODE_29A9E7:        8D 03 12      STA $1203                 
+CODE_29A9E5:        A9 43         LDA #$43                  ; \
+CODE_29A9E7:        8D 03 12      STA $1203                 ; / World 8 overworld hand pulling sound effect
 CODE_29A9EA:        22 1B 8C 23   JSL CODE_238C1B           
 CODE_29A9EE:        6B            RTL                       
 
@@ -6064,13 +6064,13 @@ CODE_29B226:        A9 15         LDA #$15
 CODE_29B228:        8D 03 12      STA $1203                 
 CODE_29B22B:        60            RTS                       
 
-CODE_29B22C:        AF 70 39 7E   LDA $7E3970               
-CODE_29B230:        D0 46         BNE CODE_29B278           
-CODE_29B232:        AF 64 39 7E   LDA $7E3964               
-CODE_29B236:        C9 01         CMP #$01                  
+CODE_29B22C:        AF 70 39 7E   LDA $7E3970               ; If white mushroom house has been spawned already
+CODE_29B230:        D0 46         BNE CODE_29B278           ; skip
+CODE_29B232:        AF 64 39 7E   LDA $7E3964               ; Skip if the level doesn't have a white mushroom house
+CODE_29B236:        C9 01         CMP #$01                  ;
 CODE_29B238:        D0 3E         BNE CODE_29B278           
-CODE_29B23A:        AF 66 39 7E   LDA $7E3966               
-CODE_29B23E:        CF 65 39 7E   CMP $7E3965               
+CODE_29B23A:        AF 66 39 7E   LDA $7E3966               ; compare the amount of collected coins within the level
+CODE_29B23E:        CF 65 39 7E   CMP $7E3965               ; with the amount of coins required to spawn the white house
 CODE_29B242:        90 34         BCC CODE_29B278           
 CODE_29B244:        20 ED B2      JSR CODE_29B2ED           
 CODE_29B247:        A9 0A         LDA #$0A                  
@@ -8189,13 +8189,13 @@ CODE_29C37A:        E6 16         INC $16
 CODE_29C37C:        A5 16         LDA $16                   
 CODE_29C37E:        C9 0F         CMP #$0F                  
 CODE_29C380:        D0 78         BNE CODE_29C3FA           
-CODE_29C382:        A0 18         LDY #$18                  
+CODE_29C382:        A0 18         LDY #$18                  ; Princess letter music
 CODE_29C384:        AD 27 07      LDA $0727                 
 CODE_29C387:        C9 06         CMP #$06                  
 CODE_29C389:        D0 07         BNE CODE_29C392           
 CODE_29C38B:        A9 78         LDA #$78                  
 CODE_29C38D:        8D 11 07      STA $0711                 
-CODE_29C390:        A0 17         LDY #$17                  
+CODE_29C390:        A0 17         LDY #$17                  ; Bowser letter music
 CODE_29C392:        8C 02 12      STY $1202                 
 CODE_29C395:        AD 11 07      LDA $0711                 
 CODE_29C398:        F0 0B         BEQ CODE_29C3A5           
@@ -8322,12 +8322,12 @@ CODE_29C48F:        AD D4 02      LDA $02D4
 CODE_29C492:        C9 08         CMP #$08                  
 CODE_29C494:        90 23         BCC CODE_29C4B9           
 CODE_29C496:        C2 20         REP #$20                  
-CODE_29C498:        A5 BB         LDA $BB                   
-CODE_29C49A:        29 FF 00      AND #$00FF                
-CODE_29C49D:        0A            ASL A                     
-CODE_29C49E:        A8            TAY                       
-CODE_29C49F:        B9 95 F3      LDA $F395,y               
-CODE_29C4A2:        8D D4 02      STA $02D4                 
+CODE_29C498:        A5 BB         LDA $BB                   ;\
+CODE_29C49A:        29 FF 00      AND #$00FF                ; |
+CODE_29C49D:        0A            ASL A                     ; |
+CODE_29C49E:        A8            TAY                       ; |
+CODE_29C49F:        B9 95 F3      LDA $F395,y               ; | 21F395
+CODE_29C4A2:        8D D4 02      STA $02D4                 ;/ 16-bit indices to King has been restored texts, depending on the player's powerup
 CODE_29C4A5:        E2 20         SEP #$20                  
 CODE_29C4A7:        A9 50         LDA #$50                  
 CODE_29C4A9:        8D 0B 07      STA $070B                 
@@ -8344,7 +8344,7 @@ CODE_29C4BF:        60            RTS
 
 CODE_29C4C0:        C2 10         REP #$10                  
 CODE_29C4C2:        AE D4 02      LDX $02D4                 
-CODE_29C4C5:        BD 85 F1      LDA $F185,x               
+CODE_29C4C5:        BD 85 F1      LDA $F185,x               ;The king has been restored text
 CODE_29C4C8:        85 00         STA $00                   
 CODE_29C4CA:        E2 10         SEP #$10                  
 CODE_29C4CC:        AC 00 16      LDY $1600                 
@@ -8632,21 +8632,22 @@ CODE_29C720:        A9 14         LDA #$14
 CODE_29C722:        8D 19 21      STA $2119                 
 CODE_29C725:        80 EC         BRA CODE_29C713           
 
+;Routine which handles letters after the world is beaten
 CODE_29C727:        CA            DEX                       
 CODE_29C728:        10 DD         BPL CODE_29C707           
-CODE_29C72A:        AD 27 07      LDA $0727                 
+CODE_29C72A:        AD 27 07      LDA $0727                 ;Current world number
 CODE_29C72D:        0A            ASL A                     
 CODE_29C72E:        AA            TAX                       
-CODE_29C72F:        BD 85 F4      LDA $F485,x               
-CODE_29C732:        85 00         STA $00                   
-CODE_29C734:        BD 86 F4      LDA $F486,x               
-CODE_29C737:        85 01         STA $01                   
+CODE_29C72F:        BD 85 F4      LDA $F485,x               ;\
+CODE_29C732:        85 00         STA $00                   ; |
+CODE_29C734:        BD 86 F4      LDA $F486,x               ; | Pointers to main content of the letter
+CODE_29C737:        85 01         STA $01                   ;/  (stuff like things about ghosts, kuribo shoe, etc)
 CODE_29C739:        A0 00         LDY #$00                  
 CODE_29C73B:        A2 05         LDX #$05                  
-CODE_29C73D:        BD DB F6      LDA $F6DB,x               
-CODE_29C740:        8D 16 21      STA $2116                 
-CODE_29C743:        BD E1 F6      LDA $F6E1,x               
-CODE_29C746:        8D 17 21      STA $2117                 
+CODE_29C73D:        BD DB F6      LDA $F6DB,x               ; \
+CODE_29C740:        8D 16 21      STA $2116                 ; | set vram address low and high byte
+CODE_29C743:        BD E1 F6      LDA $F6E1,x               ; |
+CODE_29C746:        8D 17 21      STA $2117                 ; /
 CODE_29C749:        B1 00         LDA ($00),y               
 CODE_29C74B:        C8            INY                       
 CODE_29C74C:        C9 00         CMP #$00                  
@@ -8669,8 +8670,8 @@ CODE_29C76C:        A0 00         LDY #$00
 CODE_29C76E:        A9 C6 11      LDA #$11C6                
 CODE_29C771:        85 00         STA $00                   
 CODE_29C773:        A5 00         LDA $00                   
-CODE_29C775:        8D 16 21      STA $2116                 
-CODE_29C778:        B9 E7 F6      LDA $F6E7,y               
+CODE_29C775:        8D 16 21      STA $2116                 ;
+CODE_29C778:        B9 E7 F6      LDA $F6E7,y               ; Layer 2 Bowser VRAM tilemap on world 7 beaten's letter
 CODE_29C77B:        30 07         BMI CODE_29C784           
 CODE_29C77D:        8D 18 21      STA $2118                 
 CODE_29C780:        C8            INY                       
@@ -11122,8 +11123,8 @@ CODE_29DE8C:        99 24 07      STA $0724,y
 CODE_29DE8F:        85 25         STA $25                   
 CODE_29DE91:        86 59         STX $59                   
 CODE_29DE93:        20 F4 DC      JSR CODE_29DCF4           
-CODE_29DE96:        A9 0B         LDA #$0B                  
-CODE_29DE98:        8D 02 12      STA $1202                 
+CODE_29DE96:        A9 0B         LDA #$0B                  ; \ Warp whistle jingle
+CODE_29DE98:        8D 02 12      STA $1202                 ; /
 CODE_29DE9B:        4C 11 DB      JMP CODE_29DB11           
 
 CODE_29DE9E:        A5 A6         LDA $A6                   
@@ -12314,11 +12315,11 @@ CODE_29E8A7:        99 41 1F      STA $1F41,y
 CODE_29E8AA:        60            RTS                       
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Upload multiple VRAM tilemaps to VRAM
 ;;;
 ;;; Input: $36-38 = 24-bit pointer to VRAM tables
-;;; VRAM Tables have two 2-byte headers, followed by the VRAM tilemap itself
+;;; VRAM Tables have two 2-word headers, followed by the VRAM tilemap itself
 ;;;
 ;;; Header format: %AAAA AAAA, %AAAA AAAA, %CFSS SSSS, %SSSS SSSS
 ;;;

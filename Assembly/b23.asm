@@ -1,4 +1,5 @@
 ;Super Mario Bros. 3
+;This bank is mostly code. Absolute addressing to ROM seems to use databank 21.
 
 CODE_238000:        RTL                       
 
@@ -958,13 +959,13 @@ CODE_238883:        RTL
 CODE_238884:        LDA $0728                 
 CODE_238887:        JSL CODE_20FB3A           
 
-PNTR_23888B:     dl CODE_238A0E
+PNTR_23888B:        dl CODE_238A0E
                     dl CODE_238A4E
 
 CODE_238891:        LDA $0417                 
 CODE_238894:        JSL CODE_20FB1F           
 
-PNTR_238898:     dw CODE_2388A6
+PNTR_238898:        dw CODE_2388A6
                     dw CODE_2388A6
                     dw CODE_238922
                     dw CODE_238922
@@ -2046,7 +2047,7 @@ CODE_239141:        DEX
 CODE_239142:        TXA                       
 CODE_239143:        JSL CODE_20FB3A           
 
-PNTR_239147:     dl CODE_2392D2
+PNTR_239147:        dl CODE_2392D2
 
 CODE_23914A:        JSR CODE_23914E
 CODE_23914D:        RTL
@@ -2054,7 +2055,7 @@ CODE_23914D:        RTL
 CODE_23914E:        LDA $0706                 
 CODE_239151:        JSL CODE_20FB3A           
 
-PNTR_239155:     dl CODE_2391EF
+PNTR_239155:        dl CODE_2391EF
                     dl CODE_23922C
                     dl CODE_23924F
                     dl CODE_23928C
@@ -2839,7 +2840,7 @@ CODE_239771:        RTS
 CODE_239772:        LDA $0059                 
 CODE_239775:        JSL CODE_20FB1F           
 
-PNTR_239779:     dw CODE_23977D
+PNTR_239779:        dw CODE_23977D
                     dw CODE_2397B1
 
 CODE_23977D:        LDA $7E3991
@@ -3072,13 +3073,13 @@ CODE_23995A:        ASL A
 CODE_23995B:        TAX                       
 CODE_23995C:        JMP (PNTR_23995F,x)             
 
-PNTR_23995F:     dw CODE_239963
+PNTR_23995F:        dw CODE_239963
                     dw CODE_23997B
 
 CODE_239963:        LDA $100A
 CODE_239966:        JSL CODE_20FB1F
 
-PNTR_23996A:     dw CODE_23996E
+PNTR_23996A:        dw CODE_23996E
                     dw CODE_239972
 
 CODE_23996E:        INC $100A                 
@@ -3095,7 +3096,7 @@ CODE_239982:        ASL A
 CODE_239983:        TAX                       
 CODE_239984:        JMP (PNTR_239987,x)             
 
-PNTR_239987:     dw CODE_239993
+PNTR_239987:        dw CODE_239993
                     dw CODE_2399D5
                     dw CODE_239B98
                     dw CODE_239BB5
@@ -4490,7 +4491,7 @@ CODE_23A57F:        DEX
 CODE_23A580:        TXA                       
 CODE_23A581:        JSL CODE_20FB3A           
 
-PNTR_23A585:     dl CODE_23A5FE
+PNTR_23A585:        dl CODE_23A5FE
                     dl CODE_23A603
                     dl CODE_23A608
                     dl CODE_23A920
@@ -4505,7 +4506,7 @@ DATA_23A594:        db $00,$00,$00,$00,$00,$00,$00,$00
                     db $00,$00,$00,$00,$00,$00,$00,$00
                     db $00
     
-PNTR_23A5CD:     dl CODE_23A6C1
+PNTR_23A5CD:        dl CODE_23A6C1
                     dl CODE_23A6C1
                     dl CODE_23A6C1
                     dl CODE_23A728
@@ -4523,7 +4524,7 @@ CODE_23A5EE:        ADC $0706
 CODE_23A5F1:        TAX                       
 CODE_23A5F2:        JSL CODE_20FB1F           
 
-PNTR_23A5F6:     dw CODE_23A635
+PNTR_23A5F6:        dw CODE_23A635
                     dw CODE_23A63A
                     dw CODE_23A658
                     dw CODE_23A660
@@ -5041,7 +5042,7 @@ CODE_23A9F9:        LDY #$00
 CODE_23A9FB:        STY $06                   
 CODE_23A9FD:        LDX #$06                  
 CODE_23A9FF:        LDA $070A                 
-CODE_23AA02:        CMP $B9F1,x               
+CODE_23AA02:        CMP DATA_2AB9F1,x               
 CODE_23AA05:        BEQ CODE_23AA0A           
 CODE_23AA07:        DEX                       
 CODE_23AA08:        BNE CODE_23AA02           
@@ -5049,9 +5050,9 @@ CODE_23AA0A:        TXA
 CODE_23AA0B:        ASL A                     
 CODE_23AA0C:        TAX                       
 CODE_23AA0D:        REP #$20                  
-CODE_23AA0F:        LDA $B9E3,x               
+CODE_23AA0F:        LDA DATA_2AB9E3,x               
 CODE_23AA12:        STA $0C                   
-CODE_23AA14:        LDA $BBD8,x               
+CODE_23AA14:        LDA DATA_2ABBD8,x               
 CODE_23AA17:        STA $D8                   
 CODE_23AA19:        LDA $2E                   
 CODE_23AA1B:        CLC                       
@@ -10717,7 +10718,7 @@ CODE_23D65D:        STA $01
 CODE_23D65F:        PLB                       
 CODE_23D660:        JMP ($0000)               
 
-PNTR_23D663:     dw CODE_23D67B
+PNTR_23D663:        dw CODE_23D67B
                     dw CODE_23D67E
                     dw CODE_23D68C
                     dw CODE_23D69A
@@ -11871,7 +11872,7 @@ DATA_23DF47:        db $80,$03,$5A,$16,$5B,$16,$00,$00
                     db $80,$03,$5B,$16,$5A,$96,$00,$00
                     db $80,$03,$5B,$56,$5A,$D6,$FF,$FF
 
-CODE_23DF67:          PHB
+CODE_23DF67:        PHB
 CODE_23DF68:        PHK
 CODE_23DF69:        PLB
 CODE_23DF6A:        LDA $700006               
@@ -12216,7 +12217,7 @@ CODE_23E226:        STA $199A
 CODE_23E229:        TXA                       
 CODE_23E22A:        JSL CODE_20FB1F           
 
-PNTR_23E22E:     dw CODE_23E24B
+PNTR_23E22E:        dw CODE_23E24B
                     dw CODE_23E24B
                     dw CODE_23E24B
                     dw CODE_23E28E
@@ -12285,7 +12286,7 @@ CODE_23E2AE:        JSR CODE_23E000
 CODE_23E2B1:        LDA $1F26                 
 CODE_23E2B4:        JSL CODE_20FB1F           
 
-PNTR_23E2B8:     dw CODE_23E2D0
+PNTR_23E2B8:        dw CODE_23E2D0
                     dw CODE_23E2D0
                     dw CODE_23E2D0
                     dw CODE_23E2FA
@@ -12537,7 +12538,7 @@ CODE_23E4D5:        RTS
 CODE_23E4D6:        LDA $1800,x               
 CODE_23E4D9:        JSL CODE_20FB1F           
 
-DATA_23E4DD:     dw CODE_23E4E5
+DATA_23E4DD:        dw CODE_23E4E5
                     dw CODE_23E51E
                     dw CODE_23E82C
                     dw CODE_23E78E
@@ -13623,7 +13624,7 @@ CODE_23EDCB:        LDA.l DATA_23ECE6,x
 CODE_23EDCF:        PLX                       
 CODE_23EDD0:        JSL CODE_20FB1F           
 
-DATA_23EDD4:     dw CODE_23EE02
+DATA_23EDD4:        dw CODE_23EE02
                     dw CODE_23EDF6
                     dw CODE_23EDDA
 
@@ -13712,7 +13713,7 @@ CODE_23EE87:        LDA $1802,x
 CODE_23EE8A:        BEQ CODE_23EE76           
 CODE_23EE8C:        JSL CODE_20FB1F           
 
-PNTR_23EE90:     dw CODE_23EE76
+PNTR_23EE90:        dw CODE_23EE76
                     dw CODE_23EE98
                     dw CODE_23F605
                     dw CODE_23F69D
@@ -13750,7 +13751,7 @@ CODE_23EEE0:        STA $1962,x
 CODE_23EEE3:        LDA $18BB,x               
 CODE_23EEE6:        JSL CODE_20FB1F           
 
-PNTR_23EEEA:     dw CODE_23F129
+PNTR_23EEEA:        dw CODE_23F129
                     dw CODE_23F074
                     dw CODE_23F129
                     dw CODE_23F08E

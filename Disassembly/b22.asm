@@ -5201,7 +5201,7 @@ CODE_22CDCD:        9D 18 05      STA $0518,x
 CODE_22CDD0:        F6 68         INC $68,x                 
 CODE_22CDD2:        FE 89 06      INC $0689,x               
 CODE_22CDD5:        BD 89 06      LDA $0689,x               
-CODE_22CDD8:        C9 32         CMP #$32                  
+CODE_22CDD8:        C9 32         CMP #$32                  ; The amount of times the Chain Chomp tugs on its chain before it breaks free.
 CODE_22CDDA:        D0 03         BNE CODE_22CDDF           
 CODE_22CDDC:        20 16 CD      JSR CODE_22CD16           
 CODE_22CDDF:        60            RTS                       
@@ -6538,16 +6538,17 @@ CODE_22E0FF:        E2 30         SEP #$30
 CODE_22E101:        2B            PLD                       
 CODE_22E102:        6B            RTL                       
 
-CODE_22E103:        AD 82 07      LDA $0782                 
-CODE_22E106:        29 02         AND #$02                  
-CODE_22E108:        85 00         STA $00                   
-CODE_22E10A:        AD 83 07      LDA $0783                 
-CODE_22E10D:        29 02         AND #$02                  
-CODE_22E10F:        45 00         EOR $00                   
-CODE_22E111:        18            CLC                       
-CODE_22E112:        F0 01         BEQ CODE_22E115           
-CODE_22E114:        38            SEC                       
-CODE_22E115:        6E 82 07      ROR $0782                 
+;Random number generation-related. Uses LFSR principle. A = ($0783&#$02) ^ ($0784&#$02), so either 02 or 00.
+CODE_22E103:        AD 82 07      LDA $0782                 ;\
+CODE_22E106:        29 02         AND #$02                  ; |
+CODE_22E108:        85 00         STA $00                   ; | 
+CODE_22E10A:        AD 83 07      LDA $0783                 ; | If bit 1 of both 0782 and 0783 are equal
+CODE_22E10D:        29 02         AND #$02                  ; | then clear the carry flag
+CODE_22E10F:        45 00         EOR $00                   ; | Otherwise, set it
+CODE_22E111:        18            CLC                       ; |
+CODE_22E112:        F0 01         BEQ CODE_22E115           ; |
+CODE_22E114:        38            SEC                       ;/
+CODE_22E115:        6E 82 07      ROR $0782                 ;Then rotate these addresses with carry.
 CODE_22E118:        6E 83 07      ROR $0783                 
 CODE_22E11B:        6E 84 07      ROR $0784                 
 CODE_22E11E:        6E 85 07      ROR $0785                 
@@ -7661,7 +7662,7 @@ CODE_22F117:        4C 96 F1      JMP CODE_22F196
 
 CODE_22F11A:        C2 10         REP #$10                  
 CODE_22F11C:        AE D4 02      LDX $02D4                 
-CODE_22F11F:        BD D9 FA      LDA.w DATA_21FAD9,x               
+CODE_22F11F:        BD D9 FA      LDA.w DATA_21FAD9,x               ;King has been transformed text.
 CODE_22F122:        85 00         STA $00                   
 CODE_22F124:        E2 10         SEP #$10                  
 CODE_22F126:        AC 00 16      LDY $1600                 

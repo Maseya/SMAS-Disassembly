@@ -1,5 +1,6 @@
 ;Super Mario Bros. 3
 ;It is safe to assume that all absolute addressing modes use databank $21
+;Strangely enough, there's a lot of empty space ($FF) in this bank.
 
 DATA_228000:        db $51,$08,$00,$01,$92,$01,$51,$09
                     db $40,$1A,$90,$01,$51,$17,$00,$01
