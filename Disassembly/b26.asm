@@ -3786,186 +3786,186 @@ CODE_26CBAB:        8E 00 16      STX $1600
 CODE_26CBAE:        FA            PLX                       
 CODE_26CBAF:        60            RTS                       
 
-CODE_26CBB0:        AD 30 19      LDA $1930                 
-CODE_26CBB3:        0D 28 1A      ORA $1A28                 
-CODE_26CBB6:        D0 3E         BNE CODE_26CBF6           
-CODE_26CBB8:        A5 F6         LDA $F6                   
-CODE_26CBBA:        05 F7         ORA $F7                   
-CODE_26CBBC:        29 10         AND #$10                  
-CODE_26CBBE:        F0 36         BEQ CODE_26CBF6           
+CODE_26CBB0:        AD 30 19      LDA $1930                 ; \ if the game is over
+CODE_26CBB3:        0D 28 1A      ORA $1A28                 ; | or if it hasn't started yet
+CODE_26CBB6:        D0 3E         BNE CODE_26CBF6           ; |
+CODE_26CBB8:        A5 F6         LDA $F6                   ; |
+CODE_26CBBA:        05 F7         ORA $F7                   ; |
+CODE_26CBBC:        29 10         AND #$10                  ; | and if no one presses start
+CODE_26CBBE:        F0 36         BEQ CODE_26CBF6           ; / skip forward
 CODE_26CBC0:        AD 76 00      LDA $0076                 
 CODE_26CBC3:        49 01         EOR #$01                  
-CODE_26CBC5:        8D 76 00      STA $0076                 
+CODE_26CBC5:        8D 76 00      STA $0076                 ; flip the pause flag
 CODE_26CBC8:        D0 17         BNE CODE_26CBE1           
-CODE_26CBCA:        A9 F2         LDA #$F2                  
-CODE_26CBCC:        8D 02 12      STA $1202                 
-CODE_26CBCF:        A9 43         LDA #$43                  
-CODE_26CBD1:        8D 00 12      STA $1200                 
-CODE_26CBD4:        A2 0E         LDX #$0E                  
-CODE_26CBD6:        BD 8B 19      LDA $198B,x               
-CODE_26CBD9:        9D CB 18      STA $18CB,x               
-CODE_26CBDC:        CA            DEX                       
-CODE_26CBDD:        10 F7         BPL CODE_26CBD6           
+CODE_26CBCA:        A9 F2         LDA #$F2                  ; \ if we unpaused
+CODE_26CBCC:        8D 02 12      STA $1202                 ; | bring music volume back up
+CODE_26CBCF:        A9 43         LDA #$43                  ; |
+CODE_26CBD1:        8D 00 12      STA $1200                 ; | play pause sound
+CODE_26CBD4:        A2 0E         LDX #$0E                  ; |
+CODE_26CBD6:        BD 8B 19      LDA $198B,x               ; |
+CODE_26CBD9:        9D CB 18      STA $18CB,x               ; | restore sprite lock timers
+CODE_26CBDC:        CA            DEX                       ; |
+CODE_26CBDD:        10 F7         BPL CODE_26CBD6           ; /
 CODE_26CBDF:        30 15         BMI CODE_26CBF6           
-CODE_26CBE1:        A9 F1         LDA #$F1                  
-CODE_26CBE3:        8D 02 12      STA $1202                 
-CODE_26CBE6:        A9 43         LDA #$43                  
-CODE_26CBE8:        8D 00 12      STA $1200                 
-CODE_26CBEB:        A2 0E         LDX #$0E                  
-CODE_26CBED:        BD CB 18      LDA $18CB,x               
-CODE_26CBF0:        9D 8B 19      STA $198B,x               
-CODE_26CBF3:        CA            DEX                       
+CODE_26CBE1:        A9 F1         LDA #$F1                  ; \ if we paused
+CODE_26CBE3:        8D 02 12      STA $1202                 ; | lower music volume
+CODE_26CBE6:        A9 43         LDA #$43                  ; |
+CODE_26CBE8:        8D 00 12      STA $1200                 ; | play pause sound
+CODE_26CBEB:        A2 0E         LDX #$0E                  ; |
+CODE_26CBED:        BD CB 18      LDA $18CB,x               ; |
+CODE_26CBF0:        9D 8B 19      STA $198B,x               ; | save sprite lock timers
+CODE_26CBF3:        CA            DEX                       ; /
 CODE_26CBF4:        10 F7         BPL CODE_26CBED           
-CODE_26CBF6:        AD 76 00      LDA $0076                 
-CODE_26CBF9:        F0 0A         BEQ CODE_26CC05           
+CODE_26CBF6:        AD 76 00      LDA $0076                 ; \ if the game is not paused
+CODE_26CBF9:        F0 0A         BEQ CODE_26CC05           ; / skip forward
 CODE_26CBFB:        A2 0E         LDX #$0E                  
 CODE_26CBFD:        A9 FF         LDA #$FF                  
-CODE_26CBFF:        9D CB 18      STA $18CB,x               
-CODE_26CC02:        CA            DEX                       
-CODE_26CC03:        10 FA         BPL CODE_26CBFF           
-CODE_26CC05:        20 09 CC      JSR CODE_26CC09           
-CODE_26CC08:        6B            RTL                       
-
+CODE_26CBFF:        9D CB 18      STA $18CB,x               ; \ freeze all the sprites
+CODE_26CC02:        CA            DEX                       ; |
+CODE_26CC03:        10 FA         BPL CODE_26CBFF           ; /
+CODE_26CC05:        20 09 CC      JSR CODE_26CC09           ; run game
+CODE_26CC08:        6B            RTL                       ; return
+                                                            
 CODE_26CC09:        AD 75 00      LDA $0075                 
 CODE_26CC0C:        0A            ASL A                     
 CODE_26CC0D:        AA            TAX                       
-CODE_26CC0E:        7C 11 CC      JMP ($CC11,x) 
-            
-
-DATA_26CC11:        dw CODE_26CC24                   
-                    dw CODE_26CD8E
-
-
-CODE_26CC15:        A2 40         LDX #$40
+CODE_26CC0E:        7C 11 CC      JMP ($CC11,x)             
+                                                            
+                                                            
+DATA_26CC11:        dw CODE_26CC24                          ; init
+                    dw CODE_26CD8E                          ; tick
+                                                            
+                                                            
+CODE_26CC15:        A2 40         LDX #$40                  ; unreachable
 CODE_26CC17:        A0 00         LDY #$00                  
 CODE_26CC19:        20 EF F6      JSR CODE_26F6EF           
 CODE_26CC1C:        A2 50         LDX #$50                  
 CODE_26CC1E:        A0 20         LDY #$20                  
 CODE_26CC20:        20 EF F6      JSR CODE_26F6EF           
 CODE_26CC23:        6B            RTL                       
-
-CODE_26CC24:        C2 30         REP #$30                  
-CODE_26CC26:        A9 10 00      LDA #$0010                
-CODE_26CC29:        85 8D         STA $8D                   
-CODE_26CC2B:        85 8E         STA $8E                   
-CODE_26CC2D:        A0 00 02      LDY #$0200                
-CODE_26CC30:        A9 00 00      LDA #$0000                
-CODE_26CC33:        99 00 18      STA $1800,y               
-CODE_26CC36:        88            DEY                       
-CODE_26CC37:        88            DEY                       
-CODE_26CC38:        10 F9         BPL CODE_26CC33           
+                                                            
+CODE_26CC24:        C2 30         REP #$30                  ; initialize battle
+CODE_26CC26:        A9 10 00      LDA #$0010                ; \
+CODE_26CC29:        85 8D         STA $8D                   ; | ?
+CODE_26CC2B:        85 8E         STA $8E                   ; /
+CODE_26CC2D:        A0 00 02      LDY #$0200                ; \ clear all of the memory that battle mode uses for sprites
+CODE_26CC30:        A9 00 00      LDA #$0000                ; |
+CODE_26CC33:        99 00 18      STA $1800,y               ; | $1800-$19FF
+CODE_26CC36:        88            DEY                       ; |
+CODE_26CC37:        88            DEY                       ; |
+CODE_26CC38:        10 F9         BPL CODE_26CC33           ; /
 CODE_26CC3A:        E2 30         SEP #$30                  
-CODE_26CC3C:        AD 26 1F      LDA $1F26                 
-CODE_26CC3F:        D0 0B         BNE CODE_26CC4C           
-CODE_26CC41:        9C 69 1A      STZ $1A69                 
-CODE_26CC44:        A9 04         LDA #$04                  
-CODE_26CC46:        8D 68 1A      STA $1A68                 
-CODE_26CC49:        9C 67 1A      STZ $1A67                 
-CODE_26CC4C:        A9 FF         LDA #$FF                  
-CODE_26CC4E:        8D E0 19      STA $19E0                 
-CODE_26CC51:        8D E1 19      STA $19E1                 
-CODE_26CC54:        8D E2 19      STA $19E2                 
-CODE_26CC57:        8D E3 19      STA $19E3                 
-CODE_26CC5A:        8D E4 19      STA $19E4                 
-CODE_26CC5D:        8D E5 19      STA $19E5                 
-CODE_26CC60:        8D E6 19      STA $19E6                 
-CODE_26CC63:        8D E7 19      STA $19E7                 
-CODE_26CC66:        8D 28 1A      STA $1A28                 
-CODE_26CC69:        9C C0 19      STZ $19C0                 
-CODE_26CC6C:        9C 35 1A      STZ $1A35                 
-CODE_26CC6F:        9C 2A 1A      STZ $1A2A                 
-CODE_26CC72:        9C 39 1A      STZ $1A39                 
+CODE_26CC3C:        AD 26 1F      LDA $1F26                 ; \ if we are on round 1
+CODE_26CC3F:        D0 0B         BNE CODE_26CC4C           ; |
+CODE_26CC41:        9C 69 1A      STZ $1A69                 ; | set up the "5 games to win!" message
+CODE_26CC44:        A9 04         LDA #$04                  ; |
+CODE_26CC46:        8D 68 1A      STA $1A68                 ; |
+CODE_26CC49:        9C 67 1A      STZ $1A67                 ; /
+CODE_26CC4C:        A9 FF         LDA #$FF                  ; \ clear particle frames
+CODE_26CC4E:        8D E0 19      STA $19E0                 ; |
+CODE_26CC51:        8D E1 19      STA $19E1                 ; |
+CODE_26CC54:        8D E2 19      STA $19E2                 ; |
+CODE_26CC57:        8D E3 19      STA $19E3                 ; |
+CODE_26CC5A:        8D E4 19      STA $19E4                 ; |
+CODE_26CC5D:        8D E5 19      STA $19E5                 ; |
+CODE_26CC60:        8D E6 19      STA $19E6                 ; |
+CODE_26CC63:        8D E7 19      STA $19E7                 ; /
+CODE_26CC66:        8D 28 1A      STA $1A28                 ; ??
+CODE_26CC69:        9C C0 19      STZ $19C0                 ; clear player swap position timer
+CODE_26CC6C:        9C 35 1A      STZ $1A35                 ; ??
+CODE_26CC6F:        9C 2A 1A      STZ $1A2A                 ; ??
+CODE_26CC72:        9C 39 1A      STZ $1A39                 ; ??
 CODE_26CC75:        A9 01         LDA #$01                  
-CODE_26CC77:        8D AB 19      STA $19AB                 
-CODE_26CC7A:        8D AC 19      STA $19AC                 
-CODE_26CC7D:        8D 3F 1A      STA $1A3F                 
-CODE_26CC80:        9C 38 1A      STZ $1A38                 
+CODE_26CC77:        8D AB 19      STA $19AB                 ; \ make both players big
+CODE_26CC7A:        8D AC 19      STA $19AC                 ; /
+CODE_26CC7D:        8D 3F 1A      STA $1A3F                 ; ??
+CODE_26CC80:        9C 38 1A      STZ $1A38                 ; ??
 CODE_26CC83:        A9 04         LDA #$04                  
-CODE_26CC85:        8D 33 1A      STA $1A33                 
-CODE_26CC88:        8D 6A 1A      STA $1A6A                 
-CODE_26CC8B:        9C 6B 1A      STZ $1A6B                 
+CODE_26CC85:        8D 33 1A      STA $1A33                 ; ??
+CODE_26CC88:        8D 6A 1A      STA $1A6A                 ; \ set up the "round x" message
+CODE_26CC8B:        9C 6B 1A      STZ $1A6B                 ; /
 CODE_26CC8E:        A9 F0         LDA #$F0                  
-CODE_26CC90:        8D 37 1A      STA $1A37                 
-CODE_26CC93:        9C 3E 1A      STZ $1A3E                 
-CODE_26CC96:        9C 31 1A      STZ $1A31                 
-CODE_26CC99:        9C 32 1A      STZ $1A32                 
-CODE_26CC9C:        9C 30 1A      STZ $1A30                 
-CODE_26CC9F:        9C 2F 1A      STZ $1A2F                 
-CODE_26CCA2:        9C BC 19      STZ $19BC                 
-CODE_26CCA5:        A5 15         LDA $15                   
-CODE_26CCA7:        09 91         ORA #$91                  
-CODE_26CCA9:        8D 2B 19      STA $192B                 
-CODE_26CCAC:        EE 75 00      INC $0075                 
+CODE_26CC90:        8D 37 1A      STA $1A37                 ; ??
+CODE_26CC93:        9C 3E 1A      STZ $1A3E                 ; ??
+CODE_26CC96:        9C 31 1A      STZ $1A31                 ; \ clear sprite list indices
+CODE_26CC99:        9C 32 1A      STZ $1A32                 ; |
+CODE_26CC9C:        9C 30 1A      STZ $1A30                 ; |
+CODE_26CC9F:        9C 2F 1A      STZ $1A2F                 ; /
+CODE_26CCA2:        9C BC 19      STZ $19BC                 ; clear enemy kill count
+CODE_26CCA5:        A5 15         LDA $15                   ; \ seed the RNG using the frame counter
+CODE_26CCA7:        09 91         ORA #$91                  ; |
+CODE_26CCA9:        8D 2B 19      STA $192B                 ; /
+CODE_26CCAC:        EE 75 00      INC $0075                 ; clear init flag
 CODE_26CCAF:        8B            PHB                       
 CODE_26CCB0:        4B            PHK                       
 CODE_26CCB1:        AB            PLB                       
-CODE_26CCB2:        AD 26 1F      LDA $1F26                 
-CODE_26CCB5:        8D 9A 19      STA $199A                 
+CODE_26CCB2:        AD 26 1F      LDA $1F26                 ; \ set enemy spawn type
+CODE_26CCB5:        8D 9A 19      STA $199A                 ; /
 CODE_26CCB8:        AB            PLB                       
-CODE_26CCB9:        A2 40         LDX #$40                  
-CODE_26CCBB:        A0 00         LDY #$00                  
-CODE_26CCBD:        20 EF F6      JSR CODE_26F6EF           
-CODE_26CCC0:        A2 50         LDX #$50                  
-CODE_26CCC2:        A0 20         LDY #$20                  
-CODE_26CCC4:        20 EF F6      JSR CODE_26F6EF           
-CODE_26CCC7:        9C BB 19      STZ $19BB                 
-CODE_26CCCA:        9C BD 19      STZ $19BD                 
-CODE_26CCCD:        20 E1 CC      JSR CODE_26CCE1           
+CODE_26CCB9:        A2 40         LDX #$40                  ; \ update palette
+CODE_26CCBB:        A0 00         LDY #$00                  ; |
+CODE_26CCBD:        20 EF F6      JSR CODE_26F6EF           ; |
+CODE_26CCC0:        A2 50         LDX #$50                  ; |
+CODE_26CCC2:        A0 20         LDY #$20                  ; |
+CODE_26CCC4:        20 EF F6      JSR CODE_26F6EF           ; /
+CODE_26CCC7:        9C BB 19      STZ $19BB                 ; ??
+CODE_26CCCA:        9C BD 19      STZ $19BD                 ; ??
+CODE_26CCCD:        20 E1 CC      JSR CODE_26CCE1           ; get some random numbers #$X0 in $01 and $02
 CODE_26CCD0:        A5 01         LDA $01                   
-CODE_26CCD2:        8D B7 19      STA $19B7                 
+CODE_26CCD2:        8D B7 19      STA $19B7                 ; ??
 CODE_26CCD5:        A5 02         LDA $02                   
-CODE_26CCD7:        8D B9 19      STA $19B9                 
-CODE_26CCDA:        EE BB 19      INC $19BB                 
-CODE_26CCDD:        AE 0E 19      LDX $190E                 
-CODE_26CCE0:        60            RTS
-                       
-CODE_26CCE1:        22 05 F8 25   JSL CODE_25F805           
+CODE_26CCD7:        8D B9 19      STA $19B9                 ; ??
+CODE_26CCDA:        EE BB 19      INC $19BB                 ; ??
+CODE_26CCDD:        AE 0E 19      LDX $190E                 ; ??
+CODE_26CCE0:        60            RTS                       ; return
+                                                            
+CODE_26CCE1:        22 05 F8 25   JSL CODE_25F805           ; get random number
 CODE_26CCE5:        29 0F         AND #$0F                  
 CODE_26CCE7:        C9 0C         CMP #$0C                  
-CODE_26CCE9:        B0 F6         BCS CODE_26CCE1                   
-CODE_26CCEB:        85 00         STA $00                   
-CODE_26CCED:        22 05 F8 25   JSL CODE_25F805           
+CODE_26CCE9:        B0 F6         BCS CODE_26CCE1                           
+CODE_26CCEB:        85 00         STA $00                   ; $00 = random number < #$0C
+CODE_26CCED:        22 05 F8 25   JSL CODE_25F805           ; get random number
 CODE_26CCF1:        29 03         AND #$03                  
 CODE_26CCF3:        F0 23         BEQ CODE_26CD18           
 CODE_26CCF5:        C9 03         CMP #$03                  
-CODE_26CCF7:        F0 1F         BEQ CODE_26CD18           
+CODE_26CCF7:        F0 1F         BEQ CODE_26CD18           ; 50% chance of branching here
 CODE_26CCF9:        A5 00         LDA $00                   
 CODE_26CCFB:        C9 0A         CMP #$0A                  
-CODE_26CCFD:        90 0B         BCC CODE_26CD0A           
-CODE_26CCFF:        18            CLC                       
-CODE_26CD00:        69 04         ADC #$04                  
+CODE_26CCFD:        90 0B         BCC CODE_26CD0A           ; 41% chance of branching here
+CODE_26CCFF:        18            CLC                       ; 9%:
+CODE_26CD00:        69 04         ADC #$04                  ; 9% chance that A = #$0E or #$0F
 CODE_26CD02:        48            PHA                       
 CODE_26CD03:        A9 70         LDA #$70                  
-CODE_26CD05:        85 02         STA $02                   
+CODE_26CD05:        85 02         STA $02                   ; 18% chance that $02 = #$70
 CODE_26CD07:        68            PLA                       
 CODE_26CD08:        80 1E         BRA CODE_26CD28           
-
-CODE_26CD0A:        C9 02         CMP #$02                  
-CODE_26CD0C:        90 F4         BCC CODE_26CD02           
+                                                            
+CODE_26CD0A:        C9 02         CMP #$02                  ; 41%:
+CODE_26CD0C:        90 F4         BCC CODE_26CD02           ; 9% chance that A = #$0A or #$0B
 CODE_26CD0E:        48            PHA                       
 CODE_26CD0F:        A9 60         LDA #$60                  
-CODE_26CD11:        85 02         STA $02                   
+CODE_26CD11:        85 02         STA $02                   ; 32% chance that $02 = #$60
 CODE_26CD13:        68            PLA                       
 CODE_26CD14:        1A            INC A                     
-CODE_26CD15:        1A            INC A                     
+CODE_26CD15:        1A            INC A                     ; 32% chance that A = #$0C or #$0D
 CODE_26CD16:        80 10         BRA CODE_26CD28           
-
-CODE_26CD18:        4A            LSR A                     
+                                                            
+CODE_26CD18:        4A            LSR A                     ; 50%:
 CODE_26CD19:        A8            TAY                       
-CODE_26CD1A:        B9 15 ED      LDA $ED15,y               
-CODE_26CD1D:        85 02         STA $02                   
+CODE_26CD1A:        B9 15 ED      LDA $ED15,y               ; db $30,$A0
+CODE_26CD1D:        85 02         STA $02                   ; 25% chance $02 = #$30, 25% chance $02 = #$A0
 CODE_26CD1F:        A5 00         LDA $00                   
 CODE_26CD21:        C9 06         CMP #$06                  
 CODE_26CD23:        90 03         BCC CODE_26CD28           
 CODE_26CD25:        18            CLC                       
 CODE_26CD26:        69 04         ADC #$04                  
-CODE_26CD28:        0A            ASL A                     
+CODE_26CD28:        0A            ASL A                     ; merge: A = #$00 - #$0F
 CODE_26CD29:        0A            ASL A                     
 CODE_26CD2A:        0A            ASL A                     
 CODE_26CD2B:        0A            ASL A                     
 CODE_26CD2C:        85 01         STA $01                   
-CODE_26CD2E:        60            RTS
-                       
+CODE_26CD2E:        60            RTS                       ; return
+                                                            
 CODE_26CD2F:        A2 0D         LDX #$0D                  
 CODE_26CD31:        8A            TXA                       
 CODE_26CD32:        95 00         STA $00,x                 
@@ -3987,8 +3987,8 @@ CODE_26CD54:        A9 0B         LDA #$0B
 CODE_26CD56:        9D BB 18      STA $18BB,x               
 CODE_26CD59:        CA            DEX                       
 CODE_26CD5A:        10 E3         BPL CODE_26CD3F           
-CODE_26CD5C:        60            RTS
-                       
+CODE_26CD5C:        60            RTS                       
+                                                            
 CODE_26CD5D:        22 05 F8 25   JSL CODE_25F805           
 CODE_26CD61:        29 0F         AND #$0F                  
 CODE_26CD63:        A8            TAY                       
@@ -3998,8 +3998,8 @@ CODE_26CD69:        48            PHA
 CODE_26CD6A:        A9 FF         LDA #$FF                  
 CODE_26CD6C:        99 00 00      STA $0000,y               
 CODE_26CD6F:        68            PLA                       
-CODE_26CD70:        60            RTS
-                       
+CODE_26CD70:        60            RTS                       
+                                                            
 CODE_26CD71:        A2 04         LDX #$04                  
 CODE_26CD73:        FE 02 18      INC $1802,x               
 CODE_26CD76:        A9 0B         LDA #$0B                  
@@ -4011,20 +4011,20 @@ CODE_26CD84:        9D 24 18      STA $1824,x
 CODE_26CD87:        20 0B DD      JSR CODE_26DD0B           
 CODE_26CD8A:        CA            DEX                       
 CODE_26CD8B:        10 E6         BPL CODE_26CD73           
-CODE_26CD8D:        60            RTS
-                       
-CODE_26CD8E:        20 FC CA      JSR CODE_26CAFC           
+CODE_26CD8D:        60            RTS                       
+                                                            
+CODE_26CD8E:        20 FC CA      JSR CODE_26CAFC           ; tick battle - draw player's level cards
 CODE_26CD91:        20 00 CA      JSR CODE_26CA00           
 CODE_26CD94:        20 AC CE      JSR CODE_26CEAC           
 CODE_26CD97:        20 39 DC      JSR CODE_26DC39           
 CODE_26CD9A:        20 89 DE      JSR CODE_26DE89           
-CODE_26CD9D:        20 83 EF      JSR CODE_26EF83           
-CODE_26CDA0:        20 4D ED      JSR CODE_26ED4D           
-CODE_26CDA3:        20 6B EE      JSR CODE_26EE6B           
-CODE_26CDA6:        20 11 F1      JSR CODE_26F111           
-CODE_26CDA9:        20 79 F6      JSR CODE_26F679           
-CODE_26CDAC:        20 2D F2      JSR CODE_26F22D           
-CODE_26CDAF:        20 44 F3      JSR CODE_26F344           
+CODE_26CD9D:        20 83 EF      JSR CODE_26EF83           ; handle everything to do with the bouncing block sprites
+CODE_26CDA0:        20 4D ED      JSR CODE_26ED4D           ; activate POW effect, draw it to oam, and check interaction with players
+CODE_26CDA3:        20 6B EE      JSR CODE_26EE6B           ; respawn POW block if timer is set
+CODE_26CDA6:        20 11 F1      JSR CODE_26F111           ; draw particles
+CODE_26CDA9:        20 79 F6      JSR CODE_26F679           ; make the winner's scoreboard flash if they won by getting 5 coins
+CODE_26CDAC:        20 2D F2      JSR CODE_26F22D           ; draw intro text if on intro
+CODE_26CDAF:        20 44 F3      JSR CODE_26F344           ; draw "PAUSE" text if paused
 CODE_26CDB2:        60            RTS
 
     
@@ -6048,12 +6048,12 @@ CODE_26DE82:        EE 2F 1A      INC $1A2F
 CODE_26DE85:        EE BB 19      INC $19BB                 
 CODE_26DE88:        60            RTS                       
 
-CODE_26DE89:        AD 28 1A      LDA $1A28                 
-CODE_26DE8C:        D0 25         BNE CODE_26DEB3           
+CODE_26DE89:        AD 28 1A      LDA $1A28                 ; \ if we are on the intro screen
+CODE_26DE8C:        D0 25         BNE CODE_26DEB3           ; / exit
 CODE_26DE8E:        CE C9 18      DEC $18C9                 
 CODE_26DE91:        10 05         BPL CODE_26DE98           
 CODE_26DE93:        A9 0D         LDA #$0D                  
-CODE_26DE95:        8D C9 18      STA $18C9                 
+CODE_26DE95:        8D C9 18      STA $18C9                 ; tick $18C9 thru #$0D
 CODE_26DE98:        A2 0B         LDX #$0B                  
 CODE_26DE9A:        8E 0E 19      STX $190E                 
 CODE_26DE9D:        8A            TXA                       
@@ -6062,172 +6062,172 @@ CODE_26DE9F:        6D C9 18      ADC $18C9
 CODE_26DEA2:        A8            TAY                       
 CODE_26DEA3:        B9 3E ED      LDA $ED3E,y               
 CODE_26DEA6:        8D C8 18      STA $18C8                 
-CODE_26DEA9:        22 05 F8 25   JSL CODE_25F805           
-CODE_26DEAD:        20 B4 DE      JSR CODE_26DEB4           
+CODE_26DEA9:        22 05 F8 25   JSL CODE_25F805           ; get random number
+CODE_26DEAD:        20 B4 DE      JSR CODE_26DEB4           ; update each sprite
 CODE_26DEB0:        CA            DEX                       
 CODE_26DEB1:        10 E7         BPL CODE_26DE9A           
 CODE_26DEB3:        60            RTS                       
-
+                                                            
 CODE_26DEB4:        BD CD 18      LDA $18CD,x               
-CODE_26DEB7:        F0 03         BEQ CODE_26DEBC           
-CODE_26DEB9:        DE CD 18      DEC $18CD,x               
+CODE_26DEB7:        F0 03         BEQ CODE_26DEBC           ; \ if sprite is locked
+CODE_26DEB9:        DE CD 18      DEC $18CD,x               ; / decrement timer
 CODE_26DEBC:        BD 7C 19      LDA $197C,x               
-CODE_26DEBF:        F0 03         BEQ CODE_26DEC4           
-CODE_26DEC1:        DE 7C 19      DEC $197C,x               
+CODE_26DEBF:        F0 03         BEQ CODE_26DEC4           ; \ if sprite is frozen
+CODE_26DEC1:        DE 7C 19      DEC $197C,x               ; / decrement timer
 CODE_26DEC4:        BD 02 18      LDA $1802,x               
 CODE_26DEC7:        F0 EA         BEQ CODE_26DEB3           
 CODE_26DEC9:        9B            TXY                       
 CODE_26DECA:        0A            ASL A                     
 CODE_26DECB:        AA            TAX                       
-CODE_26DECC:        7C CF DE      JMP ($DECF,x)             
-
-
-DATA_26DECF:        dw CODE_26DED9
-                    dw CODE_26DEDB
-                    dw CODE_26EBDD             
-                    dw CODE_26ECDD 
-                    dw CODE_26F548 
-               
-
-CODE_26DED9:        BB            TYX
+CODE_26DECC:        7C CF DE      JMP ($DECF,x)             ; switch on sprite status
+                                                            
+                                                            
+DATA_26DECF:        dw CODE_26DED9                          ; non-existant
+                    dw CODE_26DEDB                          ; normal
+                    dw CODE_26EBDD                          ; flipped
+                    dw CODE_26ECDD                          ; dead
+                    dw CODE_26F548                          ; kicked shell
+                                                            
+                                                            
+CODE_26DED9:        BB            TYX                       ; non-existant sprite
 CODE_26DEDA:        60            RTS                       
-
-CODE_26DEDB:        BB            TYX                       
-CODE_26DEDC:        BD CD 18      LDA $18CD,x               
-CODE_26DEDF:        1D 7C 19      ORA $197C,x               
-CODE_26DEE2:        0D C0 19      ORA $19C0                 
-CODE_26DEE5:        0D 30 19      ORA $1930                 
-CODE_26DEE8:        0D AF 19      ORA $19AF                 
-CODE_26DEEB:        0D B0 19      ORA $19B0                 
-CODE_26DEEE:        F0 28         BEQ CODE_26DF18           
+                                                            
+CODE_26DEDB:        BB            TYX                       ; normal sprite
+CODE_26DEDC:        BD CD 18      LDA $18CD,x               ; \ if sprite is locked
+CODE_26DEDF:        1D 7C 19      ORA $197C,x               ; | or frozen
+CODE_26DEE2:        0D C0 19      ORA $19C0                 ; | or player swapping
+CODE_26DEE5:        0D 30 19      ORA $1930                 ; | or game is over
+CODE_26DEE8:        0D AF 19      ORA $19AF                 ; | or mario is taking damage
+CODE_26DEEB:        0D B0 19      ORA $19B0                 ; | or luigi is taking damage
+CODE_26DEEE:        F0 28         BEQ CODE_26DF18           ; / then game is in suspended state:
 CODE_26DEF0:        20 F4 D7      JSR CODE_26D7F4           
 CODE_26DEF3:        20 7C E4      JSR CODE_26E47C           
 CODE_26DEF6:        BD BB 18      LDA $18BB,x               
-CODE_26DEF9:        C9 0B         CMP #$0B                  
-CODE_26DEFB:        F0 2B         BEQ CODE_26DF28           
-CODE_26DEFD:        C9 13         CMP #$13                  
-CODE_26DEFF:        F0 27         BEQ CODE_26DF28           
-CODE_26DF01:        C9 10         CMP #$10                  
-CODE_26DF03:        B0 23         BCS CODE_26DF28                   
-CODE_26DF05:        C9 07         CMP #$07                  
-CODE_26DF07:        F0 27         BEQ CODE_26DF30           
-CODE_26DF09:        C9 08         CMP #$08                  
-CODE_26DF0B:        F0 23         BEQ CODE_26DF30           
-CODE_26DF0D:        C9 09         CMP #$09                  
-CODE_26DF0F:        F0 1F         BEQ CODE_26DF30           
-CODE_26DF11:        C9 0F         CMP #$0F                  
-CODE_26DF13:        F0 13         BEQ CODE_26DF28           
-CODE_26DF15:        4C 5F E3      JMP CODE_26E35F           
-
-CODE_26DF18:        BD DA 18      LDA $18DA,x               
-CODE_26DF1B:        F0 03         BEQ CODE_26DF20           
-CODE_26DF1D:        DE DA 18      DEC $18DA,x               
+CODE_26DEF9:        C9 0B         CMP #$0B                  ; \ if glitchy coin
+CODE_26DEFB:        F0 2B         BEQ CODE_26DF28           ; |
+CODE_26DEFD:        C9 13         CMP #$13                  ; | or coin
+CODE_26DEFF:        F0 27         BEQ CODE_26DF28           ; |
+CODE_26DF01:        C9 10         CMP #$10                  ; | or mushroom
+CODE_26DF03:        B0 23         BCS CODE_26DF28           ; / go here        
+CODE_26DF05:        C9 07         CMP #$07                  ; \ if wavy boo
+CODE_26DF07:        F0 27         BEQ CODE_26DF30           ; |
+CODE_26DF09:        C9 08         CMP #$08                  ; | or bouncy boo
+CODE_26DF0B:        F0 23         BEQ CODE_26DF30           ; |
+CODE_26DF0D:        C9 09         CMP #$09                  ; | or falling boo
+CODE_26DF0F:        F0 1F         BEQ CODE_26DF30           ; / go here
+CODE_26DF11:        C9 0F         CMP #$0F                  ; \ if brown block
+CODE_26DF13:        F0 13         BEQ CODE_26DF28           ; / go here
+CODE_26DF15:        4C 5F E3      JMP CODE_26E35F           ; else go here
+                                                            
+CODE_26DF18:        BD DA 18      LDA $18DA,x               ; game is running:
+CODE_26DF1B:        F0 03         BEQ CODE_26DF20           ; \ if sprite is turning around
+CODE_26DF1D:        DE DA 18      DEC $18DA,x               ; / decrement counter
 CODE_26DF20:        BD 1E 19      LDA $191E,x               
-CODE_26DF23:        F0 03         BEQ CODE_26DF28           
-CODE_26DF25:        DE 1E 19      DEC $191E,x               
+CODE_26DF23:        F0 03         BEQ CODE_26DF28           ; \ if sprite is inside a pipe
+CODE_26DF25:        DE 1E 19      DEC $191E,x               ; / decrement counter
 CODE_26DF28:        BD E9 18      LDA $18E9,x               
-CODE_26DF2B:        F0 03         BEQ CODE_26DF30           
-CODE_26DF2D:        DE E9 18      DEC $18E9,x               
+CODE_26DF2B:        F0 03         BEQ CODE_26DF30           ; \ if sprite is stunned
+CODE_26DF2D:        DE E9 18      DEC $18E9,x               ; / decrement counter
 CODE_26DF30:        A9 01         LDA #$01                  
 CODE_26DF32:        BC 46 18      LDY $1846,x               
 CODE_26DF35:        10 02         BPL CODE_26DF39           
 CODE_26DF37:        A9 02         LDA #$02                  
-CODE_26DF39:        9D 66 18      STA $1866,x               
+CODE_26DF39:        9D 66 18      STA $1866,x               ; update sprite horizontal direction
 CODE_26DF3C:        A9 04         LDA #$04                  
 CODE_26DF3E:        BC 35 18      LDY $1835,x               
 CODE_26DF41:        10 02         BPL CODE_26DF45           
 CODE_26DF43:        A9 08         LDA #$08                  
-CODE_26DF45:        9D 62 19      STA $1962,x               
+CODE_26DF45:        9D 62 19      STA $1962,x               ; update sprite vertical direction
 CODE_26DF48:        BD BB 18      LDA $18BB,x               
 CODE_26DF4B:        9B            TXY                       
 CODE_26DF4C:        0A            ASL A                     
 CODE_26DF4D:        AA            TAX                       
-CODE_26DF4E:        7C 51 DF      JMP ($DF51,x)             
-
-DATA_26DF51:        dw CODE_26E297
-                    dw CODE_26E17F
-                    dw CODE_26E297   
-                    dw CODE_26E19A
-                    dw CODE_26EE99 
-                    dw CODE_26EE99 
-                    dw CODE_26EE99 
-                    dw CODE_26EE99 
-                    dw CODE_26EE99 
-                    dw CODE_26EE99 
-                    dw CODE_26E297 
-                    dw CODE_26E037 
-                    dw CODE_26DFA5 
-                    dw CODE_26DF9F 
-                    dw CODE_26DFA5 
-                    dw CODE_26DF79 
-                    dw CODE_26DFA5 
-                    dw CODE_26DFA5 
-                    dw CODE_26DFA5 
-                    dw CODE_26E0FE
-
-
-CODE_26DF79:        BB            TYX
-CODE_26DF7A:        20 27 F6      JSR CODE_26F627           
-CODE_26DF7D:        20 2D F6      JSR CODE_26F62D           
+CODE_26DF4E:        7C 51 DF      JMP ($DF51,x)             ; switch on sprite id
+                                                            
+DATA_26DF51:        dw CODE_26E297                          ; spiny
+                    dw CODE_26E17F                          ; invisible spiny?
+                    dw CODE_26E297                          ; crab
+                    dw CODE_26E19A                          ; fly
+                    dw CODE_26EE99                          ; fireball
+                    dw CODE_26EE99                          ; fireball 
+                    dw CODE_26EE99                          ; fireball
+                    dw CODE_26EE99                          ; waving boo
+                    dw CODE_26EE99                          ; bouncing boo
+                    dw CODE_26EE99                          ; falling boo
+                    dw CODE_26E297                          ; koopa
+                    dw CODE_26E037                          ; glitchy coin?
+                    dw CODE_26DFA5                          ; mushroom level card
+                    dw CODE_26DF9F                          ; flower level card
+                    dw CODE_26DFA5                          ; star level card
+                    dw CODE_26DF79                          ; brown block
+                    dw CODE_26DFA5                          ; super mushroom
+                    dw CODE_26DFA5                          ; red ? mushroom
+                    dw CODE_26DFA5                          ; green ? mushroom
+                    dw CODE_26E0FE                          ; coin
+                                                            
+                                                            
+CODE_26DF79:        BB            TYX                       ; brown block
+CODE_26DF7A:        20 27 F6      JSR CODE_26F627           ; update x position
+CODE_26DF7D:        20 2D F6      JSR CODE_26F62D           ; update y position
 CODE_26DF80:        BD 35 18      LDA $1835,x               
 CODE_26DF83:        30 04         BMI CODE_26DF89           
-CODE_26DF85:        C9 7D         CMP #$7D                  
-CODE_26DF87:        B0 09         BCS CODE_26DF92                   
+CODE_26DF85:        C9 7D         CMP #$7D                  ; terminal velocity
+CODE_26DF87:        B0 09         BCS CODE_26DF92                           
 CODE_26DF89:        FE 35 18      INC $1835,x               
 CODE_26DF8C:        FE 35 18      INC $1835,x               
-CODE_26DF8F:        FE 35 18      INC $1835,x               
+CODE_26DF8F:        FE 35 18      INC $1835,x               ; update speed
 CODE_26DF92:        BD 13 18      LDA $1813,x               
 CODE_26DF95:        C9 F0         CMP #$F0                  
-CODE_26DF97:        90 03         BCC CODE_26DF9C           
-
-CODE_26DF99:        4C 2A ED      JMP CODE_26ED2A           
-
-CODE_26DF9C:        4C 8C E5      JMP CODE_26E58C           
-CODE_26DF9F:        BB            TYX                       
-CODE_26DFA0:        9E 46 18      STZ $1846,x               
+CODE_26DF97:        90 03         BCC CODE_26DF9C           ; \ if off screen
+                                                            ; / kill sprite
+CODE_26DF99:        4C 2A ED      JMP CODE_26ED2A           ; otherwise draw it
+                                                            
+CODE_26DF9C:        4C 8C E5      JMP CODE_26E58C           ; flower level card
+CODE_26DF9F:        BB            TYX                       ; no horizontal movement
+CODE_26DFA0:        9E 46 18      STZ $1846,x               ; merge below
 CODE_26DFA3:        80 01         BRA CODE_26DFA6           
-
-CODE_26DFA5:        BB            TYX                       
-CODE_26DFA6:        BD CD 18      LDA $18CD,x               
-CODE_26DFA9:        1D 7C 19      ORA $197C,x               
-CODE_26DFAC:        0D C0 19      ORA $19C0                 
-CODE_26DFAF:        0D 30 19      ORA $1930                 
-CODE_26DFB2:        0D AF 19      ORA $19AF                 
-CODE_26DFB5:        0D B0 19      ORA $19B0                 
+                                                            ; level cards & mushrooms
+CODE_26DFA5:        BB            TYX                       ; \ if sprite is locked
+CODE_26DFA6:        BD CD 18      LDA $18CD,x               ; | or frozen
+CODE_26DFA9:        1D 7C 19      ORA $197C,x               ; | or player swapping
+CODE_26DFAC:        0D C0 19      ORA $19C0                 ; | or game is over
+CODE_26DFAF:        0D 30 19      ORA $1930                 ; | or mario is taking damage
+CODE_26DFB2:        0D AF 19      ORA $19AF                 ; | or luigi is taking damage
+CODE_26DFB5:        0D B0 19      ORA $19B0                 ; / then game is in suspended state, skip this:
 CODE_26DFB8:        D0 2D         BNE CODE_26DFE7           
 CODE_26DFBA:        BD BB 18      LDA $18BB,x               
 CODE_26DFBD:        C9 10         CMP #$10                  
-CODE_26DFBF:        90 03         BCC CODE_26DFC4           
-CODE_26DFC1:        20 04 E2      JSR CODE_26E204           
-CODE_26DFC4:        20 27 F6      JSR CODE_26F627           
-CODE_26DFC7:        20 2D F6      JSR CODE_26F62D           
-CODE_26DFCA:        20 F4 D7      JSR CODE_26D7F4           
+CODE_26DFBF:        90 03         BCC CODE_26DFC4           ; ? | only level cards run this routine
+CODE_26DFC1:        20 04 E2      JSR CODE_26E204           ; update x position
+CODE_26DFC4:        20 27 F6      JSR CODE_26F627           ; update y position
+CODE_26DFC7:        20 2D F6      JSR CODE_26F62D           ; ?
+CODE_26DFCA:        20 F4 D7      JSR CODE_26D7F4           ; gravity acceleration
 CODE_26DFCD:        FE 35 18      INC $1835,x               
 CODE_26DFD0:        BD BB 18      LDA $18BB,x               
 CODE_26DFD3:        C9 0E         CMP #$0E                  
-CODE_26DFD5:        F0 10         BEQ CODE_26DFE7           
+CODE_26DFD5:        F0 10         BEQ CODE_26DFE7           ; gravity acceleration (minus star level card)
 CODE_26DFD7:        FE 35 18      INC $1835,x               
 CODE_26DFDA:        BD 97 18      LDA $1897,x               
 CODE_26DFDD:        29 03         AND #$03                  
-CODE_26DFDF:        3D 66 18      AND $1866,x               
-CODE_26DFE2:        F0 03         BEQ CODE_26DFE7           
-CODE_26DFE4:        20 A8 E8      JSR CODE_26E8A8           
-CODE_26DFE7:        BD 44 19      LDA $1944,x               
+CODE_26DFDF:        3D 66 18      AND $1866,x               ; \ if bumped into a wall
+CODE_26DFE2:        F0 03         BEQ CODE_26DFE7           ; / turn around
+CODE_26DFE4:        20 A8 E8      JSR CODE_26E8A8           ; \ if not on the screen
+CODE_26DFE7:        BD 44 19      LDA $1944,x               ; / exit
 CODE_26DFEA:        D0 4A         BNE CODE_26E036           
 CODE_26DFEC:        BD 97 18      LDA $1897,x               
-CODE_26DFEF:        29 04         AND #$04                  
-CODE_26DFF1:        F0 17         BEQ CODE_26E00A           
+CODE_26DFEF:        29 04         AND #$04                  ; if touching the floor:
+CODE_26DFF1:        F0 17         BEQ CODE_26E00A           ; land on ground
 CODE_26DFF3:        20 70 E4      JSR CODE_26E470           
 CODE_26DFF6:        BD BB 18      LDA $18BB,x               
 CODE_26DFF9:        C9 0E         CMP #$0E                  
 CODE_26DFFB:        D0 0A         BNE CODE_26E007           
-CODE_26DFFD:        BD 35 18      LDA $1835,x               
-CODE_26E000:        30 05         BMI CODE_26E007           
-CODE_26E002:        A9 DC         LDA #$DC                  
-CODE_26E004:        9D 35 18      STA $1835,x               
+CODE_26DFFD:        BD 35 18      LDA $1835,x               ; \ if a star level card touches floor
+CODE_26E000:        30 05         BMI CODE_26E007           ; | then use this value
+CODE_26E002:        A9 DC         LDA #$DC                  ; / to make it bounce back up
+CODE_26E004:        9D 35 18      STA $1835,x               ; check if bumped from below or POW
 CODE_26E007:        20 7C E4      JSR CODE_26E47C           
 CODE_26E00A:        BD BB 18      LDA $18BB,x               
-CODE_26E00D:        C9 10         CMP #$10                  
+CODE_26E00D:        C9 10         CMP #$10                          
 CODE_26E00F:        B0 0F         BCS CODE_26E020                   
 CODE_26E011:        BC BB 18      LDY $18BB,x               
 CODE_26E014:        BE 81 ED      LDX $ED81,y               
@@ -6237,14 +6237,14 @@ CODE_26E01A:        4A            LSR A
 CODE_26E01B:        4A            LSR A                     
 CODE_26E01C:        29 06         AND #$06                  
 CODE_26E01E:        80 10         BRA CODE_26E030           
-
+                                                            
 CODE_26E020:        20 8C E5      JSR CODE_26E58C           
 CODE_26E023:        AC C8 18      LDY $18C8                 
 CODE_26E026:        B9 73 09      LDA $0973,y               
 CODE_26E029:        29 BF         AND #$BF                  
 CODE_26E02B:        99 73 09      STA $0973,y               
 CODE_26E02E:        80 03         BRA CODE_26E033           
-
+                                                            ; draw sprite
 CODE_26E030:        20 95 E5      JSR CODE_26E595           
 CODE_26E033:        20 13 E9      JSR CODE_26E913           
 CODE_26E036:        60            RTS                       
@@ -6725,33 +6725,33 @@ CODE_26E46B:        9E CD 18      STZ $18CD,x
 CODE_26E46E:        AB            PLB                       
 CODE_26E46F:        60            RTS                       
 
-CODE_26E470:        BD 13 18      LDA $1813,x               
+CODE_26E470:        BD 13 18      LDA $1813,x               ; land on the floor
 CODE_26E473:        29 F0         AND #$F0                  
 CODE_26E475:        9D 13 18      STA $1813,x               
 CODE_26E478:        9E 35 18      STZ $1835,x               
 CODE_26E47B:        60            RTS                       
-
-CODE_26E47C:        BD 35 18      LDA $1835,x               
-CODE_26E47F:        30 FA         BMI CODE_26E47B           
-CODE_26E481:        BD 1E 19      LDA $191E,x               
-CODE_26E484:        D0 F5         BNE CODE_26E47B           
+                                                            
+CODE_26E47C:        BD 35 18      LDA $1835,x               ; \ if moving upwards
+CODE_26E47F:        30 FA         BMI CODE_26E47B           ; / exit
+CODE_26E481:        BD 1E 19      LDA $191E,x               ; \ if inside a pipe
+CODE_26E484:        D0 F5         BNE CODE_26E47B           ; / exit
 CODE_26E486:        BD FA 18      LDA $18FA,x               
 CODE_26E489:        C9 C2         CMP #$C2                  
-CODE_26E48B:        F0 05         BEQ CODE_26E492           
-CODE_26E48D:        AD BA 18      LDA $18BA                 
-CODE_26E490:        F0 E9         BEQ CODE_26E47B           
+CODE_26E48B:        F0 05         BEQ CODE_26E492           ; \ if being bumped from below
+CODE_26E48D:        AD BA 18      LDA $18BA                 ; |
+CODE_26E490:        F0 E9         BEQ CODE_26E47B           ; / or POW is active
 CODE_26E492:        BD BB 18      LDA $18BB,x               
 CODE_26E495:        C9 07         CMP #$07                  
 CODE_26E497:        F0 E2         BEQ CODE_26E47B           
 CODE_26E499:        C9 08         CMP #$08                  
 CODE_26E49B:        F0 DE         BEQ CODE_26E47B           
 CODE_26E49D:        C9 09         CMP #$09                  
-CODE_26E49F:        F0 DA         BEQ CODE_26E47B           
-CODE_26E4A1:        A9 02         LDA #$02                  
-CODE_26E4A3:        8D 00 12      STA $1200                 
-CODE_26E4A6:        9E 40 1A      STZ $1A40,x               
-CODE_26E4A9:        9E CD 18      STZ $18CD,x               
-CODE_26E4AC:        9E 7C 19      STZ $197C,x               
+CODE_26E49F:        F0 DA         BEQ CODE_26E47B           ; and you are not a boo
+CODE_26E4A1:        A9 02         LDA #$02                  ; \ make stomp sound
+CODE_26E4A3:        8D 00 12      STA $1200                 ; /
+CODE_26E4A6:        9E 40 1A      STZ $1A40,x               ; ?
+CODE_26E4A9:        9E CD 18      STZ $18CD,x               ; clear sprite lock
+CODE_26E4AC:        9E 7C 19      STZ $197C,x               ; clear sprite freeze
 CODE_26E4AF:        BD BB 18      LDA $18BB,x               
 CODE_26E4B2:        C9 0C         CMP #$0C                  
 CODE_26E4B4:        90 03         BCC CODE_26E4B9           
@@ -6868,8 +6868,8 @@ CODE_26E59C:        BD 44 19      LDA $1944,x
 CODE_26E59F:        F0 08         BEQ CODE_26E5A9           
 CODE_26E5A1:        BD 13 18      LDA $1813,x               
 CODE_26E5A4:        C9 E0         CMP #$E0                  
-CODE_26E5A6:        B0 01         BCS CODE_26E5A9                   
-CODE_26E5A8:        60            RTS                       
+CODE_26E5A6:        B0 01         BCS CODE_26E5A9                   ; if sprite is off the bottom of the screen
+CODE_26E5A8:        60            RTS                               ; return
 
 CODE_26E5A9:        BC BB 18      LDY $18BB,x               
 CODE_26E5AC:        C0 07         CPY #$07                  
@@ -7238,7 +7238,7 @@ DATA_26E8A4:        db $F0,$10
 DATA_26E8A6:        db $F8,$08                       
 
 
-CODE_26E8A8:        BD 46 18      LDA $1846,x               
+CODE_26E8A8:        BD 46 18      LDA $1846,x               ; flip a sprite's x speed
 CODE_26E8AB:        49 FF         EOR #$FF                  
 CODE_26E8AD:        1A            INC A                     
 CODE_26E8AE:        9D 46 18      STA $1846,x               
@@ -7620,7 +7620,7 @@ CODE_26EBD7:        A9 05         LDA #$05
 CODE_26EBD9:        8D 00 12      STA $1200                 
 CODE_26EBDC:        60            RTS                       
 
-CODE_26EBDD:        BB            TYX                       
+CODE_26EBDD:        BB            TYX                       ; flipped sprite
 CODE_26EBDE:        BD CD 18      LDA $18CD,x               
 CODE_26EBE1:        F0 03         BEQ CODE_26EBE6           
 CODE_26EBE3:        4C 9B EC      JMP CODE_26EC9B           
@@ -7740,7 +7740,7 @@ CODE_26ECD6:        FE 35 18      INC $1835,x
 CODE_26ECD9:        FE 35 18      INC $1835,x               
 CODE_26ECDC:        60            RTS                       
 
-CODE_26ECDD:        BB            TYX                       
+CODE_26ECDD:        BB            TYX                       ; dead sprite
 CODE_26ECDE:        BD 31 19      LDA $1931,x               
 CODE_26ECE1:        D0 05         BNE CODE_26ECE8           
 CODE_26ECE3:        BD CD 18      LDA $18CD,x               
@@ -7776,8 +7776,8 @@ CODE_26ED24:        A9 47         LDA #$47
 CODE_26ED26:        8D 00 12      STA $1200                 
 CODE_26ED29:        60            RTS                       
 
-CODE_26ED2A:        9E 02 18      STZ $1802,x               
-CODE_26ED2D:        60            RTS                       
+CODE_26ED2A:        9E 02 18      STZ $1802,x               ; kill sprite
+CODE_26ED2D:        60            RTS                       ; return
 
 CODE_26ED2E:        20 C7 EC      JSR CODE_26ECC7           
 CODE_26ED31:        FE 35 18      INC $1835,x               
@@ -7792,28 +7792,28 @@ CODE_26ED44:        DE 46 18      DEC $1846,x
 CODE_26ED47:        FE 46 18      INC $1846,x               
 CODE_26ED4A:        4C 8C E5      JMP CODE_26E58C           
 
-CODE_26ED4D:        AD BA 18      LDA $18BA                 
-CODE_26ED50:        85 00         STA $00                   
-CODE_26ED52:        F0 0D         BEQ CODE_26ED61           
+CODE_26ED4D:        AD BA 18      LDA $18BA                 ; \ if POW is active
+CODE_26ED50:        85 00         STA $00                   ; |
+CODE_26ED52:        F0 0D         BEQ CODE_26ED61           ; /
 CODE_26ED54:        CE BA 18      DEC $18BA                 
 CODE_26ED57:        4A            LSR A                     
 CODE_26ED58:        29 03         AND #$03                  
 CODE_26ED5A:        A8            TAY                       
 CODE_26ED5B:        B9 DD ED      LDA $EDDD,y               
-CODE_26ED5E:        8D 16 02      STA $0216                 
+CODE_26ED5E:        8D 16 02      STA $0216                 ; shake the screen
 CODE_26ED61:        AD 3E 19      LDA $193E                 
-CODE_26ED64:        C9 03         CMP #$03                  
-CODE_26ED66:        90 15         BCC CODE_26ED7D           
+CODE_26ED64:        C9 03         CMP #$03                  ; \ if POW is still alive, draw it
+CODE_26ED66:        90 15         BCC CODE_26ED7D           ; / otherwise
 CODE_26ED68:        AD 37 1A      LDA $1A37                 
-CODE_26ED6B:        C9 F0         CMP #$F0                  
-CODE_26ED6D:        D0 0D         BNE CODE_26ED7C           
-CODE_26ED6F:        20 E1 CC      JSR CODE_26CCE1           
-CODE_26ED72:        A5 01         LDA $01                   
-CODE_26ED74:        8D 36 1A      STA $1A36                 
-CODE_26ED77:        A5 02         LDA $02                   
-CODE_26ED79:        8D 37 1A      STA $1A37                 
+CODE_26ED6B:        C9 F0         CMP #$F0                  ; \ if it is time to try to respawn the POW
+CODE_26ED6D:        D0 0D         BNE CODE_26ED7C           ; /
+CODE_26ED6F:        20 E1 CC      JSR CODE_26CCE1           ; \ update POW respawn timers
+CODE_26ED72:        A5 01         LDA $01                   ; |
+CODE_26ED74:        8D 36 1A      STA $1A36                 ; |
+CODE_26ED77:        A5 02         LDA $02                   ; |
+CODE_26ED79:        8D 37 1A      STA $1A37                 ; /
 CODE_26ED7C:        60            RTS                       
-
+                                                            
 CODE_26ED7D:        A9 98         LDA #$98                  
 CODE_26ED7F:        38            SEC                       
 CODE_26ED80:        ED 16 02      SBC $0216                 
@@ -7827,9 +7827,9 @@ CODE_26ED92:        8D 02 08      STA $0802
 CODE_26ED95:        A9 04         LDA #$04                  
 CODE_26ED97:        8D 03 08      STA $0803                 
 CODE_26ED9A:        4A            LSR A                     
-CODE_26ED9B:        8D 20 0A      STA $0A20                 
+CODE_26ED9B:        8D 20 0A      STA $0A20                 ; draw the POW to oam
 CODE_26ED9E:        A2 01         LDX #$01                  
-CODE_26EDA0:        AD 3E 19      LDA $193E                 
+CODE_26EDA0:        AD 3E 19      LDA $193E                 ; check if players are hitting POW
 CODE_26EDA3:        C9 03         CMP #$03                  
 CODE_26EDA5:        D0 03         BNE CODE_26EDAA           
 CODE_26EDA7:        4C 64 EE      JMP CODE_26EE64           
@@ -7924,17 +7924,17 @@ CODE_26EE67:        4C A0 ED      JMP CODE_26EDA0
 
 CODE_26EE6A:        60            RTS                       
 
-CODE_26EE6B:        AD 35 1A      LDA $1A35                 
-CODE_26EE6E:        F0 FA         BEQ CODE_26EE6A           
-CODE_26EE70:        AD CB 18      LDA $18CB                 
-CODE_26EE73:        0D CC 18      ORA $18CC                 
-CODE_26EE76:        0D 30 19      ORA $1930                 
-CODE_26EE79:        0D C0 19      ORA $19C0                 
-CODE_26EE7C:        0D AF 19      ORA $19AF                 
-CODE_26EE7F:        0D B0 19      ORA $19B0                 
-CODE_26EE82:        D0 E6         BNE CODE_26EE6A           
+CODE_26EE6B:        AD 35 1A      LDA $1A35                 ; \ if this thing is not happening
+CODE_26EE6E:        F0 FA         BEQ CODE_26EE6A           ; / exit
+CODE_26EE70:        AD CB 18      LDA $18CB                 ; \ if mario is frozen
+CODE_26EE73:        0D CC 18      ORA $18CC                 ; | or luigi
+CODE_26EE76:        0D 30 19      ORA $1930                 ; | or game is over
+CODE_26EE79:        0D C0 19      ORA $19C0                 ; | or players are swapping
+CODE_26EE7C:        0D AF 19      ORA $19AF                 ; | or mario is taking damage
+CODE_26EE7F:        0D B0 19      ORA $19B0                 ; | or luigi is taking damage
+CODE_26EE82:        D0 E6         BNE CODE_26EE6A           ; / exit
 CODE_26EE84:        CE 35 1A      DEC $1A35                 
-CODE_26EE87:        AD 35 1A      LDA $1A35                 
+CODE_26EE87:        AD 35 1A      LDA $1A35                 ; respawn POW
 CODE_26EE8A:        29 07         AND #$07                  
 CODE_26EE8C:        D0 DC         BNE CODE_26EE6A           
 CODE_26EE8E:        CE 3E 19      DEC $193E                 
@@ -8045,18 +8045,18 @@ CODE_26EF7D:        90 03         BCC CODE_26EF82
 CODE_26EF7F:        9E 02 18      STZ $1802,x               
 CODE_26EF82:        60            RTS                       
 
-CODE_26EF83:        A2 01         LDX #$01                  
+CODE_26EF83:        A2 01         LDX #$01                  ; handle bouncing block sprites
 CODE_26EF85:        8E 0E 19      STX $190E                 
 CODE_26EF88:        BD 0F 18      LDA $180F,x               
-CODE_26EF8B:        F0 26         BEQ CODE_26EFB3           
+CODE_26EF8B:        F0 26         BEQ CODE_26EFB3           ; if it doesn't exist, skip it
 CODE_26EF8D:        48            PHA                       
 CODE_26EF8E:        C9 0E         CMP #$0E                  
 CODE_26EF90:        D0 03         BNE CODE_26EF95           
-CODE_26EF92:        20 13 F0      JSR CODE_26F013           
+CODE_26EF92:        20 13 F0      JSR CODE_26F013           ; if it just spawned, initialize it
 CODE_26EF95:        68            PLA                       
 CODE_26EF96:        C9 01         CMP #$01                  
 CODE_26EF98:        D0 16         BNE CODE_26EFB0           
-CODE_26EF9A:        20 02 F0      JSR CODE_26F002           
+CODE_26EF9A:        20 02 F0      JSR CODE_26F002           ; if it is about to despawn
 CODE_26EF9D:        A9 00         LDA #$00                  
 CODE_26EF9F:        85 2E         STA $2E                   
 CODE_26EFA1:        A9 20         LDA #$20                  
@@ -8064,21 +8064,21 @@ CODE_26EFA3:        85 2F         STA $2F
 CODE_26EFA5:        A9 7E         LDA #$7E                  
 CODE_26EFA7:        85 30         STA $30                   
 CODE_26EFA9:        BC 08 19      LDY $1908,x               
-CODE_26EFAC:        A9 C1         LDA #$C1                  
-CODE_26EFAE:        97 2E         STA [$2E],y               
-CODE_26EFB0:        20 B7 EF      JSR CODE_26EFB7           
+CODE_26EFAC:        A9 C1         LDA #$C1                  ; \ update the level layout with a solid block
+CODE_26EFAE:        97 2E         STA [$2E],y               ; /
+CODE_26EFB0:        20 B7 EF      JSR CODE_26EFB7           ; draw the bouncing block sprite
 CODE_26EFB3:        CA            DEX                       
 CODE_26EFB4:        10 CF         BPL CODE_26EF85           
 CODE_26EFB6:        60            RTS                       
-
-CODE_26EFB7:        AD 76 00      LDA $0076                 
+                                                            
+CODE_26EFB7:        AD 76 00      LDA $0076                 ; draw bouncing block sprite
 CODE_26EFBA:        0D CB 18      ORA $18CB                 
 CODE_26EFBD:        0D CC 18      ORA $18CC                 
 CODE_26EFC0:        0D C0 19      ORA $19C0                 
 CODE_26EFC3:        0D AF 19      ORA $19AF                 
 CODE_26EFC6:        0D B0 19      ORA $19B0                 
 CODE_26EFC9:        D0 0F         BNE CODE_26EFDA           
-CODE_26EFCB:        DE 0F 18      DEC $180F,x               
+CODE_26EFCB:        DE 0F 18      DEC $180F,x               ; and tick it's status as well
 CODE_26EFCE:        20 21 F6      JSR CODE_26F621           
 CODE_26EFD1:        BD 42 18      LDA $1842,x               
 CODE_26EFD4:        18            CLC                       
@@ -8245,23 +8245,23 @@ CODE_26F10C:        99 E9 19      STA $19E9,y
 CODE_26F10F:        7A            PLY                       
 CODE_26F110:        60            RTS                       
 
-CODE_26F111:        A2 07         LDX #$07                  
+CODE_26F111:        A2 07         LDX #$07                  ; draw particles
 CODE_26F113:        BD E0 19      LDA $19E0,x               
 CODE_26F116:        30 03         BMI CODE_26F11B           
 CODE_26F118:        20 1F F1      JSR CODE_26F11F           
 CODE_26F11B:        CA            DEX                       
 CODE_26F11C:        10 F5         BPL CODE_26F113           
 CODE_26F11E:        60            RTS                       
-
-CODE_26F11F:        BD E9 19      LDA $19E9,x               
+                                                            
+CODE_26F11F:        BD E9 19      LDA $19E9,x               ; particle id
 CODE_26F122:        9B            TXY                       
 CODE_26F123:        0A            ASL A                     
 CODE_26F124:        AA            TAX                       
 CODE_26F125:        7C 28 F1      JMP ($F128,x)             
-
-
-DATA_26F128:        dw CODE_26F12C 
-                    dw CODE_26F188 
+                                                            
+                                                            
+DATA_26F128:        dw CODE_26F12C                          ; skid smoke
+                    dw CODE_26F188                          ; yellow bump star
 
 
 CODE_26F12C:        BB            TYX
@@ -8390,15 +8390,15 @@ CODE_26F228:        99 3C 0A      STA $0A3C,y
 CODE_26F22B:        7A            PLY                       
 CODE_26F22C:        60            RTS                       
 
-CODE_26F22D:        AD 28 1A      LDA $1A28                 
-CODE_26F230:        F0 13         BEQ CODE_26F245           
+CODE_26F22D:        AD 28 1A      LDA $1A28                 ; \ only if on intro screen...
+CODE_26F230:        F0 13         BEQ CODE_26F245           ; /
 CODE_26F232:        9C 6C 1A      STZ $1A6C                 
-CODE_26F235:        AD 26 1F      LDA $1F26                 
-CODE_26F238:        D0 08         BNE CODE_26F242           
-CODE_26F23A:        20 69 F3      JSR CODE_26F369           
-CODE_26F23D:        AD 67 1A      LDA $1A67                 
-CODE_26F240:        F0 03         BEQ CODE_26F245           
-CODE_26F242:        20 46 F2      JSR CODE_26F246           
+CODE_26F235:        AD 26 1F      LDA $1F26                 ; \ if on round 1
+CODE_26F238:        D0 08         BNE CODE_26F242           ; |
+CODE_26F23A:        20 69 F3      JSR CODE_26F369           ; | draw "5 games to win!" text
+CODE_26F23D:        AD 67 1A      LDA $1A67                 ; | and if the timer says so
+CODE_26F240:        F0 03         BEQ CODE_26F245           ; / also
+CODE_26F242:        20 46 F2      JSR CODE_26F246           ; draw "round x" text
 CODE_26F245:        60            RTS                       
 
 CODE_26F246:        8B            PHB                       
@@ -8519,20 +8519,20 @@ CODE_26F341:        FA            PLX
 CODE_26F342:        AB            PLB                       
 CODE_26F343:        60            RTS                       
 
-CODE_26F344:        AD 76 00      LDA $0076                 
-CODE_26F347:        F0 1F         BEQ CODE_26F368           
+CODE_26F344:        AD 76 00      LDA $0076                 ; \ only if paused...
+CODE_26F347:        F0 1F         BEQ CODE_26F368           ; /
 CODE_26F349:        8B            PHB                       
 CODE_26F34A:        4B            PHK                       
 CODE_26F34B:        AB            PLB                       
 CODE_26F34C:        A0 00         LDY #$00                  
 CODE_26F34E:        C2 30         REP #$30                  
-CODE_26F350:        A9 2A F8      LDA #$F82A                
-CODE_26F353:        8D 00 00      STA $0000                 
-CODE_26F356:        A9 7A F8      LDA #$F87A                
-CODE_26F359:        8D 02 00      STA $0002                 
-CODE_26F35C:        A9 28 00      LDA #$0028                
-CODE_26F35F:        8D 04 00      STA $0004                 
-CODE_26F362:        20 66 F4      JSR CODE_26F466           
+CODE_26F350:        A9 2A F8      LDA #$F82A                ; \ draw "PAUSE" text
+CODE_26F353:        8D 00 00      STA $0000                 ; |
+CODE_26F356:        A9 7A F8      LDA #$F87A                ; |
+CODE_26F359:        8D 02 00      STA $0002                 ; |
+CODE_26F35C:        A9 28 00      LDA #$0028                ; |
+CODE_26F35F:        8D 04 00      STA $0004                 ; |
+CODE_26F362:        20 66 F4      JSR CODE_26F466           ; /
 CODE_26F365:        E2 30         SEP #$30                  
 CODE_26F367:        AB            PLB                       
 CODE_26F368:        60            RTS                       
@@ -8651,10 +8651,10 @@ CODE_26F463:        FA            PLX
 CODE_26F464:        AB            PLB                       
 CODE_26F465:        60            RTS                       
 
-CODE_26F466:        B2 00         LDA ($00)                 
-CODE_26F468:        99 10 08      STA $0810,y               
+CODE_26F466:        B2 00         LDA ($00)                 ; draw object text
+CODE_26F468:        99 10 08      STA $0810,y               ; pointer to X|Y positions at $00
 CODE_26F46B:        B2 02         LDA ($02)                 
-CODE_26F46D:        99 12 08      STA $0812,y               
+CODE_26F46D:        99 12 08      STA $0812,y               ; pointer to tile|properties at $02
 CODE_26F470:        EE 00 00      INC $0000                 
 CODE_26F473:        EE 00 00      INC $0000                 
 CODE_26F476:        EE 02 00      INC $0002                 
@@ -8760,161 +8760,161 @@ CODE_26F543:        8D E7 09      STA $09E7                 ;0 S:01FF P:EnvMXdIz
 CODE_26F546:        FA            PLX                       ;0 S:01FF P:EnvMXdIzc HC:1438 VC:000 FC:00 I:00
 CODE_26F547:        60            RTS                       ;0 S:01FF P:EnvMXdIzc HC:1454 VC:000 FC:00 I:00
 
-CODE_26F548:        BB            TYX                       ;0 S:01FF P:EnvMXdIzc HC:1470 VC:000 FC:00 I:00
-CODE_26F549:        AD CB 18      LDA $18CB                 ;0 S:01FF P:EnvMXdIzc HC:1486 VC:000 FC:00 I:00
-CODE_26F54C:        0D CC 18      ORA $18CC                 ;0 S:01FF P:EnvMXdIzc HC:1502 VC:000 FC:00 I:00
-CODE_26F54F:        0D 30 19      ORA $1930                 ;0 S:01FF P:EnvMXdIzc HC:1518 VC:000 FC:00 I:00
-CODE_26F552:        0D C0 19      ORA $19C0                 ;0 S:01FF P:EnvMXdIzc HC:1534 VC:000 FC:00 I:00
-CODE_26F555:        0D AF 19      ORA $19AF                 ;0 S:01FF P:EnvMXdIzc HC:1550 VC:000 FC:00 I:00
-CODE_26F558:        0D B0 19      ORA $19B0                 ;0 S:01FF P:EnvMXdIzc HC:1566 VC:000 FC:00 I:00
-CODE_26F55B:        D0 6E         BNE CODE_26F5CB           ;0 S:01FF P:EnvMXdIzc HC:1582 VC:000 FC:00 I:00
-CODE_26F55D:        BD 1E 19      LDA $191E,x               ;0 S:01FF P:EnvMXdIzc HC:1598 VC:000 FC:00 I:00
-CODE_26F560:        F0 2B         BEQ CODE_26F58D           ;0 S:01FF P:EnvMXdIzc HC:1614 VC:000 FC:00 I:00
-CODE_26F562:        DE 1E 19      DEC $191E,x               ;0 S:01FF P:EnvMXdIzc HC:1630 VC:000 FC:00 I:00
-CODE_26F565:        D0 26         BNE CODE_26F58D           ;0 S:01FF P:EnvMXdIzc HC:1646 VC:000 FC:00 I:00
-CODE_26F567:        A9 01         LDA #$01                  ;0 S:01FF P:EnvMXdIzc HC:1662 VC:000 FC:00 I:00
-CODE_26F569:        9D 02 18      STA $1802,x               ;0 S:01FF P:EnvMXdIzc HC:1678 VC:000 FC:00 I:00
-CODE_26F56C:        AD 33 1A      LDA $1A33                 ;0 S:01FF P:EnvMXdIzc HC:1694 VC:000 FC:00 I:00
-CODE_26F56F:        D0 08         BNE CODE_26F579           ;0 S:01FF P:EnvMXdIzc HC:1710 VC:000 FC:00 I:00
-CODE_26F571:        BD 46 18      LDA $1846,x               ;0 S:01FF P:EnvMXdIzc HC:1726 VC:000 FC:00 I:00
-CODE_26F574:        20 1A EC      JSR CODE_26EC1A           ;0 S:01FF P:EnvMXdIzc HC:1742 VC:000 FC:00 I:00
-CODE_26F577:        80 0E         BRA CODE_26F587           ;0 S:01FF P:EnvMXdIzc HC:1758 VC:000 FC:00 I:00
+CODE_26F548:        BB            TYX                       ; kicked sprite
+CODE_26F549:        AD CB 18      LDA $18CB                 
+CODE_26F54C:        0D CC 18      ORA $18CC                 
+CODE_26F54F:        0D 30 19      ORA $1930                 
+CODE_26F552:        0D C0 19      ORA $19C0                 
+CODE_26F555:        0D AF 19      ORA $19AF                 
+CODE_26F558:        0D B0 19      ORA $19B0                 
+CODE_26F55B:        D0 6E         BNE CODE_26F5CB           
+CODE_26F55D:        BD 1E 19      LDA $191E,x               
+CODE_26F560:        F0 2B         BEQ CODE_26F58D           
+CODE_26F562:        DE 1E 19      DEC $191E,x               
+CODE_26F565:        D0 26         BNE CODE_26F58D           
+CODE_26F567:        A9 01         LDA #$01                  
+CODE_26F569:        9D 02 18      STA $1802,x               
+CODE_26F56C:        AD 33 1A      LDA $1A33                 
+CODE_26F56F:        D0 08         BNE CODE_26F579           
+CODE_26F571:        BD 46 18      LDA $1846,x               
+CODE_26F574:        20 1A EC      JSR CODE_26EC1A           
+CODE_26F577:        80 0E         BRA CODE_26F587           
 
-CODE_26F579:        BD 46 18      LDA $1846,x               ;0 S:01FF P:EnvMXdIzc HC:1774 VC:000 FC:00 I:00
-CODE_26F57C:        30 04         BMI CODE_26F582           ;0 S:01FF P:EnvMXdIzc HC:1790 VC:000 FC:00 I:00
-CODE_26F57E:        A9 06         LDA #$06                  ;0 S:01FF P:EnvMXdIzc HC:1806 VC:000 FC:00 I:00
-CODE_26F580:        80 02         BRA CODE_26F584           ;0 S:01FF P:EnvMXdIzc HC:1822 VC:000 FC:00 I:00
+CODE_26F579:        BD 46 18      LDA $1846,x               
+CODE_26F57C:        30 04         BMI CODE_26F582           
+CODE_26F57E:        A9 06         LDA #$06                  
+CODE_26F580:        80 02         BRA CODE_26F584           
 
-CODE_26F582:        A9 FA         LDA #$FA                  ;0 S:01FF P:EnvMXdIzc HC:1838 VC:000 FC:00 I:00
-CODE_26F584:        9D 46 18      STA $1846,x               ;0 S:01FF P:EnvMXdIzc HC:1854 VC:000 FC:00 I:00
-CODE_26F587:        A9 3C         LDA #$3C                  ;0 S:01FF P:EnvMXdIzc HC:1870 VC:000 FC:00 I:00
-CODE_26F589:        9D 1E 19      STA $191E,x               ;0 S:01FF P:EnvMXdIzc HC:1886 VC:000 FC:00 I:00
-CODE_26F58C:        60            RTS                       ;0 S:01FF P:EnvMXdIzc HC:1902 VC:000 FC:00 I:00
+CODE_26F582:        A9 FA         LDA #$FA                  
+CODE_26F584:        9D 46 18      STA $1846,x               
+CODE_26F587:        A9 3C         LDA #$3C                  
+CODE_26F589:        9D 1E 19      STA $191E,x               
+CODE_26F58C:        60            RTS                       
 
-CODE_26F58D:        20 04 E2      JSR CODE_26E204           ;0 S:01FF P:EnvMXdIzc HC:1918 VC:000 FC:00 I:00
-CODE_26F590:        20 80 E1      JSR CODE_26E180           ;0 S:01FF P:EnvMXdIzc HC:1934 VC:000 FC:00 I:00
-CODE_26F593:        20 2D F6      JSR CODE_26F62D           ;0 S:01FF P:EnvMXdIzc HC:1950 VC:000 FC:00 I:00
-CODE_26F596:        BD 35 18      LDA $1835,x               ;0 S:01FF P:EnvMXdIzc HC:1966 VC:000 FC:00 I:00
-CODE_26F599:        30 04         BMI CODE_26F59F           ;0 S:01FF P:EnvMXdIzc HC:1982 VC:000 FC:00 I:00
-CODE_26F59B:        C9 40         CMP #$40                  ;0 S:01FF P:EnvMXdIzc HC:1998 VC:000 FC:00 I:00
-CODE_26F59D:        B0 06         BCS CODE_26F5A5           ;0 S:01FF P:EnvMXdIzc HC:2014 VC:000 FC:00 I:00
-CODE_26F59F:        FE 35 18      INC $1835,x               ;0 S:01FF P:EnvMXdIzc HC:2030 VC:000 FC:00 I:00
-CODE_26F5A2:        FE 35 18      INC $1835,x               ;0 S:01FF P:EnvMXdIzc HC:2046 VC:000 FC:00 I:00
-CODE_26F5A5:        20 F4 D7      JSR CODE_26D7F4           ;0 S:01FF P:EnvMXdIzc HC:2062 VC:000 FC:00 I:00
-CODE_26F5A8:        BD 97 18      LDA $1897,x               ;0 S:01FF P:EnvMXdIzc HC:2078 VC:000 FC:00 I:00
-CODE_26F5AB:        29 04         AND #$04                  ;0 S:01FF P:EnvMXdIzc HC:2094 VC:000 FC:00 I:00
-CODE_26F5AD:        D0 05         BNE CODE_26F5B4           ;0 S:01FF P:EnvMXdIzc HC:2110 VC:000 FC:00 I:00
-CODE_26F5AF:        9D 57 18      STA $1857,x               ;0 S:01FF P:EnvMXdIzc HC:2126 VC:000 FC:00 I:00
-CODE_26F5B2:        80 06         BRA CODE_26F5BA           ;0 S:01FF P:EnvMXdIzc HC:2142 VC:000 FC:00 I:00
+CODE_26F58D:        20 04 E2      JSR CODE_26E204           
+CODE_26F590:        20 80 E1      JSR CODE_26E180           
+CODE_26F593:        20 2D F6      JSR CODE_26F62D           
+CODE_26F596:        BD 35 18      LDA $1835,x               
+CODE_26F599:        30 04         BMI CODE_26F59F           
+CODE_26F59B:        C9 40         CMP #$40                  
+CODE_26F59D:        B0 06         BCS CODE_26F5A5           
+CODE_26F59F:        FE 35 18      INC $1835,x               
+CODE_26F5A2:        FE 35 18      INC $1835,x               
+CODE_26F5A5:        20 F4 D7      JSR CODE_26D7F4           
+CODE_26F5A8:        BD 97 18      LDA $1897,x               
+CODE_26F5AB:        29 04         AND #$04                  
+CODE_26F5AD:        D0 05         BNE CODE_26F5B4           
+CODE_26F5AF:        9D 57 18      STA $1857,x               
+CODE_26F5B2:        80 06         BRA CODE_26F5BA           
 
-CODE_26F5B4:        20 70 E4      JSR CODE_26E470           ;0 S:01FF P:EnvMXdIzc HC:2158 VC:000 FC:00 I:00
-CODE_26F5B7:        20 7C E4      JSR CODE_26E47C           ;0 S:01FF P:EnvMXdIzc HC:2174 VC:000 FC:00 I:00
-CODE_26F5BA:        20 C6 E6      JSR CODE_26E6C6           ;0 S:01FF P:EnvMXdIzc HC:2190 VC:000 FC:00 I:00
-CODE_26F5BD:        EE 2D 1A      INC $1A2D                 ;0 S:01FF P:EnvMXdIzc HC:2206 VC:000 FC:00 I:00
-CODE_26F5C0:        BD E9 18      LDA $18E9,x               ;0 S:01FF P:EnvMXdIzc HC:2222 VC:000 FC:00 I:00
-CODE_26F5C3:        F0 03         BEQ CODE_26F5C8           ;0 S:01FF P:EnvMXdIzc HC:2238 VC:000 FC:00 I:00
-CODE_26F5C5:        DE E9 18      DEC $18E9,x               ;0 S:01FF P:EnvMXdIzc HC:2254 VC:000 FC:00 I:00
-CODE_26F5C8:        20 13 E9      JSR CODE_26E913           ;0 S:01FF P:EnvMXdIzc HC:2270 VC:000 FC:00 I:00
-CODE_26F5CB:        20 8C E5      JSR CODE_26E58C           ;0 S:01FF P:EnvMXdIzc HC:2286 VC:000 FC:00 I:00
-CODE_26F5CE:        AD 2D 1A      LDA $1A2D                 ;0 S:01FF P:EnvMXdIzc HC:2302 VC:000 FC:00 I:00
-CODE_26F5D1:        29 0C         AND #$0C                  ;0 S:01FF P:EnvMXdIzc HC:2318 VC:000 FC:00 I:00
-CODE_26F5D3:        4A            LSR A                     ;0 S:01FF P:EnvMXdIzc HC:2334 VC:000 FC:00 I:00
-CODE_26F5D4:        4A            LSR A                     ;0 S:01FF P:EnvMXdIzc HC:2350 VC:000 FC:00 I:00
-CODE_26F5D5:        48            PHA                       ;0 S:01FF P:EnvMXdIzc HC:2366 VC:000 FC:00 I:00
-CODE_26F5D6:        A8            TAY                       ;0 S:01FF P:EnvMXdIzc HC:2382 VC:000 FC:00 I:00
-CODE_26F5D7:        B9 B7 ED      LDA $EDB7,y               ;0 S:01FF P:EnvMXdIzc HC:2398 VC:000 FC:00 I:00
-CODE_26F5DA:        8D 00 00      STA $0000                 ;0 S:01FF P:EnvMXdIzc HC:2414 VC:000 FC:00 I:00
-CODE_26F5DD:        AC C8 18      LDY $18C8                 ;0 S:01FF P:EnvMXdIzc HC:2430 VC:000 FC:00 I:00
-CODE_26F5E0:        99 72 09      STA $0972,y               ;0 S:01FF P:EnvMXdIzc HC:2446 VC:000 FC:00 I:00
-CODE_26F5E3:        B9 73 09      LDA $0973,y               ;0 S:01FF P:EnvMXdIzc HC:2462 VC:000 FC:00 I:00
-CODE_26F5E6:        0D 34 1A      ORA $1A34                 ;0 S:01FF P:EnvMXdIzc HC:2478 VC:000 FC:00 I:00
-CODE_26F5E9:        99 73 09      STA $0973,y               ;0 S:01FF P:EnvMXdIzc HC:2494 VC:000 FC:00 I:00
-CODE_26F5EC:        68            PLA                       ;0 S:01FF P:EnvMXdIzc HC:2510 VC:000 FC:00 I:00
-CODE_26F5ED:        1A            INC A                     ;0 S:01FF P:EnvMXdIzc HC:2526 VC:000 FC:00 I:00
-CODE_26F5EE:        29 03         AND #$03                  ;0 S:01FF P:EnvMXdIzc HC:2542 VC:000 FC:00 I:00
-CODE_26F5F0:        8D 01 00      STA $0001                 ;0 S:01FF P:EnvMXdIzc HC:2558 VC:000 FC:00 I:00
-CODE_26F5F3:        D0 08         BNE CODE_26F5FD           ;0 S:01FF P:EnvMXdIzc HC:2574 VC:000 FC:00 I:00
-CODE_26F5F5:        B9 73 09      LDA $0973,y               ;0 S:01FF P:EnvMXdIzc HC:2590 VC:000 FC:00 I:00
-CODE_26F5F8:        49 40         EOR #$40                  ;0 S:01FF P:EnvMXdIzc HC:2606 VC:000 FC:00 I:00
-CODE_26F5FA:        99 73 09      STA $0973,y               ;0 S:01FF P:EnvMXdIzc HC:2622 VC:000 FC:00 I:00
-CODE_26F5FD:        B9 75 09      LDA $0975,y               ;0 S:01FF P:EnvMXdIzc HC:2638 VC:000 FC:00 I:00
-CODE_26F600:        C9 F0         CMP #$F0                  ;0 S:01FF P:EnvMXdIzc HC:2654 VC:000 FC:00 I:00
-CODE_26F602:        F0 1C         BEQ CODE_26F620           ;0 S:01FF P:EnvMXdIzc HC:2670 VC:000 FC:00 I:00
-CODE_26F604:        AD 00 00      LDA $0000                 ;0 S:01FF P:EnvMXdIzc HC:2686 VC:000 FC:00 I:00
-CODE_26F607:        99 76 09      STA $0976,y               ;0 S:01FF P:EnvMXdIzc HC:2702 VC:000 FC:00 I:00
-CODE_26F60A:        B9 77 09      LDA $0977,y               ;0 S:01FF P:EnvMXdIzc HC:2718 VC:000 FC:00 I:00
-CODE_26F60D:        0D 34 1A      ORA $1A34                 ;0 S:01FF P:EnvMXdIzc HC:2734 VC:000 FC:00 I:00
-CODE_26F610:        99 77 09      STA $0977,y               ;0 S:01FF P:EnvMXdIzc HC:2750 VC:000 FC:00 I:00
-CODE_26F613:        AD 01 00      LDA $0001                 ;0 S:01FF P:EnvMXdIzc HC:2766 VC:000 FC:00 I:00
-CODE_26F616:        D0 08         BNE CODE_26F620           ;0 S:01FF P:EnvMXdIzc HC:2782 VC:000 FC:00 I:00
-CODE_26F618:        B9 77 09      LDA $0977,y               ;0 S:01FF P:EnvMXdIzc HC:2798 VC:000 FC:00 I:00
-CODE_26F61B:        49 40         EOR #$40                  ;0 S:01FF P:EnvMXdIzc HC:2814 VC:000 FC:00 I:00
-CODE_26F61D:        99 77 09      STA $0977,y               ;0 S:01FF P:EnvMXdIzc HC:2830 VC:000 FC:00 I:00
-CODE_26F620:        60            RTS                       ;0 S:01FF P:EnvMXdIzc HC:2846 VC:000 FC:00 I:00
+CODE_26F5B4:        20 70 E4      JSR CODE_26E470           
+CODE_26F5B7:        20 7C E4      JSR CODE_26E47C           
+CODE_26F5BA:        20 C6 E6      JSR CODE_26E6C6           
+CODE_26F5BD:        EE 2D 1A      INC $1A2D                 
+CODE_26F5C0:        BD E9 18      LDA $18E9,x               
+CODE_26F5C3:        F0 03         BEQ CODE_26F5C8           
+CODE_26F5C5:        DE E9 18      DEC $18E9,x               
+CODE_26F5C8:        20 13 E9      JSR CODE_26E913           
+CODE_26F5CB:        20 8C E5      JSR CODE_26E58C           
+CODE_26F5CE:        AD 2D 1A      LDA $1A2D                 
+CODE_26F5D1:        29 0C         AND #$0C                  
+CODE_26F5D3:        4A            LSR A                     
+CODE_26F5D4:        4A            LSR A                     
+CODE_26F5D5:        48            PHA                       
+CODE_26F5D6:        A8            TAY                       
+CODE_26F5D7:        B9 B7 ED      LDA $EDB7,y               
+CODE_26F5DA:        8D 00 00      STA $0000                 
+CODE_26F5DD:        AC C8 18      LDY $18C8                 
+CODE_26F5E0:        99 72 09      STA $0972,y               
+CODE_26F5E3:        B9 73 09      LDA $0973,y               
+CODE_26F5E6:        0D 34 1A      ORA $1A34                 
+CODE_26F5E9:        99 73 09      STA $0973,y               
+CODE_26F5EC:        68            PLA                       
+CODE_26F5ED:        1A            INC A                     
+CODE_26F5EE:        29 03         AND #$03                  
+CODE_26F5F0:        8D 01 00      STA $0001                 
+CODE_26F5F3:        D0 08         BNE CODE_26F5FD           
+CODE_26F5F5:        B9 73 09      LDA $0973,y               
+CODE_26F5F8:        49 40         EOR #$40                  
+CODE_26F5FA:        99 73 09      STA $0973,y               
+CODE_26F5FD:        B9 75 09      LDA $0975,y               
+CODE_26F600:        C9 F0         CMP #$F0                  
+CODE_26F602:        F0 1C         BEQ CODE_26F620           
+CODE_26F604:        AD 00 00      LDA $0000                 
+CODE_26F607:        99 76 09      STA $0976,y               
+CODE_26F60A:        B9 77 09      LDA $0977,y               
+CODE_26F60D:        0D 34 1A      ORA $1A34                 
+CODE_26F610:        99 77 09      STA $0977,y               
+CODE_26F613:        AD 01 00      LDA $0001                 
+CODE_26F616:        D0 08         BNE CODE_26F620           
+CODE_26F618:        B9 77 09      LDA $0977,y               
+CODE_26F61B:        49 40         EOR #$40                  
+CODE_26F61D:        99 77 09      STA $0977,y               
+CODE_26F620:        60            RTS                       
 
-CODE_26F621:        8A            TXA                       ;0 S:01FF P:EnvMXdIzc HC:2862 VC:000 FC:00 I:00
-CODE_26F622:        18            CLC                       ;0 S:01FF P:EnvMXdIzc HC:2878 VC:000 FC:00 I:00
-CODE_26F623:        69 0F         ADC #$0F                  ;0 S:01FF P:EnvMXdIzc HC:2894 VC:000 FC:00 I:00
-CODE_26F625:        10 0A         BPL CODE_26F631           ;0 S:01FF P:EnvMXdIzc HC:2910 VC:000 FC:00 I:00
-CODE_26F627:        8A            TXA                       ;0 S:01FF P:EnvMXdIzc HC:2926 VC:000 FC:00 I:00
-CODE_26F628:        18            CLC                       ;0 S:01FF P:EnvMXdIzc HC:2942 VC:000 FC:00 I:00
-CODE_26F629:        69 13         ADC #$13                  ;0 S:01FF P:EnvMXdIzc HC:2958 VC:000 FC:00 I:00
-CODE_26F62B:        10 04         BPL CODE_26F631           ;0 S:01FF P:EnvMXdIzc HC:2974 VC:000 FC:00 I:00
-CODE_26F62D:        8A            TXA                       ;0 S:01FF P:EnvMXdIzc HC:2990 VC:000 FC:00 I:00
-CODE_26F62E:        18            CLC                       ;0 S:01FF P:EnvMXdIzc HC:3006 VC:000 FC:00 I:00
-CODE_26F62F:        69 02         ADC #$02                  ;0 S:01FF P:EnvMXdIzc HC:3022 VC:000 FC:00 I:00
-CODE_26F631:        AA            TAX                       ;0 S:01FF P:EnvMXdIzc HC:3038 VC:000 FC:00 I:00
-CODE_26F632:        20 45 F6      JSR CODE_26F645           ;0 S:01FF P:EnvMXdIzc HC:3054 VC:000 FC:00 I:00
-CODE_26F635:        AE 0E 19      LDX $190E                 ;0 S:01FF P:EnvMXdIzc HC:3070 VC:000 FC:00 I:00
-CODE_26F638:        60            RTS                       ;0 S:01FF P:EnvMXdIzc HC:3086 VC:000 FC:00 I:00
-
-CODE_26F639:        8A            TXA                       ;0 S:01FF P:EnvMXdIzc HC:3102 VC:000 FC:00 I:00
-CODE_26F63A:        18            CLC                       ;0 S:01FF P:EnvMXdIzc HC:3118 VC:000 FC:00 I:00
-CODE_26F63B:        69 11         ADC #$11                  ;0 S:01FF P:EnvMXdIzc HC:3134 VC:000 FC:00 I:00
-CODE_26F63D:        AA            TAX                       ;0 S:01FF P:EnvMXdIzc HC:3150 VC:000 FC:00 I:00
-CODE_26F63E:        20 45 F6      JSR CODE_26F645           ;0 S:01FF P:EnvMXdIzc HC:3166 VC:000 FC:00 I:00
-CODE_26F641:        AE 0E 19      LDX $190E                 ;0 S:01FF P:EnvMXdIzc HC:3182 VC:000 FC:00 I:00
-CODE_26F644:        60            RTS                       ;0 S:01FF P:EnvMXdIzc HC:3198 VC:000 FC:00 I:00
-
-CODE_26F645:        BD 33 18      LDA $1833,x               ;0 S:01FF P:EnvMXdIzc HC:3214 VC:000 FC:00 I:00
-CODE_26F648:        0A            ASL A                     ;0 S:01FF P:EnvMXdIzc HC:3230 VC:000 FC:00 I:00
-CODE_26F649:        0A            ASL A                     ;0 S:01FF P:EnvMXdIzc HC:3246 VC:000 FC:00 I:00
-CODE_26F64A:        0A            ASL A                     ;0 S:01FF P:EnvMXdIzc HC:3262 VC:000 FC:00 I:00
-CODE_26F64B:        0A            ASL A                     ;0 S:01FF P:EnvMXdIzc HC:3278 VC:000 FC:00 I:00
-CODE_26F64C:        18            CLC                       ;0 S:01FF P:EnvMXdIzc HC:3294 VC:000 FC:00 I:00
-CODE_26F64D:        7D 73 18      ADC $1873,x               ;0 S:01FF P:EnvMXdIzc HC:3310 VC:000 FC:00 I:00
-CODE_26F650:        9D 73 18      STA $1873,x               ;0 S:01FF P:EnvMXdIzc HC:3326 VC:000 FC:00 I:00
-CODE_26F653:        08            PHP                       ;0 S:01FF P:EnvMXdIzc HC:3342 VC:000 FC:00 I:00
-CODE_26F654:        A0 00         LDY #$00                  ;0 S:01FF P:EnvMXdIzc HC:3358 VC:000 FC:00 I:00
-CODE_26F656:        BD 33 18      LDA $1833,x               ;0 S:01FF P:EnvMXdIzc HC:3374 VC:000 FC:00 I:00
-CODE_26F659:        4A            LSR A                     ;0 S:01FF P:EnvMXdIzc HC:3390 VC:000 FC:00 I:00
-CODE_26F65A:        4A            LSR A                     ;0 S:01FF P:EnvMXdIzc HC:3406 VC:000 FC:00 I:00
-CODE_26F65B:        4A            LSR A                     ;0 S:01FF P:EnvMXdIzc HC:3422 VC:000 FC:00 I:00
-CODE_26F65C:        4A            LSR A                     ;0 S:01FF P:EnvMXdIzc HC:3438 VC:000 FC:00 I:00
-CODE_26F65D:        C9 08         CMP #$08                  ;0 S:01FF P:EnvMXdIzc HC:3454 VC:000 FC:00 I:00
-CODE_26F65F:        90 03         BCC CODE_26F664           ;0 S:01FF P:EnvMXdIzc HC:3470 VC:000 FC:00 I:00
-CODE_26F661:        09 F0         ORA #$F0                  ;0 S:01FF P:EnvMXdIzc HC:3486 VC:000 FC:00 I:00
-CODE_26F663:        88            DEY                       ;0 S:01FF P:EnvMXdIzc HC:3502 VC:000 FC:00 I:00
-CODE_26F664:        28            PLP                       ;0 S:01FF P:EnvMXdIzc HC:3518 VC:000 FC:00 I:00
-CODE_26F665:        7D 11 18      ADC $1811,x               ;0 S:01FF P:EnvMXdIzc HC:3534 VC:000 FC:00 I:00
-CODE_26F668:        9D 11 18      STA $1811,x               ;0 S:01FF P:EnvMXdIzc HC:3550 VC:000 FC:00 I:00
-CODE_26F66B:        2A            ROL A                     ;0 S:01FF P:EnvMXdIzc HC:3566 VC:000 FC:00 I:00
-CODE_26F66C:        E0 11         CPX #$11                  ;0 S:01FF P:EnvMXdIzc HC:3582 VC:000 FC:00 I:00
-CODE_26F66E:        B0 08         BCS CODE_26F678           ;0 S:01FF P:EnvMXdIzc HC:3598 VC:000 FC:00 I:00
-CODE_26F670:        6A            ROR A                     ;0 S:01FF P:EnvMXdIzc HC:3614 VC:000 FC:00 I:00
-CODE_26F671:        98            TYA                       ;0 S:01FF P:EnvMXdIzc HC:3630 VC:000 FC:00 I:00
-CODE_26F672:        7D 42 19      ADC $1942,x               ;0 S:01FF P:EnvMXdIzc HC:3646 VC:000 FC:00 I:00
-CODE_26F675:        9D 42 19      STA $1942,x               ;0 S:01FF P:EnvMXdIzc HC:3662 VC:000 FC:00 I:00
-CODE_26F678:        60            RTS                       ;0 S:01FF P:EnvMXdIzc HC:3678 VC:000 FC:00 I:00
-
+CODE_26F621:        8A            TXA                       ; update bouncing block sprite's x position
+CODE_26F622:        18            CLC                       
+CODE_26F623:        69 0F         ADC #$0F                  
+CODE_26F625:        10 0A         BPL CODE_26F631           
+CODE_26F627:        8A            TXA                       ; update non-player sprite's x position
+CODE_26F628:        18            CLC                       
+CODE_26F629:        69 13         ADC #$13                  
+CODE_26F62B:        10 04         BPL CODE_26F631           
+CODE_26F62D:        8A            TXA                       ; update non-player sprite's y position
+CODE_26F62E:        18            CLC                       
+CODE_26F62F:        69 02         ADC #$02                  
+CODE_26F631:        AA            TAX                       
+CODE_26F632:        20 45 F6      JSR CODE_26F645           ; \ this only works because x and y tables
+CODE_26F635:        AE 0E 19      LDX $190E                 ; / are adjacent in memory
+CODE_26F638:        60            RTS                       
+                                                            
+CODE_26F639:        8A            TXA                       ; ?
+CODE_26F63A:        18            CLC                       
+CODE_26F63B:        69 11         ADC #$11                  
+CODE_26F63D:        AA            TAX                       
+CODE_26F63E:        20 45 F6      JSR CODE_26F645           
+CODE_26F641:        AE 0E 19      LDX $190E                 
+CODE_26F644:        60            RTS                       
+                                                            
+CODE_26F645:        BD 33 18      LDA $1833,x               ; update sprite's x or y positions based on their speed
+CODE_26F648:        0A            ASL A                     
+CODE_26F649:        0A            ASL A                     
+CODE_26F64A:        0A            ASL A                     
+CODE_26F64B:        0A            ASL A                     
+CODE_26F64C:        18            CLC                       
+CODE_26F64D:        7D 73 18      ADC $1873,x               
+CODE_26F650:        9D 73 18      STA $1873,x               
+CODE_26F653:        08            PHP                       
+CODE_26F654:        A0 00         LDY #$00                  
+CODE_26F656:        BD 33 18      LDA $1833,x               
+CODE_26F659:        4A            LSR A                     
+CODE_26F65A:        4A            LSR A                     
+CODE_26F65B:        4A            LSR A                     
+CODE_26F65C:        4A            LSR A                     
+CODE_26F65D:        C9 08         CMP #$08                  
+CODE_26F65F:        90 03         BCC CODE_26F664           
+CODE_26F661:        09 F0         ORA #$F0                  
+CODE_26F663:        88            DEY                       
+CODE_26F664:        28            PLP                       
+CODE_26F665:        7D 11 18      ADC $1811,x               
+CODE_26F668:        9D 11 18      STA $1811,x               
+CODE_26F66B:        2A            ROL A                     
+CODE_26F66C:        E0 11         CPX #$11                  
+CODE_26F66E:        B0 08         BCS CODE_26F678           
+CODE_26F670:        6A            ROR A                     
+CODE_26F671:        98            TYA                       
+CODE_26F672:        7D 42 19      ADC $1942,x               ; only update high byte of y position
+CODE_26F675:        9D 42 19      STA $1942,x               
+CODE_26F678:        60            RTS                       
+                                                            
 CODE_26F679:        C2 30         REP #$30                  
-CODE_26F67B:        EE 3C 1A      INC $1A3C                 
-CODE_26F67E:        EE 3A 1A      INC $1A3A                 
+CODE_26F67B:        EE 3C 1A      INC $1A3C                 ; \ increment spawn timers
+CODE_26F67E:        EE 3A 1A      INC $1A3A                 ; /
 CODE_26F681:        E2 30         SEP #$30                  
-CODE_26F683:        AD 30 19      LDA $1930                 
-CODE_26F686:        F0 F0         BEQ CODE_26F678           
-CODE_26F688:        89 03         BIT #$03                  
-CODE_26F68A:        D0 EC         BNE CODE_26F678           
+CODE_26F683:        AD 30 19      LDA $1930                 ; \ if the game still going
+CODE_26F686:        F0 F0         BEQ CODE_26F678           ; / exit
+CODE_26F688:        89 03         BIT #$03                  ; \ if the game is over
+CODE_26F68A:        D0 EC         BNE CODE_26F678           ; / every 4 frames...
 CODE_26F68C:        AD 8C 07      LDA $078C                 
 CODE_26F68F:        29 01         AND #$01                  
 CODE_26F691:        85 0F         STA $0F                   

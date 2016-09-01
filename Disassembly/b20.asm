@@ -3966,7 +3966,7 @@ CODE_20A33A:        AC 0A 07      LDY $070A
 CODE_20A33D:        B9 75 C9      LDA.w DATA_21C975,y               
 CODE_20A340:        8D 39 07      STA $0739                 
 CODE_20A343:        9C F2 1C      STZ $1CF2                 
-CODE_20A346:        22 00 9C 20   JSL CODE_209C00           
+CODE_20A346:        22 00 9C 20   JSL CODE_209C00           ; load the level
 CODE_20A34A:        20 83 96      JSR CODE_209683           
 CODE_20A34D:        A9 11         LDA #$11                  
 CODE_20A34F:        8D 08 02      STA $0208                 
@@ -3986,16 +3986,16 @@ CODE_20A373:        8F 55 39 7E   STA $7E3955
 CODE_20A377:        22 9D E2 29   JSL CODE_29E29D           
 CODE_20A37B:        A9 80         LDA #$80                  
 CODE_20A37D:        8D 00 42      STA $4200                 
-CODE_20A380:        A9 16         LDA #$16                  
-CODE_20A382:        AC 26 1F      LDY $1F26                 
-CODE_20A385:        F0 02         BEQ CODE_20A389           
-CODE_20A387:        A9 11         LDA #$11                  ;\
-CODE_20A389:        8D 02 12      STA $1202                 ;/Hammer Bros./Battle mode music
-CODE_20A38C:        20 1F 80      JSR CODE_20801F           
-CODE_20A38F:        22 A9 E0 22   JSL CODE_22E0A9           
-CODE_20A393:        22 B0 CB 26   JSL CODE_26CBB0           
-CODE_20A397:        AD 14 00      LDA $0014                 
-CODE_20A39A:        F0 F0         BEQ CODE_20A38C           
+CODE_20A380:        A9 16         LDA #$16                  ; \ play battle start music if round 1
+CODE_20A382:        AC 26 1F      LDY $1F26                 ; |
+CODE_20A385:        F0 02         BEQ CODE_20A389           ; |
+CODE_20A387:        A9 11         LDA #$11                  ; | otherwise play the hammer bro intro
+CODE_20A389:        8D 02 12      STA $1202                 ; /
+CODE_20A38C:        20 1F 80      JSR CODE_20801F           ; \ wait for vblank | battle mode main loop
+CODE_20A38F:        22 A9 E0 22   JSL CODE_22E0A9           ; | clear objects off screen
+CODE_20A393:        22 B0 CB 26   JSL CODE_26CBB0           ; | run the game
+CODE_20A397:        AD 14 00      LDA $0014                 ; |
+CODE_20A39A:        F0 F0         BEQ CODE_20A38C           ; /
 CODE_20A39C:        AD 8C 07      LDA $078C                 
 CODE_20A39F:        3A            DEC A                     
 CODE_20A3A0:        49 01         EOR #$01                  

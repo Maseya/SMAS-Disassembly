@@ -4457,18 +4457,18 @@ DATA_23A4F0:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
 
 DATA_23A540:        db $32,$50,$AD,$C1,$32,$50,$AD,$C1
 
-CODE_23A548:        A2 00         LDX #$00
-CODE_23A54A:        A9 02         LDA #$02
-CODE_23A54C:        22 A8 98 20   JSL CODE_2098A8               
-CODE_23A550:        22 44 98 20   JSL CODE_209844    
-CODE_23A554:        E0 F0         CPX #$F0
+CODE_23A548:        A2 00         LDX #$00                  ; prepare battle level data
+CODE_23A54A:        A9 02         LDA #$02                  
+CODE_23A54C:        22 A8 98 20   JSL CODE_2098A8           
+CODE_23A550:        22 44 98 20   JSL CODE_209844           ; clear out everything first
+CODE_23A554:        E0 F0         CPX #$F0                  
 CODE_23A556:        D0 F2         BNE CODE_23A54A           
 CODE_23A558:        A2 D0         LDX #$D0                  
 CODE_23A55A:        A9 50         LDA #$50                  
-CODE_23A55C:        22 44 98 20   JSL CODE_209844           
+CODE_23A55C:        22 44 98 20   JSL CODE_209844           ; lay down some ground
 CODE_23A560:        E0 F0         CPX #$F0                  
 CODE_23A562:        D0 F6         BNE CODE_23A55A           
-CODE_23A564:        22 0B 99 20   JSL CODE_20990B           
+CODE_23A564:        22 0B 99 20   JSL CODE_20990B           ; lay down everything else
 CODE_23A568:        6B            RTL                       
 
 CODE_23A569:        A5 0E         LDA $0E                   
