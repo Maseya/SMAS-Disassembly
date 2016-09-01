@@ -3836,7 +3836,7 @@ DATA_26CC11:        dw CODE_26CC24                          ; init
                     dw CODE_26CD8E                          ; tick
                                                             
                                                             
-CODE_26CC15:        A2 40         LDX #$40                  ; unreachable
+CODE_26CC15:        A2 40         LDX #$40                  
 CODE_26CC17:        A0 00         LDY #$00                  
 CODE_26CC19:        20 EF F6      JSR CODE_26F6EF           
 CODE_26CC1C:        A2 50         LDX #$50                  

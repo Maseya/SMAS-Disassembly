@@ -3921,13 +3921,13 @@ CODE_20A2CB:        E6 0A         INC $0A                   ;
 CODE_20A2CD:        86 08         STX $08                   ;
 CODE_20A2CF:        60            RTS                       ;
 
-CODE_20A2D0:        64 01         STZ $01                   
+CODE_20A2D0:        64 01         STZ $01                   ; entry point for SMB3 Battle Mode (DB = #$21, DP = #$0000)
 CODE_20A2D2:        A9 BF         LDA #$BF                  
 CODE_20A2D4:        85 00         STA $00                   
-CODE_20A2D6:        20 17 FA      JSR CODE_20FA17           
-CODE_20A2D9:        22 A9 E0 22   JSL CODE_22E0A9           
-CODE_20A2DD:        22 5A F0 25   JSL CODE_25F05A           
-CODE_20A2E1:        22 34 F9 25   JSL CODE_25F934           
+CODE_20A2D6:        20 17 FA      JSR CODE_20FA17           ; ?? upload something to vram (seems to do nothing if removed)
+CODE_20A2D9:        22 A9 E0 22   JSL CODE_22E0A9           ; clear OAM
+CODE_20A2DD:        22 5A F0 25   JSL CODE_25F05A           ; upload music and ??
+CODE_20A2E1:        22 34 F9 25   JSL CODE_25F934           ; ?? (seems to do nothing if removed)
 CODE_20A2E5:        9C 00 42      STZ $4200                 
 CODE_20A2E8:        A9 11         LDA #$11                  
 CODE_20A2EA:        8D 0F 02      STA $020F                 
@@ -3949,19 +3949,19 @@ CODE_20A311:        A9 00         LDA #$00
 CODE_20A313:        8F 66 39 7E   STA $7E3966               
 CODE_20A317:        8F 65 39 7E   STA $7E3965               
 CODE_20A31B:        8F 64 39 7E   STA $7E3964               
-CODE_20A31F:        64 00         STZ $00                   
-CODE_20A321:        A2 05         LDX #$05                  
-CODE_20A323:        86 01         STX $01                   
-CODE_20A325:        A0 9D         LDY #$9D                  
-CODE_20A327:        91 00         STA ($00),y               
-CODE_20A329:        88            DEY                       
-CODE_20A32A:        10 FB         BPL CODE_20A327           
-CODE_20A32C:        AD 81 A3      LDA.w DATA_21A381                 
-CODE_20A32F:        85 2B         STA $2B                   
-CODE_20A331:        AD 82 A3      LDA.w DATA_21A381+1                 
-CODE_20A334:        85 2C         STA $2C                   
-CODE_20A336:        A9 21         LDA #$21                  
-CODE_20A338:        85 2D         STA $2D                   
+CODE_20A31F:        64 00         STZ $00                   ; \
+CODE_20A321:        A2 05         LDX #$05                  ; |
+CODE_20A323:        86 01         STX $01                   ; |
+CODE_20A325:        A0 9D         LDY #$9D                  ; | 
+CODE_20A327:        91 00         STA ($00),y               ; | a really complicated way of saying
+CODE_20A329:        88            DEY                       ; | STZ $059D
+CODE_20A32A:        10 FB         BPL CODE_20A327           ; /
+CODE_20A32C:        AD 81 A3      LDA.w DATA_21A381         ; \
+CODE_20A32F:        85 2B         STA $2B                   ; |
+CODE_20A331:        AD 82 A3      LDA.w DATA_21A381+1       ; |
+CODE_20A334:        85 2C         STA $2C                   ; |
+CODE_20A336:        A9 21         LDA #$21                  ; | point to level data
+CODE_20A338:        85 2D         STA $2D                   ; / [$2B] = $21A399
 CODE_20A33A:        AC 0A 07      LDY $070A                 
 CODE_20A33D:        B9 75 C9      LDA.w DATA_21C975,y               
 CODE_20A340:        8D 39 07      STA $0739                 
@@ -3991,71 +3991,71 @@ CODE_20A382:        AC 26 1F      LDY $1F26                 ; |
 CODE_20A385:        F0 02         BEQ CODE_20A389           ; |
 CODE_20A387:        A9 11         LDA #$11                  ; | otherwise play the hammer bro intro
 CODE_20A389:        8D 02 12      STA $1202                 ; /
-CODE_20A38C:        20 1F 80      JSR CODE_20801F           ; \ wait for vblank | battle mode main loop
-CODE_20A38F:        22 A9 E0 22   JSL CODE_22E0A9           ; | clear objects off screen
-CODE_20A393:        22 B0 CB 26   JSL CODE_26CBB0           ; | run the game
-CODE_20A397:        AD 14 00      LDA $0014                 ; |
-CODE_20A39A:        F0 F0         BEQ CODE_20A38C           ; /
-CODE_20A39C:        AD 8C 07      LDA $078C                 
-CODE_20A39F:        3A            DEC A                     
-CODE_20A3A0:        49 01         EOR #$01                  
-CODE_20A3A2:        AA            TAX                       
-CODE_20A3A3:        A9 01         LDA #$01                  
-CODE_20A3A5:        8D 03 12      STA $1203                 
+CODE_20A38C:        20 1F 80      JSR CODE_20801F           ; \ * wait for vblank | battle mode main loop
+CODE_20A38F:        22 A9 E0 22   JSL CODE_22E0A9           ; | * clear objects off screen
+CODE_20A393:        22 B0 CB 26   JSL CODE_26CBB0           ; | * run the game
+CODE_20A397:        AD 14 00      LDA $0014                 ; | * and keep running it until results should appear
+CODE_20A39A:        F0 F0         BEQ CODE_20A38C           ; / *
+CODE_20A39C:        AD 8C 07      LDA $078C                 ; \ X = player who won the game
+CODE_20A39F:        3A            DEC A                     ; | 0 = mario, 1 = luigi
+CODE_20A3A0:        49 01         EOR #$01                  ; |
+CODE_20A3A2:        AA            TAX                       ; /
+CODE_20A3A3:        A9 01         LDA #$01                  ; \ coin sound effect
+CODE_20A3A5:        8D 03 12      STA $1203                 ; /
 CODE_20A3A8:        FE DA 02      INC $02DA,x               
 CODE_20A3AB:        BD DA 02      LDA $02DA,x               
 CODE_20A3AE:        C9 05         CMP #$05                  
 CODE_20A3B0:        90 08         BCC CODE_20A3BA           
 CODE_20A3B2:        FE DE 02      INC $02DE,x               
-CODE_20A3B5:        A9 05         LDA #$05                  
-CODE_20A3B7:        8D 03 12      STA $1203                 
-CODE_20A3BA:        22 E1 F1 25   JSL CODE_25F1E1           
-CODE_20A3BE:        22 A9 E0 22   JSL CODE_22E0A9           
-CODE_20A3C2:        22 56 F9 25   JSL CODE_25F956           
-CODE_20A3C6:        20 1F 80      JSR CODE_20801F           
-CODE_20A3C9:        AD 14 00      LDA $0014                 
-CODE_20A3CC:        D0 F4         BNE CODE_20A3C2           
-CODE_20A3CE:        C2 20         REP #$20                  
-CODE_20A3D0:        A9 00 49      LDA #$4900                
-CODE_20A3D3:        8F 02 16 00   STA $001602               
-CODE_20A3D7:        A9 00 54      LDA #$5400                
-CODE_20A3DA:        8F 10 16 00   STA $001610               
-CODE_20A3DE:        A9 00 09      LDA #$0900                
-CODE_20A3E1:        8F 04 16 00   STA $001604               
-CODE_20A3E5:        8F 12 16 00   STA $001612               
-CODE_20A3E9:        A9 2D 18      LDA #$182D                
-CODE_20A3EC:        8F 06 16 00   STA $001606               
-CODE_20A3F0:        8F 08 16 00   STA $001608               
-CODE_20A3F4:        8F 0A 16 00   STA $00160A               
-CODE_20A3F8:        8F 0C 16 00   STA $00160C               
-CODE_20A3FC:        8F 0E 16 00   STA $00160E               
-CODE_20A400:        A9 2D 1C      LDA #$1C2D                
-CODE_20A403:        8F 14 16 00   STA $001614               
-CODE_20A407:        8F 16 16 00   STA $001616               
-CODE_20A40B:        8F 18 16 00   STA $001618               
-CODE_20A40F:        8F 1A 16 00   STA $00161A               
-CODE_20A413:        8F 1C 16 00   STA $00161C               
-CODE_20A417:        A9 FF FF      LDA #$FFFF                
-CODE_20A41A:        8F 1E 16 00   STA $00161E               
-CODE_20A41E:        E2 20         SEP #$20                  
-CODE_20A420:        22 15 CC 26   JSL CODE_26CC15           
+CODE_20A3B5:        A9 05         LDA #$05                  ; \ 1up sound effect
+CODE_20A3B7:        8D 03 12      STA $1203                 ; /
+CODE_20A3BA:        22 E1 F1 25   JSL CODE_25F1E1           ; upload results screen tilemap
+CODE_20A3BE:        22 A9 E0 22   JSL CODE_22E0A9           ; clear OAM
+CODE_20A3C2:        22 56 F9 25   JSL CODE_25F956           ; \ * create barn door in effect | result screen transition loop
+CODE_20A3C6:        20 1F 80      JSR CODE_20801F           ; | * wait for vblank
+CODE_20A3C9:        AD 14 00      LDA $0014                 ; | *
+CODE_20A3CC:        D0 F4         BNE CODE_20A3C2           ; / *
+CODE_20A3CE:        C2 20         REP #$20                  ; \ clear player scoreboards
+CODE_20A3D0:        A9 00 49      LDA #$4900                ; |
+CODE_20A3D3:        8F 02 16 00   STA $001602               ; |
+CODE_20A3D7:        A9 00 54      LDA #$5400                ; |
+CODE_20A3DA:        8F 10 16 00   STA $001610               ; |
+CODE_20A3DE:        A9 00 09      LDA #$0900                ; |
+CODE_20A3E1:        8F 04 16 00   STA $001604               ; |
+CODE_20A3E5:        8F 12 16 00   STA $001612               ; |
+CODE_20A3E9:        A9 2D 18      LDA #$182D                ; |
+CODE_20A3EC:        8F 06 16 00   STA $001606               ; |
+CODE_20A3F0:        8F 08 16 00   STA $001608               ; |
+CODE_20A3F4:        8F 0A 16 00   STA $00160A               ; |
+CODE_20A3F8:        8F 0C 16 00   STA $00160C               ; |
+CODE_20A3FC:        8F 0E 16 00   STA $00160E               ; |
+CODE_20A400:        A9 2D 1C      LDA #$1C2D                ; |
+CODE_20A403:        8F 14 16 00   STA $001614               ; |
+CODE_20A407:        8F 16 16 00   STA $001616               ; |
+CODE_20A40B:        8F 18 16 00   STA $001618               ; |
+CODE_20A40F:        8F 1A 16 00   STA $00161A               ; |
+CODE_20A413:        8F 1C 16 00   STA $00161C               ; |
+CODE_20A417:        A9 FF FF      LDA #$FFFF                ; |
+CODE_20A41A:        8F 1E 16 00   STA $00161E               ; |
+CODE_20A41E:        E2 20         SEP #$20                  ; /
+CODE_20A420:        22 15 CC 26   JSL CODE_26CC15           ; upload palettes
 CODE_20A424:        EE 11 02      INC $0211                 
 CODE_20A427:        EE 14 00      INC $0014                 
 CODE_20A42A:        9C 56 03      STZ $0356                 
-CODE_20A42D:        22 84 F3 25   JSL CODE_25F384           
-CODE_20A431:        AF 0C 30 7F   LDA $7F300C               
+CODE_20A42D:        22 84 F3 25   JSL CODE_25F384           ; * results screen main loop
+CODE_20A431:        AF 0C 30 7F   LDA $7F300C               ; continue / quit?
 CODE_20A435:        F0 07         BEQ CODE_20A43E           
-CODE_20A437:        20 1F 80      JSR CODE_20801F           
-CODE_20A43A:        5C DE 80 00   JML CODE_0080DE           
+CODE_20A437:        20 1F 80      JSR CODE_20801F           ; wait for vblank
+CODE_20A43A:        5C DE 80 00   JML CODE_0080DE           ; exit to SMAS title screen
 
-CODE_20A43E:        20 1F 80      JSR CODE_20801F           
-CODE_20A441:        22 A1 F9 25   JSL CODE_25F9A1           
-CODE_20A445:        AD 14 00      LDA $0014                 
-CODE_20A448:        D0 F4         BNE CODE_20A43E           
-CODE_20A44A:        9C 75 00      STZ $0075                 
-CODE_20A44D:        9C 2E 19      STZ $192E                 
-CODE_20A450:        9C 2F 19      STZ $192F                 
-CODE_20A453:        4C 80 A3      JMP CODE_20A380           
+CODE_20A43E:        20 1F 80      JSR CODE_20801F           ; \ * wait for vblank | result screen transition loop
+CODE_20A441:        22 A1 F9 25   JSL CODE_25F9A1           ; | * create barn door out effect
+CODE_20A445:        AD 14 00      LDA $0014                 ; | *
+CODE_20A448:        D0 F4         BNE CODE_20A43E           ; / *
+CODE_20A44A:        9C 75 00      STZ $0075                 ; init game
+CODE_20A44D:        9C 2E 19      STZ $192E                 ; \ clear coin counts
+CODE_20A450:        9C 2F 19      STZ $192F                 ; /
+CODE_20A453:        4C 80 A3      JMP CODE_20A380           ; next round
 
 DATA_20A456:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
