@@ -3111,8 +3111,8 @@ CODE_209CC3:        D0 37         BNE CODE_209CFC
 CODE_209CC5:        A6 25         LDX $25                   
 CODE_209CC7:        AD 10 02      LDA $0210                 
 CODE_209CCA:        95 26         STA $26,x                 
-CODE_209CCC:        20 B5 9D      JSR CODE_209DB5           
-CODE_209CCF:        22 53 E9 29   JSL CODE_29E953           
+CODE_209CCC:        20 B5 9D      JSR CODE_209DB5           ; prepare $0380 buffer with 2 vertical strips
+CODE_209CCF:        22 53 E9 29   JSL CODE_29E953           ; dma those strips to vram
 CODE_209CD3:        A6 25         LDX $25                   
 CODE_209CD5:        B5 26         LDA $26,x                 
 CODE_209CD7:        18            CLC                       
@@ -3928,7 +3928,7 @@ CODE_20A2D6:        20 17 FA      JSR CODE_20FA17           ; ?? upload somethin
 CODE_20A2D9:        22 A9 E0 22   JSL CODE_22E0A9           ; clear OAM
 CODE_20A2DD:        22 5A F0 25   JSL CODE_25F05A           ; upload music and ??
 CODE_20A2E1:        22 34 F9 25   JSL CODE_25F934           ; ?? (seems to do nothing if removed)
-CODE_20A2E5:        9C 00 42      STZ $4200                 
+CODE_20A2E5:        9C 00 42      STZ $4200                 ; disable interrupts
 CODE_20A2E8:        A9 11         LDA #$11                  
 CODE_20A2EA:        8D 0F 02      STA $020F                 
 CODE_20A2ED:        AF 55 39 7E   LDA $7E3955               
@@ -3937,11 +3937,11 @@ CODE_20A2F2:        8F 55 39 7E   STA $7E3955
 CODE_20A2F6:        A9 04         LDA #$04                  
 CODE_20A2F8:        8D EE 05      STA $05EE                 
 CODE_20A2FB:        64 12         STZ $12                   
-CODE_20A2FD:        9C 10 02      STZ $0210                 
-CODE_20A300:        9C 11 02      STZ $0211                 
+CODE_20A2FD:        9C 10 02      STZ $0210                 ; \ clear layer 1 x pos
+CODE_20A300:        9C 11 02      STZ $0211                 ; /
 CODE_20A303:        64 13         STZ $13                   
-CODE_20A305:        9C 16 02      STZ $0216                 
-CODE_20A308:        9C 17 02      STZ $0217                 
+CODE_20A305:        9C 16 02      STZ $0216                 ; \ clear layer 1 y pos
+CODE_20A308:        9C 17 02      STZ $0217                 ; /
 CODE_20A30B:        64 23         STZ $23                   
 CODE_20A30D:        64 24         STZ $24                   
 CODE_20A30F:        64 25         STZ $25                   
@@ -3966,26 +3966,26 @@ CODE_20A33A:        AC 0A 07      LDY $070A
 CODE_20A33D:        B9 75 C9      LDA.w DATA_21C975,y               
 CODE_20A340:        8D 39 07      STA $0739                 
 CODE_20A343:        9C F2 1C      STZ $1CF2                 
-CODE_20A346:        22 00 9C 20   JSL CODE_209C00           ; load the level
-CODE_20A34A:        20 83 96      JSR CODE_209683           
-CODE_20A34D:        A9 11         LDA #$11                  
-CODE_20A34F:        8D 08 02      STA $0208                 
-CODE_20A352:        A9 02         LDA #$02                  
-CODE_20A354:        8D 09 02      STA $0209                 
-CODE_20A357:        A9 02         LDA #$02                  
-CODE_20A359:        8D 03 02      STA $0203                 
-CODE_20A35C:        A9 20         LDA #$20                  
-CODE_20A35E:        8D 04 02      STA $0204                 
-CODE_20A361:        22 C3 AF 20   JSL CODE_20AFC3           
+CODE_20A346:        22 00 9C 20   JSL CODE_209C00           ; \ load the level
+CODE_20A34A:        20 83 96      JSR CODE_209683           ; /
+CODE_20A34D:        A9 11         LDA #$11                  ; \ layer 1 and OBJ through main
+CODE_20A34F:        8D 08 02      STA $0208                 ; /
+CODE_20A352:        A9 02         LDA #$02                  ; \ layer 2 through sub
+CODE_20A354:        8D 09 02      STA $0209                 ; /
+CODE_20A357:        A9 02         LDA #$02                  ; \ enable subscreen bg
+CODE_20A359:        8D 03 02      STA $0203                 ; /
+CODE_20A35C:        A9 20         LDA #$20                  ; \ color addition settings
+CODE_20A35E:        8D 04 02      STA $0204                 ; /
+CODE_20A361:        22 C3 AF 20   JSL CODE_20AFC3           ; upload sprite graphics
 CODE_20A365:        A9 26         LDA #$26                  
 CODE_20A367:        8D 12 06      STA $0612                 
-CODE_20A36A:        20 C0 9C      JSR CODE_209CC0           
+CODE_20A36A:        20 C0 9C      JSR CODE_209CC0           ; draw the level
 CODE_20A36D:        22 A6 F0 25   JSL CODE_25F0A6           
 CODE_20A371:        A9 00         LDA #$00                  
 CODE_20A373:        8F 55 39 7E   STA $7E3955               
 CODE_20A377:        22 9D E2 29   JSL CODE_29E29D           
-CODE_20A37B:        A9 80         LDA #$80                  
-CODE_20A37D:        8D 00 42      STA $4200                 
+CODE_20A37B:        A9 80         LDA #$80                  ; \ enable interrupts
+CODE_20A37D:        8D 00 42      STA $4200                 ; /
 CODE_20A380:        A9 16         LDA #$16                  ; \ play battle start music if round 1
 CODE_20A382:        AC 26 1F      LDY $1F26                 ; |
 CODE_20A385:        F0 02         BEQ CODE_20A389           ; |

@@ -11872,9 +11872,9 @@ DATA_23DF47:        db $80,$03,$5A,$16,$5B,$16,$00,$00
                     db $80,$03,$5B,$16,$5A,$96,$00,$00
                     db $80,$03,$5B,$56,$5A,$D6,$FF,$FF
 
-CODE_23DF67:        8B            PHB
-CODE_23DF68:        4B            PHK
-CODE_23DF69:        AB            PLB
+CODE_23DF67:        8B            PHB                       
+CODE_23DF68:        4B            PHK                       
+CODE_23DF69:        AB            PLB                       
 CODE_23DF6A:        AF 06 00 70   LDA $700006               
 CODE_23DF6E:        D0 1A         BNE CODE_23DF8A           
 CODE_23DF70:        A5 F4         LDA $F4                   
