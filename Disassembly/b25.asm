@@ -6537,81 +6537,81 @@ DATA_25F37C:        db $00,$01,$00,$01
 DATA_25F380:        db $00,$00,$01,$01             
 
 
-CODE_25F384:        AD 06 12      LDA $1206                 
-CODE_25F387:        C9 0B         CMP #$0B                  
-CODE_25F389:        D0 0A         BNE CODE_25F395           
-CODE_25F38B:        AD 42 21      LDA $2142                 
-CODE_25F38E:        D0 05         BNE CODE_25F395           
-CODE_25F390:        A9 0D         LDA #$0D                  
-CODE_25F392:        8D 02 12      STA $1202                 
-CODE_25F395:        20 70 F6      JSR CODE_25F670           
+CODE_25F384:        AD 06 12      LDA $1206                 ; results screen for SMB3 Battle Mode
+CODE_25F387:        C9 0B         CMP #$0B                  ; \
+CODE_25F389:        D0 0A         BNE CODE_25F395           ; | if the fanfare finishes playing,
+CODE_25F38B:        AD 42 21      LDA $2142                 ; |
+CODE_25F38E:        D0 05         BNE CODE_25F395           ; |
+CODE_25F390:        A9 0D         LDA #$0D                  ; | play the star theme like usual
+CODE_25F392:        8D 02 12      STA $1202                 ; /
+CODE_25F395:        20 70 F6      JSR CODE_25F670           ; update palettes
 CODE_25F398:        AD 42 21      LDA $2142                 
-CODE_25F39B:        C9 0D         CMP #$0D                  
-CODE_25F39D:        D0 46         BNE CODE_25F3E5           
-CODE_25F39F:        A5 F6         LDA $F6                   
-CODE_25F3A1:        05 F7         ORA $F7                   
-CODE_25F3A3:        89 10         BIT #$10                  
-CODE_25F3A5:        D0 4F         BNE CODE_25F3F6           
-CODE_25F3A7:        89 20         BIT #$20                  
-CODE_25F3A9:        D0 14         BNE CODE_25F3BF           
-CODE_25F3AB:        A5 F6         LDA $F6                   
-CODE_25F3AD:        05 F7         ORA $F7                   
-CODE_25F3AF:        29 03         AND #$03                  
-CODE_25F3B1:        F0 32         BEQ CODE_25F3E5           
-CODE_25F3B3:        29 02         AND #$02                  
-CODE_25F3B5:        49 02         EOR #$02                  
-CODE_25F3B7:        CF 0C 30 7F   CMP $7F300C               
-CODE_25F3BB:        F0 28         BEQ CODE_25F3E5           
-CODE_25F3BD:        80 06         BRA CODE_25F3C5           
+CODE_25F39B:        C9 0D         CMP #$0D                  ; \ if the star theme isn't playing, 
+CODE_25F39D:        D0 46         BNE CODE_25F3E5           ; / you can't interact with anything
+CODE_25F39F:        A5 F6         LDA $F6                   ; \ if someone presses start
+CODE_25F3A1:        05 F7         ORA $F7                   ; |
+CODE_25F3A3:        89 10         BIT #$10                  ; |
+CODE_25F3A5:        D0 4F         BNE CODE_25F3F6           ; / exit results screen
+CODE_25F3A7:        89 20         BIT #$20                  ; \
+CODE_25F3A9:        D0 14         BNE CODE_25F3BF           ; | if someone presses select
+CODE_25F3AB:        A5 F6         LDA $F6                   ; |
+CODE_25F3AD:        05 F7         ORA $F7                   ; |
+CODE_25F3AF:        29 03         AND #$03                  ; |
+CODE_25F3B1:        F0 32         BEQ CODE_25F3E5           ; |
+CODE_25F3B3:        29 02         AND #$02                  ; | or the dpad left/right
+CODE_25F3B5:        49 02         EOR #$02                  ; |
+CODE_25F3B7:        CF 0C 30 7F   CMP $7F300C               ; |
+CODE_25F3BB:        F0 28         BEQ CODE_25F3E5           ; |
+CODE_25F3BD:        80 06         BRA CODE_25F3C5           ; / change selection
 
-CODE_25F3BF:        AF 0C 30 7F   LDA $7F300C               
-CODE_25F3C3:        49 02         EOR #$02                  
-CODE_25F3C5:        8F 0C 30 7F   STA $7F300C               
-CODE_25F3C9:        A9 06         LDA #$06                  
-CODE_25F3CB:        8D 03 12      STA $1203                 
-CODE_25F3CE:        AF 0C 30 7F   LDA $7F300C               
-CODE_25F3D2:        AA            TAX                       
-CODE_25F3D3:        C2 20         REP #$20                  
-CODE_25F3D5:        BF 8B F1 25   LDA $25F18B,x             
-CODE_25F3D9:        8F 8E 3D 7F   STA $7F3D8E               
-CODE_25F3DD:        BF 8D F1 25   LDA $25F18D,x             
-CODE_25F3E1:        8F A6 3D 7F   STA $7F3DA6               
+CODE_25F3BF:        AF 0C 30 7F   LDA $7F300C               ; \
+CODE_25F3C3:        49 02         EOR #$02                  ; |
+CODE_25F3C5:        8F 0C 30 7F   STA $7F300C               ; | update selection
+CODE_25F3C9:        A9 06         LDA #$06                  ; |
+CODE_25F3CB:        8D 03 12      STA $1203                 ; | play sound
+CODE_25F3CE:        AF 0C 30 7F   LDA $7F300C               ; |
+CODE_25F3D2:        AA            TAX                       ; |
+CODE_25F3D3:        C2 20         REP #$20                  ; |
+CODE_25F3D5:        BF 8B F1 25   LDA $25F18B,x             ; | erase old arrow icon
+CODE_25F3D9:        8F 8E 3D 7F   STA $7F3D8E               ; |
+CODE_25F3DD:        BF 8D F1 25   LDA $25F18D,x             ; | draw new arrow icon
+CODE_25F3E1:        8F A6 3D 7F   STA $7F3DA6               ; /
 CODE_25F3E5:        C2 20         REP #$20                  
-CODE_25F3E7:        A9 00 04      LDA #$0400                
-CODE_25F3EA:        8F 08 30 7F   STA $7F3008               
+CODE_25F3E7:        A9 00 04      LDA #$0400                ; \ location in vram to draw results screen
+CODE_25F3EA:        8F 08 30 7F   STA $7F3008               ; /
 CODE_25F3EE:        E2 20         SEP #$20                  
-CODE_25F3F0:        22 4D 80 20   JSL CODE_20804D           
+CODE_25F3F0:        22 4D 80 20   JSL CODE_20804D           ; wait for vblank
 CODE_25F3F4:        80 8E         BRA CODE_25F384           
 
-CODE_25F3F6:        A9 15         LDA #$15                  
-CODE_25F3F8:        8D 03 12      STA $1203                 
+CODE_25F3F6:        A9 15         LDA #$15                  ; prepare to exit results screen
+CODE_25F3F8:        8D 03 12      STA $1203                 ; play sound
 CODE_25F3FB:        9C 11 02      STZ $0211                 
-CODE_25F3FE:        EE 26 1F      INC $1F26                 
+CODE_25F3FE:        EE 26 1F      INC $1F26                 ; increase round number
 CODE_25F401:        AD 8C 07      LDA $078C                 
 CODE_25F404:        3A            DEC A                     
 CODE_25F405:        49 01         EOR #$01                  
 CODE_25F407:        AA            TAX                       
-CODE_25F408:        BD DA 02      LDA $02DA,x               
-CODE_25F40B:        C9 05         CMP #$05                  
-CODE_25F40D:        90 1D         BCC CODE_25F42C           
-CODE_25F40F:        9C DA 02      STZ $02DA                 
-CODE_25F412:        9C DB 02      STZ $02DB                 
-CODE_25F415:        9C 26 1F      STZ $1F26                 
-CODE_25F418:        AD DE 02      LDA $02DE                 
-CODE_25F41B:        C9 06         CMP #$06                  
-CODE_25F41D:        F0 07         BEQ CODE_25F426           
-CODE_25F41F:        AD DF 02      LDA $02DF                 
-CODE_25F422:        C9 06         CMP #$06                  
-CODE_25F424:        D0 06         BNE CODE_25F42C           
-CODE_25F426:        9C DE 02      STZ $02DE                 
-CODE_25F429:        9C DF 02      STZ $02DF                 
+CODE_25F408:        BD DA 02      LDA $02DA,x               ; \
+CODE_25F40B:        C9 05         CMP #$05                  ; |
+CODE_25F40D:        90 1D         BCC CODE_25F42C           ; | if someone won 5 games
+CODE_25F40F:        9C DA 02      STZ $02DA                 ; | clear game wins
+CODE_25F412:        9C DB 02      STZ $02DB                 ; |
+CODE_25F415:        9C 26 1F      STZ $1F26                 ; | back to round 1
+CODE_25F418:        AD DE 02      LDA $02DE                 ; |
+CODE_25F41B:        C9 06         CMP #$06                  ; |
+CODE_25F41D:        F0 07         BEQ CODE_25F426           ; |
+CODE_25F41F:        AD DF 02      LDA $02DF                 ; |
+CODE_25F422:        C9 06         CMP #$06                  ; |
+CODE_25F424:        D0 06         BNE CODE_25F42C           ; | if someone won 6 matches
+CODE_25F426:        9C DE 02      STZ $02DE                 ; | clear match wins also
+CODE_25F429:        9C DF 02      STZ $02DF                 ; /
 CODE_25F42C:        AD 26 1F      LDA $1F26                 
 CODE_25F42F:        29 03         AND #$03                  
 CODE_25F431:        AA            TAX                       
-CODE_25F432:        BF 7C F3 25   LDA $25F37C,x             
-CODE_25F436:        8D 13 02      STA $0213                 
-CODE_25F439:        BF 80 F3 25   LDA $25F380,x             
-CODE_25F43D:        8D 19 02      STA $0219                 
+CODE_25F432:        BF 7C F3 25   LDA $25F37C,x             ; \ pick a background
+CODE_25F436:        8D 13 02      STA $0213                 ; |
+CODE_25F439:        BF 80 F3 25   LDA $25F380,x             ; |
+CODE_25F43D:        8D 19 02      STA $0219                 ; /
 CODE_25F440:        AD 26 1F      LDA $1F26                 
 CODE_25F443:        29 02         AND #$02                  
 CODE_25F445:        0A            ASL A                     
@@ -6622,10 +6622,10 @@ CODE_25F449:        0A            ASL A
 CODE_25F44A:        AA            TAX                       
 CODE_25F44B:        A0 00         LDY #$00                  
 CODE_25F44D:        C2 20         REP #$20                  
-CODE_25F44F:        BF 82 FD 25   LDA $25FD82,x             
-CODE_25F453:        99 22 13      STA $1322,y               
-CODE_25F456:        BF A2 FD 25   LDA $25FDA2,x             
-CODE_25F45A:        99 42 13      STA $1342,y               
+CODE_25F44F:        BF 82 FD 25   LDA $25FD82,x             ; \ pick a palette
+CODE_25F453:        99 22 13      STA $1322,y               ; |
+CODE_25F456:        BF A2 FD 25   LDA $25FDA2,x             ; |
+CODE_25F45A:        99 42 13      STA $1342,y               ; /
 CODE_25F45D:        E8            INX                       
 CODE_25F45E:        E8            INX                       
 CODE_25F45F:        C8            INY                       
@@ -6633,7 +6633,7 @@ CODE_25F460:        C8            INY
 CODE_25F461:        C0 1E         CPY #$1E                  
 CODE_25F463:        D0 EA         BNE CODE_25F44F           
 CODE_25F465:        E2 20         SEP #$20                  
-CODE_25F467:        6B            RTL                       
+CODE_25F467:        6B            RTL                       ; return
 
 DATA_25F468:        db $81,$0C,$90,$10,$91,$10,$92,$10
                     db $81,$0C
