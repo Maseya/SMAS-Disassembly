@@ -30,7 +30,7 @@ CODE_05803E:        AB            PLB                       ;/
 CODE_05803F:        8B            PHB                       ;\
 CODE_058040:        4B            PHK                       ; |Data bank = current bank
 CODE_058041:        AB            PLB                       ; |
-CODE_058042:        9C C0 0E      STZ $0EC0                 ; |Index to the current BG map16 end offset
+CODE_058042:        9C C0 0E      STZ $0EC0                 ; |Index to the current BG2 map16 page being written to
 CODE_058045:        AD 65 0E      LDA $0E65                 ; |
 CODE_058048:        29 FF 00      AND #$00FF                ; |Store current background to $DB. $0E65 is clone
 CODE_05804B:        F0 02         BEQ CODE_05804F           ; |of $DB (or the opposite......)
@@ -39,62 +39,63 @@ CODE_05804F:        A5 DB         LDA $DB                   ; |
 CODE_058051:        29 FF 00      AND #$00FF                ; |Layer 2 background
 CODE_058054:        0A            ASL A                     ; |to 16-bit index
 CODE_058055:        AA            TAX                       ; |
-CODE_058056:        BD 04 AD      LDA DATA_05AD04,x               ; |< relative index to table
-CODE_058059:        85 02         STA $02                   ; |Get index to a table. Index is indexed by
-CODE_05805B:        C2 30         REP #$30                  ; |the 16-bit index from before. $02 = index
-CODE_05805D:        A6 02         LDX $02                   ; |X = index
-CODE_05805F:        BD 57 B5      LDA DATA_05B557,x               ; |This table seems to be related to the properties of the background generated
-CODE_058062:        85 04         STA $04                   ; |Such as the graphics, tilemap and the HDMA gradient associated.
+CODE_058056:        BD 04 AD      LDA DATA_05AD04,x         ; |Get relative index to backgrounds properties table, transfer it to X
+CODE_058059:        85 02         STA $02                   ;/
+
+CODE_05805B:        C2 30         REP #$30                  ;\
+CODE_05805D:        A6 02         LDX $02                   ; |
+CODE_05805F:        BD 57 B5      LDA DATA_05B557,x         ; |This table seems to be the group of commands associated with the background scene to load. Format: HHH LLL CCCCCC VVVV?
+CODE_058062:        85 04         STA $04                   ; | ("Background scene" being the graphics tileset, layer 3 flag, HDMA gradient and the BG2 tilemap).
 CODE_058064:        E6 02         INC $02                   ; |
-CODE_058066:        E6 02         INC $02                   ; |increase pointer to read next word next time.
-CODE_058068:        29 F0 03      AND #$03F0                ; |
-CODE_05806B:        4A            LSR A                     ; |note to self: continue documenting this.
-CODE_05806C:        4A            LSR A                     ;
-CODE_05806D:        4A            LSR A                     ;
-CODE_05806E:        4A            LSR A                     ;
-CODE_05806F:        85 EF         STA $EF                   ;
-CODE_058071:        A5 04         LDA $04                   ;\ Load data
-CODE_058073:        29 0F 00      AND #$000F                ; |Extract HDMA gradient type
-CODE_058076:        85 F1         STA $F1                   ;/Store to HDMA gradient type
-CODE_058078:        A5 04         LDA $04                   ;\Load data
-CODE_05807A:        29 00 E0      AND #$E000                ; |
-CODE_05807D:        85 ED         STA $ED                   ;/
-CODE_05807F:        A5 04         LDA $04                   ;
-CODE_058081:        4A            LSR A                     ;
-CODE_058082:        29 00 0E      AND #$0E00                ;
-CODE_058085:        05 ED         ORA $ED                   ;
-CODE_058087:        EB            XBA                       ;
-CODE_058088:        85 ED         STA $ED                   ;
-CODE_05808A:        29 F0 00      AND #$00F0                ;
-CODE_05808D:        C9 E0 00      CMP #$00E0                ;
-CODE_058090:        D0 21         BNE CODE_0580B3           ;
-CODE_058092:        A5 EF         LDA $EF                   ;
-CODE_058094:        C9 3F 00      CMP #$003F                ;
-CODE_058097:        D0 15         BNE CODE_0580AE           ;
+CODE_058066:        E6 02         INC $02                   ;/ increase pointer to read next word of background commands next time.
+CODE_058068:        29 F0 03      AND #$03F0                ; | 
+CODE_05806B:        4A            LSR A                     ; |
+CODE_05806C:        4A            LSR A                     ; |
+CODE_05806D:        4A            LSR A                     ; |
+CODE_05806E:        4A            LSR A                     ; |
+CODE_05806F:        85 EF         STA $EF                   ;/ Store CCCCCC into $EF. It seems to be the "command"
+CODE_058071:        A5 04         LDA $04                   ;\ 
+CODE_058073:        29 0F 00      AND #$000F                ; |Store VVVV data. It seems to be the value associated with the command
+CODE_058076:        85 F1         STA $F1                   ;/
+CODE_058078:        A5 04         LDA $04                   ;\ Load HHH data
+CODE_05807A:        29 00 E0      AND #$E000                ; | HHH = high nibble of background data starting index of map16 tilemap
+CODE_05807D:        85 ED         STA $ED                   ;/| 
+CODE_05807F:        A5 04         LDA $04                   ;\| Load LLL data
+CODE_058081:        4A            LSR A                     ; | LLL = Low nibble of background data starting index of map16 tilemap * 2
+CODE_058082:        29 00 0E      AND #$0E00                ; | This code basically turns HHH LLL into HHH0 LLL0
+CODE_058085:        05 ED         ORA $ED                   ; |
+CODE_058087:        EB            XBA                       ; |
+CODE_058088:        85 ED         STA $ED                   ; |
+CODE_05808A:        29 F0 00      AND #$00F0                ; |
+CODE_05808D:        C9 E0 00      CMP #$00E0                ; | If #$E0, then $EF is a command to be processed
+CODE_058090:        D0 21         BNE CODE_0580B3           ;/ 
+CODE_058092:        A5 EF         LDA $EF                   ;\
+CODE_058094:        C9 3F 00      CMP #$003F                ; | if not end of background data marker, process background generation
+CODE_058097:        D0 15         BNE CODE_0580AE           ;/ (Otherwise just skip branch and finish up routine)
 CODE_058099:        EE C0 0E      INC $0EC0                 ;\
-CODE_05809C:        EE C0 0E      INC $0EC0                 ; |
-CODE_05809F:        AD C0 0E      LDA $0EC0                 ; | Increase index to the final background map16 byte written to RAM $7ED000.
+CODE_05809C:        EE C0 0E      INC $0EC0                 ; | Skip 2 pages and place a BG2 map16 marker word
+CODE_05809F:        AD C0 0E      LDA $0EC0                 ; | 
 CODE_0580A2:        EB            XBA                       ; |
 CODE_0580A3:        AA            TAX                       ; | And make sure the final bytes are FFFF to mark the end of the map16 tilemap.
 CODE_0580A4:        A9 FF FF      LDA #$FFFF                ; |
 CODE_0580A7:        9F 00 D0 7E   STA $7ED000,x             ;/
 CODE_0580AB:        4C 66 91      JMP CODE_059166           ;
 
-CODE_0580AE:        20 19 8F      JSR CODE_058F19           ;
-CODE_0580B1:        80 A8         BRA CODE_05805B           ;
+CODE_0580AE:        20 19 8F      JSR CODE_058F19           ;Process the background generation command
+CODE_0580B1:        80 A8         BRA CODE_05805B           ;back to the command processing loop
 
-CODE_0580B3:        AD C0 0E      LDA $0EC0                 ;
-CODE_0580B6:        EB            XBA                       ;
-CODE_0580B7:        18            CLC                       ;
-CODE_0580B8:        65 ED         ADC $ED                   ;
-CODE_0580BA:        85 EB         STA $EB                   ;
-CODE_0580BC:        A5 EF         LDA $EF                   ;
-CODE_0580BE:        C9 10 00      CMP #$0010                ;
-CODE_0580C1:        90 06         BCC CODE_0580C9           ;
-CODE_0580C3:        20 85 8E      JSR CODE_058E85           ;
-CODE_0580C6:        4C 5B 80      JMP CODE_05805B           ;
+CODE_0580B3:        AD C0 0E      LDA $0EC0                 ;\
+CODE_0580B6:        EB            XBA                       ; | This part of the routine deals with the background generation command
+CODE_0580B7:        18            CLC                       ; | (as in, place the tiles in the background)
+CODE_0580B8:        65 ED         ADC $ED                   ; | $EB stores the starting index of the background objects to be placed at
+CODE_0580BA:        85 EB         STA $EB                   ; | At this point $EF isn't a command but rather serves another purpose. TODO
+CODE_0580BC:        A5 EF         LDA $EF                   ; | 
+CODE_0580BE:        C9 10 00      CMP #$0010                ; | 
+CODE_0580C1:        90 06         BCC CODE_0580C9           ; |
+CODE_0580C3:        20 85 8E      JSR CODE_058E85           ; | If EF is #$10 or higher, then ???
+CODE_0580C6:        4C 5B 80      JMP CODE_05805B           ;/
 
-CODE_0580C9:        0A            ASL A                     ;A = $EF smaller than #$10
+CODE_0580C9:        0A            ASL A                     ;
 CODE_0580CA:        AA            TAX                       ;
 CODE_0580CB:        A5 DB         LDA $DB                   ;\
 CODE_0580CD:        0A            ASL A                     ; |background to index. Up to $21 is valid.
@@ -1137,8 +1138,9 @@ DATA_058971:        db $00,$00,$90,$91,$92,$93,$00,$00
                     db $94,$95,$96,$97,$00,$00,$98,$99
                     db $9A,$9B,$00,$9C,$9D,$9E,$9F,$A0
                     db $00,$A1,$A2,$A3,$A4,$A5,$00,$A6
-                    db $A7,$A8,$A9,$AA,$E2,$20
+                    db $A7,$A8,$A9,$AA
 
+CODE_058995:        E2 20         SEP #$20                  ;
 CODE_058997:        A6 EB         LDX $EB                   ;
 CODE_058999:        A0 00 00      LDY #$0000                ;
 CODE_05899C:        B9 71 89      LDA DATA_058971,y               ;
@@ -1662,13 +1664,13 @@ CODE_058F18:        60            RTS                       ;
 CODE_058F19:        A5 EF         LDA $EF                   ;
 CODE_058F1B:        0A            ASL A                     ;
 CODE_058F1C:        AA            TAX                       ;
-CODE_058F1D:        BD 25 8F      LDA PNTR_058F25,x               ;
+CODE_058F1D:        BD 25 8F      LDA PNTR_058F25,x         ;
 CODE_058F20:        85 00         STA $00                   ;
 CODE_058F22:        6C 00 00      JMP ($0000)               ;
 
-;Pointers to various background and HDMA routines.
-PNTR_058F25:        dw CODE_0590B6                          ;$00 - Increase index to background map16 tilemap's latest written tile by 1
-                    dw CODE_0590BA                          ;$01 - Handle HDMA gradient. Underwater levels use below pointer.
+;Pointers to various background-generation commands and HDMA routines
+PNTR_058F25:        dw CODE_0590B6                          ;$00 - Increase BG2 map16 tilemap's latest written page number by 1
+                    dw CODE_0590BA                          ;$01 - Handle HDMA gradient. Underwater levels use below value, instead.
                     dw CODE_0590D2                          ;$02 - Enable underwater HDMA gradient
                     dw CODE_0590E9                          ;$03 - 
                     dw CODE_05910D                          ;$04 - 
@@ -1676,7 +1678,7 @@ PNTR_058F25:        dw CODE_0590B6                          ;$00 - Increase inde
                     dw CODE_05905F                          ;$06 - Fill background with repetitive rock pattern of cave background
                     dw CODE_05903D                          ;$07 - Fill top 3 rows with blank tiles for underwater levels
                     dw CODE_059004                          ;$08 - Generate the rocks of the waterfall background
-                    dw CODE_058FFA                          ;$09 - Enable Layer 3 image
+                    dw CODE_058FFA                          ;$09 - Enable Layer 3 image processing
                     dw CODE_058F97                          ;$0A - Generate the waterfall of the waterfall background
                     dw CODE_059116                          ;$0B - Load tilemap-specific graphics?
                     dw CODE_058F6F                          ;$0C - Generate Goomba pillar background's sand
@@ -1746,8 +1748,8 @@ CODE_058FF7:        D0 A0         BNE CODE_058F99           ;
 CODE_058FF9:        60            RTS                       ;
 
 CODE_058FFA:        E2 20         SEP #$20                  ;
-CODE_058FFC:        A5 F1         LDA $F1                   ;
-CODE_058FFE:        8D DC 0E      STA $0EDC                 ;
+CODE_058FFC:        A5 F1         LDA $F1                   ;\
+CODE_058FFE:        8D DC 0E      STA $0EDC                 ;/ Process layer 3 image display flag
 CODE_059001:        C2 20         REP #$20                  ;
 CODE_059003:        60            RTS                       ;
 
@@ -1795,13 +1797,13 @@ DATA_05905B:        db $03,$05,$1D,$02        ;BG map16 tiles to fill the entire
 ;Part of underground background generation routine
 CODE_05905F:        A2 00 00      LDX #$0000                ;
 CODE_059062:        E2 20         SEP #$20                  ;
-CODE_059064:        AD 5B 90      LDA DATA_05905B                 ;
+CODE_059064:        AD 5B 90      LDA DATA_05905B           ;
 CODE_059067:        9F 00 D0 7E   STA $7ED000,x             ;
-CODE_05906B:        AD 5C 90      LDA DATA_05905B+1                 ;
+CODE_05906B:        AD 5C 90      LDA DATA_05905B+1         ;
 CODE_05906E:        9F 01 D0 7E   STA $7ED001,x             ;
-CODE_059072:        AD 5D 90      LDA DATA_05905B+2                 ;
+CODE_059072:        AD 5D 90      LDA DATA_05905B+2         ;
 CODE_059075:        9F 10 D0 7E   STA $7ED010,x             ;
-CODE_059079:        AD 5E 90      LDA DATA_05905B+3                 ;
+CODE_059079:        AD 5E 90      LDA DATA_05905B+3         ;
 CODE_05907C:        9F 11 D0 7E   STA $7ED011,x             ;
 CODE_059080:        E8            INX                       ;
 CODE_059081:        E8            INX                       ;
@@ -1835,9 +1837,10 @@ CODE_0590B1:        D0 F7         BNE CODE_0590AA           ; |
 CODE_0590B3:        C2 20         REP #$20                  ; |
 CODE_0590B5:        60            RTS                       ;/
 
-CODE_0590B6:        EE C0 0E      INC $0EC0                 ;\ Increase index to the latest background map16 byte written to RAM $7ED000.
+CODE_0590B6:        EE C0 0E      INC $0EC0                 ;\ Increase index to the latest background map16 page written to.
 CODE_0590B9:        60            RTS                       ;/
 
+;Enable Generic HDMA
 CODE_0590BA:        E2 30         SEP #$30                  ;\ Enable HDMA depending on $F1: HDMA gradient type
 CODE_0590BC:        A5 F1         LDA $F1                   ; |
 CODE_0590BE:        C9 02         CMP #$02                  ; |
@@ -1850,6 +1853,7 @@ CODE_0590CB:        22 5E 82 04   JSL CODE_04825E           ; |<-- HDMA enable r
 CODE_0590CF:        C2 30         REP #$30                  ; |
 CODE_0590D1:        60            RTS                       ;/
 
+;Enable Underwater Level HDMA
 CODE_0590D2:        E2 30         SEP #$30                  ;\
 CODE_0590D4:        A9 02         LDA #$02                  ; |
 CODE_0590D6:        22 5E 82 04   JSL CODE_04825E           ; |Enable underwater HDMA gradient (without the up/down movement, just the color definition)
@@ -1878,13 +1882,13 @@ CODE_05910C:        60            RTS                       ;
 
 CODE_05910D:        A5 F1         LDA $F1                   ;
 CODE_05910F:        85 99         STA $99                   ;
-CODE_059111:        22 B1 E6 05   JSL CODE_05E6B1           ;
+CODE_059111:        22 B1 E6 05   JSL CODE_05E6B1           ;Upload tileset graphics
 CODE_059115:        60            RTS                       ;
 
 CODE_059116:        A5 F1         LDA $F1                   ;
 CODE_059118:        09 10 00      ORA #$0010                ;
 CODE_05911B:        85 99         STA $99                   ;
-CODE_05911D:        22 B1 E6 05   JSL CODE_05E6B1           ;
+CODE_05911D:        22 B1 E6 05   JSL CODE_05E6B1           ;Upload tileset graphics
 CODE_059121:        60            RTS                       ;
 
 DATA_059122:        dw $0000,$0000,$0009,$0004              ;index to layer 2 background pointers
@@ -3612,10 +3616,9 @@ DATA_05C2A7:        dw $E012,$E060,$E050,$E043
                     dw $5520,$2900,$2D40,$4D50
                     dw $2007,$0025,$1C15,$E3F0
 
-DATA_05C397:        dw $E041,$E012,$2800,$E000
-                    dw $2800,$E000,$2800,$E000
+DATA_05C397:        dw $E041,$E012,$2800,$E000      ;Mario bonus room background commands
+                    dw $2800,$E000,$2800,$E000      ;Todo: same for luigi??
                     dw $2800,$E000,$2800,$E3F0
-
 
 DATA_05C3AF:        dw $E046,$E050,$0003,$1003
                     dw $4019,$5019,$403F,$0826
@@ -6973,7 +6976,14 @@ CODE_05E6A9:        E2 20         SEP #$20                  ;
 CODE_05E6AB:        EE 8D 02      INC $028D                 ;
 CODE_05E6AE:        6B            RTL                       ;
 
-DATA_05E6AF:        db $01,$18
+DATA_05E6AF:        db $01,$18								;Bonus Room background number, indexed by player number.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Graphics Tileset upload routines
+;; $99 = Tileset number to upload
+;; If tileset is 01 (Mario Bonus), then the game
+;; picks either 01 or 18 (Luigi Bonus) according 
+;; to the current player.
 
 CODE_05E6B1:        E2 30         SEP #$30                  ;
 CODE_05E6B3:        8B            PHB                       ;
@@ -6984,15 +6994,15 @@ CODE_05E6B8:        C9 01         CMP #$01                  ; | Branch if not bo
 CODE_05E6BA:        D0 0B         BNE CODE_05E6C7           ;/
 CODE_05E6BC:        8D F8 02      STA $02F8                 ;Set bonus room flag
 CODE_05E6BF:        AE 53 07      LDX $0753                 ;\
-CODE_05E6C2:        BD AF E6      LDA DATA_05E6AF,x               ; | Get Luigi or Mario's bonus room tileset number
+CODE_05E6C2:        BD AF E6      LDA DATA_05E6AF,x         ; | Get Luigi or Mario's bonus room tileset number
 CODE_05E6C5:        85 99         STA $99                   ;/
 CODE_05E6C7:        20 2A E8      JSR CODE_05E82A           ;GFX upload routine
 CODE_05E6CA:        A5 99         LDA $99                   ;\
 CODE_05E6CC:        0A            ASL A                     ; |
 CODE_05E6CD:        AA            TAX                       ; |
-CODE_05E6CE:        BD DB E6      LDA PNTR_05E6DB,x               ; |
+CODE_05E6CE:        BD DB E6      LDA PNTR_05E6DB,x         ; |
 CODE_05E6D1:        85 00         STA $00                   ; | A routine for each tilemap
-CODE_05E6D3:        BD DC E6      LDA PNTR_05E6DB+1,x               ; |
+CODE_05E6D3:        BD DC E6      LDA PNTR_05E6DB+1,x       ; |
 CODE_05E6D6:        85 01         STA $01                   ; |
 CODE_05E6D8:        6C 00 00      JMP ($0000)               ;/
 
@@ -7140,14 +7150,14 @@ DATA_05E7F8:        dw $1000,$1000,$2000,$1000              ;GFX size
 ;GFX upload routine. GFX number in A
 CODE_05E82A:        0A            ASL A                     ;\ Routine enters with $7E0099 loaded in accumulator
 CODE_05E82B:        AA            TAX                       ;/ but can also be fixed values. A * 2 to index
-CODE_05E82C:        BD 62 E7      LDA DATA_05E762,x               ;\
+CODE_05E82C:        BD 62 E7      LDA DATA_05E762,x         ;\
 CODE_05E82F:        8D 87 02      STA $0287                 ;/Load DMA source bank byte
 CODE_05E832:        C2 20         REP #$20                  ;16-bit A
-CODE_05E834:        BD 94 E7      LDA DATA_05E794,x               ;\DMA source address
+CODE_05E834:        BD 94 E7      LDA DATA_05E794,x         ;\DMA source address
 CODE_05E837:        8D 85 02      STA $0285                 ;/
-CODE_05E83A:        BD C6 E7      LDA DATA_05E7C6,x               ;\
+CODE_05E83A:        BD C6 E7      LDA DATA_05E7C6,x         ;\
 CODE_05E83D:        8D 8A 02      STA $028A                 ;/DMA VRAM address
-CODE_05E840:        BD F8 E7      LDA DATA_05E7F8,x               ;\
+CODE_05E840:        BD F8 E7      LDA DATA_05E7F8,x         ;\
 CODE_05E843:        8D 88 02      STA $0288                 ;/DMA size
 CODE_05E846:        E2 20         SEP #$20                  ;8-bit A
 CODE_05E848:        20 4C E8      JSR CODE_05E84C           ;DMA this setup
