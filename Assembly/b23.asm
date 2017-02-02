@@ -9,7 +9,7 @@ CODE_238006:        CPY #$00
 CODE_238008:        BEQ CODE_23800C           
 CODE_23800A:        LDX #$0B                  
 CODE_23800C:        LDY #$00                  
-CODE_23800E:        LDA $8AE9,x               
+CODE_23800E:        LDA.w DATA_218AE9,x               
 CODE_238011:        STA $1606,y               
 CODE_238014:        INX                       
 CODE_238015:        INY                       
@@ -83,7 +83,7 @@ CODE_2380AF:        LDA $0729
 CODE_2380B2:        CMP #$0D                  
 CODE_2380B4:        BNE CODE_23810B           
 CODE_2380B6:        LDX $0727                 
-CODE_2380B9:        LDY $8B03,x               
+CODE_2380B9:        LDY.w DATA_218B03,x               
 CODE_2380BC:        CPX #$04                  
 CODE_2380BE:        BNE CODE_2380C9           
 CODE_2380C0:        LDX $0726                 
@@ -219,11 +219,11 @@ CODE_2381F6:        BRL CODE_238C1B
 CODE_2381F9:        LDY $25                   
 CODE_2381FB:        LDA $0210                 
 CODE_2381FE:        CLC                       
-CODE_2381FF:        ADC $8AFF,y               
+CODE_2381FF:        ADC.w DATA_218AFF,y               
 CODE_238202:        STA $0210                 
 CODE_238205:        STA $B7                   
 CODE_238207:        LDA $0211                 
-CODE_23820A:        ADC $8B01,y               
+CODE_23820A:        ADC.w DATA_218B01,y               
 CODE_23820D:        STA $0211                 
 CODE_238210:        STA $12                   
 CODE_238212:        JSL CODE_2097F5           
@@ -266,7 +266,7 @@ CODE_23826E:        RTL
 CODE_23826F:        LDA $0729                 
 CODE_238272:        JSL CODE_20FB3A           
 
-PNTR_238276:     dl CODE_2382C5
+PNTR_238276:        dl CODE_2382C5
                     dl CODE_238631
                     dl CODE_29AC7A
                     dl CODE_29ADFC
@@ -289,7 +289,7 @@ CODE_2382AA:        LDX $0726
 CODE_2382AD:        LDA $45,x                 
 CODE_2382AF:        BEQ CODE_2382C4           
 CODE_2382B1:        LDY #$07                  
-CODE_2382B3:        LDA $8B0C,y               
+CODE_2382B3:        LDA.w DATA_218B0C,y               
 CODE_2382B6:        STA $0850,y               
 CODE_2382B9:        DEY                       
 CODE_2382BA:        BPL CODE_2382B3           
@@ -301,7 +301,7 @@ CODE_2382C4:        RTL
 CODE_2382C5:        LDA $0728                 
 CODE_2382C8:        JSL CODE_20FB1F           
 
-PNTR_2382CC:     dw CODE_2382D2
+PNTR_2382CC:        dw CODE_2382D2
                     dw CODE_238338
                     dw CODE_2383D1
 
@@ -328,7 +328,7 @@ CODE_238302:        INC $0728
 CODE_238305:        RTL                       
 
 CODE_238306:        LDY #$03                  
-CODE_238308:        LDA $8B14,y               
+CODE_238308:        LDA.w DATA_218B14,y               
 CODE_23830B:        STA $0884,y               
 CODE_23830E:        DEY                       
 CODE_23830F:        BPL CODE_238308           
@@ -345,7 +345,7 @@ CODE_238326:        TAY
 CODE_238327:        BRA CODE_23832C           
 
 CODE_238329:        LDY $0747,x               
-CODE_23832C:        LDA $8B18,y               
+CODE_23832C:        LDA.w DATA_218B18,y               
 CODE_23832F:        STA $0886                 
 CODE_238332:        LDA #$02                  
 CODE_238334:        STA $0A41                 
@@ -367,9 +367,9 @@ CODE_23834E:        LSR A
 CODE_23834F:        LSR A                     
 CODE_238350:        LSR A                     
 CODE_238351:        TAY                       
-CODE_238352:        LDA $8200,y               
+CODE_238352:        LDA.w DATA_218200,y               
 CODE_238355:        STA $2E                   
-CODE_238357:        LDA $8201,y               
+CODE_238357:        LDA.w DATA_218200+1,y               
 CODE_23835A:        STA $2F                   
 CODE_23835C:        INC $2F                   
 CODE_23835E:        LDA #$7E                  
@@ -456,7 +456,7 @@ CODE_23840C:        RTL
 CODE_23840D:        LDA $0728                 
 CODE_238410:        JSL CODE_20FB3A           
 
-PNTR_238414:     dl CODE_23842F
+PNTR_238414:        dl CODE_23842F
                     dl CODE_238441
                     dl CODE_238606
                     dl CODE_23860B
@@ -636,7 +636,7 @@ CODE_2385A8:        LDA #$00
 CODE_2385AA:        STA $0A45                 
 CODE_2385AD:        INC $028F                 
 CODE_2385B0:        LDY #$03                  
-CODE_2385B2:        LDA $8B26,y               
+CODE_2385B2:        LDA.w DATA_218B26,y               
 CODE_2385B5:        STA $0884,y               
 CODE_2385B8:        DEY                       
 CODE_2385B9:        BPL CODE_2385B2           
@@ -724,21 +724,21 @@ CODE_238679:        DEC $0746
 CODE_23867C:        LDA #$15                  
 CODE_23867E:        STA $1203                 
 CODE_238681:        LDY $0727                 
-CODE_238684:        LDA $8C49,y               
+CODE_238684:        LDA.w DATA_218C49,y               
 CODE_238687:        CLC                       
 CODE_238688:        ADC $0746                 
 CODE_23868B:        TAY                       
-CODE_23868C:        LDA $8C29,y               
+CODE_23868C:        LDA.w DATA_218C29,y               
 CODE_23868F:        STA $0746                 
 CODE_238692:        LDA #$01                  
 CODE_238694:        STA $20                   
 CODE_238696:        LDY $1600                 
 CODE_238699:        LDX $0746                 
-CODE_23869C:        LDA $8B2A,x               
+CODE_23869C:        LDA.w DATA_218B2A,x               
 CODE_23869F:        STA $0A                   
 CODE_2386A1:        STA $1602,y               
 CODE_2386A4:        INY                       
-CODE_2386A5:        LDA $8B3B,x               
+CODE_2386A5:        LDA.w DATA_218B3B,x               
 CODE_2386A8:        STA $0B                   
 CODE_2386AA:        STA $1602,y               
 CODE_2386AD:        INY                       
@@ -754,11 +754,11 @@ CODE_2386BE:        ASL A
 CODE_2386BF:        ASL A                     
 CODE_2386C0:        TAX                       
 CODE_2386C1:        REP #$20                  
-CODE_2386C3:        LDA $8B6E,x               
+CODE_2386C3:        LDA.w DATA_218B6E,x               
 CODE_2386C6:        STA $1602,y               
 CODE_2386C9:        INY                       
 CODE_2386CA:        INY                       
-CODE_2386CB:        LDA $8B70,x               
+CODE_2386CB:        LDA.w DATA_218B70,x               
 CODE_2386CE:        STA $1602,y               
 CODE_2386D1:        INY                       
 CODE_2386D2:        INY                       
@@ -773,11 +773,11 @@ CODE_2386E0:        LDA #$0300
 CODE_2386E3:        STA $1602,y               
 CODE_2386E6:        INY                       
 CODE_2386E7:        INY                       
-CODE_2386E8:        LDA $8B72,x               
+CODE_2386E8:        LDA.w DATA_218B72,x               
 CODE_2386EB:        STA $1602,y               
 CODE_2386EE:        INY                       
 CODE_2386EF:        INY                       
-CODE_2386F0:        LDA $8B74,x               
+CODE_2386F0:        LDA.w DATA_218B74,x               
 CODE_2386F3:        STA $1602,y               
 CODE_2386F6:        INY                       
 CODE_2386F7:        INY                       
@@ -788,10 +788,10 @@ CODE_2386FF:        STY $1600
 CODE_238702:        LDA $0746                 
 CODE_238705:        ASL A                     
 CODE_238706:        TAY                       
-CODE_238707:        LDA $8B4C,y               
+CODE_238707:        LDA.w DATA_218B4C,y               
 CODE_23870A:        STA $0A                   
 CODE_23870C:        INY                       
-CODE_23870D:        LDA $8B4C,y               
+CODE_23870D:        LDA.w DATA_218B4C,y               
 CODE_238710:        STA $0B                   
 CODE_238712:        LDY $0A                   
 CODE_238714:        LDA $1D00,y               
@@ -804,27 +804,27 @@ CODE_238723:        LDA $1D40,y
 CODE_238726:        ORA $0B                   
 CODE_238728:        STA $1D40,y               
 CODE_23872B:        LDX $0746                 
-CODE_23872E:        LDA $8C07,x               
+CODE_23872E:        LDA.w DATA_218C07,x               
 CODE_238731:        AND #$0F                  
 CODE_238733:        ASL A                     
 CODE_238734:        TAY                       
-CODE_238735:        LDA $8200,y               
+CODE_238735:        LDA.w DATA_218200,y               
 CODE_238738:        CLC                       
 CODE_238739:        ADC #$F0                  
 CODE_23873B:        STA $0D                   
-CODE_23873D:        LDA $8201,y               
+CODE_23873D:        LDA.w DATA_218200+1,y               
 CODE_238740:        ADC #$00                  
 CODE_238742:        STA $0E                   
 CODE_238744:        LDA #$7E                  
 CODE_238746:        STA $0F                   
-CODE_238748:        LDA $8C07,x               
+CODE_238748:        LDA.w DATA_218C07,x               
 CODE_23874B:        LSR A                     
 CODE_23874C:        LSR A                     
 CODE_23874D:        LSR A                     
 CODE_23874E:        LSR A                     
-CODE_23874F:        ORA $8BF6,x               
+CODE_23874F:        ORA.w DATA_218BF6,x               
 CODE_238752:        TAY                       
-CODE_238753:        LDA $8C18,x               
+CODE_238753:        LDA.w DATA_218C18,x               
 CODE_238756:        STA [$0D],y               
 CODE_238758:        LDA $15                   
 CODE_23875A:        AND #$03                  
@@ -834,9 +834,9 @@ CODE_238760:        LDA $20
 CODE_238762:        CMP #$05                  
 CODE_238764:        BEQ CODE_238780           
 CODE_238766:        LDY $0746                 
-CODE_238769:        LDA $8BF6,y               
+CODE_238769:        LDA.w DATA_218BF6,y               
 CODE_23876C:        STA $00                   
-CODE_23876E:        LDA $8C07,y               
+CODE_23876E:        LDA.w DATA_218C07,y               
 CODE_238771:        AND #$F0                  
 CODE_238773:        STA $01                   
 CODE_238775:        LDY $20                   
@@ -976,18 +976,18 @@ PNTR_238898:        dw CODE_2388A6
 CODE_2388A6:        LDX $20                   
 CODE_2388A8:        LDA $24
 CODE_2388AA:        CLC                       
-CODE_2388AB:        ADC $8C5A,x               
+CODE_2388AB:        ADC.w DATA_218C5A,x               
 CODE_2388AE:        PHA                       
 CODE_2388AF:        AND #$F0                  
 CODE_2388B1:        LSR A                     
 CODE_2388B2:        LSR A                     
 CODE_2388B3:        LSR A                     
 CODE_2388B4:        TAY                       
-CODE_2388B5:        LDA $8200,y               
+CODE_2388B5:        LDA.w DATA_218200,y               
 CODE_2388B8:        CLC                       
 CODE_2388B9:        ADC #$F0                  
 CODE_2388BB:        STA $2E                   
-CODE_2388BD:        LDA $8201,y               
+CODE_2388BD:        LDA.w DATA_218200+1,y               
 CODE_2388C0:        ADC #$00                  
 CODE_2388C2:        STA $2F                   
 CODE_2388C4:        PLA                       
@@ -1072,16 +1072,16 @@ CODE_238953:        INC $0417
 CODE_238956:        LDY $20                   
 CODE_238958:        LDA $24                   
 CODE_23895A:        CLC                       
-CODE_23895B:        ADC $8C97,y               
+CODE_23895B:        ADC.w DATA_218C97,y               
 CODE_23895E:        STA $24                   
 CODE_238960:        AND #$F0                  
 CODE_238962:        LSR A                     
 CODE_238963:        LSR A                     
 CODE_238964:        LSR A                     
 CODE_238965:        TAY                       
-CODE_238966:        LDA $8200,y               
+CODE_238966:        LDA.w DATA_218200,y               
 CODE_238969:        STA $2E                   
-CODE_23896B:        LDA $8201,y               
+CODE_23896B:        LDA.w DATA_218200+1,y               
 CODE_23896E:        STA $2F                   
 CODE_238970:        INC $2F                   
 CODE_238972:        LDA #$7E                  
@@ -1093,12 +1093,12 @@ CODE_23897C:        LDX #$00
 CODE_23897E:        LDA $070A                 
 CODE_238981:        ASL A                     
 CODE_238982:        TAY                       
-CODE_238983:        LDA $CE5A,y               
+CODE_238983:        LDA.w DATA_21CE5A,y               
 CODE_238986:        STA $0D                   
-CODE_238988:        LDA $CE5B,y               
+CODE_238988:        LDA.w DATA_21CE5A+1,y               
 CODE_23898B:        STA $0E                   
 CODE_23898D:        LDY $070A                 
-CODE_238990:        LDA $CE80,y               
+CODE_238990:        LDA.w DATA_21CE80,y               
 CODE_238993:        STA $0F                   
 CODE_238995:        LDY $00                   
 CODE_238997:        LDA [$2E],y               
@@ -1224,12 +1224,12 @@ CODE_238A87:        LDA $17
 CODE_238A89:        AND #$0F                  
 CODE_238A8B:        BEQ CODE_238A9F           
 CODE_238A8D:        LDY #$03                  
-CODE_238A8F:        CMP $8DB4,y               
+CODE_238A8F:        CMP.w DATA_218DB4,y               
 CODE_238A92:        BEQ CODE_238A97           
 CODE_238A94:        DEY                       
 CODE_238A95:        BNE CODE_238A8F           
 CODE_238A97:        LDA $1DD5                 
-CODE_238A9A:        CMP $8DB8,y               
+CODE_238A9A:        CMP.w DATA_218DB8,y               
 CODE_238A9D:        BNE CODE_238AA2           
 CODE_238A9F:        BRL CODE_238B1A           
 
@@ -1358,7 +1358,7 @@ CODE_238BB0:        AND #$80
 CODE_238BB2:        BEQ CODE_238BD0           
 CODE_238BB4:        LDA $B3                   
 CODE_238BB6:        LDY #$0A                  
-CODE_238BB8:        CMP $8CD9,y               
+CODE_238BB8:        CMP.w DATA_218CD9,y               
 CODE_238BBB:        BEQ CODE_238B89           
 CODE_238BBD:        DEY                       
 CODE_238BBE:        BPL CODE_238BB8           
@@ -1386,14 +1386,14 @@ CODE_238BE3:        INC $49,x
 CODE_238BE5:        TAY                       
 CODE_238BE6:        LDA $43,x                 
 CODE_238BE8:        CLC                       
-CODE_238BE9:        ADC $8C9B,y               
+CODE_238BE9:        ADC.w DATA_218C9B,y               
 CODE_238BEC:        STA $43,x                 
 CODE_238BEE:        LDA $47,x                 
 CODE_238BF0:        CLC                       
-CODE_238BF1:        ADC $8CA4,y               
+CODE_238BF1:        ADC.w DATA_218CA4,y               
 CODE_238BF4:        STA $47,x                 
 CODE_238BF6:        LDA $45,x                 
-CODE_238BF8:        ADC $8CAD,y               
+CODE_238BF8:        ADC.w DATA_218CAD,y               
 CODE_238BFB:        STA $45,x                 
 CODE_238BFD:        LDA $49,x                 
 CODE_238BFF:        AND #$1F                  
@@ -1439,29 +1439,29 @@ CODE_238C52:        ADC #$12
 CODE_238C54:        TAX                       
 CODE_238C55:        LDA $0726                 
 CODE_238C58:        BEQ CODE_238C6A           
-CODE_238C5A:        LDA $8D54,x               
+CODE_238C5A:        LDA.w DATA_218D54,x               
 CODE_238C5D:        ORA #$01                  
 CODE_238C5F:        STA $0887                 
-CODE_238C62:        LDA $8D30,x               
+CODE_238C62:        LDA.w DATA_218D30,x               
 CODE_238C65:        STA $0886                 
 CODE_238C68:        BRA CODE_238C76           
 
-CODE_238C6A:        LDA $8D54,x               
+CODE_238C6A:        LDA.w DATA_218D54,x               
 CODE_238C6D:        STA $0887                 
-CODE_238C70:        LDA $8D0C,x               
+CODE_238C70:        LDA.w DATA_218D0C,x               
 CODE_238C73:        STA $0886                 
 CODE_238C76:        LDA $0726                 
 CODE_238C79:        BEQ CODE_238C8B           
-CODE_238C7B:        LDA $8D31,x               
+CODE_238C7B:        LDA.w DATA_218D31,x               
 CODE_238C7E:        STA $088A                 
-CODE_238C81:        LDA $8D55,x               
+CODE_238C81:        LDA.w DATA_218D55,x               
 CODE_238C84:        ORA #$01                  
 CODE_238C86:        STA $088B                 
 CODE_238C89:        BRA CODE_238C97           
 
-CODE_238C8B:        LDA $8D0D,x               
+CODE_238C8B:        LDA.w DATA_218D0D,x               
 CODE_238C8E:        STA $088A                 
-CODE_238C91:        LDA $8D55,x               
+CODE_238C91:        LDA.w DATA_218D55,x               
 CODE_238C94:        STA $088B                 
 CODE_238C97:        LDA $0428                 
 CODE_238C9A:        BEQ CODE_238CAD           
@@ -1490,9 +1490,9 @@ CODE_238CD2:        BCC CODE_238CD8
 CODE_238CD4:        CMP #$0F                  
 CODE_238CD6:        BNE CODE_238D02           
 CODE_238CD8:        LDX $0726                 
-CODE_238CDB:        LDA $8D78,x               
+CODE_238CDB:        LDA.w DATA_218D78,x               
 CODE_238CDE:        STA $088A                 
-CODE_238CE1:        LDA $8D7A,x               
+CODE_238CE1:        LDA.w DATA_218D7A,x               
 CODE_238CE4:        STA $088B                 
 CODE_238CE7:        LDA #$F0                  
 CODE_238CE9:        STA $0885                 
@@ -1503,9 +1503,9 @@ CODE_238CF0:        LDA $64
 CODE_238CF2:        AND #$06                  
 CODE_238CF4:        LSR A                     
 CODE_238CF5:        TAY                       
-CODE_238CF6:        LDA $8D80,y               
+CODE_238CF6:        LDA.w DATA_218D80,y               
 CODE_238CF9:        STA $088A                 
-CODE_238CFC:        LDA $8D84,y               
+CODE_238CFC:        LDA.w DATA_218D84,y               
 CODE_238CFF:        STA $088B                 
 CODE_238D02:        LDA $0729                 
 CODE_238D05:        CMP #$02                  
@@ -1527,7 +1527,7 @@ CODE_238D28:        CMP #$D0
 CODE_238D2A:        BCC CODE_238D3A           
 CODE_238D2C:        LDY $0727                 
 CODE_238D2F:        LDA $23                   
-CODE_238D31:        CMP $8D04,y               
+CODE_238D31:        CMP.w DATA_218D04,y               
 CODE_238D34:        BEQ CODE_238D53           
 CODE_238D36:        LDX #$00                  
 CODE_238D38:        BRA CODE_238D47           
@@ -1564,9 +1564,9 @@ CODE_238D78:        CMP $12
 CODE_238D7A:        BNE CODE_238D9E           
 CODE_238D7C:        LDA $43,x                 
 CODE_238D7E:        STA $0895                 
-CODE_238D81:        LDA $8D78,x               
+CODE_238D81:        LDA.w DATA_218D78,x               
 CODE_238D84:        STA $0896                 
-CODE_238D87:        LDA $8D7A,x               
+CODE_238D87:        LDA.w DATA_218D7A,x               
 CODE_238D8A:        STA $0897                 
 CODE_238D8D:        LDA $47,x                 
 CODE_238D8F:        SEC                       
@@ -1587,7 +1587,7 @@ CODE_238DB0:        JSR CODE_238DB4
 CODE_238DB3:        RTS                       
 
 CODE_238DB4:        LDY #$1B                  
-CODE_238DB6:        LDA $8D98,y               
+CODE_238DB6:        LDA.w DATA_218D98,y               
 CODE_238DB9:        STA $0898,y               
 CODE_238DBC:        DEY                       
 CODE_238DBD:        BPL CODE_238DB6           
@@ -1609,9 +1609,9 @@ CODE_238DDD:        ASL A
 CODE_238DDE:        TAY                       
 CODE_238DDF:        LDA #$7E                  
 CODE_238DE1:        STA $30                   
-CODE_238DE3:        LDA $8200,y               
+CODE_238DE3:        LDA.w DATA_218200,y               
 CODE_238DE6:        STA $2E                   
-CODE_238DE8:        LDA $8201,y               
+CODE_238DE8:        LDA.w DATA_218200+1,y               
 CODE_238DEB:        INC A                     
 CODE_238DEC:        STA $2F                   
 CODE_238DEE:        LDA $47,x                 
@@ -1653,7 +1653,7 @@ CODE_238E2B:        RTS
 CODE_238E2C:        LDY #$03                  
 CODE_238E2E:        LDA $03                   
 CODE_238E30:        AND #$0F                  
-CODE_238E32:        CMP $8DB4,y               
+CODE_238E32:        CMP.w DATA_218DB4,y               
 CODE_238E35:        BEQ CODE_238E3B           
 CODE_238E37:        DEY                       
 CODE_238E38:        BPL CODE_238E32           
@@ -1668,9 +1668,9 @@ CODE_238E43:        TYA
 CODE_238E44:        STA $04                   
 CODE_238E46:        ASL A                     
 CODE_238E47:        TAX                       
-CODE_238E48:        LDA $8DBC,x               
+CODE_238E48:        LDA.w DATA_218DBC,x               
 CODE_238E4B:        STA $00                   
-CODE_238E4D:        LDA $8DBD,x               
+CODE_238E4D:        LDA.w DATA_218DBD,x               
 CODE_238E50:        STA $01                   
 CODE_238E52:        LDA #$21                  
 CODE_238E54:        STA $02                   
@@ -1700,14 +1700,14 @@ CODE_238E83:        LDY $04
 CODE_238E85:        LDX $0726                 
 CODE_238E88:        LDA $43,x                 
 CODE_238E8A:        CLC                       
-CODE_238E8B:        ADC $8DF0,y               
+CODE_238E8B:        ADC.w DATA_218DF0,y               
 CODE_238E8E:        STA $00                   
 CODE_238E90:        LDA $47,x                 
 CODE_238E92:        CLC                       
-CODE_238E93:        ADC $8DF4,y               
+CODE_238E93:        ADC.w DATA_218DF4,y               
 CODE_238E96:        STA $01                   
 CODE_238E98:        LDA $45,x                 
-CODE_238E9A:        ADC $8DF8,y               
+CODE_238E9A:        ADC.w DATA_218DF8,y               
 CODE_238E9D:        STA $04                   
 CODE_238E9F:        LDX #$0D                  
 CODE_238EA1:        LDY $1F17,x               
@@ -1734,10 +1734,10 @@ CODE_238ECB:        BNE CODE_238EAB
 CODE_238ECD:        LDA #$10                  
 CODE_238ECF:        BNE CODE_238EE2           
 CODE_238ED1:        LDY $04                   
-CODE_238ED3:        CMP $8DE8,y               
+CODE_238ED3:        CMP.w DATA_218DE8,y               
 CODE_238ED6:        BNE CODE_238EE0           
 CODE_238ED8:        LDA $07BC                 
-CODE_238EDB:        CMP $8DEC,y               
+CODE_238EDB:        CMP.w DATA_218DEC,y               
 CODE_238EDE:        BNE CODE_238EF8           
 CODE_238EE0:        LDA #$20                  
 CODE_238EE2:        LDX $0726                 
@@ -1756,21 +1756,21 @@ DATA_238EF9:        db $AA,$AF,$B7
 CODE_238EFC:        LDX $0726
 CODE_238EFF:        LDA $43,x
 CODE_238F01:        CLC
-CODE_238F02:        ADC $8DFC,y               
+CODE_238F02:        ADC.w DATA_218DFC,y               
 CODE_238F05:        AND #$F0                  
 CODE_238F07:        STA $0E                   
 CODE_238F09:        LDA $47,x                 
 CODE_238F0B:        CLC                       
-CODE_238F0C:        ADC $8E04,y               
+CODE_238F0C:        ADC.w DATA_218E04,y               
 CODE_238F0F:        STA $0F                   
 CODE_238F11:        LDA $45,x                 
-CODE_238F13:        ADC $8E00,y               
+CODE_238F13:        ADC.w DATA_218E00,y               
 CODE_238F16:        ASL A                     
 CODE_238F17:        TAX                       
-CODE_238F18:        LDA $8200,x               
+CODE_238F18:        LDA.w DATA_218200,x               
 CODE_238F1B:        STA $2E                   
 CODE_238F1D:        STA $D8                   
-CODE_238F1F:        LDA $8201,x               
+CODE_238F1F:        LDA.w DATA_218200+1,x               
 CODE_238F22:        INC A                     
 CODE_238F23:        STA $2F                   
 CODE_238F25:        CLC                       
@@ -1818,7 +1818,7 @@ CODE_238F6D:        INX
 CODE_238F6E:        INX                       
 CODE_238F6F:        LDA $1059                 
 CODE_238F72:        CLC                       
-CODE_238F73:        ADC $8E08,x               
+CODE_238F73:        ADC.w DATA_218E08,x               
 CODE_238F76:        STA $105C                 
 CODE_238F79:        LDA $1058                 
 CODE_238F7C:        SEC                       
@@ -1839,7 +1839,7 @@ CODE_238F98:        INX
 CODE_238F99:        INX                       
 CODE_238F9A:        LDA $1058                 
 CODE_238F9D:        CLC                       
-CODE_238F9E:        ADC $8E0C,x               
+CODE_238F9E:        ADC.w DATA_218E0C,x               
 CODE_238FA1:        STA $105D                 
 CODE_238FA4:        LDA $1059                 
 CODE_238FA7:        SEC                       
@@ -2001,10 +2001,10 @@ CODE_2390DD:        SEC
 CODE_2390DE:        ROL $1055                 
 CODE_2390E1:        RTS                       
 
-CODE_2390E2:        LDY $8E34,x               
+CODE_2390E2:        LDY.w DATA_218E34,x               
 CODE_2390E5:        LDX #$04                  
 CODE_2390E7:        REP #$20                  
-CODE_2390E9:        LDA $8E10,y               
+CODE_2390E9:        LDA.w DATA_218E10,y               
 CODE_2390EC:        STA $1402,x               
 CODE_2390EF:        DEY                       
 CODE_2390F0:        DEY                       
@@ -2066,11 +2066,11 @@ PNTR_239155:        dl CODE_2391EF
 CODE_23916A:        LDA #$00                  
 CODE_23916C:        STA $00                   
 CODE_23916E:        LDX $00                   
-CODE_239170:        LDA $96B9,x               
+CODE_239170:        LDA.w DATA_2196B9,x               
 CODE_239173:        STA $01                   
-CODE_239175:        LDA $96BA,x               
+CODE_239175:        LDA.w DATA_2196B9+1,x               
 CODE_239178:        STA $02                   
-CODE_23917A:        LDA $96BB,x               
+CODE_23917A:        LDA.w DATA_2196B9+2,x               
 CODE_23917D:        STA $03                   
 CODE_23917F:        TXA                       
 CODE_239180:        CLC                       
@@ -2103,7 +2103,7 @@ CODE_2391AF:        LDY $0700
 CODE_2391B2:        LDX #$00                  
 CODE_2391B4:        STX $0B                   
 CODE_2391B6:        LDX $0B                   
-CODE_2391B8:        LDA $96BF,x               
+CODE_2391B8:        LDA.w DATA_2196BF,x               
 CODE_2391BB:        STA $00                   
 CODE_2391BD:        CMP #$FF                  
 CODE_2391BF:        BNE CODE_2391C2           
@@ -2127,7 +2127,7 @@ CODE_2391D9:        TAX
 CODE_2391DA:        LDA $00                   
 CODE_2391DC:        AND #$0F                  
 CODE_2391DE:        STA $0A                   
-CODE_2391E0:        LDA $96EA,x               
+CODE_2391E0:        LDA.w DATA_2196EA,x               
 CODE_2391E3:        STA [$2E],y               
 CODE_2391E5:        INY                       
 CODE_2391E6:        DEC $0A                   
@@ -2138,18 +2138,18 @@ CODE_2391EC:        JMP CODE_2391B6
 CODE_2391EF:        LDX #$02                  
 CODE_2391F1:        LDY $0726                 
 CODE_2391F4:        LDA $0747,y               
-CODE_2391F7:        CMP $9716,x               
+CODE_2391F7:        CMP.w DATA_219716,x               
 CODE_2391FA:        BEQ CODE_2391FF           
 CODE_2391FC:        DEX                       
 CODE_2391FD:        BNE CODE_2391F7           
-CODE_2391FF:        LDA $9719,x               
+CODE_2391FF:        LDA.w DATA_219719,x               
 CODE_239202:        TAX                       
 CODE_239203:        LDA #$00                  
 CODE_239205:        STA $02                   
 CODE_239207:        LDY $0700                 
 CODE_23920A:        LDA #$02                  
 CODE_23920C:        STA $00                   
-CODE_23920E:        LDA $96F2,x               
+CODE_23920E:        LDA.w DATA_2196F2,x               
 CODE_239211:        STA [$2E],y               
 CODE_239213:        INY                       
 CODE_239214:        INX                       
@@ -2170,7 +2170,7 @@ CODE_23922C:        LDX #$00
 CODE_23922E:        LDY $0700                 
 CODE_239231:        LDA #$01                  
 CODE_239233:        STA $00                   
-CODE_239235:        LDA $971C,x               
+CODE_239235:        LDA.w DATA_21971C,x               
 CODE_239238:        STA [$2E],y               
 CODE_23923A:        INY                       
 CODE_23923B:        INX                       
@@ -2223,7 +2223,7 @@ CODE_23928C:        LDX #$00
 CODE_23928E:        LDY $0700                 
 CODE_239291:        LDA #$01                  
 CODE_239293:        STA $00                   
-CODE_239295:        LDA $9724,x               
+CODE_239295:        LDA.w DATA_219724,x               
 CODE_239298:        STA [$2E],y               
 CODE_23929A:        INY                       
 CODE_23929B:        INX                       
@@ -2242,7 +2242,7 @@ CODE_2392AF:        LDX #$00
 CODE_2392B1:        LDY $0700                 
 CODE_2392B4:        LDA #$01                  
 CODE_2392B6:        STA $00                   
-CODE_2392B8:        LDA $9728,x               
+CODE_2392B8:        LDA.w DATA_219728,x               
 CODE_2392BB:        STA [$2E],y               
 CODE_2392BD:        INY                       
 CODE_2392BE:        INX                       
@@ -2314,7 +2314,7 @@ CODE_23932F:        LSR A
 CODE_239330:        TAY                       
 CODE_239331:        INY                       
 CODE_239332:        INY                       
-CODE_239333:        LDA $8201,y               
+CODE_239333:        LDA.w DATA_218200+1,y               
 CODE_239336:        STA $04                   
 CODE_239338:        INC $04                   
 CODE_23933A:        LDA $0700                 
@@ -2332,7 +2332,7 @@ CODE_23934E:        RTL
 CODE_23934F:        LDA $1034                 
 CODE_239352:        JSL CODE_20FB1F           
 
-PNTR_239356:     dw CODE_23935E
+PNTR_239356:        dw CODE_23935E
                     dw CODE_239362
                     dw CODE_23936B
                     dw CODE_23936F
@@ -2355,10 +2355,10 @@ CODE_239373:        LDA #$94
 CODE_239375:        STA $0A                   
 CODE_239377:        LDY #$00                  
 CODE_239379:        LDX #$0A                  
-CODE_23937B:        LDA $9737,x               
+CODE_23937B:        LDA.w DATA_219737,x               
 CODE_23937E:        STA $0810,y               
 CODE_239381:        STA $0814,y               
-CODE_239384:        LDA $972C,x               
+CODE_239384:        LDA.w DATA_21972C,x               
 CODE_239387:        STA $0811,y               
 CODE_23938A:        CLC                       
 CODE_23938B:        ADC #$08                  
@@ -2393,7 +2393,7 @@ CODE_2393BC:        LDA #$99
 CODE_2393BE:        STA $0A                   
 CODE_2393C0:        LDY #$00                  
 CODE_2393C2:        LDX #$09                  
-CODE_2393C4:        LDA $9742,x               
+CODE_2393C4:        LDA.w DATA_219742,x               
 CODE_2393C7:        STA $0810,y               
 CODE_2393CA:        INY                       
 CODE_2393CB:        LDA $0A                   
@@ -2402,7 +2402,7 @@ CODE_2393D0:        INY
 CODE_2393D1:        LDA #$00                  
 CODE_2393D3:        STA $0810,y               
 CODE_2393D6:        INY                       
-CODE_2393D7:        LDA $974C,x               
+CODE_2393D7:        LDA.w DATA_21974C,x               
 CODE_2393DA:        STA $0810,y               
 CODE_2393DD:        INY                       
 CODE_2393DE:        DEC $0A                   
@@ -2415,7 +2415,7 @@ CODE_2393E6:        LDA #$AF
 CODE_2393E8:        STA $0A                   
 CODE_2393EA:        LDY #$00                  
 CODE_2393EC:        LDX #$0A                  
-CODE_2393EE:        LDA $9756,x               
+CODE_2393EE:        LDA.w DATA_219756,x               
 CODE_2393F1:        STA $0810,y               
 CODE_2393F4:        INY                       
 CODE_2393F5:        LDA $0A                   
@@ -2424,7 +2424,7 @@ CODE_2393FA:        INY
 CODE_2393FB:        LDA #$00                  
 CODE_2393FD:        STA $0810,y               
 CODE_239400:        INY                       
-CODE_239401:        LDA $9761,x               
+CODE_239401:        LDA.w DATA_219761,x               
 CODE_239404:        STA $0810,y               
 CODE_239407:        INY                       
 CODE_239408:        DEC $0A                   
@@ -2435,7 +2435,7 @@ CODE_23940F:        RTS
 
 CODE_239410:        STA $0A                   
 CODE_239412:        LDX #$07                  
-CODE_239414:        LDA $976C,x               
+CODE_239414:        LDA.w DATA_21976C,x               
 CODE_239417:        STA $0810,y               
 CODE_23941A:        INY                       
 CODE_23941B:        LDA $0A                   
@@ -2444,7 +2444,7 @@ CODE_239420:        INY
 CODE_239421:        LDA #$00                  
 CODE_239423:        STA $0810,y               
 CODE_239426:        INY                       
-CODE_239427:        LDA $9774,x               
+CODE_239427:        LDA.w DATA_219774,x               
 CODE_23942A:        STA $0810,y               
 CODE_23942D:        INY                       
 CODE_23942E:        DEC $0A                   
@@ -2455,7 +2455,7 @@ CODE_239435:        LDA $1040
 CODE_239438:        CMP #$02                  
 CODE_23943A:        BCC CODE_239485           
 CODE_23943C:        LDX $1043                 
-CODE_23943F:        LDA $977E,x               
+CODE_23943F:        LDA.w DATA_21977E,x               
 CODE_239442:        STA $0A                   
 CODE_239444:        LDA $1026                 
 CODE_239447:        STA $0B                   
@@ -2466,7 +2466,7 @@ CODE_239451:        INY
 CODE_239452:        LDA $0A                   
 CODE_239454:        STA $0810,y               
 CODE_239457:        INY                       
-CODE_239458:        LDA $977C,x               
+CODE_239458:        LDA.w DATA_21977C,x               
 CODE_23945B:        STA $0810,y               
 CODE_23945E:        INY                       
 CODE_23945F:        LDA $0B                   
@@ -2505,7 +2505,7 @@ CODE_2394A1:        RTL
 CODE_2394A2:        LDA $1040                 
 CODE_2394A5:        JSL CODE_20FB1F           
 
-PNTR_2394A9:     dw CODE_2394BD
+PNTR_2394A9:        dw CODE_2394BD
                     dw CODE_239513
                     dw CODE_2395F5
                     dw CODE_239752
@@ -2529,9 +2529,9 @@ CODE_2394D1:        LDA #$00
 CODE_2394D3:        STA $070F                 
 CODE_2394D6:        INC $1040                 
 CODE_2394D9:        LDY $1042                 
-CODE_2394DC:        LDA $9782,y               
+CODE_2394DC:        LDA.w DATA_219782,y               
 CODE_2394DF:        STA $2E                   
-CODE_2394E1:        LDA $978A,y               
+CODE_2394E1:        LDA.w DATA_21978A,y               
 CODE_2394E4:        STA $2F                   
 CODE_2394E6:        LDA #$21                  
 CODE_2394E8:        STA $30                   
@@ -2649,12 +2649,12 @@ CODE_2395CE:        AND #$0A
 CODE_2395D0:        BEQ CODE_2395D4           
 CODE_2395D2:        INC $00                   
 CODE_2395D4:        LDY $00                   
-CODE_2395D6:        LDA $9976,y               
+CODE_2395D6:        LDA.w DATA_219976,y               
 CODE_2395D9:        STA $7E397D,x             
-CODE_2395DD:        LDA $997A,y               
+CODE_2395DD:        LDA.w DATA_21997A,y               
 CODE_2395E0:        AND #$F0                  
 CODE_2395E2:        STA $7E3981,x             
-CODE_2395E6:        LDA $997A,y               
+CODE_2395E6:        LDA.w DATA_21997A,y               
 CODE_2395E9:        AND #$0F                  
 CODE_2395EB:        STA $7E397F,x             
 CODE_2395EF:        LDA #$01                  
@@ -2687,9 +2687,9 @@ CODE_23962A:        CMP #$02
 CODE_23962C:        BNE CODE_239647           
 CODE_23962E:        LDA $7E3991               
 CODE_239632:        AND #$01                  
-CODE_239634:        CMP $997E,y               
+CODE_239634:        CMP.w DATA_21997E,y               
 CODE_239637:        BNE CODE_23963F           
-CODE_239639:        LDA $9980,y               
+CODE_239639:        LDA.w DATA_219980,y               
 CODE_23963C:        STA $069A                 
 CODE_23963F:        LDA #$04                  
 CODE_239641:        STA $1040                 
@@ -2733,7 +2733,7 @@ CODE_239693:        LDA $070E
 CODE_239696:        AND #$03                  
 CODE_239698:        BNE CODE_2396EA           
 CODE_23969A:        LDX $02D4                 
-CODE_23969D:        LDA $9982,x               
+CODE_23969D:        LDA.w DATA_219982,x               
 CODE_2396A0:        BNE CODE_2396AD           
 CODE_2396A2:        LDA #$55                  
 CODE_2396A4:        STA $070C                 
@@ -3050,7 +3050,7 @@ CODE_239929:        BRL CODE_23987A
 
 CODE_23992C:        SEP #$10                  
 CODE_23992E:        LDY #$2F                  
-CODE_239930:        LDA $998B,y               
+CODE_239930:        LDA.w DATA_21998B,y               
 CODE_239933:        STA $0800,y               
 CODE_239936:        DEY                       
 CODE_239937:        BPL CODE_239930           
@@ -3176,7 +3176,7 @@ CODE_239A3B:        RTS
 CODE_239A3C:        LDA $100C,x               
 CODE_239A3F:        JSL CODE_20FB1F           
 
-PNTR_239A43:     dw CODE_239A4F
+PNTR_239A43:        dw CODE_239A4F
                     dw CODE_239A6F
                     dw CODE_239A7A
                     dw CODE_239ABB
@@ -3615,22 +3615,22 @@ CODE_239DEB:        RTL
 CODE_239DEC:        LDA $1041                 
 CODE_239DEF:        JSL CODE_20FB1F           
 
-PNTR_239DF3:     dw CODE_239DF9
+PNTR_239DF3:        dw CODE_239DF9
                     dw CODE_239E18
                     dw CODE_239E36
 
-CODE_239DF9:        LDA $0742                 
-CODE_239DFC:        BNE CODE_239E0F           
-CODE_239DFE:        LDY #$11                  
-CODE_239E00:        LDA $9A1C,y               
-CODE_239E03:        STA $1E84,y               
-CODE_239E06:        DEY                       
-CODE_239E07:        BPL CODE_239E00           
-CODE_239E09:        JSR CODE_239FE6           
-CODE_239E0C:        INC $0742                 
+CODE_239DF9:        LDA $0742                 ;Flag to shuffle N-Space cards
+CODE_239DFC:        BNE CODE_239E0F           ;0 means N-Spade was cleared and it's time to shuffle
+CODE_239DFE:        LDY #$11                  ;\
+CODE_239E00:        LDA.w DATA_219A1C,y               ; |
+CODE_239E03:        STA $1E84,y               ; | Load set of cards
+CODE_239E06:        DEY                       ; |
+CODE_239E07:        BPL CODE_239E00           ; |
+CODE_239E09:        JSR CODE_239FE6           ;/ Shuffle them
+CODE_239E0C:        INC $0742                 ;Set flag to keep the cards
 CODE_239E0F:        INC $1041                 
-CODE_239E12:        LDA #$11                  
-CODE_239E14:        STA $1028                 
+CODE_239E12:        LDA #$11                  ; N-Spade cursor position
+CODE_239E14:        STA $1028                 ;
 CODE_239E17:        RTS                       
 
 CODE_239E18:        LDY $1028                 
@@ -3680,7 +3680,7 @@ CODE_239E75:        RTL
 CODE_239E76:        LDA $1034                 
 CODE_239E79:        JSL CODE_20FB1F           
 
-PNTR_239E7D:     dw CODE_239E8F
+PNTR_239E7D:        dw CODE_239E8F
                     dw CODE_239E99
                     dw CODE_239EC4
                     dw CODE_239EF0
@@ -3767,7 +3767,7 @@ CODE_239F35:        LDA #$06
 CODE_239F37:        STA $1034                 
 CODE_239F3A:        LDA #$40                  
 CODE_239F3C:        STA $102B                 
-CODE_239F3F:        STZ $0742                 
+CODE_239F3F:        STZ $0742                 ;Set the N-Space cards to shuffle again.
 CODE_239F42:        STZ $0741                 
 CODE_239F45:        RTS                       
 
@@ -3845,41 +3845,41 @@ CODE_239FE0:        LDA #$04
 CODE_239FE2:        STA $102D                 
 CODE_239FE5:        RTS                       
 
-CODE_239FE6:        LDA #$02                  
-CODE_239FE8:        STA $0A                   
-CODE_239FEA:        JSL CODE_22E103           
-CODE_239FEE:        AND #$1F                  
-CODE_239FF0:        TAY                       
-CODE_239FF1:        LDA $1E92                 
-CODE_239FF4:        STA $0B                   
-CODE_239FF6:        LDX #$0D                  
-CODE_239FF8:        LDA $1E84,x               
-CODE_239FFB:        STA $1E85,x               
-CODE_239FFE:        DEX                       
-CODE_239FFF:        BPL CODE_239FF8           
-CODE_23A001:        LDA $0B                   
-CODE_23A003:        STA $1E84                 
-CODE_23A006:        DEY                       
-CODE_23A007:        BPL CODE_239FF1           
-CODE_23A009:        LDX #$00                  
-CODE_23A00B:        LDA $1E84,x               
-CODE_23A00E:        STA $0B                   
-CODE_23A010:        LDA $1E89,x               
-CODE_23A013:        STA $1E84,x               
-CODE_23A016:        LDA $1E8E,x               
-CODE_23A019:        STA $1E89,x               
-CODE_23A01C:        LDA $0B                   
-CODE_23A01E:        STA $1E8E,x               
-CODE_23A021:        DEX                       
-CODE_23A022:        DEX                       
-CODE_23A023:        BPL CODE_23A00B           
-CODE_23A025:        DEC $0A                   
-CODE_23A027:        BPL CODE_239FEA           
-CODE_23A029:        RTS                       
+CODE_239FE6:        LDA #$02                  ;Shuffle cards thrice. The cards are stored in $1E84 as 18 cards
+CODE_239FE8:        STA $0A                   ;
+CODE_239FEA:        JSL CODE_22E103           ;\ Random number generation
+CODE_239FEE:        AND #$1F                  ; | The amount of time card-shifting should be performed. Always 00 or 02.
+CODE_239FF0:        TAY                       ;/
+CODE_239FF1:        LDA $1E92                 ;\ Store card #15 in $0B
+CODE_239FF4:        STA $0B                   ; |
+CODE_239FF6:        LDX #$0D                  ; | Shift the cards one time to the right. Kinda like ROR
+CODE_239FF8:        LDA $1E84,x               ; |
+CODE_239FFB:        STA $1E85,x               ; |
+CODE_239FFE:        DEX                       ; |
+CODE_239FFF:        BPL CODE_239FF8           ; |
+CODE_23A001:        LDA $0B                   ; | Store card #15 as card #00
+CODE_23A003:        STA $1E84                 ;/|
+CODE_23A006:        DEY                       ; |
+CODE_23A007:        BPL CODE_239FF1           ;/  Depending on the RNG output from earlier, repeat card-shifting.
+CODE_23A009:        LDX #$00                  ;\
+CODE_23A00B:        LDA $1E84,x               ; | Store card #00 in $0B
+CODE_23A00E:        STA $0B                   ; |
+CODE_23A010:        LDA $1E89,x               ; | Swap card 5 with 0, 6 with 1, etc. until card 10
+CODE_23A013:        STA $1E84,x               ; |
+CODE_23A016:        LDA $1E8E,x               ; |
+CODE_23A019:        STA $1E89,x               ; |
+CODE_23A01C:        LDA $0B                   ; | Store card #00 as card #11
+CODE_23A01E:        STA $1E8E,x               ;/|
+CODE_23A021:        DEX                       ; |
+CODE_23A022:        DEX                       ; |
+CODE_23A023:        BPL CODE_23A00B           ;/ This branch never gets taken as X always will become FE after the card-swapping.
+CODE_23A025:        DEC $0A                   ;
+CODE_23A027:        BPL CODE_239FEA           ;Repeat the whole shuffling process
+CODE_23A029:        RTS                       ;One quirk about this routine is that cards 16 17 and 18 are untouched.
 
 CODE_23A02A:        REP #$20                  
 CODE_23A02C:        LDY #$3A                  
-CODE_23A02E:        LDA $9AC3,y               
+CODE_23A02E:        LDA.w DATA_219AC3,y               
 CODE_23A031:        STA $1602,y               
 CODE_23A034:        DEY                       
 CODE_23A035:        DEY                       
@@ -3888,7 +3888,7 @@ CODE_23A038:        LDA $0A
 CODE_23A03A:        AND #$00FF                
 CODE_23A03D:        ASL A                     
 CODE_23A03E:        TAY                       
-CODE_23A03F:        LDA $9A2E,y               
+CODE_23A03F:        LDA.w DATA_219A2E,y               
 CODE_23A042:        STA $102E                 
 CODE_23A045:        LDY #$00                  
 CODE_23A047:        LDX #$04                  
@@ -3919,19 +3919,19 @@ CODE_23A078:        ASL A
 CODE_23A079:        ASL A                     
 CODE_23A07A:        TAY                       
 CODE_23A07B:        REP #$20                  
-CODE_23A07D:        LDA $9A52,y               
+CODE_23A07D:        LDA.w DATA_219A52,y               
 CODE_23A080:        STA $1614                 
 CODE_23A083:        INY                       
 CODE_23A084:        INY                       
-CODE_23A085:        LDA $9A52,y               
+CODE_23A085:        LDA.w DATA_219A52,y               
 CODE_23A088:        STA $1616                 
 CODE_23A08B:        INY                       
 CODE_23A08C:        INY                       
-CODE_23A08D:        LDA $9A52,y               
+CODE_23A08D:        LDA.w DATA_219A52,y               
 CODE_23A090:        STA $1620                 
 CODE_23A093:        INY                       
 CODE_23A094:        INY                       
-CODE_23A095:        LDA $9A52,y               
+CODE_23A095:        LDA.w DATA_219A52,y               
 CODE_23A098:        STA $1622                 
 CODE_23A09B:        LDA #$FFFF                
 CODE_23A09E:        STA $163E                 
@@ -3945,9 +3945,9 @@ CODE_23A0AE:        SEC
 CODE_23A0AF:        SBC #$03                  
 CODE_23A0B1:        ASL A                     
 CODE_23A0B2:        TAY                       
-CODE_23A0B3:        LDA $9A87,y               
+CODE_23A0B3:        LDA.w DATA_219A87,y               
 CODE_23A0B6:        STA $162C                 
-CODE_23A0B9:        LDA $9A8D,y               
+CODE_23A0B9:        LDA.w DATA_219A8D,y               
 CODE_23A0BC:        STA $162E                 
 CODE_23A0BF:        LDA #$F0                  
 CODE_23A0C1:        STA $081D                 
@@ -3962,7 +3962,7 @@ CODE_23A0D9:        RTS
 
 CODE_23A0DA:        REP #$20                  
 CODE_23A0DC:        LDY #$3A                  
-CODE_23A0DE:        LDA $9B3D,y               
+CODE_23A0DE:        LDA.w DATA_219B3D,y               
 CODE_23A0E1:        STA $1602,y               
 CODE_23A0E4:        DEY                       
 CODE_23A0E5:        DEY                       
@@ -3971,7 +3971,7 @@ CODE_23A0E8:        LDA $0A
 CODE_23A0EA:        AND #$00FF                
 CODE_23A0ED:        ASL A                     
 CODE_23A0EE:        TAY                       
-CODE_23A0EF:        LDA $9A2E,y               
+CODE_23A0EF:        LDA.w DATA_219A2E,y               
 CODE_23A0F2:        STA $102E                 
 CODE_23A0F5:        LDY #$00                  
 CODE_23A0F7:        LDX #$04                  
@@ -4025,11 +4025,11 @@ CODE_23A15F:        SEP #$20
 CODE_23A161:        LDA #$02                  
 CODE_23A163:        STA $1602,y               
 CODE_23A166:        INY                       
-CODE_23A167:        LDA $9A52,x               
+CODE_23A167:        LDA.w DATA_219A52,x               
 CODE_23A16A:        STA $1602,y               
 CODE_23A16D:        INY                       
 CODE_23A16E:        INX                       
-CODE_23A16F:        LDA $9A52,x               
+CODE_23A16F:        LDA.w DATA_219A52,x               
 CODE_23A172:        STA $1602,y               
 CODE_23A175:        INY                       
 CODE_23A176:        INX                       
@@ -4046,7 +4046,7 @@ CODE_23A18C:        LDA $103D
 CODE_23A18F:        AND #$01                  
 CODE_23A191:        BEQ CODE_23A1A1           
 CODE_23A193:        INC $103C                 
-CODE_23A196:        LDA $9A82,x               
+CODE_23A196:        LDA.w DATA_219A82,x               
 CODE_23A199:        LSR A                     
 CODE_23A19A:        LSR A                     
 CODE_23A19B:        LSR A                     
@@ -4057,7 +4057,7 @@ CODE_23A1A1:        LDA $103B
 CODE_23A1A4:        CLC                       
 CODE_23A1A5:        ADC #$08                  
 CODE_23A1A7:        STA $103B                 
-CODE_23A1AA:        LDA $9A82,x               
+CODE_23A1AA:        LDA.w DATA_219A82,x               
 CODE_23A1AD:        LDX $103C                 
 CODE_23A1B0:        AND $1037,x               
 CODE_23A1B3:        STA $1037,x               
@@ -4069,7 +4069,7 @@ CODE_23A1BF:        RTS
 
 CODE_23A1C0:        REP #$20                  
 CODE_23A1C2:        LDY #$3C                  
-CODE_23A1C4:        LDA $9AFF,y               
+CODE_23A1C4:        LDA.w DATA_219AFF,y               
 CODE_23A1C7:        STA $1602,y               
 CODE_23A1CA:        DEY                       
 CODE_23A1CB:        DEY                       
@@ -4078,7 +4078,7 @@ CODE_23A1CE:        LDA $0A
 CODE_23A1D0:        AND #$00FF                
 CODE_23A1D3:        ASL A                     
 CODE_23A1D4:        TAY                       
-CODE_23A1D5:        LDA $9A2E,y               
+CODE_23A1D5:        LDA.w DATA_219A2E,y               
 CODE_23A1D8:        STA $102E                 
 CODE_23A1DB:        LDA #$003C                
 CODE_23A1DE:        STA $1600                 
@@ -4211,9 +4211,9 @@ CODE_23A2EA:        LDA $1026
 CODE_23A2ED:        STA $0804,y               
 CODE_23A2F0:        LDA $1027                 
 CODE_23A2F3:        STA $0805,y               
-CODE_23A2F6:        LDA $99CE,x               
+CODE_23A2F6:        LDA.w DATA_2199CE,x               
 CODE_23A2F9:        STA $0806,y               
-CODE_23A2FC:        LDA $99D4,x               
+CODE_23A2FC:        LDA.w DATA_2199D4,x               
 CODE_23A2FF:        STA $0807,y               
 CODE_23A302:        TYA                       
 CODE_23A303:        CLC                       
@@ -4223,10 +4223,10 @@ CODE_23A307:        INX
 CODE_23A308:        RTS                       
 
 CODE_23A309:        LDX $1028                 
-CODE_23A30C:        LDA $99DA,x               
+CODE_23A30C:        LDA.w DATA_2199DA,x               
 CODE_23A30F:        STA $1026                 
 CODE_23A312:        STA $102A                 
-CODE_23A315:        LDA $99EC,x               
+CODE_23A315:        LDA.w DATA_2199EC,x               
 CODE_23A318:        STA $1027                 
 CODE_23A31B:        LDX #$00                  
 CODE_23A31D:        LDY #$00                  
@@ -4273,12 +4273,12 @@ CODE_23A380:        SEP #$20
 CODE_23A382:        RTS                       
 
 CODE_23A383:        LDX $0A                   
-CODE_23A385:        LDA $99DA,x               
+CODE_23A385:        LDA.w DATA_2199DA,x               
 CODE_23A388:        CLC                       
 CODE_23A389:        ADC #$08                  
 CODE_23A38B:        STA $1026                 
 CODE_23A38E:        STA $102A                 
-CODE_23A391:        LDA $99EC,x               
+CODE_23A391:        LDA.w DATA_2199EC,x               
 CODE_23A394:        CLC                       
 CODE_23A395:        ADC #$08                  
 CODE_23A397:        STA $1027                 
@@ -4356,11 +4356,11 @@ CODE_23A438:        RTS
 
 CODE_23A439:        STX $0A                   
 CODE_23A43B:        LDX $1036                 
-CODE_23A43E:        LDA $9A17,x               
+CODE_23A43E:        LDA.w DATA_219A17,x               
 CODE_23A441:        CLC                       
 CODE_23A442:        ADC $0A                   
 CODE_23A444:        TAX                       
-CODE_23A445:        LDA $9A03,x               
+CODE_23A445:        LDA.w DATA_219A03,x               
 CODE_23A448:        LDX $0A                   
 CODE_23A44A:        CPX #$02                  
 CODE_23A44C:        BCS CODE_23A450                   
@@ -4415,17 +4415,17 @@ CODE_23A4AB:        LSR A
 CODE_23A4AC:        LSR A                     
 CODE_23A4AD:        STA $02D2                 
 CODE_23A4B0:        REP #$20                  
-CODE_23A4B2:        LDA $9A93,y               
+CODE_23A4B2:        LDA.w DATA_219A93,y               
 CODE_23A4B5:        STA $1386                 
-CODE_23A4B8:        LDA $9A9B,y               
+CODE_23A4B8:        LDA.w DATA_219A9B,y               
 CODE_23A4BB:        STA $1392                 
-CODE_23A4BE:        LDA $9AA3,y               
+CODE_23A4BE:        LDA.w DATA_219AA3,y               
 CODE_23A4C1:        STA $1394                 
-CODE_23A4C4:        LDA $9AAB,y               
+CODE_23A4C4:        LDA.w DATA_219AAB,y               
 CODE_23A4C7:        STA $1396                 
-CODE_23A4CA:        LDA $9AB3,y               
+CODE_23A4CA:        LDA.w DATA_219AB3,y               
 CODE_23A4CD:        STA $1398                 
-CODE_23A4D0:        LDA $9ABB,y               
+CODE_23A4D0:        LDA.w DATA_219ABB,y               
 CODE_23A4D3:        STA $139C                 
 CODE_23A4D6:        SEP #$20                  
 CODE_23A4D8:        INC $1500                 
@@ -4457,18 +4457,18 @@ DATA_23A4F0:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
 
 DATA_23A540:        db $32,$50,$AD,$C1,$32,$50,$AD,$C1
 
-CODE_23A548:        LDX #$00
-CODE_23A54A:        LDA #$02
-CODE_23A54C:        JSL CODE_2098A8               
-CODE_23A550:        JSL CODE_209844    
-CODE_23A554:        CPX #$F0
+CODE_23A548:        LDX #$00                  ; prepare battle level data
+CODE_23A54A:        LDA #$02                  
+CODE_23A54C:        JSL CODE_2098A8           
+CODE_23A550:        JSL CODE_209844           ; clear out everything first
+CODE_23A554:        CPX #$F0                  
 CODE_23A556:        BNE CODE_23A54A           
 CODE_23A558:        LDX #$D0                  
 CODE_23A55A:        LDA #$50                  
-CODE_23A55C:        JSL CODE_209844           
+CODE_23A55C:        JSL CODE_209844           ; lay down some ground
 CODE_23A560:        CPX #$F0                  
 CODE_23A562:        BNE CODE_23A55A           
-CODE_23A564:        JSL CODE_20990B           
+CODE_23A564:        JSL CODE_20990B           ; lay down everything else
 CODE_23A568:        RTL                       
 
 CODE_23A569:        LDA $0E                   
@@ -4485,7 +4485,7 @@ CODE_23A577:        LSR A
 CODE_23A578:        LSR A                     
 CODE_23A579:        LSR A                     
 CODE_23A57A:        CLC                       
-CODE_23A57B:        ADC $A379,x               
+CODE_23A57B:        ADC.w DATA_21A379,x               
 CODE_23A57E:        TAX                       
 CODE_23A57F:        DEX                       
 CODE_23A580:        TXA                       
@@ -4540,7 +4540,7 @@ CODE_23A60A:        LDA $0706
 CODE_23A60D:        AND #$0F                  
 CODE_23A60F:        STA $00                   
 CODE_23A611:        LDY $0700                 
-CODE_23A614:        LDA $A464,x               
+CODE_23A614:        LDA.w DATA_21A464,x               
 CODE_23A617:        STA [$2E],y               
 CODE_23A619:        INY                       
 CODE_23A61A:        DEC $00                   
@@ -4566,7 +4566,7 @@ CODE_23A637:        JMP CODE_23A63C
 
 CODE_23A63A:        LDX #$04                  
 CODE_23A63C:        LDY $0700                 
-CODE_23A63F:        LDA $A467,x               
+CODE_23A63F:        LDA.w DATA_21A467,x               
 CODE_23A642:        STA [$2E],y               
 CODE_23A644:        INY                       
 CODE_23A645:        INX                       
@@ -4591,7 +4591,7 @@ CODE_23A660:        LDX #$00
 CODE_23A662:        LDY $0700                 
 CODE_23A665:        LDA #$09                  
 CODE_23A667:        STA $00                   
-CODE_23A669:        LDA $A46F,x               
+CODE_23A669:        LDA.w DATA_21A46F,x               
 CODE_23A66C:        STA [$2E],y               
 CODE_23A66E:        INY                       
 CODE_23A66F:        INX                       
@@ -4658,11 +4658,11 @@ CODE_23A6D5:        LDA $0706
 CODE_23A6D8:        AND #$0F                  
 CODE_23A6DA:        STA $02                   
 CODE_23A6DC:        LDY $0700                 
-CODE_23A6DF:        LDA $A483,x               
+CODE_23A6DF:        LDA.w DATA_21A483,x               
 CODE_23A6E2:        STA [$2E],y               
 CODE_23A6E4:        JSL CODE_2AB73A           
 CODE_23A6E8:        JSL CODE_23BEBB           
-CODE_23A6EC:        LDA $A484,x               
+CODE_23A6EC:        LDA.w DATA_21A483+1,x               
 CODE_23A6EF:        STA [$2E],y               
 CODE_23A6F1:        BRA CODE_23A706           
 
@@ -4729,11 +4729,11 @@ CODE_23A770:        STA $01
 CODE_23A772:        DEC $02                   
 CODE_23A774:        BNE CODE_23A742           
 CODE_23A776:        LDY $0700                 
-CODE_23A779:        LDA $A483,x               
+CODE_23A779:        LDA.w DATA_21A483,x               
 CODE_23A77C:        STA [$2E],y               
 CODE_23A77E:        JSL CODE_2AB73A           
 CODE_23A782:        JSL CODE_23BEBB           
-CODE_23A786:        LDA $A484,x               
+CODE_23A786:        LDA.w DATA_21A483+1,x               
 CODE_23A789:        STA [$2E],y               
 CODE_23A78B:        JSL CODE_2AB73A           
 CODE_23A78F:        RTL                       
@@ -4748,13 +4748,13 @@ CODE_23A79D:        AND #$0F
 CODE_23A79F:        STA $02                   
 CODE_23A7A1:        LDY $0700                 
 CODE_23A7A4:        LDA [$2E],y               
-CODE_23A7A6:        CMP $A483,x               
+CODE_23A7A6:        CMP.w DATA_21A483,x               
 CODE_23A7A9:        BEQ CODE_23A7C3           
-CODE_23A7AB:        LDA $A483,x               
+CODE_23A7AB:        LDA.w DATA_21A483,x               
 CODE_23A7AE:        STA [$2E],y               
 CODE_23A7B0:        JSL CODE_2AB73A           
 CODE_23A7B4:        JSL CODE_23BEBB           
-CODE_23A7B8:        LDA $A484,x               
+CODE_23A7B8:        LDA.w DATA_21A483+1,x               
 CODE_23A7BB:        STA [$2E],y               
 CODE_23A7BD:        JSL CODE_2AB73A           
 CODE_23A7C1:        BRA CODE_23A7DA           
@@ -4782,11 +4782,11 @@ CODE_23A7F1:        STA $01
 CODE_23A7F3:        DEC $02                   
 CODE_23A7F5:        BNE CODE_23A7C3           
 CODE_23A7F7:        LDY $0700                 
-CODE_23A7FA:        LDA $A483,x               
+CODE_23A7FA:        LDA.w DATA_21A483,x               
 CODE_23A7FD:        STA [$2E],y               
 CODE_23A7FF:        JSL CODE_2AB73A           
 CODE_23A803:        JSL CODE_23BEBB           
-CODE_23A807:        LDA $A484,x               
+CODE_23A807:        LDA.w DATA_21A483+1,x               
 CODE_23A80A:        STA [$2E],y               
 CODE_23A80C:        JSL CODE_2AB73A           
 CODE_23A810:        RTL                       
@@ -4813,7 +4813,7 @@ CODE_23A830:        LDA $0706
 CODE_23A833:        AND #$0F                  
 CODE_23A835:        STA $02                   
 CODE_23A837:        LDY $0700                 
-CODE_23A83A:        LDA $A48D,x               
+CODE_23A83A:        LDA.w DATA_21A48D,x               
 CODE_23A83D:        STA [$2E],y               
 CODE_23A83F:        BRA CODE_23A857           
 
@@ -4850,7 +4850,7 @@ CODE_23A87B:        STA $01
 CODE_23A87D:        LDA $0706                 
 CODE_23A880:        AND #$0F                  
 CODE_23A882:        STA $02                   
-CODE_23A884:        LDA $A490,x               
+CODE_23A884:        LDA.w DATA_21A490,x               
 CODE_23A887:        STA [$2E],y               
 CODE_23A889:        BRA CODE_23A8A1           
 
@@ -4895,7 +4895,7 @@ CODE_23A8CF:        JSL CODE_2AB73A
 CODE_23A8D3:        JSL CODE_23BEBB           
 CODE_23A8D7:        DEC $02                   
 CODE_23A8D9:        BNE CODE_23A8CB           
-CODE_23A8DB:        LDA $A48D,x               
+CODE_23A8DB:        LDA.w DATA_21A48D,x               
 CODE_23A8DE:        STA [$2E],y               
 CODE_23A8E0:        LDA $00                   
 CODE_23A8E2:        STA $2E                   
@@ -4919,7 +4919,7 @@ CODE_23A905:        JSL CODE_2AB73A
 CODE_23A909:        JSL CODE_23BEBB           
 CODE_23A90D:        DEC $02                   
 CODE_23A90F:        BNE CODE_23A901           
-CODE_23A911:        LDA $A490,x               
+CODE_23A911:        LDA.w DATA_21A490,x               
 CODE_23A914:        STA [$2E],y               
 CODE_23A916:        JSL CODE_2AB73A           
 CODE_23A91A:        RTL                       
@@ -4953,7 +4953,7 @@ CODE_23A94D:        STX $03
 CODE_23A94F:        LDA #$19                  
 CODE_23A951:        STA $02                   
 CODE_23A953:        LDY $0700                 
-CODE_23A956:        LDA $A493,x               
+CODE_23A956:        LDA.w DATA_21A493,x               
 CODE_23A959:        STA [$2E],y               
 CODE_23A95B:        JSL CODE_2AB73A           
 CODE_23A95F:        TYA                       
@@ -5042,7 +5042,7 @@ CODE_23A9F9:        LDY #$00
 CODE_23A9FB:        STY $06                   
 CODE_23A9FD:        LDX #$06                  
 CODE_23A9FF:        LDA $070A                 
-CODE_23AA02:        CMP DATA_2AB9F1,x               
+CODE_23AA02:        CMP.w DATA_2AB9F1,x               
 CODE_23AA05:        BEQ CODE_23AA0A           
 CODE_23AA07:        DEX                       
 CODE_23AA08:        BNE CODE_23AA02           
@@ -5050,9 +5050,9 @@ CODE_23AA0A:        TXA
 CODE_23AA0B:        ASL A                     
 CODE_23AA0C:        TAX                       
 CODE_23AA0D:        REP #$20                  
-CODE_23AA0F:        LDA DATA_2AB9E3,x               
+CODE_23AA0F:        LDA.w DATA_2AB9E3,x               
 CODE_23AA12:        STA $0C                   
-CODE_23AA14:        LDA DATA_2ABBD8,x               
+CODE_23AA14:        LDA.w DATA_2ABBD8,x               
 CODE_23AA17:        STA $D8                   
 CODE_23AA19:        LDA $2E                   
 CODE_23AA1B:        CLC                       
@@ -5097,7 +5097,7 @@ CODE_23AA60:        CPX #$0B
 CODE_23AA62:        BEQ CODE_23AA6A           
 CODE_23AA64:        JMP CODE_23AA89           
 
-CODE_23AA67:        LDA $A495,x               
+CODE_23AA67:        LDA.w DATA_21A495,x               
 CODE_23AA6A:        STA [$2E],y               
 CODE_23AA6C:        PHA                       
 CODE_23AA6D:        JSL CODE_2AB73A           
@@ -5133,7 +5133,7 @@ CODE_23AAA1:        BNE CODE_23AAAA
 CODE_23AAA3:        JSR CODE_23BE71           
 CODE_23AAA6:        CMP #$00                  
 CODE_23AAA8:        BNE CODE_23AAB3           
-CODE_23AAAA:        LDA $A4AE,x               
+CODE_23AAAA:        LDA.w DATA_21A4AE,x               
 CODE_23AAAD:        STA [$2E],y               
 CODE_23AAAF:        JSL CODE_2AB73A           
 CODE_23AAB3:        JSL CODE_23BEBB           
@@ -5177,7 +5177,7 @@ CODE_23AAF8:        STA $00
 CODE_23AAFA:        SEP #$20                  
 CODE_23AAFC:        STY $0C                   
 CODE_23AAFE:        LDY $0C                   
-CODE_23AB00:        LDA $A5B0,y               
+CODE_23AB00:        LDA.w DATA_21A5B0,y               
 CODE_23AB03:        STA $02                   
 CODE_23AB05:        LDY $0700                 
 CODE_23AB08:        REP #$21                  
@@ -5187,10 +5187,10 @@ CODE_23AB0F:        STA $D8
 CODE_23AB11:        SEP #$20                  
 CODE_23AB13:        LDA $DB                   
 CODE_23AB15:        BNE CODE_23AB1C           
-CODE_23AB17:        LDA $A4B7,x               
+CODE_23AB17:        LDA.w DATA_21A4B7,x               
 CODE_23AB1A:        BRA CODE_23AB1F           
 
-CODE_23AB1C:        LDA $A50A,x               
+CODE_23AB1C:        LDA.w DATA_21A50A,x               
 CODE_23AB1F:        CMP #$80                  
 CODE_23AB21:        BNE CODE_23AB26           
 CODE_23AB23:        JMP CODE_23ABE9           
@@ -5212,7 +5212,7 @@ CODE_23AB3F:        LDA [$D8],y
 CODE_23AB41:        BEQ CODE_23AB46           
 CODE_23AB43:        JMP CODE_23ABE9           
 
-CODE_23AB46:        LDA $A55D,x               
+CODE_23AB46:        LDA.w DATA_21A55D,x               
 CODE_23AB49:        STA [$D8],y               
 CODE_23AB4B:        BEQ CODE_23AB50           
 CODE_23AB4D:        JMP CODE_23ABD9           
@@ -5312,7 +5312,7 @@ CODE_23AC06:        LDA $2F
 CODE_23AC08:        ADC #$00                  
 CODE_23AC0A:        STA $2F                   
 CODE_23AC0C:        STA $01                   
-CODE_23AC0E:        LDA $A4B7,x               
+CODE_23AC0E:        LDA.w DATA_21A4B7,x               
 CODE_23AC11:        CMP #$FF                  
 CODE_23AC13:        BEQ CODE_23AC18           
 CODE_23AC15:        JMP CODE_23AAFE           
@@ -5320,7 +5320,7 @@ CODE_23AC15:        JMP CODE_23AAFE
 CODE_23AC18:        RTL                       
 
 CODE_23AC19:        JSR CODE_23ACF3           
-CODE_23AC1C:        LDA $A5B3,x               
+CODE_23AC1C:        LDA.w DATA_21A5B3,x               
 CODE_23AC1F:        STA [$2E],y               
 CODE_23AC21:        JSL CODE_23BEBB           
 CODE_23AC25:        DEC $02                   
@@ -5328,7 +5328,7 @@ CODE_23AC27:        BPL CODE_23AC1C
 CODE_23AC29:        RTL                       
 
 CODE_23AC2A:        JSR CODE_23ACF3           
-CODE_23AC2D:        LDA $A5B5,x               
+CODE_23AC2D:        LDA.w DATA_21A5B5,x               
 CODE_23AC30:        STA [$2E],y               
 CODE_23AC32:        TYA                       
 CODE_23AC33:        CLC                       
@@ -5342,7 +5342,7 @@ CODE_23AC3F:        BPL CODE_23AC2D
 CODE_23AC41:        RTL                       
 
 CODE_23AC42:        JSR CODE_23ACF3           
-CODE_23AC45:        LDA $A5B7,x               
+CODE_23AC45:        LDA.w DATA_21A5B7,x               
 CODE_23AC48:        STA [$2E],y               
 CODE_23AC4A:        TYA                       
 CODE_23AC4B:        CLC                       
@@ -5358,7 +5358,7 @@ CODE_23AC5E:        BPL CODE_23AC45
 CODE_23AC60:        RTL                       
 
 CODE_23AC61:        JSR CODE_23ACF3           
-CODE_23AC64:        LDA $A5B9,x               
+CODE_23AC64:        LDA.w DATA_21A5B9,x               
 CODE_23AC67:        STA [$2E],y               
 CODE_23AC69:        TYA                       
 CODE_23AC6A:        SEC                       
@@ -5374,7 +5374,7 @@ CODE_23AC7D:        BPL CODE_23AC64
 CODE_23AC7F:        RTL                       
 
 CODE_23AC80:        JSR CODE_23ACF3           
-CODE_23AC83:        LDA $A5BB,x               
+CODE_23AC83:        LDA.w DATA_21A5BB,x               
 CODE_23AC86:        STA [$2E],y               
 CODE_23AC88:        TYA                       
 CODE_23AC89:        CLC                       
@@ -5383,7 +5383,7 @@ CODE_23AC8C:        TAY
 CODE_23AC8D:        LDA $2F                   
 CODE_23AC8F:        ADC #$00                  
 CODE_23AC91:        STA $2F                   
-CODE_23AC93:        LDA $A5BD,x               
+CODE_23AC93:        LDA.w DATA_21A5BD,x               
 CODE_23AC96:        STA [$2E],y               
 CODE_23AC98:        TYA                       
 CODE_23AC99:        CLC                       
@@ -5399,7 +5399,7 @@ CODE_23ACAC:        BPL CODE_23AC83
 CODE_23ACAE:        RTL                       
 
 CODE_23ACAF:        JSR CODE_23ACF3           
-CODE_23ACB2:        LDA $A5BF,x               
+CODE_23ACB2:        LDA.w DATA_21A5BF,x               
 CODE_23ACB5:        STA [$2E],y               
 CODE_23ACB7:        TYA                       
 CODE_23ACB8:        CLC                       
@@ -5408,7 +5408,7 @@ CODE_23ACBB:        TAY
 CODE_23ACBC:        LDA $2F                   
 CODE_23ACBE:        ADC #$00                  
 CODE_23ACC0:        STA $2F                   
-CODE_23ACC2:        LDA $A5C1,x               
+CODE_23ACC2:        LDA.w DATA_21A5C1,x               
 CODE_23ACC5:        STA [$2E],y               
 CODE_23ACC7:        TYA                       
 CODE_23ACC8:        CLC                       
@@ -5474,7 +5474,7 @@ CODE_23AD36:        LDA #$8B
 CODE_23AD38:        STA $D8                   
 CODE_23AD3A:        LDA $D8                   
 CODE_23AD3C:        BNE CODE_23AD41           
-CODE_23AD3E:        LDA $A5C3,x               
+CODE_23AD3E:        LDA.w DATA_21A5C3,x               
 CODE_23AD41:        STA [$2E],y               
 CODE_23AD43:        JSL CODE_23BEBB           
 CODE_23AD47:        DEC $04                   
@@ -5511,7 +5511,7 @@ CODE_23AD82:        AND #$0F
 CODE_23AD84:        STA $03                   
 CODE_23AD86:        LDY $0700                 
 CODE_23AD89:        LDX $02                   
-CODE_23AD8B:        LDA $A5C5,x               
+CODE_23AD8B:        LDA.w DATA_21A5C5,x               
 CODE_23AD8E:        STA [$2E],y               
 CODE_23AD90:        TYA                       
 CODE_23AD91:        CLC                       
@@ -5523,7 +5523,7 @@ CODE_23AD99:        STA $2F
 CODE_23AD9B:        LDA [$2E],y               
 CODE_23AD9D:        CMP #$02                  
 CODE_23AD9F:        BNE CODE_23ADA8           
-CODE_23ADA1:        LDA $A5C7,x               
+CODE_23ADA1:        LDA.w DATA_21A5C7,x               
 CODE_23ADA4:        STA [$2E],y               
 CODE_23ADA6:        BRA CODE_23AD90           
 
@@ -5534,7 +5534,7 @@ CODE_23ADAC:        TAY
 CODE_23ADAD:        LDA $2F                   
 CODE_23ADAF:        SBC #$00                  
 CODE_23ADB1:        STA $2F                   
-CODE_23ADB3:        LDA $A5C9,x               
+CODE_23ADB3:        LDA.w DATA_21A5C9,x               
 CODE_23ADB6:        STA [$2E],y               
 CODE_23ADB8:        LDA $00                   
 CODE_23ADBA:        STA $2E                   
@@ -5564,9 +5564,9 @@ CODE_23ADE5:        LDA $2F
 CODE_23ADE7:        ADC #$00                  
 CODE_23ADE9:        STA $2F                   
 CODE_23ADEB:        LDA [$2E],y               
-CODE_23ADED:        CMP $A5CF,x               
+CODE_23ADED:        CMP.w DATA_21A5CF,x               
 CODE_23ADF0:        BNE CODE_23ADF9           
-CODE_23ADF2:        LDA $A5CD,x               
+CODE_23ADF2:        LDA.w DATA_21A5CD,x               
 CODE_23ADF5:        STA [$2E],y               
 CODE_23ADF7:        BRA CODE_23ADE0           
 
@@ -5698,7 +5698,7 @@ CODE_23AEDC:        AND #$0F
 CODE_23AEDE:        STA $02                   
 CODE_23AEE0:        STA $03                   
 CODE_23AEE2:        LDY $0700                 
-CODE_23AEE5:        LDA $A5CF,x               
+CODE_23AEE5:        LDA.w DATA_21A5CF,x               
 CODE_23AEE8:        STA [$2E],y               
 CODE_23AEEA:        JSL CODE_2AB73A           
 CODE_23AEEE:        JSL CODE_23BEBB           
@@ -5719,7 +5719,7 @@ CODE_23AF0C:        STA $2F
 CODE_23AF0E:        STA $01                   
 CODE_23AF10:        LDA $02                   
 CODE_23AF12:        STA $03                   
-CODE_23AF14:        LDA $A5D1,x               
+CODE_23AF14:        LDA.w DATA_21A5D1,x               
 CODE_23AF17:        CMP #$C1                  
 CODE_23AF19:        BEQ CODE_23AF29           
 CODE_23AF1B:        STA [$2E],y               
@@ -5765,7 +5765,7 @@ CODE_23AF65:        CMP #$0D
 CODE_23AF67:        BNE CODE_23AF6D           
 CODE_23AF69:        CPX #$02                  
 CODE_23AF6B:        BEQ CODE_23AF87           
-CODE_23AF6D:        LDA $A5D3,x               
+CODE_23AF6D:        LDA.w DATA_21A5D3,x               
 CODE_23AF70:        STA [$2E],y               
 CODE_23AF72:        JSL CODE_2AB73A           
 CODE_23AF76:        JSL CODE_23BEBB           
@@ -5778,7 +5778,7 @@ CODE_23AF84:        BPL CODE_23AFB1
 CODE_23AF86:        RTL                       
 
 CODE_23AF87:        LDX #$08                  
-CODE_23AF89:        LDA $A5D3,x               
+CODE_23AF89:        LDA.w DATA_21A5D3,x               
 CODE_23AF8C:        STA [$2E],y               
 CODE_23AF8E:        REP #$30                  
 CODE_23AF90:        TYA                       
@@ -5825,7 +5825,7 @@ CODE_23AFDE:        STA [$2E],y
 CODE_23AFE0:        SEP #$10                  
 CODE_23AFE2:        CPX #$08                  
 CODE_23AFE4:        BEQ CODE_23AFFE           
-CODE_23AFE6:        LDA $A5DC,x               
+CODE_23AFE6:        LDA.w DATA_21A5DC,x               
 CODE_23AFE9:        STA [$2E],y               
 CODE_23AFEB:        JSL CODE_2AB73A           
 CODE_23AFEF:        JSL CODE_23BEBB           
@@ -5835,7 +5835,7 @@ CODE_23AFF7:        CMP #$FF
 CODE_23AFF9:        BNE CODE_23AFCF           
 CODE_23AFFB:        JMP CODE_23AF82           
 
-CODE_23AFFE:        LDA $A5DC,x               
+CODE_23AFFE:        LDA.w DATA_21A5DC,x               
 CODE_23B001:        STA [$2E],y               
 CODE_23B003:        REP #$30                  
 CODE_23B005:        TYA                       
@@ -5860,7 +5860,7 @@ CODE_23B02A:        LDA $0706
 CODE_23B02D:        AND #$0F                  
 CODE_23B02F:        STA $02                   
 CODE_23B031:        LDY $0700                 
-CODE_23B034:        LDA $A5E5,x               
+CODE_23B034:        LDA.w DATA_21A5E5,x               
 CODE_23B037:        STA [$2E],y               
 CODE_23B039:        JSL CODE_23BEBB           
 CODE_23B03D:        DEC $02                   
@@ -5884,7 +5884,7 @@ CODE_23B056:        PLA
 CODE_23B057:        AND #$0F                  
 CODE_23B059:        STA $02                   
 CODE_23B05B:        LDY $0700                 
-CODE_23B05E:        LDA $A5E7,x               
+CODE_23B05E:        LDA.w DATA_21A5E7,x               
 CODE_23B061:        STA [$2E],y               
 CODE_23B063:        JSL CODE_23BEBB           
 CODE_23B067:        DEC $02                   
@@ -5919,7 +5919,7 @@ CODE_23B09A:        LDX #$00
 CODE_23B09C:        TXA                       
 CODE_23B09D:        LDX $0B                   
 CODE_23B09F:        CLC                       
-CODE_23B0A0:        ADC $A644,x               
+CODE_23B0A0:        ADC.w DATA_21A644,x               
 CODE_23B0A3:        STA $0C                   
 CODE_23B0A5:        TAX                       
 CODE_23B0A6:        LDA $0706                 
@@ -5938,7 +5938,7 @@ CODE_23B0C1:        JSR CODE_23B1A5
 CODE_23B0C4:        LDA #$0A                  
 CODE_23B0C6:        BRA CODE_23B0CB           
 
-CODE_23B0C8:        LDA $A5EA,x               
+CODE_23B0C8:        LDA.w DATA_21A5EA,x               
 CODE_23B0CB:        STA [$2E],y               
 CODE_23B0CD:        JSR CODE_23B36A           
 CODE_23B0D0:        LDA [$2E],y               
@@ -5959,7 +5959,7 @@ CODE_23B0ED:        JSR CODE_23B1A5
 CODE_23B0F0:        LDA #$0B                  
 CODE_23B0F2:        BRA CODE_23B0F7           
 
-CODE_23B0F4:        LDA $A5F6,x               
+CODE_23B0F4:        LDA.w DATA_21A5F6,x               
 CODE_23B0F7:        STA [$2E],y               
 CODE_23B0F9:        BRA CODE_23B0CD           
 
@@ -5982,7 +5982,7 @@ CODE_23B117:        BNE CODE_23B11D
 CODE_23B119:        LDA #$0C                  
 CODE_23B11B:        BRA CODE_23B120           
 
-CODE_23B11D:        LDA $A602,x               
+CODE_23B11D:        LDA.w DATA_21A602,x               
 CODE_23B120:        STA [$2E],y               
 CODE_23B122:        REP #$20                  
 CODE_23B124:        LDA $02                   
@@ -6044,13 +6044,13 @@ CODE_23B18F:        RTL
 
 CODE_23B190:        LDX #$18                  
 CODE_23B192:        LDA [$2E],y               
-CODE_23B194:        CMP $A60E,x               
+CODE_23B194:        CMP.w DATA_21A60E,x               
 CODE_23B197:        BEQ CODE_23B19E           
 CODE_23B199:        DEX                       
 CODE_23B19A:        BPL CODE_23B194           
 CODE_23B19C:        BRA CODE_23B182           
 
-CODE_23B19E:        LDA $A627,x               
+CODE_23B19E:        LDA.w DATA_21A627,x               
 CODE_23B1A1:        STA [$2E],y               
 CODE_23B1A3:        BRA CODE_23B182           
 
@@ -6091,21 +6091,21 @@ CODE_23B1DA:        STZ $04
 CODE_23B1DC:        LDX $02                   
 CODE_23B1DE:        LDA $04                   
 CODE_23B1E0:        CLC                       
-CODE_23B1E1:        ADC $A644,x               
+CODE_23B1E1:        ADC.w DATA_21A644,x               
 CODE_23B1E4:        TAX                       
 CODE_23B1E5:        LDY $0700                 
-CODE_23B1E8:        LDA $A648,x               
+CODE_23B1E8:        LDA.w DATA_21A648,x               
 CODE_23B1EB:        STA [$2E],y               
 CODE_23B1ED:        JSL CODE_23BEBB           
 CODE_23B1F1:        DEC $05                   
-CODE_23B1F3:        LDA $A654,x               
+CODE_23B1F3:        LDA.w DATA_21A654,x               
 CODE_23B1F6:        STA [$2E],y               
 CODE_23B1F8:        JSL CODE_23BEBB           
 CODE_23B1FC:        DEC $05                   
 CODE_23B1FE:        LDA $05                   
 CODE_23B200:        CMP #$01                  
 CODE_23B202:        BNE CODE_23B1F3           
-CODE_23B204:        LDA $A660,x               
+CODE_23B204:        LDA.w DATA_21A660,x               
 CODE_23B207:        STA [$2E],y               
 CODE_23B209:        JSL CODE_23BEBB           
 CODE_23B20D:        LDA $00                   
@@ -6170,16 +6170,16 @@ CODE_23B27C:        STA $02
 CODE_23B27E:        LDY $0700                 
 CODE_23B281:        LDA $02                   
 CODE_23B283:        STA $03                   
-CODE_23B285:        LDA $A67B,x               
+CODE_23B285:        LDA.w DATA_21A67B,x               
 CODE_23B288:        STA [$2E],y               
 CODE_23B28A:        BRA CODE_23B291           
 
-CODE_23B28C:        LDA $A67F,x               
+CODE_23B28C:        LDA.w DATA_21A67F,x               
 CODE_23B28F:        STA [$2E],y               
 CODE_23B291:        JSL CODE_23BEBB           
 CODE_23B295:        DEC $03                   
 CODE_23B297:        BNE CODE_23B28C           
-CODE_23B299:        LDA $A683,x               
+CODE_23B299:        LDA.w DATA_21A683,x               
 CODE_23B29C:        STA [$2E],y               
 CODE_23B29E:        LDA $00                   
 CODE_23B2A0:        STA $2E                   
@@ -6222,26 +6222,26 @@ CODE_23B2E1:        LSR A
 CODE_23B2E2:        LSR A                     
 CODE_23B2E3:        LSR A                     
 CODE_23B2E4:        TAY                       
-CODE_23B2E5:        LDX $A693,y               
+CODE_23B2E5:        LDX.w DATA_21A693,y               
 CODE_23B2E8:        PLA                       
 CODE_23B2E9:        AND #$0F                  
 CODE_23B2EB:        STA $03                   
 CODE_23B2ED:        LDA $02                   
 CODE_23B2EF:        STA $04                   
 CODE_23B2F1:        LDY $0700                 
-CODE_23B2F4:        LDA $A687,x               
+CODE_23B2F4:        LDA.w DATA_21A687,x               
 CODE_23B2F7:        STA [$2E],y               
 CODE_23B2F9:        JSL CODE_2AB73A           
 CODE_23B2FD:        JSL CODE_23BEBB           
 CODE_23B301:        DEC $04                   
 CODE_23B303:        BEQ CODE_23B316           
-CODE_23B305:        LDA $A688,x               
+CODE_23B305:        LDA.w DATA_21A687+1,x               
 CODE_23B308:        STA [$2E],y               
 CODE_23B30A:        JSL CODE_2AB73A           
 CODE_23B30E:        JSL CODE_23BEBB           
 CODE_23B312:        DEC $04                   
 CODE_23B314:        BNE CODE_23B305           
-CODE_23B316:        LDA $A689,x               
+CODE_23B316:        LDA.w DATA_21A687+2,x               
 CODE_23B319:        STA [$2E],y               
 CODE_23B31B:        JSL CODE_2AB73A           
 CODE_23B31F:        LDA $00                   
@@ -6261,19 +6261,19 @@ CODE_23B339:        DEC $03
 CODE_23B33B:        BMI CODE_23B368           
 CODE_23B33D:        LDA $02                   
 CODE_23B33F:        STA $04                   
-CODE_23B341:        LDA $A68D,x               
+CODE_23B341:        LDA.w DATA_21A68D,x               
 CODE_23B344:        STA [$2E],y               
 CODE_23B346:        JSL CODE_2AB73A           
 CODE_23B34A:        JSL CODE_23BEBB           
 CODE_23B34E:        DEC $04                   
 CODE_23B350:        BEQ CODE_23B363           
-CODE_23B352:        LDA $A68E,x               
+CODE_23B352:        LDA.w DATA_21A68D+1,x               
 CODE_23B355:        STA [$2E],y               
 CODE_23B357:        JSL CODE_2AB73A           
 CODE_23B35B:        JSL CODE_23BEBB           
 CODE_23B35F:        DEC $04                   
 CODE_23B361:        BNE CODE_23B352           
-CODE_23B363:        LDA $A68F,x               
+CODE_23B363:        LDA.w DATA_21A68D+2,x               
 CODE_23B366:        STA [$2E],y               
 CODE_23B368:        RTL                       
 
@@ -6317,7 +6317,7 @@ CODE_23B3A3:        LSR A
 CODE_23B3A4:        TAY                       
 CODE_23B3A5:        INY                       
 CODE_23B3A6:        INY                       
-CODE_23B3A7:        LDA $8201,y               
+CODE_23B3A7:        LDA.w DATA_218200+1,y               
 CODE_23B3AA:        STA $04                   
 CODE_23B3AC:        INC $04                   
 CODE_23B3AE:        LDA $0700                 
@@ -6328,7 +6328,7 @@ CODE_23B3B7:        RTS
 
 CODE_23B3B8:        LDX $0706                 
 CODE_23B3BB:        LDY $0700                 
-CODE_23B3BE:        LDA $A69B,x               
+CODE_23B3BE:        LDA.w DATA_21A69B,x               
 CODE_23B3C1:        STA [$2E],y               
 CODE_23B3C3:        JSL CODE_2AB73A           
 CODE_23B3C7:        PHX                       
@@ -6481,12 +6481,12 @@ CODE_23B4D0:        BRA CODE_23B4D8
 CODE_23B4D2:        LDA [$2E],y               
 CODE_23B4D4:        CMP #$04                  
 CODE_23B4D6:        BEQ CODE_23B4DD           
-CODE_23B4D8:        LDA $A6A7,x               
+CODE_23B4D8:        LDA.w DATA_21A6A7,x               
 CODE_23B4DB:        STA [$2E],y               
 CODE_23B4DD:        JSL CODE_23BEBB           
 CODE_23B4E1:        DEC $04                   
 CODE_23B4E3:        BNE CODE_23B4C9           
-CODE_23B4E5:        LDA $A6AA,x               
+CODE_23B4E5:        LDA.w DATA_21A6AA,x               
 CODE_23B4E8:        STA [$2E],y               
 CODE_23B4EA:        JSL CODE_2A89DC           
 CODE_23B4EE:        LDA $00                   
@@ -6527,7 +6527,7 @@ CODE_23B52A:        TAX
 CODE_23B52B:        LDY $0700                 
 CODE_23B52E:        LDA $02                   
 CODE_23B530:        STA $04                   
-CODE_23B532:        LDA $A6AD,x               
+CODE_23B532:        LDA.w DATA_21A6AD,x               
 CODE_23B535:        STA [$2E],y               
 CODE_23B537:        JSL CODE_2A8AE2           
 CODE_23B53B:        BRA CODE_23B55F           
@@ -6546,7 +6546,7 @@ CODE_23B552:        CMP #$02
 CODE_23B554:        BEQ CODE_23B55F           
 CODE_23B556:        CMP #$09                  
 CODE_23B558:        BEQ CODE_23B55F           
-CODE_23B55A:        LDA $A6A7,x               
+CODE_23B55A:        LDA.w DATA_21A6A7,x               
 CODE_23B55D:        STA [$2E],y               
 CODE_23B55F:        JSL CODE_23BEBB           
 CODE_23B563:        DEC $04                   
@@ -6608,14 +6608,14 @@ CODE_23B5C4:        TAX
 CODE_23B5C5:        LDY $0700                 
 CODE_23B5C8:        LDA $02                   
 CODE_23B5CA:        STA $04                   
-CODE_23B5CC:        LDA $A6B0,x               
+CODE_23B5CC:        LDA.w DATA_21A6B0,x               
 CODE_23B5CF:        STA [$2E],y               
 CODE_23B5D1:        TXA                       
 CODE_23B5D2:        BEQ CODE_23B5DF           
 CODE_23B5D4:        JSL CODE_2A881E           
 CODE_23B5D8:        BRA CODE_23B5DF           
 
-CODE_23B5DA:        LDA $A6A7,x               
+CODE_23B5DA:        LDA.w DATA_21A6A7,x               
 CODE_23B5DD:        STA [$2E],y               
 CODE_23B5DF:        JSL CODE_23BEBB           
 CODE_23B5E3:        DEC $04                   
@@ -6684,12 +6684,12 @@ CODE_23B651:        LDA $30
 CODE_23B653:        STA $DA                   
 CODE_23B655:        LDA [$D8],y               
 CODE_23B657:        BNE CODE_23B65E           
-CODE_23B659:        LDA $A6A7,x               
+CODE_23B659:        LDA.w DATA_21A6A7,x               
 CODE_23B65C:        STA [$2E],y               
 CODE_23B65E:        JSL CODE_23BEBB           
 CODE_23B662:        DEC $04                   
 CODE_23B664:        BNE CODE_23B646           
-CODE_23B666:        LDA $A6B3,x               
+CODE_23B666:        LDA.w DATA_21A6B3,x               
 CODE_23B669:        STA [$2E],y               
 CODE_23B66B:        TXA                       
 CODE_23B66C:        BEQ CODE_23B67A           
@@ -6737,7 +6737,7 @@ CODE_23B6B7:        LDY $0700
 CODE_23B6BA:        LDA $02                   
 CODE_23B6BC:        STA $04                   
 CODE_23B6BE:        BEQ CODE_23B6DF           
-CODE_23B6C0:        LDA $A6A7,x               
+CODE_23B6C0:        LDA.w DATA_21A6A7,x               
 CODE_23B6C3:        STA [$2E],y               
 CODE_23B6C5:        JSL CODE_23BEBB           
 CODE_23B6C9:        TXA                       
@@ -6745,12 +6745,12 @@ CODE_23B6CA:        BEQ CODE_23B6D2
 CODE_23B6CC:        LDA [$2E],y               
 CODE_23B6CE:        CMP #$08                  
 CODE_23B6D0:        BEQ CODE_23B6D7           
-CODE_23B6D2:        LDA $A6A7,x               
+CODE_23B6D2:        LDA.w DATA_21A6A7,x               
 CODE_23B6D5:        STA [$2E],y               
 CODE_23B6D7:        JSL CODE_23BEBB           
 CODE_23B6DB:        DEC $04                   
 CODE_23B6DD:        BNE CODE_23B6C0           
-CODE_23B6DF:        LDA $A6B6,x               
+CODE_23B6DF:        LDA.w DATA_21A6B6,x               
 CODE_23B6E2:        STA [$2E],y               
 CODE_23B6E4:        TXA                       
 CODE_23B6E5:        BNE CODE_23B6EF           
@@ -6759,7 +6759,7 @@ CODE_23B6E8:        LDX #$04
 CODE_23B6EA:        JSL CODE_2A89DC           
 CODE_23B6EE:        PLX                       
 CODE_23B6EF:        JSL CODE_23BEBB           
-CODE_23B6F3:        LDA $A6B9,x               
+CODE_23B6F3:        LDA.w DATA_21A6B9,x               
 CODE_23B6F6:        STA [$2E],y               
 CODE_23B6F8:        CMP #$9F                  
 CODE_23B6FA:        BNE CODE_23B700           
@@ -6803,7 +6803,7 @@ CODE_23B73E:        TAX
 CODE_23B73F:        LDY $0700                 
 CODE_23B742:        LDA $02                   
 CODE_23B744:        STA $04                   
-CODE_23B746:        LDA $A6BC,x               
+CODE_23B746:        LDA.w DATA_21A6BC,x               
 CODE_23B749:        STA [$2E],y               
 CODE_23B74B:        CMP #$9C                  
 CODE_23B74D:        BNE CODE_23B757           
@@ -6812,7 +6812,7 @@ CODE_23B750:        LDX #$03
 CODE_23B752:        JSL CODE_2A8AE2           
 CODE_23B756:        PLX                       
 CODE_23B757:        JSL CODE_23BEBB           
-CODE_23B75B:        LDA $A6BF,x               
+CODE_23B75B:        LDA.w DATA_21A6BF,x               
 CODE_23B75E:        STA [$2E],y               
 CODE_23B760:        CMP #$9D                  
 CODE_23B762:        BNE CODE_23B795           
@@ -6833,10 +6833,10 @@ CODE_23B77F:        CMP #$02
 CODE_23B781:        BEQ CODE_23B78C           
 CODE_23B783:        CMP #$07                  
 CODE_23B785:        BEQ CODE_23B78C           
-CODE_23B787:        LDA $A6A7,x               
+CODE_23B787:        LDA.w DATA_21A6A7,x               
 CODE_23B78A:        STA [$2E],y               
 CODE_23B78C:        JSL CODE_23BEBB           
-CODE_23B790:        LDA $A6A7,x               
+CODE_23B790:        LDA.w DATA_21A6A7,x               
 CODE_23B793:        STA [$2E],y               
 CODE_23B795:        JSL CODE_23BEBB           
 CODE_23B799:        DEC $04                   
@@ -6901,18 +6901,18 @@ CODE_23B7FE:        TAX
 CODE_23B7FF:        LDY $0700                 
 CODE_23B802:        LDA $02                   
 CODE_23B804:        STA $04                   
-CODE_23B806:        LDA $A6C2,x               
+CODE_23B806:        LDA.w DATA_21A6C2,x               
 CODE_23B809:        STA [$2E],y               
 CODE_23B80B:        JSL CODE_2A8776           
 CODE_23B80F:        JSL CODE_23BEBB           
-CODE_23B813:        LDA $A6C5,x               
+CODE_23B813:        LDA.w DATA_21A6C5,x               
 CODE_23B816:        STA [$2E],y               
 CODE_23B818:        BRA CODE_23B828           
 
-CODE_23B81A:        LDA $A6A7,x               
+CODE_23B81A:        LDA.w DATA_21A6A7,x               
 CODE_23B81D:        STA [$2E],y               
 CODE_23B81F:        JSL CODE_23BEBB           
-CODE_23B823:        LDA $A6A7,x               
+CODE_23B823:        LDA.w DATA_21A6A7,x               
 CODE_23B826:        STA [$2E],y               
 CODE_23B828:        JSL CODE_23BEBB           
 CODE_23B82C:        DEC $04                   
@@ -6972,21 +6972,21 @@ CODE_23B886:        LDY $0700
 CODE_23B889:        LDA $02                   
 CODE_23B88B:        STA $04                   
 CODE_23B88D:        BEQ CODE_23B8A5           
-CODE_23B88F:        LDA $A6A7,x               
+CODE_23B88F:        LDA.w DATA_21A6A7,x               
 CODE_23B892:        STA [$2E],y               
 CODE_23B894:        JSL CODE_23BEBB           
-CODE_23B898:        LDA $A6A7,x               
+CODE_23B898:        LDA.w DATA_21A6A7,x               
 CODE_23B89B:        STA [$2E],y               
 CODE_23B89D:        JSL CODE_23BEBB           
 CODE_23B8A1:        DEC $04                   
 CODE_23B8A3:        BNE CODE_23B88F           
-CODE_23B8A5:        LDA $A6C8,x               
+CODE_23B8A5:        LDA.w DATA_21A6C8,x               
 CODE_23B8A8:        STA [$2E],y               
 CODE_23B8AA:        CPX #$01                  
 CODE_23B8AC:        BNE CODE_23B8B2           
 CODE_23B8AE:        JSL CODE_2A87B2           
 CODE_23B8B2:        JSL CODE_23BEBB           
-CODE_23B8B6:        LDA $A6CB,x               
+CODE_23B8B6:        LDA.w DATA_21A6CB,x               
 CODE_23B8B9:        STA [$2E],y               
 CODE_23B8BB:        CMP #$A5                  
 CODE_23B8BD:        BNE CODE_23B8C7           
@@ -7023,7 +7023,7 @@ CODE_23B8F3:        LSR A
 CODE_23B8F4:        LSR A                     
 CODE_23B8F5:        TAX                       
 CODE_23B8F6:        LDY $0700                 
-CODE_23B8F9:        LDA $A6CE,x               
+CODE_23B8F9:        LDA.w DATA_21A6CE,x               
 CODE_23B8FC:        STA [$2E],y               
 CODE_23B8FE:        TXA                       
 CODE_23B8FF:        BNE CODE_23B932           
@@ -7138,7 +7138,7 @@ CODE_23B9BE:        BEQ CODE_23B9D9
 CODE_23B9C0:        CMP #$0A                  
 CODE_23B9C2:        BEQ CODE_23B9D9           
 CODE_23B9C4:        JSL CODE_2AB73A           
-CODE_23B9C8:        LDA $A6D4,x               
+CODE_23B9C8:        LDA.w DATA_21A6D4,x               
 CODE_23B9CB:        STA [$2E],y               
 CODE_23B9CD:        CMP #$37                  
 CODE_23B9CF:        BEQ CODE_23B9D9           
@@ -7161,7 +7161,7 @@ CODE_23B9F2:        LDA $30
 CODE_23B9F4:        STA $DA                   
 CODE_23B9F6:        LDA [$D8],y               
 CODE_23B9F8:        BNE CODE_23BA03           
-CODE_23B9FA:        LDA $A6DA,x               
+CODE_23B9FA:        LDA.w DATA_21A6DA,x               
 CODE_23B9FD:        STA [$2E],y               
 CODE_23B9FF:        JSL CODE_2AB73A           
 CODE_23BA03:        JSL CODE_23BEBB           
@@ -7240,7 +7240,7 @@ CODE_23BA8F:        CMP #$02
 CODE_23BA91:        BEQ CODE_23BAA0           
 CODE_23BA93:        CMP #$04                  
 CODE_23BA95:        BEQ CODE_23BAA0           
-CODE_23BA97:        LDA $A6E0,x               
+CODE_23BA97:        LDA.w DATA_21A6E0,x               
 CODE_23BA9A:        STA [$2E],y               
 CODE_23BA9C:        JSL CODE_2AB73A           
 CODE_23BAA0:        JSL CODE_23BEBB           
@@ -7270,7 +7270,7 @@ CODE_23BAD1:        REP #$20
 CODE_23BAD3:        LDA $2E                   
 CODE_23BAD5:        STA $D8                   
 CODE_23BAD7:        SEP #$20                  
-CODE_23BAD9:        LDA $A6E3,x               
+CODE_23BAD9:        LDA.w DATA_21A6E3,x               
 CODE_23BADC:        STA [$2E],y               
 CODE_23BADE:        JSL CODE_2AB73A           
 CODE_23BAE2:        JSL CODE_2A886F           
@@ -7344,7 +7344,7 @@ CODE_23BB61:        LDA $02
 CODE_23BB63:        STA $04                   
 CODE_23BB65:        LDA $03                   
 CODE_23BB67:        BEQ CODE_23BB83           
-CODE_23BB69:        LDA $A6E6,x               
+CODE_23BB69:        LDA.w DATA_21A6E6,x               
 CODE_23BB6C:        STA [$2E],y               
 CODE_23BB6E:        JSL CODE_23BEBB           
 CODE_23BB72:        DEC $04                   
@@ -7356,7 +7356,7 @@ CODE_23BB7A:        BRA CODE_23BB90
 CODE_23BB7C:        LDA $02                   
 CODE_23BB7E:        STA $04                   
 CODE_23BB80:        LDY $0700                 
-CODE_23BB83:        LDA $A6E9,x               
+CODE_23BB83:        LDA.w DATA_21A6E9,x               
 CODE_23BB86:        STA [$2E],y               
 CODE_23BB88:        JSL CODE_23BEBB           
 CODE_23BB8C:        DEC $04                   
@@ -7395,11 +7395,11 @@ CODE_23BBC5:        SBC #$C0
 CODE_23BBC7:        TAX                       
 CODE_23BBC8:        JMP CODE_23BBD6           
 
-CODE_23BBCB:        LDA $A6EC,y               
+CODE_23BBCB:        LDA.w DATA_21A6EC,y               
 CODE_23BBCE:        JSL CODE_209844           
 CODE_23BBD2:        CPX #$00                  
 CODE_23BBD4:        BNE CODE_23BBCB           
-CODE_23BBD6:        LDA $A6EC,y               
+CODE_23BBD6:        LDA.w DATA_21A6EC,y               
 CODE_23BBD9:        JSL CODE_2098A8           
 CODE_23BBDD:        INX                       
 CODE_23BBDE:        CPX #$F0                  
@@ -7451,10 +7451,10 @@ CODE_23BC2F:        INC $03
 CODE_23BC31:        LDA $03                   
 CODE_23BC33:        ASL A                     
 CODE_23BC34:        TAX                       
-CODE_23BC35:        LDA $8200,x               
+CODE_23BC35:        LDA.w DATA_218200,x               
 CODE_23BC38:        STA $2E                   
 CODE_23BC3A:        STA $00                   
-CODE_23BC3C:        LDA $8201,x               
+CODE_23BC3C:        LDA.w DATA_218200+1,x               
 CODE_23BC3F:        STA $2F                   
 CODE_23BC41:        STA $01                   
 CODE_23BC43:        STA $04                   
@@ -7524,16 +7524,16 @@ CODE_23BCC4:        LDY $0700
 CODE_23BCC7:        LDX #$00                  
 CODE_23BCC9:        LDA $02                   
 CODE_23BCCB:        STA $03                   
-CODE_23BCCD:        LDA $A6EF,x               
+CODE_23BCCD:        LDA.w DATA_21A6EF,x               
 CODE_23BCD0:        STA [$2E],y               
 CODE_23BCD2:        BRA CODE_23BCD9           
 
-CODE_23BCD4:        LDA $A6F1,x               
+CODE_23BCD4:        LDA.w DATA_21A6F1,x               
 CODE_23BCD7:        STA [$2E],y               
 CODE_23BCD9:        JSL CODE_23BEBB           
 CODE_23BCDD:        DEC $03                   
 CODE_23BCDF:        BNE CODE_23BCD4           
-CODE_23BCE1:        LDA $A6F3,x               
+CODE_23BCE1:        LDA.w DATA_21A6F3,x               
 CODE_23BCE4:        STA [$2E],y               
 CODE_23BCE6:        LDA $00                   
 CODE_23BCE8:        STA $2E                   
@@ -7568,7 +7568,7 @@ CODE_23BD16:        PLA
 CODE_23BD17:        AND #$0F                  
 CODE_23BD19:        STA $03                   
 CODE_23BD1B:        LDY $0700                 
-CODE_23BD1E:        LDA $A6F5,x               
+CODE_23BD1E:        LDA.w DATA_21A6F5,x               
 CODE_23BD21:        STA [$2E],y               
 CODE_23BD23:        JSL CODE_2AB73A           
 CODE_23BD27:        JSL CODE_23BEBB           
@@ -7578,7 +7578,7 @@ CODE_23BD2F:        RTL
 
 CODE_23BD30:        LDX $0706                 
 CODE_23BD33:        LDY $0700                 
-CODE_23BD36:        LDA $A6F7,x               
+CODE_23BD36:        LDA.w DATA_21A6F7,x               
 CODE_23BD39:        STA [$2E],y               
 CODE_23BD3B:        RTL                       
 
@@ -7597,9 +7597,9 @@ CODE_23BD51:        STZ $06
 CODE_23BD53:        LDA $04                   
 CODE_23BD55:        ASL A                     
 CODE_23BD56:        TAX                       
-CODE_23BD57:        LDA $A817,x               
+CODE_23BD57:        LDA.w DATA_21A817,x               
 CODE_23BD5A:        STA $02                   
-CODE_23BD5C:        LDA $A818,x               
+CODE_23BD5C:        LDA.w DATA_21A817+1,x               
 CODE_23BD5F:        STA $03                   
 CODE_23BD61:        LDY $05                   
 CODE_23BD63:        REP #$21                  
@@ -7776,7 +7776,7 @@ CODE_23BEAB:        AND #$07
 CODE_23BEAD:        TAX                       
 CODE_23BEAE:        LDY $0D                   
 CODE_23BEB0:        LDA $1E04,y               
-CODE_23BEB3:        AND $AAA8,x               
+CODE_23BEB3:        AND.w DATA_21AAA8,x               
 CODE_23BEB6:        LDX $0B                   
 CODE_23BEB8:        LDY $0C                   
 CODE_23BEBA:        RTS                       
@@ -7876,13 +7876,13 @@ CODE_23BF7E:        LDA $0783,y
 CODE_23BF81:        ORA #$10                  
 CODE_23BF83:        STA $1F7C,y               
 CODE_23BF86:        LDA $70                   
-CODE_23BF88:        ADC $E9FB,y               
+CODE_23BF88:        ADC.w DATA_21E9FB,y               
 CODE_23BF8B:        STA $1F84,y               
 CODE_23BF8E:        LDA $55                   
 CODE_23BF90:        ADC #$00                  
 CODE_23BF92:        STA $1F80,y               
 CODE_23BF95:        LDA $5E                   
-CODE_23BF97:        ADC $E9FE,y               
+CODE_23BF97:        ADC.w DATA_21E9FE,y               
 CODE_23BF9A:        STA $1F8C,y               
 CODE_23BF9D:        LDA $43                   
 CODE_23BF9F:        ADC #$00                  
@@ -7890,7 +7890,7 @@ CODE_23BFA1:        STA $1F88,y
 CODE_23BFA4:        JMP CODE_23BF7A           
 
 CODE_23BFA7:        LDY $070A                 
-CODE_23BFAA:        LDA $E945,y               
+CODE_23BFAA:        LDA.w DATA_21E945,y               
 CODE_23BFAD:        STA $0560                 
 CODE_23BFB0:        JSL CODE_23DF67           
 CODE_23BFB4:        JSR CODE_23C0CD           
@@ -8029,7 +8029,7 @@ CODE_23C0E3:        JSR CODE_23C467
 CODE_23C0E6:        LDA #$40                  
 CODE_23C0E8:        STA $BD                   
 CODE_23C0EA:        LDY $0426                 
-CODE_23C0ED:        LDA $EA01,y               
+CODE_23C0ED:        LDA.w DATA_21EA01,y               
 CODE_23C0F0:        STA $5E                   
 CODE_23C0F2:        STA $B9                   
 CODE_23C0F4:        JSR CODE_23C14C           
@@ -8044,9 +8044,9 @@ CODE_23C108:        JSR CODE_23C1C9
 CODE_23C10B:        LDA $0425                 
 CODE_23C10E:        BEQ CODE_23C130           
 CODE_23C110:        LDY $55                   
-CODE_23C112:        LDA $CEED,y               
+CODE_23C112:        LDA.w DATA_21CEED,y               
 CODE_23C115:        STA $0542                 
-CODE_23C118:        LDA $CEFD,y               
+CODE_23C118:        LDA.w DATA_21CEFD,y               
 CODE_23C11B:        STA $0543                 
 CODE_23C11E:        LDA $70                   
 CODE_23C120:        LDY $55                   
@@ -8063,7 +8063,7 @@ CODE_23C136:        LDA $13
 CODE_23C138:        STA $0542                 
 CODE_23C13B:        RTS                       
 
-PNTR_23C13C:     dw CODE_23C173
+PNTR_23C13C:        dw CODE_23C173
                     dw CODE_23C167
                     dw CODE_23C174
                     dw CODE_23C17B
@@ -8088,7 +8088,7 @@ CODE_23C163:        PLB
 CODE_23C164:        JMP ($0000)               
 
 CODE_23C167:        LDY $BB                   
-CODE_23C169:        LDA $AF64,y               
+CODE_23C169:        LDA.w DATA_21AF64,y               
 CODE_23C16C:        AND #$02                  
 CODE_23C16E:        BNE CODE_23C173           
 CODE_23C170:        INC $0545                 
@@ -8203,7 +8203,7 @@ CODE_23C252:        LDA #$02
 CODE_23C254:        STA $0377                 
 CODE_23C257:        AND #$0F                  
 CODE_23C259:        TAY                       
-CODE_23C25A:        LDA $EA05,y               
+CODE_23C25A:        LDA.w DATA_21EA05,y               
 CODE_23C25D:        STA $0510                 
 CODE_23C260:        RTL                       
 
@@ -8368,7 +8368,7 @@ CODE_23C3C6:        LDY $0216
 CODE_23C3C9:        BPL CODE_23C3CD           
 CODE_23C3CB:        ORA #$04                  
 CODE_23C3CD:        TAY                       
-CODE_23C3CE:        LDA $EA0A,y               
+CODE_23C3CE:        LDA.w DATA_21EA0A,y               
 CODE_23C3D1:        PHA                       
 CODE_23C3D2:        CLC                       
 CODE_23C3D3:        ADC $0543                 
@@ -8489,7 +8489,7 @@ CODE_23C4B9:        RTS
 CODE_23C4BA:        LDY #$01                  
 CODE_23C4BC:        STY $0E                   
 CODE_23C4BE:        LDA $0584                 
-CODE_23C4C1:        AND $EB1E,x               
+CODE_23C4C1:        AND.w DATA_21EB1E,x               
 CODE_23C4C4:        BNE CODE_23C4F8           
 CODE_23C4C6:        LDA $00,x                 
 CODE_23C4C8:        ASL A                     
@@ -8507,7 +8507,7 @@ CODE_23C4DB:        BEQ CODE_23C4F6
 CODE_23C4DD:        TYA                       
 CODE_23C4DE:        ORA $02                   
 CODE_23C4E0:        TAY                       
-CODE_23C4E1:        LDA $AD84,y               
+CODE_23C4E1:        LDA.w DATA_21AD84,y               
 CODE_23C4E4:        LDY #$00                  
 CODE_23C4E6:        CMP $00,x                 
 CODE_23C4E8:        BCS CODE_23C4F6                   
@@ -8894,7 +8894,7 @@ CODE_23C811:        PLB
 CODE_23C812:        PLX                       
 CODE_23C813:        JMP ($0000)               
 
-PNTR_23C816:     dw CODE_23C834
+PNTR_23C816:        dw CODE_23C834
                     dw CODE_23C85F
                     dw CODE_23C86A
                     dw CODE_23C884
@@ -8986,7 +8986,7 @@ CODE_23C8C8:        LSR A
 CODE_23C8C9:        LSR A                     
 CODE_23C8CA:        LSR A                     
 CODE_23C8CB:        TAY                       
-CODE_23C8CC:        LDA $E9AE,y               
+CODE_23C8CC:        LDA.w DATA_21E9AE,y               
 CODE_23C8CF:        STA $BC                   
 CODE_23C8D1:        RTS                       
 
@@ -8999,7 +8999,7 @@ CODE_23C8DC:        LSR A
 CODE_23C8DD:        LSR A                     
 CODE_23C8DE:        LSR A                     
 CODE_23C8DF:        TAX                       
-CODE_23C8E0:        LDA $EB2D,x               
+CODE_23C8E0:        LDA.w DATA_21EB2D,x               
 CODE_23C8E3:        BPL CODE_23C8EC           
 CODE_23C8E5:        LDY $0544                 
 CODE_23C8E8:        BPL CODE_23C8EC           
@@ -9028,7 +9028,7 @@ CODE_23C90F:        AND #$03
 CODE_23C911:        BEQ CODE_23C923           
 CODE_23C913:        LSR A                     
 CODE_23C914:        TAY                       
-CODE_23C915:        LDA $EB2D,y               
+CODE_23C915:        LDA.w DATA_21EB2D,y               
 CODE_23C918:        LDY $17                   
 CODE_23C91A:        BPL CODE_23C91D           
 CODE_23C91C:        ASL A                     
@@ -9063,13 +9063,13 @@ CODE_23C94A:        AND #$07
 CODE_23C94C:        TAY                       
 CODE_23C94D:        BNE CODE_23C95B           
 CODE_23C94F:        LDA $15                   
-CODE_23C951:        AND $EB20,y               
+CODE_23C951:        AND.w DATA_21EB20,y               
 CODE_23C954:        BNE CODE_23C95B           
 CODE_23C956:        LDA #$0E                  
 CODE_23C958:        STA $1200                 
-CODE_23C95B:        LDA $EB22,x               
+CODE_23C95B:        LDA.w DATA_21EB22,x               
 CODE_23C95E:        CLC                       
-CODE_23C95F:        ADC $EB25,y               
+CODE_23C95F:        ADC.w DATA_21EB25,y               
 CODE_23C962:        BNE CODE_23C96F           
 CODE_23C964:        LDY #$3E                  
 CODE_23C966:        LDA $15                   
@@ -9114,12 +9114,12 @@ CODE_23C9B4:        LDA $18
 CODE_23C9B6:        BPL CODE_23C9C2           
 CODE_23C9B8:        LDA #$00                  
 CODE_23C9BA:        STA $0550                 
-CODE_23C9BD:        LDY $EAFD                 
+CODE_23C9BD:        LDY.w DATA_21EAFD                 
 CODE_23C9C0:        STY $9D                   
 CODE_23C9C2:        LDY $BB                   
 CODE_23C9C4:        BEQ CODE_23C9C8           
 CODE_23C9C6:        LDY #$01                  
-CODE_23C9C8:        LDA $E9A4,y               
+CODE_23C9C8:        LDA.w DATA_21E9A4,y               
 CODE_23C9CB:        STA $BC                   
 CODE_23C9CD:        LDA $15                   
 CODE_23C9CF:        AND #$08                  
@@ -9138,7 +9138,7 @@ CODE_23C9E6:        LDY #$01
 CODE_23C9E8:        BNE CODE_23C9EF           
 CODE_23C9EA:        LDY $06B6                 
 CODE_23C9ED:        BEQ CODE_23C9F6           
-CODE_23C9EF:        LDA $EB2F,y               
+CODE_23C9EF:        LDA.w DATA_21EB2F,y               
 CODE_23C9F2:        TAY                       
 CODE_23C9F3:        JMP CODE_23CA17           
 
@@ -9207,9 +9207,9 @@ CODE_23CA63:        AND #$01
 CODE_23CA65:        BNE CODE_23CA7F           
 CODE_23CA67:        LDA #$00                  
 CODE_23CA69:        SEC                       
-CODE_23CA6A:        SBC $EAA2,y               
+CODE_23CA6A:        SBC.w DATA_21EAA2,y               
 CODE_23CA6D:        STA $00                   
-CODE_23CA6F:        LDA $EA52,y               
+CODE_23CA6F:        LDA.w DATA_21EA52,y               
 CODE_23CA72:        EOR #$FF                  
 CODE_23CA74:        STA $01                   
 CODE_23CA76:        LDA $00                   
@@ -9217,9 +9217,9 @@ CODE_23CA78:        BNE CODE_23CA89
 CODE_23CA7A:        INC $01                   
 CODE_23CA7C:        JMP CODE_23CA89           
 
-CODE_23CA7F:        LDA $EAA2,y               
+CODE_23CA7F:        LDA.w DATA_21EAA2,y               
 CODE_23CA82:        STA $00                   
-CODE_23CA84:        LDA $EA52,y               
+CODE_23CA84:        LDA.w DATA_21EA52,y               
 CODE_23CA87:        STA $01                   
 CODE_23CA89:        LDA $00                   
 CODE_23CA8B:        CLC                       
@@ -9285,9 +9285,9 @@ CODE_23CB00:        LSR A
 CODE_23CB01:        LSR A                     
 CODE_23CB02:        LSR A                     
 CODE_23CB03:        TAX                       
-CODE_23CB04:        LDA $EAFD                 
+CODE_23CB04:        LDA.w DATA_21EAFD                 
 CODE_23CB07:        SEC                       
-CODE_23CB08:        SBC $EAFE,x               
+CODE_23CB08:        SBC.w DATA_21EAFE,x               
 CODE_23CB0B:        STA $9D                   
 CODE_23CB0D:        LDA #$01                  
 CODE_23CB0F:        STA $A6                   
@@ -9304,7 +9304,7 @@ CODE_23CB27:        STA $056E
 CODE_23CB2A:        LDA $A6                   
 CODE_23CB2C:        BNE CODE_23CB3F           
 CODE_23CB2E:        LDY $BB                   
-CODE_23CB30:        LDA $AF64,y               
+CODE_23CB30:        LDA.w DATA_21AF64,y               
 CODE_23CB33:        AND #$01                  
 CODE_23CB35:        BNE CODE_23CBA6           
 CODE_23CB37:        LDA #$00                  
@@ -9333,7 +9333,7 @@ CODE_23CB63:        DEC $BE
 CODE_23CB65:        LDA $0577                 
 CODE_23CB68:        BNE CODE_23CB7B           
 CODE_23CB6A:        LDX $BB                   
-CODE_23CB6C:        LDA $AF64,x               
+CODE_23CB6C:        LDA.w DATA_21AF64,x               
 CODE_23CB6F:        AND #$01                  
 CODE_23CB71:        BEQ CODE_23CB7B           
 CODE_23CB73:        LDY $00                   
@@ -9367,7 +9367,7 @@ CODE_23CBAB:        LSR A
 CODE_23CBAC:        TAY                       
 CODE_23CBAD:        LDA $9D                   
 CODE_23CBAF:        BPL CODE_23CBBA           
-CODE_23CBB1:        CMP $EB3A,y               
+CODE_23CBB1:        CMP.w DATA_21EB3A,y               
 CODE_23CBB4:        BMI CODE_23CBBA           
 CODE_23CBB6:        LDA #$20                  
 CODE_23CBB8:        STA $9D                   
@@ -9442,7 +9442,7 @@ CODE_23CC3C:        INY
 CODE_23CC3D:        INY                       
 CODE_23CC3E:        INY                       
 CODE_23CC3F:        INY                       
-CODE_23CC40:        LDA $E992,y               
+CODE_23CC40:        LDA.w DATA_21E992,y               
 CODE_23CC43:        STA $BC                   
 CODE_23CC45:        RTS                       
 
@@ -9457,7 +9457,7 @@ CODE_23CC56:        BNE CODE_23CC5B
 CODE_23CC58:        CLC                       
 CODE_23CC59:        ADC #$06                  
 CODE_23CC5B:        TAY                       
-CODE_23CC5C:        LDA $E986,y               
+CODE_23CC5C:        LDA.w DATA_21E986,y               
 CODE_23CC5F:        STA $BC                   
 CODE_23CC61:        RTS                       
 
@@ -9470,7 +9470,7 @@ CODE_23CC6C:        LSR A
 CODE_23CC6D:        TAY                       
 CODE_23CC6E:        INC $0574                 
 CODE_23CC71:        LDA $0574                 
-CODE_23CC74:        CMP $EAF4,y               
+CODE_23CC74:        CMP.w DATA_21EAF4,y               
 CODE_23CC77:        BMI CODE_23CC8D           
 CODE_23CC79:        LDA #$00                  
 CODE_23CC7B:        STA $0574                 
@@ -9526,7 +9526,7 @@ CODE_23CCE4:        ASL A
 CODE_23CCE5:        ASL A                     
 CODE_23CCE6:        ORA $BA                   
 CODE_23CCE8:        TAY                       
-CODE_23CCE9:        LDA $E958,y               
+CODE_23CCE9:        LDA.w DATA_21E958,y               
 CODE_23CCEC:        STA $BC                   
 CODE_23CCEE:        LDA $0575                 
 CODE_23CCF1:        BNE CODE_23CD40           
@@ -9543,7 +9543,7 @@ CODE_23CD05:        BEQ CODE_23CD09
 CODE_23CD07:        LDY #$01                  
 CODE_23CD09:        LDA $A6                   
 CODE_23CD0B:        BNE CODE_23CD40           
-CODE_23CD0D:        LDA $E984,y               
+CODE_23CD0D:        LDA.w DATA_21E984,y               
 CODE_23CD10:        STA $BC                   
 CODE_23CD12:        LDA $7FC522               
 CODE_23CD16:        ORA $7FC523               
@@ -9563,10 +9563,10 @@ CODE_23CD3C:        STA $7FC52C
 CODE_23CD40:        LDA $056F                 
 CODE_23CD43:        BEQ CODE_23CD52           
 CODE_23CD45:        LDY $BB                   
-CODE_23CD47:        LDA $AF64,y               
+CODE_23CD47:        LDA.w DATA_21AF64,y               
 CODE_23CD4A:        AND #$01                  
 CODE_23CD4C:        TAY                       
-CODE_23CD4D:        LDA $E9A6,y               
+CODE_23CD4D:        LDA.w DATA_21E9A6,y               
 CODE_23CD50:        STA $BC                   
 CODE_23CD52:        LDA $0545                 
 CODE_23CD55:        BEQ CODE_23CD70           
@@ -9603,7 +9603,7 @@ CODE_23CD96:        INY
 CODE_23CD97:        INY                       
 CODE_23CD98:        INY                       
 CODE_23CD99:        INY                       
-CODE_23CD9A:        LDA $E9B2,y               
+CODE_23CD9A:        LDA.w DATA_21E9B2,y               
 CODE_23CD9D:        STA $BC                   
 CODE_23CD9F:        LDA $054F                 
 CODE_23CDA2:        BEQ CODE_23CDBF           
@@ -9612,7 +9612,7 @@ CODE_23CDA6:        LSR A
 CODE_23CDA7:        PHA                       
 CODE_23CDA8:        AND #$07                  
 CODE_23CDAA:        TAY                       
-CODE_23CDAB:        LDA $EB14,y               
+CODE_23CDAB:        LDA.w DATA_21EB14,y               
 CODE_23CDAE:        LDY $8B                   
 CODE_23CDB0:        BPL CODE_23CDB4           
 CODE_23CDB2:        EOR #$40                  
@@ -9638,7 +9638,7 @@ CODE_23CDD5:        INY
 CODE_23CDD6:        INY                       
 CODE_23CDD7:        INY                       
 CODE_23CDD8:        INY                       
-CODE_23CDD9:        LDA $E9C6,y               
+CODE_23CDD9:        LDA.w DATA_21E9C6,y               
 CODE_23CDDC:        STA $BC                   
 CODE_23CDDE:        LDA $0558                 
 CODE_23CDE1:        BNE CODE_23CDF4           
@@ -9678,7 +9678,7 @@ CODE_23CE2C:        BRA CODE_23CE3A
 
 CODE_23CE2E:        LDY #$04                  
 CODE_23CE30:        TAX                       
-CODE_23CE31:        LDA $AF64,x               
+CODE_23CE31:        LDA.w DATA_21AF64,x               
 CODE_23CE34:        AND #$01                  
 CODE_23CE36:        BEQ CODE_23CE3A           
 CODE_23CE38:        LDY #$08                  
@@ -9690,18 +9690,18 @@ CODE_23CE41:        LSR A
 CODE_23CE42:        PHA                       
 CODE_23CE43:        LSR A                     
 CODE_23CE44:        TAY                       
-CODE_23CE45:        LDA $EB40,y               
+CODE_23CE45:        LDA.w DATA_21EB40,y               
 CODE_23CE48:        STA $BD                   
 CODE_23CE4A:        PLA                       
 CODE_23CE4B:        CLC                       
 CODE_23CE4C:        ADC $00                   
 CODE_23CE4E:        TAY                       
-CODE_23CE4F:        LDA $E9CE,y               
+CODE_23CE4F:        LDA.w DATA_21E9CE,y               
 CODE_23CE52:        STA $BC                   
 CODE_23CE54:        LDA $1CF4                 
 CODE_23CE57:        BEQ CODE_23CE60           
 CODE_23CE59:        LDY $BB                   
-CODE_23CE5B:        LDA $E9EC,y               
+CODE_23CE5B:        LDA.w DATA_21E9EC,y               
 CODE_23CE5E:        STA $BC                   
 CODE_23CE60:        RTS                       
 
@@ -9761,7 +9761,7 @@ CODE_23CEC9:        RTS
 CODE_23CECA:        LDA $056B                 
 CODE_23CECD:        BEQ CODE_23CEE5           
 CODE_23CECF:        LDY $BB                   
-CODE_23CED1:        LDA $E9DE,y               
+CODE_23CED1:        LDA.w DATA_21E9DE,y               
 CODE_23CED4:        STA $BC                   
 CODE_23CED6:        LDA $17                   
 CODE_23CED8:        AND #$0C                  
@@ -9807,7 +9807,7 @@ CODE_23CF24:        ADC #$03
 CODE_23CF26:        CLC                       
 CODE_23CF27:        ADC $00                   
 CODE_23CF29:        TAY                       
-CODE_23CF2A:        LDA $E9BA,y               
+CODE_23CF2A:        LDA.w DATA_21E9BA,y               
 CODE_23CF2D:        STA $BC                   
 CODE_23CF2F:        LDA $056E                 
 CODE_23CF32:        ORA $00BE                 
@@ -9867,7 +9867,7 @@ CODE_23CF9A:        INY
 CODE_23CF9B:        INY                       
 CODE_23CF9C:        INY                       
 CODE_23CF9D:        INY                       
-CODE_23CF9E:        LDA $E99A,y               
+CODE_23CF9E:        LDA.w DATA_21E99A,y               
 CODE_23CFA1:        STA $BC                   
 CODE_23CFA3:        LDA $0517                 
 CODE_23CFA6:        CMP #$0B                  
@@ -9888,7 +9888,7 @@ CODE_23CFBE:        BEQ CODE_23CFC3
 CODE_23CFC0:        CLC                       
 CODE_23CFC1:        ADC #$03                  
 CODE_23CFC3:        TAY                       
-CODE_23CFC4:        LDA $E9A8,y               
+CODE_23CFC4:        LDA.w DATA_21E9A8,y               
 CODE_23CFC7:        STA $BC                   
 CODE_23CFC9:        RTS                       
 
@@ -10162,9 +10162,9 @@ CODE_23D1FB:        RTL
 CODE_23D1FC:        LDA #$00                  
 CODE_23D1FE:        STA $43                   
 CODE_23D200:        LDY $22                   
-CODE_23D202:        LDA $CEED,y               
+CODE_23D202:        LDA.w DATA_21CEED,y               
 CODE_23D205:        STA $00                   
-CODE_23D207:        LDA $CEFD,y               
+CODE_23D207:        LDA.w DATA_21CEFD,y               
 CODE_23D20A:        STA $01                   
 CODE_23D20C:        LDA $70                   
 CODE_23D20E:        SEC                       
@@ -10340,9 +10340,9 @@ CODE_23D369:        LDA $0571
 CODE_23D36C:        BEQ CODE_23D36F           
 CODE_23D36E:        RTS                       
 
-CODE_23D36F:        LDA $AD82                 
+CODE_23D36F:        LDA.w DATA_21AD82                 
 CODE_23D372:        STA $52                   
-CODE_23D374:        LDA $AD83                 
+CODE_23D374:        LDA.w DATA_21AD82+1                 
 CODE_23D377:        STA $53                   
 CODE_23D379:        LDA $0563                 
 CODE_23D37C:        BEQ CODE_23D396           
@@ -10351,9 +10351,9 @@ CODE_23D381:        CMP #$03
 CODE_23D383:        BEQ CODE_23D393           
 CODE_23D385:        CMP #$0E                  
 CODE_23D387:        BEQ CODE_23D393           
-CODE_23D389:        LDA $AD80                 
+CODE_23D389:        LDA.w DATA_21AD80                 
 CODE_23D38C:        STA $52                   
-CODE_23D38E:        LDA $AD81                 
+CODE_23D38E:        LDA.w DATA_21AD80+1                 
 CODE_23D391:        STA $53                   
 CODE_23D393:        JMP CODE_23D896           
 
@@ -10380,9 +10380,9 @@ CODE_23D3B8:        ADC #$08
 CODE_23D3BA:        TAY                       
 CODE_23D3BB:        TYA                       
 CODE_23D3BC:        PHA                       
-CODE_23D3BD:        LDA $EB42,y               
+CODE_23D3BD:        LDA.w DATA_21EB42,y               
 CODE_23D3C0:        STA $09                   
-CODE_23D3C2:        LDA $EB43,y               
+CODE_23D3C2:        LDA.w DATA_21EB42+1,y               
 CODE_23D3C5:        STA $0A                   
 CODE_23D3C7:        JSL CODE_23D2B6           
 CODE_23D3CB:        STA $0603,x               
@@ -10420,7 +10420,7 @@ CODE_23D403:        LDA $BB
 CODE_23D405:        BNE CODE_23D409           
 CODE_23D407:        INX                       
 CODE_23D408:        INX                       
-CODE_23D409:        LDA $EBA8,x               
+CODE_23D409:        LDA.w DATA_21EBA8,x               
 CODE_23D40C:        CLC                       
 CODE_23D40D:        ADC $5E                   
 CODE_23D40F:        AND #$0F                  
@@ -10568,8 +10568,8 @@ CODE_23D530:        LDA #$0B
 CODE_23D532:        STA $1200                 
 CODE_23D535:        LDA #$84                  
 CODE_23D537:        STA $0567                 
-CODE_23D53A:        LDA #$04                  
-CODE_23D53C:        STA $1202                 
+CODE_23D53A:        LDA #$04                  ; \
+CODE_23D53C:        STA $1202                 ; / P-switch music
 CODE_23D53F:        JMP CODE_23D545           
 
 CODE_23D542:        JSR CODE_23D567           
@@ -10609,23 +10609,23 @@ CODE_23D57B:        BNE CODE_23D57E
 CODE_23D57D:        INY                       
 CODE_23D57E:        LDA $0603,x               
 CODE_23D581:        SEC                       
-CODE_23D582:        SBC $EC13,y               
-CODE_23D585:        CMP $EC03,y               
+CODE_23D582:        SBC.w DATA_21EC13,y               
+CODE_23D585:        CMP.w DATA_21EC03,y               
 CODE_23D588:        BCC CODE_23D590           
 CODE_23D58A:        DEY                       
 CODE_23D58B:        BPL CODE_23D57E           
 CODE_23D58D:        JMP CODE_23D619           
 
 CODE_23D590:        CLC                       
-CODE_23D591:        ADC $EC0B,y               
+CODE_23D591:        ADC.w DATA_21EC0B,y               
 CODE_23D594:        STA $05                   
-CODE_23D596:        LDA $EC23,x               
-CODE_23D599:        AND $EC1B,y               
+CODE_23D596:        LDA.w DATA_21EC23,x               
+CODE_23D599:        AND.w DATA_21EC1B,y               
 CODE_23D59C:        BEQ CODE_23D58A           
 CODE_23D59E:        LDA #$10                  
 CODE_23D5A0:        STA $1A45                 
 CODE_23D5A3:        LDY $05                   
-CODE_23D5A5:        LDA $EBC3,y               
+CODE_23D5A5:        LDA.w DATA_21EBC3,y               
 CODE_23D5A8:        JSR CODE_23D61C           
 CODE_23D5AB:        TYA                       
 CODE_23D5AC:        BNE CODE_23D5B1           
@@ -10633,7 +10633,7 @@ CODE_23D5AE:        JMP CODE_23D619
 
 CODE_23D5B1:        BMI CODE_23D5D6           
 CODE_23D5B3:        LDY $05                   
-CODE_23D5B5:        ORA $EBE3,y               
+CODE_23D5B5:        ORA.w DATA_21EBE3,y               
 CODE_23D5B8:        STA $057C                 
 CODE_23D5BB:        LDA #$01                  
 CODE_23D5BD:        STA $1200                 
@@ -10942,9 +10942,9 @@ CODE_23D817:        LDY #$00
 CODE_23D819:        LDA $BD                   
 CODE_23D81B:        BNE CODE_23D81F           
 CODE_23D81D:        LDY #$02                  
-CODE_23D81F:        LDA $EC28,y               
+CODE_23D81F:        LDA.w DATA_21EC28,y               
 CODE_23D822:        STA $09                   
-CODE_23D824:        LDA $EC29,y               
+CODE_23D824:        LDA.w DATA_21EC28+1,y               
 CODE_23D827:        STA $0A                   
 CODE_23D829:        JSL CODE_23D2B6           
 CODE_23D82D:        LDX #$04                  
@@ -11046,7 +11046,7 @@ CODE_23D8F1:        BEQ CODE_23D8F4
 CODE_23D8F3:        DEX                       
 CODE_23D8F4:        LDA $70                   
 CODE_23D8F6:        CLC                       
-CODE_23D8F7:        ADC $EBA6,x               
+CODE_23D8F7:        ADC.w DATA_21EBA6,x               
 CODE_23D8FA:        JSL CODE_27A859           
 CODE_23D8FE:        AND #$0F                  
 CODE_23D900:        CLC                       
@@ -11064,12 +11064,12 @@ CODE_23D914:        INY
 CODE_23D915:        LDA $70                   
 CODE_23D917:        AND #$F0                  
 CODE_23D919:        CLC                       
-CODE_23D91A:        ADC $EC2E,y               
+CODE_23D91A:        ADC.w DATA_21EC2E,y               
 CODE_23D91D:        STA $70                   
 CODE_23D91F:        LDA $55                   
-CODE_23D921:        ADC $EC2C,y               
+CODE_23D921:        ADC.w DATA_21EC2C,y               
 CODE_23D924:        STA $55                   
-CODE_23D926:        LDA $EC30,x               
+CODE_23D926:        LDA.w DATA_21EC30,x               
 CODE_23D929:        LDY $BB                   
 CODE_23D92B:        BEQ CODE_23D930           
 CODE_23D92D:        CLC                       
@@ -11089,7 +11089,7 @@ CODE_23D948:        CMP #$08
 CODE_23D94A:        BPL CODE_23D94F           
 CODE_23D94C:        INX                       
 CODE_23D94D:        LDY #$FF                  
-CODE_23D94F:        LDA $EBAC,x               
+CODE_23D94F:        LDA.w DATA_21EBAC,x               
 CODE_23D952:        CLC                       
 CODE_23D953:        ADC $5E                   
 CODE_23D955:        AND #$0F                  
@@ -11114,12 +11114,12 @@ CODE_23D973:        STA $0545
 CODE_23D976:        INC $0574                 
 CODE_23D979:        LDX #$00                  
 CODE_23D97B:        LDY $060D                 
-CODE_23D97E:        LDA $EBAE,y               
+CODE_23D97E:        LDA.w DATA_21EBAE,y               
 CODE_23D981:        BEQ CODE_23D984           
 CODE_23D983:        INX                       
 CODE_23D984:        LDA $5E                   
 CODE_23D986:        CLC                       
-CODE_23D987:        ADC $EB83                 
+CODE_23D987:        ADC.w DATA_21EB83                 
 CODE_23D98A:        AND #$0F                  
 CODE_23D98C:        STA $00                   
 CODE_23D98E:        LDA $060D,x               
@@ -11138,7 +11138,7 @@ CODE_23D99E:        ASL A
 CODE_23D99F:        ASL A                     
 CODE_23D9A0:        ORA $00                   
 CODE_23D9A2:        STA $00                   
-CODE_23D9A4:        LDA $AD5B,y               
+CODE_23D9A4:        LDA.w DATA_21AD5B,y               
 CODE_23D9A7:        STA $0F                   
 CODE_23D9A9:        LDY $00                   
 CODE_23D9AB:        TXA                       
@@ -11174,7 +11174,7 @@ CODE_23D9E1:        BEQ CODE_23D9E4
 CODE_23D9E3:        DEX                       
 CODE_23D9E4:        LDA $70                   
 CODE_23D9E6:        CLC                       
-CODE_23D9E7:        ADC $EBA6,x               
+CODE_23D9E7:        ADC.w DATA_21EBA6,x               
 CODE_23D9EA:        AND #$0F                  
 CODE_23D9EC:        STA $00                   
 CODE_23D9EE:        LDA ($52),y               
@@ -11257,7 +11257,7 @@ CODE_23DA86:        BNE CODE_23DAA4
 CODE_23DA88:        TXA                       
 CODE_23DA89:        BEQ CODE_23DAD2           
 CODE_23DA8B:        LDY $BB                   
-CODE_23DA8D:        LDA $AF64,y               
+CODE_23DA8D:        LDA.w DATA_21AF64,y               
 CODE_23DA90:        AND #$02                  
 CODE_23DA92:        BNE CODE_23DAD2           
 CODE_23DA94:        LDA $0577                 
@@ -11291,9 +11291,9 @@ CODE_23DAD4:        BEQ CODE_23DAD9
 CODE_23DAD6:        STX $0569                 
 CODE_23DAD9:        RTS                       
 
-CODE_23DADA:        LDA $EB82,y               
+CODE_23DADA:        LDA.w DATA_21EB82,y               
 CODE_23DADD:        STA $09                   
-CODE_23DADF:        LDA $EB83,y               
+CODE_23DADF:        LDA.w DATA_21EB83,y               
 CODE_23DAE2:        STA $0A                   
 CODE_23DAE4:        JSL CODE_23D2B6           
 CODE_23DAE8:        STA $0603,x               
@@ -11311,7 +11311,7 @@ CODE_23DAFC:        ORA $0517
 CODE_23DAFF:        ORA $054F                 
 CODE_23DB02:        BNE CODE_23DB4E           
 CODE_23DB04:        LDY $0560                 
-CODE_23DB07:        LDA $EC32,y               
+CODE_23DB07:        LDA.w DATA_21EC32,y               
 CODE_23DB0A:        STA $0F                   
 CODE_23DB0C:        LDA $A6                   
 CODE_23DB0E:        BNE CODE_23DB51           
@@ -11336,7 +11336,7 @@ CODE_23DB34:        CMP #$08
 CODE_23DB36:        BMI CODE_23DB39           
 CODE_23DB38:        INX                       
 CODE_23DB39:        LDA $17                   
-CODE_23DB3B:        AND $EC43,x               
+CODE_23DB3B:        AND.w DATA_21EC43,x               
 CODE_23DB3E:        BEQ CODE_23DB51           
 CODE_23DB40:        TYA                       
 CODE_23DB41:        BNE CODE_23DB4B           
@@ -11395,7 +11395,7 @@ CODE_23DBA7:        ASL A
 CODE_23DBA8:        ASL A                     
 CODE_23DBA9:        STA $01                   
 CODE_23DBAB:        LDA $17                   
-CODE_23DBAD:        AND $EC43,x               
+CODE_23DBAD:        AND.w DATA_21EC43,x               
 CODE_23DBB0:        BEQ CODE_23DBF3           
 CODE_23DBB2:        LDA $0571                 
 CODE_23DBB5:        BNE CODE_23DBF3           
@@ -11411,7 +11411,7 @@ CODE_23DBC6:        LDA $5E
 CODE_23DBC8:        AND #$0F                  
 CODE_23DBCA:        PHA                       
 CODE_23DBCB:        CLC                       
-CODE_23DBCC:        ADC $EC40,y               
+CODE_23DBCC:        ADC.w DATA_21EC40,y               
 CODE_23DBCF:        AND #$10                  
 CODE_23DBD1:        BNE CODE_23DBD7           
 CODE_23DBD3:        PLA                       
@@ -11440,21 +11440,21 @@ CODE_23DBF8:        BNE CODE_23DC1B
 CODE_23DBFA:        LDA $0567                 
 CODE_23DBFD:        BNE CODE_23DC1B           
 CODE_23DBFF:        LDX #$01                  
-CODE_23DC01:        LDA $AF48,y               
+CODE_23DC01:        LDA.w DATA_21AF48,y               
 CODE_23DC04:        BEQ CODE_23DC1B           
 CODE_23DC06:        SEC                       
 CODE_23DC07:        SBC $0603,x               
 CODE_23DC0A:        CMP #$02                  
 CODE_23DC0C:        BCS CODE_23DC18                   
 CODE_23DC0E:        TAX                       
-CODE_23DC0F:        LDA $EC47,x               
+CODE_23DC0F:        LDA.w DATA_21EC47,x               
 CODE_23DC12:        STA $0569                 
 CODE_23DC15:        JMP CODE_23DC1B           
 
 CODE_23DC18:        DEX                       
 CODE_23DC19:        BPL CODE_23DC01           
 CODE_23DC1B:        LDX #$02                  
-CODE_23DC1D:        LDA $AF3A,y               
+CODE_23DC1D:        LDA.w DATA_21AF3A,y               
 CODE_23DC20:        CMP #$FF                  
 CODE_23DC22:        BEQ CODE_23DC40           
 CODE_23DC24:        SEC                       
@@ -11473,7 +11473,7 @@ CODE_23DC3F:        RTS
 
 CODE_23DC40:        LDX #$03                  
 CODE_23DC42:        LDA $0603,x               
-CODE_23DC45:        CMP $AF56,y               
+CODE_23DC45:        CMP.w DATA_21AF56,y               
 CODE_23DC48:        BEQ CODE_23DC4E           
 CODE_23DC4A:        CMP #$66                  
 CODE_23DC4C:        BNE CODE_23DC5D           
@@ -11500,11 +11500,11 @@ CODE_23DC75:        LDX #$02
 CODE_23DC77:        LDA $0602,x               
 CODE_23DC7A:        PHA                       
 CODE_23DC7B:        SEC                       
-CODE_23DC7C:        SBC $EC4B,y               
+CODE_23DC7C:        SBC.w DATA_21EC4B,y               
 CODE_23DC7F:        CMP #$01                  
 CODE_23DC81:        PLA                       
 CODE_23DC82:        BCC CODE_23DC8F           
-CODE_23DC84:        CMP $EC4D,y               
+CODE_23DC84:        CMP.w DATA_21EC4D,y               
 CODE_23DC87:        BEQ CODE_23DC8F           
 CODE_23DC89:        DEX                       
 CODE_23DC8A:        BPL CODE_23DC77           
@@ -11661,7 +11661,7 @@ CODE_23DDBF:        LDY #$02
 CODE_23DDC1:        LDA $0577                 
 CODE_23DDC4:        BEQ CODE_23DDC7           
 CODE_23DDC6:        INY                       
-CODE_23DDC7:        LDA $E980,y               
+CODE_23DDC7:        LDA.w DATA_21E980,y               
 CODE_23DDCA:        STA $BC                   
 CODE_23DDCC:        RTL                       
 
@@ -11698,7 +11698,7 @@ CODE_23DE0D:        ASL A
 CODE_23DE0E:        TAX                       
 CODE_23DE0F:        LDA $5E                   
 CODE_23DE11:        CLC                       
-CODE_23DE12:        ADC $EC4F,x               
+CODE_23DE12:        ADC.w DATA_21EC4F,x               
 CODE_23DE15:        CPX #$04                  
 CODE_23DE17:        BPL CODE_23DE1B           
 CODE_23DE19:        AND #$F0                  
@@ -11709,7 +11709,7 @@ CODE_23DE21:        BNE CODE_23DE27
 CODE_23DE23:        LDY $BB                   
 CODE_23DE25:        BEQ CODE_23DE2B           
 CODE_23DE27:        CLC                       
-CODE_23DE28:        ADC $EC50,x               
+CODE_23DE28:        ADC.w DATA_21EC4F+1,x               
 CODE_23DE2B:        AND #$F0                  
 CODE_23DE2D:        CPX #$04                  
 CODE_23DE2F:        BMI CODE_23DE34           
@@ -11872,9 +11872,9 @@ DATA_23DF47:        db $80,$03,$5A,$16,$5B,$16,$00,$00
                     db $80,$03,$5B,$16,$5A,$96,$00,$00
                     db $80,$03,$5B,$56,$5A,$D6,$FF,$FF
 
-CODE_23DF67:        PHB
-CODE_23DF68:        PHK
-CODE_23DF69:        PLB
+CODE_23DF67:        PHB                       
+CODE_23DF68:        PHK                       
+CODE_23DF69:        PLB                       
 CODE_23DF6A:        LDA $700006               
 CODE_23DF6E:        BNE CODE_23DF8A           
 CODE_23DF70:        LDA $F4                   
@@ -11966,16 +11966,16 @@ CODE_23E01F:        BNE CODE_23E022
 CODE_23E021:        RTS                       
 
 CODE_23E022:        LDY $1D9C,x               
-CODE_23E025:        LDA $EC71,y               
+CODE_23E025:        LDA.w DATA_21EC71,y               
 CODE_23E028:        LDY $1D9D,x               
-CODE_23E02B:        ORA $EC71,y               
+CODE_23E02B:        ORA.w DATA_21EC71,y               
 CODE_23E02E:        LDY $1D9E,x               
-CODE_23E031:        ORA $EC71,y               
+CODE_23E031:        ORA.w DATA_21EC71,y               
 CODE_23E034:        TAY                       
 CODE_23E035:        LDX $00                   
-CODE_23E037:        ORA $EC61,y               
+CODE_23E037:        ORA.w DATA_21EC61,y               
 CODE_23E03A:        STA $1203                 
-CODE_23E03D:        LDA $EC69,y               
+CODE_23E03D:        LDA.w DATA_21EC69,y               
 CODE_23E040:        STA $19A1,x               
 CODE_23E043:        LDA $1822,x               
 CODE_23E046:        STA $19A5,x               
@@ -11983,7 +11983,7 @@ CODE_23E049:        LDA $1811,x
 CODE_23E04C:        SEC                       
 CODE_23E04D:        SBC #$08                  
 CODE_23E04F:        STA $19A3,x               
-CODE_23E052:        LDA $EC59,y               
+CODE_23E052:        LDA.w DATA_21EC59,y               
 CODE_23E055:        PHA                       
 CODE_23E056:        STA $19A7,x               
 CODE_23E059:        CLC                       
@@ -12019,7 +12019,7 @@ CODE_23E090:        LDA $15
 CODE_23E092:        LSR A                     
 CODE_23E093:        BCC CODE_23E098           
 CODE_23E095:        INC $19A1,x               
-CODE_23E098:        LDY $EC7A,x               
+CODE_23E098:        LDY.w DATA_21EC7A,x               
 CODE_23E09B:        LDA $19A3,x               
 CODE_23E09E:        SEC                       
 CODE_23E09F:        SBC $19A1,x               
@@ -12030,7 +12030,7 @@ CODE_23E0AB:        LDA #$22
 CODE_23E0AD:        STA $0803,y               
 CODE_23E0B0:        LDA $19A7,x               
 CODE_23E0B3:        TAX                       
-CODE_23E0B4:        LDA $EC74,x               
+CODE_23E0B4:        LDA.w DATA_21EC74,x               
 CODE_23E0B7:        STA $0802,y               
 CODE_23E0BA:        LDA $19A5,x               
 CODE_23E0BD:        SEC                       
@@ -12071,7 +12071,7 @@ CODE_23E0FD:        STX $03
 CODE_23E0FF:        LDA $1D9C,y               
 CODE_23E102:        BEQ CODE_23E148           
 CODE_23E104:        TAY                       
-CODE_23E105:        LDA $EC90,y               
+CODE_23E105:        LDA.w DATA_21EC90,y               
 CODE_23E108:        LDY $00                   
 CODE_23E10A:        STA $09E2,y               
 CODE_23E10D:        LDA #$D0                  
@@ -12098,7 +12098,7 @@ CODE_23E132:        CPY #$0C
 CODE_23E134:        BCC CODE_23E138           
 CODE_23E136:        LDA #$C0                  
 CODE_23E138:        CLC                       
-CODE_23E139:        ADC $EC8E,x               
+CODE_23E139:        ADC.w DATA_21EC8E,x               
 CODE_23E13C:        STA $09E0,y               
 CODE_23E13F:        TYA                       
 CODE_23E140:        LSR A                     
@@ -12127,7 +12127,7 @@ CODE_23E162:        PHA
 CODE_23E163:        REP #$30                  
 CODE_23E165:        LDY #$0000                
 CODE_23E168:        LDX $1600                 
-CODE_23E16B:        LDA $EC7C,y               
+CODE_23E16B:        LDA.w DATA_21EC7C,y               
 CODE_23E16E:        STA $1602,x               
 CODE_23E171:        INX                       
 CODE_23E172:        INX                       
@@ -12137,7 +12137,7 @@ CODE_23E175:        CPY #$0008
 CODE_23E178:        BNE CODE_23E16B           
 CODE_23E17A:        SEP #$30                  
 CODE_23E17C:        LDY $0F                   
-CODE_23E17E:        LDA $EC8C,y               
+CODE_23E17E:        LDA.w DATA_21EC8C,y               
 CODE_23E181:        CLC                       
 CODE_23E182:        ADC $192E,y               
 CODE_23E185:        STA $15FB,x               
@@ -12190,7 +12190,7 @@ CODE_23E1E5:        RTL
 CODE_23E1E6:        LDA $0075                 
 CODE_23E1E9:        JSL CODE_20FB1F           
 
-PNTR_23E1ED:     dw CODE_23E1FD
+PNTR_23E1ED:        dw CODE_23E1FD
                     dw CODE_23E2AB
 
 DATA_23E1F1:        db $00,$01,$02,$00,$03,$04,$05,$00
@@ -12245,9 +12245,9 @@ CODE_23E258:        STA $0F
 CODE_23E25A:        LDX #$04                  
 CODE_23E25C:        JSR CODE_23E27A           
 CODE_23E25F:        TAY                       
-CODE_23E260:        LDA $EC94,y               
+CODE_23E260:        LDA.w DATA_21EC94,y               
 CODE_23E263:        STA $1824,x               
-CODE_23E266:        LDA $ECA2,y               
+CODE_23E266:        LDA.w DATA_21ECA2,y               
 CODE_23E269:        STA $1813,x               
 CODE_23E26C:        LDA #$01                  
 CODE_23E26E:        STA $1802,x               
@@ -12272,9 +12272,9 @@ CODE_23E28E:        LDX #$04
 CODE_23E290:        INC $1802,x               
 CODE_23E293:        LDA #$0B                  
 CODE_23E295:        STA $18BB,x               
-CODE_23E298:        LDA $ECB5,x               
+CODE_23E298:        LDA.w DATA_21ECB5,x               
 CODE_23E29B:        STA $1813,x               
-CODE_23E29E:        LDA $ECB0,x               
+CODE_23E29E:        LDA.w DATA_21ECB0,x               
 CODE_23E2A1:        STA $1824,x               
 CODE_23E2A4:        JSR CODE_23ED8D           
 CODE_23E2A7:        DEX                       
@@ -12412,7 +12412,7 @@ CODE_23E3B9:        TAY
 CODE_23E3BA:        CLC                       
 CODE_23E3BB:        ADC #$0B                  
 CODE_23E3BD:        STA $18BB,x               
-CODE_23E3C0:        LDA $ECB9,y               
+CODE_23E3C0:        LDA.w DATA_21ECB9,y               
 CODE_23E3C3:        STA $1835,x               
 CODE_23E3C6:        INC $1802,x               
 CODE_23E3C9:        LDY $00                   
@@ -12558,7 +12558,7 @@ CODE_23E4FC:        LDA #$01
 CODE_23E4FE:        STA $1800,x               
 CODE_23E501:        TXA                       
 CODE_23E502:        TAY                       
-CODE_23E503:        LDA $ECC1,y               
+CODE_23E503:        LDA.w DATA_21ECC1,y               
 CODE_23E506:        STA $1864,x               
 CODE_23E509:        LDA #$90                  
 CODE_23E50B:        STA $1811,x               
@@ -12567,7 +12567,7 @@ CODE_23E511:        CMP #$07
 CODE_23E513:        BNE CODE_23E517           
 CODE_23E515:        INY                       
 CODE_23E516:        INY                       
-CODE_23E517:        LDA $ECBD,y               
+CODE_23E517:        LDA.w DATA_21ECBD,y               
 CODE_23E51A:        STA $1822,x               
 CODE_23E51D:        RTS                       
 
@@ -12706,7 +12706,7 @@ CODE_23E62F:        ADC #$01
 CODE_23E631:        LSR A                     
 CODE_23E632:        LSR A                     
 CODE_23E633:        TAY                       
-CODE_23E634:        LDA $ECD9,y               
+CODE_23E634:        LDA.w DATA_21ECD9,y               
 CODE_23E637:        STA $1833,x               
 CODE_23E63A:        LDA $F2,x                 
 CODE_23E63C:        AND #$03                  
@@ -12723,7 +12723,7 @@ CODE_23E650:        SEC
 CODE_23E651:        SBC #$01                  
 CODE_23E653:        STA $1844,x               
 CODE_23E656:        LDY $1F26                 
-CODE_23E659:        LDA $ECCD,y               
+CODE_23E659:        LDA.w DATA_21ECCD,y               
 CODE_23E65C:        BEQ CODE_23E679           
 CODE_23E65E:        LDA #$01                  
 CODE_23E660:        LDY $1844,x               
@@ -12734,7 +12734,7 @@ CODE_23E669:        BEQ CODE_23E679
 CODE_23E66B:        AND $F2,x                 
 CODE_23E66D:        BEQ CODE_23E673           
 CODE_23E66F:        TAY                       
-CODE_23E670:        LDA $ECCA,y               
+CODE_23E670:        LDA.w DATA_21ECCA,y               
 CODE_23E673:        STA $1844,x               
 CODE_23E676:        JMP CODE_23E67C           
 
@@ -12824,7 +12824,7 @@ CODE_23E723:        LSR A
 CODE_23E724:        TAY                       
 CODE_23E725:        LDA $199C,x               
 CODE_23E728:        CLC                       
-CODE_23E729:        ADC $ECC3,y               
+CODE_23E729:        ADC.w DATA_21ECC3,y               
 CODE_23E72C:        STA $199C,x               
 CODE_23E72F:        BCC CODE_23E734           
 CODE_23E731:        INC $199E,x               
@@ -12976,7 +12976,7 @@ CODE_23E86F:        LDY #$05
 CODE_23E871:        STY $0F                   
 CODE_23E873:        LDA $1811,x               
 CODE_23E876:        CLC                       
-CODE_23E877:        ADC $ECF3,y               
+CODE_23E877:        ADC.w DATA_21ECF3,y               
 CODE_23E87A:        AND #$F0                  
 CODE_23E87C:        STA $00                   
 CODE_23E87E:        CPX #$02                  
@@ -12990,7 +12990,7 @@ CODE_23E88B:        ADC #$06
 CODE_23E88D:        TAY                       
 CODE_23E88E:        LDA $1822,x               
 CODE_23E891:        CLC                       
-CODE_23E892:        ADC $ECE7,y               
+CODE_23E892:        ADC.w DATA_21ECE7,y               
 CODE_23E895:        STA $01                   
 CODE_23E897:        JSR CODE_23EA61           
 CODE_23E89A:        LDY $0F                   
@@ -13122,11 +13122,11 @@ CODE_23E9A6:        CMP #$FE
 CODE_23E9A8:        BCC CODE_23E9B0           
 CODE_23E9AA:        AND #$01                  
 CODE_23E9AC:        TAY                       
-CODE_23E9AD:        LDA $EC57,y               
+CODE_23E9AD:        LDA.w DATA_21EC57,y               
 CODE_23E9B0:        STA $18F8,x               
 CODE_23E9B3:        LDY $0F                   
 CODE_23E9B5:        LDA $1895,x               
-CODE_23E9B8:        ORA $ECFF,y               
+CODE_23E9B8:        ORA.w DATA_21ECFF,y               
 CODE_23E9BB:        STA $1895,x               
 CODE_23E9BE:        CPX #$02                  
 CODE_23E9C0:        BCC CODE_23E9C9           
@@ -13145,7 +13145,7 @@ CODE_23E9D9:        LDY $0F
 CODE_23E9DB:        CMP #$C2                  
 CODE_23E9DD:        BNE CODE_23E9E8           
 CODE_23E9DF:        LDA $1895,x               
-CODE_23E9E2:        ORA $ED05,y               
+CODE_23E9E2:        ORA.w DATA_21ED05,y               
 CODE_23E9E5:        STA $1895,x               
 CODE_23E9E8:        CPY #$02                  
 CODE_23E9EA:        BCS CODE_23EA06                   
@@ -13226,7 +13226,7 @@ CODE_23EA7A:        CMP #$FE
 CODE_23EA7C:        BCC CODE_23EA84           
 CODE_23EA7E:        AND #$01                  
 CODE_23EA80:        TAY                       
-CODE_23EA81:        LDA $EC57,y               
+CODE_23EA81:        LDA.w DATA_21EC57,y               
 CODE_23EA84:        PHA                       
 CODE_23EA85:        ASL A                     
 CODE_23EA86:        ROL $0E                   
@@ -13283,7 +13283,7 @@ CODE_23EAD9:        LDA #$0A
 CODE_23EADB:        STA $0A                   
 CODE_23EADD:        LDA $1864,x               
 CODE_23EAE0:        TAX                       
-CODE_23EAE1:        LDA $ED16,x               
+CODE_23EAE1:        LDA.w DATA_21ED16,x               
 CODE_23EAE4:        ORA $0A                   
 CODE_23EAE6:        STA $0883,y               
 CODE_23EAE9:        LDX $190E                 
@@ -13440,29 +13440,29 @@ CODE_23EC2A:        LDY #$00
 CODE_23EC2C:        PLP                       
 CODE_23EC2D:        BCC CODE_23EC30           
 CODE_23EC2F:        INY                       
-CODE_23EC30:        LDA $ED1D,y               
+CODE_23EC30:        LDA.w DATA_21ED1D,y               
 CODE_23EC33:        AND $1833                 
 CODE_23EC36:        BMI CODE_23EC51           
-CODE_23EC38:        LDA $ED1D,y               
+CODE_23EC38:        LDA.w DATA_21ED1D,y               
 CODE_23EC3B:        STA $1833                 
 CODE_23EC3E:        LDA $1895                 
 CODE_23EC41:        AND #$04                  
 CODE_23EC43:        BEQ CODE_23EC51           
-CODE_23EC45:        LDA $ED20,y               
+CODE_23EC45:        LDA.w DATA_21ED20,y               
 CODE_23EC48:        STA $18B5                 
-CODE_23EC4B:        LDA $ED23,y               
+CODE_23EC4B:        LDA.w DATA_21ED23,y               
 CODE_23EC4E:        STA $1200                 
-CODE_23EC51:        LDA $ED1E,y               
+CODE_23EC51:        LDA.w DATA_21ED1E,y               
 CODE_23EC54:        AND $1834                 
 CODE_23EC57:        BMI CODE_23EC72           
-CODE_23EC59:        LDA $ED1E,y               
+CODE_23EC59:        LDA.w DATA_21ED1E,y               
 CODE_23EC5C:        STA $1834                 
 CODE_23EC5F:        LDA $1896                 
 CODE_23EC62:        AND #$04                  
 CODE_23EC64:        BEQ CODE_23EC72           
-CODE_23EC66:        LDA $ED21,y               
+CODE_23EC66:        LDA.w DATA_21ED21,y               
 CODE_23EC69:        STA $18B6                 
-CODE_23EC6C:        LDA $ED24,y               
+CODE_23EC6C:        LDA.w DATA_21ED24,y               
 CODE_23EC6F:        STA $1200                 
 CODE_23EC72:        RTS                       
 
@@ -13480,9 +13480,9 @@ CODE_23EC89:        BCC CODE_23EC90
 CODE_23EC8B:        CMP $1823                 
 CODE_23EC8E:        BCS CODE_23EC91                 
 CODE_23EC90:        INY                       
-CODE_23EC91:        LDA $ED19,y               
+CODE_23EC91:        LDA.w DATA_21ED19,y               
 CODE_23EC94:        STA $1844                 
-CODE_23EC97:        LDA $ED1A,y               
+CODE_23EC97:        LDA.w DATA_21ED1A,y               
 CODE_23EC9A:        STA $1845                 
 CODE_23EC9D:        TYA                       
 CODE_23EC9E:        AND #$01                  
@@ -13571,9 +13571,9 @@ CODE_23ED4F:        LDA $190C
 CODE_23ED52:        LSR A                     
 CODE_23ED53:        AND #$01                  
 CODE_23ED55:        TAY                       
-CODE_23ED56:        LDA $ED3C,y               
+CODE_23ED56:        LDA.w DATA_21ED3C,y               
 CODE_23ED59:        STA $1846,x               
-CODE_23ED5C:        LDA $ED3A,y               
+CODE_23ED5C:        LDA.w DATA_21ED3A,y               
 CODE_23ED5F:        STA $1824,x               
 CODE_23ED62:        JSL CODE_25F805           
 CODE_23ED66:        LDA $192D                 
@@ -13670,7 +13670,7 @@ CODE_23EE29:        STA $191E,x
 CODE_23EE2C:        LDA $18CA                 
 CODE_23EE2F:        AND #$01                  
 CODE_23EE31:        TAY                       
-CODE_23EE32:        LDA $ED32,y               
+CODE_23EE32:        LDA.w DATA_21ED32,y               
 CODE_23EE35:        STA $1824,x               
 CODE_23EE38:        LDA $18CA                 
 CODE_23EE3B:        CMP #$05                  
@@ -13681,7 +13681,7 @@ CODE_23EE44:        STA $1931,x
 CODE_23EE47:        INY                       
 CODE_23EE48:        INY                       
 CODE_23EE49:        INY                       
-CODE_23EE4A:        LDA $ED34,y               
+CODE_23EE4A:        LDA.w DATA_21ED34,y               
 CODE_23EE4D:        STA $1846,x               
 CODE_23EE50:        RTS
                        
@@ -13695,7 +13695,7 @@ CODE_23EE60:        TXA
 CODE_23EE61:        CLC                       
 CODE_23EE62:        ADC $18C9                 
 CODE_23EE65:        TAY                       
-CODE_23EE66:        LDA $ED3E,y               
+CODE_23EE66:        LDA.w DATA_21ED3E,y               
 CODE_23EE69:        STA $18C8                 
 CODE_23EE6C:        JSL CODE_25F805           
 CODE_23EE70:        JSR CODE_23EE77           
@@ -13820,7 +13820,7 @@ CODE_23EF7F:        LDA #$DC
 CODE_23EF81:        STA $1835,x               
 CODE_23EF84:        JSR CODE_23F1A5           
 CODE_23EF87:        LDY $18BB,x               
-CODE_23EF8A:        LDX $ED81,y               
+CODE_23EF8A:        LDX.w DATA_21ED81,y               
 CODE_23EF8D:        LDA $15                   
 CODE_23EF8F:        LSR A                     
 CODE_23EF90:        LSR A                     
@@ -13901,7 +13901,7 @@ CODE_23F035:        SEP #$10
 CODE_23F037:        LSR A                     
 CODE_23F038:        AND #$07                  
 CODE_23F03A:        TAX                       
-CODE_23F03B:        LDA $ED5D,x               
+CODE_23F03B:        LDA.w DATA_21ED5D,x               
 CODE_23F03E:        STA $0802,y               
 CODE_23F041:        LDX $190E                 
 CODE_23F044:        LDA #$02                  
@@ -13918,7 +13918,7 @@ CODE_23F055:        CLC
 CODE_23F056:        ADC $190E                 
 CODE_23F059:        AND #$03                  
 CODE_23F05B:        TAY                       
-CODE_23F05C:        LDA $ED59,y               
+CODE_23F05C:        LDA.w DATA_21ED59,y               
 CODE_23F05F:        REP #$10                  
 CODE_23F061:        PLY                       
 CODE_23F062:        STA $0802,y               
@@ -13937,7 +13937,7 @@ CODE_23F077:        PHA
 CODE_23F078:        LDA $191E,x               
 CODE_23F07B:        BEQ CODE_23F086           
 CODE_23F07D:        LDY $1866,x               
-CODE_23F080:        LDA $ED6A,y               
+CODE_23F080:        LDA.w DATA_21ED6A,y               
 CODE_23F083:        STA $1846,x               
 CODE_23F086:        JSR CODE_23F971           
 CODE_23F089:        PLA                       
@@ -13990,19 +13990,19 @@ CODE_23F0F2:        CMP #$A0
 CODE_23F0F4:        BCC CODE_23F128           
 CODE_23F0F6:        LDY $1866,x               
 CODE_23F0F9:        LDA $1824,x               
-CODE_23F0FC:        CMP $ED64,y               
+CODE_23F0FC:        CMP.w DATA_21ED64,y               
 CODE_23F0FF:        BNE CODE_23F108           
 CODE_23F101:        LDA #$60                  
 CODE_23F103:        STA $191E,x               
 CODE_23F106:        BNE CODE_23F128           
-CODE_23F108:        CMP $ED66,y               
+CODE_23F108:        CMP.w DATA_21ED66,y               
 CODE_23F10B:        BNE CODE_23F128           
 CODE_23F10D:        LDA #$20                  
 CODE_23F10F:        STA $1813,x               
 CODE_23F112:        LDA $0783                 
 CODE_23F115:        AND #$01                  
 CODE_23F117:        TAY                       
-CODE_23F118:        LDA $ED32,y               
+CODE_23F118:        LDA.w DATA_21ED32,y               
 CODE_23F11B:        STA $1824,x               
 CODE_23F11E:        EOR $1846,x               
 CODE_23F121:        BPL CODE_23F126           
@@ -14134,14 +14134,14 @@ CODE_23F23E:        LSR A
 CODE_23F23F:        LSR A                     
 CODE_23F240:        AND #$0F                  
 CODE_23F242:        TAY                       
-CODE_23F243:        LDA $EDBD,y               
+CODE_23F243:        LDA.w DATA_21EDBD,y               
 CODE_23F246:        STA $1857,x               
 CODE_23F249:        LDX #$18                  
 CODE_23F24B:        LDA #$06                  
 CODE_23F24D:        JMP CODE_23F256           
 
-CODE_23F250:        LDX $ED81,y               
-CODE_23F253:        LDA $ED6D,y               
+CODE_23F250:        LDX.w DATA_21ED81,y               
+CODE_23F253:        LDA.w DATA_21ED6D,y               
 CODE_23F256:        STA $00                   
 CODE_23F258:        STX $01                   
 CODE_23F25A:        LDX $190E                 
@@ -14234,7 +14234,7 @@ CODE_23F314:        LDX $01
 CODE_23F316:        AND #$08                  
 CODE_23F318:        BEQ CODE_23F31B           
 CODE_23F31A:        INX                       
-CODE_23F31B:        LDA $ED95,x               
+CODE_23F31B:        LDA.w DATA_21ED95,x               
 CODE_23F31E:        STA $0902,y               
 CODE_23F321:        LDA $0900,y               
 CODE_23F324:        CMP #$F1                  
@@ -14517,7 +14517,7 @@ CODE_23F56C:        LDY #$00
 CODE_23F56E:        CMP #$00                  
 CODE_23F570:        BMI CODE_23F573           
 CODE_23F572:        INY                       
-CODE_23F573:        LDA $EDCD,y               
+CODE_23F573:        LDA.w DATA_21EDCD,y               
 CODE_23F576:        STA $1846,x               
 CODE_23F579:        LDY $0F                   
 CODE_23F57B:        LDA #$03                  
@@ -14612,7 +14612,7 @@ CODE_23F63B:        INY
 CODE_23F63C:        PLP                       
 CODE_23F63D:        BPL CODE_23F640           
 CODE_23F63F:        INY                       
-CODE_23F640:        LDA $EDD5,y               
+CODE_23F640:        LDA.w DATA_21EDD5,y               
 CODE_23F643:        STA $1846,x               
 CODE_23F646:        RTS                       
 
@@ -14630,7 +14630,7 @@ CODE_23F65A:        LSR A
 CODE_23F65B:        LSR A                     
 CODE_23F65C:        TAY                       
 CODE_23F65D:        LDA $15                   
-CODE_23F65F:        AND $EDCF,y               
+CODE_23F65F:        AND.w DATA_21EDCF,y               
 CODE_23F662:        BEQ CODE_23F66C           
 CODE_23F664:        INC $199B                 
 CODE_23F667:        LDA #$08                  
@@ -14691,7 +14691,7 @@ CODE_23F6E0:        DEC $18BA
 CODE_23F6E3:        LSR A                     
 CODE_23F6E4:        AND #$03                  
 CODE_23F6E6:        TAY                       
-CODE_23F6E7:        LDA $EDDD,y               
+CODE_23F6E7:        LDA.w DATA_21EDDD,y               
 CODE_23F6EA:        STA $0216                 
 CODE_23F6ED:        LDA $193E                 
 CODE_23F6F0:        CMP #$03                  
@@ -14704,7 +14704,7 @@ CODE_23F6FD:        LDA #$78
 CODE_23F6FF:        STA $0820                 
 CODE_23F702:        LDA $193E                 
 CODE_23F705:        TAY                       
-CODE_23F706:        LDA $EDE1,y               
+CODE_23F706:        LDA.w DATA_21EDE1,y               
 CODE_23F709:        STA $0822                 
 CODE_23F70C:        LDA #$04                  
 CODE_23F70E:        STA $0823                 
@@ -14727,12 +14727,12 @@ CODE_23F733:        LDA #$10
 CODE_23F735:        STA $07                   
 CODE_23F737:        LDY $193E                 
 CODE_23F73A:        SEC                       
-CODE_23F73B:        SBC $EDE4,y               
+CODE_23F73B:        SBC.w DATA_21EDE4,y               
 CODE_23F73E:        STA $06                   
 CODE_23F740:        JSR CODE_23ECC9           
 CODE_23F743:        BCC CODE_23F795           
 CODE_23F745:        LDY $193E                 
-CODE_23F748:        LDA $EDE4,y               
+CODE_23F748:        LDA.w DATA_21EDE4,y               
 CODE_23F74B:        STA $193F,x               
 CODE_23F74E:        LDA $1811,x               
 CODE_23F751:        SEC                       
@@ -14790,7 +14790,7 @@ CODE_23F7C0:        INC $1857,x
 CODE_23F7C3:        INC $1857,x               
 CODE_23F7C6:        LDY $1866,x               
 CODE_23F7C9:        LDA $1824,x               
-CODE_23F7CC:        CMP $EDEA,y               
+CODE_23F7CC:        CMP.w DATA_21EDEA,y               
 CODE_23F7CF:        BNE CODE_23F7DD           
 CODE_23F7D1:        LDA $18BB,x               
 CODE_23F7D4:        CMP #$04                  
@@ -14816,9 +14816,9 @@ CODE_23F804:        AND #$01
 CODE_23F806:        TAY                       
 CODE_23F807:        LDA $1835,x               
 CODE_23F80A:        CLC                       
-CODE_23F80B:        ADC $EDE7,y               
+CODE_23F80B:        ADC.w DATA_21EDE7,y               
 CODE_23F80E:        STA $1835,x               
-CODE_23F811:        CMP $EDE9,y               
+CODE_23F811:        CMP.w DATA_21EDE9,y               
 CODE_23F814:        BNE CODE_23F819           
 CODE_23F816:        INC $18A6,x               
 CODE_23F819:        RTS                       
@@ -14859,7 +14859,7 @@ CODE_23F862:        TXA
 CODE_23F863:        CLC                       
 CODE_23F864:        ADC $18C9                 
 CODE_23F867:        TAY                       
-CODE_23F868:        LDA $ED4A,y               
+CODE_23F868:        LDA.w DATA_21ED4A,y               
 CODE_23F86B:        STA $18C8                 
 CODE_23F86E:        LDA $180F,x               
 CODE_23F871:        BEQ CODE_23F899           

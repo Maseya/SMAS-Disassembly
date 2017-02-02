@@ -5201,7 +5201,7 @@ CODE_22CDCD:        STA $0518,x
 CODE_22CDD0:        INC $68,x                 
 CODE_22CDD2:        INC $0689,x               
 CODE_22CDD5:        LDA $0689,x               
-CODE_22CDD8:        CMP #$32                  
+CODE_22CDD8:        CMP #$32                  ; The amount of times the Chain Chomp tugs on its chain before it breaks free.
 CODE_22CDDA:        BNE CODE_22CDDF           
 CODE_22CDDC:        JSR CODE_22CD16           
 CODE_22CDDF:        RTS                       
@@ -6538,16 +6538,17 @@ CODE_22E0FF:        SEP #$30
 CODE_22E101:        PLD                       
 CODE_22E102:        RTL                       
 
-CODE_22E103:        LDA $0782                 
-CODE_22E106:        AND #$02                  
-CODE_22E108:        STA $00                   
-CODE_22E10A:        LDA $0783                 
-CODE_22E10D:        AND #$02                  
-CODE_22E10F:        EOR $00                   
-CODE_22E111:        CLC                       
-CODE_22E112:        BEQ CODE_22E115           
-CODE_22E114:        SEC                       
-CODE_22E115:        ROR $0782                 
+;Random number generation-related. Uses LFSR principle. A = ($0783&#$02) ^ ($0784&#$02), so either 02 or 00.
+CODE_22E103:        LDA $0782                 ;\
+CODE_22E106:        AND #$02                  ; |
+CODE_22E108:        STA $00                   ; | 
+CODE_22E10A:        LDA $0783                 ; | If bit 1 of both 0782 and 0783 are equal
+CODE_22E10D:        AND #$02                  ; | then clear the carry flag
+CODE_22E10F:        EOR $00                   ; | Otherwise, set it
+CODE_22E111:        CLC                       ; |
+CODE_22E112:        BEQ CODE_22E115           ; |
+CODE_22E114:        SEC                       ;/
+CODE_22E115:        ROR $0782                 ;Then rotate these addresses with carry.
 CODE_22E118:        ROR $0783                 
 CODE_22E11B:        ROR $0784                 
 CODE_22E11E:        ROR $0785                 
@@ -7661,7 +7662,7 @@ CODE_22F117:        JMP CODE_22F196
 
 CODE_22F11A:        REP #$10                  
 CODE_22F11C:        LDX $02D4                 
-CODE_22F11F:        LDA.w DATA_21FAD9,x               
+CODE_22F11F:        LDA.w DATA_21FAD9,x               ;King has been transformed text.
 CODE_22F122:        STA $00                   
 CODE_22F124:        SEP #$10                  
 CODE_22F126:        LDY $1600                 

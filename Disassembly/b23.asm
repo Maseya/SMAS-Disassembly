@@ -9,7 +9,7 @@ CODE_238006:        C0 00         CPY #$00
 CODE_238008:        F0 02         BEQ CODE_23800C           
 CODE_23800A:        A2 0B         LDX #$0B                  
 CODE_23800C:        A0 00         LDY #$00                  
-CODE_23800E:        BD E9 8A      LDA $8AE9,x               
+CODE_23800E:        BD E9 8A      LDA.w DATA_218AE9,x               
 CODE_238011:        99 06 16      STA $1606,y               
 CODE_238014:        E8            INX                       
 CODE_238015:        C8            INY                       
@@ -83,7 +83,7 @@ CODE_2380AF:        AD 29 07      LDA $0729
 CODE_2380B2:        C9 0D         CMP #$0D                  
 CODE_2380B4:        D0 55         BNE CODE_23810B           
 CODE_2380B6:        AE 27 07      LDX $0727                 
-CODE_2380B9:        BC 03 8B      LDY $8B03,x               
+CODE_2380B9:        BC 03 8B      LDY.w DATA_218B03,x               
 CODE_2380BC:        E0 04         CPX #$04                  
 CODE_2380BE:        D0 09         BNE CODE_2380C9           
 CODE_2380C0:        AE 26 07      LDX $0726                 
@@ -219,11 +219,11 @@ CODE_2381F6:        82 22 0A      BRL CODE_238C1B
 CODE_2381F9:        A4 25         LDY $25                   
 CODE_2381FB:        AD 10 02      LDA $0210                 
 CODE_2381FE:        18            CLC                       
-CODE_2381FF:        79 FF 8A      ADC $8AFF,y               
+CODE_2381FF:        79 FF 8A      ADC.w DATA_218AFF,y               
 CODE_238202:        8D 10 02      STA $0210                 
 CODE_238205:        85 B7         STA $B7                   
 CODE_238207:        AD 11 02      LDA $0211                 
-CODE_23820A:        79 01 8B      ADC $8B01,y               
+CODE_23820A:        79 01 8B      ADC.w DATA_218B01,y               
 CODE_23820D:        8D 11 02      STA $0211                 
 CODE_238210:        85 12         STA $12                   
 CODE_238212:        22 F5 97 20   JSL CODE_2097F5           
@@ -266,7 +266,7 @@ CODE_23826E:        6B            RTL
 CODE_23826F:        AD 29 07      LDA $0729                 
 CODE_238272:        22 3A FB 20   JSL CODE_20FB3A           
 
-PNTR_238276:     dl CODE_2382C5
+PNTR_238276:        dl CODE_2382C5
                     dl CODE_238631
                     dl CODE_29AC7A
                     dl CODE_29ADFC
@@ -289,7 +289,7 @@ CODE_2382AA:        AE 26 07      LDX $0726
 CODE_2382AD:        B5 45         LDA $45,x                 
 CODE_2382AF:        F0 13         BEQ CODE_2382C4           
 CODE_2382B1:        A0 07         LDY #$07                  
-CODE_2382B3:        B9 0C 8B      LDA $8B0C,y               
+CODE_2382B3:        B9 0C 8B      LDA.w DATA_218B0C,y               
 CODE_2382B6:        99 50 08      STA $0850,y               
 CODE_2382B9:        88            DEY                       
 CODE_2382BA:        10 F7         BPL CODE_2382B3           
@@ -301,7 +301,7 @@ CODE_2382C4:        6B            RTL
 CODE_2382C5:        AD 28 07      LDA $0728                 
 CODE_2382C8:        22 1F FB 20   JSL CODE_20FB1F           
 
-PNTR_2382CC:     dw CODE_2382D2
+PNTR_2382CC:        dw CODE_2382D2
                     dw CODE_238338
                     dw CODE_2383D1
 
@@ -328,7 +328,7 @@ CODE_238302:        EE 28 07      INC $0728
 CODE_238305:        6B            RTL                       
 
 CODE_238306:        A0 03         LDY #$03                  
-CODE_238308:        B9 14 8B      LDA $8B14,y               
+CODE_238308:        B9 14 8B      LDA.w DATA_218B14,y               
 CODE_23830B:        99 84 08      STA $0884,y               
 CODE_23830E:        88            DEY                       
 CODE_23830F:        10 F7         BPL CODE_238308           
@@ -345,7 +345,7 @@ CODE_238326:        A8            TAY
 CODE_238327:        80 03         BRA CODE_23832C           
 
 CODE_238329:        BC 47 07      LDY $0747,x               
-CODE_23832C:        B9 18 8B      LDA $8B18,y               
+CODE_23832C:        B9 18 8B      LDA.w DATA_218B18,y               
 CODE_23832F:        8D 86 08      STA $0886                 
 CODE_238332:        A9 02         LDA #$02                  
 CODE_238334:        8D 41 0A      STA $0A41                 
@@ -367,9 +367,9 @@ CODE_23834E:        4A            LSR A
 CODE_23834F:        4A            LSR A                     
 CODE_238350:        4A            LSR A                     
 CODE_238351:        A8            TAY                       
-CODE_238352:        B9 00 82      LDA $8200,y               
+CODE_238352:        B9 00 82      LDA.w DATA_218200,y               
 CODE_238355:        85 2E         STA $2E                   
-CODE_238357:        B9 01 82      LDA $8201,y               
+CODE_238357:        B9 01 82      LDA.w DATA_218200+1,y               
 CODE_23835A:        85 2F         STA $2F                   
 CODE_23835C:        E6 2F         INC $2F                   
 CODE_23835E:        A9 7E         LDA #$7E                  
@@ -456,7 +456,7 @@ CODE_23840C:        6B            RTL
 CODE_23840D:        AD 28 07      LDA $0728                 
 CODE_238410:        22 3A FB 20   JSL CODE_20FB3A           
 
-PNTR_238414:     dl CODE_23842F
+PNTR_238414:        dl CODE_23842F
                     dl CODE_238441
                     dl CODE_238606
                     dl CODE_23860B
@@ -636,7 +636,7 @@ CODE_2385A8:        A9 00         LDA #$00
 CODE_2385AA:        8D 45 0A      STA $0A45                 
 CODE_2385AD:        EE 8F 02      INC $028F                 
 CODE_2385B0:        A0 03         LDY #$03                  
-CODE_2385B2:        B9 26 8B      LDA $8B26,y               
+CODE_2385B2:        B9 26 8B      LDA.w DATA_218B26,y               
 CODE_2385B5:        99 84 08      STA $0884,y               
 CODE_2385B8:        88            DEY                       
 CODE_2385B9:        10 F7         BPL CODE_2385B2           
@@ -724,21 +724,21 @@ CODE_238679:        CE 46 07      DEC $0746
 CODE_23867C:        A9 15         LDA #$15                  
 CODE_23867E:        8D 03 12      STA $1203                 
 CODE_238681:        AC 27 07      LDY $0727                 
-CODE_238684:        B9 49 8C      LDA $8C49,y               
+CODE_238684:        B9 49 8C      LDA.w DATA_218C49,y               
 CODE_238687:        18            CLC                       
 CODE_238688:        6D 46 07      ADC $0746                 
 CODE_23868B:        A8            TAY                       
-CODE_23868C:        B9 29 8C      LDA $8C29,y               
+CODE_23868C:        B9 29 8C      LDA.w DATA_218C29,y               
 CODE_23868F:        8D 46 07      STA $0746                 
 CODE_238692:        A9 01         LDA #$01                  
 CODE_238694:        85 20         STA $20                   
 CODE_238696:        AC 00 16      LDY $1600                 
 CODE_238699:        AE 46 07      LDX $0746                 
-CODE_23869C:        BD 2A 8B      LDA $8B2A,x               
+CODE_23869C:        BD 2A 8B      LDA.w DATA_218B2A,x               
 CODE_23869F:        85 0A         STA $0A                   
 CODE_2386A1:        99 02 16      STA $1602,y               
 CODE_2386A4:        C8            INY                       
-CODE_2386A5:        BD 3B 8B      LDA $8B3B,x               
+CODE_2386A5:        BD 3B 8B      LDA.w DATA_218B3B,x               
 CODE_2386A8:        85 0B         STA $0B                   
 CODE_2386AA:        99 02 16      STA $1602,y               
 CODE_2386AD:        C8            INY                       
@@ -754,11 +754,11 @@ CODE_2386BE:        0A            ASL A
 CODE_2386BF:        0A            ASL A                     
 CODE_2386C0:        AA            TAX                       
 CODE_2386C1:        C2 20         REP #$20                  
-CODE_2386C3:        BD 6E 8B      LDA $8B6E,x               
+CODE_2386C3:        BD 6E 8B      LDA.w DATA_218B6E,x               
 CODE_2386C6:        99 02 16      STA $1602,y               
 CODE_2386C9:        C8            INY                       
 CODE_2386CA:        C8            INY                       
-CODE_2386CB:        BD 70 8B      LDA $8B70,x               
+CODE_2386CB:        BD 70 8B      LDA.w DATA_218B70,x               
 CODE_2386CE:        99 02 16      STA $1602,y               
 CODE_2386D1:        C8            INY                       
 CODE_2386D2:        C8            INY                       
@@ -773,11 +773,11 @@ CODE_2386E0:        A9 00 03      LDA #$0300
 CODE_2386E3:        99 02 16      STA $1602,y               
 CODE_2386E6:        C8            INY                       
 CODE_2386E7:        C8            INY                       
-CODE_2386E8:        BD 72 8B      LDA $8B72,x               
+CODE_2386E8:        BD 72 8B      LDA.w DATA_218B72,x               
 CODE_2386EB:        99 02 16      STA $1602,y               
 CODE_2386EE:        C8            INY                       
 CODE_2386EF:        C8            INY                       
-CODE_2386F0:        BD 74 8B      LDA $8B74,x               
+CODE_2386F0:        BD 74 8B      LDA.w DATA_218B74,x               
 CODE_2386F3:        99 02 16      STA $1602,y               
 CODE_2386F6:        C8            INY                       
 CODE_2386F7:        C8            INY                       
@@ -788,10 +788,10 @@ CODE_2386FF:        8C 00 16      STY $1600
 CODE_238702:        AD 46 07      LDA $0746                 
 CODE_238705:        0A            ASL A                     
 CODE_238706:        A8            TAY                       
-CODE_238707:        B9 4C 8B      LDA $8B4C,y               
+CODE_238707:        B9 4C 8B      LDA.w DATA_218B4C,y               
 CODE_23870A:        85 0A         STA $0A                   
 CODE_23870C:        C8            INY                       
-CODE_23870D:        B9 4C 8B      LDA $8B4C,y               
+CODE_23870D:        B9 4C 8B      LDA.w DATA_218B4C,y               
 CODE_238710:        85 0B         STA $0B                   
 CODE_238712:        A4 0A         LDY $0A                   
 CODE_238714:        B9 00 1D      LDA $1D00,y               
@@ -804,27 +804,27 @@ CODE_238723:        B9 40 1D      LDA $1D40,y
 CODE_238726:        05 0B         ORA $0B                   
 CODE_238728:        99 40 1D      STA $1D40,y               
 CODE_23872B:        AE 46 07      LDX $0746                 
-CODE_23872E:        BD 07 8C      LDA $8C07,x               
+CODE_23872E:        BD 07 8C      LDA.w DATA_218C07,x               
 CODE_238731:        29 0F         AND #$0F                  
 CODE_238733:        0A            ASL A                     
 CODE_238734:        A8            TAY                       
-CODE_238735:        B9 00 82      LDA $8200,y               
+CODE_238735:        B9 00 82      LDA.w DATA_218200,y               
 CODE_238738:        18            CLC                       
 CODE_238739:        69 F0         ADC #$F0                  
 CODE_23873B:        85 0D         STA $0D                   
-CODE_23873D:        B9 01 82      LDA $8201,y               
+CODE_23873D:        B9 01 82      LDA.w DATA_218200+1,y               
 CODE_238740:        69 00         ADC #$00                  
 CODE_238742:        85 0E         STA $0E                   
 CODE_238744:        A9 7E         LDA #$7E                  
 CODE_238746:        85 0F         STA $0F                   
-CODE_238748:        BD 07 8C      LDA $8C07,x               
+CODE_238748:        BD 07 8C      LDA.w DATA_218C07,x               
 CODE_23874B:        4A            LSR A                     
 CODE_23874C:        4A            LSR A                     
 CODE_23874D:        4A            LSR A                     
 CODE_23874E:        4A            LSR A                     
-CODE_23874F:        1D F6 8B      ORA $8BF6,x               
+CODE_23874F:        1D F6 8B      ORA.w DATA_218BF6,x               
 CODE_238752:        A8            TAY                       
-CODE_238753:        BD 18 8C      LDA $8C18,x               
+CODE_238753:        BD 18 8C      LDA.w DATA_218C18,x               
 CODE_238756:        97 0D         STA [$0D],y               
 CODE_238758:        A5 15         LDA $15                   
 CODE_23875A:        29 03         AND #$03                  
@@ -834,9 +834,9 @@ CODE_238760:        A5 20         LDA $20
 CODE_238762:        C9 05         CMP #$05                  
 CODE_238764:        F0 1A         BEQ CODE_238780           
 CODE_238766:        AC 46 07      LDY $0746                 
-CODE_238769:        B9 F6 8B      LDA $8BF6,y               
+CODE_238769:        B9 F6 8B      LDA.w DATA_218BF6,y               
 CODE_23876C:        85 00         STA $00                   
-CODE_23876E:        B9 07 8C      LDA $8C07,y               
+CODE_23876E:        B9 07 8C      LDA.w DATA_218C07,y               
 CODE_238771:        29 F0         AND #$F0                  
 CODE_238773:        85 01         STA $01                   
 CODE_238775:        A4 20         LDY $20                   
@@ -976,18 +976,18 @@ PNTR_238898:        dw CODE_2388A6
 CODE_2388A6:        A6 20         LDX $20                   
 CODE_2388A8:        A5 24         LDA $24
 CODE_2388AA:        18            CLC                       
-CODE_2388AB:        7D 5A 8C      ADC $8C5A,x               
+CODE_2388AB:        7D 5A 8C      ADC.w DATA_218C5A,x               
 CODE_2388AE:        48            PHA                       
 CODE_2388AF:        29 F0         AND #$F0                  
 CODE_2388B1:        4A            LSR A                     
 CODE_2388B2:        4A            LSR A                     
 CODE_2388B3:        4A            LSR A                     
 CODE_2388B4:        A8            TAY                       
-CODE_2388B5:        B9 00 82      LDA $8200,y               
+CODE_2388B5:        B9 00 82      LDA.w DATA_218200,y               
 CODE_2388B8:        18            CLC                       
 CODE_2388B9:        69 F0         ADC #$F0                  
 CODE_2388BB:        85 2E         STA $2E                   
-CODE_2388BD:        B9 01 82      LDA $8201,y               
+CODE_2388BD:        B9 01 82      LDA.w DATA_218200+1,y               
 CODE_2388C0:        69 00         ADC #$00                  
 CODE_2388C2:        85 2F         STA $2F                   
 CODE_2388C4:        68            PLA                       
@@ -1072,16 +1072,16 @@ CODE_238953:        EE 17 04      INC $0417
 CODE_238956:        A4 20         LDY $20                   
 CODE_238958:        A5 24         LDA $24                   
 CODE_23895A:        18            CLC                       
-CODE_23895B:        79 97 8C      ADC $8C97,y               
+CODE_23895B:        79 97 8C      ADC.w DATA_218C97,y               
 CODE_23895E:        85 24         STA $24                   
 CODE_238960:        29 F0         AND #$F0                  
 CODE_238962:        4A            LSR A                     
 CODE_238963:        4A            LSR A                     
 CODE_238964:        4A            LSR A                     
 CODE_238965:        A8            TAY                       
-CODE_238966:        B9 00 82      LDA $8200,y               
+CODE_238966:        B9 00 82      LDA.w DATA_218200,y               
 CODE_238969:        85 2E         STA $2E                   
-CODE_23896B:        B9 01 82      LDA $8201,y               
+CODE_23896B:        B9 01 82      LDA.w DATA_218200+1,y               
 CODE_23896E:        85 2F         STA $2F                   
 CODE_238970:        E6 2F         INC $2F                   
 CODE_238972:        A9 7E         LDA #$7E                  
@@ -1093,12 +1093,12 @@ CODE_23897C:        A2 00         LDX #$00
 CODE_23897E:        AD 0A 07      LDA $070A                 
 CODE_238981:        0A            ASL A                     
 CODE_238982:        A8            TAY                       
-CODE_238983:        B9 5A CE      LDA $CE5A,y               
+CODE_238983:        B9 5A CE      LDA.w DATA_21CE5A,y               
 CODE_238986:        85 0D         STA $0D                   
-CODE_238988:        B9 5B CE      LDA $CE5B,y               
+CODE_238988:        B9 5B CE      LDA.w DATA_21CE5A+1,y               
 CODE_23898B:        85 0E         STA $0E                   
 CODE_23898D:        AC 0A 07      LDY $070A                 
-CODE_238990:        B9 80 CE      LDA $CE80,y               
+CODE_238990:        B9 80 CE      LDA.w DATA_21CE80,y               
 CODE_238993:        85 0F         STA $0F                   
 CODE_238995:        A4 00         LDY $00                   
 CODE_238997:        B7 2E         LDA [$2E],y               
@@ -1224,12 +1224,12 @@ CODE_238A87:        A5 17         LDA $17
 CODE_238A89:        29 0F         AND #$0F                  
 CODE_238A8B:        F0 12         BEQ CODE_238A9F           
 CODE_238A8D:        A0 03         LDY #$03                  
-CODE_238A8F:        D9 B4 8D      CMP $8DB4,y               
+CODE_238A8F:        D9 B4 8D      CMP.w DATA_218DB4,y               
 CODE_238A92:        F0 03         BEQ CODE_238A97           
 CODE_238A94:        88            DEY                       
 CODE_238A95:        D0 F8         BNE CODE_238A8F           
 CODE_238A97:        AD D5 1D      LDA $1DD5                 
-CODE_238A9A:        D9 B8 8D      CMP $8DB8,y               
+CODE_238A9A:        D9 B8 8D      CMP.w DATA_218DB8,y               
 CODE_238A9D:        D0 03         BNE CODE_238AA2           
 CODE_238A9F:        82 78 00      BRL CODE_238B1A           
 
@@ -1358,7 +1358,7 @@ CODE_238BB0:        29 80         AND #$80
 CODE_238BB2:        F0 1C         BEQ CODE_238BD0           
 CODE_238BB4:        A5 B3         LDA $B3                   
 CODE_238BB6:        A0 0A         LDY #$0A                  
-CODE_238BB8:        D9 D9 8C      CMP $8CD9,y               
+CODE_238BB8:        D9 D9 8C      CMP.w DATA_218CD9,y               
 CODE_238BBB:        F0 CC         BEQ CODE_238B89           
 CODE_238BBD:        88            DEY                       
 CODE_238BBE:        10 F8         BPL CODE_238BB8           
@@ -1386,14 +1386,14 @@ CODE_238BE3:        F6 49         INC $49,x
 CODE_238BE5:        A8            TAY                       
 CODE_238BE6:        B5 43         LDA $43,x                 
 CODE_238BE8:        18            CLC                       
-CODE_238BE9:        79 9B 8C      ADC $8C9B,y               
+CODE_238BE9:        79 9B 8C      ADC.w DATA_218C9B,y               
 CODE_238BEC:        95 43         STA $43,x                 
 CODE_238BEE:        B5 47         LDA $47,x                 
 CODE_238BF0:        18            CLC                       
-CODE_238BF1:        79 A4 8C      ADC $8CA4,y               
+CODE_238BF1:        79 A4 8C      ADC.w DATA_218CA4,y               
 CODE_238BF4:        95 47         STA $47,x                 
 CODE_238BF6:        B5 45         LDA $45,x                 
-CODE_238BF8:        79 AD 8C      ADC $8CAD,y               
+CODE_238BF8:        79 AD 8C      ADC.w DATA_218CAD,y               
 CODE_238BFB:        95 45         STA $45,x                 
 CODE_238BFD:        B5 49         LDA $49,x                 
 CODE_238BFF:        29 1F         AND #$1F                  
@@ -1439,29 +1439,29 @@ CODE_238C52:        69 12         ADC #$12
 CODE_238C54:        AA            TAX                       
 CODE_238C55:        AD 26 07      LDA $0726                 
 CODE_238C58:        F0 10         BEQ CODE_238C6A           
-CODE_238C5A:        BD 54 8D      LDA $8D54,x               
+CODE_238C5A:        BD 54 8D      LDA.w DATA_218D54,x               
 CODE_238C5D:        09 01         ORA #$01                  
 CODE_238C5F:        8D 87 08      STA $0887                 
-CODE_238C62:        BD 30 8D      LDA $8D30,x               
+CODE_238C62:        BD 30 8D      LDA.w DATA_218D30,x               
 CODE_238C65:        8D 86 08      STA $0886                 
 CODE_238C68:        80 0C         BRA CODE_238C76           
 
-CODE_238C6A:        BD 54 8D      LDA $8D54,x               
+CODE_238C6A:        BD 54 8D      LDA.w DATA_218D54,x               
 CODE_238C6D:        8D 87 08      STA $0887                 
-CODE_238C70:        BD 0C 8D      LDA $8D0C,x               
+CODE_238C70:        BD 0C 8D      LDA.w DATA_218D0C,x               
 CODE_238C73:        8D 86 08      STA $0886                 
 CODE_238C76:        AD 26 07      LDA $0726                 
 CODE_238C79:        F0 10         BEQ CODE_238C8B           
-CODE_238C7B:        BD 31 8D      LDA $8D31,x               
+CODE_238C7B:        BD 31 8D      LDA.w DATA_218D31,x               
 CODE_238C7E:        8D 8A 08      STA $088A                 
-CODE_238C81:        BD 55 8D      LDA $8D55,x               
+CODE_238C81:        BD 55 8D      LDA.w DATA_218D55,x               
 CODE_238C84:        09 01         ORA #$01                  
 CODE_238C86:        8D 8B 08      STA $088B                 
 CODE_238C89:        80 0C         BRA CODE_238C97           
 
-CODE_238C8B:        BD 0D 8D      LDA $8D0D,x               
+CODE_238C8B:        BD 0D 8D      LDA.w DATA_218D0D,x               
 CODE_238C8E:        8D 8A 08      STA $088A                 
-CODE_238C91:        BD 55 8D      LDA $8D55,x               
+CODE_238C91:        BD 55 8D      LDA.w DATA_218D55,x               
 CODE_238C94:        8D 8B 08      STA $088B                 
 CODE_238C97:        AD 28 04      LDA $0428                 
 CODE_238C9A:        F0 11         BEQ CODE_238CAD           
@@ -1490,9 +1490,9 @@ CODE_238CD2:        90 04         BCC CODE_238CD8
 CODE_238CD4:        C9 0F         CMP #$0F                  
 CODE_238CD6:        D0 2A         BNE CODE_238D02           
 CODE_238CD8:        AE 26 07      LDX $0726                 
-CODE_238CDB:        BD 78 8D      LDA $8D78,x               
+CODE_238CDB:        BD 78 8D      LDA.w DATA_218D78,x               
 CODE_238CDE:        8D 8A 08      STA $088A                 
-CODE_238CE1:        BD 7A 8D      LDA $8D7A,x               
+CODE_238CE1:        BD 7A 8D      LDA.w DATA_218D7A,x               
 CODE_238CE4:        8D 8B 08      STA $088B                 
 CODE_238CE7:        A9 F0         LDA #$F0                  
 CODE_238CE9:        8D 85 08      STA $0885                 
@@ -1503,9 +1503,9 @@ CODE_238CF0:        A5 64         LDA $64
 CODE_238CF2:        29 06         AND #$06                  
 CODE_238CF4:        4A            LSR A                     
 CODE_238CF5:        A8            TAY                       
-CODE_238CF6:        B9 80 8D      LDA $8D80,y               
+CODE_238CF6:        B9 80 8D      LDA.w DATA_218D80,y               
 CODE_238CF9:        8D 8A 08      STA $088A                 
-CODE_238CFC:        B9 84 8D      LDA $8D84,y               
+CODE_238CFC:        B9 84 8D      LDA.w DATA_218D84,y               
 CODE_238CFF:        8D 8B 08      STA $088B                 
 CODE_238D02:        AD 29 07      LDA $0729                 
 CODE_238D05:        C9 02         CMP #$02                  
@@ -1527,7 +1527,7 @@ CODE_238D28:        C9 D0         CMP #$D0
 CODE_238D2A:        90 0E         BCC CODE_238D3A           
 CODE_238D2C:        AC 27 07      LDY $0727                 
 CODE_238D2F:        A5 23         LDA $23                   
-CODE_238D31:        D9 04 8D      CMP $8D04,y               
+CODE_238D31:        D9 04 8D      CMP.w DATA_218D04,y               
 CODE_238D34:        F0 1D         BEQ CODE_238D53           
 CODE_238D36:        A2 00         LDX #$00                  
 CODE_238D38:        80 0D         BRA CODE_238D47           
@@ -1564,9 +1564,9 @@ CODE_238D78:        C5 12         CMP $12
 CODE_238D7A:        D0 22         BNE CODE_238D9E           
 CODE_238D7C:        B5 43         LDA $43,x                 
 CODE_238D7E:        8D 95 08      STA $0895                 
-CODE_238D81:        BD 78 8D      LDA $8D78,x               
+CODE_238D81:        BD 78 8D      LDA.w DATA_218D78,x               
 CODE_238D84:        8D 96 08      STA $0896                 
-CODE_238D87:        BD 7A 8D      LDA $8D7A,x               
+CODE_238D87:        BD 7A 8D      LDA.w DATA_218D7A,x               
 CODE_238D8A:        8D 97 08      STA $0897                 
 CODE_238D8D:        B5 47         LDA $47,x                 
 CODE_238D8F:        38            SEC                       
@@ -1587,7 +1587,7 @@ CODE_238DB0:        20 B4 8D      JSR CODE_238DB4
 CODE_238DB3:        60            RTS                       
 
 CODE_238DB4:        A0 1B         LDY #$1B                  
-CODE_238DB6:        B9 98 8D      LDA $8D98,y               
+CODE_238DB6:        B9 98 8D      LDA.w DATA_218D98,y               
 CODE_238DB9:        99 98 08      STA $0898,y               
 CODE_238DBC:        88            DEY                       
 CODE_238DBD:        10 F7         BPL CODE_238DB6           
@@ -1609,9 +1609,9 @@ CODE_238DDD:        0A            ASL A
 CODE_238DDE:        A8            TAY                       
 CODE_238DDF:        A9 7E         LDA #$7E                  
 CODE_238DE1:        85 30         STA $30                   
-CODE_238DE3:        B9 00 82      LDA $8200,y               
+CODE_238DE3:        B9 00 82      LDA.w DATA_218200,y               
 CODE_238DE6:        85 2E         STA $2E                   
-CODE_238DE8:        B9 01 82      LDA $8201,y               
+CODE_238DE8:        B9 01 82      LDA.w DATA_218200+1,y               
 CODE_238DEB:        1A            INC A                     
 CODE_238DEC:        85 2F         STA $2F                   
 CODE_238DEE:        B5 47         LDA $47,x                 
@@ -1653,7 +1653,7 @@ CODE_238E2B:        60            RTS
 CODE_238E2C:        A0 03         LDY #$03                  
 CODE_238E2E:        A5 03         LDA $03                   
 CODE_238E30:        29 0F         AND #$0F                  
-CODE_238E32:        D9 B4 8D      CMP $8DB4,y               
+CODE_238E32:        D9 B4 8D      CMP.w DATA_218DB4,y               
 CODE_238E35:        F0 04         BEQ CODE_238E3B           
 CODE_238E37:        88            DEY                       
 CODE_238E38:        10 F8         BPL CODE_238E32           
@@ -1668,9 +1668,9 @@ CODE_238E43:        98            TYA
 CODE_238E44:        85 04         STA $04                   
 CODE_238E46:        0A            ASL A                     
 CODE_238E47:        AA            TAX                       
-CODE_238E48:        BD BC 8D      LDA $8DBC,x               
+CODE_238E48:        BD BC 8D      LDA.w DATA_218DBC,x               
 CODE_238E4B:        85 00         STA $00                   
-CODE_238E4D:        BD BD 8D      LDA $8DBD,x               
+CODE_238E4D:        BD BD 8D      LDA.w DATA_218DBD,x               
 CODE_238E50:        85 01         STA $01                   
 CODE_238E52:        A9 21         LDA #$21                  
 CODE_238E54:        85 02         STA $02                   
@@ -1700,14 +1700,14 @@ CODE_238E83:        A4 04         LDY $04
 CODE_238E85:        AE 26 07      LDX $0726                 
 CODE_238E88:        B5 43         LDA $43,x                 
 CODE_238E8A:        18            CLC                       
-CODE_238E8B:        79 F0 8D      ADC $8DF0,y               
+CODE_238E8B:        79 F0 8D      ADC.w DATA_218DF0,y               
 CODE_238E8E:        85 00         STA $00                   
 CODE_238E90:        B5 47         LDA $47,x                 
 CODE_238E92:        18            CLC                       
-CODE_238E93:        79 F4 8D      ADC $8DF4,y               
+CODE_238E93:        79 F4 8D      ADC.w DATA_218DF4,y               
 CODE_238E96:        85 01         STA $01                   
 CODE_238E98:        B5 45         LDA $45,x                 
-CODE_238E9A:        79 F8 8D      ADC $8DF8,y               
+CODE_238E9A:        79 F8 8D      ADC.w DATA_218DF8,y               
 CODE_238E9D:        85 04         STA $04                   
 CODE_238E9F:        A2 0D         LDX #$0D                  
 CODE_238EA1:        BC 17 1F      LDY $1F17,x               
@@ -1734,10 +1734,10 @@ CODE_238ECB:        D0 DE         BNE CODE_238EAB
 CODE_238ECD:        A9 10         LDA #$10                  
 CODE_238ECF:        D0 11         BNE CODE_238EE2           
 CODE_238ED1:        A4 04         LDY $04                   
-CODE_238ED3:        D9 E8 8D      CMP $8DE8,y               
+CODE_238ED3:        D9 E8 8D      CMP.w DATA_218DE8,y               
 CODE_238ED6:        D0 08         BNE CODE_238EE0           
 CODE_238ED8:        AD BC 07      LDA $07BC                 
-CODE_238EDB:        D9 EC 8D      CMP $8DEC,y               
+CODE_238EDB:        D9 EC 8D      CMP.w DATA_218DEC,y               
 CODE_238EDE:        D0 18         BNE CODE_238EF8           
 CODE_238EE0:        A9 20         LDA #$20                  
 CODE_238EE2:        AE 26 07      LDX $0726                 
@@ -1756,21 +1756,21 @@ DATA_238EF9:        db $AA,$AF,$B7
 CODE_238EFC:        AE 26 07      LDX $0726
 CODE_238EFF:        B5 43         LDA $43,x
 CODE_238F01:        18            CLC
-CODE_238F02:        79 FC 8D      ADC $8DFC,y               
+CODE_238F02:        79 FC 8D      ADC.w DATA_218DFC,y               
 CODE_238F05:        29 F0         AND #$F0                  
 CODE_238F07:        85 0E         STA $0E                   
 CODE_238F09:        B5 47         LDA $47,x                 
 CODE_238F0B:        18            CLC                       
-CODE_238F0C:        79 04 8E      ADC $8E04,y               
+CODE_238F0C:        79 04 8E      ADC.w DATA_218E04,y               
 CODE_238F0F:        85 0F         STA $0F                   
 CODE_238F11:        B5 45         LDA $45,x                 
-CODE_238F13:        79 00 8E      ADC $8E00,y               
+CODE_238F13:        79 00 8E      ADC.w DATA_218E00,y               
 CODE_238F16:        0A            ASL A                     
 CODE_238F17:        AA            TAX                       
-CODE_238F18:        BD 00 82      LDA $8200,x               
+CODE_238F18:        BD 00 82      LDA.w DATA_218200,x               
 CODE_238F1B:        85 2E         STA $2E                   
 CODE_238F1D:        85 D8         STA $D8                   
-CODE_238F1F:        BD 01 82      LDA $8201,x               
+CODE_238F1F:        BD 01 82      LDA.w DATA_218200+1,x               
 CODE_238F22:        1A            INC A                     
 CODE_238F23:        85 2F         STA $2F                   
 CODE_238F25:        18            CLC                       
@@ -1818,7 +1818,7 @@ CODE_238F6D:        E8            INX
 CODE_238F6E:        E8            INX                       
 CODE_238F6F:        AD 59 10      LDA $1059                 
 CODE_238F72:        18            CLC                       
-CODE_238F73:        7D 08 8E      ADC $8E08,x               
+CODE_238F73:        7D 08 8E      ADC.w DATA_218E08,x               
 CODE_238F76:        8D 5C 10      STA $105C                 
 CODE_238F79:        AD 58 10      LDA $1058                 
 CODE_238F7C:        38            SEC                       
@@ -1839,7 +1839,7 @@ CODE_238F98:        E8            INX
 CODE_238F99:        E8            INX                       
 CODE_238F9A:        AD 58 10      LDA $1058                 
 CODE_238F9D:        18            CLC                       
-CODE_238F9E:        7D 0C 8E      ADC $8E0C,x               
+CODE_238F9E:        7D 0C 8E      ADC.w DATA_218E0C,x               
 CODE_238FA1:        8D 5D 10      STA $105D                 
 CODE_238FA4:        AD 59 10      LDA $1059                 
 CODE_238FA7:        38            SEC                       
@@ -2001,10 +2001,10 @@ CODE_2390DD:        38            SEC
 CODE_2390DE:        2E 55 10      ROL $1055                 
 CODE_2390E1:        60            RTS                       
 
-CODE_2390E2:        BC 34 8E      LDY $8E34,x               
+CODE_2390E2:        BC 34 8E      LDY.w DATA_218E34,x               
 CODE_2390E5:        A2 04         LDX #$04                  
 CODE_2390E7:        C2 20         REP #$20                  
-CODE_2390E9:        B9 10 8E      LDA $8E10,y               
+CODE_2390E9:        B9 10 8E      LDA.w DATA_218E10,y               
 CODE_2390EC:        9D 02 14      STA $1402,x               
 CODE_2390EF:        88            DEY                       
 CODE_2390F0:        88            DEY                       
@@ -2066,11 +2066,11 @@ PNTR_239155:        dl CODE_2391EF
 CODE_23916A:        A9 00         LDA #$00                  
 CODE_23916C:        85 00         STA $00                   
 CODE_23916E:        A6 00         LDX $00                   
-CODE_239170:        BD B9 96      LDA $96B9,x               
+CODE_239170:        BD B9 96      LDA.w DATA_2196B9,x               
 CODE_239173:        85 01         STA $01                   
-CODE_239175:        BD BA 96      LDA $96BA,x               
+CODE_239175:        BD BA 96      LDA.w DATA_2196B9+1,x               
 CODE_239178:        85 02         STA $02                   
-CODE_23917A:        BD BB 96      LDA $96BB,x               
+CODE_23917A:        BD BB 96      LDA.w DATA_2196B9+2,x               
 CODE_23917D:        85 03         STA $03                   
 CODE_23917F:        8A            TXA                       
 CODE_239180:        18            CLC                       
@@ -2103,7 +2103,7 @@ CODE_2391AF:        AC 00 07      LDY $0700
 CODE_2391B2:        A2 00         LDX #$00                  
 CODE_2391B4:        86 0B         STX $0B                   
 CODE_2391B6:        A6 0B         LDX $0B                   
-CODE_2391B8:        BD BF 96      LDA $96BF,x               
+CODE_2391B8:        BD BF 96      LDA.w DATA_2196BF,x               
 CODE_2391BB:        85 00         STA $00                   
 CODE_2391BD:        C9 FF         CMP #$FF                  
 CODE_2391BF:        D0 01         BNE CODE_2391C2           
@@ -2127,7 +2127,7 @@ CODE_2391D9:        AA            TAX
 CODE_2391DA:        A5 00         LDA $00                   
 CODE_2391DC:        29 0F         AND #$0F                  
 CODE_2391DE:        85 0A         STA $0A                   
-CODE_2391E0:        BD EA 96      LDA $96EA,x               
+CODE_2391E0:        BD EA 96      LDA.w DATA_2196EA,x               
 CODE_2391E3:        97 2E         STA [$2E],y               
 CODE_2391E5:        C8            INY                       
 CODE_2391E6:        C6 0A         DEC $0A                   
@@ -2138,18 +2138,18 @@ CODE_2391EC:        4C B6 91      JMP CODE_2391B6
 CODE_2391EF:        A2 02         LDX #$02                  
 CODE_2391F1:        AC 26 07      LDY $0726                 
 CODE_2391F4:        B9 47 07      LDA $0747,y               
-CODE_2391F7:        DD 16 97      CMP $9716,x               
+CODE_2391F7:        DD 16 97      CMP.w DATA_219716,x               
 CODE_2391FA:        F0 03         BEQ CODE_2391FF           
 CODE_2391FC:        CA            DEX                       
 CODE_2391FD:        D0 F8         BNE CODE_2391F7           
-CODE_2391FF:        BD 19 97      LDA $9719,x               
+CODE_2391FF:        BD 19 97      LDA.w DATA_219719,x               
 CODE_239202:        AA            TAX                       
 CODE_239203:        A9 00         LDA #$00                  
 CODE_239205:        85 02         STA $02                   
 CODE_239207:        AC 00 07      LDY $0700                 
 CODE_23920A:        A9 02         LDA #$02                  
 CODE_23920C:        85 00         STA $00                   
-CODE_23920E:        BD F2 96      LDA $96F2,x               
+CODE_23920E:        BD F2 96      LDA.w DATA_2196F2,x               
 CODE_239211:        97 2E         STA [$2E],y               
 CODE_239213:        C8            INY                       
 CODE_239214:        E8            INX                       
@@ -2170,7 +2170,7 @@ CODE_23922C:        A2 00         LDX #$00
 CODE_23922E:        AC 00 07      LDY $0700                 
 CODE_239231:        A9 01         LDA #$01                  
 CODE_239233:        85 00         STA $00                   
-CODE_239235:        BD 1C 97      LDA $971C,x               
+CODE_239235:        BD 1C 97      LDA.w DATA_21971C,x               
 CODE_239238:        97 2E         STA [$2E],y               
 CODE_23923A:        C8            INY                       
 CODE_23923B:        E8            INX                       
@@ -2223,7 +2223,7 @@ CODE_23928C:        A2 00         LDX #$00
 CODE_23928E:        AC 00 07      LDY $0700                 
 CODE_239291:        A9 01         LDA #$01                  
 CODE_239293:        85 00         STA $00                   
-CODE_239295:        BD 24 97      LDA $9724,x               
+CODE_239295:        BD 24 97      LDA.w DATA_219724,x               
 CODE_239298:        97 2E         STA [$2E],y               
 CODE_23929A:        C8            INY                       
 CODE_23929B:        E8            INX                       
@@ -2242,7 +2242,7 @@ CODE_2392AF:        A2 00         LDX #$00
 CODE_2392B1:        AC 00 07      LDY $0700                 
 CODE_2392B4:        A9 01         LDA #$01                  
 CODE_2392B6:        85 00         STA $00                   
-CODE_2392B8:        BD 28 97      LDA $9728,x               
+CODE_2392B8:        BD 28 97      LDA.w DATA_219728,x               
 CODE_2392BB:        97 2E         STA [$2E],y               
 CODE_2392BD:        C8            INY                       
 CODE_2392BE:        E8            INX                       
@@ -2314,7 +2314,7 @@ CODE_23932F:        4A            LSR A
 CODE_239330:        A8            TAY                       
 CODE_239331:        C8            INY                       
 CODE_239332:        C8            INY                       
-CODE_239333:        B9 01 82      LDA $8201,y               
+CODE_239333:        B9 01 82      LDA.w DATA_218200+1,y               
 CODE_239336:        85 04         STA $04                   
 CODE_239338:        E6 04         INC $04                   
 CODE_23933A:        AD 00 07      LDA $0700                 
@@ -2332,7 +2332,7 @@ CODE_23934E:        6B            RTL
 CODE_23934F:        AD 34 10      LDA $1034                 
 CODE_239352:        22 1F FB 20   JSL CODE_20FB1F           
 
-PNTR_239356:     dw CODE_23935E
+PNTR_239356:        dw CODE_23935E
                     dw CODE_239362
                     dw CODE_23936B
                     dw CODE_23936F
@@ -2355,10 +2355,10 @@ CODE_239373:        A9 94         LDA #$94
 CODE_239375:        85 0A         STA $0A                   
 CODE_239377:        A0 00         LDY #$00                  
 CODE_239379:        A2 0A         LDX #$0A                  
-CODE_23937B:        BD 37 97      LDA $9737,x               
+CODE_23937B:        BD 37 97      LDA.w DATA_219737,x               
 CODE_23937E:        99 10 08      STA $0810,y               
 CODE_239381:        99 14 08      STA $0814,y               
-CODE_239384:        BD 2C 97      LDA $972C,x               
+CODE_239384:        BD 2C 97      LDA.w DATA_21972C,x               
 CODE_239387:        99 11 08      STA $0811,y               
 CODE_23938A:        18            CLC                       
 CODE_23938B:        69 08         ADC #$08                  
@@ -2393,7 +2393,7 @@ CODE_2393BC:        A9 99         LDA #$99
 CODE_2393BE:        85 0A         STA $0A                   
 CODE_2393C0:        A0 00         LDY #$00                  
 CODE_2393C2:        A2 09         LDX #$09                  
-CODE_2393C4:        BD 42 97      LDA $9742,x               
+CODE_2393C4:        BD 42 97      LDA.w DATA_219742,x               
 CODE_2393C7:        99 10 08      STA $0810,y               
 CODE_2393CA:        C8            INY                       
 CODE_2393CB:        A5 0A         LDA $0A                   
@@ -2402,7 +2402,7 @@ CODE_2393D0:        C8            INY
 CODE_2393D1:        A9 00         LDA #$00                  
 CODE_2393D3:        99 10 08      STA $0810,y               
 CODE_2393D6:        C8            INY                       
-CODE_2393D7:        BD 4C 97      LDA $974C,x               
+CODE_2393D7:        BD 4C 97      LDA.w DATA_21974C,x               
 CODE_2393DA:        99 10 08      STA $0810,y               
 CODE_2393DD:        C8            INY                       
 CODE_2393DE:        C6 0A         DEC $0A                   
@@ -2415,7 +2415,7 @@ CODE_2393E6:        A9 AF         LDA #$AF
 CODE_2393E8:        85 0A         STA $0A                   
 CODE_2393EA:        A0 00         LDY #$00                  
 CODE_2393EC:        A2 0A         LDX #$0A                  
-CODE_2393EE:        BD 56 97      LDA $9756,x               
+CODE_2393EE:        BD 56 97      LDA.w DATA_219756,x               
 CODE_2393F1:        99 10 08      STA $0810,y               
 CODE_2393F4:        C8            INY                       
 CODE_2393F5:        A5 0A         LDA $0A                   
@@ -2424,7 +2424,7 @@ CODE_2393FA:        C8            INY
 CODE_2393FB:        A9 00         LDA #$00                  
 CODE_2393FD:        99 10 08      STA $0810,y               
 CODE_239400:        C8            INY                       
-CODE_239401:        BD 61 97      LDA $9761,x               
+CODE_239401:        BD 61 97      LDA.w DATA_219761,x               
 CODE_239404:        99 10 08      STA $0810,y               
 CODE_239407:        C8            INY                       
 CODE_239408:        C6 0A         DEC $0A                   
@@ -2435,7 +2435,7 @@ CODE_23940F:        60            RTS
 
 CODE_239410:        85 0A         STA $0A                   
 CODE_239412:        A2 07         LDX #$07                  
-CODE_239414:        BD 6C 97      LDA $976C,x               
+CODE_239414:        BD 6C 97      LDA.w DATA_21976C,x               
 CODE_239417:        99 10 08      STA $0810,y               
 CODE_23941A:        C8            INY                       
 CODE_23941B:        A5 0A         LDA $0A                   
@@ -2444,7 +2444,7 @@ CODE_239420:        C8            INY
 CODE_239421:        A9 00         LDA #$00                  
 CODE_239423:        99 10 08      STA $0810,y               
 CODE_239426:        C8            INY                       
-CODE_239427:        BD 74 97      LDA $9774,x               
+CODE_239427:        BD 74 97      LDA.w DATA_219774,x               
 CODE_23942A:        99 10 08      STA $0810,y               
 CODE_23942D:        C8            INY                       
 CODE_23942E:        C6 0A         DEC $0A                   
@@ -2455,7 +2455,7 @@ CODE_239435:        AD 40 10      LDA $1040
 CODE_239438:        C9 02         CMP #$02                  
 CODE_23943A:        90 49         BCC CODE_239485           
 CODE_23943C:        AE 43 10      LDX $1043                 
-CODE_23943F:        BD 7E 97      LDA $977E,x               
+CODE_23943F:        BD 7E 97      LDA.w DATA_21977E,x               
 CODE_239442:        85 0A         STA $0A                   
 CODE_239444:        AD 26 10      LDA $1026                 
 CODE_239447:        85 0B         STA $0B                   
@@ -2466,7 +2466,7 @@ CODE_239451:        C8            INY
 CODE_239452:        A5 0A         LDA $0A                   
 CODE_239454:        99 10 08      STA $0810,y               
 CODE_239457:        C8            INY                       
-CODE_239458:        BD 7C 97      LDA $977C,x               
+CODE_239458:        BD 7C 97      LDA.w DATA_21977C,x               
 CODE_23945B:        99 10 08      STA $0810,y               
 CODE_23945E:        C8            INY                       
 CODE_23945F:        A5 0B         LDA $0B                   
@@ -2505,7 +2505,7 @@ CODE_2394A1:        6B            RTL
 CODE_2394A2:        AD 40 10      LDA $1040                 
 CODE_2394A5:        22 1F FB 20   JSL CODE_20FB1F           
 
-PNTR_2394A9:     dw CODE_2394BD
+PNTR_2394A9:        dw CODE_2394BD
                     dw CODE_239513
                     dw CODE_2395F5
                     dw CODE_239752
@@ -2529,9 +2529,9 @@ CODE_2394D1:        A9 00         LDA #$00
 CODE_2394D3:        8D 0F 07      STA $070F                 
 CODE_2394D6:        EE 40 10      INC $1040                 
 CODE_2394D9:        AC 42 10      LDY $1042                 
-CODE_2394DC:        B9 82 97      LDA $9782,y               
+CODE_2394DC:        B9 82 97      LDA.w DATA_219782,y               
 CODE_2394DF:        85 2E         STA $2E                   
-CODE_2394E1:        B9 8A 97      LDA $978A,y               
+CODE_2394E1:        B9 8A 97      LDA.w DATA_21978A,y               
 CODE_2394E4:        85 2F         STA $2F                   
 CODE_2394E6:        A9 21         LDA #$21                  
 CODE_2394E8:        85 30         STA $30                   
@@ -2649,12 +2649,12 @@ CODE_2395CE:        29 0A         AND #$0A
 CODE_2395D0:        F0 02         BEQ CODE_2395D4           
 CODE_2395D2:        E6 00         INC $00                   
 CODE_2395D4:        A4 00         LDY $00                   
-CODE_2395D6:        B9 76 99      LDA $9976,y               
+CODE_2395D6:        B9 76 99      LDA.w DATA_219976,y               
 CODE_2395D9:        9F 7D 39 7E   STA $7E397D,x             
-CODE_2395DD:        B9 7A 99      LDA $997A,y               
+CODE_2395DD:        B9 7A 99      LDA.w DATA_21997A,y               
 CODE_2395E0:        29 F0         AND #$F0                  
 CODE_2395E2:        9F 81 39 7E   STA $7E3981,x             
-CODE_2395E6:        B9 7A 99      LDA $997A,y               
+CODE_2395E6:        B9 7A 99      LDA.w DATA_21997A,y               
 CODE_2395E9:        29 0F         AND #$0F                  
 CODE_2395EB:        9F 7F 39 7E   STA $7E397F,x             
 CODE_2395EF:        A9 01         LDA #$01                  
@@ -2687,9 +2687,9 @@ CODE_23962A:        C9 02         CMP #$02
 CODE_23962C:        D0 19         BNE CODE_239647           
 CODE_23962E:        AF 91 39 7E   LDA $7E3991               
 CODE_239632:        29 01         AND #$01                  
-CODE_239634:        D9 7E 99      CMP $997E,y               
+CODE_239634:        D9 7E 99      CMP.w DATA_21997E,y               
 CODE_239637:        D0 06         BNE CODE_23963F           
-CODE_239639:        B9 80 99      LDA $9980,y               
+CODE_239639:        B9 80 99      LDA.w DATA_219980,y               
 CODE_23963C:        8D 9A 06      STA $069A                 
 CODE_23963F:        A9 04         LDA #$04                  
 CODE_239641:        8D 40 10      STA $1040                 
@@ -2733,7 +2733,7 @@ CODE_239693:        AD 0E 07      LDA $070E
 CODE_239696:        29 03         AND #$03                  
 CODE_239698:        D0 50         BNE CODE_2396EA           
 CODE_23969A:        AE D4 02      LDX $02D4                 
-CODE_23969D:        BD 82 99      LDA $9982,x               
+CODE_23969D:        BD 82 99      LDA.w DATA_219982,x               
 CODE_2396A0:        D0 0B         BNE CODE_2396AD           
 CODE_2396A2:        A9 55         LDA #$55                  
 CODE_2396A4:        8D 0C 07      STA $070C                 
@@ -3050,7 +3050,7 @@ CODE_239929:        82 4E FF      BRL CODE_23987A
 
 CODE_23992C:        E2 10         SEP #$10                  
 CODE_23992E:        A0 2F         LDY #$2F                  
-CODE_239930:        B9 8B 99      LDA $998B,y               
+CODE_239930:        B9 8B 99      LDA.w DATA_21998B,y               
 CODE_239933:        99 00 08      STA $0800,y               
 CODE_239936:        88            DEY                       
 CODE_239937:        10 F7         BPL CODE_239930           
@@ -3176,7 +3176,7 @@ CODE_239A3B:        60            RTS
 CODE_239A3C:        BD 0C 10      LDA $100C,x               
 CODE_239A3F:        22 1F FB 20   JSL CODE_20FB1F           
 
-PNTR_239A43:     dw CODE_239A4F
+PNTR_239A43:        dw CODE_239A4F
                     dw CODE_239A6F
                     dw CODE_239A7A
                     dw CODE_239ABB
@@ -3615,14 +3615,14 @@ CODE_239DEB:        6B            RTL
 CODE_239DEC:        AD 41 10      LDA $1041                 
 CODE_239DEF:        22 1F FB 20   JSL CODE_20FB1F           
 
-PNTR_239DF3:     dw CODE_239DF9
+PNTR_239DF3:        dw CODE_239DF9
                     dw CODE_239E18
                     dw CODE_239E36
 
 CODE_239DF9:        AD 42 07      LDA $0742                 ;Flag to shuffle N-Space cards
 CODE_239DFC:        D0 11         BNE CODE_239E0F           ;0 means N-Spade was cleared and it's time to shuffle
 CODE_239DFE:        A0 11         LDY #$11                  ;\
-CODE_239E00:        B9 1C 9A      LDA $9A1C,y               ; |
+CODE_239E00:        B9 1C 9A      LDA.w DATA_219A1C,y               ; |
 CODE_239E03:        99 84 1E      STA $1E84,y               ; | Load set of cards
 CODE_239E06:        88            DEY                       ; |
 CODE_239E07:        10 F7         BPL CODE_239E00           ; |
@@ -3680,7 +3680,7 @@ CODE_239E75:        6B            RTL
 CODE_239E76:        AD 34 10      LDA $1034                 
 CODE_239E79:        22 1F FB 20   JSL CODE_20FB1F           
 
-PNTR_239E7D:     dw CODE_239E8F
+PNTR_239E7D:        dw CODE_239E8F
                     dw CODE_239E99
                     dw CODE_239EC4
                     dw CODE_239EF0
@@ -3879,7 +3879,7 @@ CODE_23A029:        60            RTS                       ;One quirk about thi
 
 CODE_23A02A:        C2 20         REP #$20                  
 CODE_23A02C:        A0 3A         LDY #$3A                  
-CODE_23A02E:        B9 C3 9A      LDA $9AC3,y               
+CODE_23A02E:        B9 C3 9A      LDA.w DATA_219AC3,y               
 CODE_23A031:        99 02 16      STA $1602,y               
 CODE_23A034:        88            DEY                       
 CODE_23A035:        88            DEY                       
@@ -3888,7 +3888,7 @@ CODE_23A038:        A5 0A         LDA $0A
 CODE_23A03A:        29 FF 00      AND #$00FF                
 CODE_23A03D:        0A            ASL A                     
 CODE_23A03E:        A8            TAY                       
-CODE_23A03F:        B9 2E 9A      LDA $9A2E,y               
+CODE_23A03F:        B9 2E 9A      LDA.w DATA_219A2E,y               
 CODE_23A042:        8D 2E 10      STA $102E                 
 CODE_23A045:        A0 00         LDY #$00                  
 CODE_23A047:        A2 04         LDX #$04                  
@@ -3919,19 +3919,19 @@ CODE_23A078:        0A            ASL A
 CODE_23A079:        0A            ASL A                     
 CODE_23A07A:        A8            TAY                       
 CODE_23A07B:        C2 20         REP #$20                  
-CODE_23A07D:        B9 52 9A      LDA $9A52,y               
+CODE_23A07D:        B9 52 9A      LDA.w DATA_219A52,y               
 CODE_23A080:        8D 14 16      STA $1614                 
 CODE_23A083:        C8            INY                       
 CODE_23A084:        C8            INY                       
-CODE_23A085:        B9 52 9A      LDA $9A52,y               
+CODE_23A085:        B9 52 9A      LDA.w DATA_219A52,y               
 CODE_23A088:        8D 16 16      STA $1616                 
 CODE_23A08B:        C8            INY                       
 CODE_23A08C:        C8            INY                       
-CODE_23A08D:        B9 52 9A      LDA $9A52,y               
+CODE_23A08D:        B9 52 9A      LDA.w DATA_219A52,y               
 CODE_23A090:        8D 20 16      STA $1620                 
 CODE_23A093:        C8            INY                       
 CODE_23A094:        C8            INY                       
-CODE_23A095:        B9 52 9A      LDA $9A52,y               
+CODE_23A095:        B9 52 9A      LDA.w DATA_219A52,y               
 CODE_23A098:        8D 22 16      STA $1622                 
 CODE_23A09B:        A9 FF FF      LDA #$FFFF                
 CODE_23A09E:        8D 3E 16      STA $163E                 
@@ -3945,9 +3945,9 @@ CODE_23A0AE:        38            SEC
 CODE_23A0AF:        E9 03         SBC #$03                  
 CODE_23A0B1:        0A            ASL A                     
 CODE_23A0B2:        A8            TAY                       
-CODE_23A0B3:        B9 87 9A      LDA $9A87,y               
+CODE_23A0B3:        B9 87 9A      LDA.w DATA_219A87,y               
 CODE_23A0B6:        8D 2C 16      STA $162C                 
-CODE_23A0B9:        B9 8D 9A      LDA $9A8D,y               
+CODE_23A0B9:        B9 8D 9A      LDA.w DATA_219A8D,y               
 CODE_23A0BC:        8D 2E 16      STA $162E                 
 CODE_23A0BF:        A9 F0         LDA #$F0                  
 CODE_23A0C1:        8D 1D 08      STA $081D                 
@@ -3962,7 +3962,7 @@ CODE_23A0D9:        60            RTS
 
 CODE_23A0DA:        C2 20         REP #$20                  
 CODE_23A0DC:        A0 3A         LDY #$3A                  
-CODE_23A0DE:        B9 3D 9B      LDA $9B3D,y               
+CODE_23A0DE:        B9 3D 9B      LDA.w DATA_219B3D,y               
 CODE_23A0E1:        99 02 16      STA $1602,y               
 CODE_23A0E4:        88            DEY                       
 CODE_23A0E5:        88            DEY                       
@@ -3971,7 +3971,7 @@ CODE_23A0E8:        A5 0A         LDA $0A
 CODE_23A0EA:        29 FF 00      AND #$00FF                
 CODE_23A0ED:        0A            ASL A                     
 CODE_23A0EE:        A8            TAY                       
-CODE_23A0EF:        B9 2E 9A      LDA $9A2E,y               
+CODE_23A0EF:        B9 2E 9A      LDA.w DATA_219A2E,y               
 CODE_23A0F2:        8D 2E 10      STA $102E                 
 CODE_23A0F5:        A0 00         LDY #$00                  
 CODE_23A0F7:        A2 04         LDX #$04                  
@@ -4025,11 +4025,11 @@ CODE_23A15F:        E2 20         SEP #$20
 CODE_23A161:        A9 02         LDA #$02                  
 CODE_23A163:        99 02 16      STA $1602,y               
 CODE_23A166:        C8            INY                       
-CODE_23A167:        BD 52 9A      LDA $9A52,x               
+CODE_23A167:        BD 52 9A      LDA.w DATA_219A52,x               
 CODE_23A16A:        99 02 16      STA $1602,y               
 CODE_23A16D:        C8            INY                       
 CODE_23A16E:        E8            INX                       
-CODE_23A16F:        BD 52 9A      LDA $9A52,x               
+CODE_23A16F:        BD 52 9A      LDA.w DATA_219A52,x               
 CODE_23A172:        99 02 16      STA $1602,y               
 CODE_23A175:        C8            INY                       
 CODE_23A176:        E8            INX                       
@@ -4046,7 +4046,7 @@ CODE_23A18C:        AD 3D 10      LDA $103D
 CODE_23A18F:        29 01         AND #$01                  
 CODE_23A191:        F0 0E         BEQ CODE_23A1A1           
 CODE_23A193:        EE 3C 10      INC $103C                 
-CODE_23A196:        BD 82 9A      LDA $9A82,x               
+CODE_23A196:        BD 82 9A      LDA.w DATA_219A82,x               
 CODE_23A199:        4A            LSR A                     
 CODE_23A19A:        4A            LSR A                     
 CODE_23A19B:        4A            LSR A                     
@@ -4057,7 +4057,7 @@ CODE_23A1A1:        AD 3B 10      LDA $103B
 CODE_23A1A4:        18            CLC                       
 CODE_23A1A5:        69 08         ADC #$08                  
 CODE_23A1A7:        8D 3B 10      STA $103B                 
-CODE_23A1AA:        BD 82 9A      LDA $9A82,x               
+CODE_23A1AA:        BD 82 9A      LDA.w DATA_219A82,x               
 CODE_23A1AD:        AE 3C 10      LDX $103C                 
 CODE_23A1B0:        3D 37 10      AND $1037,x               
 CODE_23A1B3:        9D 37 10      STA $1037,x               
@@ -4069,7 +4069,7 @@ CODE_23A1BF:        60            RTS
 
 CODE_23A1C0:        C2 20         REP #$20                  
 CODE_23A1C2:        A0 3C         LDY #$3C                  
-CODE_23A1C4:        B9 FF 9A      LDA $9AFF,y               
+CODE_23A1C4:        B9 FF 9A      LDA.w DATA_219AFF,y               
 CODE_23A1C7:        99 02 16      STA $1602,y               
 CODE_23A1CA:        88            DEY                       
 CODE_23A1CB:        88            DEY                       
@@ -4078,7 +4078,7 @@ CODE_23A1CE:        A5 0A         LDA $0A
 CODE_23A1D0:        29 FF 00      AND #$00FF                
 CODE_23A1D3:        0A            ASL A                     
 CODE_23A1D4:        A8            TAY                       
-CODE_23A1D5:        B9 2E 9A      LDA $9A2E,y               
+CODE_23A1D5:        B9 2E 9A      LDA.w DATA_219A2E,y               
 CODE_23A1D8:        8D 2E 10      STA $102E                 
 CODE_23A1DB:        A9 3C 00      LDA #$003C                
 CODE_23A1DE:        8D 00 16      STA $1600                 
@@ -4211,9 +4211,9 @@ CODE_23A2EA:        AD 26 10      LDA $1026
 CODE_23A2ED:        99 04 08      STA $0804,y               
 CODE_23A2F0:        AD 27 10      LDA $1027                 
 CODE_23A2F3:        99 05 08      STA $0805,y               
-CODE_23A2F6:        BD CE 99      LDA $99CE,x               
+CODE_23A2F6:        BD CE 99      LDA.w DATA_2199CE,x               
 CODE_23A2F9:        99 06 08      STA $0806,y               
-CODE_23A2FC:        BD D4 99      LDA $99D4,x               
+CODE_23A2FC:        BD D4 99      LDA.w DATA_2199D4,x               
 CODE_23A2FF:        99 07 08      STA $0807,y               
 CODE_23A302:        98            TYA                       
 CODE_23A303:        18            CLC                       
@@ -4223,10 +4223,10 @@ CODE_23A307:        E8            INX
 CODE_23A308:        60            RTS                       
 
 CODE_23A309:        AE 28 10      LDX $1028                 
-CODE_23A30C:        BD DA 99      LDA $99DA,x               
+CODE_23A30C:        BD DA 99      LDA.w DATA_2199DA,x               
 CODE_23A30F:        8D 26 10      STA $1026                 
 CODE_23A312:        8D 2A 10      STA $102A                 
-CODE_23A315:        BD EC 99      LDA $99EC,x               
+CODE_23A315:        BD EC 99      LDA.w DATA_2199EC,x               
 CODE_23A318:        8D 27 10      STA $1027                 
 CODE_23A31B:        A2 00         LDX #$00                  
 CODE_23A31D:        A0 00         LDY #$00                  
@@ -4273,12 +4273,12 @@ CODE_23A380:        E2 20         SEP #$20
 CODE_23A382:        60            RTS                       
 
 CODE_23A383:        A6 0A         LDX $0A                   
-CODE_23A385:        BD DA 99      LDA $99DA,x               
+CODE_23A385:        BD DA 99      LDA.w DATA_2199DA,x               
 CODE_23A388:        18            CLC                       
 CODE_23A389:        69 08         ADC #$08                  
 CODE_23A38B:        8D 26 10      STA $1026                 
 CODE_23A38E:        8D 2A 10      STA $102A                 
-CODE_23A391:        BD EC 99      LDA $99EC,x               
+CODE_23A391:        BD EC 99      LDA.w DATA_2199EC,x               
 CODE_23A394:        18            CLC                       
 CODE_23A395:        69 08         ADC #$08                  
 CODE_23A397:        8D 27 10      STA $1027                 
@@ -4356,11 +4356,11 @@ CODE_23A438:        60            RTS
 
 CODE_23A439:        86 0A         STX $0A                   
 CODE_23A43B:        AE 36 10      LDX $1036                 
-CODE_23A43E:        BD 17 9A      LDA $9A17,x               
+CODE_23A43E:        BD 17 9A      LDA.w DATA_219A17,x               
 CODE_23A441:        18            CLC                       
 CODE_23A442:        65 0A         ADC $0A                   
 CODE_23A444:        AA            TAX                       
-CODE_23A445:        BD 03 9A      LDA $9A03,x               
+CODE_23A445:        BD 03 9A      LDA.w DATA_219A03,x               
 CODE_23A448:        A6 0A         LDX $0A                   
 CODE_23A44A:        E0 02         CPX #$02                  
 CODE_23A44C:        B0 02         BCS CODE_23A450                   
@@ -4415,17 +4415,17 @@ CODE_23A4AB:        4A            LSR A
 CODE_23A4AC:        4A            LSR A                     
 CODE_23A4AD:        8D D2 02      STA $02D2                 
 CODE_23A4B0:        C2 20         REP #$20                  
-CODE_23A4B2:        B9 93 9A      LDA $9A93,y               
+CODE_23A4B2:        B9 93 9A      LDA.w DATA_219A93,y               
 CODE_23A4B5:        8D 86 13      STA $1386                 
-CODE_23A4B8:        B9 9B 9A      LDA $9A9B,y               
+CODE_23A4B8:        B9 9B 9A      LDA.w DATA_219A9B,y               
 CODE_23A4BB:        8D 92 13      STA $1392                 
-CODE_23A4BE:        B9 A3 9A      LDA $9AA3,y               
+CODE_23A4BE:        B9 A3 9A      LDA.w DATA_219AA3,y               
 CODE_23A4C1:        8D 94 13      STA $1394                 
-CODE_23A4C4:        B9 AB 9A      LDA $9AAB,y               
+CODE_23A4C4:        B9 AB 9A      LDA.w DATA_219AAB,y               
 CODE_23A4C7:        8D 96 13      STA $1396                 
-CODE_23A4CA:        B9 B3 9A      LDA $9AB3,y               
+CODE_23A4CA:        B9 B3 9A      LDA.w DATA_219AB3,y               
 CODE_23A4CD:        8D 98 13      STA $1398                 
-CODE_23A4D0:        B9 BB 9A      LDA $9ABB,y               
+CODE_23A4D0:        B9 BB 9A      LDA.w DATA_219ABB,y               
 CODE_23A4D3:        8D 9C 13      STA $139C                 
 CODE_23A4D6:        E2 20         SEP #$20                  
 CODE_23A4D8:        EE 00 15      INC $1500                 
@@ -4485,7 +4485,7 @@ CODE_23A577:        4A            LSR A
 CODE_23A578:        4A            LSR A                     
 CODE_23A579:        4A            LSR A                     
 CODE_23A57A:        18            CLC                       
-CODE_23A57B:        7D 79 A3      ADC $A379,x               
+CODE_23A57B:        7D 79 A3      ADC.w DATA_21A379,x               
 CODE_23A57E:        AA            TAX                       
 CODE_23A57F:        CA            DEX                       
 CODE_23A580:        8A            TXA                       
@@ -4540,7 +4540,7 @@ CODE_23A60A:        A6 06 07      LDA $0706
 CODE_23A60D:        29 0F         AND #$0F                  
 CODE_23A60F:        85 00         STA $00                   
 CODE_23A611:        AC 00 07      LDY $0700                 
-CODE_23A614:        BD 64 A4      LDA $A464,x               
+CODE_23A614:        BD 64 A4      LDA.w DATA_21A464,x               
 CODE_23A617:        97 2E         STA [$2E],y               
 CODE_23A619:        C8            INY                       
 CODE_23A61A:        C6 00         DEC $00                   
@@ -4566,7 +4566,7 @@ CODE_23A637:        4C 3C A6      JMP CODE_23A63C
 
 CODE_23A63A:        A2 04         LDX #$04                  
 CODE_23A63C:        AC 00 07      LDY $0700                 
-CODE_23A63F:        BD 67 A4      LDA $A467,x               
+CODE_23A63F:        BD 67 A4      LDA.w DATA_21A467,x               
 CODE_23A642:        97 2E         STA [$2E],y               
 CODE_23A644:        C8            INY                       
 CODE_23A645:        E8            INX                       
@@ -4591,7 +4591,7 @@ CODE_23A660:        A2 00         LDX #$00
 CODE_23A662:        AC 00 07      LDY $0700                 
 CODE_23A665:        A9 09         LDA #$09                  
 CODE_23A667:        85 00         STA $00                   
-CODE_23A669:        BD 6F A4      LDA $A46F,x               
+CODE_23A669:        BD 6F A4      LDA.w DATA_21A46F,x               
 CODE_23A66C:        97 2E         STA [$2E],y               
 CODE_23A66E:        C8            INY                       
 CODE_23A66F:        E8            INX                       
@@ -4658,11 +4658,11 @@ CODE_23A6D5:        AD 06 07      LDA $0706
 CODE_23A6D8:        29 0F         AND #$0F                  
 CODE_23A6DA:        85 02         STA $02                   
 CODE_23A6DC:        AC 00 07      LDY $0700                 
-CODE_23A6DF:        BD 83 A4      LDA $A483,x               
+CODE_23A6DF:        BD 83 A4      LDA.w DATA_21A483,x               
 CODE_23A6E2:        97 2E         STA [$2E],y               
 CODE_23A6E4:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23A6E8:        22 BB BE 23   JSL CODE_23BEBB           
-CODE_23A6EC:        BD 84 A4      LDA $A484,x               
+CODE_23A6EC:        BD 84 A4      LDA.w DATA_21A483+1,x               
 CODE_23A6EF:        97 2E         STA [$2E],y               
 CODE_23A6F1:        80 13         BRA CODE_23A706           
 
@@ -4729,11 +4729,11 @@ CODE_23A770:        85 01         STA $01
 CODE_23A772:        C6 02         DEC $02                   
 CODE_23A774:        D0 CC         BNE CODE_23A742           
 CODE_23A776:        AC 00 07      LDY $0700                 
-CODE_23A779:        BD 83 A4      LDA $A483,x               
+CODE_23A779:        BD 83 A4      LDA.w DATA_21A483,x               
 CODE_23A77C:        97 2E         STA [$2E],y               
 CODE_23A77E:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23A782:        22 BB BE 23   JSL CODE_23BEBB           
-CODE_23A786:        BD 84 A4      LDA $A484,x               
+CODE_23A786:        BD 84 A4      LDA.w DATA_21A483+1,x               
 CODE_23A789:        97 2E         STA [$2E],y               
 CODE_23A78B:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23A78F:        6B            RTL                       
@@ -4748,13 +4748,13 @@ CODE_23A79D:        29 0F         AND #$0F
 CODE_23A79F:        85 02         STA $02                   
 CODE_23A7A1:        AC 00 07      LDY $0700                 
 CODE_23A7A4:        B7 2E         LDA [$2E],y               
-CODE_23A7A6:        DD 83 A4      CMP $A483,x               
+CODE_23A7A6:        DD 83 A4      CMP.w DATA_21A483,x               
 CODE_23A7A9:        F0 18         BEQ CODE_23A7C3           
-CODE_23A7AB:        BD 83 A4      LDA $A483,x               
+CODE_23A7AB:        BD 83 A4      LDA.w DATA_21A483,x               
 CODE_23A7AE:        97 2E         STA [$2E],y               
 CODE_23A7B0:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23A7B4:        22 BB BE 23   JSL CODE_23BEBB           
-CODE_23A7B8:        BD 84 A4      LDA $A484,x               
+CODE_23A7B8:        BD 84 A4      LDA.w DATA_21A483+1,x               
 CODE_23A7BB:        97 2E         STA [$2E],y               
 CODE_23A7BD:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23A7C1:        80 17         BRA CODE_23A7DA           
@@ -4782,11 +4782,11 @@ CODE_23A7F1:        85 01         STA $01
 CODE_23A7F3:        C6 02         DEC $02                   
 CODE_23A7F5:        D0 CC         BNE CODE_23A7C3           
 CODE_23A7F7:        AC 00 07      LDY $0700                 
-CODE_23A7FA:        BD 83 A4      LDA $A483,x               
+CODE_23A7FA:        BD 83 A4      LDA.w DATA_21A483,x               
 CODE_23A7FD:        97 2E         STA [$2E],y               
 CODE_23A7FF:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23A803:        22 BB BE 23   JSL CODE_23BEBB           
-CODE_23A807:        BD 84 A4      LDA $A484,x               
+CODE_23A807:        BD 84 A4      LDA.w DATA_21A483+1,x               
 CODE_23A80A:        97 2E         STA [$2E],y               
 CODE_23A80C:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23A810:        6B            RTL                       
@@ -4813,7 +4813,7 @@ CODE_23A830:        AD 06 07      LDA $0706
 CODE_23A833:        29 0F         AND #$0F                  
 CODE_23A835:        85 02         STA $02                   
 CODE_23A837:        AC 00 07      LDY $0700                 
-CODE_23A83A:        BD 8D A4      LDA $A48D,x               
+CODE_23A83A:        BD 8D A4      LDA.w DATA_21A48D,x               
 CODE_23A83D:        97 2E         STA [$2E],y               
 CODE_23A83F:        80 16         BRA CODE_23A857           
 
@@ -4850,7 +4850,7 @@ CODE_23A87B:        85 01         STA $01
 CODE_23A87D:        AD 06 07      LDA $0706                 
 CODE_23A880:        29 0F         AND #$0F                  
 CODE_23A882:        85 02         STA $02                   
-CODE_23A884:        BD 90 A4      LDA $A490,x               
+CODE_23A884:        BD 90 A4      LDA.w DATA_21A490,x               
 CODE_23A887:        97 2E         STA [$2E],y               
 CODE_23A889:        80 16         BRA CODE_23A8A1           
 
@@ -4895,7 +4895,7 @@ CODE_23A8CF:        22 3A B7 2A   JSL CODE_2AB73A
 CODE_23A8D3:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23A8D7:        C6 02         DEC $02                   
 CODE_23A8D9:        D0 F0         BNE CODE_23A8CB           
-CODE_23A8DB:        BD 8D A4      LDA $A48D,x               
+CODE_23A8DB:        BD 8D A4      LDA.w DATA_21A48D,x               
 CODE_23A8DE:        97 2E         STA [$2E],y               
 CODE_23A8E0:        A5 00         LDA $00                   
 CODE_23A8E2:        85 2E         STA $2E                   
@@ -4919,7 +4919,7 @@ CODE_23A905:        22 3A B7 2A   JSL CODE_2AB73A
 CODE_23A909:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23A90D:        C6 02         DEC $02                   
 CODE_23A90F:        D0 F0         BNE CODE_23A901           
-CODE_23A911:        BD 90 A4      LDA $A490,x               
+CODE_23A911:        BD 90 A4      LDA.w DATA_21A490,x               
 CODE_23A914:        97 2E         STA [$2E],y               
 CODE_23A916:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23A91A:        6B            RTL                       
@@ -4953,7 +4953,7 @@ CODE_23A94D:        86 03         STX $03
 CODE_23A94F:        A9 19         LDA #$19                  
 CODE_23A951:        85 02         STA $02                   
 CODE_23A953:        AC 00 07      LDY $0700                 
-CODE_23A956:        BD 93 A4      LDA $A493,x               
+CODE_23A956:        BD 93 A4      LDA.w DATA_21A493,x               
 CODE_23A959:        97 2E         STA [$2E],y               
 CODE_23A95B:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23A95F:        98            TYA                       
@@ -5042,7 +5042,7 @@ CODE_23A9F9:        A0 00         LDY #$00
 CODE_23A9FB:        84 06         STY $06                   
 CODE_23A9FD:        A2 06         LDX #$06                  
 CODE_23A9FF:        AD 0A 07      LDA $070A                 
-CODE_23AA02:        DD F1 B9      CMP DATA_2AB9F1,x               
+CODE_23AA02:        DD F1 B9      CMP.w DATA_2AB9F1,x               
 CODE_23AA05:        F0 03         BEQ CODE_23AA0A           
 CODE_23AA07:        CA            DEX                       
 CODE_23AA08:        D0 F8         BNE CODE_23AA02           
@@ -5050,9 +5050,9 @@ CODE_23AA0A:        8A            TXA
 CODE_23AA0B:        0A            ASL A                     
 CODE_23AA0C:        AA            TAX                       
 CODE_23AA0D:        C2 20         REP #$20                  
-CODE_23AA0F:        BD E3 B9      LDA DATA_2AB9E3,x               
+CODE_23AA0F:        BD E3 B9      LDA.w DATA_2AB9E3,x               
 CODE_23AA12:        85 0C         STA $0C                   
-CODE_23AA14:        BD D8 BB      LDA DATA_2ABBD8,x               
+CODE_23AA14:        BD D8 BB      LDA.w DATA_2ABBD8,x               
 CODE_23AA17:        85 D8         STA $D8                   
 CODE_23AA19:        A5 2E         LDA $2E                   
 CODE_23AA1B:        18            CLC                       
@@ -5097,7 +5097,7 @@ CODE_23AA60:        E0 0B         CPX #$0B
 CODE_23AA62:        F0 06         BEQ CODE_23AA6A           
 CODE_23AA64:        4C 89 AA      JMP CODE_23AA89           
 
-CODE_23AA67:        BD 95 A4      LDA $A495,x               
+CODE_23AA67:        BD 95 A4      LDA.w DATA_21A495,x               
 CODE_23AA6A:        97 2E         STA [$2E],y               
 CODE_23AA6C:        48            PHA                       
 CODE_23AA6D:        22 3A B7 2A   JSL CODE_2AB73A           
@@ -5133,7 +5133,7 @@ CODE_23AAA1:        D0 07         BNE CODE_23AAAA
 CODE_23AAA3:        20 71 BE      JSR CODE_23BE71           
 CODE_23AAA6:        C9 00         CMP #$00                  
 CODE_23AAA8:        D0 09         BNE CODE_23AAB3           
-CODE_23AAAA:        BD AE A4      LDA $A4AE,x               
+CODE_23AAAA:        BD AE A4      LDA.w DATA_21A4AE,x               
 CODE_23AAAD:        97 2E         STA [$2E],y               
 CODE_23AAAF:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23AAB3:        22 BB BE 23   JSL CODE_23BEBB           
@@ -5177,7 +5177,7 @@ CODE_23AAF8:        85 00         STA $00
 CODE_23AAFA:        E2 20         SEP #$20                  
 CODE_23AAFC:        84 0C         STY $0C                   
 CODE_23AAFE:        A4 0C         LDY $0C                   
-CODE_23AB00:        B9 B0 A5      LDA $A5B0,y               
+CODE_23AB00:        B9 B0 A5      LDA.w DATA_21A5B0,y               
 CODE_23AB03:        85 02         STA $02                   
 CODE_23AB05:        AC 00 07      LDY $0700                 
 CODE_23AB08:        C2 21         REP #$21                  
@@ -5187,10 +5187,10 @@ CODE_23AB0F:        85 D8         STA $D8
 CODE_23AB11:        E2 20         SEP #$20                  
 CODE_23AB13:        A5 DB         LDA $DB                   
 CODE_23AB15:        D0 05         BNE CODE_23AB1C           
-CODE_23AB17:        BD B7 A4      LDA $A4B7,x               
+CODE_23AB17:        BD B7 A4      LDA.w DATA_21A4B7,x               
 CODE_23AB1A:        80 03         BRA CODE_23AB1F           
 
-CODE_23AB1C:        BD 0A A5      LDA $A50A,x               
+CODE_23AB1C:        BD 0A A5      LDA.w DATA_21A50A,x               
 CODE_23AB1F:        C9 80         CMP #$80                  
 CODE_23AB21:        D0 03         BNE CODE_23AB26           
 CODE_23AB23:        4C E9 AB      JMP CODE_23ABE9           
@@ -5212,7 +5212,7 @@ CODE_23AB3F:        B7 D8         LDA [$D8],y
 CODE_23AB41:        F0 03         BEQ CODE_23AB46           
 CODE_23AB43:        4C E9 AB      JMP CODE_23ABE9           
 
-CODE_23AB46:        BD 5D A5      LDA $A55D,x               
+CODE_23AB46:        BD 5D A5      LDA.w DATA_21A55D,x               
 CODE_23AB49:        97 D8         STA [$D8],y               
 CODE_23AB4B:        F0 03         BEQ CODE_23AB50           
 CODE_23AB4D:        4C D9 AB      JMP CODE_23ABD9           
@@ -5312,7 +5312,7 @@ CODE_23AC06:        A5 2F         LDA $2F
 CODE_23AC08:        69 00         ADC #$00                  
 CODE_23AC0A:        85 2F         STA $2F                   
 CODE_23AC0C:        85 01         STA $01                   
-CODE_23AC0E:        BD B7 A4      LDA $A4B7,x               
+CODE_23AC0E:        BD B7 A4      LDA.w DATA_21A4B7,x               
 CODE_23AC11:        C9 FF         CMP #$FF                  
 CODE_23AC13:        F0 03         BEQ CODE_23AC18           
 CODE_23AC15:        4C FE AA      JMP CODE_23AAFE           
@@ -5320,7 +5320,7 @@ CODE_23AC15:        4C FE AA      JMP CODE_23AAFE
 CODE_23AC18:        6B            RTL                       
 
 CODE_23AC19:        20 F3 AC      JSR CODE_23ACF3           
-CODE_23AC1C:        BD B3 A5      LDA $A5B3,x               
+CODE_23AC1C:        BD B3 A5      LDA.w DATA_21A5B3,x               
 CODE_23AC1F:        97 2E         STA [$2E],y               
 CODE_23AC21:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23AC25:        C6 02         DEC $02                   
@@ -5328,7 +5328,7 @@ CODE_23AC27:        10 F3         BPL CODE_23AC1C
 CODE_23AC29:        6B            RTL                       
 
 CODE_23AC2A:        20 F3 AC      JSR CODE_23ACF3           
-CODE_23AC2D:        BD B5 A5      LDA $A5B5,x               
+CODE_23AC2D:        BD B5 A5      LDA.w DATA_21A5B5,x               
 CODE_23AC30:        97 2E         STA [$2E],y               
 CODE_23AC32:        98            TYA                       
 CODE_23AC33:        18            CLC                       
@@ -5342,7 +5342,7 @@ CODE_23AC3F:        10 EC         BPL CODE_23AC2D
 CODE_23AC41:        6B            RTL                       
 
 CODE_23AC42:        20 F3 AC      JSR CODE_23ACF3           
-CODE_23AC45:        BD B7 A5      LDA $A5B7,x               
+CODE_23AC45:        BD B7 A5      LDA.w DATA_21A5B7,x               
 CODE_23AC48:        97 2E         STA [$2E],y               
 CODE_23AC4A:        98            TYA                       
 CODE_23AC4B:        18            CLC                       
@@ -5358,7 +5358,7 @@ CODE_23AC5E:        10 E5         BPL CODE_23AC45
 CODE_23AC60:        6B            RTL                       
 
 CODE_23AC61:        20 F3 AC      JSR CODE_23ACF3           
-CODE_23AC64:        BD B9 A5      LDA $A5B9,x               
+CODE_23AC64:        BD B9 A5      LDA.w DATA_21A5B9,x               
 CODE_23AC67:        97 2E         STA [$2E],y               
 CODE_23AC69:        98            TYA                       
 CODE_23AC6A:        38            SEC                       
@@ -5374,7 +5374,7 @@ CODE_23AC7D:        10 E5         BPL CODE_23AC64
 CODE_23AC7F:        6B            RTL                       
 
 CODE_23AC80:        20 F3 AC      JSR CODE_23ACF3           
-CODE_23AC83:        BD BB A5      LDA $A5BB,x               
+CODE_23AC83:        BD BB A5      LDA.w DATA_21A5BB,x               
 CODE_23AC86:        97 2E         STA [$2E],y               
 CODE_23AC88:        98            TYA                       
 CODE_23AC89:        18            CLC                       
@@ -5383,7 +5383,7 @@ CODE_23AC8C:        A8            TAY
 CODE_23AC8D:        A5 2F         LDA $2F                   
 CODE_23AC8F:        69 00         ADC #$00                  
 CODE_23AC91:        85 2F         STA $2F                   
-CODE_23AC93:        BD BD A5      LDA $A5BD,x               
+CODE_23AC93:        BD BD A5      LDA.w DATA_21A5BD,x               
 CODE_23AC96:        97 2E         STA [$2E],y               
 CODE_23AC98:        98            TYA                       
 CODE_23AC99:        18            CLC                       
@@ -5399,7 +5399,7 @@ CODE_23ACAC:        10 D5         BPL CODE_23AC83
 CODE_23ACAE:        6B            RTL                       
 
 CODE_23ACAF:        20 F3 AC      JSR CODE_23ACF3           
-CODE_23ACB2:        BD BF A5      LDA $A5BF,x               
+CODE_23ACB2:        BD BF A5      LDA.w DATA_21A5BF,x               
 CODE_23ACB5:        97 2E         STA [$2E],y               
 CODE_23ACB7:        98            TYA                       
 CODE_23ACB8:        18            CLC                       
@@ -5408,7 +5408,7 @@ CODE_23ACBB:        A8            TAY
 CODE_23ACBC:        A5 2F         LDA $2F                   
 CODE_23ACBE:        69 00         ADC #$00                  
 CODE_23ACC0:        85 2F         STA $2F                   
-CODE_23ACC2:        BD C1 A5      LDA $A5C1,x               
+CODE_23ACC2:        BD C1 A5      LDA.w DATA_21A5C1,x               
 CODE_23ACC5:        97 2E         STA [$2E],y               
 CODE_23ACC7:        98            TYA                       
 CODE_23ACC8:        18            CLC                       
@@ -5474,7 +5474,7 @@ CODE_23AD36:        A9 8B         LDA #$8B
 CODE_23AD38:        85 D8         STA $D8                   
 CODE_23AD3A:        A5 D8         LDA $D8                   
 CODE_23AD3C:        D0 03         BNE CODE_23AD41           
-CODE_23AD3E:        BD C3 A5      LDA $A5C3,x               
+CODE_23AD3E:        BD C3 A5      LDA.w DATA_21A5C3,x               
 CODE_23AD41:        97 2E         STA [$2E],y               
 CODE_23AD43:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23AD47:        C6 04         DEC $04                   
@@ -5511,7 +5511,7 @@ CODE_23AD82:        29 0F         AND #$0F
 CODE_23AD84:        85 03         STA $03                   
 CODE_23AD86:        AC 00 07      LDY $0700                 
 CODE_23AD89:        A6 02         LDX $02                   
-CODE_23AD8B:        BD C5 A5      LDA $A5C5,x               
+CODE_23AD8B:        BD C5 A5      LDA.w DATA_21A5C5,x               
 CODE_23AD8E:        97 2E         STA [$2E],y               
 CODE_23AD90:        98            TYA                       
 CODE_23AD91:        18            CLC                       
@@ -5523,7 +5523,7 @@ CODE_23AD99:        85 2F         STA $2F
 CODE_23AD9B:        B7 2E         LDA [$2E],y               
 CODE_23AD9D:        C9 02         CMP #$02                  
 CODE_23AD9F:        D0 07         BNE CODE_23ADA8           
-CODE_23ADA1:        BD C7 A5      LDA $A5C7,x               
+CODE_23ADA1:        BD C7 A5      LDA.w DATA_21A5C7,x               
 CODE_23ADA4:        97 2E         STA [$2E],y               
 CODE_23ADA6:        80 E8         BRA CODE_23AD90           
 
@@ -5534,7 +5534,7 @@ CODE_23ADAC:        A8            TAY
 CODE_23ADAD:        A5 2F         LDA $2F                   
 CODE_23ADAF:        E9 00         SBC #$00                  
 CODE_23ADB1:        85 2F         STA $2F                   
-CODE_23ADB3:        BD C9 A5      LDA $A5C9,x               
+CODE_23ADB3:        BD C9 A5      LDA.w DATA_21A5C9,x               
 CODE_23ADB6:        97 2E         STA [$2E],y               
 CODE_23ADB8:        A5 00         LDA $00                   
 CODE_23ADBA:        85 2E         STA $2E                   
@@ -5564,9 +5564,9 @@ CODE_23ADE5:        A5 2F         LDA $2F
 CODE_23ADE7:        69 00         ADC #$00                  
 CODE_23ADE9:        85 2F         STA $2F                   
 CODE_23ADEB:        B7 2E         LDA [$2E],y               
-CODE_23ADED:        DD CF A5      CMP $A5CF,x               
+CODE_23ADED:        DD CF A5      CMP.w DATA_21A5CF,x               
 CODE_23ADF0:        D0 07         BNE CODE_23ADF9           
-CODE_23ADF2:        BD CD A5      LDA $A5CD,x               
+CODE_23ADF2:        BD CD A5      LDA.w DATA_21A5CD,x               
 CODE_23ADF5:        97 2E         STA [$2E],y               
 CODE_23ADF7:        80 E7         BRA CODE_23ADE0           
 
@@ -5698,7 +5698,7 @@ CODE_23AEDC:        29 0F         AND #$0F
 CODE_23AEDE:        85 02         STA $02                   
 CODE_23AEE0:        85 03         STA $03                   
 CODE_23AEE2:        AC 00 07      LDY $0700                 
-CODE_23AEE5:        BD CF A5      LDA $A5CF,x               
+CODE_23AEE5:        BD CF A5      LDA.w DATA_21A5CF,x               
 CODE_23AEE8:        97 2E         STA [$2E],y               
 CODE_23AEEA:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23AEEE:        22 BB BE 23   JSL CODE_23BEBB           
@@ -5719,7 +5719,7 @@ CODE_23AF0C:        85 2F         STA $2F
 CODE_23AF0E:        85 01         STA $01                   
 CODE_23AF10:        A5 02         LDA $02                   
 CODE_23AF12:        85 03         STA $03                   
-CODE_23AF14:        BD D1 A5      LDA $A5D1,x               
+CODE_23AF14:        BD D1 A5      LDA.w DATA_21A5D1,x               
 CODE_23AF17:        C9 C1         CMP #$C1                  
 CODE_23AF19:        F0 0E         BEQ CODE_23AF29           
 CODE_23AF1B:        97 2E         STA [$2E],y               
@@ -5765,7 +5765,7 @@ CODE_23AF65:        C9 0D         CMP #$0D
 CODE_23AF67:        D0 04         BNE CODE_23AF6D           
 CODE_23AF69:        E0 02         CPX #$02                  
 CODE_23AF6B:        F0 1A         BEQ CODE_23AF87           
-CODE_23AF6D:        BD D3 A5      LDA $A5D3,x               
+CODE_23AF6D:        BD D3 A5      LDA.w DATA_21A5D3,x               
 CODE_23AF70:        97 2E         STA [$2E],y               
 CODE_23AF72:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23AF76:        22 BB BE 23   JSL CODE_23BEBB           
@@ -5778,7 +5778,7 @@ CODE_23AF84:        10 2B         BPL CODE_23AFB1
 CODE_23AF86:        6B            RTL                       
 
 CODE_23AF87:        A2 08         LDX #$08                  
-CODE_23AF89:        BD D3 A5      LDA $A5D3,x               
+CODE_23AF89:        BD D3 A5      LDA.w DATA_21A5D3,x               
 CODE_23AF8C:        97 2E         STA [$2E],y               
 CODE_23AF8E:        C2 30         REP #$30                  
 CODE_23AF90:        98            TYA                       
@@ -5825,7 +5825,7 @@ CODE_23AFDE:        97 2E         STA [$2E],y
 CODE_23AFE0:        E2 10         SEP #$10                  
 CODE_23AFE2:        E0 08         CPX #$08                  
 CODE_23AFE4:        F0 18         BEQ CODE_23AFFE           
-CODE_23AFE6:        BD DC A5      LDA $A5DC,x               
+CODE_23AFE6:        BD DC A5      LDA.w DATA_21A5DC,x               
 CODE_23AFE9:        97 2E         STA [$2E],y               
 CODE_23AFEB:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23AFEF:        22 BB BE 23   JSL CODE_23BEBB           
@@ -5835,7 +5835,7 @@ CODE_23AFF7:        C9 FF         CMP #$FF
 CODE_23AFF9:        D0 D4         BNE CODE_23AFCF           
 CODE_23AFFB:        4C 82 AF      JMP CODE_23AF82           
 
-CODE_23AFFE:        BD DC A5      LDA $A5DC,x               
+CODE_23AFFE:        BD DC A5      LDA.w DATA_21A5DC,x               
 CODE_23B001:        97 2E         STA [$2E],y               
 CODE_23B003:        C2 30         REP #$30                  
 CODE_23B005:        98            TYA                       
@@ -5860,7 +5860,7 @@ CODE_23B02A:        AD 06 07      LDA $0706
 CODE_23B02D:        29 0F         AND #$0F                  
 CODE_23B02F:        85 02         STA $02                   
 CODE_23B031:        AC 00 07      LDY $0700                 
-CODE_23B034:        BD E5 A5      LDA $A5E5,x               
+CODE_23B034:        BD E5 A5      LDA.w DATA_21A5E5,x               
 CODE_23B037:        97 2E         STA [$2E],y               
 CODE_23B039:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B03D:        C6 02         DEC $02                   
@@ -5884,7 +5884,7 @@ CODE_23B056:        68            PLA
 CODE_23B057:        29 0F         AND #$0F                  
 CODE_23B059:        85 02         STA $02                   
 CODE_23B05B:        AC 00 07      LDY $0700                 
-CODE_23B05E:        BD E7 A5      LDA $A5E7,x               
+CODE_23B05E:        BD E7 A5      LDA.w DATA_21A5E7,x               
 CODE_23B061:        97 2E         STA [$2E],y               
 CODE_23B063:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B067:        C6 02         DEC $02                   
@@ -5919,7 +5919,7 @@ CODE_23B09A:        A2 00         LDX #$00
 CODE_23B09C:        8A            TXA                       
 CODE_23B09D:        A6 0B         LDX $0B                   
 CODE_23B09F:        18            CLC                       
-CODE_23B0A0:        7D 44 A6      ADC $A644,x               
+CODE_23B0A0:        7D 44 A6      ADC.w DATA_21A644,x               
 CODE_23B0A3:        85 0C         STA $0C                   
 CODE_23B0A5:        AA            TAX                       
 CODE_23B0A6:        AD 06 07      LDA $0706                 
@@ -5938,7 +5938,7 @@ CODE_23B0C1:        20 A5 B1      JSR CODE_23B1A5
 CODE_23B0C4:        A9 0A         LDA #$0A                  
 CODE_23B0C6:        80 03         BRA CODE_23B0CB           
 
-CODE_23B0C8:        BD EA A5      LDA $A5EA,x               
+CODE_23B0C8:        BD EA A5      LDA.w DATA_21A5EA,x               
 CODE_23B0CB:        97 2E         STA [$2E],y               
 CODE_23B0CD:        20 6A B3      JSR CODE_23B36A           
 CODE_23B0D0:        B7 2E         LDA [$2E],y               
@@ -5959,7 +5959,7 @@ CODE_23B0ED:        20 A5 B1      JSR CODE_23B1A5
 CODE_23B0F0:        A9 0B         LDA #$0B                  
 CODE_23B0F2:        80 03         BRA CODE_23B0F7           
 
-CODE_23B0F4:        BD F6 A5      LDA $A5F6,x               
+CODE_23B0F4:        BD F6 A5      LDA.w DATA_21A5F6,x               
 CODE_23B0F7:        97 2E         STA [$2E],y               
 CODE_23B0F9:        80 D2         BRA CODE_23B0CD           
 
@@ -5982,7 +5982,7 @@ CODE_23B117:        D0 04         BNE CODE_23B11D
 CODE_23B119:        A9 0C         LDA #$0C                  
 CODE_23B11B:        80 03         BRA CODE_23B120           
 
-CODE_23B11D:        BD 02 A6      LDA $A602,x               
+CODE_23B11D:        BD 02 A6      LDA.w DATA_21A602,x               
 CODE_23B120:        97 2E         STA [$2E],y               
 CODE_23B122:        C2 20         REP #$20                  
 CODE_23B124:        A5 02         LDA $02                   
@@ -6044,13 +6044,13 @@ CODE_23B18F:        6B            RTL
 
 CODE_23B190:        A2 18         LDX #$18                  
 CODE_23B192:        B7 2E         LDA [$2E],y               
-CODE_23B194:        DD 0E A6      CMP $A60E,x               
+CODE_23B194:        DD 0E A6      CMP.w DATA_21A60E,x               
 CODE_23B197:        F0 05         BEQ CODE_23B19E           
 CODE_23B199:        CA            DEX                       
 CODE_23B19A:        10 F8         BPL CODE_23B194           
 CODE_23B19C:        80 E4         BRA CODE_23B182           
 
-CODE_23B19E:        BD 27 A6      LDA $A627,x               
+CODE_23B19E:        BD 27 A6      LDA.w DATA_21A627,x               
 CODE_23B1A1:        97 2E         STA [$2E],y               
 CODE_23B1A3:        80 DD         BRA CODE_23B182           
 
@@ -6091,21 +6091,21 @@ CODE_23B1DA:        64 04         STZ $04
 CODE_23B1DC:        A6 02         LDX $02                   
 CODE_23B1DE:        A5 04         LDA $04                   
 CODE_23B1E0:        18            CLC                       
-CODE_23B1E1:        7D 44 A6      ADC $A644,x               
+CODE_23B1E1:        7D 44 A6      ADC.w DATA_21A644,x               
 CODE_23B1E4:        AA            TAX                       
 CODE_23B1E5:        AC 00 07      LDY $0700                 
-CODE_23B1E8:        BD 48 A6      LDA $A648,x               
+CODE_23B1E8:        BD 48 A6      LDA.w DATA_21A648,x               
 CODE_23B1EB:        97 2E         STA [$2E],y               
 CODE_23B1ED:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B1F1:        C6 05         DEC $05                   
-CODE_23B1F3:        BD 54 A6      LDA $A654,x               
+CODE_23B1F3:        BD 54 A6      LDA.w DATA_21A654,x               
 CODE_23B1F6:        97 2E         STA [$2E],y               
 CODE_23B1F8:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B1FC:        C6 05         DEC $05                   
 CODE_23B1FE:        A5 05         LDA $05                   
 CODE_23B200:        C9 01         CMP #$01                  
 CODE_23B202:        D0 EF         BNE CODE_23B1F3           
-CODE_23B204:        BD 60 A6      LDA $A660,x               
+CODE_23B204:        BD 60 A6      LDA.w DATA_21A660,x               
 CODE_23B207:        97 2E         STA [$2E],y               
 CODE_23B209:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B20D:        A5 00         LDA $00                   
@@ -6170,16 +6170,16 @@ CODE_23B27C:        85 02         STA $02
 CODE_23B27E:        AC 00 07      LDY $0700                 
 CODE_23B281:        A5 02         LDA $02                   
 CODE_23B283:        85 03         STA $03                   
-CODE_23B285:        BD 7B A6      LDA $A67B,x               
+CODE_23B285:        BD 7B A6      LDA.w DATA_21A67B,x               
 CODE_23B288:        97 2E         STA [$2E],y               
 CODE_23B28A:        80 05         BRA CODE_23B291           
 
-CODE_23B28C:        BD 7F A6      LDA $A67F,x               
+CODE_23B28C:        BD 7F A6      LDA.w DATA_21A67F,x               
 CODE_23B28F:        97 2E         STA [$2E],y               
 CODE_23B291:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B295:        C6 03         DEC $03                   
 CODE_23B297:        D0 F3         BNE CODE_23B28C           
-CODE_23B299:        BD 83 A6      LDA $A683,x               
+CODE_23B299:        BD 83 A6      LDA.w DATA_21A683,x               
 CODE_23B29C:        97 2E         STA [$2E],y               
 CODE_23B29E:        A5 00         LDA $00                   
 CODE_23B2A0:        85 2E         STA $2E                   
@@ -6222,26 +6222,26 @@ CODE_23B2E1:        4A            LSR A
 CODE_23B2E2:        4A            LSR A                     
 CODE_23B2E3:        4A            LSR A                     
 CODE_23B2E4:        A8            TAY                       
-CODE_23B2E5:        BE 93 A6      LDX $A693,y               
+CODE_23B2E5:        BE 93 A6      LDX.w DATA_21A693,y               
 CODE_23B2E8:        68            PLA                       
 CODE_23B2E9:        29 0F         AND #$0F                  
 CODE_23B2EB:        85 03         STA $03                   
 CODE_23B2ED:        A5 02         LDA $02                   
 CODE_23B2EF:        85 04         STA $04                   
 CODE_23B2F1:        AC 00 07      LDY $0700                 
-CODE_23B2F4:        BD 87 A6      LDA $A687,x               
+CODE_23B2F4:        BD 87 A6      LDA.w DATA_21A687,x               
 CODE_23B2F7:        97 2E         STA [$2E],y               
 CODE_23B2F9:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23B2FD:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B301:        C6 04         DEC $04                   
 CODE_23B303:        F0 11         BEQ CODE_23B316           
-CODE_23B305:        BD 88 A6      LDA $A688,x               
+CODE_23B305:        BD 88 A6      LDA.w DATA_21A687+1,x               
 CODE_23B308:        97 2E         STA [$2E],y               
 CODE_23B30A:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23B30E:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B312:        C6 04         DEC $04                   
 CODE_23B314:        D0 EF         BNE CODE_23B305           
-CODE_23B316:        BD 89 A6      LDA $A689,x               
+CODE_23B316:        BD 89 A6      LDA.w DATA_21A687+2,x               
 CODE_23B319:        97 2E         STA [$2E],y               
 CODE_23B31B:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23B31F:        A5 00         LDA $00                   
@@ -6261,19 +6261,19 @@ CODE_23B339:        C6 03         DEC $03
 CODE_23B33B:        30 2B         BMI CODE_23B368           
 CODE_23B33D:        A5 02         LDA $02                   
 CODE_23B33F:        85 04         STA $04                   
-CODE_23B341:        BD 8D A6      LDA $A68D,x               
+CODE_23B341:        BD 8D A6      LDA.w DATA_21A68D,x               
 CODE_23B344:        97 2E         STA [$2E],y               
 CODE_23B346:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23B34A:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B34E:        C6 04         DEC $04                   
 CODE_23B350:        F0 11         BEQ CODE_23B363           
-CODE_23B352:        BD 8E A6      LDA $A68E,x               
+CODE_23B352:        BD 8E A6      LDA.w DATA_21A68D+1,x               
 CODE_23B355:        97 2E         STA [$2E],y               
 CODE_23B357:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23B35B:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B35F:        C6 04         DEC $04                   
 CODE_23B361:        D0 EF         BNE CODE_23B352           
-CODE_23B363:        BD 8F A6      LDA $A68F,x               
+CODE_23B363:        BD 8F A6      LDA.w DATA_21A68D+2,x               
 CODE_23B366:        97 2E         STA [$2E],y               
 CODE_23B368:        6B            RTL                       
 
@@ -6317,7 +6317,7 @@ CODE_23B3A3:        4A            LSR A
 CODE_23B3A4:        A8            TAY                       
 CODE_23B3A5:        C8            INY                       
 CODE_23B3A6:        C8            INY                       
-CODE_23B3A7:        B9 01 82      LDA $8201,y               
+CODE_23B3A7:        B9 01 82      LDA.w DATA_218200+1,y               
 CODE_23B3AA:        85 04         STA $04                   
 CODE_23B3AC:        E6 04         INC $04                   
 CODE_23B3AE:        AD 00 07      LDA $0700                 
@@ -6328,7 +6328,7 @@ CODE_23B3B7:        60            RTS
 
 CODE_23B3B8:        AE 06 07      LDX $0706                 
 CODE_23B3BB:        AC 00 07      LDY $0700                 
-CODE_23B3BE:        BD 9B A6      LDA $A69B,x               
+CODE_23B3BE:        BD 9B A6      LDA.w DATA_21A69B,x               
 CODE_23B3C1:        97 2E         STA [$2E],y               
 CODE_23B3C3:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23B3C7:        DA            PHX                       
@@ -6481,12 +6481,12 @@ CODE_23B4D0:        80 06         BRA CODE_23B4D8
 CODE_23B4D2:        B7 2E         LDA [$2E],y               
 CODE_23B4D4:        C9 04         CMP #$04                  
 CODE_23B4D6:        F0 05         BEQ CODE_23B4DD           
-CODE_23B4D8:        BD A7 A6      LDA $A6A7,x               
+CODE_23B4D8:        BD A7 A6      LDA.w DATA_21A6A7,x               
 CODE_23B4DB:        97 2E         STA [$2E],y               
 CODE_23B4DD:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B4E1:        C6 04         DEC $04                   
 CODE_23B4E3:        D0 E4         BNE CODE_23B4C9           
-CODE_23B4E5:        BD AA A6      LDA $A6AA,x               
+CODE_23B4E5:        BD AA A6      LDA.w DATA_21A6AA,x               
 CODE_23B4E8:        97 2E         STA [$2E],y               
 CODE_23B4EA:        22 DC 89 2A   JSL CODE_2A89DC           
 CODE_23B4EE:        A5 00         LDA $00                   
@@ -6527,7 +6527,7 @@ CODE_23B52A:        AA            TAX
 CODE_23B52B:        AC 00 07      LDY $0700                 
 CODE_23B52E:        A5 02         LDA $02                   
 CODE_23B530:        85 04         STA $04                   
-CODE_23B532:        BD AD A6      LDA $A6AD,x               
+CODE_23B532:        BD AD A6      LDA.w DATA_21A6AD,x               
 CODE_23B535:        97 2E         STA [$2E],y               
 CODE_23B537:        22 E2 8A 2A   JSL CODE_2A8AE2           
 CODE_23B53B:        80 22         BRA CODE_23B55F           
@@ -6546,7 +6546,7 @@ CODE_23B552:        C9 02         CMP #$02
 CODE_23B554:        F0 09         BEQ CODE_23B55F           
 CODE_23B556:        C9 09         CMP #$09                  
 CODE_23B558:        F0 05         BEQ CODE_23B55F           
-CODE_23B55A:        BD A7 A6      LDA $A6A7,x               
+CODE_23B55A:        BD A7 A6      LDA.w DATA_21A6A7,x               
 CODE_23B55D:        97 2E         STA [$2E],y               
 CODE_23B55F:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B563:        C6 04         DEC $04                   
@@ -6608,14 +6608,14 @@ CODE_23B5C4:        AA            TAX
 CODE_23B5C5:        AC 00 07      LDY $0700                 
 CODE_23B5C8:        A5 02         LDA $02                   
 CODE_23B5CA:        85 04         STA $04                   
-CODE_23B5CC:        BD B0 A6      LDA $A6B0,x               
+CODE_23B5CC:        BD B0 A6      LDA.w DATA_21A6B0,x               
 CODE_23B5CF:        97 2E         STA [$2E],y               
 CODE_23B5D1:        8A            TXA                       
 CODE_23B5D2:        F0 0B         BEQ CODE_23B5DF           
 CODE_23B5D4:        22 1E 88 2A   JSL CODE_2A881E           
 CODE_23B5D8:        80 05         BRA CODE_23B5DF           
 
-CODE_23B5DA:        BD A7 A6      LDA $A6A7,x               
+CODE_23B5DA:        BD A7 A6      LDA.w DATA_21A6A7,x               
 CODE_23B5DD:        97 2E         STA [$2E],y               
 CODE_23B5DF:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B5E3:        C6 04         DEC $04                   
@@ -6684,12 +6684,12 @@ CODE_23B651:        A5 30         LDA $30
 CODE_23B653:        85 DA         STA $DA                   
 CODE_23B655:        B7 D8         LDA [$D8],y               
 CODE_23B657:        D0 05         BNE CODE_23B65E           
-CODE_23B659:        BD A7 A6      LDA $A6A7,x               
+CODE_23B659:        BD A7 A6      LDA.w DATA_21A6A7,x               
 CODE_23B65C:        97 2E         STA [$2E],y               
 CODE_23B65E:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B662:        C6 04         DEC $04                   
 CODE_23B664:        D0 E0         BNE CODE_23B646           
-CODE_23B666:        BD B3 A6      LDA $A6B3,x               
+CODE_23B666:        BD B3 A6      LDA.w DATA_21A6B3,x               
 CODE_23B669:        97 2E         STA [$2E],y               
 CODE_23B66B:        8A            TXA                       
 CODE_23B66C:        F0 0C         BEQ CODE_23B67A           
@@ -6737,7 +6737,7 @@ CODE_23B6B7:        AC 00 07      LDY $0700
 CODE_23B6BA:        A5 02         LDA $02                   
 CODE_23B6BC:        85 04         STA $04                   
 CODE_23B6BE:        F0 1F         BEQ CODE_23B6DF           
-CODE_23B6C0:        BD A7 A6      LDA $A6A7,x               
+CODE_23B6C0:        BD A7 A6      LDA.w DATA_21A6A7,x               
 CODE_23B6C3:        97 2E         STA [$2E],y               
 CODE_23B6C5:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B6C9:        8A            TXA                       
@@ -6745,12 +6745,12 @@ CODE_23B6CA:        F0 06         BEQ CODE_23B6D2
 CODE_23B6CC:        B7 2E         LDA [$2E],y               
 CODE_23B6CE:        C9 08         CMP #$08                  
 CODE_23B6D0:        F0 05         BEQ CODE_23B6D7           
-CODE_23B6D2:        BD A7 A6      LDA $A6A7,x               
+CODE_23B6D2:        BD A7 A6      LDA.w DATA_21A6A7,x               
 CODE_23B6D5:        97 2E         STA [$2E],y               
 CODE_23B6D7:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B6DB:        C6 04         DEC $04                   
 CODE_23B6DD:        D0 E1         BNE CODE_23B6C0           
-CODE_23B6DF:        BD B6 A6      LDA $A6B6,x               
+CODE_23B6DF:        BD B6 A6      LDA.w DATA_21A6B6,x               
 CODE_23B6E2:        97 2E         STA [$2E],y               
 CODE_23B6E4:        8A            TXA                       
 CODE_23B6E5:        D0 08         BNE CODE_23B6EF           
@@ -6759,7 +6759,7 @@ CODE_23B6E8:        A2 04         LDX #$04
 CODE_23B6EA:        22 DC 89 2A   JSL CODE_2A89DC           
 CODE_23B6EE:        FA            PLX                       
 CODE_23B6EF:        22 BB BE 23   JSL CODE_23BEBB           
-CODE_23B6F3:        BD B9 A6      LDA $A6B9,x               
+CODE_23B6F3:        BD B9 A6      LDA.w DATA_21A6B9,x               
 CODE_23B6F6:        97 2E         STA [$2E],y               
 CODE_23B6F8:        C9 9F         CMP #$9F                  
 CODE_23B6FA:        D0 04         BNE CODE_23B700           
@@ -6803,7 +6803,7 @@ CODE_23B73E:        AA            TAX
 CODE_23B73F:        AC 00 07      LDY $0700                 
 CODE_23B742:        A5 02         LDA $02                   
 CODE_23B744:        85 04         STA $04                   
-CODE_23B746:        BD BC A6      LDA $A6BC,x               
+CODE_23B746:        BD BC A6      LDA.w DATA_21A6BC,x               
 CODE_23B749:        97 2E         STA [$2E],y               
 CODE_23B74B:        C9 9C         CMP #$9C                  
 CODE_23B74D:        D0 08         BNE CODE_23B757           
@@ -6812,7 +6812,7 @@ CODE_23B750:        A2 03         LDX #$03
 CODE_23B752:        22 E2 8A 2A   JSL CODE_2A8AE2           
 CODE_23B756:        FA            PLX                       
 CODE_23B757:        22 BB BE 23   JSL CODE_23BEBB           
-CODE_23B75B:        BD BF A6      LDA $A6BF,x               
+CODE_23B75B:        BD BF A6      LDA.w DATA_21A6BF,x               
 CODE_23B75E:        97 2E         STA [$2E],y               
 CODE_23B760:        C9 9D         CMP #$9D                  
 CODE_23B762:        D0 31         BNE CODE_23B795           
@@ -6833,10 +6833,10 @@ CODE_23B77F:        C9 02         CMP #$02
 CODE_23B781:        F0 09         BEQ CODE_23B78C           
 CODE_23B783:        C9 07         CMP #$07                  
 CODE_23B785:        F0 05         BEQ CODE_23B78C           
-CODE_23B787:        BD A7 A6      LDA $A6A7,x               
+CODE_23B787:        BD A7 A6      LDA.w DATA_21A6A7,x               
 CODE_23B78A:        97 2E         STA [$2E],y               
 CODE_23B78C:        22 BB BE 23   JSL CODE_23BEBB           
-CODE_23B790:        BD A7 A6      LDA $A6A7,x               
+CODE_23B790:        BD A7 A6      LDA.w DATA_21A6A7,x               
 CODE_23B793:        97 2E         STA [$2E],y               
 CODE_23B795:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B799:        C6 04         DEC $04                   
@@ -6901,18 +6901,18 @@ CODE_23B7FE:        AA            TAX
 CODE_23B7FF:        AC 00 07      LDY $0700                 
 CODE_23B802:        A5 02         LDA $02                   
 CODE_23B804:        85 04         STA $04                   
-CODE_23B806:        BD C2 A6      LDA $A6C2,x               
+CODE_23B806:        BD C2 A6      LDA.w DATA_21A6C2,x               
 CODE_23B809:        97 2E         STA [$2E],y               
 CODE_23B80B:        22 76 87 2A   JSL CODE_2A8776           
 CODE_23B80F:        22 BB BE 23   JSL CODE_23BEBB           
-CODE_23B813:        BD C5 A6      LDA $A6C5,x               
+CODE_23B813:        BD C5 A6      LDA.w DATA_21A6C5,x               
 CODE_23B816:        97 2E         STA [$2E],y               
 CODE_23B818:        80 0E         BRA CODE_23B828           
 
-CODE_23B81A:        BD A7 A6      LDA $A6A7,x               
+CODE_23B81A:        BD A7 A6      LDA.w DATA_21A6A7,x               
 CODE_23B81D:        97 2E         STA [$2E],y               
 CODE_23B81F:        22 BB BE 23   JSL CODE_23BEBB           
-CODE_23B823:        BD A7 A6      LDA $A6A7,x               
+CODE_23B823:        BD A7 A6      LDA.w DATA_21A6A7,x               
 CODE_23B826:        97 2E         STA [$2E],y               
 CODE_23B828:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B82C:        C6 04         DEC $04                   
@@ -6972,21 +6972,21 @@ CODE_23B886:        AC 00 07      LDY $0700
 CODE_23B889:        A5 02         LDA $02                   
 CODE_23B88B:        85 04         STA $04                   
 CODE_23B88D:        F0 16         BEQ CODE_23B8A5           
-CODE_23B88F:        BD A7 A6      LDA $A6A7,x               
+CODE_23B88F:        BD A7 A6      LDA.w DATA_21A6A7,x               
 CODE_23B892:        97 2E         STA [$2E],y               
 CODE_23B894:        22 BB BE 23   JSL CODE_23BEBB           
-CODE_23B898:        BD A7 A6      LDA $A6A7,x               
+CODE_23B898:        BD A7 A6      LDA.w DATA_21A6A7,x               
 CODE_23B89B:        97 2E         STA [$2E],y               
 CODE_23B89D:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23B8A1:        C6 04         DEC $04                   
 CODE_23B8A3:        D0 EA         BNE CODE_23B88F           
-CODE_23B8A5:        BD C8 A6      LDA $A6C8,x               
+CODE_23B8A5:        BD C8 A6      LDA.w DATA_21A6C8,x               
 CODE_23B8A8:        97 2E         STA [$2E],y               
 CODE_23B8AA:        E0 01         CPX #$01                  
 CODE_23B8AC:        D0 04         BNE CODE_23B8B2           
 CODE_23B8AE:        22 B2 87 2A   JSL CODE_2A87B2           
 CODE_23B8B2:        22 BB BE 23   JSL CODE_23BEBB           
-CODE_23B8B6:        BD CB A6      LDA $A6CB,x               
+CODE_23B8B6:        BD CB A6      LDA.w DATA_21A6CB,x               
 CODE_23B8B9:        97 2E         STA [$2E],y               
 CODE_23B8BB:        C9 A5         CMP #$A5                  
 CODE_23B8BD:        D0 08         BNE CODE_23B8C7           
@@ -7023,7 +7023,7 @@ CODE_23B8F3:        4A            LSR A
 CODE_23B8F4:        4A            LSR A                     
 CODE_23B8F5:        AA            TAX                       
 CODE_23B8F6:        AC 00 07      LDY $0700                 
-CODE_23B8F9:        BD CE A6      LDA $A6CE,x               
+CODE_23B8F9:        BD CE A6      LDA.w DATA_21A6CE,x               
 CODE_23B8FC:        97 2E         STA [$2E],y               
 CODE_23B8FE:        8A            TXA                       
 CODE_23B8FF:        D0 31         BNE CODE_23B932           
@@ -7138,7 +7138,7 @@ CODE_23B9BE:        F0 19         BEQ CODE_23B9D9
 CODE_23B9C0:        C9 0A         CMP #$0A                  
 CODE_23B9C2:        F0 15         BEQ CODE_23B9D9           
 CODE_23B9C4:        22 3A B7 2A   JSL CODE_2AB73A           
-CODE_23B9C8:        BD D4 A6      LDA $A6D4,x               
+CODE_23B9C8:        BD D4 A6      LDA.w DATA_21A6D4,x               
 CODE_23B9CB:        97 2E         STA [$2E],y               
 CODE_23B9CD:        C9 37         CMP #$37                  
 CODE_23B9CF:        F0 08         BEQ CODE_23B9D9           
@@ -7161,7 +7161,7 @@ CODE_23B9F2:        A5 30         LDA $30
 CODE_23B9F4:        85 DA         STA $DA                   
 CODE_23B9F6:        B7 D8         LDA [$D8],y               
 CODE_23B9F8:        D0 09         BNE CODE_23BA03           
-CODE_23B9FA:        BD DA A6      LDA $A6DA,x               
+CODE_23B9FA:        BD DA A6      LDA.w DATA_21A6DA,x               
 CODE_23B9FD:        97 2E         STA [$2E],y               
 CODE_23B9FF:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23BA03:        22 BB BE 23   JSL CODE_23BEBB           
@@ -7240,7 +7240,7 @@ CODE_23BA8F:        C9 02         CMP #$02
 CODE_23BA91:        F0 0D         BEQ CODE_23BAA0           
 CODE_23BA93:        C9 04         CMP #$04                  
 CODE_23BA95:        F0 09         BEQ CODE_23BAA0           
-CODE_23BA97:        BD E0 A6      LDA $A6E0,x               
+CODE_23BA97:        BD E0 A6      LDA.w DATA_21A6E0,x               
 CODE_23BA9A:        97 2E         STA [$2E],y               
 CODE_23BA9C:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23BAA0:        22 BB BE 23   JSL CODE_23BEBB           
@@ -7270,7 +7270,7 @@ CODE_23BAD1:        C2 20         REP #$20
 CODE_23BAD3:        A5 2E         LDA $2E                   
 CODE_23BAD5:        85 D8         STA $D8                   
 CODE_23BAD7:        E2 20         SEP #$20                  
-CODE_23BAD9:        BD E3 A6      LDA $A6E3,x               
+CODE_23BAD9:        BD E3 A6      LDA.w DATA_21A6E3,x               
 CODE_23BADC:        97 2E         STA [$2E],y               
 CODE_23BADE:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23BAE2:        22 6F 88 2A   JSL CODE_2A886F           
@@ -7344,7 +7344,7 @@ CODE_23BB61:        A5 02         LDA $02
 CODE_23BB63:        85 04         STA $04                   
 CODE_23BB65:        A5 03         LDA $03                   
 CODE_23BB67:        F0 1A         BEQ CODE_23BB83           
-CODE_23BB69:        BD E6 A6      LDA $A6E6,x               
+CODE_23BB69:        BD E6 A6      LDA.w DATA_21A6E6,x               
 CODE_23BB6C:        97 2E         STA [$2E],y               
 CODE_23BB6E:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23BB72:        C6 04         DEC $04                   
@@ -7356,7 +7356,7 @@ CODE_23BB7A:        80 14         BRA CODE_23BB90
 CODE_23BB7C:        A5 02         LDA $02                   
 CODE_23BB7E:        85 04         STA $04                   
 CODE_23BB80:        AC 00 07      LDY $0700                 
-CODE_23BB83:        BD E9 A6      LDA $A6E9,x               
+CODE_23BB83:        BD E9 A6      LDA.w DATA_21A6E9,x               
 CODE_23BB86:        97 2E         STA [$2E],y               
 CODE_23BB88:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23BB8C:        C6 04         DEC $04                   
@@ -7395,11 +7395,11 @@ CODE_23BBC5:        E9 C0         SBC #$C0
 CODE_23BBC7:        AA            TAX                       
 CODE_23BBC8:        4C D6 BB      JMP CODE_23BBD6           
 
-CODE_23BBCB:        B9 EC A6      LDA $A6EC,y               
+CODE_23BBCB:        B9 EC A6      LDA.w DATA_21A6EC,y               
 CODE_23BBCE:        22 44 98 20   JSL CODE_209844           
 CODE_23BBD2:        E0 00         CPX #$00                  
 CODE_23BBD4:        D0 F5         BNE CODE_23BBCB           
-CODE_23BBD6:        B9 EC A6      LDA $A6EC,y               
+CODE_23BBD6:        B9 EC A6      LDA.w DATA_21A6EC,y               
 CODE_23BBD9:        22 A8 98 20   JSL CODE_2098A8           
 CODE_23BBDD:        E8            INX                       
 CODE_23BBDE:        E0 F0         CPX #$F0                  
@@ -7451,10 +7451,10 @@ CODE_23BC2F:        E6 03         INC $03
 CODE_23BC31:        A5 03         LDA $03                   
 CODE_23BC33:        0A            ASL A                     
 CODE_23BC34:        AA            TAX                       
-CODE_23BC35:        BD 00 82      LDA $8200,x               
+CODE_23BC35:        BD 00 82      LDA.w DATA_218200,x               
 CODE_23BC38:        85 2E         STA $2E                   
 CODE_23BC3A:        85 00         STA $00                   
-CODE_23BC3C:        BD 01 82      LDA $8201,x               
+CODE_23BC3C:        BD 01 82      LDA.w DATA_218200+1,x               
 CODE_23BC3F:        85 2F         STA $2F                   
 CODE_23BC41:        85 01         STA $01                   
 CODE_23BC43:        85 04         STA $04                   
@@ -7524,16 +7524,16 @@ CODE_23BCC4:        AC 00 07      LDY $0700
 CODE_23BCC7:        A2 00         LDX #$00                  
 CODE_23BCC9:        A5 02         LDA $02                   
 CODE_23BCCB:        85 03         STA $03                   
-CODE_23BCCD:        BD EF A6      LDA $A6EF,x               
+CODE_23BCCD:        BD EF A6      LDA.w DATA_21A6EF,x               
 CODE_23BCD0:        97 2E         STA [$2E],y               
 CODE_23BCD2:        80 05         BRA CODE_23BCD9           
 
-CODE_23BCD4:        BD F1 A6      LDA $A6F1,x               
+CODE_23BCD4:        BD F1 A6      LDA.w DATA_21A6F1,x               
 CODE_23BCD7:        97 2E         STA [$2E],y               
 CODE_23BCD9:        22 BB BE 23   JSL CODE_23BEBB           
 CODE_23BCDD:        C6 03         DEC $03                   
 CODE_23BCDF:        D0 F3         BNE CODE_23BCD4           
-CODE_23BCE1:        BD F3 A6      LDA $A6F3,x               
+CODE_23BCE1:        BD F3 A6      LDA.w DATA_21A6F3,x               
 CODE_23BCE4:        97 2E         STA [$2E],y               
 CODE_23BCE6:        A5 00         LDA $00                   
 CODE_23BCE8:        85 2E         STA $2E                   
@@ -7568,7 +7568,7 @@ CODE_23BD16:        68            PLA
 CODE_23BD17:        29 0F         AND #$0F                  
 CODE_23BD19:        85 03         STA $03                   
 CODE_23BD1B:        AC 00 07      LDY $0700                 
-CODE_23BD1E:        BD F5 A6      LDA $A6F5,x               
+CODE_23BD1E:        BD F5 A6      LDA.w DATA_21A6F5,x               
 CODE_23BD21:        97 2E         STA [$2E],y               
 CODE_23BD23:        22 3A B7 2A   JSL CODE_2AB73A           
 CODE_23BD27:        22 BB BE 23   JSL CODE_23BEBB           
@@ -7578,7 +7578,7 @@ CODE_23BD2F:        6B            RTL
 
 CODE_23BD30:        AE 06 07      LDX $0706                 
 CODE_23BD33:        AC 00 07      LDY $0700                 
-CODE_23BD36:        BD F7 A6      LDA $A6F7,x               
+CODE_23BD36:        BD F7 A6      LDA.w DATA_21A6F7,x               
 CODE_23BD39:        97 2E         STA [$2E],y               
 CODE_23BD3B:        6B            RTL                       
 
@@ -7597,9 +7597,9 @@ CODE_23BD51:        64 06         STZ $06
 CODE_23BD53:        A5 04         LDA $04                   
 CODE_23BD55:        0A            ASL A                     
 CODE_23BD56:        AA            TAX                       
-CODE_23BD57:        BD 17 A8      LDA $A817,x               
+CODE_23BD57:        BD 17 A8      LDA.w DATA_21A817,x               
 CODE_23BD5A:        85 02         STA $02                   
-CODE_23BD5C:        BD 18 A8      LDA $A818,x               
+CODE_23BD5C:        BD 18 A8      LDA.w DATA_21A817+1,x               
 CODE_23BD5F:        85 03         STA $03                   
 CODE_23BD61:        A4 05         LDY $05                   
 CODE_23BD63:        C2 21         REP #$21                  
@@ -7776,7 +7776,7 @@ CODE_23BEAB:        29 07         AND #$07
 CODE_23BEAD:        AA            TAX                       
 CODE_23BEAE:        A4 0D         LDY $0D                   
 CODE_23BEB0:        B9 04 1E      LDA $1E04,y               
-CODE_23BEB3:        3D A8 AA      AND $AAA8,x               
+CODE_23BEB3:        3D A8 AA      AND.w DATA_21AAA8,x               
 CODE_23BEB6:        A6 0B         LDX $0B                   
 CODE_23BEB8:        A4 0C         LDY $0C                   
 CODE_23BEBA:        60            RTS                       
@@ -7876,13 +7876,13 @@ CODE_23BF7E:        B9 83 07      LDA $0783,y
 CODE_23BF81:        09 10         ORA #$10                  
 CODE_23BF83:        99 7C 1F      STA $1F7C,y               
 CODE_23BF86:        A5 70         LDA $70                   
-CODE_23BF88:        79 FB E9      ADC $E9FB,y               
+CODE_23BF88:        79 FB E9      ADC.w DATA_21E9FB,y               
 CODE_23BF8B:        99 84 1F      STA $1F84,y               
 CODE_23BF8E:        A5 55         LDA $55                   
 CODE_23BF90:        69 00         ADC #$00                  
 CODE_23BF92:        99 80 1F      STA $1F80,y               
 CODE_23BF95:        A5 5E         LDA $5E                   
-CODE_23BF97:        79 FE E9      ADC $E9FE,y               
+CODE_23BF97:        79 FE E9      ADC.w DATA_21E9FE,y               
 CODE_23BF9A:        99 8C 1F      STA $1F8C,y               
 CODE_23BF9D:        A5 43         LDA $43                   
 CODE_23BF9F:        69 00         ADC #$00                  
@@ -7890,7 +7890,7 @@ CODE_23BFA1:        99 88 1F      STA $1F88,y
 CODE_23BFA4:        4C 7A BF      JMP CODE_23BF7A           
 
 CODE_23BFA7:        AC 0A 07      LDY $070A                 
-CODE_23BFAA:        B9 45 E9      LDA $E945,y               
+CODE_23BFAA:        B9 45 E9      LDA.w DATA_21E945,y               
 CODE_23BFAD:        8D 60 05      STA $0560                 
 CODE_23BFB0:        22 67 DF 23   JSL CODE_23DF67           
 CODE_23BFB4:        20 CD C0      JSR CODE_23C0CD           
@@ -8029,7 +8029,7 @@ CODE_23C0E3:        20 67 C4      JSR CODE_23C467
 CODE_23C0E6:        A9 40         LDA #$40                  
 CODE_23C0E8:        85 BD         STA $BD                   
 CODE_23C0EA:        AC 26 04      LDY $0426                 
-CODE_23C0ED:        B9 01 EA      LDA $EA01,y               
+CODE_23C0ED:        B9 01 EA      LDA.w DATA_21EA01,y               
 CODE_23C0F0:        85 5E         STA $5E                   
 CODE_23C0F2:        85 B9         STA $B9                   
 CODE_23C0F4:        20 4C C1      JSR CODE_23C14C           
@@ -8044,9 +8044,9 @@ CODE_23C108:        20 C9 C1      JSR CODE_23C1C9
 CODE_23C10B:        AD 25 04      LDA $0425                 
 CODE_23C10E:        F0 20         BEQ CODE_23C130           
 CODE_23C110:        A4 55         LDY $55                   
-CODE_23C112:        B9 ED CE      LDA $CEED,y               
+CODE_23C112:        B9 ED CE      LDA.w DATA_21CEED,y               
 CODE_23C115:        8D 42 05      STA $0542                 
-CODE_23C118:        B9 FD CE      LDA $CEFD,y               
+CODE_23C118:        B9 FD CE      LDA.w DATA_21CEFD,y               
 CODE_23C11B:        8D 43 05      STA $0543                 
 CODE_23C11E:        A5 70         LDA $70                   
 CODE_23C120:        A4 55         LDY $55                   
@@ -8063,7 +8063,7 @@ CODE_23C136:        A5 13         LDA $13
 CODE_23C138:        8D 42 05      STA $0542                 
 CODE_23C13B:        60            RTS                       
 
-PNTR_23C13C:     dw CODE_23C173
+PNTR_23C13C:        dw CODE_23C173
                     dw CODE_23C167
                     dw CODE_23C174
                     dw CODE_23C17B
@@ -8088,7 +8088,7 @@ CODE_23C163:        AB            PLB
 CODE_23C164:        6C 00 00      JMP ($0000)               
 
 CODE_23C167:        A4 BB         LDY $BB                   
-CODE_23C169:        B9 64 AF      LDA $AF64,y               
+CODE_23C169:        B9 64 AF      LDA.w DATA_21AF64,y               
 CODE_23C16C:        29 02         AND #$02                  
 CODE_23C16E:        D0 03         BNE CODE_23C173           
 CODE_23C170:        EE 45 05      INC $0545                 
@@ -8203,7 +8203,7 @@ CODE_23C252:        A9 02         LDA #$02
 CODE_23C254:        8D 77 03      STA $0377                 
 CODE_23C257:        29 0F         AND #$0F                  
 CODE_23C259:        A8            TAY                       
-CODE_23C25A:        B9 05 EA      LDA $EA05,y               
+CODE_23C25A:        B9 05 EA      LDA.w DATA_21EA05,y               
 CODE_23C25D:        8D 10 05      STA $0510                 
 CODE_23C260:        6B            RTL                       
 
@@ -8368,7 +8368,7 @@ CODE_23C3C6:        AC 16 02      LDY $0216
 CODE_23C3C9:        10 02         BPL CODE_23C3CD           
 CODE_23C3CB:        09 04         ORA #$04                  
 CODE_23C3CD:        A8            TAY                       
-CODE_23C3CE:        B9 0A EA      LDA $EA0A,y               
+CODE_23C3CE:        B9 0A EA      LDA.w DATA_21EA0A,y               
 CODE_23C3D1:        48            PHA                       
 CODE_23C3D2:        18            CLC                       
 CODE_23C3D3:        6D 43 05      ADC $0543                 
@@ -8489,7 +8489,7 @@ CODE_23C4B9:        60            RTS
 CODE_23C4BA:        A0 01         LDY #$01                  
 CODE_23C4BC:        84 0E         STY $0E                   
 CODE_23C4BE:        AD 84 05      LDA $0584                 
-CODE_23C4C1:        3D 1E EB      AND $EB1E,x               
+CODE_23C4C1:        3D 1E EB      AND.w DATA_21EB1E,x               
 CODE_23C4C4:        D0 32         BNE CODE_23C4F8           
 CODE_23C4C6:        B5 00         LDA $00,x                 
 CODE_23C4C8:        0A            ASL A                     
@@ -8507,7 +8507,7 @@ CODE_23C4DB:        F0 19         BEQ CODE_23C4F6
 CODE_23C4DD:        98            TYA                       
 CODE_23C4DE:        05 02         ORA $02                   
 CODE_23C4E0:        A8            TAY                       
-CODE_23C4E1:        B9 84 AD      LDA $AD84,y               
+CODE_23C4E1:        B9 84 AD      LDA.w DATA_21AD84,y               
 CODE_23C4E4:        A0 00         LDY #$00                  
 CODE_23C4E6:        D5 00         CMP $00,x                 
 CODE_23C4E8:        B0 0C         BCS CODE_23C4F6                   
@@ -8894,7 +8894,7 @@ CODE_23C811:        AB            PLB
 CODE_23C812:        FA            PLX                       
 CODE_23C813:        6C 00 00      JMP ($0000)               
 
-PNTR_23C816:     dw CODE_23C834
+PNTR_23C816:        dw CODE_23C834
                     dw CODE_23C85F
                     dw CODE_23C86A
                     dw CODE_23C884
@@ -8986,7 +8986,7 @@ CODE_23C8C8:        4A            LSR A
 CODE_23C8C9:        4A            LSR A                     
 CODE_23C8CA:        4A            LSR A                     
 CODE_23C8CB:        A8            TAY                       
-CODE_23C8CC:        B9 AE E9      LDA $E9AE,y               
+CODE_23C8CC:        B9 AE E9      LDA.w DATA_21E9AE,y               
 CODE_23C8CF:        85 BC         STA $BC                   
 CODE_23C8D1:        60            RTS                       
 
@@ -8999,7 +8999,7 @@ CODE_23C8DC:        4A            LSR A
 CODE_23C8DD:        4A            LSR A                     
 CODE_23C8DE:        4A            LSR A                     
 CODE_23C8DF:        AA            TAX                       
-CODE_23C8E0:        BD 2D EB      LDA $EB2D,x               
+CODE_23C8E0:        BD 2D EB      LDA.w DATA_21EB2D,x               
 CODE_23C8E3:        10 07         BPL CODE_23C8EC           
 CODE_23C8E5:        AC 44 05      LDY $0544                 
 CODE_23C8E8:        10 02         BPL CODE_23C8EC           
@@ -9028,7 +9028,7 @@ CODE_23C90F:        29 03         AND #$03
 CODE_23C911:        F0 10         BEQ CODE_23C923           
 CODE_23C913:        4A            LSR A                     
 CODE_23C914:        A8            TAY                       
-CODE_23C915:        B9 2D EB      LDA $EB2D,y               
+CODE_23C915:        B9 2D EB      LDA.w DATA_21EB2D,y               
 CODE_23C918:        A4 17         LDY $17                   
 CODE_23C91A:        10 01         BPL CODE_23C91D           
 CODE_23C91C:        0A            ASL A                     
@@ -9063,13 +9063,13 @@ CODE_23C94A:        29 07         AND #$07
 CODE_23C94C:        A8            TAY                       
 CODE_23C94D:        D0 0C         BNE CODE_23C95B           
 CODE_23C94F:        A5 15         LDA $15                   
-CODE_23C951:        39 20 EB      AND $EB20,y               
+CODE_23C951:        39 20 EB      AND.w DATA_21EB20,y               
 CODE_23C954:        D0 05         BNE CODE_23C95B           
 CODE_23C956:        A9 0E         LDA #$0E                  
 CODE_23C958:        8D 00 12      STA $1200                 
-CODE_23C95B:        BD 22 EB      LDA $EB22,x               
+CODE_23C95B:        BD 22 EB      LDA.w DATA_21EB22,x               
 CODE_23C95E:        18            CLC                       
-CODE_23C95F:        79 25 EB      ADC $EB25,y               
+CODE_23C95F:        79 25 EB      ADC.w DATA_21EB25,y               
 CODE_23C962:        D0 0B         BNE CODE_23C96F           
 CODE_23C964:        A0 3E         LDY #$3E                  
 CODE_23C966:        A5 15         LDA $15                   
@@ -9114,12 +9114,12 @@ CODE_23C9B4:        A5 18         LDA $18
 CODE_23C9B6:        10 0A         BPL CODE_23C9C2           
 CODE_23C9B8:        A9 00         LDA #$00                  
 CODE_23C9BA:        8D 50 05      STA $0550                 
-CODE_23C9BD:        AC FD EA      LDY $EAFD                 
+CODE_23C9BD:        AC FD EA      LDY.w DATA_21EAFD                 
 CODE_23C9C0:        84 9D         STY $9D                   
 CODE_23C9C2:        A4 BB         LDY $BB                   
 CODE_23C9C4:        F0 02         BEQ CODE_23C9C8           
 CODE_23C9C6:        A0 01         LDY #$01                  
-CODE_23C9C8:        B9 A4 E9      LDA $E9A4,y               
+CODE_23C9C8:        B9 A4 E9      LDA.w DATA_21E9A4,y               
 CODE_23C9CB:        85 BC         STA $BC                   
 CODE_23C9CD:        A5 15         LDA $15                   
 CODE_23C9CF:        29 08         AND #$08                  
@@ -9138,7 +9138,7 @@ CODE_23C9E6:        A0 01         LDY #$01
 CODE_23C9E8:        D0 05         BNE CODE_23C9EF           
 CODE_23C9EA:        AC B6 06      LDY $06B6                 
 CODE_23C9ED:        F0 07         BEQ CODE_23C9F6           
-CODE_23C9EF:        B9 2F EB      LDA $EB2F,y               
+CODE_23C9EF:        B9 2F EB      LDA.w DATA_21EB2F,y               
 CODE_23C9F2:        A8            TAY                       
 CODE_23C9F3:        4C 17 CA      JMP CODE_23CA17           
 
@@ -9207,9 +9207,9 @@ CODE_23CA63:        29 01         AND #$01
 CODE_23CA65:        D0 18         BNE CODE_23CA7F           
 CODE_23CA67:        A9 00         LDA #$00                  
 CODE_23CA69:        38            SEC                       
-CODE_23CA6A:        F9 A2 EA      SBC $EAA2,y               
+CODE_23CA6A:        F9 A2 EA      SBC.w DATA_21EAA2,y               
 CODE_23CA6D:        85 00         STA $00                   
-CODE_23CA6F:        B9 52 EA      LDA $EA52,y               
+CODE_23CA6F:        B9 52 EA      LDA.w DATA_21EA52,y               
 CODE_23CA72:        49 FF         EOR #$FF                  
 CODE_23CA74:        85 01         STA $01                   
 CODE_23CA76:        A5 00         LDA $00                   
@@ -9217,9 +9217,9 @@ CODE_23CA78:        D0 0F         BNE CODE_23CA89
 CODE_23CA7A:        E6 01         INC $01                   
 CODE_23CA7C:        4C 89 CA      JMP CODE_23CA89           
 
-CODE_23CA7F:        B9 A2 EA      LDA $EAA2,y               
+CODE_23CA7F:        B9 A2 EA      LDA.w DATA_21EAA2,y               
 CODE_23CA82:        85 00         STA $00                   
-CODE_23CA84:        B9 52 EA      LDA $EA52,y               
+CODE_23CA84:        B9 52 EA      LDA.w DATA_21EA52,y               
 CODE_23CA87:        85 01         STA $01                   
 CODE_23CA89:        A5 00         LDA $00                   
 CODE_23CA8B:        18            CLC                       
@@ -9285,9 +9285,9 @@ CODE_23CB00:        4A            LSR A
 CODE_23CB01:        4A            LSR A                     
 CODE_23CB02:        4A            LSR A                     
 CODE_23CB03:        AA            TAX                       
-CODE_23CB04:        AD FD EA      LDA $EAFD                 
+CODE_23CB04:        AD FD EA      LDA.w DATA_21EAFD                 
 CODE_23CB07:        38            SEC                       
-CODE_23CB08:        FD FE EA      SBC $EAFE,x               
+CODE_23CB08:        FD FE EA      SBC.w DATA_21EAFE,x               
 CODE_23CB0B:        85 9D         STA $9D                   
 CODE_23CB0D:        A9 01         LDA #$01                  
 CODE_23CB0F:        85 A6         STA $A6                   
@@ -9304,7 +9304,7 @@ CODE_23CB27:        8D 6E 05      STA $056E
 CODE_23CB2A:        A5 A6         LDA $A6                   
 CODE_23CB2C:        D0 11         BNE CODE_23CB3F           
 CODE_23CB2E:        A4 BB         LDY $BB                   
-CODE_23CB30:        B9 64 AF      LDA $AF64,y               
+CODE_23CB30:        B9 64 AF      LDA.w DATA_21AF64,y               
 CODE_23CB33:        29 01         AND #$01                  
 CODE_23CB35:        D0 6F         BNE CODE_23CBA6           
 CODE_23CB37:        A9 00         LDA #$00                  
@@ -9333,7 +9333,7 @@ CODE_23CB63:        C6 BE         DEC $BE
 CODE_23CB65:        AD 77 05      LDA $0577                 
 CODE_23CB68:        D0 11         BNE CODE_23CB7B           
 CODE_23CB6A:        A6 BB         LDX $BB                   
-CODE_23CB6C:        BD 64 AF      LDA $AF64,x               
+CODE_23CB6C:        BD 64 AF      LDA.w DATA_21AF64,x               
 CODE_23CB6F:        29 01         AND #$01                  
 CODE_23CB71:        F0 08         BEQ CODE_23CB7B           
 CODE_23CB73:        A4 00         LDY $00                   
@@ -9367,7 +9367,7 @@ CODE_23CBAB:        4A            LSR A
 CODE_23CBAC:        A8            TAY                       
 CODE_23CBAD:        A5 9D         LDA $9D                   
 CODE_23CBAF:        10 09         BPL CODE_23CBBA           
-CODE_23CBB1:        D9 3A EB      CMP $EB3A,y               
+CODE_23CBB1:        D9 3A EB      CMP.w DATA_21EB3A,y               
 CODE_23CBB4:        30 04         BMI CODE_23CBBA           
 CODE_23CBB6:        A9 20         LDA #$20                  
 CODE_23CBB8:        85 9D         STA $9D                   
@@ -9442,7 +9442,7 @@ CODE_23CC3C:        C8            INY
 CODE_23CC3D:        C8            INY                       
 CODE_23CC3E:        C8            INY                       
 CODE_23CC3F:        C8            INY                       
-CODE_23CC40:        B9 92 E9      LDA $E992,y               
+CODE_23CC40:        B9 92 E9      LDA.w DATA_21E992,y               
 CODE_23CC43:        85 BC         STA $BC                   
 CODE_23CC45:        60            RTS                       
 
@@ -9457,7 +9457,7 @@ CODE_23CC56:        D0 03         BNE CODE_23CC5B
 CODE_23CC58:        18            CLC                       
 CODE_23CC59:        69 06         ADC #$06                  
 CODE_23CC5B:        A8            TAY                       
-CODE_23CC5C:        B9 86 E9      LDA $E986,y               
+CODE_23CC5C:        B9 86 E9      LDA.w DATA_21E986,y               
 CODE_23CC5F:        85 BC         STA $BC                   
 CODE_23CC61:        60            RTS                       
 
@@ -9470,7 +9470,7 @@ CODE_23CC6C:        4A            LSR A
 CODE_23CC6D:        A8            TAY                       
 CODE_23CC6E:        EE 74 05      INC $0574                 
 CODE_23CC71:        AD 74 05      LDA $0574                 
-CODE_23CC74:        D9 F4 EA      CMP $EAF4,y               
+CODE_23CC74:        D9 F4 EA      CMP.w DATA_21EAF4,y               
 CODE_23CC77:        30 14         BMI CODE_23CC8D           
 CODE_23CC79:        A9 00         LDA #$00                  
 CODE_23CC7B:        8D 74 05      STA $0574                 
@@ -9526,7 +9526,7 @@ CODE_23CCE4:        0A            ASL A
 CODE_23CCE5:        0A            ASL A                     
 CODE_23CCE6:        05 BA         ORA $BA                   
 CODE_23CCE8:        A8            TAY                       
-CODE_23CCE9:        B9 58 E9      LDA $E958,y               
+CODE_23CCE9:        B9 58 E9      LDA.w DATA_21E958,y               
 CODE_23CCEC:        85 BC         STA $BC                   
 CODE_23CCEE:        AD 75 05      LDA $0575                 
 CODE_23CCF1:        D0 4D         BNE CODE_23CD40           
@@ -9543,7 +9543,7 @@ CODE_23CD05:        F0 02         BEQ CODE_23CD09
 CODE_23CD07:        A0 01         LDY #$01                  
 CODE_23CD09:        A5 A6         LDA $A6                   
 CODE_23CD0B:        D0 33         BNE CODE_23CD40           
-CODE_23CD0D:        B9 84 E9      LDA $E984,y               
+CODE_23CD0D:        B9 84 E9      LDA.w DATA_21E984,y               
 CODE_23CD10:        85 BC         STA $BC                   
 CODE_23CD12:        AF 22 C5 7F   LDA $7FC522               
 CODE_23CD16:        0F 23 C5 7F   ORA $7FC523               
@@ -9563,10 +9563,10 @@ CODE_23CD3C:        8F 2C C5 7F   STA $7FC52C
 CODE_23CD40:        AD 6F 05      LDA $056F                 
 CODE_23CD43:        F0 0D         BEQ CODE_23CD52           
 CODE_23CD45:        A4 BB         LDY $BB                   
-CODE_23CD47:        B9 64 AF      LDA $AF64,y               
+CODE_23CD47:        B9 64 AF      LDA.w DATA_21AF64,y               
 CODE_23CD4A:        29 01         AND #$01                  
 CODE_23CD4C:        A8            TAY                       
-CODE_23CD4D:        B9 A6 E9      LDA $E9A6,y               
+CODE_23CD4D:        B9 A6 E9      LDA.w DATA_21E9A6,y               
 CODE_23CD50:        85 BC         STA $BC                   
 CODE_23CD52:        AD 45 05      LDA $0545                 
 CODE_23CD55:        F0 19         BEQ CODE_23CD70           
@@ -9603,7 +9603,7 @@ CODE_23CD96:        C8            INY
 CODE_23CD97:        C8            INY                       
 CODE_23CD98:        C8            INY                       
 CODE_23CD99:        C8            INY                       
-CODE_23CD9A:        B9 B2 E9      LDA $E9B2,y               
+CODE_23CD9A:        B9 B2 E9      LDA.w DATA_21E9B2,y               
 CODE_23CD9D:        85 BC         STA $BC                   
 CODE_23CD9F:        AD 4F 05      LDA $054F                 
 CODE_23CDA2:        F0 1B         BEQ CODE_23CDBF           
@@ -9612,7 +9612,7 @@ CODE_23CDA6:        4A            LSR A
 CODE_23CDA7:        48            PHA                       
 CODE_23CDA8:        29 07         AND #$07                  
 CODE_23CDAA:        A8            TAY                       
-CODE_23CDAB:        B9 14 EB      LDA $EB14,y               
+CODE_23CDAB:        B9 14 EB      LDA.w DATA_21EB14,y               
 CODE_23CDAE:        A4 8B         LDY $8B                   
 CODE_23CDB0:        10 02         BPL CODE_23CDB4           
 CODE_23CDB2:        49 40         EOR #$40                  
@@ -9638,7 +9638,7 @@ CODE_23CDD5:        C8            INY
 CODE_23CDD6:        C8            INY                       
 CODE_23CDD7:        C8            INY                       
 CODE_23CDD8:        C8            INY                       
-CODE_23CDD9:        B9 C6 E9      LDA $E9C6,y               
+CODE_23CDD9:        B9 C6 E9      LDA.w DATA_21E9C6,y               
 CODE_23CDDC:        85 BC         STA $BC                   
 CODE_23CDDE:        AD 58 05      LDA $0558                 
 CODE_23CDE1:        D0 11         BNE CODE_23CDF4           
@@ -9678,7 +9678,7 @@ CODE_23CE2C:        80 0C         BRA CODE_23CE3A
 
 CODE_23CE2E:        A0 04         LDY #$04                  
 CODE_23CE30:        AA            TAX                       
-CODE_23CE31:        BD 64 AF      LDA $AF64,x               
+CODE_23CE31:        BD 64 AF      LDA.w DATA_21AF64,x               
 CODE_23CE34:        29 01         AND #$01                  
 CODE_23CE36:        F0 02         BEQ CODE_23CE3A           
 CODE_23CE38:        A0 08         LDY #$08                  
@@ -9690,18 +9690,18 @@ CODE_23CE41:        4A            LSR A
 CODE_23CE42:        48            PHA                       
 CODE_23CE43:        4A            LSR A                     
 CODE_23CE44:        A8            TAY                       
-CODE_23CE45:        B9 40 EB      LDA $EB40,y               
+CODE_23CE45:        B9 40 EB      LDA.w DATA_21EB40,y               
 CODE_23CE48:        85 BD         STA $BD                   
 CODE_23CE4A:        68            PLA                       
 CODE_23CE4B:        18            CLC                       
 CODE_23CE4C:        65 00         ADC $00                   
 CODE_23CE4E:        A8            TAY                       
-CODE_23CE4F:        B9 CE E9      LDA $E9CE,y               
+CODE_23CE4F:        B9 CE E9      LDA.w DATA_21E9CE,y               
 CODE_23CE52:        85 BC         STA $BC                   
 CODE_23CE54:        AD F4 1C      LDA $1CF4                 
 CODE_23CE57:        F0 07         BEQ CODE_23CE60           
 CODE_23CE59:        A4 BB         LDY $BB                   
-CODE_23CE5B:        B9 EC E9      LDA $E9EC,y               
+CODE_23CE5B:        B9 EC E9      LDA.w DATA_21E9EC,y               
 CODE_23CE5E:        85 BC         STA $BC                   
 CODE_23CE60:        60            RTS                       
 
@@ -9761,7 +9761,7 @@ CODE_23CEC9:        60            RTS
 CODE_23CECA:        AD 6B 05      LDA $056B                 
 CODE_23CECD:        F0 16         BEQ CODE_23CEE5           
 CODE_23CECF:        A4 BB         LDY $BB                   
-CODE_23CED1:        B9 DE E9      LDA $E9DE,y               
+CODE_23CED1:        B9 DE E9      LDA.w DATA_21E9DE,y               
 CODE_23CED4:        85 BC         STA $BC                   
 CODE_23CED6:        A5 17         LDA $17                   
 CODE_23CED8:        29 0C         AND #$0C                  
@@ -9807,7 +9807,7 @@ CODE_23CF24:        69 03         ADC #$03
 CODE_23CF26:        18            CLC                       
 CODE_23CF27:        65 00         ADC $00                   
 CODE_23CF29:        A8            TAY                       
-CODE_23CF2A:        B9 BA E9      LDA $E9BA,y               
+CODE_23CF2A:        B9 BA E9      LDA.w DATA_21E9BA,y               
 CODE_23CF2D:        85 BC         STA $BC                   
 CODE_23CF2F:        AD 6E 05      LDA $056E                 
 CODE_23CF32:        0D BE 00      ORA $00BE                 
@@ -9867,7 +9867,7 @@ CODE_23CF9A:        C8            INY
 CODE_23CF9B:        C8            INY                       
 CODE_23CF9C:        C8            INY                       
 CODE_23CF9D:        C8            INY                       
-CODE_23CF9E:        B9 9A E9      LDA $E99A,y               
+CODE_23CF9E:        B9 9A E9      LDA.w DATA_21E99A,y               
 CODE_23CFA1:        85 BC         STA $BC                   
 CODE_23CFA3:        AD 17 05      LDA $0517                 
 CODE_23CFA6:        C9 0B         CMP #$0B                  
@@ -9888,7 +9888,7 @@ CODE_23CFBE:        F0 03         BEQ CODE_23CFC3
 CODE_23CFC0:        18            CLC                       
 CODE_23CFC1:        69 03         ADC #$03                  
 CODE_23CFC3:        A8            TAY                       
-CODE_23CFC4:        B9 A8 E9      LDA $E9A8,y               
+CODE_23CFC4:        B9 A8 E9      LDA.w DATA_21E9A8,y               
 CODE_23CFC7:        85 BC         STA $BC                   
 CODE_23CFC9:        60            RTS                       
 
@@ -10162,9 +10162,9 @@ CODE_23D1FB:        6B            RTL
 CODE_23D1FC:        A9 00         LDA #$00                  
 CODE_23D1FE:        85 43         STA $43                   
 CODE_23D200:        A4 22         LDY $22                   
-CODE_23D202:        B9 ED CE      LDA $CEED,y               
+CODE_23D202:        B9 ED CE      LDA.w DATA_21CEED,y               
 CODE_23D205:        85 00         STA $00                   
-CODE_23D207:        B9 FD CE      LDA $CEFD,y               
+CODE_23D207:        B9 FD CE      LDA.w DATA_21CEFD,y               
 CODE_23D20A:        85 01         STA $01                   
 CODE_23D20C:        A5 70         LDA $70                   
 CODE_23D20E:        38            SEC                       
@@ -10340,9 +10340,9 @@ CODE_23D369:        AD 71 05      LDA $0571
 CODE_23D36C:        F0 01         BEQ CODE_23D36F           
 CODE_23D36E:        60            RTS                       
 
-CODE_23D36F:        AD 82 AD      LDA $AD82                 
+CODE_23D36F:        AD 82 AD      LDA.w DATA_21AD82                 
 CODE_23D372:        85 52         STA $52                   
-CODE_23D374:        AD 83 AD      LDA $AD83                 
+CODE_23D374:        AD 83 AD      LDA.w DATA_21AD82+1                 
 CODE_23D377:        85 53         STA $53                   
 CODE_23D379:        AD 63 05      LDA $0563                 
 CODE_23D37C:        F0 18         BEQ CODE_23D396           
@@ -10351,9 +10351,9 @@ CODE_23D381:        C9 03         CMP #$03
 CODE_23D383:        F0 0E         BEQ CODE_23D393           
 CODE_23D385:        C9 0E         CMP #$0E                  
 CODE_23D387:        F0 0A         BEQ CODE_23D393           
-CODE_23D389:        AD 80 AD      LDA $AD80                 
+CODE_23D389:        AD 80 AD      LDA.w DATA_21AD80                 
 CODE_23D38C:        85 52         STA $52                   
-CODE_23D38E:        AD 81 AD      LDA $AD81                 
+CODE_23D38E:        AD 81 AD      LDA.w DATA_21AD80+1                 
 CODE_23D391:        85 53         STA $53                   
 CODE_23D393:        4C 96 D8      JMP CODE_23D896           
 
@@ -10380,9 +10380,9 @@ CODE_23D3B8:        69 08         ADC #$08
 CODE_23D3BA:        A8            TAY                       
 CODE_23D3BB:        98            TYA                       
 CODE_23D3BC:        48            PHA                       
-CODE_23D3BD:        B9 42 EB      LDA $EB42,y               
+CODE_23D3BD:        B9 42 EB      LDA.w DATA_21EB42,y               
 CODE_23D3C0:        85 09         STA $09                   
-CODE_23D3C2:        B9 43 EB      LDA $EB43,y               
+CODE_23D3C2:        B9 43 EB      LDA.w DATA_21EB42+1,y               
 CODE_23D3C5:        85 0A         STA $0A                   
 CODE_23D3C7:        22 B6 D2 23   JSL CODE_23D2B6           
 CODE_23D3CB:        9D 03 06      STA $0603,x               
@@ -10420,7 +10420,7 @@ CODE_23D403:        A5 BB         LDA $BB
 CODE_23D405:        D0 02         BNE CODE_23D409           
 CODE_23D407:        E8            INX                       
 CODE_23D408:        E8            INX                       
-CODE_23D409:        BD A8 EB      LDA $EBA8,x               
+CODE_23D409:        BD A8 EB      LDA.w DATA_21EBA8,x               
 CODE_23D40C:        18            CLC                       
 CODE_23D40D:        65 5E         ADC $5E                   
 CODE_23D40F:        29 0F         AND #$0F                  
@@ -10609,23 +10609,23 @@ CODE_23D57B:        D0 01         BNE CODE_23D57E
 CODE_23D57D:        C8            INY                       
 CODE_23D57E:        BD 03 06      LDA $0603,x               
 CODE_23D581:        38            SEC                       
-CODE_23D582:        F9 13 EC      SBC $EC13,y               
-CODE_23D585:        D9 03 EC      CMP $EC03,y               
+CODE_23D582:        F9 13 EC      SBC.w DATA_21EC13,y               
+CODE_23D585:        D9 03 EC      CMP.w DATA_21EC03,y               
 CODE_23D588:        90 06         BCC CODE_23D590           
 CODE_23D58A:        88            DEY                       
 CODE_23D58B:        10 F1         BPL CODE_23D57E           
 CODE_23D58D:        4C 19 D6      JMP CODE_23D619           
 
 CODE_23D590:        18            CLC                       
-CODE_23D591:        79 0B EC      ADC $EC0B,y               
+CODE_23D591:        79 0B EC      ADC.w DATA_21EC0B,y               
 CODE_23D594:        85 05         STA $05                   
-CODE_23D596:        BD 23 EC      LDA $EC23,x               
-CODE_23D599:        39 1B EC      AND $EC1B,y               
+CODE_23D596:        BD 23 EC      LDA.w DATA_21EC23,x               
+CODE_23D599:        39 1B EC      AND.w DATA_21EC1B,y               
 CODE_23D59C:        F0 EC         BEQ CODE_23D58A           
 CODE_23D59E:        A9 10         LDA #$10                  
 CODE_23D5A0:        8D 45 1A      STA $1A45                 
 CODE_23D5A3:        A4 05         LDY $05                   
-CODE_23D5A5:        B9 C3 EB      LDA $EBC3,y               
+CODE_23D5A5:        B9 C3 EB      LDA.w DATA_21EBC3,y               
 CODE_23D5A8:        20 1C D6      JSR CODE_23D61C           
 CODE_23D5AB:        98            TYA                       
 CODE_23D5AC:        D0 03         BNE CODE_23D5B1           
@@ -10633,7 +10633,7 @@ CODE_23D5AE:        4C 19 D6      JMP CODE_23D619
 
 CODE_23D5B1:        30 23         BMI CODE_23D5D6           
 CODE_23D5B3:        A4 05         LDY $05                   
-CODE_23D5B5:        19 E3 EB      ORA $EBE3,y               
+CODE_23D5B5:        19 E3 EB      ORA.w DATA_21EBE3,y               
 CODE_23D5B8:        8D 7C 05      STA $057C                 
 CODE_23D5BB:        A9 01         LDA #$01                  
 CODE_23D5BD:        8D 00 12      STA $1200                 
@@ -10942,9 +10942,9 @@ CODE_23D817:        A0 00         LDY #$00
 CODE_23D819:        A5 BD         LDA $BD                   
 CODE_23D81B:        D0 02         BNE CODE_23D81F           
 CODE_23D81D:        A0 02         LDY #$02                  
-CODE_23D81F:        B9 28 EC      LDA $EC28,y               
+CODE_23D81F:        B9 28 EC      LDA.w DATA_21EC28,y               
 CODE_23D822:        85 09         STA $09                   
-CODE_23D824:        B9 29 EC      LDA $EC29,y               
+CODE_23D824:        B9 29 EC      LDA.w DATA_21EC28+1,y               
 CODE_23D827:        85 0A         STA $0A                   
 CODE_23D829:        22 B6 D2 23   JSL CODE_23D2B6           
 CODE_23D82D:        A2 04         LDX #$04                  
@@ -11046,7 +11046,7 @@ CODE_23D8F1:        F0 01         BEQ CODE_23D8F4
 CODE_23D8F3:        CA            DEX                       
 CODE_23D8F4:        A5 70         LDA $70                   
 CODE_23D8F6:        18            CLC                       
-CODE_23D8F7:        7D A6 EB      ADC $EBA6,x               
+CODE_23D8F7:        7D A6 EB      ADC.w DATA_21EBA6,x               
 CODE_23D8FA:        22 59 A8 27   JSL CODE_27A859           
 CODE_23D8FE:        29 0F         AND #$0F                  
 CODE_23D900:        18            CLC                       
@@ -11064,12 +11064,12 @@ CODE_23D914:        C8            INY
 CODE_23D915:        A5 70         LDA $70                   
 CODE_23D917:        29 F0         AND #$F0                  
 CODE_23D919:        18            CLC                       
-CODE_23D91A:        79 2E EC      ADC $EC2E,y               
+CODE_23D91A:        79 2E EC      ADC.w DATA_21EC2E,y               
 CODE_23D91D:        85 70         STA $70                   
 CODE_23D91F:        A5 55         LDA $55                   
-CODE_23D921:        79 2C EC      ADC $EC2C,y               
+CODE_23D921:        79 2C EC      ADC.w DATA_21EC2C,y               
 CODE_23D924:        85 55         STA $55                   
-CODE_23D926:        BD 30 EC      LDA $EC30,x               
+CODE_23D926:        BD 30 EC      LDA.w DATA_21EC30,x               
 CODE_23D929:        A4 BB         LDY $BB                   
 CODE_23D92B:        F0 03         BEQ CODE_23D930           
 CODE_23D92D:        18            CLC                       
@@ -11089,7 +11089,7 @@ CODE_23D948:        C9 08         CMP #$08
 CODE_23D94A:        10 03         BPL CODE_23D94F           
 CODE_23D94C:        E8            INX                       
 CODE_23D94D:        A0 FF         LDY #$FF                  
-CODE_23D94F:        BD AC EB      LDA $EBAC,x               
+CODE_23D94F:        BD AC EB      LDA.w DATA_21EBAC,x               
 CODE_23D952:        18            CLC                       
 CODE_23D953:        65 5E         ADC $5E                   
 CODE_23D955:        29 0F         AND #$0F                  
@@ -11114,12 +11114,12 @@ CODE_23D973:        8D 45 05      STA $0545
 CODE_23D976:        EE 74 05      INC $0574                 
 CODE_23D979:        A2 00         LDX #$00                  
 CODE_23D97B:        AC 0D 06      LDY $060D                 
-CODE_23D97E:        B9 AE EB      LDA $EBAE,y               
+CODE_23D97E:        B9 AE EB      LDA.w DATA_21EBAE,y               
 CODE_23D981:        F0 01         BEQ CODE_23D984           
 CODE_23D983:        E8            INX                       
 CODE_23D984:        A5 5E         LDA $5E                   
 CODE_23D986:        18            CLC                       
-CODE_23D987:        6D 83 EB      ADC $EB83                 
+CODE_23D987:        6D 83 EB      ADC.w DATA_21EB83                 
 CODE_23D98A:        29 0F         AND #$0F                  
 CODE_23D98C:        85 00         STA $00                   
 CODE_23D98E:        BD 0D 06      LDA $060D,x               
@@ -11138,7 +11138,7 @@ CODE_23D99E:        0A            ASL A
 CODE_23D99F:        0A            ASL A                     
 CODE_23D9A0:        05 00         ORA $00                   
 CODE_23D9A2:        85 00         STA $00                   
-CODE_23D9A4:        B9 5B AD      LDA $AD5B,y               
+CODE_23D9A4:        B9 5B AD      LDA.w DATA_21AD5B,y               
 CODE_23D9A7:        85 0F         STA $0F                   
 CODE_23D9A9:        A4 00         LDY $00                   
 CODE_23D9AB:        8A            TXA                       
@@ -11174,7 +11174,7 @@ CODE_23D9E1:        F0 01         BEQ CODE_23D9E4
 CODE_23D9E3:        CA            DEX                       
 CODE_23D9E4:        A5 70         LDA $70                   
 CODE_23D9E6:        18            CLC                       
-CODE_23D9E7:        7D A6 EB      ADC $EBA6,x               
+CODE_23D9E7:        7D A6 EB      ADC.w DATA_21EBA6,x               
 CODE_23D9EA:        29 0F         AND #$0F                  
 CODE_23D9EC:        85 00         STA $00                   
 CODE_23D9EE:        B1 52         LDA ($52),y               
@@ -11257,7 +11257,7 @@ CODE_23DA86:        D0 1C         BNE CODE_23DAA4
 CODE_23DA88:        8A            TXA                       
 CODE_23DA89:        F0 47         BEQ CODE_23DAD2           
 CODE_23DA8B:        A4 BB         LDY $BB                   
-CODE_23DA8D:        B9 64 AF      LDA $AF64,y               
+CODE_23DA8D:        B9 64 AF      LDA.w DATA_21AF64,y               
 CODE_23DA90:        29 02         AND #$02                  
 CODE_23DA92:        D0 3E         BNE CODE_23DAD2           
 CODE_23DA94:        AD 77 05      LDA $0577                 
@@ -11291,9 +11291,9 @@ CODE_23DAD4:        F0 03         BEQ CODE_23DAD9
 CODE_23DAD6:        8E 69 05      STX $0569                 
 CODE_23DAD9:        60            RTS                       
 
-CODE_23DADA:        B9 82 EB      LDA $EB82,y               
+CODE_23DADA:        B9 82 EB      LDA.w DATA_21EB82,y               
 CODE_23DADD:        85 09         STA $09                   
-CODE_23DADF:        B9 83 EB      LDA $EB83,y               
+CODE_23DADF:        B9 83 EB      LDA.w DATA_21EB83,y               
 CODE_23DAE2:        85 0A         STA $0A                   
 CODE_23DAE4:        22 B6 D2 23   JSL CODE_23D2B6           
 CODE_23DAE8:        9D 03 06      STA $0603,x               
@@ -11311,7 +11311,7 @@ CODE_23DAFC:        0D 17 05      ORA $0517
 CODE_23DAFF:        0D 4F 05      ORA $054F                 
 CODE_23DB02:        D0 4A         BNE CODE_23DB4E           
 CODE_23DB04:        AC 60 05      LDY $0560                 
-CODE_23DB07:        B9 32 EC      LDA $EC32,y               
+CODE_23DB07:        B9 32 EC      LDA.w DATA_21EC32,y               
 CODE_23DB0A:        85 0F         STA $0F                   
 CODE_23DB0C:        A5 A6         LDA $A6                   
 CODE_23DB0E:        D0 41         BNE CODE_23DB51           
@@ -11336,7 +11336,7 @@ CODE_23DB34:        C9 08         CMP #$08
 CODE_23DB36:        30 01         BMI CODE_23DB39           
 CODE_23DB38:        E8            INX                       
 CODE_23DB39:        A5 17         LDA $17                   
-CODE_23DB3B:        3D 43 EC      AND $EC43,x               
+CODE_23DB3B:        3D 43 EC      AND.w DATA_21EC43,x               
 CODE_23DB3E:        F0 11         BEQ CODE_23DB51           
 CODE_23DB40:        98            TYA                       
 CODE_23DB41:        D0 08         BNE CODE_23DB4B           
@@ -11395,7 +11395,7 @@ CODE_23DBA7:        0A            ASL A
 CODE_23DBA8:        0A            ASL A                     
 CODE_23DBA9:        85 01         STA $01                   
 CODE_23DBAB:        A5 17         LDA $17                   
-CODE_23DBAD:        3D 43 EC      AND $EC43,x               
+CODE_23DBAD:        3D 43 EC      AND.w DATA_21EC43,x               
 CODE_23DBB0:        F0 41         BEQ CODE_23DBF3           
 CODE_23DBB2:        AD 71 05      LDA $0571                 
 CODE_23DBB5:        D0 3C         BNE CODE_23DBF3           
@@ -11411,7 +11411,7 @@ CODE_23DBC6:        A5 5E         LDA $5E
 CODE_23DBC8:        29 0F         AND #$0F                  
 CODE_23DBCA:        48            PHA                       
 CODE_23DBCB:        18            CLC                       
-CODE_23DBCC:        79 40 EC      ADC $EC40,y               
+CODE_23DBCC:        79 40 EC      ADC.w DATA_21EC40,y               
 CODE_23DBCF:        29 10         AND #$10                  
 CODE_23DBD1:        D0 04         BNE CODE_23DBD7           
 CODE_23DBD3:        68            PLA                       
@@ -11440,21 +11440,21 @@ CODE_23DBF8:        D0 21         BNE CODE_23DC1B
 CODE_23DBFA:        AD 67 05      LDA $0567                 
 CODE_23DBFD:        D0 1C         BNE CODE_23DC1B           
 CODE_23DBFF:        A2 01         LDX #$01                  
-CODE_23DC01:        B9 48 AF      LDA $AF48,y               
+CODE_23DC01:        B9 48 AF      LDA.w DATA_21AF48,y               
 CODE_23DC04:        F0 15         BEQ CODE_23DC1B           
 CODE_23DC06:        38            SEC                       
 CODE_23DC07:        FD 03 06      SBC $0603,x               
 CODE_23DC0A:        C9 02         CMP #$02                  
 CODE_23DC0C:        B0 0A         BCS CODE_23DC18                   
 CODE_23DC0E:        AA            TAX                       
-CODE_23DC0F:        BD 47 EC      LDA $EC47,x               
+CODE_23DC0F:        BD 47 EC      LDA.w DATA_21EC47,x               
 CODE_23DC12:        8D 69 05      STA $0569                 
 CODE_23DC15:        4C 1B DC      JMP CODE_23DC1B           
 
 CODE_23DC18:        CA            DEX                       
 CODE_23DC19:        10 E6         BPL CODE_23DC01           
 CODE_23DC1B:        A2 02         LDX #$02                  
-CODE_23DC1D:        B9 3A AF      LDA $AF3A,y               
+CODE_23DC1D:        B9 3A AF      LDA.w DATA_21AF3A,y               
 CODE_23DC20:        C9 FF         CMP #$FF                  
 CODE_23DC22:        F0 1C         BEQ CODE_23DC40           
 CODE_23DC24:        38            SEC                       
@@ -11473,7 +11473,7 @@ CODE_23DC3F:        60            RTS
 
 CODE_23DC40:        A2 03         LDX #$03                  
 CODE_23DC42:        BD 03 06      LDA $0603,x               
-CODE_23DC45:        D9 56 AF      CMP $AF56,y               
+CODE_23DC45:        D9 56 AF      CMP.w DATA_21AF56,y               
 CODE_23DC48:        F0 04         BEQ CODE_23DC4E           
 CODE_23DC4A:        C9 66         CMP #$66                  
 CODE_23DC4C:        D0 0F         BNE CODE_23DC5D           
@@ -11500,11 +11500,11 @@ CODE_23DC75:        A2 02         LDX #$02
 CODE_23DC77:        BD 02 06      LDA $0602,x               
 CODE_23DC7A:        48            PHA                       
 CODE_23DC7B:        38            SEC                       
-CODE_23DC7C:        F9 4B EC      SBC $EC4B,y               
+CODE_23DC7C:        F9 4B EC      SBC.w DATA_21EC4B,y               
 CODE_23DC7F:        C9 01         CMP #$01                  
 CODE_23DC81:        68            PLA                       
 CODE_23DC82:        90 0B         BCC CODE_23DC8F           
-CODE_23DC84:        D9 4D EC      CMP $EC4D,y               
+CODE_23DC84:        D9 4D EC      CMP.w DATA_21EC4D,y               
 CODE_23DC87:        F0 06         BEQ CODE_23DC8F           
 CODE_23DC89:        CA            DEX                       
 CODE_23DC8A:        10 EB         BPL CODE_23DC77           
@@ -11661,7 +11661,7 @@ CODE_23DDBF:        A0 02         LDY #$02
 CODE_23DDC1:        AD 77 05      LDA $0577                 
 CODE_23DDC4:        F0 01         BEQ CODE_23DDC7           
 CODE_23DDC6:        C8            INY                       
-CODE_23DDC7:        B9 80 E9      LDA $E980,y               
+CODE_23DDC7:        B9 80 E9      LDA.w DATA_21E980,y               
 CODE_23DDCA:        85 BC         STA $BC                   
 CODE_23DDCC:        6B            RTL                       
 
@@ -11698,7 +11698,7 @@ CODE_23DE0D:        0A            ASL A
 CODE_23DE0E:        AA            TAX                       
 CODE_23DE0F:        A5 5E         LDA $5E                   
 CODE_23DE11:        18            CLC                       
-CODE_23DE12:        7D 4F EC      ADC $EC4F,x               
+CODE_23DE12:        7D 4F EC      ADC.w DATA_21EC4F,x               
 CODE_23DE15:        E0 04         CPX #$04                  
 CODE_23DE17:        10 02         BPL CODE_23DE1B           
 CODE_23DE19:        29 F0         AND #$F0                  
@@ -11709,7 +11709,7 @@ CODE_23DE21:        D0 04         BNE CODE_23DE27
 CODE_23DE23:        A4 BB         LDY $BB                   
 CODE_23DE25:        F0 04         BEQ CODE_23DE2B           
 CODE_23DE27:        18            CLC                       
-CODE_23DE28:        7D 50 EC      ADC $EC50,x               
+CODE_23DE28:        7D 50 EC      ADC.w DATA_21EC4F+1,x               
 CODE_23DE2B:        29 F0         AND #$F0                  
 CODE_23DE2D:        E0 04         CPX #$04                  
 CODE_23DE2F:        30 03         BMI CODE_23DE34           
@@ -11966,16 +11966,16 @@ CODE_23E01F:        D0 01         BNE CODE_23E022
 CODE_23E021:        60            RTS                       
 
 CODE_23E022:        BC 9C 1D      LDY $1D9C,x               
-CODE_23E025:        B9 71 EC      LDA $EC71,y               
+CODE_23E025:        B9 71 EC      LDA.w DATA_21EC71,y               
 CODE_23E028:        BC 9D 1D      LDY $1D9D,x               
-CODE_23E02B:        19 71 EC      ORA $EC71,y               
+CODE_23E02B:        19 71 EC      ORA.w DATA_21EC71,y               
 CODE_23E02E:        BC 9E 1D      LDY $1D9E,x               
-CODE_23E031:        19 71 EC      ORA $EC71,y               
+CODE_23E031:        19 71 EC      ORA.w DATA_21EC71,y               
 CODE_23E034:        A8            TAY                       
 CODE_23E035:        A6 00         LDX $00                   
-CODE_23E037:        19 61 EC      ORA $EC61,y               
+CODE_23E037:        19 61 EC      ORA.w DATA_21EC61,y               
 CODE_23E03A:        8D 03 12      STA $1203                 
-CODE_23E03D:        B9 69 EC      LDA $EC69,y               
+CODE_23E03D:        B9 69 EC      LDA.w DATA_21EC69,y               
 CODE_23E040:        9D A1 19      STA $19A1,x               
 CODE_23E043:        BD 22 18      LDA $1822,x               
 CODE_23E046:        9D A5 19      STA $19A5,x               
@@ -11983,7 +11983,7 @@ CODE_23E049:        BD 11 18      LDA $1811,x
 CODE_23E04C:        38            SEC                       
 CODE_23E04D:        E9 08         SBC #$08                  
 CODE_23E04F:        9D A3 19      STA $19A3,x               
-CODE_23E052:        B9 59 EC      LDA $EC59,y               
+CODE_23E052:        B9 59 EC      LDA.w DATA_21EC59,y               
 CODE_23E055:        48            PHA                       
 CODE_23E056:        9D A7 19      STA $19A7,x               
 CODE_23E059:        18            CLC                       
@@ -12019,7 +12019,7 @@ CODE_23E090:        A5 15         LDA $15
 CODE_23E092:        4A            LSR A                     
 CODE_23E093:        90 03         BCC CODE_23E098           
 CODE_23E095:        FE A1 19      INC $19A1,x               
-CODE_23E098:        BC 7A EC      LDY $EC7A,x               
+CODE_23E098:        BC 7A EC      LDY.w DATA_21EC7A,x               
 CODE_23E09B:        BD A3 19      LDA $19A3,x               
 CODE_23E09E:        38            SEC                       
 CODE_23E09F:        FD A1 19      SBC $19A1,x               
@@ -12030,7 +12030,7 @@ CODE_23E0AB:        A9 22         LDA #$22
 CODE_23E0AD:        99 03 08      STA $0803,y               
 CODE_23E0B0:        BD A7 19      LDA $19A7,x               
 CODE_23E0B3:        AA            TAX                       
-CODE_23E0B4:        BD 74 EC      LDA $EC74,x               
+CODE_23E0B4:        BD 74 EC      LDA.w DATA_21EC74,x               
 CODE_23E0B7:        99 02 08      STA $0802,y               
 CODE_23E0BA:        BD A5 19      LDA $19A5,x               
 CODE_23E0BD:        38            SEC                       
@@ -12071,7 +12071,7 @@ CODE_23E0FD:        86 03         STX $03
 CODE_23E0FF:        B9 9C 1D      LDA $1D9C,y               
 CODE_23E102:        F0 44         BEQ CODE_23E148           
 CODE_23E104:        A8            TAY                       
-CODE_23E105:        B9 90 EC      LDA $EC90,y               
+CODE_23E105:        B9 90 EC      LDA.w DATA_21EC90,y               
 CODE_23E108:        A4 00         LDY $00                   
 CODE_23E10A:        99 E2 09      STA $09E2,y               
 CODE_23E10D:        A9 D0         LDA #$D0                  
@@ -12098,7 +12098,7 @@ CODE_23E132:        C0 0C         CPY #$0C
 CODE_23E134:        90 02         BCC CODE_23E138           
 CODE_23E136:        A9 C0         LDA #$C0                  
 CODE_23E138:        18            CLC                       
-CODE_23E139:        7D 8E EC      ADC $EC8E,x               
+CODE_23E139:        7D 8E EC      ADC.w DATA_21EC8E,x               
 CODE_23E13C:        99 E0 09      STA $09E0,y               
 CODE_23E13F:        98            TYA                       
 CODE_23E140:        4A            LSR A                     
@@ -12127,7 +12127,7 @@ CODE_23E162:        48            PHA
 CODE_23E163:        C2 30         REP #$30                  
 CODE_23E165:        A0 00 00      LDY #$0000                
 CODE_23E168:        AE 00 16      LDX $1600                 
-CODE_23E16B:        B9 7C EC      LDA $EC7C,y               
+CODE_23E16B:        B9 7C EC      LDA.w DATA_21EC7C,y               
 CODE_23E16E:        9D 02 16      STA $1602,x               
 CODE_23E171:        E8            INX                       
 CODE_23E172:        E8            INX                       
@@ -12137,7 +12137,7 @@ CODE_23E175:        C0 08 00      CPY #$0008
 CODE_23E178:        D0 F1         BNE CODE_23E16B           
 CODE_23E17A:        E2 30         SEP #$30                  
 CODE_23E17C:        A4 0F         LDY $0F                   
-CODE_23E17E:        B9 8C EC      LDA $EC8C,y               
+CODE_23E17E:        B9 8C EC      LDA.w DATA_21EC8C,y               
 CODE_23E181:        18            CLC                       
 CODE_23E182:        79 2E 19      ADC $192E,y               
 CODE_23E185:        9D FB 15      STA $15FB,x               
@@ -12190,7 +12190,7 @@ CODE_23E1E5:        6B            RTL
 CODE_23E1E6:        AD 75 00      LDA $0075                 
 CODE_23E1E9:        22 1F FB 20   JSL CODE_20FB1F           
 
-PNTR_23E1ED:     dw CODE_23E1FD
+PNTR_23E1ED:        dw CODE_23E1FD
                     dw CODE_23E2AB
 
 DATA_23E1F1:        db $00,$01,$02,$00,$03,$04,$05,$00
@@ -12245,9 +12245,9 @@ CODE_23E258:        85 0F         STA $0F
 CODE_23E25A:        A2 04         LDX #$04                  
 CODE_23E25C:        20 7A E2      JSR CODE_23E27A           
 CODE_23E25F:        A8            TAY                       
-CODE_23E260:        B9 94 EC      LDA $EC94,y               
+CODE_23E260:        B9 94 EC      LDA.w DATA_21EC94,y               
 CODE_23E263:        9D 24 18      STA $1824,x               
-CODE_23E266:        B9 A2 EC      LDA $ECA2,y               
+CODE_23E266:        B9 A2 EC      LDA.w DATA_21ECA2,y               
 CODE_23E269:        9D 13 18      STA $1813,x               
 CODE_23E26C:        A9 01         LDA #$01                  
 CODE_23E26E:        9D 02 18      STA $1802,x               
@@ -12272,9 +12272,9 @@ CODE_23E28E:        A2 04         LDX #$04
 CODE_23E290:        FE 02 18      INC $1802,x               
 CODE_23E293:        A9 0B         LDA #$0B                  
 CODE_23E295:        9D BB 18      STA $18BB,x               
-CODE_23E298:        BD B5 EC      LDA $ECB5,x               
+CODE_23E298:        BD B5 EC      LDA.w DATA_21ECB5,x               
 CODE_23E29B:        9D 13 18      STA $1813,x               
-CODE_23E29E:        BD B0 EC      LDA $ECB0,x               
+CODE_23E29E:        BD B0 EC      LDA.w DATA_21ECB0,x               
 CODE_23E2A1:        9D 24 18      STA $1824,x               
 CODE_23E2A4:        20 8D ED      JSR CODE_23ED8D           
 CODE_23E2A7:        CA            DEX                       
@@ -12412,7 +12412,7 @@ CODE_23E3B9:        A8            TAY
 CODE_23E3BA:        18            CLC                       
 CODE_23E3BB:        69 0B         ADC #$0B                  
 CODE_23E3BD:        9D BB 18      STA $18BB,x               
-CODE_23E3C0:        B9 B9 EC      LDA $ECB9,y               
+CODE_23E3C0:        B9 B9 EC      LDA.w DATA_21ECB9,y               
 CODE_23E3C3:        9D 35 18      STA $1835,x               
 CODE_23E3C6:        FE 02 18      INC $1802,x               
 CODE_23E3C9:        A4 00         LDY $00                   
@@ -12558,7 +12558,7 @@ CODE_23E4FC:        A9 01         LDA #$01
 CODE_23E4FE:        9D 00 18      STA $1800,x               
 CODE_23E501:        8A            TXA                       
 CODE_23E502:        A8            TAY                       
-CODE_23E503:        B9 C1 EC      LDA $ECC1,y               
+CODE_23E503:        B9 C1 EC      LDA.w DATA_21ECC1,y               
 CODE_23E506:        9D 64 18      STA $1864,x               
 CODE_23E509:        A9 90         LDA #$90                  
 CODE_23E50B:        9D 11 18      STA $1811,x               
@@ -12567,7 +12567,7 @@ CODE_23E511:        C9 07         CMP #$07
 CODE_23E513:        D0 02         BNE CODE_23E517           
 CODE_23E515:        C8            INY                       
 CODE_23E516:        C8            INY                       
-CODE_23E517:        B9 BD EC      LDA $ECBD,y               
+CODE_23E517:        B9 BD EC      LDA.w DATA_21ECBD,y               
 CODE_23E51A:        9D 22 18      STA $1822,x               
 CODE_23E51D:        60            RTS                       
 
@@ -12706,7 +12706,7 @@ CODE_23E62F:        69 01         ADC #$01
 CODE_23E631:        4A            LSR A                     
 CODE_23E632:        4A            LSR A                     
 CODE_23E633:        A8            TAY                       
-CODE_23E634:        B9 D9 EC      LDA $ECD9,y               
+CODE_23E634:        B9 D9 EC      LDA.w DATA_21ECD9,y               
 CODE_23E637:        9D 33 18      STA $1833,x               
 CODE_23E63A:        B5 F2         LDA $F2,x                 
 CODE_23E63C:        29 03         AND #$03                  
@@ -12723,7 +12723,7 @@ CODE_23E650:        38            SEC
 CODE_23E651:        E9 01         SBC #$01                  
 CODE_23E653:        9D 44 18      STA $1844,x               
 CODE_23E656:        AC 26 1F      LDY $1F26                 
-CODE_23E659:        B9 CD EC      LDA $ECCD,y               
+CODE_23E659:        B9 CD EC      LDA.w DATA_21ECCD,y               
 CODE_23E65C:        F0 1B         BEQ CODE_23E679           
 CODE_23E65E:        A9 01         LDA #$01                  
 CODE_23E660:        BC 44 18      LDY $1844,x               
@@ -12734,7 +12734,7 @@ CODE_23E669:        F0 0E         BEQ CODE_23E679
 CODE_23E66B:        35 F2         AND $F2,x                 
 CODE_23E66D:        F0 04         BEQ CODE_23E673           
 CODE_23E66F:        A8            TAY                       
-CODE_23E670:        B9 CA EC      LDA $ECCA,y               
+CODE_23E670:        B9 CA EC      LDA.w DATA_21ECCA,y               
 CODE_23E673:        9D 44 18      STA $1844,x               
 CODE_23E676:        4C 7C E6      JMP CODE_23E67C           
 
@@ -12824,7 +12824,7 @@ CODE_23E723:        4A            LSR A
 CODE_23E724:        A8            TAY                       
 CODE_23E725:        BD 9C 19      LDA $199C,x               
 CODE_23E728:        18            CLC                       
-CODE_23E729:        79 C3 EC      ADC $ECC3,y               
+CODE_23E729:        79 C3 EC      ADC.w DATA_21ECC3,y               
 CODE_23E72C:        9D 9C 19      STA $199C,x               
 CODE_23E72F:        90 03         BCC CODE_23E734           
 CODE_23E731:        FE 9E 19      INC $199E,x               
@@ -12976,7 +12976,7 @@ CODE_23E86F:        A0 05         LDY #$05
 CODE_23E871:        84 0F         STY $0F                   
 CODE_23E873:        BD 11 18      LDA $1811,x               
 CODE_23E876:        18            CLC                       
-CODE_23E877:        79 F3 EC      ADC $ECF3,y               
+CODE_23E877:        79 F3 EC      ADC.w DATA_21ECF3,y               
 CODE_23E87A:        29 F0         AND #$F0                  
 CODE_23E87C:        85 00         STA $00                   
 CODE_23E87E:        E0 02         CPX #$02                  
@@ -12990,7 +12990,7 @@ CODE_23E88B:        69 06         ADC #$06
 CODE_23E88D:        A8            TAY                       
 CODE_23E88E:        BD 22 18      LDA $1822,x               
 CODE_23E891:        18            CLC                       
-CODE_23E892:        79 E7 EC      ADC $ECE7,y               
+CODE_23E892:        79 E7 EC      ADC.w DATA_21ECE7,y               
 CODE_23E895:        85 01         STA $01                   
 CODE_23E897:        20 61 EA      JSR CODE_23EA61           
 CODE_23E89A:        A4 0F         LDY $0F                   
@@ -13122,11 +13122,11 @@ CODE_23E9A6:        C9 FE         CMP #$FE
 CODE_23E9A8:        90 06         BCC CODE_23E9B0           
 CODE_23E9AA:        29 01         AND #$01                  
 CODE_23E9AC:        A8            TAY                       
-CODE_23E9AD:        B9 57 EC      LDA $EC57,y               
+CODE_23E9AD:        B9 57 EC      LDA.w DATA_21EC57,y               
 CODE_23E9B0:        9D F8 18      STA $18F8,x               
 CODE_23E9B3:        A4 0F         LDY $0F                   
 CODE_23E9B5:        BD 95 18      LDA $1895,x               
-CODE_23E9B8:        19 FF EC      ORA $ECFF,y               
+CODE_23E9B8:        19 FF EC      ORA.w DATA_21ECFF,y               
 CODE_23E9BB:        9D 95 18      STA $1895,x               
 CODE_23E9BE:        E0 02         CPX #$02                  
 CODE_23E9C0:        90 07         BCC CODE_23E9C9           
@@ -13145,7 +13145,7 @@ CODE_23E9D9:        A4 0F         LDY $0F
 CODE_23E9DB:        C9 C2         CMP #$C2                  
 CODE_23E9DD:        D0 09         BNE CODE_23E9E8           
 CODE_23E9DF:        BD 95 18      LDA $1895,x               
-CODE_23E9E2:        19 05 ED      ORA $ED05,y               
+CODE_23E9E2:        19 05 ED      ORA.w DATA_21ED05,y               
 CODE_23E9E5:        9D 95 18      STA $1895,x               
 CODE_23E9E8:        C0 02         CPY #$02                  
 CODE_23E9EA:        B0 1A         BCS CODE_23EA06                   
@@ -13226,7 +13226,7 @@ CODE_23EA7A:        C9 FE         CMP #$FE
 CODE_23EA7C:        90 06         BCC CODE_23EA84           
 CODE_23EA7E:        29 01         AND #$01                  
 CODE_23EA80:        A8            TAY                       
-CODE_23EA81:        B9 57 EC      LDA $EC57,y               
+CODE_23EA81:        B9 57 EC      LDA.w DATA_21EC57,y               
 CODE_23EA84:        48            PHA                       
 CODE_23EA85:        0A            ASL A                     
 CODE_23EA86:        26 0E         ROL $0E                   
@@ -13283,7 +13283,7 @@ CODE_23EAD9:        A9 0A         LDA #$0A
 CODE_23EADB:        85 0A         STA $0A                   
 CODE_23EADD:        BD 64 18      LDA $1864,x               
 CODE_23EAE0:        AA            TAX                       
-CODE_23EAE1:        BD 16 ED      LDA $ED16,x               
+CODE_23EAE1:        BD 16 ED      LDA.w DATA_21ED16,x               
 CODE_23EAE4:        05 0A         ORA $0A                   
 CODE_23EAE6:        99 83 08      STA $0883,y               
 CODE_23EAE9:        AE 0E 19      LDX $190E                 
@@ -13440,29 +13440,29 @@ CODE_23EC2A:        A0 00         LDY #$00
 CODE_23EC2C:        28            PLP                       
 CODE_23EC2D:        90 01         BCC CODE_23EC30           
 CODE_23EC2F:        C8            INY                       
-CODE_23EC30:        B9 1D ED      LDA $ED1D,y               
+CODE_23EC30:        B9 1D ED      LDA.w DATA_21ED1D,y               
 CODE_23EC33:        2D 33 18      AND $1833                 
 CODE_23EC36:        30 19         BMI CODE_23EC51           
-CODE_23EC38:        B9 1D ED      LDA $ED1D,y               
+CODE_23EC38:        B9 1D ED      LDA.w DATA_21ED1D,y               
 CODE_23EC3B:        8D 33 18      STA $1833                 
 CODE_23EC3E:        AD 95 18      LDA $1895                 
 CODE_23EC41:        29 04         AND #$04                  
 CODE_23EC43:        F0 0C         BEQ CODE_23EC51           
-CODE_23EC45:        B9 20 ED      LDA $ED20,y               
+CODE_23EC45:        B9 20 ED      LDA.w DATA_21ED20,y               
 CODE_23EC48:        8D B5 18      STA $18B5                 
-CODE_23EC4B:        B9 23 ED      LDA $ED23,y               
+CODE_23EC4B:        B9 23 ED      LDA.w DATA_21ED23,y               
 CODE_23EC4E:        8D 00 12      STA $1200                 
-CODE_23EC51:        B9 1E ED      LDA $ED1E,y               
+CODE_23EC51:        B9 1E ED      LDA.w DATA_21ED1E,y               
 CODE_23EC54:        2D 34 18      AND $1834                 
 CODE_23EC57:        30 19         BMI CODE_23EC72           
-CODE_23EC59:        B9 1E ED      LDA $ED1E,y               
+CODE_23EC59:        B9 1E ED      LDA.w DATA_21ED1E,y               
 CODE_23EC5C:        8D 34 18      STA $1834                 
 CODE_23EC5F:        AD 96 18      LDA $1896                 
 CODE_23EC62:        29 04         AND #$04                  
 CODE_23EC64:        F0 0C         BEQ CODE_23EC72           
-CODE_23EC66:        B9 21 ED      LDA $ED21,y               
+CODE_23EC66:        B9 21 ED      LDA.w DATA_21ED21,y               
 CODE_23EC69:        8D B6 18      STA $18B6                 
-CODE_23EC6C:        B9 24 ED      LDA $ED24,y               
+CODE_23EC6C:        B9 24 ED      LDA.w DATA_21ED24,y               
 CODE_23EC6F:        8D 00 12      STA $1200                 
 CODE_23EC72:        60            RTS                       
 
@@ -13480,9 +13480,9 @@ CODE_23EC89:        90 05         BCC CODE_23EC90
 CODE_23EC8B:        CD 23 18      CMP $1823                 
 CODE_23EC8E:        B0 01         BCS CODE_23EC91                 
 CODE_23EC90:        C8            INY                       
-CODE_23EC91:        B9 19 ED      LDA $ED19,y               
+CODE_23EC91:        B9 19 ED      LDA.w DATA_21ED19,y               
 CODE_23EC94:        8D 44 18      STA $1844                 
-CODE_23EC97:        B9 1A ED      LDA $ED1A,y               
+CODE_23EC97:        B9 1A ED      LDA.w DATA_21ED1A,y               
 CODE_23EC9A:        8D 45 18      STA $1845                 
 CODE_23EC9D:        98            TYA                       
 CODE_23EC9E:        29 01         AND #$01                  
@@ -13571,9 +13571,9 @@ CODE_23ED4F:        AD 0C 19      LDA $190C
 CODE_23ED52:        4A            LSR A                     
 CODE_23ED53:        29 01         AND #$01                  
 CODE_23ED55:        A8            TAY                       
-CODE_23ED56:        B9 3C ED      LDA $ED3C,y               
+CODE_23ED56:        B9 3C ED      LDA.w DATA_21ED3C,y               
 CODE_23ED59:        9D 46 18      STA $1846,x               
-CODE_23ED5C:        B9 3A ED      LDA $ED3A,y               
+CODE_23ED5C:        B9 3A ED      LDA.w DATA_21ED3A,y               
 CODE_23ED5F:        9D 24 18      STA $1824,x               
 CODE_23ED62:        22 05 F8 25   JSL CODE_25F805           
 CODE_23ED66:        AD 2D 19      LDA $192D                 
@@ -13670,7 +13670,7 @@ CODE_23EE29:        9D 1E 19      STA $191E,x
 CODE_23EE2C:        AD CA 18      LDA $18CA                 
 CODE_23EE2F:        29 01         AND #$01                  
 CODE_23EE31:        A8            TAY                       
-CODE_23EE32:        B9 32 ED      LDA $ED32,y               
+CODE_23EE32:        B9 32 ED      LDA.w DATA_21ED32,y               
 CODE_23EE35:        9D 24 18      STA $1824,x               
 CODE_23EE38:        AD CA 18      LDA $18CA                 
 CODE_23EE3B:        C9 05         CMP #$05                  
@@ -13681,7 +13681,7 @@ CODE_23EE44:        9D 31 19      STA $1931,x
 CODE_23EE47:        C8            INY                       
 CODE_23EE48:        C8            INY                       
 CODE_23EE49:        C8            INY                       
-CODE_23EE4A:        B9 34 ED      LDA $ED34,y               
+CODE_23EE4A:        B9 34 ED      LDA.w DATA_21ED34,y               
 CODE_23EE4D:        9D 46 18      STA $1846,x               
 CODE_23EE50:        60            RTS
                        
@@ -13695,7 +13695,7 @@ CODE_23EE60:        8A            TXA
 CODE_23EE61:        18            CLC                       
 CODE_23EE62:        6D C9 18      ADC $18C9                 
 CODE_23EE65:        A8            TAY                       
-CODE_23EE66:        B9 3E ED      LDA $ED3E,y               
+CODE_23EE66:        B9 3E ED      LDA.w DATA_21ED3E,y               
 CODE_23EE69:        8D C8 18      STA $18C8                 
 CODE_23EE6C:        22 05 F8 25   JSL CODE_25F805           
 CODE_23EE70:        20 77 EE      JSR CODE_23EE77           
@@ -13820,7 +13820,7 @@ CODE_23EF7F:        A9 DC         LDA #$DC
 CODE_23EF81:        9D 35 18      STA $1835,x               
 CODE_23EF84:        20 A5 F1      JSR CODE_23F1A5           
 CODE_23EF87:        BC BB 18      LDY $18BB,x               
-CODE_23EF8A:        BE 81 ED      LDX $ED81,y               
+CODE_23EF8A:        BE 81 ED      LDX.w DATA_21ED81,y               
 CODE_23EF8D:        A5 15         LDA $15                   
 CODE_23EF8F:        4A            LSR A                     
 CODE_23EF90:        4A            LSR A                     
@@ -13901,7 +13901,7 @@ CODE_23F035:        E2 10         SEP #$10
 CODE_23F037:        4A            LSR A                     
 CODE_23F038:        29 07         AND #$07                  
 CODE_23F03A:        AA            TAX                       
-CODE_23F03B:        BD 5D ED      LDA $ED5D,x               
+CODE_23F03B:        BD 5D ED      LDA.w DATA_21ED5D,x               
 CODE_23F03E:        99 02 08      STA $0802,y               
 CODE_23F041:        AE 0E 19      LDX $190E                 
 CODE_23F044:        A9 02         LDA #$02                  
@@ -13918,7 +13918,7 @@ CODE_23F055:        18            CLC
 CODE_23F056:        6D 0E 19      ADC $190E                 
 CODE_23F059:        29 03         AND #$03                  
 CODE_23F05B:        A8            TAY                       
-CODE_23F05C:        B9 59 ED      LDA $ED59,y               
+CODE_23F05C:        B9 59 ED      LDA.w DATA_21ED59,y               
 CODE_23F05F:        C2 10         REP #$10                  
 CODE_23F061:        7A            PLY                       
 CODE_23F062:        99 02 08      STA $0802,y               
@@ -13937,7 +13937,7 @@ CODE_23F077:        48            PHA
 CODE_23F078:        BD 1E 19      LDA $191E,x               
 CODE_23F07B:        F0 09         BEQ CODE_23F086           
 CODE_23F07D:        BC 66 18      LDY $1866,x               
-CODE_23F080:        B9 6A ED      LDA $ED6A,y               
+CODE_23F080:        B9 6A ED      LDA.w DATA_21ED6A,y               
 CODE_23F083:        9D 46 18      STA $1846,x               
 CODE_23F086:        20 71 F9      JSR CODE_23F971           
 CODE_23F089:        68            PLA                       
@@ -13990,19 +13990,19 @@ CODE_23F0F2:        C9 A0         CMP #$A0
 CODE_23F0F4:        90 32         BCC CODE_23F128           
 CODE_23F0F6:        BC 66 18      LDY $1866,x               
 CODE_23F0F9:        BD 24 18      LDA $1824,x               
-CODE_23F0FC:        D9 64 ED      CMP $ED64,y               
+CODE_23F0FC:        D9 64 ED      CMP.w DATA_21ED64,y               
 CODE_23F0FF:        D0 07         BNE CODE_23F108           
 CODE_23F101:        A9 60         LDA #$60                  
 CODE_23F103:        9D 1E 19      STA $191E,x               
 CODE_23F106:        D0 20         BNE CODE_23F128           
-CODE_23F108:        D9 66 ED      CMP $ED66,y               
+CODE_23F108:        D9 66 ED      CMP.w DATA_21ED66,y               
 CODE_23F10B:        D0 1B         BNE CODE_23F128           
 CODE_23F10D:        A9 20         LDA #$20                  
 CODE_23F10F:        9D 13 18      STA $1813,x               
 CODE_23F112:        AD 83 07      LDA $0783                 
 CODE_23F115:        29 01         AND #$01                  
 CODE_23F117:        A8            TAY                       
-CODE_23F118:        B9 32 ED      LDA $ED32,y               
+CODE_23F118:        B9 32 ED      LDA.w DATA_21ED32,y               
 CODE_23F11B:        9D 24 18      STA $1824,x               
 CODE_23F11E:        5D 46 18      EOR $1846,x               
 CODE_23F121:        10 03         BPL CODE_23F126           
@@ -14134,14 +14134,14 @@ CODE_23F23E:        4A            LSR A
 CODE_23F23F:        4A            LSR A                     
 CODE_23F240:        29 0F         AND #$0F                  
 CODE_23F242:        A8            TAY                       
-CODE_23F243:        B9 BD ED      LDA $EDBD,y               
+CODE_23F243:        B9 BD ED      LDA.w DATA_21EDBD,y               
 CODE_23F246:        9D 57 18      STA $1857,x               
 CODE_23F249:        A2 18         LDX #$18                  
 CODE_23F24B:        A9 06         LDA #$06                  
 CODE_23F24D:        4C 56 F2      JMP CODE_23F256           
 
-CODE_23F250:        BE 81 ED      LDX $ED81,y               
-CODE_23F253:        B9 6D ED      LDA $ED6D,y               
+CODE_23F250:        BE 81 ED      LDX.w DATA_21ED81,y               
+CODE_23F253:        B9 6D ED      LDA.w DATA_21ED6D,y               
 CODE_23F256:        85 00         STA $00                   
 CODE_23F258:        86 01         STX $01                   
 CODE_23F25A:        AE 0E 19      LDX $190E                 
@@ -14234,7 +14234,7 @@ CODE_23F314:        A6 01         LDX $01
 CODE_23F316:        29 08         AND #$08                  
 CODE_23F318:        F0 01         BEQ CODE_23F31B           
 CODE_23F31A:        E8            INX                       
-CODE_23F31B:        BD 95 ED      LDA $ED95,x               
+CODE_23F31B:        BD 95 ED      LDA.w DATA_21ED95,x               
 CODE_23F31E:        99 02 09      STA $0902,y               
 CODE_23F321:        B9 00 09      LDA $0900,y               
 CODE_23F324:        C9 F1         CMP #$F1                  
@@ -14517,7 +14517,7 @@ CODE_23F56C:        A0 00         LDY #$00
 CODE_23F56E:        C9 00         CMP #$00                  
 CODE_23F570:        30 01         BMI CODE_23F573           
 CODE_23F572:        C8            INY                       
-CODE_23F573:        B9 CD ED      LDA $EDCD,y               
+CODE_23F573:        B9 CD ED      LDA.w DATA_21EDCD,y               
 CODE_23F576:        9D 46 18      STA $1846,x               
 CODE_23F579:        A4 0F         LDY $0F                   
 CODE_23F57B:        A9 03         LDA #$03                  
@@ -14612,7 +14612,7 @@ CODE_23F63B:        C8            INY
 CODE_23F63C:        28            PLP                       
 CODE_23F63D:        10 01         BPL CODE_23F640           
 CODE_23F63F:        C8            INY                       
-CODE_23F640:        B9 D5 ED      LDA $EDD5,y               
+CODE_23F640:        B9 D5 ED      LDA.w DATA_21EDD5,y               
 CODE_23F643:        9D 46 18      STA $1846,x               
 CODE_23F646:        60            RTS                       
 
@@ -14630,7 +14630,7 @@ CODE_23F65A:        4A            LSR A
 CODE_23F65B:        4A            LSR A                     
 CODE_23F65C:        A8            TAY                       
 CODE_23F65D:        A5 15         LDA $15                   
-CODE_23F65F:        39 CF ED      AND $EDCF,y               
+CODE_23F65F:        39 CF ED      AND.w DATA_21EDCF,y               
 CODE_23F662:        F0 08         BEQ CODE_23F66C           
 CODE_23F664:        EE 9B 19      INC $199B                 
 CODE_23F667:        A9 08         LDA #$08                  
@@ -14691,7 +14691,7 @@ CODE_23F6E0:        CE BA 18      DEC $18BA
 CODE_23F6E3:        4A            LSR A                     
 CODE_23F6E4:        29 03         AND #$03                  
 CODE_23F6E6:        A8            TAY                       
-CODE_23F6E7:        B9 DD ED      LDA $EDDD,y               
+CODE_23F6E7:        B9 DD ED      LDA.w DATA_21EDDD,y               
 CODE_23F6EA:        8D 16 02      STA $0216                 
 CODE_23F6ED:        AD 3E 19      LDA $193E                 
 CODE_23F6F0:        C9 03         CMP #$03                  
@@ -14704,7 +14704,7 @@ CODE_23F6FD:        A9 78         LDA #$78
 CODE_23F6FF:        8D 20 08      STA $0820                 
 CODE_23F702:        AD 3E 19      LDA $193E                 
 CODE_23F705:        A8            TAY                       
-CODE_23F706:        B9 E1 ED      LDA $EDE1,y               
+CODE_23F706:        B9 E1 ED      LDA.w DATA_21EDE1,y               
 CODE_23F709:        8D 22 08      STA $0822                 
 CODE_23F70C:        A9 04         LDA #$04                  
 CODE_23F70E:        8D 23 08      STA $0823                 
@@ -14727,12 +14727,12 @@ CODE_23F733:        A9 10         LDA #$10
 CODE_23F735:        85 07         STA $07                   
 CODE_23F737:        AC 3E 19      LDY $193E                 
 CODE_23F73A:        38            SEC                       
-CODE_23F73B:        F9 E4 ED      SBC $EDE4,y               
+CODE_23F73B:        F9 E4 ED      SBC.w DATA_21EDE4,y               
 CODE_23F73E:        85 06         STA $06                   
 CODE_23F740:        20 C9 EC      JSR CODE_23ECC9           
 CODE_23F743:        90 50         BCC CODE_23F795           
 CODE_23F745:        AC 3E 19      LDY $193E                 
-CODE_23F748:        B9 E4 ED      LDA $EDE4,y               
+CODE_23F748:        B9 E4 ED      LDA.w DATA_21EDE4,y               
 CODE_23F74B:        9D 3F 19      STA $193F,x               
 CODE_23F74E:        BD 11 18      LDA $1811,x               
 CODE_23F751:        38            SEC                       
@@ -14790,7 +14790,7 @@ CODE_23F7C0:        FE 57 18      INC $1857,x
 CODE_23F7C3:        FE 57 18      INC $1857,x               
 CODE_23F7C6:        BC 66 18      LDY $1866,x               
 CODE_23F7C9:        BD 24 18      LDA $1824,x               
-CODE_23F7CC:        D9 EA ED      CMP $EDEA,y               
+CODE_23F7CC:        D9 EA ED      CMP.w DATA_21EDEA,y               
 CODE_23F7CF:        D0 0C         BNE CODE_23F7DD           
 CODE_23F7D1:        BD BB 18      LDA $18BB,x               
 CODE_23F7D4:        C9 04         CMP #$04                  
@@ -14816,9 +14816,9 @@ CODE_23F804:        29 01         AND #$01
 CODE_23F806:        A8            TAY                       
 CODE_23F807:        BD 35 18      LDA $1835,x               
 CODE_23F80A:        18            CLC                       
-CODE_23F80B:        79 E7 ED      ADC $EDE7,y               
+CODE_23F80B:        79 E7 ED      ADC.w DATA_21EDE7,y               
 CODE_23F80E:        9D 35 18      STA $1835,x               
-CODE_23F811:        D9 E9 ED      CMP $EDE9,y               
+CODE_23F811:        D9 E9 ED      CMP.w DATA_21EDE9,y               
 CODE_23F814:        D0 03         BNE CODE_23F819           
 CODE_23F816:        FE A6 18      INC $18A6,x               
 CODE_23F819:        60            RTS                       
@@ -14859,7 +14859,7 @@ CODE_23F862:        8A            TXA
 CODE_23F863:        18            CLC                       
 CODE_23F864:        6D C9 18      ADC $18C9                 
 CODE_23F867:        A8            TAY                       
-CODE_23F868:        B9 4A ED      LDA $ED4A,y               
+CODE_23F868:        B9 4A ED      LDA.w DATA_21ED4A,y               
 CODE_23F86B:        8D C8 18      STA $18C8                 
 CODE_23F86E:        BD 0F 18      LDA $180F,x               
 CODE_23F871:        F0 26         BEQ CODE_23F899           

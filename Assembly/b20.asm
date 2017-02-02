@@ -1260,7 +1260,7 @@ CODE_208C19:        STA $96
 CODE_208C1B:        STZ $1040                 
 CODE_208C1E:        STZ $1028                 
 CODE_208C21:        LDA #$0D                  ;\
-CODE_208C23:        STA $1202                 ;/Starman music
+CODE_208C23:        STA $1202                 ;/N-Spade/Spade music
 CODE_208C26:        LDA #$80                  
 CODE_208C28:        STA $4200                 
 CODE_208C2B:        JSR CODE_20801F           
@@ -2827,7 +2827,7 @@ CODE_209A68:        BRA CODE_209A72
 CODE_209A6A:        LDA [$2B],y               
 CODE_209A6C:        AND #$0F                  
 CODE_209A6E:        TAX                       
-CODE_209A6F:        LDA.w DATA_21CE46,x               
+CODE_209A6F:        LDA.w DATA_21CE46,x       ; Level music table        
 CODE_209A72:        STA $1061                 
 CODE_209A75:        STA $1062                 
 CODE_209A78:        LDA $2142                 
@@ -3111,8 +3111,8 @@ CODE_209CC3:        BNE CODE_209CFC
 CODE_209CC5:        LDX $25                   
 CODE_209CC7:        LDA $0210                 
 CODE_209CCA:        STA $26,x                 
-CODE_209CCC:        JSR CODE_209DB5           
-CODE_209CCF:        JSL CODE_29E953           
+CODE_209CCC:        JSR CODE_209DB5           ; prepare $0380 buffer with 2 vertical strips
+CODE_209CCF:        JSL CODE_29E953           ; dma those strips to vram
 CODE_209CD3:        LDX $25                   
 CODE_209CD5:        LDA $26,x                 
 CODE_209CD7:        CLC                       
@@ -3921,14 +3921,14 @@ CODE_20A2CB:        INC $0A                   ;
 CODE_20A2CD:        STX $08                   ;
 CODE_20A2CF:        RTS                       ;
 
-CODE_20A2D0:        STZ $01                   
+CODE_20A2D0:        STZ $01                   ; entry point for SMB3 Battle Mode (DB = #$21, DP = #$0000)
 CODE_20A2D2:        LDA #$BF                  
 CODE_20A2D4:        STA $00                   
-CODE_20A2D6:        JSR CODE_20FA17           
-CODE_20A2D9:        JSL CODE_22E0A9           
-CODE_20A2DD:        JSL CODE_25F05A           
-CODE_20A2E1:        JSL CODE_25F934           
-CODE_20A2E5:        STZ $4200                 
+CODE_20A2D6:        JSR CODE_20FA17           ; ?? upload something to vram (seems to do nothing if removed)
+CODE_20A2D9:        JSL CODE_22E0A9           ; clear OAM
+CODE_20A2DD:        JSL CODE_25F05A           ; upload music and ??
+CODE_20A2E1:        JSL CODE_25F934           ; ?? (seems to do nothing if removed)
+CODE_20A2E5:        STZ $4200                 ; disable interrupts
 CODE_20A2E8:        LDA #$11                  
 CODE_20A2EA:        STA $020F                 
 CODE_20A2ED:        LDA $7E3955               
@@ -3937,11 +3937,11 @@ CODE_20A2F2:        STA $7E3955
 CODE_20A2F6:        LDA #$04                  
 CODE_20A2F8:        STA $05EE                 
 CODE_20A2FB:        STZ $12                   
-CODE_20A2FD:        STZ $0210                 
-CODE_20A300:        STZ $0211                 
+CODE_20A2FD:        STZ $0210                 ; \ clear layer 1 x pos
+CODE_20A300:        STZ $0211                 ; /
 CODE_20A303:        STZ $13                   
-CODE_20A305:        STZ $0216                 
-CODE_20A308:        STZ $0217                 
+CODE_20A305:        STZ $0216                 ; \ clear layer 1 y pos
+CODE_20A308:        STZ $0217                 ; /
 CODE_20A30B:        STZ $23                   
 CODE_20A30D:        STZ $24                   
 CODE_20A30F:        STZ $25                   
@@ -3949,113 +3949,113 @@ CODE_20A311:        LDA #$00
 CODE_20A313:        STA $7E3966               
 CODE_20A317:        STA $7E3965               
 CODE_20A31B:        STA $7E3964               
-CODE_20A31F:        STZ $00                   
-CODE_20A321:        LDX #$05                  
-CODE_20A323:        STX $01                   
-CODE_20A325:        LDY #$9D                  
-CODE_20A327:        STA ($00),y               
-CODE_20A329:        DEY                       
-CODE_20A32A:        BPL CODE_20A327           
-CODE_20A32C:        LDA.w DATA_21A381                 
-CODE_20A32F:        STA $2B                   
-CODE_20A331:        LDA.w DATA_21A381+1                 
-CODE_20A334:        STA $2C                   
-CODE_20A336:        LDA #$21                  
-CODE_20A338:        STA $2D                   
+CODE_20A31F:        STZ $00                   ; \
+CODE_20A321:        LDX #$05                  ; |
+CODE_20A323:        STX $01                   ; |
+CODE_20A325:        LDY #$9D                  ; | 
+CODE_20A327:        STA ($00),y               ; | a really complicated way of saying
+CODE_20A329:        DEY                       ; | STZ $059D
+CODE_20A32A:        BPL CODE_20A327           ; /
+CODE_20A32C:        LDA.w DATA_21A381         ; \
+CODE_20A32F:        STA $2B                   ; |
+CODE_20A331:        LDA.w DATA_21A381+1       ; |
+CODE_20A334:        STA $2C                   ; |
+CODE_20A336:        LDA #$21                  ; | point to level data
+CODE_20A338:        STA $2D                   ; / [$2B] = $21A399
 CODE_20A33A:        LDY $070A                 
 CODE_20A33D:        LDA.w DATA_21C975,y               
 CODE_20A340:        STA $0739                 
 CODE_20A343:        STZ $1CF2                 
-CODE_20A346:        JSL CODE_209C00           
-CODE_20A34A:        JSR CODE_209683           
-CODE_20A34D:        LDA #$11                  
-CODE_20A34F:        STA $0208                 
-CODE_20A352:        LDA #$02                  
-CODE_20A354:        STA $0209                 
-CODE_20A357:        LDA #$02                  
-CODE_20A359:        STA $0203                 
-CODE_20A35C:        LDA #$20                  
-CODE_20A35E:        STA $0204                 
-CODE_20A361:        JSL CODE_20AFC3           
+CODE_20A346:        JSL CODE_209C00           ; \ load the level
+CODE_20A34A:        JSR CODE_209683           ; /
+CODE_20A34D:        LDA #$11                  ; \ layer 1 and OBJ through main
+CODE_20A34F:        STA $0208                 ; /
+CODE_20A352:        LDA #$02                  ; \ layer 2 through sub
+CODE_20A354:        STA $0209                 ; /
+CODE_20A357:        LDA #$02                  ; \ enable subscreen bg
+CODE_20A359:        STA $0203                 ; /
+CODE_20A35C:        LDA #$20                  ; \ color addition settings
+CODE_20A35E:        STA $0204                 ; /
+CODE_20A361:        JSL CODE_20AFC3           ; upload sprite graphics
 CODE_20A365:        LDA #$26                  
 CODE_20A367:        STA $0612                 
-CODE_20A36A:        JSR CODE_209CC0           
+CODE_20A36A:        JSR CODE_209CC0           ; draw the level
 CODE_20A36D:        JSL CODE_25F0A6           
 CODE_20A371:        LDA #$00                  
 CODE_20A373:        STA $7E3955               
 CODE_20A377:        JSL CODE_29E29D           
-CODE_20A37B:        LDA #$80                  
-CODE_20A37D:        STA $4200                 
-CODE_20A380:        LDA #$16                  
-CODE_20A382:        LDY $1F26                 
-CODE_20A385:        BEQ CODE_20A389           
-CODE_20A387:        LDA #$11                  ;\
-CODE_20A389:        STA $1202                 ;/Hammer Bros./Battle mode music
-CODE_20A38C:        JSR CODE_20801F           
-CODE_20A38F:        JSL CODE_22E0A9           
-CODE_20A393:        JSL CODE_26CBB0           
-CODE_20A397:        LDA $0014                 
-CODE_20A39A:        BEQ CODE_20A38C           
-CODE_20A39C:        LDA $078C                 
-CODE_20A39F:        DEC A                     
-CODE_20A3A0:        EOR #$01                  
-CODE_20A3A2:        TAX                       
-CODE_20A3A3:        LDA #$01                  
-CODE_20A3A5:        STA $1203                 
+CODE_20A37B:        LDA #$80                  ; \ enable interrupts
+CODE_20A37D:        STA $4200                 ; /
+CODE_20A380:        LDA #$16                  ; \ play battle start music if round 1
+CODE_20A382:        LDY $1F26                 ; |
+CODE_20A385:        BEQ CODE_20A389           ; |
+CODE_20A387:        LDA #$11                  ; | otherwise play the hammer bro intro
+CODE_20A389:        STA $1202                 ; /
+CODE_20A38C:        JSR CODE_20801F           ; \ * wait for vblank | battle mode main loop
+CODE_20A38F:        JSL CODE_22E0A9           ; | * clear objects off screen
+CODE_20A393:        JSL CODE_26CBB0           ; | * run the game
+CODE_20A397:        LDA $0014                 ; | * and keep running it until results should appear
+CODE_20A39A:        BEQ CODE_20A38C           ; / *
+CODE_20A39C:        LDA $078C                 ; \ X = player who won the game
+CODE_20A39F:        DEC A                     ; | 0 = mario, 1 = luigi
+CODE_20A3A0:        EOR #$01                  ; |
+CODE_20A3A2:        TAX                       ; /
+CODE_20A3A3:        LDA #$01                  ; \ coin sound effect
+CODE_20A3A5:        STA $1203                 ; /
 CODE_20A3A8:        INC $02DA,x               
 CODE_20A3AB:        LDA $02DA,x               
 CODE_20A3AE:        CMP #$05                  
 CODE_20A3B0:        BCC CODE_20A3BA           
 CODE_20A3B2:        INC $02DE,x               
-CODE_20A3B5:        LDA #$05                  
-CODE_20A3B7:        STA $1203                 
-CODE_20A3BA:        JSL CODE_25F1E1           
-CODE_20A3BE:        JSL CODE_22E0A9           
-CODE_20A3C2:        JSL CODE_25F956           
-CODE_20A3C6:        JSR CODE_20801F           
-CODE_20A3C9:        LDA $0014                 
-CODE_20A3CC:        BNE CODE_20A3C2           
-CODE_20A3CE:        REP #$20                  
-CODE_20A3D0:        LDA #$4900                
-CODE_20A3D3:        STA $001602               
-CODE_20A3D7:        LDA #$5400                
-CODE_20A3DA:        STA $001610               
-CODE_20A3DE:        LDA #$0900                
-CODE_20A3E1:        STA $001604               
-CODE_20A3E5:        STA $001612               
-CODE_20A3E9:        LDA #$182D                
-CODE_20A3EC:        STA $001606               
-CODE_20A3F0:        STA $001608               
-CODE_20A3F4:        STA $00160A               
-CODE_20A3F8:        STA $00160C               
-CODE_20A3FC:        STA $00160E               
-CODE_20A400:        LDA #$1C2D                
-CODE_20A403:        STA $001614               
-CODE_20A407:        STA $001616               
-CODE_20A40B:        STA $001618               
-CODE_20A40F:        STA $00161A               
-CODE_20A413:        STA $00161C               
-CODE_20A417:        LDA #$FFFF                
-CODE_20A41A:        STA $00161E               
-CODE_20A41E:        SEP #$20                  
-CODE_20A420:        JSL CODE_26CC15           
+CODE_20A3B5:        LDA #$05                  ; \ 1up sound effect
+CODE_20A3B7:        STA $1203                 ; /
+CODE_20A3BA:        JSL CODE_25F1E1           ; upload results screen tilemap
+CODE_20A3BE:        JSL CODE_22E0A9           ; clear OAM
+CODE_20A3C2:        JSL CODE_25F956           ; \ * create barn door in effect | result screen transition loop
+CODE_20A3C6:        JSR CODE_20801F           ; | * wait for vblank
+CODE_20A3C9:        LDA $0014                 ; | *
+CODE_20A3CC:        BNE CODE_20A3C2           ; / *
+CODE_20A3CE:        REP #$20                  ; \ clear player scoreboards
+CODE_20A3D0:        LDA #$4900                ; |
+CODE_20A3D3:        STA $001602               ; |
+CODE_20A3D7:        LDA #$5400                ; |
+CODE_20A3DA:        STA $001610               ; |
+CODE_20A3DE:        LDA #$0900                ; |
+CODE_20A3E1:        STA $001604               ; |
+CODE_20A3E5:        STA $001612               ; |
+CODE_20A3E9:        LDA #$182D                ; |
+CODE_20A3EC:        STA $001606               ; |
+CODE_20A3F0:        STA $001608               ; |
+CODE_20A3F4:        STA $00160A               ; |
+CODE_20A3F8:        STA $00160C               ; |
+CODE_20A3FC:        STA $00160E               ; |
+CODE_20A400:        LDA #$1C2D                ; |
+CODE_20A403:        STA $001614               ; |
+CODE_20A407:        STA $001616               ; |
+CODE_20A40B:        STA $001618               ; |
+CODE_20A40F:        STA $00161A               ; |
+CODE_20A413:        STA $00161C               ; |
+CODE_20A417:        LDA #$FFFF                ; |
+CODE_20A41A:        STA $00161E               ; |
+CODE_20A41E:        SEP #$20                  ; /
+CODE_20A420:        JSL CODE_26CC15           ; upload palettes
 CODE_20A424:        INC $0211                 
 CODE_20A427:        INC $0014                 
 CODE_20A42A:        STZ $0356                 
-CODE_20A42D:        JSL CODE_25F384           
-CODE_20A431:        LDA $7F300C               
+CODE_20A42D:        JSL CODE_25F384           ; * results screen main loop
+CODE_20A431:        LDA $7F300C               ; continue / quit?
 CODE_20A435:        BEQ CODE_20A43E           
-CODE_20A437:        JSR CODE_20801F           
-CODE_20A43A:        JML CODE_0080DE           
+CODE_20A437:        JSR CODE_20801F           ; wait for vblank
+CODE_20A43A:        JML CODE_0080DE           ; exit to SMAS title screen
 
-CODE_20A43E:        JSR CODE_20801F           
-CODE_20A441:        JSL CODE_25F9A1           
-CODE_20A445:        LDA $0014                 
-CODE_20A448:        BNE CODE_20A43E           
-CODE_20A44A:        STZ $0075                 
-CODE_20A44D:        STZ $192E                 
-CODE_20A450:        STZ $192F                 
-CODE_20A453:        JMP CODE_20A380           
+CODE_20A43E:        JSR CODE_20801F           ; \ * wait for vblank | result screen transition loop
+CODE_20A441:        JSL CODE_25F9A1           ; | * create barn door out effect
+CODE_20A445:        LDA $0014                 ; | *
+CODE_20A448:        BNE CODE_20A43E           ; / *
+CODE_20A44A:        STZ $0075                 ; init game
+CODE_20A44D:        STZ $192E                 ; \ clear coin counts
+CODE_20A450:        STZ $192F                 ; /
+CODE_20A453:        JMP CODE_20A380           ; next round
 
 DATA_20A456:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
