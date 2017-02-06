@@ -5,8 +5,8 @@ There are plans to make this disassembly assemble-able in either xkas or asar. T
 
 ## TAGS
 There are a few 'tags' used throughout the disassembly:
-"TODO": Code which should be looked into in terms of documenting and/or correct disassembling
-"INVALID": Most likely unused code which does something invalid (e.g. storing to ROM or (polymorphically) jumping to illogical addresses)
+- "TODO": Code which should be looked into in terms of documenting and/or correct disassembling
+- "INVALID": Most likely unused code which does something invalid (e.g. storing to ROM or (polymorphically) jumping to illogical addresses)
 
 ## WHAT'S LEFT TO DO (as of February 6th, 2017)
 - Give absolute ROM addressing opcodes of banks 26-2A labels
