@@ -19,13 +19,13 @@ There are a few 'tags' used throughout the disassembly:
 
 ## CODE LOCATIONS
 Game codes are located in the following banks:
-$008000-$02FFFF: Presents screen, hall screen, game select screen
-$038000-$0CFFFF: Super Mario Bros. 1
-$0D8000-$10FFFF: Super Mario Bros. The Lost Levels
-$118000-$15FFFF: Super Mario Bros. 2
-$208000-$2AFFFF: Super Mario Bros. 3
+- $008000-$02FFFF: Presents screen, hall screen, game select screen
+- $038000-$0CFFFF: Super Mario Bros. 1
+- $0D8000-$10FFFF: Super Mario Bros. The Lost Levels
+- $118000-$15FFFF: Super Mario Bros. 2
+- $208000-$2AFFFF: Super Mario Bros. 3
 
 ### NOTES TO SELF
-Regex for finding 16-bit ROM access: (CMP|CP[XY]|LD[AXY]|ORA|AND|EOR|ADC|SBC|BIT|TSB|TRB|ASL|DEC|INC|JMP|JSR|LSR|ROL|ROR)( \$)([8-9A-F][0-9A-F]{3})
-Regex for finding 24-bit ROM access: (AND|LD[AXY]|ORA|ADC|SBC|EOR|TSB|TRB|JSL|JML) \$([0-4][0-9A-F][8-9A-F][0-9A-F]{3})
-Regex for finding 24-bit ROM addresses: \$([0-4][0-9A-F][8-9A-F][0-9A-F]{3})
+- Regex for finding 16-bit ROM access: (CMP|CP[XY]|LD[AXY]|ORA|AND|EOR|ADC|SBC|BIT|TSB|TRB|ASL|DEC|INC|JMP|JSR|LSR|ROL|ROR)( \$)([8-9A-F][0-9A-F]{3})
+- Regex for finding 24-bit ROM access: (AND|LD[AXY]|ORA|ADC|SBC|EOR|TSB|TRB|JSL|JML) \$([0-4][0-9A-F][8-9A-F][0-9A-F]{3})
+- Regex for finding 24-bit ROM addresses: \$([0-4][0-9A-F][8-9A-F][0-9A-F]{3})
