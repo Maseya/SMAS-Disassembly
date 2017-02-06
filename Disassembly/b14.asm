@@ -2932,11 +2932,11 @@ DATA_14CFF4:        db $31,$7F,$9F,$03,$CF,$7E
 
 DATA_14CFFA:        db $8D,$76,$9F,$03,$CF,$7E
 
-DATA_14CD00:        db $C4,$75,$9F,$03,$CF,$7E
+DATA_14D000:        db $C4,$75,$9F,$03,$CF,$7E
 
-DATA_14CD06:        db $95,$15,$9F,$03,$CF,$7E
+DATA_14D006:        db $95,$15,$9F,$03,$CF,$7E
 
-DATA_14CD0C:        db $F0,$00,$9F,$03,$CF,$7E
+DATA_14D00C:        db $F0,$00,$9F,$03,$CF,$7E
 
 CODE_14D012:        A5 29         LDA $29                   
 CODE_14D014:        05 2A         ORA $2A                   
@@ -2992,11 +2992,11 @@ CODE_14D096:        BF F4 CF 14   LDA.l DATA_14CFF4,x
 CODE_14D09A:        8D 56 0B      STA $0B56                 
 CODE_14D09D:        BF FA CF 14   LDA.l DATA_14CFFA,x             
 CODE_14D0A1:        8D 58 0B      STA $0B58                 
-CODE_14D0A4:        BF 00 D0 14   LDA $14D000,x             
+CODE_14D0A4:        BF 00 D0 14   LDA.l DATA_14D000,x             
 CODE_14D0A8:        8D 5A 0B      STA $0B5A                 
-CODE_14D0AB:        BF 06 D0 14   LDA $14D006,x             
+CODE_14D0AB:        BF 06 D0 14   LDA.l DATA_14D006,x             
 CODE_14D0AF:        8D 5C 0B      STA $0B5C                 
-CODE_14D0B2:        BF 0C D0 14   LDA $14D00C,x             
+CODE_14D0B2:        BF 0C D0 14   LDA.l DATA_14D00C,x             
 CODE_14D0B6:        8D 5E 0B      STA $0B5E                 
 CODE_14D0B9:        E2 20         SEP #$20                  
 CODE_14D0BB:        A9 01         LDA #$01                  

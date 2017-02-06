@@ -7180,12 +7180,13 @@ CODE_28C921:        CLC
 CODE_28C922:        BNE CODE_28C90F           
 CODE_28C924:        PHX                       
 CODE_28C925:        TYX                       
-CODE_28C926:        LDA $28C92D,x             
+CODE_28C926:        LDA.l DATA_28C92E-1,x             
 CODE_28C92A:        STA $8B                   
 CODE_28C92C:        PLX                       
 CODE_28C92D:        RTS                       
 
-CODE_28C92E:        TSB $FC                   
+DATA_28C92E:        db $04,$FC
+
 CODE_28C930:        JSR CODE_28C934           
 CODE_28C933:        RTL                       
 
@@ -8327,7 +8328,7 @@ CODE_28D3AB:        ASL A
 CODE_28D3AC:        CLC                       
 CODE_28D3AD:        ADC $D8                   
 CODE_28D3AF:        TAX                       
-CODE_28D3B0:        LDA $288438,x             
+CODE_28D3B0:        LDA.l PNTR_288438,x             
 CODE_28D3B4:        SEP #$30                  
 CODE_28D3B6:        PLX                       
 CODE_28D3B7:        STA $0671,x               

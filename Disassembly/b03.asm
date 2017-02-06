@@ -45,7 +45,7 @@ CODE_038067:        0A            ASL A                     ; |
 CODE_038068:        18            CLC                       ; |
 CODE_038069:        6F 09 00 70   ADC $700009               ;/
 CODE_03806D:        AA            TAX                       ;Into X
-CODE_03806E:        BF 72 D2 05   LDA $05D272,x             ;\Load from level table
+CODE_03806E:        BF 72 D2 05   LDA.l DATA_05D272,x             ;\Load from level table
 CODE_038072:        8F 09 00 70   STA $700009               ; |Store into current level number loaded from save
 CODE_038076:        8F 02 FB 7F   STA $7FFB02               ;/|And some other address
 CODE_03807A:        8D 60 07      STA $0760                 ;/ And into current level
@@ -932,18 +932,18 @@ CODE_03888C:        EE 17 07      INC $0717                 ; |
 CODE_03888F:        38            SEC                       ;
 CODE_038890:        AD FB 07      LDA $07FB                 ;
 CODE_038893:        F0 06         BEQ CODE_03889B           ;
-CODE_038895:        BF 21 EE 05   LDA $05EE21,x             ;
+CODE_038895:        BF 21 EE 05   LDA.l DATA_05EE21,x             ;
 CODE_038899:        80 04         BRA CODE_03889F           ;
 
-CODE_03889B:        BF F4 ED 05   LDA $05EDF4,x             ;
+CODE_03889B:        BF F4 ED 05   LDA.l DATA_05EDF4,x             ;
 CODE_03889F:        8D 18 07      STA $0718                 ;
 CODE_0388A2:        F0 16         BEQ CODE_0388BA           ;
 CODE_0388A4:        AD FB 07      LDA $07FB                 ;
 CODE_0388A7:        F0 06         BEQ CODE_0388AF           ;
-CODE_0388A9:        BF 0A EE 05   LDA $05EE0A,x             ;
+CODE_0388A9:        BF 0A EE 05   LDA.l DATA_05EE0A,x             ;
 CODE_0388AD:        80 04         BRA CODE_0388B3           ;
 
-CODE_0388AF:        BF DF ED 05   LDA $05EDDF,x             ;
+CODE_0388AF:        BF DF ED 05   LDA.l DATA_05EDDF,x             ;
 CODE_0388B3:        8D F4 0F      STA $0FF4                 ;
 CODE_0388B6:        CE 18 07      DEC $0718                 ;
 CODE_0388B9:        18            CLC                       ;
@@ -5331,7 +5331,7 @@ CODE_03B2D8:        18            CLC                       ;
 CODE_03B2D9:        69 20 00      ADC #$0020                ;
 CODE_03B2DC:        AA            TAX                       ;
 CODE_03B2DD:        A0 E0 01      LDY #$01E0                ;
-CODE_03B2E0:        BF 40 ED 05   LDA $05ED40,x             ;
+CODE_03B2E0:        BF 40 ED 05   LDA.l DATA_05ED40,x             ;
 CODE_03B2E4:        99 00 10      STA $1000,y               ;
 CODE_03B2E7:        E8            INX                       ;
 CODE_03B2E8:        E8            INX                       ;
@@ -7452,7 +7452,7 @@ CODE_03C428:        8D 39 07      STA $0739                 ;Zero out 16-bit ene
 CODE_03C42B:        8D 3A 07      STA $073A                 ;Zero out page of the most recent sprite
 CODE_03C42E:        DA            PHX                       ;
 CODE_03C42F:        BB            TYX                       ;
-CODE_03C430:        BF 00 C0 04   LDA $04C000,x             ;
+CODE_03C430:        BF 00 C0 04   LDA.l DATA_04C000,x             ;
 CODE_03C434:        8D 2C 07      STA $072C                 ;Set level object data pointer index according to 
 CODE_03C437:        FA            PLX                       ;
 CODE_03C438:        9C DB 0E      STZ $0EDB                 ;
@@ -11748,9 +11748,9 @@ CODE_03E67A:        BC D8 90      LDY DATA_0390D8,x               ;
 CODE_03E67D:        88            DEY                       ;
 CODE_03E67E:        8C 5F 07      STY $075F                 ;
 CODE_03E681:        BB            TYX                       ;
-CODE_03E682:        BF 1C C1 04   LDA $04C11C,x             ;
+CODE_03E682:        BF 1C C1 04   LDA.l DATA_04C11C,x             ;
 CODE_03E686:        AA            TAX                       ;
-CODE_03E687:        BF 24 C1 04   LDA $04C124,x             ;
+CODE_03E687:        BF 24 C1 04   LDA.l DATA_04C124,x             ;
 CODE_03E68B:        8D 50 07      STA $0750                 ;
 CODE_03E68E:        A9 80         LDA #$80                  ;
 CODE_03E690:        8D 02 16      STA $1602                 ;
@@ -13865,13 +13865,13 @@ CODE_03F925:        AD FC 07      LDA $07FC                 ;"More difficult que
 CODE_03F928:        F0 09         BEQ CODE_03F933           ;
 CODE_03F92A:        DA            PHX                       ;
 CODE_03F92B:        BB            TYX                       ;
-CODE_03F92C:        BF 41 EC 05   LDA $05EC41,x             ;
+CODE_03F92C:        BF 41 EC 05   LDA.l DATA_05EC41,x             ;
 CODE_03F930:        FA            PLX                       ;
 CODE_03F931:        80 07         BRA CODE_03F93A           ;
 
 CODE_03F933:        DA            PHX                       ;
 CODE_03F934:        BB            TYX                       ;
-CODE_03F935:        BF 9C EB 05   LDA $05EB9C,x             ;
+CODE_03F935:        BF 9C EB 05   LDA.l DATA_05EB9C,x             ;
 CODE_03F939:        FA            PLX                       ;
 CODE_03F93A:        C9 FF         CMP #$FF                  ;
 CODE_03F93C:        D0 0A         BNE CODE_03F948           ;
@@ -13907,7 +13907,7 @@ CODE_03F974:        A9 20         LDA #$20                  ;
 CODE_03F976:        9D 57 02      STA $0257,x               ;
 CODE_03F979:        DA            PHX                       ;
 CODE_03F97A:        BB            TYX                       ;
-CODE_03F97B:        BF 9C EB 05   LDA $05EB9C,x             ;
+CODE_03F97B:        BF 9C EB 05   LDA.l DATA_05EB9C,x             ;
 CODE_03F97F:        FA            PLX                       ;
 CODE_03F980:        C9 05         CMP #$05                  ;
 CODE_03F982:        D0 06         BNE CODE_03F98A           ;
@@ -13925,9 +13925,9 @@ CODE_03F995:        6D 5F 07      ADC $075F                 ;
 CODE_03F998:        18            CLC                       ;
 CODE_03F999:        6D 60 07      ADC $0760                 ;
 CODE_03F99C:        AA            TAX                       ;
-CODE_03F99D:        BF E6 EC 05   LDA $05ECE6,x             ;
+CODE_03F99D:        BF E6 EC 05   LDA.l DATA_05ECE6,x             ;
 CODE_03F9A1:        8D 22 0E      STA $0E22                 ;
-CODE_03F9A4:        BF 13 ED 05   LDA $05ED13,x             ;
+CODE_03F9A4:        BF 13 ED 05   LDA.l DATA_05ED13,x             ;
 CODE_03F9A8:        8D 21 0E      STA $0E21                 ;
 CODE_03F9AB:        AD 21 0E      LDA $0E21                 ;
 CODE_03F9AE:        0A            ASL A                     ;

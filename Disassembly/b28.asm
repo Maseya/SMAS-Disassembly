@@ -7180,12 +7180,13 @@ CODE_28C921:        18            CLC
 CODE_28C922:        D0 EB         BNE CODE_28C90F           
 CODE_28C924:        DA            PHX                       
 CODE_28C925:        BB            TYX                       
-CODE_28C926:        BF 2D C9 28   LDA $28C92D,x             
+CODE_28C926:        BF 2D C9 28   LDA.l DATA_28C92E-1,x             
 CODE_28C92A:        85 8B         STA $8B                   
 CODE_28C92C:        FA            PLX                       
 CODE_28C92D:        60            RTS                       
 
-CODE_28C92E:        04 FC         TSB $FC                   
+DATA_28C92E:        db $04,$FC
+
 CODE_28C930:        20 34 C9      JSR CODE_28C934           
 CODE_28C933:        6B            RTL                       
 
@@ -8327,7 +8328,7 @@ CODE_28D3AB:        0A            ASL A
 CODE_28D3AC:        18            CLC                       
 CODE_28D3AD:        65 D8         ADC $D8                   
 CODE_28D3AF:        AA            TAX                       
-CODE_28D3B0:        BF 38 84 28   LDA $288438,x             
+CODE_28D3B0:        BF 38 84 28   LDA.l PNTR_288438,x             
 CODE_28D3B4:        E2 30         SEP #$30                  
 CODE_28D3B6:        FA            PLX                       
 CODE_28D3B7:        9D 71 06      STA $0671,x               

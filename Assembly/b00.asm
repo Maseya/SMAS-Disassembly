@@ -209,11 +209,11 @@ CODE_0081CB:        TAX                       ;
 CODE_0081CC:        INC A                     ;
 CODE_0081CD:        ASL A                     ;
 CODE_0081CE:        STA $7FFF00               ;
-CODE_0081D2:        LDA $008194,x             ;
+CODE_0081D2:        LDA.l DATA_008194,x             ;
 CODE_0081D6:        STA $03                   ;
-CODE_0081D8:        LDA $008198,x             ;
+CODE_0081D8:        LDA.l DATA_008198,x             ;
 CODE_0081DC:        STA $04                   ;
-CODE_0081DE:        LDA $00819C,x             ;
+CODE_0081DE:        LDA.l DATA_00819C,x             ;
 CODE_0081E2:        STA $05                   ;
 CODE_0081E4:        REP #$20                  ;
 CODE_0081E6:        LDA #$00F0                ;
@@ -269,11 +269,11 @@ CODE_00825F:        TAX                       ; A->X
 CODE_008260:        INC A                     ; +1
 CODE_008261:        ASL A                     ; *2
 CODE_008262:        STA $7FFF00               ; Store here
-CODE_008266:        LDA $008194,x             ;\
+CODE_008266:        LDA.l DATA_008194,x             ;\
 CODE_00826A:        STA $03                   ; |
-CODE_00826C:        LDA $008198,x             ; | Get pointers
+CODE_00826C:        LDA.l DATA_008198,x             ; | Get pointers
 CODE_008270:        STA $04                   ; |
-CODE_008272:        LDA $00819C,x             ; |
+CODE_008272:        LDA.l DATA_00819C,x             ; |
 CODE_008276:        STA $05                   ;/
 CODE_008278:        REP #$20                  ;
 CODE_00827A:        LDA #$00F0                ;\
@@ -3074,7 +3074,7 @@ CODE_009FF3:        LSR A                     ; | Return all odd frames
 CODE_009FF4:        BCS CODE_00A014           ;/
 CODE_009FF6:        REP #$20                  ;
 CODE_009FF8:        LDX $E3                   ; Get which step we are on
-CODE_009FFA:        LDA $009FAB,x             ;\ Set source data location to upload to BG2's tilemap in $E5
+CODE_009FFA:        LDA.l DATA_009FAB,x             ;\ Set source data location to upload to BG2's tilemap in $E5
 CODE_009FFE:        STA $E5                   ;/
 CODE_00A000:        INX                       ;\ Step we are on+2
 CODE_00A001:        INX                       ;/
@@ -3407,7 +3407,7 @@ CODE_00A3A1:        LSR A                     ;
 CODE_00A3A2:        BCS CODE_00A3F2           ;
 CODE_00A3A4:        REP #$20                  ;
 CODE_00A3A6:        LDX $E3                   ;
-CODE_00A3A8:        LDA $009FAB,x             ;
+CODE_00A3A8:        LDA.l DATA_009FAB,x             ;
 CODE_00A3AC:        STA $E5                   ;
 CODE_00A3AE:        DEX                       ;
 CODE_00A3AF:        DEX                       ;
@@ -6218,10 +6218,10 @@ CODE_00C060:        REP #$20                  ;For SMB:TLL
 CODE_00C062:        LDX #$1E                  ;Set loop count
 CODE_00C064:        LDA $0753                 ;\
 CODE_00C067:        BEQ CODE_00C06F           ;/Branch if Mario
-CODE_00C069:        LDA $00C0A3,x             ;Get Luigi palette data
+CODE_00C069:        LDA.l DATA_00C0A3,x             ;Get Luigi palette data
 CODE_00C06D:        BRA CODE_00C073           ;
 
-CODE_00C06F:        LDA $00C083,x             ;Get Mario palette data
+CODE_00C06F:        LDA.l DATA_00C083,x             ;Get Mario palette data
 CODE_00C073:        STA $1160,x               ;Write palette data to RAM
 CODE_00C076:        DEX                       ;
 CODE_00C077:        DEX                       ;
@@ -6405,13 +6405,13 @@ CODE_00C3F8:        BNE CODE_00C402           ;
 CODE_00C3FA:        LDA #$FF                  ;
 CODE_00C3FC:        STA $00A1                 ;
 CODE_00C3FF:        STZ $043D                 ;
-CODE_00C402:        LDA $00C43F,x             ;
+CODE_00C402:        LDA.l DATA_00C43F,x             ;
 CODE_00C406:        BNE CODE_00C411           ;
 CODE_00C408:        INC $0772                 ;
 CODE_00C40B:        STZ $0705                 ;
 CODE_00C40E:        STZ $005D                 ;
 CODE_00C411:        STA $0F85                 ;
-CODE_00C414:        LDA $00C44F,x             ;
+CODE_00C414:        LDA.l DATA_00C44F,x             ;
 CODE_00C418:        STA $0F86                 ;
 CODE_00C41B:        DEC $0F85                 ;
 CODE_00C41E:        LDA $0F86                 ;
@@ -6434,7 +6434,8 @@ CODE_00C43E:        RTL                       ;
 
 DATA_00C43F:        dw $A018,$0108,$1028,$0003
                     dw $A010,$0108,$1E28,$0002
-                    dw $0001,$C141,$01C9,$0001
+
+DATA_00C44F:        dw $0001,$C141,$01C9,$0001
                     dw $0001,$C141,$01C9,$0001
 
 CODE_00C45F:        DEC $0F88                 ;
@@ -6446,14 +6447,14 @@ CODE_00C46D:        CPX #$05                  ;
 CODE_00C46F:        BNE CODE_00C476           ;
 CODE_00C471:        LDA #$A0                  ;\ Set player X position to A0
 CODE_00C473:        STA $0219                 ;/ (This happens when the princess hugs the player and gets pushed back 2 pixels or so)
-CODE_00C476:        LDA $00C4B4,x             ;
+CODE_00C476:        LDA.l DATA_00C4B4,x       ;
 CODE_00C47A:        STA $0F88                 ;
 CODE_00C47D:        LDA $0F87                 ;
 CODE_00C480:        ASL A                     ;
 CODE_00C481:        TAX                       ;
-CODE_00C482:        LDA $00C491,x             ;
+CODE_00C482:        LDA.l PNTR_00C491,x       ;
 CODE_00C486:        STA $00                   ;
-CODE_00C488:        LDA $00C492,x             ;
+CODE_00C488:        LDA.l PNTR_00C491+1,x       ;
 CODE_00C48C:        STA $01                   ;
 CODE_00C48E:        JMP ($0000)               ;
 
@@ -6496,12 +6497,12 @@ CODE_00C4D9:        BNE CODE_00C4E9           ;
 CODE_00C4DB:        LDA $09                   ;
 CODE_00C4DD:        AND #$04                  ;
 CODE_00C4DF:        BNE CODE_00C4E9           ;
-CODE_00C4E1:        LDA $00C54E,x             ;
+CODE_00C4E1:        LDA.l DATA_00C54E,x             ;
 CODE_00C4E5:        INC A                     ;
 CODE_00C4E6:        INC A                     ;
 CODE_00C4E7:        BRA CODE_00C4ED           ;
 
-CODE_00C4E9:        LDA $00C54E,x             ;
+CODE_00C4E9:        LDA.l DATA_00C54E,x             ;
 CODE_00C4ED:        STA $08B2                 ;
 CODE_00C4F0:        CLC                       ;
 CODE_00C4F1:        ADC #$20                  ;
@@ -6776,7 +6777,7 @@ CODE_00C774:        LSR A                     ;
 CODE_00C775:        LSR A                     ;
 CODE_00C776:        AND #$03                  ;
 CODE_00C778:        TAX                       ;
-CODE_00C779:        LDA $00CA59,x             ;
+CODE_00C779:        LDA.l DATA_00CA59,x             ;
 CODE_00C77D:        CLC                       ;
 CODE_00C77E:        ADC #$B0                  ;
 CODE_00C780:        STA $0800                 ;
@@ -6796,7 +6797,7 @@ CODE_00C798:        LSR A                     ;
 CODE_00C799:        LSR A                     ;
 CODE_00C79A:        AND #$03                  ;
 CODE_00C79C:        TAX                       ;
-CODE_00C79D:        LDA $00CA55,x             ;
+CODE_00C79D:        LDA.l DATA_00CA55,x             ;
 CODE_00C7A1:        STA $0802                 ;
 CODE_00C7A4:        LDA #$26                  ;
 CODE_00C7A6:        STA $0803                 ;
@@ -6822,7 +6823,7 @@ CODE_00C7CB:        PLB                       ;
 CODE_00C7CC:        JSL CODE_0E81F6           ;
 CODE_00C7D0:        LDX $0F80                 ;
 CODE_00C7D3:        LDA $0F81                 ;
-CODE_00C7D6:        CMP $CA66,x               ;
+CODE_00C7D6:        CMP.w DATA_00CA66,x               ;
 CODE_00C7D9:        BCC CODE_00C7F4           ;
 CODE_00C7DB:        STZ $0F81                 ;
 CODE_00C7DE:        INC $0F80                 ;
@@ -6928,7 +6929,7 @@ CODE_00C8AB:        LSR A                     ;
 CODE_00C8AC:        LSR A                     ;
 CODE_00C8AD:        AND #$03                  ;
 CODE_00C8AF:        TAX                       ;
-CODE_00C8B0:        LDA $00CA59,x             ;
+CODE_00C8B0:        LDA.l DATA_00CA59,x             ;
 CODE_00C8B4:        CLC                       ;
 CODE_00C8B5:        ADC #$B0                  ;
 CODE_00C8B7:        STA $0800                 ;
@@ -6948,7 +6949,7 @@ CODE_00C8CF:        LSR A                     ;
 CODE_00C8D0:        LSR A                     ;
 CODE_00C8D1:        AND #$03                  ;
 CODE_00C8D3:        TAX                       ;
-CODE_00C8D4:        LDA $00CA55,x             ;
+CODE_00C8D4:        LDA.l DATA_00CA55,x             ;
 CODE_00C8D8:        STA $0802                 ;
 CODE_00C8DB:        LDA #$26                  ;
 CODE_00C8DD:        STA $0803                 ;
@@ -6969,7 +6970,7 @@ CODE_00C8F8:        PLB                       ;
 CODE_00C8F9:        JSL CODE_0E81F6           ;
 CODE_00C8FD:        LDX $0F80                 ;
 CODE_00C900:        LDA $0F81                 ;
-CODE_00C903:        CMP $CA76,x               ;
+CODE_00C903:        CMP.w DATA_00CA76,x               ;
 CODE_00C906:        BCC CODE_00C91F           ;
 CODE_00C908:        STZ $0F81                 ;
 CODE_00C90B:        INC $0F80                 ;
@@ -7074,7 +7075,7 @@ CODE_00C9D6:        LSR A                     ;
 CODE_00C9D7:        LSR A                     ;
 CODE_00C9D8:        AND #$03                  ;
 CODE_00C9DA:        TAX                       ;
-CODE_00C9DB:        LDA $00CA59,x             ;
+CODE_00C9DB:        LDA.l DATA_00CA59,x             ;
 CODE_00C9DF:        CLC                       ;
 CODE_00C9E0:        ADC #$B0                  ;
 CODE_00C9E2:        STA $0800                 ;
@@ -7094,7 +7095,7 @@ CODE_00C9FA:        LSR A                     ;
 CODE_00C9FB:        LSR A                     ;
 CODE_00C9FC:        AND #$03                  ;
 CODE_00C9FE:        TAX                       ;
-CODE_00C9FF:        LDA $00CA55,x             ;
+CODE_00C9FF:        LDA.l DATA_00CA55,x             ;
 CODE_00CA03:        STA $0802                 ;
 CODE_00CA06:        LDA #$26                  ;
 CODE_00CA08:        STA $0803                 ;
@@ -7520,7 +7521,7 @@ CODE_00D51B:        LDA $075F                 ;
 CODE_00D51E:        AND #$00FF                ;
 CODE_00D521:        ASL A                     ;
 CODE_00D522:        TAX                       ;
-CODE_00D523:        LDA $00D55A,x             ;
+CODE_00D523:        LDA.l DATA_00D55A,x             ;
 CODE_00D527:        STA $0285                 ;
 CODE_00D52A:        SEP #$20                  ;
 CODE_00D52C:        PLX                       ;

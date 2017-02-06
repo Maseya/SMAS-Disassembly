@@ -1630,9 +1630,9 @@ CODE_278E78:        B0 53         BCS CODE_278ECD
 CODE_278E7A:        DA            PHX                       
 CODE_278E7B:        0A            ASL A                     
 CODE_278E7C:        AA            TAX                       
-CODE_278E7D:        BF 00 82 21   LDA $218200,x             
+CODE_278E7D:        BF 00 82 21   LDA.l DATA_218200,x             
 CODE_278E81:        85 00         STA $00                   
-CODE_278E83:        BF 01 82 21   LDA $218201,x             
+CODE_278E83:        BF 01 82 21   LDA.l DATA_218200+1,x             
 CODE_278E87:        65 02         ADC $02                   
 CODE_278E89:        85 01         STA $01                   
 CODE_278E8B:        BD 1E 82      LDA $821E,x               
@@ -2920,7 +2920,7 @@ CODE_279956:        0A            ASL A
 CODE_279957:        18            CLC                       
 CODE_279958:        65 D8         ADC $D8                   
 CODE_27995A:        AA            TAX                       
-CODE_27995B:        BF 38 84 28   LDA $288438,x             
+CODE_27995B:        BF 38 84 28   LDA.l PNTR_288438,x             
 CODE_27995F:        85 D8         STA $D8                   
 CODE_279961:        E2 30         SEP #$30                  
 CODE_279963:        FA            PLX                       
@@ -3068,7 +3068,7 @@ CODE_279A93:        0A            ASL A
 CODE_279A94:        18            CLC                       
 CODE_279A95:        65 D8         ADC $D8                   
 CODE_279A97:        AA            TAX                       
-CODE_279A98:        BF 38 84 28   LDA $288438,x             
+CODE_279A98:        BF 38 84 28   LDA.l PNTR_288438,x             
 CODE_279A9C:        85 D8         STA $D8                   
 CODE_279A9E:        E2 30         SEP #$30                  
 CODE_279AA0:        FA            PLX                       
@@ -3542,11 +3542,11 @@ CODE_279E78:        0A            ASL A
 CODE_279E79:        18            CLC                       
 CODE_279E7A:        65 DE         ADC $DE                   
 CODE_279E7C:        AA            TAX                       
-CODE_279E7D:        BF 7F B4 21   LDA $21B47F,x             
+CODE_279E7D:        BF 7F B4 21   LDA.l DATA_21B47F,x             
 CODE_279E81:        85 D8         STA $D8                   
-CODE_279E83:        BF 80 B4 21   LDA $21B480,x             
+CODE_279E83:        BF 80 B4 21   LDA.l DATA_21B47F+1,x             
 CODE_279E87:        85 D9         STA $D9                   
-CODE_279E89:        BF 81 B4 21   LDA $21B481,x             
+CODE_279E89:        BF 81 B4 21   LDA.l DATA_21B47F+2,x             
 CODE_279E8D:        85 DA         STA $DA                   
 CODE_279E8F:        B7 D8         LDA [$D8],y               
 CODE_279E91:        18            CLC                       
@@ -4673,9 +4673,9 @@ CODE_27A767:        22 C1 9F 20   JSL CODE_209FC1
 CODE_27A76B:        48            PHA                       
 CODE_27A76C:        DA            PHX                       
 CODE_27A76D:        BB            TYX                       
-CODE_27A76E:        BF 3C 82 21   LDA $21823C,x             
+CODE_27A76E:        BF 3C 82 21   LDA.l DATA_21823C,x             
 CODE_27A772:        85 00         STA $00                   
-CODE_27A774:        BF 4C 82 21   LDA $21824C,x             
+CODE_27A774:        BF 4C 82 21   LDA.l DATA_21824C,x             
 CODE_27A778:        85 01         STA $01                   
 CODE_27A77A:        FA            PLX                       
 CODE_27A77B:        68            PLA                       
@@ -4685,9 +4685,9 @@ CODE_27A77E:        DA            PHX
 CODE_27A77F:        A5 0E         LDA $0E                   
 CODE_27A781:        0A            ASL A                     
 CODE_27A782:        AA            TAX                       
-CODE_27A783:        BF 00 82 21   LDA $218200,x             
+CODE_27A783:        BF 00 82 21   LDA.l DATA_218200,x             
 CODE_27A787:        85 00         STA $00                   
-CODE_27A789:        BF 01 82 21   LDA $218201,x             
+CODE_27A789:        BF 01 82 21   LDA.l DATA_218200+1,x             
 CODE_27A78D:        85 01         STA $01                   
 CODE_27A78F:        FA            PLX                       
 CODE_27A790:        A5 0C         LDA $0C                   
@@ -5314,10 +5314,10 @@ CODE_27B02E:        B0 4F         BCS CODE_27B07F
 CODE_27B030:        DA            PHX                       
 CODE_27B031:        0A            ASL A                     
 CODE_27B032:        AA            TAX                       
-CODE_27B033:        BF 00 82 21   LDA $218200,x             
+CODE_27B033:        BF 00 82 21   LDA.l DATA_218200,x             
 CODE_27B037:        85 2E         STA $2E                   
 CODE_27B039:        85 D8         STA $D8                   
-CODE_27B03B:        BF 01 82 21   LDA $218201,x             
+CODE_27B03B:        BF 01 82 21   LDA.l DATA_218200+1,x             
 CODE_27B03F:        18            CLC                       
 CODE_27B040:        65 02         ADC $02                   
 CODE_27B042:        85 2F         STA $2F                   
@@ -5561,7 +5561,7 @@ CODE_27B207:        A5 15         LDA $15
 CODE_27B209:        29 03 00      AND #$0003                
 CODE_27B20C:        DA            PHX                       
 CODE_27B20D:        AA            TAX                       
-CODE_27B20E:        BF 23 B2 27   LDA $27B223,x             
+CODE_27B20E:        BF 23 B2 27   LDA.l DATA_27B223,x             
 CODE_27B212:        8D 00 13      STA $1300                 
 CODE_27B215:        FA            PLX                       
 CODE_27B216:        80 03         BRA CODE_27B21B           
@@ -5572,9 +5572,9 @@ CODE_27B21D:        A9 01         LDA #$01
 CODE_27B21F:        8D 00 15      STA $1500                 
 CODE_27B222:        60            RTS                       
 
-CODE_27B223:        08            PHP                       
-CODE_27B224:        77 FF         ADC [$FF],y               
-CODE_27B226:        7F 18 F0 08   ADC $08F018,x             
+DATA_27B223:        db $08,$77,$FF
+
+CODE_27B226:        7F 18 F0 08   ADC.l DATA_08F018,x             
 CODE_27B22A:        98            TYA                       
 CODE_27B22B:        0A            ASL A                     
 CODE_27B22C:        A8            TAY                       
@@ -6196,13 +6196,13 @@ CODE_27B72A:        BD 47 02      LDA $0247,x
 CODE_27B72D:        85 06         STA $06                   
 CODE_27B72F:        0A            ASL A                     
 CODE_27B730:        AA            TAX                       
-CODE_27B731:        BF 00 82 21   LDA $218200,x             
+CODE_27B731:        BF 00 82 21   LDA.l DATA_218200,x             
 CODE_27B735:        85 D8         STA $D8                   
 CODE_27B737:        85 DB         STA $DB                   
 CODE_27B739:        A5 03         LDA $03                   
 CODE_27B73B:        29 01         AND #$01                  
 CODE_27B73D:        18            CLC                       
-CODE_27B73E:        7F 01 82 21   ADC $218201,x             
+CODE_27B73E:        7F 01 82 21   ADC.l DATA_218200+1,x             
 CODE_27B742:        85 D9         STA $D9                   
 CODE_27B744:        18            CLC                       
 CODE_27B745:        69 20         ADC #$20                  
@@ -6783,13 +6783,13 @@ CODE_27BBCD:        DA            PHX
 CODE_27BBCE:        BD 88 1F      LDA $1F88,x               
 CODE_27BBD1:        0A            ASL A                     
 CODE_27BBD2:        AA            TAX                       
-CODE_27BBD3:        BF 00 82 21   LDA $218200,x             
+CODE_27BBD3:        BF 00 82 21   LDA.l DATA_218200,x             
 CODE_27BBD7:        85 00         STA $00                   
 CODE_27BBD9:        85 D8         STA $D8                   
 CODE_27BBDB:        A5 01         LDA $01                   
 CODE_27BBDD:        29 01         AND #$01                  
 CODE_27BBDF:        18            CLC                       
-CODE_27BBE0:        7F 01 82 21   ADC $218201,x             
+CODE_27BBE0:        7F 01 82 21   ADC.l DATA_218200+1,x             
 CODE_27BBE4:        85 01         STA $01                   
 CODE_27BBE6:        18            CLC                       
 CODE_27BBE7:        69 20         ADC #$20                  
@@ -7823,13 +7823,13 @@ CODE_27C46D:        A5 12         LDA $12
 CODE_27C46F:        69 00         ADC #$00                  
 CODE_27C471:        0A            ASL A                     
 CODE_27C472:        AA            TAX                       
-CODE_27C473:        BF 00 82 21   LDA $218200,x             
+CODE_27C473:        BF 00 82 21   LDA.l DATA_218200,x             
 CODE_27C477:        85 00         STA $00                   
 CODE_27C479:        85 DB         STA $DB                   
 CODE_27C47B:        A5 01         LDA $01                   
 CODE_27C47D:        29 01         AND #$01                  
 CODE_27C47F:        18            CLC                       
-CODE_27C480:        7F 01 82 21   ADC $218201,x             
+CODE_27C480:        7F 01 82 21   ADC.l DATA_218200+1,x             
 CODE_27C484:        85 01         STA $01                   
 CODE_27C486:        18            CLC                       
 CODE_27C487:        69 20         ADC #$20                  

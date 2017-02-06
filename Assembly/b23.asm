@@ -3281,7 +3281,7 @@ CODE_239B24:        BNE CODE_239B53
 CODE_239B26:        DEY                       
 CODE_239B27:        BPL CODE_239B17           
 CODE_239B29:        LDX $1006                 
-CODE_239B2C:        LDA $2199C3,x             
+CODE_239B2C:        LDA.l DATA_2199C3,x             
 CODE_239B30:        STA $1FF9                 
 CODE_239B33:        JSL CODE_2A810D           
 CODE_239B37:        LDA #$07                  

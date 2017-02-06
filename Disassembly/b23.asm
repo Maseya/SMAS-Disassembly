@@ -3281,7 +3281,7 @@ CODE_239B24:        D0 2D         BNE CODE_239B53
 CODE_239B26:        88            DEY                       
 CODE_239B27:        10 EE         BPL CODE_239B17           
 CODE_239B29:        AE 06 10      LDX $1006                 
-CODE_239B2C:        BF C3 99 21   LDA $2199C3,x             
+CODE_239B2C:        BF C3 99 21   LDA.l DATA_2199C3,x             
 CODE_239B30:        8D F9 1F      STA $1FF9                 
 CODE_239B33:        22 0D 81 2A   JSL CODE_2A810D           
 CODE_239B37:        A9 07         LDA #$07                  

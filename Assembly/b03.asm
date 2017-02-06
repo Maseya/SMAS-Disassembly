@@ -45,7 +45,7 @@ CODE_038067:        ASL A                     ; |
 CODE_038068:        CLC                       ; |
 CODE_038069:        ADC $700009               ;/
 CODE_03806D:        TAX                       ;Into X
-CODE_03806E:        LDA $05D272,x             ;\Load from level table
+CODE_03806E:        LDA.l DATA_05D272,x             ;\Load from level table
 CODE_038072:        STA $700009               ; |Store into current level number loaded from save
 CODE_038076:        STA $7FFB02               ;/|And some other address
 CODE_03807A:        STA $0760                 ;/ And into current level
@@ -932,18 +932,18 @@ CODE_03888C:        INC $0717                 ; |
 CODE_03888F:        SEC                       ;
 CODE_038890:        LDA $07FB                 ;
 CODE_038893:        BEQ CODE_03889B           ;
-CODE_038895:        LDA $05EE21,x             ;
+CODE_038895:        LDA.l DATA_05EE21,x             ;
 CODE_038899:        BRA CODE_03889F           ;
 
-CODE_03889B:        LDA $05EDF4,x             ;
+CODE_03889B:        LDA.l DATA_05EDF4,x             ;
 CODE_03889F:        STA $0718                 ;
 CODE_0388A2:        BEQ CODE_0388BA           ;
 CODE_0388A4:        LDA $07FB                 ;
 CODE_0388A7:        BEQ CODE_0388AF           ;
-CODE_0388A9:        LDA $05EE0A,x             ;
+CODE_0388A9:        LDA.l DATA_05EE0A,x             ;
 CODE_0388AD:        BRA CODE_0388B3           ;
 
-CODE_0388AF:        LDA $05EDDF,x             ;
+CODE_0388AF:        LDA.l DATA_05EDDF,x             ;
 CODE_0388B3:        STA $0FF4                 ;
 CODE_0388B6:        DEC $0718                 ;
 CODE_0388B9:        CLC                       ;
@@ -5331,7 +5331,7 @@ CODE_03B2D8:        CLC                       ;
 CODE_03B2D9:        ADC #$0020                ;
 CODE_03B2DC:        TAX                       ;
 CODE_03B2DD:        LDY #$01E0                ;
-CODE_03B2E0:        LDA $05ED40,x             ;
+CODE_03B2E0:        LDA.l DATA_05ED40,x             ;
 CODE_03B2E4:        STA $1000,y               ;
 CODE_03B2E7:        INX                       ;
 CODE_03B2E8:        INX                       ;
@@ -7452,7 +7452,7 @@ CODE_03C428:        STA $0739                 ;Zero out 16-bit enemy data pointe
 CODE_03C42B:        STA $073A                 ;Zero out page of the most recent sprite
 CODE_03C42E:        PHX                       ;
 CODE_03C42F:        TYX                       ;
-CODE_03C430:        LDA $04C000,x             ;
+CODE_03C430:        LDA.l DATA_04C000,x             ;
 CODE_03C434:        STA $072C                 ;Set level object data pointer index according to 
 CODE_03C437:        PLX                       ;
 CODE_03C438:        STZ $0EDB                 ;
@@ -11748,9 +11748,9 @@ CODE_03E67A:        LDY DATA_0390D8,x               ;
 CODE_03E67D:        DEY                       ;
 CODE_03E67E:        STY $075F                 ;
 CODE_03E681:        TYX                       ;
-CODE_03E682:        LDA $04C11C,x             ;
+CODE_03E682:        LDA.l DATA_04C11C,x             ;
 CODE_03E686:        TAX                       ;
-CODE_03E687:        LDA $04C124,x             ;
+CODE_03E687:        LDA.l DATA_04C124,x             ;
 CODE_03E68B:        STA $0750                 ;
 CODE_03E68E:        LDA #$80                  ;
 CODE_03E690:        STA $1602                 ;
@@ -13865,13 +13865,13 @@ CODE_03F925:        LDA $07FC                 ;"More difficult quest" flag. Sets
 CODE_03F928:        BEQ CODE_03F933           ;
 CODE_03F92A:        PHX                       ;
 CODE_03F92B:        TYX                       ;
-CODE_03F92C:        LDA $05EC41,x             ;
+CODE_03F92C:        LDA.l DATA_05EC41,x             ;
 CODE_03F930:        PLX                       ;
 CODE_03F931:        BRA CODE_03F93A           ;
 
 CODE_03F933:        PHX                       ;
 CODE_03F934:        TYX                       ;
-CODE_03F935:        LDA $05EB9C,x             ;
+CODE_03F935:        LDA.l DATA_05EB9C,x             ;
 CODE_03F939:        PLX                       ;
 CODE_03F93A:        CMP #$FF                  ;
 CODE_03F93C:        BNE CODE_03F948           ;
@@ -13907,7 +13907,7 @@ CODE_03F974:        LDA #$20                  ;
 CODE_03F976:        STA $0257,x               ;
 CODE_03F979:        PHX                       ;
 CODE_03F97A:        TYX                       ;
-CODE_03F97B:        LDA $05EB9C,x             ;
+CODE_03F97B:        LDA.l DATA_05EB9C,x             ;
 CODE_03F97F:        PLX                       ;
 CODE_03F980:        CMP #$05                  ;
 CODE_03F982:        BNE CODE_03F98A           ;
@@ -13925,9 +13925,9 @@ CODE_03F995:        ADC $075F                 ;
 CODE_03F998:        CLC                       ;
 CODE_03F999:        ADC $0760                 ;
 CODE_03F99C:        TAX                       ;
-CODE_03F99D:        LDA $05ECE6,x             ;
+CODE_03F99D:        LDA.l DATA_05ECE6,x             ;
 CODE_03F9A1:        STA $0E22                 ;
-CODE_03F9A4:        LDA $05ED13,x             ;
+CODE_03F9A4:        LDA.l DATA_05ED13,x             ;
 CODE_03F9A8:        STA $0E21                 ;
 CODE_03F9AB:        LDA $0E21                 ;
 CODE_03F9AE:        ASL A                     ;

@@ -7559,7 +7559,7 @@ CODE_29BE3A:        AD 27 07      LDA $0727
 CODE_29BE3D:        0A            ASL A                     
 CODE_29BE3E:        A8            TAY                       
 CODE_29BE3F:        C2 20         REP #$20                  
-CODE_29BE41:        AF 00 82 21   LDA $218200               
+CODE_29BE41:        AF 00 82 21   LDA.l DATA_218200               
 CODE_29BE45:        18            CLC                       
 CODE_29BE46:        69 10 01      ADC #$0110                
 CODE_29BE49:        85 2E         STA $2E                   
@@ -7568,7 +7568,7 @@ CODE_29BE4C:        69 00 20      ADC #$2000
 CODE_29BE4F:        85 D8         STA $D8                   
 CODE_29BE51:        DA            PHX                       
 CODE_29BE52:        BB            TYX                       
-CODE_29BE53:        BF 56 E2 2A   LDA $2AE256,x             
+CODE_29BE53:        BF 56 E2 2A   LDA.l DATA_2AE256,x             
 CODE_29BE57:        85 00         STA $00                   
 CODE_29BE59:        FA            PLX                       
 CODE_29BE5A:        E2 20         SEP #$20                  
@@ -8817,7 +8817,7 @@ CODE_29C88C:        AD 3C 07      LDA $073C
 CODE_29C88F:        29 07 00      AND #$0007                
 CODE_29C892:        0A            ASL A                     
 CODE_29C893:        AA            TAX                       
-CODE_29C894:        BF 60 9C 3C   LDA $3C9C60,x             
+CODE_29C894:        BF 60 9C 3C   LDA.l DATA_3C9C60,x             
 CODE_29C898:        80 74         BRA CODE_29C90E           
 
 CODE_29C89A:        20 7E CB      JSR CODE_29CB7E           
@@ -9606,9 +9606,9 @@ CODE_29CF91:        E8            INX
 CODE_29CF92:        E8            INX                       
 CODE_29CF93:        E0 20 00      CPX #$0020                
 CODE_29CF96:        D0 EA         BNE CODE_29CF82           
-CODE_29CF98:        AF 3E A4 3C   LDA $3CA43E               
+CODE_29CF98:        AF 3E A4 3C   LDA.l DATA_3CA43E               
 CODE_29CF9C:        8F 3E 94 7F   STA $7F943E               
-CODE_29CFA0:        AF 5E A4 3C   LDA $3CA45E               
+CODE_29CFA0:        AF 5E A4 3C   LDA.l DATA_3CA45E               
 CODE_29CFA4:        8F 5E 94 7F   STA $7F945E               
 CODE_29CFA8:        A9 00 FF      LDA #$FF00                
 CODE_29CFAB:        8D B7 02      STA $02B7                 
@@ -12210,13 +12210,13 @@ CODE_29E7CB:        A0 00         LDY #$00
 CODE_29E7CD:        A2 05         LDX #$05                  
 CODE_29E7CF:        A5 00         LDA $00                   
 CODE_29E7D1:        38            SEC                       
-CODE_29E7D2:        FF 0C F0 21   SBC $21F00C,x             
+CODE_29E7D2:        FF 0C F0 21   SBC.l DATA_21F00C,x             
 CODE_29E7D6:        85 00         STA $00                   
 CODE_29E7D8:        A5 01         LDA $01                   
-CODE_29E7DA:        FF 06 F0 21   SBC $21F006,x             
+CODE_29E7DA:        FF 06 F0 21   SBC.l DATA_21F006,x             
 CODE_29E7DE:        85 01         STA $01                   
 CODE_29E7E0:        A5 02         LDA $02                   
-CODE_29E7E2:        FF 00 F0 21   SBC $21F000,x             
+CODE_29E7E2:        FF 00 F0 21   SBC.l DATA_21F000,x             
 CODE_29E7E6:        85 02         STA $02                   
 CODE_29E7E8:        90 05         BCC CODE_29E7EF           
 CODE_29E7EA:        EE 9E 06      INC $069E                 
@@ -12224,13 +12224,13 @@ CODE_29E7ED:        80 E0         BRA CODE_29E7CF
 
 CODE_29E7EF:        A5 00         LDA $00                   
 CODE_29E7F1:        18            CLC                       
-CODE_29E7F2:        7F 0C F0 21   ADC $21F00C,x             
+CODE_29E7F2:        7F 0C F0 21   ADC.l DATA_21F00C,x             
 CODE_29E7F6:        85 00         STA $00                   
 CODE_29E7F8:        A5 01         LDA $01                   
-CODE_29E7FA:        7F 06 F0 21   ADC $21F006,x             
+CODE_29E7FA:        7F 06 F0 21   ADC.l DATA_21F006,x             
 CODE_29E7FE:        85 01         STA $01                   
 CODE_29E800:        A5 02         LDA $02                   
-CODE_29E802:        7F 00 F0 21   ADC $21F000,x             
+CODE_29E802:        7F 00 F0 21   ADC.l DATA_21F000,x             
 CODE_29E806:        85 02         STA $02                   
 CODE_29E808:        AD 9E 06      LDA $069E                 
 CODE_29E80B:        09 90         ORA #$90                  
@@ -12581,7 +12581,7 @@ CODE_29EAD0:        A9 00         LDA #$00
 CODE_29EAD2:        8F 54 39 7E   STA $7E3954               
 CODE_29EAD6:        6B            RTL                       
 
-CODE_29EAD7:        BF 2A F0 21   LDA $21F02A,x             
+CODE_29EAD7:        BF 2A F0 21   LDA.l DATA_21F02A,x             
 CODE_29EADB:        99 02 16      STA $1602,y               
 CODE_29EADE:        C8            INY                       
 CODE_29EADF:        E8            INX                       
@@ -12953,13 +12953,13 @@ CODE_29EDCE:        AD 17 07      LDA $0717
 CODE_29EDD1:        9D A1 1D      STA $1DA1,x               
 CODE_29EDD4:        C2 20         REP #$20                  
 CODE_29EDD6:        A2 08         LDX #$08                  
-CODE_29EDD8:        BF 3C E4 21   LDA $21E43C,x             
+CODE_29EDD8:        BF 3C E4 21   LDA.l DATA_21E43C,x             
 CODE_29EDDC:        9D ED 1E      STA $1EED,x               
-CODE_29EDDF:        BF 84 E4 21   LDA $21E484,x             
+CODE_29EDDF:        BF 84 E4 21   LDA.l DATA_21E484,x             
 CODE_29EDE3:        9D 09 1F      STA $1F09,x               
-CODE_29EDE6:        BF CC E4 21   LDA $21E4CC,x             
+CODE_29EDE6:        BF CC E4 21   LDA.l DATA_21E4CC,x             
 CODE_29EDEA:        9D FB 1E      STA $1EFB,x               
-CODE_29EDED:        BF 14 E5 21   LDA $21E514,x             
+CODE_29EDED:        BF 14 E5 21   LDA.l DATA_21E514,x             
 CODE_29EDF1:        9D 17 1F      STA $1F17,x               
 CODE_29EDF4:        CA            DEX                       
 CODE_29EDF5:        CA            DEX                       

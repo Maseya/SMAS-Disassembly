@@ -7559,7 +7559,7 @@ CODE_29BE3A:        LDA $0727
 CODE_29BE3D:        ASL A                     
 CODE_29BE3E:        TAY                       
 CODE_29BE3F:        REP #$20                  
-CODE_29BE41:        LDA $218200               
+CODE_29BE41:        LDA.l DATA_218200               
 CODE_29BE45:        CLC                       
 CODE_29BE46:        ADC #$0110                
 CODE_29BE49:        STA $2E                   
@@ -7568,7 +7568,7 @@ CODE_29BE4C:        ADC #$2000
 CODE_29BE4F:        STA $D8                   
 CODE_29BE51:        PHX                       
 CODE_29BE52:        TYX                       
-CODE_29BE53:        LDA $2AE256,x             
+CODE_29BE53:        LDA.l DATA_2AE256,x             
 CODE_29BE57:        STA $00                   
 CODE_29BE59:        PLX                       
 CODE_29BE5A:        SEP #$20                  
@@ -8817,7 +8817,7 @@ CODE_29C88C:        LDA $073C
 CODE_29C88F:        AND #$0007                
 CODE_29C892:        ASL A                     
 CODE_29C893:        TAX                       
-CODE_29C894:        LDA $3C9C60,x             
+CODE_29C894:        LDA.l DATA_3C9C60,x             
 CODE_29C898:        BRA CODE_29C90E           
 
 CODE_29C89A:        JSR CODE_29CB7E           
@@ -9606,9 +9606,9 @@ CODE_29CF91:        INX
 CODE_29CF92:        INX                       
 CODE_29CF93:        CPX #$0020                
 CODE_29CF96:        BNE CODE_29CF82           
-CODE_29CF98:        LDA $3CA43E               
+CODE_29CF98:        LDA.l DATA_3CA43E               
 CODE_29CF9C:        STA $7F943E               
-CODE_29CFA0:        LDA $3CA45E               
+CODE_29CFA0:        LDA.l DATA_3CA45E               
 CODE_29CFA4:        STA $7F945E               
 CODE_29CFA8:        LDA #$FF00                
 CODE_29CFAB:        STA $02B7                 
@@ -12210,13 +12210,13 @@ CODE_29E7CB:        LDY #$00
 CODE_29E7CD:        LDX #$05                  
 CODE_29E7CF:        LDA $00                   
 CODE_29E7D1:        SEC                       
-CODE_29E7D2:        SBC $21F00C,x             
+CODE_29E7D2:        SBC.l DATA_21F00C,x             
 CODE_29E7D6:        STA $00                   
 CODE_29E7D8:        LDA $01                   
-CODE_29E7DA:        SBC $21F006,x             
+CODE_29E7DA:        SBC.l DATA_21F006,x             
 CODE_29E7DE:        STA $01                   
 CODE_29E7E0:        LDA $02                   
-CODE_29E7E2:        SBC $21F000,x             
+CODE_29E7E2:        SBC.l DATA_21F000,x             
 CODE_29E7E6:        STA $02                   
 CODE_29E7E8:        BCC CODE_29E7EF           
 CODE_29E7EA:        INC $069E                 
@@ -12224,13 +12224,13 @@ CODE_29E7ED:        BRA CODE_29E7CF
 
 CODE_29E7EF:        LDA $00                   
 CODE_29E7F1:        CLC                       
-CODE_29E7F2:        ADC $21F00C,x             
+CODE_29E7F2:        ADC.l DATA_21F00C,x             
 CODE_29E7F6:        STA $00                   
 CODE_29E7F8:        LDA $01                   
-CODE_29E7FA:        ADC $21F006,x             
+CODE_29E7FA:        ADC.l DATA_21F006,x             
 CODE_29E7FE:        STA $01                   
 CODE_29E800:        LDA $02                   
-CODE_29E802:        ADC $21F000,x             
+CODE_29E802:        ADC.l DATA_21F000,x             
 CODE_29E806:        STA $02                   
 CODE_29E808:        LDA $069E                 
 CODE_29E80B:        ORA #$90                  
@@ -12581,7 +12581,7 @@ CODE_29EAD0:        LDA #$00
 CODE_29EAD2:        STA $7E3954               
 CODE_29EAD6:        RTL                       
 
-CODE_29EAD7:        LDA $21F02A,x             
+CODE_29EAD7:        LDA.l DATA_21F02A,x             
 CODE_29EADB:        STA $1602,y               
 CODE_29EADE:        INY                       
 CODE_29EADF:        INX                       
@@ -12953,13 +12953,13 @@ CODE_29EDCE:        LDA $0717
 CODE_29EDD1:        STA $1DA1,x               
 CODE_29EDD4:        REP #$20                  
 CODE_29EDD6:        LDX #$08                  
-CODE_29EDD8:        LDA $21E43C,x             
+CODE_29EDD8:        LDA.l DATA_21E43C,x             
 CODE_29EDDC:        STA $1EED,x               
-CODE_29EDDF:        LDA $21E484,x             
+CODE_29EDDF:        LDA.l DATA_21E484,x             
 CODE_29EDE3:        STA $1F09,x               
-CODE_29EDE6:        LDA $21E4CC,x             
+CODE_29EDE6:        LDA.l DATA_21E4CC,x             
 CODE_29EDEA:        STA $1EFB,x               
-CODE_29EDED:        LDA $21E514,x             
+CODE_29EDED:        LDA.l DATA_21E514,x             
 CODE_29EDF1:        STA $1F17,x               
 CODE_29EDF4:        DEX                       
 CODE_29EDF5:        DEX                       

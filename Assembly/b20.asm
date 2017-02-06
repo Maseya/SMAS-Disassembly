@@ -1273,7 +1273,8 @@ CODE_208C3D:        CMP #$04
 CODE_208C3F:        BNE CODE_208C49           
 CODE_208C41:        LDA #$01                  
 CODE_208C43:        STA $072D                 
-CODE_208C46:        JMP CODE_208C50           
+CODE_208C46:        JMP CODE_208C50
+           
 CODE_208C49:        CMP #$07                  
 CODE_208C4B:        BNE CODE_208C50           
 CODE_208C4D:        JSR $95C1           
@@ -7763,9 +7764,9 @@ CODE_20C8EB:        REP #$10
 CODE_20C8ED:        LDY #$0000                
 CODE_20C8F0:        LDA $000249               
 CODE_20C8F4:        TAX                       
-CODE_20C8F5:        LDA $2AEEB1,x             
+CODE_20C8F5:        LDA.l DATA_2AEEB1,x             
 CODE_20C8F9:        STA $9000,x               
-CODE_20C8FC:        LDA $2AF031,x             
+CODE_20C8FC:        LDA.l DATA_2AF031,x             
 CODE_20C900:        STA $9200,x               
 CODE_20C903:        INX                       
 CODE_20C904:        INX                       
@@ -11264,9 +11265,9 @@ CODE_20F014:        LDA $0427
 CODE_20F017:        BEQ CODE_20F02A           
 CODE_20F019:        AND #$7F                  
 CODE_20F01B:        TAX                       
-CODE_20F01C:        LDA $21CEC3,x             
+CODE_20F01C:        LDA.l DATA_21CEC3,x             
 CODE_20F020:        STA $0100                 
-CODE_20F023:        LDA $21CECB,x             
+CODE_20F023:        LDA.l DATA_21CECB,x             
 CODE_20F027:        STA $0101                 
 CODE_20F02A:        LDA $7E3955               
 CODE_20F02E:        BEQ CODE_20F033           
@@ -11699,7 +11700,7 @@ CODE_20F41F:        LDA $1003,x
 CODE_20F422:        AND #$01                  
 CODE_20F424:        STA $0D                   
 CODE_20F426:        LDA $4211                 
-CODE_20F429:        LDA $21CEE4,x             
+CODE_20F429:        LDA.l DATA_21CEE4,x             
 CODE_20F42D:        STA $4209                 
 CODE_20F430:        STZ $420A                 
 CODE_20F433:        STZ $4207                 
@@ -11824,7 +11825,7 @@ CODE_20F546:        TXA
 CODE_20F547:        LSR A                     
 CODE_20F548:        TAX                       
 CODE_20F549:        LDA $4211                 
-CODE_20F54C:        LDA $21CEE8,x             
+CODE_20F54C:        LDA.l DATA_21CEE8,x             
 CODE_20F550:        STA $4209                 
 CODE_20F553:        STZ $420A                 
 CODE_20F556:        STZ $4207                 

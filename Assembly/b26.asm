@@ -320,7 +320,7 @@ CODE_26889F:        LSR A                     ;0 S:01FF P:EnvMXdIzc HC:1006 VC:0
 CODE_2688A0:        LSR A                     ;0 S:01FF P:EnvMXdIzc HC:1022 VC:000 FC:00 I:00
 CODE_2688A1:        LSR A                     ;0 S:01FF P:EnvMXdIzc HC:1038 VC:000 FC:00 I:00
 CODE_2688A2:        CLC                       ;0 S:01FF P:EnvMXdIzc HC:1054 VC:000 FC:00 I:00
-CODE_2688A3:        ADC $268889,x             ;0 S:01FF P:EnvMXdIzc HC:1070 VC:000 FC:00 I:00
+CODE_2688A3:        ADC.l DATA_268889,x             ;0 S:01FF P:EnvMXdIzc HC:1070 VC:000 FC:00 I:00
 CODE_2688A7:        TAX                       ;0 S:01FF P:EnvMXdIzc HC:1086 VC:000 FC:00 I:00
 CODE_2688A8:        DEX                       ;0 S:01FF P:EnvMXdIzc HC:1102 VC:000 FC:00 I:00
 CODE_2688A9:        TXA                       ;0 S:01FF P:EnvMXdIzc HC:1118 VC:000 FC:00 I:00
@@ -543,17 +543,17 @@ CODE_268A8B:        LDA $0706
 CODE_268A8E:        AND #$0F                  
 CODE_268A90:        STA $02                   
 CODE_268A92:        LDY $0700                 
-CODE_268A95:        LDA $268A83,x             
+CODE_268A95:        LDA.l DATA_268A83,x             
 CODE_268A99:        STA [$2E],y               
 CODE_268A9B:        JMP CODE_268AA4  
          
-CODE_268A9E:        LDA $268A85,x             
+CODE_268A9E:        LDA.l DATA_268A85,x             
 CODE_268AA2:        STA [$2E],y               
 CODE_268AA4:        JSL CODE_2AB73A           
 CODE_268AA8:        JSL CODE_23BEBB           
 CODE_268AAC:        DEC $02                   
 CODE_268AAE:        BNE CODE_268A9E           
-CODE_268AB0:        LDA $268A87,x             
+CODE_268AB0:        LDA.l DATA_268A87,x             
 CODE_268AB4:        STA [$2E],y               
 CODE_268AB6:        JSL CODE_2AB73A           
 CODE_268ABA:        RTL                       
@@ -569,7 +569,7 @@ CODE_268AC1:        LDX #$00
 CODE_268AC3:        JSR CODE_268AE8           
 CODE_268AC6:        LDA $02                   
 CODE_268AC8:        STA $04                   
-CODE_268ACA:        LDA $268ABF,x             
+CODE_268ACA:        LDA.l DATA_268ABF,x             
 CODE_268ACE:        STA [$2E],y               
 CODE_268AD0:        JSL CODE_2AB73A           
 CODE_268AD4:        JSL CODE_23BEBB           
@@ -642,7 +642,7 @@ CODE_268B4D:        LDA $0706
 CODE_268B50:        AND #$0F                  
 CODE_268B52:        STA $03                   
 CODE_268B54:        LDY $0700                 
-CODE_268B57:        LDA $268B49,x             
+CODE_268B57:        LDA.l DATA_268B49,x             
 CODE_268B5B:        STA [$2E],y               
 CODE_268B5D:        JSL CODE_23BEBB           
 CODE_268B61:        DEC $03                   
@@ -750,7 +750,7 @@ DATA_268C1D:        db $97,$98,$99,$9A
 
 CODE_268C21:        LDX #$00                
 CODE_268C23:        LDY $0700            
-CODE_268C26:        LDA $268C1D,x             
+CODE_268C26:        LDA.l DATA_268C1D,x             
 CODE_268C2A:        STA [$2E],y               
 CODE_268C2C:        INY                       
 CODE_268C2D:        INX                       
@@ -1942,7 +1942,7 @@ CODE_26B053:        LSR A                     ;0 S:01FF P:EnvMXdIzc HC:63334 VC:
 CODE_26B054:        LSR A                     ;0 S:01FF P:EnvMXdIzc HC:63350 VC:000 FC:00 I:00
 CODE_26B055:        LSR A                     ;0 S:01FF P:EnvMXdIzc HC:63366 VC:000 FC:00 I:00
 CODE_26B056:        CLC                       ;0 S:01FF P:EnvMXdIzc HC:63382 VC:000 FC:00 I:00
-CODE_26B057:        ADC $26B03D,x             ;0 S:01FF P:EnvMXdIzc HC:63398 VC:000 FC:00 I:00
+CODE_26B057:        ADC.l DATA_26B03D,x             ;0 S:01FF P:EnvMXdIzc HC:63398 VC:000 FC:00 I:00
 CODE_26B05B:        TAX                       ;0 S:01FF P:EnvMXdIzc HC:63414 VC:000 FC:00 I:00
 CODE_26B05C:        DEX                       ;0 S:01FF P:EnvMXdIzc HC:63430 VC:000 FC:00 I:00
 CODE_26B05D:        TXA                       ;0 S:01FF P:EnvMXdIzc HC:63446 VC:000 FC:00 I:00
@@ -2193,22 +2193,22 @@ CODE_26B1C5:        AND #$0F                  ;0 S:01FF P:EnvMXdIzc HC:56566 VC:
 CODE_26B1C7:        STA $02                   ;0 S:01FF P:EnvMXdIzc HC:56582 VC:000 FC:00 I:00
 CODE_26B1C9:        LDX #$00                  ;0 S:01FF P:EnvMXdIzc HC:56598 VC:000 FC:00 I:00
 CODE_26B1CB:        LDY $0700                 ;0 S:01FF P:EnvMXdIzc HC:56614 VC:000 FC:00 I:00
-CODE_26B1CE:        LDA $26B1BA,x             ;0 S:01FF P:EnvMXdIzc HC:56630 VC:000 FC:00 I:00
+CODE_26B1CE:        LDA.l DATA_26B1BA,x             ;0 S:01FF P:EnvMXdIzc HC:56630 VC:000 FC:00 I:00
 CODE_26B1D2:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:56646 VC:000 FC:00 I:00
 CODE_26B1D4:        JSL CODE_23BEBB           ;0 S:01FF P:EnvMXdIzc HC:56662 VC:000 FC:00 I:00
 CODE_26B1D8:        DEC $02                   ;0 S:01FF P:EnvMXdIzc HC:56678 VC:000 FC:00 I:00
 CODE_26B1DA:        BEQ CODE_26B1F8           ;0 S:01FF P:EnvMXdIzc HC:56694 VC:000 FC:00 I:00
-CODE_26B1DC:        LDA $26B1BC,x             ;0 S:01FF P:EnvMXdIzc HC:56710 VC:000 FC:00 I:00
+CODE_26B1DC:        LDA.l DATA_26B1BC,x             ;0 S:01FF P:EnvMXdIzc HC:56710 VC:000 FC:00 I:00
 CODE_26B1E0:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:56726 VC:000 FC:00 I:00
 CODE_26B1E2:        JSL CODE_23BEBB           ;0 S:01FF P:EnvMXdIzc HC:56742 VC:000 FC:00 I:00
 CODE_26B1E6:        DEC $02                   ;0 S:01FF P:EnvMXdIzc HC:56758 VC:000 FC:00 I:00
 CODE_26B1E8:        BEQ CODE_26B1F8           ;0 S:01FF P:EnvMXdIzc HC:56774 VC:000 FC:00 I:00
-CODE_26B1EA:        LDA $26B1BE,x             ;0 S:01FF P:EnvMXdIzc HC:56790 VC:000 FC:00 I:00
+CODE_26B1EA:        LDA.l DATA_26B1BE,x             ;0 S:01FF P:EnvMXdIzc HC:56790 VC:000 FC:00 I:00
 CODE_26B1EE:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:56806 VC:000 FC:00 I:00
 CODE_26B1F0:        JSL CODE_23BEBB           ;0 S:01FF P:EnvMXdIzc HC:56822 VC:000 FC:00 I:00
 CODE_26B1F4:        DEC $02                   ;0 S:01FF P:EnvMXdIzc HC:56838 VC:000 FC:00 I:00
 CODE_26B1F6:        BNE CODE_26B1DC           ;0 S:01FF P:EnvMXdIzc HC:56854 VC:000 FC:00 I:00
-CODE_26B1F8:        LDA $26B1C0,x             ;0 S:01FF P:EnvMXdIzc HC:56870 VC:000 FC:00 I:00
+CODE_26B1F8:        LDA.l DATA_26B1C0,x             ;0 S:01FF P:EnvMXdIzc HC:56870 VC:000 FC:00 I:00
 CODE_26B1FC:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:56886 VC:000 FC:00 I:00
 CODE_26B1FE:        RTL                       ;0 S:01FF P:EnvMXdIzc HC:56902 VC:000 FC:00 I:00
 
@@ -2303,7 +2303,7 @@ CODE_26B296:        LDX #$00                  ;0 S:01FF P:EnvMXdIzc HC:58134 VC:
 CODE_26B298:        LDA $02                   ;0 S:01FF P:EnvMXdIzc HC:58150 VC:000 FC:00 I:00
 CODE_26B29A:        STA $03                   ;0 S:01FF P:EnvMXdIzc HC:58166 VC:000 FC:00 I:00
 CODE_26B29C:        LDY $0700                 ;0 S:01FF P:EnvMXdIzc HC:58182 VC:000 FC:00 I:00
-CODE_26B29F:        LDA $26B27F,x             ;0 S:01FF P:EnvMXdIzc HC:58198 VC:000 FC:00 I:00
+CODE_26B29F:        LDA.l DATA_26B27F,x             ;0 S:01FF P:EnvMXdIzc HC:58198 VC:000 FC:00 I:00
 CODE_26B2A3:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:58214 VC:000 FC:00 I:00
 CODE_26B2A5:        TYA                       ;0 S:01FF P:EnvMXdIzc HC:58230 VC:000 FC:00 I:00
 CODE_26B2A6:        CLC                       ;0 S:01FF P:EnvMXdIzc HC:58246 VC:000 FC:00 I:00
@@ -2314,7 +2314,7 @@ CODE_26B2AC:        ADC #$00                  ;0 S:01FF P:EnvMXdIzc HC:58310 VC:
 CODE_26B2AE:        STA $2F                   ;0 S:01FF P:EnvMXdIzc HC:58326 VC:000 FC:00 I:00
 CODE_26B2B0:        DEC $03                   ;0 S:01FF P:EnvMXdIzc HC:58342 VC:000 FC:00 I:00
 CODE_26B2B2:        BEQ CODE_26B2DE           ;0 S:01FF P:EnvMXdIzc HC:58358 VC:000 FC:00 I:00
-CODE_26B2B4:        LDA $26B281,x             ;0 S:01FF P:EnvMXdIzc HC:58374 VC:000 FC:00 I:00
+CODE_26B2B4:        LDA.l DATA_26B281,x             ;0 S:01FF P:EnvMXdIzc HC:58374 VC:000 FC:00 I:00
 CODE_26B2B8:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:58390 VC:000 FC:00 I:00
 CODE_26B2BA:        TYA                       ;0 S:01FF P:EnvMXdIzc HC:58406 VC:000 FC:00 I:00
 CODE_26B2BB:        CLC                       ;0 S:01FF P:EnvMXdIzc HC:58422 VC:000 FC:00 I:00
@@ -2325,7 +2325,7 @@ CODE_26B2C1:        ADC #$00                  ;0 S:01FF P:EnvMXdIzc HC:58486 VC:
 CODE_26B2C3:        STA $2F                   ;0 S:01FF P:EnvMXdIzc HC:58502 VC:000 FC:00 I:00
 CODE_26B2C5:        DEC $03                   ;0 S:01FF P:EnvMXdIzc HC:58518 VC:000 FC:00 I:00
 CODE_26B2C7:        BEQ CODE_26B2DE           ;0 S:01FF P:EnvMXdIzc HC:58534 VC:000 FC:00 I:00
-CODE_26B2C9:        LDA $26B283,x             ;0 S:01FF P:EnvMXdIzc HC:58550 VC:000 FC:00 I:00
+CODE_26B2C9:        LDA.l DATA_26B283,x             ;0 S:01FF P:EnvMXdIzc HC:58550 VC:000 FC:00 I:00
 CODE_26B2CD:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:58566 VC:000 FC:00 I:00
 CODE_26B2CF:        TYA                       ;0 S:01FF P:EnvMXdIzc HC:58582 VC:000 FC:00 I:00
 CODE_26B2D0:        CLC                       ;0 S:01FF P:EnvMXdIzc HC:58598 VC:000 FC:00 I:00
@@ -2336,7 +2336,7 @@ CODE_26B2D6:        ADC #$00                  ;0 S:01FF P:EnvMXdIzc HC:58662 VC:
 CODE_26B2D8:        STA $2F                   ;0 S:01FF P:EnvMXdIzc HC:58678 VC:000 FC:00 I:00
 CODE_26B2DA:        DEC $03                   ;0 S:01FF P:EnvMXdIzc HC:58694 VC:000 FC:00 I:00
 CODE_26B2DC:        BNE CODE_26B2B4           ;0 S:01FF P:EnvMXdIzc HC:58710 VC:000 FC:00 I:00
-CODE_26B2DE:        LDA $26B285,x             ;0 S:01FF P:EnvMXdIzc HC:58726 VC:000 FC:00 I:00
+CODE_26B2DE:        LDA.l DATA_26B285,x             ;0 S:01FF P:EnvMXdIzc HC:58726 VC:000 FC:00 I:00
 CODE_26B2E2:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:58742 VC:000 FC:00 I:00
 CODE_26B2E4:        LDA $00                   ;0 S:01FF P:EnvMXdIzc HC:58758 VC:000 FC:00 I:00
 CODE_26B2E6:        STA $2E                   ;0 S:01FF P:EnvMXdIzc HC:58774 VC:000 FC:00 I:00
@@ -2544,12 +2544,12 @@ CODE_26B449:        STA $02                   ;0 S:01FF P:EnvMXdIzc HC:61622 VC:
 CODE_26B44B:        LDY $0700                 ;0 S:01FF P:EnvMXdIzc HC:61638 VC:000 FC:00 I:00
 CODE_26B44E:        LDA $02                   ;0 S:01FF P:EnvMXdIzc HC:61654 VC:000 FC:00 I:00
 CODE_26B450:        STA $03                   ;0 S:01FF P:EnvMXdIzc HC:61670 VC:000 FC:00 I:00
-CODE_26B452:        LDA $26B436,x             ;0 S:01FF P:EnvMXdIzc HC:61686 VC:000 FC:00 I:00
+CODE_26B452:        LDA.l DATA_26B436,x             ;0 S:01FF P:EnvMXdIzc HC:61686 VC:000 FC:00 I:00
 CODE_26B456:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:61702 VC:000 FC:00 I:00
 CODE_26B458:        JSL CODE_23BEBB           ;0 S:01FF P:EnvMXdIzc HC:61718 VC:000 FC:00 I:00
 CODE_26B45C:        DEC $03                   ;0 S:01FF P:EnvMXdIzc HC:61734 VC:000 FC:00 I:00
 CODE_26B45E:        BMI CODE_26B46E           ;0 S:01FF P:EnvMXdIzc HC:61750 VC:000 FC:00 I:00
-CODE_26B460:        LDA $26B438,x             ;0 S:01FF P:EnvMXdIzc HC:61766 VC:000 FC:00 I:00
+CODE_26B460:        LDA.l DATA_26B438,x             ;0 S:01FF P:EnvMXdIzc HC:61766 VC:000 FC:00 I:00
 CODE_26B464:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:61782 VC:000 FC:00 I:00
 CODE_26B466:        JSL CODE_23BEBB           ;0 S:01FF P:EnvMXdIzc HC:61798 VC:000 FC:00 I:00
 CODE_26B46A:        DEC $03                   ;0 S:01FF P:EnvMXdIzc HC:61814 VC:000 FC:00 I:00
@@ -2581,16 +2581,16 @@ CODE_26B494:        LDA #$03                  ;0 S:01FF P:EnvMXdIzc HC:62118 VC:
 CODE_26B496:        STA $04                   ;0 S:01FF P:EnvMXdIzc HC:62134 VC:000 FC:00 I:00
 CODE_26B498:        LDA $02                   ;0 S:01FF P:EnvMXdIzc HC:62150 VC:000 FC:00 I:00
 CODE_26B49A:        STA $03                   ;0 S:01FF P:EnvMXdIzc HC:62166 VC:000 FC:00 I:00
-CODE_26B49C:        LDA $26B477,x             ;0 S:01FF P:EnvMXdIzc HC:62182 VC:000 FC:00 I:00
+CODE_26B49C:        LDA.l DATA_26B477,x             ;0 S:01FF P:EnvMXdIzc HC:62182 VC:000 FC:00 I:00
 CODE_26B4A0:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:62198 VC:000 FC:00 I:00
 CODE_26B4A2:        JMP CODE_26B4AB           ;0 S:01FF P:EnvMXdIzc HC:62214 VC:000 FC:00 I:00
 
-CODE_26B4A5:        LDA $26B47A,x             ;0 S:01FF P:EnvMXdIzc HC:62230 VC:000 FC:00 I:00
+CODE_26B4A5:        LDA.l DATA_26B47A,x             ;0 S:01FF P:EnvMXdIzc HC:62230 VC:000 FC:00 I:00
 CODE_26B4A9:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:62246 VC:000 FC:00 I:00
 CODE_26B4AB:        JSL CODE_23BEBB           ;0 S:01FF P:EnvMXdIzc HC:62262 VC:000 FC:00 I:00
 CODE_26B4AF:        DEC $03                   ;0 S:01FF P:EnvMXdIzc HC:62278 VC:000 FC:00 I:00
 CODE_26B4B1:        BNE CODE_26B4A5           ;0 S:01FF P:EnvMXdIzc HC:62294 VC:000 FC:00 I:00
-CODE_26B4B3:        LDA $26B47D,x             ;0 S:01FF P:EnvMXdIzc HC:62310 VC:000 FC:00 I:00
+CODE_26B4B3:        LDA.l DATA_26B47D,x             ;0 S:01FF P:EnvMXdIzc HC:62310 VC:000 FC:00 I:00
 CODE_26B4B7:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:62326 VC:000 FC:00 I:00
 CODE_26B4B9:        JSR CODE_26B881           ;0 S:01FF P:EnvMXdIzc HC:62342 VC:000 FC:00 I:00
 CODE_26B4BC:        LDX #$01                  ;0 S:01FF P:EnvMXdIzc HC:62358 VC:000 FC:00 I:00
@@ -2618,16 +2618,16 @@ CODE_26B4DD:        LDY $0700                 ;0 S:01FF P:EnvMXdIzc HC:62598 VC:
 CODE_26B4E0:        LDX #$00                  ;0 S:01FF P:EnvMXdIzc HC:62614 VC:000 FC:00 I:00
 CODE_26B4E2:        LDA $02                   ;0 S:01FF P:EnvMXdIzc HC:62630 VC:000 FC:00 I:00
 CODE_26B4E4:        STA $03                   ;0 S:01FF P:EnvMXdIzc HC:62646 VC:000 FC:00 I:00
-CODE_26B4E6:        LDA $26B4CA,x             ;0 S:01FF P:EnvMXdIzc HC:62662 VC:000 FC:00 I:00
+CODE_26B4E6:        LDA.l DATA_26B4CA,x             ;0 S:01FF P:EnvMXdIzc HC:62662 VC:000 FC:00 I:00
 CODE_26B4EA:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:62678 VC:000 FC:00 I:00
 CODE_26B4EC:        JMP CODE_26B4F5           ;0 S:01FF P:EnvMXdIzc HC:62694 VC:000 FC:00 I:00
 
-CODE_26B4EF:        LDA $26B4CD,x             ;0 S:01FF P:EnvMXdIzc HC:62710 VC:000 FC:00 I:00
+CODE_26B4EF:        LDA.l DATA_26B4CD,x             ;0 S:01FF P:EnvMXdIzc HC:62710 VC:000 FC:00 I:00
 CODE_26B4F3:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:62726 VC:000 FC:00 I:00
 CODE_26B4F5:        JSL CODE_23BEBB           ;0 S:01FF P:EnvMXdIzc HC:62742 VC:000 FC:00 I:00
 CODE_26B4F9:        DEC $03                   ;0 S:01FF P:EnvMXdIzc HC:62758 VC:000 FC:00 I:00
 CODE_26B4FB:        BNE CODE_26B4EF           ;0 S:01FF P:EnvMXdIzc HC:62774 VC:000 FC:00 I:00
-CODE_26B4FD:        LDA $26B4D0,x             ;0 S:01FF P:EnvMXdIzc HC:62790 VC:000 FC:00 I:00
+CODE_26B4FD:        LDA.l DATA_26B4D0,x             ;0 S:01FF P:EnvMXdIzc HC:62790 VC:000 FC:00 I:00
 CODE_26B501:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:62806 VC:000 FC:00 I:00
 CODE_26B503:        JSR CODE_26B881           ;0 S:01FF P:EnvMXdIzc HC:62822 VC:000 FC:00 I:00
 CODE_26B506:        LDX #$01                  ;0 S:01FF P:EnvMXdIzc HC:62838 VC:000 FC:00 I:00
@@ -2639,22 +2639,18 @@ CODE_26B50E:        JMP CODE_26B4E2           ;0 S:01FF P:EnvMXdIzc HC:62902 VC:
 CODE_26B511:        BPL CODE_26B4E2           ;0 S:01FF P:EnvMXdIzc HC:62918 VC:000 FC:00 I:00
 CODE_26B513:        RTL                       ;0 S:01FF P:EnvMXdIzc HC:62934 VC:000 FC:00 I:00
 
-
 DATA_26B514:        db $83,$A6,$A7,$F6,$C8,$84,$24,$25
                     db $26,$27
 
-
 CODE_26B51E:        LDX $0706                   
 CODE_26B521:        LDY $0700                 
-CODE_26B524:        LDA $26B514,x             
+CODE_26B524:        LDA.l DATA_26B514,x             
 CODE_26B528:        STA [$2E],y               
 CODE_26B52A:        RTL           
            
- 
-DATA_26B2B:        db $9A,$9B,$92,$93,$94,$95,$9A,$9B
+DATA_26B52B:        db $9A,$9B,$92,$93,$94,$95,$9A,$9B
                     db $96,$97,$98,$99,$A8,$AA,$A9,$AB
                     db $AC,$BE,$BD,$BF,$4F,$51,$52,$54
-
 
 CODE_26B543:        LDX #$00              
 CODE_26B545:        JMP CODE_26B54A 
@@ -2667,7 +2663,7 @@ CODE_26B550:        STA $00
 CODE_26B552:        LDA $2F                   
 CODE_26B554:        STA $01                   
 CODE_26B556:        LDY $0700                 
-CODE_26B559:        LDA $26B52B,x             
+CODE_26B559:        LDA.l DATA_26B52B,x             
 CODE_26B55D:        STA [$2E],y               
 CODE_26B55F:        JSL CODE_23BEBB           
 CODE_26B563:        DEC $02                   
@@ -2691,21 +2687,19 @@ CODE_26B57E:        JMP CODE_26B54E
 CODE_26B581:        LDX #$14                  
 CODE_26B583:        JMP CODE_26B57A   
         
-
 DATA_26B586:        db $F7,$C0               
 
 DATA_26B588:        db $F8,$C2
-
 
 CODE_26B58A:        LDY $0700
 CODE_26B58D:        LDA $0706                 ;0 S:01FF P:EnvMXdIzc HC:53590 VC:000 FC:00 I:00
 CODE_26B590:        SEC                       ;0 S:01FF P:EnvMXdIzc HC:53606 VC:000 FC:00 I:00
 CODE_26B591:        SBC #$0A                  ;0 S:01FF P:EnvMXdIzc HC:53622 VC:000 FC:00 I:00
 CODE_26B593:        TAX                       ;0 S:01FF P:EnvMXdIzc HC:53638 VC:000 FC:00 I:00
-CODE_26B594:        LDA $26B586,x             ;0 S:01FF P:EnvMXdIzc HC:53654 VC:000 FC:00 I:00
+CODE_26B594:        LDA.l DATA_26B586,x             ;0 S:01FF P:EnvMXdIzc HC:53654 VC:000 FC:00 I:00
 CODE_26B598:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:53670 VC:000 FC:00 I:00
 CODE_26B59A:        JSL CODE_23BEBB           ;0 S:01FF P:EnvMXdIzc HC:53686 VC:000 FC:00 I:00
-CODE_26B59E:        LDA $26B588,x             ;0 S:01FF P:EnvMXdIzc HC:53702 VC:000 FC:00 I:00
+CODE_26B59E:        LDA.l DATA_26B588,x             ;0 S:01FF P:EnvMXdIzc HC:53702 VC:000 FC:00 I:00
 CODE_26B5A2:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:53718 VC:000 FC:00 I:00
 CODE_26B5A4:        RTL                       ;0 S:01FF P:EnvMXdIzc HC:53734 VC:000 FC:00 I:00
 
@@ -2741,9 +2735,9 @@ CODE_26B5E1:        LDA #$FE                  ;0 S:01FF P:EnvMXdIzc HC:54166 VC:
 CODE_26B5E3:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:54182 VC:000 FC:00 I:00
 CODE_26B5E5:        RTL                       ;0 S:01FF P:EnvMXdIzc HC:54198 VC:000 FC:00 I:00
 
+DATA_26B5E6:        db $29,$2B ;
 
-DATA_26B5E6:        db $29,$2B,$28,$2A
-
+DATA_26B5E8:        db $28,$2A ;
 
 CODE_26B5EA:        LDA $2E                   ;0 S:01FF P:EnvMXdIzc HC:54262 VC:000 FC:00 I:00
 CODE_26B5EC:        STA $00                   ;0 S:01FF P:EnvMXdIzc HC:54278 VC:000 FC:00 I:00
@@ -2756,10 +2750,10 @@ CODE_26B5F9:        LDX #$00                  ;0 S:01FF P:EnvMXdIzc HC:54374 VC:
 CODE_26B5FB:        LDY $0700                 ;0 S:01FF P:EnvMXdIzc HC:54390 VC:000 FC:00 I:00
 CODE_26B5FE:        LDA $02                   ;0 S:01FF P:EnvMXdIzc HC:54406 VC:000 FC:00 I:00
 CODE_26B600:        STA $03                   ;0 S:01FF P:EnvMXdIzc HC:54422 VC:000 FC:00 I:00
-CODE_26B602:        LDA $26B5E6,x             ;0 S:01FF P:EnvMXdIzc HC:54438 VC:000 FC:00 I:00
+CODE_26B602:        LDA.l DATA_26B5E6,x             ;0 S:01FF P:EnvMXdIzc HC:54438 VC:000 FC:00 I:00
 CODE_26B606:        JMP CODE_26B60D           ;0 S:01FF P:EnvMXdIzc HC:54454 VC:000 FC:00 I:00
 
-CODE_26B609:        LDA $26B5E8,x             ;0 S:01FF P:EnvMXdIzc HC:54470 VC:000 FC:00 I:00
+CODE_26B609:        LDA.l DATA_26B5E8,x             ;0 S:01FF P:EnvMXdIzc HC:54470 VC:000 FC:00 I:00
 CODE_26B60D:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:54486 VC:000 FC:00 I:00
 CODE_26B60F:        JSL CODE_23BEBB           ;0 S:01FF P:EnvMXdIzc HC:54502 VC:000 FC:00 I:00
 CODE_26B613:        DEC $03                   ;0 S:01FF P:EnvMXdIzc HC:54518 VC:000 FC:00 I:00
@@ -2781,12 +2775,12 @@ CODE_26B62F:        LDX #$00                  ;0 S:01FF P:EnvMXdIzc HC:54742 VC:
 CODE_26B631:        LDY $0700                 ;0 S:01FF P:EnvMXdIzc HC:54758 VC:000 FC:00 I:00
 CODE_26B634:        LDA $02                   ;0 S:01FF P:EnvMXdIzc HC:54774 VC:000 FC:00 I:00
 CODE_26B636:        STA $03                   ;0 S:01FF P:EnvMXdIzc HC:54790 VC:000 FC:00 I:00
-CODE_26B638:        LDA $26B5E8,x             ;0 S:01FF P:EnvMXdIzc HC:54806 VC:000 FC:00 I:00
+CODE_26B638:        LDA.l DATA_26B5E8,x             ;0 S:01FF P:EnvMXdIzc HC:54806 VC:000 FC:00 I:00
 CODE_26B63C:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:54822 VC:000 FC:00 I:00
 CODE_26B63E:        JSL CODE_23BEBB           ;0 S:01FF P:EnvMXdIzc HC:54838 VC:000 FC:00 I:00
 CODE_26B642:        DEC $03                   ;0 S:01FF P:EnvMXdIzc HC:54854 VC:000 FC:00 I:00
 CODE_26B644:        BNE CODE_26B638           ;0 S:01FF P:EnvMXdIzc HC:54870 VC:000 FC:00 I:00
-CODE_26B646:        LDA $26B5E6,x             ;0 S:01FF P:EnvMXdIzc HC:54886 VC:000 FC:00 I:00
+CODE_26B646:        LDA.l DATA_26B5E6,x             ;0 S:01FF P:EnvMXdIzc HC:54886 VC:000 FC:00 I:00
 CODE_26B64A:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:54902 VC:000 FC:00 I:00
 CODE_26B64C:        JSR CODE_26B881           ;0 S:01FF P:EnvMXdIzc HC:54918 VC:000 FC:00 I:00
 CODE_26B64F:        INX                       ;0 S:01FF P:EnvMXdIzc HC:54934 VC:000 FC:00 I:00
@@ -2863,7 +2857,7 @@ CODE_26B70F:        STA $01
 CODE_26B711:        LDA #$04                  
 CODE_26B713:        STA $03                   
 CODE_26B715:        LDY $0700                 
-CODE_26B718:        LDA $26B6A8,x             
+CODE_26B718:        LDA.l DATA_26B6A8,x             
 CODE_26B71C:        CMP #$FF                  
 CODE_26B71E:        BEQ CODE_26B72A           
 CODE_26B720:        STA [$2E],y               
@@ -2903,7 +2897,7 @@ CODE_26B7B8:        LDY $0700                 ;0 S:01FF P:EnvMXdIzc HC:6710 VC:0
 CODE_26B7BB:        LDX #$00                  ;0 S:01FF P:EnvMXdIzc HC:6726 VC:000 FC:00 I:00
 CODE_26B7BD:        LDA #$04                  ;0 S:01FF P:EnvMXdIzc HC:6742 VC:000 FC:00 I:00
 CODE_26B7BF:        STA $02                   ;0 S:01FF P:EnvMXdIzc HC:6758 VC:000 FC:00 I:00
-CODE_26B7C1:        LDA $26B733,x             ;0 S:01FF P:EnvMXdIzc HC:6774 VC:000 FC:00 I:00
+CODE_26B7C1:        LDA.l DATA_26B733,x             ;0 S:01FF P:EnvMXdIzc HC:6774 VC:000 FC:00 I:00
 CODE_26B7C5:        CMP #$FF                  ;0 S:01FF P:EnvMXdIzc HC:6790 VC:000 FC:00 I:00
 CODE_26B7C7:        BEQ CODE_26B7D3           ;0 S:01FF P:EnvMXdIzc HC:6806 VC:000 FC:00 I:00
 CODE_26B7C9:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:6822 VC:000 FC:00 I:00
@@ -2926,18 +2920,19 @@ DATA_26B7E1:        db $FD,$C3
 
 CODE_26B7E3:        LDX #$01 
 CODE_26B7E5:        LDY $0700
-CODE_26B7E8:        LDA $26B7E1,x             ;0 S:01FF P:EnvMXdIzc HC:7046 VC:000 FC:00 I:00
+CODE_26B7E8:        LDA.l DATA_26B7E1,x             ;0 S:01FF P:EnvMXdIzc HC:7046 VC:000 FC:00 I:00
 CODE_26B7EC:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:7062 VC:000 FC:00 I:00
 CODE_26B7EE:        RTL                       ;
 
+DATA_26B7EF:        db $06,$06,$C3,$06,$A6,$FF,$F6,$E3 ;
+                    db $E4,$E3,$E5,$FF,$06,$06,$06,$E6 ;
+                    db $06,$FF,$06,$FD,$E3,$E5,$A6,$FF ;
+                    db $F6,$E3,$E4,$E3,$E5,$FF ;
 
-DATA_26B7EF:        db $06,$06,$C3,$06,$A6,$FF,$F6,$E3
-                    db $E4,$E3,$E5,$FF,$06,$06,$06,$E6
-                    db $06,$FF,$06,$FD,$E3,$E5,$A6,$FF
-                    db $F6,$E3,$E4,$E3,$E5,$FF,$00,$0C
-                    db $01,$02
+DATA_26B80D:        db $00,$0C ;
 
-             
+DATA_26B80F:        db $01,$02 ;
+           
 CODE_26B811:        LDA $2E                   ;0 S:01FF P:EnvMXdIzc HC:51814 VC:000 FC:00 I:00
 CODE_26B813:        STA $00                   ;0 S:01FF P:EnvMXdIzc HC:51830 VC:000 FC:00 I:00
 CODE_26B815:        LDA $2F                   ;0 S:01FF P:EnvMXdIzc HC:51846 VC:000 FC:00 I:00
@@ -2946,12 +2941,12 @@ CODE_26B819:        LDA $0706                 ;0 S:01FF P:EnvMXdIzc HC:51878 VC:
 CODE_26B81C:        SEC                       ;0 S:01FF P:EnvMXdIzc HC:51894 VC:000 FC:00 I:00
 CODE_26B81D:        SBC #$01                  ;0 S:01FF P:EnvMXdIzc HC:51910 VC:000 FC:00 I:00
 CODE_26B81F:        TAX                       ;0 S:01FF P:EnvMXdIzc HC:51926 VC:000 FC:00 I:00
-CODE_26B820:        LDA $26B80F,x             ;0 S:01FF P:EnvMXdIzc HC:51942 VC:000 FC:00 I:00
+CODE_26B820:        LDA.l DATA_26B80F,x             ;0 S:01FF P:EnvMXdIzc HC:51942 VC:000 FC:00 I:00
 CODE_26B824:        STA $02                   ;0 S:01FF P:EnvMXdIzc HC:51958 VC:000 FC:00 I:00
-CODE_26B826:        LDA $26B80D,x             ;0 S:01FF P:EnvMXdIzc HC:51974 VC:000 FC:00 I:00
+CODE_26B826:        LDA.l DATA_26B80D,x             ;0 S:01FF P:EnvMXdIzc HC:51974 VC:000 FC:00 I:00
 CODE_26B82A:        TAX                       ;0 S:01FF P:EnvMXdIzc HC:51990 VC:000 FC:00 I:00
 CODE_26B82B:        LDY $0700                 ;0 S:01FF P:EnvMXdIzc HC:52006 VC:000 FC:00 I:00
-CODE_26B82E:        LDA $26B7EF,x             ;0 S:01FF P:EnvMXdIzc HC:52022 VC:000 FC:00 I:00
+CODE_26B82E:        LDA.l DATA_26B7EF,x             ;0 S:01FF P:EnvMXdIzc HC:52022 VC:000 FC:00 I:00
 CODE_26B832:        CMP #$FF                  ;0 S:01FF P:EnvMXdIzc HC:52038 VC:000 FC:00 I:00
 CODE_26B834:        BEQ CODE_26B840           ;0 S:01FF P:EnvMXdIzc HC:52054 VC:000 FC:00 I:00
 CODE_26B836:        STA [$2E],y               ;0 S:01FF P:EnvMXdIzc HC:52070 VC:000 FC:00 I:00
@@ -6655,19 +6650,19 @@ CODE_26E3BB:        CMP #$02
 CODE_26E3BD:        BNE CODE_26E3C9           
 CODE_26E3BF:        LDA $1857,x               
 CODE_26E3C2:        TAX                       
-CODE_26E3C3:        LDA $26E42C,x             
+CODE_26E3C3:        LDA.l DATA_26E42C,x             
 CODE_26E3C7:        BRA CODE_26E3DF           
 
 CODE_26E3C9:        CMP #$0A                  
 CODE_26E3CB:        BNE CODE_26E3D7           
 CODE_26E3CD:        LDA $1857,x               
 CODE_26E3D0:        TAX                       
-CODE_26E3D1:        LDA $26E432,x             
+CODE_26E3D1:        LDA.l DATA_26E432,x             
 CODE_26E3D5:        BRA CODE_26E3DF           
 
 CODE_26E3D7:        LDA $1857,x               
 CODE_26E3DA:        TAX                       
-CODE_26E3DB:        LDA $26E427,x             
+CODE_26E3DB:        LDA.l DATA_26E427,x             
 CODE_26E3DF:        PLX                       
 CODE_26E3E0:        STA $18E9,x               
 CODE_26E3E3:        JSR CODE_26E58C           
@@ -6679,7 +6674,7 @@ CODE_26E3EF:        CLC
 CODE_26E3F0:        ADC $1857,x               
 CODE_26E3F3:        TAX                       
 CODE_26E3F4:        LDY $18C8                 
-CODE_26E3F7:        LDA $26E437,x             
+CODE_26E3F7:        LDA.l DATA_26E437,x             
 CODE_26E3FB:        STA $0972,y               
 CODE_26E3FE:        LDA $0973,y               
 CODE_26E401:        ORA #$01                  
@@ -6698,9 +6693,11 @@ CODE_26E420:        JSR CODE_26E6C6
 CODE_26E423:        JSR CODE_26E913           
 CODE_26E426:        RTS                       
 
+DATA_26E427:        db $08,$08,$0C,$08,$08 ;
 
-DATA_26E427:        db $08,$08,$0C,$08,$08,$08,$08,$06
-                    db $06,$08,$08,$08,$08,$08,$08,$08
+DATA_26E42C:        db $08,$08,$06,$06,$08,$08 ;
+
+DATA_26E432:        db $08,$08,$08,$08,$08 ;
 
 DATA_26E437:        db $06,$08,$0A,$08,$06,$00,$02,$04
                     db $04,$02,$00,$0E,$22,$26,$22,$0E
@@ -7201,7 +7198,7 @@ CODE_26E85C:        INY
 CODE_26E85D:        INY                       
 CODE_26E85E:        PHX                       
 CODE_26E85F:        TYX                       
-CODE_26E860:        LDA $26E8A4,x             
+CODE_26E860:        LDA.l DATA_26E8A4,x             
 CODE_26E864:        PLX                       
 CODE_26E865:        PLY                       
 CODE_26E866:        STA $1846,y               
@@ -8748,7 +8745,7 @@ CODE_26F525:        CLC                       ;0 S:01FF P:EnvMXdIzc HC:1230 VC:0
 CODE_26F526:        ADC #$05                  ;0 S:01FF P:EnvMXdIzc HC:1246 VC:000 FC:00 I:00
 CODE_26F528:        TAX                       ;0 S:01FF P:EnvMXdIzc HC:1262 VC:000 FC:00 I:00
 CODE_26F529:        LDY $18C8                 ;0 S:01FF P:EnvMXdIzc HC:1278 VC:000 FC:00 I:00
-CODE_26F52C:        LDA $26E437,x             ;0 S:01FF P:EnvMXdIzc HC:1294 VC:000 FC:00 I:00
+CODE_26F52C:        LDA.l DATA_26E437,x             ;0 S:01FF P:EnvMXdIzc HC:1294 VC:000 FC:00 I:00
 CODE_26F530:        STA $09E2                 ;0 S:01FF P:EnvMXdIzc HC:1310 VC:000 FC:00 I:00
 CODE_26F533:        STA $09E6                 ;0 S:01FF P:EnvMXdIzc HC:1326 VC:000 FC:00 I:00
 CODE_26F536:        LDA $09E3                 ;0 S:01FF P:EnvMXdIzc HC:1342 VC:000 FC:00 I:00

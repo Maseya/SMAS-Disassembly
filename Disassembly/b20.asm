@@ -1273,7 +1273,8 @@ CODE_208C3D:        C9 04         CMP #$04
 CODE_208C3F:        D0 08         BNE CODE_208C49           
 CODE_208C41:        A9 01         LDA #$01                  
 CODE_208C43:        8D 2D 07      STA $072D                 
-CODE_208C46:        4C 50 8C      JMP CODE_208C50           
+CODE_208C46:        4C 50 8C      JMP CODE_208C50
+           
 CODE_208C49:        C9 07         CMP #$07                  
 CODE_208C4B:        D0 03         BNE CODE_208C50           
 CODE_208C4D:        20 C1 95      JSR $95C1           
@@ -7763,9 +7764,9 @@ CODE_20C8EB:        C2 10         REP #$10
 CODE_20C8ED:        A0 00 00      LDY #$0000                
 CODE_20C8F0:        AF 49 02 00   LDA $000249               
 CODE_20C8F4:        AA            TAX                       
-CODE_20C8F5:        BF B1 EE 2A   LDA $2AEEB1,x             
+CODE_20C8F5:        BF B1 EE 2A   LDA.l DATA_2AEEB1,x             
 CODE_20C8F9:        9D 00 90      STA $9000,x               
-CODE_20C8FC:        BF 31 F0 2A   LDA $2AF031,x             
+CODE_20C8FC:        BF 31 F0 2A   LDA.l DATA_2AF031,x             
 CODE_20C900:        9D 00 92      STA $9200,x               
 CODE_20C903:        E8            INX                       
 CODE_20C904:        E8            INX                       
@@ -11264,9 +11265,9 @@ CODE_20F014:        AD 27 04      LDA $0427
 CODE_20F017:        F0 11         BEQ CODE_20F02A           
 CODE_20F019:        29 7F         AND #$7F                  
 CODE_20F01B:        AA            TAX                       
-CODE_20F01C:        BF C3 CE 21   LDA $21CEC3,x             
+CODE_20F01C:        BF C3 CE 21   LDA.l DATA_21CEC3,x             
 CODE_20F020:        8D 00 01      STA $0100                 
-CODE_20F023:        BF CB CE 21   LDA $21CECB,x             
+CODE_20F023:        BF CB CE 21   LDA.l DATA_21CECB,x             
 CODE_20F027:        8D 01 01      STA $0101                 
 CODE_20F02A:        AF 55 39 7E   LDA $7E3955               
 CODE_20F02E:        F0 03         BEQ CODE_20F033           
@@ -11699,7 +11700,7 @@ CODE_20F41F:        BD 03 10      LDA $1003,x
 CODE_20F422:        29 01         AND #$01                  
 CODE_20F424:        85 0D         STA $0D                   
 CODE_20F426:        AD 11 42      LDA $4211                 
-CODE_20F429:        BF E4 CE 21   LDA $21CEE4,x             
+CODE_20F429:        BF E4 CE 21   LDA.l DATA_21CEE4,x             
 CODE_20F42D:        8D 09 42      STA $4209                 
 CODE_20F430:        9C 0A 42      STZ $420A                 
 CODE_20F433:        9C 07 42      STZ $4207                 
@@ -11824,7 +11825,7 @@ CODE_20F546:        8A            TXA
 CODE_20F547:        4A            LSR A                     
 CODE_20F548:        AA            TAX                       
 CODE_20F549:        AD 11 42      LDA $4211                 
-CODE_20F54C:        BF E8 CE 21   LDA $21CEE8,x             
+CODE_20F54C:        BF E8 CE 21   LDA.l DATA_21CEE8,x             
 CODE_20F550:        8D 09 42      STA $4209                 
 CODE_20F553:        9C 0A 42      STZ $420A                 
 CODE_20F556:        9C 07 42      STZ $4207                 
