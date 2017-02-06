@@ -4,7 +4,7 @@ There are plans to make this disassembly assemble-able in either xkas or asar. T
 
 There are a few 'tags' used throughout the disassembly:
 "TODO": Code which should be looked into in terms of documenting and/or correct disassembling
-"INVALID": Most likely unused code which does something invalid (e.g. storing to ROM or jumping to illogical addresses)
+"INVALID": Most likely unused code which does something invalid (e.g. storing to ROM or (polymorphically) jumping to illogical addresses)
 
 Game codes are located in the following banks:
 $008000-$02FFFF: Presents screen, hall screen, game select screen
