@@ -1277,7 +1277,7 @@ CODE_208C46:        4C 50 8C      JMP CODE_208C50
            
 CODE_208C49:        C9 07         CMP #$07                  
 CODE_208C4B:        D0 03         BNE CODE_208C50           
-CODE_208C4D:        20 C1 95      JSR $95C1           
+CODE_208C4D:        20 C1 95      JSR $95C1           ;INVALID: Polymorphic jump?
 CODE_208C50:        9C D4 02      STZ $02D4                 
 CODE_208C53:        9C 0F 07      STZ $070F                 
 CODE_208C56:        22 B6 E2 29   JSL CODE_29E2B6           
