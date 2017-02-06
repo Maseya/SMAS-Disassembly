@@ -13283,7 +13283,7 @@ CODE_23EAD9:        A9 0A         LDA #$0A
 CODE_23EADB:        85 0A         STA $0A                   
 CODE_23EADD:        BD 64 18      LDA $1864,x               
 CODE_23EAE0:        AA            TAX                       
-CODE_23EAE1:        BD 16 ED      LDA.w DATA_21ED16,x               
+CODE_23EAE1:        BD 16 ED      LDA.w DATA_21ED15+1,x               
 CODE_23EAE4:        05 0A         ORA $0A                   
 CODE_23EAE6:        99 83 08      STA $0883,y               
 CODE_23EAE9:        AE 0E 19      LDX $190E                 
@@ -13482,7 +13482,7 @@ CODE_23EC8E:        B0 01         BCS CODE_23EC91
 CODE_23EC90:        C8            INY                       
 CODE_23EC91:        B9 19 ED      LDA.w DATA_21ED19,y               
 CODE_23EC94:        8D 44 18      STA $1844                 
-CODE_23EC97:        B9 1A ED      LDA.w DATA_21ED1A,y               
+CODE_23EC97:        B9 1A ED      LDA.w DATA_21ED19+1,y               
 CODE_23EC9A:        8D 45 18      STA $1845                 
 CODE_23EC9D:        98            TYA                       
 CODE_23EC9E:        29 01         AND #$01                  

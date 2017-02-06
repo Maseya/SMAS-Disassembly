@@ -1277,7 +1277,7 @@ CODE_208C46:        JMP CODE_208C50
            
 CODE_208C49:        CMP #$07                  
 CODE_208C4B:        BNE CODE_208C50           
-CODE_208C4D:        JSR $95C1           
+CODE_208C4D:        JSR $95C1           ;INVALID: Polymorphic jump?
 CODE_208C50:        STZ $02D4                 
 CODE_208C53:        STZ $070F                 
 CODE_208C56:        JSL CODE_29E2B6           

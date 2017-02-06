@@ -1,4 +1,5 @@
 ;Super Mario Bros. 3
+;Seems to contain code about battle mode as well.
 
 DATA_268000:        db $FC,$10,$FC,$10,$FC,$10,$FC,$10
                     db $3B,$00,$3A,$00,$FC,$10,$FC,$10
@@ -263,7 +264,6 @@ DATA_268000:        db $FC,$10,$FC,$10,$FC,$10,$FC,$10
                     db $24,$14,$24,$14,$25,$14,$25,$14
     
 DATA_268828:        db $11,$5A,$9B,$E2,$11,$5A,$9B,$E2
-
 
 CODE_268830:        LDX #$00                  ;0 S:01FF P:EnvMXdIzc HC:0206 VC:000 FC:00 I:00
 CODE_268832:        LDA #$02                  ;0 S:01FF P:EnvMXdIzc HC:0222 VC:000 FC:00 I:00
@@ -3584,16 +3584,16 @@ CODE_26CA1E:        BNE CODE_26CA21           ;0 S:01FF P:EnvMXdIzc HC:4166 VC:0
 CODE_26CA20:        RTS                       ;0 S:01FF P:EnvMXdIzc HC:4182 VC:000 FC:00 I:00
 
 CODE_26CA21:        LDY $1D9C,x               ;0 S:01FF P:EnvMXdIzc HC:4198 VC:000 FC:00 I:00
-CODE_26CA24:        LDA $EC71,y               ;0 S:01FF P:EnvMXdIzc HC:4214 VC:000 FC:00 I:00
+CODE_26CA24:        LDA.w DATA_21EC71,y               ;0 S:01FF P:EnvMXdIzc HC:4214 VC:000 FC:00 I:00
 CODE_26CA27:        LDY $1D9D,x               ;0 S:01FF P:EnvMXdIzc HC:4230 VC:000 FC:00 I:00
-CODE_26CA2A:        ORA $EC71,y               ;0 S:01FF P:EnvMXdIzc HC:4246 VC:000 FC:00 I:00
+CODE_26CA2A:        ORA.w DATA_21EC71,y               ;0 S:01FF P:EnvMXdIzc HC:4246 VC:000 FC:00 I:00
 CODE_26CA2D:        LDY $1D9E,x               ;0 S:01FF P:EnvMXdIzc HC:4262 VC:000 FC:00 I:00
-CODE_26CA30:        ORA $EC71,y               ;0 S:01FF P:EnvMXdIzc HC:4278 VC:000 FC:00 I:00
+CODE_26CA30:        ORA.w DATA_21EC71,y               ;0 S:01FF P:EnvMXdIzc HC:4278 VC:000 FC:00 I:00
 CODE_26CA33:        TAY                       ;0 S:01FF P:EnvMXdIzc HC:4294 VC:000 FC:00 I:00
 CODE_26CA34:        LDX $00                   ;0 S:01FF P:EnvMXdIzc HC:4310 VC:000 FC:00 I:00
-CODE_26CA36:        LDA $EC61,y               ;0 S:01FF P:EnvMXdIzc HC:4326 VC:000 FC:00 I:00
+CODE_26CA36:        LDA.w DATA_21EC61,y               ;0 S:01FF P:EnvMXdIzc HC:4326 VC:000 FC:00 I:00
 CODE_26CA39:        STA $1203                 ;0 S:01FF P:EnvMXdIzc HC:4342 VC:000 FC:00 I:00
-CODE_26CA3C:        LDA $EC69,y               ;0 S:01FF P:EnvMXdIzc HC:4358 VC:000 FC:00 I:00
+CODE_26CA3C:        LDA.w DATA_21EC69,y               ;0 S:01FF P:EnvMXdIzc HC:4358 VC:000 FC:00 I:00
 CODE_26CA3F:        STA $19A1,x               ;0 S:01FF P:EnvMXdIzc HC:4374 VC:000 FC:00 I:00
 CODE_26CA42:        LDA $1822,x               ;0 S:01FF P:EnvMXdIzc HC:4390 VC:000 FC:00 I:00
 CODE_26CA45:        STA $19A5,x               ;0 S:01FF P:EnvMXdIzc HC:4406 VC:000 FC:00 I:00
@@ -3607,7 +3607,7 @@ CODE_26CA56:        LDA $19A3,x               ;0 S:01FF P:EnvMXdIzc HC:4518 VC:0
 CODE_26CA59:        CLC                       ;0 S:01FF P:EnvMXdIzc HC:4534 VC:000 FC:00 I:00
 CODE_26CA5A:        ADC #$10                  ;0 S:01FF P:EnvMXdIzc HC:4550 VC:000 FC:00 I:00
 CODE_26CA5C:        STA $19A3,x               ;0 S:01FF P:EnvMXdIzc HC:4566 VC:000 FC:00 I:00
-CODE_26CA5F:        LDA $EC59,y               ;0 S:01FF P:EnvMXdIzc HC:4582 VC:000 FC:00 I:00
+CODE_26CA5F:        LDA.w DATA_21EC59,y               ;0 S:01FF P:EnvMXdIzc HC:4582 VC:000 FC:00 I:00
 CODE_26CA62:        PHA                       ;0 S:01FF P:EnvMXdIzc HC:4598 VC:000 FC:00 I:00
 CODE_26CA63:        STA $19A7,x               ;0 S:01FF P:EnvMXdIzc HC:4614 VC:000 FC:00 I:00
 CODE_26CA66:        CLC                       ;0 S:01FF P:EnvMXdIzc HC:4630 VC:000 FC:00 I:00
@@ -3641,7 +3641,7 @@ CODE_26CA99:        LDA $15                   ;0 S:01FF P:EnvMXdIzc HC:5014 VC:0
 CODE_26CA9B:        LSR A                     ;0 S:01FF P:EnvMXdIzc HC:5030 VC:000 FC:00 I:00
 CODE_26CA9C:        BCC CODE_26CAA1           ;0 S:01FF P:EnvMXdIzc HC:5046 VC:000 FC:00 I:00
 CODE_26CA9E:        INC $19A1,x               ;0 S:01FF P:EnvMXdIzc HC:5062 VC:000 FC:00 I:00
-CODE_26CAA1:        LDY $EC7A,x               ;0 S:01FF P:EnvMXdIzc HC:5078 VC:000 FC:00 I:00
+CODE_26CAA1:        LDY.w DATA_21EC7A,x               ;0 S:01FF P:EnvMXdIzc HC:5078 VC:000 FC:00 I:00
 CODE_26CAA4:        LDA $19A3,x               ;0 S:01FF P:EnvMXdIzc HC:5094 VC:000 FC:00 I:00
 CODE_26CAA7:        SEC                       ;0 S:01FF P:EnvMXdIzc HC:5110 VC:000 FC:00 I:00
 CODE_26CAA8:        SBC $19A1,x               ;0 S:01FF P:EnvMXdIzc HC:5126 VC:000 FC:00 I:00
@@ -3652,7 +3652,7 @@ CODE_26CAB4:        LDA #$22                  ;0 S:01FF P:EnvMXdIzc HC:5190 VC:0
 CODE_26CAB6:        STA $0803,y               ;0 S:01FF P:EnvMXdIzc HC:5206 VC:000 FC:00 I:00
 CODE_26CAB9:        LDA $19A7,x               ;0 S:01FF P:EnvMXdIzc HC:5222 VC:000 FC:00 I:00
 CODE_26CABC:        TAX                       ;0 S:01FF P:EnvMXdIzc HC:5238 VC:000 FC:00 I:00
-CODE_26CABD:        LDA $EC74,x               ;0 S:01FF P:EnvMXdIzc HC:5254 VC:000 FC:00 I:00
+CODE_26CABD:        LDA.w DATA_21EC74,x               ;0 S:01FF P:EnvMXdIzc HC:5254 VC:000 FC:00 I:00
 CODE_26CAC0:        STA $0802,y               ;0 S:01FF P:EnvMXdIzc HC:5270 VC:000 FC:00 I:00
 CODE_26CAC3:        LDA $19A5,x               ;0 S:01FF P:EnvMXdIzc HC:5286 VC:000 FC:00 I:00
 CODE_26CAC6:        SEC                       ;0 S:01FF P:EnvMXdIzc HC:5302 VC:000 FC:00 I:00
@@ -3693,7 +3693,7 @@ CODE_26CB06:        STX $03                   ;0 S:01FF P:EnvMXdIzc HC:5814 VC:0
 CODE_26CB08:        LDA $1D9C,y               ;0 S:01FF P:EnvMXdIzc HC:5830 VC:000 FC:00 I:00
 CODE_26CB0B:        BEQ CODE_26CB51           ;0 S:01FF P:EnvMXdIzc HC:5846 VC:000 FC:00 I:00
 CODE_26CB0D:        TAY                       ;0 S:01FF P:EnvMXdIzc HC:5862 VC:000 FC:00 I:00
-CODE_26CB0E:        LDA $EC90,y               ;0 S:01FF P:EnvMXdIzc HC:5878 VC:000 FC:00 I:00
+CODE_26CB0E:        LDA.w DATA_21EC90,y               ;0 S:01FF P:EnvMXdIzc HC:5878 VC:000 FC:00 I:00
 CODE_26CB11:        LDY $00                   ;0 S:01FF P:EnvMXdIzc HC:5894 VC:000 FC:00 I:00
 CODE_26CB13:        STA $09E2,y               ;0 S:01FF P:EnvMXdIzc HC:5910 VC:000 FC:00 I:00
 CODE_26CB16:        LDA #$D0                  ;0 S:01FF P:EnvMXdIzc HC:5926 VC:000 FC:00 I:00
@@ -3720,7 +3720,7 @@ CODE_26CB3B:        CPY #$0C                  ;0 S:01FF P:EnvMXdIzc HC:6230 VC:0
 CODE_26CB3D:        BCC CODE_26CB41           ;0 S:01FF P:EnvMXdIzc HC:6246 VC:000 FC:00 I:00
 CODE_26CB3F:        LDA #$C0                  ;0 S:01FF P:EnvMXdIzc HC:6262 VC:000 FC:00 I:00
 CODE_26CB41:        CLC                       ;0 S:01FF P:EnvMXdIzc HC:6278 VC:000 FC:00 I:00
-CODE_26CB42:        ADC $EC8E,x               ;0 S:01FF P:EnvMXdIzc HC:6294 VC:000 FC:00 I:00
+CODE_26CB42:        ADC.w DATA_21EC8E,x               ;0 S:01FF P:EnvMXdIzc HC:6294 VC:000 FC:00 I:00
 CODE_26CB45:        STA $09E0,y               ;0 S:01FF P:EnvMXdIzc HC:6310 VC:000 FC:00 I:00
 CODE_26CB48:        TYA                       ;0 S:01FF P:EnvMXdIzc HC:6326 VC:000 FC:00 I:00
 CODE_26CB49:        LSR A                     ;0 S:01FF P:EnvMXdIzc HC:6342 VC:000 FC:00 I:00
@@ -3757,7 +3757,7 @@ CODE_26CB7A:        LDA #$0008
 CODE_26CB7D:        STA $00                   
 CODE_26CB7F:        LDY #$0000                
 CODE_26CB82:        LDX $1600                 
-CODE_26CB85:        LDA $EC7C,y               
+CODE_26CB85:        LDA.w DATA_21EC7C,y               
 CODE_26CB88:        STA $1602,x               
 CODE_26CB8B:        INX                       
 CODE_26CB8C:        INX                       
@@ -3767,7 +3767,7 @@ CODE_26CB8F:        CPY $00
 CODE_26CB91:        BNE CODE_26CB85           
 CODE_26CB93:        SEP #$30                  
 CODE_26CB95:        LDY $0F                   
-CODE_26CB97:        LDA $EC8C,y               
+CODE_26CB97:        LDA.w DATA_21EC8C,y               
 CODE_26CB9A:        CLC                       
 CODE_26CB9B:        ADC $192E,y               
 CODE_26CB9E:        STA $15FB,x               
@@ -3947,7 +3947,7 @@ CODE_26CD16:        BRA CODE_26CD28
                                                             
 CODE_26CD18:        LSR A                     ; 50%:
 CODE_26CD19:        TAY                       
-CODE_26CD1A:        LDA $ED15,y               ; db $30,$A0
+CODE_26CD1A:        LDA.w DATA_21ED15,y               ; db $30,$A0
 CODE_26CD1D:        STA $02                   ; 25% chance $02 = #$30, 25% chance $02 = #$A0
 CODE_26CD1F:        LDA $00                   
 CODE_26CD21:        CMP #$06                  
@@ -3972,9 +3972,9 @@ CODE_26CD3B:        STA $0F
 CODE_26CD3D:        LDX #$04                  
 CODE_26CD3F:        JSR CODE_26CD5D           
 CODE_26CD42:        TAY                       
-CODE_26CD43:        LDA $EC94,y               
+CODE_26CD43:        LDA.w DATA_21EC94,y               
 CODE_26CD46:        STA $1824,x               
-CODE_26CD49:        LDA $ECA2,y               
+CODE_26CD49:        LDA.w DATA_21ECA2,y               
 CODE_26CD4C:        STA $1813,x               
 CODE_26CD4F:        LDA #$01                  
 CODE_26CD51:        STA $1802,x               
@@ -3999,9 +3999,9 @@ CODE_26CD71:        LDX #$04
 CODE_26CD73:        INC $1802,x               
 CODE_26CD76:        LDA #$0B                  
 CODE_26CD78:        STA $18BB,x               
-CODE_26CD7B:        LDA $ECB5,x               
+CODE_26CD7B:        LDA.w DATA_21ECB5,x               
 CODE_26CD7E:        STA $1813,x               
-CODE_26CD81:        LDA $ECB0,x               
+CODE_26CD81:        LDA.w DATA_21ECB0,x               
 CODE_26CD84:        STA $1824,x               
 CODE_26CD87:        JSR CODE_26DD0B           
 CODE_26CD8A:        DEX                       
@@ -4107,7 +4107,7 @@ CODE_26CE5F:        TAY
 CODE_26CE60:        CLC                       
 CODE_26CE61:        ADC #$0B                  
 CODE_26CE63:        STA $18BB,x               
-CODE_26CE66:        LDA $ECB9,y               
+CODE_26CE66:        LDA.w DATA_21ECB9,y               
 CODE_26CE69:        STA $1835,x               
 CODE_26CE6C:        INC $1802,x               
 CODE_26CE6F:        LDY $00                   
@@ -4301,11 +4301,11 @@ CODE_26D006:        LDA #$01
 CODE_26D008:        STA $1800,x               
 CODE_26D00B:        TXA                       
 CODE_26D00C:        TAY                       
-CODE_26D00D:        LDA $ECC1,y               
+CODE_26D00D:        LDA.w DATA_21ECC1,y               
 CODE_26D010:        STA $1864,x               
 CODE_26D013:        LDA #$80                  
 CODE_26D015:        STA $1811,x               
-CODE_26D018:        LDA $ECBD,y               
+CODE_26D018:        LDA.w DATA_21ECBD,y               
 CODE_26D01B:        STA $1822,x               
 CODE_26D01E:        RTS
                        
@@ -4386,13 +4386,13 @@ CODE_26D0C3:        LDA $F2,x
 CODE_26D0C5:        AND #$40                  
 CODE_26D0C7:        BEQ CODE_26D0D5           
 CODE_26D0C9:        LDA $1844,x               
-CODE_26D0CC:        CMP $ED2E,y               
+CODE_26D0CC:        CMP.w DATA_21ED2E,y               
 CODE_26D0CF:        BPL CODE_26D0D2           
 CODE_26D0D1:        INC A                     
 CODE_26D0D2:        JMP CODE_26D10A           
 
 CODE_26D0D5:        LDA $1844,x               
-CODE_26D0D8:        CMP $ED2A,y               
+CODE_26D0D8:        CMP.w DATA_21ED2A,y               
 CODE_26D0DB:        BEQ CODE_26D0E4           
 CODE_26D0DD:        BPL CODE_26D0E3           
 CODE_26D0DF:        INC A                     
@@ -4407,13 +4407,13 @@ CODE_26D0E9:        LDA $F2,x
 CODE_26D0EB:        AND #$40                  
 CODE_26D0ED:        BEQ CODE_26D0FB           
 CODE_26D0EF:        LDA $1844,x               
-CODE_26D0F2:        CMP $ED2E,y               
+CODE_26D0F2:        CMP.w DATA_21ED2E,y               
 CODE_26D0F5:        BMI CODE_26D0F8           
 CODE_26D0F7:        DEC A                     
 CODE_26D0F8:        JMP CODE_26D10A           
 
 CODE_26D0FB:        LDA $1844,x               
-CODE_26D0FE:        CMP $ED2A,y               
+CODE_26D0FE:        CMP.w DATA_21ED2A,y               
 CODE_26D101:        BEQ CODE_26D10A           
 CODE_26D103:        BMI CODE_26D109           
 CODE_26D105:        DEC A                     
@@ -4484,7 +4484,7 @@ CODE_26D18F:        INC A
 CODE_26D190:        LSR A                     
 CODE_26D191:        LSR A                     
 CODE_26D192:        TAY                       
-CODE_26D193:        LDA $ECD9,y               
+CODE_26D193:        LDA.w DATA_21ECD9,y               
 CODE_26D196:        STA $1833,x               
 CODE_26D199:        LDA $F2,x                 
 CODE_26D19B:        AND #$03                  
@@ -4605,7 +4605,7 @@ CODE_26D289:        LSR A
 CODE_26D28A:        TAY                       
 CODE_26D28B:        LDA $199C,x               
 CODE_26D28E:        CLC                       
-CODE_26D28F:        ADC $ECC3,y               
+CODE_26D28F:        ADC.w DATA_21ECC3,y               
 CODE_26D292:        STA $199C,x               
 CODE_26D295:        BCC CODE_26D2A2           
 CODE_26D297:        LDA $19AF                 
@@ -4671,7 +4671,7 @@ CODE_26D306:        TAY
 CODE_26D307:        PHB                       
 CODE_26D308:        PHK                       
 CODE_26D309:        PLB                       
-CODE_26D30A:        LDA $D3F3,y               
+CODE_26D30A:        LDA.w DATA_26D3F3,y               
 CODE_26D30D:        TAY                       
 CODE_26D30E:        PLB                       
 CODE_26D30F:        LDA $0076                 
@@ -4901,7 +4901,7 @@ CODE_26D4F6:        LDY #$05
 CODE_26D4F8:        STY $0F                   
 CODE_26D4FA:        LDA $1811,x               
 CODE_26D4FD:        CLC                       
-CODE_26D4FE:        ADC $ECF3,y               
+CODE_26D4FE:        ADC.w DATA_21ECF3,y               
 CODE_26D501:        AND #$F0                  
 CODE_26D503:        STA $00                   
 CODE_26D505:        CPX #$02                  
@@ -4929,12 +4929,12 @@ CODE_26D52C:        BRA CODE_26D539
 
 CODE_26D52E:        LDA $1811,x               
 CODE_26D531:        CLC                       
-CODE_26D532:        ADC $ECF9,y               
+CODE_26D532:        ADC.w DATA_21ECF9,y               
 CODE_26D535:        AND #$F0                  
 CODE_26D537:        STA $00                   
 CODE_26D539:        LDA $1822,x               
 CODE_26D53C:        CLC                       
-CODE_26D53D:        ADC $ECE7,y               
+CODE_26D53D:        ADC.w DATA_21ECE7,y               
 CODE_26D540:        STA $01                   
 CODE_26D542:        JSR CODE_26D7C0           
 CODE_26D545:        LDY $0F                   
@@ -5045,11 +5045,11 @@ CODE_26D624:        CMP #$FE
 CODE_26D626:        BCC CODE_26D62E           
 CODE_26D628:        AND #$01                  
 CODE_26D62A:        TAY                       
-CODE_26D62B:        LDA $EC57,y               
+CODE_26D62B:        LDA.w DATA_21EC57,y               
 CODE_26D62E:        STA $18F8,x               
 CODE_26D631:        LDY $0F                   
 CODE_26D633:        LDA $1895,x               
-CODE_26D636:        ORA $ECFF,y               
+CODE_26D636:        ORA.w DATA_21ECFF,y               
 CODE_26D639:        STA $1895,x               
 CODE_26D63C:        CPX #$02                  
 CODE_26D63E:        BCC CODE_26D647           
@@ -5068,12 +5068,12 @@ CODE_26D657:        CMP #$FE
 CODE_26D659:        BCC CODE_26D661           
 CODE_26D65B:        AND #$01                  
 CODE_26D65D:        TAY                       
-CODE_26D65E:        LDA $EC57,y               
+CODE_26D65E:        LDA.w DATA_21EC57,y               
 CODE_26D661:        LDY $0F                   
 CODE_26D663:        CMP #$C2                  
 CODE_26D665:        BNE CODE_26D670           
 CODE_26D667:        LDA $1895,x               
-CODE_26D66A:        ORA $ED05,y               
+CODE_26D66A:        ORA.w DATA_21ED05,y               
 CODE_26D66D:        STA $1895,x               
 CODE_26D670:        CPY #$02                  
 CODE_26D672:        BCS CODE_26D698                   
@@ -5092,7 +5092,7 @@ CODE_26D68B:        CMP #$FE
 CODE_26D68D:        BCC CODE_26D695           
 CODE_26D68F:        AND #$01                  
 CODE_26D691:        TAY                       
-CODE_26D692:        LDA $EC57,y               
+CODE_26D692:        LDA.w DATA_21EC57,y               
 CODE_26D695:        STA $190F,x               
 CODE_26D698:        LDY $0F                   
 CODE_26D69A:        DEY                       
@@ -5250,7 +5250,7 @@ CODE_26D7D9:        CMP #$FE
 CODE_26D7DB:        BCC CODE_26D7E3           
 CODE_26D7DD:        AND #$01                  
 CODE_26D7DF:        TAY                       
-CODE_26D7E0:        LDA $EC57,y               
+CODE_26D7E0:        LDA.w DATA_21EC57,y               
 CODE_26D7E3:        PHA                       
 CODE_26D7E4:        ASL A                     
 CODE_26D7E5:        ROL $0E                   
@@ -5307,7 +5307,7 @@ CODE_26D838:        LDA #$0A
 CODE_26D83A:        STA $0A                   
 CODE_26D83C:        LDA $1864,x               
 CODE_26D83F:        TAX                       
-CODE_26D840:        LDA $ED16,x               
+CODE_26D840:        LDA.w DATA_21ED15+1,x               
 CODE_26D843:        ORA $0A                   
 CODE_26D845:        STA $08F3,y               
 CODE_26D848:        LDX $190E                 
@@ -5629,31 +5629,31 @@ CODE_26DAE4:        BRA CODE_26DAE9
 CODE_26DAE6:        DEC $1822,x               
 CODE_26DAE9:        TXY                       
 CODE_26DAEA:        PLX                       
-CODE_26DAEB:        LDA $ED1D,y               
+CODE_26DAEB:        LDA.w DATA_21ED1D,y               
 CODE_26DAEE:        AND $1833                 
 CODE_26DAF1:        BPL CODE_26DAF6           
 CODE_26DAF3:        JMP CODE_26DB0F           
 
-CODE_26DAF6:        LDA $ED1D,y               
+CODE_26DAF6:        LDA.w DATA_21ED1D,y               
 CODE_26DAF9:        STA $1833                 
 CODE_26DAFC:        LDA $1895                 
 CODE_26DAFF:        AND #$04                  
 CODE_26DB01:        BEQ CODE_26DB0F           
-CODE_26DB03:        LDA $ED20,y               
+CODE_26DB03:        LDA.w DATA_21ED20,y               
 CODE_26DB06:        STA $18B5                 
-CODE_26DB09:        LDA $ED23,y               
+CODE_26DB09:        LDA.w DATA_21ED23,y               
 CODE_26DB0C:        STA $1200                 
-CODE_26DB0F:        LDA $ED1E,y               
+CODE_26DB0F:        LDA.w DATA_21ED1E,y               
 CODE_26DB12:        AND $1834                 
 CODE_26DB15:        BMI CODE_26DB30           
-CODE_26DB17:        LDA $ED1E,y               
+CODE_26DB17:        LDA.w DATA_21ED1E,y               
 CODE_26DB1A:        STA $1834                 
 CODE_26DB1D:        LDA $1896                 
 CODE_26DB20:        AND #$04                  
 CODE_26DB22:        BEQ CODE_26DB30           
-CODE_26DB24:        LDA $ED21,y               
+CODE_26DB24:        LDA.w DATA_21ED21,y               
 CODE_26DB27:        STA $18B6                 
-CODE_26DB2A:        LDA $ED24,y               
+CODE_26DB2A:        LDA.w DATA_21ED24,y               
 CODE_26DB2D:        STA $1200                 
 CODE_26DB30:        RTS
                        
@@ -5710,21 +5710,21 @@ CODE_26DB9D:        BCC CODE_26DBA4
 CODE_26DB9F:        CMP $1823                 
 CODE_26DBA2:        BCS CODE_26DBA5                   
 CODE_26DBA4:        INY                       
-CODE_26DBA5:        LDA $ED19,y               
+CODE_26DBA5:        LDA.w DATA_21ED19,y               
 CODE_26DBA8:        STA $1844                 
-CODE_26DBAB:        LDA $ED1A,y               
+CODE_26DBAB:        LDA.w DATA_21ED19+1,y               
 CODE_26DBAE:        STA $1845                 
 CODE_26DBB1:        LDA $19AB                 
 CODE_26DBB4:        BNE CODE_26DBC1           
 CODE_26DBB6:        LDA $19AC                 
 CODE_26DBB9:        BEQ CODE_26DBC1           
-CODE_26DBBB:        LDA $ED26,y               
+CODE_26DBBB:        LDA.w DATA_21ED26,y               
 CODE_26DBBE:        STA $1844                 
 CODE_26DBC1:        LDA $19AC                 
 CODE_26DBC4:        BNE CODE_26DBD1           
 CODE_26DBC6:        LDA $19AB                 
 CODE_26DBC9:        BEQ CODE_26DBD1           
-CODE_26DBCB:        LDA $ED27,y               
+CODE_26DBCB:        LDA.w DATA_21ED26+1,y               
 CODE_26DBCE:        STA $1845                 
 CODE_26DBD1:        TYA                       
 CODE_26DBD2:        AND #$01                  
@@ -5740,7 +5740,7 @@ CODE_26DBE3:        BEQ CODE_26DBEB
 CODE_26DBE5:        LDA $19AD,x               
 CODE_26DBE8:        BEQ CODE_26DBEB           
 CODE_26DBEA:        DEY                       
-CODE_26DBEB:        LDA $ED0B,y               
+CODE_26DBEB:        LDA.w DATA_21ED0B,y               
 CODE_26DBEE:        PLY                       
 CODE_26DBEF:        CLC                       
 CODE_26DBF0:        ADC $1811,x               
@@ -5845,9 +5845,9 @@ CODE_26DCB0:        LDA $190C
 CODE_26DCB3:        LSR A                     
 CODE_26DCB4:        AND #$01                  
 CODE_26DCB6:        TAY                       
-CODE_26DCB7:        LDA $ED3C,y               
+CODE_26DCB7:        LDA.w DATA_21ED3C,y               
 CODE_26DCBA:        STA $1846,x               
-CODE_26DCBD:        LDA $ED3A,y               
+CODE_26DCBD:        LDA.w DATA_21ED3A,y               
 CODE_26DCC0:        STA $1824,x               
 CODE_26DCC3:        JSL CODE_25F805           
 CODE_26DCC7:        LDA $192D                 
@@ -5907,7 +5907,7 @@ CODE_26DD47:        TAY
 CODE_26DD48:        PHB                       
 CODE_26DD49:        PHK                       
 CODE_26DD4A:        PLB                       
-CODE_26DD4B:        LDA $DD6B,y               
+CODE_26DD4B:        LDA.w DATA_26DD6B,y               
 CODE_26DD4E:        CMP #$03                  
 CODE_26DD50:        BNE CODE_26DD5D           
 CODE_26DD52:        LDY $1A2A                 
@@ -5922,12 +5922,10 @@ CODE_26DD5E:        ASL A
 CODE_26DD5F:        TAX                       
 CODE_26DD60:        JMP ($DD63,x)             
 
-
 DATA_26DD63:        dw CODE_26DDC9                 
                     dw CODE_26DDBD
                     dw CODE_26DDA1
                     dw CODE_26F495               
-
 
 DATA_26DD6B:        db $00,$00,$03,$00,$00,$00,$00,$00
                     db $03,$02,$00,$02,$02,$02,$03,$02
@@ -5937,7 +5935,6 @@ DATA_26DD6B:        db $00,$00,$03,$00,$00,$00,$00,$00
                     db $01,$02,$01,$02,$03,$01,$02,$01
                     db $00,$01,$02,$03,$00,$01
                  
-
 CODE_26DDA1:        JSR CODE_26DDC9           
 CODE_26DDA4:        TXA                       
 CODE_26DDA5:        BMI CODE_26DDBC           
@@ -5991,9 +5988,9 @@ CODE_26DE0F:        BRA CODE_26DE14
 
 CODE_26DE11:        STZ $1A3A                 
 CODE_26DE14:        SEP #$30                  
-CODE_26DE16:        LDA $ED32,y               
+CODE_26DE16:        LDA.w DATA_21ED32,y               
 CODE_26DE19:        STA $1824,x               
-CODE_26DE1C:        LDA $ED34,y               
+CODE_26DE1C:        LDA.w DATA_21ED34,y               
 CODE_26DE1F:        STA $1846,x               
 CODE_26DE22:        RTS                       
 
@@ -6055,7 +6052,7 @@ CODE_26DE9D:        TXA
 CODE_26DE9E:        CLC                       
 CODE_26DE9F:        ADC $18C9                 
 CODE_26DEA2:        TAY                       
-CODE_26DEA3:        LDA $ED3E,y               
+CODE_26DEA3:        LDA.w DATA_21ED3E,y               
 CODE_26DEA6:        STA $18C8                 
 CODE_26DEA9:        JSL CODE_25F805           ; get random number
 CODE_26DEAD:        JSR CODE_26DEB4           ; update each sprite
@@ -6225,7 +6222,7 @@ CODE_26E00A:        LDA $18BB,x
 CODE_26E00D:        CMP #$10                          
 CODE_26E00F:        BCS CODE_26E020                   
 CODE_26E011:        LDY $18BB,x               
-CODE_26E014:        LDX $ED81,y               
+CODE_26E014:        LDX.w DATA_21ED81,y               
 CODE_26E017:        LDA $15                   
 CODE_26E019:        LSR A                     
 CODE_26E01A:        LSR A                     
@@ -6306,7 +6303,7 @@ CODE_26E0BF:        SEP #$10
 CODE_26E0C1:        LSR A                     
 CODE_26E0C2:        AND #$07                  
 CODE_26E0C4:        TAX                       
-CODE_26E0C5:        LDA $ED5D,x               
+CODE_26E0C5:        LDA.w DATA_21ED5D,x               
 CODE_26E0C8:        STA $0802,y               
 CODE_26E0CB:        LDX $190E                 
 CODE_26E0CE:        LDA #$02                  
@@ -6323,7 +6320,7 @@ CODE_26E0DF:        CLC
 CODE_26E0E0:        ADC $190E                 
 CODE_26E0E3:        AND #$03                  
 CODE_26E0E5:        TAY                       
-CODE_26E0E6:        LDA $ED59,y               
+CODE_26E0E6:        LDA.w DATA_21ED59,y               
 CODE_26E0E9:        REP #$10                  
 CODE_26E0EB:        PLY                       
 CODE_26E0EC:        STA $0802,y               
@@ -6375,7 +6372,7 @@ CODE_26E154:        BEQ CODE_26E15F
 CODE_26E156:        LSR A                     
 CODE_26E157:        AND #$07                  
 CODE_26E159:        TAY                       
-CODE_26E15A:        LDA $ED5D,x               
+CODE_26E15A:        LDA.w DATA_21ED5D,x               
 CODE_26E15D:        BRA CODE_26E178           
 
 CODE_26E15F:        LDA $0F                   
@@ -6389,7 +6386,7 @@ CODE_26E16E:        CLC
 CODE_26E16F:        ADC $190E                 
 CODE_26E172:        AND #$03                  
 CODE_26E174:        TAY                       
-CODE_26E175:        LDA $ED59,y               
+CODE_26E175:        LDA.w DATA_21ED59,y               
 CODE_26E178:        TAX                       
 CODE_26E179:        LDA #$02                  
 CODE_26E17B:        JSR CODE_26E595           
@@ -6401,7 +6398,7 @@ CODE_26E183:        PHA
 CODE_26E184:        LDA $191E,x               
 CODE_26E187:        BEQ CODE_26E192           
 CODE_26E189:        LDY $1866,x               
-CODE_26E18C:        LDA $ED6A,y               
+CODE_26E18C:        LDA.w DATA_21ED6A,y               
 CODE_26E18F:        STA $1846,x               
 CODE_26E192:        JSR CODE_26F627           
 CODE_26E195:        PLA                       
@@ -6463,7 +6460,7 @@ CODE_26E211:        BNE CODE_26E20B
 CODE_26E213:        LDY $1866,x               
 CODE_26E216:        LDA $1824,x               
 CODE_26E219:        AND #$FE                  
-CODE_26E21B:        CMP $ED64,y               
+CODE_26E21B:        CMP.w DATA_21ED64,y               
 CODE_26E21E:        BNE CODE_26E251           
 CODE_26E220:        LDA #$60                  
 CODE_26E222:        STA $191E,x               
@@ -6488,7 +6485,7 @@ CODE_26E249:        JSR CODE_26EB99
 CODE_26E24C:        JSR CODE_26ED2A           
 CODE_26E24F:        BRA CODE_26E294           
 
-CODE_26E251:        CMP $ED66,y               
+CODE_26E251:        CMP.w DATA_21ED66,y               
 CODE_26E254:        BNE CODE_26E296           
 CODE_26E256:        LDA $191E,x               
 CODE_26E259:        BEQ CODE_26E296           
@@ -6512,7 +6509,7 @@ CODE_26E27F:        BRA CODE_26E284
 
 CODE_26E281:        STZ $1A3A                 
 CODE_26E284:        SEP #$30                  
-CODE_26E286:        LDA $ED32,y               
+CODE_26E286:        LDA.w DATA_21ED32,y               
 CODE_26E289:        STA $1824,x               
 CODE_26E28C:        EOR $1846,x               
 CODE_26E28F:        BPL CODE_26E294           
@@ -6596,7 +6593,7 @@ CODE_26E33F:        JSL CODE_25F805
 CODE_26E343:        AND #$01                  
 CODE_26E345:        TAY                       
 CODE_26E346:        PLA                       
-CODE_26E347:        EOR $ED34,y               
+CODE_26E347:        EOR.w DATA_21ED34,y               
 CODE_26E34A:        BPL CODE_26E35F           
 CODE_26E34C:        JSR CODE_26E44C           
 CODE_26E34F:        BRA CODE_26E35F           
@@ -6856,8 +6853,8 @@ CODE_26E588:        STA $1835,x
 CODE_26E58B:        RTS                       
 
 CODE_26E58C:        LDY $18BB,x               
-CODE_26E58F:        LDX $ED81,y               
-CODE_26E592:        LDA $ED6D,y               
+CODE_26E58F:        LDX.w DATA_21ED81,y               
+CODE_26E592:        LDA.w DATA_21ED6D,y               
 CODE_26E595:        STA $00                   
 CODE_26E597:        STX $01                   
 CODE_26E599:        LDX $190E                 
@@ -6965,7 +6962,7 @@ CODE_26E674:        LDX $01
 CODE_26E676:        AND #$08                  
 CODE_26E678:        BEQ CODE_26E67B           
 CODE_26E67A:        INX                       
-CODE_26E67B:        LDA $ED95,x               
+CODE_26E67B:        LDA.w DATA_21ED95,x               
 CODE_26E67E:        BRA CODE_26E682           
 CODE_26E680:        LDA $01                   
 CODE_26E682:        STA $0972,y               
@@ -7470,7 +7467,7 @@ CODE_26EA95:        LDY #$00
 CODE_26EA97:        CMP #$00                  
 CODE_26EA99:        BMI CODE_26EA9C           
 CODE_26EA9B:        INY                       
-CODE_26EA9C:        LDA $EDCD,y               
+CODE_26EA9C:        LDA.w DATA_21EDCD,y               
 CODE_26EA9F:        STA $1846,x               
 CODE_26EAA2:        LDY $0F                   
 CODE_26EAA4:        LDA #$03                  
@@ -7668,7 +7665,7 @@ CODE_26EC3F:        LDY #$06
 CODE_26EC41:        PLP                       
 CODE_26EC42:        BPL CODE_26EC45           
 CODE_26EC44:        INY                       
-CODE_26EC45:        LDA $EDD5,y               
+CODE_26EC45:        LDA.w DATA_21EDD5,y               
 CODE_26EC48:        STA $1846,x               
 CODE_26EC4B:        LDA $18BB,x               
 CODE_26EC4E:        CMP #$07                  
@@ -7694,7 +7691,7 @@ CODE_26EC73:        LSR A
 CODE_26EC74:        LSR A                     
 CODE_26EC75:        TAY                       
 CODE_26EC76:        LDA $15                   
-CODE_26EC78:        AND $EDCF,y               
+CODE_26EC78:        AND.w DATA_21EDCF,y               
 CODE_26EC7B:        BEQ CODE_26EC85           
 CODE_26EC7D:        INC $199B                 
 CODE_26EC80:        LDA #$08                  
@@ -7796,7 +7793,7 @@ CODE_26ED54:        DEC $18BA
 CODE_26ED57:        LSR A                     
 CODE_26ED58:        AND #$03                  
 CODE_26ED5A:        TAY                       
-CODE_26ED5B:        LDA $EDDD,y               
+CODE_26ED5B:        LDA.w DATA_21EDDD,y               
 CODE_26ED5E:        STA $0216                 ; shake the screen
 CODE_26ED61:        LDA $193E                 
 CODE_26ED64:        CMP #$03                  ; \ if POW is still alive, draw it
@@ -7819,7 +7816,7 @@ CODE_26ED86:        LDA #$78
 CODE_26ED88:        STA $0800                 
 CODE_26ED8B:        LDA $193E                 
 CODE_26ED8E:        TAY                       
-CODE_26ED8F:        LDA $EDE1,y               
+CODE_26ED8F:        LDA.w DATA_21EDE1,y               
 CODE_26ED92:        STA $0802                 
 CODE_26ED95:        LDA #$04                  
 CODE_26ED97:        STA $0803                 
@@ -7863,7 +7860,7 @@ CODE_26EDE3:        STA $05
 CODE_26EDE5:        LDY $193E                 
 CODE_26EDE8:        LDA #$08                  
 CODE_26EDEA:        SEC                       
-CODE_26EDEB:        SBC $EDE4,y               
+CODE_26EDEB:        SBC.w DATA_21EDE4,y               
 CODE_26EDEE:        CLC                       
 CODE_26EDEF:        ADC $06                   
 CODE_26EDF1:        STA $06                   
@@ -7872,7 +7869,7 @@ CODE_26EDF5:        STA $07
 CODE_26EDF7:        JSR CODE_26DC1A           
 CODE_26EDFA:        BCC CODE_26EE64           
 CODE_26EDFC:        LDY $193E                 
-CODE_26EDFF:        LDA $EDE4,y               
+CODE_26EDFF:        LDA.w DATA_21EDE4,y               
 CODE_26EE02:        STA $193F,x               
 CODE_26EE05:        LDA $1811,x               
 CODE_26EE08:        SEC                       
@@ -7981,7 +7978,7 @@ CODE_26EEEB:        BNE CODE_26EEDE
 CODE_26EEED:        INC $1857,x               
 CODE_26EEF0:        LDY $1866,x               
 CODE_26EEF3:        LDA $1824,x               
-CODE_26EEF6:        CMP $EDEA,y               
+CODE_26EEF6:        CMP.w DATA_21EDEA,y               
 CODE_26EEF9:        BNE CODE_26EF07           
 CODE_26EEFB:        LDA $18BB,x               
 CODE_26EEFE:        CMP #$07                  
@@ -8007,9 +8004,9 @@ CODE_26EF2E:        AND #$01
 CODE_26EF30:        TAY                       
 CODE_26EF31:        LDA $1835,x               
 CODE_26EF34:        CLC                       
-CODE_26EF35:        ADC $EDE7,y               
+CODE_26EF35:        ADC.w DATA_21EDE7,y               
 CODE_26EF38:        STA $1835,x               
-CODE_26EF3B:        CMP $EDE9,y               
+CODE_26EF3B:        CMP.w DATA_21EDE9,y               
 CODE_26EF3E:        BNE CODE_26EF43           
 CODE_26EF40:        INC $18A6,x               
 CODE_26EF43:        RTS                       
@@ -8274,7 +8271,7 @@ CODE_26F13E:        BNE CODE_26F156
 CODE_26F140:        INC $19E0,x               
 CODE_26F143:        LDA $19E0,x               
 CODE_26F146:        TAY                       
-CODE_26F147:        LDA $F779,y               
+CODE_26F147:        LDA.w DATA_26F779,y               
 CODE_26F14A:        BPL CODE_26F151           
 CODE_26F14C:        STA $19E0,x               
 CODE_26F14F:        PLB                       
@@ -8288,15 +8285,15 @@ CODE_26F159:        LDA $19E0,x
 CODE_26F15C:        TAY                       
 CODE_26F15D:        LDA $19C5,x               
 CODE_26F160:        CLC                       
-CODE_26F161:        ADC $F77E,y               
+CODE_26F161:        ADC.w DATA_26F77E,y               
 CODE_26F164:        STA $19FB,x               
 CODE_26F167:        LDA $19CE,x               
 CODE_26F16A:        CLC                       
-CODE_26F16B:        ADC $F77E,y               
+CODE_26F16B:        ADC.w DATA_26F77E,y               
 CODE_26F16E:        STA $1A04,x               
-CODE_26F171:        LDA $F782,y               
+CODE_26F171:        LDA.w DATA_26F782,y               
 CODE_26F174:        STA $1A1F,x               
-CODE_26F177:        LDA $F786,y               
+CODE_26F177:        LDA.w DATA_26F786,y               
 CODE_26F17A:        STA $1A0D,x               
 CODE_26F17D:        STZ $1A16,x               
 CODE_26F180:        STZ $0000                 
@@ -8317,7 +8314,7 @@ CODE_26F19A:        BNE CODE_26F1B2
 CODE_26F19C:        INC $19E0,x               
 CODE_26F19F:        LDA $19E0,x               
 CODE_26F1A2:        TAY                       
-CODE_26F1A3:        LDA $F78A,y               
+CODE_26F1A3:        LDA.w DATA_26F78A,y               
 CODE_26F1A6:        BPL CODE_26F1AD           
 CODE_26F1A8:        STA $19E0,x               
 CODE_26F1AB:        PLB                       
@@ -8331,9 +8328,9 @@ CODE_26F1B5:        LDA $19E0,x
 CODE_26F1B8:        TAY                       
 CODE_26F1B9:        BEQ CODE_26F1BE           
 CODE_26F1BB:        STZ $1A16,x               
-CODE_26F1BE:        LDA $F7AF,y               
+CODE_26F1BE:        LDA.w DATA_26F7AF,y               
 CODE_26F1C1:        STA $1A1F,x               
-CODE_26F1C4:        LDA $F7B3,y               
+CODE_26F1C4:        LDA.w DATA_26F7B3,y               
 CODE_26F1C7:        STA $1A0D,x               
 CODE_26F1CA:        TYA                       
 CODE_26F1CB:        ASL A                     
@@ -8344,11 +8341,11 @@ CODE_26F1D0:        STA $19F2,x
 CODE_26F1D3:        STZ $0000                 
 CODE_26F1D6:        LDA $19C5,x               
 CODE_26F1D9:        CLC                       
-CODE_26F1DA:        ADC $F78F,y               
+CODE_26F1DA:        ADC.w DATA_26F78F,y               
 CODE_26F1DD:        STA $19FB,x               
 CODE_26F1E0:        LDA $19CE,x               
 CODE_26F1E3:        CLC                       
-CODE_26F1E4:        ADC $F79F,y               
+CODE_26F1E4:        ADC.w DATA_26F79F,y               
 CODE_26F1E7:        STA $1A04,x               
 CODE_26F1EA:        JSR CODE_26F200           
 CODE_26F1ED:        DEC $19F2,x               
@@ -8412,7 +8409,7 @@ CODE_26F257:        DEC $1A6A
 CODE_26F25A:        BNE CODE_26F273           
 CODE_26F25C:        INC $1A6B                 
 CODE_26F25F:        INY                       
-CODE_26F260:        LDA $F823,y               
+CODE_26F260:        LDA.w DATA_26F823,y               
 CODE_26F263:        STA $1A6A                 
 CODE_26F266:        LDA $1A6B                 
 CODE_26F269:        CMP #$07                  
@@ -8427,9 +8424,9 @@ CODE_26F27B:        AND #$00FF
 CODE_26F27E:        ASL A                     
 CODE_26F27F:        TAX                       
 CODE_26F280:        STA $0A                   
-CODE_26F282:        LDA $F815,x               
+CODE_26F282:        LDA.w DATA_26F815,x               
 CODE_26F285:        STA $0002                 
-CODE_26F288:        LDA $F807,x               
+CODE_26F288:        LDA.w DATA_26F807,x               
 CODE_26F28B:        STA $0000                 
 CODE_26F28E:        LDA #$0028                
 CODE_26F291:        CLC                       
@@ -8441,9 +8438,9 @@ CODE_26F29E:        INC A
 CODE_26F29F:        CMP #$000A                
 CODE_26F2A2:        BCC CODE_26F2C7           
 CODE_26F2A4:        LDX $0A                   
-CODE_26F2A6:        LDA $F902,x               
+CODE_26F2A6:        LDA.w DATA_26F902,x               
 CODE_26F2A9:        STA $02                   
-CODE_26F2AB:        LDA $F8E6,x               
+CODE_26F2AB:        LDA.w DATA_26F8E6,x               
 CODE_26F2AE:        STA $0000                 
 CODE_26F2B1:        LDA #$0030                
 CODE_26F2B4:        CLC                       
@@ -8467,12 +8464,12 @@ CODE_26F2D1:        CLC
 CODE_26F2D2:        ADC #$F8BA                
 CODE_26F2D5:        STA $0002                 
 CODE_26F2D8:        LDX $0A                   
-CODE_26F2DA:        LDA $F8F4,x               
+CODE_26F2DA:        LDA.w DATA_26F8F4,x               
 CODE_26F2DD:        STA $00                   
 CODE_26F2DF:        LDA $1A6B                 
 CODE_26F2E2:        CMP #$0003                
 CODE_26F2E5:        BEQ CODE_26F2EC           
-CODE_26F2E7:        LDA $F902,x               
+CODE_26F2E7:        LDA.w DATA_26F902,x               
 CODE_26F2EA:        STA $02                   
 CODE_26F2EC:        LDA #$0038                
 CODE_26F2EF:        CLC                       
@@ -8489,7 +8486,7 @@ CODE_26F301:        DEC $1A6A
 CODE_26F304:        BNE CODE_26F31C           
 CODE_26F306:        INC $1A6B                 
 CODE_26F309:        INY                       
-CODE_26F30A:        LDA $F823,y               
+CODE_26F30A:        LDA.w DATA_26F823,y               
 CODE_26F30D:        STA $1A6A                 
 CODE_26F310:        LDA $1A6B                 
 CODE_26F313:        CMP #$07                  
@@ -8504,9 +8501,9 @@ CODE_26F323:        AND #$00FF
 CODE_26F326:        ASL A                     
 CODE_26F327:        TAX                       
 CODE_26F328:        STA $0A                   
-CODE_26F32A:        LDA $F88E,x               
+CODE_26F32A:        LDA.w DATA_26F88E,x               
 CODE_26F32D:        STA $0002                 
-CODE_26F330:        LDA $F89C,x               
+CODE_26F330:        LDA.w DATA_26F89C,x               
 CODE_26F333:        STA $0000                 
 CODE_26F336:        LDA #$0028                
 CODE_26F339:        STA $0004                 
@@ -8543,7 +8540,7 @@ CODE_26F370:        DEC $1A68
 CODE_26F373:        BNE CODE_26F388           
 CODE_26F375:        INC $1A69                 
 CODE_26F378:        INY                       
-CODE_26F379:        LDA $FA8E,y               
+CODE_26F379:        LDA.w DATA_26FA8E,y               
 CODE_26F37C:        STA $1A68                 
 CODE_26F37F:        LDA $1A69                 
 CODE_26F382:        CMP #$07                  
@@ -8563,11 +8560,11 @@ CODE_26F39D:        LDA $1A69
 CODE_26F3A0:        AND #$00FF                
 CODE_26F3A3:        ASL A                     
 CODE_26F3A4:        TAX                       
-CODE_26F3A5:        LDA $FA72,x               
+CODE_26F3A5:        LDA.w DATA_26FA72,x               
 CODE_26F3A8:        STA $0002                 
-CODE_26F3AB:        LDA $FA95,x               
+CODE_26F3AB:        LDA.w DATA_26FA95,x               
 CODE_26F3AE:        STA $0000                 
-CODE_26F3B1:        LDA $FA80,x               
+CODE_26F3B1:        LDA.w DATA_26FA80,x               
 CODE_26F3B4:        STA $0004                 
 CODE_26F3B7:        JSR CODE_26F466           
 CODE_26F3BA:        SEP #$30                  
@@ -8596,7 +8593,7 @@ CODE_26F3E5:        AND #$00FF
 CODE_26F3E8:        PHA                       
 CODE_26F3E9:        ASL A                     
 CODE_26F3EA:        TAX                       
-CODE_26F3EB:        LDA $F992,x               
+CODE_26F3EB:        LDA.w DATA_26F992,x               
 CODE_26F3EE:        STA $0002                 
 CODE_26F3F1:        LDA #$0014                
 CODE_26F3F4:        STA $0004                 
@@ -8625,7 +8622,7 @@ CODE_26F42D:        AND #$00FF
 CODE_26F430:        PHA                       
 CODE_26F431:        ASL A                     
 CODE_26F432:        TAX                       
-CODE_26F433:        LDA $F992,x               
+CODE_26F433:        LDA.w DATA_26F992,x               
 CODE_26F436:        STA $0002                 
 CODE_26F439:        LDA #$0024                
 CODE_26F43C:        STA $0004                 
@@ -8819,7 +8816,7 @@ CODE_26F5D3:        LSR A
 CODE_26F5D4:        LSR A                     
 CODE_26F5D5:        PHA                       
 CODE_26F5D6:        TAY                       
-CODE_26F5D7:        LDA $EDB7,y               
+CODE_26F5D7:        LDA.w DATA_21EDB7,y               
 CODE_26F5DA:        STA $0000                 
 CODE_26F5DD:        LDY $18C8                 
 CODE_26F5E0:        STA $0972,y               
@@ -8962,316 +8959,342 @@ CODE_26F6EF:        REP #$30
 CODE_26F6F1:        PHB                       
 CODE_26F6F2:        PHK                       
 CODE_26F6F3:        PLB                       
-CODE_26F6F4:        LDA $F71B,x               
+CODE_26F6F4:        LDA.w DATA_26F71B,x               
 CODE_26F6F7:        STA $13CE,y               
-CODE_26F6FA:        LDA $F71D,x               
+CODE_26F6FA:        LDA.w DATA_26F71D,x               
 CODE_26F6FD:        STA $13D0,y               
-CODE_26F700:        LDA $F71F,x               
+CODE_26F700:        LDA.w DATA_26F71F,x               
 CODE_26F703:        STA $13D2,y               
-CODE_26F706:        LDA $F723,x               
+CODE_26F706:        LDA.w DATA_26F723,x               
 CODE_26F709:        STA $13DC,y               
-CODE_26F70C:        LDA $F725,x               
+CODE_26F70C:        LDA.w DATA_26F725,x               
 CODE_26F70F:        STA $13DE,y               
 CODE_26F712:        PLB                       
 CODE_26F713:        SEP #$30                  
 CODE_26F715:        INC $1500                 
 CODE_26F718:        RTS
                        
+DATA_26F719:        db $00,$00 ;
 
-DATA_26F719:        db $00,$00
+DATA_26F71B:        db $92,$01 ;
 
-DATA_26F71B:        db $92,$01
+DATA_26F71D:        db $58,$02 ;
 
-DATA_26F71D:        db $58,$02
+DATA_26F71F:        db $3F,$03,$25,$34 ;
 
-DATA_26F71F:        db $3F,$03
+DATA_26F723:        db $3F,$0E ;
 
-DATA_26F721:        db $25,$34
+DATA_26F725:        db $1F,$1F,$00,$00,$00,$00,$33,$30 ;
+                    db $D9,$44,$5D,$55,$25,$34,$6F,$6D ;
+                    db $56,$7E,$00,$00,$00,$00,$E6,$0E ;
+                    db $AB,$1F,$F7,$4B,$25,$34,$7F,$55 ;
+                    db $5F,$6A,$00,$00,$00,$00,$24,$44 ;
+                    db $C9,$58,$6D,$6D,$25,$34,$ED,$1F ;
+                    db $F7,$4B,$00,$00,$00,$00,$92,$01 ;
+                    db $58,$02,$3F,$03,$25,$34,$18,$00 ;
+                    db $7F,$01,$00,$00,$00,$00,$92,$01 ;
+                    db $58,$02,$3F,$03,$25,$34,$26,$02 ;
+                    db $4C,$17,$00,$00 ;
 
-DATA_26F723:        db $3F,$0E
+DATA_26F779:        db $04,$04,$04,$04,$FF ;
 
-DATA_26F725:        db $1F,$1F,$00,$00
+DATA_26F77E:        db $00,$00,$00,$00 ;
 
-DATA_26F72A:        db $00,$00,$33,$30,$D9,$44,$5D,$55
-                    db $25,$34,$6F,$6D,$56,$7E,$00,$00
-                    db $00,$00,$E6,$0E,$AB,$1F,$F7,$4B
-                    db $25,$34,$7F,$55,$5F,$6A,$00,$00
-                    db $00,$00,$24,$44,$C9,$58,$6D,$6D
-                    db $25,$34,$ED,$1F,$F7,$4B,$00,$00
-                    db $00,$00,$92,$01,$58,$02,$3F,$03
-                    db $25,$34,$18,$00,$7F,$01,$00,$00
-                    db $00,$00,$92,$01,$58,$02,$3F,$03
-                    db $25,$34,$26,$02,$4C,$17,$00,$00
-                    db $04,$04,$04,$04,$FF,$00,$00,$00
-                    db $00,$88,$89,$8A,$8B,$20,$20,$20
-                    db $20,$04,$04,$04,$04,$FF,$00,$00
-                    db $00,$00,$07,$02,$08,$07,$09,$01
-                    db $09,$09,$0B,$FF,$0B,$0B,$00,$00
-                    db $00,$00,$00,$04,$08,$00,$FE,$04
-                    db $0A,$FE,$FD,$04,$0B,$FD,$CC,$9E
-                    db $9E,$9E,$22,$22,$22,$22,$60,$80
-                    db $68,$80,$70,$80,$78,$80,$80,$80
-                    db $60,$88,$68,$88,$70,$88,$78,$88
-                    db $80,$88,$60,$84,$68,$84,$70,$84
-                    db $78,$84,$80,$84,$60,$84,$68,$84
-                    db $70,$84,$78,$84,$80,$84,$C0,$22
-                    db $A0,$22,$C2,$22,$C3,$22,$C4,$22
-                    db $D0,$22,$B0,$22,$D2,$22,$D3,$22
-                    db $D4,$22,$C1,$22,$C1,$22,$C1,$22
-                    db $C1,$22,$C1,$22,$D1,$22,$D1,$22
-                    db $D1,$22,$D1,$22,$D1,$22,$CB,$F7
-                    db $CB,$F7,$B7,$F7,$B7,$F7,$B7,$F7
-                    db $CB,$F7,$CB,$F7,$12,$FA,$2A,$FA
-                    db $F3,$F7,$DF,$F7,$F3,$F7,$2A,$FA
-                    db $12,$FA,$04,$04,$04,$70,$04,$04
-                    db $04,$6C,$80,$74,$80,$7C,$80,$84
-                    db $80,$8C,$80,$6C,$88,$74,$88,$7C
-                    db $88,$84,$88,$8C,$88,$6C,$84,$74
-                    db $84,$7C,$84,$84,$84,$8C,$84,$6C
-                    db $84,$74,$84,$7C,$84,$84,$84,$8C
-                    db $84,$45,$22,$C7,$22,$C3,$22,$C6
-                    db $22,$C9,$22,$55,$22,$D7,$22,$D3
-                    db $22,$D6,$22,$D9,$22,$C1,$22,$C1
-                    db $22,$C1,$22,$C1,$22,$C1,$22,$D1
-                    db $22,$D1,$22,$D1,$22,$D1,$22,$D1
-                    db $22,$2D,$23,$C6,$22,$C2,$22,$2E
-                    db $23,$2F,$23,$3D,$23,$D6,$22,$D2
-                    db $22,$3E,$23,$3F,$23,$12,$FA,$2A
-                    db $FA,$66,$F8,$52,$F8,$66,$F8,$2A
-                    db $FA,$12,$FA,$3E,$F8,$3E,$F8,$2A
-                    db $F8,$2A,$F8,$2A,$F8,$3E,$F8,$3E
-                    db $F8,$90,$80,$90,$88,$90,$84,$90
-                    db $84,$98,$80,$98,$88,$98,$84,$98
-                    db $84,$A0,$22,$B0,$22,$A1,$22,$B1
-                    db $22,$A2,$22,$B2,$22,$A3,$22,$B3
-                    db $22,$A4,$22,$B4,$22,$A5,$22,$B5
-                    db $22,$A6,$22,$B6,$22,$A7,$22,$B7
-                    db $22,$A8,$22,$B8,$22,$A9,$22,$B9
-                    db $22,$C1,$22,$D1,$22,$AE,$F8,$AE
-                    db $F8,$AA,$F8,$AA,$F8,$AA,$F8,$AE
-                    db $F8,$AE,$F8,$B6,$F8,$B6,$F8,$B2
-                    db $F8,$B2,$F8,$B2,$F8,$B6,$F8,$B6
-                    db $F8,$12,$FA,$2A,$FA,$E2,$F8,$BE
-                    db $F8,$E2,$F8,$2A,$FA,$12,$FA,$58
-                    db $74,$60,$74,$68,$74,$70,$74,$58
-                    db $7C,$60,$7C,$68,$7C,$70,$7C,$78
-                    db $74,$78,$7C,$C5,$22,$C6,$22,$C0
-                    db $22,$C7,$22,$D5,$22,$D6,$22,$D0
-                    db $22,$D7,$22,$A0,$22,$B0,$22,$C9
-                    db $22,$C2,$22,$C7,$22,$CA,$22,$D9
-                    db $22,$D2,$22,$D7,$22,$DA,$22,$C7
-                    db $22,$D7,$22,$88,$74,$90,$74,$98
-                    db $74,$A0,$74,$88,$7C,$90,$7C,$98
-                    db $7C,$A0,$7C,$58,$78,$60,$78,$68
-                    db $78,$70,$78,$78,$78,$88,$78,$90
-                    db $78,$98,$78,$A0,$78,$C8,$22,$C7
-                    db $22,$C3,$22,$CB,$22,$D8,$22,$D7
-                    db $22,$D3,$22,$DB,$22,$C1,$22,$C1
-                    db $22,$C1,$22,$C1,$22,$D1,$22,$D1
-                    db $22,$D1,$22,$D1,$22,$C1,$22,$D1
-                    db $22,$12,$FA,$2A,$FA,$7E,$F9,$24
-                    db $F9,$44,$70,$54,$70,$5C,$70,$64
-                    db $70,$6C,$70,$74,$70,$84,$70,$8C
-                    db $70,$9C,$70,$A4,$70,$AC,$70,$B4
-                    db $70,$44,$78,$54,$78,$5C,$78,$64
-                    db $78,$6C,$78,$74,$78,$84,$78,$8C
-                    db $78,$9C,$78,$A4,$78,$AC,$78,$B4
-                    db $78,$44,$74,$54,$74,$5C,$74,$64
-                    db $74,$6C,$74,$74,$74,$84,$74,$8C
-                    db $74,$9C,$74,$A4,$74,$AC,$74,$B4
-                    db $74,$A5,$22,$CA,$22,$C6,$22,$C5
-                    db $22,$2F,$23,$2E,$23,$2C,$23,$A0
-                    db $22,$C8,$22,$C7,$22,$C3,$22,$CB
-                    db $22,$B5,$22,$DA,$22,$D6,$22,$D5
-                    db $22,$3F,$23,$3E,$23,$3C,$23,$B0
-                    db $22,$D8,$22,$D7,$22,$D3,$22,$DB
-                    db $22,$44,$22,$44,$22,$44,$22,$44
-                    db $22,$44,$22,$44,$22,$44,$22,$44
-                    db $22,$44,$22,$44,$22,$44,$22,$44
-                    db $22,$54,$22,$54,$22,$54,$22,$54
-                    db $22,$54,$22,$54,$22,$54,$22,$54
-                    db $22,$54,$22,$54,$22,$54,$22,$54
-                    db $22,$C1,$22,$C1,$22,$C1,$22,$C1
-                    db $22,$C1,$22,$C1,$22,$C1,$22,$C1
-                    db $22,$C1,$22,$C1,$22,$C1,$22,$C1
-                    db $22,$D1,$22,$D1,$22,$D1,$22,$D1
-                    db $22,$D1,$22,$D1,$22,$D1,$22,$D1
-                    db $22,$D1,$22,$D1,$22,$D1,$22,$D1
-                    db $22,$12,$FA,$2A,$FA,$42,$FA,$E2
-                    db $F9,$42,$FA,$2A,$FA,$12,$FA,$30
-                    db $00,$30,$00,$60,$00,$60,$00,$60
-                    db $00,$30,$00,$30,$00,$04,$04,$04
-                    db $D0,$04,$04,$04,$CA,$F9,$CA,$F9
-                    db $9A,$F9,$9A,$F9,$9A,$F9,$CA,$F9
-                    db $CA,$F9,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF
+DATA_26F782:        db $88,$89,$8A,$8B ;
+
+DATA_26F786:        db $20,$20,$20,$20 ;
+
+DATA_26F78A:        db $04,$04,$04,$04,$FF ;
+
+DATA_26F78F:        db $00,$00,$00,$00,$07,$02,$08,$07 ;
+                    db $09,$01,$09,$09,$0B,$FF,$0B,$0B ;
+
+DATA_26F79F:        db $00,$00,$00,$00,$00,$04,$08,$00 ;
+                    db $FE,$04,$0A,$FE,$FD,$04,$0B,$FD ;
+
+DATA_26F7AF:        db $CC,$9E,$9E,$9E ;
+
+DATA_26F7B3:        db $22,$22,$22,$22,$60,$80,$68,$80 ;
+                    db $70,$80,$78,$80,$80,$80,$60,$88 ;
+                    db $68,$88,$70,$88,$78,$88,$80,$88 ;
+                    db $60,$84,$68,$84,$70,$84,$78,$84 ;
+                    db $80,$84,$60,$84,$68,$84,$70,$84 ;
+                    db $78,$84,$80,$84,$C0,$22,$A0,$22 ;
+                    db $C2,$22,$C3,$22,$C4,$22,$D0,$22 ;
+                    db $B0,$22,$D2,$22,$D3,$22,$D4,$22 ;
+                    db $C1,$22,$C1,$22,$C1,$22,$C1,$22 ;
+                    db $C1,$22,$D1,$22,$D1,$22,$D1,$22 ;
+                    db $D1,$22,$D1,$22 ;
+
+DATA_26F807:        db $CB,$F7,$CB,$F7,$B7,$F7,$B7,$F7 ;
+                    db $B7,$F7,$CB,$F7,$CB,$F7 ;
+
+DATA_26F815:        db $12,$FA,$2A,$FA,$F3,$F7,$DF,$F7 ;
+                    db $F3,$F7,$2A,$FA,$12,$FA ;
+
+DATA_26F823:        db $04,$04,$04,$70,$04,$04,$04,$6C ;
+                    db $80,$74,$80,$7C,$80,$84,$80,$8C ;
+                    db $80,$6C,$88,$74,$88,$7C,$88,$84 ;
+                    db $88,$8C,$88,$6C,$84,$74,$84,$7C ;
+                    db $84,$84,$84,$8C,$84,$6C,$84,$74 ;
+                    db $84,$7C,$84,$84,$84,$8C,$84,$45 ;
+                    db $22,$C7,$22,$C3,$22,$C6,$22,$C9 ;
+                    db $22,$55,$22,$D7,$22,$D3,$22,$D6 ;
+                    db $22,$D9,$22,$C1,$22,$C1,$22,$C1 ;
+                    db $22,$C1,$22,$C1,$22,$D1,$22,$D1 ;
+                    db $22,$D1,$22,$D1,$22,$D1,$22,$2D ;
+                    db $23,$C6,$22,$C2,$22,$2E,$23,$2F ;
+                    db $23,$3D,$23,$D6,$22,$D2,$22,$3E ;
+                    db $23,$3F,$23 ;
+
+DATA_26F88E:        db $12,$FA,$2A,$FA,$66,$F8,$52,$F8 ;
+                    db $66,$F8,$2A,$FA,$12,$FA ;
+
+DATA_26F89C:        db $3E,$F8,$3E,$F8,$2A,$F8,$2A,$F8 ;
+                    db $2A,$F8,$3E,$F8,$3E,$F8,$90,$80 ;
+                    db $90,$88,$90,$84,$90,$84,$98,$80 ;
+                    db $98,$88,$98,$84,$98,$84,$A0,$22 ;
+                    db $B0,$22,$A1,$22,$B1,$22,$A2,$22 ;
+                    db $B2,$22,$A3,$22,$B3,$22,$A4,$22 ;
+                    db $B4,$22,$A5,$22,$B5,$22,$A6,$22 ;
+                    db $B6,$22,$A7,$22,$B7,$22,$A8,$22 ;
+                    db $B8,$22,$A9,$22,$B9,$22,$C1,$22 ;
+                    db $D1,$22 ;
+
+DATA_26F8E6:        db $AE,$F8,$AE,$F8,$AA,$F8,$AA,$F8 ;
+                    db $AA,$F8,$AE,$F8,$AE,$F8 ;
+
+DATA_26F8F4:        db $B6,$F8,$B6,$F8,$B2,$F8,$B2,$F8 ;
+                    db $B2,$F8,$B6,$F8,$B6,$F8 ;
+
+DATA_26F902:        db $12,$FA,$2A,$FA,$E2,$F8,$BE,$F8 ;
+                    db $E2,$F8,$2A,$FA,$12,$FA,$58,$74 ;
+                    db $60,$74,$68,$74,$70,$74,$58,$7C ;
+                    db $60,$7C,$68,$7C,$70,$7C,$78,$74 ;
+                    db $78,$7C,$C5,$22,$C6,$22,$C0,$22 ;
+                    db $C7,$22,$D5,$22,$D6,$22,$D0,$22 ;
+                    db $D7,$22,$A0,$22,$B0,$22,$C9,$22 ;
+                    db $C2,$22,$C7,$22,$CA,$22,$D9,$22 ;
+                    db $D2,$22,$D7,$22,$DA,$22,$C7,$22 ;
+                    db $D7,$22,$88,$74,$90,$74,$98,$74 ;
+                    db $A0,$74,$88,$7C,$90,$7C,$98,$7C ;
+                    db $A0,$7C,$58,$78,$60,$78,$68,$78 ;
+                    db $70,$78,$78,$78,$88,$78,$90,$78 ;
+                    db $98,$78,$A0,$78,$C8,$22,$C7,$22 ;
+                    db $C3,$22,$CB,$22,$D8,$22,$D7,$22 ;
+                    db $D3,$22,$DB,$22,$C1,$22,$C1,$22 ;
+                    db $C1,$22,$C1,$22,$D1,$22,$D1,$22 ;
+                    db $D1,$22,$D1,$22,$C1,$22,$D1,$22 ;
+
+DATA_26F992:        db $12,$FA,$2A,$FA,$7E,$F9,$24,$F9 ;
+                    db $44,$70,$54,$70,$5C,$70,$64,$70 ;
+                    db $6C,$70,$74,$70,$84,$70,$8C,$70 ;
+                    db $9C,$70,$A4,$70,$AC,$70,$B4,$70 ;
+                    db $44,$78,$54,$78,$5C,$78,$64,$78 ;
+                    db $6C,$78,$74,$78,$84,$78,$8C,$78 ;
+                    db $9C,$78,$A4,$78,$AC,$78,$B4,$78 ;
+                    db $44,$74,$54,$74,$5C,$74,$64,$74 ;
+                    db $6C,$74,$74,$74,$84,$74,$8C,$74 ;
+                    db $9C,$74,$A4,$74,$AC,$74,$B4,$74 ;
+                    db $A5,$22,$CA,$22,$C6,$22,$C5,$22 ;
+                    db $2F,$23,$2E,$23,$2C,$23,$A0,$22 ;
+                    db $C8,$22,$C7,$22,$C3,$22,$CB,$22 ;
+                    db $B5,$22,$DA,$22,$D6,$22,$D5,$22 ;
+                    db $3F,$23,$3E,$23,$3C,$23,$B0,$22 ;
+                    db $D8,$22,$D7,$22,$D3,$22,$DB,$22 ;
+                    db $44,$22,$44,$22,$44,$22,$44,$22 ;
+                    db $44,$22,$44,$22,$44,$22,$44,$22 ;
+                    db $44,$22,$44,$22,$44,$22,$44,$22 ;
+                    db $54,$22,$54,$22,$54,$22,$54,$22 ;
+                    db $54,$22,$54,$22,$54,$22,$54,$22 ;
+                    db $54,$22,$54,$22,$54,$22,$54,$22 ;
+                    db $C1,$22,$C1,$22,$C1,$22,$C1,$22 ;
+                    db $C1,$22,$C1,$22,$C1,$22,$C1,$22 ;
+                    db $C1,$22,$C1,$22,$C1,$22,$C1,$22 ;
+                    db $D1,$22,$D1,$22,$D1,$22,$D1,$22 ;
+                    db $D1,$22,$D1,$22,$D1,$22,$D1,$22 ;
+                    db $D1,$22,$D1,$22,$D1,$22,$D1,$22 ;
+
+DATA_26FA72:        db $12,$FA,$2A,$FA,$42,$FA,$E2,$F9 ;
+                    db $42,$FA,$2A,$FA,$12,$FA ;
+
+DATA_26FA80:        db $30,$00,$30,$00,$60,$00,$60,$00 ;
+                    db $60,$00,$30,$00,$30,$00 ;
+
+DATA_26FA8E:        db $04,$04,$04,$D0,$04,$04,$04 ;
+
+DATA_26FA95:        db $CA,$F9,$CA,$F9,$9A,$F9,$9A,$F9 ;
+                    db $9A,$F9,$CA,$F9,$CA,$F9 ;
+
+DATA_26FAA3:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
+                    db $FF,$FF,$FF,$FF,$FF ;
