@@ -9373,9 +9373,9 @@ DATA_03D38D:        db $F8,$A0,$70,$BD,$00
 
 DATA_03D392:        db $00,$00,$00,$20,$20
 
-CODE_03D397:        LDA $29,x                 ;0 S:01FF P:EnvMXdIzc HC:0206 VC:000 FC:00 I:00
-CODE_03D399:        AND #$20                  ;0 S:01FF P:EnvMXdIzc HC:0222 VC:000 FC:00 I:00
-CODE_03D39B:        BEQ CODE_03D3A5           ;0 S:01FF P:EnvMXdIzc HC:0238 VC:000 FC:00 I:00
+CODE_03D397:        LDA $29,x                 ;
+CODE_03D399:        AND #$20                  ;
+CODE_03D39B:        BEQ CODE_03D3A5           ;
 CODE_03D39D:        LDA #$20                  ;
 CODE_03D39F:        STA $0257,x               ;
 CODE_03D3A2:        JMP CODE_03C140           ;
@@ -11811,9 +11811,9 @@ CODE_03E701:        RTS                       ;
 
 DATA_03E702:        db $28,$77,$8E,$FE
 
-CODE_03E706:        JSR CODE_03E71D           ;0 S:01FF P:EnvMXdIzc HC:1062 VC:000 FC:00 I:00
-CODE_03E709:        CMP DATA_03E702,x               ;0 S:01FF P:EnvMXdIzc HC:1078 VC:000 FC:00 I:00
-CODE_03E70C:        RTS                       ;0 S:01FF P:EnvMXdIzc HC:1094 VC:000 FC:00 I:00
+CODE_03E706:        JSR CODE_03E71D           ;
+CODE_03E709:        CMP DATA_03E702,x               ;
+CODE_03E70C:        RTS                       ;
 
 CODE_03E70D:        CMP #$E9                  ;
 CODE_03E70F:        BEQ CODE_03E717           ;
@@ -13383,7 +13383,6 @@ CODE_03F4A0:        STA $0903,y               ;
 CODE_03F4A3:        RTS                       ;
 
 DATA_03F4A4:        db $CC,$CB,$CA,$FC
-
 
 CODE_03F4A8:        LDY $0B51,x
 CODE_03F4AB:        LDA $0068,x               ;

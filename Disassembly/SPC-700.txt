@@ -273,7 +273,6 @@ HandleNote:
 06ff: c5 f3 00  mov   $00f3,a            ;/
 0702: 6f        ret
 
-
 0703: 8b 24     dec   $24
 0705: e4 24     mov   a,$24
 0707: 28 03     and   a,#$03
@@ -392,7 +391,7 @@ HandleNote:
 
 07e6: 6f        ret
 
-07e7: 68 f1     cmp   a,#$f1            ;\ If we want to do command 2 (make music quite)
+07e7: 68 f1     cmp   a,#$f1            ;\ If we want to do command 2 (make music quiet)
 07e9: f0 d1     beq   $07bc             ;/ branch
 07eb: 68 f2     cmp   a,#$f2            ;\ If we want to do command 3 (make music loud)
 07ed: f0 e5     beq   $07d4             ;/ branch
@@ -404,7 +403,6 @@ HandleNote:
 07f9: 68 19     cmp   a,#$19            ;\ If the command is less than $19, branch
 07fb: 90 28     bcc   $0825             ;/
 07fd: 6f        ret                     ; otherwise return
-
 
 07fe: 8c ca 03  dec   $03ca
 0801: f0 03     beq   $0806
@@ -418,7 +416,6 @@ HandleNote:
 0813: 8f 00 47  mov   $47,#$00
 0816: 6f        ret
 
-
 0817: 8d 00     mov   y,#$00
 0819: f7 40     mov   a,($40)+y
 081b: 3a 40     incw  $40
@@ -428,7 +425,6 @@ HandleNote:
 0822: fd        mov   y,a
 0823: ae        pop   a
 0824: 6f        ret
-
 
 0825: 60        clrc
 0826: 68 12     cmp   a,#$12
@@ -465,7 +461,6 @@ HandleNote:
 085f: c4 06     mov   $06,a
 0861: 6f        ret
 
-
 0862: f5 fe bf  mov   a,$bffe+x
 0865: da 40     movw  $40,ya
 0867: 8f 02 0d  mov   $0d,#$02
@@ -473,7 +468,6 @@ HandleNote:
 086c: 48 ff     eor   a,#$ff
 086e: 0e 46 00  tset1 $0046
 0871: 6f        ret
-
 
 0872: cd 0e     mov   x,#$0e
 0874: 8f 80 47  mov   $47,#$80
@@ -507,7 +501,6 @@ HandleNote:
 08b4: 8f c0 59  mov   $59,#$c0
 08b7: 8f 20 53  mov   $53,#$20         ; Set tempo
 08ba: 6f        ret
-
 
 08bb: e4 02     mov   a,$02            ;\ If we don't want to play a song, branch
 08bd: f0 0a     beq   $08c9            ;/
@@ -676,7 +669,6 @@ HandleNote:
 0a03: d0 f3     bne   $09f8
 0a05: 6f        ret
 
-
 0a06: 1c        asl   a
 0a07: fd        mov   y,a
 0a08: f6 18 0c  mov   a,$0c18+y
@@ -694,7 +686,6 @@ HandleNote:
 0a1e: bb 31     inc   $31+x            ; |Increase pointer so it points to next byte
 0a20: fd        mov   y,a              ;/
 0a21: 6f        ret                    ;
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ChangeInstrument
@@ -756,14 +747,12 @@ ChangeInstrument:
 0a77: d5 20 02  mov   $0220+x,a
 0a7a: 6f        ret
 
-
 0a7b: d5 51 03  mov   $0351+x,a
 0a7e: 28 1f     and   a,#$1f
 0a80: d5 31 03  mov   $0331+x,a
 0a83: e8 00     mov   a,#$00
 0a85: d5 30 03  mov   $0330+x,a
 0a88: 6f        ret
-
 
 0a89: d4 91     mov   $91+x,a
 0a8b: 2d        push  a
@@ -778,7 +767,6 @@ ChangeInstrument:
 0a9e: d5 41 03  mov   $0341+x,a
 0aa1: 6f        ret
 
-
 0aa2: d5 b0 02  mov   $02b0+x,a
 0aa5: 3f 18 0a  call  $0a18
 0aa8: d5 a1 02  mov   $02a1+x,a
@@ -788,7 +776,6 @@ ChangeInstrument:
 0ab3: e8 00     mov   a,#$00
 0ab5: d5 b1 02  mov   $02b1+x,a
 0ab8: 6f        ret
-
 
 0ab9: d5 b1 02  mov   $02b1+x,a
 0abc: 2d        push  a
@@ -800,7 +787,6 @@ ChangeInstrument:
 0ac5: d5 c0 02  mov   $02c0+x,a
 0ac8: 6f        ret
 
-
 0ac9: e5 ca 03  mov   a,$03ca
 0acc: d0 09     bne   $0ad7
 0ace: e5 f1 03  mov   a,$03f1
@@ -808,7 +794,6 @@ ChangeInstrument:
 0ad3: e8 00     mov   a,#$00
 0ad5: da 58     movw  $58,ya
 0ad7: 6f        ret
-
 
 0ad8: c4 5a     mov   $5a,a
 0ada: 3f 18 0a  call  $0a18
@@ -820,13 +805,11 @@ ChangeInstrument:
 0ae7: da 5c     movw  $5c,ya
 0ae9: 6f        ret
 
-
 0aea: 85 c8 03  adc   a,$03c8
 0aed: fd        mov   y,a
 0aee: e8 00     mov   a,#$00
 0af0: da 52     movw  $52,ya
 0af2: 6f        ret
-
 
 0af3: c4 54     mov   $54,a
 0af5: 3f 18 0a  call  $0a18
@@ -838,7 +821,6 @@ ChangeInstrument:
 0b02: 3f bb 0c  call  $0cbb
 0b05: da 56     movw  $56,ya
 0b07: 6f        ret
-
 
 0b08: c4 50     mov   $50,a
 0b0a: 6f        ret
@@ -852,7 +834,6 @@ ChangeInstrument:
 0b16: f5 a1 03  mov   a,$03a1+x
 0b19: d5 f0 02  mov   $02f0+x,a
 0b1c: 6f        ret
-
 
 0b1d: d5 e0 02  mov   $02e0+x,a
 0b20: 3f 18 0a  call  $0a18
@@ -881,17 +862,14 @@ ChangeInstrument:
 0b4f: d5 91 02  mov   $0291+x,a
 0b52: 6f        ret
 
-
 0b53: d5 80 02  mov   $0280+x,a
 0b56: d5 e1 03  mov   $03e1+x,a
 0b59: 6f        ret
-
 
 0b5a: d5 01 03  mov   $0301+x,a
 0b5d: e8 00     mov   a,#$00
 0b5f: d5 00 03  mov   $0300+x,a
 0b62: 6f        ret
-
 
 0b63: d4 90     mov   $90+x,a
 0b65: 2d        push  a
@@ -906,7 +884,6 @@ ChangeInstrument:
 0b78: d5 11 03  mov   $0311+x,a
 0b7b: 6f        ret
 
-
 0b7c: d5 e0 03  mov   $03e0+x,a
 0b7f: 2d        push  a
 0b80: e4 47     mov   a,$47
@@ -916,7 +893,6 @@ ChangeInstrument:
 0b87: f5 e0 03  mov   a,$03e0+x
 0b8a: d5 81 03  mov   $0381+x,a
 0b8d: 6f        ret
-
 
 0b8e: d5 40 02  mov   $0240+x,a
 0b91: 3f 18 0a  call  $0a18
@@ -933,7 +909,6 @@ ChangeInstrument:
 0bae: d4 31     mov   $31+x,a
 0bb0: 6f        ret
 
-
 0bb1: c5 c3 03  mov   $03c3,a
 0bb4: c4 4a     mov   $4a,a
 0bb6: 3f 18 0a  call  $0a18
@@ -944,7 +919,6 @@ ChangeInstrument:
 0bc2: da 62     movw  $62,ya
 0bc4: b2 48     clr5  $48
 0bc6: 6f        ret
-
 
 0bc7: c4 68     mov   $68,a
 0bc9: 3f 18 0a  call  $0a18
@@ -963,12 +937,10 @@ ChangeInstrument:
 0be5: da 66     movw  $66,ya
 0be7: 6f        ret
 
-
 0be8: da 60     movw  $60,ya
 0bea: da 62     movw  $62,ya
 0bec: a2 48     set5  $48
 0bee: 6f        ret
-
 
 0bef: 3f 11 0c  call  $0c11
 0bf2: 3f 18 0a  call  $0a18
@@ -988,7 +960,6 @@ ChangeInstrument:
 0c0c: 10 f2     bpl   $0c00
 0c0e: f8 44     mov   x,$44
 0c10: 6f        ret
-
 
 ;Set echo. Parameters: A = Echo ($00-$02)
 0c11: c4 4d     mov   $4d,a             ;Specified parameter into $004D
@@ -1027,7 +998,6 @@ ChangeInstrument:
 
 0c57: c4 5f     mov   $5f,a
 0c59: 6f        ret
-
 
 0c5a: 2d        push  a
 0c5b: e4 47     mov   a,$47
@@ -1072,13 +1042,11 @@ ChangeInstrument:
 0cac: d5 71 03  mov   $0371+x,a
 0caf: 6f        ret
 
-
 0cb0: f5 61 03  mov   a,$0361+x
 0cb3: c4 11     mov   $11,a
 0cb5: f5 60 03  mov   a,$0360+x
 0cb8: c4 10     mov   $10,a
 0cba: 6f        ret
-
 
 0cbb: ed        notc
 0cbc: 6b 12     ror   $12
@@ -1097,7 +1065,6 @@ ChangeInstrument:
 0cd2: ba 0e     movw  ya,$0e
 0cd4: 9a 14     subw  ya,$14
 0cd6: 6f        ret
-
 
 ; vcmd dispatch table
 0cd7: dw ChangeInstrument            ; e0 - set instrument
@@ -1211,7 +1178,6 @@ ChangeInstrument:
 0dba: 33 12 c5  bbc1  $12,$0d82
 0dbd: 6f        ret
 
-
 0dbe: 09 47 5e  or    ($5e),($47)
 0dc1: da 14     movw  $14,ya
 0dc3: da 16     movw  $16,ya
@@ -1232,7 +1198,6 @@ ChangeInstrument:
 0ddd: 97 16     adc   a,($16)+y
 0ddf: d7 14     mov   ($14)+y,a
 0de1: 6f        ret
-
 
 0de2: f4 71     mov   a,$71+x
 0de4: f0 65     beq   $0e4b
@@ -1357,7 +1322,6 @@ ChangeInstrument:
 0ebd: e3 13 f8  bbs7  $13,$0eb8
 0ec0: 6f        ret
 
-
 0ec1: f2 13     clr7  $13
 0ec3: f4 c1     mov   a,$c1+x
 0ec5: f0 09     beq   $0ed0
@@ -1415,7 +1379,6 @@ ChangeInstrument:
 0f37: da 10     movw  $10,ya
 0f39: 6f        ret
 
-
 0f3a: e2 13     set7  $13
 0f3c: eb 51     mov   y,$51
 0f3e: f5 d1 02  mov   a,$02d1+x
@@ -1441,7 +1404,6 @@ ChangeInstrument:
 0f5f: dd        mov   a,y
 0f60: d5 21 03  mov   $0321+x,a
 0f63: 6f        ret
-
 
 ; echo FIR presets
 0f79: db $7f,$00,$00,$00,$00,$00,$00,$00            ; 00
@@ -1509,7 +1471,6 @@ ChangeInstrument:
 101a: c9 f1 00  mov   $00f1,x             ;/Enable timer 0
 101d: 6f        ret
 
-
 101e: e8 0a     mov   a,#$0a
 1020: c5 c8 03  mov   $03c8,a
 1023: e4 53     mov   a,$53
@@ -1574,7 +1535,6 @@ ChangeInstrument:
 10a4: 3f fc 06  call  $06fc             ;/
 10a7: 6f        ret                     ;
 
-
 10a8: 8c 0c 00  dec   $000c             ;\ If $0c is non-zero, branch
 10ab: d0 b6     bne   $1063             ;/
 10ad: e4 04     mov   a,$04             ;\
@@ -1615,7 +1575,6 @@ ChangeInstrument:
 10ff: 5f 22 0a  jmp   ChangeInstrument
 
 1102: 6f        ret
-
 
 1103: 8c 2e 00  dec   $002e
 1106: d0 58     bne   $1160
@@ -1740,7 +1699,6 @@ ChangeInstrument:
 11f9: d0 60     bne   $125b
 11fb: 6f        ret
 
-
 11fc: c4 07     mov   $07,a             ; Move SFX to play into $07
 11fe: 8f 02 23  mov   $23,#$02
 1201: e8 40     mov   a,#$40            ;\
@@ -1753,7 +1711,6 @@ ChangeInstrument:
 1211: c5 8d 03  mov   $038d,a
 1214: c5 fc 02  mov   $02fc,a
 1217: 6f        ret
-
 
 1218: 6e 23 e0  dbnz  $23,$11fb         ; If $23 is non-zero, return
 121b: e4 07     mov   a,$07             ; Get the SFX
@@ -1785,7 +1742,6 @@ ChangeInstrument:
 1257: 5f 22 0a  jmp   ChangeInstrument
 
 125a: 6f        ret
-
 
 125b: 8c d1 03  dec   $03d1
 125e: d0 59     bne   $12b9
@@ -1847,7 +1803,6 @@ ChangeInstrument:
 12cf: 8d 5c     mov   y,#$5c
 12d1: 3f fc 06  call  $06fc
 12d4: 6f        ret
-
 
 12d5: cd 00     mov   x,#$00
 12d7: 3a d0     incw  $d0
@@ -1925,7 +1880,6 @@ ChangeInstrument:
 136e: c5 2a 02  mov   $022a,a
 1371: 6f        ret
 
-
 1372: 2d        push  a
 1373: 8d 5c     mov   y,#$5c
 1375: e8 00     mov   a,#$00
@@ -1951,7 +1905,6 @@ ChangeInstrument:
 139c: f5 a3 13  mov   a,$13a3+x
 139f: c5 2a 02  mov   $022a,a
 13a2: 6f        ret
-
 
 13a3: db $20,$00,$00
 13a6: db $e8,$04,$00
@@ -1981,7 +1934,6 @@ ChangeInstrument:
 13e0: c5 fa 02  mov   $02fa,a
 13e3: 6f        ret
 
-
 13e4: e4 25     mov   a,$25             ;\
 13e6: 68 10     cmp   a,#$10            ; | If we want to play SFX $01 (or $10), branch
 13e8: f0 0f     beq   $13f9             ;/
@@ -1993,7 +1945,6 @@ ChangeInstrument:
 13f4: 68 10     cmp   a,#$10
 13f6: f0 48     beq   $1440
 13f8: 6f        ret
-
 
 13f9: c4 26     mov   $26,a
 13fb: e8 03     mov   a,#$03
@@ -2008,7 +1959,6 @@ ChangeInstrument:
 1410: c5 8b 03  mov   $038b,a
 1413: c5 fa 02  mov   $02fa,a
 1416: 6f        ret
-
 
 1417: 8c 27 00  dec   $0027
 141a: d0 fa     bne   $1416
@@ -2029,7 +1979,6 @@ ChangeInstrument:
 143c: 3f 98 0c  call  $0c98
 143f: 6f        ret
 
-
 1440: f2 13     clr7  $13
 1442: e4 aa     mov   a,$aa
 1444: f0 1f     beq   $1465
@@ -2049,7 +1998,6 @@ ChangeInstrument:
 1461: 3f fc 06  call  $06fc
 1464: 6f        ret
 
-
 1465: e8 80     mov   a,#$80
 1467: c4 aa     mov   $aa,a
 1469: 8f 00 ab  mov   $ab,#$00
@@ -2060,7 +2008,6 @@ ChangeInstrument:
 1474: d8 44     mov   $44,x
 1476: 3f 98 0c  call  $0c98
 1479: 6f        ret
-
 
 147a: e8 00     mov   a,#$00            ;\
 147c: 8d 2c     mov   y,#$2c            ; | Echo off
@@ -2124,7 +2071,6 @@ ChangeInstrument:
 14f5: f0 04     beq   $14fb             ;/
 14f7: 6f        ret
 
-
 14f8: 5f d6 15  jmp   $15d6
 
 14fb: 5f 05 16  jmp   $1605
@@ -2142,7 +2088,6 @@ ChangeInstrument:
 1515: c5 8f 03  mov   $038f,a
 1518: c5 fe 02  mov   $02fe,a
 151b: 6f        ret
-
 
 151c: 8c c6 03  dec   $03c6
 151f: d0 fa     bne   $151b
@@ -2180,7 +2125,6 @@ ChangeInstrument:
 
 156a: 6f        ret
 
-
 156b: 3f b4 15  call  $15b4
 156e: 8d b2     mov   y,#$b2
 1570: 8f 0e 44  mov   $44,#$0e
@@ -2214,7 +2158,6 @@ ChangeInstrument:
 15b0: 3f a9 14  call  $14a9
 15b3: 6f        ret
 
-
 15b4: e8 08     mov   a,#$08
 15b6: 8d 09     mov   y,#$09
 15b8: cf        mul   ya
@@ -2232,7 +2175,6 @@ ChangeInstrument:
 15d2: c5 2e 02  mov   $022e,a
 15d5: 6f        ret
 
-
 15d6: c4 05     mov   $05,a
 15d8: e8 02     mov   a,#$02
 15da: c5 c6 03  mov   $03c6,a
@@ -2247,7 +2189,6 @@ ChangeInstrument:
 15f0: c5 fe 02  mov   $02fe,a
 15f3: 6f        ret
 
-
 15f4: 8c c6 03  dec   $03c6
 15f7: d0 fa     bne   $15f3
 15f9: 8f 05 22  mov   $22,#$05
@@ -2255,7 +2196,6 @@ ChangeInstrument:
 15ff: e8 01     mov   a,#$01
 1601: 3f b6 15  call  $15b6
 1604: 6f        ret
-
 
 1605: e5 c6 03  mov   a,$03c6
 1608: d0 ea     bne   $15f4

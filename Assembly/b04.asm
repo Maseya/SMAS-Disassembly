@@ -5342,7 +5342,6 @@ CODE_04DE5D:        CMP #$08                  ;
 CODE_04DE5F:        BCC CODE_04DE7F           ;
 CODE_04DE61:        JMP CODE_04DE7F           ;
 
-
 CODE_04DE64:        LDA $075F                 ;\Load current world into stack
 CODE_04DE67:        PHA                       ;/
 CODE_04DE68:        LDA $0E24                 ;\Load loaded level into stack

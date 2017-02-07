@@ -2845,11 +2845,9 @@ CODE_159FE9:        CPY #$A0
 CODE_159FEB:        BNE CODE_159FD2           
 CODE_159FED:        RTL                       
 
-
 DATA_159FEE:        db $11,$05
 
 DATA_159FF0:        db $12,$06
-
 
 CODE_159FF2:        STZ $0713                 
 CODE_159FF5:        LDA #$9F                  
@@ -5428,7 +5426,6 @@ DATA_15D2F6:        db $58,$C8,$DF,$30,$60,$C8,$79,$31
                     db $80,$C8,$2F,$31,$88,$C8,$3F,$31
                     db $90,$C8,$C8,$30,$98,$C8,$1F,$31
                     db $A0,$C8,$3F,$31
-
 
 CODE_15D31A:        LDX #$23
 CODE_15D31C:        LDA.l DATA_15D2F6,x             

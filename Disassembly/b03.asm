@@ -9373,9 +9373,9 @@ DATA_03D38D:        db $F8,$A0,$70,$BD,$00
 
 DATA_03D392:        db $00,$00,$00,$20,$20
 
-CODE_03D397:        B5 29         LDA $29,x                 ;0 S:01FF P:EnvMXdIzc HC:0206 VC:000 FC:00 I:00
-CODE_03D399:        29 20         AND #$20                  ;0 S:01FF P:EnvMXdIzc HC:0222 VC:000 FC:00 I:00
-CODE_03D39B:        F0 08         BEQ CODE_03D3A5           ;0 S:01FF P:EnvMXdIzc HC:0238 VC:000 FC:00 I:00
+CODE_03D397:        B5 29         LDA $29,x                 ;
+CODE_03D399:        29 20         AND #$20                  ;
+CODE_03D39B:        F0 08         BEQ CODE_03D3A5           ;
 CODE_03D39D:        A9 20         LDA #$20                  ;
 CODE_03D39F:        9D 57 02      STA $0257,x               ;
 CODE_03D3A2:        4C 40 C1      JMP CODE_03C140           ;
@@ -11811,9 +11811,9 @@ CODE_03E701:        60            RTS                       ;
 
 DATA_03E702:        db $28,$77,$8E,$FE
 
-CODE_03E706:        20 1D E7      JSR CODE_03E71D           ;0 S:01FF P:EnvMXdIzc HC:1062 VC:000 FC:00 I:00
-CODE_03E709:        DD 02 E7      CMP DATA_03E702,x               ;0 S:01FF P:EnvMXdIzc HC:1078 VC:000 FC:00 I:00
-CODE_03E70C:        60            RTS                       ;0 S:01FF P:EnvMXdIzc HC:1094 VC:000 FC:00 I:00
+CODE_03E706:        20 1D E7      JSR CODE_03E71D           ;
+CODE_03E709:        DD 02 E7      CMP DATA_03E702,x               ;
+CODE_03E70C:        60            RTS                       ;
 
 CODE_03E70D:        C9 E9         CMP #$E9                  ;
 CODE_03E70F:        F0 06         BEQ CODE_03E717           ;
@@ -13383,7 +13383,6 @@ CODE_03F4A0:        99 03 09      STA $0903,y               ;
 CODE_03F4A3:        60            RTS                       ;
 
 DATA_03F4A4:        db $CC,$CB,$CA,$FC
-
 
 CODE_03F4A8:        BC 51 0B      LDY $0B51,x
 CODE_03F4AB:        BD 68 00      LDA $0068,x               ;

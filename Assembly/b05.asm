@@ -1311,7 +1311,6 @@ CODE_058B17:        JMP CODE_05805B           ;
 
 DATA_058B1A:        db $2F,$30,$31,$32,$35,$36,$3A,$3B
 
-
 CODE_058B22:        SEP #$20                  ;
 CODE_058B24:        LDY #$0000                ;
 CODE_058B27:        LDX $EB                   ;
@@ -5392,7 +5391,6 @@ DATA_05D68E:        db $FC,$30,$31,$32,$FC ;
 DATA_05D693:        db $30,$31,$32,$FC,$FC ;
 
 DATA_05D698:        db $FF,$FF,$FF,$00,$00 ;
-
 
 CODE_05D69D:        LDA $0B09,x               ;\
 CODE_05D6A0:        LSR A                     ; |

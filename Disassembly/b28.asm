@@ -2321,7 +2321,7 @@ CODE_2894F5:        20 F9 94      JSR CODE_2894F9
 CODE_2894F8:        6B            RTL                       
 
 CODE_2894F9:        AD BE 07      LDA $07BE                 
-CODE_2894FC:        22 1F FB 20   JSL CODE_20FB1F           
+CODE_2894FC:        22 1F FB 20   JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_289500:        dw CODE_289556
                     dw CODE_289510
@@ -4200,7 +4200,7 @@ CODE_28B0DF:        8D 3C 05      STA $053C
 CODE_28B0E2:        A9 16         LDA #$16                  
 CODE_28B0E4:        8D 30 05      STA $0530                 
 CODE_28B0E7:        BD 89 06      LDA $0689,x               
-CODE_28B0EA:        22 1F FB 20   JSL CODE_20FB1F           
+CODE_28B0EA:        22 1F FB 20   JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_28B0EE:        dw CODE_28B0F6
                     dw CODE_28B0F9
@@ -6210,7 +6210,7 @@ CODE_28C11E:        20 22 C1      JSR CODE_28C122
 CODE_28C121:        6B            RTL                       
 
 CODE_28C122:        B5 4D         LDA $4D,x                 
-CODE_28C124:        22 1F FB 20   JSL CODE_20FB1F           
+CODE_28C124:        22 1F FB 20   JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_28C128:        dw CODE_28C12E
                     dw CODE_28C1A0
@@ -7191,7 +7191,7 @@ CODE_28C930:        20 34 C9      JSR CODE_28C934
 CODE_28C933:        6B            RTL                       
 
 CODE_28C934:        B5 A7         LDA $A7,x                 
-CODE_28C936:        22 1F FB 20   JSL CODE_20FB1F           
+CODE_28C936:        22 1F FB 20   JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_28C93A:        dw CODE_28C94A
                     dw CODE_28C974
@@ -8442,7 +8442,7 @@ CODE_28D49E:        20 A2 D4      JSR CODE_28D4A2
 CODE_28D4A1:        6B            RTL                       
 
 CODE_28D4A2:        B5 68         LDA $68,x                 
-CODE_28D4A4:        22 1F FB 20   JSL CODE_20FB1F           
+CODE_28D4A4:        22 1F FB 20   JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_28D4A8:        dw CODE_28D4AE
                     dw CODE_28D529
@@ -8972,7 +8972,7 @@ CODE_28D8E0:        6B            RTL
 CODE_28D8E1:        20 4D DC      JSR CODE_28DC4D           
 CODE_28D8E4:        FE D2 1F      INC $1FD2,x               
 CODE_28D8E7:        B5 68         LDA $68,x                 
-CODE_28D8E9:        22 1F FB 20   JSL CODE_20FB1F           
+CODE_28D8E9:        22 1F FB 20   JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_28D8ED:        dw CODE_28D8F9
                     dw CODE_28D92D
@@ -9164,7 +9164,7 @@ DATA_28DA81:        db $20,$E0
 
 DATA_28DA83:        db $01,$FF
 
-DATA_28DA84:            db $10,$F0
+DATA_28DA85:        db $10,$F0
 
 CODE_28DA87:        22 37 A8 27   JSL CODE_27A837
 CODE_28DA8B:        8B            PHB
@@ -9172,15 +9172,15 @@ CODE_28DA8C:        A9 28         LDA #$28
 CODE_28DA8E:        48            PHA                       
 CODE_28DA8F:        AB            PLB                       
 CODE_28DA90:        B5 8C         LDA $8C,x                 
-CODE_28DA92:        D9 81 DA      CMP DATA_28DA81,y               
+CODE_28DA92:        D9 81 DA      CMP.w DATA_28DA81,y               
 CODE_28DA95:        F0 06         BEQ CODE_28DA9D           
 CODE_28DA97:        18            CLC                       
-CODE_28DA98:        79 83 DA      ADC DATA_28DA83,y               
+CODE_28DA98:        79 83 DA      ADC.w DATA_28DA83,y               
 CODE_28DA9B:        95 8C         STA $8C,x                 
 CODE_28DA9D:        AB            PLB                       
 CODE_28DA9E:        20 DB D9      JSR CODE_28D9DB           
 CODE_28DAA1:        BD D7 1C      LDA $1CD7,x               
-CODE_28DAA4:        22 1F FB 20   JSL CODE_20FB1F           
+CODE_28DAA4:        22 1F FB 20   JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_28DAA8:        dw CODE_28DAAC
                     dw CODE_28DAED
@@ -9197,10 +9197,10 @@ CODE_28DABE:        A9 28         LDA #$28
 CODE_28DAC0:        48            PHA                       
 CODE_28DAC1:        AB            PLB                       
 CODE_28DAC2:        B5 9E         LDA $9E,x                 
-CODE_28DAC4:        D9 85 DA      CMP $DA85,y               
+CODE_28DAC4:        D9 85 DA      CMP.w DATA_28DA85,y               
 CODE_28DAC7:        F0 06         BEQ CODE_28DACF           
 CODE_28DAC9:        18            CLC                       
-CODE_28DACA:        79 83 DA      ADC $DA83,y               
+CODE_28DACA:        79 83 DA      ADC.w DATA_28DA83,y               
 CODE_28DACD:        95 9E         STA $9E,x                 
 CODE_28DACF:        AB            PLB                       
 CODE_28DAD0:        B5 71         LDA $71,x                 
@@ -9529,7 +9529,7 @@ CODE_28DD79:        6B            RTL
 
 CODE_28DD7A:        B5 4D         LDA $4D,x                 
 CODE_28DD7C:        29 03         AND #$03                  
-CODE_28DD7E:        22 1F FB 20   JSL CODE_20FB1F           
+CODE_28DD7E:        22 1F FB 20   JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_28DD82:        dw CODE_28DDB6
                     dw CODE_28DD8A
@@ -11485,7 +11485,7 @@ CODE_28ED1E:        A4 9C         LDY $9C
 CODE_28ED20:        F0 03         BEQ CODE_28ED25           
 CODE_28ED22:        4C 99 E9      JMP CODE_28E999           
 
-CODE_28ED25:        22 1F FB 20   JSL CODE_20FB1F           
+CODE_28ED25:        22 1F FB 20   JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_28ED29:        dw CODE_28ED2F
                     dw CODE_28ED5A

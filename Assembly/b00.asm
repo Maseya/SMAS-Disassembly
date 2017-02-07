@@ -1361,7 +1361,6 @@ CODE_008BA5:        JSL CODE_00868E           ; |
 CODE_008BA9:        SEP #$20                  ;/
 CODE_008BAB:        RTL                       ;
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Upload SPC data
 ;;
@@ -10233,7 +10232,6 @@ DATA_00E5C4:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF
-
 
 INTERNALHEADER: 
                     db "SUPER MARIO ALL_STARS"         ;ROM NAME

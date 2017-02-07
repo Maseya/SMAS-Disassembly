@@ -3038,7 +3038,7 @@ CODE_209BFE:        PLY
 CODE_209BFF:        RTL                       
 
 CODE_209C00:        LDA $070A                 
-CODE_209C03:        JSL CODE_20FB3A           
+CODE_209C03:        JSL CODE_20FB3A           ; ExecutePtrLong
 
 PNTR_209C07:        dl CODE_29BE08
                     dl CODE_248920
@@ -3060,9 +3060,8 @@ PNTR_209C07:        dl CODE_29BE08
                     dl CODE_239110
                     dl CODE_23A548
 
-
 CODE_209C40:        LDA $070A                 
-CODE_209C43:        JSL CODE_20FB3A           
+CODE_209C43:        JSL CODE_20FB3A           ; ExecutePtrLong
 
 PNTR_209C47:        dl DATA_29C1EC
                     dl CODE_24893D
@@ -3085,7 +3084,7 @@ PNTR_209C47:        dl DATA_29C1EC
                     dl CODE_23A569
                
 CODE_209C80:        LDA $070A       
-CODE_209C83:        JSL CODE_20FB3A
+CODE_209C83:        JSL CODE_20FB3A           ; ExecutePtrLong
 
 PNTR_209C87:        dl DATA_29C1EC
                     dl CODE_2489EA
@@ -5507,7 +5506,7 @@ CODE_20B646:        STZ $B3
 CODE_20B648:        RTS                       
 
 CODE_20B649:        LDA $BC                   
-CODE_20B64B:        JSL CODE_20FB1F
+CODE_20B64B:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_20B64F:          dw CODE_20B663
                dw CODE_20B663
@@ -6482,10 +6481,10 @@ DATA_20BE89:        db $0A,$1A
 
 DATA_20BE8B:        db $07,$05
 
-CODE_20BE8D:        PHX                       ;0 S:01FF P:EnvMXdIzc HC:16846 VC:000 FC:00 I:00
-CODE_20BE8E:        JSR CODE_20E07C           ;0 S:01FF P:EnvMXdIzc HC:16862 VC:000 FC:00 I:00
-CODE_20BE91:        PLX                       ;0 S:01FF P:EnvMXdIzc HC:16878 VC:000 FC:00 I:00
-CODE_20BE92:        BRA CODE_20BE99           ;0 S:01FF P:EnvMXdIzc HC:16894 VC:000 FC:00 I:00
+CODE_20BE8D:        PHX                       ;
+CODE_20BE8E:        JSR CODE_20E07C           ;
+CODE_20BE91:        PLX                       ;
+CODE_20BE92:        BRA CODE_20BE99           ;
 
 CODE_20BE94:        PHX                       
 CODE_20BE95:        JSR CODE_20E0A2           
@@ -6802,7 +6801,7 @@ CODE_20C114:        STZ $65,x
 CODE_20C116:        STZ $6D,x                 
 CODE_20C118:        INC $A6,x                 
 CODE_20C11A:        TXA                       
-CODE_20C11B:        JSL CODE_20FB1F           
+CODE_20C11B:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_20C11F:          dw CODE_20C139
                dw CODE_20C139
@@ -6824,7 +6823,7 @@ CODE_20C13C:        STA $0519,x
 CODE_20C13F:        RTS                       
 
 CODE_20C140:        TXA                       
-CODE_20C141:        JSL CODE_20FB1F           
+CODE_20C141:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_20C145:          dw CODE_20C151
                dw CODE_20C164
@@ -6983,7 +6982,7 @@ CODE_20C270:        JMP CODE_20C418
 CODE_20C273:        LDA $A6,x                 
 CODE_20C275:        SEC                       
 CODE_20C276:        SBC #$02                  
-CODE_20C278:        JSL CODE_20FB1F           
+CODE_20C278:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_20C27C:          dw CODE_20C286
                dw CODE_20C2A8
@@ -7639,7 +7638,7 @@ CODE_20C805:        JSR CODE_20BE99
 CODE_20C808:        RTS                       
 
 CODE_20C809:        LDA $A3                   
-CODE_20C80B:        JSL CODE_20FB1F           
+CODE_20C80B:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_20C80F:          dw CODE_20C81F
                dw CODE_20C856
@@ -7889,7 +7888,7 @@ CODE_20C9DF:        STA $00A1
 CODE_20C9E2:        RTS                       
 
 CODE_20C9E3:        LDA $A7                   
-CODE_20C9E5:        JSL CODE_20FB1F           
+CODE_20C9E5:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_20C9E9:        dw CODE_20CA69
                     dw CODE_20CB26
@@ -8442,7 +8441,7 @@ CODE_20CF66:        JMP CODE_20CF31
 
 CODE_20CF69:        DEC $C2                   
 CODE_20CF6B:        LDA $C2                   
-CODE_20CF6D:        JSL CODE_20FB1F           
+CODE_20CF6D:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_20CF71:          dw CODE_20D11A
                dw CODE_20D157
@@ -8569,7 +8568,7 @@ CODE_20D0B9:        RTS
 CODE_20D0BA:        LDA #$00                  
 CODE_20D0BC:        STA $C2                   
 CODE_20D0BE:        LDA $43                   
-CODE_20D0C0:        JSL CODE_20FB1F           
+CODE_20D0C0:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_20D0C4:          dw CODE_20D0DF
                dw CODE_20D102
@@ -10442,7 +10441,7 @@ CODE_20E970:        PLA
 CODE_20E971:        JSR CODE_20E975           
 CODE_20E974:        RTL                       
 
-CODE_20E975:        JSL CODE_20FB1F           
+CODE_20E975:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_20E979:          dw CODE_20E983
                dw CODE_20E984
@@ -12482,21 +12481,21 @@ CODE_20FB19:        JMP CODE_20FAF7
 CODE_20FB1C:        SEP #$30                  
 CODE_20FB1E:        RTS                       
 
-CODE_20FB1F:        STY $03                   
-CODE_20FB21:        PLY                       
-CODE_20FB22:        STY $00                   
-CODE_20FB24:        REP #$30                  
-CODE_20FB26:        AND #$00FF                
-CODE_20FB29:        ASL A                     
-CODE_20FB2A:        TAY                       
-CODE_20FB2B:        PLA                       
-CODE_20FB2C:        STA $01                   
-CODE_20FB2E:        INY                       
-CODE_20FB2F:        LDA [$00],y               
-CODE_20FB31:        STA $00                   
+CODE_20FB1F:        STY $03                   ;ExecutePtrShort | Preserve Y
+CODE_20FB21:        PLY                       ;Get bank of JSL which called this routine
+CODE_20FB22:        STY $00                   ;Store in Y
+CODE_20FB24:        REP #$30                  ;\
+CODE_20FB26:        AND #$00FF                ; | Get pointer index * 2
+CODE_20FB29:        ASL A                     ; |
+CODE_20FB2A:        TAY                       ;/ To Y
+CODE_20FB2B:        PLA                       ;Get high and low bytes of (pointer table-1)
+CODE_20FB2C:        STA $01                   ;Into $01 and $02, $00 $01 $02 now contains the 24-bit address of the pointer table-1
+CODE_20FB2E:        INY                       ;INY so we get the proper index for the pointer table
+CODE_20FB2F:        LDA [$00],y               ;
+CODE_20FB31:        STA $00                   ;Store jump pointer into $00
 CODE_20FB33:        SEP #$30                  
-CODE_20FB35:        LDY $03                   
-CODE_20FB37:        JML [$0000]               
+CODE_20FB35:        LDY $03                   ;Restore Y
+CODE_20FB37:        JML [$0000]               ;Jump to pointer
 
 CODE_20FB3A:        STY $05               ; ExecutePtrLong | Preserve Y       
 CODE_20FB3C:        PLY                   ; Get bank of source
@@ -12516,7 +12515,7 @@ CODE_20FB52:        INY                   ; +1 so we don't read the same data ag
 CODE_20FB53:        LDA [$02],y           ;\ Get high and bank byte
 CODE_20FB55:        STA $01               ;/  
 CODE_20FB57:        SEP #$30              ;
-CODE_20FB59:        LDY $05               ; Restore A   
+CODE_20FB59:        LDY $05               ; Restore Y   
 CODE_20FB5B:        JML [$0000]           ; Jump to pointer
 
 CODE_20FB5E:        STZ $4016                 

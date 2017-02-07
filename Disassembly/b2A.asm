@@ -2222,18 +2222,15 @@ PNTR_2A9270:                     dw DATA_2A9328
                     dw DATA_2A9338
                     dw DATA_2A933E
 
-
 DATA_2A927A:        db $01,$02,$01,$03,$04,$05,$03,$02
        db $01,$04,$06,$06,$06,$06,$07,$02
        db $08,$09,$06,$07,$09,$07,$04,$05
        db $06,$05,$08,$04,$05,$04,$06,$06
 
-
 DATA_2A929A:        db $03,$03,$02,$06,$06,$05,$02,$01
                     db $02,$07,$08,$09,$07,$04,$05,$02
                     db $00,$07,$08,$04,$06,$05,$04,$06
                     db $06,$05,$03,$07,$04,$05,$04
-
 
 DATA_2A92B9:        db $01,$03,$02,$01,$02,$00,$01,$04       
                     db $06,$05,$03,$02,$01,$0A,$05,$03
@@ -2600,14 +2597,11 @@ CODE_2A95D1:        C6 04         DEC $04
 CODE_2A95D3:        D0 E4         BNE CODE_2A95B9           
 CODE_2A95D5:        60            RTS                       
 
-
 DATA_2A95D6:        db $15,$1B,$00,$00,$00,$00,$00,$29
                     db $2F,$16,$1C,$1F,$21,$23,$25,$27
                     db $2A,$30,$17,$1D,$20,$22,$24,$26
                     db $28,$2B,$31,$18,$1E,$00,$00,$00
                     db $00,$00,$2C,$32
-
-
 
 CODE_2A95FA:        E2 10         SEP #$10
 CODE_2A95FC:        A9 3A         LDA #$3A
@@ -2809,7 +2803,6 @@ CODE_2A9785:        C6 04         DEC $04
 CODE_2A9787:        D0 F0         BNE CODE_2A9779           
 CODE_2A9789:        60            RTS                       
 
-
 DATA_2A978A:        db $06,$00,$04,$00,$06,$00,$06,$00
                     db $09,$00,$06,$00,$BA,$97,$D4,$97
                     db $E6,$97,$FF,$97,$1D,$98,$33,$98
@@ -2900,7 +2893,6 @@ CODE_2A9914:        80 F0         BRA CODE_2A9906
 CODE_2A9916:        AB            PLB                       
 CODE_2A9917:        6B            RTL                       
 
-
 PNTR_2A9918:        dw CODE_2A994C
                     dw CODE_2A9988
                     dw CODE_2A99BB
@@ -2924,39 +2916,37 @@ CODE_2A9937:        29 0F         AND #$0F
 CODE_2A9939:        D0 F5         BNE CODE_2A9930           
 CODE_2A993B:        60            RTS                       
 
-
 DATA_2A993C:        db $34,$35,$34,$36,$34,$36,$34,$35
                     db $34,$36,$37,$34,$38,$35,$37,$37
 
+CODE_2A994C:        C2 10         REP #$10                  ;
+CODE_2A994E:        A6 00         LDX $00                   ;
+CODE_2A9950:        BF 00 00 7F   LDA $7F0000,x             ;
+CODE_2A9954:        C9 14         CMP #$14                  ;
+CODE_2A9956:        F0 13         BEQ CODE_2A996B           ;
+CODE_2A9958:        A9 02         LDA #$02                  ;
+CODE_2A995A:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2A995D:        C2 20         REP #$20                  ;
+CODE_2A995F:        A5 00         LDA $00                   ;
+CODE_2A9961:        18            CLC                       ;
+CODE_2A9962:        69 10 00      ADC #$0010                ;
+CODE_2A9965:        85 00         STA $00                   ;
+CODE_2A9967:        E2 20         SEP #$20                  ;
+CODE_2A9969:        80 E3         BRA CODE_2A994E           ;
 
-CODE_2A994C:        C2 10         REP #$10                  ;0 S:01FF P:EnvMXdIzc HC:20934 VC:000 FC:00 I:00
-CODE_2A994E:        A6 00         LDX $00                   ;0 S:01FF P:EnvMxdIzc HC:20950 VC:000 FC:00 I:00
-CODE_2A9950:        BF 00 00 7F   LDA $7F0000,x             ;0 S:01FF P:EnvMxdIzc HC:20966 VC:000 FC:00 I:00
-CODE_2A9954:        C9 14         CMP #$14                  ;0 S:01FF P:EnvMxdIzc HC:20982 VC:000 FC:00 I:00
-CODE_2A9956:        F0 13         BEQ CODE_2A996B           ;0 S:01FF P:EnvMxdIzc HC:20998 VC:000 FC:00 I:00
-CODE_2A9958:        A9 02         LDA #$02                  ;0 S:01FF P:EnvMxdIzc HC:21014 VC:000 FC:00 I:00
-CODE_2A995A:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:21030 VC:000 FC:00 I:00
-CODE_2A995D:        C2 20         REP #$20                  ;0 S:01FF P:EnvMxdIzc HC:21054 VC:000 FC:00 I:00
-CODE_2A995F:        A5 00         LDA $00                   ;0 S:01FF P:EnvmxdIzc HC:21070 VC:000 FC:00 I:00
-CODE_2A9961:        18            CLC                       ;0 S:01FF P:EnvmxdIzc HC:21086 VC:000 FC:00 I:00
-CODE_2A9962:        69 10 00      ADC #$0010                ;0 S:01FF P:EnvmxdIzc HC:21102 VC:000 FC:00 I:00
-CODE_2A9965:        85 00         STA $00                   ;0 S:01FF P:EnvmxdIzc HC:21118 VC:000 FC:00 I:00
-CODE_2A9967:        E2 20         SEP #$20                  ;0 S:01FF P:EnvmxdIzc HC:21142 VC:000 FC:00 I:00
-CODE_2A9969:        80 E3         BRA CODE_2A994E           ;0 S:01FF P:EnvMxdIzc HC:21158 VC:000 FC:00 I:00
-
-CODE_2A996B:        A9 17         LDA #$17                  ;0 S:01FF P:EnvMxdIzc HC:21174 VC:000 FC:00 I:00
-CODE_2A996D:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:21190 VC:000 FC:00 I:00
-CODE_2A9970:        C2 20         REP #$20                  ;0 S:01FF P:EnvMxdIzc HC:21214 VC:000 FC:00 I:00
-CODE_2A9972:        A5 00         LDA $00                   ;0 S:01FF P:EnvmxdIzc HC:21230 VC:000 FC:00 I:00
-CODE_2A9974:        18            CLC                       ;0 S:01FF P:EnvmxdIzc HC:21246 VC:000 FC:00 I:00
-CODE_2A9975:        69 10 00      ADC #$0010                ;0 S:01FF P:EnvmxdIzc HC:21262 VC:000 FC:00 I:00
-CODE_2A9978:        AA            TAX                       ;0 S:01FF P:EnvmxdIzc HC:21278 VC:000 FC:00 I:00
-CODE_2A9979:        E2 20         SEP #$20                  ;0 S:01FF P:EnvmxdIzc HC:21302 VC:000 FC:00 I:00
-CODE_2A997B:        A9 1B         LDA #$1B                  ;0 S:01FF P:EnvMxdIzc HC:21318 VC:000 FC:00 I:00
-CODE_2A997D:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:21334 VC:000 FC:00 I:00
-CODE_2A9980:        A9 20         LDA #$20                  ;0 S:01FF P:EnvMxdIzc HC:21350 VC:000 FC:00 I:00
-CODE_2A9982:        20 EE 8C      JSR CODE_2A8CEE           ;0 S:01FF P:EnvMxdIzc HC:21366 VC:000 FC:00 I:00
-CODE_2A9985:        E2 10         SEP #$10                  ;0 S:01FF P:EnvMxdIzc HC:21390 VC:000 FC:00 I:00
+CODE_2A996B:        A9 17         LDA #$17                  ;
+CODE_2A996D:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2A9970:        C2 20         REP #$20                  ;
+CODE_2A9972:        A5 00         LDA $00                   ;
+CODE_2A9974:        18            CLC                       ;
+CODE_2A9975:        69 10 00      ADC #$0010                ;
+CODE_2A9978:        AA            TAX                       ;
+CODE_2A9979:        E2 20         SEP #$20                  ;
+CODE_2A997B:        A9 1B         LDA #$1B                  ;
+CODE_2A997D:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2A9980:        A9 20         LDA #$20                  ;
+CODE_2A9982:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2A9985:        E2 10         SEP #$10                  ;
 CODE_2A9987:        60            RTS                       ;
 
 CODE_2A9988:        C2 10         REP #$10                  
@@ -2980,7 +2970,6 @@ CODE_2A99AC:        80 DF         BRA CODE_2A998D
 
 CODE_2A99AE:        E2 10         SEP #$10                  
 CODE_2A99B0:        60            RTS                       
-
 
 DATA_2A99B1:        db $03,$08,$0D,$10,$12,$04,$09,$0E
                     db $11,$13
@@ -3054,7 +3043,6 @@ CODE_2A9A32:        C0 05 00      CPY #$0005
 CODE_2A9A35:        D0 F3         BNE CODE_2A9A2A           
 CODE_2A9A37:        80 14         BRA CODE_2A9A4D           
 
-
 DATA_2A9A39:        db $23,$24,$28,$26,$27
     
              
@@ -3117,14 +3105,12 @@ CODE_2A9AA8:        20 D9 8C      JSR CODE_2A8CD9
 CODE_2A9AAB:        E2 10         SEP #$10                  
 CODE_2A9AAD:        60            RTS                       
 
-
 DATA_2A9AAE:        db $2B,$28,$2C,$2D,$2E,$2F
 
-
-CODE_2A9AB4:        E2 10         SEP #$10                  ;0 S:01FF P:EnvMXdIzc HC:22470 VC:000 FC:00 I:00
-CODE_2A9AB6:        AD 27 07      LDA $0727                 ;0 S:01FF P:EnvMXdIzc HC:22486 VC:000 FC:00 I:00
-CODE_2A9AB9:        C9 07         CMP #$07                  ;0 S:01FF P:EnvMXdIzc HC:22502 VC:000 FC:00 I:00
-CODE_2A9ABB:        F0 05         BEQ CODE_2A9AC2           ;0 S:01FF P:EnvMXdIzc HC:22518 VC:000 FC:00 I:00
+CODE_2A9AB4:        E2 10         SEP #$10                  ;
+CODE_2A9AB6:        AD 27 07      LDA $0727                 ;
+CODE_2A9AB9:        C9 07         CMP #$07                  ;
+CODE_2A9ABB:        F0 05         BEQ CODE_2A9AC2           ;
 CODE_2A9ABD:        A9 01         LDA #$01                  
 CODE_2A9ABF:        8D D9 02      STA $02D9                 
 CODE_2A9AC2:        A2 10         LDX #$10                  
@@ -3158,7 +3144,6 @@ CODE_2A9B02:        80 F0         BRA CODE_2A9AF4
 
 CODE_2A9B04:        AB            PLB                       
 CODE_2A9B05:        6B            RTL                       
-
 
 PNTR_2A9B06:        dw CODE_2A9B0C
                     dw CODE_2A9B6A                      
@@ -3250,18 +3235,16 @@ CODE_2A9BA5:        D0 E4         BNE CODE_2A9B8B
 CODE_2A9BA7:        E2 10         SEP #$10                  
 CODE_2A9BA9:        60            RTS                       
 
-
 DATA_2A9BAA:    db $0F,$09,$09,$09,$0D,$0B,$0E,$09
                     db $10,$15,$16,$16,$09,$0D,$0B,$0E
                     db $09,$17,$1A,$1B,$1B,$1C,$1D,$1E
                     db $1F,$1C,$20
 
-
-CODE_2A9BC5:        E2 10         SEP #$10                  ;0 S:01FF P:EnvMXdIzc HC:23006 VC:000 FC:00 I:00
-CODE_2A9BC7:        A2 C0         LDX #$C0                  ;0 S:01FF P:EnvMXdIzc HC:23022 VC:000 FC:00 I:00
-CODE_2A9BC9:        A9 30         LDA #$30                  ;0 S:01FF P:EnvMXdIzc HC:23038 VC:000 FC:00 I:00
-CODE_2A9BCB:        85 00         STA $00                   ;0 S:01FF P:EnvMXdIzc HC:23054 VC:000 FC:00 I:00
-CODE_2A9BCD:        20 24 99      JSR CODE_2A9924           ;0 S:01FF P:EnvMXdIzc HC:23070 VC:000 FC:00 I:00
+CODE_2A9BC5:        E2 10         SEP #$10                  ;
+CODE_2A9BC7:        A2 C0         LDX #$C0                  ;
+CODE_2A9BC9:        A9 30         LDA #$30                  ;
+CODE_2A9BCB:        85 00         STA $00                   ;
+CODE_2A9BCD:        20 24 99      JSR CODE_2A9924           ;
 CODE_2A9BD0:        A9 01         LDA #$01                  
 CODE_2A9BD2:        85 00         STA $00                   
 CODE_2A9BD4:        20 24 99      JSR CODE_2A9924           
@@ -3286,25 +3269,23 @@ CODE_2A9BFC:        80 F0         BRA CODE_2A9BEE
 CODE_2A9BFE:        AB            PLB                       
 CODE_2A9BFF:        6B            RTL                       
 
-
 PNTR_2A9C00:        dw CODE_2A9C06
                     dw CODE_2A9C14
                     dw CODE_2A9C22 
 
+CODE_2A9C06:        C2 30         REP #$30                  ;
+CODE_2A9C08:        A9 59 9C      LDA #$9C59                ;
+CODE_2A9C0B:        85 02         STA $02                   ;
+CODE_2A9C0D:        A9 07 00      LDA #$0007                ;
+CODE_2A9C10:        85 05         STA $05                   ;
+CODE_2A9C12:        80 1A         BRA CODE_2A9C2E           ;
 
-CODE_2A9C06:        C2 30         REP #$30                  ;0 S:01FF P:EnvMXdIzc HC:31510 VC:000 FC:00 I:00
-CODE_2A9C08:        A9 59 9C      LDA #$9C59                ;0 S:01FF P:EnvmxdIzc HC:31526 VC:000 FC:00 I:00
-CODE_2A9C0B:        85 02         STA $02                   ;0 S:01FF P:EnvmxdIzc HC:31542 VC:000 FC:00 I:00
-CODE_2A9C0D:        A9 07 00      LDA #$0007                ;0 S:01FF P:EnvmxdIzc HC:31558 VC:000 FC:00 I:00
-CODE_2A9C10:        85 05         STA $05                   ;0 S:01FF P:EnvmxdIzc HC:31574 VC:000 FC:00 I:00
-CODE_2A9C12:        80 1A         BRA CODE_2A9C2E           ;0 S:01FF P:EnvmxdIzc HC:31590 VC:000 FC:00 I:00
-
-CODE_2A9C14:        C2 30         REP #$30                  ;0 S:01FF P:EnvmxdIzc HC:31614 VC:000 FC:00 I:00
-CODE_2A9C16:        A9 75 9C      LDA #$9C75                ;0 S:01FF P:EnvmxdIzc HC:31630 VC:000 FC:00 I:00
-CODE_2A9C19:        85 02         STA $02                   ;0 S:01FF P:EnvmxdIzc HC:31646 VC:000 FC:00 I:00
-CODE_2A9C1B:        A9 05 00      LDA #$0005                ;0 S:01FF P:EnvmxdIzc HC:31662 VC:000 FC:00 I:00
-CODE_2A9C1E:        85 05         STA $05                   ;0 S:01FF P:EnvmxdIzc HC:31678 VC:000 FC:00 I:00
-CODE_2A9C20:        80 0C         BRA CODE_2A9C2E           ;0 S:01FF P:EnvmxdIzc HC:31694 VC:000 FC:00 I:00
+CODE_2A9C14:        C2 30         REP #$30                  ;
+CODE_2A9C16:        A9 75 9C      LDA #$9C75                ;
+CODE_2A9C19:        85 02         STA $02                   ;
+CODE_2A9C1B:        A9 05 00      LDA #$0005                ;
+CODE_2A9C1E:        85 05         STA $05                   ;
+CODE_2A9C20:        80 0C         BRA CODE_2A9C2E           ;
 
 CODE_2A9C22:        C2 30         REP #$30                  
 CODE_2A9C24:        A9 89 9C      LDA #$9C89                
@@ -3333,7 +3314,6 @@ CODE_2A9C52:        C6 05         DEC $05
 CODE_2A9C54:        D0 DA         BNE CODE_2A9C30           
 CODE_2A9C56:        E2 10         SEP #$10                  
 CODE_2A9C58:        60            RTS                       
-
 
 DATA_2A9C59:        db $04,$05,$06,$04,$07,$08,$09,$0A
                     db $0B,$0C,$0D,$0E,$13,$14,$15,$16
@@ -3366,7 +3346,6 @@ CODE_2A9CBF:        E2 10         SEP #$10
 CODE_2A9CC1:        AB            PLB                       
 CODE_2A9CC2:        6B            RTL                       
 
-
 PNTR_2A9CC3:        dw CODE_2A9CCF
                     dw CODE_2A9D61
                     dw CODE_2A9DC0
@@ -3374,17 +3353,15 @@ PNTR_2A9CC3:        dw CODE_2A9CCF
                     dw CODE_2A9ED2
                     dw CODE_2A9EE8
 
-
-CODE_2A9CCF:        C2 30         REP #$30                  ;0 S:01FF P:EnvMXdIzc HC:33470 VC:000 FC:00 I:00
-CODE_2A9CD1:        A5 DA         LDA $DA                   ;0 S:01FF P:EnvmxdIzc HC:33486 VC:000 FC:00 I:00
-CODE_2A9CD3:        0A            ASL A                     ;0 S:01FF P:EnvmxdIzc HC:33502 VC:000 FC:00 I:00
-CODE_2A9CD4:        A8            TAY                       ;0 S:01FF P:EnvmxdIzc HC:33518 VC:000 FC:00 I:00
-CODE_2A9CD5:        B9 E0 9C      LDA $9CE0,y               ;0 S:01FF P:EnvmxdIzc HC:33534 VC:000 FC:00 I:00
-CODE_2A9CD8:        85 02         STA $02                   ;0 S:01FF P:EnvmxdIzc HC:33550 VC:000 FC:00 I:00
-CODE_2A9CDA:        E2 20         SEP #$20                  ;0 S:01FF P:EnvmxdIzc HC:33574 VC:000 FC:00 I:00
-CODE_2A9CDC:        20 3A 9D      JSR CODE_2A9D3A           ;0 S:01FF P:EnvMxdIzc HC:33590 VC:000 FC:00 I:00
-CODE_2A9CDF:        60            RTS                       ;0 S:01FF P:EnvMxdIzc HC:33606 VC:000 FC:00 I:00                     
-
+CODE_2A9CCF:        C2 30         REP #$30                  ;
+CODE_2A9CD1:        A5 DA         LDA $DA                   ;
+CODE_2A9CD3:        0A            ASL A                     ;
+CODE_2A9CD4:        A8            TAY                       ;
+CODE_2A9CD5:        B9 E0 9C      LDA $9CE0,y               ;
+CODE_2A9CD8:        85 02         STA $02                   ;
+CODE_2A9CDA:        E2 20         SEP #$20                  ;
+CODE_2A9CDC:        20 3A 9D      JSR CODE_2A9D3A           ;
+CODE_2A9CDF:        60            RTS                       ;
 
 DATA_2A9CE0:        db $EA,$9C,$FA,$9C,$0A,$9D,$1A,$9D
                     db $2A,$9D,$02,$06,$1F,$02,$06,$06
@@ -3399,27 +3376,26 @@ DATA_2A9CE0:        db $EA,$9C,$FA,$9C,$0A,$9D,$1A,$9D
                     db $1F,$03,$03,$02,$03,$03,$10,$17
                     db $03,$03
 
+CODE_2A9D3A:        A6 00         LDX $00                   ;
+CODE_2A9D3C:        A0 00 00      LDY #$0000                ;
+CODE_2A9D3F:        B1 02         LDA ($02),y               ;
+CODE_2A9D41:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2A9D44:        C2 20         REP #$20                  ;
+CODE_2A9D46:        8A            TXA                       ;
+CODE_2A9D47:        18            CLC                       ;
+CODE_2A9D48:        69 10 00      ADC #$0010                ;
+CODE_2A9D4B:        AA            TAX                       ;
+CODE_2A9D4C:        E2 20         SEP #$20                  ;
+CODE_2A9D4E:        C8            INY                       ;
+CODE_2A9D4F:        C0 10 00      CPY #$0010                ;
+CODE_2A9D52:        D0 EB         BNE CODE_2A9D3F           ;
+CODE_2A9D54:        A5 D8         LDA $D8                   ;
+CODE_2A9D56:        F0 06         BEQ CODE_2A9D5E           ;
+CODE_2A9D58:        C6 D8         DEC $D8                   ;
+CODE_2A9D5A:        E6 00         INC $00                   ;
+CODE_2A9D5C:        80 DC         BRA CODE_2A9D3A           ;
 
-CODE_2A9D3A:        A6 00         LDX $00                   ;0 S:01FF P:EnvMxdIzc HC:1990 VC:000 FC:00 I:00
-CODE_2A9D3C:        A0 00 00      LDY #$0000                ;0 S:01FF P:EnvMxdIzc HC:2006 VC:000 FC:00 I:00
-CODE_2A9D3F:        B1 02         LDA ($02),y               ;0 S:01FF P:EnvMxdIzc HC:2022 VC:000 FC:00 I:00
-CODE_2A9D41:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:2038 VC:000 FC:00 I:00
-CODE_2A9D44:        C2 20         REP #$20                  ;0 S:01FF P:EnvMxdIzc HC:35406 VC:000 FC:00 I:00
-CODE_2A9D46:        8A            TXA                       ;0 S:01FF P:EnvmxdIzc HC:35422 VC:000 FC:00 I:00
-CODE_2A9D47:        18            CLC                       ;0 S:01FF P:EnvmxdIzc HC:35438 VC:000 FC:00 I:00
-CODE_2A9D48:        69 10 00      ADC #$0010                ;0 S:01FF P:EnvmxdIzc HC:35454 VC:000 FC:00 I:00
-CODE_2A9D4B:        AA            TAX                       ;0 S:01FF P:EnvmxdIzc HC:35470 VC:000 FC:00 I:00
-CODE_2A9D4C:        E2 20         SEP #$20                  ;0 S:01FF P:EnvmxdIzc HC:35494 VC:000 FC:00 I:00
-CODE_2A9D4E:        C8            INY                       ;0 S:01FF P:EnvMxdIzc HC:35510 VC:000 FC:00 I:00
-CODE_2A9D4F:        C0 10 00      CPY #$0010                ;0 S:01FF P:EnvMxdIzc HC:35526 VC:000 FC:00 I:00
-CODE_2A9D52:        D0 EB         BNE CODE_2A9D3F           ;0 S:01FF P:EnvMxdIzc HC:35542 VC:000 FC:00 I:00
-CODE_2A9D54:        A5 D8         LDA $D8                   ;0 S:01FF P:EnvMxdIzc HC:35558 VC:000 FC:00 I:00
-CODE_2A9D56:        F0 06         BEQ CODE_2A9D5E           ;0 S:01FF P:EnvMxdIzc HC:35574 VC:000 FC:00 I:00
-CODE_2A9D58:        C6 D8         DEC $D8                   ;0 S:01FF P:EnvMxdIzc HC:35590 VC:000 FC:00 I:00
-CODE_2A9D5A:        E6 00         INC $00                   ;0 S:01FF P:EnvMxdIzc HC:35606 VC:000 FC:00 I:00
-CODE_2A9D5C:        80 DC         BRA CODE_2A9D3A           ;0 S:01FF P:EnvMxdIzc HC:35622 VC:000 FC:00 I:00
-
-CODE_2A9D5E:        E2 10         SEP #$10                  ;0 S:01FF P:EnvMxdIzc HC:35646 VC:000 FC:00 I:00
+CODE_2A9D5E:        E2 10         SEP #$10                  ;
 CODE_2A9D60:        60            RTS                       ;
 
 CODE_2A9D61:        C2 30         REP #$30                  
@@ -3434,7 +3410,6 @@ CODE_2A9D70:        20 A6 9D      JSR CODE_2A9DA6
 CODE_2A9D73:        60            RTS                       
 
 DATA_2A9D74:        db $80,$9D           
-
 
 DATA_2A9D76:        db $88,$9D,$8D,$9D,$95,$9D,$9D,$9D
                     db $A2,$9D,$07,$08,$07,$08,$1A,$07
@@ -3477,7 +3452,6 @@ CODE_2A9DDD:        E2 20         SEP #$20
 CODE_2A9DDF:        20 3A 9D      JSR CODE_2A9D3A           
 CODE_2A9DE2:        60            RTS                       
 
-
 DATA_2A9DE3:        db $EB,$9D,$0B,$9E,$2B,$9E,$4B,$9E
                     db $04,$1B,$20,$33,$1B,$20,$35,$04
                     db $20,$20,$35,$04,$2E,$30,$35,$04
@@ -3515,7 +3489,6 @@ CODE_2A9E86:        E2 20         SEP #$20
 CODE_2A9E88:        20 A6 9D      JSR CODE_2A9DA6           
 CODE_2A9E8B:        60            RTS                       
 
-
 DATA_2A9E8C:        db $94,$9E,$A2,$9E,$B2,$9E,$C2,$9E
                     db $0A,$0A,$0D,$0E,$0D,$0E,$0A,$11
                     db $2A,$14,$15,$14,$15,$11,$0A,$0D
@@ -3535,40 +3508,36 @@ CODE_2A9EDB:        20 D9 8C      JSR CODE_2A8CD9
 CODE_2A9EDE:        E2 10         SEP #$10                  
 CODE_2A9EE0:        60            RTS                       
 
-
 DATA_2A9EE1:        db $02,$32,$03,$06,$1F,$20,$21
 
-
-CODE_2A9EE8:        C2 30         REP #$30                  ;0 S:01FF P:EnvMXdIzc HC:37134 VC:000 FC:00 I:00
-CODE_2A9EEA:        A5 DA         LDA $DA                   ;0 S:01FF P:EnvmxdIzc HC:37150 VC:000 FC:00 I:00
-CODE_2A9EEC:        0A            ASL A                     ;0 S:01FF P:EnvmxdIzc HC:37166 VC:000 FC:00 I:00
-CODE_2A9EED:        AA            TAX                       ;0 S:01FF P:EnvmxdIzc HC:37182 VC:000 FC:00 I:00
-CODE_2A9EEE:        BD 1B 9F      LDA $9F1B,x               ;0 S:01FF P:EnvmxdIzc HC:37198 VC:000 FC:00 I:00
-CODE_2A9EF1:        85 02         STA $02                   ;0 S:01FF P:EnvmxdIzc HC:37214 VC:000 FC:00 I:00
-CODE_2A9EF3:        E2 20         SEP #$20                  ;0 S:01FF P:EnvmxdIzc HC:37238 VC:000 FC:00 I:00
-CODE_2A9EF5:        A0 02 00      LDY #$0002                ;0 S:01FF P:EnvMxdIzc HC:37254 VC:000 FC:00 I:00
-CODE_2A9EF8:        B2 02         LDA ($02)                 ;0 S:01FF P:EnvMxdIzc HC:37270 VC:000 FC:00 I:00
-CODE_2A9EFA:        A6 00         LDX $00                   ;0 S:01FF P:EnvMxdIzc HC:37286 VC:000 FC:00 I:00
-CODE_2A9EFC:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:37302 VC:000 FC:00 I:00
-CODE_2A9EFF:        B1 02         LDA ($02),y               ;0 S:01FF P:EnvMxdIzc HC:37318 VC:000 FC:00 I:00
-CODE_2A9F01:        20 EE 8C      JSR CODE_2A8CEE           ;0 S:01FF P:EnvMxdIzc HC:37334 VC:000 FC:00 I:00
-CODE_2A9F04:        C2 20         REP #$20                  ;0 S:01FF P:EnvMxdIzc HC:37358 VC:000 FC:00 I:00
-CODE_2A9F06:        E6 02         INC $02                   ;0 S:01FF P:EnvmxdIzc HC:37374 VC:000 FC:00 I:00
-CODE_2A9F08:        E6 00         INC $00                   ;0 S:01FF P:EnvmxdIzc HC:37390 VC:000 FC:00 I:00
-CODE_2A9F0A:        E2 20         SEP #$20                  ;0 S:01FF P:EnvmxdIzc HC:37414 VC:000 FC:00 I:00
-CODE_2A9F0C:        B2 02         LDA ($02)                 ;0 S:01FF P:EnvMxdIzc HC:37430 VC:000 FC:00 I:00
-CODE_2A9F0E:        A6 00         LDX $00                   ;0 S:01FF P:EnvMxdIzc HC:37446 VC:000 FC:00 I:00
-CODE_2A9F10:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:37462 VC:000 FC:00 I:00
-CODE_2A9F13:        B1 02         LDA ($02),y               ;0 S:01FF P:EnvMxdIzc HC:37478 VC:000 FC:00 I:00
-CODE_2A9F15:        20 EE 8C      JSR CODE_2A8CEE           ;0 S:01FF P:EnvMxdIzc HC:37494 VC:000 FC:00 I:00
-CODE_2A9F18:        E2 10         SEP #$10                  ;0 S:01FF P:EnvMxdIzc HC:37518 VC:000 FC:00 I:00
+CODE_2A9EE8:        C2 30         REP #$30                  ;
+CODE_2A9EEA:        A5 DA         LDA $DA                   ;
+CODE_2A9EEC:        0A            ASL A                     ;
+CODE_2A9EED:        AA            TAX                       ;
+CODE_2A9EEE:        BD 1B 9F      LDA $9F1B,x               ;
+CODE_2A9EF1:        85 02         STA $02                   ;
+CODE_2A9EF3:        E2 20         SEP #$20                  ;
+CODE_2A9EF5:        A0 02 00      LDY #$0002                ;
+CODE_2A9EF8:        B2 02         LDA ($02)                 ;
+CODE_2A9EFA:        A6 00         LDX $00                   ;
+CODE_2A9EFC:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2A9EFF:        B1 02         LDA ($02),y               ;
+CODE_2A9F01:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2A9F04:        C2 20         REP #$20                  ;
+CODE_2A9F06:        E6 02         INC $02                   ;
+CODE_2A9F08:        E6 00         INC $00                   ;
+CODE_2A9F0A:        E2 20         SEP #$20                  ;
+CODE_2A9F0C:        B2 02         LDA ($02)                 ;
+CODE_2A9F0E:        A6 00         LDX $00                   ;
+CODE_2A9F10:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2A9F13:        B1 02         LDA ($02),y               ;
+CODE_2A9F15:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2A9F18:        E2 10         SEP #$10                  ;
 CODE_2A9F1A:        60            RTS                       ;
-
 
 DATA_2A9F1B:        db $21,$9F,$25,$9F,$29,$9F,$0D,$0E
                     db $14,$15,$0A,$0D,$2A,$14,$0A,$0A
                     db $11,$11
-
 
 CODE_2A9F2D:        E2 10         SEP #$10                  
 CODE_2A9F2F:        AD 27 07      LDA $0727                 
@@ -3600,7 +3569,6 @@ CODE_2A9F69:        80 F0         BRA CODE_2A9F5B
 CODE_2A9F6B:        AB            PLB                       
 CODE_2A9F6C:        6B            RTL                       
 
-
 PNTR_2A9F6D:        dw CODE_2A9F7D
                     dw CODE_2A9F84
                     dw CODE_2A9F8B
@@ -3610,10 +3578,9 @@ PNTR_2A9F6D:        dw CODE_2A9F7D
                     dw CODE_2A9FA7
                     dw CODE_2AA066
 
-
-CODE_2A9F7D:        C2 10         REP #$10                  ;0 S:01FF P:EnvMXdIzc HC:39302 VC:000 FC:00 I:00
-CODE_2A9F7F:        A0 00 00      LDY #$0000                ;0 S:01FF P:EnvMxdIzc HC:39318 VC:000 FC:00 I:00
-CODE_2A9F82:        80 28         BRA CODE_2A9FAC           ;0 S:01FF P:EnvMxdIzc HC:39334 VC:000 FC:00 I:00
+CODE_2A9F7D:        C2 10         REP #$10                  ;
+CODE_2A9F7F:        A0 00 00      LDY #$0000                ;
+CODE_2A9F82:        80 28         BRA CODE_2A9FAC           ;
 
 CODE_2A9F84:        C2 10         REP #$10                  
 CODE_2A9F86:        A0 08 00      LDY #$0008                
@@ -3702,7 +3669,6 @@ CODE_2AA01F:        E9 C0 01      SBC #$01C0
 CODE_2AA022:        AA            TAX                       
 CODE_2AA023:        E2 20         SEP #$20                  
 CODE_2AA025:        60            RTS                       
-
 
 DATA_2AA026:        db $1D,$1E,$1F,$20,$21,$08,$09,$22
                     db $29,$04,$0B,$0C,$07,$08,$09,$0F
@@ -3808,23 +3774,21 @@ CODE_2AA114:        80 F0         BRA CODE_2AA106
 CODE_2AA116:        AB            PLB                       
 CODE_2AA117:        6B            RTL                       
 
-
 PNTR_2AA118:        dw CODE_2AA120
                     dw CODE_2AA143
                     dw CODE_2AA153
                     dw CODE_2AA15F
 
-
-CODE_2AA120:        20 43 A1      JSR CODE_2AA143           ;0 S:01FF P:EnvMXdIzc HC:40366 VC:000 FC:00 I:00
-CODE_2AA123:        C2 10         REP #$10                  ;0 S:01FF P:EnvMXdIzc HC:40390 VC:000 FC:00 I:00
-CODE_2AA125:        A5 DA         LDA $DA                   ;0 S:01FF P:EnvMxdIzc HC:40406 VC:000 FC:00 I:00
-CODE_2AA127:        F0 02         BEQ CODE_2AA12B           ;0 S:01FF P:EnvMxdIzc HC:40422 VC:000 FC:00 I:00
-CODE_2AA129:        85 D8         STA $D8                   ;0 S:01FF P:EnvMxdIzc HC:40438 VC:000 FC:00 I:00
-CODE_2AA12B:        20 36 A1      JSR CODE_2AA136           ;0 S:01FF P:EnvMxdIzc HC:40454 VC:000 FC:00 I:00
-CODE_2AA12E:        A9 04         LDA #$04                  ;0 S:01FF P:EnvMxdIzc HC:40470 VC:000 FC:00 I:00
-CODE_2AA130:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:40486 VC:000 FC:00 I:00
-CODE_2AA133:        E2 10         SEP #$10                  ;0 S:01FF P:EnvMxdIzc HC:40510 VC:000 FC:00 I:00
-CODE_2AA135:        60            RTS                       ;0 S:01FF P:EnvMXdIzc HC:40526 VC:000 FC:00 I:00                  
+CODE_2AA120:        20 43 A1      JSR CODE_2AA143           ;
+CODE_2AA123:        C2 10         REP #$10                  ;
+CODE_2AA125:        A5 DA         LDA $DA                   ;
+CODE_2AA127:        F0 02         BEQ CODE_2AA12B           ;
+CODE_2AA129:        85 D8         STA $D8                   ;
+CODE_2AA12B:        20 36 A1      JSR CODE_2AA136           ;
+CODE_2AA12E:        A9 04         LDA #$04                  ;
+CODE_2AA130:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA133:        E2 10         SEP #$10                  ;
+CODE_2AA135:        60            RTS                       ;
 
 CODE_2AA136:        C2 20         REP #$20                  
 CODE_2AA138:        A5 00         LDA $00                   
@@ -3935,17 +3899,15 @@ CODE_2AA215:        E2 10         SEP #$10
 CODE_2AA217:        AB            PLB                       
 CODE_2AA218:        6B            RTL                       
 
-
 PNTR_2AA219:        dw CODE_2AA221               
                     dw CODE_2AA225               
                     dw CODE_2AA229                 
                     dw CODE_2AA22D
 
+CODE_2AA221:        A0 00         LDY #$00                  ;
+CODE_2AA223:        80 0A         BRA CODE_2AA22F           ;
 
-CODE_2AA221:        A0 00         LDY #$00                  ;0 S:01FF P:EnvMXdIzc HC:40550 VC:000 FC:00 I:00
-CODE_2AA223:        80 0A         BRA CODE_2AA22F           ;0 S:01FF P:EnvMXdIzc HC:40566 VC:000 FC:00 I:00
-
-CODE_2AA225:        A0 02         LDY #$02                  ;0 S:01FF P:EnvMXdIzc HC:40582 VC:000 FC:00 I:00                 
+CODE_2AA225:        A0 02         LDY #$02                  ;
 CODE_2AA227:        80 06         BRA CODE_2AA22F           
 
 CODE_2AA229:        A0 04         LDY #$04                  
@@ -3974,7 +3936,6 @@ CODE_2AA258:        85 02         STA $02
 CODE_2AA25A:        20 A7 8F      JSR CODE_2A8FA7           
 CODE_2AA25D:        E2 10         SEP #$10                  
 CODE_2AA25F:        60            RTS                       
-
 
 DATA_2AA260:        db $07,$00,$06,$00,$04,$00,$05,$00
                     db $80,$A2,$BD,$A2,$CE,$A2,$E4,$A2
@@ -4048,15 +4009,13 @@ CODE_2AA383:        80 F0         BRA CODE_2AA375
 CODE_2AA385:        AB            PLB                       
 CODE_2AA386:        6B            RTL                       
 
-
 PNTR_2AA387:        dw CODE_2AA3E1              
                     dw CODE_2AA40E
 
-
 CODE_2AA38B:        A2 B0         LDX #$B0
-CODE_2AA38D:        A9 41         LDA #$41                  ;0 S:01FF P:EnvMXdIzc HC:40606 VC:000 FC:00 I:00
-CODE_2AA38F:        85 00         STA $00                   ;0 S:01FF P:EnvMXdIzc HC:40622 VC:000 FC:00 I:00
-CODE_2AA391:        20 24 99      JSR CODE_2A9924           ;0 S:01FF P:EnvMXdIzc HC:40638 VC:000 FC:00 I:00                   
+CODE_2AA38D:        A9 41         LDA #$41                  ;
+CODE_2AA38F:        85 00         STA $00                   ;
+CODE_2AA391:        20 24 99      JSR CODE_2A9924           ;
 CODE_2AA394:        A9 01         LDA #$01                  
 CODE_2AA396:        85 00         STA $00                   
 CODE_2AA398:        20 24 99      JSR CODE_2A9924           
@@ -4239,19 +4198,18 @@ PNTR_2AA4F9:        dw CODE_2AA3E1
                     dw CODE_2AA600
                     dw CODE_2AA65A
 
-
-CODE_2AA505:        C2 10         REP #$10                  ;0 S:01FF P:EnvMXdIzc HC:41462 VC:000 FC:00 I:00
-CODE_2AA507:        64 02         STZ $02                   ;0 S:01FF P:EnvMxdIzc HC:41478 VC:000 FC:00 I:00
-CODE_2AA509:        A6 00         LDX $00                   ;0 S:01FF P:EnvMxdIzc HC:41494 VC:000 FC:00 I:00
-CODE_2AA50B:        BF 00 00 7F   LDA $7F0000,x             ;0 S:01FF P:EnvMxdIzc HC:41510 VC:000 FC:00 I:00
-CODE_2AA50F:        C9 04         CMP #$04                  ;0 S:01FF P:EnvMxdIzc HC:41526 VC:000 FC:00 I:00
-CODE_2AA511:        D0 4F         BNE CODE_2AA562           ;0 S:01FF P:EnvMxdIzc HC:41542 VC:000 FC:00 I:00
-CODE_2AA513:        A5 02         LDA $02                   ;0 S:01FF P:EnvMxdIzc HC:41558 VC:000 FC:00 I:00
-CODE_2AA515:        85 03         STA $03                   ;0 S:01FF P:EnvMxdIzc HC:41574 VC:000 FC:00 I:00
-CODE_2AA517:        A9 16         LDA #$16                  ;0 S:01FF P:EnvMxdIzc HC:41590 VC:000 FC:00 I:00
-CODE_2AA519:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:41606 VC:000 FC:00 I:00
-CODE_2AA51C:        A5 03         LDA $03                   ;0 S:01FF P:EnvMxdIzc HC:41622 VC:000 FC:00 I:00
-CODE_2AA51E:        F0 12         BEQ CODE_2AA532           ;0 S:01FF P:EnvMxdIzc HC:41638 VC:000 FC:00 I:00
+CODE_2AA505:        C2 10         REP #$10                  ;
+CODE_2AA507:        64 02         STZ $02                   ;
+CODE_2AA509:        A6 00         LDX $00                   ;
+CODE_2AA50B:        BF 00 00 7F   LDA $7F0000,x             ;
+CODE_2AA50F:        C9 04         CMP #$04                  ;
+CODE_2AA511:        D0 4F         BNE CODE_2AA562           ;
+CODE_2AA513:        A5 02         LDA $02                   ;
+CODE_2AA515:        85 03         STA $03                   ;
+CODE_2AA517:        A9 16         LDA #$16                  ;
+CODE_2AA519:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA51C:        A5 03         LDA $03                   ;
+CODE_2AA51E:        F0 12         BEQ CODE_2AA532           ;
 CODE_2AA520:        E8            INX                       ;               
 CODE_2AA521:        A9 18         LDA #$18                  
 CODE_2AA523:        20 D9 8C      JSR CODE_2A8CD9           
@@ -4475,7 +4433,6 @@ CODE_2AA6C3:        80 F0         BRA CODE_2AA6B5
 CODE_2AA6C5:        AB            PLB                       
 CODE_2AA6C6:        6B            RTL                       
 
-
 PNTR_2AA6C7:        dw CODE_2AA6D7
                     dw CODE_2AA755
                     dw CODE_2AA8A5
@@ -4485,21 +4442,20 @@ PNTR_2AA6C7:        dw CODE_2AA6D7
                     dw CODE_2AA932
                     dw CODE_2AA938
 
+CODE_2AA6D7:        C2 10         REP #$10                  ;
+CODE_2AA6D9:        A6 00         LDX $00                   ;
+CODE_2AA6DB:        BF 00 00 7F   LDA $7F0000,x             ;
+CODE_2AA6DF:        D0 04         BNE CODE_2AA6E5           ;
+CODE_2AA6E1:        A9 05         LDA #$05                  ;
+CODE_2AA6E3:        80 02         BRA CODE_2AA6E7           ;
 
-CODE_2AA6D7:        C2 10         REP #$10                  ;0 S:01FF P:EnvMXdIzc HC:43606 VC:000 FC:00 I:00
-CODE_2AA6D9:        A6 00         LDX $00                   ;0 S:01FF P:EnvMxdIzc HC:43622 VC:000 FC:00 I:00
-CODE_2AA6DB:        BF 00 00 7F   LDA $7F0000,x             ;0 S:01FF P:EnvMxdIzc HC:43638 VC:000 FC:00 I:00
-CODE_2AA6DF:        D0 04         BNE CODE_2AA6E5           ;0 S:01FF P:EnvMxdIzc HC:43654 VC:000 FC:00 I:00
-CODE_2AA6E1:        A9 05         LDA #$05                  ;0 S:01FF P:EnvMxdIzc HC:43670 VC:000 FC:00 I:00
-CODE_2AA6E3:        80 02         BRA CODE_2AA6E7           ;0 S:01FF P:EnvMxdIzc HC:43686 VC:000 FC:00 I:00
-
-CODE_2AA6E5:        A9 0C         LDA #$0C                  ;0 S:01FF P:EnvMxdIzc HC:43702 VC:000 FC:00 I:00
-CODE_2AA6E7:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:43718 VC:000 FC:00 I:00
-CODE_2AA6EA:        E8            INX                       ;0 S:01FF P:EnvMxdIzc HC:43734 VC:000 FC:00 I:00
-CODE_2AA6EB:        8A            TXA                       ;0 S:01FF P:EnvMxdIzc HC:43750 VC:000 FC:00 I:00
-CODE_2AA6EC:        29 0F         AND #$0F                  ;0 S:01FF P:EnvMxdIzc HC:43766 VC:000 FC:00 I:00
-CODE_2AA6EE:        D0 0A         BNE CODE_2AA6FA           ;0 S:01FF P:EnvMxdIzc HC:43782 VC:000 FC:00 I:00
-CODE_2AA6F0:        C2 20         REP #$20                  ;0 S:01FF P:EnvMxdIzc HC:43806 VC:000 FC:00 I:00                  
+CODE_2AA6E5:        A9 0C         LDA #$0C                  ;
+CODE_2AA6E7:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA6EA:        E8            INX                       ;
+CODE_2AA6EB:        8A            TXA                       ;
+CODE_2AA6EC:        29 0F         AND #$0F                  ;
+CODE_2AA6EE:        D0 0A         BNE CODE_2AA6FA           ;
+CODE_2AA6F0:        C2 20         REP #$20                  ;
 CODE_2AA6F2:        8A            TXA                       
 CODE_2AA6F3:        18            CLC                       
 CODE_2AA6F4:        69 A0 01      ADC #$01A0                
@@ -4815,7 +4771,6 @@ CODE_2AA958:        80 F0         BRA CODE_2AA94A
 CODE_2AA95A:        AB            PLB                       
 CODE_2AA95B:        6B            RTL                       
 
-
 PNTR_2AA95C:        dw CODE_2AA966                   
                     dw CODE_2AA9B7          
                     dw CODE_2AA9F6                
@@ -4833,23 +4788,23 @@ CODE_2AA974:        20 7A A9      JSR CODE_2AA97A
 CODE_2AA977:        E2 10         SEP #$10                  
 CODE_2AA979:        60            RTS                       
 
-CODE_2AA97A:        A6 00         LDX $00                   ;0 S:01FF P:EnvMxdIzc HC:43822 VC:000 FC:00 I:00
-CODE_2AA97C:        A0 00 00      LDY #$0000                ;0 S:01FF P:EnvMxdIzc HC:43838 VC:000 FC:00 I:00
-CODE_2AA97F:        B1 02         LDA ($02),y               ;0 S:01FF P:EnvMxdIzc HC:43854 VC:000 FC:00 I:00
-CODE_2AA981:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:43870 VC:000 FC:00 I:00
-CODE_2AA984:        B1 04         LDA ($04),y               ;0 S:01FF P:EnvMxdIzc HC:43886 VC:000 FC:00 I:00
-CODE_2AA986:        20 EE 8C      JSR CODE_2A8CEE           ;0 S:01FF P:EnvMxdIzc HC:43902 VC:000 FC:00 I:00
-CODE_2AA989:        E8            INX                       ;0 S:01FF P:EnvMxdIzc HC:43918 VC:000 FC:00 I:00
-CODE_2AA98A:        8A            TXA                       ;0 S:01FF P:EnvMxdIzc HC:43934 VC:000 FC:00 I:00
-CODE_2AA98B:        29 0F         AND #$0F                  ;0 S:01FF P:EnvMxdIzc HC:43950 VC:000 FC:00 I:00
-CODE_2AA98D:        D0 15         BNE CODE_2AA9A4           ;0 S:01FF P:EnvMxdIzc HC:43966 VC:000 FC:00 I:00
-CODE_2AA98F:        C2 20         REP #$20                  ;0 S:01FF P:EnvMxdIzc HC:43990 VC:000 FC:00 I:00
-CODE_2AA991:        8A            TXA                       ;0 S:01FF P:EnvmxdIzc HC:44006 VC:000 FC:00 I:00
-CODE_2AA992:        C9 B0 01      CMP #$01B0                ;0 S:01FF P:EnvmxdIzc HC:44022 VC:000 FC:00 I:00
-CODE_2AA995:        B0 06         BCS CODE_2AA99D           ;0 S:01FF P:EnvmxdIzc HC:44038 VC:000 FC:00 I:00
-CODE_2AA997:        18            CLC                       ;0 S:01FF P:EnvmxdIzc HC:44054 VC:000 FC:00 I:00
-CODE_2AA998:        69 A0 01      ADC #$01A0                ;0 S:01FF P:EnvmxdIzc HC:44070 VC:000 FC:00 I:00
-CODE_2AA99B:        80 04         BRA CODE_2AA9A1           ;0 S:01FF P:EnvmxdIzc HC:44086 VC:000 FC:00 I:00         
+CODE_2AA97A:        A6 00         LDX $00                   ;
+CODE_2AA97C:        A0 00 00      LDY #$0000                ;
+CODE_2AA97F:        B1 02         LDA ($02),y               ;
+CODE_2AA981:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA984:        B1 04         LDA ($04),y               ;
+CODE_2AA986:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2AA989:        E8            INX                       ;
+CODE_2AA98A:        8A            TXA                       ;
+CODE_2AA98B:        29 0F         AND #$0F                  ;
+CODE_2AA98D:        D0 15         BNE CODE_2AA9A4           ;
+CODE_2AA98F:        C2 20         REP #$20                  ;
+CODE_2AA991:        8A            TXA                       ;
+CODE_2AA992:        C9 B0 01      CMP #$01B0                ;
+CODE_2AA995:        B0 06         BCS CODE_2AA99D           ;
+CODE_2AA997:        18            CLC                       ;
+CODE_2AA998:        69 A0 01      ADC #$01A0                ;
+CODE_2AA99B:        80 04         BRA CODE_2AA9A1           ;
 
 CODE_2AA99D:        38            SEC                       
 CODE_2AA99E:        E9 C0 01      SBC #$01C0                
@@ -4862,7 +4817,6 @@ CODE_2AA9A8:        D0 D5         BNE CODE_2AA97F
 CODE_2AA9AA:        C6 D8         DEC $D8                   
 CODE_2AA9AC:        D0 CE         BNE CODE_2AA97C           
 CODE_2AA9AE:        60            RTS                       
-
 
 DATA_2AA9AF:        db $04,$05,$06,$07,$02,$03,$00,$01
 
@@ -4877,41 +4831,39 @@ CODE_2AA9C5:        20 CB A9      JSR CODE_2AA9CB
 CODE_2AA9C8:        E2 10         SEP #$10                  
 CODE_2AA9CA:        60            RTS                       
 
-CODE_2AA9CB:        A0 00 00      LDY #$0000                ;0 S:01FF P:EnvMxdIzc HC:44102 VC:000 FC:00 I:00
-CODE_2AA9CE:        A6 00         LDX $00                   ;0 S:01FF P:EnvMxdIzc HC:44118 VC:000 FC:00 I:00
-CODE_2AA9D0:        B1 02         LDA ($02),y               ;0 S:01FF P:EnvMxdIzc HC:44134 VC:000 FC:00 I:00
-CODE_2AA9D2:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:44150 VC:000 FC:00 I:00
-CODE_2AA9D5:        E8            INX                       ;0 S:01FF P:EnvMxdIzc HC:44166 VC:000 FC:00 I:00
-CODE_2AA9D6:        B1 04         LDA ($04),y               ;0 S:01FF P:EnvMxdIzc HC:44182 VC:000 FC:00 I:00
-CODE_2AA9D8:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:44198 VC:000 FC:00 I:00
-CODE_2AA9DB:        C2 20         REP #$20                  ;0 S:01FF P:EnvMxdIzc HC:44222 VC:000 FC:00 I:00
-CODE_2AA9DD:        A5 00         LDA $00                   ;0 S:01FF P:EnvmxdIzc HC:44238 VC:000 FC:00 I:00
-CODE_2AA9DF:        18            CLC                       ;0 S:01FF P:EnvmxdIzc HC:44254 VC:000 FC:00 I:00
-CODE_2AA9E0:        69 10 00      ADC #$0010                ;0 S:01FF P:EnvmxdIzc HC:44270 VC:000 FC:00 I:00
-CODE_2AA9E3:        85 00         STA $00                   ;0 S:01FF P:EnvmxdIzc HC:44286 VC:000 FC:00 I:00
-CODE_2AA9E5:        E2 20         SEP #$20                  ;0 S:01FF P:EnvmxdIzc HC:44310 VC:000 FC:00 I:00
-CODE_2AA9E7:        C8            INY                       ;0 S:01FF P:EnvMxdIzc HC:44326 VC:000 FC:00 I:00
-CODE_2AA9E8:        98            TYA                       ;0 S:01FF P:EnvMxdIzc HC:44342 VC:000 FC:00 I:00
-CODE_2AA9E9:        29 03         AND #$03                  ;0 S:01FF P:EnvMxdIzc HC:44358 VC:000 FC:00 I:00
-CODE_2AA9EB:        D0 E1         BNE CODE_2AA9CE           ;0 S:01FF P:EnvMxdIzc HC:44374 VC:000 FC:00 I:00
-CODE_2AA9ED:        60            RTS                       ;0 S:01FF P:EnvMxdIzc HC:44390 VC:000 FC:00 I:00                    
-
+CODE_2AA9CB:        A0 00 00      LDY #$0000                ;
+CODE_2AA9CE:        A6 00         LDX $00                   ;
+CODE_2AA9D0:        B1 02         LDA ($02),y               ;
+CODE_2AA9D2:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA9D5:        E8            INX                       ;
+CODE_2AA9D6:        B1 04         LDA ($04),y               ;
+CODE_2AA9D8:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA9DB:        C2 20         REP #$20                  ;
+CODE_2AA9DD:        A5 00         LDA $00                   ;
+CODE_2AA9DF:        18            CLC                       ;
+CODE_2AA9E0:        69 10 00      ADC #$0010                ;
+CODE_2AA9E3:        85 00         STA $00                   ;
+CODE_2AA9E5:        E2 20         SEP #$20                  ;
+CODE_2AA9E7:        C8            INY                       ;
+CODE_2AA9E8:        98            TYA                       ;
+CODE_2AA9E9:        29 03         AND #$03                  ;
+CODE_2AA9EB:        D0 E1         BNE CODE_2AA9CE           ;
+CODE_2AA9ED:        60            RTS                       ;
 
 DATA_2AA9EE:        db $04,$08,$08,$02,$07,$09,$09,$01
 
-
-CODE_2AA9F6:        C2 10         REP #$10                  ;0 S:01FF P:EnvMXdIzc HC:44414 VC:000 FC:00 I:00
-CODE_2AA9F8:        A6 00         LDX $00                   ;0 S:01FF P:EnvMxdIzc HC:44430 VC:000 FC:00 I:00
-CODE_2AA9FA:        A9 04         LDA #$04                  ;0 S:01FF P:EnvMxdIzc HC:44446 VC:000 FC:00 I:00
-CODE_2AA9FC:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:44462 VC:000 FC:00 I:00
-CODE_2AA9FF:        A9 02         LDA #$02                  ;0 S:01FF P:EnvMxdIzc HC:44478 VC:000 FC:00 I:00
-CODE_2AAA01:        20 EE 8C      JSR CODE_2A8CEE           ;0 S:01FF P:EnvMxdIzc HC:44494 VC:000 FC:00 I:00
-CODE_2AAA04:        E8            INX                       ;0 S:01FF P:EnvMxdIzc HC:44510 VC:000 FC:00 I:00
-CODE_2AAA05:        A9 07         LDA #$07                  ;0 S:01FF P:EnvMxdIzc HC:44526 VC:000 FC:00 I:00
-CODE_2AAA07:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:44542 VC:000 FC:00 I:00
-CODE_2AAA0A:        A9 01         LDA #$01                  ;0 S:01FF P:EnvMxdIzc HC:44558 VC:000 FC:00 I:00
-CODE_2AAA0C:        20 EE 8C      JSR CODE_2A8CEE           ;0 S:01FF P:EnvMxdIzc HC:44574 VC:000 FC:00 I:00
-CODE_2AAA0F:        E2 10         SEP #$10                  ;0 S:01FF P:EnvMxdIzc HC:44598 VC:000 FC:00 I:00
+CODE_2AA9F6:        C2 10         REP #$10                  ;
+CODE_2AA9F8:        A6 00         LDX $00                   ;
+CODE_2AA9FA:        A9 04         LDA #$04                  ;
+CODE_2AA9FC:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA9FF:        A9 02         LDA #$02                  ;
+CODE_2AAA01:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2AAA04:        E8            INX                       ;
+CODE_2AAA05:        A9 07         LDA #$07                  ;
+CODE_2AAA07:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AAA0A:        A9 01         LDA #$01                  ;
+CODE_2AAA0C:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2AAA0F:        E2 10         SEP #$10                  ;
 CODE_2AAA11:        60            RTS                       ;                       
 
 CODE_2AAA12:        C2 30         REP #$30                  
@@ -4939,15 +4891,13 @@ CODE_2AAA41:        20 7A A9      JSR CODE_2AA97A
 CODE_2AAA44:        E2 10         SEP #$10                  
 CODE_2AAA46:        60            RTS                       
 
-
 DATA_2AAA47:        db $04,$05,$06,$07,$0E,$0F,$10,$11
                     db $0E,$0F,$10,$11,$02,$03,$00,$01
 
-
-CODE_2AAA57:        C2 30         REP #$30                  ;0 S:01FF P:EnvMXdIzc HC:56726 VC:000 FC:00 I:00
-CODE_2AAA59:        A9 87 AA      LDA #$AA87                ;0 S:01FF P:EnvmxdIzc HC:56742 VC:000 FC:00 I:00
-CODE_2AAA5C:        85 02         STA $02                   ;0 S:01FF P:EnvmxdIzc HC:56758 VC:000 FC:00 I:00
-CODE_2AAA5E:        A9 8B AA      LDA #$AA8B                ;0 S:01FF P:EnvmxdIzc HC:56774 VC:000 FC:00 I:00
+CODE_2AAA57:        C2 30         REP #$30                  ;
+CODE_2AAA59:        A9 87 AA      LDA #$AA87                ;
+CODE_2AAA5C:        85 02         STA $02                   ;
+CODE_2AAA5E:        A9 8B AA      LDA #$AA8B                ;
 CODE_2AAA61:        85 04         STA $04                   ;
 CODE_2AAA63:        A5 00         LDA $00                   
 CODE_2AAA65:        48            PHA                       
@@ -4968,7 +4918,6 @@ CODE_2AAA7F:        E2 20         SEP #$20
 CODE_2AAA81:        20 CB A9      JSR CODE_2AA9CB           
 CODE_2AAA84:        E2 10         SEP #$10                  
 CODE_2AAA86:        60            RTS                       
-
 
 DATA_2AAA87:        db $0A,$0C,$0D,$0A,$0B,$0C,$0D,$0B
 
@@ -5000,7 +4949,6 @@ CODE_2AAAC4:        80 F0         BRA CODE_2AAAB6
 CODE_2AAAC6:        AB            PLB                       
 CODE_2AAAC7:        6B            RTL                       
 
-
 PNTR_2AAAC8:        dw CODE_2AAACE
                     dw CODE_2AAB8D                      
                     dw CODE_2AABB1   
@@ -5029,7 +4977,6 @@ CODE_2AAAF9:        85 02         STA $02
 CODE_2AAAFB:        20 A7 8F      JSR CODE_2A8FA7           
 CODE_2AAAFE:        E2 10         SEP #$10                  
 CODE_2AAB00:        60            RTS                       
-
 
 DATA_2AAB01:        db $04,$00,$02,$00,$02,$00,$02,$00
                     db $02,$00,$03,$00,$31,$AB,$3E,$AB
@@ -5307,14 +5254,13 @@ CODE_2AAD92:        E2 10         SEP #$10
 CODE_2AAD94:        AB            PLB                       
 CODE_2AAD95:        6B            RTL                       
 
-CODE_2AAD96:        B1 00         LDA ($00),y               ;0 S:01FF P:EnvMxdIzc HC:58270 VC:000 FC:00 I:00
-CODE_2AAD98:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMxdIzc HC:58286 VC:000 FC:00 I:00
-CODE_2AAD9B:        E8            INX                       ;0 S:01FF P:EnvMxdIzc HC:58302 VC:000 FC:00 I:00
-CODE_2AAD9C:        C8            INY                       ;0 S:01FF P:EnvMxdIzc HC:58318 VC:000 FC:00 I:00
-CODE_2AAD9D:        C0 30 00      CPY #$0030                ;0 S:01FF P:EnvMxdIzc HC:58334 VC:000 FC:00 I:00
-CODE_2AADA0:        D0 F4         BNE CODE_2AAD96           ;0 S:01FF P:EnvMxdIzc HC:58350 VC:000 FC:00 I:00
-CODE_2AADA2:        60            RTS                       ;0 S:01FF P:EnvMxdIzc HC:58366 VC:000 FC:00 I:00
-
+CODE_2AAD96:        B1 00         LDA ($00),y               ;
+CODE_2AAD98:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AAD9B:        E8            INX                       ;
+CODE_2AAD9C:        C8            INY                       ;
+CODE_2AAD9D:        C0 30 00      CPY #$0030                ;
+CODE_2AADA0:        D0 F4         BNE CODE_2AAD96           ;
+CODE_2AADA2:        60            RTS                       ;
 
 DATA_2AADA3:        db $08,$08,$09,$00,$04,$09,$00,$00
                     db $00,$00,$04,$08,$09,$00,$04,$08
@@ -5375,13 +5321,11 @@ CODE_2AAE6C:        A6 00         LDX $00
 CODE_2AAE6E:        E2 10         SEP #$10                  
 CODE_2AAE70:        60            RTS                       
 
-
 DATA_2AAE71:        db $1E,$21,$25,$28,$2C,$1E,$22,$26
                     db $29,$26,$1E,$23,$27,$2A,$2D
 
-
-CODE_2AAE80:        C2 20         REP #$20                  ;0 S:01FF P:EnvMXdIzc HC:1198 VC:000 FC:00 I:00
-CODE_2AAE82:        8A            TXA                       ;0 S:01FF P:EnvmXdIzc HC:1214 VC:000 FC:00 I:00
+CODE_2AAE80:        C2 20         REP #$20                  ;
+CODE_2AAE82:        8A            TXA                       ;
 CODE_2AAE83:        18            CLC                       
 CODE_2AAE84:        69 10         ADC #$10                  
 CODE_2AAE86:        00 AA         BRK #$AA                  
@@ -5443,16 +5387,14 @@ CODE_2AAEEE:        80 F0         BRA CODE_2AAEE0
 CODE_2AAEF0:        AB            PLB                       
 CODE_2AAEF1:        6B            RTL                       
 
-
 PNTR_2AAEF2:        dw CODE_2AAEF6
                     dw CODE_2AAF39
 
-
-CODE_2AAEF6:        A6 00         LDX $00                   ;0 S:01FF P:EnvMXdIzc HC:1374 VC:000 FC:00 I:00
-CODE_2AAEF8:        A9 01         LDA #$01                  ;0 S:01FF P:EnvMXdIzc HC:1390 VC:000 FC:00 I:00
-CODE_2AAEFA:        20 03 8D      JSR CODE_2A8D03           ;0 S:01FF P:EnvMXdIzc HC:1406 VC:000 FC:00 I:00
-CODE_2AAEFD:        E8            INX                       ;0 S:01FF P:EnvMXdIzc HC:1422 VC:000 FC:00 I:00
-CODE_2AAEFE:        A9 02         LDA #$02                  ;0 S:01FF P:EnvMXdIzc HC:1438 VC:000 FC:00 I:00
+CODE_2AAEF6:        A6 00         LDX $00                   ;
+CODE_2AAEF8:        A9 01         LDA #$01                  ;
+CODE_2AAEFA:        20 03 8D      JSR CODE_2A8D03           ;
+CODE_2AAEFD:        E8            INX                       ;
+CODE_2AAEFE:        A9 02         LDA #$02                  ;
 CODE_2AAF00:        20 03 8D      JSR CODE_2A8D03           
 CODE_2AAF03:        A5 00         LDA $00                   
 CODE_2AAF05:        18            CLC                       
@@ -5572,21 +5514,19 @@ CODE_2AAFE8:        80 F0         BRA CODE_2AAFDA
 CODE_2AAFEA:        AB            PLB                       
 CODE_2AAFEB:        6B            RTL                       
 
-
 PNTR_2AAFEC:        dw CODE_2AB011             
                     dw CODE_2AB064                 
                     dw CODE_2AB08B
                     dw CODE_2AB0DD
 
-
-CODE_2AAFF4:        A9 06         LDA #$06                  ;0 S:01FF P:EnvMXdIzc HC:1502 VC:000 FC:00 I:00
-CODE_2AAFF6:        85 00         STA $00                   ;0 S:01FF P:EnvMXdIzc HC:1518 VC:000 FC:00 I:00
-CODE_2AAFF8:        A5 01         LDA $01                   ;0 S:01FF P:EnvMXdIzc HC:1534 VC:000 FC:00 I:00
-CODE_2AAFFA:        20 03 8D      JSR CODE_2A8D03           ;0 S:01FF P:EnvMXdIzc HC:1550 VC:000 FC:00 I:00
-CODE_2AAFFD:        E8            INX                       ;0 S:01FF P:EnvMXdIzc HC:1566 VC:000 FC:00 I:00
-CODE_2AAFFE:        C6 00         DEC $00                   ;0 S:01FF P:EnvMXdIzc HC:1582 VC:000 FC:00 I:00
-CODE_2AB000:        D0 F8         BNE CODE_2AAFFA           ;0 S:01FF P:EnvMXdIzc HC:1598 VC:000 FC:00 I:00
-CODE_2AB002:        60            RTS                       ;0 S:01FF P:EnvMXdIzc HC:1614 VC:000 FC:00 I:00                     
+CODE_2AAFF4:        A9 06         LDA #$06                  ;
+CODE_2AAFF6:        85 00         STA $00                   ;
+CODE_2AAFF8:        A5 01         LDA $01                   ;
+CODE_2AAFFA:        20 03 8D      JSR CODE_2A8D03           ;
+CODE_2AAFFD:        E8            INX                       ;
+CODE_2AAFFE:        C6 00         DEC $00                   ;
+CODE_2AB000:        D0 F8         BNE CODE_2AAFFA           ;
+CODE_2AB002:        60            RTS                       ;
 
 CODE_2AB003:        A5 00         LDA $00                   
 CODE_2AB005:        20 25 8D      JSR CODE_2A8D25           
@@ -5836,7 +5776,6 @@ CODE_2AB1EE:        29 0F         AND #$0F
 CODE_2AB1F0:        D0 E6         BNE CODE_2AB1D8           
 CODE_2AB1F2:        60            RTS                       
 
-
 PNTR_2AB1F3:        dw CODE_2AB1FF
                     dw CODE_2AB205           
                     dw CODE_2AB241             
@@ -5844,18 +5783,17 @@ PNTR_2AB1F3:        dw CODE_2AB1FF
                     dw CODE_2AB20B
                     dw CODE_2AB211
 
+CODE_2AB1FF:        A9 01         LDA #$01                  ;
+CODE_2AB201:        85 03         STA $03                   ;
+CODE_2AB203:        80 10         BRA CODE_2AB215           ;
 
-CODE_2AB1FF:        A9 01         LDA #$01                  ;0 S:01FF P:EnvMXdIzc HC:1630 VC:000 FC:00 I:00
-CODE_2AB201:        85 03         STA $03                   ;0 S:01FF P:EnvMXdIzc HC:1646 VC:000 FC:00 I:00
-CODE_2AB203:        80 10         BRA CODE_2AB215           ;0 S:01FF P:EnvMXdIzc HC:1662 VC:000 FC:00 I:00
+CODE_2AB205:        A9 02         LDA #$02                  ;
+CODE_2AB207:        85 03         STA $03                   ;
+CODE_2AB209:        80 0A         BRA CODE_2AB215           ;
 
-CODE_2AB205:        A9 02         LDA #$02                  ;0 S:01FF P:EnvMXdIzc HC:1678 VC:000 FC:00 I:00
-CODE_2AB207:        85 03         STA $03                   ;0 S:01FF P:EnvMXdIzc HC:1694 VC:000 FC:00 I:00
-CODE_2AB209:        80 0A         BRA CODE_2AB215           ;0 S:01FF P:EnvMXdIzc HC:1710 VC:000 FC:00 I:00
-
-CODE_2AB20B:        A9 2C         LDA #$2C                  ;0 S:01FF P:EnvMXdIzc HC:1726 VC:000 FC:00 I:00
-CODE_2AB20D:        85 03         STA $03                   ;0 S:01FF P:EnvMXdIzc HC:1742 VC:000 FC:00 I:00
-CODE_2AB20F:        80 04         BRA CODE_2AB215           ;0 S:01FF P:EnvMXdIzc HC:1758 VC:000 FC:00 I:00
+CODE_2AB20B:        A9 2C         LDA #$2C                  ;
+CODE_2AB20D:        85 03         STA $03                   ;
+CODE_2AB20F:        80 04         BRA CODE_2AB215           ;
 
 CODE_2AB211:        A9 2D         LDA #$2D                  
 CODE_2AB213:        85 03         STA $03                   
@@ -5996,48 +5934,44 @@ PNTR_2AB305:        dw CODE_2AA966
       dw CODE_2AB34D
       dw CODE_2AB369
 
-
-CODE_2AB315:        C2 30         REP #$30                  ;0 S:01FF P:EnvMXdIzc HC:1782 VC:000 FC:00 I:00
-CODE_2AB317:        A9 29 B3      LDA #$B329                ;0 S:01FF P:EnvmxdIzc HC:1798 VC:000 FC:00 I:00
-CODE_2AB31A:        85 02         STA $02                   ;0 S:01FF P:EnvmxdIzc HC:1814 VC:000 FC:00 I:00
-CODE_2AB31C:        A9 2D B3      LDA #$B32D                ;0 S:01FF P:EnvmxdIzc HC:1830 VC:000 FC:00 I:00
-CODE_2AB31F:        85 04         STA $04                   ;0 S:01FF P:EnvmxdIzc HC:1846 VC:000 FC:00 I:00
-CODE_2AB321:        E2 20         SEP #$20                  ;0 S:01FF P:EnvmxdIzc HC:1870 VC:000 FC:00 I:00
-CODE_2AB323:        20 7A A9      JSR CODE_2AA97A           ;0 S:01FF P:EnvMxdIzc HC:1886 VC:000 FC:00 I:00
-CODE_2AB326:        E2 10         SEP #$10                  ;0 S:01FF P:EnvMxdIzc HC:1910 VC:000 FC:00 I:00
+CODE_2AB315:        C2 30         REP #$30                  ;
+CODE_2AB317:        A9 29 B3      LDA #$B329                ;
+CODE_2AB31A:        85 02         STA $02                   ;
+CODE_2AB31C:        A9 2D B3      LDA #$B32D                ;
+CODE_2AB31F:        85 04         STA $04                   ;
+CODE_2AB321:        E2 20         SEP #$20                  ;
+CODE_2AB323:        20 7A A9      JSR CODE_2AA97A           ;
+CODE_2AB326:        E2 10         SEP #$10                  ;
 CODE_2AB328:        60            RTS                       ;
 
            
 DATA_2AB329:        db $1A,$1B,$1C,$1D,$1E,$1F,$20,$21
 
-
-CODE_2AB331:        C2 30         REP #$30                  ;0 S:01FF P:EnvMXdIzc HC:3710 VC:000 FC:00 I:00
-CODE_2AB333:        A9 45 B3      LDA #$B345                ;0 S:01FF P:EnvmxdIzc HC:3726 VC:000 FC:00 I:00
-CODE_2AB336:        85 02         STA $02                   ;0 S:01FF P:EnvmxdIzc HC:3742 VC:000 FC:00 I:00
-CODE_2AB338:        A9 49 B3      LDA #$B349                ;0 S:01FF P:EnvmxdIzc HC:3758 VC:000 FC:00 I:00
-CODE_2AB33B:        85 04         STA $04                   ;0 S:01FF P:EnvmxdIzc HC:3774 VC:000 FC:00 I:00
-CODE_2AB33D:        E2 20         SEP #$20                  ;0 S:01FF P:EnvmxdIzc HC:3798 VC:000 FC:00 I:00
-CODE_2AB33F:        20 CB A9      JSR CODE_2AA9CB           ;0 S:01FF P:EnvMxdIzc HC:3814 VC:000 FC:00 I:00
-CODE_2AB342:        E2 10         SEP #$10                  ;0 S:01FF P:EnvMxdIzc HC:3838 VC:000 FC:00 I:00
-CODE_2AB344:        60            RTS                       ;0 S:01FF P:EnvMXdIzc HC:3854 VC:000 FC:00 I:00
-
+CODE_2AB331:        C2 30         REP #$30                  ;
+CODE_2AB333:        A9 45 B3      LDA #$B345                ;
+CODE_2AB336:        85 02         STA $02                   ;
+CODE_2AB338:        A9 49 B3      LDA #$B349                ;
+CODE_2AB33B:        85 04         STA $04                   ;
+CODE_2AB33D:        E2 20         SEP #$20                  ;
+CODE_2AB33F:        20 CB A9      JSR CODE_2AA9CB           ;
+CODE_2AB342:        E2 10         SEP #$10                  ;
+CODE_2AB344:        60            RTS                       ;
 
 DATA_2AB345:        db $1A,$22,$22,$1E
 DATA_2AB349:        db $1D,$23,$23,$21
 
-
 CODE_2AB34D:        C2 10         REP #$10
 CODE_2AB34F:        A6 00         LDX $00
 CODE_2AB351:        A9 1A         LDA #$1A
-CODE_2AB353:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMXdIzc HC:3982 VC:000 FC:00 I:00
-CODE_2AB356:        A9 1E         LDA #$1E                  ;0 S:01FF P:EnvMXdIzc HC:3998 VC:000 FC:00 I:00
-CODE_2AB358:        20 EE 8C      JSR CODE_2A8CEE           ;0 S:01FF P:EnvMXdIzc HC:4014 VC:000 FC:00 I:00
-CODE_2AB35B:        E8            INX                       ;0 S:01FF P:EnvMXdIzc HC:4030 VC:000 FC:00 I:00
-CODE_2AB35C:        A9 1D         LDA #$1D                  ;0 S:01FF P:EnvMXdIzc HC:4046 VC:000 FC:00 I:00
-CODE_2AB35E:        20 D9 8C      JSR CODE_2A8CD9           ;0 S:01FF P:EnvMXdIzc HC:4062 VC:000 FC:00 I:00
-CODE_2AB361:        A9 21         LDA #$21                  ;0 S:01FF P:EnvMXdIzc HC:4078 VC:000 FC:00 I:00
-CODE_2AB363:        20 EE 8C      JSR CODE_2A8CEE           ;0 S:01FF P:EnvMXdIzc HC:4094 VC:000 FC:00 I:00
-CODE_2AB366:        E2 10         SEP #$10                  ;0 S:01FF P:EnvMXdIzc HC:4118 VC:000 FC:00 I:00
+CODE_2AB353:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AB356:        A9 1E         LDA #$1E                  ;
+CODE_2AB358:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2AB35B:        E8            INX                       ;
+CODE_2AB35C:        A9 1D         LDA #$1D                  ;
+CODE_2AB35E:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AB361:        A9 21         LDA #$21                  ;
+CODE_2AB363:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2AB366:        E2 10         SEP #$10                  ;
 CODE_2AB368:        60            RTS                       ;
 
 CODE_2AB369:        C2 30         REP #$30                  
@@ -6064,7 +5998,6 @@ CODE_2AB391:        E2 20         SEP #$20
 CODE_2AB393:        20 CB A9      JSR CODE_2AA9CB           
 CODE_2AB396:        E2 10         SEP #$10                  
 CODE_2AB398:        60            RTS                       
-
 
 DATA_2AB399:        db $24,$26,$27,$24,$25,$26,$27,$25
    
@@ -6108,13 +6041,13 @@ CODE_2AB3E8:        8A            TXA
 CODE_2AB3E9:        18            CLC                       
 CODE_2AB3EA:        69 20 00      ADC #$0020                
 CODE_2AB3ED:        AA            TAX                       
-CODE_2AB3EE:        E2 20         SEP #$20                  ;0 S:01FF P:EnvMxdIzc HC:5430 VC:000 FC:00 I:00
-CODE_2AB3F0:        E0 B0 01      CPX #$01B0                ;0 S:01FF P:EnvMxdIzc HC:5446 VC:000 FC:00 I:00
-CODE_2AB3F3:        90 EC         BCC CODE_2AB3E1           ;0 S:01FF P:EnvMxdIzc HC:5462 VC:000 FC:00 I:00
-CODE_2AB3F5:        E6 00         INC $00                   ;0 S:01FF P:EnvMxdIzc HC:5478 VC:000 FC:00 I:00
-CODE_2AB3F7:        E6 00         INC $00                   ;0 S:01FF P:EnvMxdIzc HC:5494 VC:000 FC:00 I:00
-CODE_2AB3F9:        C6 02         DEC $02                   ;0 S:01FF P:EnvMxdIzc HC:5510 VC:000 FC:00 I:00
-CODE_2AB3FB:        D0 E2         BNE CODE_2AB3DF           ;0 S:01FF P:EnvMxdIzc HC:5526 VC:000 FC:00 I:00
+CODE_2AB3EE:        E2 20         SEP #$20                  ;
+CODE_2AB3F0:        E0 B0 01      CPX #$01B0                ;
+CODE_2AB3F3:        90 EC         BCC CODE_2AB3E1           ;
+CODE_2AB3F5:        E6 00         INC $00                   ;
+CODE_2AB3F7:        E6 00         INC $00                   ;
+CODE_2AB3F9:        C6 02         DEC $02                   ;
+CODE_2AB3FB:        D0 E2         BNE CODE_2AB3DF           ;
 CODE_2AB3FD:        60            RTS                       ;
 
 CODE_2AB3FE:        E2 10         SEP #$10                  
@@ -6263,7 +6196,6 @@ CODE_2AB53D:        D0 CF         BNE CODE_2AB50E
 CODE_2AB53F:        9C 18 02      STZ $0218                 
 CODE_2AB542:        9C 49 02      STZ $0249                 
 CODE_2AB545:        6B            RTL                       
-
 
 DATA_2AB546:        db $10,$BD,$2A,$58,$BE,$2A,$30,$BF
                     db $2A,$30,$C2,$2A,$58,$C0,$2A,$20
@@ -9049,127 +8981,127 @@ CODE_2AFB87:        C9 C0 01      CMP #$01C0                ;
 CODE_2AFB8A:        B0 03         BCS CODE_2AFB8F           ;
 CODE_2AFB8C:        82 42 FF      BRL CODE_2AFAD1           ;
 
-CODE_2AFB8F:        E2 30         SEP #$30                  ;0 S:01FF P:EnvmxdIzc HC:9174 VC:000 FC:00 I:00
-CODE_2AFB91:        A5 91         LDA $91                   ;0 S:01FF P:EnvMXdIzc HC:9190 VC:000 FC:00 I:00
-CODE_2AFB93:        3A            DEC A                     ;0 S:01FF P:EnvMXdIzc HC:9206 VC:000 FC:00 I:00
-CODE_2AFB94:        F0 6E         BEQ CODE_2AFC04           ;0 S:01FF P:EnvMXdIzc HC:9222 VC:000 FC:00 I:00
-CODE_2AFB96:        C9 03         CMP #$03                  ;0 S:01FF P:EnvMXdIzc HC:9238 VC:000 FC:00 I:00
-CODE_2AFB98:        F0 6A         BEQ CODE_2AFC04           ;0 S:01FF P:EnvMXdIzc HC:9254 VC:000 FC:00 I:00
-CODE_2AFB9A:        C9 04         CMP #$04                  ;0 S:01FF P:EnvMXdIzc HC:9270 VC:000 FC:00 I:00
-CODE_2AFB9C:        F0 76         BEQ CODE_2AFC14           ;0 S:01FF P:EnvMXdIzc HC:9286 VC:000 FC:00 I:00
-CODE_2AFB9E:        A5 81         LDA $81                   ;0 S:01FF P:EnvMXdIzc HC:9302 VC:000 FC:00 I:00
-CODE_2AFBA0:        18            CLC                       ;0 S:01FF P:EnvMXdIzc HC:9318 VC:000 FC:00 I:00
-CODE_2AFBA1:        69 08         ADC #$08                  ;0 S:01FF P:EnvMXdIzc HC:9334 VC:000 FC:00 I:00
-CODE_2AFBA3:        85 81         STA $81                   ;0 S:01FF P:EnvMXdIzc HC:9350 VC:000 FC:00 I:00
-CODE_2AFBA5:        B0 03         BCS CODE_2AFBAA           ;0 S:01FF P:EnvMXdIzc HC:9366 VC:000 FC:00 I:00
-CODE_2AFBA7:        4C 28 FC      JMP CODE_2AFC28           ;0 S:01FF P:EnvMXdIzc HC:9382 VC:000 FC:00 I:00
+CODE_2AFB8F:        E2 30         SEP #$30                  ;
+CODE_2AFB91:        A5 91         LDA $91                   ;
+CODE_2AFB93:        3A            DEC A                     ;
+CODE_2AFB94:        F0 6E         BEQ CODE_2AFC04           ;
+CODE_2AFB96:        C9 03         CMP #$03                  ;
+CODE_2AFB98:        F0 6A         BEQ CODE_2AFC04           ;
+CODE_2AFB9A:        C9 04         CMP #$04                  ;
+CODE_2AFB9C:        F0 76         BEQ CODE_2AFC14           ;
+CODE_2AFB9E:        A5 81         LDA $81                   ;
+CODE_2AFBA0:        18            CLC                       ;
+CODE_2AFBA1:        69 08         ADC #$08                  ;
+CODE_2AFBA3:        85 81         STA $81                   ;
+CODE_2AFBA5:        B0 03         BCS CODE_2AFBAA           ;
+CODE_2AFBA7:        4C 28 FC      JMP CODE_2AFC28           ;
 
-CODE_2AFBAA:        A9 38         LDA #$38                  ;0 S:01FF P:EnvMXdIzc HC:9398 VC:000 FC:00 I:00
-CODE_2AFBAC:        8D 50 10      STA $1050                 ;0 S:01FF P:EnvMXdIzc HC:9414 VC:000 FC:00 I:00
-CODE_2AFBAF:        64 85         STZ $85                   ;0 S:01FF P:EnvMXdIzc HC:9430 VC:000 FC:00 I:00
-CODE_2AFBB1:        64 91         STZ $91                   ;0 S:01FF P:EnvMXdIzc HC:9446 VC:000 FC:00 I:00
-CODE_2AFBB3:        64 93         STZ $93                   ;0 S:01FF P:EnvMXdIzc HC:9462 VC:000 FC:00 I:00
-CODE_2AFBB5:        64 00         STZ $00                   ;0 S:01FF P:EnvMXdIzc HC:9478 VC:000 FC:00 I:00
-CODE_2AFBB7:        64 01         STZ $01                   ;0 S:01FF P:EnvMXdIzc HC:9494 VC:000 FC:00 I:00
-CODE_2AFBB9:        64 02         STZ $02                   ;0 S:01FF P:EnvMXdIzc HC:9510 VC:000 FC:00 I:00
-CODE_2AFBBB:        A9 02         LDA #$02                  ;0 S:01FF P:EnvMXdIzc HC:9526 VC:000 FC:00 I:00
-CODE_2AFBBD:        8D 03 02      STA $0203                 ;0 S:01FF P:EnvMXdIzc HC:9542 VC:000 FC:00 I:00
-CODE_2AFBC0:        A9 11         LDA #$11                  ;0 S:01FF P:EnvMXdIzc HC:9558 VC:000 FC:00 I:00
-CODE_2AFBC2:        AE BF 02      LDX $02BF                 ;0 S:01FF P:EnvMXdIzc HC:9574 VC:000 FC:00 I:00
-CODE_2AFBC5:        E0 01         CPX #$01                  ;0 S:01FF P:EnvMXdIzc HC:9590 VC:000 FC:00 I:00
-CODE_2AFBC7:        F0 26         BEQ CODE_2AFBEF           ;0 S:01FF P:EnvMXdIzc HC:9606 VC:000 FC:00 I:00
-CODE_2AFBC9:        E0 05         CPX #$05                  ;0 S:01FF P:EnvMXdIzc HC:9622 VC:000 FC:00 I:00
-CODE_2AFBCB:        F0 22         BEQ CODE_2AFBEF           ;0 S:01FF P:EnvMXdIzc HC:9638 VC:000 FC:00 I:00
-CODE_2AFBCD:        E0 06         CPX #$06                  ;0 S:01FF P:EnvMXdIzc HC:9654 VC:000 FC:00 I:00
-CODE_2AFBCF:        F0 1E         BEQ CODE_2AFBEF           ;0 S:01FF P:EnvMXdIzc HC:9670 VC:000 FC:00 I:00
-CODE_2AFBD1:        E0 09         CPX #$09                  ;0 S:01FF P:EnvMXdIzc HC:9686 VC:000 FC:00 I:00
-CODE_2AFBD3:        F0 1E         BEQ CODE_2AFBF3           ;0 S:01FF P:EnvMXdIzc HC:9702 VC:000 FC:00 I:00
-CODE_2AFBD5:        E0 0A         CPX #$0A                  ;0 S:01FF P:EnvMXdIzc HC:9718 VC:000 FC:00 I:00
-CODE_2AFBD7:        F0 1A         BEQ CODE_2AFBF3           ;0 S:01FF P:EnvMXdIzc HC:9734 VC:000 FC:00 I:00
-CODE_2AFBD9:        E0 0B         CPX #$0B                  ;0 S:01FF P:EnvMXdIzc HC:9750 VC:000 FC:00 I:00
-CODE_2AFBDB:        F0 16         BEQ CODE_2AFBF3           ;0 S:01FF P:EnvMXdIzc HC:9766 VC:000 FC:00 I:00
-CODE_2AFBDD:        E0 0C         CPX #$0C                  ;0 S:01FF P:EnvMXdIzc HC:9782 VC:000 FC:00 I:00
-CODE_2AFBDF:        F0 12         BEQ CODE_2AFBF3           ;0 S:01FF P:EnvMXdIzc HC:9798 VC:000 FC:00 I:00
-CODE_2AFBE1:        E0 0F         CPX #$0F                  ;0 S:01FF P:EnvMXdIzc HC:9814 VC:000 FC:00 I:00
-CODE_2AFBE3:        F0 0E         BEQ CODE_2AFBF3           ;0 S:01FF P:EnvMXdIzc HC:9830 VC:000 FC:00 I:00
-CODE_2AFBE5:        E0 03         CPX #$03                  ;0 S:01FF P:EnvMXdIzc HC:9846 VC:000 FC:00 I:00
-CODE_2AFBE7:        F0 13         BEQ CODE_2AFBFC           ;0 S:01FF P:EnvMXdIzc HC:9862 VC:000 FC:00 I:00
-CODE_2AFBE9:        E0 04         CPX #$04                  ;0 S:01FF P:EnvMXdIzc HC:9878 VC:000 FC:00 I:00
-CODE_2AFBEB:        F0 0F         BEQ CODE_2AFBFC           ;0 S:01FF P:EnvMXdIzc HC:9894 VC:000 FC:00 I:00
-CODE_2AFBED:        80 02         BRA CODE_2AFBF1           ;0 S:01FF P:EnvMXdIzc HC:9910 VC:000 FC:00 I:00
+CODE_2AFBAA:        A9 38         LDA #$38                  ;
+CODE_2AFBAC:        8D 50 10      STA $1050                 ;
+CODE_2AFBAF:        64 85         STZ $85                   ;
+CODE_2AFBB1:        64 91         STZ $91                   ;
+CODE_2AFBB3:        64 93         STZ $93                   ;
+CODE_2AFBB5:        64 00         STZ $00                   ;
+CODE_2AFBB7:        64 01         STZ $01                   ;
+CODE_2AFBB9:        64 02         STZ $02                   ;
+CODE_2AFBBB:        A9 02         LDA #$02                  ;
+CODE_2AFBBD:        8D 03 02      STA $0203                 ;
+CODE_2AFBC0:        A9 11         LDA #$11                  ;
+CODE_2AFBC2:        AE BF 02      LDX $02BF                 ;
+CODE_2AFBC5:        E0 01         CPX #$01                  ;
+CODE_2AFBC7:        F0 26         BEQ CODE_2AFBEF           ;
+CODE_2AFBC9:        E0 05         CPX #$05                  ;
+CODE_2AFBCB:        F0 22         BEQ CODE_2AFBEF           ;
+CODE_2AFBCD:        E0 06         CPX #$06                  ;
+CODE_2AFBCF:        F0 1E         BEQ CODE_2AFBEF           ;
+CODE_2AFBD1:        E0 09         CPX #$09                  ;
+CODE_2AFBD3:        F0 1E         BEQ CODE_2AFBF3           ;
+CODE_2AFBD5:        E0 0A         CPX #$0A                  ;
+CODE_2AFBD7:        F0 1A         BEQ CODE_2AFBF3           ;
+CODE_2AFBD9:        E0 0B         CPX #$0B                  ;
+CODE_2AFBDB:        F0 16         BEQ CODE_2AFBF3           ;
+CODE_2AFBDD:        E0 0C         CPX #$0C                  ;
+CODE_2AFBDF:        F0 12         BEQ CODE_2AFBF3           ;
+CODE_2AFBE1:        E0 0F         CPX #$0F                  ;
+CODE_2AFBE3:        F0 0E         BEQ CODE_2AFBF3           ;
+CODE_2AFBE5:        E0 03         CPX #$03                  ;
+CODE_2AFBE7:        F0 13         BEQ CODE_2AFBFC           ;
+CODE_2AFBE9:        E0 04         CPX #$04                  ;
+CODE_2AFBEB:        F0 0F         BEQ CODE_2AFBFC           ;
+CODE_2AFBED:        80 02         BRA CODE_2AFBF1           ;
 
-CODE_2AFBEF:        09 02         ORA #$02                  ;0 S:01FF P:EnvMXdIzc HC:9926 VC:000 FC:00 I:00
-CODE_2AFBF1:        09 04         ORA #$04                  ;0 S:01FF P:EnvMXdIzc HC:9942 VC:000 FC:00 I:00
-CODE_2AFBF3:        85 08         STA $08                   ;0 S:01FF P:EnvMXdIzc HC:9958 VC:000 FC:00 I:00
-CODE_2AFBF5:        64 0A         STZ $0A                   ;0 S:01FF P:EnvMXdIzc HC:9974 VC:000 FC:00 I:00
-CODE_2AFBF7:        9C 8C 02      STZ $028C                 ;0 S:01FF P:EnvMXdIzc HC:9990 VC:000 FC:00 I:00
-CODE_2AFBFA:        80 75         BRA CODE_2AFC71           ;0 S:01FF P:EnvMXdIzc HC:10006 VC:000 FC:00 I:00
+CODE_2AFBEF:        09 02         ORA #$02                  ;
+CODE_2AFBF1:        09 04         ORA #$04                  ;
+CODE_2AFBF3:        85 08         STA $08                   ;
+CODE_2AFBF5:        64 0A         STZ $0A                   ;
+CODE_2AFBF7:        9C 8C 02      STZ $028C                 ;
+CODE_2AFBFA:        80 75         BRA CODE_2AFC71           ;
 
-CODE_2AFBFC:        A9 13         LDA #$13                  ;0 S:01FF P:EnvMXdIzc HC:10022 VC:000 FC:00 I:00
-CODE_2AFBFE:        85 08         STA $08                   ;0 S:01FF P:EnvMXdIzc HC:10038 VC:000 FC:00 I:00
-CODE_2AFC00:        64 0A         STZ $0A                   ;0 S:01FF P:EnvMXdIzc HC:10054 VC:000 FC:00 I:00
-CODE_2AFC02:        80 6D         BRA CODE_2AFC71           ;0 S:01FF P:EnvMXdIzc HC:10070 VC:000 FC:00 I:00
+CODE_2AFBFC:        A9 13         LDA #$13                  ;
+CODE_2AFBFE:        85 08         STA $08                   ;
+CODE_2AFC00:        64 0A         STZ $0A                   ;
+CODE_2AFC02:        80 6D         BRA CODE_2AFC71           ;
 
-CODE_2AFC04:        A5 81         LDA $81                   ;0 S:01FF P:EnvMXdIzc HC:10086 VC:000 FC:00 I:00
-CODE_2AFC06:        38            SEC                       ;0 S:01FF P:EnvMXdIzc HC:10102 VC:000 FC:00 I:00
-CODE_2AFC07:        E9 06         SBC #$06                  ;0 S:01FF P:EnvMXdIzc HC:10118 VC:000 FC:00 I:00
-CODE_2AFC09:        85 81         STA $81                   ;0 S:01FF P:EnvMXdIzc HC:10134 VC:000 FC:00 I:00
-CODE_2AFC0B:        B0 1B         BCS CODE_2AFC28           ;0 S:01FF P:EnvMXdIzc HC:10150 VC:000 FC:00 I:00
-CODE_2AFC0D:        A9 FF         LDA #$FF                  ;0 S:01FF P:EnvMXdIzc HC:10166 VC:000 FC:00 I:00
-CODE_2AFC0F:        8D 50 10      STA $1050                 ;0 S:01FF P:EnvMXdIzc HC:10182 VC:000 FC:00 I:00
-CODE_2AFC12:        80 14         BRA CODE_2AFC28           ;0 S:01FF P:EnvMXdIzc HC:10198 VC:000 FC:00 I:00
+CODE_2AFC04:        A5 81         LDA $81                   ;
+CODE_2AFC06:        38            SEC                       ;
+CODE_2AFC07:        E9 06         SBC #$06                  ;
+CODE_2AFC09:        85 81         STA $81                   ;
+CODE_2AFC0B:        B0 1B         BCS CODE_2AFC28           ;
+CODE_2AFC0D:        A9 FF         LDA #$FF                  ;
+CODE_2AFC0F:        8D 50 10      STA $1050                 ;
+CODE_2AFC12:        80 14         BRA CODE_2AFC28           ;
 
-CODE_2AFC14:        A5 81         LDA $81                   ;0 S:01FF P:EnvMXdIzc HC:10214 VC:000 FC:00 I:00
-CODE_2AFC16:        18            CLC                       ;0 S:01FF P:EnvMXdIzc HC:10230 VC:000 FC:00 I:00
-CODE_2AFC17:        69 0A         ADC #$0A                  ;0 S:01FF P:EnvMXdIzc HC:10246 VC:000 FC:00 I:00
-CODE_2AFC19:        85 81         STA $81                   ;0 S:01FF P:EnvMXdIzc HC:10262 VC:000 FC:00 I:00
-CODE_2AFC1B:        C9 20         CMP #$20                  ;0 S:01FF P:EnvMXdIzc HC:10278 VC:000 FC:00 I:00
-CODE_2AFC1D:        90 09         BCC CODE_2AFC28           ;0 S:01FF P:EnvMXdIzc HC:10294 VC:000 FC:00 I:00
-CODE_2AFC1F:        A9 20         LDA #$20                  ;0 S:01FF P:EnvMXdIzc HC:10310 VC:000 FC:00 I:00
-CODE_2AFC21:        85 81         STA $81                   ;0 S:01FF P:EnvMXdIzc HC:10326 VC:000 FC:00 I:00
-CODE_2AFC23:        A9 FF         LDA #$FF                  ;0 S:01FF P:EnvMXdIzc HC:10342 VC:000 FC:00 I:00
-CODE_2AFC25:        8D 50 10      STA $1050                 ;0 S:01FF P:EnvMXdIzc HC:10358 VC:000 FC:00 I:00
-CODE_2AFC28:        A2 17         LDX #$17                  ;0 S:01FF P:EnvMXdIzc HC:10374 VC:000 FC:00 I:00
-CODE_2AFC2A:        AD BF 02      LDA $02BF                 ;0 S:01FF P:EnvMXdIzc HC:10390 VC:000 FC:00 I:00
-CODE_2AFC2D:        C9 01         CMP #$01                  ;0 S:01FF P:EnvMXdIzc HC:10406 VC:000 FC:00 I:00
-CODE_2AFC2F:        D0 0A         BNE CODE_2AFC3B           ;0 S:01FF P:EnvMXdIzc HC:10422 VC:000 FC:00 I:00
-CODE_2AFC31:        80 02         BRA CODE_2AFC35           ;0 S:01FF P:EnvMXdIzc HC:10438 VC:000 FC:00 I:00
+CODE_2AFC14:        A5 81         LDA $81                   ;
+CODE_2AFC16:        18            CLC                       ;
+CODE_2AFC17:        69 0A         ADC #$0A                  ;
+CODE_2AFC19:        85 81         STA $81                   ;
+CODE_2AFC1B:        C9 20         CMP #$20                  ;
+CODE_2AFC1D:        90 09         BCC CODE_2AFC28           ;
+CODE_2AFC1F:        A9 20         LDA #$20                  ;
+CODE_2AFC21:        85 81         STA $81                   ;
+CODE_2AFC23:        A9 FF         LDA #$FF                  ;
+CODE_2AFC25:        8D 50 10      STA $1050                 ;
+CODE_2AFC28:        A2 17         LDX #$17                  ;
+CODE_2AFC2A:        AD BF 02      LDA $02BF                 ;
+CODE_2AFC2D:        C9 01         CMP #$01                  ;
+CODE_2AFC2F:        D0 0A         BNE CODE_2AFC3B           ;
+CODE_2AFC31:        80 02         BRA CODE_2AFC35           ;
 
-CODE_2AFC33:        A2 15         LDX #$15                  ;0 S:01FF P:EnvMXdIzc HC:10454 VC:000 FC:00 I:00
-CODE_2AFC35:        A0 13         LDY #$13                  ;0 S:01FF P:EnvMXdIzc HC:10470 VC:000 FC:00 I:00
-CODE_2AFC37:        84 09         STY $09                   ;0 S:01FF P:EnvMXdIzc HC:10486 VC:000 FC:00 I:00
-CODE_2AFC39:        80 20         BRA CODE_2AFC5B           ;0 S:01FF P:EnvMXdIzc HC:10502 VC:000 FC:00 I:00
+CODE_2AFC33:        A2 15         LDX #$15                  ;
+CODE_2AFC35:        A0 13         LDY #$13                  ;
+CODE_2AFC37:        84 09         STY $09                   ;
+CODE_2AFC39:        80 20         BRA CODE_2AFC5B           ;
 
-CODE_2AFC3B:        C9 02         CMP #$02                  ;0 S:01FF P:EnvMXdIzc HC:10518 VC:000 FC:00 I:00
-CODE_2AFC3D:        F0 F4         BEQ CODE_2AFC33           ;0 S:01FF P:EnvMXdIzc HC:10534 VC:000 FC:00 I:00
-CODE_2AFC3F:        C9 07         CMP #$07                  ;0 S:01FF P:EnvMXdIzc HC:10550 VC:000 FC:00 I:00
-CODE_2AFC41:        F0 F2         BEQ CODE_2AFC35           ;0 S:01FF P:EnvMXdIzc HC:10566 VC:000 FC:00 I:00
-CODE_2AFC43:        C9 09         CMP #$09                  ;0 S:01FF P:EnvMXdIzc HC:10582 VC:000 FC:00 I:00
-CODE_2AFC45:        F0 0E         BEQ CODE_2AFC55           ;0 S:01FF P:EnvMXdIzc HC:10598 VC:000 FC:00 I:00
-CODE_2AFC47:        C9 0A         CMP #$0A                  ;0 S:01FF P:EnvMXdIzc HC:10614 VC:000 FC:00 I:00
-CODE_2AFC49:        F0 0A         BEQ CODE_2AFC55           ;0 S:01FF P:EnvMXdIzc HC:10630 VC:000 FC:00 I:00
-CODE_2AFC4B:        C9 0B         CMP #$0B                  ;0 S:01FF P:EnvMXdIzc HC:10646 VC:000 FC:00 I:00
-CODE_2AFC4D:        F0 06         BEQ CODE_2AFC55           ;0 S:01FF P:EnvMXdIzc HC:10662 VC:000 FC:00 I:00
-CODE_2AFC4F:        C9 0C         CMP #$0C                  ;0 S:01FF P:EnvMXdIzc HC:10678 VC:000 FC:00 I:00
-CODE_2AFC51:        F0 02         BEQ CODE_2AFC55           ;0 S:01FF P:EnvMXdIzc HC:10694 VC:000 FC:00 I:00
-CODE_2AFC53:        80 06         BRA CODE_2AFC5B           ;0 S:01FF P:EnvMXdIzc HC:10710 VC:000 FC:00 I:00
+CODE_2AFC3B:        C9 02         CMP #$02                  ;
+CODE_2AFC3D:        F0 F4         BEQ CODE_2AFC33           ;
+CODE_2AFC3F:        C9 07         CMP #$07                  ;
+CODE_2AFC41:        F0 F2         BEQ CODE_2AFC35           ;
+CODE_2AFC43:        C9 09         CMP #$09                  ;
+CODE_2AFC45:        F0 0E         BEQ CODE_2AFC55           ;
+CODE_2AFC47:        C9 0A         CMP #$0A                  ;
+CODE_2AFC49:        F0 0A         BEQ CODE_2AFC55           ;
+CODE_2AFC4B:        C9 0B         CMP #$0B                  ;
+CODE_2AFC4D:        F0 06         BEQ CODE_2AFC55           ;
+CODE_2AFC4F:        C9 0C         CMP #$0C                  ;
+CODE_2AFC51:        F0 02         BEQ CODE_2AFC55           ;
+CODE_2AFC53:        80 06         BRA CODE_2AFC5B           ;
 
-CODE_2AFC55:        A2 11         LDX #$11                  ;0 S:01FF P:EnvMXdIzc HC:10726 VC:000 FC:00 I:00
-CODE_2AFC57:        A0 06         LDY #$06                  ;0 S:01FF P:EnvMXdIzc HC:10742 VC:000 FC:00 I:00
-CODE_2AFC59:        84 09         STY $09                   ;0 S:01FF P:EnvMXdIzc HC:10758 VC:000 FC:00 I:00
-CODE_2AFC5B:        86 08         STX $08                   ;0 S:01FF P:EnvMXdIzc HC:10774 VC:000 FC:00 I:00
-CODE_2AFC5D:        86 0A         STX $0A                   ;0 S:01FF P:EnvMXdIzc HC:10790 VC:000 FC:00 I:00
-CODE_2AFC5F:        A0 17         LDY #$17                  ;0 S:01FF P:EnvMXdIzc HC:10806 VC:000 FC:00 I:00
-CODE_2AFC61:        84 0B         STY $0B                   ;0 S:01FF P:EnvMXdIzc HC:10822 VC:000 FC:00 I:00
-CODE_2AFC63:        A0 80         LDY #$80                  ;0 S:01FF P:EnvMXdIzc HC:10838 VC:000 FC:00 I:00
-CODE_2AFC65:        A5 8B         LDA $8B                   ;0 S:01FF P:EnvMXdIzc HC:10854 VC:000 FC:00 I:00
-CODE_2AFC67:        29 01         AND #$01                  ;0 S:01FF P:EnvMXdIzc HC:10870 VC:000 FC:00 I:00
-CODE_2AFC69:        F0 02         BEQ CODE_2AFC6D           ;0 S:01FF P:EnvMXdIzc HC:10886 VC:000 FC:00 I:00
-CODE_2AFC6B:        A0 40         LDY #$40                  ;0 S:01FF P:EnvMXdIzc HC:10902 VC:000 FC:00 I:00
-CODE_2AFC6D:        84 93         STY $93                   ;0 S:01FF P:EnvMXdIzc HC:10918 VC:000 FC:00 I:00
-CODE_2AFC6F:        E6 8B         INC $8B                   ;0 S:01FF P:EnvMXdIzc HC:10934 VC:000 FC:00 I:00
-CODE_2AFC71:        2B            PLD                       ;0 S:01FF P:EnvMXdIzc HC:10950 VC:000 FC:00 I:00
-CODE_2AFC72:        AB            PLB                       ;0 S:01FF P:EnvMXdIzc HC:10966 VC:000 FC:00 I:00
+CODE_2AFC55:        A2 11         LDX #$11                  ;
+CODE_2AFC57:        A0 06         LDY #$06                  ;
+CODE_2AFC59:        84 09         STY $09                   ;
+CODE_2AFC5B:        86 08         STX $08                   ;
+CODE_2AFC5D:        86 0A         STX $0A                   ;
+CODE_2AFC5F:        A0 17         LDY #$17                  ;
+CODE_2AFC61:        84 0B         STY $0B                   ;
+CODE_2AFC63:        A0 80         LDY #$80                  ;
+CODE_2AFC65:        A5 8B         LDA $8B                   ;
+CODE_2AFC67:        29 01         AND #$01                  ;
+CODE_2AFC69:        F0 02         BEQ CODE_2AFC6D           ;
+CODE_2AFC6B:        A0 40         LDY #$40                  ;
+CODE_2AFC6D:        84 93         STY $93                   ;
+CODE_2AFC6F:        E6 8B         INC $8B                   ;
+CODE_2AFC71:        2B            PLD                       ;
+CODE_2AFC72:        AB            PLB                       ;
 CODE_2AFC73:        6B            RTL                       ;
 
 DATA_2AFC74:        db $F9,$07,$F6,$0A,$F4,$0C,$F2,$0E
@@ -9365,22 +9297,21 @@ DATA_2AFE3F:        db $58,$A0,$F4,$32,$60,$A0,$F5,$32
                     db $90,$A0,$F9,$32,$98,$A0,$FA,$32
                     db $A0,$A0,$F8,$32
 
-
-CODE_2AFE63:        A2 23         LDX #$23                  ;0 S:01FF P:EnvMXdIzc HC:12734 VC:000 FC:00 I:00
-CODE_2AFE65:        BF 3F FE 2A   LDA.l DATA_2AFE3F,x             ;0 S:01FF P:EnvMXdIzc HC:12750 VC:000 FC:00 I:00
-CODE_2AFE69:        9D 00 09      STA $0900,x               ;0 S:01FF P:EnvMXdIzc HC:12766 VC:000 FC:00 I:00
-CODE_2AFE6C:        CA            DEX                       ;0 S:01FF P:EnvMXdIzc HC:12782 VC:000 FC:00 I:00
-CODE_2AFE6D:        10 F6         BPL CODE_2AFE65           ;0 S:01FF P:EnvMXdIzc HC:12798 VC:000 FC:00 I:00
-CODE_2AFE6F:        9C 60 0A      STZ $0A60                 ;0 S:01FF P:EnvMXdIzc HC:12814 VC:000 FC:00 I:00
-CODE_2AFE72:        9C 61 0A      STZ $0A61                 ;0 S:01FF P:EnvMXdIzc HC:12830 VC:000 FC:00 I:00
-CODE_2AFE75:        9C 62 0A      STZ $0A62                 ;0 S:01FF P:EnvMXdIzc HC:12846 VC:000 FC:00 I:00
-CODE_2AFE78:        9C 63 0A      STZ $0A63                 ;0 S:01FF P:EnvMXdIzc HC:12862 VC:000 FC:00 I:00
-CODE_2AFE7B:        9C 64 0A      STZ $0A64                 ;0 S:01FF P:EnvMXdIzc HC:12878 VC:000 FC:00 I:00
-CODE_2AFE7E:        9C 65 0A      STZ $0A65                 ;0 S:01FF P:EnvMXdIzc HC:12894 VC:000 FC:00 I:00
-CODE_2AFE81:        9C 66 0A      STZ $0A66                 ;0 S:01FF P:EnvMXdIzc HC:12910 VC:000 FC:00 I:00
-CODE_2AFE84:        9C 67 0A      STZ $0A67                 ;0 S:01FF P:EnvMXdIzc HC:12926 VC:000 FC:00 I:00
-CODE_2AFE87:        9C 68 0A      STZ $0A68                 ;0 S:01FF P:EnvMXdIzc HC:12942 VC:000 FC:00 I:00
-CODE_2AFE8A:        6B            RTL                       ;0 S:01FF P:EnvMXdIzc HC:12958 VC:000 FC:00 I:00                      
+CODE_2AFE63:        A2 23         LDX #$23                  ;
+CODE_2AFE65:        BF 3F FE 2A   LDA.l DATA_2AFE3F,x             ;
+CODE_2AFE69:        9D 00 09      STA $0900,x               ;
+CODE_2AFE6C:        CA            DEX                       ;
+CODE_2AFE6D:        10 F6         BPL CODE_2AFE65           ;
+CODE_2AFE6F:        9C 60 0A      STZ $0A60                 ;
+CODE_2AFE72:        9C 61 0A      STZ $0A61                 ;
+CODE_2AFE75:        9C 62 0A      STZ $0A62                 ;
+CODE_2AFE78:        9C 63 0A      STZ $0A63                 ;
+CODE_2AFE7B:        9C 64 0A      STZ $0A64                 ;
+CODE_2AFE7E:        9C 65 0A      STZ $0A65                 ;
+CODE_2AFE81:        9C 66 0A      STZ $0A66                 ;
+CODE_2AFE84:        9C 67 0A      STZ $0A67                 ;
+CODE_2AFE87:        9C 68 0A      STZ $0A68                 ;
+CODE_2AFE8A:        6B            RTL                       ;
 
      
 DATA_2AFE8B:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF

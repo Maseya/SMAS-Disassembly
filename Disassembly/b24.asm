@@ -294,7 +294,6 @@ DATA_248000:        db $FC,$10,$FC,$10,$FC,$10,$FC,$10
 
 DATA_248918:        db $25,$50,$A0,$E2,$2D,$53,$AD,$F0
 
-
 CODE_248920:        A2 00         LDX #$00                  ;
 CODE_248922:        A9 80         LDA #$80                  ;
 CODE_248924:        22 A8 98 20   JSL CODE_2098A8           ;
@@ -304,9 +303,7 @@ CODE_24892E:        D0 F2         BNE CODE_248922           ;
 CODE_248930:        22 0B 99 20   JSL CODE_20990B           ;
 CODE_248934:        6B            RTL                       ;
 
-
 DATA_248935:        db $00,$0F,$1E,$2D,$3C,$4B,$5A,$69
-
 
 CODE_24893D:        A5 0E         LDA $0E                   ;
 CODE_24893F:        29 E0         AND #$E0                  ;
@@ -326,7 +323,7 @@ CODE_24894F:        7F 35 89 24   ADC.l DATA_248935,x             ;
 CODE_248953:        AA            TAX                       ;
 CODE_248954:        CA            DEX                       ;
 CODE_248955:        8A            TXA                       ;
-CODE_248956:        22 3A FB 20   JSL CODE_20FB3A           ;
+CODE_248956:        22 3A FB 20   JSL CODE_20FB3A           ; ExecutePtrLong
 
 PNTR_24895A:        dl CODE_23B089
                     dl CODE_23B089
@@ -383,7 +380,7 @@ CODE_2489EE:        4A            LSR A                     ;
 CODE_2489EF:        18            CLC                       ;
 CODE_2489F0:        6D 06 07      ADC $0706                 ;
 CODE_2489F3:        AA            TAX                       ;
-CODE_2489F4:        22 3A FB 20   JSL CODE_20FB3A           ;
+CODE_2489F4:        22 3A FB 20   JSL CODE_20FB3A           ; ExecutePtrLong
 
                     dl CODE_23AAC1
                     dl CODE_23AAC7
@@ -427,8 +424,8 @@ CODE_2489F4:        22 3A FB 20   JSL CODE_20FB3A           ;
                     dl CODE_23AA47
                     dl CODE_23AA47
                     dl CODE_23A943
-                    dl $25BA0E
-                    dl $27F48D
+                    dl DATA_25BA0E                         ;INVALID: Jump to data
+                    dl DATA_27F48D                         ;INVALID: Jump to data
 
 DATA_248A7C:        db $06,$84,$AD,$01,$08,$22,$05,$00 ;
                     db $00,$03,$60,$00,$19,$20,$02,$D5 ;
@@ -1594,9 +1591,9 @@ CODE_24ADF5:        7F DB AD 24   ADC.l DATA_24ADDB,x             ;
 CODE_24ADF9:        AA            TAX                       ;
 CODE_24ADFA:        CA            DEX                       ;
 CODE_24ADFB:        8A            TXA                       ;
-CODE_24ADFC:        22 3A FB 20   JSL CODE_20FB3A           ;
+CODE_24ADFC:        22 3A FB 20   JSL CODE_20FB3A           ; ExecutePtrLong
 
-                    dl CODE_23B4A3
+PNTR_24AE00:        dl CODE_23B4A3
                     dl CODE_23B50E
                     dl CODE_23B5AA
                     dl CODE_23B622
@@ -1678,17 +1675,15 @@ CODE_24ADFC:        22 3A FB 20   JSL CODE_20FB3A           ;
                     dl CODE_2AB753
                     dl CODE_2AB787
 
-
-
 CODE_24AEF3:        A5 0E         LDA $0E                   ;
 CODE_24AEF5:        29 E0         AND #$E0                  ;
 CODE_24AEF7:        4A            LSR A                     ;
 CODE_24AEF8:        18            CLC                       ;
 CODE_24AEF9:        6D 06 07      ADC $0706                 ;
 CODE_24AEFC:        AA            TAX                       ;
-CODE_24AEFD:        22 3A FB 20   JSL CODE_20FB3A           ;
+CODE_24AEFD:        22 3A FB 20   JSL CODE_20FB3A           ; ExecutePtrLong
 
-                    dl CODE_23B3B8
+PNTR_24AF01:        dl CODE_23B3B8
                     dl CODE_23B3B8
                     dl CODE_23B3B8
                     dl CODE_23B3B8
@@ -1755,9 +1750,8 @@ CODE_24AEFD:        22 3A FB 20   JSL CODE_20FB3A           ;
                     dl CODE_23BD30
                     dl CODE_23BD30
                     dl CODE_23BD30
-                    dl DATA_25E05A
-                    dl $27F6A7
-
+                    dl DATA_25E05A                          ;INVALID: Jump to data
+                    dl DATA_27F6A7                          ;INVALID: Jump to data
 
 DATA_24AFD0:        db $07,$00,$A9,$03,$01,$00,$0B,$40
                     db $00,$0E,$80,$00,$BC,$1B,$8C,$00
@@ -3542,9 +3536,9 @@ CODE_24E6A7:        7F 8D E6 24   ADC.l DATA_24E68D,x
 CODE_24E6AB:        AA            TAX                       
 CODE_24E6AC:        CA            DEX                       
 CODE_24E6AD:        8A            TXA                       
-CODE_24E6AE:        22 3A FB 20   JSL CODE_20FB3A           
+CODE_24E6AE:        22 3A FB 20   JSL CODE_20FB3A           ; ExecutePtrLong
 
-POINTER_24E6B2:                    dl CODE_24E7F9
+PNTR_24E6B2:        dl CODE_24E7F9
                     dl CODE_24E821
                     dl CODE_24E821
                     dl CODE_24E876
@@ -3601,16 +3595,15 @@ POINTER_24E6B2:                    dl CODE_24E7F9
                     dl CODE_24EA6D
                     dl CODE_2AB77C
 
-
 CODE_24E75A:        A5 0E         LDA $0E                   
 CODE_24E75C:        29 E0         AND #$E0                  
 CODE_24E75E:        4A            LSR A                     
 CODE_24E75F:        18            CLC                       
 CODE_24E760:        6D 06 07      ADC $0706                 
 CODE_24E763:        AA            TAX                       
-CODE_24E764:        22 3A FB 20   JSL CODE_20FB3A           
+CODE_24E764:        22 3A FB 20   JSL CODE_20FB3A           ; ExecutePtrLong
 
-POINTER_24E768:                    dl CODE_24EA1B
+PNTR_24E768:        dl CODE_24EA1B
                     dl CODE_24EA1C
                     dl CODE_24EA1D
                     dl CODE_24EA25
@@ -4021,7 +4014,6 @@ CODE_24EAA1:        69 00         ADC #$00                  ;
 CODE_24EAA3:        85 2F         STA $2F                   ;
 CODE_24EAA5:        85 01         STA $01                   ;
 CODE_24EAA7:        60            RTS                       ;
-
 
 DATA_24EAA8:        db $85,$EB,$24,$08,$F0,$27,$67,$98
                     db $C4,$04,$08,$71,$1E,$15,$00,$02

@@ -3152,9 +3152,9 @@ DATA_0DA141:        db $71,$4E,$4A,$63,$00,$00,$00,$18 ;
                     db $01,$00,$8F,$1F,$F1,$1F,$F9,$18 ;
                     db $F1,$18,$FF,$1F ;
 
-CODE_0DA165:        LDA $0728                 ;0 S:01FF P:EnvMXdizc HC:3366 VC:000 FC:00 I:00
-CODE_0DA168:        BEQ CODE_0DA16D           ;0 S:01FF P:EnvMXdizc HC:3382 VC:000 FC:00 I:00
-CODE_0DA16A:        JSR CODE_0DA316           ;0 S:01FF P:EnvMXdizc HC:3398 VC:000 FC:00 I:00
+CODE_0DA165:        LDA $0728                 ;
+CODE_0DA168:        BEQ CODE_0DA16D           ;
+CODE_0DA16A:        JSR CODE_0DA316           ;
 CODE_0DA16D:        LDX #$0C                  ;
 CODE_0DA16F:        LDA #$00                  ;
 CODE_0DA171:        STA $06A1,x               ;
@@ -3685,7 +3685,6 @@ PNTR_0DA513:        dw CODE_0DA76E
                     dw CODE_0DA581
                     dw CODE_0DA586
                     dw CODE_0DA58C
-
 
 CODE_0DA581:        JSL CODE_0FF2D9
 CODE_0DA585:        RTS        
@@ -6162,11 +6161,11 @@ DATA_0DB956:        db $04,$04,$04,$05,$05,$05,$06,$06
 
 DATA_0DB95F:        db $10,$F0
 
-CODE_0DB961:        LDA $07B8                 ;0 S:01FF P:EnvMXdizc HC:7566 VC:000 FC:00 I:00
-CODE_0DB964:        AND #$07                  ;0 S:01FF P:EnvMXdizc HC:7582 VC:000 FC:00 I:00
-CODE_0DB966:        BNE CODE_0DB96D           ;0 S:01FF P:EnvMXdizc HC:7598 VC:000 FC:00 I:00
-CODE_0DB968:        LDA $07B8                 ;0 S:01FF P:EnvMXdizc HC:7614 VC:000 FC:00 I:00
-CODE_0DB96B:        AND #$08                  ;0 S:01FF P:EnvMXdizc HC:7630 VC:000 FC:00 I:00
+CODE_0DB961:        LDA $07B8                 ;
+CODE_0DB964:        AND #$07                  ;
+CODE_0DB966:        BNE CODE_0DB96D           ;
+CODE_0DB968:        LDA $07B8                 ;
+CODE_0DB96B:        AND #$08                  ;
 CODE_0DB96D:        TAY                       ;
 CODE_0DB96E:        LDA $0039,y               ;
 CODE_0DB971:        BNE CODE_0DB98C           ;
@@ -13352,9 +13351,7 @@ CODE_0DF48E:        ORA #$C0                  ;
 CODE_0DF490:        STA $0903,y               ;
 CODE_0DF493:        RTS                       ;
 
-
 DATA_0DF494:        db $CC,$CB,$CA,$FC
-
 
 CODE_0DF498:        LDY $0B51,x
 CODE_0DF49B:        LDA $0068,x               ;

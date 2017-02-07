@@ -1858,7 +1858,7 @@ CODE_22B22E:        JSR CODE_22B232
 CODE_22B231:        RTL                       
 CODE_22B232:        LDA $68,x                 
 CODE_22B234:        AND #$03                  
-CODE_22B236:        JSL CODE_20FB1F           
+CODE_22B236:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_22B23A:        dw CODE_22B242
                     dw CODE_22B255
@@ -2083,7 +2083,7 @@ CODE_22B417:        JSR CODE_22B41B
 CODE_22B41A:        RTL                       
 
 CODE_22B41B:        LDA $68,x                 
-CODE_22B41D:        JSL CODE_20FB1F           
+CODE_22B41D:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_22B421:        dw CODE_22B427
                     dw CODE_22B43F
@@ -2220,7 +2220,7 @@ CODE_22B538:        JSR CODE_22B53C
 CODE_22B53B:        RTL                       
 
 CODE_22B53C:        LDA $68,x                 
-CODE_22B53E:        JSL CODE_20FB1F           
+CODE_22B53E:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_22B542:        dw CODE_22B548
                     dw CODE_22B575
@@ -2297,7 +2297,7 @@ CODE_22B5D7:        RTL
 
 CODE_22B5D8:        LDA $68,x                 
 CODE_22B5DA:        AND #$03                  
-CODE_22B5DC:        JSL CODE_20FB1F           
+CODE_22B5DC:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_22B5E0:        dw CODE_22B5E8
                     dw CODE_22B605
@@ -2463,7 +2463,7 @@ CODE_22B741:        RTL
 
 CODE_22B742:        LDA $4D,x                 
 CODE_22B744:        AND #$03                  
-CODE_22B746:        JSL CODE_20FB1F           
+CODE_22B746:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_22B74A:        dw CODE_22B752
                     dw CODE_22B765
@@ -2663,7 +2663,7 @@ CODE_22B8E5:        RTL
 
 CODE_22B8E6:        LDA $4D,x                 
 CODE_22B8E8:        AND #$03                  
-CODE_22B8EA:        JSL CODE_20FB1F           
+CODE_22B8EA:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_22B8EE:        dw CODE_22B8F6
                     dw CODE_22B908
@@ -3420,7 +3420,7 @@ CODE_22BF44:        JSR CODE_22BF48
 CODE_22BF47:        RTL                       
 
 CODE_22BF48:        LDA $4D,x                 
-CODE_22BF4A:        JSL CODE_20FB1F           
+CODE_22BF4A:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_22BF4E:        dw CODE_22BF54
                     dw CODE_22BFA5
@@ -4680,7 +4680,7 @@ CODE_22C9B8:        RTS
 CODE_22C9B9:        INC $1FD2,x               
 CODE_22C9BC:        LDA $4D,x                 
 CODE_22C9BE:        AND #$03                  
-CODE_22C9C0:        JSL CODE_20FB1F           
+CODE_22C9C0:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_22C9C4:        dw CODE_22CA19
                     dw CODE_22C9CC
@@ -5157,7 +5157,7 @@ CODE_22CD7E:        JSR CODE_22CD82
 CODE_22CD81:        RTL                       
 
 CODE_22CD82:        LDA $68,x                 
-CODE_22CD84:        JSL CODE_20FB1F           
+CODE_22CD84:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_22CD88:        dw CODE_22CD8E
                     dw CODE_22CDE0
@@ -7589,7 +7589,7 @@ CODE_22F083:        JSR CODE_22F089
 CODE_22F086:        JMP CODE_22F1C2           
 
 CODE_22F089:        LDA $4D                   
-CODE_22F08B:        JSL CODE_20FB1F           
+CODE_22F08B:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_22F08F:        dw CODE_22F095
                     dw CODE_22F113
@@ -7986,7 +7986,7 @@ CODE_22F3AE:        STA $0669
 CODE_22F3B1:        LDA #$07                  
 CODE_22F3B3:        STA $0518,x               
 CODE_22F3B6:        LDA $0727                 
-CODE_22F3B9:        JSL CODE_20FB1F           
+CODE_22F3B9:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_22F3BD:        dw CODE_22F421
                     dw CODE_22F3D1

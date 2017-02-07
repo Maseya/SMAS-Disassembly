@@ -264,7 +264,7 @@ CODE_23826C:        BEQ CODE_23826F
 CODE_23826E:        RTL                       
 
 CODE_23826F:        LDA $0729                 
-CODE_238272:        JSL CODE_20FB3A           
+CODE_238272:        JSL CODE_20FB3A           ; ExecutePtrLong
 
 PNTR_238276:        dl CODE_2382C5
                     dl CODE_238631
@@ -299,7 +299,7 @@ CODE_2382C1:        STA $0A35
 CODE_2382C4:        RTL                       
 
 CODE_2382C5:        LDA $0728                 
-CODE_2382C8:        JSL CODE_20FB1F           
+CODE_2382C8:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_2382CC:        dw CODE_2382D2
                     dw CODE_238338
@@ -454,7 +454,7 @@ CODE_238408:        JSL CODE_238C1B
 CODE_23840C:        RTL                       
 
 CODE_23840D:        LDA $0728                 
-CODE_238410:        JSL CODE_20FB3A           
+CODE_238410:        JSL CODE_20FB3A           ; ExecutePtrLong
 
 PNTR_238414:        dl CODE_23842F
                     dl CODE_238441
@@ -957,13 +957,13 @@ CODE_23887F:        JSL CODE_238C1B
 CODE_238883:        RTL                       
 
 CODE_238884:        LDA $0728                 
-CODE_238887:        JSL CODE_20FB3A           
+CODE_238887:        JSL CODE_20FB3A           ; ExecutePtrLong
 
 PNTR_23888B:        dl CODE_238A0E
                     dl CODE_238A4E
 
 CODE_238891:        LDA $0417                 
-CODE_238894:        JSL CODE_20FB1F           
+CODE_238894:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_238898:        dw CODE_2388A6
                     dw CODE_2388A6
@@ -2019,19 +2019,19 @@ DATA_2390FC:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF
 
-CODE_239110:        LDX #$00                  ;0 S:01FF P:EnvMXdIzc HC:15022 VC:000 FC:00 I:00
-CODE_239112:        LDA #$09                  ;0 S:01FF P:EnvMXdIzc HC:15038 VC:000 FC:00 I:00
-CODE_239114:        JSL CODE_2098A8           ;0 S:01FF P:EnvMXdIzc HC:15054 VC:000 FC:00 I:00
-CODE_239118:        JSL CODE_209844           ;0 S:01FF P:EnvMXdIzc HC:15070 VC:000 FC:00 I:00
-CODE_23911C:        CPX #$40                  ;0 S:01FF P:EnvMXdIzc HC:15086 VC:000 FC:00 I:00
-CODE_23911E:        BNE CODE_239112           ;0 S:01FF P:EnvMXdIzc HC:15102 VC:000 FC:00 I:00
-CODE_239120:        LDA #$40                  ;0 S:01FF P:EnvMXdIzc HC:15118 VC:000 FC:00 I:00
-CODE_239122:        JSL CODE_2098A8           ;0 S:01FF P:EnvMXdIzc HC:15134 VC:000 FC:00 I:00
-CODE_239126:        LDA #$09                  ;0 S:01FF P:EnvMXdIzc HC:15150 VC:000 FC:00 I:00
-CODE_239128:        JSL CODE_209844           ;0 S:01FF P:EnvMXdIzc HC:15166 VC:000 FC:00 I:00
-CODE_23912C:        CPX #$F0                  ;0 S:01FF P:EnvMXdIzc HC:15182 VC:000 FC:00 I:00
-CODE_23912E:        BNE CODE_239120           ;0 S:01FF P:EnvMXdIzc HC:15198 VC:000 FC:00 I:00
-CODE_239130:        JSL CODE_20990B           ;0 S:01FF P:EnvMXdIzc HC:15214 VC:000 FC:00 I:00
+CODE_239110:        LDX #$00                  ;
+CODE_239112:        LDA #$09                  ;
+CODE_239114:        JSL CODE_2098A8           ;
+CODE_239118:        JSL CODE_209844           ;
+CODE_23911C:        CPX #$40                  ;
+CODE_23911E:        BNE CODE_239112           ;
+CODE_239120:        LDA #$40                  ;
+CODE_239122:        JSL CODE_2098A8           ;
+CODE_239126:        LDA #$09                  ;
+CODE_239128:        JSL CODE_209844           ;
+CODE_23912C:        CPX #$F0                  ;
+CODE_23912E:        BNE CODE_239120           ;
+CODE_239130:        JSL CODE_20990B           ;
 CODE_239134:        RTL                       ;
 
 CODE_239135:        JSR CODE_239139           
@@ -2045,7 +2045,7 @@ CODE_23913F:        LSR A
 CODE_239140:        TAX                       
 CODE_239141:        DEX                       
 CODE_239142:        TXA                       
-CODE_239143:        JSL CODE_20FB3A           
+CODE_239143:        JSL CODE_20FB3A           ; ExecutePtrLong
 
 PNTR_239147:        dl CODE_2392D2
 
@@ -2053,7 +2053,7 @@ CODE_23914A:        JSR CODE_23914E
 CODE_23914D:        RTL
 
 CODE_23914E:        LDA $0706                 
-CODE_239151:        JSL CODE_20FB3A           
+CODE_239151:        JSL CODE_20FB3A           ; ExecutePtrLong
 
 PNTR_239155:        dl CODE_2391EF
                     dl CODE_23922C
@@ -2330,7 +2330,7 @@ CODE_23934B:        JSR CODE_23934F
 CODE_23934E:        RTL                       
 
 CODE_23934F:        LDA $1034                 
-CODE_239352:        JSL CODE_20FB1F           
+CODE_239352:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_239356:        dw CODE_23935E
                     dw CODE_239362
@@ -2503,7 +2503,7 @@ CODE_23949E:        JSR CODE_2394A2
 CODE_2394A1:        RTL                       
 
 CODE_2394A2:        LDA $1040                 
-CODE_2394A5:        JSL CODE_20FB1F           
+CODE_2394A5:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_2394A9:        dw CODE_2394BD
                     dw CODE_239513
@@ -2838,7 +2838,7 @@ CODE_23976E:        INC $1040
 CODE_239771:        RTS                       
 
 CODE_239772:        LDA $0059                 
-CODE_239775:        JSL CODE_20FB1F           
+CODE_239775:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_239779:        dw CODE_23977D
                     dw CODE_2397B1
@@ -3077,7 +3077,7 @@ PNTR_23995F:        dw CODE_239963
                     dw CODE_23997B
 
 CODE_239963:        LDA $100A
-CODE_239966:        JSL CODE_20FB1F
+CODE_239966:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_23996A:        dw CODE_23996E
                     dw CODE_239972
@@ -3174,7 +3174,7 @@ CODE_239A39:        BPL CODE_239A2B
 CODE_239A3B:        RTS                       
 
 CODE_239A3C:        LDA $100C,x               
-CODE_239A3F:        JSL CODE_20FB1F           
+CODE_239A3F:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_239A43:        dw CODE_239A4F
                     dw CODE_239A6F
@@ -3613,16 +3613,16 @@ CODE_239DE8:        JSR CODE_239DEC
 CODE_239DEB:        RTL                       
 
 CODE_239DEC:        LDA $1041                 
-CODE_239DEF:        JSL CODE_20FB1F           
+CODE_239DEF:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_239DF3:        dw CODE_239DF9
                     dw CODE_239E18
                     dw CODE_239E36
 
 CODE_239DF9:        LDA $0742                 ;Flag to shuffle N-Space cards
-CODE_239DFC:        BNE CODE_239E0F           ;0 means N-Spade was cleared and it's time to shuffle
+CODE_239DFC:        BNE CODE_239E0F           ;$00 means N-Spade was cleared and it's time to shuffle
 CODE_239DFE:        LDY #$11                  ;\
-CODE_239E00:        LDA.w DATA_219A1C,y               ; |
+CODE_239E00:        LDA.w DATA_219A1C,y       ; |
 CODE_239E03:        STA $1E84,y               ; | Load set of cards
 CODE_239E06:        DEY                       ; |
 CODE_239E07:        BPL CODE_239E00           ; |
@@ -3678,7 +3678,7 @@ CODE_239E72:        JSR CODE_239E76
 CODE_239E75:        RTL                       
 
 CODE_239E76:        LDA $1034                 
-CODE_239E79:        JSL CODE_20FB1F           
+CODE_239E79:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_239E7D:        dw CODE_239E8F
                     dw CODE_239E99
@@ -4489,24 +4489,31 @@ CODE_23A57B:        ADC.w DATA_21A379,x
 CODE_23A57E:        TAX                       
 CODE_23A57F:        DEX                       
 CODE_23A580:        TXA                       
-CODE_23A581:        JSL CODE_20FB3A           
+CODE_23A581:        JSL CODE_20FB3A           ; ExecutePtrLong
 
 PNTR_23A585:        dl CODE_23A5FE
                     dl CODE_23A603
                     dl CODE_23A608
                     dl CODE_23A920
                     dl CODE_23A61F
-
-DATA_23A594:        db $00,$00,$00,$00,$00,$00,$00,$00
-                    db $00,$00,$00,$00,$00,$00,$00,$00
-                    db $00,$00,$00,$00,$00,$00,$00,$00
-                    db $00,$00,$00,$00,$00,$00,$00,$00
-                    db $00,$00,$00,$00,$00,$00,$00,$00
-                    db $00,$00,$00,$00,$00,$00,$00,$00
-                    db $00,$00,$00,$00,$00,$00,$00,$00
-                    db $00
-    
-PNTR_23A5CD:        dl CODE_23A6C1
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl $000000
+                    dl CODE_23A6C1
                     dl CODE_23A6C1
                     dl CODE_23A6C1
                     dl CODE_23A728
@@ -4522,7 +4529,7 @@ CODE_23A5EC:        LSR A
 CODE_23A5ED:        CLC                       
 CODE_23A5EE:        ADC $0706                 
 CODE_23A5F1:        TAX                       
-CODE_23A5F2:        JSL CODE_20FB1F           
+CODE_23A5F2:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_23A5F6:        dw CODE_23A635
                     dw CODE_23A63A
@@ -12188,7 +12195,7 @@ CODE_23E1E2:        JSR CODE_23E1E6
 CODE_23E1E5:        RTL                       
 
 CODE_23E1E6:        LDA $0075                 
-CODE_23E1E9:        JSL CODE_20FB1F           
+CODE_23E1E9:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_23E1ED:        dw CODE_23E1FD
                     dw CODE_23E2AB
@@ -12215,7 +12222,7 @@ CODE_23E21F:        LDX $1F26
 CODE_23E222:        LDA.l DATA_23E1F1,x             
 CODE_23E226:        STA $199A                 
 CODE_23E229:        TXA                       
-CODE_23E22A:        JSL CODE_20FB1F           
+CODE_23E22A:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_23E22E:        dw CODE_23E24B
                     dw CODE_23E24B
@@ -12284,7 +12291,7 @@ CODE_23E2AA:        RTS
 CODE_23E2AB:        JSR CODE_23E0F3           
 CODE_23E2AE:        JSR CODE_23E000           
 CODE_23E2B1:        LDA $1F26                 
-CODE_23E2B4:        JSL CODE_20FB1F           
+CODE_23E2B4:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_23E2B8:        dw CODE_23E2D0
                     dw CODE_23E2D0
@@ -12536,7 +12543,7 @@ CODE_23E4D2:        JSR CODE_23E6CC
 CODE_23E4D5:        RTS                       
 
 CODE_23E4D6:        LDA $1800,x               
-CODE_23E4D9:        JSL CODE_20FB1F           
+CODE_23E4D9:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 DATA_23E4DD:        dw CODE_23E4E5
                     dw CODE_23E51E
@@ -13622,7 +13629,7 @@ CODE_23EDC7:        ADC $18CA
 CODE_23EDCA:        TAX                       
 CODE_23EDCB:        LDA.l DATA_23ECE6,x             
 CODE_23EDCF:        PLX                       
-CODE_23EDD0:        JSL CODE_20FB1F           
+CODE_23EDD0:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 DATA_23EDD4:        dw CODE_23EE02
                     dw CODE_23EDF6
@@ -13711,7 +13718,7 @@ CODE_23EE82:        BEQ CODE_23EE87
 CODE_23EE84:        DEC $197C,x               
 CODE_23EE87:        LDA $1802,x               
 CODE_23EE8A:        BEQ CODE_23EE76           
-CODE_23EE8C:        JSL CODE_20FB1F           
+CODE_23EE8C:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_23EE90:        dw CODE_23EE76
                     dw CODE_23EE98
@@ -13749,7 +13756,7 @@ CODE_23EEDC:        BPL CODE_23EEE0
 CODE_23EEDE:        LDA #$08                  
 CODE_23EEE0:        STA $1962,x               
 CODE_23EEE3:        LDA $18BB,x               
-CODE_23EEE6:        JSL CODE_20FB1F           
+CODE_23EEE6:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_23EEEA:        dw CODE_23F129
                     dw CODE_23F074

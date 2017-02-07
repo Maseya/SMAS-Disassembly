@@ -883,7 +883,7 @@ CODE_298751:        JSL CODE_279B6F
 CODE_298755:        INC $1FD2,x               
 CODE_298758:        LDA $4D,x                 
 CODE_29875A:        AND #$03                  
-CODE_29875C:        JSL CODE_20FB1F           
+CODE_29875C:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_298760:        dw CODE_2987F6
                     dw CODE_298768
@@ -1290,7 +1290,7 @@ CODE_298AA6:        JSR CODE_298AAA
 CODE_298AA9:        RTL                       
 
 CODE_298AAA:        LDA $68,x                 
-CODE_298AAC:        JSL CODE_20FB1F           
+CODE_298AAC:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_298AB0:        dw CODE_298ABE
                     dw CODE_298AD7
@@ -1732,7 +1732,7 @@ CODE_298E18:        JSR CODE_298E1C
 CODE_298E1B:        RTL                       
 
 CODE_298E1C:        LDA $1021,x               
-CODE_298E1F:        JSL CODE_20FB1F           
+CODE_298E1F:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_298E23:        dw CODE_298E31
                     dw CODE_298E46
@@ -3825,7 +3825,7 @@ CODE_299E7E:        RTL
 
 CODE_299E7F:        LDA $0566                 
 CODE_299E82:        BEQ CODE_299EA4           
-CODE_299E84:        JSL CODE_20FB1F           
+CODE_299E84:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_299E88:        dw CODE_299E7A
                     dw CODE_299FD1
@@ -4861,7 +4861,7 @@ CODE_29A7F1:        RTS
 
 CODE_29A7F2:        LDX $0738                 
 CODE_29A7F5:        LDA $1DC6,x               
-CODE_29A7F8:        JSL CODE_20FB1F           
+CODE_29A7F8:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29A7FC:        dw CODE_29B99E
                     dw CODE_29A81C
@@ -4884,7 +4884,7 @@ CODE_29A81C:        JSL CODE_238C1B
 CODE_29A820:        RTS                       
 
 CODE_29A821:        LDA $59                   
-CODE_29A823:        JSL CODE_20FB1F           
+CODE_29A823:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29A827:        dw CODE_29A88D
                     dw CODE_29A8D7
@@ -5064,12 +5064,11 @@ CODE_29A9A9:        STA $56
 CODE_29A9AB:        JMP CODE_29A927           
 
 CODE_29A9AE:        LDA $072E                 
-CODE_29A9B1:        JSL CODE_20FB1F           
+CODE_29A9B1:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29A9B5:        dw CODE_29A9BB
                     dw CODE_29A9D9
                     dw CODE_29A9EF
-
 
 CODE_29A9BB:        LDX $0726
 CODE_29A9BE:        LDA $43,x                 
@@ -6011,7 +6010,7 @@ CODE_29B19C:        JSL CODE_238C1B
 CODE_29B1A0:        RTL                       
 
 CODE_29B1A1:        LDA $0F                   
-CODE_29B1A3:        JSL CODE_20FB1F           
+CODE_29B1A3:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29B1A7:        dw CODE_29B1AF
                     dw CODE_29B22C
@@ -6184,7 +6183,7 @@ CODE_29B33F:        CPY #$0B
 CODE_29B341:        BNE CODE_29B348           
 CODE_29B343:        LDY $053C,x               
 CODE_29B346:        BEQ CODE_29B331           
-CODE_29B348:        JSL CODE_20FB1F           
+CODE_29B348:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29B34C:        dw CODE_29B331
                     dw CODE_29B331
@@ -6769,7 +6768,7 @@ CODE_29B803:        CPX #$00
 CODE_29B805:        BEQ CODE_29B808           
 CODE_29B807:        RTS                       
 
-CODE_29B808:        JSL CODE_20FB1F           
+CODE_29B808:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29B80C:        dw CODE_29B331
                     dw CODE_29B82E
@@ -6991,7 +6990,7 @@ CODE_29B9BF:        JSL CODE_238C1B
 CODE_29B9C3:        RTS                       
 
 CODE_29B9C4:        LDA $0059                 
-CODE_29B9C7:        JSL CODE_20FB1F           
+CODE_29B9C7:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29B9CB:        dw CODE_29B9D5
                     dw CODE_29A8D7
@@ -7863,7 +7862,7 @@ CODE_29C06A:        RTL
 CODE_29C06B:        JSR CODE_29C06F           
 CODE_29C06E:        RTL                       
 
-CODE_29C06F:        JSL CODE_20FB1F           
+CODE_29C06F:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29C073:        dw CODE_29C10B
                     dw CODE_29C10B
@@ -8089,7 +8088,7 @@ CODE_29C2A8:        JSR CODE_29C6D3
 CODE_29C2AB:        RTL                       
 
 CODE_29C2AC:        LDA $0728                 
-CODE_29C2AF:        JSL CODE_20FB1F           
+CODE_29C2AF:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29C2B3:        dw CODE_29C2BD
                     dw CODE_29C43A
@@ -10436,7 +10435,7 @@ CODE_29D8F2:        JSR CODE_29D8F6
 CODE_29D8F5:        RTL                       
 
 CODE_29D8F6:        LDA $041C                 
-CODE_29D8F9:        JSL CODE_20FB1F           
+CODE_29D8F9:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29D8FD:        dw CODE_29D907
                     dw CODE_29D93D
@@ -10633,7 +10632,7 @@ CODE_29DA80:        RTS
 
 CODE_29DA81:        LDA $041B                 
 CODE_29DA84:        AND #$07                  
-CODE_29DA86:        JSL CODE_20FB1F           
+CODE_29DA86:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29DA8A:        dw CODE_29DA80
                     dw CODE_29DA80
@@ -10861,7 +10860,7 @@ CODE_29DC61:        STA $1500
 CODE_29DC64:        RTS                       
 
 CODE_29DC65:        LDA $1D80,y               
-CODE_29DC68:        JSL CODE_20FB1F           
+CODE_29DC68:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29DC6C:        dw CODE_29DBBA
                     dw CODE_29DC88
@@ -11302,7 +11301,7 @@ CODE_29E014:        STA $0210
 CODE_29E017:        JML CODE_208753           
 
 CODE_29E01B:        LDA $0414                 
-CODE_29E01E:        JSL CODE_20FB1F           
+CODE_29E01E:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29E022:        dw $0000
                     dw CODE_29E02E
@@ -11730,7 +11729,7 @@ CODE_29E3B5:        PLB
 CODE_29E3B6:        RTL                       
 
 CODE_29E3B7:        LDA $104F                 
-CODE_29E3BA:        JSL CODE_20FB1F           
+CODE_29E3BA:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29E3BE:        dw CODE_29E3C6
                     dw CODE_29E429
@@ -11873,7 +11872,7 @@ CODE_29E4E8:        PLB
 CODE_29E4E9:        RTL                       
 
 CODE_29E4EA:        LDA $104F                 
-CODE_29E4ED:        JSL CODE_20FB1F           
+CODE_29E4ED:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29E4F1:        dw CODE_29E4F9
                     dw CODE_29E568
@@ -12331,7 +12330,6 @@ CODE_29E8AA:        RTS
 ;;; F = Fixed DMA. When DMA is fixed, size is increased by 1, because each byte becomes a word, and you can't have a half word.
 ;;;
 ;;; S = DMA Size - 1 (Big Endian). So transferring 4 bytes would be $00,$03
-
 
 CODE_29E8AB:        LDA $38                   ;
 CODE_29E8AD:        STA $4314                 ;
@@ -13569,7 +13567,7 @@ CODE_29F860:        STA $0651,x
 CODE_29F863:        RTL                       
 
 CODE_29F864:        LDA $68,x                 
-CODE_29F866:        JSL CODE_20FB1F           
+CODE_29F866:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29F86A:        dw CODE_29F876
                     dw CODE_29F8AB
@@ -13616,7 +13614,7 @@ CODE_29F8C3:        BEQ CODE_29F8CA
 CODE_29F8C5:        ORA #$13                  
 CODE_29F8C7:        STA $1A64                 
 CODE_29F8CA:        LDA $4D,x                 
-CODE_29F8CC:        JSL CODE_20FB1F           
+CODE_29F8CC:        JSL CODE_20FB1F           ; ExecutePtrShort
 
 PNTR_29F8D0:        dw CODE_29F8D8
                     dw CODE_29F964
