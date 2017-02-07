@@ -1368,14 +1368,14 @@ CODE_278C7D:        A2 00         LDX #$00
 CODE_278C7F:        8A            TXA                       
 CODE_278C80:        E0 00         CPX #$00                  
 CODE_278C82:        10 04         BPL CODE_278C88           
-CODE_278C84:        22 59 A8 27   JSL CODE_27A859           
+CODE_278C84:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_278C88:        86 00         STX $00                   
 CODE_278C8A:        A6 9B         LDX $9B                   
 CODE_278C8C:        9D B6 07      STA $07B6,x               
 CODE_278C8F:        A5 00         LDA $00                   
 CODE_278C91:        B4 8C         LDY $8C,x                 
 CODE_278C93:        10 04         BPL CODE_278C99           
-CODE_278C95:        22 59 A8 27   JSL CODE_27A859           
+CODE_278C95:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_278C99:        8D B5 07      STA $07B5                 
 CODE_278C9C:        6B            RTL                       
 
@@ -2061,16 +2061,16 @@ CODE_279213:        22 67 8B 27   JSL CODE_278B67
 CODE_279217:        B5 8C         LDA $8C,x                 
 CODE_279219:        08            PHP                       
 CODE_27921A:        10 04         BPL CODE_279220           
-CODE_27921C:        22 59 A8 27   JSL CODE_27A859           
+CODE_27921C:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_279220:        4A            LSR A                     
 CODE_279221:        28            PLP                       
 CODE_279222:        10 04         BPL CODE_279228           
-CODE_279224:        22 59 A8 27   JSL CODE_27A859           
+CODE_279224:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_279228:        95 8C         STA $8C,x                 
 CODE_27922A:        68            PLA                       
 CODE_27922B:        4A            LSR A                     
 CODE_27922C:        4A            LSR A                     
-CODE_27922D:        22 59 A8 27   JSL CODE_27A859           
+CODE_27922D:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_279231:        C9 FE         CMP #$FE                  
 CODE_279233:        B0 02         BCS CODE_279237                   
 CODE_279235:        95 9E         STA $9E,x                 
@@ -2882,7 +2882,7 @@ CODE_279901:        4C 51 92      JMP CODE_279251
 CODE_279904:        60            RTS                       
 
 CODE_279905:        B5 8C         LDA $8C,x                 
-CODE_279907:        22 59 A8 27   JSL CODE_27A859           
+CODE_279907:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_27990B:        95 8C         STA $8C,x                 
 CODE_27990D:        BD 79 06      LDA $0679,x               
 CODE_279910:        49 40         EOR #$40                  
@@ -3665,7 +3665,7 @@ CODE_279F71:        D0 01         BNE CODE_279F74
 CODE_279F73:        6B            RTL                       
 
 CODE_279F74:        10 04         BPL CODE_279F7A           
-CODE_279F76:        22 59 A8 27   JSL CODE_27A859           
+CODE_279F76:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_279F7A:        29 F0         AND #$F0                  
 CODE_279F7C:        4A            LSR A                     
 CODE_279F7D:        4A            LSR A                     
@@ -4195,7 +4195,7 @@ CODE_27A37A:        F5 44         SBC $44,x
 CODE_27A37C:        85 0D         STA $0D                   
 CODE_27A37E:        10 10         BPL CODE_27A390           
 CODE_27A380:        A5 0E         LDA $0E                   
-CODE_27A382:        22 59 A8 27   JSL CODE_27A859           
+CODE_27A382:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_27A386:        85 0E         STA $0E                   
 CODE_27A388:        A5 0D         LDA $0D                   
 CODE_27A38A:        49 FF         EOR #$FF                  
@@ -4214,7 +4214,7 @@ CODE_27A3A1:        F5 56         SBC $56,x
 CODE_27A3A3:        85 0D         STA $0D                   
 CODE_27A3A5:        10 10         BPL CODE_27A3B7           
 CODE_27A3A7:        A5 0E         LDA $0E                   
-CODE_27A3A9:        22 59 A8 27   JSL CODE_27A859           
+CODE_27A3A9:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_27A3AD:        85 0E         STA $0E                   
 CODE_27A3AF:        A5 0D         LDA $0D                   
 CODE_27A3B1:        49 FF         EOR #$FF                  
@@ -4821,7 +4821,7 @@ CODE_27A858:        6B            RTL
 CODE_27A859:        49 FF         EOR #$FF                  ;\Invert accumulator (8-bit)
 CODE_27A85B:        18            CLC                       ; |
 CODE_27A85C:        69 01         ADC #$01                  ; |Something tells me SMW's version (InvertAccum) is better
-CODE_27A85E:        6B            RTL                       ;/
+CODE_27A85E:        6B            RTL                       ;/ (Because it uses INC A instead)
 
 CODE_27A85F:        BD 51 06      LDA $0651,x               ;
 CODE_27A862:        1D 81 06      ORA $0681,x               ;
@@ -5810,7 +5810,7 @@ CODE_27B412:        85 00         STA $00
 CODE_27B414:        A9 10         LDA #$10                  
 CODE_27B416:        A4 BD         LDY $BD                   
 CODE_27B418:        D0 04         BNE CODE_27B41E           
-CODE_27B41A:        22 59 A8 27   JSL CODE_27A859           
+CODE_27B41A:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_27B41E:        18            CLC                       
 CODE_27B41F:        65 00         ADC $00                   
 CODE_27B421:        9D E9 1C      STA $1CE9,x               
@@ -8010,34 +8010,34 @@ CODE_27C5CF:        30 05         BMI CODE_27C5D6
 CODE_27C5D1:        E2 20         SEP #$20                  
 CODE_27C5D3:        4C 7F D3      JMP CODE_27D37F           
 
-CODE_27C5D6:        BD C8 1F      LDA $1FC8,x               
+CODE_27C5D6:        BD C8 1F      LDA $1FC8,x               ; Extended sprites
 CODE_27C5D9:        22 1F FB 20   JSL CODE_20FB1F           ; ExecutePtrShort
 
-PNTR_27C5DD:        dw CODE_27C545
-                    dw CODE_27D175
-                    dw CODE_27D442
-                    dw CODE_27D508
-                    dw CODE_27D576
-                    dw CODE_27D576
-                    dw CODE_27D013
-                    dw CODE_27CF6B
-                    dw CODE_27CE2B
-                    dw CODE_27CEC9
-                    dw CODE_27CD7B
-                    dw CODE_27CC31
-                    dw CODE_27D576
-                    dw CODE_27C91B
-                    dw CODE_27CB74
-                    dw CODE_27CAAE
-                    dw CODE_27C995
-                    dw CODE_27C7A7
-                    dw CODE_27D576
-                    dw CODE_27C7A7
-                    dw CODE_27C6D6
-                    dw CODE_27C60F
-                    dw CODE_27D672
-                    dw CODE_27DFF2
-                    dw CODE_27E05B
+PNTR_27C5DD:        dw CODE_27C545                          ; $00 -
+                    dw CODE_27D175                          ; $01 - Hammer
+                    dw CODE_27D442                          ; $02 - Boomerang
+                    dw CODE_27D508                          ; $03 -
+                    dw CODE_27D576                          ; $04 -
+                    dw CODE_27D576                          ; $05 - Venus Fire Trap fireball
+                    dw CODE_27D013                          ; $06 - Baby Goomba
+                    dw CODE_27CF6B                          ; $07 - Ptooie spiked ball (uninteractable)
+                    dw CODE_27CE2B                          ; $08 -
+                    dw CODE_27CEC9                          ; $09 -
+                    dw CODE_27CD7B                          ; $0A - Wrench
+                    dw CODE_27CC31                          ; $0B - Cannonball
+                    dw CODE_27D576                          ; $0C -
+                    dw CODE_27C91B                          ; $0D -
+                    dw CODE_27CB74                          ; $0E -
+                    dw CODE_27CAAE                          ; $0F -
+                    dw CODE_27C995                          ; $10 -
+                    dw CODE_27C7A7                          ; $11 -
+                    dw CODE_27D576                          ; $12 -
+                    dw CODE_27C7A7                          ; $13 - 
+                    dw CODE_27C6D6                          ; $14 -
+                    dw CODE_27C60F                          ; $15 - Bowser statue laser
+                    dw CODE_27D672                          ; $16 -
+                    dw CODE_27DFF2                          ; $17 - Podoboo fire trail
+                    dw CODE_27E05B                          ; $18 - Podoboo lava splash
 
 CODE_27C60F:        20 7F C6      JSR CODE_27C67F           ;Draw GFX for laser sprite
 CODE_27C612:        A5 9C         LDA $9C                   ;\
@@ -8490,7 +8490,7 @@ CODE_27C9B6:        30 3E         BMI CODE_27C9F6
 CODE_27C9B8:        C9 20         CMP #$20                  
 CODE_27C9BA:        90 27         BCC CODE_27C9E3           
 CODE_27C9BC:        4A            LSR A                     
-CODE_27C9BD:        22 59 A8 27   JSL CODE_27A859           
+CODE_27C9BD:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_27C9C1:        9D D3 05      STA $05D3,x               
 CODE_27C9C4:        DE BF 05      DEC $05BF,x               
 CODE_27C9C7:        DE BF 05      DEC $05BF,x               
@@ -9502,7 +9502,7 @@ CODE_27D215:        A9 40         LDA #$40
 CODE_27D217:        C5 02         CMP $02                   
 CODE_27D219:        F0 0D         BEQ CODE_27D228           
 CODE_27D21B:        BD DD 05      LDA $05DD,x               
-CODE_27D21E:        22 59 A8 27   JSL CODE_27A859           
+CODE_27D21E:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_27D222:        9D DD 05      STA $05DD,x               
 CODE_27D225:        FE 97 05      INC $0597,x               
 CODE_27D228:        4C 31 D2      JMP CODE_27D231           

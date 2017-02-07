@@ -653,7 +653,7 @@ CODE_288738:        A5 79         LDA $79
 CODE_28873A:        D5 7A         CMP $7A,x                 
 CODE_28873C:        68            PLA                       
 CODE_28873D:        B0 04         BCS CODE_288743                   
-CODE_28873F:        22 59 A8 27   JSL CODE_27A859           
+CODE_28873F:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_288743:        85 C1         STA $C1                   
 CODE_288745:        A5 C1         LDA $C1                   
 CODE_288747:        F0 08         BEQ CODE_288751           
@@ -670,7 +670,7 @@ CODE_288758:        A8            TAY
 CODE_288759:        B9 92 B8      LDA $B892,y               
 CODE_28875C:        A4 8B         LDY $8B                   
 CODE_28875E:        10 04         BPL CODE_288764           
-CODE_288760:        22 59 A8 27   JSL CODE_27A859           
+CODE_288760:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_288764:        85 8B         STA $8B                   
 CODE_288766:        95 8C         STA $8C,x                 
 CODE_288768:        FE 89 06      INC $0689,x               
@@ -998,7 +998,7 @@ CODE_288A1E:        BC 26 05      LDY $0526,x
 CODE_288A21:        B9 BD B8      LDA $B8BD,y               
 CODE_288A24:        BC 91 06      LDY $0691,x               
 CODE_288A27:        F0 09         BEQ CODE_288A32           
-CODE_288A29:        22 59 A8 27   JSL CODE_27A859           
+CODE_288A29:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_288A2D:        95 9E         STA $9E,x                 
 CODE_288A2F:        4C 41 8A      JMP CODE_288A41           
 
@@ -1306,7 +1306,7 @@ CODE_288C84:        A5 79         LDA $79
 CODE_288C86:        D5 7A         CMP $7A,x                 
 CODE_288C88:        A5 8B         LDA $8B                   
 CODE_288C8A:        B0 04         BCS CODE_288C90                   
-CODE_288C8C:        22 59 A8 27   JSL CODE_27A859           
+CODE_288C8C:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_288C90:        10 0E         BPL CODE_288CA0           
 CODE_288C92:        A0 FD         LDY #$FD                  
 CODE_288C94:        A5 8B         LDA $8B                   
@@ -1895,7 +1895,7 @@ CODE_28916A:        B9 BD B8      LDA $B8BD,y
 CODE_28916D:        BC 91 06      LDY $0691,x               
 CODE_289170:        C0 02         CPY #$02                  
 CODE_289172:        F0 04         BEQ CODE_289178           
-CODE_289174:        22 59 A8 27   JSL CODE_27A859           
+CODE_289174:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_289178:        95 8C         STA $8C,x                 
 CODE_28917A:        DE 26 05      DEC $0526,x               
 CODE_28917D:        6B            RTL                       
@@ -1924,7 +1924,7 @@ CODE_2891A1:        A9 40         LDA #$40
 CODE_2891A3:        B4 5F         LDY $5F,x                 
 CODE_2891A5:        C4 5E         CPY $5E                   
 CODE_2891A7:        10 04         BPL CODE_2891AD           
-CODE_2891A9:        22 59 A8 27   JSL CODE_27A859           
+CODE_2891A9:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_2891AD:        95 8C         STA $8C,x                 
 CODE_2891AF:        A9 80         LDA #$80                  
 CODE_2891B1:        95 9E         STA $9E,x                 
@@ -2554,13 +2554,13 @@ CODE_2896D8:        22 48 A8 27   JSL CODE_27A848
 CODE_2896DC:        84 02         STY $02                   
 CODE_2896DE:        A5 0F         LDA $0F                   
 CODE_2896E0:        10 04         BPL CODE_2896E6           
-CODE_2896E2:        22 59 A8 27   JSL CODE_27A859           
+CODE_2896E2:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_2896E6:        85 0C         STA $0C                   
 CODE_2896E8:        22 37 A8 27   JSL CODE_27A837           
 CODE_2896EC:        84 03         STY $03                   
 CODE_2896EE:        A5 0F         LDA $0F                   
 CODE_2896F0:        10 04         BPL CODE_2896F6           
-CODE_2896F2:        22 59 A8 27   JSL CODE_27A859           
+CODE_2896F2:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_2896F6:        85 0D         STA $0D                   
 CODE_2896F8:        A0 00         LDY #$00                  
 CODE_2896FA:        A5 0D         LDA $0D                   
@@ -2597,12 +2597,12 @@ CODE_28972E:        85 01         STA $01
 CODE_289730:        A5 00         LDA $00                   
 CODE_289732:        A4 02         LDY $02                   
 CODE_289734:        F0 06         BEQ CODE_28973C           
-CODE_289736:        22 59 A8 27   JSL CODE_27A859           
+CODE_289736:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28973A:        85 00         STA $00                   
 CODE_28973C:        A5 01         LDA $01                   
 CODE_28973E:        A4 03         LDY $03                   
 CODE_289740:        F0 06         BEQ CODE_289748           
-CODE_289742:        22 59 A8 27   JSL CODE_27A859           
+CODE_289742:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_289746:        85 01         STA $01                   
 CODE_289748:        68            PLA                       
 CODE_289749:        85 70         STA $70                   
@@ -3253,7 +3253,7 @@ CODE_289C73:        30 06         BMI CODE_289C7B
 CODE_289C75:        C9 78         CMP #$78                  
 CODE_289C77:        B0 10         BCS CODE_289C89                   
 CODE_289C79:        90 04         BCC CODE_289C7F           
-CODE_289C7B:        22 59 A8 27   JSL CODE_27A859           
+CODE_289C7B:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_289C7F:        4A            LSR A                     
 CODE_289C80:        4A            LSR A                     
 CODE_289C81:        4A            LSR A                     
@@ -3295,7 +3295,7 @@ CODE_289CD0:        1D 20 05      ORA $0520,x
 CODE_289CD3:        D0 73         BNE CODE_289D48           
 CODE_289CD5:        B5 8C         LDA $8C,x                 
 CODE_289CD7:        10 04         BPL CODE_289CDD           
-CODE_289CD9:        22 59 A8 27   JSL CODE_27A859           
+CODE_289CD9:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_289CDD:        4A            LSR A                     
 CODE_289CDE:        4A            LSR A                     
 CODE_289CDF:        4A            LSR A                     
@@ -4565,7 +4565,7 @@ CODE_28B3E3:        85 D9         STA $D9
 CODE_28B3E5:        B9 08 BC      LDA $BC08,y               
 CODE_28B3E8:        24 02         BIT $02                   
 CODE_28B3EA:        70 04         BVS CODE_28B3F0           
-CODE_28B3EC:        22 59 A8 27   JSL CODE_27A859           
+CODE_28B3EC:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28B3F0:        C2 20         REP #$20                  
 CODE_28B3F2:        29 FF 00      AND #$00FF                
 CODE_28B3F5:        C9 80 00      CMP #$0080                
@@ -5536,7 +5536,7 @@ CODE_28BB99:        85 D8         STA $D8
 CODE_28BB9B:        B9 3A BD      LDA $BD3A,y               
 CODE_28BB9E:        24 02         BIT $02                   
 CODE_28BBA0:        50 04         BVC CODE_28BBA6                   
-CODE_28BBA2:        22 59 A8 27   JSL CODE_27A859           
+CODE_28BBA2:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28BBA6:        64 07         STZ $07                   
 CODE_28BBA8:        C2 20         REP #$20                  
 CODE_28BBAA:        29 FF 00      AND #$00FF                
@@ -5669,7 +5669,7 @@ CODE_28BCB0:        4A            LSR A
 CODE_28BCB1:        4A            LSR A                     
 CODE_28BCB2:        AA            TAX                       
 CODE_28BCB3:        BD 76 BD      LDA $BD76,x               
-CODE_28BCB6:        22 59 A8 27   JSL CODE_27A859           
+CODE_28BCB6:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28BCBA:        0A            ASL A                     
 CODE_28BCBB:        0A            ASL A                     
 CODE_28BCBC:        0A            ASL A                     
@@ -5698,7 +5698,7 @@ CODE_28BCE5:        7D AA BC      ADC $BCAA,x
 CODE_28BCE8:        29 9F         AND #$9F                  
 CODE_28BCEA:        D0 08         BNE CODE_28BCF4           
 CODE_28BCEC:        B5 8C         LDA $8C,x                 
-CODE_28BCEE:        22 59 A8 27   JSL CODE_27A859           
+CODE_28BCEE:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28BCF2:        95 8C         STA $8C,x                 
 CODE_28BCF4:        A5 15         LDA $15                   
 CODE_28BCF6:        0A            ASL A                     
@@ -6530,7 +6530,7 @@ CODE_28C3D9:        B5 56         LDA $56,x
 CODE_28C3DB:        99 D7 1F      STA $1FD7,y               
 CODE_28C3DE:        A5 00         LDA $00                   
 CODE_28C3E0:        0A            ASL A                     
-CODE_28C3E1:        22 59 A8 27   JSL CODE_27A859           
+CODE_28C3E1:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28C3E5:        99 DD 05      STA $05DD,y               
 CODE_28C3E8:        A9 C0         LDA #$C0                  
 CODE_28C3EA:        38            SEC                       
@@ -6557,7 +6557,7 @@ CODE_28C41D:        0A            ASL A
 CODE_28C41E:        0A            ASL A                     
 CODE_28C41F:        B9 18 BF      LDA $BF18,y               
 CODE_28C422:        B0 04         BCS CODE_28C428                   
-CODE_28C424:        22 59 A8 27   JSL CODE_27A859           
+CODE_28C424:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28C428:        95 8C         STA $8C,x                 
 CODE_28C42A:        B5 A7         LDA $A7,x                 
 CODE_28C42C:        29 04         AND #$04                  
@@ -8087,7 +8087,7 @@ CODE_28D19B:        30 06         BMI CODE_28D1A3
 CODE_28D19D:        C9 70         CMP #$70                  
 CODE_28D19F:        B0 15         BCS CODE_28D1B6                   
 CODE_28D1A1:        90 04         BCC CODE_28D1A7           
-CODE_28D1A3:        22 59 A8 27   JSL CODE_27A859           
+CODE_28D1A3:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28D1A7:        4A            LSR A                     
 CODE_28D1A8:        4A            LSR A                     
 CODE_28D1A9:        B4 9E         LDY $9E,x                 
@@ -8534,11 +8534,11 @@ CODE_28D566:        F0 28         BEQ CODE_28D590
 CODE_28D568:        B5 8C         LDA $8C,x                 
 CODE_28D56A:        08            PHP                       
 CODE_28D56B:        10 04         BPL CODE_28D571           
-CODE_28D56D:        22 59 A8 27   JSL CODE_27A859           
+CODE_28D56D:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28D571:        4A            LSR A                     
 CODE_28D572:        28            PLP                       
 CODE_28D573:        10 04         BPL CODE_28D579           
-CODE_28D575:        22 59 A8 27   JSL CODE_27A859           
+CODE_28D575:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28D579:        95 8C         STA $8C,x                 
 CODE_28D57B:        B5 9E         LDA $9E,x                 
 CODE_28D57D:        48            PHA                       
@@ -8546,7 +8546,7 @@ CODE_28D57E:        22 67 8B 27   JSL CODE_278B67
 CODE_28D582:        68            PLA                       
 CODE_28D583:        30 0B         BMI CODE_28D590           
 CODE_28D585:        4A            LSR A                     
-CODE_28D586:        22 59 A8 27   JSL CODE_27A859           
+CODE_28D586:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28D58A:        C9 FC         CMP #$FC                  
 CODE_28D58C:        B0 02         BCS CODE_28D590                   
 CODE_28D58E:        95 9E         STA $9E,x                 
@@ -8554,7 +8554,7 @@ CODE_28D590:        B5 A7         LDA $A7,x
 CODE_28D592:        29 03         AND #$03                  
 CODE_28D594:        F0 0B         BEQ CODE_28D5A1           
 CODE_28D596:        B5 8C         LDA $8C,x                 
-CODE_28D598:        22 59 A8 27   JSL CODE_27A859           
+CODE_28D598:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28D59C:        95 8C         STA $8C,x                 
 CODE_28D59E:        0A            ASL A                     
 CODE_28D59F:        76 8C         ROR $8C,x                 
@@ -8766,7 +8766,7 @@ CODE_28D74D:        22 67 8B 27   JSL CODE_278B67
 CODE_28D751:        68            PLA                       
 CODE_28D752:        4A            LSR A                     
 CODE_28D753:        4A            LSR A                     
-CODE_28D754:        22 59 A8 27   JSL CODE_27A859           
+CODE_28D754:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28D758:        C9 FE         CMP #$FE                  
 CODE_28D75A:        B0 02         BCS CODE_28D75E                   
 CODE_28D75C:        95 9E         STA $9E,x                 
@@ -9799,7 +9799,7 @@ CODE_28DFAD:        BD 71 06      LDA $0671,x
 CODE_28DFB0:        C9 66         CMP #$66                  
 CODE_28DFB2:        F0 09         BEQ CODE_28DFBD           
 CODE_28DFB4:        A5 0F         LDA $0F                   
-CODE_28DFB6:        22 59 A8 27   JSL CODE_27A859           
+CODE_28DFB6:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28DFBA:        85 0F         STA $0F                   
 CODE_28DFBC:        88            DEY                       
 CODE_28DFBD:        C0 00         CPY #$00                  
@@ -10330,7 +10330,7 @@ CODE_28E40D:        98            TYA
 CODE_28E40E:        9D 79 06      STA $0679,x               
 CODE_28E411:        F0 08         BEQ CODE_28E41B           
 CODE_28E413:        A5 0F         LDA $0F                   
-CODE_28E415:        22 59 A8 27   JSL CODE_27A859           
+CODE_28E415:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28E419:        85 0F         STA $0F                   
 CODE_28E41B:        A5 0F         LDA $0F                   
 CODE_28E41D:        C9 10         CMP #$10                  
@@ -10356,7 +10356,7 @@ CODE_28E43F:        84 00         STY $00
 CODE_28E441:        B9 A3 C2      LDA $C2A3,y               
 CODE_28E444:        BC 79 06      LDY $0679,x               
 CODE_28E447:        D0 04         BNE CODE_28E44D           
-CODE_28E449:        22 59 A8 27   JSL CODE_27A859           
+CODE_28E449:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28E44D:        8D 20 10      STA $1020                 
 CODE_28E450:        A5 0F         LDA $0F                   
 CODE_28E452:        C9 10         CMP #$10                  
@@ -10437,7 +10437,7 @@ CODE_28E4CC:        F0 10         BEQ CODE_28E4DE
 CODE_28E4CE:        20 DE E4      JSR CODE_28E4DE           
 CODE_28E4D1:        A0 01         LDY #$01                  
 CODE_28E4D3:        B9 08 00      LDA $0008,y               
-CODE_28E4D6:        22 59 A8 27   JSL CODE_27A859           
+CODE_28E4D6:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28E4DA:        99 08 00      STA $0008,y               
 CODE_28E4DD:        60            RTS                       
 
@@ -10584,7 +10584,7 @@ CODE_28E5F0:        F6 68         INC $68,x
 CODE_28E5F2:        B5 9E         LDA $9E,x                 
 CODE_28E5F4:        BC 79 06      LDY $0679,x               
 CODE_28E5F7:        F0 04         BEQ CODE_28E5FD           
-CODE_28E5F9:        22 59 A8 27   JSL CODE_27A859           
+CODE_28E5F9:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28E5FD:        B4 9E         LDY $9E,x                 
 CODE_28E5FF:        30 19         BMI CODE_28E61A           
 CODE_28E601:        8A            TXA                       
@@ -11330,13 +11330,13 @@ CODE_28EBD6:        22 48 A8 27   JSL CODE_27A848
 CODE_28EBDA:        84 02         STY $02                   
 CODE_28EBDC:        A5 0F         LDA $0F                   
 CODE_28EBDE:        10 04         BPL CODE_28EBE4           
-CODE_28EBE0:        22 59 A8 27   JSL CODE_27A859           
+CODE_28EBE0:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28EBE4:        85 0C         STA $0C                   
 CODE_28EBE6:        22 37 A8 27   JSL CODE_27A837           
 CODE_28EBEA:        84 03         STY $03                   
 CODE_28EBEC:        A5 0F         LDA $0F                   
 CODE_28EBEE:        10 04         BPL CODE_28EBF4           
-CODE_28EBF0:        22 59 A8 27   JSL CODE_27A859           
+CODE_28EBF0:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28EBF4:        85 0D         STA $0D                   
 CODE_28EBF6:        A0 00         LDY #$00                  
 CODE_28EBF8:        A5 0D         LDA $0D                   
@@ -11373,12 +11373,12 @@ CODE_28EC2C:        85 01         STA $01
 CODE_28EC2E:        A5 00         LDA $00                   
 CODE_28EC30:        A4 02         LDY $02                   
 CODE_28EC32:        F0 06         BEQ CODE_28EC3A           
-CODE_28EC34:        22 59 A8 27   JSL CODE_27A859           
+CODE_28EC34:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28EC38:        85 00         STA $00                   
 CODE_28EC3A:        A5 01         LDA $01                   
 CODE_28EC3C:        A4 03         LDY $03                   
 CODE_28EC3E:        F0 06         BEQ CODE_28EC46           
-CODE_28EC40:        22 59 A8 27   JSL CODE_27A859           
+CODE_28EC40:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28EC44:        85 01         STA $01                   
 CODE_28EC46:        68            PLA                       
 CODE_28EC47:        A8            TAY                       
