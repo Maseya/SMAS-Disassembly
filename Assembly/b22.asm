@@ -1800,7 +1800,7 @@ CODE_22B1B1:        JSL CODE_279905
 CODE_22B1B5:        RTS                       
 
 CODE_22B1B6:        LDA $9E,x                 
-CODE_22B1B8:        JSL CODE_27A859           
+CODE_22B1B8:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_22B1BC:        STA $9E,x                 
 CODE_22B1BE:        RTS                       
 
@@ -2307,10 +2307,10 @@ PNTR_22B5E0:        dw CODE_22B5E8
 CODE_22B5E8:        LDA $0518,x
 CODE_22B5EB:        BNE CODE_22B604
 CODE_22B5ED:        LDA $8C,x
-CODE_22B5EF:        JSL CODE_27A859
+CODE_22B5EF:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_22B5F3:        STA $8C,x
 CODE_22B5F5:        LDA $9E,x    
-CODE_22B5F7:        JSL CODE_27A859           
+CODE_22B5F7:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_22B5FB:        STA $9E,x                 
 CODE_22B5FD:        INC $68,x                 
 CODE_22B5FF:        LDA #$80                  

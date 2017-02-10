@@ -545,7 +545,7 @@ PNTR_288438:        dl CODE_2886D3
 
 CODE_288654:        FE B7 06      INC $06B7,x               
 CODE_288657:        22 37 A8 27   JSL CODE_27A837           
-CODE_28865B:        B9 8C B8      LDA $B88C,y               
+CODE_28865B:        B9 8C B8      LDA.w DATA_21B88C,y               
 CODE_28865E:        95 8C         STA $8C,x                 
 CODE_288660:        B5 5F         LDA $5F,x                 
 CODE_288662:        38            SEC                       
@@ -567,9 +567,9 @@ CODE_28867D:        29 01         AND #$01
 CODE_28867F:        A8            TAY                       
 CODE_288680:        B5 9E         LDA $9E,x                 
 CODE_288682:        18            CLC                       
-CODE_288683:        79 8E B8      ADC $B88E,y               
+CODE_288683:        79 8E B8      ADC.w DATA_21B88E,y               
 CODE_288686:        95 9E         STA $9E,x                 
-CODE_288688:        D9 90 B8      CMP $B890,y               
+CODE_288688:        D9 90 B8      CMP.w DATA_21B890,y               
 CODE_28868B:        D0 02         BNE CODE_28868F           
 CODE_28868D:        F6 4D         INC $4D,x                 
 CODE_28868F:        22 EF A7 27   JSL CODE_27A7EF           
@@ -667,7 +667,7 @@ CODE_288755:        4A            LSR A
 CODE_288756:        4A            LSR A                     
 CODE_288757:        4A            LSR A                     
 CODE_288758:        A8            TAY                       
-CODE_288759:        B9 92 B8      LDA $B892,y               
+CODE_288759:        B9 92 B8      LDA.w DATA_21B892,y               
 CODE_28875C:        A4 8B         LDY $8B                   
 CODE_28875E:        10 04         BPL CODE_288764           
 CODE_288760:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
@@ -727,9 +727,9 @@ CODE_2887CF:        8D 79 05      STA $0579
 CODE_2887D2:        6B            RTL                       
 
 CODE_2887D3:        BC 18 05      LDY $0518,x               
-CODE_2887D6:        B9 98 B8      LDA $B898,y               
+CODE_2887D6:        B9 98 B8      LDA.w DATA_21B898,y               
 CODE_2887D9:        9D 69 06      STA $0669,x               
-CODE_2887DC:        B9 BD B8      LDA $B8BD,y               
+CODE_2887DC:        B9 BD B8      LDA.w DATA_21B8BD,y               
 CODE_2887DF:        85 9D         STA $9D                   
 CODE_2887E1:        BD 18 05      LDA $0518,x               
 CODE_2887E4:        C9 07         CMP #$07                  
@@ -906,7 +906,7 @@ CODE_288953:        4A            LSR A
 CODE_288954:        4A            LSR A                     
 CODE_288955:        4A            LSR A                     
 CODE_288956:        A8            TAY                       
-CODE_288957:        B9 B5 B8      LDA $B8B5,y               
+CODE_288957:        B9 B5 B8      LDA.w DATA_21B8B5,y               
 CODE_28895A:        C9 07         CMP #$07                  
 CODE_28895C:        D0 07         BNE CODE_288965           
 CODE_28895E:        AC 67 05      LDY $0567                 
@@ -952,7 +952,7 @@ CODE_2889B5:        D0 60         BNE CODE_288A17
 CODE_2889B7:        BD 89 06      LDA $0689,x               
 CODE_2889BA:        29 0F         AND #$0F                  
 CODE_2889BC:        A8            TAY                       
-CODE_2889BD:        B9 AD B8      LDA $B8AD,y               
+CODE_2889BD:        B9 AD B8      LDA.w DATA_21B8AD,y               
 CODE_2889C0:        F0 3A         BEQ CODE_2889FC           
 CODE_2889C2:        85 00         STA $00                   
 CODE_2889C4:        A0 05         LDY #$05                  
@@ -995,7 +995,7 @@ CODE_288A13:        22 5D A7 27   JSL CODE_27A75D
 CODE_288A17:        22 D8 A7 27   JSL CODE_27A7D8           
 CODE_288A1B:        20 45 8A      JSR CODE_288A45           
 CODE_288A1E:        BC 26 05      LDY $0526,x               
-CODE_288A21:        B9 BD B8      LDA $B8BD,y               
+CODE_288A21:        B9 BD B8      LDA.w DATA_21B8BD,y               
 CODE_288A24:        BC 91 06      LDY $0691,x               
 CODE_288A27:        F0 09         BEQ CODE_288A32           
 CODE_288A29:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
@@ -1018,15 +1018,15 @@ CODE_288A49:        4A            LSR A
 CODE_288A4A:        4A            LSR A                     
 CODE_288A4B:        4A            LSR A                     
 CODE_288A4C:        A8            TAY                       
-CODE_288A4D:        B9 C8 B8      LDA $B8C8,y               
+CODE_288A4D:        B9 C8 B8      LDA.w DATA_21B8C8,y               
 CODE_288A50:        0A            ASL A                     
 CODE_288A51:        85 00         STA $00                   
 CODE_288A53:        98            TYA                       
 CODE_288A54:        0A            ASL A                     
 CODE_288A55:        A8            TAY                       
-CODE_288A56:        B9 D4 B8      LDA $B8D4,y               
+CODE_288A56:        B9 D4 B8      LDA.w DATA_21B8D4,y               
 CODE_288A59:        85 01         STA $01                   
-CODE_288A5B:        B9 D5 B8      LDA $B8D5,y               
+CODE_288A5B:        B9 D5 B8      LDA.w DATA_21B8D4+1,y               
 CODE_288A5E:        85 02         STA $02                   
 CODE_288A60:        A9 00         LDA #$00                  
 CODE_288A62:        A4 01         LDY $01                   
@@ -1362,7 +1362,7 @@ CODE_288CFD:        AD 86 05      LDA $0586
 CODE_288D00:        29 03         AND #$03                  
 CODE_288D02:        9D 69 06      STA $0669,x               
 CODE_288D05:        A8            TAY                       
-CODE_288D06:        B9 E4 B8      LDA $B8E4,y               
+CODE_288D06:        B9 E4 B8      LDA.w DATA_21B8E4,y               
 CODE_288D09:        9D E9 1F      STA $1FE9,x               
 CODE_288D0C:        6B            RTL                       
 
@@ -1405,7 +1405,7 @@ CODE_288D60:        8D C6 02      STA $02C6
 CODE_288D63:        80 1C         BRA CODE_288D81           
 
 CODE_288D65:        A8            TAY                       
-CODE_288D66:        B9 E8 B8      LDA $B8E8,y               
+CODE_288D66:        B9 E8 B8      LDA.w DATA_21B8E8,y               
 CODE_288D69:        C5 BB         CMP $BB                   
 CODE_288D6B:        F0 11         BEQ CODE_288D7E           
 CODE_288D6D:        A8            TAY                       
@@ -1832,7 +1832,7 @@ CODE_2890E2:        4A            LSR A
 CODE_2890E3:        4A            LSR A                     
 CODE_2890E4:        4A            LSR A                     
 CODE_2890E5:        A8            TAY                       
-CODE_2890E6:        B9 B5 B8      LDA $B8B5,y               
+CODE_2890E6:        B9 B5 B8      LDA.w DATA_21B8B5,y               
 CODE_2890E9:        85 0B         STA $0B                   
 CODE_2890EB:        B5 44         LDA $44,x                 
 CODE_2890ED:        85 0E         STA $0E                   
@@ -1868,7 +1868,7 @@ CODE_289128:        D0 36         BNE CODE_289160
 CODE_28912A:        BD 89 06      LDA $0689,x               
 CODE_28912D:        29 0F         AND #$0F                  
 CODE_28912F:        A8            TAY                       
-CODE_289130:        B9 AD B8      LDA $B8AD,y               
+CODE_289130:        B9 AD B8      LDA.w DATA_21B8AD,y               
 CODE_289133:        F0 2B         BEQ CODE_289160           
 CODE_289135:        85 00         STA $00                   
 CODE_289137:        A0 05         LDY #$05                  
@@ -1891,7 +1891,7 @@ CODE_28915D:        99 61 06      STA $0661,y
 CODE_289160:        22 EF A7 27   JSL CODE_27A7EF           
 CODE_289164:        20 45 8A      JSR CODE_288A45           
 CODE_289167:        BC 26 05      LDY $0526,x               
-CODE_28916A:        B9 BD B8      LDA $B8BD,y               
+CODE_28916A:        B9 BD B8      LDA.w DATA_21B8BD,y               
 CODE_28916D:        BC 91 06      LDY $0691,x               
 CODE_289170:        C0 02         CPY #$02                  
 CODE_289172:        F0 04         BEQ CODE_289178           
@@ -1972,9 +1972,9 @@ CODE_28920C:        75 71         ADC $71,x
 CODE_28920E:        95 71         STA $71,x                 
 CODE_289210:        90 02         BCC CODE_289214           
 CODE_289212:        F6 56         INC $56,x                 
-CODE_289214:        B9 F8 B8      LDA $B8F8,y               
+CODE_289214:        B9 F8 B8      LDA.w DATA_21B8F8,y               
 CODE_289217:        9D 18 05      STA $0518,x               
-CODE_28921A:        B9 F4 B8      LDA $B8F4,y               
+CODE_28921A:        B9 F4 B8      LDA.w DATA_21B8F4,y               
 CODE_28921D:        95 9E         STA $9E,x                 
 CODE_28921F:        A9 10         LDA #$10                  
 CODE_289221:        9D 20 05      STA $0520,x               
@@ -2002,15 +2002,15 @@ CODE_28924F:        29 01         AND #$01
 CODE_289251:        A8            TAY                       
 CODE_289252:        B5 8C         LDA $8C,x                 
 CODE_289254:        18            CLC                       
-CODE_289255:        79 FC B8      ADC $B8FC,y               
+CODE_289255:        79 FC B8      ADC.w DATA_21B8FC,y               
 CODE_289258:        95 8C         STA $8C,x                 
-CODE_28925A:        D9 FE B8      CMP $B8FE,y               
+CODE_28925A:        D9 FE B8      CMP.w DATA_21B8FE,y               
 CODE_28925D:        D0 03         BNE CODE_289262           
 CODE_28925F:        FE 91 06      INC $0691,x               
 CODE_289262:        B5 8C         LDA $8C,x                 
 CODE_289264:        10 01         BPL CODE_289267           
 CODE_289266:        C8            INY                       
-CODE_289267:        B9 00 B9      LDA $B900,y               
+CODE_289267:        B9 00 B9      LDA.w DATA_21B900,y               
 CODE_28926A:        18            CLC                       
 CODE_28926B:        69 06         ADC #$06                  
 CODE_28926D:        95 9E         STA $9E,x                 
@@ -2091,9 +2091,9 @@ CODE_289311:        6B            RTL
 CODE_289312:        B5 44         LDA $44,x                 
 CODE_289314:        0A            ASL A                     
 CODE_289315:        A8            TAY                       
-CODE_289316:        B9 00 82      LDA $8200,y               
+CODE_289316:        B9 00 82      LDA.w DATA_218200,y               
 CODE_289319:        85 D8         STA $D8                   
-CODE_28931B:        B9 01 82      LDA $8201,y               
+CODE_28931B:        B9 01 82      LDA.w DATA_218200+1,y               
 CODE_28931E:        85 D9         STA $D9                   
 CODE_289320:        A9 7E         LDA #$7E                  
 CODE_289322:        85 DA         STA $DA                   
@@ -2134,7 +2134,7 @@ CODE_289360:        0A            ASL A
 CODE_289361:        69 00         ADC #$00                  
 CODE_289363:        48            PHA                       
 CODE_289364:        29 03         AND #$03                  
-CODE_289366:        19 03 B9      ORA $B903,y               
+CODE_289366:        19 03 B9      ORA.w DATA_21B903,y               
 CODE_289369:        18            CLC                       
 CODE_28936A:        65 DB         ADC $DB                   
 CODE_28936C:        AC 00 16      LDY $1600                 
@@ -2299,13 +2299,13 @@ CODE_2894C4:        0A            ASL A
 CODE_2894C5:        0A            ASL A                     
 CODE_2894C6:        A8            TAY                       
 CODE_2894C7:        C2 20         REP #$20                  
-CODE_2894C9:        B9 05 B9      LDA $B905,y               
+CODE_2894C9:        B9 05 B9      LDA.w DATA_21B905,y               
 CODE_2894CC:        8D 40 14      STA $1440                 
-CODE_2894CF:        B9 07 B9      LDA $B907,y               
+CODE_2894CF:        B9 07 B9      LDA.w DATA_21B907,y               
 CODE_2894D2:        8D 42 14      STA $1442                 
-CODE_2894D5:        B9 09 B9      LDA $B909,y               
+CODE_2894D5:        B9 09 B9      LDA.w DATA_21B909,y               
 CODE_2894D8:        8D 44 14      STA $1444                 
-CODE_2894DB:        B9 0B B9      LDA $B90B,y               
+CODE_2894DB:        B9 0B B9      LDA.w DATA_21B90B,y               
 CODE_2894DE:        8D 46 14      STA $1446                 
 CODE_2894E1:        E2 20         SEP #$20                  
 CODE_2894E3:        A9 01         LDA #$01                  
@@ -2407,7 +2407,7 @@ CODE_2895AA:        B5 A7         LDA $A7,x
 CODE_2895AC:        29 04         AND #$04                  
 CODE_2895AE:        F0 0D         BEQ CODE_2895BD           
 CODE_2895B0:        22 37 A8 27   JSL CODE_27A837           
-CODE_2895B4:        B9 4B B9      LDA $B94B,y               
+CODE_2895B4:        B9 4B B9      LDA.w DATA_21B94B,y               
 CODE_2895B7:        95 8C         STA $8C,x                 
 CODE_2895B9:        A9 B8         LDA #$B8                  
 CODE_2895BB:        95 9E         STA $9E,x                 
@@ -2446,14 +2446,14 @@ CODE_2895F7:        4A            LSR A
 CODE_2895F8:        29 01         AND #$01                  
 CODE_2895FA:        9D 69 06      STA $0669,x               
 CODE_2895FD:        B4 4D         LDY $4D,x                 
-CODE_2895FF:        B9 4D B9      LDA $B94D,y               
+CODE_2895FF:        B9 4D B9      LDA.w DATA_21B94D,y               
 CODE_289602:        18            CLC                       
 CODE_289603:        6D 27 07      ADC $0727                 
 CODE_289606:        A8            TAY                       
 CODE_289607:        A5 15         LDA $15                   
-CODE_289609:        39 65 B9      AND $B965,y               
+CODE_289609:        39 65 B9      AND.w DATA_21B965,y               
 CODE_28960C:        D0 06         BNE CODE_289614           
-CODE_28960E:        B9 7A B9      LDA $B97A,y               
+CODE_28960E:        B9 7A B9      LDA.w DATA_21B97A,y               
 CODE_289611:        95 9E         STA $9E,x                 
 CODE_289613:        60            RTS                       
 
@@ -2466,7 +2466,7 @@ CODE_289620:        90 2B         BCC CODE_28964D
 CODE_289622:        FE 71 07      INC $0771,x               
 CODE_289625:        D0 07         BNE CODE_28962E           
 CODE_289627:        A5 15         LDA $15                   
-CODE_289629:        39 50 B9      AND $B950,y               
+CODE_289629:        39 50 B9      AND.w DATA_21B950,y               
 CODE_28962C:        D0 1F         BNE CODE_28964D           
 CODE_28962E:        A5 0F         LDA $0F                   
 CODE_289630:        9D 79 06      STA $0679,x               
@@ -2496,7 +2496,7 @@ CODE_289660:        2A            ROL A
 CODE_289661:        2A            ROL A                     
 CODE_289662:        29 01         AND #$01                  
 CODE_289664:        A8            TAY                       
-CODE_289665:        B9 8F B9      LDA $B98F,y               
+CODE_289665:        B9 8F B9      LDA.w DATA_21B98F,y               
 CODE_289668:        85 00         STA $00                   
 CODE_28966A:        22 72 8A 27   JSL CODE_278A72           
 CODE_28966E:        B0 54         BCS CODE_2896C4                   
@@ -2721,12 +2721,12 @@ CODE_289828:        D0 1B         BNE CODE_289845
 CODE_28982A:        AC BE 07      LDY $07BE                 
 CODE_28982D:        FE 69 06      INC $0669,x               
 CODE_289830:        BD 69 06      LDA $0669,x               
-CODE_289833:        D9 91 B9      CMP $B991,y               
+CODE_289833:        D9 91 B9      CMP.w DATA_21B991,y               
 CODE_289836:        90 06         BCC CODE_28983E           
-CODE_289838:        B9 93 B9      LDA $B993,y               
+CODE_289838:        B9 93 B9      LDA.w DATA_21B993,y               
 CODE_28983B:        9D 69 06      STA $0669,x               
 CODE_28983E:        A8            TAY                       
-CODE_28983F:        B9 95 B9      LDA $B995,y               
+CODE_28983F:        B9 95 B9      LDA.w DATA_21B995,y               
 CODE_289842:        9D 79 06      STA $0679,x               
 CODE_289845:        AD E1 02      LDA $02E1                 
 CODE_289848:        30 12         BMI CODE_28985C           
@@ -2765,7 +2765,7 @@ CODE_28988B:        C9 03         CMP #$03
 CODE_28988D:        D0 02         BNE CODE_289891           
 CODE_28988F:        A9 00         LDA #$00                  
 CODE_289891:        AC 27 07      LDY $0727                 
-CODE_289894:        79 A7 B9      ADC $B9A7,y               
+CODE_289894:        79 A7 B9      ADC.w DATA_21B9A7,y               
 CODE_289897:        0A            ASL A                     
 CODE_289898:        85 0F         STA $0F                   
 CODE_28989A:        0A            ASL A                     
@@ -2849,16 +2849,16 @@ CODE_28993C:        B0 F6         BCS CODE_289934
 CODE_28993E:        AC 27 07      LDY $0727                 
 CODE_289941:        BD 69 06      LDA $0669,x               
 CODE_289944:        18            CLC                       
-CODE_289945:        79 C0 BA      ADC $BAC0,y               
+CODE_289945:        79 C0 BA      ADC.w DATA_21BAC0,y               
 CODE_289948:        A8            TAY                       
 CODE_289949:        B5 71         LDA $71,x                 
 CODE_28994B:        48            PHA                       
 CODE_28994C:        18            CLC                       
-CODE_28994D:        79 84 BA      ADC $BA84,y               
+CODE_28994D:        79 84 BA      ADC.w DATA_21BA84,y               
 CODE_289950:        95 71         STA $71,x                 
 CODE_289952:        B5 56         LDA $56,x                 
 CODE_289954:        48            PHA                       
-CODE_289955:        79 B4 BA      ADC $BAB4,y               
+CODE_289955:        79 B4 BA      ADC.w DATA_21BAB4,y               
 CODE_289958:        95 56         STA $56,x                 
 CODE_28995A:        BD 79 06      LDA $0679,x               
 CODE_28995D:        0A            ASL A                     
@@ -2870,11 +2870,11 @@ CODE_289964:        A8            TAY
 CODE_289965:        B5 5F         LDA $5F,x                 
 CODE_289967:        48            PHA                       
 CODE_289968:        18            CLC                       
-CODE_289969:        79 90 BA      ADC $BA90,y               
+CODE_289969:        79 90 BA      ADC.w DATA_21BA90,y               
 CODE_28996C:        95 5F         STA $5F,x                 
 CODE_28996E:        B5 44         LDA $44,x                 
 CODE_289970:        48            PHA                       
-CODE_289971:        79 A8 BA      ADC $BAA8,y               
+CODE_289971:        79 A8 BA      ADC.w DATA_21BAA8,y               
 CODE_289974:        95 44         STA $44,x                 
 CODE_289976:        22 7C A2 27   JSL CODE_27A27C           
 CODE_28997A:        22 C8 A2 27   JSL CODE_27A2C8           
@@ -2893,7 +2893,7 @@ CODE_289996:        A9 20         LDA #$20
 CODE_289998:        95 C6         STA $C6,x                 
 CODE_28999A:        74 C7         STZ $C7,x                 
 CODE_28999C:        BC 69 06      LDY $0669,x               
-CODE_28999F:        BE 80 BA      LDX $BA80,y               
+CODE_28999F:        BE 80 BA      LDX.w DATA_21BA80,y               
 CODE_2899A2:        22 90 9F 27   JSL CODE_279F90           
 CODE_2899A6:        A6 9B         LDX $9B                   
 CODE_2899A8:        24 02         BIT $02                   
@@ -2971,15 +2971,15 @@ CODE_289A36:        18            CLC
 CODE_289A37:        69 08         ADC #$08                  
 CODE_289A39:        99 08 08      STA $0808,y               
 CODE_289A3C:        99 14 08      STA $0814,y               
-CODE_289A3F:        BD 96 B9      LDA $B996,x               
+CODE_289A3F:        BD 96 B9      LDA.w DATA_21B995+1,x               
 CODE_289A42:        99 02 08      STA $0802,y               
 CODE_289A45:        1A            INC A                     
 CODE_289A46:        99 0E 08      STA $080E,y               
-CODE_289A49:        BD 97 B9      LDA $B997,x               
+CODE_289A49:        BD 97 B9      LDA.w DATA_21B995+2,x               
 CODE_289A4C:        99 06 08      STA $0806,y               
 CODE_289A4F:        1A            INC A                     
 CODE_289A50:        99 12 08      STA $0812,y               
-CODE_289A53:        BD 98 B9      LDA $B998,x               
+CODE_289A53:        BD 98 B9      LDA.w DATA_21B995+3,x               
 CODE_289A56:        99 0A 08      STA $080A,y               
 CODE_289A59:        1A            INC A                     
 CODE_289A5A:        99 16 08      STA $0816,y               
@@ -3050,7 +3050,7 @@ CODE_289AE6:        2A            ROL A
 CODE_289AE7:        2A            ROL A                     
 CODE_289AE8:        29 03         AND #$03                  
 CODE_289AEA:        A8            TAY                       
-CODE_289AEB:        B9 E5 BA      LDA $BAE5,y               
+CODE_289AEB:        B9 E5 BA      LDA.w DATA_21BAE5,y               
 CODE_289AEE:        A0 00         LDY #$00                  
 CODE_289AF0:        3D 18 05      AND $0518,x               
 CODE_289AF3:        F0 02         BEQ CODE_289AF7           
@@ -3091,9 +3091,9 @@ CODE_289B3C:        A8            TAY
 CODE_289B3D:        A2 04         LDX #$04                  
 CODE_289B3F:        A9 01         LDA #$01                  
 CODE_289B41:        95 56         STA $56,x                 
-CODE_289B43:        B9 CF BA      LDA $BACF,y               
+CODE_289B43:        B9 CF BA      LDA.w DATA_21BACF,y               
 CODE_289B46:        95 71         STA $71,x                 
-CODE_289B48:        B9 C7 BA      LDA $BAC7,y               
+CODE_289B48:        B9 C7 BA      LDA.w DATA_21BAC7,y               
 CODE_289B4B:        95 5F         STA $5F,x                 
 CODE_289B4D:        A9 FF         LDA #$FF                  
 CODE_289B4F:        95 9E         STA $9E,x                 
@@ -3120,13 +3120,13 @@ CODE_289B6D:        6D 5D 05      ADC $055D
 CODE_289B70:        0A            ASL A                     
 CODE_289B71:        A8            TAY                       
 CODE_289B72:        C2 20         REP #$20                  
-CODE_289B74:        B9 6E AF      LDA $AF6E,y               
+CODE_289B74:        B9 6E AF      LDA.w DATA_21AF6E,y               
 CODE_289B77:        95 C6         STA $C6,x                 
 CODE_289B79:        E2 20         SEP #$20                  
 CODE_289B7B:        20 B8 9B      JSR CODE_289BB8           
 CODE_289B7E:        22 D8 A7 27   JSL CODE_27A7D8           
 CODE_289B82:        A6 02         LDX $02                   
-CODE_289B84:        BD D7 BA      LDA $BAD7,x               
+CODE_289B84:        BD D7 BA      LDA.w DATA_21BAD7,x               
 CODE_289B87:        A4 01         LDY $01                   
 CODE_289B89:        D0 02         BNE CODE_289B8D           
 CODE_289B8B:        38            SEC                       
@@ -3142,7 +3142,7 @@ CODE_289B9B:        B5 71         LDA $71,x
 CODE_289B9D:        C9 F0         CMP #$F0                  
 CODE_289B9F:        B0 0F         BCS CODE_289BB0                   
 CODE_289BA1:        A4 00         LDY $00                   
-CODE_289BA3:        B9 C7 BA      LDA $BAC7,y               
+CODE_289BA3:        B9 C7 BA      LDA.w DATA_21BAC7,y               
 CODE_289BA6:        95 5F         STA $5F,x                 
 CODE_289BA8:        A9 00         LDA #$00                  
 CODE_289BAA:        95 56         STA $56,x                 
@@ -3171,7 +3171,7 @@ CODE_289BCC:        85 0E         STA $0E
 CODE_289BCE:        B5 71         LDA $71,x                 
 CODE_289BD0:        85 0F         STA $0F                   
 CODE_289BD2:        C2 20         REP #$20                  
-CODE_289BD4:        BD DC BA      LDA $BADC,x               
+CODE_289BD4:        BD DC BA      LDA.w DATA_21BADC,x               
 CODE_289BD7:        29 FF 00      AND #$00FF                
 CODE_289BDA:        AA            TAX                       
 CODE_289BDB:        E2 20         SEP #$20                  
@@ -3270,7 +3270,7 @@ CODE_289C93:        90 14         BCC CODE_289CA9
 CODE_289C95:        A9 09         LDA #$09                  
 CODE_289C97:        8D 03 12      STA $1203                 
 CODE_289C9A:        B4 4D         LDY $4D,x                 
-CODE_289C9C:        B9 E9 BA      LDA $BAE9,y               
+CODE_289C9C:        B9 E9 BA      LDA.w DATA_21BAE9,y               
 CODE_289C9F:        8D F3 1C      STA $1CF3                 
 CODE_289CA2:        A4 A6         LDY $A6                   
 CODE_289CA4:        D0 03         BNE CODE_289CA9           
@@ -3301,7 +3301,7 @@ CODE_289CDE:        4A            LSR A
 CODE_289CDF:        4A            LSR A                     
 CODE_289CE0:        29 07         AND #$07                  
 CODE_289CE2:        A8            TAY                       
-CODE_289CE3:        B9 F4 BA      LDA $BAF4,y               
+CODE_289CE3:        B9 F4 BA      LDA.w DATA_21BAF4,y               
 CODE_289CE6:        18            CLC                       
 CODE_289CE7:        7D 21 10      ADC $1021,x               
 CODE_289CEA:        9D 21 10      STA $1021,x               
@@ -3315,7 +3315,7 @@ CODE_289CFD:        A5 15         LDA $15
 CODE_289CFF:        29 7F         AND #$7F                  
 CODE_289D01:        D0 0A         BNE CODE_289D0D           
 CODE_289D03:        22 37 A8 27   JSL CODE_27A837           
-CODE_289D07:        B9 F2 BA      LDA $BAF2,y               
+CODE_289D07:        B9 F2 BA      LDA.w DATA_21BAF2,y               
 CODE_289D0A:        9D 79 06      STA $0679,x               
 CODE_289D0D:        A5 15         LDA $15                   
 CODE_289D0F:        4A            LSR A                     
@@ -3331,16 +3331,16 @@ CODE_289D24:        20 2A 9E      JSR CODE_289E2A
 CODE_289D27:        BD 76 07      LDA $0776,x               
 CODE_289D2A:        29 01         AND #$01                  
 CODE_289D2C:        A8            TAY                       
-CODE_289D2D:        B9 EC BA      LDA $BAEC,y               
+CODE_289D2D:        B9 EC BA      LDA.w DATA_21BAEC,y               
 CODE_289D30:        D5 5F         CMP $5F,x                 
 CODE_289D32:        A0 00         LDY #$00                  
 CODE_289D34:        B0 01         BCS CODE_289D37                   
 CODE_289D36:        C8            INY                       
 CODE_289D37:        B5 8C         LDA $8C,x                 
-CODE_289D39:        D9 EE BA      CMP $BAEE,y               
+CODE_289D39:        D9 EE BA      CMP.w DATA_21BAEE,y               
 CODE_289D3C:        F0 06         BEQ CODE_289D44           
 CODE_289D3E:        18            CLC                       
-CODE_289D3F:        79 F0 BA      ADC $BAF0,y               
+CODE_289D3F:        79 F0 BA      ADC.w DATA_21BAF0,y               
 CODE_289D42:        95 8C         STA $8C,x                 
 CODE_289D44:        22 EF A7 27   JSL CODE_27A7EF           
 CODE_289D48:        60            RTS                       
@@ -3373,15 +3373,15 @@ CODE_289D77:        90 02         BCC CODE_289D7B
 CODE_289D79:        49 03         EOR #$03                  
 CODE_289D7B:        29 03         AND #$03                  
 CODE_289D7D:        A8            TAY                       
-CODE_289D7E:        B9 FC BA      LDA $BAFC,y               
+CODE_289D7E:        B9 FC BA      LDA.w DATA_21BAFC,y               
 CODE_289D81:        8D 32 08      STA $0832                 
 CODE_289D84:        1A            INC A                     
 CODE_289D85:        8D 3A 08      STA $083A                 
-CODE_289D88:        B9 00 BB      LDA $BB00,y               
+CODE_289D88:        B9 00 BB      LDA.w DATA_21BB00,y               
 CODE_289D8B:        8D 36 08      STA $0836                 
 CODE_289D8E:        1A            INC A                     
 CODE_289D8F:        8D 3E 08      STA $083E                 
-CODE_289D92:        B9 04 BB      LDA $BB04,y               
+CODE_289D92:        B9 04 BB      LDA.w DATA_21BB04,y               
 CODE_289D95:        8D 33 08      STA $0833                 
 CODE_289D98:        8D 37 08      STA $0837                 
 CODE_289D9B:        8D 3B 08      STA $083B                 
@@ -3481,7 +3481,7 @@ CODE_289E62:        99 44 00      STA $0044,y
 CODE_289E65:        BD 76 07      LDA $0776,x               
 CODE_289E68:        29 01         AND #$01                  
 CODE_289E6A:        AA            TAX                       
-CODE_289E6B:        BD 08 BB      LDA $BB08,x               
+CODE_289E6B:        BD 08 BB      LDA.w DATA_21BB08,x               
 CODE_289E6E:        99 8C 00      STA $008C,y               
 CODE_289E71:        A9 04         LDA #$04                  
 CODE_289E73:        99 E9 1F      STA $1FE9,y               
@@ -3504,7 +3504,7 @@ CODE_289E96:        BD 79 06      LDA $0679,x
 CODE_289E99:        29 40         AND #$40                  
 CODE_289E9B:        D0 01         BNE CODE_289E9E           
 CODE_289E9D:        C8            INY                       
-CODE_289E9E:        B9 0A BB      LDA $BB0A,y               
+CODE_289E9E:        B9 0A BB      LDA.w DATA_21BB0A,y               
 CODE_289EA1:        A4 00         LDY $00                   
 CODE_289EA3:        99 8C 00      STA $008C,y               
 CODE_289EA6:        60            RTS                       
@@ -4100,10 +4100,10 @@ CODE_28B01B:        85 00         STA $00
 CODE_28B01D:        A0 02         LDY #$02                  
 CODE_28B01F:        A5 00         LDA $00                   
 CODE_28B021:        38            SEC                       
-CODE_28B022:        F9 C4 BB      SBC $BBC4,y               
+CODE_28B022:        F9 C4 BB      SBC.w DATA_21BBC4,y               
 CODE_28B025:        C9 04         CMP #$04                  
 CODE_28B027:        B0 1B         BCS CODE_28B044                   
-CODE_28B029:        B9 C7 BB      LDA $BBC7,y               
+CODE_28B029:        B9 C7 BB      LDA.w DATA_21BBC7,y               
 CODE_28B02C:        9D 69 06      STA $0669,x               
 CODE_28B02F:        98            TYA                       
 CODE_28B030:        D0 0A         BNE CODE_28B03C           
@@ -4124,7 +4124,7 @@ CODE_28B047:        6B            RTL
 CODE_28B048:        C9 01         CMP #$01                  
 CODE_28B04A:        D0 0A         BNE CODE_28B056           
 CODE_28B04C:        BC 89 06      LDY $0689,x               
-CODE_28B04F:        B9 C0 BB      LDA $BBC0,y               
+CODE_28B04F:        B9 C0 BB      LDA.w DATA_21BBC0,y               
 CODE_28B052:        8D 30 05      STA $0530                 
 CODE_28B055:        6B            RTL                       
 
@@ -4155,7 +4155,7 @@ CODE_28B082:        A9 F3         LDA #$F3
 CODE_28B084:        22 5D A7 27   JSL CODE_27A75D           
 CODE_28B088:        68            PLA                       
 CODE_28B089:        A8            TAY                       
-CODE_28B08A:        B9 CB BB      LDA $BBCB,y               
+CODE_28B08A:        B9 CB BB      LDA.w DATA_21BBCB,y               
 CODE_28B08D:        95 9E         STA $9E,x                 
 CODE_28B08F:        22 D8 A7 27   JSL CODE_27A7D8           
 CODE_28B093:        6B            RTL                       
@@ -4255,23 +4255,23 @@ CODE_28B155:        4C 91 B1      JMP CODE_28B191
 
 CODE_28B158:        A9 13         LDA #$13                  
 CODE_28B15A:        99 C8 1F      STA $1FC8,y               
-CODE_28B15D:        BD D6 BB      LDA $BBD6,x               
+CODE_28B15D:        BD D6 BB      LDA.w DATA_21BBD6,x               
 CODE_28B160:        18            CLC                       
 CODE_28B161:        6D 36 05      ADC $0536                 
 CODE_28B164:        99 C9 05      STA $05C9,y               
 CODE_28B167:        A5 EE         LDA $EE                   
 CODE_28B169:        69 00         ADC #$00                  
 CODE_28B16B:        99 E2 00      STA $00E2,y               
-CODE_28B16E:        BD DA BB      LDA $BBDA,x               
+CODE_28B16E:        BD DA BB      LDA.w DATA_21BBDA,x               
 CODE_28B171:        18            CLC                       
 CODE_28B172:        6D 3C 05      ADC $053C                 
 CODE_28B175:        99 BF 05      STA $05BF,y               
 CODE_28B178:        A9 00         LDA #$00                  
 CODE_28B17A:        6D 39 05      ADC $0539                 
 CODE_28B17D:        99 D7 1F      STA $1FD7,y               
-CODE_28B180:        BD DE BB      LDA $BBDE,x               
+CODE_28B180:        BD DE BB      LDA.w DATA_21BBDE,x               
 CODE_28B183:        99 DD 05      STA $05DD,y               
-CODE_28B186:        BD E2 BB      LDA $BBE2,x               
+CODE_28B186:        BD E2 BB      LDA.w DATA_21BBE2,x               
 CODE_28B189:        99 D3 05      STA $05D3,y               
 CODE_28B18C:        A9 00         LDA #$00                  
 CODE_28B18E:        99 C7 06      STA $06C7,y               
@@ -4337,12 +4337,12 @@ CODE_28B208:        99 04 08      STA $0804,y
 CODE_28B20B:        18            CLC                       
 CODE_28B20C:        69 08         ADC #$08                  
 CODE_28B20E:        85 01         STA $01                   
-CODE_28B210:        BD E6 BB      LDA $BBE6,x               
+CODE_28B210:        BD E6 BB      LDA.w DATA_21BBE6,x               
 CODE_28B213:        99 02 08      STA $0802,y               
 CODE_28B216:        1A            INC A                     
 CODE_28B217:        99 06 08      STA $0806,y               
 CODE_28B21A:        A9 21         LDA #$21                  
-CODE_28B21C:        1D F6 BB      ORA $BBF6,x               
+CODE_28B21C:        1D F6 BB      ORA.w DATA_21BBF6,x               
 CODE_28B21F:        99 03 08      STA $0803,y               
 CODE_28B222:        99 07 08      STA $0807,y               
 CODE_28B225:        29 80         AND #$80                  
@@ -4387,9 +4387,9 @@ CODE_28B263:        38            SEC
 CODE_28B264:        60            RTS                       
 
 CODE_28B265:        A4 25         LDY $25                   
-CODE_28B267:        B9 B5 BC      LDA $BCB5,y               
+CODE_28B267:        B9 B5 BC      LDA.w DATA_21BCB5,y               
 CODE_28B26A:        9D 79 06      STA $0679,x               
-CODE_28B26D:        B9 06 BC      LDA $BC06,y               
+CODE_28B26D:        B9 06 BC      LDA.w DATA_21BC06,y               
 CODE_28B270:        95 8C         STA $8C,x                 
 CODE_28B272:        6B            RTL                       
 
@@ -4541,7 +4541,7 @@ CODE_28B3B4:        B5 4D         LDA $4D,x
 CODE_28B3B6:        AA            TAX                       
 CODE_28B3B7:        A5 00         LDA $00                   
 CODE_28B3B9:        18            CLC                       
-CODE_28B3BA:        7D 20 BC      ADC $BC20,x               
+CODE_28B3BA:        7D 20 BC      ADC.w DATA_21BC20,x               
 CODE_28B3BD:        85 00         STA $00                   
 CODE_28B3BF:        A6 05         LDX $05                   
 CODE_28B3C1:        22 90 9F 27   JSL CODE_279F90           
@@ -4556,13 +4556,13 @@ CODE_28B3D1:        B4 4D         LDY $4D,x
 CODE_28B3D3:        24 02         BIT $02                   
 CODE_28B3D5:        30 04         BMI CODE_28B3DB           
 CODE_28B3D7:        18            CLC                       
-CODE_28B3D8:        79 20 BC      ADC $BC20,y               
+CODE_28B3D8:        79 20 BC      ADC.w DATA_21BC20,y               
 CODE_28B3DB:        85 00         STA $00                   
 CODE_28B3DD:        B5 5F         LDA $5F,x                 
 CODE_28B3DF:        85 D8         STA $D8                   
 CODE_28B3E1:        B5 44         LDA $44,x                 
 CODE_28B3E3:        85 D9         STA $D9                   
-CODE_28B3E5:        B9 08 BC      LDA $BC08,y               
+CODE_28B3E5:        B9 08 BC      LDA.w DATA_21BC08,y               
 CODE_28B3E8:        24 02         BIT $02                   
 CODE_28B3EA:        70 04         BVS CODE_28B3F0           
 CODE_28B3EC:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
@@ -4639,7 +4639,7 @@ CODE_28B476:        6A            ROR A
 CODE_28B477:        85 00         STA $00                   
 CODE_28B479:        B4 71         LDY $71,x                 
 CODE_28B47B:        AE 26 07      LDX $0726                 
-CODE_28B47E:        B9 38 BC      LDA $BC38,y               
+CODE_28B47E:        B9 38 BC      LDA.w DATA_21BC38,y               
 CODE_28B481:        24 00         BIT $00                   
 CODE_28B483:        30 04         BMI CODE_28B489           
 CODE_28B485:        4A            LSR A                     
@@ -4648,13 +4648,13 @@ CODE_28B487:        4A            LSR A
 CODE_28B488:        4A            LSR A                     
 CODE_28B489:        29 0F         AND #$0F                  
 CODE_28B48B:        9F 77 39 7E   STA $7E3977,x             
-CODE_28B48F:        B9 50 BC      LDA $BC50,y               
+CODE_28B48F:        B9 50 BC      LDA.w DATA_21BC50,y               
 CODE_28B492:        20 C7 B4      JSR CODE_28B4C7           
 CODE_28B495:        9F 79 39 7E   STA $7E3979,x             
-CODE_28B499:        B9 68 BC      LDA $BC68,y               
+CODE_28B499:        B9 68 BC      LDA.w DATA_21BC68,y               
 CODE_28B49C:        20 C7 B4      JSR CODE_28B4C7           
 CODE_28B49F:        9F 75 39 7E   STA $7E3975,x             
-CODE_28B4A3:        B9 80 BC      LDA $BC80,y               
+CODE_28B4A3:        B9 80 BC      LDA.w DATA_21BC80,y               
 CODE_28B4A6:        20 C7 B4      JSR CODE_28B4C7           
 CODE_28B4A9:        A8            TAY                       
 CODE_28B4AA:        29 80         AND #$80                  
@@ -4722,9 +4722,9 @@ CODE_28B50A:        A9 B0         LDA #$B0
 CODE_28B50C:        95 9E         STA $9E,x                 
 CODE_28B50E:        80 05         BRA CODE_28B515           
 
-CODE_28B510:        B9 9E BC      LDA $BC9E,y               
+CODE_28B510:        B9 9E BC      LDA.w DATA_21BC9E,y               
 CODE_28B513:        95 9E         STA $9E,x                 
-CODE_28B515:        B9 98 BC      LDA $BC98,y               
+CODE_28B515:        B9 98 BC      LDA.w DATA_21BC98,y               
 CODE_28B518:        95 8C         STA $8C,x                 
 CODE_28B51A:        22 EF A7 27   JSL CODE_27A7EF           
 CODE_28B51E:        22 D8 A7 27   JSL CODE_27A7D8           
@@ -4749,7 +4749,7 @@ CODE_28B545:        B4 4D         LDY $4D,x
 CODE_28B547:        B5 68         LDA $68,x                 
 CODE_28B549:        18            CLC                       
 CODE_28B54A:        6D 4D 07      ADC $074D                 
-CODE_28B54D:        D9 A4 BC      CMP $BCA4,y               
+CODE_28B54D:        D9 A4 BC      CMP.w DATA_21BCA4,y               
 CODE_28B550:        30 35         BMI CODE_28B587           
 CODE_28B552:        B4 9E         LDY $9E,x                 
 CODE_28B554:        30 31         BMI CODE_28B587           
@@ -4803,7 +4803,7 @@ CODE_28B5B3:        A8            TAY
 CODE_28B5B4:        30 03         BMI CODE_28B5B9           
 CODE_28B5B6:        4C FA B4      JMP CODE_28B4FA           
 
-CODE_28B5B9:        BD AA BC      LDA $BCAA,x               
+CODE_28B5B9:        BD AA BC      LDA.w DATA_21BCAA,x               
 CODE_28B5BC:        95 68         STA $68,x                 
 CODE_28B5BE:        B5 5F         LDA $5F,x                 
 CODE_28B5C0:        09 04         ORA #$04                  
@@ -4856,12 +4856,12 @@ CODE_28B625:        BD 81 06      LDA $0681,x
 CODE_28B628:        D0 58         BNE CODE_28B682           
 CODE_28B62A:        22 C2 9D 27   JSL CODE_279DC2           
 CODE_28B62E:        AC 18 04      LDY $0418                 
-CODE_28B631:        B9 C1 B4      LDA $B4C1,y               
+CODE_28B631:        B9 C1 B4      LDA.w DATA_21B4C1,y               
 CODE_28B634:        18            CLC                       
 CODE_28B635:        7D 69 06      ADC $0669,x               
 CODE_28B638:        A8            TAY                       
 CODE_28B639:        C2 10         REP #$10                  
-CODE_28B63B:        B9 A2 B5      LDA $B5A2,y               
+CODE_28B63B:        B9 A2 B5      LDA.w DATA_21B5A2,y               
 CODE_28B63E:        B4 C6         LDY $C6,x                 
 CODE_28B640:        99 02 08      STA $0802,y               
 CODE_28B643:        1A            INC A                     
@@ -4947,12 +4947,12 @@ CODE_28B6DE:        A5 9C         LDA $9C
 CODE_28B6E0:        D0 47         BNE CODE_28B729           
 CODE_28B6E2:        22 37 A8 27   JSL CODE_27A837           
 CODE_28B6E6:        B5 8C         LDA $8C,x                 
-CODE_28B6E8:        D9 B1 BC      CMP $BCB1,y               
+CODE_28B6E8:        D9 B1 BC      CMP.w DATA_21BCB1,y               
 CODE_28B6EB:        F0 06         BEQ CODE_28B6F3           
 CODE_28B6ED:        18            CLC                       
-CODE_28B6EE:        79 AF BC      ADC $BCAF,y               
+CODE_28B6EE:        79 AF BC      ADC.w DATA_21BCAF,y               
 CODE_28B6F1:        95 8C         STA $8C,x                 
-CODE_28B6F3:        B9 B6 BC      LDA $BCB6,y               
+CODE_28B6F3:        B9 B6 BC      LDA.w DATA_21BCB5+1,y               
 CODE_28B6F6:        9D 79 06      STA $0679,x               
 CODE_28B6F9:        22 C4 A7 27   JSL CODE_27A7C4           
 CODE_28B6FD:        A0 00         LDY #$00                  
@@ -4962,10 +4962,10 @@ CODE_28B702:        E9 04         SBC #$04
 CODE_28B704:        30 01         BMI CODE_28B707           
 CODE_28B706:        C8            INY                       
 CODE_28B707:        B5 9E         LDA $9E,x                 
-CODE_28B709:        D9 B1 BC      CMP $BCB1,y               
+CODE_28B709:        D9 B1 BC      CMP.w DATA_21BCB1,y               
 CODE_28B70C:        F0 06         BEQ CODE_28B714           
 CODE_28B70E:        18            CLC                       
-CODE_28B70F:        79 AF BC      ADC $BCAF,y               
+CODE_28B70F:        79 AF BC      ADC.w DATA_21BCAF,y               
 CODE_28B712:        95 9E         STA $9E,x                 
 CODE_28B714:        22 EF A7 27   JSL CODE_27A7EF           
 CODE_28B718:        22 D8 A7 27   JSL CODE_27A7D8           
@@ -4991,9 +4991,9 @@ CODE_28B74C:        95 71         STA $71,x
 CODE_28B74E:        90 02         BCC CODE_28B752           
 CODE_28B750:        F6 56         INC $56,x                 
 CODE_28B752:        A4 25         LDY $25                   
-CODE_28B754:        B9 B5 BC      LDA $BCB5,y               
+CODE_28B754:        B9 B5 BC      LDA.w DATA_21BCB5,y               
 CODE_28B757:        9D 79 06      STA $0679,x               
-CODE_28B75A:        B9 B3 BC      LDA $BCB3,y               
+CODE_28B75A:        B9 B3 BC      LDA.w DATA_21BCB3,y               
 CODE_28B75D:        95 8C         STA $8C,x                 
 CODE_28B75F:        6B            RTL                       
 
@@ -5022,7 +5022,7 @@ CODE_28B78A:        88            DEY
 CODE_28B78B:        10 02         BPL CODE_28B78F           
 CODE_28B78D:        A0 03         LDY #$03                  
 CODE_28B78F:        94 68         STY $68,x                 
-CODE_28B791:        B9 B8 BC      LDA $BCB8,y               
+CODE_28B791:        B9 B8 BC      LDA.w DATA_21BCB8,y               
 CODE_28B794:        9D 18 05      STA $0518,x               
 CODE_28B797:        98            TYA                       
 CODE_28B798:        4A            LSR A                     
@@ -5030,7 +5030,7 @@ CODE_28B799:        08            PHP
 CODE_28B79A:        B0 2A         BCS CODE_28B7C6                   
 CODE_28B79C:        22 EF A7 27   JSL CODE_27A7EF           
 CODE_28B7A0:        AC 18 04      LDY $0418                 
-CODE_28B7A3:        B9 30 BB      LDA $BB30,y               
+CODE_28B7A3:        B9 30 BB      LDA.w DATA_21BB30,y               
 CODE_28B7A6:        29 F0         AND #$F0                  
 CODE_28B7A8:        4A            LSR A                     
 CODE_28B7A9:        A8            TAY                       
@@ -5249,15 +5249,15 @@ CODE_28B942:        4A            LSR A
 CODE_28B943:        B0 1B         BCS CODE_28B960                   
 CODE_28B945:        B4 68         LDY $68,x                 
 CODE_28B947:        B5 8C         LDA $8C,x                 
-CODE_28B949:        79 BE BC      ADC $BCBE,y               
+CODE_28B949:        79 BE BC      ADC.w DATA_21BCBE,y               
 CODE_28B94C:        95 8C         STA $8C,x                 
-CODE_28B94E:        D9 BC BC      CMP $BCBC,y               
+CODE_28B94E:        D9 BC BC      CMP.w DATA_21BCBC,y               
 CODE_28B951:        D0 0D         BNE CODE_28B960           
 CODE_28B953:        98            TYA                       
 CODE_28B954:        49 01         EOR #$01                  
 CODE_28B956:        95 68         STA $68,x                 
 CODE_28B958:        B4 4D         LDY $4D,x                 
-CODE_28B95A:        B9 C0 BC      LDA $BCC0,y               
+CODE_28B95A:        B9 C0 BC      LDA.w DATA_21BCC0,y               
 CODE_28B95D:        9D 18 05      STA $0518,x               
 CODE_28B960:        22 C3 9B 27   JSL CODE_279BC3           
 CODE_28B964:        20 08 C3      JSR CODE_28C308           
@@ -5293,7 +5293,7 @@ CODE_28B9A2:        A5 9C         LDA $9C
 CODE_28B9A4:        D0 F3         BNE CODE_28B999           
 CODE_28B9A6:        B4 4D         LDY $4D,x                 
 CODE_28B9A8:        95 4D         STA $4D,x                 
-CODE_28B9AA:        B9 C2 BC      LDA $BCC2,y               
+CODE_28B9AA:        B9 C2 BC      LDA.w DATA_21BCC2,y               
 CODE_28B9AD:        A0 00         LDY #$00                  
 CODE_28B9AF:        38            SEC                       
 CODE_28B9B0:        F5 68         SBC $68,x                 
@@ -5306,7 +5306,7 @@ CODE_28B9BB:        30 01         BMI CODE_28B9BE
 CODE_28B9BD:        C8            INY                       
 CODE_28B9BE:        B5 9E         LDA $9E,x                 
 CODE_28B9C0:        18            CLC                       
-CODE_28B9C1:        79 C5 BC      ADC $BCC5,y               
+CODE_28B9C1:        79 C5 BC      ADC.w DATA_21BCC5,y               
 CODE_28B9C4:        95 9E         STA $9E,x                 
 CODE_28B9C6:        22 D8 A7 27   JSL CODE_27A7D8           
 CODE_28B9CA:        B5 68         LDA $68,x                 
@@ -5376,7 +5376,7 @@ CODE_28BA46:        D0 6A         BNE CODE_28BAB2
 CODE_28BA48:        A9 03         LDA #$03                  
 CODE_28BA4A:        85 0C         STA $0C                   
 CODE_28BA4C:        AC 18 04      LDY $0418                 
-CODE_28BA4F:        B9 30 BB      LDA $BB30,y               
+CODE_28BA4F:        B9 30 BB      LDA.w DATA_21BB30,y               
 CODE_28BA52:        29 F0         AND #$F0                  
 CODE_28BA54:        4A            LSR A                     
 CODE_28BA55:        A8            TAY                       
@@ -5394,16 +5394,16 @@ CODE_28BA6B:        85 0C         STA $0C
 CODE_28BA6D:        B5 68         LDA $68,x                 
 CODE_28BA6F:        85 0D         STA $0D                   
 CODE_28BA71:        A4 0C         LDY $0C                   
-CODE_28BA73:        B9 C8 BC      LDA $BCC8,y               
+CODE_28BA73:        B9 C8 BC      LDA.w DATA_21BCC8,y               
 CODE_28BA76:        18            CLC                       
 CODE_28BA77:        65 0D         ADC $0D                   
 CODE_28BA79:        29 0F         AND #$0F                  
 CODE_28BA7B:        A8            TAY                       
-CODE_28BA7C:        BE D5 BC      LDX $BCD5,y               
+CODE_28BA7C:        BE D5 BC      LDX.w DATA_21BCD5,y               
 CODE_28BA7F:        B5 08         LDA $08,x                 
-CODE_28BA81:        D9 E5 BC      CMP $BCE5,y               
+CODE_28BA81:        D9 E5 BC      CMP.w DATA_21BCE5,y               
 CODE_28BA84:        F0 1D         BEQ CODE_28BAA3           
-CODE_28BA86:        D9 F5 BC      CMP $BCF5,y               
+CODE_28BA86:        D9 F5 BC      CMP.w DATA_21BCF5,y               
 CODE_28BA89:        F0 18         BEQ CODE_28BAA3           
 CODE_28BA8B:        C4 0D         CPY $0D                   
 CODE_28BA8D:        D0 0A         BNE CODE_28BA99           
@@ -5421,9 +5421,9 @@ CODE_28BAA1:        A0 10         LDY #$10
 CODE_28BAA3:        A6 9B         LDX $9B                   
 CODE_28BAA5:        98            TYA                       
 CODE_28BAA6:        95 68         STA $68,x                 
-CODE_28BAA8:        B9 16 BD      LDA $BD16,y               
+CODE_28BAA8:        B9 16 BD      LDA.w DATA_21BD16,y               
 CODE_28BAAB:        95 8C         STA $8C,x                 
-CODE_28BAAD:        B9 05 BD      LDA $BD05,y               
+CODE_28BAAD:        B9 05 BD      LDA.w DATA_21BD05,y               
 CODE_28BAB0:        95 9E         STA $9E,x                 
 CODE_28BAB2:        22 D8 A7 27   JSL CODE_27A7D8           
 CODE_28BAB6:        22 EF A7 27   JSL CODE_27A7EF           
@@ -5435,9 +5435,9 @@ CODE_28BAC3:        95 4D         STA $4D,x
 CODE_28BAC5:        6B            RTL                       
 
 CODE_28BAC6:        AC 25 00      LDY $0025                 
-CODE_28BAC9:        B9 27 BD      LDA $BD27,y               
+CODE_28BAC9:        B9 27 BD      LDA.w DATA_21BD27,y               
 CODE_28BACC:        9D 79 06      STA $0679,x               
-CODE_28BACF:        B9 29 BD      LDA $BD29,y               
+CODE_28BACF:        B9 29 BD      LDA.w DATA_21BD29,y               
 CODE_28BAD2:        95 8C         STA $8C,x                 
 CODE_28BAD4:        6B            RTL                       
 
@@ -5460,7 +5460,7 @@ CODE_28BAF2:        BD 18 05      LDA $0518,x
 CODE_28BAF5:        4A            LSR A                     
 CODE_28BAF6:        4A            LSR A                     
 CODE_28BAF7:        A8            TAY                       
-CODE_28BAF8:        B9 2B BD      LDA $BD2B,y               
+CODE_28BAF8:        B9 2B BD      LDA.w DATA_21BD2B,y               
 CODE_28BAFB:        9D 69 06      STA $0669,x               
 CODE_28BAFE:        10 59         BPL CODE_28BB59           
 CODE_28BB00:        20 43 BC      JSR CODE_28BC43           
@@ -5474,7 +5474,7 @@ CODE_28BB0D:        4A            LSR A
 CODE_28BB0E:        29 01         AND #$01                  
 CODE_28BB10:        9D 69 06      STA $0669,x               
 CODE_28BB13:        A5 15         LDA $15                   
-CODE_28BB15:        7D AA BC      ADC $BCAA,x               
+CODE_28BB15:        7D AA BC      ADC.w DATA_21BCAA,x               
 CODE_28BB18:        30 3F         BMI CODE_28BB59           
 CODE_28BB1A:        22 AD A7 27   JSL CODE_27A7AD           
 CODE_28BB1E:        5D 79 06      EOR $0679,x               
@@ -5517,7 +5517,7 @@ CODE_28BB72:        B5 4D         LDA $4D,x
 CODE_28BB74:        AA            TAX                       
 CODE_28BB75:        A5 00         LDA $00                   
 CODE_28BB77:        18            CLC                       
-CODE_28BB78:        7D 58 BD      ADC $BD58,x               
+CODE_28BB78:        7D 58 BD      ADC.w DATA_21BD58,x               
 CODE_28BB7B:        85 00         STA $00                   
 CODE_28BB7D:        A6 05         LDX $05                   
 CODE_28BB7F:        22 90 9F 27   JSL CODE_279F90           
@@ -5527,13 +5527,13 @@ CODE_28BB87:        B5 83         LDA $83,x
 CODE_28BB89:        24 02         BIT $02                   
 CODE_28BB8B:        30 04         BMI CODE_28BB91           
 CODE_28BB8D:        18            CLC                       
-CODE_28BB8E:        79 58 BD      ADC $BD58,y               
+CODE_28BB8E:        79 58 BD      ADC.w DATA_21BD58,y               
 CODE_28BB91:        85 00         STA $00                   
 CODE_28BB93:        B5 44         LDA $44,x                 
 CODE_28BB95:        85 D9         STA $D9                   
 CODE_28BB97:        B5 5F         LDA $5F,x                 
 CODE_28BB99:        85 D8         STA $D8                   
-CODE_28BB9B:        B9 3A BD      LDA $BD3A,y               
+CODE_28BB9B:        B9 3A BD      LDA.w DATA_21BD3A,y               
 CODE_28BB9E:        24 02         BIT $02                   
 CODE_28BBA0:        50 04         BVC CODE_28BBA6                   
 CODE_28BBA2:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
@@ -5668,7 +5668,7 @@ CODE_28BCAE:        29 7C         AND #$7C
 CODE_28BCB0:        4A            LSR A                     
 CODE_28BCB1:        4A            LSR A                     
 CODE_28BCB2:        AA            TAX                       
-CODE_28BCB3:        BD 76 BD      LDA $BD76,x               
+CODE_28BCB3:        BD 76 BD      LDA.w DATA_21BD76,x               
 CODE_28BCB6:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28BCBA:        0A            ASL A                     
 CODE_28BCBB:        0A            ASL A                     
@@ -5694,7 +5694,7 @@ CODE_28BCDD:        B5 A7         LDA $A7,x
 CODE_28BCDF:        29 04         AND #$04                  
 CODE_28BCE1:        F0 1B         BEQ CODE_28BCFE           
 CODE_28BCE3:        A5 15         LDA $15                   
-CODE_28BCE5:        7D AA BC      ADC $BCAA,x               
+CODE_28BCE5:        7D AA BC      ADC.w DATA_21BCAA,x               
 CODE_28BCE8:        29 9F         AND #$9F                  
 CODE_28BCEA:        D0 08         BNE CODE_28BCF4           
 CODE_28BCEC:        B5 8C         LDA $8C,x                 
@@ -5743,7 +5743,7 @@ CODE_28BD40:        4A            LSR A
 CODE_28BD41:        A8            TAY                       
 CODE_28BD42:        B5 68         LDA $68,x                 
 CODE_28BD44:        18            CLC                       
-CODE_28BD45:        79 76 BD      ADC $BD76,y               
+CODE_28BD45:        79 76 BD      ADC.w DATA_21BD76,y               
 CODE_28BD48:        95 68         STA $68,x                 
 CODE_28BD4A:        22 16 A3 27   JSL CODE_27A316           
 CODE_28BD4E:        22 C3 9B 27   JSL CODE_279BC3           
@@ -5836,7 +5836,7 @@ CODE_28BE08:        EB            XBA
 CODE_28BE09:        B5 5F         LDA $5F,x                 
 CODE_28BE0B:        C2 20         REP #$20                  
 CODE_28BE0D:        18            CLC                       
-CODE_28BE0E:        79 8E BD      ADC $BD8E,y               
+CODE_28BE0E:        79 8E BD      ADC.w DATA_21BD8E,y               
 CODE_28BE11:        E2 20         SEP #$20                  
 CODE_28BE13:        95 5F         STA $5F,x                 
 CODE_28BE15:        EB            XBA                       
@@ -6059,7 +6059,7 @@ CODE_28BFE3:        B5 68         LDA $68,x
 CODE_28BFE5:        AA            TAX                       
 CODE_28BFE6:        A5 00         LDA $00                   
 CODE_28BFE8:        18            CLC                       
-CODE_28BFE9:        7D 96 BD      ADC $BD96,x               
+CODE_28BFE9:        7D 96 BD      ADC.w DATA_21BD96,x               
 CODE_28BFEC:        85 00         STA $00                   
 CODE_28BFEE:        A6 05         LDX $05                   
 CODE_28BFF0:        22 90 9F 27   JSL CODE_279F90           
@@ -6069,7 +6069,7 @@ CODE_28BFF8:        24 02         BIT $02
 CODE_28BFFA:        30 06         BMI CODE_28C002           
 CODE_28BFFC:        B4 68         LDY $68,x                 
 CODE_28BFFE:        18            CLC                       
-CODE_28BFFF:        79 96 BD      ADC $BD96,y               
+CODE_28BFFF:        79 96 BD      ADC.w DATA_21BD96,y               
 CODE_28C002:        85 00         STA $00                   
 CODE_28C004:        24 02         BIT $02                   
 CODE_28C006:        70 0B         BVS CODE_28C013           
@@ -6232,10 +6232,10 @@ CODE_28C14D:        9D 05 16      STA $1605,x
 CODE_28C150:        1A            INC A                     
 CODE_28C151:        85 00         STA $00                   
 CODE_28C153:        AC D4 02      LDY $02D4                 
-CODE_28C156:        B9 15 BE      LDA $BE15,y               
+CODE_28C156:        B9 15 BE      LDA.w DATA_21BE15,y               
 CODE_28C159:        A8            TAY                       
 CODE_28C15A:        C2 20         REP #$20                  
-CODE_28C15C:        B9 A9 BD      LDA $BDA9,y               
+CODE_28C15C:        B9 A9 BD      LDA.w DATA_21BDA9,y               
 CODE_28C15F:        9D 06 16      STA $1606,x               
 CODE_28C162:        E2 20         SEP #$20                  
 CODE_28C164:        C8            INY                       
@@ -6257,7 +6257,7 @@ CODE_28C17F:        AD D4 02      LDA $02D4
 CODE_28C182:        C9 07         CMP #$07                  
 CODE_28C184:        90 19         BCC CODE_28C19F           
 CODE_28C186:        B4 68         LDY $68,x                 
-CODE_28C188:        B9 EE BE      LDA $BEEE,y               
+CODE_28C188:        B9 EE BE      LDA.w DATA_21BEEE,y               
 CODE_28C18B:        8D D4 02      STA $02D4                 
 CODE_28C18E:        A9 50         LDA #$50                  
 CODE_28C190:        8D 0B 07      STA $070B                 
@@ -6271,7 +6271,7 @@ CODE_28C19F:        60            RTS
 CODE_28C1A0:        BD 18 05      LDA $0518,x               
 CODE_28C1A3:        D0 72         BNE CODE_28C217           
 CODE_28C1A5:        AC D4 02      LDY $02D4                 
-CODE_28C1A8:        B9 1C BE      LDA $BE1C,y               
+CODE_28C1A8:        B9 1C BE      LDA.w DATA_21BE1C,y               
 CODE_28C1AB:        48            PHA                       
 CODE_28C1AC:        C9 FE         CMP #$FE                  
 CODE_28C1AE:        F0 0B         BEQ CODE_28C1BB           
@@ -6385,20 +6385,20 @@ CODE_28C2A3:        99 09 08      STA $0809,y
 CODE_28C2A6:        99 0D 08      STA $080D,y               
 CODE_28C2A9:        BD 69 06      LDA $0669,x               
 CODE_28C2AC:        AA            TAX                       
-CODE_28C2AD:        BD F0 BE      LDA $BEF0,x               
+CODE_28C2AD:        BD F0 BE      LDA.w DATA_21BEF0,x               
 CODE_28C2B0:        99 02 08      STA $0802,y               
 CODE_28C2B3:        1A            INC A                     
 CODE_28C2B4:        99 0A 08      STA $080A,y               
-CODE_28C2B7:        BD FD BE      LDA $BEFD,x               
+CODE_28C2B7:        BD FD BE      LDA.w DATA_21BEFD,x               
 CODE_28C2BA:        99 06 08      STA $0806,y               
 CODE_28C2BD:        1A            INC A                     
 CODE_28C2BE:        99 0E 08      STA $080E,y               
-CODE_28C2C1:        BD 0A BF      LDA $BF0A,x               
+CODE_28C2C1:        BD 0A BF      LDA.w DATA_21BF0A,x               
 CODE_28C2C4:        29 0F         AND #$0F                  
 CODE_28C2C6:        09 20         ORA #$20                  
 CODE_28C2C8:        99 03 08      STA $0803,y               
 CODE_28C2CB:        99 0B 08      STA $080B,y               
-CODE_28C2CE:        BD 0A BF      LDA $BF0A,x               
+CODE_28C2CE:        BD 0A BF      LDA.w DATA_21BF0A,x               
 CODE_28C2D1:        09 20         ORA #$20                  
 CODE_28C2D3:        99 07 08      STA $0807,y               
 CODE_28C2D6:        99 0F 08      STA $080F,y               
@@ -6555,7 +6555,7 @@ CODE_28C419:        C8            INY
 CODE_28C41A:        BD 79 06      LDA $0679,x               
 CODE_28C41D:        0A            ASL A                     
 CODE_28C41E:        0A            ASL A                     
-CODE_28C41F:        B9 18 BF      LDA $BF18,y               
+CODE_28C41F:        B9 18 BF      LDA.w DATA_21BF18,y               
 CODE_28C422:        B0 04         BCS CODE_28C428                   
 CODE_28C424:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28C428:        95 8C         STA $8C,x                 
@@ -6563,7 +6563,7 @@ CODE_28C42A:        B5 A7         LDA $A7,x
 CODE_28C42C:        29 04         AND #$04                  
 CODE_28C42E:        F0 0C         BEQ CODE_28C43C           
 CODE_28C430:        A5 15         LDA $15                   
-CODE_28C432:        39 1B BF      AND $BF1B,y               
+CODE_28C432:        39 1B BF      AND.w DATA_21BF1B,y               
 CODE_28C435:        F0 02         BEQ CODE_28C439           
 CODE_28C437:        A9 01         LDA #$01                  
 CODE_28C439:        9D 69 06      STA $0669,x               
@@ -6578,9 +6578,9 @@ CODE_28C44A:        9D 79 06      STA $0679,x
 CODE_28C44D:        6B            RTL                       
 
 CODE_28C44E:        B4 68         LDY $68,x                 
-CODE_28C450:        B9 1D BF      LDA $BF1D,y               
+CODE_28C450:        B9 1D BF      LDA.w DATA_21BF1D,y               
 CODE_28C453:        9D 69 06      STA $0669,x               
-CODE_28C456:        B9 25 BF      LDA $BF25,y               
+CODE_28C456:        B9 25 BF      LDA.w DATA_21BF25,y               
 CODE_28C459:        9D 18 05      STA $0518,x               
 CODE_28C45C:        6B            RTL                       
 
@@ -6625,7 +6625,7 @@ CODE_28C4A4:        22 89 A2 27   JSL CODE_27A289
 CODE_28C4A8:        22 F8 9D 27   JSL CODE_279DF8           
 CODE_28C4AC:        A6 9B         LDX $9B                   
 CODE_28C4AE:        BC 69 06      LDY $0669,x               
-CODE_28C4B1:        BE 2C BF      LDX $BF2C,y               
+CODE_28C4B1:        BE 2C BF      LDX.w DATA_21BF2C,y               
 CODE_28C4B4:        22 79 A0 27   JSL CODE_27A079           
 CODE_28C4B8:        A6 9B         LDX $9B                   
 CODE_28C4BA:        24 02         BIT $02                   
@@ -6646,7 +6646,7 @@ CODE_28C4D6:        E2 20         SEP #$20
 CODE_28C4D8:        A4 D8         LDY $D8                   
 CODE_28C4DA:        B9 01 08      LDA $0801,y               
 CODE_28C4DD:        18            CLC                       
-CODE_28C4DE:        7D 30 BF      ADC $BF30,x               
+CODE_28C4DE:        7D 30 BF      ADC.w DATA_21BF30,x               
 CODE_28C4E1:        99 01 08      STA $0801,y               
 CODE_28C4E4:        18            CLC                       
 CODE_28C4E5:        69 08         ADC #$08                  
@@ -6705,7 +6705,7 @@ CODE_28C54A:        F0 04         BEQ CODE_28C550
 CODE_28C54C:        C9 03         CMP #$03                  
 CODE_28C54E:        D0 6E         BNE CODE_28C5BE           
 CODE_28C550:        BC 71 06      LDY $0671,x               
-CODE_28C553:        B9 78 AE      LDA $AE78,y               
+CODE_28C553:        B9 78 AE      LDA.w DATA_21AE78,y               
 CODE_28C556:        29 10         AND #$10                  
 CODE_28C558:        F0 64         BEQ CODE_28C5BE           
 CODE_28C55A:        BD 81 06      LDA $0681,x               
@@ -6761,10 +6761,10 @@ CODE_28C5C3:        60            RTS
 CODE_28C5C4:        A4 25         LDY $25                   
 CODE_28C5C6:        A5 5E         LDA $5E                   
 CODE_28C5C8:        18            CLC                       
-CODE_28C5C9:        79 39 BF      ADC $BF39,y               
+CODE_28C5C9:        79 39 BF      ADC.w DATA_21BF39,y               
 CODE_28C5CC:        95 5F         STA $5F,x                 
 CODE_28C5CE:        A5 43         LDA $43                   
-CODE_28C5D0:        79 3B BF      ADC $BF3B,y               
+CODE_28C5D0:        79 3B BF      ADC.w DATA_21BF3B,y               
 CODE_28C5D3:        95 44         STA $44,x                 
 CODE_28C5D5:        98            TYA                       
 CODE_28C5D6:        95 68         STA $68,x                 
@@ -6828,11 +6828,11 @@ CODE_28C657:        95 9E         STA $9E,x
 CODE_28C659:        B4 68         LDY $68,x                 
 CODE_28C65B:        B5 8C         LDA $8C,x                 
 CODE_28C65D:        18            CLC                       
-CODE_28C65E:        79 3F BF      ADC $BF3F,y               
+CODE_28C65E:        79 3F BF      ADC.w DATA_21BF3F,y               
 CODE_28C661:        30 08         BMI CODE_28C66B           
 CODE_28C663:        B5 8C         LDA $8C,x                 
 CODE_28C665:        18            CLC                       
-CODE_28C666:        79 41 BF      ADC $BF41,y               
+CODE_28C666:        79 41 BF      ADC.w DATA_21BF41,y               
 CODE_28C669:        95 8C         STA $8C,x                 
 CODE_28C66B:        B5 8C         LDA $8C,x                 
 CODE_28C66D:        4A            LSR A                     
@@ -6842,13 +6842,13 @@ CODE_28C672:        9D 79 06      STA $0679,x
 CODE_28C675:        22 AD A7 27   JSL CODE_27A7AD           
 CODE_28C679:        A5 0E         LDA $0E                   
 CODE_28C67B:        18            CLC                       
-CODE_28C67C:        79 43 BF      ADC $BF43,y               
+CODE_28C67C:        79 43 BF      ADC.w DATA_21BF43,y               
 CODE_28C67F:        10 05         BPL CODE_28C686           
 CODE_28C681:        98            TYA                       
 CODE_28C682:        49 01         EOR #$01                  
 CODE_28C684:        95 68         STA $68,x                 
 CODE_28C686:        A5 0E         LDA $0E                   
-CODE_28C688:        D9 3D BF      CMP $BF3D,y               
+CODE_28C688:        D9 3D BF      CMP.w DATA_21BF3D,y               
 CODE_28C68B:        D0 A7         BNE CODE_28C634           
 CODE_28C68D:        22 C4 A7 27   JSL CODE_27A7C4           
 CODE_28C691:        A5 0E         LDA $0E                   
@@ -6887,7 +6887,7 @@ CODE_28C6CD:        22 AD A7 27   JSL CODE_27A7AD
 CODE_28C6D1:        B4 68         LDY $68,x                 
 CODE_28C6D3:        A5 0E         LDA $0E                   
 CODE_28C6D5:        18            CLC                       
-CODE_28C6D6:        79 45 BF      ADC $BF45,y               
+CODE_28C6D6:        79 45 BF      ADC.w DATA_21BF45,y               
 CODE_28C6D9:        C9 02         CMP #$02                  
 CODE_28C6DB:        B0 25         BCS CODE_28C702                   
 CODE_28C6DD:        22 C4 A7 27   JSL CODE_27A7C4           
@@ -7060,11 +7060,11 @@ CODE_28C837:        95 9E         STA $9E,x
 CODE_28C839:        B4 68         LDY $68,x                 
 CODE_28C83B:        B5 8C         LDA $8C,x                 
 CODE_28C83D:        18            CLC                       
-CODE_28C83E:        79 51 BF      ADC $BF51,y               
+CODE_28C83E:        79 51 BF      ADC.w DATA_21BF51,y               
 CODE_28C841:        30 08         BMI CODE_28C84B           
 CODE_28C843:        B5 8C         LDA $8C,x                 
 CODE_28C845:        18            CLC                       
-CODE_28C846:        79 53 BF      ADC $BF53,y               
+CODE_28C846:        79 53 BF      ADC.w DATA_21BF53,y               
 CODE_28C849:        95 8C         STA $8C,x                 
 CODE_28C84B:        B5 8C         LDA $8C,x                 
 CODE_28C84D:        4A            LSR A                     
@@ -7081,13 +7081,13 @@ CODE_28C862:        4C C4 C5      JMP CODE_28C5C4
 
 CODE_28C865:        A5 0E         LDA $0E                   
 CODE_28C867:        18            CLC                       
-CODE_28C868:        79 55 BF      ADC $BF55,y               
+CODE_28C868:        79 55 BF      ADC.w DATA_21BF55,y               
 CODE_28C86B:        10 05         BPL CODE_28C872           
 CODE_28C86D:        98            TYA                       
 CODE_28C86E:        49 01         EOR #$01                  
 CODE_28C870:        95 68         STA $68,x                 
 CODE_28C872:        A5 0E         LDA $0E                   
-CODE_28C874:        D9 4F BF      CMP $BF4F,y               
+CODE_28C874:        D9 4F BF      CMP.w DATA_21BF4F,y               
 CODE_28C877:        D0 4B         BNE CODE_28C8C4           
 CODE_28C879:        22 C4 A7 27   JSL CODE_27A7C4           
 CODE_28C87D:        A5 0E         LDA $0E                   
@@ -7232,7 +7232,7 @@ CODE_28C987:        F6 A7         INC $A7,x
 CODE_28C989:        A9 00         LDA #$00                  
 CODE_28C98B:        A8            TAY                       
 CODE_28C98C:        9D 89 06      STA $0689,x               
-CODE_28C98F:        B9 66 BF      LDA $BF66,y               
+CODE_28C98F:        B9 66 BF      LDA.w DATA_21BF66,y               
 CODE_28C992:        9D 69 06      STA $0669,x               
 CODE_28C995:        22 71 CE 28   JSL CODE_28CE71           
 CODE_28C999:        C2 10         REP #$10                  
@@ -7423,7 +7423,7 @@ CODE_28CB42:        20 EF CC      JSR CODE_28CCEF
 CODE_28CB45:        98            TYA                       
 CODE_28CB46:        9D 91 06      STA $0691,x               
 CODE_28CB49:        B4 68         LDY $68,x                 
-CODE_28CB4B:        B9 B2 BF      LDA $BFB2,y               
+CODE_28CB4B:        B9 B2 BF      LDA.w DATA_21BFB2,y               
 CODE_28CB4E:        9D 89 06      STA $0689,x               
 CODE_28CB51:        A9 06         LDA #$06                  
 CODE_28CB53:        95 A7         STA $A7,x                 
@@ -7514,14 +7514,14 @@ CODE_28CC07:        99 01 08      STA $0801,y
 CODE_28CC0A:        18            CLC                       
 CODE_28CC0B:        69 08         ADC #$08                  
 CODE_28CC0D:        99 05 08      STA $0805,y               
-CODE_28CC10:        BD B7 BF      LDA $BFB7,x               
+CODE_28CC10:        BD B7 BF      LDA.w DATA_21BFB7,x               
 CODE_28CC13:        99 02 08      STA $0802,y               
 CODE_28CC16:        1A            INC A                     
 CODE_28CC17:        99 06 08      STA $0806,y               
 CODE_28CC1A:        A9 22         LDA #$22                  
 CODE_28CC1C:        99 03 08      STA $0803,y               
 CODE_28CC1F:        99 07 08      STA $0807,y               
-CODE_28CC22:        BD BA BF      LDA $BFBA,x               
+CODE_28CC22:        BD BA BF      LDA.w DATA_21BFBA,x               
 CODE_28CC25:        2C 16 02      BIT $0216                 
 CODE_28CC28:        10 03         BPL CODE_28CC2D           
 CODE_28CC2A:        18            CLC                       
@@ -7554,7 +7554,7 @@ CODE_28CC52:        10 AD         BPL CODE_28CC01
 CODE_28CC54:        A6 9B         LDX $9B                   
 CODE_28CC56:        B5 68         LDA $68,x                 
 CODE_28CC58:        AA            TAX                       
-CODE_28CC59:        BD BC BF      LDA $BFBC,x               
+CODE_28CC59:        BD BC BF      LDA.w DATA_21BFBC,x               
 CODE_28CC5C:        99 FA 07      STA $07FA,y               
 CODE_28CC5F:        1A            INC A                     
 CODE_28CC60:        99 FE 07      STA $07FE,y               
@@ -7610,10 +7610,10 @@ CODE_28CCC5:        AE 00 16      LDX $1600
 CODE_28CCC8:        A9 02         LDA #$02                  
 CODE_28CCCA:        85 00         STA $00                   
 CODE_28CCCC:        C2 20         REP #$20                  
-CODE_28CCCE:        B9 B9 BF      LDA $BFB9,y               
+CODE_28CCCE:        B9 B9 BF      LDA.w DATA_21BFB9,y               
 CODE_28CCD1:        9D F6 15      STA $15F6,x               
 CODE_28CCD4:        9D E6 15      STA $15E6,x               
-CODE_28CCD7:        B9 D1 BF      LDA $BFD1,y               
+CODE_28CCD7:        B9 D1 BF      LDA.w DATA_21BFD1,y               
 CODE_28CCDA:        9D FE 15      STA $15FE,x               
 CODE_28CCDD:        9D EE 15      STA $15EE,x               
 CODE_28CCE0:        E2 20         SEP #$20                  
@@ -7632,11 +7632,11 @@ CODE_28CCF2:        F0 02         BEQ CODE_28CCF6
 CODE_28CCF4:        A0 23         LDY #$23                  
 CODE_28CCF6:        60            RTS                       
 
-CODE_28CCF7:        B9 6F BF      LDA $BF6F,y               
+CODE_28CCF7:        B9 6F BF      LDA.w DATA_21BF6E+1,y               
 CODE_28CCFA:        85 00         STA $00                   
-CODE_28CCFC:        BE 6E BF      LDX $BF6E,y               
+CODE_28CCFC:        BE 6E BF      LDX.w DATA_21BF6E,y               
 CODE_28CCFF:        AC 00 16      LDY $1600                 
-CODE_28CD02:        BD 71 BF      LDA $BF71,x               
+CODE_28CD02:        BD 71 BF      LDA.w DATA_21BF71,x               
 CODE_28CD05:        99 02 16      STA $1602,y               
 CODE_28CD08:        C8            INY                       
 CODE_28CD09:        E8            INX                       
@@ -7753,9 +7753,9 @@ CODE_28CDF5:        95 8C         STA $8C,x
 CODE_28CDF7:        A9 D8         LDA #$D8                  
 CODE_28CDF9:        95 9E         STA $9E,x                 
 CODE_28CDFB:        BC 69 06      LDY $0669,x               
-CODE_28CDFE:        B9 F1 BF      LDA $BFF1,y               
+CODE_28CDFE:        B9 F1 BF      LDA.w DATA_21BFF1,y               
 CODE_28CE01:        9D 89 06      STA $0689,x               
-CODE_28CE04:        B9 F4 BF      LDA $BFF4,y               
+CODE_28CE04:        B9 F4 BF      LDA.w DATA_21BFF4,y               
 CODE_28CE07:        9D 69 06      STA $0669,x               
 CODE_28CE0A:        C8            INY                       
 CODE_28CE0B:        98            TYA                       
@@ -7816,7 +7816,7 @@ CODE_28CE8A:        AA            TAX
 CODE_28CE8B:        E2 20         SEP #$20                  
 CODE_28CE8D:        BD 03 08      LDA $0803,x               
 CODE_28CE90:        29 B9         AND #$B9                  
-CODE_28CE92:        19 57 BF      ORA $BF57,y               
+CODE_28CE92:        19 57 BF      ORA.w DATA_21BF57,y               
 CODE_28CE95:        9D 03 08      STA $0803,x               
 CODE_28CE98:        9D 0B 08      STA $080B,x               
 CODE_28CE9B:        49 40         EOR #$40                  
@@ -7931,7 +7931,7 @@ CODE_28D04A:        F6 4D         INC $4D,x
 CODE_28D04C:        A9 D0         LDA #$D0                  
 CODE_28D04E:        95 9E         STA $9E,x                 
 CODE_28D050:        B4 68         LDY $68,x                 
-CODE_28D052:        B9 BC AD      LDA $ADBC,y               
+CODE_28D052:        B9 BC AD      LDA.w DATA_21ADBC,y               
 CODE_28D055:        9D E9 1F      STA $1FE9,x               
 CODE_28D058:        20 B3 D0      JSR CODE_28D0B3           
 CODE_28D05B:        A9 00         LDA #$00                  
@@ -7967,7 +7967,7 @@ CODE_28D09B:        6B            RTL
 CODE_28D09C:        AF 63 39 7E   LDA $7E3963               
 CODE_28D0A0:        A8            TAY                       
 CODE_28D0A1:        9D 69 06      STA $0669,x               
-CODE_28D0A4:        B9 AB C0      LDA $C0AB,y               
+CODE_28D0A4:        B9 AB C0      LDA.w DATA_21C0AB,y               
 CODE_28D0A7:        10 05         BPL CODE_28D0AE           
 CODE_28D0A9:        22 DD 9E 27   JSL CODE_279EDD           
 CODE_28D0AD:        6B            RTL                       
@@ -8066,7 +8066,7 @@ CODE_28D169:        95 9E         STA $9E,x
 CODE_28D16B:        A9 70         LDA #$70                  
 CODE_28D16D:        9D 18 05      STA $0518,x               
 CODE_28D170:        22 37 A8 27   JSL CODE_27A837           
-CODE_28D174:        B9 B9 C0      LDA $C0B9,y               
+CODE_28D174:        B9 B9 C0      LDA.w DATA_21C0B9,y               
 CODE_28D177:        95 8C         STA $8C,x                 
 CODE_28D179:        80 16         BRA CODE_28D191           
 
@@ -8163,14 +8163,14 @@ CODE_28D245:        C2 10         REP #$10
 CODE_28D247:        A4 D8         LDY $D8                   
 CODE_28D249:        B9 01 08      LDA $0801,y               
 CODE_28D24C:        38            SEC                       
-CODE_28D24D:        FD BB C0      SBC $C0BB,x               
+CODE_28D24D:        FD BB C0      SBC.w DATA_21C0BB,x               
 CODE_28D250:        99 01 08      STA $0801,y               
 CODE_28D253:        18            CLC                       
 CODE_28D254:        69 08         ADC #$08                  
 CODE_28D256:        99 09 08      STA $0809,y               
 CODE_28D259:        B9 05 08      LDA $0805,y               
 CODE_28D25C:        38            SEC                       
-CODE_28D25D:        FD BB C0      SBC $C0BB,x               
+CODE_28D25D:        FD BB C0      SBC.w DATA_21C0BB,x               
 CODE_28D260:        99 05 08      STA $0805,y               
 CODE_28D263:        18            CLC                       
 CODE_28D264:        69 08         ADC #$08                  
@@ -8235,18 +8235,18 @@ CODE_28D2D6:        85 D8         STA $D8
 CODE_28D2D8:        A6 0F         LDX $0F                   
 CODE_28D2DA:        A5 00         LDA $00                   
 CODE_28D2DC:        18            CLC                       
-CODE_28D2DD:        7D C1 C0      ADC $C0C1,x               
+CODE_28D2DD:        7D C1 C0      ADC.w DATA_21C0C1,x               
 CODE_28D2E0:        99 BF 05      STA $05BF,y               
 CODE_28D2E3:        A5 02         LDA $02                   
-CODE_28D2E5:        7D C6 C0      ADC $C0C6,x               
+CODE_28D2E5:        7D C6 C0      ADC.w DATA_21C0C6,x               
 CODE_28D2E8:        99 D7 1F      STA $1FD7,y               
 CODE_28D2EB:        A5 01         LDA $01                   
 CODE_28D2ED:        99 C9 05      STA $05C9,y               
 CODE_28D2F0:        A5 D8         LDA $D8                   
 CODE_28D2F2:        99 E2 00      STA $00E2,y               
-CODE_28D2F5:        BD D0 C0      LDA $C0D0,x               
+CODE_28D2F5:        BD D0 C0      LDA.w DATA_21C0D0,x               
 CODE_28D2F8:        99 D3 05      STA $05D3,y               
-CODE_28D2FB:        BD D5 C0      LDA $C0D5,x               
+CODE_28D2FB:        BD D5 C0      LDA.w DATA_21C0D5,x               
 CODE_28D2FE:        99 DD 05      STA $05DD,y               
 CODE_28D301:        A9 13         LDA #$13                  
 CODE_28D303:        E0 04         CPX #$04                  
@@ -8265,7 +8265,7 @@ CODE_28D31F:        99 D1 06      STA $06D1,y
 CODE_28D322:        60            RTS                       
 
 CODE_28D323:        22 37 A8 27   JSL CODE_27A837           
-CODE_28D327:        B9 DA C0      LDA $C0DA,y               
+CODE_28D327:        B9 DA C0      LDA.w DATA_21C0DA,y               
 CODE_28D32A:        95 8C         STA $8C,x                 
 CODE_28D32C:        A9 80         LDA #$80                  
 CODE_28D32E:        9D 79 06      STA $0679,x               
@@ -8417,12 +8417,12 @@ CODE_28D46A:        8D 29 05      STA $0529
 CODE_28D46D:        60            RTS                       
 
 CODE_28D46E:        22 37 A8 27   JSL CODE_27A837           
-CODE_28D472:        B9 E6 C0      LDA $C0E6,y               
+CODE_28D472:        B9 E6 C0      LDA.w DATA_21C0E6,y               
 CODE_28D475:        95 8C         STA $8C,x                 
 CODE_28D477:        6B            RTL                       
 
 CODE_28D478:        22 37 A8 27   JSL CODE_27A837           
-CODE_28D47C:        B9 E8 C0      LDA $C0E8,y               
+CODE_28D47C:        B9 E8 C0      LDA.w DATA_21C0E8,y               
 CODE_28D47F:        95 8C         STA $8C,x                 
 CODE_28D481:        FE 21 10      INC $1021,x               
 CODE_28D484:        6B            RTL                       
@@ -8477,7 +8477,7 @@ CODE_28D4E8:        BD D2 1F      LDA $1FD2,x
 CODE_28D4EB:        29 3F         AND #$3F                  
 CODE_28D4ED:        D0 09         BNE CODE_28D4F8           
 CODE_28D4EF:        22 37 A8 27   JSL CODE_27A837           
-CODE_28D4F3:        B9 E8 C0      LDA $C0E8,y               
+CODE_28D4F3:        B9 E8 C0      LDA.w DATA_21C0E8,y               
 CODE_28D4F6:        95 8C         STA $8C,x                 
 CODE_28D4F8:        B5 A7         LDA $A7,x                 
 CODE_28D4FA:        29 03         AND #$03                  
@@ -8612,11 +8612,11 @@ CODE_28D608:        69 06         ADC #$06
 CODE_28D60A:        AA            TAX                       
 CODE_28D60B:        A5 00         LDA $00                   
 CODE_28D60D:        18            CLC                       
-CODE_28D60E:        7D FE C0      ADC $C0FE,x               
+CODE_28D60E:        7D FE C0      ADC.w DATA_21C0FE,x               
 CODE_28D611:        85 00         STA $00                   
 CODE_28D613:        A5 01         LDA $01                   
 CODE_28D615:        18            CLC                       
-CODE_28D616:        7D F2 C0      ADC $C0F2,x               
+CODE_28D616:        7D F2 C0      ADC.w DATA_21C0F2,x               
 CODE_28D619:        85 01         STA $01                   
 CODE_28D61B:        C6 02         DEC $02                   
 CODE_28D61D:        10 EC         BPL CODE_28D60B           
@@ -8809,7 +8809,7 @@ CODE_28D79D:        AA            TAX
 CODE_28D79E:        E2 20         SEP #$20                  
 CODE_28D7A0:        68            PLA                       
 CODE_28D7A1:        85 D8         STA $D8                   
-CODE_28D7A3:        BD 0A C1      LDA $C10A,x               
+CODE_28D7A3:        BD 0A C1      LDA.w DATA_21C10A,x               
 CODE_28D7A6:        A6 9B         LDX $9B                   
 CODE_28D7A8:        C9 70         CMP #$70                  
 CODE_28D7AA:        F0 42         BEQ CODE_28D7EE           
@@ -8941,7 +8941,7 @@ CODE_28D8A2:        4A            LSR A
 CODE_28D8A3:        4A            LSR A                     
 CODE_28D8A4:        4A            LSR A                     
 CODE_28D8A5:        A8            TAY                       
-CODE_28D8A6:        B9 30 C1      LDA $C130,y               
+CODE_28D8A6:        B9 30 C1      LDA.w DATA_21C130,y               
 CODE_28D8A9:        9D 69 06      STA $0669,x               
 CODE_28D8AC:        BD 71 07      LDA $0771,x               
 CODE_28D8AF:        C9 10         CMP #$10                  
@@ -8951,7 +8951,7 @@ CODE_28D8B5:        95 9E         STA $9E,x
 CODE_28D8B7:        BD 91 06      LDA $0691,x               
 CODE_28D8BA:        D0 09         BNE CODE_28D8C5           
 CODE_28D8BC:        22 37 A8 27   JSL CODE_27A837           
-CODE_28D8C0:        B9 2A C1      LDA $C12A,y               
+CODE_28D8C0:        B9 2A C1      LDA.w DATA_21C12A,y               
 CODE_28D8C3:        95 8C         STA $8C,x                 
 CODE_28D8C5:        A5 15         LDA $15                   
 CODE_28D8C7:        4A            LSR A                     
@@ -9011,10 +9011,10 @@ CODE_28D930:        BD 91 06      LDA $0691,x
 CODE_28D933:        F0 24         BEQ CODE_28D959           
 CODE_28D935:        22 37 A8 27   JSL CODE_27A837           
 CODE_28D939:        B5 8C         LDA $8C,x                 
-CODE_28D93B:        D9 40 C1      CMP $C140,y               
+CODE_28D93B:        D9 40 C1      CMP.w DATA_21C140,y               
 CODE_28D93E:        F0 09         BEQ CODE_28D949           
 CODE_28D940:        18            CLC                       
-CODE_28D941:        79 44 C1      ADC $C144,y               
+CODE_28D941:        79 44 C1      ADC.w DATA_21C144,y               
 CODE_28D944:        95 8C         STA $8C,x                 
 CODE_28D946:        FE D2 1F      INC $1FD2,x               
 CODE_28D949:        FE 89 06      INC $0689,x               
@@ -9043,7 +9043,7 @@ DATA_28D978:        db $20,$E0
 CODE_28D97A:        29 3F         AND #$3F
 CODE_28D97C:        D0 09         BNE CODE_28D987             
 CODE_28D97E:        22 37 A8 27   JSL CODE_27A837
-CODE_28D982:        B9 2A C1      LDA $C12A,y
+CODE_28D982:        B9 2A C1      LDA.w DATA_21C12A,y
 CODE_28D985:        95 8C         STA $8C,x
 CODE_28D987:        BD D2 1F      LDA $1FD2,x
 CODE_28D98A:        29 03         AND #$03
@@ -9132,10 +9132,10 @@ CODE_28DA41:        BD 91 06      LDA $0691,x
 CODE_28DA44:        F0 17         BEQ CODE_28DA5D           
 CODE_28DA46:        22 37 A8 27   JSL CODE_27A837           
 CODE_28DA4A:        B5 8C         LDA $8C,x                 
-CODE_28DA4C:        D9 40 C1      CMP $C140,y               
+CODE_28DA4C:        D9 40 C1      CMP.w DATA_21C140,y               
 CODE_28DA4F:        F0 09         BEQ CODE_28DA5A           
 CODE_28DA51:        18            CLC                       
-CODE_28DA52:        79 44 C1      ADC $C144,y               
+CODE_28DA52:        79 44 C1      ADC.w DATA_21C144,y               
 CODE_28DA55:        95 8C         STA $8C,x                 
 CODE_28DA57:        FE D2 1F      INC $1FD2,x               
 CODE_28DA5A:        4C 63 DA      JMP CODE_28DA63           
@@ -9156,7 +9156,7 @@ CODE_28DA73:        9D 21 10      STA $1021,x
 CODE_28DA76:        60            RTS                       
 
 CODE_28DA77:        22 37 A8 27   JSL CODE_27A837           
-CODE_28DA7B:        B9 2A C1      LDA $C12A,y               
+CODE_28DA7B:        B9 2A C1      LDA.w DATA_21C12A,y               
 CODE_28DA7E:        95 8C         STA $8C,x                 
 CODE_28DA80:        60            RTS                       
 
@@ -9253,10 +9253,10 @@ CODE_28DB39:        BD 91 06      LDA $0691,x
 CODE_28DB3C:        F0 15         BEQ CODE_28DB53           
 CODE_28DB3E:        22 37 A8 27   JSL CODE_27A837           
 CODE_28DB42:        B5 8C         LDA $8C,x                 
-CODE_28DB44:        D9 42 C1      CMP $C142,y               
+CODE_28DB44:        D9 42 C1      CMP.w DATA_21C142,y               
 CODE_28DB47:        F0 09         BEQ CODE_28DB52           
 CODE_28DB49:        18            CLC                       
-CODE_28DB4A:        79 46 C1      ADC $C146,y               
+CODE_28DB4A:        79 46 C1      ADC.w DATA_21C146,y               
 CODE_28DB4D:        95 8C         STA $8C,x                 
 CODE_28DB4F:        FE D2 1F      INC $1FD2,x               
 CODE_28DB52:        60            RTS                       
@@ -9269,7 +9269,7 @@ CODE_28DB5D:        AD 27 07      LDA $0727
 CODE_28DB60:        D0 02         BNE CODE_28DB64           
 CODE_28DB62:        C8            INY                       
 CODE_28DB63:        C8            INY                       
-CODE_28DB64:        B9 2C C1      LDA $C12C,y               
+CODE_28DB64:        B9 2C C1      LDA.w DATA_21C12C,y               
 CODE_28DB67:        95 8C         STA $8C,x                 
 CODE_28DB69:        60            RTS                       
 
@@ -9324,7 +9324,7 @@ CODE_28DBC6:        AD EF 1C      LDA $1CEF
 CODE_28DBC9:        30 0F         BMI CODE_28DBDA           
 CODE_28DBCB:        A5 00         LDA $00                   
 CODE_28DBCD:        18            CLC                       
-CODE_28DBCE:        7D 74 C1      ADC $C174,x               
+CODE_28DBCE:        7D 74 C1      ADC.w DATA_21C174,x               
 CODE_28DBD1:        99 11 08      STA $0811,y               
 CODE_28DBD4:        18            CLC                       
 CODE_28DBD5:        69 08         ADC #$08                  
@@ -9334,16 +9334,16 @@ CODE_28DBDD:        29 10         AND #$10
 CODE_28DBDF:        D0 0F         BNE CODE_28DBF0           
 CODE_28DBE1:        A5 00         LDA $00                   
 CODE_28DBE3:        18            CLC                       
-CODE_28DBE4:        7D 8A C1      ADC $C18A,x               
+CODE_28DBE4:        7D 8A C1      ADC.w DATA_21C18A,x               
 CODE_28DBE7:        99 15 08      STA $0815,y               
 CODE_28DBEA:        18            CLC                       
 CODE_28DBEB:        69 08         ADC #$08                  
 CODE_28DBED:        99 1D 08      STA $081D,y               
-CODE_28DBF0:        BD 48 C1      LDA $C148,x               
+CODE_28DBF0:        BD 48 C1      LDA.w DATA_21C148,x               
 CODE_28DBF3:        99 12 08      STA $0812,y               
 CODE_28DBF6:        1A            INC A                     
 CODE_28DBF7:        99 1A 08      STA $081A,y               
-CODE_28DBFA:        BD 5E C1      LDA $C15E,x               
+CODE_28DBFA:        BD 5E C1      LDA.w DATA_21C15E,x               
 CODE_28DBFD:        99 16 08      STA $0816,y               
 CODE_28DC00:        1A            INC A                     
 CODE_28DC01:        99 1E 08      STA $081E,y               
@@ -9481,14 +9481,14 @@ CODE_28DD18:        69 00         ADC #$00
 CODE_28DD1A:        99 D7 1F      STA $1FD7,y               
 CODE_28DD1D:        A9 00         LDA #$00                  
 CODE_28DD1F:        9D C7 06      STA $06C7,x               
-CODE_28DD22:        B9 B0 C1      LDA $C1B0,y               
+CODE_28DD22:        B9 B0 C1      LDA.w DATA_21C1B0,y               
 CODE_28DD25:        99 D3 05      STA $05D3,y               
 CODE_28DD28:        98            TYA                       
 CODE_28DD29:        18            CLC                       
 CODE_28DD2A:        69 02         ADC #$02                  
 CODE_28DD2C:        29 07         AND #$07                  
 CODE_28DD2E:        AA            TAX                       
-CODE_28DD2F:        BD B0 C1      LDA $C1B0,x               
+CODE_28DD2F:        BD B0 C1      LDA.w DATA_21C1B0,x               
 CODE_28DD32:        99 DD 05      STA $05DD,y               
 CODE_28DD35:        A9 3F         LDA #$3F                  
 CODE_28DD37:        99 D1 06      STA $06D1,y               
@@ -9592,7 +9592,7 @@ CODE_28DDF2:        F0 01         BEQ CODE_28DDF5
 CODE_28DDF4:        C8            INY                       
 CODE_28DDF5:        B5 7A         LDA $7A,x                 
 CODE_28DDF7:        18            CLC                       
-CODE_28DDF8:        79 B8 C1      ADC $C1B8,y               
+CODE_28DDF8:        79 B8 C1      ADC.w DATA_21C1B8,y               
 CODE_28DDFB:        85 01         STA $01                   
 CODE_28DDFD:        C2 10         REP #$10                  
 CODE_28DDFF:        B4 C6         LDY $C6,x                 
@@ -9706,11 +9706,11 @@ CODE_28DEEB:        99 1B 08      STA $081B,y
 CODE_28DEEE:        99 1F 08      STA $081F,y               
 CODE_28DEF1:        BD 69 06      LDA $0669,x               
 CODE_28DEF4:        AA            TAX                       
-CODE_28DEF5:        BD BA C1      LDA $C1BA,x               
+CODE_28DEF5:        BD BA C1      LDA.w DATA_21C1BA,x               
 CODE_28DEF8:        99 12 08      STA $0812,y               
 CODE_28DEFB:        1A            INC A                     
 CODE_28DEFC:        99 1A 08      STA $081A,y               
-CODE_28DEFF:        BD BD C1      LDA $C1BD,x               
+CODE_28DEFF:        BD BD C1      LDA.w DATA_21C1BD,x               
 CODE_28DF02:        99 16 08      STA $0816,y               
 CODE_28DF05:        1A            INC A                     
 CODE_28DF06:        99 1E 08      STA $081E,y               
@@ -9761,14 +9761,14 @@ CODE_28DF5A:        48            PHA
 CODE_28DF5B:        B5 5F         LDA $5F,x                 
 CODE_28DF5D:        18            CLC                       
 CODE_28DF5E:        A6 00         LDX $00                   
-CODE_28DF60:        7D C0 C1      ADC $C1C0,x               
+CODE_28DF60:        7D C0 C1      ADC.w DATA_21C1C0,x               
 CODE_28DF63:        99 C9 05      STA $05C9,y               
 CODE_28DF66:        68            PLA                       
 CODE_28DF67:        69 00         ADC #$00                  
 CODE_28DF69:        99 E2 00      STA $00E2,y               
-CODE_28DF6C:        BD CA C1      LDA $C1CA,x               
+CODE_28DF6C:        BD CA C1      LDA.w DATA_21C1CA,x               
 CODE_28DF6F:        99 D3 05      STA $05D3,y               
-CODE_28DF72:        BD C5 C1      LDA $C1C5,x               
+CODE_28DF72:        BD C5 C1      LDA.w DATA_21C1C5,x               
 CODE_28DF75:        99 DD 05      STA $05DD,y               
 CODE_28DF78:        A9 01         LDA #$01                  
 CODE_28DF7A:        99 C7 06      STA $06C7,y               
@@ -9818,7 +9818,7 @@ CODE_28DFD0:        A5 9D         LDA $9D
 CODE_28DFD2:        C9 3B         CMP #$3B                  
 CODE_28DFD4:        10 1B         BPL CODE_28DFF1           
 CODE_28DFD6:        18            CLC                       
-CODE_28DFD7:        79 D8 C1      ADC $C1D8,y               
+CODE_28DFD7:        79 D8 C1      ADC.w DATA_21C1D8,y               
 CODE_28DFDA:        80 0F         BRA CODE_28DFEB           
 
 CODE_28DFDC:        AD 6D 05      LDA $056D                 
@@ -9827,7 +9827,7 @@ CODE_28DFE1:        A5 9D         LDA $9D
 CODE_28DFE3:        C9 C4         CMP #$C4                  
 CODE_28DFE5:        30 0A         BMI CODE_28DFF1           
 CODE_28DFE7:        18            CLC                       
-CODE_28DFE8:        79 CF C1      ADC $C1CF,y               
+CODE_28DFE8:        79 CF C1      ADC.w DATA_21C1CF,y               
 CODE_28DFEB:        85 9D         STA $9D                   
 CODE_28DFED:        A9 01         LDA #$01                  
 CODE_28DFEF:        85 A6         STA $A6                   
@@ -9933,10 +9933,10 @@ CODE_28E0C4:        29 01         AND #$01
 CODE_28E0C6:        A8            TAY                       
 CODE_28E0C7:        BD C8 1C      LDA $1CC8,x               
 CODE_28E0CA:        18            CLC                       
-CODE_28E0CB:        79 E7 C1      ADC $C1E7,y               
+CODE_28E0CB:        79 E7 C1      ADC.w DATA_21C1E7,y               
 CODE_28E0CE:        85 01         STA $01                   
 CODE_28E0D0:        BD CD 1C      LDA $1CCD,x               
-CODE_28E0D3:        79 E9 C1      ADC $C1E9,y               
+CODE_28E0D3:        79 E9 C1      ADC.w DATA_21C1E9,y               
 CODE_28E0D6:        85 00         STA $00                   
 CODE_28E0D8:        A0 00         LDY #$00                  
 CODE_28E0DA:        B5 5F         LDA $5F,x                 
@@ -9946,14 +9946,14 @@ CODE_28E0E0:        E5 00         SBC $00
 CODE_28E0E2:        90 01         BCC CODE_28E0E5           
 CODE_28E0E4:        C8            INY                       
 CODE_28E0E5:        B5 8C         LDA $8C,x                 
-CODE_28E0E7:        D9 E3 C1      CMP $C1E3,y               
+CODE_28E0E7:        D9 E3 C1      CMP.w DATA_21C1E3,y               
 CODE_28E0EA:        F0 0B         BEQ CODE_28E0F7           
 CODE_28E0EC:        18            CLC                       
-CODE_28E0ED:        79 E1 C1      ADC $C1E1,y               
+CODE_28E0ED:        79 E1 C1      ADC.w DATA_21C1E1,y               
 CODE_28E0F0:        95 8C         STA $8C,x                 
 CODE_28E0F2:        D0 03         BNE CODE_28E0F7           
 CODE_28E0F4:        FE 21 10      INC $1021,x               
-CODE_28E0F7:        D9 E5 C1      CMP $C1E5,y               
+CODE_28E0F7:        D9 E5 C1      CMP.w DATA_21C1E5,y               
 CODE_28E0FA:        D0 14         BNE CODE_28E110           
 CODE_28E0FC:        BD A6 06      LDA $06A6,x               
 CODE_28E0FF:        D0 0F         BNE CODE_28E110           
@@ -9997,7 +9997,7 @@ CODE_28E14A:        84 D8         STY $D8
 CODE_28E14C:        64 D9         STZ $D9                   
 CODE_28E14E:        B5 7A         LDA $7A,x                 
 CODE_28E150:        18            CLC                       
-CODE_28E151:        79 ED C1      ADC $C1ED,y               
+CODE_28E151:        79 ED C1      ADC.w DATA_21C1ED,y               
 CODE_28E154:        85 01         STA $01                   
 CODE_28E156:        C2 10         REP #$10                  
 CODE_28E158:        B4 C6         LDY $C6,x                 
@@ -10122,11 +10122,11 @@ CODE_28E253:        F0 02         BEQ CODE_28E257
 CODE_28E255:        E6 00         INC $00                   
 CODE_28E257:        B5 5F         LDA $5F,x                 
 CODE_28E259:        A6 00         LDX $00                   
-CODE_28E25B:        7D F1 C1      ADC $C1F1,x               
+CODE_28E25B:        7D F1 C1      ADC.w DATA_21C1F1,x               
 CODE_28E25E:        99 5F 00      STA $005F,y               
-CODE_28E261:        BD EF C1      LDA $C1EF,x               
+CODE_28E261:        BD EF C1      LDA.w DATA_21C1EF,x               
 CODE_28E264:        99 8C 00      STA $008C,y               
-CODE_28E267:        BD F3 C1      LDA $C1F3,x               
+CODE_28E267:        BD F3 C1      LDA.w DATA_21C1F3,x               
 CODE_28E26A:        99 79 06      STA $0679,y               
 CODE_28E26D:        A6 9B         LDX $9B                   
 CODE_28E26F:        B5 44         LDA $44,x                 
@@ -10159,10 +10159,10 @@ CODE_28E2A6:        A0 00         LDY #$00
 CODE_28E2A8:        B5 8C         LDA $8C,x                 
 CODE_28E2AA:        10 01         BPL CODE_28E2AD           
 CODE_28E2AC:        C8            INY                       
-CODE_28E2AD:        D9 F5 C1      CMP $C1F5,y               
+CODE_28E2AD:        D9 F5 C1      CMP.w DATA_21C1F5,y               
 CODE_28E2B0:        F0 06         BEQ CODE_28E2B8           
 CODE_28E2B2:        18            CLC                       
-CODE_28E2B3:        79 F7 C1      ADC $C1F7,y               
+CODE_28E2B3:        79 F7 C1      ADC.w DATA_21C1F7,y               
 CODE_28E2B6:        95 8C         STA $8C,x                 
 CODE_28E2B8:        22 EF A7 27   JSL CODE_27A7EF           
 CODE_28E2BC:        22 E4 A7 27   JSL CODE_27A7E4           
@@ -10210,7 +10210,7 @@ CODE_28E317:        22 BB 9E 27   JSL CODE_279EBB
 CODE_28E31B:        6B            RTL                       
 
 CODE_28E31C:        22 37 A8 27   JSL CODE_27A837           
-CODE_28E320:        B9 F9 C1      LDA $C1F9,y               
+CODE_28E320:        B9 F9 C1      LDA.w DATA_21C1F9,y               
 CODE_28E323:        95 8C         STA $8C,x                 
 CODE_28E325:        6B            RTL                       
 
@@ -10240,7 +10240,7 @@ CODE_28E35B:        9D 69 06      STA $0669,x
 CODE_28E35E:        6B            RTL                       
 
 CODE_28E35F:        22 37 A8 27   JSL CODE_27A837           
-CODE_28E363:        B9 FB C1      LDA $C1FB,y               
+CODE_28E363:        B9 FB C1      LDA.w DATA_21C1FB,y               
 CODE_28E366:        95 8C         STA $8C,x                 
 CODE_28E368:        A9 A5         LDA #$A5                  
 CODE_28E36A:        95 4D         STA $4D,x                 
@@ -10276,7 +10276,7 @@ CODE_28E39B:        4A            LSR A
 CODE_28E39C:        4A            LSR A                     
 CODE_28E39D:        29 07         AND #$07                  
 CODE_28E39F:        A8            TAY                       
-CODE_28E3A0:        B9 95 C2      LDA $C295,y               
+CODE_28E3A0:        B9 95 C2      LDA.w DATA_21C295,y               
 CODE_28E3A3:        95 68         STA $68,x                 
 CODE_28E3A5:        18            CLC                       
 CODE_28E3A6:        75 94         ADC $94,x                 
@@ -10288,7 +10288,7 @@ CODE_28E3AF:        4A            LSR A
 CODE_28E3B0:        4A            LSR A                     
 CODE_28E3B1:        29 01         AND #$01                  
 CODE_28E3B3:        A8            TAY                       
-CODE_28E3B4:        B9 8D C2      LDA $C28D,y               
+CODE_28E3B4:        B9 8D C2      LDA.w DATA_21C28D,y               
 CODE_28E3B7:        85 0C         STA $0C                   
 CODE_28E3B9:        22 C2 9D 27   JSL CODE_279DC2           
 CODE_28E3BD:        A2 07         LDX #$07                  
@@ -10313,15 +10313,15 @@ CODE_28E3E6:        C9 30         CMP #$30
 CODE_28E3E8:        90 01         BCC CODE_28E3EB           
 CODE_28E3EA:        C8            INY                       
 CODE_28E3EB:        BD 71 07      LDA $0771,x               
-CODE_28E3EE:        D9 9D C2      CMP $C29D,y               
+CODE_28E3EE:        D9 9D C2      CMP.w DATA_21C29D,y               
 CODE_28E3F1:        F0 07         BEQ CODE_28E3FA           
 CODE_28E3F3:        18            CLC                       
-CODE_28E3F4:        79 9F C2      ADC $C29F,y               
+CODE_28E3F4:        79 9F C2      ADC.w DATA_21C29F,y               
 CODE_28E3F7:        9D 71 07      STA $0771,x               
 CODE_28E3FA:        85 9D         STA $9D                   
 CODE_28E3FC:        64 8B         STZ $8B                   
 CODE_28E3FE:        22 37 A8 27   JSL CODE_27A837           
-CODE_28E402:        B9 A1 C2      LDA $C2A1,y               
+CODE_28E402:        B9 A1 C2      LDA.w DATA_21C2A1,y               
 CODE_28E405:        8D 20 10      STA $1020                 
 CODE_28E408:        6B            RTL                       
 
@@ -10353,7 +10353,7 @@ CODE_28E43C:        4A            LSR A
 CODE_28E43D:        4A            LSR A                     
 CODE_28E43E:        A8            TAY                       
 CODE_28E43F:        84 00         STY $00                   
-CODE_28E441:        B9 A3 C2      LDA $C2A3,y               
+CODE_28E441:        B9 A3 C2      LDA.w DATA_21C2A3,y               
 CODE_28E444:        BC 79 06      LDY $0679,x               
 CODE_28E447:        D0 04         BNE CODE_28E44D           
 CODE_28E449:        22 59 A8 27   JSL CODE_27A859           ;Invert Accumulator (8-bit)
@@ -10369,7 +10369,7 @@ CODE_28E45B:        4A            LSR A
 CODE_28E45C:        A8            TAY                       
 CODE_28E45D:        A5 9D         LDA $9D                   
 CODE_28E45F:        18            CLC                       
-CODE_28E460:        79 AB C2      ADC $C2AB,y               
+CODE_28E460:        79 AB C2      ADC.w DATA_21C2AB,y               
 CODE_28E463:        85 9D         STA $9D                   
 CODE_28E465:        6B            RTL                       
 
@@ -10381,7 +10381,7 @@ CODE_28E46A:        0A            ASL A
 CODE_28E46B:        85 0D         STA $0D                   
 CODE_28E46D:        A5 0E         LDA $0E                   
 CODE_28E46F:        18            CLC                       
-CODE_28E470:        7D 85 C2      ADC $C285,x               
+CODE_28E470:        7D 85 C2      ADC.w DATA_21C285,x               
 CODE_28E473:        85 0E         STA $0E                   
 CODE_28E475:        A5 0E         LDA $0E                   
 CODE_28E477:        29 0F         AND #$0F                  
@@ -10399,7 +10399,7 @@ CODE_28E48A:        98            TYA
 CODE_28E48B:        29 0F         AND #$0F                  
 CODE_28E48D:        05 0D         ORA $0D                   
 CODE_28E48F:        A8            TAY                       
-CODE_28E490:        B9 FD C1      LDA $C1FD,y               
+CODE_28E490:        B9 FD C1      LDA.w DATA_21C1FD,y               
 CODE_28E493:        85 09         STA $09                   
 CODE_28E495:        A5 0E         LDA $0E                   
 CODE_28E497:        29 0F         AND #$0F                  
@@ -10417,7 +10417,7 @@ CODE_28E4AA:        98            TYA
 CODE_28E4AB:        29 0F         AND #$0F                  
 CODE_28E4AD:        05 0D         ORA $0D                   
 CODE_28E4AF:        A8            TAY                       
-CODE_28E4B0:        B9 FD C1      LDA $C1FD,y               
+CODE_28E4B0:        B9 FD C1      LDA.w DATA_21C1FD,y               
 CODE_28E4B3:        4A            LSR A                     
 CODE_28E4B4:        4A            LSR A                     
 CODE_28E4B5:        A4 0C         LDY $0C                   
@@ -10450,10 +10450,10 @@ CODE_28E4E9:        4A            LSR A
 CODE_28E4EA:        29 07         AND #$07                  
 CODE_28E4EC:        A8            TAY                       
 CODE_28E4ED:        8A            TXA                       
-CODE_28E4EE:        39 CB C2      AND $C2CB,y               
+CODE_28E4EE:        39 CB C2      AND.w DATA_21C2CB,y               
 CODE_28E4F1:        85 00         STA $00                   
 CODE_28E4F3:        A5 15         LDA $15                   
-CODE_28E4F5:        39 CB C2      AND $C2CB,y               
+CODE_28E4F5:        39 CB C2      AND.w DATA_21C2CB,y               
 CODE_28E4F8:        C5 00         CMP $00                   
 CODE_28E4FA:        D0 E1         BNE CODE_28E4DD           
 CODE_28E4FC:        E0 06         CPX #$06                  
@@ -10478,7 +10478,7 @@ CODE_28E51E:        18            CLC
 CODE_28E51F:        7D 83 00      ADC $0083,x               
 CODE_28E522:        A6 0F         LDX $0F                   
 CODE_28E524:        18            CLC                       
-CODE_28E525:        7D 7D C2      ADC $C27D,x               
+CODE_28E525:        7D 7D C2      ADC.w DATA_21C27D,x               
 CODE_28E528:        18            CLC                       
 CODE_28E529:        65 08         ADC $08                   
 CODE_28E52B:        85 00         STA $00                   
@@ -10491,7 +10491,7 @@ CODE_28E534:        29 07         AND #$07
 CODE_28E536:        18            CLC                       
 CODE_28E537:        65 0F         ADC $0F                   
 CODE_28E539:        AA            TAX                       
-CODE_28E53A:        BD BB C2      LDA $C2BB,x               
+CODE_28E53A:        BD BB C2      LDA.w DATA_21C2BB,x               
 CODE_28E53D:        18            CLC                       
 CODE_28E53E:        A6 9B         LDX $9B                   
 CODE_28E540:        7D 7A 00      ADC $007A,x               
@@ -10576,9 +10576,9 @@ CODE_28E5E0:        29 01         AND #$01
 CODE_28E5E2:        A8            TAY                       
 CODE_28E5E3:        B5 9E         LDA $9E,x                 
 CODE_28E5E5:        18            CLC                       
-CODE_28E5E6:        79 D3 C2      ADC $C2D3,y               
+CODE_28E5E6:        79 D3 C2      ADC.w DATA_21C2D3,y               
 CODE_28E5E9:        95 9E         STA $9E,x                 
-CODE_28E5EB:        D9 D5 C2      CMP $C2D5,y               
+CODE_28E5EB:        D9 D5 C2      CMP.w DATA_21C2D5,y               
 CODE_28E5EE:        D0 02         BNE CODE_28E5F2           
 CODE_28E5F0:        F6 68         INC $68,x                 
 CODE_28E5F2:        B5 9E         LDA $9E,x                 
@@ -10597,7 +10597,7 @@ CODE_28E60B:        C8            INY
 CODE_28E60C:        80 04         BRA CODE_28E612           
 
 CODE_28E60E:        22 37 A8 27   JSL CODE_27A837           
-CODE_28E612:        B9 DC C2      LDA $C2DC,y               
+CODE_28E612:        B9 DC C2      LDA.w DATA_21C2DC,y               
 CODE_28E615:        9D 79 06      STA $0679,x               
 CODE_28E618:        A9 00         LDA #$00                  
 CODE_28E61A:        95 8C         STA $8C,x                 
@@ -10686,13 +10686,13 @@ CODE_28E6C9:        99 BF 05      STA $05BF,y
 CODE_28E6CC:        B5 56         LDA $56,x                 
 CODE_28E6CE:        99 D7 1F      STA $1FD7,y               
 CODE_28E6D1:        A6 00         LDX $00                   
-CODE_28E6D3:        BD DE C2      LDA $C2DE,x               
+CODE_28E6D3:        BD DE C2      LDA.w DATA_21C2DE,x               
 CODE_28E6D6:        99 D3 05      STA $05D3,y               
-CODE_28E6D9:        BD E2 C2      LDA $C2E2,x               
+CODE_28E6D9:        BD E2 C2      LDA.w DATA_21C2E2,x               
 CODE_28E6DC:        99 DD 05      STA $05DD,y               
-CODE_28E6DF:        BD E6 C2      LDA $C2E6,x               
+CODE_28E6DF:        BD E6 C2      LDA.w DATA_21C2E6,x               
 CODE_28E6E2:        99 C7 06      STA $06C7,y               
-CODE_28E6E5:        BD EA C2      LDA $C2EA,x               
+CODE_28E6E5:        BD EA C2      LDA.w DATA_21C2EA,x               
 CODE_28E6E8:        99 BD 06      STA $06BD,y               
 CODE_28E6EB:        A9 FF         LDA #$FF                  
 CODE_28E6ED:        99 D1 06      STA $06D1,y               
@@ -10788,14 +10788,14 @@ CODE_28E797:        22 67 8B 27   JSL CODE_278B67
 CODE_28E79B:        BD 83 07      LDA $0783,x               
 CODE_28E79E:        29 01         AND #$01                  
 CODE_28E7A0:        A8            TAY                       
-CODE_28E7A1:        B9 EE C2      LDA $C2EE,y               
+CODE_28E7A1:        B9 EE C2      LDA.w DATA_21C2EE,y               
 CODE_28E7A4:        95 9E         STA $9E,x                 
 CODE_28E7A6:        B5 8C         LDA $8C,x                 
 CODE_28E7A8:        0A            ASL A                     
 CODE_28E7A9:        2A            ROL A                     
 CODE_28E7AA:        29 01         AND #$01                  
 CODE_28E7AC:        A8            TAY                       
-CODE_28E7AD:        B9 F0 C2      LDA $C2F0,y               
+CODE_28E7AD:        B9 F0 C2      LDA.w DATA_21C2F0,y               
 CODE_28E7B0:        95 8C         STA $8C,x                 
 CODE_28E7B2:        22 62 E8 28   JSL CODE_28E862           
 CODE_28E7B6:        6B            RTL                       
@@ -10910,7 +10910,7 @@ CODE_28E890:        F0 05         BEQ CODE_28E897
 CODE_28E892:        A9 20         LDA #$20                  
 CODE_28E894:        9D 18 05      STA $0518,x               
 CODE_28E897:        22 37 A8 27   JSL CODE_27A837           
-CODE_28E89B:        B9 15 C3      LDA $C315,y               
+CODE_28E89B:        B9 15 C3      LDA.w DATA_21C315,y               
 CODE_28E89E:        9D 79 06      STA $0679,x               
 CODE_28E8A1:        BD 21 10      LDA $1021,x               
 CODE_28E8A4:        D0 02         BNE CODE_28E8A8           
@@ -10921,10 +10921,10 @@ CODE_28E8AB:        BD D2 1F      LDA $1FD2,x
 CODE_28E8AE:        4A            LSR A                     
 CODE_28E8AF:        90 0D         BCC CODE_28E8BE           
 CODE_28E8B1:        B5 8C         LDA $8C,x                 
-CODE_28E8B3:        D9 0D C3      CMP $C30D,y               
+CODE_28E8B3:        D9 0D C3      CMP.w DATA_21C30D,y               
 CODE_28E8B6:        F0 06         BEQ CODE_28E8BE           
 CODE_28E8B8:        18            CLC                       
-CODE_28E8B9:        79 11 C3      ADC $C311,y               
+CODE_28E8B9:        79 11 C3      ADC.w DATA_21C311,y               
 CODE_28E8BC:        95 8C         STA $8C,x                 
 CODE_28E8BE:        22 EF A7 27   JSL CODE_27A7EF           
 CODE_28E8C2:        A5 70         LDA $70                   
@@ -10945,10 +10945,10 @@ CODE_28E8DB:        BD D2 1F      LDA $1FD2,x
 CODE_28E8DE:        4A            LSR A                     
 CODE_28E8DF:        90 0D         BCC CODE_28E8EE           
 CODE_28E8E1:        B5 9E         LDA $9E,x                 
-CODE_28E8E3:        D9 17 C3      CMP $C317,y               
+CODE_28E8E3:        D9 17 C3      CMP.w DATA_21C317,y               
 CODE_28E8E6:        F0 06         BEQ CODE_28E8EE           
 CODE_28E8E8:        18            CLC                       
-CODE_28E8E9:        79 19 C3      ADC $C319,y               
+CODE_28E8E9:        79 19 C3      ADC.w DATA_21C319,y               
 CODE_28E8EC:        95 9E         STA $9E,x                 
 CODE_28E8EE:        22 E4 A7 27   JSL CODE_27A7E4           
 CODE_28E8F2:        60            RTS                       
@@ -11137,11 +11137,11 @@ CODE_28EA51:        4A            LSR A
 CODE_28EA52:        29 03 00      AND #$0003                
 CODE_28EA55:        AA            TAX                       
 CODE_28EA56:        E2 20         SEP #$20                  
-CODE_28EA58:        BD 1B C3      LDA $C31B,x               
+CODE_28EA58:        BD 1B C3      LDA.w DATA_21C31B,x               
 CODE_28EA5B:        99 02 08      STA $0802,y               
 CODE_28EA5E:        1A            INC A                     
 CODE_28EA5F:        99 06 08      STA $0806,y               
-CODE_28EA62:        BD 1F C3      LDA $C31F,x               
+CODE_28EA62:        BD 1F C3      LDA.w DATA_21C31F,x               
 CODE_28EA65:        09 20         ORA #$20                  
 CODE_28EA67:        99 03 08      STA $0803,y               
 CODE_28EA6A:        99 07 08      STA $0807,y               
@@ -11243,7 +11243,7 @@ CODE_28EB31:        4A            LSR A
 CODE_28EB32:        A8            TAY                       
 CODE_28EB33:        FE D2 1F      INC $1FD2,x               
 CODE_28EB36:        BD D2 1F      LDA $1FD2,x               
-CODE_28EB39:        39 FD C2      AND $C2FD,y               
+CODE_28EB39:        39 FD C2      AND.w DATA_21C2FD,y               
 CODE_28EB3C:        D0 58         BNE CODE_28EB96           
 CODE_28EB3E:        B5 4D         LDA $4D,x                 
 CODE_28EB40:        38            SEC                       
@@ -11259,7 +11259,7 @@ CODE_28EB4E:        29 01         AND #$01
 CODE_28EB50:        F0 01         BEQ CODE_28EB53           
 CODE_28EB52:        C8            INY                       
 CODE_28EB53:        B5 8C         LDA $8C,x                 
-CODE_28EB55:        D9 01 C3      CMP $C301,y               
+CODE_28EB55:        D9 01 C3      CMP.w DATA_21C301,y               
 CODE_28EB58:        D0 0E         BNE CODE_28EB68           
 CODE_28EB5A:        48            PHA                       
 CODE_28EB5B:        BD 76 07      LDA $0776,x               
@@ -11270,7 +11270,7 @@ CODE_28EB64:        49 01         EOR #$01
 CODE_28EB66:        A8            TAY                       
 CODE_28EB67:        68            PLA                       
 CODE_28EB68:        18            CLC                       
-CODE_28EB69:        79 F2 C2      ADC $C2F2,y               
+CODE_28EB69:        79 F2 C2      ADC.w DATA_21C2F2,y               
 CODE_28EB6C:        95 8C         STA $8C,x                 
 CODE_28EB6E:        68            PLA                       
 CODE_28EB6F:        18            CLC                       
@@ -11281,7 +11281,7 @@ CODE_28EB76:        29 01         AND #$01
 CODE_28EB78:        F0 01         BEQ CODE_28EB7B           
 CODE_28EB7A:        C8            INY                       
 CODE_28EB7B:        B5 9E         LDA $9E,x                 
-CODE_28EB7D:        D9 01 C3      CMP $C301,y               
+CODE_28EB7D:        D9 01 C3      CMP.w DATA_21C301,y               
 CODE_28EB80:        D0 0E         BNE CODE_28EB90           
 CODE_28EB82:        48            PHA                       
 CODE_28EB83:        BD 7B 07      LDA $077B,x               
@@ -11292,7 +11292,7 @@ CODE_28EB8C:        49 01         EOR #$01
 CODE_28EB8E:        A8            TAY                       
 CODE_28EB8F:        68            PLA                       
 CODE_28EB90:        18            CLC                       
-CODE_28EB91:        79 F2 C2      ADC $C2F2,y               
+CODE_28EB91:        79 F2 C2      ADC.w DATA_21C2F2,y               
 CODE_28EB94:        95 9E         STA $9E,x                 
 CODE_28EB96:        60            RTS                       
 
@@ -11407,8 +11407,8 @@ CODE_28EC6B:        69 08         ADC #$08
 CODE_28EC6D:        38            SEC                       
 CODE_28EC6E:        E5 82         SBC $82                   
 CODE_28EC70:        38            SEC                       
-CODE_28EC71:        F9 23 C3      SBC $C323,y               
-CODE_28EC74:        D9 25 C3      CMP $C325,y               
+CODE_28EC71:        F9 23 C3      SBC.w DATA_21C323,y               
+CODE_28EC74:        D9 25 C3      CMP.w DATA_21C325,y               
 CODE_28EC77:        B0 22         BCS CODE_28EC9B                   
 CODE_28EC79:        A5 01         LDA $01                   
 CODE_28EC7B:        18            CLC                       
@@ -11431,9 +11431,9 @@ CODE_28EC9C:        AD 65 05      LDA $0565
 CODE_28EC9F:        4A            LSR A                     
 CODE_28ECA0:        29 03         AND #$03                  
 CODE_28ECA2:        A8            TAY                       
-CODE_28ECA3:        B9 29 C3      LDA $C329,y               
+CODE_28ECA3:        B9 29 C3      LDA.w DATA_21C329,y               
 CODE_28ECA6:        9D 79 06      STA $0679,x               
-CODE_28ECA9:        B9 2D C3      LDA $C32D,y               
+CODE_28ECA9:        B9 2D C3      LDA.w DATA_21C32D,y               
 CODE_28ECAC:        9D 69 06      STA $0669,x               
 CODE_28ECAF:        22 9B 8B 27   JSL CODE_278B9B           
 CODE_28ECB3:        20 19 ED      JSR CODE_28ED19           
@@ -11462,7 +11462,7 @@ CODE_28ECE5:        22 67 8B 27   JSL CODE_278B67
 CODE_28ECE9:        BD 83 07      LDA $0783,x               
 CODE_28ECEC:        29 01         AND #$01                  
 CODE_28ECEE:        A8            TAY                       
-CODE_28ECEF:        B9 31 C3      LDA $C331,y               
+CODE_28ECEF:        B9 31 C3      LDA.w DATA_21C331,y               
 CODE_28ECF2:        95 9E         STA $9E,x                 
 CODE_28ECF4:        22 48 A8 27   JSL CODE_27A848           
 CODE_28ECF8:        C0 00         CPY #$00                  
@@ -11470,10 +11470,10 @@ CODE_28ECFA:        D0 0C         BNE CODE_28ED08
 CODE_28ECFC:        BD 83 07      LDA $0783,x               
 CODE_28ECFF:        29 07         AND #$07                  
 CODE_28ED01:        A8            TAY                       
-CODE_28ED02:        B9 33 C3      LDA $C333,y               
+CODE_28ED02:        B9 33 C3      LDA.w DATA_21C333,y               
 CODE_28ED05:        9D A6 06      STA $06A6,x               
 CODE_28ED08:        22 37 A8 27   JSL CODE_27A837           
-CODE_28ED0C:        B9 27 C3      LDA $C327,y               
+CODE_28ED0C:        B9 27 C3      LDA.w DATA_21C327,y               
 CODE_28ED0F:        95 8C         STA $8C,x                 
 CODE_28ED11:        22 62 E8 28   JSL CODE_28E862           
 CODE_28ED15:        6B            RTL                       
@@ -11553,10 +11553,10 @@ CODE_28EDA8:        94 8C         STY $8C,x
 CODE_28EDAA:        4C 67 ED      JMP CODE_28ED67           
 
 CODE_28EDAD:        A0 03         LDY #$03                  
-CODE_28EDAF:        AD 0A C3      LDA $C30A                 
+CODE_28EDAF:        AD 0A C3      LDA.w DATA_21C309+1                 
 CODE_28EDB2:        D0 05         BNE CODE_28EDB9           
 CODE_28EDB4:        A0 FE         LDY #$FE                  
-CODE_28EDB6:        AD 09 C3      LDA $C309                 
+CODE_28EDB6:        AD 09 C3      LDA.w DATA_21C309                 
 CODE_28EDB9:        95 9E         STA $9E,x                 
 CODE_28EDBB:        84 00         STY $00                   
 CODE_28EDBD:        A9 00         LDA #$00                  

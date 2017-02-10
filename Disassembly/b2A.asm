@@ -8832,7 +8832,7 @@ CODE_2AFA5E:        8D 67 43      STA $4367
 CODE_2AFA61:        AB            PLB                       
 CODE_2AFA62:        6B            RTL     
 
-CODE_2AFA63:        8B            PHB                       ;Windowing HDMA routine
+CODE_2AFA63:        8B            PHB                       ;Windowing HDMA routine (TODO: For what?)
 CODE_2AFA64:        4B            PHK                       ;
 CODE_2AFA65:        AB            PLB                       ;
 CODE_2AFA66:        0B            PHD                       ;
@@ -8862,7 +8862,7 @@ CODE_2AFA9B:        A5 81         LDA $81                   ;
 CODE_2AFA9D:        29 FF 00      AND #$00FF                ;
 CODE_2AFAA0:        0A            ASL A                     ;
 CODE_2AFAA1:        AA            TAX                       ;
-CODE_2AFAA2:        BF 80 97 00   LDA.l DATA_009780,x             ;
+CODE_2AFAA2:        BF 80 97 00   LDA.l DATA_009780,x       ;
 CODE_2AFAA6:        85 A9         STA $A9                   ;
 CODE_2AFAA8:        A5 94         LDA $94                   ;
 CODE_2AFAAA:        29 FF 00      AND #$00FF                ;

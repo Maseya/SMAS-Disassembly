@@ -8013,11 +8013,11 @@ CODE_27C5D3:        4C 7F D3      JMP CODE_27D37F
 CODE_27C5D6:        BD C8 1F      LDA $1FC8,x               ; Extended sprites
 CODE_27C5D9:        22 1F FB 20   JSL CODE_20FB1F           ; ExecutePtrShort
 
-PNTR_27C5DD:        dw CODE_27C545                          ; $00 -
+PNTR_27C5DD:        dw CODE_27C545                          ; $00 - None
                     dw CODE_27D175                          ; $01 - Hammer
                     dw CODE_27D442                          ; $02 - Boomerang
-                    dw CODE_27D508                          ; $03 -
-                    dw CODE_27D576                          ; $04 -
+                    dw CODE_27D508                          ; $03 - Boomerang??
+                    dw CODE_27D576                          ; $04 - Nipper Plant fireball
                     dw CODE_27D576                          ; $05 - Venus Fire Trap fireball
                     dw CODE_27D013                          ; $06 - Baby Goomba
                     dw CODE_27CF6B                          ; $07 - Ptooie spiked ball (uninteractable)
@@ -8025,17 +8025,17 @@ PNTR_27C5DD:        dw CODE_27C545                          ; $00 -
                     dw CODE_27CEC9                          ; $09 -
                     dw CODE_27CD7B                          ; $0A - Wrench
                     dw CODE_27CC31                          ; $0B - Cannonball
-                    dw CODE_27D576                          ; $0C -
+                    dw CODE_27D576                          ; $0C - Fire Bros. fireball
                     dw CODE_27C91B                          ; $0D -
                     dw CODE_27CB74                          ; $0E -
                     dw CODE_27CAAE                          ; $0F -
-                    dw CODE_27C995                          ; $10 -
-                    dw CODE_27C7A7                          ; $11 -
-                    dw CODE_27D576                          ; $12 -
-                    dw CODE_27C7A7                          ; $13 - 
+                    dw CODE_27C995                          ; $10 - Magic Wand
+                    dw CODE_27C7A7                          ; $11 - Enemy morphed into coin (at level end when there are enemies present)
+                    dw CODE_27D576                          ; $12 - 
+                    dw CODE_27C7A7                          ; $13 - Brick shatter
                     dw CODE_27C6D6                          ; $14 -
                     dw CODE_27C60F                          ; $15 - Bowser statue laser
-                    dw CODE_27D672                          ; $16 -
+                    dw CODE_27D672                          ; $16 - Puff of smoke
                     dw CODE_27DFF2                          ; $17 - Podoboo fire trail
                     dw CODE_27E05B                          ; $18 - Podoboo lava splash
 

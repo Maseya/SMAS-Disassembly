@@ -4513,6 +4513,8 @@ PNTR_23A585:        dl CODE_23A5FE
                     dl $000000
                     dl $000000
                     dl $000000
+                    dl $000000
+                    dl $000000
                     dl CODE_23A6C1
                     dl CODE_23A6C1
                     dl CODE_23A6C1

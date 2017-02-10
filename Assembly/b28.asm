@@ -545,7 +545,7 @@ PNTR_288438:        dl CODE_2886D3
 
 CODE_288654:        INC $06B7,x               
 CODE_288657:        JSL CODE_27A837           
-CODE_28865B:        LDA $B88C,y               
+CODE_28865B:        LDA.w DATA_21B88C,y               
 CODE_28865E:        STA $8C,x                 
 CODE_288660:        LDA $5F,x                 
 CODE_288662:        SEC                       
@@ -567,9 +567,9 @@ CODE_28867D:        AND #$01
 CODE_28867F:        TAY                       
 CODE_288680:        LDA $9E,x                 
 CODE_288682:        CLC                       
-CODE_288683:        ADC $B88E,y               
+CODE_288683:        ADC.w DATA_21B88E,y               
 CODE_288686:        STA $9E,x                 
-CODE_288688:        CMP $B890,y               
+CODE_288688:        CMP.w DATA_21B890,y               
 CODE_28868B:        BNE CODE_28868F           
 CODE_28868D:        INC $4D,x                 
 CODE_28868F:        JSL CODE_27A7EF           
@@ -653,7 +653,7 @@ CODE_288738:        LDA $79
 CODE_28873A:        CMP $7A,x                 
 CODE_28873C:        PLA                       
 CODE_28873D:        BCS CODE_288743                   
-CODE_28873F:        JSL CODE_27A859           
+CODE_28873F:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_288743:        STA $C1                   
 CODE_288745:        LDA $C1                   
 CODE_288747:        BEQ CODE_288751           
@@ -667,10 +667,10 @@ CODE_288755:        LSR A
 CODE_288756:        LSR A                     
 CODE_288757:        LSR A                     
 CODE_288758:        TAY                       
-CODE_288759:        LDA $B892,y               
+CODE_288759:        LDA.w DATA_21B892,y               
 CODE_28875C:        LDY $8B                   
 CODE_28875E:        BPL CODE_288764           
-CODE_288760:        JSL CODE_27A859           
+CODE_288760:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_288764:        STA $8B                   
 CODE_288766:        STA $8C,x                 
 CODE_288768:        INC $0689,x               
@@ -727,9 +727,9 @@ CODE_2887CF:        STA $0579
 CODE_2887D2:        RTL                       
 
 CODE_2887D3:        LDY $0518,x               
-CODE_2887D6:        LDA $B898,y               
+CODE_2887D6:        LDA.w DATA_21B898,y               
 CODE_2887D9:        STA $0669,x               
-CODE_2887DC:        LDA $B8BD,y               
+CODE_2887DC:        LDA.w DATA_21B8BD,y               
 CODE_2887DF:        STA $9D                   
 CODE_2887E1:        LDA $0518,x               
 CODE_2887E4:        CMP #$07                  
@@ -906,7 +906,7 @@ CODE_288953:        LSR A
 CODE_288954:        LSR A                     
 CODE_288955:        LSR A                     
 CODE_288956:        TAY                       
-CODE_288957:        LDA $B8B5,y               
+CODE_288957:        LDA.w DATA_21B8B5,y               
 CODE_28895A:        CMP #$07                  
 CODE_28895C:        BNE CODE_288965           
 CODE_28895E:        LDY $0567                 
@@ -952,7 +952,7 @@ CODE_2889B5:        BNE CODE_288A17
 CODE_2889B7:        LDA $0689,x               
 CODE_2889BA:        AND #$0F                  
 CODE_2889BC:        TAY                       
-CODE_2889BD:        LDA $B8AD,y               
+CODE_2889BD:        LDA.w DATA_21B8AD,y               
 CODE_2889C0:        BEQ CODE_2889FC           
 CODE_2889C2:        STA $00                   
 CODE_2889C4:        LDY #$05                  
@@ -995,10 +995,10 @@ CODE_288A13:        JSL CODE_27A75D
 CODE_288A17:        JSL CODE_27A7D8           
 CODE_288A1B:        JSR CODE_288A45           
 CODE_288A1E:        LDY $0526,x               
-CODE_288A21:        LDA $B8BD,y               
+CODE_288A21:        LDA.w DATA_21B8BD,y               
 CODE_288A24:        LDY $0691,x               
 CODE_288A27:        BEQ CODE_288A32           
-CODE_288A29:        JSL CODE_27A859           
+CODE_288A29:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_288A2D:        STA $9E,x                 
 CODE_288A2F:        JMP CODE_288A41           
 
@@ -1018,15 +1018,15 @@ CODE_288A49:        LSR A
 CODE_288A4A:        LSR A                     
 CODE_288A4B:        LSR A                     
 CODE_288A4C:        TAY                       
-CODE_288A4D:        LDA $B8C8,y               
+CODE_288A4D:        LDA.w DATA_21B8C8,y               
 CODE_288A50:        ASL A                     
 CODE_288A51:        STA $00                   
 CODE_288A53:        TYA                       
 CODE_288A54:        ASL A                     
 CODE_288A55:        TAY                       
-CODE_288A56:        LDA $B8D4,y               
+CODE_288A56:        LDA.w DATA_21B8D4,y               
 CODE_288A59:        STA $01                   
-CODE_288A5B:        LDA $B8D5,y               
+CODE_288A5B:        LDA.w DATA_21B8D4+1,y               
 CODE_288A5E:        STA $02                   
 CODE_288A60:        LDA #$00                  
 CODE_288A62:        LDY $01                   
@@ -1306,7 +1306,7 @@ CODE_288C84:        LDA $79
 CODE_288C86:        CMP $7A,x                 
 CODE_288C88:        LDA $8B                   
 CODE_288C8A:        BCS CODE_288C90                   
-CODE_288C8C:        JSL CODE_27A859           
+CODE_288C8C:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_288C90:        BPL CODE_288CA0           
 CODE_288C92:        LDY #$FD                  
 CODE_288C94:        LDA $8B                   
@@ -1362,7 +1362,7 @@ CODE_288CFD:        LDA $0586
 CODE_288D00:        AND #$03                  
 CODE_288D02:        STA $0669,x               
 CODE_288D05:        TAY                       
-CODE_288D06:        LDA $B8E4,y               
+CODE_288D06:        LDA.w DATA_21B8E4,y               
 CODE_288D09:        STA $1FE9,x               
 CODE_288D0C:        RTL                       
 
@@ -1405,7 +1405,7 @@ CODE_288D60:        STA $02C6
 CODE_288D63:        BRA CODE_288D81           
 
 CODE_288D65:        TAY                       
-CODE_288D66:        LDA $B8E8,y               
+CODE_288D66:        LDA.w DATA_21B8E8,y               
 CODE_288D69:        CMP $BB                   
 CODE_288D6B:        BEQ CODE_288D7E           
 CODE_288D6D:        TAY                       
@@ -1832,7 +1832,7 @@ CODE_2890E2:        LSR A
 CODE_2890E3:        LSR A                     
 CODE_2890E4:        LSR A                     
 CODE_2890E5:        TAY                       
-CODE_2890E6:        LDA $B8B5,y               
+CODE_2890E6:        LDA.w DATA_21B8B5,y               
 CODE_2890E9:        STA $0B                   
 CODE_2890EB:        LDA $44,x                 
 CODE_2890ED:        STA $0E                   
@@ -1868,7 +1868,7 @@ CODE_289128:        BNE CODE_289160
 CODE_28912A:        LDA $0689,x               
 CODE_28912D:        AND #$0F                  
 CODE_28912F:        TAY                       
-CODE_289130:        LDA $B8AD,y               
+CODE_289130:        LDA.w DATA_21B8AD,y               
 CODE_289133:        BEQ CODE_289160           
 CODE_289135:        STA $00                   
 CODE_289137:        LDY #$05                  
@@ -1891,11 +1891,11 @@ CODE_28915D:        STA $0661,y
 CODE_289160:        JSL CODE_27A7EF           
 CODE_289164:        JSR CODE_288A45           
 CODE_289167:        LDY $0526,x               
-CODE_28916A:        LDA $B8BD,y               
+CODE_28916A:        LDA.w DATA_21B8BD,y               
 CODE_28916D:        LDY $0691,x               
 CODE_289170:        CPY #$02                  
 CODE_289172:        BEQ CODE_289178           
-CODE_289174:        JSL CODE_27A859           
+CODE_289174:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_289178:        STA $8C,x                 
 CODE_28917A:        DEC $0526,x               
 CODE_28917D:        RTL                       
@@ -1924,7 +1924,7 @@ CODE_2891A1:        LDA #$40
 CODE_2891A3:        LDY $5F,x                 
 CODE_2891A5:        CPY $5E                   
 CODE_2891A7:        BPL CODE_2891AD           
-CODE_2891A9:        JSL CODE_27A859           
+CODE_2891A9:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_2891AD:        STA $8C,x                 
 CODE_2891AF:        LDA #$80                  
 CODE_2891B1:        STA $9E,x                 
@@ -1972,9 +1972,9 @@ CODE_28920C:        ADC $71,x
 CODE_28920E:        STA $71,x                 
 CODE_289210:        BCC CODE_289214           
 CODE_289212:        INC $56,x                 
-CODE_289214:        LDA $B8F8,y               
+CODE_289214:        LDA.w DATA_21B8F8,y               
 CODE_289217:        STA $0518,x               
-CODE_28921A:        LDA $B8F4,y               
+CODE_28921A:        LDA.w DATA_21B8F4,y               
 CODE_28921D:        STA $9E,x                 
 CODE_28921F:        LDA #$10                  
 CODE_289221:        STA $0520,x               
@@ -2002,15 +2002,15 @@ CODE_28924F:        AND #$01
 CODE_289251:        TAY                       
 CODE_289252:        LDA $8C,x                 
 CODE_289254:        CLC                       
-CODE_289255:        ADC $B8FC,y               
+CODE_289255:        ADC.w DATA_21B8FC,y               
 CODE_289258:        STA $8C,x                 
-CODE_28925A:        CMP $B8FE,y               
+CODE_28925A:        CMP.w DATA_21B8FE,y               
 CODE_28925D:        BNE CODE_289262           
 CODE_28925F:        INC $0691,x               
 CODE_289262:        LDA $8C,x                 
 CODE_289264:        BPL CODE_289267           
 CODE_289266:        INY                       
-CODE_289267:        LDA $B900,y               
+CODE_289267:        LDA.w DATA_21B900,y               
 CODE_28926A:        CLC                       
 CODE_28926B:        ADC #$06                  
 CODE_28926D:        STA $9E,x                 
@@ -2091,9 +2091,9 @@ CODE_289311:        RTL
 CODE_289312:        LDA $44,x                 
 CODE_289314:        ASL A                     
 CODE_289315:        TAY                       
-CODE_289316:        LDA $8200,y               
+CODE_289316:        LDA.w DATA_218200,y               
 CODE_289319:        STA $D8                   
-CODE_28931B:        LDA $8201,y               
+CODE_28931B:        LDA.w DATA_218200+1,y               
 CODE_28931E:        STA $D9                   
 CODE_289320:        LDA #$7E                  
 CODE_289322:        STA $DA                   
@@ -2134,7 +2134,7 @@ CODE_289360:        ASL A
 CODE_289361:        ADC #$00                  
 CODE_289363:        PHA                       
 CODE_289364:        AND #$03                  
-CODE_289366:        ORA $B903,y               
+CODE_289366:        ORA.w DATA_21B903,y               
 CODE_289369:        CLC                       
 CODE_28936A:        ADC $DB                   
 CODE_28936C:        LDY $1600                 
@@ -2299,13 +2299,13 @@ CODE_2894C4:        ASL A
 CODE_2894C5:        ASL A                     
 CODE_2894C6:        TAY                       
 CODE_2894C7:        REP #$20                  
-CODE_2894C9:        LDA $B905,y               
+CODE_2894C9:        LDA.w DATA_21B905,y               
 CODE_2894CC:        STA $1440                 
-CODE_2894CF:        LDA $B907,y               
+CODE_2894CF:        LDA.w DATA_21B907,y               
 CODE_2894D2:        STA $1442                 
-CODE_2894D5:        LDA $B909,y               
+CODE_2894D5:        LDA.w DATA_21B909,y               
 CODE_2894D8:        STA $1444                 
-CODE_2894DB:        LDA $B90B,y               
+CODE_2894DB:        LDA.w DATA_21B90B,y               
 CODE_2894DE:        STA $1446                 
 CODE_2894E1:        SEP #$20                  
 CODE_2894E3:        LDA #$01                  
@@ -2407,7 +2407,7 @@ CODE_2895AA:        LDA $A7,x
 CODE_2895AC:        AND #$04                  
 CODE_2895AE:        BEQ CODE_2895BD           
 CODE_2895B0:        JSL CODE_27A837           
-CODE_2895B4:        LDA $B94B,y               
+CODE_2895B4:        LDA.w DATA_21B94B,y               
 CODE_2895B7:        STA $8C,x                 
 CODE_2895B9:        LDA #$B8                  
 CODE_2895BB:        STA $9E,x                 
@@ -2446,14 +2446,14 @@ CODE_2895F7:        LSR A
 CODE_2895F8:        AND #$01                  
 CODE_2895FA:        STA $0669,x               
 CODE_2895FD:        LDY $4D,x                 
-CODE_2895FF:        LDA $B94D,y               
+CODE_2895FF:        LDA.w DATA_21B94D,y               
 CODE_289602:        CLC                       
 CODE_289603:        ADC $0727                 
 CODE_289606:        TAY                       
 CODE_289607:        LDA $15                   
-CODE_289609:        AND $B965,y               
+CODE_289609:        AND.w DATA_21B965,y               
 CODE_28960C:        BNE CODE_289614           
-CODE_28960E:        LDA $B97A,y               
+CODE_28960E:        LDA.w DATA_21B97A,y               
 CODE_289611:        STA $9E,x                 
 CODE_289613:        RTS                       
 
@@ -2466,7 +2466,7 @@ CODE_289620:        BCC CODE_28964D
 CODE_289622:        INC $0771,x               
 CODE_289625:        BNE CODE_28962E           
 CODE_289627:        LDA $15                   
-CODE_289629:        AND $B950,y               
+CODE_289629:        AND.w DATA_21B950,y               
 CODE_28962C:        BNE CODE_28964D           
 CODE_28962E:        LDA $0F                   
 CODE_289630:        STA $0679,x               
@@ -2496,7 +2496,7 @@ CODE_289660:        ROL A
 CODE_289661:        ROL A                     
 CODE_289662:        AND #$01                  
 CODE_289664:        TAY                       
-CODE_289665:        LDA $B98F,y               
+CODE_289665:        LDA.w DATA_21B98F,y               
 CODE_289668:        STA $00                   
 CODE_28966A:        JSL CODE_278A72           
 CODE_28966E:        BCS CODE_2896C4                   
@@ -2554,13 +2554,13 @@ CODE_2896D8:        JSL CODE_27A848
 CODE_2896DC:        STY $02                   
 CODE_2896DE:        LDA $0F                   
 CODE_2896E0:        BPL CODE_2896E6           
-CODE_2896E2:        JSL CODE_27A859           
+CODE_2896E2:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_2896E6:        STA $0C                   
 CODE_2896E8:        JSL CODE_27A837           
 CODE_2896EC:        STY $03                   
 CODE_2896EE:        LDA $0F                   
 CODE_2896F0:        BPL CODE_2896F6           
-CODE_2896F2:        JSL CODE_27A859           
+CODE_2896F2:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_2896F6:        STA $0D                   
 CODE_2896F8:        LDY #$00                  
 CODE_2896FA:        LDA $0D                   
@@ -2597,12 +2597,12 @@ CODE_28972E:        STA $01
 CODE_289730:        LDA $00                   
 CODE_289732:        LDY $02                   
 CODE_289734:        BEQ CODE_28973C           
-CODE_289736:        JSL CODE_27A859           
+CODE_289736:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28973A:        STA $00                   
 CODE_28973C:        LDA $01                   
 CODE_28973E:        LDY $03                   
 CODE_289740:        BEQ CODE_289748           
-CODE_289742:        JSL CODE_27A859           
+CODE_289742:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_289746:        STA $01                   
 CODE_289748:        PLA                       
 CODE_289749:        STA $70                   
@@ -2721,12 +2721,12 @@ CODE_289828:        BNE CODE_289845
 CODE_28982A:        LDY $07BE                 
 CODE_28982D:        INC $0669,x               
 CODE_289830:        LDA $0669,x               
-CODE_289833:        CMP $B991,y               
+CODE_289833:        CMP.w DATA_21B991,y               
 CODE_289836:        BCC CODE_28983E           
-CODE_289838:        LDA $B993,y               
+CODE_289838:        LDA.w DATA_21B993,y               
 CODE_28983B:        STA $0669,x               
 CODE_28983E:        TAY                       
-CODE_28983F:        LDA $B995,y               
+CODE_28983F:        LDA.w DATA_21B995,y               
 CODE_289842:        STA $0679,x               
 CODE_289845:        LDA $02E1                 
 CODE_289848:        BMI CODE_28985C           
@@ -2765,7 +2765,7 @@ CODE_28988B:        CMP #$03
 CODE_28988D:        BNE CODE_289891           
 CODE_28988F:        LDA #$00                  
 CODE_289891:        LDY $0727                 
-CODE_289894:        ADC $B9A7,y               
+CODE_289894:        ADC.w DATA_21B9A7,y               
 CODE_289897:        ASL A                     
 CODE_289898:        STA $0F                   
 CODE_28989A:        ASL A                     
@@ -2849,16 +2849,16 @@ CODE_28993C:        BCS CODE_289934
 CODE_28993E:        LDY $0727                 
 CODE_289941:        LDA $0669,x               
 CODE_289944:        CLC                       
-CODE_289945:        ADC $BAC0,y               
+CODE_289945:        ADC.w DATA_21BAC0,y               
 CODE_289948:        TAY                       
 CODE_289949:        LDA $71,x                 
 CODE_28994B:        PHA                       
 CODE_28994C:        CLC                       
-CODE_28994D:        ADC $BA84,y               
+CODE_28994D:        ADC.w DATA_21BA84,y               
 CODE_289950:        STA $71,x                 
 CODE_289952:        LDA $56,x                 
 CODE_289954:        PHA                       
-CODE_289955:        ADC $BAB4,y               
+CODE_289955:        ADC.w DATA_21BAB4,y               
 CODE_289958:        STA $56,x                 
 CODE_28995A:        LDA $0679,x               
 CODE_28995D:        ASL A                     
@@ -2870,11 +2870,11 @@ CODE_289964:        TAY
 CODE_289965:        LDA $5F,x                 
 CODE_289967:        PHA                       
 CODE_289968:        CLC                       
-CODE_289969:        ADC $BA90,y               
+CODE_289969:        ADC.w DATA_21BA90,y               
 CODE_28996C:        STA $5F,x                 
 CODE_28996E:        LDA $44,x                 
 CODE_289970:        PHA                       
-CODE_289971:        ADC $BAA8,y               
+CODE_289971:        ADC.w DATA_21BAA8,y               
 CODE_289974:        STA $44,x                 
 CODE_289976:        JSL CODE_27A27C           
 CODE_28997A:        JSL CODE_27A2C8           
@@ -2893,7 +2893,7 @@ CODE_289996:        LDA #$20
 CODE_289998:        STA $C6,x                 
 CODE_28999A:        STZ $C7,x                 
 CODE_28999C:        LDY $0669,x               
-CODE_28999F:        LDX $BA80,y               
+CODE_28999F:        LDX.w DATA_21BA80,y               
 CODE_2899A2:        JSL CODE_279F90           
 CODE_2899A6:        LDX $9B                   
 CODE_2899A8:        BIT $02                   
@@ -2971,15 +2971,15 @@ CODE_289A36:        CLC
 CODE_289A37:        ADC #$08                  
 CODE_289A39:        STA $0808,y               
 CODE_289A3C:        STA $0814,y               
-CODE_289A3F:        LDA $B996,x               
+CODE_289A3F:        LDA.w DATA_21B995+1,x               
 CODE_289A42:        STA $0802,y               
 CODE_289A45:        INC A                     
 CODE_289A46:        STA $080E,y               
-CODE_289A49:        LDA $B997,x               
+CODE_289A49:        LDA.w DATA_21B995+2,x               
 CODE_289A4C:        STA $0806,y               
 CODE_289A4F:        INC A                     
 CODE_289A50:        STA $0812,y               
-CODE_289A53:        LDA $B998,x               
+CODE_289A53:        LDA.w DATA_21B995+3,x               
 CODE_289A56:        STA $080A,y               
 CODE_289A59:        INC A                     
 CODE_289A5A:        STA $0816,y               
@@ -3050,7 +3050,7 @@ CODE_289AE6:        ROL A
 CODE_289AE7:        ROL A                     
 CODE_289AE8:        AND #$03                  
 CODE_289AEA:        TAY                       
-CODE_289AEB:        LDA $BAE5,y               
+CODE_289AEB:        LDA.w DATA_21BAE5,y               
 CODE_289AEE:        LDY #$00                  
 CODE_289AF0:        AND $0518,x               
 CODE_289AF3:        BEQ CODE_289AF7           
@@ -3091,9 +3091,9 @@ CODE_289B3C:        TAY
 CODE_289B3D:        LDX #$04                  
 CODE_289B3F:        LDA #$01                  
 CODE_289B41:        STA $56,x                 
-CODE_289B43:        LDA $BACF,y               
+CODE_289B43:        LDA.w DATA_21BACF,y               
 CODE_289B46:        STA $71,x                 
-CODE_289B48:        LDA $BAC7,y               
+CODE_289B48:        LDA.w DATA_21BAC7,y               
 CODE_289B4B:        STA $5F,x                 
 CODE_289B4D:        LDA #$FF                  
 CODE_289B4F:        STA $9E,x                 
@@ -3120,13 +3120,13 @@ CODE_289B6D:        ADC $055D
 CODE_289B70:        ASL A                     
 CODE_289B71:        TAY                       
 CODE_289B72:        REP #$20                  
-CODE_289B74:        LDA $AF6E,y               
+CODE_289B74:        LDA.w DATA_21AF6E,y               
 CODE_289B77:        STA $C6,x                 
 CODE_289B79:        SEP #$20                  
 CODE_289B7B:        JSR CODE_289BB8           
 CODE_289B7E:        JSL CODE_27A7D8           
 CODE_289B82:        LDX $02                   
-CODE_289B84:        LDA $BAD7,x               
+CODE_289B84:        LDA.w DATA_21BAD7,x               
 CODE_289B87:        LDY $01                   
 CODE_289B89:        BNE CODE_289B8D           
 CODE_289B8B:        SEC                       
@@ -3142,7 +3142,7 @@ CODE_289B9B:        LDA $71,x
 CODE_289B9D:        CMP #$F0                  
 CODE_289B9F:        BCS CODE_289BB0                   
 CODE_289BA1:        LDY $00                   
-CODE_289BA3:        LDA $BAC7,y               
+CODE_289BA3:        LDA.w DATA_21BAC7,y               
 CODE_289BA6:        STA $5F,x                 
 CODE_289BA8:        LDA #$00                  
 CODE_289BAA:        STA $56,x                 
@@ -3171,7 +3171,7 @@ CODE_289BCC:        STA $0E
 CODE_289BCE:        LDA $71,x                 
 CODE_289BD0:        STA $0F                   
 CODE_289BD2:        REP #$20                  
-CODE_289BD4:        LDA $BADC,x               
+CODE_289BD4:        LDA.w DATA_21BADC,x               
 CODE_289BD7:        AND #$00FF                
 CODE_289BDA:        TAX                       
 CODE_289BDB:        SEP #$20                  
@@ -3253,7 +3253,7 @@ CODE_289C73:        BMI CODE_289C7B
 CODE_289C75:        CMP #$78                  
 CODE_289C77:        BCS CODE_289C89                   
 CODE_289C79:        BCC CODE_289C7F           
-CODE_289C7B:        JSL CODE_27A859           
+CODE_289C7B:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_289C7F:        LSR A                     
 CODE_289C80:        LSR A                     
 CODE_289C81:        LSR A                     
@@ -3270,7 +3270,7 @@ CODE_289C93:        BCC CODE_289CA9
 CODE_289C95:        LDA #$09                  
 CODE_289C97:        STA $1203                 
 CODE_289C9A:        LDY $4D,x                 
-CODE_289C9C:        LDA $BAE9,y               
+CODE_289C9C:        LDA.w DATA_21BAE9,y               
 CODE_289C9F:        STA $1CF3                 
 CODE_289CA2:        LDY $A6                   
 CODE_289CA4:        BNE CODE_289CA9           
@@ -3295,13 +3295,13 @@ CODE_289CD0:        ORA $0520,x
 CODE_289CD3:        BNE CODE_289D48           
 CODE_289CD5:        LDA $8C,x                 
 CODE_289CD7:        BPL CODE_289CDD           
-CODE_289CD9:        JSL CODE_27A859           
+CODE_289CD9:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_289CDD:        LSR A                     
 CODE_289CDE:        LSR A                     
 CODE_289CDF:        LSR A                     
 CODE_289CE0:        AND #$07                  
 CODE_289CE2:        TAY                       
-CODE_289CE3:        LDA $BAF4,y               
+CODE_289CE3:        LDA.w DATA_21BAF4,y               
 CODE_289CE6:        CLC                       
 CODE_289CE7:        ADC $1021,x               
 CODE_289CEA:        STA $1021,x               
@@ -3315,7 +3315,7 @@ CODE_289CFD:        LDA $15
 CODE_289CFF:        AND #$7F                  
 CODE_289D01:        BNE CODE_289D0D           
 CODE_289D03:        JSL CODE_27A837           
-CODE_289D07:        LDA $BAF2,y               
+CODE_289D07:        LDA.w DATA_21BAF2,y               
 CODE_289D0A:        STA $0679,x               
 CODE_289D0D:        LDA $15                   
 CODE_289D0F:        LSR A                     
@@ -3331,16 +3331,16 @@ CODE_289D24:        JSR CODE_289E2A
 CODE_289D27:        LDA $0776,x               
 CODE_289D2A:        AND #$01                  
 CODE_289D2C:        TAY                       
-CODE_289D2D:        LDA $BAEC,y               
+CODE_289D2D:        LDA.w DATA_21BAEC,y               
 CODE_289D30:        CMP $5F,x                 
 CODE_289D32:        LDY #$00                  
 CODE_289D34:        BCS CODE_289D37                   
 CODE_289D36:        INY                       
 CODE_289D37:        LDA $8C,x                 
-CODE_289D39:        CMP $BAEE,y               
+CODE_289D39:        CMP.w DATA_21BAEE,y               
 CODE_289D3C:        BEQ CODE_289D44           
 CODE_289D3E:        CLC                       
-CODE_289D3F:        ADC $BAF0,y               
+CODE_289D3F:        ADC.w DATA_21BAF0,y               
 CODE_289D42:        STA $8C,x                 
 CODE_289D44:        JSL CODE_27A7EF           
 CODE_289D48:        RTS                       
@@ -3373,15 +3373,15 @@ CODE_289D77:        BCC CODE_289D7B
 CODE_289D79:        EOR #$03                  
 CODE_289D7B:        AND #$03                  
 CODE_289D7D:        TAY                       
-CODE_289D7E:        LDA $BAFC,y               
+CODE_289D7E:        LDA.w DATA_21BAFC,y               
 CODE_289D81:        STA $0832                 
 CODE_289D84:        INC A                     
 CODE_289D85:        STA $083A                 
-CODE_289D88:        LDA $BB00,y               
+CODE_289D88:        LDA.w DATA_21BB00,y               
 CODE_289D8B:        STA $0836                 
 CODE_289D8E:        INC A                     
 CODE_289D8F:        STA $083E                 
-CODE_289D92:        LDA $BB04,y               
+CODE_289D92:        LDA.w DATA_21BB04,y               
 CODE_289D95:        STA $0833                 
 CODE_289D98:        STA $0837                 
 CODE_289D9B:        STA $083B                 
@@ -3481,7 +3481,7 @@ CODE_289E62:        STA $0044,y
 CODE_289E65:        LDA $0776,x               
 CODE_289E68:        AND #$01                  
 CODE_289E6A:        TAX                       
-CODE_289E6B:        LDA $BB08,x               
+CODE_289E6B:        LDA.w DATA_21BB08,x               
 CODE_289E6E:        STA $008C,y               
 CODE_289E71:        LDA #$04                  
 CODE_289E73:        STA $1FE9,y               
@@ -3504,7 +3504,7 @@ CODE_289E96:        LDA $0679,x
 CODE_289E99:        AND #$40                  
 CODE_289E9B:        BNE CODE_289E9E           
 CODE_289E9D:        INY                       
-CODE_289E9E:        LDA $BB0A,y               
+CODE_289E9E:        LDA.w DATA_21BB0A,y               
 CODE_289EA1:        LDY $00                   
 CODE_289EA3:        STA $008C,y               
 CODE_289EA6:        RTS                       
@@ -4100,10 +4100,10 @@ CODE_28B01B:        STA $00
 CODE_28B01D:        LDY #$02                  
 CODE_28B01F:        LDA $00                   
 CODE_28B021:        SEC                       
-CODE_28B022:        SBC $BBC4,y               
+CODE_28B022:        SBC.w DATA_21BBC4,y               
 CODE_28B025:        CMP #$04                  
 CODE_28B027:        BCS CODE_28B044                   
-CODE_28B029:        LDA $BBC7,y               
+CODE_28B029:        LDA.w DATA_21BBC7,y               
 CODE_28B02C:        STA $0669,x               
 CODE_28B02F:        TYA                       
 CODE_28B030:        BNE CODE_28B03C           
@@ -4124,7 +4124,7 @@ CODE_28B047:        RTL
 CODE_28B048:        CMP #$01                  
 CODE_28B04A:        BNE CODE_28B056           
 CODE_28B04C:        LDY $0689,x               
-CODE_28B04F:        LDA $BBC0,y               
+CODE_28B04F:        LDA.w DATA_21BBC0,y               
 CODE_28B052:        STA $0530                 
 CODE_28B055:        RTL                       
 
@@ -4155,7 +4155,7 @@ CODE_28B082:        LDA #$F3
 CODE_28B084:        JSL CODE_27A75D           
 CODE_28B088:        PLA                       
 CODE_28B089:        TAY                       
-CODE_28B08A:        LDA $BBCB,y               
+CODE_28B08A:        LDA.w DATA_21BBCB,y               
 CODE_28B08D:        STA $9E,x                 
 CODE_28B08F:        JSL CODE_27A7D8           
 CODE_28B093:        RTL                       
@@ -4255,23 +4255,23 @@ CODE_28B155:        JMP CODE_28B191
 
 CODE_28B158:        LDA #$13                  
 CODE_28B15A:        STA $1FC8,y               
-CODE_28B15D:        LDA $BBD6,x               
+CODE_28B15D:        LDA.w DATA_21BBD6,x               
 CODE_28B160:        CLC                       
 CODE_28B161:        ADC $0536                 
 CODE_28B164:        STA $05C9,y               
 CODE_28B167:        LDA $EE                   
 CODE_28B169:        ADC #$00                  
 CODE_28B16B:        STA $00E2,y               
-CODE_28B16E:        LDA $BBDA,x               
+CODE_28B16E:        LDA.w DATA_21BBDA,x               
 CODE_28B171:        CLC                       
 CODE_28B172:        ADC $053C                 
 CODE_28B175:        STA $05BF,y               
 CODE_28B178:        LDA #$00                  
 CODE_28B17A:        ADC $0539                 
 CODE_28B17D:        STA $1FD7,y               
-CODE_28B180:        LDA $BBDE,x               
+CODE_28B180:        LDA.w DATA_21BBDE,x               
 CODE_28B183:        STA $05DD,y               
-CODE_28B186:        LDA $BBE2,x               
+CODE_28B186:        LDA.w DATA_21BBE2,x               
 CODE_28B189:        STA $05D3,y               
 CODE_28B18C:        LDA #$00                  
 CODE_28B18E:        STA $06C7,y               
@@ -4337,12 +4337,12 @@ CODE_28B208:        STA $0804,y
 CODE_28B20B:        CLC                       
 CODE_28B20C:        ADC #$08                  
 CODE_28B20E:        STA $01                   
-CODE_28B210:        LDA $BBE6,x               
+CODE_28B210:        LDA.w DATA_21BBE6,x               
 CODE_28B213:        STA $0802,y               
 CODE_28B216:        INC A                     
 CODE_28B217:        STA $0806,y               
 CODE_28B21A:        LDA #$21                  
-CODE_28B21C:        ORA $BBF6,x               
+CODE_28B21C:        ORA.w DATA_21BBF6,x               
 CODE_28B21F:        STA $0803,y               
 CODE_28B222:        STA $0807,y               
 CODE_28B225:        AND #$80                  
@@ -4387,9 +4387,9 @@ CODE_28B263:        SEC
 CODE_28B264:        RTS                       
 
 CODE_28B265:        LDY $25                   
-CODE_28B267:        LDA $BCB5,y               
+CODE_28B267:        LDA.w DATA_21BCB5,y               
 CODE_28B26A:        STA $0679,x               
-CODE_28B26D:        LDA $BC06,y               
+CODE_28B26D:        LDA.w DATA_21BC06,y               
 CODE_28B270:        STA $8C,x                 
 CODE_28B272:        RTL                       
 
@@ -4541,7 +4541,7 @@ CODE_28B3B4:        LDA $4D,x
 CODE_28B3B6:        TAX                       
 CODE_28B3B7:        LDA $00                   
 CODE_28B3B9:        CLC                       
-CODE_28B3BA:        ADC $BC20,x               
+CODE_28B3BA:        ADC.w DATA_21BC20,x               
 CODE_28B3BD:        STA $00                   
 CODE_28B3BF:        LDX $05                   
 CODE_28B3C1:        JSL CODE_279F90           
@@ -4556,16 +4556,16 @@ CODE_28B3D1:        LDY $4D,x
 CODE_28B3D3:        BIT $02                   
 CODE_28B3D5:        BMI CODE_28B3DB           
 CODE_28B3D7:        CLC                       
-CODE_28B3D8:        ADC $BC20,y               
+CODE_28B3D8:        ADC.w DATA_21BC20,y               
 CODE_28B3DB:        STA $00                   
 CODE_28B3DD:        LDA $5F,x                 
 CODE_28B3DF:        STA $D8                   
 CODE_28B3E1:        LDA $44,x                 
 CODE_28B3E3:        STA $D9                   
-CODE_28B3E5:        LDA $BC08,y               
+CODE_28B3E5:        LDA.w DATA_21BC08,y               
 CODE_28B3E8:        BIT $02                   
 CODE_28B3EA:        BVS CODE_28B3F0           
-CODE_28B3EC:        JSL CODE_27A859           
+CODE_28B3EC:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28B3F0:        REP #$20                  
 CODE_28B3F2:        AND #$00FF                
 CODE_28B3F5:        CMP #$0080                
@@ -4639,7 +4639,7 @@ CODE_28B476:        ROR A
 CODE_28B477:        STA $00                   
 CODE_28B479:        LDY $71,x                 
 CODE_28B47B:        LDX $0726                 
-CODE_28B47E:        LDA $BC38,y               
+CODE_28B47E:        LDA.w DATA_21BC38,y               
 CODE_28B481:        BIT $00                   
 CODE_28B483:        BMI CODE_28B489           
 CODE_28B485:        LSR A                     
@@ -4648,13 +4648,13 @@ CODE_28B487:        LSR A
 CODE_28B488:        LSR A                     
 CODE_28B489:        AND #$0F                  
 CODE_28B48B:        STA $7E3977,x             
-CODE_28B48F:        LDA $BC50,y               
+CODE_28B48F:        LDA.w DATA_21BC50,y               
 CODE_28B492:        JSR CODE_28B4C7           
 CODE_28B495:        STA $7E3979,x             
-CODE_28B499:        LDA $BC68,y               
+CODE_28B499:        LDA.w DATA_21BC68,y               
 CODE_28B49C:        JSR CODE_28B4C7           
 CODE_28B49F:        STA $7E3975,x             
-CODE_28B4A3:        LDA $BC80,y               
+CODE_28B4A3:        LDA.w DATA_21BC80,y               
 CODE_28B4A6:        JSR CODE_28B4C7           
 CODE_28B4A9:        TAY                       
 CODE_28B4AA:        AND #$80                  
@@ -4722,9 +4722,9 @@ CODE_28B50A:        LDA #$B0
 CODE_28B50C:        STA $9E,x                 
 CODE_28B50E:        BRA CODE_28B515           
 
-CODE_28B510:        LDA $BC9E,y               
+CODE_28B510:        LDA.w DATA_21BC9E,y               
 CODE_28B513:        STA $9E,x                 
-CODE_28B515:        LDA $BC98,y               
+CODE_28B515:        LDA.w DATA_21BC98,y               
 CODE_28B518:        STA $8C,x                 
 CODE_28B51A:        JSL CODE_27A7EF           
 CODE_28B51E:        JSL CODE_27A7D8           
@@ -4749,7 +4749,7 @@ CODE_28B545:        LDY $4D,x
 CODE_28B547:        LDA $68,x                 
 CODE_28B549:        CLC                       
 CODE_28B54A:        ADC $074D                 
-CODE_28B54D:        CMP $BCA4,y               
+CODE_28B54D:        CMP.w DATA_21BCA4,y               
 CODE_28B550:        BMI CODE_28B587           
 CODE_28B552:        LDY $9E,x                 
 CODE_28B554:        BMI CODE_28B587           
@@ -4803,7 +4803,7 @@ CODE_28B5B3:        TAY
 CODE_28B5B4:        BMI CODE_28B5B9           
 CODE_28B5B6:        JMP CODE_28B4FA           
 
-CODE_28B5B9:        LDA $BCAA,x               
+CODE_28B5B9:        LDA.w DATA_21BCAA,x               
 CODE_28B5BC:        STA $68,x                 
 CODE_28B5BE:        LDA $5F,x                 
 CODE_28B5C0:        ORA #$04                  
@@ -4856,12 +4856,12 @@ CODE_28B625:        LDA $0681,x
 CODE_28B628:        BNE CODE_28B682           
 CODE_28B62A:        JSL CODE_279DC2           
 CODE_28B62E:        LDY $0418                 
-CODE_28B631:        LDA $B4C1,y               
+CODE_28B631:        LDA.w DATA_21B4C1,y               
 CODE_28B634:        CLC                       
 CODE_28B635:        ADC $0669,x               
 CODE_28B638:        TAY                       
 CODE_28B639:        REP #$10                  
-CODE_28B63B:        LDA $B5A2,y               
+CODE_28B63B:        LDA.w DATA_21B5A2,y               
 CODE_28B63E:        LDY $C6,x                 
 CODE_28B640:        STA $0802,y               
 CODE_28B643:        INC A                     
@@ -4947,12 +4947,12 @@ CODE_28B6DE:        LDA $9C
 CODE_28B6E0:        BNE CODE_28B729           
 CODE_28B6E2:        JSL CODE_27A837           
 CODE_28B6E6:        LDA $8C,x                 
-CODE_28B6E8:        CMP $BCB1,y               
+CODE_28B6E8:        CMP.w DATA_21BCB1,y               
 CODE_28B6EB:        BEQ CODE_28B6F3           
 CODE_28B6ED:        CLC                       
-CODE_28B6EE:        ADC $BCAF,y               
+CODE_28B6EE:        ADC.w DATA_21BCAF,y               
 CODE_28B6F1:        STA $8C,x                 
-CODE_28B6F3:        LDA $BCB6,y               
+CODE_28B6F3:        LDA.w DATA_21BCB5+1,y               
 CODE_28B6F6:        STA $0679,x               
 CODE_28B6F9:        JSL CODE_27A7C4           
 CODE_28B6FD:        LDY #$00                  
@@ -4962,10 +4962,10 @@ CODE_28B702:        SBC #$04
 CODE_28B704:        BMI CODE_28B707           
 CODE_28B706:        INY                       
 CODE_28B707:        LDA $9E,x                 
-CODE_28B709:        CMP $BCB1,y               
+CODE_28B709:        CMP.w DATA_21BCB1,y               
 CODE_28B70C:        BEQ CODE_28B714           
 CODE_28B70E:        CLC                       
-CODE_28B70F:        ADC $BCAF,y               
+CODE_28B70F:        ADC.w DATA_21BCAF,y               
 CODE_28B712:        STA $9E,x                 
 CODE_28B714:        JSL CODE_27A7EF           
 CODE_28B718:        JSL CODE_27A7D8           
@@ -4991,9 +4991,9 @@ CODE_28B74C:        STA $71,x
 CODE_28B74E:        BCC CODE_28B752           
 CODE_28B750:        INC $56,x                 
 CODE_28B752:        LDY $25                   
-CODE_28B754:        LDA $BCB5,y               
+CODE_28B754:        LDA.w DATA_21BCB5,y               
 CODE_28B757:        STA $0679,x               
-CODE_28B75A:        LDA $BCB3,y               
+CODE_28B75A:        LDA.w DATA_21BCB3,y               
 CODE_28B75D:        STA $8C,x                 
 CODE_28B75F:        RTL                       
 
@@ -5022,7 +5022,7 @@ CODE_28B78A:        DEY
 CODE_28B78B:        BPL CODE_28B78F           
 CODE_28B78D:        LDY #$03                  
 CODE_28B78F:        STY $68,x                 
-CODE_28B791:        LDA $BCB8,y               
+CODE_28B791:        LDA.w DATA_21BCB8,y               
 CODE_28B794:        STA $0518,x               
 CODE_28B797:        TYA                       
 CODE_28B798:        LSR A                     
@@ -5030,7 +5030,7 @@ CODE_28B799:        PHP
 CODE_28B79A:        BCS CODE_28B7C6                   
 CODE_28B79C:        JSL CODE_27A7EF           
 CODE_28B7A0:        LDY $0418                 
-CODE_28B7A3:        LDA $BB30,y               
+CODE_28B7A3:        LDA.w DATA_21BB30,y               
 CODE_28B7A6:        AND #$F0                  
 CODE_28B7A8:        LSR A                     
 CODE_28B7A9:        TAY                       
@@ -5249,15 +5249,15 @@ CODE_28B942:        LSR A
 CODE_28B943:        BCS CODE_28B960                   
 CODE_28B945:        LDY $68,x                 
 CODE_28B947:        LDA $8C,x                 
-CODE_28B949:        ADC $BCBE,y               
+CODE_28B949:        ADC.w DATA_21BCBE,y               
 CODE_28B94C:        STA $8C,x                 
-CODE_28B94E:        CMP $BCBC,y               
+CODE_28B94E:        CMP.w DATA_21BCBC,y               
 CODE_28B951:        BNE CODE_28B960           
 CODE_28B953:        TYA                       
 CODE_28B954:        EOR #$01                  
 CODE_28B956:        STA $68,x                 
 CODE_28B958:        LDY $4D,x                 
-CODE_28B95A:        LDA $BCC0,y               
+CODE_28B95A:        LDA.w DATA_21BCC0,y               
 CODE_28B95D:        STA $0518,x               
 CODE_28B960:        JSL CODE_279BC3           
 CODE_28B964:        JSR CODE_28C308           
@@ -5293,7 +5293,7 @@ CODE_28B9A2:        LDA $9C
 CODE_28B9A4:        BNE CODE_28B999           
 CODE_28B9A6:        LDY $4D,x                 
 CODE_28B9A8:        STA $4D,x                 
-CODE_28B9AA:        LDA $BCC2,y               
+CODE_28B9AA:        LDA.w DATA_21BCC2,y               
 CODE_28B9AD:        LDY #$00                  
 CODE_28B9AF:        SEC                       
 CODE_28B9B0:        SBC $68,x                 
@@ -5306,7 +5306,7 @@ CODE_28B9BB:        BMI CODE_28B9BE
 CODE_28B9BD:        INY                       
 CODE_28B9BE:        LDA $9E,x                 
 CODE_28B9C0:        CLC                       
-CODE_28B9C1:        ADC $BCC5,y               
+CODE_28B9C1:        ADC.w DATA_21BCC5,y               
 CODE_28B9C4:        STA $9E,x                 
 CODE_28B9C6:        JSL CODE_27A7D8           
 CODE_28B9CA:        LDA $68,x                 
@@ -5376,7 +5376,7 @@ CODE_28BA46:        BNE CODE_28BAB2
 CODE_28BA48:        LDA #$03                  
 CODE_28BA4A:        STA $0C                   
 CODE_28BA4C:        LDY $0418                 
-CODE_28BA4F:        LDA $BB30,y               
+CODE_28BA4F:        LDA.w DATA_21BB30,y               
 CODE_28BA52:        AND #$F0                  
 CODE_28BA54:        LSR A                     
 CODE_28BA55:        TAY                       
@@ -5394,16 +5394,16 @@ CODE_28BA6B:        STA $0C
 CODE_28BA6D:        LDA $68,x                 
 CODE_28BA6F:        STA $0D                   
 CODE_28BA71:        LDY $0C                   
-CODE_28BA73:        LDA $BCC8,y               
+CODE_28BA73:        LDA.w DATA_21BCC8,y               
 CODE_28BA76:        CLC                       
 CODE_28BA77:        ADC $0D                   
 CODE_28BA79:        AND #$0F                  
 CODE_28BA7B:        TAY                       
-CODE_28BA7C:        LDX $BCD5,y               
+CODE_28BA7C:        LDX.w DATA_21BCD5,y               
 CODE_28BA7F:        LDA $08,x                 
-CODE_28BA81:        CMP $BCE5,y               
+CODE_28BA81:        CMP.w DATA_21BCE5,y               
 CODE_28BA84:        BEQ CODE_28BAA3           
-CODE_28BA86:        CMP $BCF5,y               
+CODE_28BA86:        CMP.w DATA_21BCF5,y               
 CODE_28BA89:        BEQ CODE_28BAA3           
 CODE_28BA8B:        CPY $0D                   
 CODE_28BA8D:        BNE CODE_28BA99           
@@ -5421,9 +5421,9 @@ CODE_28BAA1:        LDY #$10
 CODE_28BAA3:        LDX $9B                   
 CODE_28BAA5:        TYA                       
 CODE_28BAA6:        STA $68,x                 
-CODE_28BAA8:        LDA $BD16,y               
+CODE_28BAA8:        LDA.w DATA_21BD16,y               
 CODE_28BAAB:        STA $8C,x                 
-CODE_28BAAD:        LDA $BD05,y               
+CODE_28BAAD:        LDA.w DATA_21BD05,y               
 CODE_28BAB0:        STA $9E,x                 
 CODE_28BAB2:        JSL CODE_27A7D8           
 CODE_28BAB6:        JSL CODE_27A7EF           
@@ -5435,9 +5435,9 @@ CODE_28BAC3:        STA $4D,x
 CODE_28BAC5:        RTL                       
 
 CODE_28BAC6:        LDY $0025                 
-CODE_28BAC9:        LDA $BD27,y               
+CODE_28BAC9:        LDA.w DATA_21BD27,y               
 CODE_28BACC:        STA $0679,x               
-CODE_28BACF:        LDA $BD29,y               
+CODE_28BACF:        LDA.w DATA_21BD29,y               
 CODE_28BAD2:        STA $8C,x                 
 CODE_28BAD4:        RTL                       
 
@@ -5460,7 +5460,7 @@ CODE_28BAF2:        LDA $0518,x
 CODE_28BAF5:        LSR A                     
 CODE_28BAF6:        LSR A                     
 CODE_28BAF7:        TAY                       
-CODE_28BAF8:        LDA $BD2B,y               
+CODE_28BAF8:        LDA.w DATA_21BD2B,y               
 CODE_28BAFB:        STA $0669,x               
 CODE_28BAFE:        BPL CODE_28BB59           
 CODE_28BB00:        JSR CODE_28BC43           
@@ -5474,7 +5474,7 @@ CODE_28BB0D:        LSR A
 CODE_28BB0E:        AND #$01                  
 CODE_28BB10:        STA $0669,x               
 CODE_28BB13:        LDA $15                   
-CODE_28BB15:        ADC $BCAA,x               
+CODE_28BB15:        ADC.w DATA_21BCAA,x               
 CODE_28BB18:        BMI CODE_28BB59           
 CODE_28BB1A:        JSL CODE_27A7AD           
 CODE_28BB1E:        EOR $0679,x               
@@ -5517,7 +5517,7 @@ CODE_28BB72:        LDA $4D,x
 CODE_28BB74:        TAX                       
 CODE_28BB75:        LDA $00                   
 CODE_28BB77:        CLC                       
-CODE_28BB78:        ADC $BD58,x               
+CODE_28BB78:        ADC.w DATA_21BD58,x               
 CODE_28BB7B:        STA $00                   
 CODE_28BB7D:        LDX $05                   
 CODE_28BB7F:        JSL CODE_279F90           
@@ -5527,16 +5527,16 @@ CODE_28BB87:        LDA $83,x
 CODE_28BB89:        BIT $02                   
 CODE_28BB8B:        BMI CODE_28BB91           
 CODE_28BB8D:        CLC                       
-CODE_28BB8E:        ADC $BD58,y               
+CODE_28BB8E:        ADC.w DATA_21BD58,y               
 CODE_28BB91:        STA $00                   
 CODE_28BB93:        LDA $44,x                 
 CODE_28BB95:        STA $D9                   
 CODE_28BB97:        LDA $5F,x                 
 CODE_28BB99:        STA $D8                   
-CODE_28BB9B:        LDA $BD3A,y               
+CODE_28BB9B:        LDA.w DATA_21BD3A,y               
 CODE_28BB9E:        BIT $02                   
 CODE_28BBA0:        BVC CODE_28BBA6                   
-CODE_28BBA2:        JSL CODE_27A859           
+CODE_28BBA2:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28BBA6:        STZ $07                   
 CODE_28BBA8:        REP #$20                  
 CODE_28BBAA:        AND #$00FF                
@@ -5668,8 +5668,8 @@ CODE_28BCAE:        AND #$7C
 CODE_28BCB0:        LSR A                     
 CODE_28BCB1:        LSR A                     
 CODE_28BCB2:        TAX                       
-CODE_28BCB3:        LDA $BD76,x               
-CODE_28BCB6:        JSL CODE_27A859           
+CODE_28BCB3:        LDA.w DATA_21BD76,x               
+CODE_28BCB6:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28BCBA:        ASL A                     
 CODE_28BCBB:        ASL A                     
 CODE_28BCBC:        ASL A                     
@@ -5694,11 +5694,11 @@ CODE_28BCDD:        LDA $A7,x
 CODE_28BCDF:        AND #$04                  
 CODE_28BCE1:        BEQ CODE_28BCFE           
 CODE_28BCE3:        LDA $15                   
-CODE_28BCE5:        ADC $BCAA,x               
+CODE_28BCE5:        ADC.w DATA_21BCAA,x               
 CODE_28BCE8:        AND #$9F                  
 CODE_28BCEA:        BNE CODE_28BCF4           
 CODE_28BCEC:        LDA $8C,x                 
-CODE_28BCEE:        JSL CODE_27A859           
+CODE_28BCEE:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28BCF2:        STA $8C,x                 
 CODE_28BCF4:        LDA $15                   
 CODE_28BCF6:        ASL A                     
@@ -5743,7 +5743,7 @@ CODE_28BD40:        LSR A
 CODE_28BD41:        TAY                       
 CODE_28BD42:        LDA $68,x                 
 CODE_28BD44:        CLC                       
-CODE_28BD45:        ADC $BD76,y               
+CODE_28BD45:        ADC.w DATA_21BD76,y               
 CODE_28BD48:        STA $68,x                 
 CODE_28BD4A:        JSL CODE_27A316           
 CODE_28BD4E:        JSL CODE_279BC3           
@@ -5836,7 +5836,7 @@ CODE_28BE08:        XBA
 CODE_28BE09:        LDA $5F,x                 
 CODE_28BE0B:        REP #$20                  
 CODE_28BE0D:        CLC                       
-CODE_28BE0E:        ADC $BD8E,y               
+CODE_28BE0E:        ADC.w DATA_21BD8E,y               
 CODE_28BE11:        SEP #$20                  
 CODE_28BE13:        STA $5F,x                 
 CODE_28BE15:        XBA                       
@@ -6059,7 +6059,7 @@ CODE_28BFE3:        LDA $68,x
 CODE_28BFE5:        TAX                       
 CODE_28BFE6:        LDA $00                   
 CODE_28BFE8:        CLC                       
-CODE_28BFE9:        ADC $BD96,x               
+CODE_28BFE9:        ADC.w DATA_21BD96,x               
 CODE_28BFEC:        STA $00                   
 CODE_28BFEE:        LDX $05                   
 CODE_28BFF0:        JSL CODE_279F90           
@@ -6069,7 +6069,7 @@ CODE_28BFF8:        BIT $02
 CODE_28BFFA:        BMI CODE_28C002           
 CODE_28BFFC:        LDY $68,x                 
 CODE_28BFFE:        CLC                       
-CODE_28BFFF:        ADC $BD96,y               
+CODE_28BFFF:        ADC.w DATA_21BD96,y               
 CODE_28C002:        STA $00                   
 CODE_28C004:        BIT $02                   
 CODE_28C006:        BVS CODE_28C013           
@@ -6232,10 +6232,10 @@ CODE_28C14D:        STA $1605,x
 CODE_28C150:        INC A                     
 CODE_28C151:        STA $00                   
 CODE_28C153:        LDY $02D4                 
-CODE_28C156:        LDA $BE15,y               
+CODE_28C156:        LDA.w DATA_21BE15,y               
 CODE_28C159:        TAY                       
 CODE_28C15A:        REP #$20                  
-CODE_28C15C:        LDA $BDA9,y               
+CODE_28C15C:        LDA.w DATA_21BDA9,y               
 CODE_28C15F:        STA $1606,x               
 CODE_28C162:        SEP #$20                  
 CODE_28C164:        INY                       
@@ -6257,7 +6257,7 @@ CODE_28C17F:        LDA $02D4
 CODE_28C182:        CMP #$07                  
 CODE_28C184:        BCC CODE_28C19F           
 CODE_28C186:        LDY $68,x                 
-CODE_28C188:        LDA $BEEE,y               
+CODE_28C188:        LDA.w DATA_21BEEE,y               
 CODE_28C18B:        STA $02D4                 
 CODE_28C18E:        LDA #$50                  
 CODE_28C190:        STA $070B                 
@@ -6271,7 +6271,7 @@ CODE_28C19F:        RTS
 CODE_28C1A0:        LDA $0518,x               
 CODE_28C1A3:        BNE CODE_28C217           
 CODE_28C1A5:        LDY $02D4                 
-CODE_28C1A8:        LDA $BE1C,y               
+CODE_28C1A8:        LDA.w DATA_21BE1C,y               
 CODE_28C1AB:        PHA                       
 CODE_28C1AC:        CMP #$FE                  
 CODE_28C1AE:        BEQ CODE_28C1BB           
@@ -6385,20 +6385,20 @@ CODE_28C2A3:        STA $0809,y
 CODE_28C2A6:        STA $080D,y               
 CODE_28C2A9:        LDA $0669,x               
 CODE_28C2AC:        TAX                       
-CODE_28C2AD:        LDA $BEF0,x               
+CODE_28C2AD:        LDA.w DATA_21BEF0,x               
 CODE_28C2B0:        STA $0802,y               
 CODE_28C2B3:        INC A                     
 CODE_28C2B4:        STA $080A,y               
-CODE_28C2B7:        LDA $BEFD,x               
+CODE_28C2B7:        LDA.w DATA_21BEFD,x               
 CODE_28C2BA:        STA $0806,y               
 CODE_28C2BD:        INC A                     
 CODE_28C2BE:        STA $080E,y               
-CODE_28C2C1:        LDA $BF0A,x               
+CODE_28C2C1:        LDA.w DATA_21BF0A,x               
 CODE_28C2C4:        AND #$0F                  
 CODE_28C2C6:        ORA #$20                  
 CODE_28C2C8:        STA $0803,y               
 CODE_28C2CB:        STA $080B,y               
-CODE_28C2CE:        LDA $BF0A,x               
+CODE_28C2CE:        LDA.w DATA_21BF0A,x               
 CODE_28C2D1:        ORA #$20                  
 CODE_28C2D3:        STA $0807,y               
 CODE_28C2D6:        STA $080F,y               
@@ -6530,7 +6530,7 @@ CODE_28C3D9:        LDA $56,x
 CODE_28C3DB:        STA $1FD7,y               
 CODE_28C3DE:        LDA $00                   
 CODE_28C3E0:        ASL A                     
-CODE_28C3E1:        JSL CODE_27A859           
+CODE_28C3E1:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28C3E5:        STA $05DD,y               
 CODE_28C3E8:        LDA #$C0                  
 CODE_28C3EA:        SEC                       
@@ -6555,15 +6555,15 @@ CODE_28C419:        INY
 CODE_28C41A:        LDA $0679,x               
 CODE_28C41D:        ASL A                     
 CODE_28C41E:        ASL A                     
-CODE_28C41F:        LDA $BF18,y               
+CODE_28C41F:        LDA.w DATA_21BF18,y               
 CODE_28C422:        BCS CODE_28C428                   
-CODE_28C424:        JSL CODE_27A859           
+CODE_28C424:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28C428:        STA $8C,x                 
 CODE_28C42A:        LDA $A7,x                 
 CODE_28C42C:        AND #$04                  
 CODE_28C42E:        BEQ CODE_28C43C           
 CODE_28C430:        LDA $15                   
-CODE_28C432:        AND $BF1B,y               
+CODE_28C432:        AND.w DATA_21BF1B,y               
 CODE_28C435:        BEQ CODE_28C439           
 CODE_28C437:        LDA #$01                  
 CODE_28C439:        STA $0669,x               
@@ -6578,9 +6578,9 @@ CODE_28C44A:        STA $0679,x
 CODE_28C44D:        RTL                       
 
 CODE_28C44E:        LDY $68,x                 
-CODE_28C450:        LDA $BF1D,y               
+CODE_28C450:        LDA.w DATA_21BF1D,y               
 CODE_28C453:        STA $0669,x               
-CODE_28C456:        LDA $BF25,y               
+CODE_28C456:        LDA.w DATA_21BF25,y               
 CODE_28C459:        STA $0518,x               
 CODE_28C45C:        RTL                       
 
@@ -6625,7 +6625,7 @@ CODE_28C4A4:        JSL CODE_27A289
 CODE_28C4A8:        JSL CODE_279DF8           
 CODE_28C4AC:        LDX $9B                   
 CODE_28C4AE:        LDY $0669,x               
-CODE_28C4B1:        LDX $BF2C,y               
+CODE_28C4B1:        LDX.w DATA_21BF2C,y               
 CODE_28C4B4:        JSL CODE_27A079           
 CODE_28C4B8:        LDX $9B                   
 CODE_28C4BA:        BIT $02                   
@@ -6646,7 +6646,7 @@ CODE_28C4D6:        SEP #$20
 CODE_28C4D8:        LDY $D8                   
 CODE_28C4DA:        LDA $0801,y               
 CODE_28C4DD:        CLC                       
-CODE_28C4DE:        ADC $BF30,x               
+CODE_28C4DE:        ADC.w DATA_21BF30,x               
 CODE_28C4E1:        STA $0801,y               
 CODE_28C4E4:        CLC                       
 CODE_28C4E5:        ADC #$08                  
@@ -6705,7 +6705,7 @@ CODE_28C54A:        BEQ CODE_28C550
 CODE_28C54C:        CMP #$03                  
 CODE_28C54E:        BNE CODE_28C5BE           
 CODE_28C550:        LDY $0671,x               
-CODE_28C553:        LDA $AE78,y               
+CODE_28C553:        LDA.w DATA_21AE78,y               
 CODE_28C556:        AND #$10                  
 CODE_28C558:        BEQ CODE_28C5BE           
 CODE_28C55A:        LDA $0681,x               
@@ -6761,10 +6761,10 @@ CODE_28C5C3:        RTS
 CODE_28C5C4:        LDY $25                   
 CODE_28C5C6:        LDA $5E                   
 CODE_28C5C8:        CLC                       
-CODE_28C5C9:        ADC $BF39,y               
+CODE_28C5C9:        ADC.w DATA_21BF39,y               
 CODE_28C5CC:        STA $5F,x                 
 CODE_28C5CE:        LDA $43                   
-CODE_28C5D0:        ADC $BF3B,y               
+CODE_28C5D0:        ADC.w DATA_21BF3B,y               
 CODE_28C5D3:        STA $44,x                 
 CODE_28C5D5:        TYA                       
 CODE_28C5D6:        STA $68,x                 
@@ -6828,11 +6828,11 @@ CODE_28C657:        STA $9E,x
 CODE_28C659:        LDY $68,x                 
 CODE_28C65B:        LDA $8C,x                 
 CODE_28C65D:        CLC                       
-CODE_28C65E:        ADC $BF3F,y               
+CODE_28C65E:        ADC.w DATA_21BF3F,y               
 CODE_28C661:        BMI CODE_28C66B           
 CODE_28C663:        LDA $8C,x                 
 CODE_28C665:        CLC                       
-CODE_28C666:        ADC $BF41,y               
+CODE_28C666:        ADC.w DATA_21BF41,y               
 CODE_28C669:        STA $8C,x                 
 CODE_28C66B:        LDA $8C,x                 
 CODE_28C66D:        LSR A                     
@@ -6842,13 +6842,13 @@ CODE_28C672:        STA $0679,x
 CODE_28C675:        JSL CODE_27A7AD           
 CODE_28C679:        LDA $0E                   
 CODE_28C67B:        CLC                       
-CODE_28C67C:        ADC $BF43,y               
+CODE_28C67C:        ADC.w DATA_21BF43,y               
 CODE_28C67F:        BPL CODE_28C686           
 CODE_28C681:        TYA                       
 CODE_28C682:        EOR #$01                  
 CODE_28C684:        STA $68,x                 
 CODE_28C686:        LDA $0E                   
-CODE_28C688:        CMP $BF3D,y               
+CODE_28C688:        CMP.w DATA_21BF3D,y               
 CODE_28C68B:        BNE CODE_28C634           
 CODE_28C68D:        JSL CODE_27A7C4           
 CODE_28C691:        LDA $0E                   
@@ -6887,7 +6887,7 @@ CODE_28C6CD:        JSL CODE_27A7AD
 CODE_28C6D1:        LDY $68,x                 
 CODE_28C6D3:        LDA $0E                   
 CODE_28C6D5:        CLC                       
-CODE_28C6D6:        ADC $BF45,y               
+CODE_28C6D6:        ADC.w DATA_21BF45,y               
 CODE_28C6D9:        CMP #$02                  
 CODE_28C6DB:        BCS CODE_28C702                   
 CODE_28C6DD:        JSL CODE_27A7C4           
@@ -7060,11 +7060,11 @@ CODE_28C837:        STA $9E,x
 CODE_28C839:        LDY $68,x                 
 CODE_28C83B:        LDA $8C,x                 
 CODE_28C83D:        CLC                       
-CODE_28C83E:        ADC $BF51,y               
+CODE_28C83E:        ADC.w DATA_21BF51,y               
 CODE_28C841:        BMI CODE_28C84B           
 CODE_28C843:        LDA $8C,x                 
 CODE_28C845:        CLC                       
-CODE_28C846:        ADC $BF53,y               
+CODE_28C846:        ADC.w DATA_21BF53,y               
 CODE_28C849:        STA $8C,x                 
 CODE_28C84B:        LDA $8C,x                 
 CODE_28C84D:        LSR A                     
@@ -7081,13 +7081,13 @@ CODE_28C862:        JMP CODE_28C5C4
 
 CODE_28C865:        LDA $0E                   
 CODE_28C867:        CLC                       
-CODE_28C868:        ADC $BF55,y               
+CODE_28C868:        ADC.w DATA_21BF55,y               
 CODE_28C86B:        BPL CODE_28C872           
 CODE_28C86D:        TYA                       
 CODE_28C86E:        EOR #$01                  
 CODE_28C870:        STA $68,x                 
 CODE_28C872:        LDA $0E                   
-CODE_28C874:        CMP $BF4F,y               
+CODE_28C874:        CMP.w DATA_21BF4F,y               
 CODE_28C877:        BNE CODE_28C8C4           
 CODE_28C879:        JSL CODE_27A7C4           
 CODE_28C87D:        LDA $0E                   
@@ -7232,7 +7232,7 @@ CODE_28C987:        INC $A7,x
 CODE_28C989:        LDA #$00                  
 CODE_28C98B:        TAY                       
 CODE_28C98C:        STA $0689,x               
-CODE_28C98F:        LDA $BF66,y               
+CODE_28C98F:        LDA.w DATA_21BF66,y               
 CODE_28C992:        STA $0669,x               
 CODE_28C995:        JSL CODE_28CE71           
 CODE_28C999:        REP #$10                  
@@ -7423,7 +7423,7 @@ CODE_28CB42:        JSR CODE_28CCEF
 CODE_28CB45:        TYA                       
 CODE_28CB46:        STA $0691,x               
 CODE_28CB49:        LDY $68,x                 
-CODE_28CB4B:        LDA $BFB2,y               
+CODE_28CB4B:        LDA.w DATA_21BFB2,y               
 CODE_28CB4E:        STA $0689,x               
 CODE_28CB51:        LDA #$06                  
 CODE_28CB53:        STA $A7,x                 
@@ -7514,14 +7514,14 @@ CODE_28CC07:        STA $0801,y
 CODE_28CC0A:        CLC                       
 CODE_28CC0B:        ADC #$08                  
 CODE_28CC0D:        STA $0805,y               
-CODE_28CC10:        LDA $BFB7,x               
+CODE_28CC10:        LDA.w DATA_21BFB7,x               
 CODE_28CC13:        STA $0802,y               
 CODE_28CC16:        INC A                     
 CODE_28CC17:        STA $0806,y               
 CODE_28CC1A:        LDA #$22                  
 CODE_28CC1C:        STA $0803,y               
 CODE_28CC1F:        STA $0807,y               
-CODE_28CC22:        LDA $BFBA,x               
+CODE_28CC22:        LDA.w DATA_21BFBA,x               
 CODE_28CC25:        BIT $0216                 
 CODE_28CC28:        BPL CODE_28CC2D           
 CODE_28CC2A:        CLC                       
@@ -7554,7 +7554,7 @@ CODE_28CC52:        BPL CODE_28CC01
 CODE_28CC54:        LDX $9B                   
 CODE_28CC56:        LDA $68,x                 
 CODE_28CC58:        TAX                       
-CODE_28CC59:        LDA $BFBC,x               
+CODE_28CC59:        LDA.w DATA_21BFBC,x               
 CODE_28CC5C:        STA $07FA,y               
 CODE_28CC5F:        INC A                     
 CODE_28CC60:        STA $07FE,y               
@@ -7610,10 +7610,10 @@ CODE_28CCC5:        LDX $1600
 CODE_28CCC8:        LDA #$02                  
 CODE_28CCCA:        STA $00                   
 CODE_28CCCC:        REP #$20                  
-CODE_28CCCE:        LDA $BFB9,y               
+CODE_28CCCE:        LDA.w DATA_21BFB9,y               
 CODE_28CCD1:        STA $15F6,x               
 CODE_28CCD4:        STA $15E6,x               
-CODE_28CCD7:        LDA $BFD1,y               
+CODE_28CCD7:        LDA.w DATA_21BFD1,y               
 CODE_28CCDA:        STA $15FE,x               
 CODE_28CCDD:        STA $15EE,x               
 CODE_28CCE0:        SEP #$20                  
@@ -7632,11 +7632,11 @@ CODE_28CCF2:        BEQ CODE_28CCF6
 CODE_28CCF4:        LDY #$23                  
 CODE_28CCF6:        RTS                       
 
-CODE_28CCF7:        LDA $BF6F,y               
+CODE_28CCF7:        LDA.w DATA_21BF6E+1,y               
 CODE_28CCFA:        STA $00                   
-CODE_28CCFC:        LDX $BF6E,y               
+CODE_28CCFC:        LDX.w DATA_21BF6E,y               
 CODE_28CCFF:        LDY $1600                 
-CODE_28CD02:        LDA $BF71,x               
+CODE_28CD02:        LDA.w DATA_21BF71,x               
 CODE_28CD05:        STA $1602,y               
 CODE_28CD08:        INY                       
 CODE_28CD09:        INX                       
@@ -7753,9 +7753,9 @@ CODE_28CDF5:        STA $8C,x
 CODE_28CDF7:        LDA #$D8                  
 CODE_28CDF9:        STA $9E,x                 
 CODE_28CDFB:        LDY $0669,x               
-CODE_28CDFE:        LDA $BFF1,y               
+CODE_28CDFE:        LDA.w DATA_21BFF1,y               
 CODE_28CE01:        STA $0689,x               
-CODE_28CE04:        LDA $BFF4,y               
+CODE_28CE04:        LDA.w DATA_21BFF4,y               
 CODE_28CE07:        STA $0669,x               
 CODE_28CE0A:        INY                       
 CODE_28CE0B:        TYA                       
@@ -7816,7 +7816,7 @@ CODE_28CE8A:        TAX
 CODE_28CE8B:        SEP #$20                  
 CODE_28CE8D:        LDA $0803,x               
 CODE_28CE90:        AND #$B9                  
-CODE_28CE92:        ORA $BF57,y               
+CODE_28CE92:        ORA.w DATA_21BF57,y               
 CODE_28CE95:        STA $0803,x               
 CODE_28CE98:        STA $080B,x               
 CODE_28CE9B:        EOR #$40                  
@@ -7931,7 +7931,7 @@ CODE_28D04A:        INC $4D,x
 CODE_28D04C:        LDA #$D0                  
 CODE_28D04E:        STA $9E,x                 
 CODE_28D050:        LDY $68,x                 
-CODE_28D052:        LDA $ADBC,y               
+CODE_28D052:        LDA.w DATA_21ADBC,y               
 CODE_28D055:        STA $1FE9,x               
 CODE_28D058:        JSR CODE_28D0B3           
 CODE_28D05B:        LDA #$00                  
@@ -7967,7 +7967,7 @@ CODE_28D09B:        RTL
 CODE_28D09C:        LDA $7E3963               
 CODE_28D0A0:        TAY                       
 CODE_28D0A1:        STA $0669,x               
-CODE_28D0A4:        LDA $C0AB,y               
+CODE_28D0A4:        LDA.w DATA_21C0AB,y               
 CODE_28D0A7:        BPL CODE_28D0AE           
 CODE_28D0A9:        JSL CODE_279EDD           
 CODE_28D0AD:        RTL                       
@@ -8066,7 +8066,7 @@ CODE_28D169:        STA $9E,x
 CODE_28D16B:        LDA #$70                  
 CODE_28D16D:        STA $0518,x               
 CODE_28D170:        JSL CODE_27A837           
-CODE_28D174:        LDA $C0B9,y               
+CODE_28D174:        LDA.w DATA_21C0B9,y               
 CODE_28D177:        STA $8C,x                 
 CODE_28D179:        BRA CODE_28D191           
 
@@ -8087,7 +8087,7 @@ CODE_28D19B:        BMI CODE_28D1A3
 CODE_28D19D:        CMP #$70                  
 CODE_28D19F:        BCS CODE_28D1B6                   
 CODE_28D1A1:        BCC CODE_28D1A7           
-CODE_28D1A3:        JSL CODE_27A859           
+CODE_28D1A3:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28D1A7:        LSR A                     
 CODE_28D1A8:        LSR A                     
 CODE_28D1A9:        LDY $9E,x                 
@@ -8163,14 +8163,14 @@ CODE_28D245:        REP #$10
 CODE_28D247:        LDY $D8                   
 CODE_28D249:        LDA $0801,y               
 CODE_28D24C:        SEC                       
-CODE_28D24D:        SBC $C0BB,x               
+CODE_28D24D:        SBC.w DATA_21C0BB,x               
 CODE_28D250:        STA $0801,y               
 CODE_28D253:        CLC                       
 CODE_28D254:        ADC #$08                  
 CODE_28D256:        STA $0809,y               
 CODE_28D259:        LDA $0805,y               
 CODE_28D25C:        SEC                       
-CODE_28D25D:        SBC $C0BB,x               
+CODE_28D25D:        SBC.w DATA_21C0BB,x               
 CODE_28D260:        STA $0805,y               
 CODE_28D263:        CLC                       
 CODE_28D264:        ADC #$08                  
@@ -8235,18 +8235,18 @@ CODE_28D2D6:        STA $D8
 CODE_28D2D8:        LDX $0F                   
 CODE_28D2DA:        LDA $00                   
 CODE_28D2DC:        CLC                       
-CODE_28D2DD:        ADC $C0C1,x               
+CODE_28D2DD:        ADC.w DATA_21C0C1,x               
 CODE_28D2E0:        STA $05BF,y               
 CODE_28D2E3:        LDA $02                   
-CODE_28D2E5:        ADC $C0C6,x               
+CODE_28D2E5:        ADC.w DATA_21C0C6,x               
 CODE_28D2E8:        STA $1FD7,y               
 CODE_28D2EB:        LDA $01                   
 CODE_28D2ED:        STA $05C9,y               
 CODE_28D2F0:        LDA $D8                   
 CODE_28D2F2:        STA $00E2,y               
-CODE_28D2F5:        LDA $C0D0,x               
+CODE_28D2F5:        LDA.w DATA_21C0D0,x               
 CODE_28D2F8:        STA $05D3,y               
-CODE_28D2FB:        LDA $C0D5,x               
+CODE_28D2FB:        LDA.w DATA_21C0D5,x               
 CODE_28D2FE:        STA $05DD,y               
 CODE_28D301:        LDA #$13                  
 CODE_28D303:        CPX #$04                  
@@ -8265,7 +8265,7 @@ CODE_28D31F:        STA $06D1,y
 CODE_28D322:        RTS                       
 
 CODE_28D323:        JSL CODE_27A837           
-CODE_28D327:        LDA $C0DA,y               
+CODE_28D327:        LDA.w DATA_21C0DA,y               
 CODE_28D32A:        STA $8C,x                 
 CODE_28D32C:        LDA #$80                  
 CODE_28D32E:        STA $0679,x               
@@ -8417,12 +8417,12 @@ CODE_28D46A:        STA $0529
 CODE_28D46D:        RTS                       
 
 CODE_28D46E:        JSL CODE_27A837           
-CODE_28D472:        LDA $C0E6,y               
+CODE_28D472:        LDA.w DATA_21C0E6,y               
 CODE_28D475:        STA $8C,x                 
 CODE_28D477:        RTL                       
 
 CODE_28D478:        JSL CODE_27A837           
-CODE_28D47C:        LDA $C0E8,y               
+CODE_28D47C:        LDA.w DATA_21C0E8,y               
 CODE_28D47F:        STA $8C,x                 
 CODE_28D481:        INC $1021,x               
 CODE_28D484:        RTL                       
@@ -8477,7 +8477,7 @@ CODE_28D4E8:        LDA $1FD2,x
 CODE_28D4EB:        AND #$3F                  
 CODE_28D4ED:        BNE CODE_28D4F8           
 CODE_28D4EF:        JSL CODE_27A837           
-CODE_28D4F3:        LDA $C0E8,y               
+CODE_28D4F3:        LDA.w DATA_21C0E8,y               
 CODE_28D4F6:        STA $8C,x                 
 CODE_28D4F8:        LDA $A7,x                 
 CODE_28D4FA:        AND #$03                  
@@ -8534,11 +8534,11 @@ CODE_28D566:        BEQ CODE_28D590
 CODE_28D568:        LDA $8C,x                 
 CODE_28D56A:        PHP                       
 CODE_28D56B:        BPL CODE_28D571           
-CODE_28D56D:        JSL CODE_27A859           
+CODE_28D56D:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28D571:        LSR A                     
 CODE_28D572:        PLP                       
 CODE_28D573:        BPL CODE_28D579           
-CODE_28D575:        JSL CODE_27A859           
+CODE_28D575:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28D579:        STA $8C,x                 
 CODE_28D57B:        LDA $9E,x                 
 CODE_28D57D:        PHA                       
@@ -8546,7 +8546,7 @@ CODE_28D57E:        JSL CODE_278B67
 CODE_28D582:        PLA                       
 CODE_28D583:        BMI CODE_28D590           
 CODE_28D585:        LSR A                     
-CODE_28D586:        JSL CODE_27A859           
+CODE_28D586:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28D58A:        CMP #$FC                  
 CODE_28D58C:        BCS CODE_28D590                   
 CODE_28D58E:        STA $9E,x                 
@@ -8554,7 +8554,7 @@ CODE_28D590:        LDA $A7,x
 CODE_28D592:        AND #$03                  
 CODE_28D594:        BEQ CODE_28D5A1           
 CODE_28D596:        LDA $8C,x                 
-CODE_28D598:        JSL CODE_27A859           
+CODE_28D598:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28D59C:        STA $8C,x                 
 CODE_28D59E:        ASL A                     
 CODE_28D59F:        ROR $8C,x                 
@@ -8612,11 +8612,11 @@ CODE_28D608:        ADC #$06
 CODE_28D60A:        TAX                       
 CODE_28D60B:        LDA $00                   
 CODE_28D60D:        CLC                       
-CODE_28D60E:        ADC $C0FE,x               
+CODE_28D60E:        ADC.w DATA_21C0FE,x               
 CODE_28D611:        STA $00                   
 CODE_28D613:        LDA $01                   
 CODE_28D615:        CLC                       
-CODE_28D616:        ADC $C0F2,x               
+CODE_28D616:        ADC.w DATA_21C0F2,x               
 CODE_28D619:        STA $01                   
 CODE_28D61B:        DEC $02                   
 CODE_28D61D:        BPL CODE_28D60B           
@@ -8766,7 +8766,7 @@ CODE_28D74D:        JSL CODE_278B67
 CODE_28D751:        PLA                       
 CODE_28D752:        LSR A                     
 CODE_28D753:        LSR A                     
-CODE_28D754:        JSL CODE_27A859           
+CODE_28D754:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28D758:        CMP #$FE                  
 CODE_28D75A:        BCS CODE_28D75E                   
 CODE_28D75C:        STA $9E,x                 
@@ -8809,7 +8809,7 @@ CODE_28D79D:        TAX
 CODE_28D79E:        SEP #$20                  
 CODE_28D7A0:        PLA                       
 CODE_28D7A1:        STA $D8                   
-CODE_28D7A3:        LDA $C10A,x               
+CODE_28D7A3:        LDA.w DATA_21C10A,x               
 CODE_28D7A6:        LDX $9B                   
 CODE_28D7A8:        CMP #$70                  
 CODE_28D7AA:        BEQ CODE_28D7EE           
@@ -8941,7 +8941,7 @@ CODE_28D8A2:        LSR A
 CODE_28D8A3:        LSR A                     
 CODE_28D8A4:        LSR A                     
 CODE_28D8A5:        TAY                       
-CODE_28D8A6:        LDA $C130,y               
+CODE_28D8A6:        LDA.w DATA_21C130,y               
 CODE_28D8A9:        STA $0669,x               
 CODE_28D8AC:        LDA $0771,x               
 CODE_28D8AF:        CMP #$10                  
@@ -8951,7 +8951,7 @@ CODE_28D8B5:        STA $9E,x
 CODE_28D8B7:        LDA $0691,x               
 CODE_28D8BA:        BNE CODE_28D8C5           
 CODE_28D8BC:        JSL CODE_27A837           
-CODE_28D8C0:        LDA $C12A,y               
+CODE_28D8C0:        LDA.w DATA_21C12A,y               
 CODE_28D8C3:        STA $8C,x                 
 CODE_28D8C5:        LDA $15                   
 CODE_28D8C7:        LSR A                     
@@ -9011,10 +9011,10 @@ CODE_28D930:        LDA $0691,x
 CODE_28D933:        BEQ CODE_28D959           
 CODE_28D935:        JSL CODE_27A837           
 CODE_28D939:        LDA $8C,x                 
-CODE_28D93B:        CMP $C140,y               
+CODE_28D93B:        CMP.w DATA_21C140,y               
 CODE_28D93E:        BEQ CODE_28D949           
 CODE_28D940:        CLC                       
-CODE_28D941:        ADC $C144,y               
+CODE_28D941:        ADC.w DATA_21C144,y               
 CODE_28D944:        STA $8C,x                 
 CODE_28D946:        INC $1FD2,x               
 CODE_28D949:        INC $0689,x               
@@ -9043,7 +9043,7 @@ DATA_28D978:        db $20,$E0
 CODE_28D97A:        AND #$3F
 CODE_28D97C:        BNE CODE_28D987             
 CODE_28D97E:        JSL CODE_27A837
-CODE_28D982:        LDA $C12A,y
+CODE_28D982:        LDA.w DATA_21C12A,y
 CODE_28D985:        STA $8C,x
 CODE_28D987:        LDA $1FD2,x
 CODE_28D98A:        AND #$03
@@ -9132,10 +9132,10 @@ CODE_28DA41:        LDA $0691,x
 CODE_28DA44:        BEQ CODE_28DA5D           
 CODE_28DA46:        JSL CODE_27A837           
 CODE_28DA4A:        LDA $8C,x                 
-CODE_28DA4C:        CMP $C140,y               
+CODE_28DA4C:        CMP.w DATA_21C140,y               
 CODE_28DA4F:        BEQ CODE_28DA5A           
 CODE_28DA51:        CLC                       
-CODE_28DA52:        ADC $C144,y               
+CODE_28DA52:        ADC.w DATA_21C144,y               
 CODE_28DA55:        STA $8C,x                 
 CODE_28DA57:        INC $1FD2,x               
 CODE_28DA5A:        JMP CODE_28DA63           
@@ -9156,7 +9156,7 @@ CODE_28DA73:        STA $1021,x
 CODE_28DA76:        RTS                       
 
 CODE_28DA77:        JSL CODE_27A837           
-CODE_28DA7B:        LDA $C12A,y               
+CODE_28DA7B:        LDA.w DATA_21C12A,y               
 CODE_28DA7E:        STA $8C,x                 
 CODE_28DA80:        RTS                       
 
@@ -9253,10 +9253,10 @@ CODE_28DB39:        LDA $0691,x
 CODE_28DB3C:        BEQ CODE_28DB53           
 CODE_28DB3E:        JSL CODE_27A837           
 CODE_28DB42:        LDA $8C,x                 
-CODE_28DB44:        CMP $C142,y               
+CODE_28DB44:        CMP.w DATA_21C142,y               
 CODE_28DB47:        BEQ CODE_28DB52           
 CODE_28DB49:        CLC                       
-CODE_28DB4A:        ADC $C146,y               
+CODE_28DB4A:        ADC.w DATA_21C146,y               
 CODE_28DB4D:        STA $8C,x                 
 CODE_28DB4F:        INC $1FD2,x               
 CODE_28DB52:        RTS                       
@@ -9269,7 +9269,7 @@ CODE_28DB5D:        LDA $0727
 CODE_28DB60:        BNE CODE_28DB64           
 CODE_28DB62:        INY                       
 CODE_28DB63:        INY                       
-CODE_28DB64:        LDA $C12C,y               
+CODE_28DB64:        LDA.w DATA_21C12C,y               
 CODE_28DB67:        STA $8C,x                 
 CODE_28DB69:        RTS                       
 
@@ -9324,7 +9324,7 @@ CODE_28DBC6:        LDA $1CEF
 CODE_28DBC9:        BMI CODE_28DBDA           
 CODE_28DBCB:        LDA $00                   
 CODE_28DBCD:        CLC                       
-CODE_28DBCE:        ADC $C174,x               
+CODE_28DBCE:        ADC.w DATA_21C174,x               
 CODE_28DBD1:        STA $0811,y               
 CODE_28DBD4:        CLC                       
 CODE_28DBD5:        ADC #$08                  
@@ -9334,16 +9334,16 @@ CODE_28DBDD:        AND #$10
 CODE_28DBDF:        BNE CODE_28DBF0           
 CODE_28DBE1:        LDA $00                   
 CODE_28DBE3:        CLC                       
-CODE_28DBE4:        ADC $C18A,x               
+CODE_28DBE4:        ADC.w DATA_21C18A,x               
 CODE_28DBE7:        STA $0815,y               
 CODE_28DBEA:        CLC                       
 CODE_28DBEB:        ADC #$08                  
 CODE_28DBED:        STA $081D,y               
-CODE_28DBF0:        LDA $C148,x               
+CODE_28DBF0:        LDA.w DATA_21C148,x               
 CODE_28DBF3:        STA $0812,y               
 CODE_28DBF6:        INC A                     
 CODE_28DBF7:        STA $081A,y               
-CODE_28DBFA:        LDA $C15E,x               
+CODE_28DBFA:        LDA.w DATA_21C15E,x               
 CODE_28DBFD:        STA $0816,y               
 CODE_28DC00:        INC A                     
 CODE_28DC01:        STA $081E,y               
@@ -9481,14 +9481,14 @@ CODE_28DD18:        ADC #$00
 CODE_28DD1A:        STA $1FD7,y               
 CODE_28DD1D:        LDA #$00                  
 CODE_28DD1F:        STA $06C7,x               
-CODE_28DD22:        LDA $C1B0,y               
+CODE_28DD22:        LDA.w DATA_21C1B0,y               
 CODE_28DD25:        STA $05D3,y               
 CODE_28DD28:        TYA                       
 CODE_28DD29:        CLC                       
 CODE_28DD2A:        ADC #$02                  
 CODE_28DD2C:        AND #$07                  
 CODE_28DD2E:        TAX                       
-CODE_28DD2F:        LDA $C1B0,x               
+CODE_28DD2F:        LDA.w DATA_21C1B0,x               
 CODE_28DD32:        STA $05DD,y               
 CODE_28DD35:        LDA #$3F                  
 CODE_28DD37:        STA $06D1,y               
@@ -9592,7 +9592,7 @@ CODE_28DDF2:        BEQ CODE_28DDF5
 CODE_28DDF4:        INY                       
 CODE_28DDF5:        LDA $7A,x                 
 CODE_28DDF7:        CLC                       
-CODE_28DDF8:        ADC $C1B8,y               
+CODE_28DDF8:        ADC.w DATA_21C1B8,y               
 CODE_28DDFB:        STA $01                   
 CODE_28DDFD:        REP #$10                  
 CODE_28DDFF:        LDY $C6,x                 
@@ -9706,11 +9706,11 @@ CODE_28DEEB:        STA $081B,y
 CODE_28DEEE:        STA $081F,y               
 CODE_28DEF1:        LDA $0669,x               
 CODE_28DEF4:        TAX                       
-CODE_28DEF5:        LDA $C1BA,x               
+CODE_28DEF5:        LDA.w DATA_21C1BA,x               
 CODE_28DEF8:        STA $0812,y               
 CODE_28DEFB:        INC A                     
 CODE_28DEFC:        STA $081A,y               
-CODE_28DEFF:        LDA $C1BD,x               
+CODE_28DEFF:        LDA.w DATA_21C1BD,x               
 CODE_28DF02:        STA $0816,y               
 CODE_28DF05:        INC A                     
 CODE_28DF06:        STA $081E,y               
@@ -9761,14 +9761,14 @@ CODE_28DF5A:        PHA
 CODE_28DF5B:        LDA $5F,x                 
 CODE_28DF5D:        CLC                       
 CODE_28DF5E:        LDX $00                   
-CODE_28DF60:        ADC $C1C0,x               
+CODE_28DF60:        ADC.w DATA_21C1C0,x               
 CODE_28DF63:        STA $05C9,y               
 CODE_28DF66:        PLA                       
 CODE_28DF67:        ADC #$00                  
 CODE_28DF69:        STA $00E2,y               
-CODE_28DF6C:        LDA $C1CA,x               
+CODE_28DF6C:        LDA.w DATA_21C1CA,x               
 CODE_28DF6F:        STA $05D3,y               
-CODE_28DF72:        LDA $C1C5,x               
+CODE_28DF72:        LDA.w DATA_21C1C5,x               
 CODE_28DF75:        STA $05DD,y               
 CODE_28DF78:        LDA #$01                  
 CODE_28DF7A:        STA $06C7,y               
@@ -9799,7 +9799,7 @@ CODE_28DFAD:        LDA $0671,x
 CODE_28DFB0:        CMP #$66                  
 CODE_28DFB2:        BEQ CODE_28DFBD           
 CODE_28DFB4:        LDA $0F                   
-CODE_28DFB6:        JSL CODE_27A859           
+CODE_28DFB6:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28DFBA:        STA $0F                   
 CODE_28DFBC:        DEY                       
 CODE_28DFBD:        CPY #$00                  
@@ -9818,7 +9818,7 @@ CODE_28DFD0:        LDA $9D
 CODE_28DFD2:        CMP #$3B                  
 CODE_28DFD4:        BPL CODE_28DFF1           
 CODE_28DFD6:        CLC                       
-CODE_28DFD7:        ADC $C1D8,y               
+CODE_28DFD7:        ADC.w DATA_21C1D8,y               
 CODE_28DFDA:        BRA CODE_28DFEB           
 
 CODE_28DFDC:        LDA $056D                 
@@ -9827,7 +9827,7 @@ CODE_28DFE1:        LDA $9D
 CODE_28DFE3:        CMP #$C4                  
 CODE_28DFE5:        BMI CODE_28DFF1           
 CODE_28DFE7:        CLC                       
-CODE_28DFE8:        ADC $C1CF,y               
+CODE_28DFE8:        ADC.w DATA_21C1CF,y               
 CODE_28DFEB:        STA $9D                   
 CODE_28DFED:        LDA #$01                  
 CODE_28DFEF:        STA $A6                   
@@ -9933,10 +9933,10 @@ CODE_28E0C4:        AND #$01
 CODE_28E0C6:        TAY                       
 CODE_28E0C7:        LDA $1CC8,x               
 CODE_28E0CA:        CLC                       
-CODE_28E0CB:        ADC $C1E7,y               
+CODE_28E0CB:        ADC.w DATA_21C1E7,y               
 CODE_28E0CE:        STA $01                   
 CODE_28E0D0:        LDA $1CCD,x               
-CODE_28E0D3:        ADC $C1E9,y               
+CODE_28E0D3:        ADC.w DATA_21C1E9,y               
 CODE_28E0D6:        STA $00                   
 CODE_28E0D8:        LDY #$00                  
 CODE_28E0DA:        LDA $5F,x                 
@@ -9946,14 +9946,14 @@ CODE_28E0E0:        SBC $00
 CODE_28E0E2:        BCC CODE_28E0E5           
 CODE_28E0E4:        INY                       
 CODE_28E0E5:        LDA $8C,x                 
-CODE_28E0E7:        CMP $C1E3,y               
+CODE_28E0E7:        CMP.w DATA_21C1E3,y               
 CODE_28E0EA:        BEQ CODE_28E0F7           
 CODE_28E0EC:        CLC                       
-CODE_28E0ED:        ADC $C1E1,y               
+CODE_28E0ED:        ADC.w DATA_21C1E1,y               
 CODE_28E0F0:        STA $8C,x                 
 CODE_28E0F2:        BNE CODE_28E0F7           
 CODE_28E0F4:        INC $1021,x               
-CODE_28E0F7:        CMP $C1E5,y               
+CODE_28E0F7:        CMP.w DATA_21C1E5,y               
 CODE_28E0FA:        BNE CODE_28E110           
 CODE_28E0FC:        LDA $06A6,x               
 CODE_28E0FF:        BNE CODE_28E110           
@@ -9997,7 +9997,7 @@ CODE_28E14A:        STY $D8
 CODE_28E14C:        STZ $D9                   
 CODE_28E14E:        LDA $7A,x                 
 CODE_28E150:        CLC                       
-CODE_28E151:        ADC $C1ED,y               
+CODE_28E151:        ADC.w DATA_21C1ED,y               
 CODE_28E154:        STA $01                   
 CODE_28E156:        REP #$10                  
 CODE_28E158:        LDY $C6,x                 
@@ -10122,11 +10122,11 @@ CODE_28E253:        BEQ CODE_28E257
 CODE_28E255:        INC $00                   
 CODE_28E257:        LDA $5F,x                 
 CODE_28E259:        LDX $00                   
-CODE_28E25B:        ADC $C1F1,x               
+CODE_28E25B:        ADC.w DATA_21C1F1,x               
 CODE_28E25E:        STA $005F,y               
-CODE_28E261:        LDA $C1EF,x               
+CODE_28E261:        LDA.w DATA_21C1EF,x               
 CODE_28E264:        STA $008C,y               
-CODE_28E267:        LDA $C1F3,x               
+CODE_28E267:        LDA.w DATA_21C1F3,x               
 CODE_28E26A:        STA $0679,y               
 CODE_28E26D:        LDX $9B                   
 CODE_28E26F:        LDA $44,x                 
@@ -10159,10 +10159,10 @@ CODE_28E2A6:        LDY #$00
 CODE_28E2A8:        LDA $8C,x                 
 CODE_28E2AA:        BPL CODE_28E2AD           
 CODE_28E2AC:        INY                       
-CODE_28E2AD:        CMP $C1F5,y               
+CODE_28E2AD:        CMP.w DATA_21C1F5,y               
 CODE_28E2B0:        BEQ CODE_28E2B8           
 CODE_28E2B2:        CLC                       
-CODE_28E2B3:        ADC $C1F7,y               
+CODE_28E2B3:        ADC.w DATA_21C1F7,y               
 CODE_28E2B6:        STA $8C,x                 
 CODE_28E2B8:        JSL CODE_27A7EF           
 CODE_28E2BC:        JSL CODE_27A7E4           
@@ -10210,7 +10210,7 @@ CODE_28E317:        JSL CODE_279EBB
 CODE_28E31B:        RTL                       
 
 CODE_28E31C:        JSL CODE_27A837           
-CODE_28E320:        LDA $C1F9,y               
+CODE_28E320:        LDA.w DATA_21C1F9,y               
 CODE_28E323:        STA $8C,x                 
 CODE_28E325:        RTL                       
 
@@ -10240,7 +10240,7 @@ CODE_28E35B:        STA $0669,x
 CODE_28E35E:        RTL                       
 
 CODE_28E35F:        JSL CODE_27A837           
-CODE_28E363:        LDA $C1FB,y               
+CODE_28E363:        LDA.w DATA_21C1FB,y               
 CODE_28E366:        STA $8C,x                 
 CODE_28E368:        LDA #$A5                  
 CODE_28E36A:        STA $4D,x                 
@@ -10276,7 +10276,7 @@ CODE_28E39B:        LSR A
 CODE_28E39C:        LSR A                     
 CODE_28E39D:        AND #$07                  
 CODE_28E39F:        TAY                       
-CODE_28E3A0:        LDA $C295,y               
+CODE_28E3A0:        LDA.w DATA_21C295,y               
 CODE_28E3A3:        STA $68,x                 
 CODE_28E3A5:        CLC                       
 CODE_28E3A6:        ADC $94,x                 
@@ -10288,7 +10288,7 @@ CODE_28E3AF:        LSR A
 CODE_28E3B0:        LSR A                     
 CODE_28E3B1:        AND #$01                  
 CODE_28E3B3:        TAY                       
-CODE_28E3B4:        LDA $C28D,y               
+CODE_28E3B4:        LDA.w DATA_21C28D,y               
 CODE_28E3B7:        STA $0C                   
 CODE_28E3B9:        JSL CODE_279DC2           
 CODE_28E3BD:        LDX #$07                  
@@ -10313,15 +10313,15 @@ CODE_28E3E6:        CMP #$30
 CODE_28E3E8:        BCC CODE_28E3EB           
 CODE_28E3EA:        INY                       
 CODE_28E3EB:        LDA $0771,x               
-CODE_28E3EE:        CMP $C29D,y               
+CODE_28E3EE:        CMP.w DATA_21C29D,y               
 CODE_28E3F1:        BEQ CODE_28E3FA           
 CODE_28E3F3:        CLC                       
-CODE_28E3F4:        ADC $C29F,y               
+CODE_28E3F4:        ADC.w DATA_21C29F,y               
 CODE_28E3F7:        STA $0771,x               
 CODE_28E3FA:        STA $9D                   
 CODE_28E3FC:        STZ $8B                   
 CODE_28E3FE:        JSL CODE_27A837           
-CODE_28E402:        LDA $C2A1,y               
+CODE_28E402:        LDA.w DATA_21C2A1,y               
 CODE_28E405:        STA $1020                 
 CODE_28E408:        RTL                       
 
@@ -10330,7 +10330,7 @@ CODE_28E40D:        TYA
 CODE_28E40E:        STA $0679,x               
 CODE_28E411:        BEQ CODE_28E41B           
 CODE_28E413:        LDA $0F                   
-CODE_28E415:        JSL CODE_27A859           
+CODE_28E415:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28E419:        STA $0F                   
 CODE_28E41B:        LDA $0F                   
 CODE_28E41D:        CMP #$10                  
@@ -10353,10 +10353,10 @@ CODE_28E43C:        LSR A
 CODE_28E43D:        LSR A                     
 CODE_28E43E:        TAY                       
 CODE_28E43F:        STY $00                   
-CODE_28E441:        LDA $C2A3,y               
+CODE_28E441:        LDA.w DATA_21C2A3,y               
 CODE_28E444:        LDY $0679,x               
 CODE_28E447:        BNE CODE_28E44D           
-CODE_28E449:        JSL CODE_27A859           
+CODE_28E449:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28E44D:        STA $1020                 
 CODE_28E450:        LDA $0F                   
 CODE_28E452:        CMP #$10                  
@@ -10369,7 +10369,7 @@ CODE_28E45B:        LSR A
 CODE_28E45C:        TAY                       
 CODE_28E45D:        LDA $9D                   
 CODE_28E45F:        CLC                       
-CODE_28E460:        ADC $C2AB,y               
+CODE_28E460:        ADC.w DATA_21C2AB,y               
 CODE_28E463:        STA $9D                   
 CODE_28E465:        RTL                       
 
@@ -10381,7 +10381,7 @@ CODE_28E46A:        ASL A
 CODE_28E46B:        STA $0D                   
 CODE_28E46D:        LDA $0E                   
 CODE_28E46F:        CLC                       
-CODE_28E470:        ADC $C285,x               
+CODE_28E470:        ADC.w DATA_21C285,x               
 CODE_28E473:        STA $0E                   
 CODE_28E475:        LDA $0E                   
 CODE_28E477:        AND #$0F                  
@@ -10399,7 +10399,7 @@ CODE_28E48A:        TYA
 CODE_28E48B:        AND #$0F                  
 CODE_28E48D:        ORA $0D                   
 CODE_28E48F:        TAY                       
-CODE_28E490:        LDA $C1FD,y               
+CODE_28E490:        LDA.w DATA_21C1FD,y               
 CODE_28E493:        STA $09                   
 CODE_28E495:        LDA $0E                   
 CODE_28E497:        AND #$0F                  
@@ -10417,7 +10417,7 @@ CODE_28E4AA:        TYA
 CODE_28E4AB:        AND #$0F                  
 CODE_28E4AD:        ORA $0D                   
 CODE_28E4AF:        TAY                       
-CODE_28E4B0:        LDA $C1FD,y               
+CODE_28E4B0:        LDA.w DATA_21C1FD,y               
 CODE_28E4B3:        LSR A                     
 CODE_28E4B4:        LSR A                     
 CODE_28E4B5:        LDY $0C                   
@@ -10437,7 +10437,7 @@ CODE_28E4CC:        BEQ CODE_28E4DE
 CODE_28E4CE:        JSR CODE_28E4DE           
 CODE_28E4D1:        LDY #$01                  
 CODE_28E4D3:        LDA $0008,y               
-CODE_28E4D6:        JSL CODE_27A859           
+CODE_28E4D6:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28E4DA:        STA $0008,y               
 CODE_28E4DD:        RTS                       
 
@@ -10450,10 +10450,10 @@ CODE_28E4E9:        LSR A
 CODE_28E4EA:        AND #$07                  
 CODE_28E4EC:        TAY                       
 CODE_28E4ED:        TXA                       
-CODE_28E4EE:        AND $C2CB,y               
+CODE_28E4EE:        AND.w DATA_21C2CB,y               
 CODE_28E4F1:        STA $00                   
 CODE_28E4F3:        LDA $15                   
-CODE_28E4F5:        AND $C2CB,y               
+CODE_28E4F5:        AND.w DATA_21C2CB,y               
 CODE_28E4F8:        CMP $00                   
 CODE_28E4FA:        BNE CODE_28E4DD           
 CODE_28E4FC:        CPX #$06                  
@@ -10478,7 +10478,7 @@ CODE_28E51E:        CLC
 CODE_28E51F:        ADC $0083,x               
 CODE_28E522:        LDX $0F                   
 CODE_28E524:        CLC                       
-CODE_28E525:        ADC $C27D,x               
+CODE_28E525:        ADC.w DATA_21C27D,x               
 CODE_28E528:        CLC                       
 CODE_28E529:        ADC $08                   
 CODE_28E52B:        STA $00                   
@@ -10491,7 +10491,7 @@ CODE_28E534:        AND #$07
 CODE_28E536:        CLC                       
 CODE_28E537:        ADC $0F                   
 CODE_28E539:        TAX                       
-CODE_28E53A:        LDA $C2BB,x               
+CODE_28E53A:        LDA.w DATA_21C2BB,x               
 CODE_28E53D:        CLC                       
 CODE_28E53E:        LDX $9B                   
 CODE_28E540:        ADC $007A,x               
@@ -10576,15 +10576,15 @@ CODE_28E5E0:        AND #$01
 CODE_28E5E2:        TAY                       
 CODE_28E5E3:        LDA $9E,x                 
 CODE_28E5E5:        CLC                       
-CODE_28E5E6:        ADC $C2D3,y               
+CODE_28E5E6:        ADC.w DATA_21C2D3,y               
 CODE_28E5E9:        STA $9E,x                 
-CODE_28E5EB:        CMP $C2D5,y               
+CODE_28E5EB:        CMP.w DATA_21C2D5,y               
 CODE_28E5EE:        BNE CODE_28E5F2           
 CODE_28E5F0:        INC $68,x                 
 CODE_28E5F2:        LDA $9E,x                 
 CODE_28E5F4:        LDY $0679,x               
 CODE_28E5F7:        BEQ CODE_28E5FD           
-CODE_28E5F9:        JSL CODE_27A859           
+CODE_28E5F9:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28E5FD:        LDY $9E,x                 
 CODE_28E5FF:        BMI CODE_28E61A           
 CODE_28E601:        TXA                       
@@ -10597,7 +10597,7 @@ CODE_28E60B:        INY
 CODE_28E60C:        BRA CODE_28E612           
 
 CODE_28E60E:        JSL CODE_27A837           
-CODE_28E612:        LDA $C2DC,y               
+CODE_28E612:        LDA.w DATA_21C2DC,y               
 CODE_28E615:        STA $0679,x               
 CODE_28E618:        LDA #$00                  
 CODE_28E61A:        STA $8C,x                 
@@ -10686,13 +10686,13 @@ CODE_28E6C9:        STA $05BF,y
 CODE_28E6CC:        LDA $56,x                 
 CODE_28E6CE:        STA $1FD7,y               
 CODE_28E6D1:        LDX $00                   
-CODE_28E6D3:        LDA $C2DE,x               
+CODE_28E6D3:        LDA.w DATA_21C2DE,x               
 CODE_28E6D6:        STA $05D3,y               
-CODE_28E6D9:        LDA $C2E2,x               
+CODE_28E6D9:        LDA.w DATA_21C2E2,x               
 CODE_28E6DC:        STA $05DD,y               
-CODE_28E6DF:        LDA $C2E6,x               
+CODE_28E6DF:        LDA.w DATA_21C2E6,x               
 CODE_28E6E2:        STA $06C7,y               
-CODE_28E6E5:        LDA $C2EA,x               
+CODE_28E6E5:        LDA.w DATA_21C2EA,x               
 CODE_28E6E8:        STA $06BD,y               
 CODE_28E6EB:        LDA #$FF                  
 CODE_28E6ED:        STA $06D1,y               
@@ -10788,14 +10788,14 @@ CODE_28E797:        JSL CODE_278B67
 CODE_28E79B:        LDA $0783,x               
 CODE_28E79E:        AND #$01                  
 CODE_28E7A0:        TAY                       
-CODE_28E7A1:        LDA $C2EE,y               
+CODE_28E7A1:        LDA.w DATA_21C2EE,y               
 CODE_28E7A4:        STA $9E,x                 
 CODE_28E7A6:        LDA $8C,x                 
 CODE_28E7A8:        ASL A                     
 CODE_28E7A9:        ROL A                     
 CODE_28E7AA:        AND #$01                  
 CODE_28E7AC:        TAY                       
-CODE_28E7AD:        LDA $C2F0,y               
+CODE_28E7AD:        LDA.w DATA_21C2F0,y               
 CODE_28E7B0:        STA $8C,x                 
 CODE_28E7B2:        JSL CODE_28E862           
 CODE_28E7B6:        RTL                       
@@ -10910,7 +10910,7 @@ CODE_28E890:        BEQ CODE_28E897
 CODE_28E892:        LDA #$20                  
 CODE_28E894:        STA $0518,x               
 CODE_28E897:        JSL CODE_27A837           
-CODE_28E89B:        LDA $C315,y               
+CODE_28E89B:        LDA.w DATA_21C315,y               
 CODE_28E89E:        STA $0679,x               
 CODE_28E8A1:        LDA $1021,x               
 CODE_28E8A4:        BNE CODE_28E8A8           
@@ -10921,10 +10921,10 @@ CODE_28E8AB:        LDA $1FD2,x
 CODE_28E8AE:        LSR A                     
 CODE_28E8AF:        BCC CODE_28E8BE           
 CODE_28E8B1:        LDA $8C,x                 
-CODE_28E8B3:        CMP $C30D,y               
+CODE_28E8B3:        CMP.w DATA_21C30D,y               
 CODE_28E8B6:        BEQ CODE_28E8BE           
 CODE_28E8B8:        CLC                       
-CODE_28E8B9:        ADC $C311,y               
+CODE_28E8B9:        ADC.w DATA_21C311,y               
 CODE_28E8BC:        STA $8C,x                 
 CODE_28E8BE:        JSL CODE_27A7EF           
 CODE_28E8C2:        LDA $70                   
@@ -10945,10 +10945,10 @@ CODE_28E8DB:        LDA $1FD2,x
 CODE_28E8DE:        LSR A                     
 CODE_28E8DF:        BCC CODE_28E8EE           
 CODE_28E8E1:        LDA $9E,x                 
-CODE_28E8E3:        CMP $C317,y               
+CODE_28E8E3:        CMP.w DATA_21C317,y               
 CODE_28E8E6:        BEQ CODE_28E8EE           
 CODE_28E8E8:        CLC                       
-CODE_28E8E9:        ADC $C319,y               
+CODE_28E8E9:        ADC.w DATA_21C319,y               
 CODE_28E8EC:        STA $9E,x                 
 CODE_28E8EE:        JSL CODE_27A7E4           
 CODE_28E8F2:        RTS                       
@@ -11137,11 +11137,11 @@ CODE_28EA51:        LSR A
 CODE_28EA52:        AND #$0003                
 CODE_28EA55:        TAX                       
 CODE_28EA56:        SEP #$20                  
-CODE_28EA58:        LDA $C31B,x               
+CODE_28EA58:        LDA.w DATA_21C31B,x               
 CODE_28EA5B:        STA $0802,y               
 CODE_28EA5E:        INC A                     
 CODE_28EA5F:        STA $0806,y               
-CODE_28EA62:        LDA $C31F,x               
+CODE_28EA62:        LDA.w DATA_21C31F,x               
 CODE_28EA65:        ORA #$20                  
 CODE_28EA67:        STA $0803,y               
 CODE_28EA6A:        STA $0807,y               
@@ -11243,7 +11243,7 @@ CODE_28EB31:        LSR A
 CODE_28EB32:        TAY                       
 CODE_28EB33:        INC $1FD2,x               
 CODE_28EB36:        LDA $1FD2,x               
-CODE_28EB39:        AND $C2FD,y               
+CODE_28EB39:        AND.w DATA_21C2FD,y               
 CODE_28EB3C:        BNE CODE_28EB96           
 CODE_28EB3E:        LDA $4D,x                 
 CODE_28EB40:        SEC                       
@@ -11259,7 +11259,7 @@ CODE_28EB4E:        AND #$01
 CODE_28EB50:        BEQ CODE_28EB53           
 CODE_28EB52:        INY                       
 CODE_28EB53:        LDA $8C,x                 
-CODE_28EB55:        CMP $C301,y               
+CODE_28EB55:        CMP.w DATA_21C301,y               
 CODE_28EB58:        BNE CODE_28EB68           
 CODE_28EB5A:        PHA                       
 CODE_28EB5B:        LDA $0776,x               
@@ -11270,7 +11270,7 @@ CODE_28EB64:        EOR #$01
 CODE_28EB66:        TAY                       
 CODE_28EB67:        PLA                       
 CODE_28EB68:        CLC                       
-CODE_28EB69:        ADC $C2F2,y               
+CODE_28EB69:        ADC.w DATA_21C2F2,y               
 CODE_28EB6C:        STA $8C,x                 
 CODE_28EB6E:        PLA                       
 CODE_28EB6F:        CLC                       
@@ -11281,7 +11281,7 @@ CODE_28EB76:        AND #$01
 CODE_28EB78:        BEQ CODE_28EB7B           
 CODE_28EB7A:        INY                       
 CODE_28EB7B:        LDA $9E,x                 
-CODE_28EB7D:        CMP $C301,y               
+CODE_28EB7D:        CMP.w DATA_21C301,y               
 CODE_28EB80:        BNE CODE_28EB90           
 CODE_28EB82:        PHA                       
 CODE_28EB83:        LDA $077B,x               
@@ -11292,7 +11292,7 @@ CODE_28EB8C:        EOR #$01
 CODE_28EB8E:        TAY                       
 CODE_28EB8F:        PLA                       
 CODE_28EB90:        CLC                       
-CODE_28EB91:        ADC $C2F2,y               
+CODE_28EB91:        ADC.w DATA_21C2F2,y               
 CODE_28EB94:        STA $9E,x                 
 CODE_28EB96:        RTS                       
 
@@ -11330,13 +11330,13 @@ CODE_28EBD6:        JSL CODE_27A848
 CODE_28EBDA:        STY $02                   
 CODE_28EBDC:        LDA $0F                   
 CODE_28EBDE:        BPL CODE_28EBE4           
-CODE_28EBE0:        JSL CODE_27A859           
+CODE_28EBE0:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28EBE4:        STA $0C                   
 CODE_28EBE6:        JSL CODE_27A837           
 CODE_28EBEA:        STY $03                   
 CODE_28EBEC:        LDA $0F                   
 CODE_28EBEE:        BPL CODE_28EBF4           
-CODE_28EBF0:        JSL CODE_27A859           
+CODE_28EBF0:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28EBF4:        STA $0D                   
 CODE_28EBF6:        LDY #$00                  
 CODE_28EBF8:        LDA $0D                   
@@ -11373,12 +11373,12 @@ CODE_28EC2C:        STA $01
 CODE_28EC2E:        LDA $00                   
 CODE_28EC30:        LDY $02                   
 CODE_28EC32:        BEQ CODE_28EC3A           
-CODE_28EC34:        JSL CODE_27A859           
+CODE_28EC34:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28EC38:        STA $00                   
 CODE_28EC3A:        LDA $01                   
 CODE_28EC3C:        LDY $03                   
 CODE_28EC3E:        BEQ CODE_28EC46           
-CODE_28EC40:        JSL CODE_27A859           
+CODE_28EC40:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_28EC44:        STA $01                   
 CODE_28EC46:        PLA                       
 CODE_28EC47:        TAY                       
@@ -11407,8 +11407,8 @@ CODE_28EC6B:        ADC #$08
 CODE_28EC6D:        SEC                       
 CODE_28EC6E:        SBC $82                   
 CODE_28EC70:        SEC                       
-CODE_28EC71:        SBC $C323,y               
-CODE_28EC74:        CMP $C325,y               
+CODE_28EC71:        SBC.w DATA_21C323,y               
+CODE_28EC74:        CMP.w DATA_21C325,y               
 CODE_28EC77:        BCS CODE_28EC9B                   
 CODE_28EC79:        LDA $01                   
 CODE_28EC7B:        CLC                       
@@ -11431,9 +11431,9 @@ CODE_28EC9C:        LDA $0565
 CODE_28EC9F:        LSR A                     
 CODE_28ECA0:        AND #$03                  
 CODE_28ECA2:        TAY                       
-CODE_28ECA3:        LDA $C329,y               
+CODE_28ECA3:        LDA.w DATA_21C329,y               
 CODE_28ECA6:        STA $0679,x               
-CODE_28ECA9:        LDA $C32D,y               
+CODE_28ECA9:        LDA.w DATA_21C32D,y               
 CODE_28ECAC:        STA $0669,x               
 CODE_28ECAF:        JSL CODE_278B9B           
 CODE_28ECB3:        JSR CODE_28ED19           
@@ -11462,7 +11462,7 @@ CODE_28ECE5:        JSL CODE_278B67
 CODE_28ECE9:        LDA $0783,x               
 CODE_28ECEC:        AND #$01                  
 CODE_28ECEE:        TAY                       
-CODE_28ECEF:        LDA $C331,y               
+CODE_28ECEF:        LDA.w DATA_21C331,y               
 CODE_28ECF2:        STA $9E,x                 
 CODE_28ECF4:        JSL CODE_27A848           
 CODE_28ECF8:        CPY #$00                  
@@ -11470,10 +11470,10 @@ CODE_28ECFA:        BNE CODE_28ED08
 CODE_28ECFC:        LDA $0783,x               
 CODE_28ECFF:        AND #$07                  
 CODE_28ED01:        TAY                       
-CODE_28ED02:        LDA $C333,y               
+CODE_28ED02:        LDA.w DATA_21C333,y               
 CODE_28ED05:        STA $06A6,x               
 CODE_28ED08:        JSL CODE_27A837           
-CODE_28ED0C:        LDA $C327,y               
+CODE_28ED0C:        LDA.w DATA_21C327,y               
 CODE_28ED0F:        STA $8C,x                 
 CODE_28ED11:        JSL CODE_28E862           
 CODE_28ED15:        RTL                       
@@ -11553,10 +11553,10 @@ CODE_28EDA8:        STY $8C,x
 CODE_28EDAA:        JMP CODE_28ED67           
 
 CODE_28EDAD:        LDY #$03                  
-CODE_28EDAF:        LDA $C30A                 
+CODE_28EDAF:        LDA.w DATA_21C309+1                 
 CODE_28EDB2:        BNE CODE_28EDB9           
 CODE_28EDB4:        LDY #$FE                  
-CODE_28EDB6:        LDA $C309                 
+CODE_28EDB6:        LDA.w DATA_21C309                 
 CODE_28EDB9:        STA $9E,x                 
 CODE_28EDBB:        STY $00                   
 CODE_28EDBD:        LDA #$00                  

@@ -4513,6 +4513,8 @@ PNTR_23A585:        dl CODE_23A5FE
                     dl $000000
                     dl $000000
                     dl $000000
+                    dl $000000
+                    dl $000000
                     dl CODE_23A6C1
                     dl CODE_23A6C1
                     dl CODE_23A6C1
@@ -8862,7 +8864,7 @@ CODE_23C7BF:        STA $0569
 CODE_23C7C2:        LDY #$02                  
 CODE_23C7C4:        LDA $8B                   
 CODE_23C7C6:        BPL CODE_23C7CD           
-CODE_23C7C8:        JSL CODE_27A859           
+CODE_23C7C8:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_23C7CC:        DEY                       
 CODE_23C7CD:        BNE CODE_23C7D0           
 CODE_23C7CF:        TAY                       
@@ -9286,7 +9288,7 @@ CODE_23CAF2:        LDA #$00
 CODE_23CAF4:        STA $101F                 
 CODE_23CAF7:        LDA $8B                   
 CODE_23CAF9:        BPL CODE_23CAFF           
-CODE_23CAFB:        JSL CODE_27A859           
+CODE_23CAFB:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_23CAFF:        LSR A                     
 CODE_23CB00:        LSR A                     
 CODE_23CB01:        LSR A                     
@@ -9470,7 +9472,7 @@ CODE_23CC61:        RTS
 
 CODE_23CC62:        LDA $8B                   
 CODE_23CC64:        BPL CODE_23CC6A           
-CODE_23CC66:        JSL CODE_27A859           
+CODE_23CC66:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_23CC6A:        LSR A                     
 CODE_23CC6B:        LSR A                     
 CODE_23CC6C:        LSR A                     
@@ -9593,7 +9595,7 @@ CODE_23CD70:        RTS
 
 CODE_23CD71:        LDA $8B                   
 CODE_23CD73:        BPL CODE_23CD79           
-CODE_23CD75:        JSL CODE_27A859           
+CODE_23CD75:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_23CD79:        CMP #$37                  
 CODE_23CD7B:        BCC CODE_23CD9F           
 CODE_23CD7D:        LDA $056E                 
@@ -9823,7 +9825,7 @@ CODE_23CF37:        LDY #$FF
 CODE_23CF39:        LDA $8B                   
 CODE_23CF3B:        BPL CODE_23CF43           
 CODE_23CF3D:        LDY #$01                  
-CODE_23CF3F:        JSL CODE_27A859           
+CODE_23CF3F:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_23CF43:        CMP #$18                  
 CODE_23CF45:        BMI CODE_23CF4D           
 CODE_23CF47:        TYA                       
@@ -10460,7 +10462,7 @@ CODE_23D43E:        STA $1200
 CODE_23D441:        INY                       
 CODE_23D442:        STY $056D                 
 CODE_23D445:        LDA $1A0F                 
-CODE_23D448:        JSL CODE_27A859           
+CODE_23D448:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_23D44C:        BPL CODE_23D450           
 CODE_23D44E:        LDA #$01                  
 CODE_23D450:        STA $9D                   
@@ -11054,7 +11056,7 @@ CODE_23D8F3:        DEX
 CODE_23D8F4:        LDA $70                   
 CODE_23D8F6:        CLC                       
 CODE_23D8F7:        ADC.w DATA_21EBA6,x               
-CODE_23D8FA:        JSL CODE_27A859           
+CODE_23D8FA:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_23D8FE:        AND #$0F                  
 CODE_23D900:        CLC                       
 CODE_23D901:        ADC $70                   
@@ -11198,7 +11200,7 @@ CODE_23D9FE:        PHA
 CODE_23D9FF:        LDA $9D                   
 CODE_23DA01:        BPL CODE_23DA15           
 CODE_23DA03:        LDA $1A0F                 
-CODE_23DA06:        JSL CODE_27A859           
+CODE_23DA06:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_23DA0A:        BPL CODE_23DA0E           
 CODE_23DA0C:        LDA #$00                  
 CODE_23DA0E:        STA $9D                   
@@ -11256,7 +11258,7 @@ CODE_23DA73:        TXA
 CODE_23DA74:        LDY $0545                 
 CODE_23DA77:        BEQ CODE_23DA83           
 CODE_23DA79:        BPL CODE_23DA7F           
-CODE_23DA7B:        JSL CODE_27A859           
+CODE_23DA7B:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_23DA7F:        CMP #$00                  
 CODE_23DA81:        BMI CODE_23DAC2           
 CODE_23DA83:        LDA $0545                 
@@ -11279,7 +11281,7 @@ CODE_23DAA5:        CLC
 CODE_23DAA6:        ADC $0545                 
 CODE_23DAA9:        STA $0545                 
 CODE_23DAAC:        BPL CODE_23DAB2           
-CODE_23DAAE:        JSL CODE_27A859           
+CODE_23DAAE:        JSL CODE_27A859           ;Invert Accumulator (8-bit)
 CODE_23DAB2:        CMP #$40                  
 CODE_23DAB4:        BMI CODE_23DAC2           
 CODE_23DAB6:        LDY #$40                  
