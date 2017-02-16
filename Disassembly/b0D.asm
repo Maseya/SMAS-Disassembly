@@ -216,9 +216,9 @@ CODE_0D81F3:        85 02         STA $02                   ;
 CODE_0D81F5:        20 7C 97      JSR CODE_0D977C           ;
 CODE_0D81F8:        0B            PHD                       ;
 CODE_0D81F9:        A9 43         LDA #$43                  ;
-CODE_0D81FB:        EB            XBA                       ;
+CODE_0D81FB:        EB            XBA                       ; DP: $4300
 CODE_0D81FC:        A9 00         LDA #$00                  ;
-CODE_0D81FE:        5B            TCD                       ;
+CODE_0D81FE:        5B            TCD                       ; TODO: DMA source
 CODE_0D81FF:        C2 10         REP #$10                  ;
 CODE_0D8201:        A9 81         LDA #$81                  ;
 CODE_0D8203:        8D 15 21      STA $2115                 ;

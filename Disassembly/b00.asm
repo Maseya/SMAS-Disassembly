@@ -618,8 +618,8 @@ CODE_00853D:        0A            ASL A                     ; |
 CODE_00853E:        AA            TAX                       ;/
 CODE_00853F:        A9 00 02      LDA #$0200                ;\ Size: $0200
 CODE_008542:        85 00         STA $00                   ;/
-CODE_008544:        BD BF 88      LDA DATA_0088BF,x               ;\
-CODE_008547:        A0 3C         LDY #$3C                  ; | Upload palette
+CODE_008544:        BD BF 88      LDA DATA_0088BF,x         ;\
+CODE_008547:        A0 3C         LDY.b #DATA_3C8E00>>16    ; | Upload palette
 CODE_008549:        85 02         STA $02                   ; |
 CODE_00854B:        84 04         STY $04                   ;/
 CODE_00854D:        A9 00 92      LDA #$9200                ;\ $7F:9200
@@ -1021,10 +1021,11 @@ DATA_008873:        db $00,$00,$00,$01,$00,$00,$00,$20 ;
                     db $00,$00,$00,$40,$0F,$00,$6D,$00 ;
                     db $24,$01,$24,$01                 ;
 
-DATA_0088BF:        dw $8E00,$B400
+DATA_0088BF:        dw DATA_3C8E00
+                    dw DATA_3CB400
 
 CODE_0088C3:        A9 43         LDA #$43                  ;\
-CODE_0088C5:        EB            XBA                       ; |Direct page: $43xx
+CODE_0088C5:        EB            XBA                       ; |Direct page: $4300
 CODE_0088C6:        A9 00         LDA #$00                  ; |
 CODE_0088C8:        5B            TCD                       ;/
 CODE_0088C9:        C2 10         REP #$10                  ;16-bit XY
@@ -1036,9 +1037,9 @@ CODE_0088D5:        AD 19 02      LDA $0219                 ;\
 CODE_0088D8:        F0 23         BEQ CODE_0088FD           ; |Flag to do file select images DMA. If it is set:
 CODE_0088DA:        A2 00 6C      LDX #$6C00                ; |Do file select images DMA.
 CODE_0088DD:        8E 16 21      STX $2116                 ; |VRAM Destination: $D800
-CODE_0088E0:        A2 00 D8      LDX #$D800                ; |
+CODE_0088E0:        A2 00 D8      LDX.w #DATA_2CD800        ; |
 CODE_0088E3:        86 02         STX $02                   ; |DMA Source: $2C:D800
-CODE_0088E5:        A9 2C         LDA #$2C                  ; |
+CODE_0088E5:        A9 2C         LDA.b #DATA_2CD800>>16    ; |
 CODE_0088E7:        85 04         STA $04                   ; |Size: 4kB 
 CODE_0088E9:        A2 00 10      LDX #$1000                ; |
 CODE_0088EC:        86 05         STX $05                   ; |Do DMA transfer
@@ -2219,9 +2220,9 @@ CODE_009418:        A9 01 18      LDA #$1801                ;\Base register: $21
 CODE_00941B:        85 00         STA $00                   ;/Writing mode: 2 regs write once
 CODE_00941D:        A9 00 00      LDA #$0000                ;\VRAM Address: $0000
 CODE_009420:        8D 16 21      STA $2116                 ;/
-CODE_009423:        A9 00 98      LDA #$9800                ;\
+CODE_009423:        A9 00 98      LDA.w #DATA_199800        ;\
 CODE_009426:        85 02         STA $02                   ; |DMA Source: $19:9800.
-CODE_009428:        A2 19         LDX #$19                  ; |(SMB2 font GFX is located there)
+CODE_009428:        A2 19         LDX.b #DATA_199800>>16    ; |(SMB2 font GFX is located there)
 CODE_00942A:        86 04         STX $04                   ;/
 CODE_00942C:        A9 00 08      LDA #$0800                ;\DMA Size:
 CODE_00942F:        85 05         STA $05                   ;/0x800 bytes/2kB
@@ -2416,9 +2417,9 @@ CODE_0096AF:        A9 01 18      LDA #$1801                ;\Base reg: $2118: V
 CODE_0096B2:        85 00         STA $00                   ;/2 regs write once
 CODE_0096B4:        A9 00 00      LDA #$0000                ;\VRAM Address: $0000
 CODE_0096B7:        8D 16 21      STA $2116                 ;/
-CODE_0096BA:        A9 00 98      LDA #$9800                ;\
+CODE_0096BA:        A9 00 98      LDA.w #DATA_199800        ;\
 CODE_0096BD:        85 02         STA $02                   ; |DMA Source: $19:9800
-CODE_0096BF:        A2 19         LDX #$19                  ; |SMB2 font GFX
+CODE_0096BF:        A2 19         LDX.b #DATA_199800>>16    ; |SMB2 font GFX
 CODE_0096C1:        86 04         STX $04                   ;/
 CODE_0096C3:        A9 00 08      LDA #$0800                ;\DMA Size: 0x800 bytes/2kB
 CODE_0096C6:        85 05         STA $05                   ;/
@@ -2444,7 +2445,7 @@ CODE_0096F6:        E8            INX                       ;\
 CODE_0096F7:        E8            INX                       ; |If not done yet, continue uploading.
 CODE_0096F8:        E0 34         CPX #$34                  ; |
 CODE_0096FA:        D0 D6         BNE CODE_0096D2           ;/
-CODE_0096FC:        4C 59 94      JMP CODE_009459           ;Continue updating palette animation and loop.
+CODE_0096FC:        4C 59 94      JMP CODE_009459           ;Continue updating palette animation and loop endlessly.
 
 DATA_0096FF:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;Values in a decrementing fashion
                     db $FF,$FF,$FF,$FF,$FE,$FE,$FE,$FE

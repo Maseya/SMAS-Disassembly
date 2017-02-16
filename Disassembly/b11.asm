@@ -1945,7 +1945,7 @@ CODE_119325:        A2 80         LDX #$80
 CODE_119327:        8E 15 21      STX $2115                 
 CODE_11932A:        C2 20         REP #$20                  
 CODE_11932C:        A9 00 43      LDA #$4300                
-CODE_11932F:        5B            TCD                       
+CODE_11932F:        5B            TCD                       ; DP: $4300
 CODE_119330:        9C 02 21      STZ $2102                 
 CODE_119333:        A9 00 04      LDA #$0400                
 CODE_119336:        85 00         STA $00                   

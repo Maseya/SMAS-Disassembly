@@ -97,7 +97,7 @@ CODE_0E8108:        8D 02 17      STA $1702                 ;
 CODE_0E810B:        8F 02 00 7F   STA $7F0002               ;
 CODE_0E810F:        8F 02 20 7F   STA $7F2002               ;
 CODE_0E8113:        0B            PHD                       ;
-CODE_0E8114:        A9 00 43      LDA #$4300                ;
+CODE_0E8114:        A9 00 43      LDA #$4300                ; DP: $4300
 CODE_0E8117:        5B            TCD                       ;
 CODE_0E8118:        A2 80         LDX #$80                  ;
 CODE_0E811A:        8E 15 21      STX $2115                 ;
@@ -106,31 +106,31 @@ CODE_0E811F:        A9 00 10      LDA #$1000                ;
 CODE_0E8122:        8D 16 21      STA $2116                 ;
 CODE_0E8125:        A9 01 18      LDA #$1801                ;
 CODE_0E8128:        85 00         STA $00                   ;
-CODE_0E812A:        A9 00 80      LDA #$8000                ;
+CODE_0E812A:        A9 00 80      LDA.w #DATA_108000        ; DMA source: DATA_108000
 CODE_0E812D:        85 02         STA $02                   ;
-CODE_0E812F:        A0 10         LDY #$10                  ;
+CODE_0E812F:        A0 10         LDY.b #DATA_108000>>16    ;
 CODE_0E8131:        84 04         STY $04                   ;
-CODE_0E8133:        A9 00 40      LDA #$4000                ;
+CODE_0E8133:        A9 00 40      LDA #$4000                ; $4000 bytes to transfer
 CODE_0E8136:        85 05         STA $05                   ;
 CODE_0E8138:        A2 01         LDX #$01                  ;
 CODE_0E813A:        8E 0B 42      STX $420B                 ;
 CODE_0E813D:        C2 20         REP #$20                  ;
 CODE_0E813F:        A9 00 60      LDA #$6000                ;
 CODE_0E8142:        8D 16 21      STA $2116                 ;
-CODE_0E8145:        A9 00 80      LDA #$8000                ;
+CODE_0E8145:        A9 00 80      LDA.w #DATA_078000        ; DMA source: DATA_078000
 CODE_0E8148:        85 02         STA $02                   ;
-CODE_0E814A:        A0 07         LDY #$07                  ;
+CODE_0E814A:        A0 07         LDY.b #DATA_078000>>16    ;
 CODE_0E814C:        84 04         STY $04                   ;
-CODE_0E814E:        A9 00 40      LDA #$4000                ;
+CODE_0E814E:        A9 00 40      LDA #$4000                ; $4000 bytes to transfer
 CODE_0E8151:        85 05         STA $05                   ;
 CODE_0E8153:        8E 0B 42      STX $420B                 ;
 CODE_0E8156:        A9 00 50      LDA #$5000                ;
 CODE_0E8159:        8D 16 21      STA $2116                 ;
-CODE_0E815C:        A9 00 F8      LDA #$F800                ;
+CODE_0E815C:        A9 00 F8      LDA.w #DATA_0CF800        ; DMA source: DATA_0CF800
 CODE_0E815F:        85 02         STA $02                   ;
-CODE_0E8161:        A0 0C         LDY #$0C                  ;
+CODE_0E8161:        A0 0C         LDY.b #DATA_0CF800>>16    ;
 CODE_0E8163:        84 04         STY $04                   ;
-CODE_0E8165:        A9 00 08      LDA #$0800                ;
+CODE_0E8165:        A9 00 08      LDA #$0800                ; $800 bytes to transfer
 CODE_0E8168:        85 05         STA $05                   ;
 CODE_0E816A:        8E 0B 42      STX $420B                 ;
 CODE_0E816D:        2B            PLD                       ;
