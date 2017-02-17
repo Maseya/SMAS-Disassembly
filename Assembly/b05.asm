@@ -2843,17 +2843,42 @@ DATA_05AC14:        db $0E,$15,$0F,$15,$1E,$15,$1F,$15
                     db $3D,$15,$3C,$15,$3C,$15,$3D,$15
                     db $00,$1D,$01,$1D,$10,$1D,$11,$1D
 
-DATA_05AD04:        dw $0000,$0036,$00C6,$00D8              ;Indices to $05B557
-                    dw $01B8,$022A,$0264,$040E
-                    dw $05B8,$05EA,$0610,$064C
-                    dw $067A,$0686,$06B8,$06C6
-                    dw $072A,$080A,$09B4,$09D0
-                    dw $0A22,$0A54,$0A78,$0AAA
-                    dw $0AB6,$0C60,$0D50,$0E40
-                    dw $0E58,$0EBC,$0F26,$0F8A
-                    dw $0FEE,$1060
+DATA_05AD04:        dw DATA_05B557-DATA_05B557              ;Relative indices to $05B557
+                    dw DATA_05B58D-DATA_05B557
+                    dw DATA_05B61D-DATA_05B557
+                    dw DATA_06B62F-DATA_05B557
+                    dw DATA_05B70F-DATA_05B557
+                    dw DATA_05B781-DATA_05B557
+                    dw DATA_05B7BB-DATA_05B557
+                    dw DATA_05B965-DATA_05B557
+                    dw DATA_05BB0F-DATA_05B557
+                    dw DATA_05BB41-DATA_05B557
+                    dw DATA_05BB67-DATA_05B557
+                    dw DATA_05BBA3-DATA_05B557
+                    dw DATA_05BBD1-DATA_05B557
+                    dw DATA_05BBDD-DATA_05B557
+                    dw DATA_05BC0F-DATA_05B557
+                    dw DATA_05BC1D-DATA_05B557
+                    dw DATA_05BC81-DATA_05B557
+                    dw DATA_05BD61-DATA_05B557
+                    dw DATA_05BF0B-DATA_05B557
+                    dw DATA_05BF27-DATA_05B557
+                    dw DATA_05BF79-DATA_05B557
+                    dw DATA_05BFAB-DATA_05B557
+                    dw DATA_05BFCF-DATA_05B557
+                    dw DATA_05C001-DATA_05B557
+                    dw DATA_05C00D-DATA_05B557
+                    dw DATA_05C1B7-DATA_05B557
+                    dw DATA_05C2A7-DATA_05B557
+                    dw DATA_05C397-DATA_05B557         ; Mario bonus room background commands
+                    dw DATA_05C3AF-DATA_05B557
+                    dw DATA_05C413-DATA_05B557
+                    dw DATA_05C47D-DATA_05B557
+                    dw DATA_05C4E1-DATA_05B557
+                    dw DATA_05C545-DATA_05B557
+                    dw DATA_05C5B7-DATA_05B557
 
-DATA_05AD48:        db $FE,$00,$B9,$B8,$B6,$FE,$00,$BE
+DATA_05AD48:        db $FE,$00,$B9,$B8,$B6,$FE,$00,$BE ;
                     db $C3,$C6,$FE,$B4,$B1,$BC,$BD,$B0
                     db $B5,$FE,$C0,$C1,$C0,$C1,$C0,$C4
                     db $FE,$B2,$B3,$B2,$B3,$B2,$B3,$B6
@@ -3616,7 +3641,7 @@ DATA_05C2A7:        dw $E012,$E060,$E050,$E043
                     dw $2007,$0025,$1C15,$E3F0
 
 DATA_05C397:        dw $E041,$E012,$2800,$E000      ;Mario bonus room background commands
-                    dw $2800,$E000,$2800,$E000      ;Todo: same for luigi??
+                    dw $2800,$E000,$2800,$E000      ;TODO: same for luigi??
                     dw $2800,$E000,$2800,$E3F0
 
 DATA_05C3AF:        dw $E046,$E050,$0003,$1003
@@ -7087,7 +7112,7 @@ CODE_05E760:        BRA CODE_05E71B           ;finish upload
 ;;address as well as their size.
 ;;
 ;; Address -  VRAM - Size
-;; $000000 - $0000 - $1000 ; $00 - Unused
+;; $000000 - $0000 - $1000 ; $00 - (null)
 ;; $08E000 - $2000 - $1000 ; $01 - Mario bonus background
 ;; $06A000 - $2000 - $2000 ; $02 - Hills background & SUPER MARIO BROS. title screen banner
 ;; $098000 - $2000 - $1000 ; $03 - Underground background
@@ -7113,21 +7138,57 @@ CODE_05E760:        BRA CODE_05E71B           ;finish upload
 ;; $09C000 - $3000 - $1000 ; $17 - Grass foreground
 ;; $08F000 - $2000 - $1000 ; $18 - Luigi bonus background
 
-DATA_05E762:        db $00,$00,$08,$00,$06,$00,$09,$00      ;GFX bank bytes. every other byte is not used, so here's a more comprehensive list:
-                    db $09,$00,$08,$00,$09,$00,$06,$00      ; $00,$08,$06,$09,$09,$08,$09,$06
-                    db $08,$00,$06,$00,$08,$00,$09,$00      ; $08,$06,$08,$09,$08,$08,$08,$09
-                    db $08,$00,$08,$00,$08,$00,$09,$00      ; $08,$09,$08,$09,$09,$09,$09,$09
-                    db $08,$00,$09,$00,$08,$00,$09,$00      ; $08
-                    db $09,$00,$09,$00,$09,$00,$09,$00
-                    db $08,$00
+DATA_05E762:        db $00,$00                              ; Bank bytes for GFX data addresses.
+                    db DATA_08E000>>16,$00
+                    db DATA_06A000>>16,$00
+                    db DATA_098000>>16,$00
+                    db DATA_09A000>>16,$00
+                    db DATA_089800>>16,$00
+                    db DATA_09A000>>16,$00
+                    db DATA_06A000>>16,$00
+                    db DATA_088000>>16,$00
+                    db DATA_06A000>>16,$00
+                    db DATA_08D000>>16,$00
+                    db DATA_09E000>>16,$00
+                    db DATA_08A000>>16,$00
+                    db DATA_089000>>16,$00
+                    db DATA_08B000>>16,$00
+                    db DATA_099000>>16,$00
+                    db DATA_08B800>>16,$00
+                    db DATA_09D000>>16,$00
+                    db DATA_08C000>>16,$00
+                    db DATA_09E800>>16,$00
+                    db DATA_09F000>>16,$00
+                    db DATA_09F800>>16,$00
+                    db DATA_09E000>>16,$00
+                    db DATA_09C000>>16,$00
+                    db DATA_08F000>>16,$00
 
-DATA_05E794:        dw $0000,$E000,$A000,$8000              ;GFX address
-                    dw $A000,$9800,$A000,$A000
-                    dw $8000,$A000,$D000,$E000
-                    dw $A000,$9000,$B000,$9000
-                    dw $B800,$D000,$C000,$E800
-                    dw $F000,$F800,$E000,$C000
-                    dw $F000
+DATA_05E794:        dw $0000                                ;Low and high bytes for GFX data addresses
+                    dw DATA_08E000
+                    dw DATA_06A000
+                    dw DATA_098000
+                    dw DATA_09A000
+                    dw DATA_089800
+                    dw DATA_09A000
+                    dw DATA_06A000
+                    dw DATA_088000
+                    dw DATA_06A000
+                    dw DATA_08D000
+                    dw DATA_09E000
+                    dw DATA_08A000
+                    dw DATA_089000
+                    dw DATA_08B000
+                    dw DATA_099000
+                    dw DATA_08B800
+                    dw DATA_09D000
+                    dw DATA_08C000
+                    dw DATA_09E800
+                    dw DATA_09F000
+                    dw DATA_09F800
+                    dw DATA_09E000
+                    dw DATA_09C000
+                    dw DATA_08F000
 
 DATA_05E7C6:        dw $0000,$2000,$2000,$2000              ;GFX VRAM address
                     dw $2000,$2C00,$2000,$2000

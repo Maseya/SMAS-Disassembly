@@ -71,14 +71,45 @@ CODE_00809D:        20 73 87      JSR CODE_008773           ;/ Update OAM sizes
 CODE_0080A0:        9C 22 01      STZ $0122                 ;
 CODE_0080A3:        4C 7D 80      JMP CODE_00807D           ; Game loop
 
-DATA_0080A6:        db $C0,$D8,$9B,$CE,$40,$A5,$C5,$F9
-                    db $A0,$2B,$00                     ;low byte portion of indirect pointers
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Pointers below are specified by $E0's values
+;;
 
-DATA_0080B1:        db $9B,$A2,$A3,$B1,$B4,$B2,$A2,$89
-                    db $81,$82,$00                     ;high byte portion of indirect pointers
+DATA_0080A6:        db CODE_009BC0                          ; Nintendo Presents Screen + Title screen
+                    db CODE_00A2D8                          ; Set up game select screen
+                    db CODE_00A39B                          ; Game select screen
+                    db CODE_00B1CE                          ; Open erase file box
+                    db CODE_00B440                          ; Erase file box
+                    db CODE_00B2A5                          ; Close erase file box
+                    db CODE_00A2C5                          ; Fade out of game select screen
+                    db CODE_0089F9                          ; Setup game
+                    db CODE_0081A0                          ; Setup game
+                    db CODE_00822B                          ; Bring up game-play demo
+                    db $00                                  ; (null)
 
-DATA_0080BC:        db $00,$00,$00,$00,$00,$00,$00,$00
-                    db $00,$00,$00                     ;bank portion of indirect pointers
+DATA_0080B1:        db CODE_009BC0>>8                       ;high bytes
+                    db CODE_00A2D8>>8
+                    db CODE_00A39B>>8
+                    db CODE_00B1CE>>8
+                    db CODE_00B440>>8
+                    db CODE_00B2A5>>8
+                    db CODE_00A2C5>>8
+                    db CODE_0089F9>>8
+                    db CODE_0081A0>>8
+                    db CODE_00822B>>8
+                    db $00
+
+DATA_0080BC:        db CODE_009BC0>>16                      ;bank bytes
+                    db CODE_00A2D8>>16
+                    db CODE_00A39B>>16
+                    db CODE_00B1CE>>16
+                    db CODE_00B440>>16
+                    db CODE_00B2A5>>16
+                    db CODE_00A2C5>>16
+                    db CODE_0089F9>>16
+                    db CODE_0081A0>>16
+                    db CODE_00822B>>16
+                    db $00
 
 GameIndex:
 CODE_0080C7:        A6 E0         LDX $E0                   ;\
@@ -89,22 +120,6 @@ CODE_0080D3:        85 04         STA $04                   ; |
 CODE_0080D5:        BF BC 80 00   LDA.l DATA_0080BC,x       ; |
 CODE_0080D9:        85 05         STA $05                   ;/
 CODE_0080DB:        DC 03 00      JML [$0003]               ;Jump to the indirect game pointers.
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; This is where it will jump to with $E0's values:
-;;
-;; #$00 = $009BC0                  ; Nintendo Presents Screen + Title screen
-;; #$01 = $00A2D8                  ; Set up game select screen
-;; #$02 = $00A39B                  ; Game select screen
-;; #$03 = $00B1CE                  ; Open erase file box
-;; #$04 = $00B440                  ; Erase file box
-;; #$05 = $00B2A5                  ; Close erase file box
-;; #$06 = $00A2C5                  ; Fade out of game select screen
-;; #$07 = $0089F9                  ; Setup game
-;; #$08 = $0081A0                  ; Setup game
-;; #$09 = $00822B                  ; Bring up game-play demo
-;; #$0A = $000000                  ; (null)
 
 CODE_0080DE:        22 2E 88 00   JSL ForceBlank           ;Forced blank + HDMA-Disable
 CODE_0080E2:        9C 00 42      STZ $4200                 ;Disable interrupts

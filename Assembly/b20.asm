@@ -363,7 +363,7 @@ CODE_208378:        PLB
 CODE_208379:        STZ $4200                 
 CODE_20837C:        PHD                       
 CODE_20837D:        REP #$20                  
-CODE_20837F:        LDA #$4300                
+CODE_20837F:        LDA #$4300                ; DP: $4300
 CODE_208382:        TCD                       
 CODE_208383:        LDA #$2000                
 CODE_208386:        STA $2116                 
@@ -377,27 +377,27 @@ CODE_208397:        LDY #$08
 CODE_208399:        LDX $0727                 
 CODE_20839C:        CPX #$04                  
 CODE_20839E:        BNE CODE_2083CA           
-CODE_2083A0:        LDA #$C000                
+CODE_2083A0:        LDA.w #DATA_39C000                
 CODE_2083A3:        STA $32                   
-CODE_2083A5:        LDX #$39                  
+CODE_2083A5:        LDX.b #DATA_39C000>>16                  
 CODE_2083A7:        STX $34                   
 CODE_2083A9:        LDA #$1000                
 CODE_2083AC:        STA $35                   
 CODE_2083AE:        STY $420B                 
 CODE_2083B1:        LDA #$2800                
 CODE_2083B4:        STA $2116                 
-CODE_2083B7:        LDA #$B000                
+CODE_2083B7:        LDA.w #DATA_31B000                
 CODE_2083BA:        STA $32                   
-CODE_2083BC:        LDX #$31                  
+CODE_2083BC:        LDX.b #DATA_31B000>>16                  
 CODE_2083BE:        STX $34                   
 CODE_2083C0:        LDA #$3000                
 CODE_2083C3:        STA $35                   
 CODE_2083C5:        STY $420B                 
 CODE_2083C8:        BRA CODE_2083DB           
 
-CODE_2083CA:        LDA #$A000                
+CODE_2083CA:        LDA.w #DATA_31A000                
 CODE_2083CD:        STA $32                   
-CODE_2083CF:        LDX #$31                  
+CODE_2083CF:        LDX.b #DATA_31A000>>16                  
 CODE_2083D1:        STX $34                   
 CODE_2083D3:        LDA #$4000                
 CODE_2083D6:        STA $35                   
@@ -406,12 +406,12 @@ CODE_2083DB:        LDA #$5800
 CODE_2083DE:        STA $2116                 
 CODE_2083E1:        LDA #$8000                
 CODE_2083E4:        STA $42                   
-CODE_2083E6:        LDX #$38                  
+CODE_2083E6:        LDX.b #DATA_38C000>>16                  
 CODE_2083E8:        STX $44                   
 CODE_2083EA:        STX $54                   
 CODE_2083EC:        LDA #$1000                
 CODE_2083EF:        STA $45                   
-CODE_2083F1:        LDA #$C000                
+CODE_2083F1:        LDA.w #DATA_38C000                
 CODE_2083F4:        STA $52                   
 CODE_2083F6:        LDA #$4000                
 CODE_2083F9:        STA $55                   
@@ -12497,26 +12497,26 @@ CODE_20FB33:        SEP #$30
 CODE_20FB35:        LDY $03                   ;Restore Y
 CODE_20FB37:        JML [$0000]               ;Jump to pointer
 
-CODE_20FB3A:        STY $05               ; ExecutePtrLong | Preserve Y       
-CODE_20FB3C:        PLY                   ; Get bank of source
-CODE_20FB3D:        STY $02               ; Store in Y
-CODE_20FB3F:        REP #$30              ;
-CODE_20FB41:        AND #$00FF            ; Get A  
-CODE_20FB44:        STA $03               ; Store in $03
-CODE_20FB46:        ASL A                 ;\ *3 since the table entries are three bytes
-CODE_20FB47:        ADC $03               ;/  
-CODE_20FB49:        TAY                   ; A -> Y
-CODE_20FB4A:        PLA                   ; Get Low and High byte of source
-CODE_20FB4B:        STA $03               ;   
-CODE_20FB4D:        INY                   ; +1 so we don't read the last byte of the JSL   
-CODE_20FB4E:        LDA [$02],y           ;\ Read low and high byte of spot to jump to
-CODE_20FB50:        STA $00               ;/  
-CODE_20FB52:        INY                   ; +1 so we don't read the same data again
-CODE_20FB53:        LDA [$02],y           ;\ Get high and bank byte
-CODE_20FB55:        STA $01               ;/  
-CODE_20FB57:        SEP #$30              ;
-CODE_20FB59:        LDY $05               ; Restore Y   
-CODE_20FB5B:        JML [$0000]           ; Jump to pointer
+CODE_20FB3A:        STY $05                   ; ExecutePtrLong | Preserve Y       
+CODE_20FB3C:        PLY                       ; Get bank of source
+CODE_20FB3D:        STY $02                   ; Store in Y
+CODE_20FB3F:        REP #$30                  ;
+CODE_20FB41:        AND #$00FF                ; Get A  
+CODE_20FB44:        STA $03                   ; Store in $03
+CODE_20FB46:        ASL A                     ;\ *3 since the table entries are three bytes
+CODE_20FB47:        ADC $03                   ;/  
+CODE_20FB49:        TAY                       ; A -> Y
+CODE_20FB4A:        PLA                       ; Get Low and High byte of source
+CODE_20FB4B:        STA $03                   ;   
+CODE_20FB4D:        INY                       ; +1 so we don't read the last byte of the JSL   
+CODE_20FB4E:        LDA [$02],y               ;\ Read low and high byte of spot to jump to
+CODE_20FB50:        STA $00                   ;/  
+CODE_20FB52:        INY                       ; +1 so we don't read the same data again
+CODE_20FB53:        LDA [$02],y               ;\ Get high and bank byte
+CODE_20FB55:        STA $01                   ;/  
+CODE_20FB57:        SEP #$30                  ;
+CODE_20FB59:        LDY $05                   ; Restore Y   
+CODE_20FB5B:        JML [$0000]               ; Jump to pointer
 
 CODE_20FB5E:        STZ $4016                 
 CODE_20FB61:        LDA $701FF4               

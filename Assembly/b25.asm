@@ -5972,7 +5972,7 @@ CODE_25F0AA:        LDY #$25
 CODE_25F0AC:        JSL CODE_20A1BE           
 CODE_25F0B0:        REP #$20                  
 CODE_25F0B2:        PHD                       
-CODE_25F0B3:        LDA #$4300                
+CODE_25F0B3:        LDA #$4300                ; DP: $4300
 CODE_25F0B6:        TCD                       
 CODE_25F0B7:        LDX #$80                  
 CODE_25F0B9:        STX $2115                 
@@ -5980,47 +5980,47 @@ CODE_25F0BC:        LDA #$1801
 CODE_25F0BF:        STA $00                   
 CODE_25F0C1:        LDA #$2000                
 CODE_25F0C4:        STA $2116                 
-CODE_25F0C7:        LDA #$A800                
-CODE_25F0CA:        STA $02                   
-CODE_25F0CC:        LDX #$34                  
-CODE_25F0CE:        STX $04                   
+CODE_25F0C7:        LDA.w #DATA_34A800                
+CODE_25F0CA:        STA $02                   ;dma source
+CODE_25F0CC:        LDX.b #DATA_34A800>>16                  
+CODE_25F0CE:        STX $04                   ;dma bank
 CODE_25F0D0:        LDA #$1800                
-CODE_25F0D3:        STA $05                   
+CODE_25F0D3:        STA $05                   ;dma size
 CODE_25F0D5:        LDX #$01                  
-CODE_25F0D7:        STX $420B                 
-CODE_25F0DA:        LDA #$D000                
-CODE_25F0DD:        STA $02                   
+CODE_25F0D7:        STX $420B                 ;enable transfer
+CODE_25F0DA:        LDA.w #DATA_34D000                
+CODE_25F0DD:        STA $02                   ;dma source. bank is still $34
 CODE_25F0DF:        LDA #$0800                
-CODE_25F0E2:        STA $05                   
-CODE_25F0E4:        STX $420B                 
-CODE_25F0E7:        LDA #$E000                
+CODE_25F0E2:        STA $05                   ;dma size
+CODE_25F0E4:        STX $420B                 ;enable transfer
+CODE_25F0E7:        LDA.w #DATA_35E000                
 CODE_25F0EA:        STA $02                   
-CODE_25F0EC:        LDY #$35                  
+CODE_25F0EC:        LDY.b #DATA_35E000>>16                  
 CODE_25F0EE:        STY $04                   
 CODE_25F0F0:        LDA #$0800                
 CODE_25F0F3:        STA $05                   
 CODE_25F0F5:        STX $420B                 
-CODE_25F0F8:        LDA #$B800                
+CODE_25F0F8:        LDA.w #DATA_30B800                
 CODE_25F0FB:        STA $02                   
-CODE_25F0FD:        LDY #$30                  
+CODE_25F0FD:        LDY.b #DATA_30B800>>16                  
 CODE_25F0FF:        STY $04                   
 CODE_25F101:        LDA #$0800                
 CODE_25F104:        STA $05                   
 CODE_25F106:        STX $420B                 
 CODE_25F109:        LDA #$7000                
 CODE_25F10C:        STA $2116                 
-CODE_25F10F:        LDA #$A000                
+CODE_25F10F:        LDA.w #DATA_3DA000
 CODE_25F112:        STA $02                   
-CODE_25F114:        LDY #$3D                  
+CODE_25F114:        LDY.b #DATA_3DA000>>16                  
 CODE_25F116:        STY $04                   
 CODE_25F118:        LDA #$2000                
 CODE_25F11B:        STA $05                   
 CODE_25F11D:        STX $420B                 
 CODE_25F120:        LDA #$0400                
 CODE_25F123:        STA $2116                 
-CODE_25F126:        LDA #$B800                
+CODE_25F126:        LDA.w #DATA_38B800
 CODE_25F129:        STA $02                   
-CODE_25F12B:        LDY #$38                  
+CODE_25F12B:        LDY.b #DATA_38B800>>16                  
 CODE_25F12D:        STY $04                   
 CODE_25F12F:        LDA #$0800                
 CODE_25F132:        STA $05                   

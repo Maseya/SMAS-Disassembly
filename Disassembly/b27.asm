@@ -5574,7 +5574,7 @@ CODE_27B222:        60            RTS
 
 DATA_27B223:        db $08,$77,$FF
 
-CODE_27B226:        7F 18 F0 08   ADC.l DATA_08F018,x             
+CODE_27B226:        7F 18 F0 08   ADC.l DATA_08F000+$18,x             ;INVALID: this points to graphics data???
 CODE_27B22A:        98            TYA                       
 CODE_27B22B:        0A            ASL A                     
 CODE_27B22C:        A8            TAY                       

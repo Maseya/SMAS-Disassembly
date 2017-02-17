@@ -71,14 +71,45 @@ CODE_00809D:        JSR CODE_008773           ;/ Update OAM sizes
 CODE_0080A0:        STZ $0122                 ;
 CODE_0080A3:        JMP CODE_00807D           ; Game loop
 
-DATA_0080A6:        db $C0,$D8,$9B,$CE,$40,$A5,$C5,$F9
-                    db $A0,$2B,$00                     ;low byte portion of indirect pointers
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Pointers below are specified by $E0's values
+;;
 
-DATA_0080B1:        db $9B,$A2,$A3,$B1,$B4,$B2,$A2,$89
-                    db $81,$82,$00                     ;high byte portion of indirect pointers
+DATA_0080A6:        db CODE_009BC0                          ; Nintendo Presents Screen + Title screen
+                    db CODE_00A2D8                          ; Set up game select screen
+                    db CODE_00A39B                          ; Game select screen
+                    db CODE_00B1CE                          ; Open erase file box
+                    db CODE_00B440                          ; Erase file box
+                    db CODE_00B2A5                          ; Close erase file box
+                    db CODE_00A2C5                          ; Fade out of game select screen
+                    db CODE_0089F9                          ; Setup game
+                    db CODE_0081A0                          ; Setup game
+                    db CODE_00822B                          ; Bring up game-play demo
+                    db $00                                  ; (null)
 
-DATA_0080BC:        db $00,$00,$00,$00,$00,$00,$00,$00
-                    db $00,$00,$00                     ;bank portion of indirect pointers
+DATA_0080B1:        db CODE_009BC0>>8                       ;high bytes
+                    db CODE_00A2D8>>8
+                    db CODE_00A39B>>8
+                    db CODE_00B1CE>>8
+                    db CODE_00B440>>8
+                    db CODE_00B2A5>>8
+                    db CODE_00A2C5>>8
+                    db CODE_0089F9>>8
+                    db CODE_0081A0>>8
+                    db CODE_00822B>>8
+                    db $00
+
+DATA_0080BC:        db CODE_009BC0>>16                      ;bank bytes
+                    db CODE_00A2D8>>16
+                    db CODE_00A39B>>16
+                    db CODE_00B1CE>>16
+                    db CODE_00B440>>16
+                    db CODE_00B2A5>>16
+                    db CODE_00A2C5>>16
+                    db CODE_0089F9>>16
+                    db CODE_0081A0>>16
+                    db CODE_00822B>>16
+                    db $00
 
 GameIndex:
 CODE_0080C7:        LDX $E0                   ;\
@@ -89,22 +120,6 @@ CODE_0080D3:        STA $04                   ; |
 CODE_0080D5:        LDA.l DATA_0080BC,x       ; |
 CODE_0080D9:        STA $05                   ;/
 CODE_0080DB:        JML [$0003]               ;Jump to the indirect game pointers.
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; This is where it will jump to with $E0's values:
-;;
-;; #$00 = $009BC0                  ; Nintendo Presents Screen + Title screen
-;; #$01 = $00A2D8                  ; Set up game select screen
-;; #$02 = $00A39B                  ; Game select screen
-;; #$03 = $00B1CE                  ; Open erase file box
-;; #$04 = $00B440                  ; Erase file box
-;; #$05 = $00B2A5                  ; Close erase file box
-;; #$06 = $00A2C5                  ; Fade out of game select screen
-;; #$07 = $0089F9                  ; Setup game
-;; #$08 = $0081A0                  ; Setup game
-;; #$09 = $00822B                  ; Bring up game-play demo
-;; #$0A = $000000                  ; (null)
 
 CODE_0080DE:        JSL ForceBlank           ;Forced blank + HDMA-Disable
 CODE_0080E2:        STZ $4200                 ;Disable interrupts
@@ -618,8 +633,8 @@ CODE_00853D:        ASL A                     ; |
 CODE_00853E:        TAX                       ;/
 CODE_00853F:        LDA #$0200                ;\ Size: $0200
 CODE_008542:        STA $00                   ;/
-CODE_008544:        LDA DATA_0088BF,x               ;\
-CODE_008547:        LDY #$3C                  ; | Upload palette
+CODE_008544:        LDA DATA_0088BF,x         ;\
+CODE_008547:        LDY.b #DATA_3C8E00>>16    ; | Upload palette
 CODE_008549:        STA $02                   ; |
 CODE_00854B:        STY $04                   ;/
 CODE_00854D:        LDA #$9200                ;\ $7F:9200
@@ -1021,10 +1036,11 @@ DATA_008873:        db $00,$00,$00,$01,$00,$00,$00,$20 ;
                     db $00,$00,$00,$40,$0F,$00,$6D,$00 ;
                     db $24,$01,$24,$01                 ;
 
-DATA_0088BF:        dw $8E00,$B400
+DATA_0088BF:        dw DATA_3C8E00
+                    dw DATA_3CB400
 
 CODE_0088C3:        LDA #$43                  ;\
-CODE_0088C5:        XBA                       ; |Direct page: $43xx
+CODE_0088C5:        XBA                       ; |Direct page: $4300
 CODE_0088C6:        LDA #$00                  ; |
 CODE_0088C8:        TCD                       ;/
 CODE_0088C9:        REP #$10                  ;16-bit XY
@@ -1036,9 +1052,9 @@ CODE_0088D5:        LDA $0219                 ;\
 CODE_0088D8:        BEQ CODE_0088FD           ; |Flag to do file select images DMA. If it is set:
 CODE_0088DA:        LDX #$6C00                ; |Do file select images DMA.
 CODE_0088DD:        STX $2116                 ; |VRAM Destination: $D800
-CODE_0088E0:        LDX #$D800                ; |
+CODE_0088E0:        LDX.w #DATA_2CD800        ; |
 CODE_0088E3:        STX $02                   ; |DMA Source: $2C:D800
-CODE_0088E5:        LDA #$2C                  ; |
+CODE_0088E5:        LDA.b #DATA_2CD800>>16    ; |
 CODE_0088E7:        STA $04                   ; |Size: 4kB 
 CODE_0088E9:        LDX #$1000                ; |
 CODE_0088EC:        STX $05                   ; |Do DMA transfer
@@ -2219,9 +2235,9 @@ CODE_009418:        LDA #$1801                ;\Base register: $2118
 CODE_00941B:        STA $00                   ;/Writing mode: 2 regs write once
 CODE_00941D:        LDA #$0000                ;\VRAM Address: $0000
 CODE_009420:        STA $2116                 ;/
-CODE_009423:        LDA #$9800                ;\
+CODE_009423:        LDA.w #DATA_199800        ;\
 CODE_009426:        STA $02                   ; |DMA Source: $19:9800.
-CODE_009428:        LDX #$19                  ; |(SMB2 font GFX is located there)
+CODE_009428:        LDX.b #DATA_199800>>16    ; |(SMB2 font GFX is located there)
 CODE_00942A:        STX $04                   ;/
 CODE_00942C:        LDA #$0800                ;\DMA Size:
 CODE_00942F:        STA $05                   ;/0x800 bytes/2kB
@@ -2416,9 +2432,9 @@ CODE_0096AF:        LDA #$1801                ;\Base reg: $2118: VRAM Write
 CODE_0096B2:        STA $00                   ;/2 regs write once
 CODE_0096B4:        LDA #$0000                ;\VRAM Address: $0000
 CODE_0096B7:        STA $2116                 ;/
-CODE_0096BA:        LDA #$9800                ;\
+CODE_0096BA:        LDA.w #DATA_199800        ;\
 CODE_0096BD:        STA $02                   ; |DMA Source: $19:9800
-CODE_0096BF:        LDX #$19                  ; |SMB2 font GFX
+CODE_0096BF:        LDX.b #DATA_199800>>16    ; |SMB2 font GFX
 CODE_0096C1:        STX $04                   ;/
 CODE_0096C3:        LDA #$0800                ;\DMA Size: 0x800 bytes/2kB
 CODE_0096C6:        STA $05                   ;/
@@ -2444,7 +2460,7 @@ CODE_0096F6:        INX                       ;\
 CODE_0096F7:        INX                       ; |If not done yet, continue uploading.
 CODE_0096F8:        CPX #$34                  ; |
 CODE_0096FA:        BNE CODE_0096D2           ;/
-CODE_0096FC:        JMP CODE_009459           ;Continue updating palette animation and loop.
+CODE_0096FC:        JMP CODE_009459           ;Continue updating palette animation and loop endlessly.
 
 DATA_0096FF:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;Values in a decrementing fashion
                     db $FF,$FF,$FF,$FF,$FE,$FE,$FE,$FE

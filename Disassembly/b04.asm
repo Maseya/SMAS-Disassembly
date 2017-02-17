@@ -2082,9 +2082,9 @@ CODE_049592:        80 2C         BRA CODE_0495C0           ;
 CODE_049594:        C2 20         REP #$20                  ;16-bit A. Start of a DMA code.
 CODE_049596:        A9 42 0F      LDA #$0F42                ;\
 CODE_049599:        8D 20 43      STA $4320                 ; | Indirect HDMA, 1 reg write twice to BG2 horizontal scroll
-CODE_04959C:        A9 64 95      LDA #$9564                ; |
+CODE_04959C:        A9 64 95      LDA.w #DATA_049564        ; |
 CODE_04959F:        8D 22 43      STA $4322                 ; |
-CODE_0495A2:        A2 04         LDX #$04                  ; | $049564: Pointer to indirect HDMA pointer table
+CODE_0495A2:        A2 04         LDX.b #DATA_049564>>16    ; | $049564: Pointer to indirect HDMA pointer table
 CODE_0495A4:        8E 24 43      STX $4324                 ; |
 CODE_0495A7:        A0 7F         LDY #$7F                  ; |
 CODE_0495A9:        8C 27 43      STY $4327                 ; |

@@ -1945,7 +1945,7 @@ CODE_119325:        LDX #$80
 CODE_119327:        STX $2115                 
 CODE_11932A:        REP #$20                  
 CODE_11932C:        LDA #$4300                
-CODE_11932F:        TCD                       
+CODE_11932F:        TCD                       ; DP: $4300
 CODE_119330:        STZ $2102                 
 CODE_119333:        LDA #$0400                
 CODE_119336:        STA $00                   

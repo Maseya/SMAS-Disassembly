@@ -216,9 +216,9 @@ CODE_0D81F3:        STA $02                   ;
 CODE_0D81F5:        JSR CODE_0D977C           ;
 CODE_0D81F8:        PHD                       ;
 CODE_0D81F9:        LDA #$43                  ;
-CODE_0D81FB:        XBA                       ;
+CODE_0D81FB:        XBA                       ; DP: $4300
 CODE_0D81FC:        LDA #$00                  ;
-CODE_0D81FE:        TCD                       ;
+CODE_0D81FE:        TCD                       ; TODO: DMA source
 CODE_0D81FF:        REP #$10                  ;
 CODE_0D8201:        LDA #$81                  ;
 CODE_0D8203:        STA $2115                 ;
@@ -2462,8 +2462,8 @@ CODE_0D9AA2:        LDX #$0E                  ;
 CODE_0D9AA4:        LDY #$10                  ;
 CODE_0D9AA6:        STX $B38E                 ;
 CODE_0D9AA9:        LDX #$10                  ;
-CODE_0D9AAB:        LDA DATA_0D9A77,y               ;
-CODE_0D9AAE:        STA $0DB1F9,x             ;
+CODE_0D9AAB:        LDA DATA_0D9A77,y         ;
+CODE_0D9AAE:        STA $0DB1F9,x             ; INVALID: wtf
 CODE_0D9AB2:        DEY                       ;
 CODE_0D9AB3:        DEX                       ;
 CODE_0D9AB4:        BPL CODE_0D9AAB           ;

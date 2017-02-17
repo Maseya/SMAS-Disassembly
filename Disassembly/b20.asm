@@ -12497,26 +12497,26 @@ CODE_20FB33:        E2 30         SEP #$30
 CODE_20FB35:        A4 03         LDY $03                   ;Restore Y
 CODE_20FB37:        DC 00 00      JML [$0000]               ;Jump to pointer
 
-CODE_20FB3A:        84 05         STY $05               ; ExecutePtrLong | Preserve Y       
-CODE_20FB3C:        7A            PLY                   ; Get bank of source
-CODE_20FB3D:        84 02         STY $02               ; Store in Y
-CODE_20FB3F:        C2 30         REP #$30              ;
-CODE_20FB41:        29 FF 00      AND #$00FF            ; Get A  
-CODE_20FB44:        85 03         STA $03               ; Store in $03
-CODE_20FB46:        0A            ASL A                 ;\ *3 since the table entries are three bytes
-CODE_20FB47:        65 03         ADC $03               ;/  
-CODE_20FB49:        A8            TAY                   ; A -> Y
-CODE_20FB4A:        68            PLA                   ; Get Low and High byte of source
-CODE_20FB4B:        85 03         STA $03               ;   
-CODE_20FB4D:        C8            INY                   ; +1 so we don't read the last byte of the JSL   
-CODE_20FB4E:        B7 02         LDA [$02],y           ;\ Read low and high byte of spot to jump to
-CODE_20FB50:        85 00         STA $00               ;/  
-CODE_20FB52:        C8            INY                   ; +1 so we don't read the same data again
-CODE_20FB53:        B7 02         LDA [$02],y           ;\ Get high and bank byte
-CODE_20FB55:        85 01         STA $01               ;/  
-CODE_20FB57:        E2 30         SEP #$30              ;
-CODE_20FB59:        A4 05         LDY $05               ; Restore Y   
-CODE_20FB5B:        DC 00 00      JML [$0000]           ; Jump to pointer
+CODE_20FB3A:        84 05         STY $05                   ; ExecutePtrLong | Preserve Y       
+CODE_20FB3C:        7A            PLY                       ; Get bank of source
+CODE_20FB3D:        84 02         STY $02                   ; Store in Y
+CODE_20FB3F:        C2 30         REP #$30                  ;
+CODE_20FB41:        29 FF 00      AND #$00FF                ; Get A  
+CODE_20FB44:        85 03         STA $03                   ; Store in $03
+CODE_20FB46:        0A            ASL A                     ;\ *3 since the table entries are three bytes
+CODE_20FB47:        65 03         ADC $03                   ;/  
+CODE_20FB49:        A8            TAY                       ; A -> Y
+CODE_20FB4A:        68            PLA                       ; Get Low and High byte of source
+CODE_20FB4B:        85 03         STA $03                   ;   
+CODE_20FB4D:        C8            INY                       ; +1 so we don't read the last byte of the JSL   
+CODE_20FB4E:        B7 02         LDA [$02],y               ;\ Read low and high byte of spot to jump to
+CODE_20FB50:        85 00         STA $00                   ;/  
+CODE_20FB52:        C8            INY                       ; +1 so we don't read the same data again
+CODE_20FB53:        B7 02         LDA [$02],y               ;\ Get high and bank byte
+CODE_20FB55:        85 01         STA $01                   ;/  
+CODE_20FB57:        E2 30         SEP #$30                  ;
+CODE_20FB59:        A4 05         LDY $05                   ; Restore Y   
+CODE_20FB5B:        DC 00 00      JML [$0000]               ; Jump to pointer
 
 CODE_20FB5E:        9C 16 40      STZ $4016                 
 CODE_20FB61:        AF F4 1F 70   LDA $701FF4               

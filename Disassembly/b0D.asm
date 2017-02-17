@@ -2462,8 +2462,8 @@ CODE_0D9AA2:        A2 0E         LDX #$0E                  ;
 CODE_0D9AA4:        A0 10         LDY #$10                  ;
 CODE_0D9AA6:        8E 8E B3      STX $B38E                 ;
 CODE_0D9AA9:        A2 10         LDX #$10                  ;
-CODE_0D9AAB:        B9 77 9A      LDA DATA_0D9A77,y               ;
-CODE_0D9AAE:        9F F9 B1 0D   STA $0DB1F9,x             ;
+CODE_0D9AAB:        B9 77 9A      LDA DATA_0D9A77,y         ;
+CODE_0D9AAE:        9F F9 B1 0D   STA $0DB1F9,x             ; INVALID: wtf
 CODE_0D9AB2:        88            DEY                       ;
 CODE_0D9AB3:        CA            DEX                       ;
 CODE_0D9AB4:        10 F5         BPL CODE_0D9AAB           ;
