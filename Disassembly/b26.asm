@@ -1898,8 +1898,9 @@ DATA_268C3F:        db $9C,$B8,$26,$4C,$FC,$27,$00,$91
                     db $12,$FF,$1C,$FF,$1C,$FF,$1C,$FF
                     db $1C,$24,$14,$16,$94,$25,$14,$17
                     db $94,$26,$14,$18,$94,$27,$14,$19
-                    db $94,$24,$5C,$9C,$E2,$24,$5F,$A6
-                    db $E2
+                    db $94
+
+DATA_26B020:        db $24,$5C,$9C,$E2,$24,$5F,$A6,$E2
 
 CODE_26B028:        A2 00         LDX #$00                  ;
 CODE_26B02A:        A9 06         LDA #$06                  ;
@@ -1926,7 +1927,7 @@ CODE_26B053:        4A            LSR A                     ;
 CODE_26B054:        4A            LSR A                     ;
 CODE_26B055:        4A            LSR A                     ;
 CODE_26B056:        18            CLC                       ;
-CODE_26B057:        7F 3D B0 26   ADC.l DATA_26B03D,x             ;
+CODE_26B057:        7F 3D B0 26   ADC.l DATA_26B03D,x       ;
 CODE_26B05B:        AA            TAX                       ;
 CODE_26B05C:        CA            DEX                       ;
 CODE_26B05D:        8A            TXA                       ;

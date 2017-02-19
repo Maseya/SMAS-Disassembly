@@ -12769,7 +12769,7 @@ CODE_12E6E1:        C9 01         CMP #$01
 CODE_12E6E3:        D0 15         BNE CODE_12E6FA           
 CODE_12E6E5:        A2 02         LDX #$02                  
 CODE_12E6E7:        B7 01         LDA [$01],y               
-CODE_12E6E9:        DF AF E6 12   CMP $12E6AF,x             
+CODE_12E6E9:        DF AF E6 12   CMP.l DATA_12E6AF,x             
 CODE_12E6ED:        F0 05         BEQ CODE_12E6F4           
 CODE_12E6EF:        CA            DEX                       
 CODE_12E6F0:        10 F7         BPL CODE_12E6E9           
@@ -12786,7 +12786,7 @@ CODE_12E702:        C9 10         CMP #$10
 CODE_12E704:        F0 57         BEQ CODE_12E75D           
 CODE_12E706:        A2 02         LDX #$02                  
 CODE_12E708:        B7 01         LDA [$01],y               
-CODE_12E70A:        DF AF E6 12   CMP $12E6AF,x             
+CODE_12E70A:        DF AF E6 12   CMP.l DATA_12E6AF,x             
 CODE_12E70E:        F0 44         BEQ CODE_12E754           
 CODE_12E710:        CA            DEX                       
 CODE_12E711:        10 F7         BPL CODE_12E70A           
@@ -12802,7 +12802,7 @@ CODE_12E722:        85 02         STA $02
 CODE_12E724:        A2 02         LDX #$02                  
 CODE_12E726:        C8            INY                       
 CODE_12E727:        B7 01         LDA [$01],y               
-CODE_12E729:        DF B8 E6 12   CMP $12E6B8,x             
+CODE_12E729:        DF B8 E6 12   CMP.l DATA_12E6B8,x             
 CODE_12E72D:        F0 05         BEQ CODE_12E734           
 CODE_12E72F:        CA            DEX                       
 CODE_12E730:        10 F7         BPL CODE_12E729           
@@ -12815,7 +12815,7 @@ CODE_12E73A:        AD 14 07      LDA $0714
 CODE_12E73D:        85 02         STA $02                   
 CODE_12E73F:        A2 0B         LDX #$0B                  
 CODE_12E741:        B7 01         LDA [$01],y               
-CODE_12E743:        DF 97 E6 12   CMP $12E697,x             
+CODE_12E743:        DF 97 E6 12   CMP.l DATA_12E697,x             
 CODE_12E747:        F0 05         BEQ CODE_12E74E           
 CODE_12E749:        CA            DEX                       
 CODE_12E74A:        10 F7         BPL CODE_12E743           
@@ -12853,7 +12853,7 @@ CODE_12E785:        F0 19         BEQ CODE_12E7A0
 CODE_12E787:        A2 05         LDX #$05                  
 CODE_12E789:        C8            INY                       
 CODE_12E78A:        B7 01         LDA [$01],y               
-CODE_12E78C:        DF 97 E6 12   CMP $12E697,x             
+CODE_12E78C:        DF 97 E6 12   CMP.l DATA_12E697,x             
 CODE_12E790:        F0 05         BEQ CODE_12E797           
 CODE_12E792:        CA            DEX                       
 CODE_12E793:        10 F7         BPL CODE_12E78C           
@@ -15786,7 +15786,7 @@ CODE_12FE62:        C9 40         CMP #$40
 CODE_12FE64:        D0 16         BNE CODE_12FE7C           
 CODE_12FE66:        A2 03         LDX #$03                  
 CODE_12FE68:        AD C5 02      LDA $02C5                 
-CODE_12FE6B:        DF 39 B7 11   CMP $11B739,x             
+CODE_12FE6B:        DF 39 B7 11   CMP.l DATA_11B739,x             
 CODE_12FE6F:        F0 05         BEQ CODE_12FE76           
 CODE_12FE71:        CA            DEX                       
 CODE_12FE72:        10 F7         BPL CODE_12FE6B           
@@ -15843,7 +15843,7 @@ CODE_12FED2:        C9 40         CMP #$40
 CODE_12FED4:        D0 16         BNE CODE_12FEEC           
 CODE_12FED6:        A2 03         LDX #$03                  
 CODE_12FED8:        AD C5 02      LDA $02C5                 
-CODE_12FEDB:        DF 31 B7 11   CMP $11B731,x             
+CODE_12FEDB:        DF 31 B7 11   CMP.l DATA_11B731,x             
 CODE_12FEDF:        F0 05         BEQ CODE_12FEE6           
 CODE_12FEE1:        CA            DEX                       
 CODE_12FEE2:        10 F7         BPL CODE_12FEDB           
@@ -15859,13 +15859,13 @@ CODE_12FEF0:        8D C5 02      STA $02C5
 CODE_12FEF3:        A0 00         LDY #$00                  
 CODE_12FEF5:        A2 07         LDX #$07                  
 CODE_12FEF7:        AD C5 02      LDA $02C5                 
-CODE_12FEFA:        DF 12 CF 11   CMP $11CF12,x             
+CODE_12FEFA:        DF 12 CF 11   CMP.l DATA_11CF12,x             
 CODE_12FEFE:        D0 12         BNE CODE_12FF12           
 CODE_12FF00:        AD 33 05      LDA $0533                 
-CODE_12FF03:        DF 1A CF 11   CMP $11CF1A,x             
+CODE_12FF03:        DF 1A CF 11   CMP.l DATA_11CF1A,x             
 CODE_12FF07:        D0 09         BNE CODE_12FF12           
 CODE_12FF09:        AD 34 05      LDA $0534                 
-CODE_12FF0C:        DF 22 CF 11   CMP $11CF22,x             
+CODE_12FF0C:        DF 22 CF 11   CMP.l DATA_11CF22,x             
 CODE_12FF10:        F0 04         BEQ CODE_12FF16           
 CODE_12FF12:        CA            DEX                       
 CODE_12FF13:        10 E2         BPL CODE_12FEF7           
@@ -15886,7 +15886,7 @@ CODE_12FF32:        AE 34 05      LDX $0534
 CODE_12FF35:        E0 01         CPX #$01                  
 CODE_12FF37:        D0 11         BNE CODE_12FF4A           
 CODE_12FF39:        A2 02         LDX #$02                  
-CODE_12FF3B:        DF 2A CF 11   CMP $11CF2A,x             
+CODE_12FF3B:        DF 2A CF 11   CMP.l DATA_11CF2A,x             
 CODE_12FF3F:        D0 06         BNE CODE_12FF47           
 CODE_12FF41:        BF 2D CF 11   LDA.l DATA_11CF2D,x             
 CODE_12FF45:        80 03         BRA CODE_12FF4A           
@@ -15901,10 +15901,10 @@ DATA_12FF4D:        db $04,$04
                 
 CODE_12FF4F:        A2 01         LDX #$01                  
 CODE_12FF51:        AD 33 05      LDA $0533                 
-CODE_12FF54:        DF 4B FF 12   CMP $12FF4B,x             
+CODE_12FF54:        DF 4B FF 12   CMP.l DATA_12FF4B,x             
 CODE_12FF58:        D0 09         BNE CODE_12FF63           
 CODE_12FF5A:        AD 34 05      LDA $0534                 
-CODE_12FF5D:        DF 4D FF 12   CMP $12FF4D,x             
+CODE_12FF5D:        DF 4D FF 12   CMP.l DATA_12FF4D,x             
 CODE_12FF61:        F0 04         BEQ CODE_12FF67           
 CODE_12FF63:        CA            DEX                       
 CODE_12FF64:        10 EB         BPL CODE_12FF51           

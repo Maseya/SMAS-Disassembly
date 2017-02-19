@@ -355,9 +355,9 @@ CODE_208363:        JSL CODE_29C794
 CODE_208367:        PHB                       
 CODE_208368:        REP #$30                  
 CODE_20836A:        LDY #$14A0                
-CODE_20836D:        LDX #$8B80                
+CODE_20836D:        LDX.w #DATA_3C8B80                
 CODE_208370:        LDA #$001F                
-CODE_208373:        MVN $3C00                 
+CODE_208373:        MVN $00, DATA_3C8B80>>16                 
 CODE_208376:        SEP #$30                  
 CODE_208378:        PLB                       
 CODE_208379:        STZ $4200                 
@@ -721,7 +721,7 @@ CODE_2086E7:        LDA.w DATA_21A381,x
 CODE_2086EA:        STA $2B                   
 CODE_2086EC:        LDA.w DATA_21A381+1,x               
 CODE_2086EF:        STA $2C                   
-CODE_2086F1:        LDA #$21                  
+CODE_2086F1:        LDA.b #DATA_21A381>>16                  
 CODE_2086F3:        STA $2D                   
 CODE_2086F5:        BRA CODE_2086FB           
 
@@ -744,13 +744,13 @@ CODE_20871D:        LDA $31
 CODE_20871F:        STA $0420                 
 CODE_208722:        LDA $32                   
 CODE_208724:        STA $0421                 
-CODE_208727:        LDA #$E3                  ;
+CODE_208727:        LDA.b #DATA_27E5E3          ;
 CODE_208729:        STA $31                   ;Store pointer $27:E5E3 to $31 and $023A
 CODE_20872B:        STA $023A                 ;
-CODE_20872E:        LDA #$E5                  ;
+CODE_20872E:        LDA.b #DATA_27E5E3>>8       ;
 CODE_208730:        STA $32                   ;
 CODE_208732:        STA $023B                 ;
-CODE_208735:        LDA #$27                  ;
+CODE_208735:        LDA.b #DATA_27E5E3>>16    ;
 CODE_208737:        STA $33                   ;
 CODE_208739:        STA $023C                 ;
 CODE_20873C:        LDY #$7F                  
@@ -1920,10 +1920,10 @@ CODE_209281:        LDX #$04
 CODE_209283:        STX $420B                 
 CODE_209286:        REP #$10                  
 CODE_209288:        PHB                       
-CODE_209289:        LDX #$BE00                
+CODE_209289:        LDX.w #DATA_1CBE00                
 CODE_20928C:        LDY #$1300                
 CODE_20928F:        LDA #$01FF                
-CODE_209292:        MVN $1C00                 
+CODE_209292:        MVN $00, DATA_1CBE00>>16                 
 CODE_209295:        PLB                       
 CODE_209296:        SEP #$30                  
 CODE_209298:        LDX $072B                 
@@ -2318,18 +2318,18 @@ CODE_209641:        RTS
 PNTR_209642:        dl DATA_29BE00
                     dl DATA_248918
                     dl DATA_268828
-                    dl $24ADB0
-                    dl $24E660
-                    dl $25B030
-                    dl $258860
-                    dl $258860
-                    dl $258860
-                    dl $25D510
-                    dl $26B020
-                    dl $25B030
-                    dl $24E660
-                    dl $25B030
-                    dl $24ADB0
+                    dl DATA_24ADB0
+                    dl DATA_24E660
+                    dl DATA_25B030
+                    dl DATA_258860
+                    dl DATA_258860
+                    dl DATA_258860
+                    dl DATA_25D510
+                    dl DATA_26B020
+                    dl DATA_25B030
+                    dl DATA_24E660
+                    dl DATA_25B030
+                    dl DATA_24ADB0
                     dl DATA_20967B
                     dl DATA_20967B
                     dl DATA_20967B
@@ -3960,7 +3960,7 @@ CODE_20A32C:        LDA.w DATA_21A381         ; \
 CODE_20A32F:        STA $2B                   ; |
 CODE_20A331:        LDA.w DATA_21A381+1       ; |
 CODE_20A334:        STA $2C                   ; |
-CODE_20A336:        LDA #$21                  ; | point to level data
+CODE_20A336:        LDA.b #DATA_21A381>>16    ; | point to level data
 CODE_20A338:        STA $2D                   ; / [$2B] = $21A399
 CODE_20A33A:        LDY $070A                 
 CODE_20A33D:        LDA.w DATA_21C975,y               
@@ -4866,10 +4866,10 @@ CODE_20B071:        DEX
 CODE_20B072:        DEX                       
 CODE_20B073:        BPL CODE_20B041           
 CODE_20B075:        PHB                       
-CODE_20B076:        LDX #$A400                
+CODE_20B076:        LDX.w #DATA_3CA400                
 CODE_20B079:        LDY #$1300                
 CODE_20B07C:        LDA #$007F                
-CODE_20B07F:        MVN $3C00                 
+CODE_20B07F:        MVN $00, DATA_3CA400>>16                 
 CODE_20B082:        PLB                       
 CODE_20B083:        LDA #$0000                
 CODE_20B086:        STA $1300                 
@@ -4904,10 +4904,10 @@ CODE_20B0D2:        DEX
 CODE_20B0D3:        DEX                       
 CODE_20B0D4:        BPL CODE_20B0A2           
 CODE_20B0D6:        PHB                       
-CODE_20B0D7:        LDX #$AC00                
+CODE_20B0D7:        LDX.w #DATA_3CAC00                
 CODE_20B0DA:        LDY #$1300                
 CODE_20B0DD:        LDA #$001F                
-CODE_20B0E0:        MVN $3C00                 
+CODE_20B0E0:        MVN $00, DATA_3CAC00>>16                 
 CODE_20B0E3:        PLB                       
 CODE_20B0E4:        LDA #$0000                
 CODE_20B0E7:        STA $1300                 
@@ -7472,32 +7472,32 @@ CODE_20C667:        LDX #$01
 CODE_20C669:        STX $420B                 
 CODE_20C66C:        REP #$10                  
 CODE_20C66E:        PHB                       
-CODE_20C66F:        LDX #$A120                
+CODE_20C66F:        LDX.w #DATA_3CA120                
 CODE_20C672:        LDY #$1320                
 CODE_20C675:        LDA #$00DF                
-CODE_20C678:        MVN $3C00                 
-CODE_20C67B:        LDX #$A8C0                
+CODE_20C678:        MVN $00, DATA_3CA120>>16                 
+CODE_20C67B:        LDX.w #DATA_3CA8C0                
 CODE_20C67E:        LDY #$1320                
 CODE_20C681:        LDA #$001F                
-CODE_20C684:        MVN $3C00                 
-CODE_20C687:        LDX #$8800                
+CODE_20C684:        MVN $00, DATA_3CA8C0>>16                 
+CODE_20C687:        LDX.w #DATA_3C8800                
 CODE_20C68A:        LDY #$1400                
 CODE_20C68D:        LDA #$009F                
-CODE_20C690:        MVN $3C00                 
-CODE_20C693:        LDX #$8BE0                
+CODE_20C690:        MVN $00, DATA_3C8800>>16                 
+CODE_20C693:        LDX.w #DATA_3C8BE0                
 CODE_20C696:        LDY #$14A0                
 CODE_20C699:        LDA #$001F                
-CODE_20C69C:        MVN $3C00                 
+CODE_20C69C:        MVN $00, DATA_3C8BE0>>16                 
 CODE_20C69F:        PLB                       
 CODE_20C6A0:        PHB                       
-CODE_20C6A1:        LDX #$88A0                
+CODE_20C6A1:        LDX.w #DATA_3C88A0                
 CODE_20C6A4:        LDA $0726                 
 CODE_20C6A7:        AND #$00FF                
 CODE_20C6AA:        BEQ CODE_20C6AF           
-CODE_20C6AC:        LDX #$88E0                
+CODE_20C6AC:        LDX.w #DATA_3C88E0                
 CODE_20C6AF:        LDY #$14E0                
 CODE_20C6B2:        LDA #$001F                
-CODE_20C6B5:        MVN $3C00                 
+CODE_20C6B5:        MVN $00, DATA_3C88A0>>16                 
 CODE_20C6B8:        PLB                       
 CODE_20C6B9:        SEP #$30                  
 CODE_20C6BB:        REP #$20                  
@@ -8328,10 +8328,10 @@ CODE_20CE6D:        DEX
 CODE_20CE6E:        DEX                       
 CODE_20CE6F:        BPL CODE_20CE69           
 CODE_20CE71:        PHB                       
-CODE_20CE72:        LDX #$A4C0                
+CODE_20CE72:        LDX.w #DATA_3CA4C0                
 CODE_20CE75:        LDY #$13E0                
 CODE_20CE78:        LDA #$001F                
-CODE_20CE7B:        MVN $3C00                 
+CODE_20CE7B:        MVN $00, DATA_3CA4C0>>16                 
 CODE_20CE7E:        PLB                       
 CODE_20CE7F:        SEP #$30                  
 CODE_20CE81:        INC $1500                 
@@ -8776,7 +8776,7 @@ CODE_20D23B:        REP #$10
 CODE_20D23D:        LDY #$00B0                
 CODE_20D240:        LDX #$00F0                
 CODE_20D243:        LDA #$BF                  
-CODE_20D245:        MVN $7F7F                 
+CODE_20D245:        MVN $7F, $7F                 
 CODE_20D248:        SEP #$10                  
 CODE_20D24A:        PLB                       
 CODE_20D24B:        BRA CODE_20D251           

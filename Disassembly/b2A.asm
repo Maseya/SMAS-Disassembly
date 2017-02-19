@@ -2666,13 +2666,13 @@ CODE_2A966B:        C2 10         REP #$10
 CODE_2A966D:        A0 10 05      LDY #$0510                
 CODE_2A9670:        A2 C0 05      LDX #$05C0                
 CODE_2A9673:        A9 CF         LDA #$CF                  
-CODE_2A9675:        54 7F 7F      MVN $7F7F                 
+CODE_2A9675:        54 7F 7F      MVN $7F, $7F                 
 CODE_2A9678:        A9 00         LDA #$00                  
 CODE_2A967A:        EB            XBA                       
 CODE_2A967B:        A0 C0 06      LDY #$06C0                
 CODE_2A967E:        A2 70 07      LDX #$0770                
 CODE_2A9681:        A9 CF         LDA #$CF                  
-CODE_2A9683:        54 7F 7F      MVN $7F7F                 
+CODE_2A9683:        54 7F 7F      MVN $7F, $7F                 
 CODE_2A9686:        E2 10         SEP #$10                  
 CODE_2A9688:        A2 E0         LDX #$E0                  
 CODE_2A968A:        A9 13         LDA #$13                  
@@ -3350,7 +3350,7 @@ CODE_2A9CB2:        C2 10         REP #$10
 CODE_2A9CB4:        A0 00 01      LDY #$0100                
 CODE_2A9CB7:        A2 B0 01      LDX #$01B0                
 CODE_2A9CBA:        A9 AF         LDA #$AF                  
-CODE_2A9CBC:        54 7F 7F      MVN $7F7F                 
+CODE_2A9CBC:        54 7F 7F      MVN $7F, $7F                 
 CODE_2A9CBF:        E2 10         SEP #$10                  
 CODE_2A9CC1:        AB            PLB                       
 CODE_2A9CC2:        6B            RTL                       
@@ -3876,31 +3876,31 @@ CODE_2AA1D0:        C2 10         REP #$10
 CODE_2AA1D2:        A0 C0 00      LDY #$00C0                
 CODE_2AA1D5:        A2 D0 00      LDX #$00D0                
 CODE_2AA1D8:        A9 AF         LDA #$AF                  
-CODE_2AA1DA:        54 7F 7F      MVN $7F7F                 
+CODE_2AA1DA:        54 7F 7F      MVN $7F, $7F                 
 CODE_2AA1DD:        A9 00         LDA #$00                  
 CODE_2AA1DF:        EB            XBA                       
 CODE_2AA1E0:        A0 70 02      LDY #$0270                
 CODE_2AA1E3:        A2 80 02      LDX #$0280                
 CODE_2AA1E6:        A9 AF         LDA #$AF                  
-CODE_2AA1E8:        54 7F 7F      MVN $7F7F                 
+CODE_2AA1E8:        54 7F 7F      MVN $7F, $7F                 
 CODE_2AA1EB:        A9 00         LDA #$00                  
 CODE_2AA1ED:        EB            XBA                       
 CODE_2AA1EE:        A0 20 04      LDY #$0420                
 CODE_2AA1F1:        A2 30 04      LDX #$0430                
 CODE_2AA1F4:        A9 AF         LDA #$AF                  
-CODE_2AA1F6:        54 7F 7F      MVN $7F7F                 
+CODE_2AA1F6:        54 7F 7F      MVN $7F, $7F                 
 CODE_2AA1F9:        A9 00         LDA #$00                  
 CODE_2AA1FB:        EB            XBA                       
 CODE_2AA1FC:        A0 D0 05      LDY #$05D0                
 CODE_2AA1FF:        A2 E0 05      LDX #$05E0                
 CODE_2AA202:        A9 AF         LDA #$AF                  
-CODE_2AA204:        54 7F 7F      MVN $7F7F                 
+CODE_2AA204:        54 7F 7F      MVN $7F, $7F                 
 CODE_2AA207:        A9 00         LDA #$00                  
 CODE_2AA209:        EB            XBA                       
 CODE_2AA20A:        A0 80 07      LDY #$0780                
 CODE_2AA20D:        A2 90 07      LDX #$0790                
 CODE_2AA210:        A9 AF         LDA #$AF                  
-CODE_2AA212:        54 7F 7F      MVN $7F7F                 
+CODE_2AA212:        54 7F 7F      MVN $7F, $7F                 
 CODE_2AA215:        E2 10         SEP #$10                  
 CODE_2AA217:        AB            PLB                       
 CODE_2AA218:        6B            RTL                       
@@ -4148,13 +4148,13 @@ CODE_2AA485:        C2 10         REP #$10
 CODE_2AA487:        A0 00 00      LDY #$0000                
 CODE_2AA48A:        A2 B0 00      LDX #$00B0                
 CODE_2AA48D:        A9 CF         LDA #$CF                  
-CODE_2AA48F:        54 7F 7F      MVN $7F7F                 
+CODE_2AA48F:        54 7F 7F      MVN $7F, $7F                 
 CODE_2AA492:        A9 00         LDA #$00                  
 CODE_2AA494:        EB            XBA                       
 CODE_2AA495:        A0 B0 01      LDY #$01B0                
 CODE_2AA498:        A2 60 02      LDX #$0260                
 CODE_2AA49B:        A9 CF         LDA #$CF                  
-CODE_2AA49D:        54 7F 7F      MVN $7F7F                 
+CODE_2AA49D:        54 7F 7F      MVN $7F, $7F                 
 CODE_2AA4A0:        E2 10         SEP #$10                  
 CODE_2AA4A2:        A9 42         LDA #$42                  
 CODE_2AA4A4:        85 00         STA $00                   
@@ -5262,13 +5262,13 @@ CODE_2AAD77:        C2 10         REP #$10
 CODE_2AAD79:        A0 10 01      LDY #$0110                
 CODE_2AAD7C:        A2 20 01      LDX #$0120                
 CODE_2AAD7F:        A9 EF         LDA #$EF                  
-CODE_2AAD81:        54 7F 7F      MVN $7F7F                 
+CODE_2AAD81:        54 7F 7F      MVN $7F, $7F                 
 CODE_2AAD84:        A9 00         LDA #$00                  
 CODE_2AAD86:        EB            XBA                       
 CODE_2AAD87:        A0 C0 02      LDY #$02C0                
 CODE_2AAD8A:        A2 D0 02      LDX #$02D0                
 CODE_2AAD8D:        A9 EF         LDA #$EF                  
-CODE_2AAD8F:        54 7F 7F      MVN $7F7F                 
+CODE_2AAD8F:        54 7F 7F      MVN $7F, $7F                 
 CODE_2AAD92:        E2 10         SEP #$10                  
 CODE_2AAD94:        AB            PLB                       
 CODE_2AAD95:        6B            RTL                       
@@ -6050,7 +6050,7 @@ CODE_2AB3D0:        A2 00 00      LDX #$0000
 CODE_2AB3D3:        A9 01         LDA #$01                  
 CODE_2AB3D5:        EB            XBA                       
 CODE_2AB3D6:        A9 AF         LDA #$AF                  
-CODE_2AB3D8:        54 7F 7F      MVN $7F7F                 
+CODE_2AB3D8:        54 7F 7F      MVN $7F, $7F                 
 CODE_2AB3DB:        E2 10         SEP #$10                  
 CODE_2AB3DD:        AB            PLB                       
 CODE_2AB3DE:        6B            RTL                       

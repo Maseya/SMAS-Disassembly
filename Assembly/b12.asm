@@ -12769,7 +12769,7 @@ CODE_12E6E1:        CMP #$01
 CODE_12E6E3:        BNE CODE_12E6FA           
 CODE_12E6E5:        LDX #$02                  
 CODE_12E6E7:        LDA [$01],y               
-CODE_12E6E9:        CMP $12E6AF,x             
+CODE_12E6E9:        CMP.l DATA_12E6AF,x             
 CODE_12E6ED:        BEQ CODE_12E6F4           
 CODE_12E6EF:        DEX                       
 CODE_12E6F0:        BPL CODE_12E6E9           
@@ -12786,7 +12786,7 @@ CODE_12E702:        CMP #$10
 CODE_12E704:        BEQ CODE_12E75D           
 CODE_12E706:        LDX #$02                  
 CODE_12E708:        LDA [$01],y               
-CODE_12E70A:        CMP $12E6AF,x             
+CODE_12E70A:        CMP.l DATA_12E6AF,x             
 CODE_12E70E:        BEQ CODE_12E754           
 CODE_12E710:        DEX                       
 CODE_12E711:        BPL CODE_12E70A           
@@ -12802,7 +12802,7 @@ CODE_12E722:        STA $02
 CODE_12E724:        LDX #$02                  
 CODE_12E726:        INY                       
 CODE_12E727:        LDA [$01],y               
-CODE_12E729:        CMP $12E6B8,x             
+CODE_12E729:        CMP.l DATA_12E6B8,x             
 CODE_12E72D:        BEQ CODE_12E734           
 CODE_12E72F:        DEX                       
 CODE_12E730:        BPL CODE_12E729           
@@ -12815,7 +12815,7 @@ CODE_12E73A:        LDA $0714
 CODE_12E73D:        STA $02                   
 CODE_12E73F:        LDX #$0B                  
 CODE_12E741:        LDA [$01],y               
-CODE_12E743:        CMP $12E697,x             
+CODE_12E743:        CMP.l DATA_12E697,x             
 CODE_12E747:        BEQ CODE_12E74E           
 CODE_12E749:        DEX                       
 CODE_12E74A:        BPL CODE_12E743           
@@ -12853,7 +12853,7 @@ CODE_12E785:        BEQ CODE_12E7A0
 CODE_12E787:        LDX #$05                  
 CODE_12E789:        INY                       
 CODE_12E78A:        LDA [$01],y               
-CODE_12E78C:        CMP $12E697,x             
+CODE_12E78C:        CMP.l DATA_12E697,x             
 CODE_12E790:        BEQ CODE_12E797           
 CODE_12E792:        DEX                       
 CODE_12E793:        BPL CODE_12E78C           
@@ -15786,7 +15786,7 @@ CODE_12FE62:        CMP #$40
 CODE_12FE64:        BNE CODE_12FE7C           
 CODE_12FE66:        LDX #$03                  
 CODE_12FE68:        LDA $02C5                 
-CODE_12FE6B:        CMP $11B739,x             
+CODE_12FE6B:        CMP.l DATA_11B739,x             
 CODE_12FE6F:        BEQ CODE_12FE76           
 CODE_12FE71:        DEX                       
 CODE_12FE72:        BPL CODE_12FE6B           
@@ -15843,7 +15843,7 @@ CODE_12FED2:        CMP #$40
 CODE_12FED4:        BNE CODE_12FEEC           
 CODE_12FED6:        LDX #$03                  
 CODE_12FED8:        LDA $02C5                 
-CODE_12FEDB:        CMP $11B731,x             
+CODE_12FEDB:        CMP.l DATA_11B731,x             
 CODE_12FEDF:        BEQ CODE_12FEE6           
 CODE_12FEE1:        DEX                       
 CODE_12FEE2:        BPL CODE_12FEDB           
@@ -15859,13 +15859,13 @@ CODE_12FEF0:        STA $02C5
 CODE_12FEF3:        LDY #$00                  
 CODE_12FEF5:        LDX #$07                  
 CODE_12FEF7:        LDA $02C5                 
-CODE_12FEFA:        CMP $11CF12,x             
+CODE_12FEFA:        CMP.l DATA_11CF12,x             
 CODE_12FEFE:        BNE CODE_12FF12           
 CODE_12FF00:        LDA $0533                 
-CODE_12FF03:        CMP $11CF1A,x             
+CODE_12FF03:        CMP.l DATA_11CF1A,x             
 CODE_12FF07:        BNE CODE_12FF12           
 CODE_12FF09:        LDA $0534                 
-CODE_12FF0C:        CMP $11CF22,x             
+CODE_12FF0C:        CMP.l DATA_11CF22,x             
 CODE_12FF10:        BEQ CODE_12FF16           
 CODE_12FF12:        DEX                       
 CODE_12FF13:        BPL CODE_12FEF7           
@@ -15886,7 +15886,7 @@ CODE_12FF32:        LDX $0534
 CODE_12FF35:        CPX #$01                  
 CODE_12FF37:        BNE CODE_12FF4A           
 CODE_12FF39:        LDX #$02                  
-CODE_12FF3B:        CMP $11CF2A,x             
+CODE_12FF3B:        CMP.l DATA_11CF2A,x             
 CODE_12FF3F:        BNE CODE_12FF47           
 CODE_12FF41:        LDA.l DATA_11CF2D,x             
 CODE_12FF45:        BRA CODE_12FF4A           
@@ -15901,10 +15901,10 @@ DATA_12FF4D:        db $04,$04
                 
 CODE_12FF4F:        LDX #$01                  
 CODE_12FF51:        LDA $0533                 
-CODE_12FF54:        CMP $12FF4B,x             
+CODE_12FF54:        CMP.l DATA_12FF4B,x             
 CODE_12FF58:        BNE CODE_12FF63           
 CODE_12FF5A:        LDA $0534                 
-CODE_12FF5D:        CMP $12FF4D,x             
+CODE_12FF5D:        CMP.l DATA_12FF4D,x             
 CODE_12FF61:        BEQ CODE_12FF67           
 CODE_12FF63:        DEX                       
 CODE_12FF64:        BPL CODE_12FF51           

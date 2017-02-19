@@ -325,9 +325,9 @@ CODE_04830E:        C9 02         CMP #$02                  ;
 CODE_048310:        D0 45         BNE CODE_048357           ;
 CODE_048312:        A2 41 28      LDX #$2841                ;\Base reg: $2128. Indirect pointers.
 CODE_048315:        8E 40 43      STX $4340                 ;/2 regs write once (Window 2 L+R position)
-CODE_048318:        A2 A5 83      LDX #$83A5                ;\
+CODE_048318:        A2 A5 83      LDX.w #DATA_0483A5        ;\
 CODE_04831B:        8E 42 43      STX $4342                 ; |
-CODE_04831E:        A9 04         LDA #$04                  ; |DMA source: $04:83A5
+CODE_04831E:        A9 04         LDA.b #DATA_0483A5>>16    ; |DMA source: $04:83A5
 CODE_048320:        8D 44 43      STA $4344                 ; |
 CODE_048323:        A9 04         LDA #$04                  ; |
 CODE_048325:        8D 47 43      STA $4347                 ;/

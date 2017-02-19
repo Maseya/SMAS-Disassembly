@@ -1898,8 +1898,9 @@ DATA_268C3F:        db $9C,$B8,$26,$4C,$FC,$27,$00,$91
                     db $12,$FF,$1C,$FF,$1C,$FF,$1C,$FF
                     db $1C,$24,$14,$16,$94,$25,$14,$17
                     db $94,$26,$14,$18,$94,$27,$14,$19
-                    db $94,$24,$5C,$9C,$E2,$24,$5F,$A6
-                    db $E2
+                    db $94
+
+DATA_26B020:        db $24,$5C,$9C,$E2,$24,$5F,$A6,$E2
 
 CODE_26B028:        LDX #$00                  ;
 CODE_26B02A:        LDA #$06                  ;
@@ -1926,7 +1927,7 @@ CODE_26B053:        LSR A                     ;
 CODE_26B054:        LSR A                     ;
 CODE_26B055:        LSR A                     ;
 CODE_26B056:        CLC                       ;
-CODE_26B057:        ADC.l DATA_26B03D,x             ;
+CODE_26B057:        ADC.l DATA_26B03D,x       ;
 CODE_26B05B:        TAX                       ;
 CODE_26B05C:        DEX                       ;
 CODE_26B05D:        TXA                       ;

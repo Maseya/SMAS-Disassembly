@@ -2666,13 +2666,13 @@ CODE_2A966B:        REP #$10
 CODE_2A966D:        LDY #$0510                
 CODE_2A9670:        LDX #$05C0                
 CODE_2A9673:        LDA #$CF                  
-CODE_2A9675:        MVN $7F7F                 
+CODE_2A9675:        MVN $7F, $7F                 
 CODE_2A9678:        LDA #$00                  
 CODE_2A967A:        XBA                       
 CODE_2A967B:        LDY #$06C0                
 CODE_2A967E:        LDX #$0770                
 CODE_2A9681:        LDA #$CF                  
-CODE_2A9683:        MVN $7F7F                 
+CODE_2A9683:        MVN $7F, $7F                 
 CODE_2A9686:        SEP #$10                  
 CODE_2A9688:        LDX #$E0                  
 CODE_2A968A:        LDA #$13                  
@@ -3350,7 +3350,7 @@ CODE_2A9CB2:        REP #$10
 CODE_2A9CB4:        LDY #$0100                
 CODE_2A9CB7:        LDX #$01B0                
 CODE_2A9CBA:        LDA #$AF                  
-CODE_2A9CBC:        MVN $7F7F                 
+CODE_2A9CBC:        MVN $7F, $7F                 
 CODE_2A9CBF:        SEP #$10                  
 CODE_2A9CC1:        PLB                       
 CODE_2A9CC2:        RTL                       
@@ -3876,31 +3876,31 @@ CODE_2AA1D0:        REP #$10
 CODE_2AA1D2:        LDY #$00C0                
 CODE_2AA1D5:        LDX #$00D0                
 CODE_2AA1D8:        LDA #$AF                  
-CODE_2AA1DA:        MVN $7F7F                 
+CODE_2AA1DA:        MVN $7F, $7F                 
 CODE_2AA1DD:        LDA #$00                  
 CODE_2AA1DF:        XBA                       
 CODE_2AA1E0:        LDY #$0270                
 CODE_2AA1E3:        LDX #$0280                
 CODE_2AA1E6:        LDA #$AF                  
-CODE_2AA1E8:        MVN $7F7F                 
+CODE_2AA1E8:        MVN $7F, $7F                 
 CODE_2AA1EB:        LDA #$00                  
 CODE_2AA1ED:        XBA                       
 CODE_2AA1EE:        LDY #$0420                
 CODE_2AA1F1:        LDX #$0430                
 CODE_2AA1F4:        LDA #$AF                  
-CODE_2AA1F6:        MVN $7F7F                 
+CODE_2AA1F6:        MVN $7F, $7F                 
 CODE_2AA1F9:        LDA #$00                  
 CODE_2AA1FB:        XBA                       
 CODE_2AA1FC:        LDY #$05D0                
 CODE_2AA1FF:        LDX #$05E0                
 CODE_2AA202:        LDA #$AF                  
-CODE_2AA204:        MVN $7F7F                 
+CODE_2AA204:        MVN $7F, $7F                 
 CODE_2AA207:        LDA #$00                  
 CODE_2AA209:        XBA                       
 CODE_2AA20A:        LDY #$0780                
 CODE_2AA20D:        LDX #$0790                
 CODE_2AA210:        LDA #$AF                  
-CODE_2AA212:        MVN $7F7F                 
+CODE_2AA212:        MVN $7F, $7F                 
 CODE_2AA215:        SEP #$10                  
 CODE_2AA217:        PLB                       
 CODE_2AA218:        RTL                       
@@ -4148,13 +4148,13 @@ CODE_2AA485:        REP #$10
 CODE_2AA487:        LDY #$0000                
 CODE_2AA48A:        LDX #$00B0                
 CODE_2AA48D:        LDA #$CF                  
-CODE_2AA48F:        MVN $7F7F                 
+CODE_2AA48F:        MVN $7F, $7F                 
 CODE_2AA492:        LDA #$00                  
 CODE_2AA494:        XBA                       
 CODE_2AA495:        LDY #$01B0                
 CODE_2AA498:        LDX #$0260                
 CODE_2AA49B:        LDA #$CF                  
-CODE_2AA49D:        MVN $7F7F                 
+CODE_2AA49D:        MVN $7F, $7F                 
 CODE_2AA4A0:        SEP #$10                  
 CODE_2AA4A2:        LDA #$42                  
 CODE_2AA4A4:        STA $00                   
@@ -5262,13 +5262,13 @@ CODE_2AAD77:        REP #$10
 CODE_2AAD79:        LDY #$0110                
 CODE_2AAD7C:        LDX #$0120                
 CODE_2AAD7F:        LDA #$EF                  
-CODE_2AAD81:        MVN $7F7F                 
+CODE_2AAD81:        MVN $7F, $7F                 
 CODE_2AAD84:        LDA #$00                  
 CODE_2AAD86:        XBA                       
 CODE_2AAD87:        LDY #$02C0                
 CODE_2AAD8A:        LDX #$02D0                
 CODE_2AAD8D:        LDA #$EF                  
-CODE_2AAD8F:        MVN $7F7F                 
+CODE_2AAD8F:        MVN $7F, $7F                 
 CODE_2AAD92:        SEP #$10                  
 CODE_2AAD94:        PLB                       
 CODE_2AAD95:        RTL                       
@@ -6050,7 +6050,7 @@ CODE_2AB3D0:        LDX #$0000
 CODE_2AB3D3:        LDA #$01                  
 CODE_2AB3D5:        XBA                       
 CODE_2AB3D6:        LDA #$AF                  
-CODE_2AB3D8:        MVN $7F7F                 
+CODE_2AB3D8:        MVN $7F, $7F                 
 CODE_2AB3DB:        SEP #$10                  
 CODE_2AB3DD:        PLB                       
 CODE_2AB3DE:        RTL                       

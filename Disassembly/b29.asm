@@ -8325,7 +8325,7 @@ CODE_29C498:        A5 BB         LDA $BB                   ;\
 CODE_29C49A:        29 FF 00      AND #$00FF                ; |
 CODE_29C49D:        0A            ASL A                     ; |
 CODE_29C49E:        A8            TAY                       ; |
-CODE_29C49F:        B9 95 F3      LDA.w DATA_21F395,y               ; | 21F395
+CODE_29C49F:        B9 95 F3      LDA.w DATA_21F395,y       ; | 21F395
 CODE_29C4A2:        8D D4 02      STA $02D4                 ;/ 16-bit indices to King has been restored texts, depending on the player's powerup
 CODE_29C4A5:        E2 20         SEP #$20                  
 CODE_29C4A7:        A9 50         LDA #$50                  
@@ -8691,76 +8691,76 @@ CODE_29C793:        6B            RTL
 CODE_29C794:        22 2B C8 29   JSL CODE_29C82B           
 CODE_29C798:        6B            RTL                       
 
-DATA_29C799:        dw $1000
-                    dw $9000
-                    dw $9580
-                    dw $9B00
-                    dw $9160
-                    dw $9B00
-                    dw $96E0
+PNTR_29C799:        dw $1000
+                    dw DATA_3C9000
+                    dw DATA_3C9580
+                    dw DATA_3C9B00
+                    dw DATA_3C9160
+                    dw DATA_3C9B00
+                    dw DATA_3C96E0
                     dw $2002
-                    dw $9B00
-                    dw $92C0
-                    dw $9840
-                    dw $9000
-                    dw $99A0
-                    dw $9160
-                    dw $9420
+                    dw DATA_3C9B00
+                    dw DATA_3C92C0
+                    dw DATA_3C9840
+                    dw DATA_3C9000
+                    dw DATA_3C99A0
+                    dw DATA_3C9160
+                    dw DATA_3C9420
                     dw $2000
                     dw $2001
                     dw $2002
                     dw $3000
 
-DATA_29C7BF:        dw $9E00
-                    dw $9E80
-                    dw $9E00
-                    dw $9F00
-                    dw $9F00
-                    dw $9F80
-                    dw $A000
-                    dw $A080
-                    dw $9E00
-                    dw $9D80
+PNTR_29C7BF:        dw DATA_3C9E00
+                    dw DATA_3C9E80
+                    dw DATA_3C9E00
+                    dw DATA_3C9F00
+                    dw DATA_3C9F00
+                    dw DATA_3C9F80
+                    dw DATA_3CA000
+                    dw DATA_3CA080
+                    dw DATA_3C9E00
+                    dw DATA_3C9D80
 
-DATA_29C7D3:        dw $8960
-                    dw $8980
-                    dw $89A0
-                    dw $89C0
-                    dw $89E0
-                    dw $8A00
-                    dw $8960
+PNTR_29C7D3:        dw DATA_3C8960
+                    dw DATA_3C8980
+                    dw DATA_3C89A0
+                    dw DATA_3C89C0
+                    dw DATA_3C89E0
+                    dw DATA_3C8A00
+                    dw DATA_3C8960
                     dw $0000
 
-DATA_29C7E3:        dw $88A0
-                    dw $88A0
-                    dw $8920
-                    dw $88A0
-                    dw $88E0
-                    dw $88C0
-                    dw $8900
-                    dw $88E0
-                    dw $88E0
-                    dw $8940
-                    dw $88E0
-                    dw $88E0
-                    dw $88C0
-                    dw $8900
+PNTR_29C7E3:        dw DATA_3C88A0
+                    dw DATA_3C88A0
+                    dw DATA_3C8920
+                    dw DATA_3C88A0
+                    dw DATA_3C88E0
+                    dw DATA_3C88C0
+                    dw DATA_3C8900
+                    dw DATA_3C88E0
+                    dw DATA_3C88E0
+                    dw DATA_3C8940
+                    dw DATA_3C88E0
+                    dw DATA_3C88E0
+                    dw DATA_3C88C0
+                    dw DATA_3C8900
 
-DATA_29C7FF:        dw $9C80
-                    dw $9C90
-                    dw $9CA0
-                    dw $9CB0
-                    dw $9CC0
-                    dw $9CD0
-                    dw $9CE0
-                    dw $9CF0
-                    dw $9D00
-                    dw $9D10
-                    dw $9D20
-                    dw $9D30
-                    dw $9D40
-                    dw $9D50
-                    dw $9D60
+PNTR_29C7FF:        dw DATA_3C9C80
+                    dw DATA_3C9C90
+                    dw DATA_3C9CA0
+                    dw DATA_3C9CB0
+                    dw DATA_3C9CC0
+                    dw DATA_3C9CD0
+                    dw DATA_3C9CE0
+                    dw DATA_3C9CF0
+                    dw DATA_3C9D00
+                    dw DATA_3C9D10
+                    dw DATA_3C9D20
+                    dw DATA_3C9D30
+                    dw DATA_3C9D40
+                    dw DATA_3C9D50
+                    dw DATA_3C9D60
 
 DATA_29C81D:        dw $0700
 
@@ -8768,9 +8768,9 @@ DATA_29C81F:        dw $0040
                     dw $0040
                     dw $0020
 
-DATA_29C825:        dw $8BC0
-                    dw $8B60
-                    dw $8BC0
+PNTR_29C825:        dw DATA_3C8BC0
+                    dw DATA_3C8B60
+                    dw DATA_3C8BC0
 
 CODE_29C82B:        A9 20         LDA #$20                  
 CODE_29C82D:        8D 05 02      STA $0205                 
@@ -8780,22 +8780,22 @@ CODE_29C834:        0A            ASL A
 CODE_29C835:        8D 07 02      STA $0207                 
 CODE_29C838:        C2 30         REP #$30                  
 CODE_29C83A:        8B            PHB                       ;
-CODE_29C83B:        A2 00 A1      LDX #$A100                
+CODE_29C83B:        A2 00 A1      LDX.w #DATA_3CA100                
 CODE_29C83E:        A0 00 13      LDY #$1300                
 CODE_29C841:        A9 1F 00      LDA #$001F                
-CODE_29C844:        54 00 3C      MVN $3C00                 
+CODE_29C844:        54 00 3C      MVN $00, DATA_3CA100>>16                 
 CODE_29C847:        AB            PLB                       ;
 CODE_29C848:        8B            PHB                       ;
-CODE_29C849:        A2 00 88      LDX #$8800                
+CODE_29C849:        A2 00 88      LDX.w #DATA_3C8800                
 CODE_29C84C:        A0 00 14      LDY #$1400                
 CODE_29C84F:        A9 9F 00      LDA #$009F                
-CODE_29C852:        54 00 3C      MVN $3C00                 
+CODE_29C852:        54 00 3C      MVN $00, DATA_3C8800>>16                 
 CODE_29C855:        AB            PLB                       ;
 CODE_29C856:        AD 0A 07      LDA $070A                 
 CODE_29C859:        29 FF 00      AND #$00FF                
 CODE_29C85C:        0A            ASL A                     
 CODE_29C85D:        AA            TAX                       
-CODE_29C85E:        BF 99 C7 29   LDA.l DATA_29C799,x             
+CODE_29C85E:        BF 99 C7 29   LDA.l PNTR_29C799,x             
 CODE_29C862:        29 00 F0      AND #$F000                
 CODE_29C865:        F0 36         BEQ CODE_29C89D           
 CODE_29C867:        C9 00 10      CMP #$1000                
@@ -8830,14 +8830,14 @@ CODE_29C8A7:        80 62         BRA CODE_29C90B
 
 CODE_29C8A9:        DA            PHX                       
 CODE_29C8AA:        8B            PHB                       ;
-CODE_29C8AB:        A2 20 A1      LDX #$A120                
+CODE_29C8AB:        A2 20 A1      LDX.w #DATA_3CA120                
 CODE_29C8AE:        A0 20 13      LDY #$1320                
 CODE_29C8B1:        A9 DF 00      LDA #$00DF                
-CODE_29C8B4:        54 00 3C      MVN $3C00                 
-CODE_29C8B7:        A2 60 8A      LDX #$8A60                
+CODE_29C8B4:        54 00 3C      MVN $00, DATA_3CA120>>16                 
+CODE_29C8B7:        A2 60 8A      LDX.w #DATA_3C8A60                
 CODE_29C8BA:        A0 C0 14      LDY #$14C0                
 CODE_29C8BD:        A9 1F 00      LDA #$001F                
-CODE_29C8C0:        54 00 3C      MVN $3C00                 
+CODE_29C8C0:        54 00 3C      MVN $00, DATA_3C8A60>>16                
 CODE_29C8C3:        AB            PLB                       ;
 CODE_29C8C4:        AD 0A 07      LDA $070A                 
 CODE_29C8C7:        29 FF 00      AND #$00FF                
@@ -8847,23 +8847,23 @@ CODE_29C8CF:        AD 26 07      LDA $0726
 CODE_29C8D2:        29 01 00      AND #$0001                
 CODE_29C8D5:        F0 0E         BEQ CODE_29C8E5           
 CODE_29C8D7:        8B            PHB                       ;
-CODE_29C8D8:        A2 E0 88      LDX #$88E0                
+CODE_29C8D8:        A2 E0 88      LDX.w #DATA_3C88E0                
 CODE_29C8DB:        A0 E0 13      LDY #$13E0                
 CODE_29C8DE:        A9 1F 00      LDA #$001F                
-CODE_29C8E1:        54 00 3C      MVN $3C00                 
+CODE_29C8E1:        54 00 3C      MVN $00, DATA_3C88E0>>16                 
 CODE_29C8E4:        AB            PLB                       ;
 CODE_29C8E5:        FA            PLX                       
-CODE_29C8E6:        BF 99 C7 29   LDA.l DATA_29C799,x             
+CODE_29C8E6:        BF 99 C7 29   LDA.l PNTR_29C799,x             
 CODE_29C8EA:        29 0F 00      AND #$000F                
 CODE_29C8ED:        0A            ASL A                     
 CODE_29C8EE:        AA            TAX                       
 CODE_29C8EF:        DA            PHX                       
 CODE_29C8F0:        8B            PHB                       ;
-CODE_29C8F1:        BF 25 C8 29   LDA.l DATA_29C825,x             
+CODE_29C8F1:        BF 25 C8 29   LDA.l PNTR_29C825,x             
 CODE_29C8F5:        AA            TAX                       
 CODE_29C8F6:        A0 A0 14      LDY #$14A0                
 CODE_29C8F9:        A9 1F 00      LDA #$001F                
-CODE_29C8FC:        54 00 3C      MVN $3C00                 
+CODE_29C8FC:        54 00 3C      MVN $00, DATA_3C8BC0>>16  ;first data pointer in above table                 
 CODE_29C8FF:        AB            PLB                       ;
 CODE_29C900:        FA            PLX                       
 CODE_29C901:        BF 1F C8 29   LDA.l DATA_29C81F,x             
@@ -8980,31 +8980,31 @@ DATA_29C963:        dw $0000
                     dw $9500
                     dw $9540
 
-DATA_29C9EB:        dw $A600
-                    dw $A640
-                    dw $A680
-                    dw $A6C0
-                    dw $A700
-                    dw $A740
-                    dw $A780
-                    dw $A7C0
-                    dw $A800
-                    dw $A840
-                    dw $A880
-                    dw $A8C0
-                    dw $A900
-                    dw $A940
-                    dw $A700
-                    dw $A9C0
-                    dw $AA00
-                    dw $AA40
-                    dw $AA80
-                    dw $AAC0
-                    dw $AB00
-                    dw $AB40
-                    dw $AB80
-                    dw $ABC0
-                    dw $A980
+PNTR_29C9EB:        dw DATA_3CA600
+                    dw DATA_3CA640
+                    dw DATA_3CA680
+                    dw DATA_3CA6C0
+                    dw DATA_3CA700
+                    dw DATA_3CA740
+                    dw DATA_3CA780
+                    dw DATA_3CA7C0
+                    dw DATA_3CA800
+                    dw DATA_3CA840
+                    dw DATA_3CA880
+                    dw DATA_3CA8C0
+                    dw DATA_3CA900
+                    dw DATA_3CA940
+                    dw DATA_3CA700
+                    dw DATA_3CA9C0
+                    dw DATA_3CAA00
+                    dw DATA_3CAA40
+                    dw DATA_3CAA80
+                    dw DATA_3CAAC0
+                    dw DATA_3CAB00
+                    dw DATA_3CAB40
+                    dw DATA_3CAB80
+                    dw DATA_3CABC0
+                    dw DATA_3CA980
 
 DATA_29CA1D:        dw $0000
                     dw $0103
@@ -9057,27 +9057,27 @@ DATA_29CA1D:        dw $0000
 
 DATA_29CA7D:        db $08,$08,$07,$07,$08,$08,$08
 
-DATA_29CA84:        dw $8A40
-                    dw $8A60
-                    dw $8A80
-                    dw $8AA0
-                    dw $8AC0
-                    dw $8AE0
-                    dw $8B00
-                    dw $8B20
-                    dw $8B40
-                    dw $8B60
-                    dw $8B80
-                    dw $8BA0
-                    dw $8BC0
-                    dw $8BE0
+PNTR_29CA84:        dw DATA_3C8A40
+                    dw DATA_3C8A60
+                    dw DATA_3C8A80
+                    dw DATA_3C8AA0
+                    dw DATA_3C8AC0
+                    dw DATA_3C8AE0
+                    dw DATA_3C8B00
+                    dw DATA_3C8B20
+                    dw DATA_3C8B40
+                    dw DATA_3C8B60
+                    dw DATA_3C8B80
+                    dw DATA_3C8BA0
+                    dw DATA_3C8BC0
+                    dw DATA_3C8BE0
 
-CODE_29CAA0:        BF 99 C7 29   LDA.l DATA_29C799,x       
+CODE_29CAA0:        BF 99 C7 29   LDA.l PNTR_29C799,x       
 CODE_29CAA4:        8B            PHB                       
 CODE_29CAA5:        AA            TAX                       
 CODE_29CAA6:        A0 60         LDY #$1360                
 CODE_29CAA9:        A9 5F 00      LDA #$005F                
-CODE_29CAAB:        54 00 3C      MVN $3C00                 
+CODE_29CAAB:        54 00 3C      MVN $00, DATA_3C9000>>16  ;first (valid) data pointer in above table                 
 CODE_29CAAE:        AB            PLB                       ;
 CODE_29CAB0:        AD BE 02      LDA $02BE
 CODE_29CAB3:        29 FF 00      AND #$00FF
@@ -9086,11 +9086,11 @@ CODE_29CAB8:        3A            DEC A
 CODE_29CAB9:        0A            ASL A                     
 CODE_29CABA:        AA            TAX                       
 CODE_29CABB:        8B            PHB                       ;
-CODE_29CABC:        BF FF C7 29   LDA.l DATA_29C7FF,x             
+CODE_29CABC:        BF FF C7 29   LDA.l PNTR_29C7FF,x             
 CODE_29CAC0:        AA            TAX                       
 CODE_29CAC1:        A0 10 13      LDY #$1310                  
 CODE_29CAC4:        A9 0F 00      LDA #$000F
-CODE_29CAC7:        54 00 3C      MVN $3C00
+CODE_29CAC7:        54 00 3C      MVN $00, DATA_3C9C80>>16  ;first data pointer in above table
 CODE_29CACA:        AB            PLB                       ;
 CODE_29CACB:        AD 0A 07      LDA $070A
 CODE_29CACE:        29 FF 00      AND #$00FF
@@ -9111,21 +9111,21 @@ CODE_29CAEA:        AD 50 03      LDA $0350
 CODE_29CAED:        29 FF 00      AND #$00FF                                  
 CODE_29CAF0:        C9 0B 00      CMP #$000B
 CODE_29CAF3:        D0 03         BNE CODE_29CAF8
-CODE_29CAF5:        A2 C0 94      LDX #$94C0
+CODE_29CAF5:        A2 C0 94      LDX.w #DATA_3C94C0
 CODE_29CAF8:        A0 C0 13      LDY #$13C0                  
 CODE_29CAFB:        A9 3F 00      LDA #$003F
-CODE_29CAFE:        54 00 3C      MVN $3C00
+CODE_29CAFE:        54 00 3C      MVN $00, DATA_3C94C0>>16
 CODE_29CB01:        AB            PLB                       ;
 CODE_29CB02:        AD C5 02      LDA $02C5
 CODE_29CB05:        29 FF 00      AND #$00FF                  
 CODE_29CB08:        0A            ASL A
 CODE_29CB09:        AA            TAX                       
-CODE_29CB0A:        BF EB C9 29   LDA.l DATA_29C9EB,x             
+CODE_29CB0A:        BF EB C9 29   LDA.l PNTR_29C9EB,x             
 CODE_29CB0E:        8B            PHB                       ;
 CODE_29CB0F:        AA            TAX                       
 CODE_29CB10:        A0 20 13      LDY #$1320                
 CODE_29CB13:        A9 3F 00      LDA #$003F                
-CODE_29CB16:        54 00 3C      MVN $3C00                 
+CODE_29CB16:        54 00 3C      MVN $00, DATA_3CA600>>16  ;first data pointer in above table                 
 CODE_29CB19:        AB            PLB                       ;
 CODE_29CB1A:        AD BF 1E      LDA $1EBF                 
 CODE_29CB1D:        29 FF 00      AND #$00FF                
@@ -9153,29 +9153,29 @@ CODE_29CB50:        29 FF 00      AND #$00FF
 CODE_29CB53:        0A            ASL A                     
 CODE_29CB54:        85 DA         STA $DA                   
 CODE_29CB56:        A6 D8         LDX $D8                   
-CODE_29CB58:        BF 84 CA 29   LDA.l DATA_29CA84,x             
+CODE_29CB58:        BF 84 CA 29   LDA.l PNTR_29CA84,x             
 CODE_29CB5C:        AA            TAX                       
 CODE_29CB5D:        8B            PHB                       
 CODE_29CB5E:        AA            TAX                       
 CODE_29CB5F:        A0 A0 14      LDY #$14A0                
 CODE_29CB62:        A9 1F 00      LDA #$001F                
-CODE_29CB65:        54 00 3C      MVN $3C00                 
+CODE_29CB65:        54 00 3C      MVN $00, DATA_3C8A40>>16  ;first data pointer in above table                 
 CODE_29CB68:        AB            PLB                       ;
 CODE_29CB69:        A6 DA         LDX $DA                   
-CODE_29CB6B:        BF 84 CA 29   LDA.l DATA_29CA84,x             
+CODE_29CB6B:        BF 84 CA 29   LDA.l PNTR_29CA84,x             
 CODE_29CB6F:        AA            TAX                       
 CODE_29CB70:        8B            PHB                       ;
 CODE_29CB71:        AA            TAX                       
 CODE_29CB72:        A0 C0 14      LDY #$14C0                
 CODE_29CB75:        A9 1F 00      LDA #$001F                
-CODE_29CB78:        54 00 3C      MVN $3C00                 
+CODE_29CB78:        54 00 3C      MVN $00, DATA_3C8A40>>16  ;first data pointer in above table           
 CODE_29CB7B:        82 FE 00      BRL CODE_29CC7C           
 
 CODE_29CB7E:        8B            PHB                       
-CODE_29CB7F:        A2 00 A5      LDX #$A500                
+CODE_29CB7F:        A2 00 A5      LDX.w #DATA_3CA500                
 CODE_29CB82:        A0 20 13      LDY #$1320                
 CODE_29CB85:        A9 DF 00      LDA #$00DF                
-CODE_29CB88:        54 00 3C      MVN $3C00                 
+CODE_29CB88:        54 00 3C      MVN $00, DATA_3CA500>>16                 
 CODE_29CB8B:        AB            PLB                       ;
 CODE_29CB8C:        AD BF 1E      LDA $1EBF                 
 CODE_29CB8F:        29 FF 00      AND #$00FF                
@@ -9225,21 +9225,21 @@ CODE_29CBF9:        AD 27 07      LDA $0727
 CODE_29CBFC:        29 FF 00      AND #$00FF                
 CODE_29CBFF:        0A            ASL A                     
 CODE_29CC00:        AA            TAX                       
-CODE_29CC01:        BF D3 C7 29   LDA.l DATA_29C7D3,x             
+CODE_29CC01:        BF D3 C7 29   LDA.l PNTR_29C7D3,x             
 CODE_29CC05:        F0 0C         BEQ CODE_29CC13           
 CODE_29CC07:        8B            PHB                       ;
 CODE_29CC08:        AA            TAX                       
 CODE_29CC09:        A0 80 14      LDY #$1480                
 CODE_29CC0C:        A9 1F 00      LDA #$001F                
-CODE_29CC0F:        54 00 3C      MVN $3C00                 
+CODE_29CC0F:        54 00 3C      MVN $00, DATA_3C8960>>16  ;first data pointer in above table                 
 CODE_29CC12:        AB            PLB                       ;
 CODE_29CC13:        60            RTS                       
 
 CODE_29CC14:        8B            PHB                       ;
-CODE_29CC15:        A2 A0 A3      LDX #$A3A0                
+CODE_29CC15:        A2 A0 A3      LDX.w #DATA_3CA3A0                
 CODE_29CC18:        A0 20 13      LDY #$1320                
 CODE_29CC1B:        A9 5F 00      LDA #$005F                
-CODE_29CC1E:        54 00 3C      MVN $3C00                 
+CODE_29CC1E:        54 00 3C      MVN $00, DATA_3CA3A0>>16                 
 CODE_29CC21:        AB            PLB                       ;
 CODE_29CC22:        AD 27 07      LDA $0727                 
 CODE_29CC25:        29 FF 00      AND #$00FF                
@@ -9268,16 +9268,16 @@ CODE_29CC59:        AD 27 07      LDA $0727
 CODE_29CC5C:        29 FF 00      AND #$00FF                
 CODE_29CC5F:        0A            ASL A                     
 CODE_29CC60:        AA            TAX                       
-CODE_29CC61:        BF BF C7 29   LDA.l DATA_29C7BF,x             
+CODE_29CC61:        BF BF C7 29   LDA.l PNTR_29C7BF,x             
 CODE_29CC65:        8B            PHB                       
 CODE_29CC66:        AA            TAX                       
 CODE_29CC67:        A0 80 13      LDY #$1380                
 CODE_29CC6A:        A9 7F 00      LDA #$007F                
-CODE_29CC6D:        54 00 3C      MVN $3C00                 
-CODE_29CC70:        A2 00 8C      LDX #$8C00                
+CODE_29CC6D:        54 00 3C      MVN $00, DATA_3C9E00>>16  ;first data pointer in above table                 
+CODE_29CC70:        A2 00 8C      LDX.w #DATA_3C8C00                
 CODE_29CC73:        A0 A0 14      LDY #$14A0                
 CODE_29CC76:        A9 3F 00      LDA #$003F                
-CODE_29CC79:        54 00 3C      MVN $3C00                 
+CODE_29CC79:        54 00 3C      MVN $00, DATA_3C8C00>>16                 
 CODE_29CC7C:        AD 26 07      LDA $0726                 
 CODE_29CC7F:        29 01 00      AND #$0001                
 CODE_29CC82:        AA            TAX                       
@@ -9291,11 +9291,11 @@ CODE_29CC93:        0A            ASL A
 CODE_29CC94:        18            CLC                       
 CODE_29CC95:        65 D8         ADC $D8                   
 CODE_29CC97:        AA            TAX                       
-CODE_29CC98:        BF E3 C7 29   LDA.l DATA_29C7E3,x             
+CODE_29CC98:        BF E3 C7 29   LDA.l PNTR_29C7E3,x             
 CODE_29CC9C:        AA            TAX                       
 CODE_29CC9D:        A0 E0 14      LDY #$14E0                
 CODE_29CCA0:        A9 1F 00      LDA #$001F                
-CODE_29CCA3:        54 00 3C      MVN $3C00                 
+CODE_29CCA3:        54 00 3C      MVN $00, DATA_3C88A0>>16  ;first data pointer in above table                 
 CODE_29CCA6:        AB            PLB                       ;
 CODE_29CCA7:        A2 20 00      LDX #$0020                
 CODE_29CCAA:        BD E0 14      LDA $14E0,x               
@@ -9306,40 +9306,40 @@ CODE_29CCB3:        10 F5         BPL CODE_29CCAA
 CODE_29CCB5:        60            RTS                       
 
 CODE_29CCB6:        8B            PHB                       
-CODE_29CCB7:        A2 20 A9      LDX #$A920                
+CODE_29CCB7:        A2 20 A9      LDX.w #DATA_3CA920                
 CODE_29CCBA:        A0 40 13      LDY #$1340                
 CODE_29CCBD:        A9 1F 00      LDA #$001F                
-CODE_29CCC0:        54 00 3C      MVN $3C00                 
-CODE_29CCC3:        A2 E0 96      LDX #$96E0                
+CODE_29CCC0:        54 00 3C      MVN $00, DATA_3CA920>>16                 
+CODE_29CCC3:        A2 E0 96      LDX.w #DATA_3C96E0                
 CODE_29CCC6:        A0 60 13      LDY #$1360                
 CODE_29CCC9:        A9 5F 00      LDA #$005F                
-CODE_29CCCC:        54 00 3C      MVN $3C00                 
-CODE_29CCCF:        A2 80 97      LDX #$9780                
+CODE_29CCCC:        54 00 3C      MVN $00, DATA_3C96E0>>16                 
+CODE_29CCCF:        A2 80 97      LDX.w #DATA_3C9780                
 CODE_29CCD2:        A0 C0 13      LDY #$13C0                
 CODE_29CCD5:        A9 3F 00      LDA #$003F                
-CODE_29CCD8:        54 00 3C      MVN $3C00                 
-CODE_29CCDB:        A2 00 8C      LDX #$8C00                
+CODE_29CCD8:        54 00 3C      MVN $00, DATA_3C9780>>16                 
+CODE_29CCDB:        A2 00 8C      LDX.w #DATA_3C8C00                
 CODE_29CCDE:        A0 A0 14      LDY #$14A0                
 CODE_29CCE1:        A9 3F 00      LDA #$003F                
-CODE_29CCE4:        54 00 3C      MVN $3C00                 
-CODE_29CCE7:        A2 A0 88      LDX #$88A0                
+CODE_29CCE4:        54 00 3C      MVN $00, DATA_3C8C00>>16                
+CODE_29CCE7:        A2 A0 88      LDX.w #DATA_3C88A0                
 CODE_29CCEA:        A0 E0 14      LDY #$14E0                
 CODE_29CCED:        A9 1F 00      LDA #$001F                
-CODE_29CCF0:        54 00 3C      MVN $3C00                 
+CODE_29CCF0:        54 00 3C      MVN $00, DATA_3C88A0>>16                 
 CODE_29CCF3:        9C 80 13      STZ $1380                 
 CODE_29CCF6:        AB            PLB                       ;
 CODE_29CCF7:        60            RTS                       
 
 CODE_29CCF8:        C2 30         REP #$30                  
 CODE_29CCFA:        8B            PHB                       
-CODE_29CCFB:        A2 00 88      LDX #$8800                
+CODE_29CCFB:        A2 00 88      LDX.w #DATA_3C8800                
 CODE_29CCFE:        A0 00 14      LDY #$1400                
 CODE_29CD01:        A9 9F 00      LDA #$009F                
-CODE_29CD04:        54 00 3C      MVN $3C00                 
-CODE_29CD07:        A2 E0 8B      LDX #$8BE0                
+CODE_29CD04:        54 00 3C      MVN $00, DATA_3C8800>>16                 
+CODE_29CD07:        A2 E0 8B      LDX.w #DATA_3C8BE0                
 CODE_29CD0A:        A0 A0 14      LDY #$14A0                
 CODE_29CD0D:        A9 1F 00      LDA #$001F                
-CODE_29CD10:        54 00 3C      MVN $3C00                 
+CODE_29CD10:        54 00 3C      MVN $00, DATA_3C8BE0>>16                 
 CODE_29CD13:        AB            PLB                       ;
 CODE_29CD14:        E2 30         SEP #$30                  
 CODE_29CD16:        60            RTS                       
@@ -9412,18 +9412,18 @@ CODE_29CDE4:        6B            RTL
 
 CODE_29CDE5:        C2 30         REP #$30                  
 CODE_29CDE7:        8B            PHB                       
-CODE_29CDE8:        A2 00 88      LDX #$8800                
+CODE_29CDE8:        A2 00 88      LDX.w #DATA_3C8800                
 CODE_29CDEB:        A0 00 14      LDY #$1400                
 CODE_29CDEE:        A9 9F 00      LDA #$009F                
-CODE_29CDF1:        54 00 3C      MVN $3C00                 
-CODE_29CDF4:        A2 00 8C      LDX #$8C00                
+CODE_29CDF1:        54 00 3C      MVN $00, DATA_3C8800>>16                 
+CODE_29CDF4:        A2 00 8C      LDX.w #DATA_3C8C00                
 CODE_29CDF7:        A0 A0 14      LDY #$14A0                
 CODE_29CDFA:        A9 3F 00      LDA #$003F                
-CODE_29CDFD:        54 00 3C      MVN $3C00                 
-CODE_29CE00:        A2 A0 88      LDX #$88A0                
+CODE_29CDFD:        54 00 3C      MVN $00, DATA_3C8C00>>16                 
+CODE_29CE00:        A2 A0 88      LDX.w #DATA_3C88A0                
 CODE_29CE03:        A0 E0 14      LDY #$14E0                
 CODE_29CE06:        A9 1F 00      LDA #$001F                
-CODE_29CE09:        54 00 3C      MVN $3C00                 
+CODE_29CE09:        54 00 3C      MVN $00, DATA_3C88A0>>16                 
 CODE_29CE0C:        AB            PLB                       ;
 CODE_29CE0D:        E2 30         SEP #$30                  
 CODE_29CE0F:        6B            RTL                       
@@ -9462,31 +9462,31 @@ CODE_29CE4F:        A9 01         LDA #$01
 CODE_29CE51:        8D 00 15      STA $1500                 
 CODE_29CE54:        6B            RTL                       
 
-DATA_29CE55:        dw $AC00
-                    dw $AD00
-                    dw $AE00
-                    dw $AF00
-                    dw $B000
-                    dw $B100
-                    dw $B200
-                    dw $B300
+PNTR_29CE55:        dw DATA_3CAC00
+                    dw DATA_3CAD00
+                    dw DATA_3CAE00
+                    dw DATA_3CAF00
+                    dw DATA_3CB000
+                    dw DATA_3CB100
+                    dw DATA_3CB200
+                    dw DATA_3CB300
 
-DATA_29CE65:        dw $88A0
-                    dw $88A0
-                    dw $88E0
-                    dw $88A0
-                    dw $88C0
-                    dw $88A0
-                    dw $8900
-                    dw $88A0
+PNTR_29CE65:        dw DATA_3C88A0
+                    dw DATA_3C88A0
+                    dw DATA_3C88E0
+                    dw DATA_3C88A0
+                    dw DATA_3C88C0
+                    dw DATA_3C88A0
+                    dw DATA_3C8900
+                    dw DATA_3C88A0
 
-DATA_29CE75:        dw $0000
+PNTR_29CE75:        dw $0000
                     dw $0000
-                    dw $8AE0
+                    dw DATA_3C8AE0
                     dw $0000
                     dw $0000
-                    dw $8A40
-                    dw $8A40
+                    dw DATA_3C8A40
+                    dw DATA_3C8A40
                     dw $0000
 
 DATA_29CE85:        dw $88E0
@@ -9504,31 +9504,31 @@ CODE_29CE98:        A5 4D         LDA $4D
 CODE_29CE9A:        29 FF 00      AND #$00FF                
 CODE_29CE9D:        0A            ASL A                     
 CODE_29CE9E:        AA            TAX                       
-CODE_29CE9F:        BF 55 CE 29   LDA.l DATA_29CE55,x             
+CODE_29CE9F:        BF 55 CE 29   LDA.l PNTR_29CE55,x             
 CODE_29CEA3:        AA            TAX                       
 CODE_29CEA4:        A0 00 94      LDY #$9400                
 CODE_29CEA7:        A9 FF 00      LDA #$00FF                
-CODE_29CEAA:        54 7F 3C      MVN $3C7F                 
-CODE_29CEAD:        A2 00 88      LDX #$8800                
+CODE_29CEAA:        54 7F 3C      MVN $7F, DATA_3CAC00>>16  ;first data pointer in above table                 
+CODE_29CEAD:        A2 00 88      LDX.w #DATA_3C8800                
 CODE_29CEB0:        A0 00 95      LDY #$9500                
 CODE_29CEB3:        A9 7F 00      LDA #$007F                
-CODE_29CEB6:        54 7F 3C      MVN $3C7F                 
-CODE_29CEB9:        A2 20 8A      LDX #$8A20                
+CODE_29CEB6:        54 7F 3C      MVN $7F, DATA_3C8800>>16                 
+CODE_29CEB9:        A2 20 8A      LDX.w #DATA_3C8A20                
 CODE_29CEBC:        A0 80 95      LDY #$9580                
 CODE_29CEBF:        A9 1F 00      LDA #$001F                
-CODE_29CEC2:        54 7F 3C      MVN $3C7F                 
+CODE_29CEC2:        54 7F 3C      MVN $7F, DATA_3C8A20>>16                 
 CODE_29CEC5:        AB            PLB                       ;
 CODE_29CEC6:        A5 4D         LDA $4D                   
 CODE_29CEC8:        29 FF 00      AND #$00FF                
 CODE_29CECB:        0A            ASL A                     
 CODE_29CECC:        AA            TAX                       
-CODE_29CECD:        BF 75 CE 29   LDA.l DATA_29CE75,x             
+CODE_29CECD:        BF 75 CE 29   LDA.l PNTR_29CE75,x             
 CODE_29CED1:        F0 0C         BEQ CODE_29CEDF           
 CODE_29CED3:        8B            PHB                       
 CODE_29CED4:        AA            TAX                       
 CODE_29CED5:        A0 A0 95      LDY #$95A0                
 CODE_29CED8:        A9 1F 00      LDA #$001F                
-CODE_29CEDB:        54 7F 3C      MVN $3C7F                 
+CODE_29CEDB:        54 7F 3C      MVN $7F, DATA_3C8AE0>>16  ;first (valid) data pointer in above table                 
 CODE_29CEDE:        AB            PLB                       ;
 CODE_29CEDF:        A5 4D         LDA $4D                   
 CODE_29CEE1:        29 FF 00      AND #$00FF                
@@ -9540,12 +9540,12 @@ CODE_29CEEC:        F0 06         BEQ CODE_29CEF4
 CODE_29CEEE:        BF 85 CE 29   LDA.l DATA_29CE85,x             
 CODE_29CEF2:        80 04         BRA CODE_29CEF8           
 
-CODE_29CEF4:        BF 65 CE 29   LDA.l DATA_29CE65,x             
+CODE_29CEF4:        BF 65 CE 29   LDA.l PNTR_29CE65,x             
 CODE_29CEF8:        8B            PHB                       
 CODE_29CEF9:        AA            TAX                       
 CODE_29CEFA:        A0 E0 95      LDY #$95E0                
 CODE_29CEFD:        A9 1F 00      LDA #$001F                
-CODE_29CF00:        54 7F 3C      MVN $3C7F                 
+CODE_29CF00:        54 7F 3C      MVN $7F, DATA_3C88A0>>16  ;first data pointer in above table                 
 CODE_29CF03:        AB            PLB                       ;
 CODE_29CF04:        A2 00 00      LDX #$0000                
 CODE_29CF07:        8A            TXA                       
@@ -9585,14 +9585,14 @@ CODE_29CF61:        6B            RTL
 
 CODE_29CF62:        C2 30         REP #$30                  
 CODE_29CF64:        8B            PHB                       
-CODE_29CF65:        A2 00 A4      LDX #$A400                
+CODE_29CF65:        A2 00 A4      LDX.w #DATA_3CA400                
 CODE_29CF68:        A0 00 94      LDY #$9400                
 CODE_29CF6B:        A9 1F 00      LDA #$001F                
-CODE_29CF6E:        54 7F 3C      MVN $3C7F                 
-CODE_29CF71:        A2 80 A4      LDX #$A480                
+CODE_29CF6E:        54 7F 3C      MVN $7F, DATA_3CA400>>16                 
+CODE_29CF71:        A2 80 A4      LDX.w #DATA_3CA480                
 CODE_29CF74:        A0 80 94      LDY #$9480                
 CODE_29CF77:        A9 7F 00      LDA #$007F                
-CODE_29CF7A:        54 7F 3C      MVN $3C7F                 
+CODE_29CF7A:        54 7F 3C      MVN $7F, DATA_3CA480>>16                 
 CODE_29CF7D:        AB            PLB                       ;
 CODE_29CF7E:        A2 00 00      LDX #$0000                
 CODE_29CF81:        8A            TXA                       
@@ -9618,10 +9618,10 @@ CODE_29CFB5:        6B            RTL
 
 CODE_29CFB6:        C2 30         REP #$30                  
 CODE_29CFB8:        8B            PHB                       
-CODE_29CFB9:        A2 40 88      LDX #$8840                
+CODE_29CFB9:        A2 40 88      LDX.w #DATA_3C8840                
 CODE_29CFBC:        A0 40 95      LDY #$9540                
 CODE_29CFBF:        A9 1F 00      LDA #$001F                
-CODE_29CFC2:        54 7F 3C      MVN $3C7F                 
+CODE_29CFC2:        54 7F 3C      MVN $7F, DATA_3C8840>>16                 
 CODE_29CFC5:        AB            PLB                       ;
 CODE_29CFC6:        9C B3 02      STZ $02B3                 
 CODE_29CFC9:        A9 00 00      LDA #$0000                
@@ -10903,10 +10903,10 @@ CODE_29DCAD:        98            TYA
 CODE_29DCAE:        29 FF 00      AND #$00FF                
 CODE_29DCB1:        A8            TAY                       
 CODE_29DCB2:        8B            PHB                       
-CODE_29DCB3:        BE 09 EF      LDX.w DATA_21EF09,y               
+CODE_29DCB3:        BE 09 EF      LDX.w PNTR_21EF09,y               
 CODE_29DCB6:        A0 E0 14      LDY #$14E0                
 CODE_29DCB9:        A9 1F 00      LDA #$001F                
-CODE_29DCBC:        54 00 3C      MVN $3C00                 
+CODE_29DCBC:        54 00 3C      MVN $00, DATA_3C88A0>>16  ;first (valid) data pointer in above table                 
 CODE_29DCBF:        AB            PLB                       ;
 CODE_29DCC0:        E2 30         SEP #$30                  
 CODE_29DCC2:        FA            PLX                       

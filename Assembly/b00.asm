@@ -197,11 +197,20 @@ CODE_00818B:        STA $4200                 ;
 CODE_00818E:        STA $001C                 ;
 CODE_008191:        JMP CODE_00807D           ;
 
-DATA_008194:        db $00,$00,$00,$00        ;Indirect game pointers.
+DATA_008194:        db CODE_038000                          ;Indirect game pointers.
+                    db CODE_0D8000                          ;SMB1, SMBTLL, SMB2, SMB3
+                    db CODE_118000
+                    db CODE_208000
 
-DATA_008198:        db $80,$80,$80,$80        ;$038000, $0D8000, $118000, $208000
+DATA_008198:        db CODE_038000>>8
+                    db CODE_0D8000>>8
+                    db CODE_118000>>8
+                    db CODE_208000>>8
 
-DATA_00819C:        db $03,$0D,$11,$20        ;SMB1, SMBTLL, SMB2, SMB3
+DATA_00819C:        db CODE_038000>>16
+                    db CODE_0D8000>>16
+                    db CODE_118000>>16
+                    db CODE_208000>>16                    
 
 CODE_0081A0:        LDX #$0F                  ;
 CODE_0081A2:        LDA $70,x                 ;
@@ -575,22 +584,22 @@ CODE_0084B8:        LDA $0000D0               ; |Upload the game select tilemap 
 CODE_0084BC:        AND #$0003                ; |closing the file select menu. Upload the tiles
 CODE_0084BF:        ASL A                     ; |according to $D0's index so we won't upload the
 CODE_0084C0:        TAX                       ; |wrong game's portrait tiles.
-CODE_0084C1:        LDA DATA_008559,x               ; |
+CODE_0084C1:        LDA DATA_008559,x         ; |
 CODE_0084C4:        STA $0214                 ; |
-CODE_0084C7:        LDX #$F000                ; |
+CODE_0084C7:        LDX.w #DATA_02F000        ; |
 CODE_0084CA:        LDY #$1000                ; |
 CODE_0084CD:        LDA #$0FFF                ; |Source: $02:F000. Dest: $7F:1000
-CODE_0084D0:        MVN $027F                 ; |Used when collapsing a file select menu
+CODE_0084D0:        MVN $7F, DATA_02F000>>16  ; |Used when collapsing a file select menu
 CODE_0084D3:        SEP #$30                  ; |after selecting a game. 8-bit AXY
 CODE_0084D5:        PLX                       ; |
 CODE_0084D6:        PLB                       ;/
-CODE_0084D7:        LDA DATA_008873,x               ;
+CODE_0084D7:        LDA DATA_008873,x         ;
 CODE_0084DA:        STA $0A                   ;
-CODE_0084DC:        LDA DATA_008873+2,x               ;
+CODE_0084DC:        LDA DATA_008873+2,x       ;
 CODE_0084DF:        STA $0B                   ;
-CODE_0084E1:        LDA DATA_00885D,x               ;
+CODE_0084E1:        LDA DATA_00885D,x         ;
 CODE_0084E4:        STA $01                   ;
-CODE_0084E6:        LDA DATA_00885D+2,x               ;
+CODE_0084E6:        LDA DATA_00885D+2,x       ;
 CODE_0084E9:        STA $02                   ;
 CODE_0084EB:        STZ $03                   ;
 CODE_0084ED:        LDA DATA_008861,x               ;
@@ -664,52 +673,52 @@ CODE_008579:        RTS                       ;/
 
 CODE_00857A:        LDA #$0000                ;\ DMA 'hall screen' graphics to VRAM
 CODE_00857D:        STA $2116                 ; |DMA to: VRAM $0000-$7FFF
-CODE_008580:        LDA #$8000                ; |
+CODE_008580:        LDA.w #DATA_018000        ; |
 CODE_008583:        STA $02                   ; |
-CODE_008585:        LDX #$01                  ; |DMA source: $01:8000
+CODE_008585:        LDX.b #DATA_018000>>16    ; |DMA source: $01:8000
 CODE_008587:        STX $04                   ; |Size: $8000 bytes/32kB
 CODE_008589:        LDA #$8000                ; |
 CODE_00858C:        STA $05                   ; |
 CODE_00858E:        STY $420B                 ;/
-CODE_008591:        LDA #$CC00                ;\ Upload animated hall screen tiles of Bowser, princess, toad, luigi's ear to VRAM
+CODE_008591:        LDA.w #DATA_3DCC00        ;\ Upload animated hall screen tiles of Bowser, princess, toad, luigi's ear to VRAM
 CODE_008594:        STA $02                   ; |DMA to: VRAM $8000-$93FF
-CODE_008596:        LDX #$3D                  ; |
+CODE_008596:        LDX.b #DATA_3DCC00>>16    ; |
 CODE_008598:        STX $04                   ; |
 CODE_00859A:        LDA #$1400                ; |DMA Source: $3D:CC00
 CODE_00859D:        STA $05                   ; |Size: $1400 bytes
 CODE_00859F:        STY $420B                 ;/
 CODE_0085A2:        LDA #$5000                ;\ Upload triangle fading GFX to VRAM
 CODE_0085A5:        STA $2116                 ; |
-CODE_0085A8:        LDA #$9000                ; |DMA to: VRAM $A000-$A7FF
+CODE_0085A8:        LDA.w #DATA_029000        ; |DMA to: VRAM $A000-$A7FF
 CODE_0085AB:        STA $02                   ; |
-CODE_0085AD:        LDX #$02                  ; |DMA Source: $02:9000
+CODE_0085AD:        LDX.b #DATA_029000>>16    ; |DMA Source: $02:9000
 CODE_0085AF:        STX $04                   ; |Size: $0800 bytes
 CODE_0085B1:        LDA #$0800                ; |
 CODE_0085B4:        STA $05                   ; |
 CODE_0085B6:        STY $420B                 ;/
 CODE_0085B9:        LDA #$6000                ;\ Upload Nintendo Presents graphics to VRAM
 CODE_0085BC:        STA $2116                 ; |
-CODE_0085BF:        LDA #$8000                ; |
+CODE_0085BF:        LDA.w #DATA_028000        ; |
 CODE_0085C2:        STA $02                   ; |DMA to: VRAM $C000-$CFFF
-CODE_0085C4:        LDX #$02                  ; |
+CODE_0085C4:        LDX.b #DATA_028000>>16    ; |
 CODE_0085C6:        STX $04                   ; |DMA Source: $02:8000
 CODE_0085C8:        LDA #$1000                ; |Size: $1000 bytes
 CODE_0085CB:        STA $05                   ; |
 CODE_0085CD:        STY $420B                 ;/
 CODE_0085D0:        LDA #$7000                ;\ Upload default BG2 hall screen tilemap?
 CODE_0085D3:        STA $2116                 ; |
-CODE_0085D6:        LDA #$C000                ; |DMA to: VRAM $E000-$E7FF
+CODE_0085D6:        LDA.w #DATA_02C000        ; |DMA to: VRAM $E000-$E7FF
 CODE_0085D9:        STA $02                   ; |
-CODE_0085DB:        LDX #$02                  ; |DMA Source: $02:C000
+CODE_0085DB:        LDX.b #DATA_02C000>>16    ; |DMA Source: $02:C000
 CODE_0085DD:        STX $04                   ; |DMA Size: $0800 bytes
 CODE_0085DF:        LDA #$0800                ; |
 CODE_0085E2:        STA $05                   ; |
 CODE_0085E4:        STY $420B                 ;/
 CODE_0085E7:        LDA #$7800                ;\ upload default BG1 hall screen tilemap
 CODE_0085EA:        STA $2116                 ; |
-CODE_0085ED:        LDA #$8000                ; |
+CODE_0085ED:        LDA.w #DATA_3C8000        ; |
 CODE_0085F0:        STA $02                   ; |DMA to: VRAM $F000-$F7FF
-CODE_0085F2:        LDX #$3C                  ; |
+CODE_0085F2:        LDX.b #DATA_3C8000>>16    ; |
 CODE_0085F4:        STX $04                   ; |DMA Source: $3C:8000
 CODE_0085F6:        LDA #$0800                ; |DMA Size: $0800 bytes
 CODE_0085F9:        STA $05                   ; |
@@ -718,43 +727,43 @@ CODE_0085FE:        RTS                       ;
 
 CODE_0085FF:        LDA #$0000                ;\
 CODE_008602:        STA $2116                 ; |Upload game select menu tiles
-CODE_008605:        LDA #$8000                ; |and its components to VRAM $0000-$D7FF
+CODE_008605:        LDA.w #DATA_2B8000        ; |and its components to VRAM $0000-$D7FF
 CODE_008608:        STA $02                   ; |
-CODE_00860A:        LDX #$2B                  ; |Source: $2B8000-$2BFFFF
+CODE_00860A:        LDX.b #DATA_2B8000>>16    ; |Source: $2B8000-$2BFFFF
 CODE_00860C:        STX $04                   ; |        $2C8000-$2CFFFF
 CODE_00860E:        LDA #$8000                ; |
 CODE_008611:        STA $05                   ; |
 CODE_008613:        STY $420B                 ; |
-CODE_008616:        LDA #$8000                ; |
+CODE_008616:        LDA.w #DATA_2C8000        ; |
 CODE_008619:        STA $02                   ; |
-CODE_00861B:        LDX #$2C                  ; |
+CODE_00861B:        LDX.b #DATA_2C8000>>16    ; |
 CODE_00861D:        STX $04                   ; |
 CODE_00861F:        LDA #$5800                ; |
 CODE_008622:        STA $05                   ; |
 CODE_008624:        STY $420B                 ;/
 CODE_008627:        LDA #$6C00                ;\ Upload default BG2 hall screen tilemap?
 CODE_00862A:        STA $2116                 ; |DMA to VRAM $D800-$DFFF
-CODE_00862D:        LDA #$C000                ; |
+CODE_00862D:        LDA.w #DATA_02C000        ; |
 CODE_008630:        STA $02                   ; |Source: $02:C000
-CODE_008632:        LDX #$02                  ; |
+CODE_008632:        LDX.b #DATA_02C000>>16    ; |
 CODE_008634:        STX $04                   ; |Size: $0800 bytes
 CODE_008636:        LDA #$0800                ; |
 CODE_008639:        STA $05                   ; |
 CODE_00863B:        STY $420B                 ;/
 CODE_00863E:        LDA #$7000                ;\
 CODE_008641:        STA $2116                 ; |
-CODE_008644:        LDA #$A800                ; |Upload to VRAM $E000-$E7FF
+CODE_008644:        LDA.w #DATA_3DA800        ; |Upload to VRAM $E000-$E7FF
 CODE_008647:        STA $02                   ; |
-CODE_008649:        LDX #$3D                  ; |Upload absolute nothingness?
+CODE_008649:        LDX.b #DATA_3DA800>>16    ; |Upload absolute nothingness?
 CODE_00864B:        STX $04                   ; |
 CODE_00864D:        LDA #$0800                ; |Source: $3D:A800
 CODE_008650:        STA $05                   ; |
 CODE_008652:        STY $420B                 ;/
 CODE_008655:        LDA #$7800                ;\
 CODE_008658:        STA $2116                 ; |
-CODE_00865B:        LDA #$F000                ; |Upload game select menu tilemap
+CODE_00865B:        LDA.w #DATA_02F000        ; |Upload game select menu tilemap
 CODE_00865E:        STA $02                   ; |to VRAM $F000-$FFFF
-CODE_008660:        LDX #$02                  ; |
+CODE_008660:        LDX.b #DATA_02F000>>16    ; |
 CODE_008662:        STX $04                   ; |Source: $02:F000-$02:FFFF
 CODE_008664:        LDA #$1000                ; |
 CODE_008667:        STA $05                   ; |
@@ -1218,18 +1227,18 @@ CODE_008A4E:        RTL                       ;
 CODE_008A4F:        REP #$20                  ;\
 CODE_008A51:        LDA #$0400                ; |DMA SPC-700 data to RAM, part 1 of 2
 CODE_008A54:        STA $00                   ; |Source: $07FC00
-CODE_008A56:        LDA #$FC00                ; |Size: $0400 bytes
+CODE_008A56:        LDA.w #DATA_07FC00        ; |Size: $0400 bytes
 CODE_008A59:        STA $02                   ; |Destination: $7F0000
-CODE_008A5B:        LDY #$07                  ; |
+CODE_008A5B:        LDY.b #DATA_07FC00>>16    ; |
 CODE_008A5D:        STY $04                   ; |
 CODE_008A5F:        LDA #$0000                ; |
 CODE_008A62:        LDY #$7F                  ; |
 CODE_008A64:        JSL CODE_00866D           ;/
 CODE_008A68:        LDA #$8000                ;\
 CODE_008A6B:        STA $00                   ; |DMA SPC-700 data to RAM, part 2 of 2
-CODE_008A6D:        LDA #$8000                ; |Source: $3B8000
+CODE_008A6D:        LDA.w #DATA_3B8000        ; |Source: $3B8000
 CODE_008A70:        STA $02                   ; |Size: $8000 bytes
-CODE_008A72:        LDY #$3B                  ; |Destination: $7F0400
+CODE_008A72:        LDY.b #DATA_3B8000>>16    ; |Destination: $7F0400
 CODE_008A74:        STY $04                   ; |
 CODE_008A76:        LDA #$0400                ; |
 CODE_008A79:        LDY #$7F                  ; |
@@ -1251,9 +1260,9 @@ CODE_008A9A:        STA $2141                 ;
 CODE_008A9D:        STZ $2142                 ;
 CODE_008AA0:        STZ $2143                 ;
 CODE_008AA3:        STZ $00                   ;\
-CODE_008AA5:        LDA #$80                  ; |
+CODE_008AA5:        LDA.b #DATA_0B8000>>8     ; |
 CODE_008AA7:        STA $01                   ; |SPC-700 data source: $0B:8000
-CODE_008AA9:        LDA #$0B                  ; |
+CODE_008AA9:        LDA.b #DATA_0B8000>>16    ; |
 CODE_008AAB:        STA $02                   ;/
 CODE_008AAD:        JSR SPCUpload             ;Upload SPC data
 CODE_008AB0:        LDA #$81                  ;
@@ -1273,9 +1282,9 @@ CODE_008ACB:        STA $2141                 ; | Tell SPC700 we are ready to up
 CODE_008ACE:        STZ $2142                 ; |
 CODE_008AD1:        STZ $2143                 ;/
 CODE_008AD4:        STZ $00                   ;\
-CODE_008AD6:        LDA #$80                  ; |
+CODE_008AD6:        LDA.b #DATA_0B8000>>8     ; |
 CODE_008AD8:        STA $01                   ; |SPC-700 data source: $0B:8000
-CODE_008ADA:        LDA #$0B                  ; |
+CODE_008ADA:        LDA.b #DATA_0B8000>>16    ; |
 CODE_008ADC:        STA $02                   ;/
 CODE_008ADE:        JSR SPCUpload             ;Upload SPC data
 CODE_008AE1:        LDA #$81                  ;
@@ -1290,11 +1299,11 @@ CODE_008AF1:        LDA #$FF                  ; |
 CODE_008AF3:        STA $2141                 ; | Tell the SPC700 we are ready to upload data
 CODE_008AF6:        STZ $2142                 ; |
 CODE_008AF9:        STZ $2143                 ;/
-CODE_008AFC:        LDA #$51                  ;\
+CODE_008AFC:        LDA.b #DATA_3BA251        ;\
 CODE_008AFE:        STA $00                   ; |
-CODE_008B00:        LDA #$A2                  ; |
+CODE_008B00:        LDA.b #DATA_3BA251>>8     ; |
 CODE_008B02:        STA $01                   ; |SPC-700 data source: $3B:A251
-CODE_008B04:        LDA #$3B                  ; |
+CODE_008B04:        LDA.b #DATA_3BA251>>16    ; |
 CODE_008B06:        STA $02                   ;/
 CODE_008B08:        JSR SPCUpload             ;Upload SPC-700 data
 CODE_008B0B:        LDA #$81                  ;\ Enable NMI again and joypad read
@@ -1304,29 +1313,29 @@ CODE_008B12:        LDA #$3E                  ;\ Play talking crowd SFX
 CODE_008B14:        STA $60                   ;/
 CODE_008B16:        RTS                       ;
 
-CODE_008B17:        LDA #$00                  ;\
+CODE_008B17:        LDA.b #DATA_1F8000        ;\
 CODE_008B19:        STA $00                   ; |
-CODE_008B1B:        LDA #$80                  ; |
+CODE_008B1B:        LDA.b #DATA_1F8000>>8     ; |
 CODE_008B1D:        STA $01                   ; |SPC-700 data source: $1F:8000
-CODE_008B1F:        LDA #$1F                  ; |
+CODE_008B1F:        LDA.b #DATA_1F8000>>16    ; |
 CODE_008B21:        STA $02                   ;/
 CODE_008B23:        JSR SPCUpload             ;Upload SPC-700 data
 CODE_008B26:        RTS                       ;
 
-CODE_008B27:        LDA #$00                  ;\
+CODE_008B27:        LDA.b #DATA_1FC000        ;\
 CODE_008B29:        STA $00                   ; |
-CODE_008B2B:        LDA #$C0                  ; |
+CODE_008B2B:        LDA.b #DATA_1FC000>>8     ; |
 CODE_008B2D:        STA $01                   ; |SPC-700 data source: $1F:C000
-CODE_008B2F:        LDA #$1F                  ; |
+CODE_008B2F:        LDA.b #DATA_1FC000>>16    ; |
 CODE_008B31:        STA $02                   ;/
 CODE_008B33:        JSR SPCUpload             ;Upload SPC-700 data
 CODE_008B36:        RTS                       ;
 
-CODE_008B37:        LDA #$00                  ;\
+CODE_008B37:        LDA.b #DATA_0C8000        ;\
 CODE_008B39:        STA $00                   ; |
-CODE_008B3B:        LDA #$80                  ; |SPC-700 data source: $0C:8000
+CODE_008B3B:        LDA.b #DATA_0C8000>>8     ; |SPC-700 data source: $0C:8000
 CODE_008B3D:        STA $01                   ; |
-CODE_008B3F:        LDA #$0C                  ; |
+CODE_008B3F:        LDA.b #DATA_0C8000>>16    ; |
 CODE_008B41:        STA $02                   ;/
 CODE_008B43:        JSR SPCUpload             ;Upload SPC-700 data
 CODE_008B46:        RTS                       ;
@@ -1353,9 +1362,9 @@ CODE_008B6C:        STA $2141                 ;
 CODE_008B6F:        REP #$20                  ;
 CODE_008B71:        LDA #$2800                ;\
 CODE_008B74:        STA $00                   ; |
-CODE_008B76:        LDA #$C000                ; |
+CODE_008B76:        LDA.w #DATA_07C000        ; |
 CODE_008B79:        STA $02                   ; |SPC-700 data to RAM:
-CODE_008B7B:        LDY #$07                  ; |Source: $07:C000
+CODE_008B7B:        LDY.b #DATA_07C000>>16    ; |Source: $07:C000
 CODE_008B7D:        STY $04                   ; | Dest.: $7F:0000
 CODE_008B7F:        LDA #$0000                ; | Size: $2800 bytes
 CODE_008B82:        LDY #$7F                  ; |
@@ -2705,8 +2714,8 @@ CODE_009C40:        STZ $E7                   ;
 CODE_009C42:        REP #$20                  ;
 CODE_009C44:        LDA #$0200                ;\ Size
 CODE_009C47:        STA $00                   ;/
-CODE_009C49:        LDA #$CA00                ;\
-CODE_009C4C:        LDY #$02                  ; | Source: $02:CA00
+CODE_009C49:        LDA.w #DATA_02CA00        ;\
+CODE_009C4C:        LDY.b #DATA_02CA00>>16    ; | Source: $02:CA00
 CODE_009C4E:        STA $02                   ; |
 CODE_009C50:        STY $04                   ;/
 CODE_009C52:        LDA #$9200                ;\ RAM: $7F:9200
@@ -2782,9 +2791,9 @@ CODE_009CF4:        LDA #$6000                ; |
 CODE_009CF7:        STA $2116                 ; | Upload sprite GFX
 CODE_009CFA:        LDA #$1801                ; |
 CODE_009CFD:        STA $4300                 ; |
-CODE_009D00:        LDA #$A000                ; | Source: $02A000
+CODE_009D00:        LDA.w #DATA_02A000        ; | Source: $02A000
 CODE_009D03:        STA $4302                 ; | Size:   $2000
-CODE_009D06:        LDY #$02                  ; |
+CODE_009D06:        LDY.b #DATA_02A000>>16    ; |
 CODE_009D08:        STY $4304                 ; |
 CODE_009D0B:        LDA #$2000                ; |
 CODE_009D0E:        STA $4305                 ; |
@@ -2792,7 +2801,7 @@ CODE_009D11:        LDY #$01                  ; |
 CODE_009D13:        STY $420B                 ;/
 CODE_009D16:        SEP #$20                  ;
 CODE_009D18:        LDA #$02                  ;\ BG2 on main screen
-CODE_009D1A:        STA $0117                 ;/ why?
+CODE_009D1A:        STA $0117                 ;/
 CODE_009D1D:        LDA #$11                  ;\ BG1 and sprites on sub-screen
 CODE_009D1F:        STA $0118                 ;/
 CODE_009D22:        LDA #$02                  ;\
@@ -5558,10 +5567,10 @@ CODE_00B683:        PHB                       ;
 CODE_00B684:        PHK                       ;
 CODE_00B685:        PLB                       ;
 CODE_00B686:        REP #$30                  ; Upload BG1 tilemap to RAM
-CODE_00B688:        LDX #$8000                ; Source low and high byte
+CODE_00B688:        LDX.w #DATA_3C8000                ; Source low and high byte
 CODE_00B68B:        LDY #$0000                ; Destination low and high byte
 CODE_00B68E:        LDA #$07FF                ; Amount of byte to transfer
-CODE_00B691:        MVN $3C7F                 ; Transfer $3C:8000 -> $7F:0000
+CODE_00B691:        MVN $7F, DATA_3C8000>>16  ; Transfer $3C:8000 -> $7F:0000
 CODE_00B694:        SEP #$30                  ;
 CODE_00B696:        PLB                       ;
 CODE_00B697:        LDA #$0B                  ;\

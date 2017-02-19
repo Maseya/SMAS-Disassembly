@@ -1268,12 +1268,12 @@ CODE_238AED:        0A            ASL A
 CODE_238AEE:        18            CLC                       
 CODE_238AEF:        65 D8         ADC $D8                   
 CODE_238AF1:        AA            TAX                       
-CODE_238AF2:        BF E3 C7 29   LDA.l DATA_29C7E3,x             
+CODE_238AF2:        BF E3 C7 29   LDA.l PNTR_29C7E3,x             
 CODE_238AF6:        8B            PHB                       
 CODE_238AF7:        AA            TAX                       
 CODE_238AF8:        A0 E0 14      LDY #$14E0                
 CODE_238AFB:        A9 1F 00      LDA #$001F                
-CODE_238AFE:        54 00 3C      MVN $3C00                 
+CODE_238AFE:        54 00 3C      MVN $00, DATA_3C88A0>>16  ;first data pointer in above table              
 CODE_238B01:        AB            PLB                       
 CODE_238B02:        A2 1E 00      LDX #$001E                
 CODE_238B05:        BD E0 14      LDA $14E0,x               
@@ -3274,9 +3274,9 @@ CODE_239B13:        0A            ASL A
 CODE_239B14:        AA            TAX                       
 CODE_239B15:        A0 01         LDY #$01                  
 CODE_239B17:        B9 07 10      LDA $1007,y               
-CODE_239B1A:        DF BB 99 21   CMP $2199BB,x             
+CODE_239B1A:        DF BB 99 21   CMP.l DATA_2199BB,x             
 CODE_239B1E:        F0 06         BEQ CODE_239B26           
-CODE_239B20:        DF BC 99 21   CMP $2199BC,x             
+CODE_239B20:        DF BC 99 21   CMP.l DATA_2199BB+1,x             
 CODE_239B24:        D0 2D         BNE CODE_239B53           
 CODE_239B26:        88            DEY                       
 CODE_239B27:        10 EE         BPL CODE_239B17           
@@ -8439,15 +8439,15 @@ CODE_23C44B:        A9 00         LDA #$00
 CODE_23C44D:        8D 7B 05      STA $057B                 
 CODE_23C450:        60            RTS                       
 
-DATA_23C451:     dw $88A0
-                    dw $88E0
-                    dw $8920
-                    dw $88A0
-                    dw $88E0
-                    dw $88C0
-                    dw $8900
-                    dw $88C0
-                    dw $8940
+PNTR_23C451:        dw DATA_3C88A0
+                    dw DATA_3C88E0
+                    dw DATA_3C8920
+                    dw DATA_3C88A0
+                    dw DATA_3C88E0
+                    dw DATA_3C88C0
+                    dw DATA_3C8900
+                    dw DATA_3C88C0
+                    dw DATA_3C8940
 
 CODE_23C463:        20 67 C4      JSR CODE_23C467                 
 CODE_23C466:        6B            RTL                       
@@ -8476,12 +8476,12 @@ CODE_23C48D:        98            TYA
 CODE_23C48E:        29 FF 00      AND #$00FF                
 CODE_23C491:        0A            ASL A                     
 CODE_23C492:        AA            TAX                       
-CODE_23C493:        BF 51 C4 23   LDA.l DATA_23C451,x             
+CODE_23C493:        BF 51 C4 23   LDA.l PNTR_23C451,x             
 CODE_23C497:        8B            PHB                       
 CODE_23C498:        AA            TAX                       
 CODE_23C499:        A0 E0 14      LDY #$14E0                
 CODE_23C49C:        A9 1F 00      LDA #$001F                
-CODE_23C49F:        54 00 3C      MVN $3C00                 
+CODE_23C49F:        54 00 3C      MVN $00, DATA_3C88A0>>16  ;first data pointer in above table                 
 CODE_23C4A2:        AB            PLB                       
 CODE_23C4A3:        A2 1E 00      LDX #$001E                
 CODE_23C4A6:        BD E0 14      LDA $14E0,x               

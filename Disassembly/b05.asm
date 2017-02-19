@@ -6589,9 +6589,9 @@ CODE_05E1EB:        AB            PLB                       ;/
 CODE_05E1EC:        E2 20         SEP #$20                  ;A = 8-bit. XY = 16-bit
 CODE_05E1EE:        A2 41 26      LDX #$2641                ;\Window 1 left position & window 1 right position
 CODE_05E1F1:        8E 30 43      STX $4330                 ;/2 regs write once. Indirect HDMA
-CODE_05E1F4:        A2 2A E2      LDX #$E22A                ;\
+CODE_05E1F4:        A2 2A E2      LDX.w #DATA_05E22A        ;\
 CODE_05E1F7:        8E 32 43      STX $4332                 ; |Source: $05:E22A
-CODE_05E1FA:        A9 05         LDA #$05                  ; |
+CODE_05E1FA:        A9 05         LDA.b #DATA_05E22A>>16    ; |
 CODE_05E1FC:        8D 34 43      STA $4334                 ;/
 CODE_05E1FF:        A9 7F         LDA #$7F                  ;\
 CODE_05E201:        8D 37 43      STA $4337                 ;/Indirect HDMA address bank byte: $7F:xxxx

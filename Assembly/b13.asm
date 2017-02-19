@@ -49,17 +49,17 @@ DATA_13804D:        dw $C800
 DATA_13805B:        db $18,$18,$18,$18,$18,$18,$18
                    
 CODE_138062:        REP #$20              ; Accumulator = 16-bit.           
-CODE_138064:        LDA #$E000            ; \ Load sprite GFX tiles 00-7F. (00-1F will get overwritten)
+CODE_138064:        LDA.w #DATA_19E000    ; \ Load sprite GFX tiles 00-7F. (00-1F will get overwritten)
 CODE_138067:        STA $0D               ;  | ($19E000)
-CODE_138069:        LDX #$19              ;  |
+CODE_138069:        LDX.b #DATA_19E000>>16 ;  |
 CODE_13806B:        STX $0F               ; /
 CODE_13806D:        LDA #$1000            ; \ Amount of bytes to transfer = #$1000. 
 CODE_138070:        STA $0B               ; /
 CODE_138072:        LDA #$6000            ; \ First GFX slot. 
 CODE_138075:        JSR CODE_138AE7       ; / Transfer to VRAM.
-CODE_138078:        LDA #$C000            ; \ Load sprite GFX tiles 80-13F.
+CODE_138078:        LDA.w #DATA_16C000    ; \ Load sprite GFX tiles 80-13F.
 CODE_13807B:        STA $0D               ;  | ($16C000)
-CODE_13807D:        LDX #$16              ;  |
+CODE_13807D:        LDX.b #DATA_16C000>>16 ;  |
 CODE_13807F:        STX $0F               ; /
 CODE_138081:        LDA #$1800            ; \ Amount of bytes to transfer = #$1800. 
 CODE_138084:        STA $0B               ; /
@@ -93,9 +93,9 @@ CODE_1380BF:        LDA #$0800            ; \ Amount of bytes to transfer = #$08
 CODE_1380C2:        STA $0B               ; /
 CODE_1380C4:        LDA #$7800            ; \ First half of fourth GFX slot. 
 CODE_1380C7:        JSR CODE_138AE7       ; / Transfer to VRAM.
-CODE_1380CA:        LDA #$9000            ; \ Load sprite GFX tiles 1C0-1FF.
+CODE_1380CA:        LDA.w #DATA_179000    ; \ Load sprite GFX tiles 1C0-1FF.
 CODE_1380CD:        STA $0D               ;  | ($179000)
-CODE_1380CF:        LDX #$17              ;  |
+CODE_1380CF:        LDX.b #DATA_179000>>16 ;  |
 CODE_1380D1:        STX $0F               ; /
 CODE_1380D3:        LDA #$0800            ; \ Amount of bytes to transfer = #$0800. 
 CODE_1380D6:        STA $0B               ; /
@@ -113,9 +113,9 @@ CODE_1380EE:        LDA #$1000            ; \ Amount of bytes to transfer = #$10
 CODE_1380F1:        STA $0B               ; /
 CODE_1380F3:        LDA #$2000            ; \ First GFX slot.
 CODE_1380F6:        JSR CODE_138AC4       ; / Transfer to VRAM.
-CODE_1380F9:        LDA #$C000            ; \ Load layer GFX tiles 80-BF.
+CODE_1380F9:        LDA.w #DATA_18C000    ; \ Load layer GFX tiles 80-BF.
 CODE_1380FC:        STA $0D               ;  | ($18C000)
-CODE_1380FE:        LDX #$18              ;  |
+CODE_1380FE:        LDX.b #DATA_18C000>>16 ;  |
 CODE_138100:        STX $0F               ; /
 CODE_138102:        LDA #$0800            ; \ Amount of bytes to transfer = #$0800. 
 CODE_138105:        STA $0B               ; /
@@ -330,14 +330,14 @@ CODE_138634:        SEP #$10                  ; Index = 8-bit.
 CODE_138636:        LDX $0635                 ; \ If not in World 7, branch.
 CODE_138639:        CPX #$06                  ;  |
 CODE_13863B:        BNE CODE_138646           ; /
-CODE_13863D:        LDA #$B000                ; \ $1DB000 = Tiles of the FG/BG slots 100-13F
+CODE_13863D:        LDA.w #DATA_1DB000        ; \ $1DB000 = Tiles of the FG/BG slots 100-13F
 CODE_138640:        STA $0D                   ;  | Metal ground graphics.
-CODE_138642:        LDX #$1D                  ;  |
+CODE_138642:        LDX.b #DATA_1DB000>>16      ;  |
 CODE_138644:        BRA CODE_13864D           ; /
 
-CODE_138646:        LDA #$C000                ; \ $1BC000 = Tiles of the FG/BG slots 100-13F.
+CODE_138646:        LDA.w #DATA_1BC000        ; \ $1BC000 = Tiles of the FG/BG slots 100-13F.
 CODE_138649:        STA $0D                   ;  |
-CODE_13864B:        LDX #$1B                  ;  |
+CODE_13864B:        LDX.b #DATA_1BC000>>16    ;  |
 CODE_13864D:        STX $0F                   ; /
 CODE_13864F:        LDA #$0800                ; \ Amount of bytes to transfer = #$0800.
 CODE_138652:        STA $0B                   ; /
@@ -379,14 +379,14 @@ CODE_1386AA:        BNE CODE_1386D2           ;  |
 CODE_1386AC:        LDX $0534                 ;  | If it's level 5-3 and the sixth room is entered...
 CODE_1386AF:        CPX #$05                  ;  | ...use the tiles from 1-3, 3-3 and 4-3.
 CODE_1386B1:        BEQ CODE_1386BC           ;  |
-CODE_1386B3:        LDA #$C800                ;  | Graphics from $18C800 are used.
+CODE_1386B3:        LDA.w #DATA_18C800        ;  | Graphics from $18C800 are used.
 CODE_1386B6:        STA $0D                   ;  | $0800 bytes.
-CODE_1386B8:        LDX #$18                  ;  |
+CODE_1386B8:        LDX.b #DATA_18C800>>16    ;  |
 CODE_1386BA:        BRA CODE_1386C3           ; /
 
-CODE_1386BC:        LDA #$9000                ; \ 1-3, 3-3, 4-3 or 5-3 room 6.
+CODE_1386BC:        LDA.w #DATA_1D9000        ; \ 1-3, 3-3, 4-3 or 5-3 room 6.
 CODE_1386BF:        STA $0D                   ;  | They use graphics from $1D9000.
-CODE_1386C1:        LDX #$1D                  ;  |
+CODE_1386C1:        LDX.b #DATA_1D9000>>16    ;  |
 CODE_1386C3:        STX $0F                   ;  |
 CODE_1386C5:        LDA #$0800                ;  | $0800 bytes also.
 CODE_1386C8:        STA $0B                   ;  |
@@ -397,9 +397,9 @@ CODE_1386D0:        BRA CODE_1386ED           ; / Branch.
 CODE_1386D2:        LDX $0533                 ; \ If NOT 7-2...
 CODE_1386D5:        CPX #$13                  ;  | ...then don't load any new tiles at all.
 CODE_1386D7:        BNE CODE_1386ED           ;  |
-CODE_1386D9:        LDA #$A000                ;  | 7-2 uses graphics from $1DA000.
+CODE_1386D9:        LDA.w #DATA_1DA000        ;  | 7-2 uses graphics from $1DA000.
 CODE_1386DC:        STA $0D                   ;  |
-CODE_1386DE:        LDX #$1D                  ;  |
+CODE_1386DE:        LDX.b #DATA_1DA000>>16    ;  |
 CODE_1386E0:        STX $0F                   ;  |
 CODE_1386E2:        LDA #$0800                ;  | $0800 bytes as usual.
 CODE_1386E5:        STA $0B                   ;  |
@@ -646,9 +646,9 @@ CODE_138900:        LDA #$0800                ; \ Amount of bytes to transfer = 
 CODE_138903:        STA $0B                   ; /
 CODE_138905:        LDA #$2000                ; \ First half of first GFX slot.
 CODE_138908:        JSR CODE_138AC4           ; / Transfer to VRAM.
-CODE_13890B:        LDA #$C800                ; \ Layer tiles 40-FF.
+CODE_13890B:        LDA.w #DATA_19C800        ; \ Layer tiles 40-FF.
 CODE_13890E:        STA $0D                   ;  | ($19C800)
-CODE_138910:        LDX #$19                  ;  |
+CODE_138910:        LDX.b #DATA_19C800>>16    ;  |
 CODE_138912:        STX $0F                   ; /
 CODE_138914:        LDA #$1800                ; \ Amount of bytes to transfer = #$1800.
 CODE_138917:        STA $0B                   ; /
@@ -656,9 +656,9 @@ CODE_138919:        LDA #$2400                ; \ Second half of first and full 
 CODE_13891C:        JSR CODE_138AC4           ; / Transfer to VRAM.
 CODE_13891F:        LDA #$4000                ; \ Amount of bytes to transfer = #$4000.
 CODE_138922:        STA $0B                   ; /
-CODE_138924:        LDA #$8000                ; \ Sprite tiles 00-1FF.
+CODE_138924:        LDA.w #DATA_1B8000        ; \ Sprite tiles 00-1FF.
 CODE_138927:        STA $0D                   ;  | ($1B8000)
-CODE_138929:        LDX #$1B                  ;  |
+CODE_138929:        LDX.b #DATA_1B8000>>16    ;  |
 CODE_13892B:        STX $0F                   ; /
 CODE_13892D:        LDA #$6000                ; \ All four GFX slots.
 CODE_138930:        JSR CODE_138AE7           ; / Transfer to VRAM.
