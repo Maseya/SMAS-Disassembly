@@ -13256,9 +13256,9 @@ CODE_29F0FE:        PLB                       ;
 CODE_29F0FF:        SEP #$20                  
 CODE_29F101:        LDX #$2641                
 CODE_29F104:        STX $4330                 
-CODE_29F107:        LDX #$F14C                
+CODE_29F107:        LDX.w #DATA_29F14C                
 CODE_29F10A:        STX $4332                 
-CODE_29F10D:        LDA #$29                  
+CODE_29F10D:        LDA.b #DATA_29F14C>>16                  
 CODE_29F10F:        STA $4334                 
 CODE_29F112:        LDA #$7F                  
 CODE_29F114:        STA $4337                 

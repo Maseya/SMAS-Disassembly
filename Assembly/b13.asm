@@ -1275,11 +1275,11 @@ CODE_138E57:        LDA #$41
 CODE_138E59:        STA $4370                 
 CODE_138E5C:        LDA #$26                  
 CODE_138E5E:        STA $4371                 
-CODE_138E61:        LDA #$DD                  
+CODE_138E61:        LDA.b #DATA_138EDD                  
 CODE_138E63:        STA $4372                 
-CODE_138E66:        LDA #$8E                  
+CODE_138E66:        LDA.b #DATA_138EDD>>8                  
 CODE_138E68:        STA $4373                 
-CODE_138E6B:        LDA #$13                  
+CODE_138E6B:        LDA.b #DATA_138EDD>>16                  
 CODE_138E6D:        STA $4374                 
 CODE_138E70:        LDA #$7F                  
 CODE_138E72:        STA $4377                 
@@ -1287,11 +1287,11 @@ CODE_138E75:        LDA #$41
 CODE_138E77:        STA $4330                 
 CODE_138E7A:        LDA #$28                  
 CODE_138E7C:        STA $4331                 
-CODE_138E7F:        LDA #$E4                  
+CODE_138E7F:        LDA.b #DATA_138EE4                  
 CODE_138E81:        STA $4332                 
-CODE_138E84:        LDA #$8E                  
+CODE_138E84:        LDA.b #DATA_138EE4>>8                  
 CODE_138E86:        STA $4333                 
-CODE_138E89:        LDA #$13                  
+CODE_138E89:        LDA.b #DATA_138EE4>>16                  
 CODE_138E8B:        STA $4334                 
 CODE_138E8E:        LDA #$7F                  
 CODE_138E90:        STA $4337                 
@@ -1325,8 +1325,9 @@ CODE_138ED8:        STZ $0245
 CODE_138EDB:        PLB                       
 CODE_138EDC:        RTL                       
 
-DATA_138EDD:        db $F0,$00,$F0,$F0,$E0,$F0,$00,$F0
-                    db $00,$F2,$F0,$E0,$F2,$00
+DATA_138EDD:        db $F0,$00,$F0,$F0,$E0,$F0,$00 ;
+
+DATA_138EE4:        db $F0,$00,$F2,$F0,$E0,$F2,$00 ;
             
 CODE_138EEB:        REP #$30                  
 CODE_138EED:        LDA $022B                 

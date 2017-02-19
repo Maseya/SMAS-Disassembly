@@ -3340,9 +3340,9 @@ CODE_14D37F:        STZ $023A
 CODE_14D382:        REP #$20                  
 CODE_14D384:        LDA #$0D42                
 CODE_14D387:        STA $4370                 
-CODE_14D38A:        LDA #$D39D                
+CODE_14D38A:        LDA.w #DATA_14D39D                
 CODE_14D38D:        STA $4372                 
-CODE_14D390:        LDX #$14                  
+CODE_14D390:        LDX.b #DATA_14D39D>>16                  
 CODE_14D392:        STX $4374                 
 CODE_14D395:        LDX #$7F                  
 CODE_14D397:        STX $4377                 
@@ -4163,11 +4163,11 @@ CODE_14DC9E:        LDA #$41
 CODE_14DCA0:        STA $4370                 
 CODE_14DCA3:        LDA #$26                  
 CODE_14DCA5:        STA $4371                 
-CODE_14DCA8:        LDA #$EE                  
+CODE_14DCA8:        LDA.b #DATA_14DCEE                  
 CODE_14DCAA:        STA $4372                 
-CODE_14DCAD:        LDA #$DC                  
+CODE_14DCAD:        LDA.b #DATA_14DCEE>>8                  
 CODE_14DCAF:        STA $4373                 
-CODE_14DCB2:        LDA #$14                  
+CODE_14DCB2:        LDA.b #DATA_14DCEE>>16                  
 CODE_14DCB4:        STA $4374                 
 CODE_14DCB7:        LDA #$7F                  
 CODE_14DCB9:        STA $4377                 
@@ -4175,11 +4175,11 @@ CODE_14DCBC:        LDA #$41
 CODE_14DCBE:        STA $4330                 
 CODE_14DCC1:        LDA #$28                  
 CODE_14DCC3:        STA $4331                 
-CODE_14DCC6:        LDA #$F5                  
+CODE_14DCC6:        LDA.b #DATA_14DCF5                  
 CODE_14DCC8:        STA $4332                 
-CODE_14DCCB:        LDA #$DC                  
+CODE_14DCCB:        LDA.b #DATA_14DCF5>>8                  
 CODE_14DCCD:        STA $4333                 
-CODE_14DCD0:        LDA #$14                  
+CODE_14DCD0:        LDA.b #DATA_14DCF5>>16                  
 CODE_14DCD2:        STA $4334                 
 CODE_14DCD5:        LDA #$7F                  
 CODE_14DCD7:        STA $4337                 
@@ -4192,8 +4192,9 @@ CODE_14DCE9:        STZ $0245
 CODE_14DCEC:        PLB                       
 CODE_14DCED:        RTS                       
 
-DATA_14DCEE:        db $F0,$00,$F0,$F0,$E0,$F0,$00,$F0
-                    db $00,$F2,$F0,$E0,$F2,$00
+DATA_14DCEE:        db $F0,$00,$F0,$F0,$E0,$F0,$00 ;
+
+DATA_14DCF5:        db $F0,$00,$F2,$F0,$E0,$F2,$00 ;
 
 CODE_14DCFC:        REP #$30                  
 CODE_14DCFE:        LDA $022B                 

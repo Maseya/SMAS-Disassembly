@@ -347,9 +347,9 @@ CODE_2A82F1:        LDA #$6800
 CODE_2A82F4:        STA $2116                 
 CODE_2A82F7:        LDA #$1801                
 CODE_2A82FA:        STA $4300                 
-CODE_2A82FD:        LDA #$F000                
+CODE_2A82FD:        LDA.w #DATA_37F000                
 CODE_2A8300:        STA $4302                 
-CODE_2A8303:        LDX #$37                  
+CODE_2A8303:        LDX.b #DATA_37F000>>16                  
 CODE_2A8305:        STX $4304                 
 CODE_2A8308:        LDA #$1000                
 CODE_2A830B:        STA $4305                 
@@ -8677,8 +8677,9 @@ CODE_2AF853:        JMP CODE_2AFA1F
         
 CODE_2AF856:        BRL CODE_2AFA19    
 
-DATA_2AF859:        db $F0,$00,$90,$F0,$E0,$90,$00,$F0
-                    db $00,$92,$F0,$E0,$92,$00
+DATA_2AF859:        db $F0,$00,$90,$F0,$E0,$90,$00 ;
+
+DATA_2AF860:        db $F0,$00,$92,$F0,$E0,$92,$00 ;
 
 CODE_2AF867:        PHB                       
 CODE_2AF868:        PHK                       
@@ -8877,11 +8878,11 @@ CODE_2AFA25:        LDA #$41
 CODE_2AFA27:        STA $4370                 
 CODE_2AFA2A:        LDA #$26                  
 CODE_2AFA2C:        STA $4371                 
-CODE_2AFA2F:        LDA #$59                  
+CODE_2AFA2F:        LDA.b #DATA_2AF859                  
 CODE_2AFA31:        STA $4372                 
-CODE_2AFA34:        LDA #$F8                  
+CODE_2AFA34:        LDA.b #DATA_2AF859>>8                  
 CODE_2AFA36:        STA $4373                 
-CODE_2AFA39:        LDA #$2A                  
+CODE_2AFA39:        LDA.b #DATA_2AF859>>16                  
 CODE_2AFA3B:        STA $4374                 
 CODE_2AFA3E:        LDA #$7F                  
 CODE_2AFA40:        STA $4377                 
@@ -8889,11 +8890,11 @@ CODE_2AFA43:        LDA #$41
 CODE_2AFA45:        STA $4360                 
 CODE_2AFA48:        LDA #$26                  
 CODE_2AFA4A:        STA $4361                 
-CODE_2AFA4D:        LDA #$60                  
+CODE_2AFA4D:        LDA.b #DATA_2AF860                  
 CODE_2AFA4F:        STA $4362                 
-CODE_2AFA52:        LDA #$F8                  
+CODE_2AFA52:        LDA.b #DATA_2AF860>>8                  
 CODE_2AFA54:        STA $4363                 
-CODE_2AFA57:        LDA #$2A                  
+CODE_2AFA57:        LDA.b #DATA_2AF860>>16                  
 CODE_2AFA59:        STA $4364                 
 CODE_2AFA5C:        LDA #$7F                  
 CODE_2AFA5E:        STA $4367                 
