@@ -3340,9 +3340,9 @@ CODE_14D37F:        9C 3A 02      STZ $023A
 CODE_14D382:        C2 20         REP #$20                  
 CODE_14D384:        A9 42 0D      LDA #$0D42                
 CODE_14D387:        8D 70 43      STA $4370                 
-CODE_14D38A:        A9 9D D3      LDA #$D39D                
+CODE_14D38A:        A9 9D D3      LDA.w #DATA_14D39D                
 CODE_14D38D:        8D 72 43      STA $4372                 
-CODE_14D390:        A2 14         LDX #$14                  
+CODE_14D390:        A2 14         LDX.b #DATA_14D39D>>16                  
 CODE_14D392:        8E 74 43      STX $4374                 
 CODE_14D395:        A2 7F         LDX #$7F                  
 CODE_14D397:        8E 77 43      STX $4377                 
@@ -4163,11 +4163,11 @@ CODE_14DC9E:        A9 41         LDA #$41
 CODE_14DCA0:        8D 70 43      STA $4370                 
 CODE_14DCA3:        A9 26         LDA #$26                  
 CODE_14DCA5:        8D 71 43      STA $4371                 
-CODE_14DCA8:        A9 EE         LDA #$EE                  
+CODE_14DCA8:        A9 EE         LDA.b #DATA_14DCEE                  
 CODE_14DCAA:        8D 72 43      STA $4372                 
-CODE_14DCAD:        A9 DC         LDA #$DC                  
+CODE_14DCAD:        A9 DC         LDA.b #DATA_14DCEE>>8                  
 CODE_14DCAF:        8D 73 43      STA $4373                 
-CODE_14DCB2:        A9 14         LDA #$14                  
+CODE_14DCB2:        A9 14         LDA.b #DATA_14DCEE>>16                  
 CODE_14DCB4:        8D 74 43      STA $4374                 
 CODE_14DCB7:        A9 7F         LDA #$7F                  
 CODE_14DCB9:        8D 77 43      STA $4377                 
@@ -4175,11 +4175,11 @@ CODE_14DCBC:        A9 41         LDA #$41
 CODE_14DCBE:        8D 30 43      STA $4330                 
 CODE_14DCC1:        A9 28         LDA #$28                  
 CODE_14DCC3:        8D 31 43      STA $4331                 
-CODE_14DCC6:        A9 F5         LDA #$F5                  
+CODE_14DCC6:        A9 F5         LDA.b #DATA_14DCF5                  
 CODE_14DCC8:        8D 32 43      STA $4332                 
-CODE_14DCCB:        A9 DC         LDA #$DC                  
+CODE_14DCCB:        A9 DC         LDA.b #DATA_14DCF5>>8                  
 CODE_14DCCD:        8D 33 43      STA $4333                 
-CODE_14DCD0:        A9 14         LDA #$14                  
+CODE_14DCD0:        A9 14         LDA.b #DATA_14DCF5>>16                  
 CODE_14DCD2:        8D 34 43      STA $4334                 
 CODE_14DCD5:        A9 7F         LDA #$7F                  
 CODE_14DCD7:        8D 37 43      STA $4337                 
@@ -4192,8 +4192,9 @@ CODE_14DCE9:        9C 45 02      STZ $0245
 CODE_14DCEC:        AB            PLB                       
 CODE_14DCED:        60            RTS                       
 
-DATA_14DCEE:        db $F0,$00,$F0,$F0,$E0,$F0,$00,$F0
-                    db $00,$F2,$F0,$E0,$F2,$00
+DATA_14DCEE:        db $F0,$00,$F0,$F0,$E0,$F0,$00 ;
+
+DATA_14DCF5:        db $F0,$00,$F2,$F0,$E0,$F2,$00 ;
 
 CODE_14DCFC:        C2 30         REP #$30                  
 CODE_14DCFE:        AD 2B 02      LDA $022B                 

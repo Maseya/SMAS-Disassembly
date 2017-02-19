@@ -1349,9 +1349,9 @@ CODE_208CEA:        D0 22         BNE CODE_208D0E
 CODE_208CEC:        C2 20         REP #$20                  
 CODE_208CEE:        A9 42 0F      LDA #$0F42                
 CODE_208CF1:        8D 70 43      STA $4370                 
-CODE_208CF4:        A9 60 F8      LDA #$F860                
+CODE_208CF4:        A9 60 F8      LDA.w #DATA_2AF860                
 CODE_208CF7:        8D 72 43      STA $4372                 
-CODE_208CFA:        A2 2A         LDX #$2A                  
+CODE_208CFA:        A2 2A         LDX.b #DATA_2AF860>>16                  
 CODE_208CFC:        8E 74 43      STX $4374                 
 CODE_208CFF:        A2 7F         LDX #$7F                  
 CODE_208D01:        8E 77 43      STX $4377                 
@@ -1693,17 +1693,17 @@ CODE_20902F:        A9 01 18      LDA #$1801
 CODE_209032:        8D 00 43      STA $4300                 
 CODE_209035:        8D 10 43      STA $4310                 
 CODE_209038:        8D 20 43      STA $4320                 
-CODE_20903B:        A9 00 B0      LDA #$B000                
+CODE_20903B:        A9 00 B0      LDA.w #DATA_33B000                
 CODE_20903E:        8D 02 43      STA $4302                 
-CODE_209041:        A9 00 80      LDA #$8000                
+CODE_209041:        A9 00 80      LDA.w #DATA_398000                
 CODE_209044:        8D 12 43      STA $4312                 
-CODE_209047:        A9 00 88      LDA #$8800                
+CODE_209047:        A9 00 88      LDA.w #DATA_328800                
 CODE_20904A:        8D 22 43      STA $4322                 
-CODE_20904D:        A2 33         LDX #$33                  
+CODE_20904D:        A2 33         LDX.b #DATA_33B000>>16                  
 CODE_20904F:        8E 04 43      STX $4304                 
-CODE_209052:        A2 39         LDX #$39                  
+CODE_209052:        A2 39         LDX.b #DATA_398000>>16                  
 CODE_209054:        8E 14 43      STX $4314                 
-CODE_209057:        A2 32         LDX #$32                  
+CODE_209057:        A2 32         LDX.b #DATA_328800>>16                  
 CODE_209059:        8E 24 43      STX $4324                 
 CODE_20905C:        A9 00 10      LDA #$1000                
 CODE_20905F:        8D 05 43      STA $4305                 
@@ -1875,35 +1875,35 @@ CODE_209203:        A0 01         LDY #$01
 CODE_209205:        AE 27 07      LDX $0727                 
 CODE_209208:        E0 04         CPX #$04                  
 CODE_20920A:        D0 30         BNE CODE_20923C           
-CODE_20920C:        A9 00 C0      LDA #$C000                
+CODE_20920C:        A9 00 C0      LDA.w #DATA_39C000                
 CODE_20920F:        8D 02 43      STA $4302                 
-CODE_209212:        A2 39         LDX #$39                  
+CODE_209212:        A2 39         LDX.b #DATA_39C000>>16                  
 CODE_209214:        8E 04 43      STX $4304                 
 CODE_209217:        A9 00 10      LDA #$1000                
 CODE_20921A:        8D 05 43      STA $4305                 
 CODE_20921D:        8C 0B 42      STY $420B                 
 CODE_209220:        A9 00 28      LDA #$2800                
 CODE_209223:        8D 16 21      STA $2116                 
-CODE_209226:        A9 00 B0      LDA #$B000                
+CODE_209226:        A9 00 B0      LDA.w #DATA_31B000                
 CODE_209229:        8D 02 43      STA $4302                 
-CODE_20922C:        A2 31         LDX #$31                  
+CODE_20922C:        A2 31         LDX.b #DATA_31B000>>16                  
 CODE_20922E:        8E 04 43      STX $4304                 
 CODE_209231:        A9 00 10      LDA #$1000                
 CODE_209234:        8D 05 43      STA $4305                 
 CODE_209237:        8C 0B 42      STY $420B                 
 CODE_20923A:        80 14         BRA CODE_209250           
-CODE_20923C:        A9 00 A0      LDA #$A000                
+CODE_20923C:        A9 00 A0      LDA.w #DATA_31A000                
 CODE_20923F:        8D 02 43      STA $4302                 
-CODE_209242:        A2 31         LDX #$31                  
+CODE_209242:        A2 31         LDX.b #DATA_31A000>>16                  
 CODE_209244:        8E 04 43      STX $4304                 
 CODE_209247:        A9 00 20      LDA #$2000                
 CODE_20924A:        8D 05 43      STA $4305                 
 CODE_20924D:        8C 0B 42      STY $420B                 
-CODE_209250:        A9 00 C0      LDA #$C000                
+CODE_209250:        A9 00 C0      LDA.w #DATA_38C000                
 CODE_209253:        8D 12 43      STA $4312                 
-CODE_209256:        A9 00 80      LDA #$8000                
+CODE_209256:        A9 00 80      LDA.w #DATA_388000                
 CODE_209259:        8D 22 43      STA $4322                 
-CODE_20925C:        A2 38         LDX #$38                  
+CODE_20925C:        A2 38         LDX.b #DATA_388000>>16                  
 CODE_20925E:        8E 14 43      STX $4314                 
 CODE_209261:        8E 24 43      STX $4324                 
 CODE_209264:        A9 00 40      LDA #$4000                
@@ -4740,10 +4740,10 @@ CODE_20AF4F:        A9 00 58      LDA #$5800
 CODE_20AF52:        8D 16 21      STA $2116                 
 CODE_20AF55:        A9 00 04      LDA #$0400                
 CODE_20AF58:        8D 05 43      STA $4305                 
-CODE_20AF5B:        A9 00 AC      LDA #$AC00                
+CODE_20AF5B:        A9 00 AC      LDA.w #DATA_38AC00                
 CODE_20AF5E:        8D 02 43      STA $4302                 
 CODE_20AF61:        E2 20         SEP #$20                  
-CODE_20AF63:        A9 38         LDA #$38                  
+CODE_20AF63:        A9 38         LDA.b #DATA_38AC00>>16                  
 CODE_20AF65:        8D 04 43      STA $4304                 
 CODE_20AF68:        A9 01         LDA #$01                  
 CODE_20AF6A:        8D 0B 42      STA $420B                 
@@ -7450,9 +7450,9 @@ CODE_20C628:        A9 00 20      LDA #$2000
 CODE_20C62B:        8D 16 21      STA $2116                 
 CODE_20C62E:        A9 01 18      LDA #$1801                
 CODE_20C631:        8D 00 43      STA $4300                 
-CODE_20C634:        A9 00 E0      LDA #$E000                
+CODE_20C634:        A9 00 E0      LDA.w #DATA_35E000                
 CODE_20C637:        8D 02 43      STA $4302                 
-CODE_20C63A:        A2 35         LDX #$35                  
+CODE_20C63A:        A2 35         LDX.b #DATA_35E000>>16                  
 CODE_20C63C:        8E 04 43      STX $4304                 
 CODE_20C63F:        A9 00 20      LDA #$2000                
 CODE_20C642:        8D 05 43      STA $4305                 
@@ -7462,9 +7462,9 @@ CODE_20C64A:        A9 00 34      LDA #$3400
 CODE_20C64D:        8D 16 21      STA $2116                 
 CODE_20C650:        A9 01 18      LDA #$1801                
 CODE_20C653:        8D 00 43      STA $4300                 
-CODE_20C656:        A9 00 90      LDA #$9000                
+CODE_20C656:        A9 00 90      LDA.w #DATA_329000                
 CODE_20C659:        8D 02 43      STA $4302                 
-CODE_20C65C:        A2 32         LDX #$32                  
+CODE_20C65C:        A2 32         LDX.b #DATA_329000>>16                  
 CODE_20C65E:        8E 04 43      STX $4304                 
 CODE_20C661:        A9 00 10      LDA #$1000                
 CODE_20C664:        8D 05 43      STA $4305                 
@@ -7517,17 +7517,17 @@ CODE_20C6E4:        E0 70         CPX #$70
 CODE_20C6E6:        D0 DA         BNE CODE_20C6C2           
 CODE_20C6E8:        A9 41 26      LDA #$2641                
 CODE_20C6EB:        8D 70 43      STA $4370                 
-CODE_20C6EE:        A9 59 F8      LDA #$F859                
+CODE_20C6EE:        A9 59 F8      LDA.w #DATA_2AF859                
 CODE_20C6F1:        8D 72 43      STA $4372                 
-CODE_20C6F4:        A2 2A         LDX #$2A                  
+CODE_20C6F4:        A2 2A         LDX.b #DATA_2AF859>>16                  
 CODE_20C6F6:        8E 74 43      STX $4374                 
 CODE_20C6F9:        A2 7F         LDX #$7F                  
 CODE_20C6FB:        8E 77 43      STX $4377                 
 CODE_20C6FE:        A9 41 28      LDA #$2841                
 CODE_20C701:        8D 60 43      STA $4360                 
-CODE_20C704:        A9 60 F8      LDA #$F860                
+CODE_20C704:        A9 60 F8      LDA.w #DATA_2AF860                
 CODE_20C707:        8D 62 43      STA $4362                 
-CODE_20C70A:        A2 2A         LDX #$2A                  
+CODE_20C70A:        A2 2A         LDX.b #DATA_2AF860>>16                  
 CODE_20C70C:        8E 64 43      STX $4364                 
 CODE_20C70F:        A2 7F         LDX #$7F                  
 CODE_20C711:        8E 67 43      STX $4367                 
@@ -8068,20 +8068,20 @@ CODE_20CBDD:        8D 00 43      STA $4300
 CODE_20CBE0:        8D 10 43      STA $4310                 
 CODE_20CBE3:        8D 20 43      STA $4320                 
 CODE_20CBE6:        8D 30 43      STA $4330                 
-CODE_20CBE9:        A9 00 E0      LDA #$E000                
+CODE_20CBE9:        A9 00 E0      LDA.w #DATA_37E000                
 CODE_20CBEC:        8D 02 43      STA $4302                 
-CODE_20CBEF:        A9 00 B0      LDA #$B000                
+CODE_20CBEF:        A9 00 B0      LDA.w #DATA_37B000                
 CODE_20CBF2:        8D 12 43      STA $4312                 
-CODE_20CBF5:        A9 00 D0      LDA #$D000                
+CODE_20CBF5:        A9 00 D0      LDA.w #DATA_0CD000                
 CODE_20CBF8:        8D 22 43      STA $4322                 
-CODE_20CBFB:        A9 00 B0      LDA #$B000                
-CODE_20CBFE:        8D 32 43      STA $4332                 
-CODE_20CC01:        A2 37         LDX #$37                  
+CODE_20CBFB:        A9 00 B0      LDA.w #DATA_3AB000                
+CODE_20CBFE:        8D 32 43      STA $4332                 ;
+CODE_20CC01:        A2 37         LDX.b #DATA_37B000>>16                  
 CODE_20CC03:        8E 04 43      STX $4304                 
 CODE_20CC06:        8E 14 43      STX $4314                 
-CODE_20CC09:        A2 0C         LDX #$0C                  
+CODE_20CC09:        A2 0C         LDX.b #DATA_0CD000>>16                  
 CODE_20CC0B:        8E 24 43      STX $4324                 
-CODE_20CC0E:        A2 3A         LDX #$3A                  
+CODE_20CC0E:        A2 3A         LDX.b #DATA_3AB000>>16                  
 CODE_20CC10:        8E 34 43      STX $4334                 
 CODE_20CC13:        A9 00 10      LDA #$1000                
 CODE_20CC16:        8D 05 43      STA $4305                 
@@ -8103,11 +8103,11 @@ CODE_20CC3F:        A2 08         LDX #$08
 CODE_20CC41:        8E 0B 42      STX $420B                 
 CODE_20CC44:        AE 26 07      LDX $0726                 
 CODE_20CC47:        F0 36         BEQ CODE_20CC7F           
-CODE_20CC49:        A9 00 E0      LDA #$E000                
+CODE_20CC49:        A9 00 E0      LDA.w #DATA_3DE000                
 CODE_20CC4C:        8D 02 43      STA $4302                 
-CODE_20CC4F:        A9 00 F0      LDA #$F000                
+CODE_20CC4F:        A9 00 F0      LDA.w #DATA_3DF000                
 CODE_20CC52:        8D 12 43      STA $4312                 
-CODE_20CC55:        A2 3D         LDX #$3D                  
+CODE_20CC55:        A2 3D         LDX.b #DATA_3DE000>>16                  
 CODE_20CC57:        8E 04 43      STX $4304                 
 CODE_20CC5A:        8E 14 43      STX $4314                 
 CODE_20CC5D:        A9 00 10      LDA #$1000                

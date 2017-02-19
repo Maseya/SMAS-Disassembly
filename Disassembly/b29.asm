@@ -13256,9 +13256,9 @@ CODE_29F0FE:        AB            PLB                       ;
 CODE_29F0FF:        E2 20         SEP #$20                  
 CODE_29F101:        A2 41 26      LDX #$2641                
 CODE_29F104:        8E 30 43      STX $4330                 
-CODE_29F107:        A2 4C F1      LDX #$F14C                
+CODE_29F107:        A2 4C F1      LDX.w #DATA_29F14C                
 CODE_29F10A:        8E 32 43      STX $4332                 
-CODE_29F10D:        A9 29         LDA #$29                  
+CODE_29F10D:        A9 29         LDA.b #DATA_29F14C>>16                  
 CODE_29F10F:        8D 34 43      STA $4334                 
 CODE_29F112:        A9 7F         LDA #$7F                  
 CODE_29F114:        8D 37 43      STA $4337                 

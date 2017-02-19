@@ -347,9 +347,9 @@ CODE_2A82F1:        A9 00 68      LDA #$6800
 CODE_2A82F4:        8D 16 21      STA $2116                 
 CODE_2A82F7:        A9 01 18      LDA #$1801                
 CODE_2A82FA:        8D 00 43      STA $4300                 
-CODE_2A82FD:        A9 00 F0      LDA #$F000                
+CODE_2A82FD:        A9 00 F0      LDA.w #DATA_37F000                
 CODE_2A8300:        8D 02 43      STA $4302                 
-CODE_2A8303:        A2 37         LDX #$37                  
+CODE_2A8303:        A2 37         LDX.b #DATA_37F000>>16                  
 CODE_2A8305:        8E 04 43      STX $4304                 
 CODE_2A8308:        A9 00 10      LDA #$1000                
 CODE_2A830B:        8D 05 43      STA $4305                 
@@ -8677,8 +8677,9 @@ CODE_2AF853:        4C 1F FA      JMP CODE_2AFA1F
         
 CODE_2AF856:        82 C0 01      BRL CODE_2AFA19    
 
-DATA_2AF859:        db $F0,$00,$90,$F0,$E0,$90,$00,$F0
-                    db $00,$92,$F0,$E0,$92,$00
+DATA_2AF859:        db $F0,$00,$90,$F0,$E0,$90,$00 ;
+
+DATA_2AF860:        db $F0,$00,$92,$F0,$E0,$92,$00 ;
 
 CODE_2AF867:        8B            PHB                       
 CODE_2AF868:        4B            PHK                       
@@ -8877,11 +8878,11 @@ CODE_2AFA25:        A9 41         LDA #$41
 CODE_2AFA27:        8D 70 43      STA $4370                 
 CODE_2AFA2A:        A9 26         LDA #$26                  
 CODE_2AFA2C:        8D 71 43      STA $4371                 
-CODE_2AFA2F:        A9 59         LDA #$59                  
+CODE_2AFA2F:        A9 59         LDA.b #DATA_2AF859                  
 CODE_2AFA31:        8D 72 43      STA $4372                 
-CODE_2AFA34:        A9 F8         LDA #$F8                  
+CODE_2AFA34:        A9 F8         LDA.b #DATA_2AF859>>8                  
 CODE_2AFA36:        8D 73 43      STA $4373                 
-CODE_2AFA39:        A9 2A         LDA #$2A                  
+CODE_2AFA39:        A9 2A         LDA.b #DATA_2AF859>>16                  
 CODE_2AFA3B:        8D 74 43      STA $4374                 
 CODE_2AFA3E:        A9 7F         LDA #$7F                  
 CODE_2AFA40:        8D 77 43      STA $4377                 
@@ -8889,11 +8890,11 @@ CODE_2AFA43:        A9 41         LDA #$41
 CODE_2AFA45:        8D 60 43      STA $4360                 
 CODE_2AFA48:        A9 26         LDA #$26                  
 CODE_2AFA4A:        8D 61 43      STA $4361                 
-CODE_2AFA4D:        A9 60         LDA #$60                  
+CODE_2AFA4D:        A9 60         LDA.b #DATA_2AF860                  
 CODE_2AFA4F:        8D 62 43      STA $4362                 
-CODE_2AFA52:        A9 F8         LDA #$F8                  
+CODE_2AFA52:        A9 F8         LDA.b #DATA_2AF860>>8                  
 CODE_2AFA54:        8D 63 43      STA $4363                 
-CODE_2AFA57:        A9 2A         LDA #$2A                  
+CODE_2AFA57:        A9 2A         LDA.b #DATA_2AF860>>16                  
 CODE_2AFA59:        8D 64 43      STA $4364                 
 CODE_2AFA5C:        A9 7F         LDA #$7F                  
 CODE_2AFA5E:        8D 67 43      STA $4367                 

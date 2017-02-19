@@ -1275,11 +1275,11 @@ CODE_138E57:        A9 41         LDA #$41
 CODE_138E59:        8D 70 43      STA $4370                 
 CODE_138E5C:        A9 26         LDA #$26                  
 CODE_138E5E:        8D 71 43      STA $4371                 
-CODE_138E61:        A9 DD         LDA #$DD                  
+CODE_138E61:        A9 DD         LDA.b #DATA_138EDD                  
 CODE_138E63:        8D 72 43      STA $4372                 
-CODE_138E66:        A9 8E         LDA #$8E                  
+CODE_138E66:        A9 8E         LDA.b #DATA_138EDD>>8                  
 CODE_138E68:        8D 73 43      STA $4373                 
-CODE_138E6B:        A9 13         LDA #$13                  
+CODE_138E6B:        A9 13         LDA.b #DATA_138EDD>>16                  
 CODE_138E6D:        8D 74 43      STA $4374                 
 CODE_138E70:        A9 7F         LDA #$7F                  
 CODE_138E72:        8D 77 43      STA $4377                 
@@ -1287,11 +1287,11 @@ CODE_138E75:        A9 41         LDA #$41
 CODE_138E77:        8D 30 43      STA $4330                 
 CODE_138E7A:        A9 28         LDA #$28                  
 CODE_138E7C:        8D 31 43      STA $4331                 
-CODE_138E7F:        A9 E4         LDA #$E4                  
+CODE_138E7F:        A9 E4         LDA.b #DATA_138EE4                  
 CODE_138E81:        8D 32 43      STA $4332                 
-CODE_138E84:        A9 8E         LDA #$8E                  
+CODE_138E84:        A9 8E         LDA.b #DATA_138EE4>>8                  
 CODE_138E86:        8D 33 43      STA $4333                 
-CODE_138E89:        A9 13         LDA #$13                  
+CODE_138E89:        A9 13         LDA.b #DATA_138EE4>>16                  
 CODE_138E8B:        8D 34 43      STA $4334                 
 CODE_138E8E:        A9 7F         LDA #$7F                  
 CODE_138E90:        8D 37 43      STA $4337                 
@@ -1325,8 +1325,9 @@ CODE_138ED8:        9C 45 02      STZ $0245
 CODE_138EDB:        AB            PLB                       
 CODE_138EDC:        6B            RTL                       
 
-DATA_138EDD:        db $F0,$00,$F0,$F0,$E0,$F0,$00,$F0
-                    db $00,$F2,$F0,$E0,$F2,$00
+DATA_138EDD:        db $F0,$00,$F0,$F0,$E0,$F0,$00 ;
+
+DATA_138EE4:        db $F0,$00,$F2,$F0,$E0,$F2,$00 ;
             
 CODE_138EEB:        C2 30         REP #$30                  
 CODE_138EED:        AD 2B 02      LDA $022B                 
