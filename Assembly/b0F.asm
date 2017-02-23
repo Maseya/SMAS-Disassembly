@@ -116,7 +116,7 @@ CODE_0F80F6:        ASL A                     ;
 CODE_0F80F7:        TAY                       ;
 CODE_0F80F8:        LDA PNTR_0F810A,y         ;\Load a ptr which points to a routine using a ptr.
 CODE_0F80FB:        STA $04                   ; |
-CODE_0F80FD:        LDA #$000F                ; |
+CODE_0F80FD:        LDA.w #PNTR_0F810A>>16|$0000 ; |
 CODE_0F8100:        STA $06                   ; |
 CODE_0F8102:        TXY                       ; |
 CODE_0F8103:        LDA [$04],y               ; |

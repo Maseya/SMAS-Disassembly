@@ -1,5 +1,18 @@
-;The Presents screen, the Hall screen and the game selection
-;as well as other miscellaneous stuff like setting up the SPC-700
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;; SUPER MARIO ALL-STARS (U) DISASSEMBLY
+;;;
+;;; CREDITS:
+;;; Ersanio           spel werdz rite
+;;; Roy/FuzzyFreak    imamelia
+;;; BlueRabbit        Alcaro
+;;; MiOr              wiiqwertyuiop
+;;; Dotsarecool       and probably others who I forgot, sorry.
+;;;
+;;;
+
+; This bank consists of the Presents screen, the Hall screen and the game selection
+; as well as other miscellaneous stuff such as setting up the SPC-700
 
 Reset:
 CODE_008000:        SEI                       ; Set interput flag
