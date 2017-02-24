@@ -3846,7 +3846,7 @@ CODE_0EC40D:        LDA PNTR_0EC582,y         ;
 CODE_0EC410:        STA $FA                   ;
 CODE_0EC412:        LDA PNTR_0EC5C9,y         ;
 CODE_0EC415:        STA $FB                   ;
-CODE_0EC417:        LDA.b #PNTR_0EC582>>16    ; TODO: bank byte
+CODE_0EC417:        LDA.b #PNTR_0EC582>>16    ;
 CODE_0EC419:        STA $FC                   ;
 CODE_0EC41B:        LDY #$00                  ;
 CODE_0EC41D:        LDA [$FA],y               ; TODO: this is where you left off

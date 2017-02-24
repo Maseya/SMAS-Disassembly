@@ -460,9 +460,9 @@ PNTR_228B5C:        dl $001602
                     dl DATA_228F48
                     dl DATA_22920D
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;; Default template for statusbar
+;;; Default template for SMB3 statusbar
 ;;;
 
 DATA_228BF2:        db $0F,$00,$00,$03,$AE,$22,$80,$22  ;Top row's left corner of statusbar's first portion

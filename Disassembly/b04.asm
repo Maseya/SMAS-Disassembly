@@ -3864,11 +3864,11 @@ CODE_04C029:        9C 60 07      STZ $0760                 ;Store zero to curre
 CODE_04C02C:        9C 5C 07      STZ $075C                 ;Store zero to written number of current level
 CODE_04C02F:        A0 00         LDY #$00                  ;\
 CODE_04C031:        8C 5F 07      STY $075F                 ;/Store zero to current world
-CODE_04C034:        B9 1C C1      LDA DATA_04C11C,y               ;\Load indexes to the level number table
+CODE_04C034:        B9 1C C1      LDA DATA_04C11C,y         ;\Load indices to the level number table
 CODE_04C037:        18            CLC                       ; |clear carry flag
 CODE_04C038:        6D 60 07      ADC $0760                 ; |add current level to it
 CODE_04C03B:        A8            TAY                       ; |use it as index
-CODE_04C03C:        B9 24 C1      LDA DATA_04C124,y               ;\|Load the level number
+CODE_04C03C:        B9 24 C1      LDA DATA_04C124,y         ;\|Load the level number
 CODE_04C03F:        AB            PLB                       ; |return it
 CODE_04C040:        6B            RTL                       ;/
 
@@ -3993,7 +3993,29 @@ CODE_04C116:        A9 01         LDA #$01                  ;\Grow a vine in the
 CODE_04C118:        8D 36 02      STA $0236                 ;/
 CODE_04C11B:        60            RTS                       ;
 
-DATA_04C11C:        db $00,$05,$0A,$0E,$13,$17,$1B,$20 ; "Levels per world". Actually indexes to the next tables
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 
+;; SMB1 LEVEL DATA POINTERS (and their data)
+;;
+;; First the level numbers get defined, then the
+;; sprite data pointers as well as the object
+;; data pointers follow. These pointers are 16-bit
+;; and the bank byte is defined in the code
+;; CODE_04C06C and CODE_04C09C
+;; 
+;; After these pointers, the sprite and object data
+;; themselves follow
+;;
+
+DATA_04C11C:        db DATA_04C124-DATA_04C124 ; World 1 | Relative indices to level numbers grouped by world.
+                    db DATA_04C129-DATA_04C124 ; World 2
+                    db DATA_04C12E-DATA_04C124 ; World 3
+                    db DATA_04C132-DATA_04C124 ; World 4
+                    db DATA_04C137-DATA_04C124 ; World 5
+                    db DATA_04C13B-DATA_04C124 ; World 6
+                    db DATA_04C13F-DATA_04C124 ; World 7
+                    db DATA_04C144-DATA_04C124 ; World 8
 
 DATA_04C124:        db $25,$29,$C0,$26,$60             ; "World 1 Levels" They get stored in $7E:0750
 
@@ -4011,41 +4033,167 @@ DATA_04C13F:        db $33,$29,$01,$27,$64             ; "World 7 Levels"
 
 DATA_04C144:        db $30,$32,$21,$65                 ; "World 8 Levels"
 
-DATA_04C148:        db $1F,$06,$1C,$00                 ; "Map type offsets"
+DATA_04C148:        db DATA_04C16B-DATA_04C14C         ; Relative indices to level sprite data pointer tables
+                    db DATA_04C152-DATA_04C14C         ; Grouped by level type
+                    db DATA_04C168-DATA_04C14C
+                    db DATA_04C14C-DATA_04C14C
 
-DATA_04C14C:        db $D8,$FF,$18,$47,$72,$87         ; The castle levels sprites offset low
+DATA_04C14C:        db DATA_04C1D8                     ; The castle levels sprite data offset low
+                    db DATA_04C1FF
+                    db DATA_04C218
+                    db DATA_04C247
+                    db DATA_04C272
+                    db DATA_04C287
 
-DATA_04C152:        db $C1,$E6,$03,$11,$38,$69,$87,$A4 ; The grassland levels sprites offset low
-                    db $B9,$E3,$E4,$08,$11,$36,$59,$62
-                    db $63,$9D,$C8,$F6,$12,$1B
+DATA_04C152:        db DATA_04C2C1                     ; The overworld levels sprite data offset low
+                    db DATA_04C2E6
+                    db DATA_04C303
+                    db DATA_04C311
+                    db DATA_04C338
+                    db DATA_04C369
+                    db DATA_04C387
+                    db DATA_04C3A4
+                    db DATA_04C3B9
+                    db DATA_04C3E4-1
+                    db DATA_04C3E4
+                    db DATA_04C408
+                    db DATA_04C411
+                    db DATA_04C436
+                    db DATA_04C459
+                    db DATA_04C462
+                    db DATA_04C463
+                    db DATA_04C49D
+                    db DATA_04C4C8
+                    db DATA_04C4F6
+                    db DATA_04C512
+                    db DATA_04C51B
 
-DATA_04C168:        db $40,$6D,$9B                     ; The underground levels sprites offset low
+DATA_04C168:        db DATA_04C540                     ; The underground levels sprite data offset low
+                    db DATA_04C56D
+                    db DATA_04C59B
 
-DATA_04C16B:        db $C8,$D9,$03                     ; The underwater levels sprites offset low
+DATA_04C16B:        db DATA_04C5C8                     ; The underwater levels sprite data offset low
+                    db DATA_04C5D9
+                    db DATA_04C603
 
-DATA_04C16E:        db $C1,$C1,$C2,$C2,$C2,$C2,$C2,$C2 ; Enemy address high bytes
-                    db $C3,$C3,$C3,$C3,$C3,$C3,$C3,$C3
-                    db $C3,$C4,$C4,$C4,$C4,$C4,$C4,$C4
-                    db $C4,$C4,$C5,$C5,$C5,$C5,$C5,$C5
-                    db $C5,$C6
+DATA_04C16E:        db DATA_04C1D8>>8                  ; The castle levels sprite data offset high
+                    db DATA_04C1FF>>8
+                    db DATA_04C218>>8
+                    db DATA_04C247>>8
+                    db DATA_04C272>>8
+                    db DATA_04C287>>8
 
-DATA_04C190:        db $00,$03,$19,$1C                 ; indexes to the next 4 types tables
+DATA_04C174:        db DATA_04C2C1>>8                  ; The overworld levels sprite data offset high
+                    db DATA_04C2E6>>8
+                    db DATA_04C303>>8
+                    db DATA_04C311>>8
+                    db DATA_04C338>>8
+                    db DATA_04C369>>8
+                    db DATA_04C387>>8
+                    db DATA_04C3A4>>8
+                    db DATA_04C3B9>>8
+                    db DATA_04C3E4-1>>8
+                    db DATA_04C3E4>>8
+                    db DATA_04C408>>8
+                    db DATA_04C411>>8
+                    db DATA_04C436>>8
+                    db DATA_04C459>>8
+                    db DATA_04C462>>8
+                    db DATA_04C463>>8
+                    db DATA_04C49D>>8
+                    db DATA_04C4C8>>8
+                    db DATA_04C4F6>>8
+                    db DATA_04C512>>8
+                    db DATA_04C51B>>8
 
-DATA_04C194:        db $08,$71,$0D                     ; The Underwater levels objects offset low
+DATA_04C18A:        db DATA_04C540>>8                  ; The underground levels sprite data offset high
+                    db DATA_04C56D>>8
+                    db DATA_04C59B>>8
 
-DATA_04C197:        db $0B,$74,$C3,$1B,$B0,$2F,$9A,$F1 ; The grassland levels objects offset low
-                    db $7A,$E7,$F1,$35,$4A,$BB,$28,$A3
-                    db $D5,$6D,$EB,$6B,$CA,$F5
+DATA_04C18D:        db DATA_04C5C8>>8                  ; The underwater levels sprite data offset high
+                    db DATA_04C5D9>>8
+                    db DATA_04C603>>8
 
-DATA_04C1AD:        db $2D,$D2,$76                     ; The underground levels objects offset low
+DATA_04C190:        db DATA_04C194-DATA_04C194         ; Relative indices to level object data pointer tables
+                    db DATA_04C197-DATA_04C194         ; Grouped by level type
+                    db DATA_04C1AD-DATA_04C194
+                    db DATA_04C1B0-DATA_04C194
 
-DATA_04C1B0:        db $17,$D2,$FA,$D8,$D4,$01         ; The castle levels objects offset low
+DATA_04C194:        db DATA_04D608                     ; Underwater levels objects offset low
+                    db DATA_04D671
+                    db DATA_04D70D
 
-DATA_04C1B6:        db $D6,$D6,$D7,$CC,$CC,$CC,$CD,$CD ; Objects address high bytes
-                    db $CE,$CE,$CE,$CF,$CF,$CF,$D0,$D0
-                    db $D0,$D1,$D1,$D1,$D2,$D2,$D3,$D3
-                    db $D3,$D4,$D4,$D5,$C6,$C6,$C7,$C8
-                    db $C9,$CB
+DATA_04C197:        db DATA_04CC0B                     ; Overworld levels objects offset low
+                    db DATA_04CC74
+                    db DATA_04CCC3
+                    db DATA_04CD1B
+                    db DATA_04CDB0
+                    db DATA_04CE2F
+                    db DATA_04CE9A
+                    db DATA_04CEF1
+                    db DATA_04CF7A
+                    db DATA_04CFE7
+                    db DATA_04CFF1
+                    db DATA_04D035
+                    db DATA_04D04A
+                    db DATA_04D0BB
+                    db DATA_04D128
+                    db DATA_04D1A3
+                    db DATA_04D1D5
+                    db DATA_04D26D
+                    db DATA_04D2EB
+                    db DATA_04D36B
+                    db DATA_04D3CA
+                    db DATA_04D3F5
+
+DATA_04C1AD:        db DATA_04D42D                     ; Underground levels objects offset low
+                    db DATA_04D4D2
+                    db DATA_04D576
+
+DATA_04C1B0:        db DATA_04C617                     ; Castle levels objects offset low
+                    db DATA_04C6D2
+                    db DATA_04C7FA
+                    db DATA_04C8D8
+                    db DATA_04C9D4
+                    db DATA_04CB01
+
+DATA_04C1B6:        db DATA_04D608>>8                  ; Underwater levels objects offset high
+                    db DATA_04D671>>8
+                    db DATA_04D70D>>8
+
+DATA_04C1B9:        db DATA_04CC0B>>8                  ; Overworld levels objects offset high
+                    db DATA_04CC74>>8
+                    db DATA_04CCC3>>8
+                    db DATA_04CD1B>>8
+                    db DATA_04CDB0>>8
+                    db DATA_04CE2F>>8
+                    db DATA_04CE9A>>8
+                    db DATA_04CEF1>>8
+                    db DATA_04CF7A>>8
+                    db DATA_04CFE7>>8
+                    db DATA_04CFF1>>8
+                    db DATA_04D035>>8
+                    db DATA_04D04A>>8
+                    db DATA_04D0BB>>8
+                    db DATA_04D128>>8
+                    db DATA_04D1A3>>8
+                    db DATA_04D1D5>>8
+                    db DATA_04D26D>>8
+                    db DATA_04D2EB>>8
+                    db DATA_04D36B>>8
+                    db DATA_04D3CA>>8
+                    db DATA_04D3F5>>8
+
+DATA_04C1CF:        db DATA_04D42D>>8                  ; Underground levels objects offset high
+                    db DATA_04D4D2>>8
+                    db DATA_04D576>>8
+
+DATA_04C1D2:        db DATA_04C617>>8                  ; Castle levels objects offset high
+                    db DATA_04C6D2>>8
+                    db DATA_04C7FA>>8
+                    db DATA_04C8D8>>8
+                    db DATA_04C9D4>>8
+                    db DATA_04CB01>>8
 
 ;SMB1 LEVEL SPRITE DATA. Ends with FF.
 
@@ -4861,7 +5009,7 @@ DATA_04D776:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ; empty
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; From here on starts duplicate code of $00C000
 ;; This is for SMB1 while the code at $00C000 is for
 ;; The Lost Levels.
@@ -4991,7 +5139,10 @@ CODE_04D923:        FA            PLX                       ; |
 CODE_04D924:        AB            PLB                       ; |
 CODE_04D925:        60            RTS                       ;/
 
-DATA_04D926:        dw $0000,$00A4,$0156,$01FA         ;Indices for next table. 
+DATA_04D926:        dw DATA_04D92E-DATA_04D92E              ;Relative indices to next table
+                    dw DATA_04D9D2-DATA_04D92E
+                    dw DATA_04DA84-DATA_04D92E
+                    dw DATA_04DB28-DATA_04D92E
 
 DATA_04D92E:        db $59,$05,$00,$11,$1D,$20,$11,$20 ; "Thank you Mario! The kingdom is saved!
                     db $0A,$20,$17,$20,$14,$20,$28,$20 ;  Now try a more difficult quest..." text.
@@ -8151,7 +8302,7 @@ CODE_04FDC3:        60            RTS                       ;Return
 
 ;;
 ;; Duplicate code of $00C000 ends here
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CODE_04FDC4:        9C 3F 07      STZ $073F                 ;Store zero to BG1 X-scrolling
 CODE_04FDC7:        9C 40 07      STZ $0740                 ;Store zero to BG1 Y-scrolling

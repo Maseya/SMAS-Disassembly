@@ -1,4 +1,4 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;; SUPER MARIO ALL-STARS (U) DISASSEMBLY
 ;;;
@@ -84,7 +84,7 @@ CODE_00809D:        JSR CODE_008773           ;/ Update OAM sizes
 CODE_0080A0:        STZ $0122                 ;
 CODE_0080A3:        JMP CODE_00807D           ; Game loop
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Pointers below are specified by $E0's values
 ;;
 
@@ -1399,10 +1399,10 @@ CODE_008BA5:        JSL CODE_00868E           ; |
 CODE_008BA9:        SEP #$20                  ;/
 CODE_008BAB:        RTL                       ;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Upload SPC data
 ;;
-;; Works like so:
+;; Works like this:
 ;; 1. Wait for $2140-1 to return $BBAA.
 ;; 2. Write target address to $2142-3 (the address where you are uploading the data to).
 ;; 3. Write non-zero to $2141.
@@ -6201,7 +6201,7 @@ DATA_00BE26:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; From here on starts duplicate code of $04D800
 ;; This is for TLL while the code at $04D800 is for
 ;; SMB1.
@@ -9436,7 +9436,7 @@ CODE_00E5C3:        RTS                       ;
 
 ;;
 ;; Duplicate code of $04D800 ends here
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 DATA_00E5C4:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF

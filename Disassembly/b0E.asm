@@ -3846,7 +3846,7 @@ CODE_0EC40D:        B9 82 C5      LDA PNTR_0EC582,y         ;
 CODE_0EC410:        85 FA         STA $FA                   ;
 CODE_0EC412:        B9 C9 C5      LDA PNTR_0EC5C9,y         ;
 CODE_0EC415:        85 FB         STA $FB                   ;
-CODE_0EC417:        A9 0E         LDA.b #PNTR_0EC582>>16    ; TODO: bank byte
+CODE_0EC417:        A9 0E         LDA.b #PNTR_0EC582>>16    ;
 CODE_0EC419:        85 FC         STA $FC                   ;
 CODE_0EC41B:        A0 00         LDY #$00                  ;
 CODE_0EC41D:        B7 FA         LDA [$FA],y               ; TODO: this is where you left off

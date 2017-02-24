@@ -1905,12 +1905,12 @@ DATA_059122:        dw $0000,$0000,$0009,$0004              ;index to layer 2 ba
 CODE_059166:        LDA $DB                   ;\ Load background number
 CODE_059168:        ASL A                     ; |to index
 CODE_059169:        TAX                       ; |
-CODE_05916A:        LDA DATA_059122,x               ; |Load index to layer 2 background pointer
+CODE_05916A:        LDA DATA_059122,x         ; |Load index to layer 2 background pointer
 CODE_05916D:        ASL A                     ; |
 CODE_05916E:        TAX                       ; |
-CODE_05916F:        LDA DATA_0591CE,x               ; |Store pointer to $00-$02. $02 is hardcoded to bank 5
+CODE_05916F:        LDA PNTR_0591CE,x         ; |Store pointer to $00-$02. $02 is hardcoded to bank 5
 CODE_059172:        STA $00                   ; |
-CODE_059174:        LDA #$0005                ; |
+CODE_059174:        LDA.w #PNTR_0591CE>>16    ; |
 CODE_059177:        STA $02                   ;/
 CODE_059179:        LDX #$0000                ;Index to RAM?
 CODE_05917C:        LDY #$0000                ;Loop count
@@ -1959,9 +1959,17 @@ CODE_0591CA:        SEP #$30                  ;
 CODE_0591CC:        PLB                       ;
 CODE_0591CD:        RTL                       ;
 
-DATA_0591CE:        dw $9A2C,$9C2C,$AC14,$A614 ;pointers to various background map16 data
-                    dw $A364,$972C,$9564,$94EC ;indexed by $DB's indexes
-                    dw $944C,$A4C4,$92A4
+PNTR_0591CE:        dw DATA_059A2C ;pointers to various background map16 data
+                    dw DATA_059C2C ;indexed by $DB
+                    dw DATA_05AC14
+                    dw DATA_05A614 
+                    dw DATA_05A364
+                    dw DATA_05972C
+                    dw DATA_059564
+                    dw DATA_0594EC 
+                    dw DATA_05944C
+                    dw DATA_05A4C4
+                    dw DATA_0592A4
 
 DATA_0591E4:        db $00,$00,$00,$11,$00,$00,$00,$1F ;background map16 tiles
                     db $00,$00,$00,$0C,$00,$12,$00,$00 ;format: TTTTTTTT YXPCCCTT
@@ -2811,9 +2819,9 @@ DATA_05A614:        db $34,$15,$34,$15,$34,$15,$34,$15 ;Castle background map16 
                     db $94,$15,$A6,$15,$B4,$15,$B6,$15
                     db $A6,$15,$A6,$15,$B6,$15,$B6,$15
                     db $94,$15,$A7,$15,$B4,$15,$B7,$15
-                    db $24,$10,$24,$10,$24,$10,$24,$10
 
-DATA_05AC14:        db $0E,$15,$0F,$15,$1E,$15,$1F,$15
+DATA_05AC14:        db $24,$10,$24,$10,$24,$10,$24,$10
+                    db $0E,$15,$0F,$15,$1E,$15,$1F,$15
                     db $02,$1D,$03,$1D,$12,$1D,$13,$1D
                     db $20,$1D,$21,$1D,$30,$1D,$31,$1D
                     db $2E,$15,$2F,$15,$3E,$15,$3F,$15
@@ -7001,7 +7009,7 @@ CODE_05E6AE:        RTL                       ;
 
 DATA_05E6AF:        db $01,$18								;Bonus Room background number, indexed by player number.
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Graphics Tileset upload routines
 ;; $99 = Tileset number to upload
 ;; If tileset is 01 (Mario Bonus), then the game

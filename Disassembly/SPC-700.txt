@@ -135,7 +135,7 @@
 0604: db 00     mov   $00+x,y           ; $00+X = Y
 0606: 6f        ret                     ;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; HandleNote
 ;;
 ;; Inputs: Y
@@ -687,7 +687,7 @@ HandleNote:
 0a20: fd        mov   y,a              ;/
 0a21: 6f        ret                    ;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ChangeInstrument
 ;;
 ;; sets the instrument for this voice using an alternate method
