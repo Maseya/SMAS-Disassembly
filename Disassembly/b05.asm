@@ -7038,7 +7038,7 @@ CODE_05E6D6:        85 01         STA $01                   ; |
 CODE_05E6D8:        6C 00 00      JMP ($0000)               ;/
 
 PNTR_05E6DB:        dw CODE_05E71B                          ;$00 - Unused?
-                    dw CODE_05E73C                          ;$01 - Mario bonus background
+                    dw CODE_05E73C                          ;$01 - Mario bonus background + cave FG
                     dw CODE_05E727                          ;$02 - Hills background & SUPER MARIO BROS banner
                     dw CODE_05E73C                          ;$03 - Underground background
                     dw CODE_05E74F                          ;$04 - Castle FG & BG tileset
@@ -7061,14 +7061,14 @@ PNTR_05E6DB:        dw CODE_05E71B                          ;$00 - Unused?
                     dw CODE_05E71B                          ;$15 - Game Over and Time Up text
                     dw CODE_05E71B                          ;$16 - Starry night background
                     dw CODE_05E71B                          ;$17 - Grass foreground
-                    dw CODE_05E73C                          ;$18 - Luigi bonus background
-                    dw CODE_05E71B                          ;$19 -
-                    dw CODE_05E71B                          ;$1A -
-                    dw CODE_05E71B                          ;$1B -
-                    dw CODE_05E71B                          ;$1C -
-                    dw CODE_05E71B                          ;$1D -
-                    dw CODE_05E71B                          ;$1E -
-                    dw CODE_05E71B                          ;$1F -
+                    dw CODE_05E73C                          ;$18 - Luigi bonus background + cave FG
+                    dw CODE_05E71B                          ;$19 - Unused?
+                    dw CODE_05E71B                          ;$1A - Unused?
+                    dw CODE_05E71B                          ;$1B - Unused?
+                    dw CODE_05E71B                          ;$1C - Unused?
+                    dw CODE_05E71B                          ;$1D - Unused?
+                    dw CODE_05E71B                          ;$1E - Unused?
+                    dw CODE_05E71B                          ;$1F - Unused?
 
 ;Disable graphics animations so that GFX uploads normally
 ;without animation interfering

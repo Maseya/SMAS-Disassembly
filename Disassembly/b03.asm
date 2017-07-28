@@ -3859,13 +3859,21 @@ CODE_03A7B7:        18            CLC                       ; |
 CODE_03A7B8:        65 07         ADC $07                   ; |
 CODE_03A7BA:        0A            ASL A                     ; |
 CODE_03A7BB:        A8            TAY                       ; | Build vertically extendable objects appropriately and place them into the level
-CODE_03A7BC:        B9 C9 A7      LDA PNTR_03A7C9,y               ; |
+CODE_03A7BC:        B9 C9 A7      LDA PNTR_03A7C9,y         ; |
 CODE_03A7BF:        85 04         STA $04                   ; |
-CODE_03A7C1:        B9 CA A7      LDA PNTR_03A7C9+1,y               ; |
+CODE_03A7C1:        B9 CA A7      LDA PNTR_03A7C9+1,y       ; |
 CODE_03A7C4:        85 05         STA $05                   ; |
 CODE_03A7C6:        6C 04 00      JMP ($0004)               ;/
 
-;Pointers to level objects
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; SMB1 OBJECT DATA - Vertically Extendable Objects
+;;
+;; Each "Object" is composed out of (multiple) map16 tiles. These objects are defined in the level
+;; data, then are generated programmatically in the level from there. For example, the springboard
+;; consists of a combination of a map16 tile and a sprite, but these are defined as a single object.
+;;
+
 PNTR_03A7C9:        dw CODE_03A9F7                          ;$00 - Warp pipe
                     dw CODE_03A8AF                          ;$01 - $0733-dependant object. 00 = normal, green platform. 01 = mushroom, 02 = bullet bill cannons
                     dw CODE_03AB63                          ;$02 - Row of bricks

@@ -147,11 +147,11 @@ CODE_298138:        B0 05         BCS CODE_29813F
 CODE_29813A:        18            CLC                       
 CODE_29813B:        69 02         ADC #$02                  
 CODE_29813D:        95 9E         STA $9E,x                 
-CODE_29813F:        22 C3 9B 27   JSL CODE_279BC3           
+CODE_29813F:        22 C3 9B 27   JSL CODE_279BC3           ; Subroutine: Remove if offscreen
 CODE_298143:        22 DD 9E 27   JSL CODE_279EDD           
 CODE_298147:        6B            RTL                       
 
-CODE_298148:        22 37 A8 27   JSL CODE_27A837           
+CODE_298148:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_29814C:        B9 5E C5      LDA.w DATA_21C55E,y               
 CODE_29814F:        95 8C         STA $8C,x                 
 CODE_298151:        6B            RTL                       
@@ -181,7 +181,7 @@ CODE_298182:        EA            NOP
 CODE_298183:        EA            NOP                       
 CODE_298184:        29 01         AND #$01                  
 CODE_298186:        9D 69 06      STA $0669,x               
-CODE_298189:        22 C3 9B 27   JSL CODE_279BC3           
+CODE_298189:        22 C3 9B 27   JSL CODE_279BC3           ; Subroutine: Remove if offscreen
 CODE_29818D:        22 6F 9B 27   JSL CODE_279B6F           
 CODE_298191:        22 3B 98 27   JSL CODE_27983B           
 CODE_298195:        B5 A7         LDA $A7,x                 
@@ -206,7 +206,7 @@ CODE_2981C2:        22 EF A7 27   JSL CODE_27A7EF
 CODE_2981C6:        22 EF A7 27   JSL CODE_27A7EF           
 CODE_2981CA:        6B            RTL                       
 
-CODE_2981CB:        22 C3 9B 27   JSL CODE_279BC3           
+CODE_2981CB:        22 C3 9B 27   JSL CODE_279BC3           ; Subroutine: Remove if offscreen
 CODE_2981CF:        20 E6 81      JSR CODE_2981E6           
 CODE_2981D2:        BD 61 06      LDA $0661,x               
 CODE_2981D5:        C9 02         CMP #$02                  
@@ -333,7 +333,7 @@ CODE_2982D3:        D0 02         BNE CODE_2982D7
 CODE_2982D5:        D6 56         DEC $56,x                 
 CODE_2982D7:        6B            RTL                       
 
-CODE_2982D8:        22 C3 9B 27   JSL CODE_279BC3           
+CODE_2982D8:        22 C3 9B 27   JSL CODE_279BC3           ; Subroutine: Remove if offscreen
 CODE_2982DC:        A5 9C         LDA $9C                   
 CODE_2982DE:        D0 21         BNE CODE_298301           
 CODE_2982E0:        BD 18 05      LDA $0518,x               
@@ -637,7 +637,7 @@ CODE_298527:        69 08         ADC #$08
 CODE_298529:        95 5F         STA $5F,x                 
 CODE_29852B:        6B            RTL                       
 
-CODE_29852C:        22 C3 9B 27   JSL CODE_279BC3           
+CODE_29852C:        22 C3 9B 27   JSL CODE_279BC3           ; Subroutine: Remove if offscreen
 CODE_298530:        B5 4D         LDA $4D,x                 
 CODE_298532:        BC 79 06      LDY $0679,x               
 CODE_298535:        10 03         BPL CODE_29853A           
@@ -650,7 +650,7 @@ CODE_298542:        A9 01         LDA #$01
 CODE_298544:        9D 51 06      STA $0651,x               
 CODE_298547:        4C 47 87      JMP CODE_298747           
 
-CODE_29854A:        22 37 A8 27   JSL CODE_27A837           
+CODE_29854A:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_29854E:        BD 79 06      LDA $0679,x               
 CODE_298551:        29 BF         AND #$BF                  
 CODE_298553:        19 C3 C5      ORA.w DATA_21C5C3,y               
@@ -945,7 +945,7 @@ CODE_2987D1:        10 13         BPL CODE_2987E6
 CODE_2987D3:        BD 91 06      LDA $0691,x               
 CODE_2987D6:        4A            LSR A                     
 CODE_2987D7:        B0 0D         BCS CODE_2987E6                   
-CODE_2987D9:        22 37 A8 27   JSL CODE_27A837           
+CODE_2987D9:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_2987DD:        A5 0F         LDA $0F                   
 CODE_2987DF:        18            CLC                       
 CODE_2987E0:        69 1B         ADC #$1B                  
@@ -984,7 +984,7 @@ CODE_298825:        30 BF         BMI CODE_2987E6
 CODE_298827:        BD 91 06      LDA $0691,x               
 CODE_29882A:        4A            LSR A                     
 CODE_29882B:        B0 B9         BCS CODE_2987E6                   
-CODE_29882D:        22 37 A8 27   JSL CODE_27A837           
+CODE_29882D:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_298831:        A5 0F         LDA $0F                   
 CODE_298833:        18            CLC                       
 CODE_298834:        69 1B         ADC #$1B                  
@@ -1019,7 +1019,7 @@ CODE_29886E:        99 C8 1F      STA $1FC8,y
 CODE_298871:        84 00         STY $00                   
 CODE_298873:        22 48 A8 27   JSL CODE_27A848           
 CODE_298877:        84 05         STY $05                   
-CODE_298879:        22 37 A8 27   JSL CODE_27A837           
+CODE_298879:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_29887D:        84 06         STY $06                   
 CODE_29887F:        A2 00         LDX #$00                  
 CODE_298881:        A5 0F         LDA $0F                   
@@ -1051,7 +1051,7 @@ CODE_2988B7:        69 03         ADC #$03
 CODE_2988B9:        95 71         STA $71,x                 
 CODE_2988BB:        6B            RTL                       
 
-CODE_2988BC:        22 C3 9B 27   JSL CODE_279BC3           
+CODE_2988BC:        22 C3 9B 27   JSL CODE_279BC3           ; Subroutine: Remove if offscreen
 CODE_2988C0:        BD 81 06      LDA $0681,x               
 CODE_2988C3:        D0 F6         BNE CODE_2988BB           
 CODE_2988C5:        22 C2 9D 27   JSL CODE_279DC2           
@@ -1205,7 +1205,7 @@ CODE_2989F6:        D6 56         DEC $56,x
 CODE_2989F8:        6B            RTL                       
 
 CODE_2989F9:        F6 4D         INC $4D,x                 
-CODE_2989FB:        22 37 A8 27   JSL CODE_27A837           
+CODE_2989FB:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_2989FF:        B9 CF C5      LDA.w DATA_21C5CF,y               
 CODE_298A02:        9D 79 06      STA $0679,x               
 CODE_298A05:        6B            RTL                       
@@ -1220,7 +1220,7 @@ CODE_298A11:        BD 79 06      LDA $0679,x
 CODE_298A14:        29 40         AND #$40                  
 CODE_298A16:        09 10         ORA #$10                  
 CODE_298A18:        9D 79 06      STA $0679,x               
-CODE_298A1B:        22 C3 9B 27   JSL CODE_279BC3           
+CODE_298A1B:        22 C3 9B 27   JSL CODE_279BC3           ; Subroutine: Remove if offscreen
 CODE_298A1F:        B5 44         LDA $44,x                 
 CODE_298A21:        EB            XBA                       
 CODE_298A22:        B5 5F         LDA $5F,x                 
@@ -1474,7 +1474,7 @@ CODE_298C13:        E9 00         SBC #$00
 CODE_298C15:        95 56         STA $56,x                 
 CODE_298C17:        6B            RTL                       
 
-CODE_298C18:        22 C3 9B 27   JSL CODE_279BC3           
+CODE_298C18:        22 C3 9B 27   JSL CODE_279BC3           ; Subroutine: Remove if offscreen
 CODE_298C1C:        22 BB 9E 27   JSL CODE_279EBB           
 CODE_298C20:        BD 51 06      LDA $0651,x               
 CODE_298C23:        48            PHA                       
@@ -1701,7 +1701,7 @@ CODE_298DD8:        9D 69 06      STA $0669,x
 CODE_298DDB:        20 21 8F      JSR CODE_298F21           
 CODE_298DDE:        6B            RTL                       
 
-CODE_298DDF:        22 C3 9B 27   JSL CODE_279BC3           
+CODE_298DDF:        22 C3 9B 27   JSL CODE_279BC3           ; Subroutine: Remove if offscreen
 CODE_298DE3:        BD 21 10      LDA $1021,x               
 CODE_298DE6:        F0 04         BEQ CODE_298DEC           
 CODE_298DE8:        22 6F 9B 27   JSL CODE_279B6F           
@@ -2026,7 +2026,7 @@ CODE_29908D:        29 03         AND #$03
 CODE_29908F:        D0 04         BNE CODE_299095           
 CODE_299091:        D6 68         DEC $68,x                 
 CODE_299093:        F0 EB         BEQ CODE_299080           
-CODE_299095:        22 C3 9B 27   JSL CODE_279BC3           
+CODE_299095:        22 C3 9B 27   JSL CODE_279BC3           ; Subroutine: Remove if offscreen
 CODE_299099:        B4 4D         LDY $4D,x                 
 CODE_29909B:        B9 F7 C5      LDA.w DATA_21C5F7,y               
 CODE_29909E:        95 8C         STA $8C,x                 
@@ -2319,7 +2319,7 @@ CODE_2992CE:        A9 40         LDA #$40
 CODE_2992D0:        9D 79 06      STA $0679,x               
 CODE_2992D3:        60            RTS                       
 
-CODE_2992D4:        22 37 A8 27   JSL CODE_27A837           
+CODE_2992D4:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_2992D8:        B9 1C C6      LDA.w DATA_21C61C,y               
 CODE_2992DB:        95 8C         STA $8C,x                 
 CODE_2992DD:        6B            RTL                       
@@ -2332,7 +2332,7 @@ CODE_2992E8:        A9 01         LDA #$01
 CODE_2992EA:        90 02         BCC CODE_2992EE           
 CODE_2992EC:        69 00         ADC #$00                  
 CODE_2992EE:        9D E9 1F      STA $1FE9,x               
-CODE_2992F1:        22 C3 9B 27   JSL CODE_279BC3           
+CODE_2992F1:        22 C3 9B 27   JSL CODE_279BC3           ; Subroutine: Remove if offscreen
 CODE_2992F5:        20 C8 92      JSR CODE_2992C8           
 CODE_2992F8:        BD D2 1F      LDA $1FD2,x               
 CODE_2992FB:        4A            LSR A                     
@@ -3065,7 +3065,7 @@ CODE_299883:        F0 03         BEQ CODE_299888
 CODE_299885:        FE 69 06      INC $0669,x               
 CODE_299888:        6B            RTL                       
 
-CODE_299889:        22 C3 9B 27   JSL CODE_279BC3           
+CODE_299889:        22 C3 9B 27   JSL CODE_279BC3           ; Subroutine: Remove if offscreen
 CODE_29988D:        20 94 99      JSR CODE_299994           
 CODE_299890:        A5 9C         LDA $9C                   
 CODE_299892:        D0 F4         BNE CODE_299888           
@@ -3132,7 +3132,7 @@ CODE_29990C:        85 9D         STA $9D
 CODE_29990E:        20 2B 99      JSR CODE_29992B           
 CODE_299911:        6B            RTL                       
 
-CODE_299912:        22 37 A8 27   JSL CODE_27A837           
+CODE_299912:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_299916:        C8            INY                       
 CODE_299917:        A5 17         LDA $17                   
 CODE_299919:        29 03         AND #$03                  
@@ -3616,7 +3616,7 @@ CODE_299CD7:        A5 0B         LDA $0B
 CODE_299CD9:        95 5F         STA $5F,x                 
 CODE_299CDB:        A5 0A         LDA $0A                   
 CODE_299CDD:        95 44         STA $44,x                 
-CODE_299CDF:        22 37 A8 27   JSL CODE_27A837           
+CODE_299CDF:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_299CE3:        B9 9D C6      LDA.w DATA_21C69D,y               
 CODE_299CE6:        9D 79 06      STA $0679,x               
 CODE_299CE9:        A5 0B         LDA $0B                   
@@ -14159,7 +14159,7 @@ CODE_29FD1A:        48            PHA
 CODE_29FD1B:        18            CLC                       
 CODE_29FD1C:        69 08         ADC #$08                  
 CODE_29FD1E:        95 5F         STA $5F,x                 
-CODE_29FD20:        22 37 A8 27   JSL CODE_27A837           
+CODE_29FD20:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_29FD24:        68            PLA                       
 CODE_29FD25:        95 5F         STA $5F,x                 
 CODE_29FD27:        60            RTS                       

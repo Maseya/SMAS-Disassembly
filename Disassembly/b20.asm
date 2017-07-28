@@ -10355,7 +10355,7 @@ CODE_20E8BC:        22 37 E2 20   JSL CODE_20E237
 CODE_20E8C0:        CE 55 05      DEC $0555                 
 CODE_20E8C3:        6B            RTL                       
 
-CODE_20E8C4:        AD 51 05      LDA $0551                 
+CODE_20E8C4:        AD 51 05      LDA $0551                 ; Player growing/shrinking animation timer
 CODE_20E8C7:        F0 2A         BEQ CODE_20E8F3           
 CODE_20E8C9:        4A            LSR A                     
 CODE_20E8CA:        4A            LSR A                     
@@ -10379,7 +10379,7 @@ CODE_20E8E6:        85 BB         STA $BB
 CODE_20E8E8:        22 37 E2 20   JSL CODE_20E237           
 CODE_20E8EC:        68            PLA                       
 CODE_20E8ED:        85 BB         STA $BB                   
-CODE_20E8EF:        CE 51 05      DEC $0551                 
+CODE_20E8EF:        CE 51 05      DEC $0551                 ; Player growing/shrinking animation timer
 CODE_20E8F2:        6B            RTL                       
 
 CODE_20E8F3:        AD 59 05      LDA $0559                 
