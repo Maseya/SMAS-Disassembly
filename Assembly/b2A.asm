@@ -1,105 +1,105 @@
 ;Super Mario Bros. 3
 
-CODE_2A8000:        LDA $100B                 
-CODE_2A8003:        CMP #$04                  
-CODE_2A8005:        BCC CODE_2A8018           
-CODE_2A8007:        PHB                       
-CODE_2A8008:        PHK                       
-CODE_2A8009:        PLB                       ;
-CODE_2A800A:        PHX                       
-CODE_2A800B:        INC $034A                 
-CODE_2A800E:        LDA $034B                 
-CODE_2A8011:        ASL A                     
-CODE_2A8012:        TAX                       
-CODE_2A8013:        JSR (PNTR_2A8019,x)             
-CODE_2A8016:        PLX                       
-CODE_2A8017:        PLB                       ;
-CODE_2A8018:        RTL                       
+CODE_2A8000:        AD 0B 10      LDA $100B                 
+CODE_2A8003:        C9 04         CMP #$04                  
+CODE_2A8005:        90 11         BCC CODE_2A8018           
+CODE_2A8007:        8B            PHB                       
+CODE_2A8008:        4B            PHK                       
+CODE_2A8009:        AB            PLB                       ;
+CODE_2A800A:        DA            PHX                       
+CODE_2A800B:        EE 4A 03      INC $034A                 
+CODE_2A800E:        AD 4B 03      LDA $034B                 
+CODE_2A8011:        0A            ASL A                     
+CODE_2A8012:        AA            TAX                       
+CODE_2A8013:        FC 19 80      JSR (PNTR_2A8019,x)             
+CODE_2A8016:        FA            PLX                       
+CODE_2A8017:        AB            PLB                       ;
+CODE_2A8018:        6B            RTL                       
 
 PNTR_2A8019:        dw CODE_2A801D
                     dw CODE_2A8083
 
-CODE_2A801D:        LDA $034A
-CODE_2A8020:        AND #$07
-CODE_2A8022:        BNE CODE_2A804E
-CODE_2A8024:        REP #$20                  
-CODE_2A8026:        LDA $034A                 
-CODE_2A8029:        AND #$0018                
-CODE_2A802C:        ASL A                     
-CODE_2A802D:        STA $00                   
-CODE_2A802F:        LDA $1006                 
-CODE_2A8032:        AND #$000F                
-CODE_2A8035:        ASL A                     
-CODE_2A8036:        ORA $00                   
-CODE_2A8038:        TAX                       
-CODE_2A8039:        LDA.w DATA_2A80C5,x               
-CODE_2A803C:        STA $00                   
-CODE_2A803E:        INC A                     
-CODE_2A803F:        STA $04                   
-CODE_2A8041:        LDA.w DATA_2A80CD,x               
-CODE_2A8044:        STA $02                   
-CODE_2A8046:        INC A                     
-CODE_2A8047:        STA $06                   
-CODE_2A8049:        JSR CODE_2A817E           
-CODE_2A804C:        SEP #$20                  
-CODE_2A804E:        LDA $034A                 
-CODE_2A8051:        CMP #$18                  
-CODE_2A8053:        BNE CODE_2A8082           
-CODE_2A8055:        REP #$20                  
-CODE_2A8057:        LDA $1006                 
-CODE_2A805A:        AND #$000F                
-CODE_2A805D:        ASL A                     
-CODE_2A805E:        TAX                       
-CODE_2A805F:        LDA.w DATA_2A82B2,x               
-CODE_2A8062:        STA $0A                   
-CODE_2A8064:        LDA #$00FC                
-CODE_2A8067:        STA $00                   
-CODE_2A8069:        STA $04                   
-CODE_2A806B:        LDA #$00FC                
-CODE_2A806E:        STA $02                   
-CODE_2A8070:        STA $06                   
-CODE_2A8072:        LDA.w DATA_2A8105,x               
-CODE_2A8075:        STA $08                   
-CODE_2A8077:        JSR CODE_2A8287           
-CODE_2A807A:        SEP #$20                  
-CODE_2A807C:        STZ $034A                 
-CODE_2A807F:        INC $034B                 
-CODE_2A8082:        RTS                       
+CODE_2A801D:        AD 4A 03      LDA $034A
+CODE_2A8020:        29 07         AND #$07
+CODE_2A8022:        D0 2A         BNE CODE_2A804E
+CODE_2A8024:        C2 20         REP #$20                  
+CODE_2A8026:        AD 4A 03      LDA $034A                 
+CODE_2A8029:        29 18 00      AND #$0018                
+CODE_2A802C:        0A            ASL A                     
+CODE_2A802D:        85 00         STA $00                   
+CODE_2A802F:        AD 06 10      LDA $1006                 
+CODE_2A8032:        29 0F 00      AND #$000F                
+CODE_2A8035:        0A            ASL A                     
+CODE_2A8036:        05 00         ORA $00                   
+CODE_2A8038:        AA            TAX                       
+CODE_2A8039:        BD C5 80      LDA.w DATA_2A80C5,x               
+CODE_2A803C:        85 00         STA $00                   
+CODE_2A803E:        1A            INC A                     
+CODE_2A803F:        85 04         STA $04                   
+CODE_2A8041:        BD CD 80      LDA.w DATA_2A80CD,x               
+CODE_2A8044:        85 02         STA $02                   
+CODE_2A8046:        1A            INC A                     
+CODE_2A8047:        85 06         STA $06                   
+CODE_2A8049:        20 7E 81      JSR CODE_2A817E           
+CODE_2A804C:        E2 20         SEP #$20                  
+CODE_2A804E:        AD 4A 03      LDA $034A                 
+CODE_2A8051:        C9 18         CMP #$18                  
+CODE_2A8053:        D0 2D         BNE CODE_2A8082           
+CODE_2A8055:        C2 20         REP #$20                  
+CODE_2A8057:        AD 06 10      LDA $1006                 
+CODE_2A805A:        29 0F 00      AND #$000F                
+CODE_2A805D:        0A            ASL A                     
+CODE_2A805E:        AA            TAX                       
+CODE_2A805F:        BD B2 82      LDA.w DATA_2A82B2,x               
+CODE_2A8062:        85 0A         STA $0A                   
+CODE_2A8064:        A9 FC 00      LDA #$00FC                
+CODE_2A8067:        85 00         STA $00                   
+CODE_2A8069:        85 04         STA $04                   
+CODE_2A806B:        A9 FC 00      LDA #$00FC                
+CODE_2A806E:        85 02         STA $02                   
+CODE_2A8070:        85 06         STA $06                   
+CODE_2A8072:        BD 05 81      LDA.w DATA_2A8105,x               
+CODE_2A8075:        85 08         STA $08                   
+CODE_2A8077:        20 87 82      JSR CODE_2A8287           
+CODE_2A807A:        E2 20         SEP #$20                  
+CODE_2A807C:        9C 4A 03      STZ $034A                 
+CODE_2A807F:        EE 4B 03      INC $034B                 
+CODE_2A8082:        60            RTS                       
 
-CODE_2A8083:        LDA $034A                 
-CODE_2A8086:        AND #$07                  
-CODE_2A8088:        BNE CODE_2A80C4           
-CODE_2A808A:        LDA $034A                 
-CODE_2A808D:        AND #$18                  
-CODE_2A808F:        ASL A                     
-CODE_2A8090:        STA $00                   
-CODE_2A8092:        LDA $1006                 
-CODE_2A8095:        ASL A                     
-CODE_2A8096:        ADC $00                   
-CODE_2A8098:        TAY                       
-CODE_2A8099:        LDA $034A                 
-CODE_2A809C:        AND #$60                  
-CODE_2A809E:        LSR A                     
-CODE_2A809F:        LSR A                     
-CODE_2A80A0:        LSR A                     
-CODE_2A80A1:        LSR A                     
-CODE_2A80A2:        TAX                       
-CODE_2A80A3:        REP #$20                  
-CODE_2A80A5:        LDA.w DATA_2A82B2,x               
-CODE_2A80A8:        STA $0A                   
-CODE_2A80AA:        LDA DATA_2A80C5,y               
-CODE_2A80AD:        STA $00                   
-CODE_2A80AF:        INC A                     
-CODE_2A80B0:        STA $04                   
-CODE_2A80B2:        LDA DATA_2A80CD,y               
-CODE_2A80B5:        STA $02                   
-CODE_2A80B7:        INC A                     
-CODE_2A80B8:        STA $06                   
-CODE_2A80BA:        LDA.w DATA_2A8105,x               
-CODE_2A80BD:        STA $08                   
-CODE_2A80BF:        JSR CODE_2A8287           
-CODE_2A80C2:        SEP #$20                  
-CODE_2A80C4:        RTS                       
+CODE_2A8083:        AD 4A 03      LDA $034A                 
+CODE_2A8086:        29 07         AND #$07                  
+CODE_2A8088:        D0 3A         BNE CODE_2A80C4           
+CODE_2A808A:        AD 4A 03      LDA $034A                 
+CODE_2A808D:        29 18         AND #$18                  
+CODE_2A808F:        0A            ASL A                     
+CODE_2A8090:        85 00         STA $00                   
+CODE_2A8092:        AD 06 10      LDA $1006                 
+CODE_2A8095:        0A            ASL A                     
+CODE_2A8096:        65 00         ADC $00                   
+CODE_2A8098:        A8            TAY                       
+CODE_2A8099:        AD 4A 03      LDA $034A                 
+CODE_2A809C:        29 60         AND #$60                  
+CODE_2A809E:        4A            LSR A                     
+CODE_2A809F:        4A            LSR A                     
+CODE_2A80A0:        4A            LSR A                     
+CODE_2A80A1:        4A            LSR A                     
+CODE_2A80A2:        AA            TAX                       
+CODE_2A80A3:        C2 20         REP #$20                  
+CODE_2A80A5:        BD B2 82      LDA.w DATA_2A82B2,x               
+CODE_2A80A8:        85 0A         STA $0A                   
+CODE_2A80AA:        B9 C5 80      LDA DATA_2A80C5,y               
+CODE_2A80AD:        85 00         STA $00                   
+CODE_2A80AF:        1A            INC A                     
+CODE_2A80B0:        85 04         STA $04                   
+CODE_2A80B2:        B9 CD 80      LDA DATA_2A80CD,y               
+CODE_2A80B5:        85 02         STA $02                   
+CODE_2A80B7:        1A            INC A                     
+CODE_2A80B8:        85 06         STA $06                   
+CODE_2A80BA:        BD 05 81      LDA.w DATA_2A8105,x               
+CODE_2A80BD:        85 08         STA $08                   
+CODE_2A80BF:        20 87 82      JSR CODE_2A8287           
+CODE_2A80C2:        E2 20         SEP #$20                  
+CODE_2A80C4:        60            RTS                       
 
 DATA_2A80C5:        dw $00FC
                     dw $00FC
@@ -140,43 +140,43 @@ DATA_2A8105:        dw $0006
                     dw $0006
                     dw $0007
 
-CODE_2A810D:        PHB
-CODE_2A810E:        PHK                       
-CODE_2A810F:        PLB                       ;
-CODE_2A8110:        PHX                       
-CODE_2A8111:        PHY                       
-CODE_2A8112:        REP #$20                  
-CODE_2A8114:        LDX #$80                  
-CODE_2A8116:        STX $2115                 
-CODE_2A8119:        LDA #$00FC                
-CODE_2A811C:        STA $00                   
-CODE_2A811E:        STA $04                   
-CODE_2A8120:        LDA #$00FC                
-CODE_2A8123:        STA $02                   
-CODE_2A8125:        STA $06                   
-CODE_2A8127:        JSR CODE_2A817E           
-CODE_2A812A:        LDA $1006                 
-CODE_2A812D:        AND #$000F                
-CODE_2A8130:        ASL A                     
-CODE_2A8131:        TAX                       
-CODE_2A8132:        LDA.w DATA_2A8156,x               
-CODE_2A8135:        STA $00                   
-CODE_2A8137:        LDY #$00                  
-CODE_2A8139:        LDA DATA_2A82BA,y               
-CODE_2A813C:        STA $2116                 
-CODE_2A813F:        LDA $00                   
-CODE_2A8141:        STA $2118                 
-CODE_2A8144:        INY                       
-CODE_2A8145:        INY                       
-CODE_2A8146:        CPY #$30                  
-CODE_2A8148:        BNE CODE_2A8139           
-CODE_2A814A:        SEP #$20                  
-CODE_2A814C:        PLY                       
-CODE_2A814D:        PLX                       
-CODE_2A814E:        PLB                       ;
-CODE_2A814F:        STZ $034A                 
-CODE_2A8152:        STZ $034B                 
-CODE_2A8155:        RTL                       
+CODE_2A810D:        8B            PHB
+CODE_2A810E:        4B            PHK                       
+CODE_2A810F:        AB            PLB                       ;
+CODE_2A8110:        DA            PHX                       
+CODE_2A8111:        5A            PHY                       
+CODE_2A8112:        C2 20         REP #$20                  
+CODE_2A8114:        A2 80         LDX #$80                  
+CODE_2A8116:        8E 15 21      STX $2115                 
+CODE_2A8119:        A9 FC 00      LDA #$00FC                
+CODE_2A811C:        85 00         STA $00                   
+CODE_2A811E:        85 04         STA $04                   
+CODE_2A8120:        A9 FC 00      LDA #$00FC                
+CODE_2A8123:        85 02         STA $02                   
+CODE_2A8125:        85 06         STA $06                   
+CODE_2A8127:        20 7E 81      JSR CODE_2A817E           
+CODE_2A812A:        AD 06 10      LDA $1006                 
+CODE_2A812D:        29 0F 00      AND #$000F                
+CODE_2A8130:        0A            ASL A                     
+CODE_2A8131:        AA            TAX                       
+CODE_2A8132:        BD 56 81      LDA.w DATA_2A8156,x               
+CODE_2A8135:        85 00         STA $00                   
+CODE_2A8137:        A0 00         LDY #$00                  
+CODE_2A8139:        B9 BA 82      LDA DATA_2A82BA,y               
+CODE_2A813C:        8D 16 21      STA $2116                 
+CODE_2A813F:        A5 00         LDA $00                   
+CODE_2A8141:        8D 18 21      STA $2118                 
+CODE_2A8144:        C8            INY                       
+CODE_2A8145:        C8            INY                       
+CODE_2A8146:        C0 30         CPY #$30                  
+CODE_2A8148:        D0 EF         BNE CODE_2A8139           
+CODE_2A814A:        E2 20         SEP #$20                  
+CODE_2A814C:        7A            PLY                       
+CODE_2A814D:        FA            PLX                       
+CODE_2A814E:        AB            PLB                       ;
+CODE_2A814F:        9C 4A 03      STZ $034A                 
+CODE_2A8152:        9C 4B 03      STZ $034B                 
+CODE_2A8155:        6B            RTL                       
 
 DATA_2A8156:        dw $09AB,$09AC,$09AB,$09AD
 
@@ -187,145 +187,145 @@ DATA_2A816E:        dw $0005,$0006,$0005,$0006
      
 DATA_2A8176:        dw $0007,$0007,$0007,$0005
 
-CODE_2A817E:        LDA $1006                 
-CODE_2A8181:        AND #$000F                  
-CODE_2A8184:        ASL A
-CODE_2A8185:        TAY                       
-CODE_2A8186:        ASL A                     
-CODE_2A8187:        TAX                       
-CODE_2A8188:        LDA.w DATA_2A815E,x               
-CODE_2A818B:        STA $0A                   
-CODE_2A818D:        LDA DATA_2A816E,y               
-CODE_2A8190:        STA $08                   
-CODE_2A8192:        PHY                       
-CODE_2A8193:        JSR CODE_2A8287           
-CODE_2A8196:        PLY                       
-CODE_2A8197:        LDA.w DATA_2A815E+2,x               
-CODE_2A819A:        STA $0A                   
-CODE_2A819C:        LDA DATA_2A8176,y               
-CODE_2A819F:        STA $08                   
-CODE_2A81A1:        JSR CODE_2A8287           
-CODE_2A81A4:        RTS                       
+CODE_2A817E:        AD 06 10      LDA $1006                 
+CODE_2A8181:        29 0F 00      AND #$000F                  
+CODE_2A8184:        0A            ASL A
+CODE_2A8185:        A8            TAY                       
+CODE_2A8186:        0A            ASL A                     
+CODE_2A8187:        AA            TAX                       
+CODE_2A8188:        BD 5E 81      LDA.w DATA_2A815E,x               
+CODE_2A818B:        85 0A         STA $0A                   
+CODE_2A818D:        B9 6E 81      LDA DATA_2A816E,y               
+CODE_2A8190:        85 08         STA $08                   
+CODE_2A8192:        5A            PHY                       
+CODE_2A8193:        20 87 82      JSR CODE_2A8287           
+CODE_2A8196:        7A            PLY                       
+CODE_2A8197:        BD 60 81      LDA.w DATA_2A815E+2,x               
+CODE_2A819A:        85 0A         STA $0A                   
+CODE_2A819C:        B9 76 81      LDA DATA_2A8176,y               
+CODE_2A819F:        85 08         STA $08                   
+CODE_2A81A1:        20 87 82      JSR CODE_2A8287           
+CODE_2A81A4:        60            RTS                       
 
-CODE_2A81A5:        PHB                       
-CODE_2A81A6:        PHK                       
-CODE_2A81A7:        PLB                       ;
-CODE_2A81A8:        STZ $2115                 
-CODE_2A81AB:        REP #$20                  
-CODE_2A81AD:        LDA #$00FC                
-CODE_2A81B0:        STA $00                   
-CODE_2A81B2:        LDA #$1000                
-CODE_2A81B5:        STA $2116                 
-CODE_2A81B8:        LDA #$1808                
-CODE_2A81BB:        STA $4300                 
-CODE_2A81BE:        LDA #$0000                
-CODE_2A81C1:        STA $4302                 
-CODE_2A81C4:        STZ $4304                 
-CODE_2A81C7:        LDA #$1000                
-CODE_2A81CA:        STA $4305                 
-CODE_2A81CD:        LDY #$01                  
-CODE_2A81CF:        STY $420B                 
-CODE_2A81D2:        LDX #$80                  
-CODE_2A81D4:        STX $2115                 
-CODE_2A81D7:        STA $4305                 
-CODE_2A81DA:        LDA #$1000                
-CODE_2A81DD:        STA $2116                 
-CODE_2A81E0:        LDA #$1908                
-CODE_2A81E3:        STA $4300                 
-CODE_2A81E6:        LDA #$0001                
-CODE_2A81E9:        STA $4302                 
-CODE_2A81EC:        STY $420B                 
-CODE_2A81EF:        LDA.w DATA_2A82B2                 
-CODE_2A81F2:        STA $0A                   
-CODE_2A81F4:        LDA #$09A5                
-CODE_2A81F7:        STA $00                   
-CODE_2A81F9:        INC A                     
-CODE_2A81FA:        STA $04                   
-CODE_2A81FC:        LDA #$49A5                
-CODE_2A81FF:        STA $02                   
-CODE_2A8201:        INC A                     
-CODE_2A8202:        STA $06                   
-CODE_2A8204:        LDA #$0006                
-CODE_2A8207:        STA $08                   
-CODE_2A8209:        JSR CODE_2A8287           
-CODE_2A820C:        LDA.w DATA_2A82B4                 
-CODE_2A820F:        STA $0A                   
-CODE_2A8211:        LDA #$05A7                
-CODE_2A8214:        STA $00                   
-CODE_2A8216:        INC A                     
-CODE_2A8217:        STA $04                   
-CODE_2A8219:        LDA #$45A7                
-CODE_2A821C:        STA $02                   
-CODE_2A821E:        INC A                     
-CODE_2A821F:        STA $06                   
-CODE_2A8221:        LDA #$0005                
-CODE_2A8224:        STA $08                   
-CODE_2A8226:        JSR CODE_2A8287           
-CODE_2A8229:        LDA.w DATA_2A82B8                 
-CODE_2A822C:        STA $0A                   
-CODE_2A822E:        LDA #$09A9                
-CODE_2A8231:        STA $00                   
-CODE_2A8233:        INC A                     
-CODE_2A8234:        STA $04                   
-CODE_2A8236:        LDA #$49A9                
-CODE_2A8239:        STA $02                   
-CODE_2A823B:        INC A                     
-CODE_2A823C:        STA $06                   
-CODE_2A823E:        LDA #$0007                
-CODE_2A8241:        STA $08                   
-CODE_2A8243:        JSR CODE_2A8287           
-CODE_2A8246:        LDA #$09AE                
-CODE_2A8249:        STA $02                   
-CODE_2A824B:        LDA #$09AF                
-CODE_2A824E:        STA $04                   
-CODE_2A8250:        LDY #$00                  
-CODE_2A8252:        LDA #$09AB                
-CODE_2A8255:        STA $00                   
-CODE_2A8257:        LDA DATA_2A82BA,y               
-CODE_2A825A:        STA $2116                 
-CODE_2A825D:        LDA $00                   
-CODE_2A825F:        STA $2118                 
-CODE_2A8262:        LDA $02                   
-CODE_2A8264:        STA $2118                 
-CODE_2A8267:        LDA $04                   
-CODE_2A8269:        STA $2118                 
-CODE_2A826C:        INY                       
-CODE_2A826D:        INY                       
-CODE_2A826E:        CPY #$30                  
-CODE_2A8270:        BEQ CODE_2A8283           
-CODE_2A8272:        TYA                       
-CODE_2A8273:        AND #$0002                
-CODE_2A8276:        BNE CODE_2A8257           
-CODE_2A8278:        INC $00                   
-CODE_2A827A:        LDA $00                   
-CODE_2A827C:        CMP #$09AE                
-CODE_2A827F:        BNE CODE_2A8257           
-CODE_2A8281:        BRA CODE_2A8252           
+CODE_2A81A5:        8B            PHB                       
+CODE_2A81A6:        4B            PHK                       
+CODE_2A81A7:        AB            PLB                       ;
+CODE_2A81A8:        9C 15 21      STZ $2115                 
+CODE_2A81AB:        C2 20         REP #$20                  
+CODE_2A81AD:        A9 FC 00      LDA #$00FC                
+CODE_2A81B0:        85 00         STA $00                   
+CODE_2A81B2:        A9 00 10      LDA #$1000                
+CODE_2A81B5:        8D 16 21      STA $2116                 
+CODE_2A81B8:        A9 08 18      LDA #$1808                
+CODE_2A81BB:        8D 00 43      STA $4300                 
+CODE_2A81BE:        A9 00 00      LDA #$0000                
+CODE_2A81C1:        8D 02 43      STA $4302                 
+CODE_2A81C4:        9C 04 43      STZ $4304                 
+CODE_2A81C7:        A9 00 10      LDA #$1000                
+CODE_2A81CA:        8D 05 43      STA $4305                 
+CODE_2A81CD:        A0 01         LDY #$01                  
+CODE_2A81CF:        8C 0B 42      STY $420B                 
+CODE_2A81D2:        A2 80         LDX #$80                  
+CODE_2A81D4:        8E 15 21      STX $2115                 
+CODE_2A81D7:        8D 05 43      STA $4305                 
+CODE_2A81DA:        A9 00 10      LDA #$1000                
+CODE_2A81DD:        8D 16 21      STA $2116                 
+CODE_2A81E0:        A9 08 19      LDA #$1908                
+CODE_2A81E3:        8D 00 43      STA $4300                 
+CODE_2A81E6:        A9 01 00      LDA #$0001                
+CODE_2A81E9:        8D 02 43      STA $4302                 
+CODE_2A81EC:        8C 0B 42      STY $420B                 
+CODE_2A81EF:        AD B2 82      LDA.w DATA_2A82B2                 
+CODE_2A81F2:        85 0A         STA $0A                   
+CODE_2A81F4:        A9 A5 09      LDA #$09A5                
+CODE_2A81F7:        85 00         STA $00                   
+CODE_2A81F9:        1A            INC A                     
+CODE_2A81FA:        85 04         STA $04                   
+CODE_2A81FC:        A9 A5 49      LDA #$49A5                
+CODE_2A81FF:        85 02         STA $02                   
+CODE_2A8201:        1A            INC A                     
+CODE_2A8202:        85 06         STA $06                   
+CODE_2A8204:        A9 06 00      LDA #$0006                
+CODE_2A8207:        85 08         STA $08                   
+CODE_2A8209:        20 87 82      JSR CODE_2A8287           
+CODE_2A820C:        AD B4 82      LDA.w DATA_2A82B4                 
+CODE_2A820F:        85 0A         STA $0A                   
+CODE_2A8211:        A9 A7 05      LDA #$05A7                
+CODE_2A8214:        85 00         STA $00                   
+CODE_2A8216:        1A            INC A                     
+CODE_2A8217:        85 04         STA $04                   
+CODE_2A8219:        A9 A7 45      LDA #$45A7                
+CODE_2A821C:        85 02         STA $02                   
+CODE_2A821E:        1A            INC A                     
+CODE_2A821F:        85 06         STA $06                   
+CODE_2A8221:        A9 05 00      LDA #$0005                
+CODE_2A8224:        85 08         STA $08                   
+CODE_2A8226:        20 87 82      JSR CODE_2A8287           
+CODE_2A8229:        AD B8 82      LDA.w DATA_2A82B8                 
+CODE_2A822C:        85 0A         STA $0A                   
+CODE_2A822E:        A9 A9 09      LDA #$09A9                
+CODE_2A8231:        85 00         STA $00                   
+CODE_2A8233:        1A            INC A                     
+CODE_2A8234:        85 04         STA $04                   
+CODE_2A8236:        A9 A9 49      LDA #$49A9                
+CODE_2A8239:        85 02         STA $02                   
+CODE_2A823B:        1A            INC A                     
+CODE_2A823C:        85 06         STA $06                   
+CODE_2A823E:        A9 07 00      LDA #$0007                
+CODE_2A8241:        85 08         STA $08                   
+CODE_2A8243:        20 87 82      JSR CODE_2A8287           
+CODE_2A8246:        A9 AE 09      LDA #$09AE                
+CODE_2A8249:        85 02         STA $02                   
+CODE_2A824B:        A9 AF 09      LDA #$09AF                
+CODE_2A824E:        85 04         STA $04                   
+CODE_2A8250:        A0 00         LDY #$00                  
+CODE_2A8252:        A9 AB 09      LDA #$09AB                
+CODE_2A8255:        85 00         STA $00                   
+CODE_2A8257:        B9 BA 82      LDA DATA_2A82BA,y               
+CODE_2A825A:        8D 16 21      STA $2116                 
+CODE_2A825D:        A5 00         LDA $00                   
+CODE_2A825F:        8D 18 21      STA $2118                 
+CODE_2A8262:        A5 02         LDA $02                   
+CODE_2A8264:        8D 18 21      STA $2118                 
+CODE_2A8267:        A5 04         LDA $04                   
+CODE_2A8269:        8D 18 21      STA $2118                 
+CODE_2A826C:        C8            INY                       
+CODE_2A826D:        C8            INY                       
+CODE_2A826E:        C0 30         CPY #$30                  
+CODE_2A8270:        F0 11         BEQ CODE_2A8283           
+CODE_2A8272:        98            TYA                       
+CODE_2A8273:        29 02 00      AND #$0002                
+CODE_2A8276:        D0 DF         BNE CODE_2A8257           
+CODE_2A8278:        E6 00         INC $00                   
+CODE_2A827A:        A5 00         LDA $00                   
+CODE_2A827C:        C9 AE 09      CMP #$09AE                
+CODE_2A827F:        D0 D6         BNE CODE_2A8257           
+CODE_2A8281:        80 CF         BRA CODE_2A8252           
 
-CODE_2A8283:        SEP #$20                  
-CODE_2A8285:        PLB                       ;
-CODE_2A8286:        RTL                       
+CODE_2A8283:        E2 20         SEP #$20                  
+CODE_2A8285:        AB            PLB                       ;
+CODE_2A8286:        6B            RTL                       
 
-CODE_2A8287:        LDY #$00                  
-CODE_2A8289:        LDA ($0A),y               
-CODE_2A828B:        STA $2116                 
-CODE_2A828E:        LDA $00                   
-CODE_2A8290:        STA $2118                 
-CODE_2A8293:        LDA $02                   
-CODE_2A8295:        STA $2118                 
-CODE_2A8298:        LDA ($0A),y               
-CODE_2A829A:        CLC                       
-CODE_2A829B:        ADC #$0020              
-CODE_2A829E:        STA $2116
-CODE_2A82A1:        LDA $04                   
-CODE_2A82A3:        STA $2118                 
-CODE_2A82A6:        LDA $06                   
-CODE_2A82A8:        STA $2118                 
-CODE_2A82AB:        INY                       
-CODE_2A82AC:        INY                       
-CODE_2A82AD:        DEC $08                   
-CODE_2A82AF:        BNE CODE_2A8289           
-CODE_2A82B1:        RTS                       
+CODE_2A8287:        A0 00         LDY #$00                  
+CODE_2A8289:        B1 0A         LDA ($0A),y               
+CODE_2A828B:        8D 16 21      STA $2116                 
+CODE_2A828E:        A5 00         LDA $00                   
+CODE_2A8290:        8D 18 21      STA $2118                 
+CODE_2A8293:        A5 02         LDA $02                   
+CODE_2A8295:        8D 18 21      STA $2118                 
+CODE_2A8298:        B1 0A         LDA ($0A),y               
+CODE_2A829A:        18            CLC                       
+CODE_2A829B:        69 20         ADC #$0020              
+CODE_2A829E:        8D 16 21      STA $2116
+CODE_2A82A1:        A5 04         LDA $04                   
+CODE_2A82A3:        8D 18 21      STA $2118                 
+CODE_2A82A6:        A5 06         LDA $06                   
+CODE_2A82A8:        8D 18 21      STA $2118                 
+CODE_2A82AB:        C8            INY                       
+CODE_2A82AC:        C8            INY                       
+CODE_2A82AD:        C6 08         DEC $08                   
+CODE_2A82AF:        D0 D8         BNE CODE_2A8289           
+CODE_2A82B1:        60            RTS                       
 
 DATA_2A82B2:        dw $BBE6
 
@@ -340,121 +340,121 @@ DATA_2A82BA:        dw $1076,$1283,$122B,$1294
                     dw $1946,$1977,$1C76,$1E83
                     dw $1E2B,$1E94,$1D46,$1D77
      
-CODE_2A82EA:        LDA #$80                  
-CODE_2A82EC:        STA $2115                 
-CODE_2A82EF:        REP #$20                  
-CODE_2A82F1:        LDA #$6800                
-CODE_2A82F4:        STA $2116                 
-CODE_2A82F7:        LDA #$1801                
-CODE_2A82FA:        STA $4300                 
-CODE_2A82FD:        LDA.w #DATA_37F000                
-CODE_2A8300:        STA $4302                 
-CODE_2A8303:        LDX.b #DATA_37F000>>16                  
-CODE_2A8305:        STX $4304                 
-CODE_2A8308:        LDA #$1000                
-CODE_2A830B:        STA $4305                 
-CODE_2A830E:        LDX #$01                  
-CODE_2A8310:        STX $420B                 
-CODE_2A8313:        SEP #$20                  
-CODE_2A8315:        LDA #$0F                  
-CODE_2A8317:        STA $16                   
-CODE_2A8319:        LDA $0726                 
-CODE_2A831C:        STA $1A80                 
-CODE_2A831F:        LDA $001D                 
-CODE_2A8322:        AND #$02                  
-CODE_2A8324:        BEQ CODE_2A832F           
-CODE_2A8326:        LDX $B3                   
-CODE_2A8328:        CPX #$BC                  
-CODE_2A832A:        BEQ CODE_2A832F           
-CODE_2A832C:        STA $1A80                 
-CODE_2A832F:        JSL CODE_22E0A9           
-CODE_2A8333:        JSL CODE_27E173           
-CODE_2A8337:        RTL                       
+CODE_2A82EA:        A9 80         LDA #$80                  
+CODE_2A82EC:        8D 15 21      STA $2115                 
+CODE_2A82EF:        C2 20         REP #$20                  
+CODE_2A82F1:        A9 00 68      LDA #$6800                
+CODE_2A82F4:        8D 16 21      STA $2116                 
+CODE_2A82F7:        A9 01 18      LDA #$1801                
+CODE_2A82FA:        8D 00 43      STA $4300                 
+CODE_2A82FD:        A9 00 F0      LDA.w #DATA_37F000                
+CODE_2A8300:        8D 02 43      STA $4302                 
+CODE_2A8303:        A2 37         LDX.b #DATA_37F000>>16                  
+CODE_2A8305:        8E 04 43      STX $4304                 
+CODE_2A8308:        A9 00 10      LDA #$1000                
+CODE_2A830B:        8D 05 43      STA $4305                 
+CODE_2A830E:        A2 01         LDX #$01                  
+CODE_2A8310:        8E 0B 42      STX $420B                 
+CODE_2A8313:        E2 20         SEP #$20                  
+CODE_2A8315:        A9 0F         LDA #$0F                  
+CODE_2A8317:        85 16         STA $16                   
+CODE_2A8319:        AD 26 07      LDA $0726                 
+CODE_2A831C:        8D 80 1A      STA $1A80                 
+CODE_2A831F:        AD 1D 00      LDA $001D                 
+CODE_2A8322:        29 02         AND #$02                  
+CODE_2A8324:        F0 09         BEQ CODE_2A832F           
+CODE_2A8326:        A6 B3         LDX $B3                   
+CODE_2A8328:        E0 BC         CPX #$BC                  
+CODE_2A832A:        F0 03         BEQ CODE_2A832F           
+CODE_2A832C:        8D 80 1A      STA $1A80                 
+CODE_2A832F:        22 A9 E0 22   JSL CODE_22E0A9           
+CODE_2A8333:        22 73 E1 27   JSL CODE_27E173           
+CODE_2A8337:        6B            RTL                       
 
-CODE_2A8338:        LDA $0706                 
-CODE_2A833B:        AND #$0F                  
-CODE_2A833D:        STA $02                   
-CODE_2A833F:        LDY $0700                 
-CODE_2A8342:        LDA #$BA                  
-CODE_2A8344:        STA [$2E],y               
-CODE_2A8346:        JSL CODE_2AB73A           
-CODE_2A834A:        INY                       
-CODE_2A834B:        LDA #$BB                  
-CODE_2A834D:        STA [$2E],y               
-CODE_2A834F:        JSL CODE_2AB73A           
-CODE_2A8353:        LDA $0700                 
-CODE_2A8356:        CLC                       
-CODE_2A8357:        ADC #$10                  
-CODE_2A8359:        STA $0700                 
-CODE_2A835C:        LDA $2F                   
-CODE_2A835E:        ADC #$00                  
-CODE_2A8360:        STA $2F                   
-CODE_2A8362:        DEC $02                   
-CODE_2A8364:        BNE CODE_2A833F           
-CODE_2A8366:        REP #$20                  
-CODE_2A8368:        LDA $2E                   
-CODE_2A836A:        STA $D8                   
-CODE_2A836C:        SEP #$20                  
-CODE_2A836E:        LDA $30                   
-CODE_2A8370:        STA $DA                   
-CODE_2A8372:        LDY $0700                 
-CODE_2A8375:        LDA #$02                  
-CODE_2A8377:        STA [$D8],y               
-CODE_2A8379:        JSR CODE_2A8AD2           
-CODE_2A837C:        INY                       
-CODE_2A837D:        LDA $D9                   
-CODE_2A837F:        SEC                       
-CODE_2A8380:        SBC #$20                  
-CODE_2A8382:        STA $D9                   
-CODE_2A8384:        LDA #$03                  
-CODE_2A8386:        STA [$D8],y               
-CODE_2A8388:        JSR CODE_2A8AD2           
-CODE_2A838B:        RTL                       
+CODE_2A8338:        AD 06 07      LDA $0706                 
+CODE_2A833B:        29 0F         AND #$0F                  
+CODE_2A833D:        85 02         STA $02                   
+CODE_2A833F:        AC 00 07      LDY $0700                 
+CODE_2A8342:        A9 BA         LDA #$BA                  
+CODE_2A8344:        97 2E         STA [$2E],y               
+CODE_2A8346:        22 3A B7 2A   JSL CODE_2AB73A           
+CODE_2A834A:        C8            INY                       
+CODE_2A834B:        A9 BB         LDA #$BB                  
+CODE_2A834D:        97 2E         STA [$2E],y               
+CODE_2A834F:        22 3A B7 2A   JSL CODE_2AB73A           
+CODE_2A8353:        AD 00 07      LDA $0700                 
+CODE_2A8356:        18            CLC                       
+CODE_2A8357:        69 10         ADC #$10                  
+CODE_2A8359:        8D 00 07      STA $0700                 
+CODE_2A835C:        A5 2F         LDA $2F                   
+CODE_2A835E:        69 00         ADC #$00                  
+CODE_2A8360:        85 2F         STA $2F                   
+CODE_2A8362:        C6 02         DEC $02                   
+CODE_2A8364:        D0 D9         BNE CODE_2A833F           
+CODE_2A8366:        C2 20         REP #$20                  
+CODE_2A8368:        A5 2E         LDA $2E                   
+CODE_2A836A:        85 D8         STA $D8                   
+CODE_2A836C:        E2 20         SEP #$20                  
+CODE_2A836E:        A5 30         LDA $30                   
+CODE_2A8370:        85 DA         STA $DA                   
+CODE_2A8372:        AC 00 07      LDY $0700                 
+CODE_2A8375:        A9 02         LDA #$02                  
+CODE_2A8377:        97 D8         STA [$D8],y               
+CODE_2A8379:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A837C:        C8            INY                       
+CODE_2A837D:        A5 D9         LDA $D9                   
+CODE_2A837F:        38            SEC                       
+CODE_2A8380:        E9 20         SBC #$20                  
+CODE_2A8382:        85 D9         STA $D9                   
+CODE_2A8384:        A9 03         LDA #$03                  
+CODE_2A8386:        97 D8         STA [$D8],y               
+CODE_2A8388:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A838B:        6B            RTL                       
 
-CODE_2A838C:        LDY $0700                 
-CODE_2A838F:        LDA #$E2                  
-CODE_2A8391:        STA [$2E],y               
-CODE_2A8393:        RTL                       
+CODE_2A838C:        AC 00 07      LDY $0700                 
+CODE_2A838F:        A9 E2         LDA #$E2                  
+CODE_2A8391:        97 2E         STA [$2E],y               
+CODE_2A8393:        6B            RTL                       
 
-CODE_2A8394:        PHB                       
-CODE_2A8395:        PHK                       
-CODE_2A8396:        PLB                       ;
-CODE_2A8397:        LDA $30                   
-CODE_2A8399:        STA $DA                   
-CODE_2A839B:        REP #$20                  
-CODE_2A839D:        LDA $2E                   
-CODE_2A839F:        CLC                       
-CODE_2A83A0:        ADC #$2000                
-CODE_2A83A3:        STA $D8                   
-CODE_2A83A5:        SEP #$20                  
-CODE_2A83A7:        LDA $0700                 
-CODE_2A83AA:        STA $03                   
-CODE_2A83AC:        LDX #$00                  
-CODE_2A83AE:        LDY $03                   
-CODE_2A83B0:        LDA.w DATA_2A83DB,x               
-CODE_2A83B3:        CMP #$80                  
-CODE_2A83B5:        BEQ CODE_2A83C5           
-CODE_2A83B7:        CMP #$FF                  
-CODE_2A83B9:        BEQ CODE_2A83D9           
-CODE_2A83BB:        STA [$2E],y               
-CODE_2A83BD:        AND #$F0                  
-CODE_2A83BF:        BNE CODE_2A83C5           
-CODE_2A83C1:        LDA #$01                  
-CODE_2A83C3:        STA [$D8],y               
-CODE_2A83C5:        INX                       
-CODE_2A83C6:        INC $03                   
-CODE_2A83C8:        LDA $03                   
-CODE_2A83CA:        AND #$07                  
-CODE_2A83CC:        BNE CODE_2A83AE           
-CODE_2A83CE:        LDA $03                   
-CODE_2A83D0:        AND #$F0                  
-CODE_2A83D2:        CLC                       
-CODE_2A83D3:        ADC #$10                  
-CODE_2A83D5:        STA $03                   
-CODE_2A83D7:        BRA CODE_2A83AE           
+CODE_2A8394:        8B            PHB                       
+CODE_2A8395:        4B            PHK                       
+CODE_2A8396:        AB            PLB                       ;
+CODE_2A8397:        A5 30         LDA $30                   
+CODE_2A8399:        85 DA         STA $DA                   
+CODE_2A839B:        C2 20         REP #$20                  
+CODE_2A839D:        A5 2E         LDA $2E                   
+CODE_2A839F:        18            CLC                       
+CODE_2A83A0:        69 00 20      ADC #$2000                
+CODE_2A83A3:        85 D8         STA $D8                   
+CODE_2A83A5:        E2 20         SEP #$20                  
+CODE_2A83A7:        AD 00 07      LDA $0700                 
+CODE_2A83AA:        85 03         STA $03                   
+CODE_2A83AC:        A2 00         LDX #$00                  
+CODE_2A83AE:        A4 03         LDY $03                   
+CODE_2A83B0:        BD DB 83      LDA.w DATA_2A83DB,x               
+CODE_2A83B3:        C9 80         CMP #$80                  
+CODE_2A83B5:        F0 0E         BEQ CODE_2A83C5           
+CODE_2A83B7:        C9 FF         CMP #$FF                  
+CODE_2A83B9:        F0 1E         BEQ CODE_2A83D9           
+CODE_2A83BB:        97 2E         STA [$2E],y               
+CODE_2A83BD:        29 F0         AND #$F0                  
+CODE_2A83BF:        D0 04         BNE CODE_2A83C5           
+CODE_2A83C1:        A9 01         LDA #$01                  
+CODE_2A83C3:        97 D8         STA [$D8],y               
+CODE_2A83C5:        E8            INX                       
+CODE_2A83C6:        E6 03         INC $03                   
+CODE_2A83C8:        A5 03         LDA $03                   
+CODE_2A83CA:        29 07         AND #$07                  
+CODE_2A83CC:        D0 E0         BNE CODE_2A83AE           
+CODE_2A83CE:        A5 03         LDA $03                   
+CODE_2A83D0:        29 F0         AND #$F0                  
+CODE_2A83D2:        18            CLC                       
+CODE_2A83D3:        69 10         ADC #$10                  
+CODE_2A83D5:        85 03         STA $03                   
+CODE_2A83D7:        80 D5         BRA CODE_2A83AE           
 
-CODE_2A83D9:        PLB                       ;
-CODE_2A83DA:        RTL                       
+CODE_2A83D9:        AB            PLB                       ;
+CODE_2A83DA:        6B            RTL                       
 
 DATA_2A83DB:        db $80,$80,$80,$90,$91,$80,$80,$80
                     db $80,$80,$80,$94,$92,$91,$80,$80
@@ -466,347 +466,347 @@ DATA_2A83DB:        db $80,$80,$80,$90,$91,$80,$80,$80
                     db $94,$03,$98,$03,$92,$93,$03,$95
                     db $FF
 
-CODE_2A841C:        RTL                       
+CODE_2A841C:        6B            RTL                       
 
-CODE_2A841D:        PHB                       
-CODE_2A841E:        LDA #$7F                  
-CODE_2A8420:        PHA                       
-CODE_2A8421:        PLB                       ;
-CODE_2A8422:        LDA $000249               
-CODE_2A8426:        AND #$FE                  
-CODE_2A8428:        TAX                       
-CODE_2A8429:        LDY #$00                  
-CODE_2A842B:        REP #$20                  
-CODE_2A842D:        LDA #$001F                
-CODE_2A8430:        STA $00                   
-CODE_2A8432:        LDA $000212               
-CODE_2A8436:        STA $02                   
-CODE_2A8438:        LDA.l DATA_2ABC0A,x             
-CODE_2A843C:        CLC                       
-CODE_2A843D:        ADC $02                   
-CODE_2A843F:        STA $9200,y               
-CODE_2A8442:        STA $9240,y               
-CODE_2A8445:        STA $9280,y               
-CODE_2A8448:        STA $92C0,y               
-CODE_2A844B:        STA $9300,y               
-CODE_2A844E:        STA $9340,y               
-CODE_2A8451:        STA $9380,y               
-CODE_2A8454:        STA $93C0,y               
-CODE_2A8457:        INX                       
-CODE_2A8458:        INX                       
-CODE_2A8459:        INY                       
-CODE_2A845A:        INY                       
-CODE_2A845B:        DEC $00                   
-CODE_2A845D:        BPL CODE_2A8438           
-CODE_2A845F:        SEP #$20                  
-CODE_2A8461:        PLB                       ;
-CODE_2A8462:        LDA $15                   
-CODE_2A8464:        AND #$03                  
-CODE_2A8466:        BNE CODE_2A846E           
-CODE_2A8468:        INC $0249                 
-CODE_2A846B:        INC $0249                 
-CODE_2A846E:        LDA $0293                 
-CODE_2A8471:        ORA #$80                  
-CODE_2A8473:        STA $0293                 
-CODE_2A8476:        RTL                       
+CODE_2A841D:        8B            PHB                       
+CODE_2A841E:        A9 7F         LDA #$7F                  
+CODE_2A8420:        48            PHA                       
+CODE_2A8421:        AB            PLB                       ;
+CODE_2A8422:        AF 49 02 00   LDA $000249               
+CODE_2A8426:        29 FE         AND #$FE                  
+CODE_2A8428:        AA            TAX                       
+CODE_2A8429:        A0 00         LDY #$00                  
+CODE_2A842B:        C2 20         REP #$20                  
+CODE_2A842D:        A9 1F 00      LDA #$001F                
+CODE_2A8430:        85 00         STA $00                   
+CODE_2A8432:        AF 12 02 00   LDA $000212               
+CODE_2A8436:        85 02         STA $02                   
+CODE_2A8438:        BF 0A BC 2A   LDA.l DATA_2ABC0A,x             
+CODE_2A843C:        18            CLC                       
+CODE_2A843D:        65 02         ADC $02                   
+CODE_2A843F:        99 00 92      STA $9200,y               
+CODE_2A8442:        99 40 92      STA $9240,y               
+CODE_2A8445:        99 80 92      STA $9280,y               
+CODE_2A8448:        99 C0 92      STA $92C0,y               
+CODE_2A844B:        99 00 93      STA $9300,y               
+CODE_2A844E:        99 40 93      STA $9340,y               
+CODE_2A8451:        99 80 93      STA $9380,y               
+CODE_2A8454:        99 C0 93      STA $93C0,y               
+CODE_2A8457:        E8            INX                       
+CODE_2A8458:        E8            INX                       
+CODE_2A8459:        C8            INY                       
+CODE_2A845A:        C8            INY                       
+CODE_2A845B:        C6 00         DEC $00                   
+CODE_2A845D:        10 D9         BPL CODE_2A8438           
+CODE_2A845F:        E2 20         SEP #$20                  
+CODE_2A8461:        AB            PLB                       ;
+CODE_2A8462:        A5 15         LDA $15                   
+CODE_2A8464:        29 03         AND #$03                  
+CODE_2A8466:        D0 06         BNE CODE_2A846E           
+CODE_2A8468:        EE 49 02      INC $0249                 
+CODE_2A846B:        EE 49 02      INC $0249                 
+CODE_2A846E:        AD 93 02      LDA $0293                 
+CODE_2A8471:        09 80         ORA #$80                  
+CODE_2A8473:        8D 93 02      STA $0293                 
+CODE_2A8476:        6B            RTL                       
 
 DATA_2A8477:        db $55,$56,$56,$56,$56,$57
 
 DATA_2A847D:        db $5B,$5C,$5C,$5C,$5C,$5D
              
-CODE_2A8483:        PHB
-CODE_2A8484:        PHK
-CODE_2A8485:        PLB                       ;
-CODE_2A8486:        LDX #$00                  
-CODE_2A8488:        LDY $0700                 
-CODE_2A848B:        LDA $30                   
-CODE_2A848D:        STA $DA                   
-CODE_2A848F:        REP #$20                  
-CODE_2A8491:        LDA $2E                   
-CODE_2A8493:        CLC                       
-CODE_2A8494:        ADC #$0010                
-CODE_2A8497:        STA $D8                   
-CODE_2A8499:        SEP #$20                  
-CODE_2A849B:        LDA.w DATA_2A8477,x               
-CODE_2A849E:        STA [$2E],y               
-CODE_2A84A0:        LDA.w DATA_2A847D,x               
-CODE_2A84A3:        STA [$D8],y               
-CODE_2A84A5:        JSL CODE_23BEBB           
-CODE_2A84A9:        INX                       
-CODE_2A84AA:        CPX #$06                  
-CODE_2A84AC:        BNE CODE_2A848F           
-CODE_2A84AE:        PLB                       ;
-CODE_2A84AF:        RTL                       
+CODE_2A8483:        8B            PHB
+CODE_2A8484:        4B            PHK
+CODE_2A8485:        AB            PLB                       ;
+CODE_2A8486:        A2 00         LDX #$00                  
+CODE_2A8488:        AC 00 07      LDY $0700                 
+CODE_2A848B:        A5 30         LDA $30                   
+CODE_2A848D:        85 DA         STA $DA                   
+CODE_2A848F:        C2 20         REP #$20                  
+CODE_2A8491:        A5 2E         LDA $2E                   
+CODE_2A8493:        18            CLC                       
+CODE_2A8494:        69 10 00      ADC #$0010                
+CODE_2A8497:        85 D8         STA $D8                   
+CODE_2A8499:        E2 20         SEP #$20                  
+CODE_2A849B:        BD 77 84      LDA.w DATA_2A8477,x               
+CODE_2A849E:        97 2E         STA [$2E],y               
+CODE_2A84A0:        BD 7D 84      LDA.w DATA_2A847D,x               
+CODE_2A84A3:        97 D8         STA [$D8],y               
+CODE_2A84A5:        22 BB BE 23   JSL CODE_23BEBB           
+CODE_2A84A9:        E8            INX                       
+CODE_2A84AA:        E0 06         CPX #$06                  
+CODE_2A84AC:        D0 E1         BNE CODE_2A848F           
+CODE_2A84AE:        AB            PLB                       ;
+CODE_2A84AF:        6B            RTL                       
 
-CODE_2A84B0:        LDA $0350                 
-CODE_2A84B3:        BEQ CODE_2A84EA           
-CODE_2A84B5:        STZ $0249                 
-CODE_2A84B8:        LDA #$B0                  
-CODE_2A84BA:        STA $024B                 
-CODE_2A84BD:        LDA #$1A                  
-CODE_2A84BF:        STA $0612                 
-CODE_2A84C2:        STZ $D8                   
-CODE_2A84C4:        STZ $D9                   
-CODE_2A84C6:        JSR CODE_2A8518           
-CODE_2A84C9:        INC $0249                 
-CODE_2A84CC:        LDA $0249                 
-CODE_2A84CF:        AND #$01                  
-CODE_2A84D1:        BNE CODE_2A84E3           
-CODE_2A84D3:        LDA $024B                 
-CODE_2A84D6:        CLC                       
-CODE_2A84D7:        ADC #$10                  
-CODE_2A84D9:        STA $024B                 
-CODE_2A84DC:        AND #$F0                  
-CODE_2A84DE:        BNE CODE_2A84E3           
-CODE_2A84E0:        INC $024B                 
-CODE_2A84E3:        DEC $0612                 
-CODE_2A84E6:        BNE CODE_2A84C6           
-CODE_2A84E8:        BRA CODE_2A8513           
+CODE_2A84B0:        AD 50 03      LDA $0350                 
+CODE_2A84B3:        F0 35         BEQ CODE_2A84EA           
+CODE_2A84B5:        9C 49 02      STZ $0249                 
+CODE_2A84B8:        A9 B0         LDA #$B0                  
+CODE_2A84BA:        8D 4B 02      STA $024B                 
+CODE_2A84BD:        A9 1A         LDA #$1A                  
+CODE_2A84BF:        8D 12 06      STA $0612                 
+CODE_2A84C2:        64 D8         STZ $D8                   
+CODE_2A84C4:        64 D9         STZ $D9                   
+CODE_2A84C6:        20 18 85      JSR CODE_2A8518           
+CODE_2A84C9:        EE 49 02      INC $0249                 
+CODE_2A84CC:        AD 49 02      LDA $0249                 
+CODE_2A84CF:        29 01         AND #$01                  
+CODE_2A84D1:        D0 10         BNE CODE_2A84E3           
+CODE_2A84D3:        AD 4B 02      LDA $024B                 
+CODE_2A84D6:        18            CLC                       
+CODE_2A84D7:        69 10         ADC #$10                  
+CODE_2A84D9:        8D 4B 02      STA $024B                 
+CODE_2A84DC:        29 F0         AND #$F0                  
+CODE_2A84DE:        D0 03         BNE CODE_2A84E3           
+CODE_2A84E0:        EE 4B 02      INC $024B                 
+CODE_2A84E3:        CE 12 06      DEC $0612                 
+CODE_2A84E6:        D0 DE         BNE CODE_2A84C6           
+CODE_2A84E8:        80 29         BRA CODE_2A8513           
 
-CODE_2A84EA:        REP #$20                  
-CODE_2A84EC:        LDX #$00                  
-CODE_2A84EE:        LDA #$00FF                
-CODE_2A84F1:        STA $7F2000,x             
-CODE_2A84F5:        STA $7F2100,x             
-CODE_2A84F9:        STA $7F2200,x             
-CODE_2A84FD:        STA $7F2300,x             
-CODE_2A8501:        STA $7F2400,x             
-CODE_2A8505:        STA $7F2500,x             
-CODE_2A8509:        STA $7F2600,x             
-CODE_2A850D:        DEX                       
-CODE_2A850E:        DEX                       
-CODE_2A850F:        BNE CODE_2A84F1           
-CODE_2A8511:        SEP #$20                  
-CODE_2A8513:        STZ $D8                   
-CODE_2A8515:        STZ $D9                   
-CODE_2A8517:        RTL                       
+CODE_2A84EA:        C2 20         REP #$20                  
+CODE_2A84EC:        A2 00         LDX #$00                  
+CODE_2A84EE:        A9 FF 00      LDA #$00FF                
+CODE_2A84F1:        9F 00 20 7F   STA $7F2000,x             
+CODE_2A84F5:        9F 00 21 7F   STA $7F2100,x             
+CODE_2A84F9:        9F 00 22 7F   STA $7F2200,x             
+CODE_2A84FD:        9F 00 23 7F   STA $7F2300,x             
+CODE_2A8501:        9F 00 24 7F   STA $7F2400,x             
+CODE_2A8505:        9F 00 25 7F   STA $7F2500,x             
+CODE_2A8509:        9F 00 26 7F   STA $7F2600,x             
+CODE_2A850D:        CA            DEX                       
+CODE_2A850E:        CA            DEX                       
+CODE_2A850F:        D0 E0         BNE CODE_2A84F1           
+CODE_2A8511:        E2 20         SEP #$20                  
+CODE_2A8513:        64 D8         STZ $D8                   
+CODE_2A8515:        64 D9         STZ $D9                   
+CODE_2A8517:        6B            RTL                       
 
-CODE_2A8518:        PHB                       
-CODE_2A8519:        PHK                       
-CODE_2A851A:        PLB                       ;
-CODE_2A851B:        LDA $0249                 
-CODE_2A851E:        AND #$01                  
-CODE_2A8520:        STA $C2                   
-CODE_2A8522:        LDA $0350                 
-CODE_2A8525:        ASL A                     
-CODE_2A8526:        CLC                       
-CODE_2A8527:        ADC $0350                 
-CODE_2A852A:        TAY                       
-CODE_2A852B:        LDA.w DATA_2AB546-1,y               
-CODE_2A852E:        STA $08                   
-CODE_2A8530:        REP #$20                  
-CODE_2A8532:        LDA.w DATA_2AB546-3,y               
-CODE_2A8535:        STA $06                   
-CODE_2A8537:        SEP #$20                  
-CODE_2A8539:        LDA #$7F                  
-CODE_2A853B:        STA $0F                   
-CODE_2A853D:        REP #$20                  
-CODE_2A853F:        STZ $0D                   
-CODE_2A8541:        LDA #$0010                
-CODE_2A8544:        STA $00                   
-CODE_2A8546:        LDA $024B                 
-CODE_2A8549:        AND #$00F0                
-CODE_2A854C:        STA $09                   
-CODE_2A854E:        REP #$10                  
-CODE_2A8550:        LDA $024B                 
-CODE_2A8553:        AND #$0001                
-CODE_2A8556:        BEQ CODE_2A8560           
-CODE_2A8558:        LDA $0D                   
-CODE_2A855A:        CLC                       
-CODE_2A855B:        ADC #$0100                
-CODE_2A855E:        STA $0D                   
-CODE_2A8560:        LDX $D8                   
-CODE_2A8562:        LDY $09                   
-CODE_2A8564:        LDA [$0D],y               
-CODE_2A8566:        AND #$00FF                
-CODE_2A8569:        ASL A                     
-CODE_2A856A:        ASL A                     
-CODE_2A856B:        ASL A                     
-CODE_2A856C:        TAY                       
-CODE_2A856D:        LDA $C2                   
-CODE_2A856F:        AND #$00FF                
-CODE_2A8572:        BEQ CODE_2A8576           
-CODE_2A8574:        INY                       
-CODE_2A8575:        INY                       
-CODE_2A8576:        LDA [$06],y               
-CODE_2A8578:        STA $7F2000,x             
-CODE_2A857C:        INY                       
-CODE_2A857D:        INY                       
-CODE_2A857E:        INY                       
-CODE_2A857F:        INY                       
-CODE_2A8580:        LDA [$06],y               
-CODE_2A8582:        STA $7F2002,x             
-CODE_2A8586:        INC $09                   
-CODE_2A8588:        INC $D8                   
-CODE_2A858A:        INC $D8                   
-CODE_2A858C:        INC $D8                   
-CODE_2A858E:        INC $D8                   
-CODE_2A8590:        DEC $00                   
-CODE_2A8592:        BNE CODE_2A8560           
-CODE_2A8594:        SEP #$30                  
-CODE_2A8596:        PLB                       ;
-CODE_2A8597:        RTS                       
+CODE_2A8518:        8B            PHB                       
+CODE_2A8519:        4B            PHK                       
+CODE_2A851A:        AB            PLB                       ;
+CODE_2A851B:        AD 49 02      LDA $0249                 
+CODE_2A851E:        29 01         AND #$01                  
+CODE_2A8520:        85 C2         STA $C2                   
+CODE_2A8522:        AD 50 03      LDA $0350                 
+CODE_2A8525:        0A            ASL A                     
+CODE_2A8526:        18            CLC                       
+CODE_2A8527:        6D 50 03      ADC $0350                 
+CODE_2A852A:        A8            TAY                       
+CODE_2A852B:        B9 45 B5      LDA.w DATA_2AB546-1,y               
+CODE_2A852E:        85 08         STA $08                   
+CODE_2A8530:        C2 20         REP #$20                  
+CODE_2A8532:        B9 43 B5      LDA.w DATA_2AB546-3,y               
+CODE_2A8535:        85 06         STA $06                   
+CODE_2A8537:        E2 20         SEP #$20                  
+CODE_2A8539:        A9 7F         LDA #$7F                  
+CODE_2A853B:        85 0F         STA $0F                   
+CODE_2A853D:        C2 20         REP #$20                  
+CODE_2A853F:        64 0D         STZ $0D                   
+CODE_2A8541:        A9 10 00      LDA #$0010                
+CODE_2A8544:        85 00         STA $00                   
+CODE_2A8546:        AD 4B 02      LDA $024B                 
+CODE_2A8549:        29 F0 00      AND #$00F0                
+CODE_2A854C:        85 09         STA $09                   
+CODE_2A854E:        C2 10         REP #$10                  
+CODE_2A8550:        AD 4B 02      LDA $024B                 
+CODE_2A8553:        29 01 00      AND #$0001                
+CODE_2A8556:        F0 08         BEQ CODE_2A8560           
+CODE_2A8558:        A5 0D         LDA $0D                   
+CODE_2A855A:        18            CLC                       
+CODE_2A855B:        69 00 01      ADC #$0100                
+CODE_2A855E:        85 0D         STA $0D                   
+CODE_2A8560:        A6 D8         LDX $D8                   
+CODE_2A8562:        A4 09         LDY $09                   
+CODE_2A8564:        B7 0D         LDA [$0D],y               
+CODE_2A8566:        29 FF 00      AND #$00FF                
+CODE_2A8569:        0A            ASL A                     
+CODE_2A856A:        0A            ASL A                     
+CODE_2A856B:        0A            ASL A                     
+CODE_2A856C:        A8            TAY                       
+CODE_2A856D:        A5 C2         LDA $C2                   
+CODE_2A856F:        29 FF 00      AND #$00FF                
+CODE_2A8572:        F0 02         BEQ CODE_2A8576           
+CODE_2A8574:        C8            INY                       
+CODE_2A8575:        C8            INY                       
+CODE_2A8576:        B7 06         LDA [$06],y               
+CODE_2A8578:        9F 00 20 7F   STA $7F2000,x             
+CODE_2A857C:        C8            INY                       
+CODE_2A857D:        C8            INY                       
+CODE_2A857E:        C8            INY                       
+CODE_2A857F:        C8            INY                       
+CODE_2A8580:        B7 06         LDA [$06],y               
+CODE_2A8582:        9F 02 20 7F   STA $7F2002,x             
+CODE_2A8586:        E6 09         INC $09                   
+CODE_2A8588:        E6 D8         INC $D8                   
+CODE_2A858A:        E6 D8         INC $D8                   
+CODE_2A858C:        E6 D8         INC $D8                   
+CODE_2A858E:        E6 D8         INC $D8                   
+CODE_2A8590:        C6 00         DEC $00                   
+CODE_2A8592:        D0 CC         BNE CODE_2A8560           
+CODE_2A8594:        E2 30         SEP #$30                  
+CODE_2A8596:        AB            PLB                       ;
+CODE_2A8597:        60            RTS                       
 
-CODE_2A8598:        PHB                       
-CODE_2A8599:        PHK                       
-CODE_2A859A:        PLB                       ;
-CODE_2A859B:        REP #$20                  
-CODE_2A859D:        LDA $2E                   
-CODE_2A859F:        STA $D8                   
-CODE_2A85A1:        LDA #$0010                
-CODE_2A85A4:        STA $DB                   
-CODE_2A85A6:        SEP #$20                  
-CODE_2A85A8:        LDA $30                   
-CODE_2A85AA:        STA $DA                   
-CODE_2A85AC:        LDA $0706                 
-CODE_2A85AF:        AND #$0F                  
-CODE_2A85B1:        TAX                       
-CODE_2A85B2:        LDY $0700                 
-CODE_2A85B5:        LDA.w DATA_2A85CB,x               
-CODE_2A85B8:        STA [$D8],y               
-CODE_2A85BA:        JSR CODE_2A8AD2           
-CODE_2A85BD:        JSR CODE_2A86F5           
-CODE_2A85C0:        INX                       
-CODE_2A85C1:        LDA.w DATA_2A85CB,x               
-CODE_2A85C4:        STA [$D8],y               
-CODE_2A85C6:        JSR CODE_2A8AD2           
-CODE_2A85C9:        PLB                       ;
-CODE_2A85CA:        RTL                       
+CODE_2A8598:        8B            PHB                       
+CODE_2A8599:        4B            PHK                       
+CODE_2A859A:        AB            PLB                       ;
+CODE_2A859B:        C2 20         REP #$20                  
+CODE_2A859D:        A5 2E         LDA $2E                   
+CODE_2A859F:        85 D8         STA $D8                   
+CODE_2A85A1:        A9 10 00      LDA #$0010                
+CODE_2A85A4:        85 DB         STA $DB                   
+CODE_2A85A6:        E2 20         SEP #$20                  
+CODE_2A85A8:        A5 30         LDA $30                   
+CODE_2A85AA:        85 DA         STA $DA                   
+CODE_2A85AC:        AD 06 07      LDA $0706                 
+CODE_2A85AF:        29 0F         AND #$0F                  
+CODE_2A85B1:        AA            TAX                       
+CODE_2A85B2:        AC 00 07      LDY $0700                 
+CODE_2A85B5:        BD CB 85      LDA.w DATA_2A85CB,x               
+CODE_2A85B8:        97 D8         STA [$D8],y               
+CODE_2A85BA:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A85BD:        20 F5 86      JSR CODE_2A86F5           
+CODE_2A85C0:        E8            INX                       
+CODE_2A85C1:        BD CB 85      LDA.w DATA_2A85CB,x               
+CODE_2A85C4:        97 D8         STA [$D8],y               
+CODE_2A85C6:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A85C9:        AB            PLB                       ;
+CODE_2A85CA:        6B            RTL                       
 
 DATA_2A85CB:        db $02,$03,$04,$05
 
-CODE_2A85CF:        PHB                       
-CODE_2A85D0:        PHK                       
-CODE_2A85D1:        PLB                       ;
-CODE_2A85D2:        LDA [$2B]                 
-CODE_2A85D4:        TAX                       
-CODE_2A85D5:        REP #$20                  
-CODE_2A85D7:        INC $2B                   
-CODE_2A85D9:        LDA $2E                   
-CODE_2A85DB:        STA $D8                   
-CODE_2A85DD:        LDA #$0001                
-CODE_2A85E0:        STA $DB                   
-CODE_2A85E2:        SEP #$20                  
-CODE_2A85E4:        LDA $30                   
-CODE_2A85E6:        STA $DA                   
-CODE_2A85E8:        LDA $0706                 
-CODE_2A85EB:        AND #$0F                  
-CODE_2A85ED:        STA $03                   
-CODE_2A85EF:        LDY $0700                 
-CODE_2A85F2:        TXA                       
-CODE_2A85F3:        BEQ CODE_2A8648           
-CODE_2A85F5:        CPX #$04                  
-CODE_2A85F7:        BNE CODE_2A8615           
-CODE_2A85F9:        REP #$20                  
-CODE_2A85FB:        DEC $D8                   
-CODE_2A85FD:        DEC $D8                   
-CODE_2A85FF:        SEP #$20                  
-CODE_2A8601:        LDA #$48                  
-CODE_2A8603:        STA [$D8],y               
-CODE_2A8605:        REP #$20                  
-CODE_2A8607:        INC $D8                   
-CODE_2A8609:        SEP #$20                  
-CODE_2A860B:        LDA #$48                  
-CODE_2A860D:        STA [$D8],y               
-CODE_2A860F:        REP #$20                  
-CODE_2A8611:        INC $D8                   
-CODE_2A8613:        SEP #$20                  
-CODE_2A8615:        LDA.w DATA_2A8668-1,x               
-CODE_2A8618:        STA [$D8],y               
-CODE_2A861A:        JSR CODE_2A8AD2           
-CODE_2A861D:        JSR CODE_2A86F5           
-CODE_2A8620:        DEC $03                   
-CODE_2A8622:        LDA #$02                  
-CODE_2A8624:        STA $02                   
-CODE_2A8626:        JSR CODE_2A8655           
-CODE_2A8629:        LDA.w DATA_2A866D,x               
-CODE_2A862C:        STA [$D8],y               
-CODE_2A862E:        JSR CODE_2A8AD2           
-CODE_2A8631:        JSR CODE_2A86F5           
-CODE_2A8634:        CPX #$04                  
-CODE_2A8636:        BNE CODE_2A8653           
-CODE_2A8638:        LDA #$48                  
-CODE_2A863A:        STA [$D8],y               
-CODE_2A863C:        REP #$20                  
-CODE_2A863E:        INC $D8                   
-CODE_2A8640:        SEP #$20                  
-CODE_2A8642:        LDA #$48                  
-CODE_2A8644:        STA [$D8],y               
-CODE_2A8646:        BRA CODE_2A8653           
+CODE_2A85CF:        8B            PHB                       
+CODE_2A85D0:        4B            PHK                       
+CODE_2A85D1:        AB            PLB                       ;
+CODE_2A85D2:        A7 2B         LDA [$2B]                 
+CODE_2A85D4:        AA            TAX                       
+CODE_2A85D5:        C2 20         REP #$20                  
+CODE_2A85D7:        E6 2B         INC $2B                   
+CODE_2A85D9:        A5 2E         LDA $2E                   
+CODE_2A85DB:        85 D8         STA $D8                   
+CODE_2A85DD:        A9 01 00      LDA #$0001                
+CODE_2A85E0:        85 DB         STA $DB                   
+CODE_2A85E2:        E2 20         SEP #$20                  
+CODE_2A85E4:        A5 30         LDA $30                   
+CODE_2A85E6:        85 DA         STA $DA                   
+CODE_2A85E8:        AD 06 07      LDA $0706                 
+CODE_2A85EB:        29 0F         AND #$0F                  
+CODE_2A85ED:        85 03         STA $03                   
+CODE_2A85EF:        AC 00 07      LDY $0700                 
+CODE_2A85F2:        8A            TXA                       
+CODE_2A85F3:        F0 53         BEQ CODE_2A8648           
+CODE_2A85F5:        E0 04         CPX #$04                  
+CODE_2A85F7:        D0 1C         BNE CODE_2A8615           
+CODE_2A85F9:        C2 20         REP #$20                  
+CODE_2A85FB:        C6 D8         DEC $D8                   
+CODE_2A85FD:        C6 D8         DEC $D8                   
+CODE_2A85FF:        E2 20         SEP #$20                  
+CODE_2A8601:        A9 48         LDA #$48                  
+CODE_2A8603:        97 D8         STA [$D8],y               
+CODE_2A8605:        C2 20         REP #$20                  
+CODE_2A8607:        E6 D8         INC $D8                   
+CODE_2A8609:        E2 20         SEP #$20                  
+CODE_2A860B:        A9 48         LDA #$48                  
+CODE_2A860D:        97 D8         STA [$D8],y               
+CODE_2A860F:        C2 20         REP #$20                  
+CODE_2A8611:        E6 D8         INC $D8                   
+CODE_2A8613:        E2 20         SEP #$20                  
+CODE_2A8615:        BD 67 86      LDA.w DATA_2A8668-1,x               
+CODE_2A8618:        97 D8         STA [$D8],y               
+CODE_2A861A:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A861D:        20 F5 86      JSR CODE_2A86F5           
+CODE_2A8620:        C6 03         DEC $03                   
+CODE_2A8622:        A9 02         LDA #$02                  
+CODE_2A8624:        85 02         STA $02                   
+CODE_2A8626:        20 55 86      JSR CODE_2A8655           
+CODE_2A8629:        BD 6D 86      LDA.w DATA_2A866D,x               
+CODE_2A862C:        97 D8         STA [$D8],y               
+CODE_2A862E:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A8631:        20 F5 86      JSR CODE_2A86F5           
+CODE_2A8634:        E0 04         CPX #$04                  
+CODE_2A8636:        D0 1B         BNE CODE_2A8653           
+CODE_2A8638:        A9 48         LDA #$48                  
+CODE_2A863A:        97 D8         STA [$D8],y               
+CODE_2A863C:        C2 20         REP #$20                  
+CODE_2A863E:        E6 D8         INC $D8                   
+CODE_2A8640:        E2 20         SEP #$20                  
+CODE_2A8642:        A9 48         LDA #$48                  
+CODE_2A8644:        97 D8         STA [$D8],y               
+CODE_2A8646:        80 0B         BRA CODE_2A8653           
 
-CODE_2A8648:        LDA #$10                  
-CODE_2A864A:        STA $DB                   
-CODE_2A864C:        LDA #$07                  
-CODE_2A864E:        STA $02                   
-CODE_2A8650:        JSR CODE_2A8655           
-CODE_2A8653:        PLB                       ;
-CODE_2A8654:        RTL                       
+CODE_2A8648:        A9 10         LDA #$10                  
+CODE_2A864A:        85 DB         STA $DB                   
+CODE_2A864C:        A9 07         LDA #$07                  
+CODE_2A864E:        85 02         STA $02                   
+CODE_2A8650:        20 55 86      JSR CODE_2A8655           
+CODE_2A8653:        AB            PLB                       ;
+CODE_2A8654:        6B            RTL                       
 
-CODE_2A8655:        LDA $03                   
-CODE_2A8657:        BEQ CODE_2A8667           
-CODE_2A8659:        LDA $02                   
-CODE_2A865B:        STA [$D8],y               
-CODE_2A865D:        JSR CODE_2A8AD2           
-CODE_2A8660:        JSR CODE_2A86F5           
-CODE_2A8663:        DEC $03                   
-CODE_2A8665:        BRA CODE_2A8655           
+CODE_2A8655:        A5 03         LDA $03                   
+CODE_2A8657:        F0 0E         BEQ CODE_2A8667           
+CODE_2A8659:        A5 02         LDA $02                   
+CODE_2A865B:        97 D8         STA [$D8],y               
+CODE_2A865D:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A8660:        20 F5 86      JSR CODE_2A86F5           
+CODE_2A8663:        C6 03         DEC $03                   
+CODE_2A8665:        80 EE         BRA CODE_2A8655           
 
-CODE_2A8667:        RTS                       
+CODE_2A8667:        60            RTS                       
 
 DATA_2A8668:        db $03,$03,$06,$08,$0B ;
 
 DATA_2A866D:        db $08,$04,$05,$04,$09,$09,$0A ;
              
-CODE_2A8674:        PHB                       
-CODE_2A8675:        PHK                       
-CODE_2A8676:        PLB                       ;
-CODE_2A8677:        LDA [$2B]                 
-CODE_2A8679:        STA $03                   
-CODE_2A867B:        STA $DD                   
-CODE_2A867D:        REP #$20                  
-CODE_2A867F:        INC $2B                   
-CODE_2A8681:        LDA $2E                   
-CODE_2A8683:        STA $D8                   
-CODE_2A8685:        SEP #$20                  
-CODE_2A8687:        LDA $30                   
-CODE_2A8689:        STA $DA                   
-CODE_2A868B:        LDA $0706                 
-CODE_2A868E:        AND #$0F                  
-CODE_2A8690:        TAX                       
-CODE_2A8691:        LDA.w DATA_2A86D5,x               
-CODE_2A8694:        STA $DB                   
-CODE_2A8696:        STZ $DC                   
-CODE_2A8698:        STZ $02                   
-CODE_2A869A:        TXA                       
-CODE_2A869B:        BNE CODE_2A86A7           
-CODE_2A869D:        LDA [$2B]                 
-CODE_2A869F:        STA $02                   
-CODE_2A86A1:        REP #$20                  
-CODE_2A86A3:        INC $2B                   
-CODE_2A86A5:        SEP #$20                  
-CODE_2A86A7:        LDY $0700                 
-CODE_2A86AA:        LDA.w DATA_2A86E5,x               
-CODE_2A86AD:        STA [$D8],y               
-CODE_2A86AF:        JSR CODE_2A8AD2           
-CODE_2A86B2:        JSR CODE_2A86F5           
-CODE_2A86B5:        DEC $03                   
-CODE_2A86B7:        BNE CODE_2A86AA           
-CODE_2A86B9:        LDA $02                   
-CODE_2A86BB:        BEQ CODE_2A86D3           
-CODE_2A86BD:        DEC $02                   
-CODE_2A86BF:        REP #$20                  
-CODE_2A86C1:        LDA $2E                   
-CODE_2A86C3:        CLC                       
-CODE_2A86C4:        ADC #$0010                
-CODE_2A86C7:        STA $2E                   
-CODE_2A86C9:        STA $D8                   
-CODE_2A86CB:        SEP #$20                  
-CODE_2A86CD:        LDA $DD                   
-CODE_2A86CF:        STA $03                   
-CODE_2A86D1:        BRA CODE_2A86AA           
+CODE_2A8674:        8B            PHB                       
+CODE_2A8675:        4B            PHK                       
+CODE_2A8676:        AB            PLB                       ;
+CODE_2A8677:        A7 2B         LDA [$2B]                 
+CODE_2A8679:        85 03         STA $03                   
+CODE_2A867B:        85 DD         STA $DD                   
+CODE_2A867D:        C2 20         REP #$20                  
+CODE_2A867F:        E6 2B         INC $2B                   
+CODE_2A8681:        A5 2E         LDA $2E                   
+CODE_2A8683:        85 D8         STA $D8                   
+CODE_2A8685:        E2 20         SEP #$20                  
+CODE_2A8687:        A5 30         LDA $30                   
+CODE_2A8689:        85 DA         STA $DA                   
+CODE_2A868B:        AD 06 07      LDA $0706                 
+CODE_2A868E:        29 0F         AND #$0F                  
+CODE_2A8690:        AA            TAX                       
+CODE_2A8691:        BD D5 86      LDA.w DATA_2A86D5,x               
+CODE_2A8694:        85 DB         STA $DB                   
+CODE_2A8696:        64 DC         STZ $DC                   
+CODE_2A8698:        64 02         STZ $02                   
+CODE_2A869A:        8A            TXA                       
+CODE_2A869B:        D0 0A         BNE CODE_2A86A7           
+CODE_2A869D:        A7 2B         LDA [$2B]                 
+CODE_2A869F:        85 02         STA $02                   
+CODE_2A86A1:        C2 20         REP #$20                  
+CODE_2A86A3:        E6 2B         INC $2B                   
+CODE_2A86A5:        E2 20         SEP #$20                  
+CODE_2A86A7:        AC 00 07      LDY $0700                 
+CODE_2A86AA:        BD E5 86      LDA.w DATA_2A86E5,x               
+CODE_2A86AD:        97 D8         STA [$D8],y               
+CODE_2A86AF:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A86B2:        20 F5 86      JSR CODE_2A86F5           
+CODE_2A86B5:        C6 03         DEC $03                   
+CODE_2A86B7:        D0 F1         BNE CODE_2A86AA           
+CODE_2A86B9:        A5 02         LDA $02                   
+CODE_2A86BB:        F0 16         BEQ CODE_2A86D3           
+CODE_2A86BD:        C6 02         DEC $02                   
+CODE_2A86BF:        C2 20         REP #$20                  
+CODE_2A86C1:        A5 2E         LDA $2E                   
+CODE_2A86C3:        18            CLC                       
+CODE_2A86C4:        69 10 00      ADC #$0010                
+CODE_2A86C7:        85 2E         STA $2E                   
+CODE_2A86C9:        85 D8         STA $D8                   
+CODE_2A86CB:        E2 20         SEP #$20                  
+CODE_2A86CD:        A5 DD         LDA $DD                   
+CODE_2A86CF:        85 03         STA $03                   
+CODE_2A86D1:        80 D7         BRA CODE_2A86AA           
 
-CODE_2A86D3:        PLB                       ;
-CODE_2A86D4:        RTL                       
+CODE_2A86D3:        AB            PLB                       ;
+CODE_2A86D4:        6B            RTL                       
 
 DATA_2A86D5:        db $01,$0F,$01,$11,$10,$10,$11,$01
                     db $0F,$0F,$11,$11,$0F,$01,$01,$01
@@ -814,838 +814,838 @@ DATA_2A86D5:        db $01,$0F,$01,$11,$10,$10,$11,$01
 DATA_2A86E5:        db $13,$14,$15,$16,$17,$18,$19,$1A
                     db $1B,$1C,$1D,$1E,$1F,$20,$21,$22
    
-CODE_2A86F5:        REP #$20                  
-CODE_2A86F7:        LDA $D8                   
-CODE_2A86F9:        SEC                       
-CODE_2A86FA:        SBC #$2000                
-CODE_2A86FD:        CLC                       
-CODE_2A86FE:        ADC $DB                   
-CODE_2A8700:        STA $D8                   
-CODE_2A8702:        SEP #$20                  
-CODE_2A8704:        RTS                       
+CODE_2A86F5:        C2 20         REP #$20                  
+CODE_2A86F7:        A5 D8         LDA $D8                   
+CODE_2A86F9:        38            SEC                       
+CODE_2A86FA:        E9 00 20      SBC #$2000                
+CODE_2A86FD:        18            CLC                       
+CODE_2A86FE:        65 DB         ADC $DB                   
+CODE_2A8700:        85 D8         STA $D8                   
+CODE_2A8702:        E2 20         SEP #$20                  
+CODE_2A8704:        60            RTS                       
 
-CODE_2A8705:        PHB                       
-CODE_2A8706:        PHK                       
-CODE_2A8707:        PLB                       ;
-CODE_2A8708:        LDA $00                   
-CODE_2A870A:        PHA                       
-CODE_2A870B:        LDA $01                   
-CODE_2A870D:        PHA                       
-CODE_2A870E:        PHX                       
-CODE_2A870F:        LDA $30                   
-CODE_2A8711:        STA $DA                   
-CODE_2A8713:        STA $DD                   
-CODE_2A8715:        REP #$20                  
-CODE_2A8717:        LDA $2E                   
-CODE_2A8719:        STA $D8                   
-CODE_2A871B:        CLC                       
-CODE_2A871C:        ADC #$2000                
-CODE_2A871F:        STA $DB                   
-CODE_2A8721:        SEP #$20                  
-CODE_2A8723:        LDX #$00                  
-CODE_2A8725:        JSR CODE_2A8761           
-CODE_2A8728:        LDA [$D8],y               
-CODE_2A872A:        CMP #$9C                  
-CODE_2A872C:        BEQ CODE_2A8755           
-CODE_2A872E:        CMP #$E4                  
-CODE_2A8730:        BEQ CODE_2A8755           
-CODE_2A8732:        LDA.w DATA_2A875E,x               
-CODE_2A8735:        STA [$D8],y               
-CODE_2A8737:        CPX #$02                  
-CODE_2A8739:        BEQ CODE_2A873E           
-CODE_2A873B:        INX                       
-CODE_2A873C:        BRA CODE_2A8725           
+CODE_2A8705:        8B            PHB                       
+CODE_2A8706:        4B            PHK                       
+CODE_2A8707:        AB            PLB                       ;
+CODE_2A8708:        A5 00         LDA $00                   
+CODE_2A870A:        48            PHA                       
+CODE_2A870B:        A5 01         LDA $01                   
+CODE_2A870D:        48            PHA                       
+CODE_2A870E:        DA            PHX                       
+CODE_2A870F:        A5 30         LDA $30                   
+CODE_2A8711:        85 DA         STA $DA                   
+CODE_2A8713:        85 DD         STA $DD                   
+CODE_2A8715:        C2 20         REP #$20                  
+CODE_2A8717:        A5 2E         LDA $2E                   
+CODE_2A8719:        85 D8         STA $D8                   
+CODE_2A871B:        18            CLC                       
+CODE_2A871C:        69 00 20      ADC #$2000                
+CODE_2A871F:        85 DB         STA $DB                   
+CODE_2A8721:        E2 20         SEP #$20                  
+CODE_2A8723:        A2 00         LDX #$00                  
+CODE_2A8725:        20 61 87      JSR CODE_2A8761           
+CODE_2A8728:        B7 D8         LDA [$D8],y               
+CODE_2A872A:        C9 9C         CMP #$9C                  
+CODE_2A872C:        F0 27         BEQ CODE_2A8755           
+CODE_2A872E:        C9 E4         CMP #$E4                  
+CODE_2A8730:        F0 23         BEQ CODE_2A8755           
+CODE_2A8732:        BD 5E 87      LDA.w DATA_2A875E,x               
+CODE_2A8735:        97 D8         STA [$D8],y               
+CODE_2A8737:        E0 02         CPX #$02                  
+CODE_2A8739:        F0 03         BEQ CODE_2A873E           
+CODE_2A873B:        E8            INX                       
+CODE_2A873C:        80 E7         BRA CODE_2A8725           
 
-CODE_2A873E:        JSR CODE_2A8761           
-CODE_2A8741:        LDA [$D8],y               
-CODE_2A8743:        CMP #$9C                  
-CODE_2A8745:        BEQ CODE_2A8755           
-CODE_2A8747:        CMP #$E4                  
-CODE_2A8749:        BEQ CODE_2A8755           
-CODE_2A874B:        LDA #$04                  
-CODE_2A874D:        STA [$D8],y               
-CODE_2A874F:        LDA #$01                  
-CODE_2A8751:        STA [$DB],y               
-CODE_2A8753:        BRA CODE_2A873E           
+CODE_2A873E:        20 61 87      JSR CODE_2A8761           
+CODE_2A8741:        B7 D8         LDA [$D8],y               
+CODE_2A8743:        C9 9C         CMP #$9C                  
+CODE_2A8745:        F0 0E         BEQ CODE_2A8755           
+CODE_2A8747:        C9 E4         CMP #$E4                  
+CODE_2A8749:        F0 0A         BEQ CODE_2A8755           
+CODE_2A874B:        A9 04         LDA #$04                  
+CODE_2A874D:        97 D8         STA [$D8],y               
+CODE_2A874F:        A9 01         LDA #$01                  
+CODE_2A8751:        97 DB         STA [$DB],y               
+CODE_2A8753:        80 E9         BRA CODE_2A873E           
 
-CODE_2A8755:        PLX                       
-CODE_2A8756:        PLA                       
-CODE_2A8757:        STA $01                   
-CODE_2A8759:        PLA                       
-CODE_2A875A:        STA $00                   
-CODE_2A875C:        PLB                       ;
-CODE_2A875D:        RTL                       
+CODE_2A8755:        FA            PLX                       
+CODE_2A8756:        68            PLA                       
+CODE_2A8757:        85 01         STA $01                   
+CODE_2A8759:        68            PLA                       
+CODE_2A875A:        85 00         STA $00                   
+CODE_2A875C:        AB            PLB                       ;
+CODE_2A875D:        6B            RTL                       
 
 DATA_2A875E:        db $06,$07
 
-CODE_2A8760:        PHP                       
-CODE_2A8761:        REP #$20                  
-CODE_2A8763:        LDA $D8                   
-CODE_2A8765:        SEC                       
-CODE_2A8766:        SBC #$0010                
-CODE_2A8769:        STA $D8                   
-CODE_2A876B:        LDA $DB                   
-CODE_2A876D:        SEC                       
-CODE_2A876E:        SBC #$0010                
-CODE_2A8771:        STA $DB                   
-CODE_2A8773:        SEP #$20                  
-CODE_2A8775:        RTS                       
+CODE_2A8760:        08            PHP                       
+CODE_2A8761:        C2 20         REP #$20                  
+CODE_2A8763:        A5 D8         LDA $D8                   
+CODE_2A8765:        38            SEC                       
+CODE_2A8766:        E9 10 00      SBC #$0010                
+CODE_2A8769:        85 D8         STA $D8                   
+CODE_2A876B:        A5 DB         LDA $DB                   
+CODE_2A876D:        38            SEC                       
+CODE_2A876E:        E9 10 00      SBC #$0010                
+CODE_2A8771:        85 DB         STA $DB                   
+CODE_2A8773:        E2 20         SEP #$20                  
+CODE_2A8775:        60            RTS                       
 
-CODE_2A8776:        REP #$20                  
-CODE_2A8778:        LDA $2E                   
-CODE_2A877A:        SEC                       
-CODE_2A877B:        SBC #$0010                
-CODE_2A877E:        STA $D8                   
-CODE_2A8780:        SEP #$20                  
-CODE_2A8782:        LDA $30                   
-CODE_2A8784:        STA $DA                   
-CODE_2A8786:        LDA [$D8],y               
-CODE_2A8788:        CMP #$AB                  
-CODE_2A878A:        BNE CODE_2A8793           
-CODE_2A878C:        LDA #$0B                  
-CODE_2A878E:        STA [$D8],y               
-CODE_2A8790:        JSR CODE_2A8AD2           
-CODE_2A8793:        RTL                       
+CODE_2A8776:        C2 20         REP #$20                  
+CODE_2A8778:        A5 2E         LDA $2E                   
+CODE_2A877A:        38            SEC                       
+CODE_2A877B:        E9 10 00      SBC #$0010                
+CODE_2A877E:        85 D8         STA $D8                   
+CODE_2A8780:        E2 20         SEP #$20                  
+CODE_2A8782:        A5 30         LDA $30                   
+CODE_2A8784:        85 DA         STA $DA                   
+CODE_2A8786:        B7 D8         LDA [$D8],y               
+CODE_2A8788:        C9 AB         CMP #$AB                  
+CODE_2A878A:        D0 07         BNE CODE_2A8793           
+CODE_2A878C:        A9 0B         LDA #$0B                  
+CODE_2A878E:        97 D8         STA [$D8],y               
+CODE_2A8790:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A8793:        6B            RTL                       
 
-CODE_2A8794:        REP #$20                  
-CODE_2A8796:        LDA $2E                   
-CODE_2A8798:        CLC                       
-CODE_2A8799:        ADC #$0010                
-CODE_2A879C:        STA $D8                   
-CODE_2A879E:        SEP #$20                  
-CODE_2A87A0:        LDA $30                   
-CODE_2A87A2:        STA $DA                   
-CODE_2A87A4:        LDA [$D8],y               
-CODE_2A87A6:        CMP #$9A                  
-CODE_2A87A8:        BNE CODE_2A87B1           
-CODE_2A87AA:        LDA #$0D                  
-CODE_2A87AC:        STA [$D8],y               
-CODE_2A87AE:        JSR CODE_2A8AD2           
-CODE_2A87B1:        RTL                       
+CODE_2A8794:        C2 20         REP #$20                  
+CODE_2A8796:        A5 2E         LDA $2E                   
+CODE_2A8798:        18            CLC                       
+CODE_2A8799:        69 10 00      ADC #$0010                
+CODE_2A879C:        85 D8         STA $D8                   
+CODE_2A879E:        E2 20         SEP #$20                  
+CODE_2A87A0:        A5 30         LDA $30                   
+CODE_2A87A2:        85 DA         STA $DA                   
+CODE_2A87A4:        B7 D8         LDA [$D8],y               
+CODE_2A87A6:        C9 9A         CMP #$9A                  
+CODE_2A87A8:        D0 07         BNE CODE_2A87B1           
+CODE_2A87AA:        A9 0D         LDA #$0D                  
+CODE_2A87AC:        97 D8         STA [$D8],y               
+CODE_2A87AE:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A87B1:        6B            RTL                       
 
-CODE_2A87B2:        PHY                       
-CODE_2A87B3:        LDA $30                   
-CODE_2A87B5:        STA $DA                   
-CODE_2A87B7:        REP #$20                  
-CODE_2A87B9:        LDA $2E                   
-CODE_2A87BB:        CLC                       
-CODE_2A87BC:        ADC #$000F                
-CODE_2A87BF:        STA $D8                   
-CODE_2A87C1:        TYA                       
-CODE_2A87C2:        AND #$00FF                
-CODE_2A87C5:        BNE CODE_2A87CF           
-CODE_2A87C7:        LDA $D8                   
-CODE_2A87C9:        SEC                       
-CODE_2A87CA:        SBC #$01A0                
-CODE_2A87CD:        STA $D8                   
-CODE_2A87CF:        SEP #$20                  
-CODE_2A87D1:        LDA [$D8],y               
-CODE_2A87D3:        CMP #$AA                  
-CODE_2A87D5:        BNE CODE_2A87E5           
-CODE_2A87D7:        LDA $D8                   
-CODE_2A87D9:        SEC                       
-CODE_2A87DA:        SBC #$10                  
-CODE_2A87DC:        STA $D8                   
-CODE_2A87DE:        LDA #$06                  
-CODE_2A87E0:        STA [$D8],y               
-CODE_2A87E2:        JSR CODE_2A8AD2           
-CODE_2A87E5:        REP #$20                  
-CODE_2A87E7:        LDA $2E                   
-CODE_2A87E9:        SEC                       
-CODE_2A87EA:        SBC #$0010                
-CODE_2A87ED:        STA $D8                   
-CODE_2A87EF:        SEP #$20                  
-CODE_2A87F1:        INY                       
-CODE_2A87F2:        TYA                       
-CODE_2A87F3:        AND #$0F                  
-CODE_2A87F5:        BNE CODE_2A8803           
-CODE_2A87F7:        REP #$20                  
-CODE_2A87F9:        LDA $D8                   
-CODE_2A87FB:        CLC                       
-CODE_2A87FC:        ADC #$01A0                
-CODE_2A87FF:        STA $D8                   
-CODE_2A8801:        SEP #$20                  
-CODE_2A8803:        LDA [$D8],y               
-CODE_2A8805:        CMP #$A8                  
-CODE_2A8807:        BNE CODE_2A881C           
-CODE_2A8809:        REP #$20                  
-CODE_2A880B:        LDA $D8                   
-CODE_2A880D:        CLC                       
-CODE_2A880E:        ADC #$0010                
-CODE_2A8811:        STA $D8                   
-CODE_2A8813:        SEP #$20                  
-CODE_2A8815:        LDA #$02                  
-CODE_2A8817:        STA [$D8],y               
-CODE_2A8819:        JSR CODE_2A8AD2           
-CODE_2A881C:        PLY                       
-CODE_2A881D:        RTL                       
+CODE_2A87B2:        5A            PHY                       
+CODE_2A87B3:        A5 30         LDA $30                   
+CODE_2A87B5:        85 DA         STA $DA                   
+CODE_2A87B7:        C2 20         REP #$20                  
+CODE_2A87B9:        A5 2E         LDA $2E                   
+CODE_2A87BB:        18            CLC                       
+CODE_2A87BC:        69 0F 00      ADC #$000F                
+CODE_2A87BF:        85 D8         STA $D8                   
+CODE_2A87C1:        98            TYA                       
+CODE_2A87C2:        29 FF 00      AND #$00FF                
+CODE_2A87C5:        D0 08         BNE CODE_2A87CF           
+CODE_2A87C7:        A5 D8         LDA $D8                   
+CODE_2A87C9:        38            SEC                       
+CODE_2A87CA:        E9 A0 01      SBC #$01A0                
+CODE_2A87CD:        85 D8         STA $D8                   
+CODE_2A87CF:        E2 20         SEP #$20                  
+CODE_2A87D1:        B7 D8         LDA [$D8],y               
+CODE_2A87D3:        C9 AA         CMP #$AA                  
+CODE_2A87D5:        D0 0E         BNE CODE_2A87E5           
+CODE_2A87D7:        A5 D8         LDA $D8                   
+CODE_2A87D9:        38            SEC                       
+CODE_2A87DA:        E9 10         SBC #$10                  
+CODE_2A87DC:        85 D8         STA $D8                   
+CODE_2A87DE:        A9 06         LDA #$06                  
+CODE_2A87E0:        97 D8         STA [$D8],y               
+CODE_2A87E2:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A87E5:        C2 20         REP #$20                  
+CODE_2A87E7:        A5 2E         LDA $2E                   
+CODE_2A87E9:        38            SEC                       
+CODE_2A87EA:        E9 10 00      SBC #$0010                
+CODE_2A87ED:        85 D8         STA $D8                   
+CODE_2A87EF:        E2 20         SEP #$20                  
+CODE_2A87F1:        C8            INY                       
+CODE_2A87F2:        98            TYA                       
+CODE_2A87F3:        29 0F         AND #$0F                  
+CODE_2A87F5:        D0 0C         BNE CODE_2A8803           
+CODE_2A87F7:        C2 20         REP #$20                  
+CODE_2A87F9:        A5 D8         LDA $D8                   
+CODE_2A87FB:        18            CLC                       
+CODE_2A87FC:        69 A0 01      ADC #$01A0                
+CODE_2A87FF:        85 D8         STA $D8                   
+CODE_2A8801:        E2 20         SEP #$20                  
+CODE_2A8803:        B7 D8         LDA [$D8],y               
+CODE_2A8805:        C9 A8         CMP #$A8                  
+CODE_2A8807:        D0 13         BNE CODE_2A881C           
+CODE_2A8809:        C2 20         REP #$20                  
+CODE_2A880B:        A5 D8         LDA $D8                   
+CODE_2A880D:        18            CLC                       
+CODE_2A880E:        69 10 00      ADC #$0010                
+CODE_2A8811:        85 D8         STA $D8                   
+CODE_2A8813:        E2 20         SEP #$20                  
+CODE_2A8815:        A9 02         LDA #$02                  
+CODE_2A8817:        97 D8         STA [$D8],y               
+CODE_2A8819:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A881C:        7A            PLY                       
+CODE_2A881D:        6B            RTL                       
 
-CODE_2A881E:        PHY                       
-CODE_2A881F:        REP #$20                  
-CODE_2A8821:        LDA $2E                   
-CODE_2A8823:        SEC                       
-CODE_2A8824:        SBC #$0010                
-CODE_2A8827:        STA $D8                   
-CODE_2A8829:        SEP #$20                  
-CODE_2A882B:        LDA $30                   
-CODE_2A882D:        STA $DA                   
-CODE_2A882F:        LDA [$D8],y               
-CODE_2A8831:        CMP #$A8                  
-CODE_2A8833:        BEQ CODE_2A8840           
-CODE_2A8835:        CMP #$34                  
-CODE_2A8837:        BEQ CODE_2A8840           
-CODE_2A8839:        LDA #$05                  
-CODE_2A883B:        STA [$D8],y               
-CODE_2A883D:        JSR CODE_2A8AD2           
-CODE_2A8840:        PLY                       
-CODE_2A8841:        RTL                       
+CODE_2A881E:        5A            PHY                       
+CODE_2A881F:        C2 20         REP #$20                  
+CODE_2A8821:        A5 2E         LDA $2E                   
+CODE_2A8823:        38            SEC                       
+CODE_2A8824:        E9 10 00      SBC #$0010                
+CODE_2A8827:        85 D8         STA $D8                   
+CODE_2A8829:        E2 20         SEP #$20                  
+CODE_2A882B:        A5 30         LDA $30                   
+CODE_2A882D:        85 DA         STA $DA                   
+CODE_2A882F:        B7 D8         LDA [$D8],y               
+CODE_2A8831:        C9 A8         CMP #$A8                  
+CODE_2A8833:        F0 0B         BEQ CODE_2A8840           
+CODE_2A8835:        C9 34         CMP #$34                  
+CODE_2A8837:        F0 07         BEQ CODE_2A8840           
+CODE_2A8839:        A9 05         LDA #$05                  
+CODE_2A883B:        97 D8         STA [$D8],y               
+CODE_2A883D:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A8840:        7A            PLY                       
+CODE_2A8841:        6B            RTL                       
 
 DATA_2A8842:        db $06,$0C
 
-CODE_2A8844:        PHB                       
-CODE_2A8845:        PHK                       
-CODE_2A8846:        PLB                       ;
-CODE_2A8847:        PHX                       
-CODE_2A8848:        PHY                       
-CODE_2A8849:        LDA $30                   
-CODE_2A884B:        STA $DA                   
-CODE_2A884D:        REP #$20                  
-CODE_2A884F:        LDA $2E                   
-CODE_2A8851:        SEC                       
-CODE_2A8852:        SBC #$0010                
-CODE_2A8855:        STA $D8                   
-CODE_2A8857:        SEP #$20                  
-CODE_2A8859:        LDA [$D8],y               
-CODE_2A885B:        CMP #$AA                  
-CODE_2A885D:        BEQ CODE_2A886B           
-CODE_2A885F:        CMP #$A9                  
-CODE_2A8861:        BEQ CODE_2A886B           
-CODE_2A8863:        LDA.w DATA_2A8842,x               
-CODE_2A8866:        STA [$D8],y               
-CODE_2A8868:        JSR CODE_2A8AD2           
-CODE_2A886B:        PLY                       
-CODE_2A886C:        PLX                       
-CODE_2A886D:        PLB                       ;
-CODE_2A886E:        RTL                       
+CODE_2A8844:        8B            PHB                       
+CODE_2A8845:        4B            PHK                       
+CODE_2A8846:        AB            PLB                       ;
+CODE_2A8847:        DA            PHX                       
+CODE_2A8848:        5A            PHY                       
+CODE_2A8849:        A5 30         LDA $30                   
+CODE_2A884B:        85 DA         STA $DA                   
+CODE_2A884D:        C2 20         REP #$20                  
+CODE_2A884F:        A5 2E         LDA $2E                   
+CODE_2A8851:        38            SEC                       
+CODE_2A8852:        E9 10 00      SBC #$0010                
+CODE_2A8855:        85 D8         STA $D8                   
+CODE_2A8857:        E2 20         SEP #$20                  
+CODE_2A8859:        B7 D8         LDA [$D8],y               
+CODE_2A885B:        C9 AA         CMP #$AA                  
+CODE_2A885D:        F0 0C         BEQ CODE_2A886B           
+CODE_2A885F:        C9 A9         CMP #$A9                  
+CODE_2A8861:        F0 08         BEQ CODE_2A886B           
+CODE_2A8863:        BD 42 88      LDA.w DATA_2A8842,x               
+CODE_2A8866:        97 D8         STA [$D8],y               
+CODE_2A8868:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A886B:        7A            PLY                       
+CODE_2A886C:        FA            PLX                       
+CODE_2A886D:        AB            PLB                       ;
+CODE_2A886E:        6B            RTL                       
 
-CODE_2A886F:        PHX                       
-CODE_2A8870:        PHY                       
-CODE_2A8871:        LDA [$2E],y               
-CODE_2A8873:        CMP #$A6                  
-CODE_2A8875:        BNE CODE_2A88C0           
-CODE_2A8877:        LDA $30                   
-CODE_2A8879:        STA $DA                   
-CODE_2A887B:        REP #$20                  
-CODE_2A887D:        LDA $2E                   
-CODE_2A887F:        PHA                       
-CODE_2A8880:        CLC                       
-CODE_2A8881:        ADC #$0011                
-CODE_2A8884:        STA $D8                   
-CODE_2A8886:        PLA                       
-CODE_2A8887:        CLC                       
-CODE_2A8888:        ADC #$000F                
-CODE_2A888B:        STA $DB                   
-CODE_2A888D:        TYA                       
-CODE_2A888E:        AND #$000F                
-CODE_2A8891:        BNE CODE_2A88A3           
-CODE_2A8893:        LDA $D8                   
-CODE_2A8895:        CLC                       
-CODE_2A8896:        ADC #$01A0                
-CODE_2A8899:        STA $D8                   
-CODE_2A889B:        LDA $DB                   
-CODE_2A889D:        CLC                       
-CODE_2A889E:        ADC #$01A0                
-CODE_2A88A1:        STA $DB                   
-CODE_2A88A3:        SEP #$20                  
-CODE_2A88A5:        LDA [$D8],y               
-CODE_2A88A7:        CMP #$A8                  
-CODE_2A88A9:        BNE CODE_2A88C0           
-CODE_2A88AB:        REP #$20                  
-CODE_2A88AD:        LDA $D8                   
-CODE_2A88AF:        SEC                       
-CODE_2A88B0:        SBC #$0010                
-CODE_2A88B3:        STA $D8                   
-CODE_2A88B5:        SEP #$20                  
-CODE_2A88B7:        LDA #$05                  
-CODE_2A88B9:        STA [$D8],y               
-CODE_2A88BB:        JSR CODE_2A8AD2           
-CODE_2A88BE:        BRA CODE_2A88E5           
+CODE_2A886F:        DA            PHX                       
+CODE_2A8870:        5A            PHY                       
+CODE_2A8871:        B7 2E         LDA [$2E],y               
+CODE_2A8873:        C9 A6         CMP #$A6                  
+CODE_2A8875:        D0 49         BNE CODE_2A88C0           
+CODE_2A8877:        A5 30         LDA $30                   
+CODE_2A8879:        85 DA         STA $DA                   
+CODE_2A887B:        C2 20         REP #$20                  
+CODE_2A887D:        A5 2E         LDA $2E                   
+CODE_2A887F:        48            PHA                       
+CODE_2A8880:        18            CLC                       
+CODE_2A8881:        69 11 00      ADC #$0011                
+CODE_2A8884:        85 D8         STA $D8                   
+CODE_2A8886:        68            PLA                       
+CODE_2A8887:        18            CLC                       
+CODE_2A8888:        69 0F 00      ADC #$000F                
+CODE_2A888B:        85 DB         STA $DB                   
+CODE_2A888D:        98            TYA                       
+CODE_2A888E:        29 0F 00      AND #$000F                
+CODE_2A8891:        D0 10         BNE CODE_2A88A3           
+CODE_2A8893:        A5 D8         LDA $D8                   
+CODE_2A8895:        18            CLC                       
+CODE_2A8896:        69 A0 01      ADC #$01A0                
+CODE_2A8899:        85 D8         STA $D8                   
+CODE_2A889B:        A5 DB         LDA $DB                   
+CODE_2A889D:        18            CLC                       
+CODE_2A889E:        69 A0 01      ADC #$01A0                
+CODE_2A88A1:        85 DB         STA $DB                   
+CODE_2A88A3:        E2 20         SEP #$20                  
+CODE_2A88A5:        B7 D8         LDA [$D8],y               
+CODE_2A88A7:        C9 A8         CMP #$A8                  
+CODE_2A88A9:        D0 15         BNE CODE_2A88C0           
+CODE_2A88AB:        C2 20         REP #$20                  
+CODE_2A88AD:        A5 D8         LDA $D8                   
+CODE_2A88AF:        38            SEC                       
+CODE_2A88B0:        E9 10 00      SBC #$0010                
+CODE_2A88B3:        85 D8         STA $D8                   
+CODE_2A88B5:        E2 20         SEP #$20                  
+CODE_2A88B7:        A9 05         LDA #$05                  
+CODE_2A88B9:        97 D8         STA [$D8],y               
+CODE_2A88BB:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A88BE:        80 25         BRA CODE_2A88E5           
 
-CODE_2A88C0:        REP #$20                  
-CODE_2A88C2:        LDA $DB                   
-CODE_2A88C4:        STA $D8                   
-CODE_2A88C6:        SEP #$20                  
-CODE_2A88C8:        LDA [$D8],y               
-CODE_2A88CA:        CMP #$AA                  
-CODE_2A88CC:        BEQ CODE_2A88D2           
-CODE_2A88CE:        CMP #$BF                  
-CODE_2A88D0:        BNE CODE_2A88E5           
-CODE_2A88D2:        REP #$20                  
-CODE_2A88D4:        LDA $D8                   
-CODE_2A88D6:        SEC                       
-CODE_2A88D7:        SBC #$0010                
-CODE_2A88DA:        STA $D8                   
-CODE_2A88DC:        SEP #$20                  
-CODE_2A88DE:        LDA #$06                  
-CODE_2A88E0:        STA [$D8],y               
-CODE_2A88E2:        JSR CODE_2A8AD2           
-CODE_2A88E5:        PLY                       
-CODE_2A88E6:        PLX                       
-CODE_2A88E7:        RTL                       
+CODE_2A88C0:        C2 20         REP #$20                  
+CODE_2A88C2:        A5 DB         LDA $DB                   
+CODE_2A88C4:        85 D8         STA $D8                   
+CODE_2A88C6:        E2 20         SEP #$20                  
+CODE_2A88C8:        B7 D8         LDA [$D8],y               
+CODE_2A88CA:        C9 AA         CMP #$AA                  
+CODE_2A88CC:        F0 04         BEQ CODE_2A88D2           
+CODE_2A88CE:        C9 BF         CMP #$BF                  
+CODE_2A88D0:        D0 13         BNE CODE_2A88E5           
+CODE_2A88D2:        C2 20         REP #$20                  
+CODE_2A88D4:        A5 D8         LDA $D8                   
+CODE_2A88D6:        38            SEC                       
+CODE_2A88D7:        E9 10 00      SBC #$0010                
+CODE_2A88DA:        85 D8         STA $D8                   
+CODE_2A88DC:        E2 20         SEP #$20                  
+CODE_2A88DE:        A9 06         LDA #$06                  
+CODE_2A88E0:        97 D8         STA [$D8],y               
+CODE_2A88E2:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A88E5:        7A            PLY                       
+CODE_2A88E6:        FA            PLX                       
+CODE_2A88E7:        6B            RTL                       
 
-CODE_2A88E8:        PHY                       
-CODE_2A88E9:        LDA $30                   
-CODE_2A88EB:        STA $DA                   
-CODE_2A88ED:        REP #$20                  
-CODE_2A88EF:        LDA $2E                   
-CODE_2A88F1:        STA $D8                   
-CODE_2A88F3:        SEP #$20                  
-CODE_2A88F5:        TYA                       
-CODE_2A88F6:        CLC                       
-CODE_2A88F7:        ADC #$0F                  
-CODE_2A88F9:        TAY                       
-CODE_2A88FA:        AND #$F0                  
-CODE_2A88FC:        BNE CODE_2A8900           
-CODE_2A88FE:        INC $D9                   
-CODE_2A8900:        LDA [$D8],y               
-CODE_2A8902:        CMP #$9A                  
-CODE_2A8904:        BEQ CODE_2A890E           
-CODE_2A8906:        CMP #$99                  
-CODE_2A8908:        BEQ CODE_2A890E           
-CODE_2A890A:        CMP #$E3                  
-CODE_2A890C:        BNE CODE_2A8927           
-CODE_2A890E:        INY                       
-CODE_2A890F:        TYA                       
-CODE_2A8910:        AND #$0F                  
-CODE_2A8912:        BNE CODE_2A8920           
-CODE_2A8914:        REP #$20                  
-CODE_2A8916:        LDA $D8                   
-CODE_2A8918:        CLC                       
-CODE_2A8919:        ADC #$01A0                
-CODE_2A891C:        STA $D8                   
-CODE_2A891E:        SEP #$20                  
-CODE_2A8920:        LDA #$02                  
-CODE_2A8922:        STA [$D8],y               
-CODE_2A8924:        JSR CODE_2A8AD2           
-CODE_2A8927:        PLY                       
-CODE_2A8928:        RTL                       
+CODE_2A88E8:        5A            PHY                       
+CODE_2A88E9:        A5 30         LDA $30                   
+CODE_2A88EB:        85 DA         STA $DA                   
+CODE_2A88ED:        C2 20         REP #$20                  
+CODE_2A88EF:        A5 2E         LDA $2E                   
+CODE_2A88F1:        85 D8         STA $D8                   
+CODE_2A88F3:        E2 20         SEP #$20                  
+CODE_2A88F5:        98            TYA                       
+CODE_2A88F6:        18            CLC                       
+CODE_2A88F7:        69 0F         ADC #$0F                  
+CODE_2A88F9:        A8            TAY                       
+CODE_2A88FA:        29 F0         AND #$F0                  
+CODE_2A88FC:        D0 02         BNE CODE_2A8900           
+CODE_2A88FE:        E6 D9         INC $D9                   
+CODE_2A8900:        B7 D8         LDA [$D8],y               
+CODE_2A8902:        C9 9A         CMP #$9A                  
+CODE_2A8904:        F0 08         BEQ CODE_2A890E           
+CODE_2A8906:        C9 99         CMP #$99                  
+CODE_2A8908:        F0 04         BEQ CODE_2A890E           
+CODE_2A890A:        C9 E3         CMP #$E3                  
+CODE_2A890C:        D0 19         BNE CODE_2A8927           
+CODE_2A890E:        C8            INY                       
+CODE_2A890F:        98            TYA                       
+CODE_2A8910:        29 0F         AND #$0F                  
+CODE_2A8912:        D0 0C         BNE CODE_2A8920           
+CODE_2A8914:        C2 20         REP #$20                  
+CODE_2A8916:        A5 D8         LDA $D8                   
+CODE_2A8918:        18            CLC                       
+CODE_2A8919:        69 A0 01      ADC #$01A0                
+CODE_2A891C:        85 D8         STA $D8                   
+CODE_2A891E:        E2 20         SEP #$20                  
+CODE_2A8920:        A9 02         LDA #$02                  
+CODE_2A8922:        97 D8         STA [$D8],y               
+CODE_2A8924:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A8927:        7A            PLY                       
+CODE_2A8928:        6B            RTL                       
 
 DATA_2A8929:        db $0A,$04,$08
 
-CODE_2A892C:        PHB                       
-CODE_2A892D:        PHK                       
-CODE_2A892E:        PLB                       ;
-CODE_2A892F:        PHY                       
-CODE_2A8930:        PHX                       
-CODE_2A8931:        LDA $30                   
-CODE_2A8933:        STA $DA                   
-CODE_2A8935:        STA $DD                   
-CODE_2A8937:        REP #$20                  
-CODE_2A8939:        LDA $2E                   
-CODE_2A893B:        STA $D8                   
-CODE_2A893D:        SEC                       
-CODE_2A893E:        SBC #$000F                
-CODE_2A8941:        STA $DB                   
-CODE_2A8943:        TYA                       
-CODE_2A8944:        AND #$000F                
-CODE_2A8947:        BNE CODE_2A8951           
-CODE_2A8949:        LDA $D8                   
-CODE_2A894B:        SEC                       
-CODE_2A894C:        SBC #$01A0                
-CODE_2A894F:        STA $D8                   
-CODE_2A8951:        LDA $D8                   
-CODE_2A8953:        SEC                       
-CODE_2A8954:        SBC #$0011                
-CODE_2A8957:        STA $D8                   
-CODE_2A8959:        SEP #$20                  
-CODE_2A895B:        LDX #$00                  
-CODE_2A895D:        LDA [$D8],y               
-CODE_2A895F:        CMP #$9F                  
-CODE_2A8961:        BEQ CODE_2A8981           
-CODE_2A8963:        CMP #$27                  
-CODE_2A8965:        BEQ CODE_2A8983           
-CODE_2A8967:        CMP #$35                  
-CODE_2A8969:        BEQ CODE_2A8983           
-CODE_2A896B:        CMP #$36                  
-CODE_2A896D:        BEQ CODE_2A8983           
-CODE_2A896F:        CMP #$E4                  
-CODE_2A8971:        BEQ CODE_2A8982           
-CODE_2A8973:        CMP #$F8                  
-CODE_2A8975:        BEQ CODE_2A8982           
-CODE_2A8977:        CMP #$9B                  
-CODE_2A8979:        BEQ CODE_2A8982           
-CODE_2A897B:        CMP #$AA                  
-CODE_2A897D:        BEQ CODE_2A8982           
-CODE_2A897F:        BRA CODE_2A8997           
+CODE_2A892C:        8B            PHB                       
+CODE_2A892D:        4B            PHK                       
+CODE_2A892E:        AB            PLB                       ;
+CODE_2A892F:        5A            PHY                       
+CODE_2A8930:        DA            PHX                       
+CODE_2A8931:        A5 30         LDA $30                   
+CODE_2A8933:        85 DA         STA $DA                   
+CODE_2A8935:        85 DD         STA $DD                   
+CODE_2A8937:        C2 20         REP #$20                  
+CODE_2A8939:        A5 2E         LDA $2E                   
+CODE_2A893B:        85 D8         STA $D8                   
+CODE_2A893D:        38            SEC                       
+CODE_2A893E:        E9 0F 00      SBC #$000F                
+CODE_2A8941:        85 DB         STA $DB                   
+CODE_2A8943:        98            TYA                       
+CODE_2A8944:        29 0F 00      AND #$000F                
+CODE_2A8947:        D0 08         BNE CODE_2A8951           
+CODE_2A8949:        A5 D8         LDA $D8                   
+CODE_2A894B:        38            SEC                       
+CODE_2A894C:        E9 A0 01      SBC #$01A0                
+CODE_2A894F:        85 D8         STA $D8                   
+CODE_2A8951:        A5 D8         LDA $D8                   
+CODE_2A8953:        38            SEC                       
+CODE_2A8954:        E9 11 00      SBC #$0011                
+CODE_2A8957:        85 D8         STA $D8                   
+CODE_2A8959:        E2 20         SEP #$20                  
+CODE_2A895B:        A2 00         LDX #$00                  
+CODE_2A895D:        B7 D8         LDA [$D8],y               
+CODE_2A895F:        C9 9F         CMP #$9F                  
+CODE_2A8961:        F0 1E         BEQ CODE_2A8981           
+CODE_2A8963:        C9 27         CMP #$27                  
+CODE_2A8965:        F0 1C         BEQ CODE_2A8983           
+CODE_2A8967:        C9 35         CMP #$35                  
+CODE_2A8969:        F0 18         BEQ CODE_2A8983           
+CODE_2A896B:        C9 36         CMP #$36                  
+CODE_2A896D:        F0 14         BEQ CODE_2A8983           
+CODE_2A896F:        C9 E4         CMP #$E4                  
+CODE_2A8971:        F0 0F         BEQ CODE_2A8982           
+CODE_2A8973:        C9 F8         CMP #$F8                  
+CODE_2A8975:        F0 0B         BEQ CODE_2A8982           
+CODE_2A8977:        C9 9B         CMP #$9B                  
+CODE_2A8979:        F0 07         BEQ CODE_2A8982           
+CODE_2A897B:        C9 AA         CMP #$AA                  
+CODE_2A897D:        F0 03         BEQ CODE_2A8982           
+CODE_2A897F:        80 16         BRA CODE_2A8997           
 
-CODE_2A8981:        INX                       
-CODE_2A8982:        INX                       
-CODE_2A8983:        REP #$20                  
-CODE_2A8985:        LDA $D8                   
-CODE_2A8987:        CLC                       
-CODE_2A8988:        ADC #$0010                
-CODE_2A898B:        STA $D8                   
-CODE_2A898D:        SEP #$20                  
-CODE_2A898F:        LDA.w DATA_2A8929,x               
-CODE_2A8992:        STA [$D8],y               
-CODE_2A8994:        JSR CODE_2A8AD2           
-CODE_2A8997:        LDA [$DB],y               
-CODE_2A8999:        CMP #$A8                  
-CODE_2A899B:        BEQ CODE_2A89A1           
-CODE_2A899D:        CMP #$F6                  
-CODE_2A899F:        BNE CODE_2A89BC           
-CODE_2A89A1:        REP #$20                  
-CODE_2A89A3:        LDA $DB                   
-CODE_2A89A5:        CLC                       
-CODE_2A89A6:        ADC #$0010                
-CODE_2A89A9:        STA $DB                   
-CODE_2A89AB:        SEP #$20                  
-CODE_2A89AD:        LDA #$02                  
-CODE_2A89AF:        STA [$DB],y               
-CODE_2A89B1:        LDA $DC                   
-CODE_2A89B3:        CLC                       
-CODE_2A89B4:        ADC #$20                  
-CODE_2A89B6:        STA $DC                   
-CODE_2A89B8:        LDA #$01                  
-CODE_2A89BA:        STA [$DB],y               
-CODE_2A89BC:        TYA                       
-CODE_2A89BD:        CLC                       
-CODE_2A89BE:        ADC #$10                  
-CODE_2A89C0:        TAY                       
-CODE_2A89C1:        LDA [$2E],y               
-CODE_2A89C3:        CMP #$02                  
-CODE_2A89C5:        BEQ CODE_2A89CB           
-CODE_2A89C7:        CMP #$04                  
-CODE_2A89C9:        BNE CODE_2A89D3           
-CODE_2A89CB:        JSL CODE_2AB73A           
-CODE_2A89CF:        LDA #$AB                  
-CODE_2A89D1:        STA [$2E],y               
-CODE_2A89D3:        PLX                       
-CODE_2A89D4:        PLY                       
-CODE_2A89D5:        PLB                       ;
-CODE_2A89D6:        RTL                       
+CODE_2A8981:        E8            INX                       
+CODE_2A8982:        E8            INX                       
+CODE_2A8983:        C2 20         REP #$20                  
+CODE_2A8985:        A5 D8         LDA $D8                   
+CODE_2A8987:        18            CLC                       
+CODE_2A8988:        69 10 00      ADC #$0010                
+CODE_2A898B:        85 D8         STA $D8                   
+CODE_2A898D:        E2 20         SEP #$20                  
+CODE_2A898F:        BD 29 89      LDA.w DATA_2A8929,x               
+CODE_2A8992:        97 D8         STA [$D8],y               
+CODE_2A8994:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A8997:        B7 DB         LDA [$DB],y               
+CODE_2A8999:        C9 A8         CMP #$A8                  
+CODE_2A899B:        F0 04         BEQ CODE_2A89A1           
+CODE_2A899D:        C9 F6         CMP #$F6                  
+CODE_2A899F:        D0 1B         BNE CODE_2A89BC           
+CODE_2A89A1:        C2 20         REP #$20                  
+CODE_2A89A3:        A5 DB         LDA $DB                   
+CODE_2A89A5:        18            CLC                       
+CODE_2A89A6:        69 10 00      ADC #$0010                
+CODE_2A89A9:        85 DB         STA $DB                   
+CODE_2A89AB:        E2 20         SEP #$20                  
+CODE_2A89AD:        A9 02         LDA #$02                  
+CODE_2A89AF:        97 DB         STA [$DB],y               
+CODE_2A89B1:        A5 DC         LDA $DC                   
+CODE_2A89B3:        18            CLC                       
+CODE_2A89B4:        69 20         ADC #$20                  
+CODE_2A89B6:        85 DC         STA $DC                   
+CODE_2A89B8:        A9 01         LDA #$01                  
+CODE_2A89BA:        97 DB         STA [$DB],y               
+CODE_2A89BC:        98            TYA                       
+CODE_2A89BD:        18            CLC                       
+CODE_2A89BE:        69 10         ADC #$10                  
+CODE_2A89C0:        A8            TAY                       
+CODE_2A89C1:        B7 2E         LDA [$2E],y               
+CODE_2A89C3:        C9 02         CMP #$02                  
+CODE_2A89C5:        F0 04         BEQ CODE_2A89CB           
+CODE_2A89C7:        C9 04         CMP #$04                  
+CODE_2A89C9:        D0 08         BNE CODE_2A89D3           
+CODE_2A89CB:        22 3A B7 2A   JSL CODE_2AB73A           
+CODE_2A89CF:        A9 AB         LDA #$AB                  
+CODE_2A89D1:        97 2E         STA [$2E],y               
+CODE_2A89D3:        FA            PLX                       
+CODE_2A89D4:        7A            PLY                       
+CODE_2A89D5:        AB            PLB                       ;
+CODE_2A89D6:        6B            RTL                       
 
 DATA_2A89D7:        db $0A,$04,$04 ;
 
 DATA_2A89DA:        db $08,$0A ;
 
-CODE_2A89DC:        PHB                       
-CODE_2A89DD:        PHK                       
-CODE_2A89DE:        PLB                       ;
-CODE_2A89DF:        PHX                       
-CODE_2A89E0:        PHY                       
-CODE_2A89E1:        REP #$20                  
-CODE_2A89E3:        LDA $2E                   
-CODE_2A89E5:        STA $D8                   
-CODE_2A89E7:        SEP #$20                  
-CODE_2A89E9:        LDA $30                   
-CODE_2A89EB:        STA $DA                   
-CODE_2A89ED:        REP #$20                  
-CODE_2A89EF:        INY                       
-CODE_2A89F0:        TYA                       
-CODE_2A89F1:        AND #$000F                
-CODE_2A89F4:        BNE CODE_2A89FE           
-CODE_2A89F6:        LDA $D8                   
-CODE_2A89F8:        CLC                       
-CODE_2A89F9:        ADC #$01A0                
-CODE_2A89FC:        STA $D8                   
-CODE_2A89FE:        SEP #$20                  
-CODE_2A8A00:        LDA [$D8],y               
-CODE_2A8A02:        CMP #$C2                  
-CODE_2A8A04:        BNE CODE_2A8A0E           
-CODE_2A8A06:        DEY                       
-CODE_2A8A07:        LDA #$03                  
-CODE_2A8A09:        STA [$D8],y               
-CODE_2A8A0B:        JSR CODE_2A8AD2           
-CODE_2A8A0E:        PLY                       
-CODE_2A8A0F:        PLX                       
-CODE_2A8A10:        PHX                       
-CODE_2A8A11:        PHY                       
-CODE_2A8A12:        LDA [$2E],y               
-CODE_2A8A14:        CMP #$9F                  
-CODE_2A8A16:        BEQ CODE_2A8A50           
-CODE_2A8A18:        REP #$20                  
-CODE_2A8A1A:        LDA $2E                   
-CODE_2A8A1C:        STA $D8                   
-CODE_2A8A1E:        SEP #$20                  
-CODE_2A8A20:        TYA                       
-CODE_2A8A21:        AND #$0F                  
-CODE_2A8A23:        BNE CODE_2A8A31           
-CODE_2A8A25:        REP #$20                  
-CODE_2A8A27:        LDA $D8                   
-CODE_2A8A29:        SEC                       
-CODE_2A8A2A:        SBC #$01A0                
-CODE_2A8A2D:        STA $D8                   
-CODE_2A8A2F:        SEP #$20                  
-CODE_2A8A31:        DEY                       
-CODE_2A8A32:        LDA [$D8],y               
-CODE_2A8A34:        CMP #$26                  
-CODE_2A8A36:        BEQ CODE_2A8A50           
-CODE_2A8A38:        CMP #$33                  
-CODE_2A8A3A:        BEQ CODE_2A8A50           
-CODE_2A8A3C:        CMP #$9A                  
-CODE_2A8A3E:        BEQ CODE_2A8A50           
-CODE_2A8A40:        CMP #$E3                  
-CODE_2A8A42:        BEQ CODE_2A8A50           
-CODE_2A8A44:        CMP #$0D                  
-CODE_2A8A46:        BEQ CODE_2A8A50           
-CODE_2A8A48:        LDA.w DATA_2A89D7,x               
-CODE_2A8A4B:        STA [$D8],y               
-CODE_2A8A4D:        JSR CODE_2A8AD2           
-CODE_2A8A50:        PLY                       
-CODE_2A8A51:        PHY                       
-CODE_2A8A52:        LDA [$2E],y               
-CODE_2A8A54:        CMP #$9B                  
-CODE_2A8A56:        BEQ CODE_2A8A5E           
-CODE_2A8A58:        CMP #$E4                  
-CODE_2A8A5A:        BEQ CODE_2A8A5E           
-CODE_2A8A5C:        CMP #$9F                  
-CODE_2A8A5E:        BNE CODE_2A8AA8           
-CODE_2A8A60:        REP #$20                  
-CODE_2A8A62:        LDA $2E                   
-CODE_2A8A64:        CLC                       
-CODE_2A8A65:        ADC #$0010                
-CODE_2A8A68:        STA $D8                   
-CODE_2A8A6A:        SEP #$20                  
-CODE_2A8A6C:        INY                       
-CODE_2A8A6D:        TYA                       
-CODE_2A8A6E:        AND #$0F                  
-CODE_2A8A70:        BNE CODE_2A8A7E           
-CODE_2A8A72:        REP #$20                  
-CODE_2A8A74:        LDA $D8                   
-CODE_2A8A76:        CLC                       
-CODE_2A8A77:        ADC #$01A0                
-CODE_2A8A7A:        STA $D8                   
-CODE_2A8A7C:        SEP #$20                  
-CODE_2A8A7E:        LDX #$03                  
-CODE_2A8A80:        LDA [$D8],y               
-CODE_2A8A82:        CMP #$E3                  
-CODE_2A8A84:        BEQ CODE_2A8A9D           
-CODE_2A8A86:        CMP #$9A                  
-CODE_2A8A88:        BNE CODE_2A8AA8           
-CODE_2A8A8A:        TYA                       
-CODE_2A8A8B:        AND #$0F                  
-CODE_2A8A8D:        BNE CODE_2A8A9B           
-CODE_2A8A8F:        REP #$20                  
-CODE_2A8A91:        LDA $D8                   
-CODE_2A8A93:        SEC                       
-CODE_2A8A94:        SBC #$01A0                
-CODE_2A8A97:        STA $D8                   
-CODE_2A8A99:        SEP #$20                  
-CODE_2A8A9B:        BRA CODE_2A8A9F           
+CODE_2A89DC:        8B            PHB                       
+CODE_2A89DD:        4B            PHK                       
+CODE_2A89DE:        AB            PLB                       ;
+CODE_2A89DF:        DA            PHX                       
+CODE_2A89E0:        5A            PHY                       
+CODE_2A89E1:        C2 20         REP #$20                  
+CODE_2A89E3:        A5 2E         LDA $2E                   
+CODE_2A89E5:        85 D8         STA $D8                   
+CODE_2A89E7:        E2 20         SEP #$20                  
+CODE_2A89E9:        A5 30         LDA $30                   
+CODE_2A89EB:        85 DA         STA $DA                   
+CODE_2A89ED:        C2 20         REP #$20                  
+CODE_2A89EF:        C8            INY                       
+CODE_2A89F0:        98            TYA                       
+CODE_2A89F1:        29 0F 00      AND #$000F                
+CODE_2A89F4:        D0 08         BNE CODE_2A89FE           
+CODE_2A89F6:        A5 D8         LDA $D8                   
+CODE_2A89F8:        18            CLC                       
+CODE_2A89F9:        69 A0 01      ADC #$01A0                
+CODE_2A89FC:        85 D8         STA $D8                   
+CODE_2A89FE:        E2 20         SEP #$20                  
+CODE_2A8A00:        B7 D8         LDA [$D8],y               
+CODE_2A8A02:        C9 C2         CMP #$C2                  
+CODE_2A8A04:        D0 08         BNE CODE_2A8A0E           
+CODE_2A8A06:        88            DEY                       
+CODE_2A8A07:        A9 03         LDA #$03                  
+CODE_2A8A09:        97 D8         STA [$D8],y               
+CODE_2A8A0B:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A8A0E:        7A            PLY                       
+CODE_2A8A0F:        FA            PLX                       
+CODE_2A8A10:        DA            PHX                       
+CODE_2A8A11:        5A            PHY                       
+CODE_2A8A12:        B7 2E         LDA [$2E],y               
+CODE_2A8A14:        C9 9F         CMP #$9F                  
+CODE_2A8A16:        F0 38         BEQ CODE_2A8A50           
+CODE_2A8A18:        C2 20         REP #$20                  
+CODE_2A8A1A:        A5 2E         LDA $2E                   
+CODE_2A8A1C:        85 D8         STA $D8                   
+CODE_2A8A1E:        E2 20         SEP #$20                  
+CODE_2A8A20:        98            TYA                       
+CODE_2A8A21:        29 0F         AND #$0F                  
+CODE_2A8A23:        D0 0C         BNE CODE_2A8A31           
+CODE_2A8A25:        C2 20         REP #$20                  
+CODE_2A8A27:        A5 D8         LDA $D8                   
+CODE_2A8A29:        38            SEC                       
+CODE_2A8A2A:        E9 A0 01      SBC #$01A0                
+CODE_2A8A2D:        85 D8         STA $D8                   
+CODE_2A8A2F:        E2 20         SEP #$20                  
+CODE_2A8A31:        88            DEY                       
+CODE_2A8A32:        B7 D8         LDA [$D8],y               
+CODE_2A8A34:        C9 26         CMP #$26                  
+CODE_2A8A36:        F0 18         BEQ CODE_2A8A50           
+CODE_2A8A38:        C9 33         CMP #$33                  
+CODE_2A8A3A:        F0 14         BEQ CODE_2A8A50           
+CODE_2A8A3C:        C9 9A         CMP #$9A                  
+CODE_2A8A3E:        F0 10         BEQ CODE_2A8A50           
+CODE_2A8A40:        C9 E3         CMP #$E3                  
+CODE_2A8A42:        F0 0C         BEQ CODE_2A8A50           
+CODE_2A8A44:        C9 0D         CMP #$0D                  
+CODE_2A8A46:        F0 08         BEQ CODE_2A8A50           
+CODE_2A8A48:        BD D7 89      LDA.w DATA_2A89D7,x               
+CODE_2A8A4B:        97 D8         STA [$D8],y               
+CODE_2A8A4D:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A8A50:        7A            PLY                       
+CODE_2A8A51:        5A            PHY                       
+CODE_2A8A52:        B7 2E         LDA [$2E],y               
+CODE_2A8A54:        C9 9B         CMP #$9B                  
+CODE_2A8A56:        F0 06         BEQ CODE_2A8A5E           
+CODE_2A8A58:        C9 E4         CMP #$E4                  
+CODE_2A8A5A:        F0 02         BEQ CODE_2A8A5E           
+CODE_2A8A5C:        C9 9F         CMP #$9F                  
+CODE_2A8A5E:        D0 48         BNE CODE_2A8AA8           
+CODE_2A8A60:        C2 20         REP #$20                  
+CODE_2A8A62:        A5 2E         LDA $2E                   
+CODE_2A8A64:        18            CLC                       
+CODE_2A8A65:        69 10 00      ADC #$0010                
+CODE_2A8A68:        85 D8         STA $D8                   
+CODE_2A8A6A:        E2 20         SEP #$20                  
+CODE_2A8A6C:        C8            INY                       
+CODE_2A8A6D:        98            TYA                       
+CODE_2A8A6E:        29 0F         AND #$0F                  
+CODE_2A8A70:        D0 0C         BNE CODE_2A8A7E           
+CODE_2A8A72:        C2 20         REP #$20                  
+CODE_2A8A74:        A5 D8         LDA $D8                   
+CODE_2A8A76:        18            CLC                       
+CODE_2A8A77:        69 A0 01      ADC #$01A0                
+CODE_2A8A7A:        85 D8         STA $D8                   
+CODE_2A8A7C:        E2 20         SEP #$20                  
+CODE_2A8A7E:        A2 03         LDX #$03                  
+CODE_2A8A80:        B7 D8         LDA [$D8],y               
+CODE_2A8A82:        C9 E3         CMP #$E3                  
+CODE_2A8A84:        F0 17         BEQ CODE_2A8A9D           
+CODE_2A8A86:        C9 9A         CMP #$9A                  
+CODE_2A8A88:        D0 1E         BNE CODE_2A8AA8           
+CODE_2A8A8A:        98            TYA                       
+CODE_2A8A8B:        29 0F         AND #$0F                  
+CODE_2A8A8D:        D0 0C         BNE CODE_2A8A9B           
+CODE_2A8A8F:        C2 20         REP #$20                  
+CODE_2A8A91:        A5 D8         LDA $D8                   
+CODE_2A8A93:        38            SEC                       
+CODE_2A8A94:        E9 A0 01      SBC #$01A0                
+CODE_2A8A97:        85 D8         STA $D8                   
+CODE_2A8A99:        E2 20         SEP #$20                  
+CODE_2A8A9B:        80 02         BRA CODE_2A8A9F           
 
-CODE_2A8A9D:        LDX #$02                  
-CODE_2A8A9F:        DEY                       
-CODE_2A8AA0:        LDA.w DATA_2A89D7,x               
-CODE_2A8AA3:        STA [$D8],y               
-CODE_2A8AA5:        JSR CODE_2A8AD2           
-CODE_2A8AA8:        TYA                       
-CODE_2A8AA9:        AND #$0F                  
-CODE_2A8AAB:        BNE CODE_2A8AB9           
-CODE_2A8AAD:        REP #$20                  
-CODE_2A8AAF:        LDA $D8                   
-CODE_2A8AB1:        SEC                       
-CODE_2A8AB2:        SBC #$01A0                
-CODE_2A8AB5:        STA $D8                   
-CODE_2A8AB7:        SEP #$20                  
-CODE_2A8AB9:        DEY                       
-CODE_2A8ABA:        LDA [$2E],y               
-CODE_2A8ABC:        CMP #$9F                  
-CODE_2A8ABE:        BNE CODE_2A8ACE           
-CODE_2A8AC0:        LDA [$D8],y               
-CODE_2A8AC2:        CMP #$86                  
-CODE_2A8AC4:        BNE CODE_2A8ACE           
-CODE_2A8AC6:        LDA.w DATA_2A89DA                 
-CODE_2A8AC9:        STA [$D8],y               
-CODE_2A8ACB:        JSR CODE_2A8AD2           
-CODE_2A8ACE:        PLY                       
-CODE_2A8ACF:        PLX                       
-CODE_2A8AD0:        PLB                       ;
-CODE_2A8AD1:        RTL                       
+CODE_2A8A9D:        A2 02         LDX #$02                  
+CODE_2A8A9F:        88            DEY                       
+CODE_2A8AA0:        BD D7 89      LDA.w DATA_2A89D7,x               
+CODE_2A8AA3:        97 D8         STA [$D8],y               
+CODE_2A8AA5:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A8AA8:        98            TYA                       
+CODE_2A8AA9:        29 0F         AND #$0F                  
+CODE_2A8AAB:        D0 0C         BNE CODE_2A8AB9           
+CODE_2A8AAD:        C2 20         REP #$20                  
+CODE_2A8AAF:        A5 D8         LDA $D8                   
+CODE_2A8AB1:        38            SEC                       
+CODE_2A8AB2:        E9 A0 01      SBC #$01A0                
+CODE_2A8AB5:        85 D8         STA $D8                   
+CODE_2A8AB7:        E2 20         SEP #$20                  
+CODE_2A8AB9:        88            DEY                       
+CODE_2A8ABA:        B7 2E         LDA [$2E],y               
+CODE_2A8ABC:        C9 9F         CMP #$9F                  
+CODE_2A8ABE:        D0 0E         BNE CODE_2A8ACE           
+CODE_2A8AC0:        B7 D8         LDA [$D8],y               
+CODE_2A8AC2:        C9 86         CMP #$86                  
+CODE_2A8AC4:        D0 08         BNE CODE_2A8ACE           
+CODE_2A8AC6:        AD DA 89      LDA.w DATA_2A89DA                 
+CODE_2A8AC9:        97 D8         STA [$D8],y               
+CODE_2A8ACB:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A8ACE:        7A            PLY                       
+CODE_2A8ACF:        FA            PLX                       
+CODE_2A8AD0:        AB            PLB                       ;
+CODE_2A8AD1:        6B            RTL                       
 
-CODE_2A8AD2:        LDA $D9                   
-CODE_2A8AD4:        CLC                       
-CODE_2A8AD5:        ADC #$20                  
-CODE_2A8AD7:        STA $D9                   
-CODE_2A8AD9:        LDA #$01                  
-CODE_2A8ADB:        STA [$D8],y               
-CODE_2A8ADD:        RTS                       
+CODE_2A8AD2:        A5 D9         LDA $D9                   
+CODE_2A8AD4:        18            CLC                       
+CODE_2A8AD5:        69 20         ADC #$20                  
+CODE_2A8AD7:        85 D9         STA $D9                   
+CODE_2A8AD9:        A9 01         LDA #$01                  
+CODE_2A8ADB:        97 D8         STA [$D8],y               
+CODE_2A8ADD:        60            RTS                       
 
 DATA_2A8ADE:        db $09,$02,$02,$07
               
-CODE_2A8AE2:        PHB                       
-CODE_2A8AE3:        PHK                       
-CODE_2A8AE4:        PLB                       ;
-CODE_2A8AE5:        PHX                       
-CODE_2A8AE6:        PHY                       
-CODE_2A8AE7:        REP #$20                  
-CODE_2A8AE9:        LDA $2E                   
-CODE_2A8AEB:        STA $D8                   
-CODE_2A8AED:        STA $DB                   
-CODE_2A8AEF:        SEP #$20                  
-CODE_2A8AF1:        LDA $30                   
-CODE_2A8AF3:        STA $DA                   
-CODE_2A8AF5:        STA $DD                   
-CODE_2A8AF7:        TYA                       
-CODE_2A8AF8:        CLC                       
-CODE_2A8AF9:        ADC #$10                  
-CODE_2A8AFB:        TAY                       
-CODE_2A8AFC:        AND #$F0                  
-CODE_2A8AFE:        BNE CODE_2A8B02           
-CODE_2A8B00:        INC $D9                   
-CODE_2A8B02:        LDA [$D8],y               
-CODE_2A8B04:        CMP #$9A                  
-CODE_2A8B06:        BEQ CODE_2A8B18           
-CODE_2A8B08:        CMP #$A8                  
-CODE_2A8B0A:        BEQ CODE_2A8B18           
-CODE_2A8B0C:        CMP #$F6                  
-CODE_2A8B0E:        BEQ CODE_2A8B18           
-CODE_2A8B10:        LDA.w DATA_2A8ADE,x               
-CODE_2A8B13:        STA [$D8],y               
-CODE_2A8B15:        JSR CODE_2A8AD2           
-CODE_2A8B18:        PLY                       
-CODE_2A8B19:        PHY                       
-CODE_2A8B1A:        TYA                       
-CODE_2A8B1B:        AND #$0F                  
-CODE_2A8B1D:        BNE CODE_2A8B2B           
-CODE_2A8B1F:        REP #$20                  
-CODE_2A8B21:        LDA $DB                   
-CODE_2A8B23:        SEC                       
-CODE_2A8B24:        SBC #$01A0                
-CODE_2A8B27:        STA $DB                   
-CODE_2A8B29:        SEP #$20                  
-CODE_2A8B2B:        DEY                       
-CODE_2A8B2C:        LDA [$DB],y               
-CODE_2A8B2E:        CMP #$C2                  
-CODE_2A8B30:        BNE CODE_2A8B47           
-CODE_2A8B32:        PLY                       
-CODE_2A8B33:        PHY                       
-CODE_2A8B34:        LDA #$12                  
-CODE_2A8B36:        STA [$2E],y               
-CODE_2A8B38:        REP #$30                  
-CODE_2A8B3A:        TYA                       
-CODE_2A8B3B:        ORA #$2000                
-CODE_2A8B3E:        TAY                       
-CODE_2A8B3F:        SEP #$20                  
-CODE_2A8B41:        LDA #$01                  
-CODE_2A8B43:        STA [$2E],y               
-CODE_2A8B45:        SEP #$10                  
-CODE_2A8B47:        PLY                       
-CODE_2A8B48:        PLX                       
-CODE_2A8B49:        PLB                       ;
-CODE_2A8B4A:        RTL                       
+CODE_2A8AE2:        8B            PHB                       
+CODE_2A8AE3:        4B            PHK                       
+CODE_2A8AE4:        AB            PLB                       ;
+CODE_2A8AE5:        DA            PHX                       
+CODE_2A8AE6:        5A            PHY                       
+CODE_2A8AE7:        C2 20         REP #$20                  
+CODE_2A8AE9:        A5 2E         LDA $2E                   
+CODE_2A8AEB:        85 D8         STA $D8                   
+CODE_2A8AED:        85 DB         STA $DB                   
+CODE_2A8AEF:        E2 20         SEP #$20                  
+CODE_2A8AF1:        A5 30         LDA $30                   
+CODE_2A8AF3:        85 DA         STA $DA                   
+CODE_2A8AF5:        85 DD         STA $DD                   
+CODE_2A8AF7:        98            TYA                       
+CODE_2A8AF8:        18            CLC                       
+CODE_2A8AF9:        69 10         ADC #$10                  
+CODE_2A8AFB:        A8            TAY                       
+CODE_2A8AFC:        29 F0         AND #$F0                  
+CODE_2A8AFE:        D0 02         BNE CODE_2A8B02           
+CODE_2A8B00:        E6 D9         INC $D9                   
+CODE_2A8B02:        B7 D8         LDA [$D8],y               
+CODE_2A8B04:        C9 9A         CMP #$9A                  
+CODE_2A8B06:        F0 10         BEQ CODE_2A8B18           
+CODE_2A8B08:        C9 A8         CMP #$A8                  
+CODE_2A8B0A:        F0 0C         BEQ CODE_2A8B18           
+CODE_2A8B0C:        C9 F6         CMP #$F6                  
+CODE_2A8B0E:        F0 08         BEQ CODE_2A8B18           
+CODE_2A8B10:        BD DE 8A      LDA.w DATA_2A8ADE,x               
+CODE_2A8B13:        97 D8         STA [$D8],y               
+CODE_2A8B15:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2A8B18:        7A            PLY                       
+CODE_2A8B19:        5A            PHY                       
+CODE_2A8B1A:        98            TYA                       
+CODE_2A8B1B:        29 0F         AND #$0F                  
+CODE_2A8B1D:        D0 0C         BNE CODE_2A8B2B           
+CODE_2A8B1F:        C2 20         REP #$20                  
+CODE_2A8B21:        A5 DB         LDA $DB                   
+CODE_2A8B23:        38            SEC                       
+CODE_2A8B24:        E9 A0 01      SBC #$01A0                
+CODE_2A8B27:        85 DB         STA $DB                   
+CODE_2A8B29:        E2 20         SEP #$20                  
+CODE_2A8B2B:        88            DEY                       
+CODE_2A8B2C:        B7 DB         LDA [$DB],y               
+CODE_2A8B2E:        C9 C2         CMP #$C2                  
+CODE_2A8B30:        D0 15         BNE CODE_2A8B47           
+CODE_2A8B32:        7A            PLY                       
+CODE_2A8B33:        5A            PHY                       
+CODE_2A8B34:        A9 12         LDA #$12                  
+CODE_2A8B36:        97 2E         STA [$2E],y               
+CODE_2A8B38:        C2 30         REP #$30                  
+CODE_2A8B3A:        98            TYA                       
+CODE_2A8B3B:        09 00 20      ORA #$2000                
+CODE_2A8B3E:        A8            TAY                       
+CODE_2A8B3F:        E2 20         SEP #$20                  
+CODE_2A8B41:        A9 01         LDA #$01                  
+CODE_2A8B43:        97 2E         STA [$2E],y               
+CODE_2A8B45:        E2 10         SEP #$10                  
+CODE_2A8B47:        7A            PLY                       
+CODE_2A8B48:        FA            PLX                       
+CODE_2A8B49:        AB            PLB                       ;
+CODE_2A8B4A:        6B            RTL                       
 
-CODE_2A8B4B:        REP #$20                  
-CODE_2A8B4D:        LDA #$1000                
-CODE_2A8B50:        XBA                       
-CODE_2A8B51:        STA $1602                 
-CODE_2A8B54:        LDA #$40BE                
-CODE_2A8B57:        XBA                       
-CODE_2A8B58:        STA $1604                 
-CODE_2A8B5B:        LDA #$30FB                
-CODE_2A8B5E:        STA $1606                 
-CODE_2A8B61:        LDA #$FFFF                
-CODE_2A8B64:        STA $1608                 
-CODE_2A8B67:        SEP #$20                  
-CODE_2A8B69:        JSR CODE_2A8C9A           
-CODE_2A8B6C:        REP #$20                  
-CODE_2A8B6E:        LDA #$1300                
-CODE_2A8B71:        XBA                       
-CODE_2A8B72:        STA $1602                 
-CODE_2A8B75:        LDA #$403E                
-CODE_2A8B78:        XBA                       
-CODE_2A8B79:        STA $1604                 
-CODE_2A8B7C:        SEP #$20                  
-CODE_2A8B7E:        JSR CODE_2A8C9A           
-CODE_2A8B81:        REP #$20                  
-CODE_2A8B83:        LDA #$1060                
-CODE_2A8B86:        XBA                       
-CODE_2A8B87:        STA $1602                 
-CODE_2A8B8A:        LDA #$003F                
-CODE_2A8B8D:        XBA                       
-CODE_2A8B8E:        STA $1604                 
-CODE_2A8B91:        LDX #$40                  
-CODE_2A8B93:        LDA #$04D9                
-CODE_2A8B96:        STA $1606,x               
-CODE_2A8B99:        DEX                       
-CODE_2A8B9A:        DEX                       
-CODE_2A8B9B:        BPL CODE_2A8B96           
-CODE_2A8B9D:        LDA #$04E7                
-CODE_2A8BA0:        STA $1624                 
-CODE_2A8BA3:        LDA #$04E8                
-CODE_2A8BA6:        STA $1626                 
-CODE_2A8BA9:        LDA #$FFFF                
-CODE_2A8BAC:        STA $1646                 
-CODE_2A8BAF:        SEP #$20                  
-CODE_2A8BB1:        JSR CODE_2A8C9A           
-CODE_2A8BB4:        REP #$20                  
-CODE_2A8BB6:        LDA #$12E0                
-CODE_2A8BB9:        XBA                       
-CODE_2A8BBA:        STA $1602                 
-CODE_2A8BBD:        LDX #$40                  
-CODE_2A8BBF:        LDA #$04E5                
-CODE_2A8BC2:        STA $1606,x               
-CODE_2A8BC5:        DEX                       
-CODE_2A8BC6:        DEX                       
-CODE_2A8BC7:        BPL CODE_2A8BC2           
-CODE_2A8BC9:        LDA #$04E9                
-CODE_2A8BCC:        STA $1624                 
-CODE_2A8BCF:        LDA #$04EA                
-CODE_2A8BD2:        STA $1626                 
-CODE_2A8BD5:        LDA #$FFFF                
-CODE_2A8BD8:        STA $1646                 
-CODE_2A8BDB:        SEP #$20                  
-CODE_2A8BDD:        JSR CODE_2A8C9A           
-CODE_2A8BE0:        REP #$20                  
-CODE_2A8BE2:        LDA #$1000                
-CODE_2A8BE5:        XBA                       
-CODE_2A8BE6:        STA $1602                 
-CODE_2A8BE9:        LDA #$C02E                
-CODE_2A8BEC:        XBA                       
-CODE_2A8BED:        STA $1604                 
-CODE_2A8BF0:        LDA #$30FB                
-CODE_2A8BF3:        STA $1606                 
-CODE_2A8BF6:        LDA #$FFFF                
-CODE_2A8BF9:        STA $1608                 
-CODE_2A8BFC:        SEP #$20                  
-CODE_2A8BFE:        JSR CODE_2A8C9A           
-CODE_2A8C01:        LDA #$10                  
-CODE_2A8C03:        STA $1602                 
-CODE_2A8C06:        LDA #$1F                  
-CODE_2A8C08:        STA $1603                 
-CODE_2A8C0B:        JSR CODE_2A8C9A           
-CODE_2A8C0E:        REP #$20                  
-CODE_2A8C10:        LDA #$1061                
-CODE_2A8C13:        XBA                       
-CODE_2A8C14:        STA $1602                 
-CODE_2A8C17:        LDA #$8029                
-CODE_2A8C1A:        XBA                       
-CODE_2A8C1B:        STA $1604                 
-CODE_2A8C1E:        LDA #$24D8                
-CODE_2A8C21:        STA $1606                 
-CODE_2A8C24:        LDA #$24DB                
-CODE_2A8C27:        LDX #$24                  
-CODE_2A8C29:        STA $1608,x               
-CODE_2A8C2C:        DEX                       
-CODE_2A8C2D:        DEX                       
-CODE_2A8C2E:        BPL CODE_2A8C29           
-CODE_2A8C30:        LDA #$24EB                
-CODE_2A8C33:        STA $1618                 
-CODE_2A8C36:        LDA #$24EC                
-CODE_2A8C39:        STA $161A                 
-CODE_2A8C3C:        LDA #$24ED                
-CODE_2A8C3F:        STA $161C                 
-CODE_2A8C42:        LDA #$24E4                
-CODE_2A8C45:        STA $162E                 
-CODE_2A8C48:        LDA #$FFFF                
-CODE_2A8C4B:        STA $1630                 
-CODE_2A8C4E:        SEP #$20                  
-CODE_2A8C50:        JSR CODE_2A8C9A           
-CODE_2A8C53:        REP #$20                  
-CODE_2A8C55:        LDA #$107E                
-CODE_2A8C58:        XBA                       
-CODE_2A8C59:        STA $1602                 
-CODE_2A8C5C:        LDA #$24DA                
-CODE_2A8C5F:        STA $1606                 
-CODE_2A8C62:        LDA #$24E3                
-CODE_2A8C65:        LDX #$24                  
-CODE_2A8C67:        STA $1608,x               
-CODE_2A8C6A:        DEX                       
-CODE_2A8C6B:        DEX                       
-CODE_2A8C6C:        BPL CODE_2A8C67           
-CODE_2A8C6E:        LDA #$24EE                
-CODE_2A8C71:        STA $1618                 
-CODE_2A8C74:        LDA #$24F0                
-CODE_2A8C77:        STA $161A                 
-CODE_2A8C7A:        LDA #$24F1                
-CODE_2A8C7D:        STA $161C                 
-CODE_2A8C80:        LDA #$24E6                
-CODE_2A8C83:        STA $162E                 
-CODE_2A8C86:        SEP #$20                  
-CODE_2A8C88:        JSR CODE_2A8C9A           
-CODE_2A8C8B:        STZ $1600                 
-CODE_2A8C8E:        STZ $1601                 
-CODE_2A8C91:        LDA #$FF                  
-CODE_2A8C93:        STA $1602                 
-CODE_2A8C96:        STA $1603                 
-CODE_2A8C99:        RTL                       
+CODE_2A8B4B:        C2 20         REP #$20                  
+CODE_2A8B4D:        A9 00 10      LDA #$1000                
+CODE_2A8B50:        EB            XBA                       
+CODE_2A8B51:        8D 02 16      STA $1602                 
+CODE_2A8B54:        A9 BE 40      LDA #$40BE                
+CODE_2A8B57:        EB            XBA                       
+CODE_2A8B58:        8D 04 16      STA $1604                 
+CODE_2A8B5B:        A9 FB 30      LDA #$30FB                
+CODE_2A8B5E:        8D 06 16      STA $1606                 
+CODE_2A8B61:        A9 FF FF      LDA #$FFFF                
+CODE_2A8B64:        8D 08 16      STA $1608                 
+CODE_2A8B67:        E2 20         SEP #$20                  
+CODE_2A8B69:        20 9A 8C      JSR CODE_2A8C9A           
+CODE_2A8B6C:        C2 20         REP #$20                  
+CODE_2A8B6E:        A9 00 13      LDA #$1300                
+CODE_2A8B71:        EB            XBA                       
+CODE_2A8B72:        8D 02 16      STA $1602                 
+CODE_2A8B75:        A9 3E 40      LDA #$403E                
+CODE_2A8B78:        EB            XBA                       
+CODE_2A8B79:        8D 04 16      STA $1604                 
+CODE_2A8B7C:        E2 20         SEP #$20                  
+CODE_2A8B7E:        20 9A 8C      JSR CODE_2A8C9A           
+CODE_2A8B81:        C2 20         REP #$20                  
+CODE_2A8B83:        A9 60 10      LDA #$1060                
+CODE_2A8B86:        EB            XBA                       
+CODE_2A8B87:        8D 02 16      STA $1602                 
+CODE_2A8B8A:        A9 3F 00      LDA #$003F                
+CODE_2A8B8D:        EB            XBA                       
+CODE_2A8B8E:        8D 04 16      STA $1604                 
+CODE_2A8B91:        A2 40         LDX #$40                  
+CODE_2A8B93:        A9 D9 04      LDA #$04D9                
+CODE_2A8B96:        9D 06 16      STA $1606,x               
+CODE_2A8B99:        CA            DEX                       
+CODE_2A8B9A:        CA            DEX                       
+CODE_2A8B9B:        10 F9         BPL CODE_2A8B96           
+CODE_2A8B9D:        A9 E7 04      LDA #$04E7                
+CODE_2A8BA0:        8D 24 16      STA $1624                 
+CODE_2A8BA3:        A9 E8 04      LDA #$04E8                
+CODE_2A8BA6:        8D 26 16      STA $1626                 
+CODE_2A8BA9:        A9 FF FF      LDA #$FFFF                
+CODE_2A8BAC:        8D 46 16      STA $1646                 
+CODE_2A8BAF:        E2 20         SEP #$20                  
+CODE_2A8BB1:        20 9A 8C      JSR CODE_2A8C9A           
+CODE_2A8BB4:        C2 20         REP #$20                  
+CODE_2A8BB6:        A9 E0 12      LDA #$12E0                
+CODE_2A8BB9:        EB            XBA                       
+CODE_2A8BBA:        8D 02 16      STA $1602                 
+CODE_2A8BBD:        A2 40         LDX #$40                  
+CODE_2A8BBF:        A9 E5 04      LDA #$04E5                
+CODE_2A8BC2:        9D 06 16      STA $1606,x               
+CODE_2A8BC5:        CA            DEX                       
+CODE_2A8BC6:        CA            DEX                       
+CODE_2A8BC7:        10 F9         BPL CODE_2A8BC2           
+CODE_2A8BC9:        A9 E9 04      LDA #$04E9                
+CODE_2A8BCC:        8D 24 16      STA $1624                 
+CODE_2A8BCF:        A9 EA 04      LDA #$04EA                
+CODE_2A8BD2:        8D 26 16      STA $1626                 
+CODE_2A8BD5:        A9 FF FF      LDA #$FFFF                
+CODE_2A8BD8:        8D 46 16      STA $1646                 
+CODE_2A8BDB:        E2 20         SEP #$20                  
+CODE_2A8BDD:        20 9A 8C      JSR CODE_2A8C9A           
+CODE_2A8BE0:        C2 20         REP #$20                  
+CODE_2A8BE2:        A9 00 10      LDA #$1000                
+CODE_2A8BE5:        EB            XBA                       
+CODE_2A8BE6:        8D 02 16      STA $1602                 
+CODE_2A8BE9:        A9 2E C0      LDA #$C02E                
+CODE_2A8BEC:        EB            XBA                       
+CODE_2A8BED:        8D 04 16      STA $1604                 
+CODE_2A8BF0:        A9 FB 30      LDA #$30FB                
+CODE_2A8BF3:        8D 06 16      STA $1606                 
+CODE_2A8BF6:        A9 FF FF      LDA #$FFFF                
+CODE_2A8BF9:        8D 08 16      STA $1608                 
+CODE_2A8BFC:        E2 20         SEP #$20                  
+CODE_2A8BFE:        20 9A 8C      JSR CODE_2A8C9A           
+CODE_2A8C01:        A9 10         LDA #$10                  
+CODE_2A8C03:        8D 02 16      STA $1602                 
+CODE_2A8C06:        A9 1F         LDA #$1F                  
+CODE_2A8C08:        8D 03 16      STA $1603                 
+CODE_2A8C0B:        20 9A 8C      JSR CODE_2A8C9A           
+CODE_2A8C0E:        C2 20         REP #$20                  
+CODE_2A8C10:        A9 61 10      LDA #$1061                
+CODE_2A8C13:        EB            XBA                       
+CODE_2A8C14:        8D 02 16      STA $1602                 
+CODE_2A8C17:        A9 29 80      LDA #$8029                
+CODE_2A8C1A:        EB            XBA                       
+CODE_2A8C1B:        8D 04 16      STA $1604                 
+CODE_2A8C1E:        A9 D8 24      LDA #$24D8                
+CODE_2A8C21:        8D 06 16      STA $1606                 
+CODE_2A8C24:        A9 DB 24      LDA #$24DB                
+CODE_2A8C27:        A2 24         LDX #$24                  
+CODE_2A8C29:        9D 08 16      STA $1608,x               
+CODE_2A8C2C:        CA            DEX                       
+CODE_2A8C2D:        CA            DEX                       
+CODE_2A8C2E:        10 F9         BPL CODE_2A8C29           
+CODE_2A8C30:        A9 EB 24      LDA #$24EB                
+CODE_2A8C33:        8D 18 16      STA $1618                 
+CODE_2A8C36:        A9 EC 24      LDA #$24EC                
+CODE_2A8C39:        8D 1A 16      STA $161A                 
+CODE_2A8C3C:        A9 ED 24      LDA #$24ED                
+CODE_2A8C3F:        8D 1C 16      STA $161C                 
+CODE_2A8C42:        A9 E4 24      LDA #$24E4                
+CODE_2A8C45:        8D 2E 16      STA $162E                 
+CODE_2A8C48:        A9 FF FF      LDA #$FFFF                
+CODE_2A8C4B:        8D 30 16      STA $1630                 
+CODE_2A8C4E:        E2 20         SEP #$20                  
+CODE_2A8C50:        20 9A 8C      JSR CODE_2A8C9A           
+CODE_2A8C53:        C2 20         REP #$20                  
+CODE_2A8C55:        A9 7E 10      LDA #$107E                
+CODE_2A8C58:        EB            XBA                       
+CODE_2A8C59:        8D 02 16      STA $1602                 
+CODE_2A8C5C:        A9 DA 24      LDA #$24DA                
+CODE_2A8C5F:        8D 06 16      STA $1606                 
+CODE_2A8C62:        A9 E3 24      LDA #$24E3                
+CODE_2A8C65:        A2 24         LDX #$24                  
+CODE_2A8C67:        9D 08 16      STA $1608,x               
+CODE_2A8C6A:        CA            DEX                       
+CODE_2A8C6B:        CA            DEX                       
+CODE_2A8C6C:        10 F9         BPL CODE_2A8C67           
+CODE_2A8C6E:        A9 EE 24      LDA #$24EE                
+CODE_2A8C71:        8D 18 16      STA $1618                 
+CODE_2A8C74:        A9 F0 24      LDA #$24F0                
+CODE_2A8C77:        8D 1A 16      STA $161A                 
+CODE_2A8C7A:        A9 F1 24      LDA #$24F1                
+CODE_2A8C7D:        8D 1C 16      STA $161C                 
+CODE_2A8C80:        A9 E6 24      LDA #$24E6                
+CODE_2A8C83:        8D 2E 16      STA $162E                 
+CODE_2A8C86:        E2 20         SEP #$20                  
+CODE_2A8C88:        20 9A 8C      JSR CODE_2A8C9A           
+CODE_2A8C8B:        9C 00 16      STZ $1600                 
+CODE_2A8C8E:        9C 01 16      STZ $1601                 
+CODE_2A8C91:        A9 FF         LDA #$FF                  
+CODE_2A8C93:        8D 02 16      STA $1602                 
+CODE_2A8C96:        8D 03 16      STA $1603                 
+CODE_2A8C99:        6B            RTL                       
 
-CODE_2A8C9A:        REP #$20                  
-CODE_2A8C9C:        LDA #$1602                
-CODE_2A8C9F:        STA $36                   
-CODE_2A8CA1:        LDX #$00                  
-CODE_2A8CA3:        STX $38                   
-CODE_2A8CA5:        SEP #$20                  
-CODE_2A8CA7:        JSL CODE_29E8AB           
-CODE_2A8CAB:        RTS                       
+CODE_2A8C9A:        C2 20         REP #$20                  
+CODE_2A8C9C:        A9 02 16      LDA #$1602                
+CODE_2A8C9F:        85 36         STA $36                   
+CODE_2A8CA1:        A2 00         LDX #$00                  
+CODE_2A8CA3:        86 38         STX $38                   
+CODE_2A8CA5:        E2 20         SEP #$20                  
+CODE_2A8CA7:        22 AB E8 29   JSL CODE_29E8AB           
+CODE_2A8CAB:        60            RTS                       
 
-CODE_2A8CAC:        PHB                       
-CODE_2A8CAD:        LDA #$7F                  
-CODE_2A8CAF:        PHA                       
-CODE_2A8CB0:        PLB                       ;
-CODE_2A8CB1:        REP #$30                  
-CODE_2A8CB3:        LDX #$01AE                
-CODE_2A8CB6:        STZ $0000,x               
-CODE_2A8CB9:        STZ $01B0,x               
-CODE_2A8CBC:        STZ $0360,x               
-CODE_2A8CBF:        STZ $0510,x               
-CODE_2A8CC2:        STZ $06C0,x               
-CODE_2A8CC5:        STZ $0870,x               
-CODE_2A8CC8:        STZ $0A20,x               
-CODE_2A8CCB:        STZ $0BD0,x               
-CODE_2A8CCE:        STZ $0D80,x               
-CODE_2A8CD1:        DEX                       
-CODE_2A8CD2:        DEX                       
-CODE_2A8CD3:        BPL CODE_2A8CB6           
-CODE_2A8CD5:        SEP #$30                  
-CODE_2A8CD7:        PLB                       ;
-CODE_2A8CD8:        RTS                       
+CODE_2A8CAC:        8B            PHB                       
+CODE_2A8CAD:        A9 7F         LDA #$7F                  
+CODE_2A8CAF:        48            PHA                       
+CODE_2A8CB0:        AB            PLB                       ;
+CODE_2A8CB1:        C2 30         REP #$30                  
+CODE_2A8CB3:        A2 AE 01      LDX #$01AE                
+CODE_2A8CB6:        9E 00 00      STZ $0000,x               
+CODE_2A8CB9:        9E B0 01      STZ $01B0,x               
+CODE_2A8CBC:        9E 60 03      STZ $0360,x               
+CODE_2A8CBF:        9E 10 05      STZ $0510,x               
+CODE_2A8CC2:        9E C0 06      STZ $06C0,x               
+CODE_2A8CC5:        9E 70 08      STZ $0870,x               
+CODE_2A8CC8:        9E 20 0A      STZ $0A20,x               
+CODE_2A8CCB:        9E D0 0B      STZ $0BD0,x               
+CODE_2A8CCE:        9E 80 0D      STZ $0D80,x               
+CODE_2A8CD1:        CA            DEX                       
+CODE_2A8CD2:        CA            DEX                       
+CODE_2A8CD3:        10 E1         BPL CODE_2A8CB6           
+CODE_2A8CD5:        E2 30         SEP #$30                  
+CODE_2A8CD7:        AB            PLB                       ;
+CODE_2A8CD8:        60            RTS                       
 
-CODE_2A8CD9:        STA $7F0000,x             
-CODE_2A8CDD:        STA $7F0360,x             
-CODE_2A8CE1:        STA $7F06C0,x             
-CODE_2A8CE5:        STA $7F0A20,x             
-CODE_2A8CE9:        STA $7F0D80,x             
-CODE_2A8CED:        RTS                       
+CODE_2A8CD9:        9F 00 00 7F   STA $7F0000,x             
+CODE_2A8CDD:        9F 60 03 7F   STA $7F0360,x             
+CODE_2A8CE1:        9F C0 06 7F   STA $7F06C0,x             
+CODE_2A8CE5:        9F 20 0A 7F   STA $7F0A20,x             
+CODE_2A8CE9:        9F 80 0D 7F   STA $7F0D80,x             
+CODE_2A8CED:        60            RTS                       
 
-CODE_2A8CEE:        STA $7F0010,x             
-CODE_2A8CF2:        STA $7F0370,x             
-CODE_2A8CF6:        STA $7F06D0,x             
-CODE_2A8CFA:        STA $7F0A30,x             
-CODE_2A8CFE:        STA $7F0D90,x             
-CODE_2A8D02:        RTS                       
+CODE_2A8CEE:        9F 10 00 7F   STA $7F0010,x             
+CODE_2A8CF2:        9F 70 03 7F   STA $7F0370,x             
+CODE_2A8CF6:        9F D0 06 7F   STA $7F06D0,x             
+CODE_2A8CFA:        9F 30 0A 7F   STA $7F0A30,x             
+CODE_2A8CFE:        9F 90 0D 7F   STA $7F0D90,x             
+CODE_2A8D02:        60            RTS                       
 
-CODE_2A8D03:        PHB                       
-CODE_2A8D04:        LDY #$7F                  
-CODE_2A8D06:        PHY                       
-CODE_2A8D07:        PLB                       ;
-CODE_2A8D08:        STA $0000,x               
-CODE_2A8D0B:        STA $01B0,x               
-CODE_2A8D0E:        STA $0360,x               
-CODE_2A8D11:        STA $0510,x               
-CODE_2A8D14:        STA $06C0,x               
-CODE_2A8D17:        STA $0870,x               
-CODE_2A8D1A:        STA $0A20,x               
-CODE_2A8D1D:        STA $0BD0,x               
-CODE_2A8D20:        STA $0D80,x               
-CODE_2A8D23:        PLB                       ;
-CODE_2A8D24:        RTS                       
+CODE_2A8D03:        8B            PHB                       
+CODE_2A8D04:        A0 7F         LDY #$7F                  
+CODE_2A8D06:        5A            PHY                       
+CODE_2A8D07:        AB            PLB                       ;
+CODE_2A8D08:        9D 00 00      STA $0000,x               
+CODE_2A8D0B:        9D B0 01      STA $01B0,x               
+CODE_2A8D0E:        9D 60 03      STA $0360,x               
+CODE_2A8D11:        9D 10 05      STA $0510,x               
+CODE_2A8D14:        9D C0 06      STA $06C0,x               
+CODE_2A8D17:        9D 70 08      STA $0870,x               
+CODE_2A8D1A:        9D 20 0A      STA $0A20,x               
+CODE_2A8D1D:        9D D0 0B      STA $0BD0,x               
+CODE_2A8D20:        9D 80 0D      STA $0D80,x               
+CODE_2A8D23:        AB            PLB                       ;
+CODE_2A8D24:        60            RTS                       
 
-CODE_2A8D25:        PHB                       
-CODE_2A8D26:        LDY #$7F                  
-CODE_2A8D28:        PHY                       
-CODE_2A8D29:        PLB                       ;
-CODE_2A8D2A:        STA $0100,x               
-CODE_2A8D2D:        STA $02B0,x               
-CODE_2A8D30:        STA $0460,x               
-CODE_2A8D33:        STA $0610,x               
-CODE_2A8D36:        STA $07C0,x               
-CODE_2A8D39:        STA $0970,x               
-CODE_2A8D3C:        STA $0B20,x               
-CODE_2A8D3F:        STA $0CD0,x               
-CODE_2A8D42:        STA $0E80,x               
-CODE_2A8D45:        PLB                       ;
-CODE_2A8D46:        RTS                       
+CODE_2A8D25:        8B            PHB                       
+CODE_2A8D26:        A0 7F         LDY #$7F                  
+CODE_2A8D28:        5A            PHY                       
+CODE_2A8D29:        AB            PLB                       ;
+CODE_2A8D2A:        9D 00 01      STA $0100,x               
+CODE_2A8D2D:        9D B0 02      STA $02B0,x               
+CODE_2A8D30:        9D 60 04      STA $0460,x               
+CODE_2A8D33:        9D 10 06      STA $0610,x               
+CODE_2A8D36:        9D C0 07      STA $07C0,x               
+CODE_2A8D39:        9D 70 09      STA $0970,x               
+CODE_2A8D3C:        9D 20 0B      STA $0B20,x               
+CODE_2A8D3F:        9D D0 0C      STA $0CD0,x               
+CODE_2A8D42:        9D 80 0E      STA $0E80,x               
+CODE_2A8D45:        AB            PLB                       ;
+CODE_2A8D46:        60            RTS                       
 
 PNTR_2A8D47:        dl DATA_2ADC80
                     dl DATA_2ADCE6
@@ -1685,47 +1685,47 @@ PNTR_2A8D47:        dl DATA_2ADC80
                     dl DATA_2ADCFB
                     dl DATA_2ADCD4
                   
-CODE_2A8DB6:        PHB                       ;Is this the level loading routine?
-CODE_2A8DB7:        PHK                       ;
-CODE_2A8DB8:        PLB                       ;
-CODE_2A8DB9:        LDA $0350                 
-CODE_2A8DBC:        CMP #$17                  
-CODE_2A8DBE:        BEQ CODE_2A8DC0           
-CODE_2A8DC0:        JSR CODE_2A8CAC           
-CODE_2A8DC3:        STZ $0293                 
-CODE_2A8DC6:        STZ $420C                 
-CODE_2A8DC9:        LDA $0350                 
-CODE_2A8DCC:        ASL A                     
-CODE_2A8DCD:        CLC                       
-CODE_2A8DCE:        ADC $0350                 
-CODE_2A8DD1:        TAX                       
-CODE_2A8DD2:        LDA.w PNTR_2A8D47-1,x               
-CODE_2A8DD5:        STA $2D                   
-CODE_2A8DD7:        REP #$20                  
-CODE_2A8DD9:        LDA.w PNTR_2A8D47-3,x               
-CODE_2A8DDC:        STA $2B                   
-CODE_2A8DDE:        SEP #$20                  
-CODE_2A8DE0:        LDY #$00                  
-CODE_2A8DE2:        LDA [$2B],y               
-CODE_2A8DE4:        STA $02C5                 
-CODE_2A8DE7:        INY                       
-CODE_2A8DE8:        LDA [$2B],y               
-CODE_2A8DEA:        STA $034F                 
-CODE_2A8DED:        REP #$30                  
-CODE_2A8DEF:        LDA $2B                   
-CODE_2A8DF1:        CLC                       
-CODE_2A8DF2:        ADC #$0002                
-CODE_2A8DF5:        STA $2B                   
-CODE_2A8DF7:        LDA $0350                 
-CODE_2A8DFA:        AND #$00FF                
-CODE_2A8DFD:        ASL A                     
-CODE_2A8DFE:        TAX                       
-CODE_2A8DFF:        SEP #$20                  
-CODE_2A8E01:        JMP (PNTR_2A8E08,x)             
+CODE_2A8DB6:        8B            PHB                       ;Is this the level loading routine?
+CODE_2A8DB7:        4B            PHK                       ;
+CODE_2A8DB8:        AB            PLB                       ;
+CODE_2A8DB9:        AD 50 03      LDA $0350                 
+CODE_2A8DBC:        C9 17         CMP #$17                  
+CODE_2A8DBE:        F0 00         BEQ CODE_2A8DC0           
+CODE_2A8DC0:        20 AC 8C      JSR CODE_2A8CAC           
+CODE_2A8DC3:        9C 93 02      STZ $0293                 
+CODE_2A8DC6:        9C 0C 42      STZ $420C                 
+CODE_2A8DC9:        AD 50 03      LDA $0350                 
+CODE_2A8DCC:        0A            ASL A                     
+CODE_2A8DCD:        18            CLC                       
+CODE_2A8DCE:        6D 50 03      ADC $0350                 
+CODE_2A8DD1:        AA            TAX                       
+CODE_2A8DD2:        BD 46 8D      LDA.w PNTR_2A8D47-1,x               
+CODE_2A8DD5:        85 2D         STA $2D                   
+CODE_2A8DD7:        C2 20         REP #$20                  
+CODE_2A8DD9:        BD 44 8D      LDA.w PNTR_2A8D47-3,x               
+CODE_2A8DDC:        85 2B         STA $2B                   
+CODE_2A8DDE:        E2 20         SEP #$20                  
+CODE_2A8DE0:        A0 00         LDY #$00                  
+CODE_2A8DE2:        B7 2B         LDA [$2B],y               
+CODE_2A8DE4:        8D C5 02      STA $02C5                 
+CODE_2A8DE7:        C8            INY                       
+CODE_2A8DE8:        B7 2B         LDA [$2B],y               
+CODE_2A8DEA:        8D 4F 03      STA $034F                 
+CODE_2A8DED:        C2 30         REP #$30                  
+CODE_2A8DEF:        A5 2B         LDA $2B                   
+CODE_2A8DF1:        18            CLC                       
+CODE_2A8DF2:        69 02 00      ADC #$0002                
+CODE_2A8DF5:        85 2B         STA $2B                   
+CODE_2A8DF7:        AD 50 03      LDA $0350                 
+CODE_2A8DFA:        29 FF 00      AND #$00FF                
+CODE_2A8DFD:        0A            ASL A                     
+CODE_2A8DFE:        AA            TAX                       
+CODE_2A8DFF:        E2 20         SEP #$20                  
+CODE_2A8E01:        7C 08 8E      JMP (PNTR_2A8E08,x)             
 
-CODE_2A8E04:        SEP #$10                  
-CODE_2A8E06:        PLB                       ;
-CODE_2A8E07:        RTL                       
+CODE_2A8E04:        E2 10         SEP #$10                  
+CODE_2A8E06:        AB            PLB                       ;
+CODE_2A8E07:        6B            RTL                       
 
 PNTR_2A8E08:        dw CODE_2A8E04
                     dw CODE_2A8EBA
@@ -1766,222 +1766,222 @@ PNTR_2A8E08:        dw CODE_2A8E04
                     dw CODE_2A9342
                     dw CODE_2A8EBA
 
-CODE_2A8E54:        PHA
-CODE_2A8E55:        ROL A
-CODE_2A8E56:        ROL A                     
-CODE_2A8E57:        ROL A                     
-CODE_2A8E58:        ROL A                     
-CODE_2A8E59:        AND #$07                  
-CODE_2A8E5B:        STA $04                   
-CODE_2A8E5D:        PLA                       
-CODE_2A8E5E:        AND #$1F                  
-CODE_2A8E60:        XBA                       
-CODE_2A8E61:        INY                       
-CODE_2A8E62:        LDA [$2B],y               
-CODE_2A8E64:        REP #$20                  
-CODE_2A8E66:        LSR A                     
-CODE_2A8E67:        LSR A                     
-CODE_2A8E68:        LSR A                     
-CODE_2A8E69:        LSR A                     
-CODE_2A8E6A:        STA $00                   
-CODE_2A8E6C:        SEP #$20                  
-CODE_2A8E6E:        LDA [$2B],y               
-CODE_2A8E70:        AND #$0F                  
-CODE_2A8E72:        BEQ CODE_2A8E88           
-CODE_2A8E74:        STA $02                   
-CODE_2A8E76:        STZ $03                   
-CODE_2A8E78:        REP #$20                  
-CODE_2A8E7A:        LDA $00                   
-CODE_2A8E7C:        CLC                       
-CODE_2A8E7D:        ADC #$01B0                
-CODE_2A8E80:        STA $00                   
-CODE_2A8E82:        DEC $02                   
-CODE_2A8E84:        BNE CODE_2A8E7A           
-CODE_2A8E86:        SEP #$20                  
-CODE_2A8E88:        INY                       
-CODE_2A8E89:        LDA [$2B],y               
-CODE_2A8E8B:        AND #$0F                  
-CODE_2A8E8D:        STA $D8                   
-CODE_2A8E8F:        STZ $D9                   
-CODE_2A8E91:        LDA [$2B],y               
-CODE_2A8E93:        AND #$F0                  
-CODE_2A8E95:        LSR A                     
-CODE_2A8E96:        LSR A                     
-CODE_2A8E97:        LSR A                     
-CODE_2A8E98:        TAX                       
-CODE_2A8E99:        STZ $DA                   
-CODE_2A8E9B:        STZ $DB                   
-CODE_2A8E9D:        LDA $04                   
-CODE_2A8E9F:        BEQ CODE_2A8EA6           
-CODE_2A8EA1:        INY                       
-CODE_2A8EA2:        LDA [$2B],y               
-CODE_2A8EA4:        STA $DA                   
-CODE_2A8EA6:        REP #$20                  
-CODE_2A8EA8:        LDA $04                   
-CODE_2A8EAA:        AND #$00FF                
-CODE_2A8EAD:        BEQ CODE_2A8EB1           
-CODE_2A8EAF:        INC $2B                   
-CODE_2A8EB1:        INC $2B                   
-CODE_2A8EB3:        INC $2B                   
-CODE_2A8EB5:        INC $2B                   
-CODE_2A8EB7:        SEP #$20                  
-CODE_2A8EB9:        RTS                       
+CODE_2A8E54:        48            PHA
+CODE_2A8E55:        2A            ROL A
+CODE_2A8E56:        2A            ROL A                     
+CODE_2A8E57:        2A            ROL A                     
+CODE_2A8E58:        2A            ROL A                     
+CODE_2A8E59:        29 07         AND #$07                  
+CODE_2A8E5B:        85 04         STA $04                   
+CODE_2A8E5D:        68            PLA                       
+CODE_2A8E5E:        29 1F         AND #$1F                  
+CODE_2A8E60:        EB            XBA                       
+CODE_2A8E61:        C8            INY                       
+CODE_2A8E62:        B7 2B         LDA [$2B],y               
+CODE_2A8E64:        C2 20         REP #$20                  
+CODE_2A8E66:        4A            LSR A                     
+CODE_2A8E67:        4A            LSR A                     
+CODE_2A8E68:        4A            LSR A                     
+CODE_2A8E69:        4A            LSR A                     
+CODE_2A8E6A:        85 00         STA $00                   
+CODE_2A8E6C:        E2 20         SEP #$20                  
+CODE_2A8E6E:        B7 2B         LDA [$2B],y               
+CODE_2A8E70:        29 0F         AND #$0F                  
+CODE_2A8E72:        F0 14         BEQ CODE_2A8E88           
+CODE_2A8E74:        85 02         STA $02                   
+CODE_2A8E76:        64 03         STZ $03                   
+CODE_2A8E78:        C2 20         REP #$20                  
+CODE_2A8E7A:        A5 00         LDA $00                   
+CODE_2A8E7C:        18            CLC                       
+CODE_2A8E7D:        69 B0 01      ADC #$01B0                
+CODE_2A8E80:        85 00         STA $00                   
+CODE_2A8E82:        C6 02         DEC $02                   
+CODE_2A8E84:        D0 F4         BNE CODE_2A8E7A           
+CODE_2A8E86:        E2 20         SEP #$20                  
+CODE_2A8E88:        C8            INY                       
+CODE_2A8E89:        B7 2B         LDA [$2B],y               
+CODE_2A8E8B:        29 0F         AND #$0F                  
+CODE_2A8E8D:        85 D8         STA $D8                   
+CODE_2A8E8F:        64 D9         STZ $D9                   
+CODE_2A8E91:        B7 2B         LDA [$2B],y               
+CODE_2A8E93:        29 F0         AND #$F0                  
+CODE_2A8E95:        4A            LSR A                     
+CODE_2A8E96:        4A            LSR A                     
+CODE_2A8E97:        4A            LSR A                     
+CODE_2A8E98:        AA            TAX                       
+CODE_2A8E99:        64 DA         STZ $DA                   
+CODE_2A8E9B:        64 DB         STZ $DB                   
+CODE_2A8E9D:        A5 04         LDA $04                   
+CODE_2A8E9F:        F0 05         BEQ CODE_2A8EA6           
+CODE_2A8EA1:        C8            INY                       
+CODE_2A8EA2:        B7 2B         LDA [$2B],y               
+CODE_2A8EA4:        85 DA         STA $DA                   
+CODE_2A8EA6:        C2 20         REP #$20                  
+CODE_2A8EA8:        A5 04         LDA $04                   
+CODE_2A8EAA:        29 FF 00      AND #$00FF                
+CODE_2A8EAD:        F0 02         BEQ CODE_2A8EB1           
+CODE_2A8EAF:        E6 2B         INC $2B                   
+CODE_2A8EB1:        E6 2B         INC $2B                   
+CODE_2A8EB3:        E6 2B         INC $2B                   
+CODE_2A8EB5:        E6 2B         INC $2B                   
+CODE_2A8EB7:        E2 20         SEP #$20                  
+CODE_2A8EB9:        60            RTS                       
 
-CODE_2A8EBA:        SEP #$10                  
-CODE_2A8EBC:        LDY #$00                  
-CODE_2A8EBE:        LDX #$70                  
-CODE_2A8EC0:        LDA #$15                  
-CODE_2A8EC2:        JSR CODE_2A8D25           
-CODE_2A8EC5:        INX                       
-CODE_2A8EC6:        TXA                       
-CODE_2A8EC7:        AND #$0F                  
-CODE_2A8EC9:        BNE CODE_2A8EC0           
-CODE_2A8ECB:        LDA #$15                  
-CODE_2A8ECD:        JSR CODE_2A8D25           
-CODE_2A8ED0:        INX                       
-CODE_2A8ED1:        TXA                       
-CODE_2A8ED2:        AND #$0F                  
-CODE_2A8ED4:        BNE CODE_2A8ECB           
-CODE_2A8ED6:        REP #$10                  
-CODE_2A8ED8:        LDX #$0170                
-CODE_2A8EDB:        LDA #$20                  
-CODE_2A8EDD:        JSR CODE_2A8CD9           
-CODE_2A8EE0:        INX                       
-CODE_2A8EE1:        LDA #$23                  
-CODE_2A8EE3:        JSR CODE_2A8CD9           
-CODE_2A8EE6:        INX                       
-CODE_2A8EE7:        JSR CODE_2A8CD9           
-CODE_2A8EEA:        INX                       
-CODE_2A8EEB:        JSR CODE_2A8CD9           
-CODE_2A8EEE:        INX                       
-CODE_2A8EEF:        JSR CODE_2A8CD9           
-CODE_2A8EF2:        INX                       
-CODE_2A8EF3:        LDA #$21                  
-CODE_2A8EF5:        JSR CODE_2A8CD9           
-CODE_2A8EF8:        INX                       
-CODE_2A8EF9:        LDA #$0F                  
-CODE_2A8EFB:        JSR CODE_2A8CD9           
-CODE_2A8EFE:        LDX #$0324                
-CODE_2A8F01:        JSR CODE_2A8CD9           
-CODE_2A8F04:        SEP #$10                  
-CODE_2A8F06:        LDY #$00                  
-CODE_2A8F08:        LDA [$2B],y               
-CODE_2A8F0A:        CMP #$FF                  
-CODE_2A8F0C:        BEQ CODE_2A8F16           
-CODE_2A8F0E:        JSR CODE_2A8E54           
-CODE_2A8F11:        JSR (PNTR_2A8F18,x)             
-CODE_2A8F14:        BRA CODE_2A8F06           
+CODE_2A8EBA:        E2 10         SEP #$10                  
+CODE_2A8EBC:        A0 00         LDY #$00                  
+CODE_2A8EBE:        A2 70         LDX #$70                  
+CODE_2A8EC0:        A9 15         LDA #$15                  
+CODE_2A8EC2:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A8EC5:        E8            INX                       
+CODE_2A8EC6:        8A            TXA                       
+CODE_2A8EC7:        29 0F         AND #$0F                  
+CODE_2A8EC9:        D0 F5         BNE CODE_2A8EC0           
+CODE_2A8ECB:        A9 15         LDA #$15                  
+CODE_2A8ECD:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A8ED0:        E8            INX                       
+CODE_2A8ED1:        8A            TXA                       
+CODE_2A8ED2:        29 0F         AND #$0F                  
+CODE_2A8ED4:        D0 F5         BNE CODE_2A8ECB           
+CODE_2A8ED6:        C2 10         REP #$10                  
+CODE_2A8ED8:        A2 70 01      LDX #$0170                
+CODE_2A8EDB:        A9 20         LDA #$20                  
+CODE_2A8EDD:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8EE0:        E8            INX                       
+CODE_2A8EE1:        A9 23         LDA #$23                  
+CODE_2A8EE3:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8EE6:        E8            INX                       
+CODE_2A8EE7:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8EEA:        E8            INX                       
+CODE_2A8EEB:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8EEE:        E8            INX                       
+CODE_2A8EEF:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8EF2:        E8            INX                       
+CODE_2A8EF3:        A9 21         LDA #$21                  
+CODE_2A8EF5:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8EF8:        E8            INX                       
+CODE_2A8EF9:        A9 0F         LDA #$0F                  
+CODE_2A8EFB:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8EFE:        A2 24 03      LDX #$0324                
+CODE_2A8F01:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8F04:        E2 10         SEP #$10                  
+CODE_2A8F06:        A0 00         LDY #$00                  
+CODE_2A8F08:        B7 2B         LDA [$2B],y               
+CODE_2A8F0A:        C9 FF         CMP #$FF                  
+CODE_2A8F0C:        F0 08         BEQ CODE_2A8F16           
+CODE_2A8F0E:        20 54 8E      JSR CODE_2A8E54           
+CODE_2A8F11:        FC 18 8F      JSR (PNTR_2A8F18,x)             
+CODE_2A8F14:        80 F0         BRA CODE_2A8F06           
 
-CODE_2A8F16:        PLB                       
-CODE_2A8F17:        RTL                       
+CODE_2A8F16:        AB            PLB                       
+CODE_2A8F17:        6B            RTL                       
 
 PNTR_2A8F18:        dw CODE_2A8F1E
                     dw CODE_2A8F58
                     dw CODE_2A8F78
 
-CODE_2A8F1E:        REP #$10
-CODE_2A8F20:        LDX $00
-CODE_2A8F22:        LDA #$11                  
-CODE_2A8F24:        JSR CODE_2A8CD9
-CODE_2A8F27:        LDA #$16
-CODE_2A8F29:        JSR CODE_2A8CEE
-CODE_2A8F2C:        LDA $D8
-CODE_2A8F2E:        BEQ CODE_2A8F4A           
-CODE_2A8F30:        INX                       
-CODE_2A8F31:        LDA #$19                  
-CODE_2A8F33:        JSR CODE_2A8CD9           
-CODE_2A8F36:        LDA #$1C                  
-CODE_2A8F38:        JSR CODE_2A8CEE           
-CODE_2A8F3B:        INX                       
-CODE_2A8F3C:        LDA #$1A                  
-CODE_2A8F3E:        JSR CODE_2A8CD9           
-CODE_2A8F41:        LDA #$1D                  
-CODE_2A8F43:        JSR CODE_2A8CEE           
-CODE_2A8F46:        DEC $D8                   
-CODE_2A8F48:        BNE CODE_2A8F30           
-CODE_2A8F4A:        INX                       
-CODE_2A8F4B:        LDA #$12                  
-CODE_2A8F4D:        JSR CODE_2A8CD9           
-CODE_2A8F50:        LDA #$17                  
-CODE_2A8F52:        JSR CODE_2A8CEE           
-CODE_2A8F55:        SEP #$10                  
-CODE_2A8F57:        RTS                       
+CODE_2A8F1E:        C2 10         REP #$10
+CODE_2A8F20:        A6 00         LDX $00
+CODE_2A8F22:        A9 11         LDA #$11                  
+CODE_2A8F24:        20 D9 8C      JSR CODE_2A8CD9
+CODE_2A8F27:        A9 16         LDA #$16
+CODE_2A8F29:        20 EE 8C      JSR CODE_2A8CEE
+CODE_2A8F2C:        A5 D8         LDA $D8
+CODE_2A8F2E:        F0 1A         BEQ CODE_2A8F4A           
+CODE_2A8F30:        E8            INX                       
+CODE_2A8F31:        A9 19         LDA #$19                  
+CODE_2A8F33:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8F36:        A9 1C         LDA #$1C                  
+CODE_2A8F38:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2A8F3B:        E8            INX                       
+CODE_2A8F3C:        A9 1A         LDA #$1A                  
+CODE_2A8F3E:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8F41:        A9 1D         LDA #$1D                  
+CODE_2A8F43:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2A8F46:        C6 D8         DEC $D8                   
+CODE_2A8F48:        D0 E6         BNE CODE_2A8F30           
+CODE_2A8F4A:        E8            INX                       
+CODE_2A8F4B:        A9 12         LDA #$12                  
+CODE_2A8F4D:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8F50:        A9 17         LDA #$17                  
+CODE_2A8F52:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2A8F55:        E2 10         SEP #$10                  
+CODE_2A8F57:        60            RTS                       
 
-CODE_2A8F58:        REP #$10                  
-CODE_2A8F5A:        LDX $00                   
-CODE_2A8F5C:        LDA #$25                  
-CODE_2A8F5E:        JSR CODE_2A8CD9           
-CODE_2A8F61:        LDA $D8                   
-CODE_2A8F63:        BEQ CODE_2A8F6F           
-CODE_2A8F65:        INX                       
-CODE_2A8F66:        LDA #$26                  
-CODE_2A8F68:        JSR CODE_2A8CD9           
-CODE_2A8F6B:        DEC $D8                   
-CODE_2A8F6D:        BNE CODE_2A8F65           
-CODE_2A8F6F:        INX                       
-CODE_2A8F70:        LDA #$27                  
-CODE_2A8F72:        JSR CODE_2A8CD9           
-CODE_2A8F75:        SEP #$10                  
-CODE_2A8F77:        RTS                       
+CODE_2A8F58:        C2 10         REP #$10                  
+CODE_2A8F5A:        A6 00         LDX $00                   
+CODE_2A8F5C:        A9 25         LDA #$25                  
+CODE_2A8F5E:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8F61:        A5 D8         LDA $D8                   
+CODE_2A8F63:        F0 0A         BEQ CODE_2A8F6F           
+CODE_2A8F65:        E8            INX                       
+CODE_2A8F66:        A9 26         LDA #$26                  
+CODE_2A8F68:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8F6B:        C6 D8         DEC $D8                   
+CODE_2A8F6D:        D0 F6         BNE CODE_2A8F65           
+CODE_2A8F6F:        E8            INX                       
+CODE_2A8F70:        A9 27         LDA #$27                  
+CODE_2A8F72:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8F75:        E2 10         SEP #$10                  
+CODE_2A8F77:        60            RTS                       
 
-CODE_2A8F78:        LDA #$2A                  
-CODE_2A8F7A:        STA $08                   
-CODE_2A8F7C:        STA $0B                   
-CODE_2A8F7E:        STA $0E                   
-CODE_2A8F80:        REP #$30                  
-CODE_2A8F82:        LDX $D8                   
-CODE_2A8F84:        LDA.w PNTR_2A8FF3,x               
-CODE_2A8F87:        STA $06                   
-CODE_2A8F89:        LDA.w PNTR_2A9001,x               
-CODE_2A8F8C:        STA $09                   
-CODE_2A8F8E:        LDA.w PNTR_2A900F,x               
-CODE_2A8F91:        STA $0C                   
-CODE_2A8F93:        SEP #$20                  
-CODE_2A8F95:        LDA.w DATA_2A8FE5,x               
-CODE_2A8F98:        STA $0F                   
-CODE_2A8F9A:        LDX $00                   
-CODE_2A8F9C:        LDY #$0000                
-CODE_2A8F9F:        LDA [$0C]                 
-CODE_2A8FA1:        STA $02                   
-CODE_2A8FA3:        STZ $04                   
-CODE_2A8FA5:        STZ $05                   
-CODE_2A8FA7:        LDA [$06],y               
-CODE_2A8FA9:        JSR CODE_2A8CD9           
-CODE_2A8FAC:        INY                       
-CODE_2A8FAD:        INX                       
-CODE_2A8FAE:        TXA                       
-CODE_2A8FAF:        AND #$0F                  
-CODE_2A8FB1:        BNE CODE_2A8FBD           
-CODE_2A8FB3:        REP #$20                  
-CODE_2A8FB5:        TXA                       
-CODE_2A8FB6:        CLC                       
-CODE_2A8FB7:        ADC #$01A0                
-CODE_2A8FBA:        TAX                       
-CODE_2A8FBB:        SEP #$20                  
-CODE_2A8FBD:        DEC $02                   
-CODE_2A8FBF:        BNE CODE_2A8FA7           
-CODE_2A8FC1:        DEC $0F                   
-CODE_2A8FC3:        BEQ CODE_2A8FE2           
-CODE_2A8FC5:        PHY                       
-CODE_2A8FC6:        REP #$20                  
-CODE_2A8FC8:        LDA $04                   
-CODE_2A8FCA:        ASL A                     
-CODE_2A8FCB:        TAY                       
-CODE_2A8FCC:        LDA $00                   
-CODE_2A8FCE:        CLC                       
-CODE_2A8FCF:        ADC [$09],y               
-CODE_2A8FD1:        STA $00                   
-CODE_2A8FD3:        SEP #$20                  
-CODE_2A8FD5:        INC $04                   
-CODE_2A8FD7:        LDY $04                   
-CODE_2A8FD9:        LDA [$0C],y               
-CODE_2A8FDB:        STA $02                   
-CODE_2A8FDD:        LDX $00                   
-CODE_2A8FDF:        PLY                       
-CODE_2A8FE0:        BRA CODE_2A8FA7           
+CODE_2A8F78:        A9 2A         LDA #$2A                  
+CODE_2A8F7A:        85 08         STA $08                   
+CODE_2A8F7C:        85 0B         STA $0B                   
+CODE_2A8F7E:        85 0E         STA $0E                   
+CODE_2A8F80:        C2 30         REP #$30                  
+CODE_2A8F82:        A6 D8         LDX $D8                   
+CODE_2A8F84:        BD F3 8F      LDA.w PNTR_2A8FF3,x               
+CODE_2A8F87:        85 06         STA $06                   
+CODE_2A8F89:        BD 01 90      LDA.w PNTR_2A9001,x               
+CODE_2A8F8C:        85 09         STA $09                   
+CODE_2A8F8E:        BD 0F 90      LDA.w PNTR_2A900F,x               
+CODE_2A8F91:        85 0C         STA $0C                   
+CODE_2A8F93:        E2 20         SEP #$20                  
+CODE_2A8F95:        BD E5 8F      LDA.w DATA_2A8FE5,x               
+CODE_2A8F98:        85 0F         STA $0F                   
+CODE_2A8F9A:        A6 00         LDX $00                   
+CODE_2A8F9C:        A0 00 00      LDY #$0000                
+CODE_2A8F9F:        A7 0C         LDA [$0C]                 
+CODE_2A8FA1:        85 02         STA $02                   
+CODE_2A8FA3:        64 04         STZ $04                   
+CODE_2A8FA5:        64 05         STZ $05                   
+CODE_2A8FA7:        B7 06         LDA [$06],y               
+CODE_2A8FA9:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A8FAC:        C8            INY                       
+CODE_2A8FAD:        E8            INX                       
+CODE_2A8FAE:        8A            TXA                       
+CODE_2A8FAF:        29 0F         AND #$0F                  
+CODE_2A8FB1:        D0 0A         BNE CODE_2A8FBD           
+CODE_2A8FB3:        C2 20         REP #$20                  
+CODE_2A8FB5:        8A            TXA                       
+CODE_2A8FB6:        18            CLC                       
+CODE_2A8FB7:        69 A0 01      ADC #$01A0                
+CODE_2A8FBA:        AA            TAX                       
+CODE_2A8FBB:        E2 20         SEP #$20                  
+CODE_2A8FBD:        C6 02         DEC $02                   
+CODE_2A8FBF:        D0 E6         BNE CODE_2A8FA7           
+CODE_2A8FC1:        C6 0F         DEC $0F                   
+CODE_2A8FC3:        F0 1D         BEQ CODE_2A8FE2           
+CODE_2A8FC5:        5A            PHY                       
+CODE_2A8FC6:        C2 20         REP #$20                  
+CODE_2A8FC8:        A5 04         LDA $04                   
+CODE_2A8FCA:        0A            ASL A                     
+CODE_2A8FCB:        A8            TAY                       
+CODE_2A8FCC:        A5 00         LDA $00                   
+CODE_2A8FCE:        18            CLC                       
+CODE_2A8FCF:        77 09         ADC [$09],y               
+CODE_2A8FD1:        85 00         STA $00                   
+CODE_2A8FD3:        E2 20         SEP #$20                  
+CODE_2A8FD5:        E6 04         INC $04                   
+CODE_2A8FD7:        A4 04         LDY $04                   
+CODE_2A8FD9:        B7 0C         LDA [$0C],y               
+CODE_2A8FDB:        85 02         STA $02                   
+CODE_2A8FDD:        A6 00         LDX $00                   
+CODE_2A8FDF:        7A            PLY                       
+CODE_2A8FE0:        80 C5         BRA CODE_2A8FA7           
 
-CODE_2A8FE2:        SEP #$10                  
-CODE_2A8FE4:        RTS                       
+CODE_2A8FE2:        E2 10         SEP #$10                  
+CODE_2A8FE4:        60            RTS                       
 
 DATA_2A8FE5:        dw $0005,$0004,$0002,$0002
                     dw $0005,$0005,$0006
@@ -2066,141 +2066,141 @@ DATA_2A9139:        db $03,$08,$0D,$0D,$09
 
 DATA_2A913E:        db $05,$08,$0B,$0C,$09,$03
 
-CODE_2A9144:        SEP #$10                  
-CODE_2A9146:        STZ $02D9                 
-CODE_2A9149:        LDA $0350                 
-CODE_2A914C:        CMP #$23                  
-CODE_2A914E:        BNE CODE_2A9155           
-CODE_2A9150:        LDA #$01                  
-CODE_2A9152:        STA $02D9                 
-CODE_2A9155:        LDX #$A0                  
-CODE_2A9157:        LDA #$40                  
-CODE_2A9159:        STA $00                   
-CODE_2A915B:        LDA #$06                  
-CODE_2A915D:        JSR CODE_2A8D03           
-CODE_2A9160:        INX                       
-CODE_2A9161:        DEC $00                   
-CODE_2A9163:        BNE CODE_2A915D           
-CODE_2A9165:        LDA #$0C                  
-CODE_2A9167:        STA $02                   
-CODE_2A9169:        LDA #$0D                  
-CODE_2A916B:        STA $03                   
-CODE_2A916D:        LDA #$02                  
-CODE_2A916F:        STA $01                   
-CODE_2A9171:        LDA #$08                  
-CODE_2A9173:        STA $00                   
-CODE_2A9175:        LDA $02                   
-CODE_2A9177:        JSR CODE_2A8D03           
-CODE_2A917A:        INX                       
-CODE_2A917B:        LDA $03                   
-CODE_2A917D:        JSR CODE_2A8D03           
-CODE_2A9180:        INX                       
-CODE_2A9181:        DEC $00                   
-CODE_2A9183:        BNE CODE_2A9175           
-CODE_2A9185:        INC $02                   
-CODE_2A9187:        INC $02                   
-CODE_2A9189:        INC $03                   
-CODE_2A918B:        INC $03                   
-CODE_2A918D:        DEC $01                   
-CODE_2A918F:        BNE CODE_2A9171           
-CODE_2A9191:        LDA #$04                  
-CODE_2A9193:        STA $01                   
-CODE_2A9195:        LDA #$08                  
-CODE_2A9197:        STA $00                   
-CODE_2A9199:        LDA #$10                  
-CODE_2A919B:        JSR CODE_2A8D25           
-CODE_2A919E:        INX                       
-CODE_2A919F:        LDA #$10                  
-CODE_2A91A1:        JSR CODE_2A8D25           
-CODE_2A91A4:        INX                       
-CODE_2A91A5:        DEC $00                   
-CODE_2A91A7:        BNE CODE_2A9199           
-CODE_2A91A9:        DEC $01                   
-CODE_2A91AB:        BNE CODE_2A9195           
-CODE_2A91AD:        LDY #$00                  
-CODE_2A91AF:        LDA [$2B],y               
-CODE_2A91B1:        CMP #$FF                  
-CODE_2A91B3:        BEQ CODE_2A91BD           
-CODE_2A91B5:        JSR CODE_2A8E54           
-CODE_2A91B8:        JSR (PNTR_2A91BF,x)             
-CODE_2A91BB:        BRA CODE_2A91AD           
+CODE_2A9144:        E2 10         SEP #$10                  
+CODE_2A9146:        9C D9 02      STZ $02D9                 
+CODE_2A9149:        AD 50 03      LDA $0350                 
+CODE_2A914C:        C9 23         CMP #$23                  
+CODE_2A914E:        D0 05         BNE CODE_2A9155           
+CODE_2A9150:        A9 01         LDA #$01                  
+CODE_2A9152:        8D D9 02      STA $02D9                 
+CODE_2A9155:        A2 A0         LDX #$A0                  
+CODE_2A9157:        A9 40         LDA #$40                  
+CODE_2A9159:        85 00         STA $00                   
+CODE_2A915B:        A9 06         LDA #$06                  
+CODE_2A915D:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A9160:        E8            INX                       
+CODE_2A9161:        C6 00         DEC $00                   
+CODE_2A9163:        D0 F8         BNE CODE_2A915D           
+CODE_2A9165:        A9 0C         LDA #$0C                  
+CODE_2A9167:        85 02         STA $02                   
+CODE_2A9169:        A9 0D         LDA #$0D                  
+CODE_2A916B:        85 03         STA $03                   
+CODE_2A916D:        A9 02         LDA #$02                  
+CODE_2A916F:        85 01         STA $01                   
+CODE_2A9171:        A9 08         LDA #$08                  
+CODE_2A9173:        85 00         STA $00                   
+CODE_2A9175:        A5 02         LDA $02                   
+CODE_2A9177:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A917A:        E8            INX                       
+CODE_2A917B:        A5 03         LDA $03                   
+CODE_2A917D:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A9180:        E8            INX                       
+CODE_2A9181:        C6 00         DEC $00                   
+CODE_2A9183:        D0 F0         BNE CODE_2A9175           
+CODE_2A9185:        E6 02         INC $02                   
+CODE_2A9187:        E6 02         INC $02                   
+CODE_2A9189:        E6 03         INC $03                   
+CODE_2A918B:        E6 03         INC $03                   
+CODE_2A918D:        C6 01         DEC $01                   
+CODE_2A918F:        D0 E0         BNE CODE_2A9171           
+CODE_2A9191:        A9 04         LDA #$04                  
+CODE_2A9193:        85 01         STA $01                   
+CODE_2A9195:        A9 08         LDA #$08                  
+CODE_2A9197:        85 00         STA $00                   
+CODE_2A9199:        A9 10         LDA #$10                  
+CODE_2A919B:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A919E:        E8            INX                       
+CODE_2A919F:        A9 10         LDA #$10                  
+CODE_2A91A1:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A91A4:        E8            INX                       
+CODE_2A91A5:        C6 00         DEC $00                   
+CODE_2A91A7:        D0 F0         BNE CODE_2A9199           
+CODE_2A91A9:        C6 01         DEC $01                   
+CODE_2A91AB:        D0 E8         BNE CODE_2A9195           
+CODE_2A91AD:        A0 00         LDY #$00                  
+CODE_2A91AF:        B7 2B         LDA [$2B],y               
+CODE_2A91B1:        C9 FF         CMP #$FF                  
+CODE_2A91B3:        F0 08         BEQ CODE_2A91BD           
+CODE_2A91B5:        20 54 8E      JSR CODE_2A8E54           
+CODE_2A91B8:        FC BF 91      JSR (PNTR_2A91BF,x)             
+CODE_2A91BB:        80 F0         BRA CODE_2A91AD           
 
-CODE_2A91BD:        PLB                       
-CODE_2A91BE:        RTL                       
+CODE_2A91BD:        AB            PLB                       
+CODE_2A91BE:        6B            RTL                       
 
 PNTR_2A91BF:        dw CODE_2A91C3
                     dw CODE_2A9221
 
-CODE_2A91C3:        LDA $0350                 
-CODE_2A91C6:        CMP #$23                  
-CODE_2A91C8:        BEQ CODE_2A9216           
-CODE_2A91CA:        REP #$10                  
-CODE_2A91CC:        LDX $00                   
-CODE_2A91CE:        LDA #$08                  
-CODE_2A91D0:        STA $02                   
-CODE_2A91D2:        STZ $03                   
-CODE_2A91D4:        LDA #$11                  
-CODE_2A91D6:        STA $04                   
-CODE_2A91D8:        LDY $D8                   
-CODE_2A91DA:        LDA $04                   
-CODE_2A91DC:        JSR CODE_2A8CD9           
-CODE_2A91DF:        INC $04                   
-CODE_2A91E1:        INX                       
-CODE_2A91E2:        TXA                       
-CODE_2A91E3:        AND #$0F                  
-CODE_2A91E5:        BNE CODE_2A91F1           
-CODE_2A91E7:        REP #$20                  
-CODE_2A91E9:        TXA                       
-CODE_2A91EA:        CLC                       
-CODE_2A91EB:        ADC #$01A0                
-CODE_2A91EE:        TAX                       
-CODE_2A91EF:        SEP #$20                  
-CODE_2A91F1:        DEY                       
-CODE_2A91F2:        BNE CODE_2A91DA           
-CODE_2A91F4:        LDY $02                   
-CODE_2A91F6:        REP #$20                  
-CODE_2A91F8:        LDA $00                   
-CODE_2A91FA:        CLC                       
-CODE_2A91FB:        ADC DATA_2A9217,y               
-CODE_2A91FE:        STA $00                   
-CODE_2A9200:        TAX                       
-CODE_2A9201:        SEP #$20                  
-CODE_2A9203:        DEC $02                   
-CODE_2A9205:        DEC $02                   
-CODE_2A9207:        BPL CODE_2A91D8           
-CODE_2A9209:        LDA #$17                  
-CODE_2A920B:        JSR CODE_2A8CD9           
-CODE_2A920E:        LDA #$18                  
-CODE_2A9210:        INX                       
-CODE_2A9211:        JSR CODE_2A8CD9           
-CODE_2A9214:        SEP #$10                  
-CODE_2A9216:        RTS                       
+CODE_2A91C3:        AD 50 03      LDA $0350                 
+CODE_2A91C6:        C9 23         CMP #$23                  
+CODE_2A91C8:        F0 4C         BEQ CODE_2A9216           
+CODE_2A91CA:        C2 10         REP #$10                  
+CODE_2A91CC:        A6 00         LDX $00                   
+CODE_2A91CE:        A9 08         LDA #$08                  
+CODE_2A91D0:        85 02         STA $02                   
+CODE_2A91D2:        64 03         STZ $03                   
+CODE_2A91D4:        A9 11         LDA #$11                  
+CODE_2A91D6:        85 04         STA $04                   
+CODE_2A91D8:        A4 D8         LDY $D8                   
+CODE_2A91DA:        A5 04         LDA $04                   
+CODE_2A91DC:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A91DF:        E6 04         INC $04                   
+CODE_2A91E1:        E8            INX                       
+CODE_2A91E2:        8A            TXA                       
+CODE_2A91E3:        29 0F         AND #$0F                  
+CODE_2A91E5:        D0 0A         BNE CODE_2A91F1           
+CODE_2A91E7:        C2 20         REP #$20                  
+CODE_2A91E9:        8A            TXA                       
+CODE_2A91EA:        18            CLC                       
+CODE_2A91EB:        69 A0 01      ADC #$01A0                
+CODE_2A91EE:        AA            TAX                       
+CODE_2A91EF:        E2 20         SEP #$20                  
+CODE_2A91F1:        88            DEY                       
+CODE_2A91F2:        D0 E6         BNE CODE_2A91DA           
+CODE_2A91F4:        A4 02         LDY $02                   
+CODE_2A91F6:        C2 20         REP #$20                  
+CODE_2A91F8:        A5 00         LDA $00                   
+CODE_2A91FA:        18            CLC                       
+CODE_2A91FB:        79 17 92      ADC DATA_2A9217,y               
+CODE_2A91FE:        85 00         STA $00                   
+CODE_2A9200:        AA            TAX                       
+CODE_2A9201:        E2 20         SEP #$20                  
+CODE_2A9203:        C6 02         DEC $02                   
+CODE_2A9205:        C6 02         DEC $02                   
+CODE_2A9207:        10 CF         BPL CODE_2A91D8           
+CODE_2A9209:        A9 17         LDA #$17                  
+CODE_2A920B:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A920E:        A9 18         LDA #$18                  
+CODE_2A9210:        E8            INX                       
+CODE_2A9211:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9214:        E2 10         SEP #$10                  
+CODE_2A9216:        60            RTS                       
 
 DATA_2A9217:        dw $0010,$000F,$0010,$0010
                     dw $0010
            
-CODE_2A9221:        LDA #$2A                  
-CODE_2A9223:        STA $08                   
-CODE_2A9225:        STA $0B                   
-CODE_2A9227:        STA $0E                   
-CODE_2A9229:        REP #$30                  
-CODE_2A922B:        LDX $D8                   
-CODE_2A922D:        LDA.w PNTR_2A925C,x               
-CODE_2A9230:        STA $06                   
-CODE_2A9232:        LDA.w PNTR_2A9266,x               
-CODE_2A9235:        STA $09                   
-CODE_2A9237:        LDA.w PNTR_2A9270,x               
-CODE_2A923A:        STA $0C                   
-CODE_2A923C:        STZ $04                   
-CODE_2A923E:        SEP #$20                  
-CODE_2A9240:        LDA.w DATA_2A9252,x               
-CODE_2A9243:        STA $0F                   
-CODE_2A9245:        LDX $00                   
-CODE_2A9247:        LDY #$0000                
-CODE_2A924A:        LDA [$0C]                 
-CODE_2A924C:        STA $02                   
-CODE_2A924E:        JSR CODE_2A8FA7           
-CODE_2A9251:        RTS                       
+CODE_2A9221:        A9 2A         LDA #$2A                  
+CODE_2A9223:        85 08         STA $08                   
+CODE_2A9225:        85 0B         STA $0B                   
+CODE_2A9227:        85 0E         STA $0E                   
+CODE_2A9229:        C2 30         REP #$30                  
+CODE_2A922B:        A6 D8         LDX $D8                   
+CODE_2A922D:        BD 5C 92      LDA.w PNTR_2A925C,x               
+CODE_2A9230:        85 06         STA $06                   
+CODE_2A9232:        BD 66 92      LDA.w PNTR_2A9266,x               
+CODE_2A9235:        85 09         STA $09                   
+CODE_2A9237:        BD 70 92      LDA.w PNTR_2A9270,x               
+CODE_2A923A:        85 0C         STA $0C                   
+CODE_2A923C:        64 04         STZ $04                   
+CODE_2A923E:        E2 20         SEP #$20                  
+CODE_2A9240:        BD 52 92      LDA.w DATA_2A9252,x               
+CODE_2A9243:        85 0F         STA $0F                   
+CODE_2A9245:        A6 00         LDX $00                   
+CODE_2A9247:        A0 00 00      LDY #$0000                
+CODE_2A924A:        A7 0C         LDA [$0C]                 
+CODE_2A924C:        85 02         STA $02                   
+CODE_2A924E:        20 A7 8F      JSR CODE_2A8FA7           
+CODE_2A9251:        60            RTS                       
 
 DATA_2A9252:        db $05,$00,$06,$00,$05,$00,$06,$00
                     db $04,$00
@@ -2268,39 +2268,39 @@ DATA_2A9338:        db $02,$04,$03,$01,$03,$02
 
 DATA_2A933E:        db $02,$09,$06,$02
 
-CODE_2A9342:        SEP #$10
-CODE_2A9344:        LDX #$00
-CODE_2A9346:        LDA #$02
-CODE_2A9348:        STA $7F0000,x
-CODE_2A934C:        INX
-CODE_2A934D:        CPX #$30        
-CODE_2A934F:        BNE CODE_2A9346           
-CODE_2A9351:        LDA #$04                  
-CODE_2A9353:        STA $7F0000,x             
-CODE_2A9357:        INX                       
-CODE_2A9358:        LDA #$07                  
-CODE_2A935A:        STA $7F0000,x             
-CODE_2A935E:        INX                       
-CODE_2A935F:        CPX #$40     
-CODE_2A9361:        BNE CODE_2A9351
-CODE_2A9363:        LDX #$50               
-CODE_2A9365:        LDA #$90                  
-CODE_2A9367:        STA $00                   
-CODE_2A9369:        LDA #$10                  
-CODE_2A936B:        STA $7F0000,x             
-CODE_2A936F:        INX                       
-CODE_2A9370:        DEC $00                   
-CODE_2A9372:        BNE CODE_2A936B           
-CODE_2A9374:        LDY #$00                
-CODE_2A9376:        LDA [$2B],y                       
-CODE_2A9378:        CMP #$FF                  
-CODE_2A937A:        BEQ CODE_2A9384           
-CODE_2A937C:        JSR CODE_2A8E54           
-CODE_2A937F:        JSR (PNTR_2A9386,x)             
-CODE_2A9382:        BRA CODE_2A9374           
+CODE_2A9342:        E2 10         SEP #$10
+CODE_2A9344:        A2 00         LDX #$00
+CODE_2A9346:        A9 02         LDA #$02
+CODE_2A9348:        9F 00 00 7F   STA $7F0000,x
+CODE_2A934C:        E8            INX
+CODE_2A934D:        E0 30         CPX #$30        
+CODE_2A934F:        D0 F5         BNE CODE_2A9346           
+CODE_2A9351:        A9 04         LDA #$04                  
+CODE_2A9353:        9F 00 00 7F   STA $7F0000,x             
+CODE_2A9357:        E8            INX                       
+CODE_2A9358:        A9 07         LDA #$07                  
+CODE_2A935A:        9F 00 00 7F   STA $7F0000,x             
+CODE_2A935E:        E8            INX                       
+CODE_2A935F:        E0 40         CPX #$40     
+CODE_2A9361:        D0 EE         BNE CODE_2A9351
+CODE_2A9363:        A2 50         LDX #$50               
+CODE_2A9365:        A9 90         LDA #$90                  
+CODE_2A9367:        85 00         STA $00                   
+CODE_2A9369:        A9 10         LDA #$10                  
+CODE_2A936B:        9F 00 00 7F   STA $7F0000,x             
+CODE_2A936F:        E8            INX                       
+CODE_2A9370:        C6 00         DEC $00                   
+CODE_2A9372:        D0 F7         BNE CODE_2A936B           
+CODE_2A9374:        A0 00         LDY #$00                
+CODE_2A9376:        B7 2B         LDA [$2B],y                       
+CODE_2A9378:        C9 FF         CMP #$FF                  
+CODE_2A937A:        F0 08         BEQ CODE_2A9384           
+CODE_2A937C:        20 54 8E      JSR CODE_2A8E54           
+CODE_2A937F:        FC 86 93      JSR (PNTR_2A9386,x)             
+CODE_2A9382:        80 F0         BRA CODE_2A9374           
 
-CODE_2A9384:        PLB                       
-CODE_2A9385:        RTL                       
+CODE_2A9384:        AB            PLB                       
+CODE_2A9385:        6B            RTL                       
 
 PNTR_2A9386:        dw CODE_2A9392
                     dw CODE_2A93D7
@@ -2309,84 +2309,84 @@ PNTR_2A9386:        dw CODE_2A9392
                     dw CODE_2A9465
                     dw CODE_2A9480
 
-CODE_2A9392:        REP #$10                 
-CODE_2A9394:        LDX $00
-CODE_2A9396:        LDA #$01                  
-CODE_2A9398:        STA $7F0000,x
-CODE_2A939C:        REP #$20
-CODE_2A939E:        TXA                      
-CODE_2A939F:        CLC                       
-CODE_2A93A0:        ADC #$0010                  
-CODE_2A93A3:        TAX                
-CODE_2A93A4:        SEP #$20                  
-CODE_2A93A6:        LDA $7F0000,x             
-CODE_2A93AA:        CMP #$07                  
-CODE_2A93AC:        BEQ CODE_2A93C6           
-CODE_2A93AE:        LDA #$03                  
-CODE_2A93B0:        STA $7F0000,x             
-CODE_2A93B4:        REP #$20                  
-CODE_2A93B6:        TXA                       
-CODE_2A93B7:        CLC                       
-CODE_2A93B8:        ADC #$0010                
-CODE_2A93BB:        TAX                       
-CODE_2A93BC:        SEP #$20                  
-CODE_2A93BE:        DEC $D8                   
-CODE_2A93C0:        DEC $D8                   
-CODE_2A93C2:        BPL CODE_2A9396           
-CODE_2A93C4:        BRA CODE_2A93D4           
+CODE_2A9392:        C2 10         REP #$10                 
+CODE_2A9394:        A6 00         LDX $00
+CODE_2A9396:        A9 01         LDA #$01                  
+CODE_2A9398:        9F 00 00 7F   STA $7F0000,x
+CODE_2A939C:        C2 20         REP #$20
+CODE_2A939E:        8A            TXA                      
+CODE_2A939F:        18            CLC                       
+CODE_2A93A0:        69 10 00      ADC #$0010                  
+CODE_2A93A3:        AA            TAX                
+CODE_2A93A4:        E2 20         SEP #$20                  
+CODE_2A93A6:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2A93AA:        C9 07         CMP #$07                  
+CODE_2A93AC:        F0 18         BEQ CODE_2A93C6           
+CODE_2A93AE:        A9 03         LDA #$03                  
+CODE_2A93B0:        9F 00 00 7F   STA $7F0000,x             
+CODE_2A93B4:        C2 20         REP #$20                  
+CODE_2A93B6:        8A            TXA                       
+CODE_2A93B7:        18            CLC                       
+CODE_2A93B8:        69 10 00      ADC #$0010                
+CODE_2A93BB:        AA            TAX                       
+CODE_2A93BC:        E2 20         SEP #$20                  
+CODE_2A93BE:        C6 D8         DEC $D8                   
+CODE_2A93C0:        C6 D8         DEC $D8                   
+CODE_2A93C2:        10 D2         BPL CODE_2A9396           
+CODE_2A93C4:        80 0E         BRA CODE_2A93D4           
 
-CODE_2A93C6:        LDA #$05                  
-CODE_2A93C8:        STA $7F0000,x             
-CODE_2A93CC:        LDA #$06                  
-CODE_2A93CE:        STA $7F0001,x             
-CODE_2A93D2:        BRA CODE_2A93B4           
+CODE_2A93C6:        A9 05         LDA #$05                  
+CODE_2A93C8:        9F 00 00 7F   STA $7F0000,x             
+CODE_2A93CC:        A9 06         LDA #$06                  
+CODE_2A93CE:        9F 01 00 7F   STA $7F0001,x             
+CODE_2A93D2:        80 E0         BRA CODE_2A93B4           
 
-CODE_2A93D4:        SEP #$10                  
-CODE_2A93D6:        RTS                       
+CODE_2A93D4:        E2 10         SEP #$10                  
+CODE_2A93D6:        60            RTS                       
 
-CODE_2A93D7:        LDY #$00                  
-CODE_2A93D9:        LDX $00                   
-CODE_2A93DB:        LDA $7F0000,x             
-CODE_2A93DF:        BNE CODE_2A93E9           
-CODE_2A93E1:        LDA.w DATA_2A93EF,y               
-CODE_2A93E4:        STA $7F0000,x             
-CODE_2A93E8:        INY                       
-CODE_2A93E9:        INX                       
-CODE_2A93EA:        DEC $D8                   
-CODE_2A93EC:        BPL CODE_2A93DB           
-CODE_2A93EE:        RTS                       
+CODE_2A93D7:        A0 00         LDY #$00                  
+CODE_2A93D9:        A6 00         LDX $00                   
+CODE_2A93DB:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2A93DF:        D0 08         BNE CODE_2A93E9           
+CODE_2A93E1:        B9 EF 93      LDA.w DATA_2A93EF,y               
+CODE_2A93E4:        9F 00 00 7F   STA $7F0000,x             
+CODE_2A93E8:        C8            INY                       
+CODE_2A93E9:        E8            INX                       
+CODE_2A93EA:        C6 D8         DEC $D8                   
+CODE_2A93EC:        10 ED         BPL CODE_2A93DB           
+CODE_2A93EE:        60            RTS                       
 
 DATA_2A93EF:        db $08,$09,$0A,$0A,$0A,$0B,$0C,$08
                     db $08,$08,$0D,$0E,$0F,$08     
               
-CODE_2A93FD:        LDY #$00                  
-CODE_2A93FF:        LDX $00                   
-CODE_2A9401:        LDA $1EBF                 
-CODE_2A9404:        CMP #$24                  
-CODE_2A9406:        BEQ CODE_2A9425           
-CODE_2A9408:        LDA.w DATA_2A9441,y               
-CODE_2A940B:        STA $7F0000,x             
-CODE_2A940F:        LDA.w DATA_2A9444,y               
-CODE_2A9412:        STA $7F0010,x             
-CODE_2A9416:        LDA.w DATA_2A9447,y               
-CODE_2A9419:        STA $7F0020,x             
-CODE_2A941D:        INX                       
-CODE_2A941E:        INY                       
-CODE_2A941F:        DEC $D8                   
-CODE_2A9421:        BPL CODE_2A9408           
-CODE_2A9423:        BRA CODE_2A9440           
+CODE_2A93FD:        A0 00         LDY #$00                  
+CODE_2A93FF:        A6 00         LDX $00                   
+CODE_2A9401:        AD BF 1E      LDA $1EBF                 
+CODE_2A9404:        C9 24         CMP #$24                  
+CODE_2A9406:        F0 1D         BEQ CODE_2A9425           
+CODE_2A9408:        B9 41 94      LDA.w DATA_2A9441,y               
+CODE_2A940B:        9F 00 00 7F   STA $7F0000,x             
+CODE_2A940F:        B9 44 94      LDA.w DATA_2A9444,y               
+CODE_2A9412:        9F 10 00 7F   STA $7F0010,x             
+CODE_2A9416:        B9 47 94      LDA.w DATA_2A9447,y               
+CODE_2A9419:        9F 20 00 7F   STA $7F0020,x             
+CODE_2A941D:        E8            INX                       
+CODE_2A941E:        C8            INY                       
+CODE_2A941F:        C6 D8         DEC $D8                   
+CODE_2A9421:        10 E5         BPL CODE_2A9408           
+CODE_2A9423:        80 1B         BRA CODE_2A9440           
 
-CODE_2A9425:        LDA.w DATA_2A944A,y               
-CODE_2A9428:        STA $7F0000,x             
-CODE_2A942C:        LDA.w DATA_2A944D,y               
-CODE_2A942F:        STA $7F0010,x             
-CODE_2A9433:        LDA.w DATA_2A9450,y               
-CODE_2A9436:        STA $7F0020,x             
-CODE_2A943A:        INX                       
-CODE_2A943B:        INY                       
-CODE_2A943C:        DEC $D8                   
-CODE_2A943E:        BPL CODE_2A9425           
-CODE_2A9440:        RTS                       
+CODE_2A9425:        B9 4A 94      LDA.w DATA_2A944A,y               
+CODE_2A9428:        9F 00 00 7F   STA $7F0000,x             
+CODE_2A942C:        B9 4D 94      LDA.w DATA_2A944D,y               
+CODE_2A942F:        9F 10 00 7F   STA $7F0010,x             
+CODE_2A9433:        B9 50 94      LDA.w DATA_2A9450,y               
+CODE_2A9436:        9F 20 00 7F   STA $7F0020,x             
+CODE_2A943A:        E8            INX                       
+CODE_2A943B:        C8            INY                       
+CODE_2A943C:        C6 D8         DEC $D8                   
+CODE_2A943E:        10 E5         BPL CODE_2A9425           
+CODE_2A9440:        60            RTS                       
 
 DATA_2A9441:        db $12,$13,$14
 
@@ -2400,208 +2400,208 @@ DATA_2A944D:        db $23,$24,$14
 
 DATA_2A9450:        db $18,$19,$1A
 
-CODE_2A9453:        LDX $00
-CODE_2A9455:        LDA #$11
-CODE_2A9457:        STA $7F0000,X
-CODE_2A945B:        TXA
-CODE_2A945C:        CLC
-CODE_2A945D:        ADC #$10
-CODE_2A945F:        TAX          
-CODE_2A9460:        DEC $D8                   
-CODE_2A9462:        BPL CODE_2A9455           
-CODE_2A9464:        RTS                       
+CODE_2A9453:        A6 00         LDX $00
+CODE_2A9455:        A9 11         LDA #$11
+CODE_2A9457:        9F 00 00 7F   STA $7F0000,X
+CODE_2A945B:        8A            TXA
+CODE_2A945C:        18            CLC
+CODE_2A945D:        69 10         ADC #$10
+CODE_2A945F:        AA            TAX          
+CODE_2A9460:        C6 D8         DEC $D8                   
+CODE_2A9462:        10 F1         BPL CODE_2A9455           
+CODE_2A9464:        60            RTS                       
 
-CODE_2A9465:        LDX $00                   
-CODE_2A9467:        LDA $7F0000,x             
-CODE_2A946B:        CMP #$11                  
-CODE_2A946D:        BEQ CODE_2A9473           
-CODE_2A946F:        LDA #$1B                  
-CODE_2A9471:        BRA CODE_2A9475           
+CODE_2A9465:        A6 00         LDX $00                   
+CODE_2A9467:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2A946B:        C9 11         CMP #$11                  
+CODE_2A946D:        F0 04         BEQ CODE_2A9473           
+CODE_2A946F:        A9 1B         LDA #$1B                  
+CODE_2A9471:        80 02         BRA CODE_2A9475           
 
-CODE_2A9473:        LDA #$1D                  
-CODE_2A9475:        STA $7F0000,x             
-CODE_2A9479:        LDA #$1C                  
-CODE_2A947B:        STA $7F0001,x             
-CODE_2A947F:        RTS                       
+CODE_2A9473:        A9 1D         LDA #$1D                  
+CODE_2A9475:        9F 00 00 7F   STA $7F0000,x             
+CODE_2A9479:        A9 1C         LDA #$1C                  
+CODE_2A947B:        9F 01 00 7F   STA $7F0001,x             
+CODE_2A947F:        60            RTS                       
 
-CODE_2A9480:        LDX $00                   
-CODE_2A9482:        LDY $D8                   
-CODE_2A9484:        LDA.w DATA_2A948C,y               
-CODE_2A9487:        STA $7F0000,x             
-CODE_2A948B:        RTS                       
+CODE_2A9480:        A6 00         LDX $00                   
+CODE_2A9482:        A4 D8         LDY $D8                   
+CODE_2A9484:        B9 8C 94      LDA.w DATA_2A948C,y               
+CODE_2A9487:        9F 00 00 7F   STA $7F0000,x             
+CODE_2A948B:        60            RTS                       
 
 DATA_2A948C:        db $15,$1E
                 
-CODE_2A948E:        SEP #$10                  
-CODE_2A9490:        LDX #$60                  
-CODE_2A9492:        LDA #$3D                  
-CODE_2A9494:        JSR CODE_2A8D03           
-CODE_2A9497:        INX                       
-CODE_2A9498:        CPX #$70                  
-CODE_2A949A:        BNE CODE_2A9494           
-CODE_2A949C:        LDA #$01                  
-CODE_2A949E:        JSR CODE_2A8D03           
-CODE_2A94A1:        INX                       
-CODE_2A94A2:        CPX #$80                  
-CODE_2A94A4:        BNE CODE_2A949E           
-CODE_2A94A6:        LDA #$02                  
-CODE_2A94A8:        STA $00                   
-CODE_2A94AA:        LDA #$03                  
-CODE_2A94AC:        STA $01                   
-CODE_2A94AE:        LDA #$08                  
-CODE_2A94B0:        STA $02                   
-CODE_2A94B2:        LDA #$04                  
-CODE_2A94B4:        STA $03                   
-CODE_2A94B6:        LDA $00                   
-CODE_2A94B8:        JSR CODE_2A8D03           
-CODE_2A94BB:        INX                       
-CODE_2A94BC:        LDA $01                   
-CODE_2A94BE:        JSR CODE_2A8D03           
-CODE_2A94C1:        INX                       
-CODE_2A94C2:        DEC $02                   
-CODE_2A94C4:        BNE CODE_2A94B6           
-CODE_2A94C6:        LDA #$08                  
-CODE_2A94C8:        STA $02                   
-CODE_2A94CA:        INC $00                   
-CODE_2A94CC:        INC $00                   
-CODE_2A94CE:        INC $01                   
-CODE_2A94D0:        INC $01                   
-CODE_2A94D2:        DEC $03                   
-CODE_2A94D4:        BNE CODE_2A94B6           
-CODE_2A94D6:        LDA #$10                  
-CODE_2A94D8:        STA $02                   
-CODE_2A94DA:        LDA #$0A                  
-CODE_2A94DC:        JSR CODE_2A8D03           
-CODE_2A94DF:        INX                       
-CODE_2A94E0:        DEC $02                   
-CODE_2A94E2:        BNE CODE_2A94DC           
-CODE_2A94E4:        LDA #$04                  
-CODE_2A94E6:        STA $04                   
-CODE_2A94E8:        LDA #$0B                  
-CODE_2A94EA:        STA $00                   
-CODE_2A94EC:        INC A                     
-CODE_2A94ED:        STA $01                   
-CODE_2A94EF:        INC A                     
-CODE_2A94F0:        STA $02                   
-CODE_2A94F2:        INC A                     
-CODE_2A94F3:        STA $03                   
-CODE_2A94F5:        JSR CODE_2A95B9           
-CODE_2A94F8:        LDA #$04                  
-CODE_2A94FA:        STA $04                   
-CODE_2A94FC:        LDA #$0F                  
-CODE_2A94FE:        STA $00                   
-CODE_2A9500:        INC A                     
-CODE_2A9501:        STA $01                   
-CODE_2A9503:        INC A                     
-CODE_2A9504:        STA $02                   
-CODE_2A9506:        INC A                     
-CODE_2A9507:        STA $03                   
-CODE_2A9509:        JSR CODE_2A95B9           
-CODE_2A950C:        LDA #$04                  
-CODE_2A950E:        STA $04                   
-CODE_2A9510:        LDA #$13                  
-CODE_2A9512:        STA $00                   
-CODE_2A9514:        LDA #$14                  
-CODE_2A9516:        STA $01                   
-CODE_2A9518:        LDA #$19                  
-CODE_2A951A:        STA $02                   
-CODE_2A951C:        LDA #$1A                  
-CODE_2A951E:        STA $03                   
-CODE_2A9520:        JSR CODE_2A95B9           
-CODE_2A9523:        LDX #$70                  
-CODE_2A9525:        LDA #$04                  
-CODE_2A9527:        STA $04                   
-CODE_2A9529:        LDA #$2D                  
-CODE_2A952B:        STA $00                   
-CODE_2A952D:        LDA #$2E                  
-CODE_2A952F:        STA $01                   
-CODE_2A9531:        LDA #$33                  
-CODE_2A9533:        STA $02                   
-CODE_2A9535:        LDA #$34                  
-CODE_2A9537:        STA $03                   
-CODE_2A9539:        JSR CODE_2A975C           
-CODE_2A953C:        LDA #$04                  
-CODE_2A953E:        STA $04                   
-CODE_2A9540:        LDA #$35                  
-CODE_2A9542:        STA $00                   
-CODE_2A9544:        INC A                     
-CODE_2A9545:        STA $01                   
-CODE_2A9547:        INC A                     
-CODE_2A9548:        STA $02                   
-CODE_2A954A:        INC A                     
-CODE_2A954B:        STA $03                   
-CODE_2A954D:        JSR CODE_2A975C           
-CODE_2A9550:        LDA #$04                  
-CODE_2A9552:        STA $04                   
-CODE_2A9554:        LDA #$39                  
-CODE_2A9556:        STA $00                   
-CODE_2A9558:        INC A                     
-CODE_2A9559:        STA $01                   
-CODE_2A955B:        INC A                     
-CODE_2A955C:        STA $02                   
-CODE_2A955E:        INC A                     
-CODE_2A955F:        STA $03                   
-CODE_2A9561:        JSR CODE_2A975C           
-CODE_2A9564:        LDA #$0A                  
-CODE_2A9566:        JSR CODE_2A8D25           
-CODE_2A9569:        INX                       
-CODE_2A956A:        CPX #$B0                  
-CODE_2A956C:        BNE CODE_2A9564           
-CODE_2A956E:        LDY #$00                  
-CODE_2A9570:        LDA [$2B],y               
-CODE_2A9572:        CMP #$FF                  
-CODE_2A9574:        BEQ CODE_2A95B7           
-CODE_2A9576:        JSR CODE_2A8E54           
-CODE_2A9579:        STZ $02                   
-CODE_2A957B:        REP #$20                  
-CODE_2A957D:        LDA $00                   
-CODE_2A957F:        STA $04                   
-CODE_2A9581:        SEP #$20                  
-CODE_2A9583:        LDA #$09                  
-CODE_2A9585:        STA $03                   
-CODE_2A9587:        LDX $02                   
-CODE_2A9589:        LDA.w DATA_2A95D6,x               
-CODE_2A958C:        REP #$10                  
-CODE_2A958E:        LDX $04                   
-CODE_2A9590:        JSR CODE_2A8CD9           
-CODE_2A9593:        REP #$20                  
-CODE_2A9595:        LDA $04                   
-CODE_2A9597:        CLC                       
-CODE_2A9598:        ADC #$0010                
-CODE_2A959B:        STA $04                   
-CODE_2A959D:        SEP #$30                  
-CODE_2A959F:        INC $02                   
-CODE_2A95A1:        DEC $03                   
-CODE_2A95A3:        BNE CODE_2A9587           
-CODE_2A95A5:        INC $00                   
-CODE_2A95A7:        LDA $02                   
-CODE_2A95A9:        CMP #$24                  
-CODE_2A95AB:        BNE CODE_2A957B           
-CODE_2A95AD:        LDA $D8                   
-CODE_2A95AF:        BEQ CODE_2A95B5           
-CODE_2A95B1:        DEC $D8                   
-CODE_2A95B3:        BRA CODE_2A9579           
+CODE_2A948E:        E2 10         SEP #$10                  
+CODE_2A9490:        A2 60         LDX #$60                  
+CODE_2A9492:        A9 3D         LDA #$3D                  
+CODE_2A9494:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A9497:        E8            INX                       
+CODE_2A9498:        E0 70         CPX #$70                  
+CODE_2A949A:        D0 F8         BNE CODE_2A9494           
+CODE_2A949C:        A9 01         LDA #$01                  
+CODE_2A949E:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A94A1:        E8            INX                       
+CODE_2A94A2:        E0 80         CPX #$80                  
+CODE_2A94A4:        D0 F8         BNE CODE_2A949E           
+CODE_2A94A6:        A9 02         LDA #$02                  
+CODE_2A94A8:        85 00         STA $00                   
+CODE_2A94AA:        A9 03         LDA #$03                  
+CODE_2A94AC:        85 01         STA $01                   
+CODE_2A94AE:        A9 08         LDA #$08                  
+CODE_2A94B0:        85 02         STA $02                   
+CODE_2A94B2:        A9 04         LDA #$04                  
+CODE_2A94B4:        85 03         STA $03                   
+CODE_2A94B6:        A5 00         LDA $00                   
+CODE_2A94B8:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A94BB:        E8            INX                       
+CODE_2A94BC:        A5 01         LDA $01                   
+CODE_2A94BE:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A94C1:        E8            INX                       
+CODE_2A94C2:        C6 02         DEC $02                   
+CODE_2A94C4:        D0 F0         BNE CODE_2A94B6           
+CODE_2A94C6:        A9 08         LDA #$08                  
+CODE_2A94C8:        85 02         STA $02                   
+CODE_2A94CA:        E6 00         INC $00                   
+CODE_2A94CC:        E6 00         INC $00                   
+CODE_2A94CE:        E6 01         INC $01                   
+CODE_2A94D0:        E6 01         INC $01                   
+CODE_2A94D2:        C6 03         DEC $03                   
+CODE_2A94D4:        D0 E0         BNE CODE_2A94B6           
+CODE_2A94D6:        A9 10         LDA #$10                  
+CODE_2A94D8:        85 02         STA $02                   
+CODE_2A94DA:        A9 0A         LDA #$0A                  
+CODE_2A94DC:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A94DF:        E8            INX                       
+CODE_2A94E0:        C6 02         DEC $02                   
+CODE_2A94E2:        D0 F8         BNE CODE_2A94DC           
+CODE_2A94E4:        A9 04         LDA #$04                  
+CODE_2A94E6:        85 04         STA $04                   
+CODE_2A94E8:        A9 0B         LDA #$0B                  
+CODE_2A94EA:        85 00         STA $00                   
+CODE_2A94EC:        1A            INC A                     
+CODE_2A94ED:        85 01         STA $01                   
+CODE_2A94EF:        1A            INC A                     
+CODE_2A94F0:        85 02         STA $02                   
+CODE_2A94F2:        1A            INC A                     
+CODE_2A94F3:        85 03         STA $03                   
+CODE_2A94F5:        20 B9 95      JSR CODE_2A95B9           
+CODE_2A94F8:        A9 04         LDA #$04                  
+CODE_2A94FA:        85 04         STA $04                   
+CODE_2A94FC:        A9 0F         LDA #$0F                  
+CODE_2A94FE:        85 00         STA $00                   
+CODE_2A9500:        1A            INC A                     
+CODE_2A9501:        85 01         STA $01                   
+CODE_2A9503:        1A            INC A                     
+CODE_2A9504:        85 02         STA $02                   
+CODE_2A9506:        1A            INC A                     
+CODE_2A9507:        85 03         STA $03                   
+CODE_2A9509:        20 B9 95      JSR CODE_2A95B9           
+CODE_2A950C:        A9 04         LDA #$04                  
+CODE_2A950E:        85 04         STA $04                   
+CODE_2A9510:        A9 13         LDA #$13                  
+CODE_2A9512:        85 00         STA $00                   
+CODE_2A9514:        A9 14         LDA #$14                  
+CODE_2A9516:        85 01         STA $01                   
+CODE_2A9518:        A9 19         LDA #$19                  
+CODE_2A951A:        85 02         STA $02                   
+CODE_2A951C:        A9 1A         LDA #$1A                  
+CODE_2A951E:        85 03         STA $03                   
+CODE_2A9520:        20 B9 95      JSR CODE_2A95B9           
+CODE_2A9523:        A2 70         LDX #$70                  
+CODE_2A9525:        A9 04         LDA #$04                  
+CODE_2A9527:        85 04         STA $04                   
+CODE_2A9529:        A9 2D         LDA #$2D                  
+CODE_2A952B:        85 00         STA $00                   
+CODE_2A952D:        A9 2E         LDA #$2E                  
+CODE_2A952F:        85 01         STA $01                   
+CODE_2A9531:        A9 33         LDA #$33                  
+CODE_2A9533:        85 02         STA $02                   
+CODE_2A9535:        A9 34         LDA #$34                  
+CODE_2A9537:        85 03         STA $03                   
+CODE_2A9539:        20 5C 97      JSR CODE_2A975C           
+CODE_2A953C:        A9 04         LDA #$04                  
+CODE_2A953E:        85 04         STA $04                   
+CODE_2A9540:        A9 35         LDA #$35                  
+CODE_2A9542:        85 00         STA $00                   
+CODE_2A9544:        1A            INC A                     
+CODE_2A9545:        85 01         STA $01                   
+CODE_2A9547:        1A            INC A                     
+CODE_2A9548:        85 02         STA $02                   
+CODE_2A954A:        1A            INC A                     
+CODE_2A954B:        85 03         STA $03                   
+CODE_2A954D:        20 5C 97      JSR CODE_2A975C           
+CODE_2A9550:        A9 04         LDA #$04                  
+CODE_2A9552:        85 04         STA $04                   
+CODE_2A9554:        A9 39         LDA #$39                  
+CODE_2A9556:        85 00         STA $00                   
+CODE_2A9558:        1A            INC A                     
+CODE_2A9559:        85 01         STA $01                   
+CODE_2A955B:        1A            INC A                     
+CODE_2A955C:        85 02         STA $02                   
+CODE_2A955E:        1A            INC A                     
+CODE_2A955F:        85 03         STA $03                   
+CODE_2A9561:        20 5C 97      JSR CODE_2A975C           
+CODE_2A9564:        A9 0A         LDA #$0A                  
+CODE_2A9566:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9569:        E8            INX                       
+CODE_2A956A:        E0 B0         CPX #$B0                  
+CODE_2A956C:        D0 F6         BNE CODE_2A9564           
+CODE_2A956E:        A0 00         LDY #$00                  
+CODE_2A9570:        B7 2B         LDA [$2B],y               
+CODE_2A9572:        C9 FF         CMP #$FF                  
+CODE_2A9574:        F0 41         BEQ CODE_2A95B7           
+CODE_2A9576:        20 54 8E      JSR CODE_2A8E54           
+CODE_2A9579:        64 02         STZ $02                   
+CODE_2A957B:        C2 20         REP #$20                  
+CODE_2A957D:        A5 00         LDA $00                   
+CODE_2A957F:        85 04         STA $04                   
+CODE_2A9581:        E2 20         SEP #$20                  
+CODE_2A9583:        A9 09         LDA #$09                  
+CODE_2A9585:        85 03         STA $03                   
+CODE_2A9587:        A6 02         LDX $02                   
+CODE_2A9589:        BD D6 95      LDA.w DATA_2A95D6,x               
+CODE_2A958C:        C2 10         REP #$10                  
+CODE_2A958E:        A6 04         LDX $04                   
+CODE_2A9590:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9593:        C2 20         REP #$20                  
+CODE_2A9595:        A5 04         LDA $04                   
+CODE_2A9597:        18            CLC                       
+CODE_2A9598:        69 10 00      ADC #$0010                
+CODE_2A959B:        85 04         STA $04                   
+CODE_2A959D:        E2 30         SEP #$30                  
+CODE_2A959F:        E6 02         INC $02                   
+CODE_2A95A1:        C6 03         DEC $03                   
+CODE_2A95A3:        D0 E2         BNE CODE_2A9587           
+CODE_2A95A5:        E6 00         INC $00                   
+CODE_2A95A7:        A5 02         LDA $02                   
+CODE_2A95A9:        C9 24         CMP #$24                  
+CODE_2A95AB:        D0 CE         BNE CODE_2A957B           
+CODE_2A95AD:        A5 D8         LDA $D8                   
+CODE_2A95AF:        F0 04         BEQ CODE_2A95B5           
+CODE_2A95B1:        C6 D8         DEC $D8                   
+CODE_2A95B3:        80 C4         BRA CODE_2A9579           
 
-CODE_2A95B5:        BRA CODE_2A956E           
+CODE_2A95B5:        80 B7         BRA CODE_2A956E           
 
-CODE_2A95B7:        PLB                       
-CODE_2A95B8:        RTL                       
+CODE_2A95B7:        AB            PLB                       
+CODE_2A95B8:        6B            RTL                       
 
-CODE_2A95B9:        LDA $00                   
-CODE_2A95BB:        JSR CODE_2A8D03           
-CODE_2A95BE:        INX                       
-CODE_2A95BF:        LDA $01                   
-CODE_2A95C1:        JSR CODE_2A8D03           
-CODE_2A95C4:        INX                       
-CODE_2A95C5:        LDA $02                   
-CODE_2A95C7:        JSR CODE_2A8D03           
-CODE_2A95CA:        INX                       
-CODE_2A95CB:        LDA $03                   
-CODE_2A95CD:        JSR CODE_2A8D03           
-CODE_2A95D0:        INX                       
-CODE_2A95D1:        DEC $04                   
-CODE_2A95D3:        BNE CODE_2A95B9           
-CODE_2A95D5:        RTS                       
+CODE_2A95B9:        A5 00         LDA $00                   
+CODE_2A95BB:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A95BE:        E8            INX                       
+CODE_2A95BF:        A5 01         LDA $01                   
+CODE_2A95C1:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A95C4:        E8            INX                       
+CODE_2A95C5:        A5 02         LDA $02                   
+CODE_2A95C7:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A95CA:        E8            INX                       
+CODE_2A95CB:        A5 03         LDA $03                   
+CODE_2A95CD:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A95D0:        E8            INX                       
+CODE_2A95D1:        C6 04         DEC $04                   
+CODE_2A95D3:        D0 E4         BNE CODE_2A95B9           
+CODE_2A95D5:        60            RTS                       
 
 DATA_2A95D6:        db $15,$1B,$00,$00,$00,$00,$00,$29
                     db $2F,$16,$1C,$1F,$21,$23,$25,$27
@@ -2609,205 +2609,205 @@ DATA_2A95D6:        db $15,$1B,$00,$00,$00,$00,$00,$29
                     db $28,$2B,$31,$18,$1E,$00,$00,$00
                     db $00,$00,$2C,$32
 
-CODE_2A95FA:        SEP #$10
-CODE_2A95FC:        LDA #$3A
-CODE_2A95FE:        STA $00                   
-CODE_2A9600:        LDA #$01                  
-CODE_2A9602:        STA $01                   
-CODE_2A9604:        LDA #$08                  
-CODE_2A9606:        STA $04                   
-CODE_2A9608:        LDX #$E0                  
-CODE_2A960A:        JSR CODE_2A973A           
-CODE_2A960D:        LDA #$02                  
-CODE_2A960F:        STA $00                   
-CODE_2A9611:        LDA #$03                  
-CODE_2A9613:        STA $01                   
-CODE_2A9615:        LDA #$08                  
-CODE_2A9617:        STA $04                   
-CODE_2A9619:        JSR CODE_2A973A           
-CODE_2A961C:        LDA #$04                  
-CODE_2A961E:        STA $00                   
-CODE_2A9620:        LDA #$05                  
-CODE_2A9622:        STA $01                   
-CODE_2A9624:        LDA #$08                  
-CODE_2A9626:        STA $04                   
-CODE_2A9628:        JSR CODE_2A974B           
-CODE_2A962B:        LDA #$0B                  
-CODE_2A962D:        STA $00                   
-CODE_2A962F:        LDA #$0C                  
-CODE_2A9631:        STA $01                   
-CODE_2A9633:        LDA #$08                  
-CODE_2A9635:        STA $04                   
-CODE_2A9637:        JSR CODE_2A974B           
-CODE_2A963A:        LDA #$20                  
-CODE_2A963C:        STA $04                   
-CODE_2A963E:        LDA #$13                  
-CODE_2A9640:        JSR CODE_2A8D25           
-CODE_2A9643:        INX                       
-CODE_2A9644:        DEC $04                   
-CODE_2A9646:        BNE CODE_2A963E           
-CODE_2A9648:        LDX #$30                  
-CODE_2A964A:        LDA #$10                  
-CODE_2A964C:        STA $04                   
-CODE_2A964E:        LDA #$13                  
-CODE_2A9650:        JSR CODE_2A8D25           
-CODE_2A9653:        INX                       
-CODE_2A9654:        DEC $04                   
-CODE_2A9656:        BNE CODE_2A9650           
-CODE_2A9658:        JSR CODE_2A96ED           
-CODE_2A965B:        JSR CODE_2A96AD           
-CODE_2A965E:        LDA $0350                 
-CODE_2A9661:        CMP #$1A                  
-CODE_2A9663:        BNE CODE_2A96AB           
-CODE_2A9665:        LDA #$00                  
-CODE_2A9667:        XBA                       
-CODE_2A9668:        INC $034F                 
-CODE_2A966B:        REP #$10                  
-CODE_2A966D:        LDY #$0510                
-CODE_2A9670:        LDX #$05C0                
-CODE_2A9673:        LDA #$CF                  
-CODE_2A9675:        MVN $7F, $7F                 
-CODE_2A9678:        LDA #$00                  
-CODE_2A967A:        XBA                       
-CODE_2A967B:        LDY #$06C0                
-CODE_2A967E:        LDX #$0770                
-CODE_2A9681:        LDA #$CF                  
-CODE_2A9683:        MVN $7F, $7F                 
-CODE_2A9686:        SEP #$10                  
-CODE_2A9688:        LDX #$E0                  
-CODE_2A968A:        LDA #$13                  
-CODE_2A968C:        STA $7F05E0,x             
-CODE_2A9690:        STA $7F0790,x             
-CODE_2A9694:        DEX                       
-CODE_2A9695:        BNE CODE_2A968C           
-CODE_2A9697:        LDX #$70                  
-CODE_2A9699:        JSR CODE_2A96ED           
-CODE_2A969C:        PHB                       
-CODE_2A969D:        LDA #$2A                  ;
-CODE_2A969F:        PHA                       
-CODE_2A96A0:        PLB                       ;
-CODE_2A96A1:        REP #$20                  
-CODE_2A96A3:        INC $2B                   
-CODE_2A96A5:        SEP #$20                  
-CODE_2A96A7:        JSR CODE_2A96AD           
-CODE_2A96AA:        PLB                       ;
-CODE_2A96AB:        PLB                       ;
-CODE_2A96AC:        RTL                       
+CODE_2A95FA:        E2 10         SEP #$10
+CODE_2A95FC:        A9 3A         LDA #$3A
+CODE_2A95FE:        85 00         STA $00                   
+CODE_2A9600:        A9 01         LDA #$01                  
+CODE_2A9602:        85 01         STA $01                   
+CODE_2A9604:        A9 08         LDA #$08                  
+CODE_2A9606:        85 04         STA $04                   
+CODE_2A9608:        A2 E0         LDX #$E0                  
+CODE_2A960A:        20 3A 97      JSR CODE_2A973A           
+CODE_2A960D:        A9 02         LDA #$02                  
+CODE_2A960F:        85 00         STA $00                   
+CODE_2A9611:        A9 03         LDA #$03                  
+CODE_2A9613:        85 01         STA $01                   
+CODE_2A9615:        A9 08         LDA #$08                  
+CODE_2A9617:        85 04         STA $04                   
+CODE_2A9619:        20 3A 97      JSR CODE_2A973A           
+CODE_2A961C:        A9 04         LDA #$04                  
+CODE_2A961E:        85 00         STA $00                   
+CODE_2A9620:        A9 05         LDA #$05                  
+CODE_2A9622:        85 01         STA $01                   
+CODE_2A9624:        A9 08         LDA #$08                  
+CODE_2A9626:        85 04         STA $04                   
+CODE_2A9628:        20 4B 97      JSR CODE_2A974B           
+CODE_2A962B:        A9 0B         LDA #$0B                  
+CODE_2A962D:        85 00         STA $00                   
+CODE_2A962F:        A9 0C         LDA #$0C                  
+CODE_2A9631:        85 01         STA $01                   
+CODE_2A9633:        A9 08         LDA #$08                  
+CODE_2A9635:        85 04         STA $04                   
+CODE_2A9637:        20 4B 97      JSR CODE_2A974B           
+CODE_2A963A:        A9 20         LDA #$20                  
+CODE_2A963C:        85 04         STA $04                   
+CODE_2A963E:        A9 13         LDA #$13                  
+CODE_2A9640:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9643:        E8            INX                       
+CODE_2A9644:        C6 04         DEC $04                   
+CODE_2A9646:        D0 F6         BNE CODE_2A963E           
+CODE_2A9648:        A2 30         LDX #$30                  
+CODE_2A964A:        A9 10         LDA #$10                  
+CODE_2A964C:        85 04         STA $04                   
+CODE_2A964E:        A9 13         LDA #$13                  
+CODE_2A9650:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9653:        E8            INX                       
+CODE_2A9654:        C6 04         DEC $04                   
+CODE_2A9656:        D0 F8         BNE CODE_2A9650           
+CODE_2A9658:        20 ED 96      JSR CODE_2A96ED           
+CODE_2A965B:        20 AD 96      JSR CODE_2A96AD           
+CODE_2A965E:        AD 50 03      LDA $0350                 
+CODE_2A9661:        C9 1A         CMP #$1A                  
+CODE_2A9663:        D0 46         BNE CODE_2A96AB           
+CODE_2A9665:        A9 00         LDA #$00                  
+CODE_2A9667:        EB            XBA                       
+CODE_2A9668:        EE 4F 03      INC $034F                 
+CODE_2A966B:        C2 10         REP #$10                  
+CODE_2A966D:        A0 10 05      LDY #$0510                
+CODE_2A9670:        A2 C0 05      LDX #$05C0                
+CODE_2A9673:        A9 CF         LDA #$CF                  
+CODE_2A9675:        54 7F 7F      MVN $7F, $7F                 
+CODE_2A9678:        A9 00         LDA #$00                  
+CODE_2A967A:        EB            XBA                       
+CODE_2A967B:        A0 C0 06      LDY #$06C0                
+CODE_2A967E:        A2 70 07      LDX #$0770                
+CODE_2A9681:        A9 CF         LDA #$CF                  
+CODE_2A9683:        54 7F 7F      MVN $7F, $7F                 
+CODE_2A9686:        E2 10         SEP #$10                  
+CODE_2A9688:        A2 E0         LDX #$E0                  
+CODE_2A968A:        A9 13         LDA #$13                  
+CODE_2A968C:        9F E0 05 7F   STA $7F05E0,x             
+CODE_2A9690:        9F 90 07 7F   STA $7F0790,x             
+CODE_2A9694:        CA            DEX                       
+CODE_2A9695:        D0 F5         BNE CODE_2A968C           
+CODE_2A9697:        A2 70         LDX #$70                  
+CODE_2A9699:        20 ED 96      JSR CODE_2A96ED           
+CODE_2A969C:        8B            PHB                       
+CODE_2A969D:        A9 2A         LDA #$2A                  ;
+CODE_2A969F:        48            PHA                       
+CODE_2A96A0:        AB            PLB                       ;
+CODE_2A96A1:        C2 20         REP #$20                  
+CODE_2A96A3:        E6 2B         INC $2B                   
+CODE_2A96A5:        E2 20         SEP #$20                  
+CODE_2A96A7:        20 AD 96      JSR CODE_2A96AD           
+CODE_2A96AA:        AB            PLB                       ;
+CODE_2A96AB:        AB            PLB                       ;
+CODE_2A96AC:        6B            RTL                       
 
-CODE_2A96AD:        LDY #$00                  
-CODE_2A96AF:        LDA [$2B],y               
-CODE_2A96B1:        CMP #$FF                  
-CODE_2A96B3:        BEQ CODE_2A96EC           
-CODE_2A96B5:        JSR CODE_2A8E54           
-CODE_2A96B8:        LDA #$2A                  
-CODE_2A96BA:        STA $08                   
-CODE_2A96BC:        STA $0B                   
-CODE_2A96BE:        STA $0E                   
-CODE_2A96C0:        REP #$30                  
-CODE_2A96C2:        LDX $D8                   
-CODE_2A96C4:        LDA.w DATA_2A9796,x               
-CODE_2A96C7:        STA $06                   
-CODE_2A96C9:        LDA.w DATA_2A97A2,x               
-CODE_2A96CC:        STA $09                   
-CODE_2A96CE:        LDA.w DATA_2A97AE,x               
-CODE_2A96D1:        STA $0C                   
-CODE_2A96D3:        STZ $04                   
-CODE_2A96D5:        SEP #$20                  
-CODE_2A96D7:        LDA.w DATA_2A978A,x               
-CODE_2A96DA:        STA $0F                   
-CODE_2A96DC:        LDX $00                   
-CODE_2A96DE:        LDY #$0000                
-CODE_2A96E1:        LDA [$0C]                 
-CODE_2A96E3:        STA $02                   
-CODE_2A96E5:        JSR CODE_2A8FA7           
-CODE_2A96E8:        SEP #$10                  
-CODE_2A96EA:        BRA CODE_2A96AD           
+CODE_2A96AD:        A0 00         LDY #$00                  
+CODE_2A96AF:        B7 2B         LDA [$2B],y               
+CODE_2A96B1:        C9 FF         CMP #$FF                  
+CODE_2A96B3:        F0 37         BEQ CODE_2A96EC           
+CODE_2A96B5:        20 54 8E      JSR CODE_2A8E54           
+CODE_2A96B8:        A9 2A         LDA #$2A                  
+CODE_2A96BA:        85 08         STA $08                   
+CODE_2A96BC:        85 0B         STA $0B                   
+CODE_2A96BE:        85 0E         STA $0E                   
+CODE_2A96C0:        C2 30         REP #$30                  
+CODE_2A96C2:        A6 D8         LDX $D8                   
+CODE_2A96C4:        BD 96 97      LDA.w DATA_2A9796,x               
+CODE_2A96C7:        85 06         STA $06                   
+CODE_2A96C9:        BD A2 97      LDA.w DATA_2A97A2,x               
+CODE_2A96CC:        85 09         STA $09                   
+CODE_2A96CE:        BD AE 97      LDA.w DATA_2A97AE,x               
+CODE_2A96D1:        85 0C         STA $0C                   
+CODE_2A96D3:        64 04         STZ $04                   
+CODE_2A96D5:        E2 20         SEP #$20                  
+CODE_2A96D7:        BD 8A 97      LDA.w DATA_2A978A,x               
+CODE_2A96DA:        85 0F         STA $0F                   
+CODE_2A96DC:        A6 00         LDX $00                   
+CODE_2A96DE:        A0 00 00      LDY #$0000                
+CODE_2A96E1:        A7 0C         LDA [$0C]                 
+CODE_2A96E3:        85 02         STA $02                   
+CODE_2A96E5:        20 A7 8F      JSR CODE_2A8FA7           
+CODE_2A96E8:        E2 10         SEP #$10                  
+CODE_2A96EA:        80 C1         BRA CODE_2A96AD           
 
-CODE_2A96EC:        RTS                       
+CODE_2A96EC:        60            RTS                       
 
-CODE_2A96ED:        LDA #$18                  
-CODE_2A96EF:        STA $00                   
-CODE_2A96F1:        LDA #$19                  
-CODE_2A96F3:        STA $01                   
-CODE_2A96F5:        LDA #$1E                  
-CODE_2A96F7:        STA $02                   
-CODE_2A96F9:        LDA #$1B                  
-CODE_2A96FB:        STA $03                   
-CODE_2A96FD:        LDA #$04                  
-CODE_2A96FF:        STA $04                   
-CODE_2A9701:        JSR CODE_2A975C           
-CODE_2A9704:        LDA #$21                  
-CODE_2A9706:        STA $00                   
-CODE_2A9708:        LDA #$22                  
-CODE_2A970A:        STA $01                   
-CODE_2A970C:        LDA #$26                  
-CODE_2A970E:        STA $02                   
-CODE_2A9710:        LDA #$24                  
-CODE_2A9712:        STA $03                   
-CODE_2A9714:        LDA #$04                  
-CODE_2A9716:        STA $04                   
-CODE_2A9718:        JSR CODE_2A975C           
-CODE_2A971B:        LDA #$28                  
-CODE_2A971D:        STA $00                   
-CODE_2A971F:        LDA #$29                  
-CODE_2A9721:        STA $01                   
-CODE_2A9723:        LDA #$08                  
-CODE_2A9725:        STA $04                   
-CODE_2A9727:        JSR CODE_2A9779           
-CODE_2A972A:        LDA #$38                  
-CODE_2A972C:        STA $00                   
-CODE_2A972E:        LDA #$39                  
-CODE_2A9730:        STA $01                   
-CODE_2A9732:        LDA #$08                  
-CODE_2A9734:        STA $04                   
-CODE_2A9736:        JSR CODE_2A9779           
-CODE_2A9739:        RTS                       
+CODE_2A96ED:        A9 18         LDA #$18                  
+CODE_2A96EF:        85 00         STA $00                   
+CODE_2A96F1:        A9 19         LDA #$19                  
+CODE_2A96F3:        85 01         STA $01                   
+CODE_2A96F5:        A9 1E         LDA #$1E                  
+CODE_2A96F7:        85 02         STA $02                   
+CODE_2A96F9:        A9 1B         LDA #$1B                  
+CODE_2A96FB:        85 03         STA $03                   
+CODE_2A96FD:        A9 04         LDA #$04                  
+CODE_2A96FF:        85 04         STA $04                   
+CODE_2A9701:        20 5C 97      JSR CODE_2A975C           
+CODE_2A9704:        A9 21         LDA #$21                  
+CODE_2A9706:        85 00         STA $00                   
+CODE_2A9708:        A9 22         LDA #$22                  
+CODE_2A970A:        85 01         STA $01                   
+CODE_2A970C:        A9 26         LDA #$26                  
+CODE_2A970E:        85 02         STA $02                   
+CODE_2A9710:        A9 24         LDA #$24                  
+CODE_2A9712:        85 03         STA $03                   
+CODE_2A9714:        A9 04         LDA #$04                  
+CODE_2A9716:        85 04         STA $04                   
+CODE_2A9718:        20 5C 97      JSR CODE_2A975C           
+CODE_2A971B:        A9 28         LDA #$28                  
+CODE_2A971D:        85 00         STA $00                   
+CODE_2A971F:        A9 29         LDA #$29                  
+CODE_2A9721:        85 01         STA $01                   
+CODE_2A9723:        A9 08         LDA #$08                  
+CODE_2A9725:        85 04         STA $04                   
+CODE_2A9727:        20 79 97      JSR CODE_2A9779           
+CODE_2A972A:        A9 38         LDA #$38                  
+CODE_2A972C:        85 00         STA $00                   
+CODE_2A972E:        A9 39         LDA #$39                  
+CODE_2A9730:        85 01         STA $01                   
+CODE_2A9732:        A9 08         LDA #$08                  
+CODE_2A9734:        85 04         STA $04                   
+CODE_2A9736:        20 79 97      JSR CODE_2A9779           
+CODE_2A9739:        60            RTS                       
 
-CODE_2A973A:        LDA $00                   
-CODE_2A973C:        JSR CODE_2A8D03           
-CODE_2A973F:        INX                       
-CODE_2A9740:        LDA $01                   
-CODE_2A9742:        JSR CODE_2A8D03           
-CODE_2A9745:        INX                       
-CODE_2A9746:        DEC $04                   
-CODE_2A9748:        BNE CODE_2A973A           
-CODE_2A974A:        RTS                       
+CODE_2A973A:        A5 00         LDA $00                   
+CODE_2A973C:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A973F:        E8            INX                       
+CODE_2A9740:        A5 01         LDA $01                   
+CODE_2A9742:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A9745:        E8            INX                       
+CODE_2A9746:        C6 04         DEC $04                   
+CODE_2A9748:        D0 F0         BNE CODE_2A973A           
+CODE_2A974A:        60            RTS                       
 
-CODE_2A974B:        LDA $00                   
-CODE_2A974D:        JSR CODE_2A8D25           
-CODE_2A9750:        INX                       
-CODE_2A9751:        LDA $01                   
-CODE_2A9753:        JSR CODE_2A8D25           
-CODE_2A9756:        INX                       
-CODE_2A9757:        DEC $04                   
-CODE_2A9759:        BNE CODE_2A974B           
-CODE_2A975B:        RTS                       
+CODE_2A974B:        A5 00         LDA $00                   
+CODE_2A974D:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9750:        E8            INX                       
+CODE_2A9751:        A5 01         LDA $01                   
+CODE_2A9753:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9756:        E8            INX                       
+CODE_2A9757:        C6 04         DEC $04                   
+CODE_2A9759:        D0 F0         BNE CODE_2A974B           
+CODE_2A975B:        60            RTS                       
 
-CODE_2A975C:        LDA $00                   
-CODE_2A975E:        JSR CODE_2A8D25           
-CODE_2A9761:        INX                       
-CODE_2A9762:        LDA $01                   
-CODE_2A9764:        JSR CODE_2A8D25           
-CODE_2A9767:        INX                       
-CODE_2A9768:        LDA $02                   
-CODE_2A976A:        JSR CODE_2A8D25           
-CODE_2A976D:        INX                       
-CODE_2A976E:        LDA $03                   
-CODE_2A9770:        JSR CODE_2A8D25           
-CODE_2A9773:        INX                       
-CODE_2A9774:        DEC $04                   
-CODE_2A9776:        BNE CODE_2A975C           
-CODE_2A9778:        RTS                       
+CODE_2A975C:        A5 00         LDA $00                   
+CODE_2A975E:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9761:        E8            INX                       
+CODE_2A9762:        A5 01         LDA $01                   
+CODE_2A9764:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9767:        E8            INX                       
+CODE_2A9768:        A5 02         LDA $02                   
+CODE_2A976A:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A976D:        E8            INX                       
+CODE_2A976E:        A5 03         LDA $03                   
+CODE_2A9770:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9773:        E8            INX                       
+CODE_2A9774:        C6 04         DEC $04                   
+CODE_2A9776:        D0 E4         BNE CODE_2A975C           
+CODE_2A9778:        60            RTS                       
 
-CODE_2A9779:        LDA $00                   
-CODE_2A977B:        JSR CODE_2A8D25           
-CODE_2A977E:        INX                       
-CODE_2A977F:        LDA $01                   
-CODE_2A9781:        JSR CODE_2A8D25           
-CODE_2A9784:        INX                       
-CODE_2A9785:        DEC $04                   
-CODE_2A9787:        BNE CODE_2A9779           
-CODE_2A9789:        RTS                       
+CODE_2A9779:        A5 00         LDA $00                   
+CODE_2A977B:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A977E:        E8            INX                       
+CODE_2A977F:        A5 01         LDA $01                   
+CODE_2A9781:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9784:        E8            INX                       
+CODE_2A9785:        C6 04         DEC $04                   
+CODE_2A9787:        D0 F0         BNE CODE_2A9779           
+CODE_2A9789:        60            RTS                       
 
 DATA_2A978A:        db $06,$00,$04,$00,$06,$00,$06,$00 ;
                     db $09,$00,$06,$00 ;
@@ -2852,55 +2852,55 @@ DATA_2A97AE:        db $90,$98,$96,$98,$9A,$98,$A0,$98 ;
                     db $03,$03,$03,$03,$02,$02,$02,$02 ;
                     db $02,$03,$03,$04,$07,$07,$07 ;
 
-CODE_2A98B5:        SEP #$10                  
-CODE_2A98B7:        LDX #$10                  
-CODE_2A98B9:        LDA #$01                  
-CODE_2A98BB:        STA $00                   
-CODE_2A98BD:        JSR CODE_2A9924           
-CODE_2A98C0:        LDX #$A0                  
-CODE_2A98C2:        LDA #$14                  
-CODE_2A98C4:        STA $00                   
-CODE_2A98C6:        JSR CODE_2A9924           
-CODE_2A98C9:        INX                       
-CODE_2A98CA:        LDA #$18                  
-CODE_2A98CC:        JSR CODE_2A8D03           
-CODE_2A98CF:        INX                       
-CODE_2A98D0:        TXA                       
-CODE_2A98D1:        AND #$0F                  
-CODE_2A98D3:        BNE CODE_2A98C9           
-CODE_2A98D5:        LDA #$1C                  
-CODE_2A98D7:        JSR CODE_2A8D03           
-CODE_2A98DA:        INX                       
-CODE_2A98DB:        LDA #$1D                  
-CODE_2A98DD:        JSR CODE_2A8D03           
-CODE_2A98E0:        INX                       
-CODE_2A98E1:        TXA                       
-CODE_2A98E2:        AND #$0F                  
-CODE_2A98E4:        BNE CODE_2A98D5           
-CODE_2A98E6:        LDA #$21                  
-CODE_2A98E8:        STA $00                   
-CODE_2A98EA:        JSR CODE_2A9924           
-CODE_2A98ED:        LDA #$22                  
-CODE_2A98EF:        STA $00                   
-CODE_2A98F1:        JSR CODE_2A9924           
-CODE_2A98F4:        LDA #$29                  
-CODE_2A98F6:        STA $00                   
-CODE_2A98F8:        JSR CODE_2A9924           
-CODE_2A98FB:        LDA #$2A                  
-CODE_2A98FD:        STA $00                   
-CODE_2A98FF:        JSR CODE_2A9930           
-CODE_2A9902:        CPX #$B0                  
-CODE_2A9904:        BNE CODE_2A98FF           
-CODE_2A9906:        LDY #$00                  
-CODE_2A9908:        LDA [$2B],y               
-CODE_2A990A:        CMP #$FF                  
-CODE_2A990C:        BEQ CODE_2A9916           
-CODE_2A990E:        JSR CODE_2A8E54           
-CODE_2A9911:        JSR (PNTR_2A9918,x)             
-CODE_2A9914:        BRA CODE_2A9906           
+CODE_2A98B5:        E2 10         SEP #$10                  
+CODE_2A98B7:        A2 10         LDX #$10                  
+CODE_2A98B9:        A9 01         LDA #$01                  
+CODE_2A98BB:        85 00         STA $00                   
+CODE_2A98BD:        20 24 99      JSR CODE_2A9924           
+CODE_2A98C0:        A2 A0         LDX #$A0                  
+CODE_2A98C2:        A9 14         LDA #$14                  
+CODE_2A98C4:        85 00         STA $00                   
+CODE_2A98C6:        20 24 99      JSR CODE_2A9924           
+CODE_2A98C9:        E8            INX                       
+CODE_2A98CA:        A9 18         LDA #$18                  
+CODE_2A98CC:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A98CF:        E8            INX                       
+CODE_2A98D0:        8A            TXA                       
+CODE_2A98D1:        29 0F         AND #$0F                  
+CODE_2A98D3:        D0 F4         BNE CODE_2A98C9           
+CODE_2A98D5:        A9 1C         LDA #$1C                  
+CODE_2A98D7:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A98DA:        E8            INX                       
+CODE_2A98DB:        A9 1D         LDA #$1D                  
+CODE_2A98DD:        20 03 8D      JSR CODE_2A8D03           
+CODE_2A98E0:        E8            INX                       
+CODE_2A98E1:        8A            TXA                       
+CODE_2A98E2:        29 0F         AND #$0F                  
+CODE_2A98E4:        D0 EF         BNE CODE_2A98D5           
+CODE_2A98E6:        A9 21         LDA #$21                  
+CODE_2A98E8:        85 00         STA $00                   
+CODE_2A98EA:        20 24 99      JSR CODE_2A9924           
+CODE_2A98ED:        A9 22         LDA #$22                  
+CODE_2A98EF:        85 00         STA $00                   
+CODE_2A98F1:        20 24 99      JSR CODE_2A9924           
+CODE_2A98F4:        A9 29         LDA #$29                  
+CODE_2A98F6:        85 00         STA $00                   
+CODE_2A98F8:        20 24 99      JSR CODE_2A9924           
+CODE_2A98FB:        A9 2A         LDA #$2A                  
+CODE_2A98FD:        85 00         STA $00                   
+CODE_2A98FF:        20 30 99      JSR CODE_2A9930           
+CODE_2A9902:        E0 B0         CPX #$B0                  
+CODE_2A9904:        D0 F9         BNE CODE_2A98FF           
+CODE_2A9906:        A0 00         LDY #$00                  
+CODE_2A9908:        B7 2B         LDA [$2B],y               
+CODE_2A990A:        C9 FF         CMP #$FF                  
+CODE_2A990C:        F0 08         BEQ CODE_2A9916           
+CODE_2A990E:        20 54 8E      JSR CODE_2A8E54           
+CODE_2A9911:        FC 18 99      JSR (PNTR_2A9918,x)             
+CODE_2A9914:        80 F0         BRA CODE_2A9906           
 
-CODE_2A9916:        PLB                       
-CODE_2A9917:        RTL                       
+CODE_2A9916:        AB            PLB                       
+CODE_2A9917:        6B            RTL                       
 
 PNTR_2A9918:        dw CODE_2A994C
                     dw CODE_2A9988
@@ -2909,420 +2909,420 @@ PNTR_2A9918:        dw CODE_2A994C
                     dw CODE_2A9A23
                     dw CODE_2A9A3E
 
-CODE_2A9924:        LDA $00
-CODE_2A9926:        JSR CODE_2A8D03
-CODE_2A9929:        INX                       
-CODE_2A992A:        TXA                       
-CODE_2A992B:        AND #$0F                  
-CODE_2A992D:        BNE CODE_2A9924           
-CODE_2A992F:        RTS                       
+CODE_2A9924:        A5 00         LDA $00
+CODE_2A9926:        20 03 8D      JSR CODE_2A8D03
+CODE_2A9929:        E8            INX                       
+CODE_2A992A:        8A            TXA                       
+CODE_2A992B:        29 0F         AND #$0F                  
+CODE_2A992D:        D0 F5         BNE CODE_2A9924           
+CODE_2A992F:        60            RTS                       
 
-CODE_2A9930:        LDA $00                   
-CODE_2A9932:        JSR CODE_2A8D25           
-CODE_2A9935:        INX                       
-CODE_2A9936:        TXA                       
-CODE_2A9937:        AND #$0F                  
-CODE_2A9939:        BNE CODE_2A9930           
-CODE_2A993B:        RTS                       
+CODE_2A9930:        A5 00         LDA $00                   
+CODE_2A9932:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9935:        E8            INX                       
+CODE_2A9936:        8A            TXA                       
+CODE_2A9937:        29 0F         AND #$0F                  
+CODE_2A9939:        D0 F5         BNE CODE_2A9930           
+CODE_2A993B:        60            RTS                       
 
 DATA_2A993C:        db $34,$35,$34,$36,$34,$36,$34,$35
                     db $34,$36,$37,$34,$38,$35,$37,$37
 
-CODE_2A994C:        REP #$10                  ;
-CODE_2A994E:        LDX $00                   ;
-CODE_2A9950:        LDA $7F0000,x             ;
-CODE_2A9954:        CMP #$14                  ;
-CODE_2A9956:        BEQ CODE_2A996B           ;
-CODE_2A9958:        LDA #$02                  ;
-CODE_2A995A:        JSR CODE_2A8CD9           ;
-CODE_2A995D:        REP #$20                  ;
-CODE_2A995F:        LDA $00                   ;
-CODE_2A9961:        CLC                       ;
-CODE_2A9962:        ADC #$0010                ;
-CODE_2A9965:        STA $00                   ;
-CODE_2A9967:        SEP #$20                  ;
-CODE_2A9969:        BRA CODE_2A994E           ;
+CODE_2A994C:        C2 10         REP #$10                  ;
+CODE_2A994E:        A6 00         LDX $00                   ;
+CODE_2A9950:        BF 00 00 7F   LDA $7F0000,x             ;
+CODE_2A9954:        C9 14         CMP #$14                  ;
+CODE_2A9956:        F0 13         BEQ CODE_2A996B           ;
+CODE_2A9958:        A9 02         LDA #$02                  ;
+CODE_2A995A:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2A995D:        C2 20         REP #$20                  ;
+CODE_2A995F:        A5 00         LDA $00                   ;
+CODE_2A9961:        18            CLC                       ;
+CODE_2A9962:        69 10 00      ADC #$0010                ;
+CODE_2A9965:        85 00         STA $00                   ;
+CODE_2A9967:        E2 20         SEP #$20                  ;
+CODE_2A9969:        80 E3         BRA CODE_2A994E           ;
 
-CODE_2A996B:        LDA #$17                  ;
-CODE_2A996D:        JSR CODE_2A8CD9           ;
-CODE_2A9970:        REP #$20                  ;
-CODE_2A9972:        LDA $00                   ;
-CODE_2A9974:        CLC                       ;
-CODE_2A9975:        ADC #$0010                ;
-CODE_2A9978:        TAX                       ;
-CODE_2A9979:        SEP #$20                  ;
-CODE_2A997B:        LDA #$1B                  ;
-CODE_2A997D:        JSR CODE_2A8CD9           ;
-CODE_2A9980:        LDA #$20                  ;
-CODE_2A9982:        JSR CODE_2A8CEE           ;
-CODE_2A9985:        SEP #$10                  ;
-CODE_2A9987:        RTS                       ;
+CODE_2A996B:        A9 17         LDA #$17                  ;
+CODE_2A996D:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2A9970:        C2 20         REP #$20                  ;
+CODE_2A9972:        A5 00         LDA $00                   ;
+CODE_2A9974:        18            CLC                       ;
+CODE_2A9975:        69 10 00      ADC #$0010                ;
+CODE_2A9978:        AA            TAX                       ;
+CODE_2A9979:        E2 20         SEP #$20                  ;
+CODE_2A997B:        A9 1B         LDA #$1B                  ;
+CODE_2A997D:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2A9980:        A9 20         LDA #$20                  ;
+CODE_2A9982:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2A9985:        E2 10         SEP #$10                  ;
+CODE_2A9987:        60            RTS                       ;
 
-CODE_2A9988:        REP #$10                  
-CODE_2A998A:        LDY #$0000                
-CODE_2A998D:        LDX $00                   
-CODE_2A998F:        LDA.w DATA_2A99B1,y               
-CODE_2A9992:        JSR CODE_2A8CD9           
-CODE_2A9995:        INY                       
-CODE_2A9996:        REP #$20                  
-CODE_2A9998:        TXA                       
-CODE_2A9999:        CLC                       
-CODE_2A999A:        ADC #$0010                
-CODE_2A999D:        TAX                       
-CODE_2A999E:        SEP #$20                  
-CODE_2A99A0:        CPY #$000A                
-CODE_2A99A3:        BEQ CODE_2A99AE           
-CODE_2A99A5:        CPY #$0005                
-CODE_2A99A8:        BNE CODE_2A998F           
-CODE_2A99AA:        INC $00                   
-CODE_2A99AC:        BRA CODE_2A998D           
+CODE_2A9988:        C2 10         REP #$10                  
+CODE_2A998A:        A0 00 00      LDY #$0000                
+CODE_2A998D:        A6 00         LDX $00                   
+CODE_2A998F:        B9 B1 99      LDA.w DATA_2A99B1,y               
+CODE_2A9992:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9995:        C8            INY                       
+CODE_2A9996:        C2 20         REP #$20                  
+CODE_2A9998:        8A            TXA                       
+CODE_2A9999:        18            CLC                       
+CODE_2A999A:        69 10 00      ADC #$0010                
+CODE_2A999D:        AA            TAX                       
+CODE_2A999E:        E2 20         SEP #$20                  
+CODE_2A99A0:        C0 0A 00      CPY #$000A                
+CODE_2A99A3:        F0 09         BEQ CODE_2A99AE           
+CODE_2A99A5:        C0 05 00      CPY #$0005                
+CODE_2A99A8:        D0 E5         BNE CODE_2A998F           
+CODE_2A99AA:        E6 00         INC $00                   
+CODE_2A99AC:        80 DF         BRA CODE_2A998D           
 
-CODE_2A99AE:        SEP #$10                  
-CODE_2A99B0:        RTS                       
+CODE_2A99AE:        E2 10         SEP #$10                  
+CODE_2A99B0:        60            RTS                       
 
 DATA_2A99B1:        db $03,$08,$0D,$10,$12,$04,$09,$0E
                     db $11,$13
               
-CODE_2A99BB:        REP #$10                  
-CODE_2A99BD:        LDX $00                   
-CODE_2A99BF:        LDA #$05                  
-CODE_2A99C1:        JSR CODE_2A99E9           
-CODE_2A99C4:        REP #$20                  
-CODE_2A99C6:        LDA $00                   
-CODE_2A99C8:        CLC                       
-CODE_2A99C9:        ADC #$0010                
-CODE_2A99CC:        STA $00                   
-CODE_2A99CE:        TAX                       
-CODE_2A99CF:        SEP #$20                  
-CODE_2A99D1:        LDA #$0A                  
-CODE_2A99D3:        JSR CODE_2A99E9           
-CODE_2A99D6:        REP #$20                  
-CODE_2A99D8:        LDA $00                   
-CODE_2A99DA:        CLC                       
-CODE_2A99DB:        ADC #$0011                
-CODE_2A99DE:        TAX                       
-CODE_2A99DF:        SEP #$20                  
-CODE_2A99E1:        LDA #$0F                  
-CODE_2A99E3:        JSR CODE_2A8CD9           
-CODE_2A99E6:        SEP #$10                  
-CODE_2A99E8:        RTS                       
+CODE_2A99BB:        C2 10         REP #$10                  
+CODE_2A99BD:        A6 00         LDX $00                   
+CODE_2A99BF:        A9 05         LDA #$05                  
+CODE_2A99C1:        20 E9 99      JSR CODE_2A99E9           
+CODE_2A99C4:        C2 20         REP #$20                  
+CODE_2A99C6:        A5 00         LDA $00                   
+CODE_2A99C8:        18            CLC                       
+CODE_2A99C9:        69 10 00      ADC #$0010                
+CODE_2A99CC:        85 00         STA $00                   
+CODE_2A99CE:        AA            TAX                       
+CODE_2A99CF:        E2 20         SEP #$20                  
+CODE_2A99D1:        A9 0A         LDA #$0A                  
+CODE_2A99D3:        20 E9 99      JSR CODE_2A99E9           
+CODE_2A99D6:        C2 20         REP #$20                  
+CODE_2A99D8:        A5 00         LDA $00                   
+CODE_2A99DA:        18            CLC                       
+CODE_2A99DB:        69 11 00      ADC #$0011                
+CODE_2A99DE:        AA            TAX                       
+CODE_2A99DF:        E2 20         SEP #$20                  
+CODE_2A99E1:        A9 0F         LDA #$0F                  
+CODE_2A99E3:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A99E6:        E2 10         SEP #$10                  
+CODE_2A99E8:        60            RTS                       
 
-CODE_2A99E9:        JSR CODE_2A8CD9           
-CODE_2A99EC:        INX                       
-CODE_2A99ED:        INC A                     
-CODE_2A99EE:        JSR CODE_2A8CD9           
-CODE_2A99F1:        INX                       
-CODE_2A99F2:        INC A                     
-CODE_2A99F3:        JSR CODE_2A8CD9           
-CODE_2A99F6:        RTS                       
+CODE_2A99E9:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A99EC:        E8            INX                       
+CODE_2A99ED:        1A            INC A                     
+CODE_2A99EE:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A99F1:        E8            INX                       
+CODE_2A99F2:        1A            INC A                     
+CODE_2A99F3:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A99F6:        60            RTS                       
 
-CODE_2A99F7:        REP #$10                  
-CODE_2A99F9:        LDX $00                   
-CODE_2A99FB:        LDA #$15                  
-CODE_2A99FD:        JSR CODE_2A9A0D           
-CODE_2A9A00:        LDA #$19                  
-CODE_2A9A02:        JSR CODE_2A9A0D           
-CODE_2A9A05:        LDA #$1E                  
-CODE_2A9A07:        JSR CODE_2A9A0D           
-CODE_2A9A0A:        SEP #$10                  
-CODE_2A9A0C:        RTS                       
+CODE_2A99F7:        C2 10         REP #$10                  
+CODE_2A99F9:        A6 00         LDX $00                   
+CODE_2A99FB:        A9 15         LDA #$15                  
+CODE_2A99FD:        20 0D 9A      JSR CODE_2A9A0D           
+CODE_2A9A00:        A9 19         LDA #$19                  
+CODE_2A9A02:        20 0D 9A      JSR CODE_2A9A0D           
+CODE_2A9A05:        A9 1E         LDA #$1E                  
+CODE_2A9A07:        20 0D 9A      JSR CODE_2A9A0D           
+CODE_2A9A0A:        E2 10         SEP #$10                  
+CODE_2A9A0C:        60            RTS                       
 
-CODE_2A9A0D:        JSR CODE_2A8CD9           
-CODE_2A9A10:        INX                       
-CODE_2A9A11:        INC A                     
-CODE_2A9A12:        JSR CODE_2A8CD9           
-CODE_2A9A15:        REP #$20                  
-CODE_2A9A17:        LDA $00                   
-CODE_2A9A19:        CLC                       
-CODE_2A9A1A:        ADC #$0010                
-CODE_2A9A1D:        STA $00                   
-CODE_2A9A1F:        TAX                       
-CODE_2A9A20:        SEP #$20                  
-CODE_2A9A22:        RTS                       
+CODE_2A9A0D:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9A10:        E8            INX                       
+CODE_2A9A11:        1A            INC A                     
+CODE_2A9A12:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9A15:        C2 20         REP #$20                  
+CODE_2A9A17:        A5 00         LDA $00                   
+CODE_2A9A19:        18            CLC                       
+CODE_2A9A1A:        69 10 00      ADC #$0010                
+CODE_2A9A1D:        85 00         STA $00                   
+CODE_2A9A1F:        AA            TAX                       
+CODE_2A9A20:        E2 20         SEP #$20                  
+CODE_2A9A22:        60            RTS                       
 
-CODE_2A9A23:        REP #$10                  
-CODE_2A9A25:        LDX $00                   
-CODE_2A9A27:        LDY #$0000                
-CODE_2A9A2A:        LDA.w DATA_2A9A39,y               
-CODE_2A9A2D:        JSR CODE_2A8CD9           
-CODE_2A9A30:        INX                       
-CODE_2A9A31:        INY                       
-CODE_2A9A32:        CPY #$0005                
-CODE_2A9A35:        BNE CODE_2A9A2A           
-CODE_2A9A37:        BRA CODE_2A9A4D           
+CODE_2A9A23:        C2 10         REP #$10                  
+CODE_2A9A25:        A6 00         LDX $00                   
+CODE_2A9A27:        A0 00 00      LDY #$0000                
+CODE_2A9A2A:        B9 39 9A      LDA.w DATA_2A9A39,y               
+CODE_2A9A2D:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9A30:        E8            INX                       
+CODE_2A9A31:        C8            INY                       
+CODE_2A9A32:        C0 05 00      CPY #$0005                
+CODE_2A9A35:        D0 F3         BNE CODE_2A9A2A           
+CODE_2A9A37:        80 14         BRA CODE_2A9A4D           
 
 DATA_2A9A39:        db $23,$24,$28,$26,$27
 
-CODE_2A9A3E:        REP #$10                  
-CODE_2A9A40:        LDX $00                   
-CODE_2A9A42:        LDA #$23                  
-CODE_2A9A44:        JSR CODE_2A8CD9           
-CODE_2A9A47:        INX                       
-CODE_2A9A48:        INC A                     
-CODE_2A9A49:        CMP #$28                  
-CODE_2A9A4B:        BNE CODE_2A9A44           
-CODE_2A9A4D:        LDY #$0000                
-CODE_2A9A50:        REP #$20                  
-CODE_2A9A52:        LDA $00                   
-CODE_2A9A54:        CLC                       
-CODE_2A9A55:        ADC #$0011                
-CODE_2A9A58:        TAX                       
-CODE_2A9A59:        SEP #$20                  
-CODE_2A9A5B:        LDA.w DATA_2A9AAE,y               
-CODE_2A9A5E:        JSR CODE_2A8CD9           
-CODE_2A9A61:        LDA.w DATA_2A9AB1,y               
-CODE_2A9A64:        JSR CODE_2A8CEE           
-CODE_2A9A67:        INX                       
-CODE_2A9A68:        INY                       
-CODE_2A9A69:        CPY #$0003                
-CODE_2A9A6C:        BNE CODE_2A9A5B           
-CODE_2A9A6E:        REP #$20                  
-CODE_2A9A70:        LDA $00                   
-CODE_2A9A72:        CLC                       
-CODE_2A9A73:        ADC #$0032                
-CODE_2A9A76:        TAX                       
-CODE_2A9A77:        SEP #$20                  
-CODE_2A9A79:        LDA $7F0000,x             
-CODE_2A9A7D:        CMP #$2A                  
-CODE_2A9A7F:        BNE CODE_2A9A92           
-CODE_2A9A81:        LDA #$30                  
-CODE_2A9A83:        JSR CODE_2A8CD9           
-CODE_2A9A86:        REP #$20                  
-CODE_2A9A88:        TXA                       
-CODE_2A9A89:        CLC                       
-CODE_2A9A8A:        ADC #$0010                
-CODE_2A9A8D:        TAX                       
-CODE_2A9A8E:        SEP #$20                  
-CODE_2A9A90:        BRA CODE_2A9A79           
+CODE_2A9A3E:        C2 10         REP #$10                  
+CODE_2A9A40:        A6 00         LDX $00                   
+CODE_2A9A42:        A9 23         LDA #$23                  
+CODE_2A9A44:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9A47:        E8            INX                       
+CODE_2A9A48:        1A            INC A                     
+CODE_2A9A49:        C9 28         CMP #$28                  
+CODE_2A9A4B:        D0 F7         BNE CODE_2A9A44           
+CODE_2A9A4D:        A0 00 00      LDY #$0000                
+CODE_2A9A50:        C2 20         REP #$20                  
+CODE_2A9A52:        A5 00         LDA $00                   
+CODE_2A9A54:        18            CLC                       
+CODE_2A9A55:        69 11 00      ADC #$0011                
+CODE_2A9A58:        AA            TAX                       
+CODE_2A9A59:        E2 20         SEP #$20                  
+CODE_2A9A5B:        B9 AE 9A      LDA.w DATA_2A9AAE,y               
+CODE_2A9A5E:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9A61:        B9 B1 9A      LDA.w DATA_2A9AB1,y               
+CODE_2A9A64:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2A9A67:        E8            INX                       
+CODE_2A9A68:        C8            INY                       
+CODE_2A9A69:        C0 03 00      CPY #$0003                
+CODE_2A9A6C:        D0 ED         BNE CODE_2A9A5B           
+CODE_2A9A6E:        C2 20         REP #$20                  
+CODE_2A9A70:        A5 00         LDA $00                   
+CODE_2A9A72:        18            CLC                       
+CODE_2A9A73:        69 32 00      ADC #$0032                
+CODE_2A9A76:        AA            TAX                       
+CODE_2A9A77:        E2 20         SEP #$20                  
+CODE_2A9A79:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2A9A7D:        C9 2A         CMP #$2A                  
+CODE_2A9A7F:        D0 11         BNE CODE_2A9A92           
+CODE_2A9A81:        A9 30         LDA #$30                  
+CODE_2A9A83:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9A86:        C2 20         REP #$20                  
+CODE_2A9A88:        8A            TXA                       
+CODE_2A9A89:        18            CLC                       
+CODE_2A9A8A:        69 10 00      ADC #$0010                
+CODE_2A9A8D:        AA            TAX                       
+CODE_2A9A8E:        E2 20         SEP #$20                  
+CODE_2A9A90:        80 E7         BRA CODE_2A9A79           
 
-CODE_2A9A92:        REP #$20                  
-CODE_2A9A94:        TXA                       
-CODE_2A9A95:        SEC                       
-CODE_2A9A96:        SBC #$0011                
-CODE_2A9A99:        TAX                       
-CODE_2A9A9A:        SEP #$20                  
-CODE_2A9A9C:        LDA #$31                  
-CODE_2A9A9E:        JSR CODE_2A8CD9           
-CODE_2A9AA1:        INC A                     
-CODE_2A9AA2:        INX                       
-CODE_2A9AA3:        JSR CODE_2A8CD9           
-CODE_2A9AA6:        INC A                     
-CODE_2A9AA7:        INX                       
-CODE_2A9AA8:        JSR CODE_2A8CD9           
-CODE_2A9AAB:        SEP #$10                  
-CODE_2A9AAD:        RTS                       
+CODE_2A9A92:        C2 20         REP #$20                  
+CODE_2A9A94:        8A            TXA                       
+CODE_2A9A95:        38            SEC                       
+CODE_2A9A96:        E9 11 00      SBC #$0011                
+CODE_2A9A99:        AA            TAX                       
+CODE_2A9A9A:        E2 20         SEP #$20                  
+CODE_2A9A9C:        A9 31         LDA #$31                  
+CODE_2A9A9E:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9AA1:        1A            INC A                     
+CODE_2A9AA2:        E8            INX                       
+CODE_2A9AA3:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9AA6:        1A            INC A                     
+CODE_2A9AA7:        E8            INX                       
+CODE_2A9AA8:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9AAB:        E2 10         SEP #$10                  
+CODE_2A9AAD:        60            RTS                       
 
 DATA_2A9AAE:        db $2B,$28,$2C ;
 
 DATA_2A9AB1:        db $2D,$2E,$2F ;
 
-CODE_2A9AB4:        SEP #$10                  ;
-CODE_2A9AB6:        LDA $0727                 ;
-CODE_2A9AB9:        CMP #$07                  ;
-CODE_2A9ABB:        BEQ CODE_2A9AC2           ;
-CODE_2A9ABD:        LDA #$01                  
-CODE_2A9ABF:        STA $02D9                 
-CODE_2A9AC2:        LDX #$10                  
-CODE_2A9AC4:        LDA #$01                  
-CODE_2A9AC6:        STA $00                   
-CODE_2A9AC8:        JSR CODE_2A9930           
-CODE_2A9ACB:        LDA #$05                  
-CODE_2A9ACD:        STA $00                   
-CODE_2A9ACF:        JSR CODE_2A9930           
-CODE_2A9AD2:        LDA #$09                  
-CODE_2A9AD4:        STA $00                   
-CODE_2A9AD6:        JSR CODE_2A9930           
-CODE_2A9AD9:        JSR CODE_2A9930           
-CODE_2A9ADC:        JSR CODE_2A9930           
-CODE_2A9ADF:        LDA #$11                  
-CODE_2A9AE1:        STA $00                   
-CODE_2A9AE3:        JSR CODE_2A9930           
-CODE_2A9AE6:        LDA #$19                  
-CODE_2A9AE8:        STA $00                   
-CODE_2A9AEA:        JSR CODE_2A9930           
-CODE_2A9AED:        LDA #$22                  
-CODE_2A9AEF:        STA $00                   
-CODE_2A9AF1:        JSR CODE_2A9930           
-CODE_2A9AF4:        LDY #$00                  
-CODE_2A9AF6:        LDA [$2B],y               
-CODE_2A9AF8:        CMP #$FF                  
-CODE_2A9AFA:        BEQ CODE_2A9B04           
-CODE_2A9AFC:        JSR CODE_2A8E54           
-CODE_2A9AFF:        JSR (PNTR_2A9B06,x)             
-CODE_2A9B02:        BRA CODE_2A9AF4           
+CODE_2A9AB4:        E2 10         SEP #$10                  ;
+CODE_2A9AB6:        AD 27 07      LDA $0727                 ;
+CODE_2A9AB9:        C9 07         CMP #$07                  ;
+CODE_2A9ABB:        F0 05         BEQ CODE_2A9AC2           ;
+CODE_2A9ABD:        A9 01         LDA #$01                  
+CODE_2A9ABF:        8D D9 02      STA $02D9                 
+CODE_2A9AC2:        A2 10         LDX #$10                  
+CODE_2A9AC4:        A9 01         LDA #$01                  
+CODE_2A9AC6:        85 00         STA $00                   
+CODE_2A9AC8:        20 30 99      JSR CODE_2A9930           
+CODE_2A9ACB:        A9 05         LDA #$05                  
+CODE_2A9ACD:        85 00         STA $00                   
+CODE_2A9ACF:        20 30 99      JSR CODE_2A9930           
+CODE_2A9AD2:        A9 09         LDA #$09                  
+CODE_2A9AD4:        85 00         STA $00                   
+CODE_2A9AD6:        20 30 99      JSR CODE_2A9930           
+CODE_2A9AD9:        20 30 99      JSR CODE_2A9930           
+CODE_2A9ADC:        20 30 99      JSR CODE_2A9930           
+CODE_2A9ADF:        A9 11         LDA #$11                  
+CODE_2A9AE1:        85 00         STA $00                   
+CODE_2A9AE3:        20 30 99      JSR CODE_2A9930           
+CODE_2A9AE6:        A9 19         LDA #$19                  
+CODE_2A9AE8:        85 00         STA $00                   
+CODE_2A9AEA:        20 30 99      JSR CODE_2A9930           
+CODE_2A9AED:        A9 22         LDA #$22                  
+CODE_2A9AEF:        85 00         STA $00                   
+CODE_2A9AF1:        20 30 99      JSR CODE_2A9930           
+CODE_2A9AF4:        A0 00         LDY #$00                  
+CODE_2A9AF6:        B7 2B         LDA [$2B],y               
+CODE_2A9AF8:        C9 FF         CMP #$FF                  
+CODE_2A9AFA:        F0 08         BEQ CODE_2A9B04           
+CODE_2A9AFC:        20 54 8E      JSR CODE_2A8E54           
+CODE_2A9AFF:        FC 06 9B      JSR (PNTR_2A9B06,x)             
+CODE_2A9B02:        80 F0         BRA CODE_2A9AF4           
 
-CODE_2A9B04:        PLB                       
-CODE_2A9B05:        RTL                       
+CODE_2A9B04:        AB            PLB                       
+CODE_2A9B05:        6B            RTL                       
 
 PNTR_2A9B06:        dw CODE_2A9B0C
                     dw CODE_2A9B6A                      
                     dw CODE_2A9B86  
 
                 
-CODE_2A9B0C:        LDX $00                   
-CODE_2A9B0E:        STX $01                   
-CODE_2A9B10:        LDA #$03                  
-CODE_2A9B12:        STA $D8                   
-CODE_2A9B14:        LDA #$02                  
-CODE_2A9B16:        JSR CODE_2A9B58           
-CODE_2A9B19:        LDA #$03                  
-CODE_2A9B1B:        STA $D8                   
-CODE_2A9B1D:        LDA #$06                  
-CODE_2A9B1F:        JSR CODE_2A9B58           
-CODE_2A9B22:        LDA #$03                  
-CODE_2A9B24:        STA $D8                   
-CODE_2A9B26:        LDA #$0A                  
-CODE_2A9B28:        JSR CODE_2A9B58           
-CODE_2A9B2B:        STZ $D8                   
-CODE_2A9B2D:        LDA #$0D                  
-CODE_2A9B2F:        JSR CODE_2A8D25           
-CODE_2A9B32:        INX                       
-CODE_2A9B33:        LDA #$0B                  
-CODE_2A9B35:        JSR CODE_2A8D25           
-CODE_2A9B38:        INX                       
-CODE_2A9B39:        LDA #$0E                  
-CODE_2A9B3B:        JSR CODE_2A8D25           
-CODE_2A9B3E:        LDA $00                   
-CODE_2A9B40:        CLC                       
-CODE_2A9B41:        ADC #$10                  
-CODE_2A9B43:        STA $00                   
-CODE_2A9B45:        TAX                       
-CODE_2A9B46:        LDA $D8                   
-CODE_2A9B48:        BNE CODE_2A9B4E           
-CODE_2A9B4A:        INC $D8                   
-CODE_2A9B4C:        BRA CODE_2A9B2D           
+CODE_2A9B0C:        A6 00         LDX $00                   
+CODE_2A9B0E:        86 01         STX $01                   
+CODE_2A9B10:        A9 03         LDA #$03                  
+CODE_2A9B12:        85 D8         STA $D8                   
+CODE_2A9B14:        A9 02         LDA #$02                  
+CODE_2A9B16:        20 58 9B      JSR CODE_2A9B58           
+CODE_2A9B19:        A9 03         LDA #$03                  
+CODE_2A9B1B:        85 D8         STA $D8                   
+CODE_2A9B1D:        A9 06         LDA #$06                  
+CODE_2A9B1F:        20 58 9B      JSR CODE_2A9B58           
+CODE_2A9B22:        A9 03         LDA #$03                  
+CODE_2A9B24:        85 D8         STA $D8                   
+CODE_2A9B26:        A9 0A         LDA #$0A                  
+CODE_2A9B28:        20 58 9B      JSR CODE_2A9B58           
+CODE_2A9B2B:        64 D8         STZ $D8                   
+CODE_2A9B2D:        A9 0D         LDA #$0D                  
+CODE_2A9B2F:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9B32:        E8            INX                       
+CODE_2A9B33:        A9 0B         LDA #$0B                  
+CODE_2A9B35:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9B38:        E8            INX                       
+CODE_2A9B39:        A9 0E         LDA #$0E                  
+CODE_2A9B3B:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9B3E:        A5 00         LDA $00                   
+CODE_2A9B40:        18            CLC                       
+CODE_2A9B41:        69 10         ADC #$10                  
+CODE_2A9B43:        85 00         STA $00                   
+CODE_2A9B45:        AA            TAX                       
+CODE_2A9B46:        A5 D8         LDA $D8                   
+CODE_2A9B48:        D0 04         BNE CODE_2A9B4E           
+CODE_2A9B4A:        E6 D8         INC $D8                   
+CODE_2A9B4C:        80 DF         BRA CODE_2A9B2D           
 
-CODE_2A9B4E:        LDA #$03                  
-CODE_2A9B50:        STA $D8                   
-CODE_2A9B52:        LDA #$12                  
-CODE_2A9B54:        JSR CODE_2A9B58           
-CODE_2A9B57:        RTS                       
+CODE_2A9B4E:        A9 03         LDA #$03                  
+CODE_2A9B50:        85 D8         STA $D8                   
+CODE_2A9B52:        A9 12         LDA #$12                  
+CODE_2A9B54:        20 58 9B      JSR CODE_2A9B58           
+CODE_2A9B57:        60            RTS                       
 
-CODE_2A9B58:        JSR CODE_2A8D25           
-CODE_2A9B5B:        INC A                     
-CODE_2A9B5C:        INX                       
-CODE_2A9B5D:        DEC $D8                   
-CODE_2A9B5F:        BNE CODE_2A9B58           
-CODE_2A9B61:        LDA $00                   
-CODE_2A9B63:        CLC                       
-CODE_2A9B64:        ADC #$10                  
-CODE_2A9B66:        STA $00                   
-CODE_2A9B68:        TAX                       
-CODE_2A9B69:        RTS                       
+CODE_2A9B58:        20 25 8D      JSR CODE_2A8D25           
+CODE_2A9B5B:        1A            INC A                     
+CODE_2A9B5C:        E8            INX                       
+CODE_2A9B5D:        C6 D8         DEC $D8                   
+CODE_2A9B5F:        D0 F7         BNE CODE_2A9B58           
+CODE_2A9B61:        A5 00         LDA $00                   
+CODE_2A9B63:        18            CLC                       
+CODE_2A9B64:        69 10         ADC #$10                  
+CODE_2A9B66:        85 00         STA $00                   
+CODE_2A9B68:        AA            TAX                       
+CODE_2A9B69:        60            RTS                       
 
-CODE_2A9B6A:        REP #$10                  
-CODE_2A9B6C:        LDX $00                   
-CODE_2A9B6E:        LDA #$18                  
-CODE_2A9B70:        JSR CODE_2A8CD9           
-CODE_2A9B73:        LDA #$21                  
-CODE_2A9B75:        JSR CODE_2A8CEE           
-CODE_2A9B78:        INX                       
-CODE_2A9B79:        LDA #$18                  
-CODE_2A9B7B:        JSR CODE_2A8CD9           
-CODE_2A9B7E:        LDA #$21                  
-CODE_2A9B80:        JSR CODE_2A8CEE           
-CODE_2A9B83:        SEP #$10                  
-CODE_2A9B85:        RTS                       
+CODE_2A9B6A:        C2 10         REP #$10                  
+CODE_2A9B6C:        A6 00         LDX $00                   
+CODE_2A9B6E:        A9 18         LDA #$18                  
+CODE_2A9B70:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9B73:        A9 21         LDA #$21                  
+CODE_2A9B75:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2A9B78:        E8            INX                       
+CODE_2A9B79:        A9 18         LDA #$18                  
+CODE_2A9B7B:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9B7E:        A9 21         LDA #$21                  
+CODE_2A9B80:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2A9B83:        E2 10         SEP #$10                  
+CODE_2A9B85:        60            RTS                       
 
-CODE_2A9B86:        REP #$10                  
-CODE_2A9B88:        LDY #$0000                
-CODE_2A9B8B:        LDX $00                   
-CODE_2A9B8D:        LDA.w DATA_2A9BAA,y               
-CODE_2A9B90:        JSR CODE_2A8CD9           
-CODE_2A9B93:        INY                       
-CODE_2A9B94:        INX                       
-CODE_2A9B95:        TXA                       
-CODE_2A9B96:        AND #$0F                  
-CODE_2A9B98:        CMP #$09                  
-CODE_2A9B9A:        BNE CODE_2A9B8D           
-CODE_2A9B9C:        LDA $00                   
-CODE_2A9B9E:        CLC                       
-CODE_2A9B9F:        ADC #$10                  
-CODE_2A9BA1:        STA $00                   
-CODE_2A9BA3:        CMP #$40                  
-CODE_2A9BA5:        BNE CODE_2A9B8B           
-CODE_2A9BA7:        SEP #$10                  
-CODE_2A9BA9:        RTS                       
+CODE_2A9B86:        C2 10         REP #$10                  
+CODE_2A9B88:        A0 00 00      LDY #$0000                
+CODE_2A9B8B:        A6 00         LDX $00                   
+CODE_2A9B8D:        B9 AA 9B      LDA.w DATA_2A9BAA,y               
+CODE_2A9B90:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9B93:        C8            INY                       
+CODE_2A9B94:        E8            INX                       
+CODE_2A9B95:        8A            TXA                       
+CODE_2A9B96:        29 0F         AND #$0F                  
+CODE_2A9B98:        C9 09         CMP #$09                  
+CODE_2A9B9A:        D0 F1         BNE CODE_2A9B8D           
+CODE_2A9B9C:        A5 00         LDA $00                   
+CODE_2A9B9E:        18            CLC                       
+CODE_2A9B9F:        69 10         ADC #$10                  
+CODE_2A9BA1:        85 00         STA $00                   
+CODE_2A9BA3:        C9 40         CMP #$40                  
+CODE_2A9BA5:        D0 E4         BNE CODE_2A9B8B           
+CODE_2A9BA7:        E2 10         SEP #$10                  
+CODE_2A9BA9:        60            RTS                       
 
 DATA_2A9BAA:        db $0F,$09,$09,$09,$0D,$0B,$0E,$09
                     db $10,$15,$16,$16,$09,$0D,$0B,$0E
                     db $09,$17,$1A,$1B,$1B,$1C,$1D,$1E
                     db $1F,$1C,$20
 
-CODE_2A9BC5:        SEP #$10                  ;
-CODE_2A9BC7:        LDX #$C0                  ;
-CODE_2A9BC9:        LDA #$30                  ;
-CODE_2A9BCB:        STA $00                   ;
-CODE_2A9BCD:        JSR CODE_2A9924           ;
-CODE_2A9BD0:        LDA #$01                  
-CODE_2A9BD2:        STA $00                   
-CODE_2A9BD4:        JSR CODE_2A9924           
-CODE_2A9BD7:        INC $00                   
-CODE_2A9BD9:        LDA $00                   
-CODE_2A9BDB:        AND #$03                  
-CODE_2A9BDD:        BNE CODE_2A9BD4           
-CODE_2A9BDF:        JSR CODE_2A9930           
-CODE_2A9BE2:        JSR CODE_2A9930           
-CODE_2A9BE5:        LDX #$70                  
-CODE_2A9BE7:        LDA #$2F                  
-CODE_2A9BE9:        STA $00                   
-CODE_2A9BEB:        JSR CODE_2A9930           
-CODE_2A9BEE:        LDY #$00                  
-CODE_2A9BF0:        LDA [$2B],y               
-CODE_2A9BF2:        CMP #$FF                  
-CODE_2A9BF4:        BEQ CODE_2A9BFE           
-CODE_2A9BF6:        JSR CODE_2A8E54           
-CODE_2A9BF9:        JSR (PNTR_2A9C00,x)             
-CODE_2A9BFC:        BRA CODE_2A9BEE           
+CODE_2A9BC5:        E2 10         SEP #$10                  ;
+CODE_2A9BC7:        A2 C0         LDX #$C0                  ;
+CODE_2A9BC9:        A9 30         LDA #$30                  ;
+CODE_2A9BCB:        85 00         STA $00                   ;
+CODE_2A9BCD:        20 24 99      JSR CODE_2A9924           ;
+CODE_2A9BD0:        A9 01         LDA #$01                  
+CODE_2A9BD2:        85 00         STA $00                   
+CODE_2A9BD4:        20 24 99      JSR CODE_2A9924           
+CODE_2A9BD7:        E6 00         INC $00                   
+CODE_2A9BD9:        A5 00         LDA $00                   
+CODE_2A9BDB:        29 03         AND #$03                  
+CODE_2A9BDD:        D0 F5         BNE CODE_2A9BD4           
+CODE_2A9BDF:        20 30 99      JSR CODE_2A9930           
+CODE_2A9BE2:        20 30 99      JSR CODE_2A9930           
+CODE_2A9BE5:        A2 70         LDX #$70                  
+CODE_2A9BE7:        A9 2F         LDA #$2F                  
+CODE_2A9BE9:        85 00         STA $00                   
+CODE_2A9BEB:        20 30 99      JSR CODE_2A9930           
+CODE_2A9BEE:        A0 00         LDY #$00                  
+CODE_2A9BF0:        B7 2B         LDA [$2B],y               
+CODE_2A9BF2:        C9 FF         CMP #$FF                  
+CODE_2A9BF4:        F0 08         BEQ CODE_2A9BFE           
+CODE_2A9BF6:        20 54 8E      JSR CODE_2A8E54           
+CODE_2A9BF9:        FC 00 9C      JSR (PNTR_2A9C00,x)             
+CODE_2A9BFC:        80 F0         BRA CODE_2A9BEE           
 
-CODE_2A9BFE:        PLB                       
-CODE_2A9BFF:        RTL                       
+CODE_2A9BFE:        AB            PLB                       
+CODE_2A9BFF:        6B            RTL                       
 
 PNTR_2A9C00:        dw CODE_2A9C06
                     dw CODE_2A9C14
                     dw CODE_2A9C22 
 
-CODE_2A9C06:        REP #$30                  ;
-CODE_2A9C08:        LDA #$9C59                ;
-CODE_2A9C0B:        STA $02                   ;
-CODE_2A9C0D:        LDA #$0007                ;
-CODE_2A9C10:        STA $05                   ;
-CODE_2A9C12:        BRA CODE_2A9C2E           ;
+CODE_2A9C06:        C2 30         REP #$30                  ;
+CODE_2A9C08:        A9 59 9C      LDA #$9C59                ;
+CODE_2A9C0B:        85 02         STA $02                   ;
+CODE_2A9C0D:        A9 07 00      LDA #$0007                ;
+CODE_2A9C10:        85 05         STA $05                   ;
+CODE_2A9C12:        80 1A         BRA CODE_2A9C2E           ;
 
-CODE_2A9C14:        REP #$30                  ;
-CODE_2A9C16:        LDA #$9C75                ;
-CODE_2A9C19:        STA $02                   ;
-CODE_2A9C1B:        LDA #$0005                ;
-CODE_2A9C1E:        STA $05                   ;
-CODE_2A9C20:        BRA CODE_2A9C2E           ;
+CODE_2A9C14:        C2 30         REP #$30                  ;
+CODE_2A9C16:        A9 75 9C      LDA #$9C75                ;
+CODE_2A9C19:        85 02         STA $02                   ;
+CODE_2A9C1B:        A9 05 00      LDA #$0005                ;
+CODE_2A9C1E:        85 05         STA $05                   ;
+CODE_2A9C20:        80 0C         BRA CODE_2A9C2E           ;
 
-CODE_2A9C22:        REP #$30                  
-CODE_2A9C24:        LDA #$9C89                
-CODE_2A9C27:        STA $02                   
-CODE_2A9C29:        LDA #$0005                
-CODE_2A9C2C:        STA $05                   
-CODE_2A9C2E:        SEP #$20                  
-CODE_2A9C30:        LDA #$04                  
-CODE_2A9C32:        STA $04                   
-CODE_2A9C34:        LDX $00                   
-CODE_2A9C36:        LDA ($02)                 
-CODE_2A9C38:        JSR CODE_2A8CD9           
-CODE_2A9C3B:        INX                       
-CODE_2A9C3C:        REP #$20                  
-CODE_2A9C3E:        INC $02                   
-CODE_2A9C40:        SEP #$20                  
-CODE_2A9C42:        DEC $04                   
-CODE_2A9C44:        BNE CODE_2A9C36           
-CODE_2A9C46:        REP #$20                  
-CODE_2A9C48:        LDA $00                   
-CODE_2A9C4A:        CLC                       
-CODE_2A9C4B:        ADC #$0010                
-CODE_2A9C4E:        STA $00                   
-CODE_2A9C50:        SEP #$20                  
-CODE_2A9C52:        DEC $05                   
-CODE_2A9C54:        BNE CODE_2A9C30           
-CODE_2A9C56:        SEP #$10                  
-CODE_2A9C58:        RTS                       
+CODE_2A9C22:        C2 30         REP #$30                  
+CODE_2A9C24:        A9 89 9C      LDA #$9C89                
+CODE_2A9C27:        85 02         STA $02                   
+CODE_2A9C29:        A9 05 00      LDA #$0005                
+CODE_2A9C2C:        85 05         STA $05                   
+CODE_2A9C2E:        E2 20         SEP #$20                  
+CODE_2A9C30:        A9 04         LDA #$04                  
+CODE_2A9C32:        85 04         STA $04                   
+CODE_2A9C34:        A6 00         LDX $00                   
+CODE_2A9C36:        B2 02         LDA ($02)                 
+CODE_2A9C38:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9C3B:        E8            INX                       
+CODE_2A9C3C:        C2 20         REP #$20                  
+CODE_2A9C3E:        E6 02         INC $02                   
+CODE_2A9C40:        E2 20         SEP #$20                  
+CODE_2A9C42:        C6 04         DEC $04                   
+CODE_2A9C44:        D0 F0         BNE CODE_2A9C36           
+CODE_2A9C46:        C2 20         REP #$20                  
+CODE_2A9C48:        A5 00         LDA $00                   
+CODE_2A9C4A:        18            CLC                       
+CODE_2A9C4B:        69 10 00      ADC #$0010                
+CODE_2A9C4E:        85 00         STA $00                   
+CODE_2A9C50:        E2 20         SEP #$20                  
+CODE_2A9C52:        C6 05         DEC $05                   
+CODE_2A9C54:        D0 DA         BNE CODE_2A9C30           
+CODE_2A9C56:        E2 10         SEP #$10                  
+CODE_2A9C58:        60            RTS                       
 
 DATA_2A9C59:        db $04,$05,$06,$04,$07,$08,$09,$0A
                     db $0B,$0C,$0D,$0E,$13,$14,$15,$16
@@ -3335,25 +3335,25 @@ DATA_2A9C59:        db $04,$05,$06,$04,$07,$08,$09,$0A
                     db $29,$2D,$2E,$2C
  
                 
-CODE_2A9C9D:        SEP #$10                  
-CODE_2A9C9F:        LDY #$00                  
-CODE_2A9CA1:        LDA [$2B],y               
-CODE_2A9CA3:        CMP #$FF                  
-CODE_2A9CA5:        BEQ CODE_2A9CAF           
-CODE_2A9CA7:        JSR CODE_2A8E54           
-CODE_2A9CAA:        JSR (PNTR_2A9CC3,x)             
-CODE_2A9CAD:        BRA CODE_2A9C9F           
+CODE_2A9C9D:        E2 10         SEP #$10                  
+CODE_2A9C9F:        A0 00         LDY #$00                  
+CODE_2A9CA1:        B7 2B         LDA [$2B],y               
+CODE_2A9CA3:        C9 FF         CMP #$FF                  
+CODE_2A9CA5:        F0 08         BEQ CODE_2A9CAF           
+CODE_2A9CA7:        20 54 8E      JSR CODE_2A8E54           
+CODE_2A9CAA:        FC C3 9C      JSR (PNTR_2A9CC3,x)             
+CODE_2A9CAD:        80 F0         BRA CODE_2A9C9F           
 
-CODE_2A9CAF:        LDA #$00                  
-CODE_2A9CB1:        XBA                       
-CODE_2A9CB2:        REP #$10                  
-CODE_2A9CB4:        LDY #$0100                
-CODE_2A9CB7:        LDX #$01B0                
-CODE_2A9CBA:        LDA #$AF                  
-CODE_2A9CBC:        MVN $7F, $7F                 
-CODE_2A9CBF:        SEP #$10                  
-CODE_2A9CC1:        PLB                       
-CODE_2A9CC2:        RTL                       
+CODE_2A9CAF:        A9 00         LDA #$00                  
+CODE_2A9CB1:        EB            XBA                       
+CODE_2A9CB2:        C2 10         REP #$10                  
+CODE_2A9CB4:        A0 00 01      LDY #$0100                
+CODE_2A9CB7:        A2 B0 01      LDX #$01B0                
+CODE_2A9CBA:        A9 AF         LDA #$AF                  
+CODE_2A9CBC:        54 7F 7F      MVN $7F, $7F                 
+CODE_2A9CBF:        E2 10         SEP #$10                  
+CODE_2A9CC1:        AB            PLB                       
+CODE_2A9CC2:        6B            RTL                       
 
 PNTR_2A9CC3:        dw CODE_2A9CCF
                     dw CODE_2A9D61
@@ -3362,15 +3362,15 @@ PNTR_2A9CC3:        dw CODE_2A9CCF
                     dw CODE_2A9ED2
                     dw CODE_2A9EE8
 
-CODE_2A9CCF:        REP #$30                  ;
-CODE_2A9CD1:        LDA $DA                   ;
-CODE_2A9CD3:        ASL A                     ;
-CODE_2A9CD4:        TAY                       ;
-CODE_2A9CD5:        LDA.w DATA_2A9CE0,y               ;
-CODE_2A9CD8:        STA $02                   ;
-CODE_2A9CDA:        SEP #$20                  ;
-CODE_2A9CDC:        JSR CODE_2A9D3A           ;
-CODE_2A9CDF:        RTS                       ;
+CODE_2A9CCF:        C2 30         REP #$30                  ;
+CODE_2A9CD1:        A5 DA         LDA $DA                   ;
+CODE_2A9CD3:        0A            ASL A                     ;
+CODE_2A9CD4:        A8            TAY                       ;
+CODE_2A9CD5:        B9 E0 9C      LDA.w DATA_2A9CE0,y               ;
+CODE_2A9CD8:        85 02         STA $02                   ;
+CODE_2A9CDA:        E2 20         SEP #$20                  ;
+CODE_2A9CDC:        20 3A 9D      JSR CODE_2A9D3A           ;
+CODE_2A9CDF:        60            RTS                       ;
 
 DATA_2A9CE0:        db $EA,$9C,$FA,$9C,$0A,$9D,$1A,$9D
                     db $2A,$9D,$02,$06,$1F,$02,$06,$06
@@ -3385,38 +3385,38 @@ DATA_2A9CE0:        db $EA,$9C,$FA,$9C,$0A,$9D,$1A,$9D
                     db $1F,$03,$03,$02,$03,$03,$10,$17
                     db $03,$03
 
-CODE_2A9D3A:        LDX $00                   ;
-CODE_2A9D3C:        LDY #$0000                ;
-CODE_2A9D3F:        LDA ($02),y               ;
-CODE_2A9D41:        JSR CODE_2A8CD9           ;
-CODE_2A9D44:        REP #$20                  ;
-CODE_2A9D46:        TXA                       ;
-CODE_2A9D47:        CLC                       ;
-CODE_2A9D48:        ADC #$0010                ;
-CODE_2A9D4B:        TAX                       ;
-CODE_2A9D4C:        SEP #$20                  ;
-CODE_2A9D4E:        INY                       ;
-CODE_2A9D4F:        CPY #$0010                ;
-CODE_2A9D52:        BNE CODE_2A9D3F           ;
-CODE_2A9D54:        LDA $D8                   ;
-CODE_2A9D56:        BEQ CODE_2A9D5E           ;
-CODE_2A9D58:        DEC $D8                   ;
-CODE_2A9D5A:        INC $00                   ;
-CODE_2A9D5C:        BRA CODE_2A9D3A           ;
+CODE_2A9D3A:        A6 00         LDX $00                   ;
+CODE_2A9D3C:        A0 00 00      LDY #$0000                ;
+CODE_2A9D3F:        B1 02         LDA ($02),y               ;
+CODE_2A9D41:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2A9D44:        C2 20         REP #$20                  ;
+CODE_2A9D46:        8A            TXA                       ;
+CODE_2A9D47:        18            CLC                       ;
+CODE_2A9D48:        69 10 00      ADC #$0010                ;
+CODE_2A9D4B:        AA            TAX                       ;
+CODE_2A9D4C:        E2 20         SEP #$20                  ;
+CODE_2A9D4E:        C8            INY                       ;
+CODE_2A9D4F:        C0 10 00      CPY #$0010                ;
+CODE_2A9D52:        D0 EB         BNE CODE_2A9D3F           ;
+CODE_2A9D54:        A5 D8         LDA $D8                   ;
+CODE_2A9D56:        F0 06         BEQ CODE_2A9D5E           ;
+CODE_2A9D58:        C6 D8         DEC $D8                   ;
+CODE_2A9D5A:        E6 00         INC $00                   ;
+CODE_2A9D5C:        80 DC         BRA CODE_2A9D3A           ;
 
-CODE_2A9D5E:        SEP #$10                  ;
-CODE_2A9D60:        RTS                       ;
+CODE_2A9D5E:        E2 10         SEP #$10                  ;
+CODE_2A9D60:        60            RTS                       ;
 
-CODE_2A9D61:        REP #$30                  
-CODE_2A9D63:        LDA $DA                   
-CODE_2A9D65:        ASL A                     
-CODE_2A9D66:        TAX                       
-CODE_2A9D67:        LDA.w DATA_2A9D74,x               
-CODE_2A9D6A:        STA $02                   
-CODE_2A9D6C:        SEP #$20                  
-CODE_2A9D6E:        LDX $00                   
-CODE_2A9D70:        JSR CODE_2A9DA6           
-CODE_2A9D73:        RTS                       
+CODE_2A9D61:        C2 30         REP #$30                  
+CODE_2A9D63:        A5 DA         LDA $DA                   
+CODE_2A9D65:        0A            ASL A                     
+CODE_2A9D66:        AA            TAX                       
+CODE_2A9D67:        BD 74 9D      LDA.w DATA_2A9D74,x               
+CODE_2A9D6A:        85 02         STA $02                   
+CODE_2A9D6C:        E2 20         SEP #$20                  
+CODE_2A9D6E:        A6 00         LDX $00                   
+CODE_2A9D70:        20 A6 9D      JSR CODE_2A9DA6           
+CODE_2A9D73:        60            RTS                       
 
 DATA_2A9D74:        db $80,$9D           
                     db $88,$9D,$8D,$9D,$95,$9D,$9D,$9D
@@ -3427,38 +3427,38 @@ DATA_2A9D74:        db $80,$9D
                     db $08,$06,$1A,$00,$07,$08,$06,$00
 
                 
-CODE_2A9DA6:        LDA $7F0000,x             
-CODE_2A9DAA:        BNE CODE_2A9DB7           
-CODE_2A9DAC:        LDA ($02)                 
-CODE_2A9DAE:        JSR CODE_2A8CD9           
-CODE_2A9DB1:        REP #$20                  
-CODE_2A9DB3:        INC $02                   
-CODE_2A9DB5:        SEP #$20                  
-CODE_2A9DB7:        INX                       
-CODE_2A9DB8:        TXA                       
-CODE_2A9DB9:        AND #$0F                  
-CODE_2A9DBB:        BNE CODE_2A9DA6           
-CODE_2A9DBD:        SEP #$10                  
-CODE_2A9DBF:        RTS                       
+CODE_2A9DA6:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2A9DAA:        D0 0B         BNE CODE_2A9DB7           
+CODE_2A9DAC:        B2 02         LDA ($02)                 
+CODE_2A9DAE:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9DB1:        C2 20         REP #$20                  
+CODE_2A9DB3:        E6 02         INC $02                   
+CODE_2A9DB5:        E2 20         SEP #$20                  
+CODE_2A9DB7:        E8            INX                       
+CODE_2A9DB8:        8A            TXA                       
+CODE_2A9DB9:        29 0F         AND #$0F                  
+CODE_2A9DBB:        D0 E9         BNE CODE_2A9DA6           
+CODE_2A9DBD:        E2 10         SEP #$10                  
+CODE_2A9DBF:        60            RTS                       
 
-CODE_2A9DC0:        REP #$30                  
-CODE_2A9DC2:        LDA $DA                   
-CODE_2A9DC4:        ASL A                     
-CODE_2A9DC5:        TAX                       
-CODE_2A9DC6:        LDA.w DATA_2A9DE3,x               
-CODE_2A9DC9:        STA $02                   
-CODE_2A9DCB:        SEP #$20                  
-CODE_2A9DCD:        JSR CODE_2A9D3A           
-CODE_2A9DD0:        REP #$30                  
-CODE_2A9DD2:        TYA                       
-CODE_2A9DD3:        AND #$00FF                
-CODE_2A9DD6:        CLC                       
-CODE_2A9DD7:        ADC $02                   
-CODE_2A9DD9:        STA $02                   
-CODE_2A9DDB:        INC $00                   
-CODE_2A9DDD:        SEP #$20                  
-CODE_2A9DDF:        JSR CODE_2A9D3A           
-CODE_2A9DE2:        RTS                       
+CODE_2A9DC0:        C2 30         REP #$30                  
+CODE_2A9DC2:        A5 DA         LDA $DA                   
+CODE_2A9DC4:        0A            ASL A                     
+CODE_2A9DC5:        AA            TAX                       
+CODE_2A9DC6:        BD E3 9D      LDA.w DATA_2A9DE3,x               
+CODE_2A9DC9:        85 02         STA $02                   
+CODE_2A9DCB:        E2 20         SEP #$20                  
+CODE_2A9DCD:        20 3A 9D      JSR CODE_2A9D3A           
+CODE_2A9DD0:        C2 30         REP #$30                  
+CODE_2A9DD2:        98            TYA                       
+CODE_2A9DD3:        29 FF 00      AND #$00FF                
+CODE_2A9DD6:        18            CLC                       
+CODE_2A9DD7:        65 02         ADC $02                   
+CODE_2A9DD9:        85 02         STA $02                   
+CODE_2A9DDB:        E6 00         INC $00                   
+CODE_2A9DDD:        E2 20         SEP #$20                  
+CODE_2A9DDF:        20 3A 9D      JSR CODE_2A9D3A           
+CODE_2A9DE2:        60            RTS                       
 
 DATA_2A9DE3:        db $EB,$9D,$0B,$9E,$2B,$9E,$4B,$9E
                     db $04,$1B,$20,$33,$1B,$20,$35,$04
@@ -3479,23 +3479,23 @@ DATA_2A9DE3:        db $EB,$9D,$0B,$9E,$2B,$9E,$4B,$9E
                     db $05,$1C,$21,$21,$21,$01,$23,$28
  
               
-CODE_2A9E6B:        REP #$30                  
-CODE_2A9E6D:        LDA $DA                   
-CODE_2A9E6F:        ASL A                     
-CODE_2A9E70:        TAX                       
-CODE_2A9E71:        LDA.w DATA_2A9E8C,x               
-CODE_2A9E74:        STA $02                   
-CODE_2A9E76:        SEP #$20                  
-CODE_2A9E78:        LDX $00                   
-CODE_2A9E7A:        JSR CODE_2A9DA6           
-CODE_2A9E7D:        REP #$30                  
-CODE_2A9E7F:        LDA $00                   
-CODE_2A9E81:        CLC                       
-CODE_2A9E82:        ADC #$0010                
-CODE_2A9E85:        TAX                       
-CODE_2A9E86:        SEP #$20                  
-CODE_2A9E88:        JSR CODE_2A9DA6           
-CODE_2A9E8B:        RTS                       
+CODE_2A9E6B:        C2 30         REP #$30                  
+CODE_2A9E6D:        A5 DA         LDA $DA                   
+CODE_2A9E6F:        0A            ASL A                     
+CODE_2A9E70:        AA            TAX                       
+CODE_2A9E71:        BD 8C 9E      LDA.w DATA_2A9E8C,x               
+CODE_2A9E74:        85 02         STA $02                   
+CODE_2A9E76:        E2 20         SEP #$20                  
+CODE_2A9E78:        A6 00         LDX $00                   
+CODE_2A9E7A:        20 A6 9D      JSR CODE_2A9DA6           
+CODE_2A9E7D:        C2 30         REP #$30                  
+CODE_2A9E7F:        A5 00         LDA $00                   
+CODE_2A9E81:        18            CLC                       
+CODE_2A9E82:        69 10 00      ADC #$0010                
+CODE_2A9E85:        AA            TAX                       
+CODE_2A9E86:        E2 20         SEP #$20                  
+CODE_2A9E88:        20 A6 9D      JSR CODE_2A9DA6           
+CODE_2A9E8B:        60            RTS                       
 
 DATA_2A9E8C:        db $94,$9E,$A2,$9E,$B2,$9E,$C2,$9E
                     db $0A,$0A,$0D,$0E,$0D,$0E,$0A,$11
@@ -3508,74 +3508,74 @@ DATA_2A9E8C:        db $94,$9E,$A2,$9E,$B2,$9E,$C2,$9E
                     db $26,$15,$16,$17,$11,$16
   
             
-CODE_2A9ED2:        REP #$10                  
-CODE_2A9ED4:        LDX $00                   
-CODE_2A9ED6:        LDY $DA                   
-CODE_2A9ED8:        LDA.w DATA_2A9EE1,y               
-CODE_2A9EDB:        JSR CODE_2A8CD9           
-CODE_2A9EDE:        SEP #$10                  
-CODE_2A9EE0:        RTS                       
+CODE_2A9ED2:        C2 10         REP #$10                  
+CODE_2A9ED4:        A6 00         LDX $00                   
+CODE_2A9ED6:        A4 DA         LDY $DA                   
+CODE_2A9ED8:        B9 E1 9E      LDA.w DATA_2A9EE1,y               
+CODE_2A9EDB:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9EDE:        E2 10         SEP #$10                  
+CODE_2A9EE0:        60            RTS                       
 
 DATA_2A9EE1:        db $02,$32,$03,$06,$1F,$20,$21
 
-CODE_2A9EE8:        REP #$30                  ;
-CODE_2A9EEA:        LDA $DA                   ;
-CODE_2A9EEC:        ASL A                     ;
-CODE_2A9EED:        TAX                       ;
-CODE_2A9EEE:        LDA.w DATA_2A9F1B,x               ;
-CODE_2A9EF1:        STA $02                   ;
-CODE_2A9EF3:        SEP #$20                  ;
-CODE_2A9EF5:        LDY #$0002                ;
-CODE_2A9EF8:        LDA ($02)                 ;
-CODE_2A9EFA:        LDX $00                   ;
-CODE_2A9EFC:        JSR CODE_2A8CD9           ;
-CODE_2A9EFF:        LDA ($02),y               ;
-CODE_2A9F01:        JSR CODE_2A8CEE           ;
-CODE_2A9F04:        REP #$20                  ;
-CODE_2A9F06:        INC $02                   ;
-CODE_2A9F08:        INC $00                   ;
-CODE_2A9F0A:        SEP #$20                  ;
-CODE_2A9F0C:        LDA ($02)                 ;
-CODE_2A9F0E:        LDX $00                   ;
-CODE_2A9F10:        JSR CODE_2A8CD9           ;
-CODE_2A9F13:        LDA ($02),y               ;
-CODE_2A9F15:        JSR CODE_2A8CEE           ;
-CODE_2A9F18:        SEP #$10                  ;
-CODE_2A9F1A:        RTS                       ;
+CODE_2A9EE8:        C2 30         REP #$30                  ;
+CODE_2A9EEA:        A5 DA         LDA $DA                   ;
+CODE_2A9EEC:        0A            ASL A                     ;
+CODE_2A9EED:        AA            TAX                       ;
+CODE_2A9EEE:        BD 1B 9F      LDA.w DATA_2A9F1B,x               ;
+CODE_2A9EF1:        85 02         STA $02                   ;
+CODE_2A9EF3:        E2 20         SEP #$20                  ;
+CODE_2A9EF5:        A0 02 00      LDY #$0002                ;
+CODE_2A9EF8:        B2 02         LDA ($02)                 ;
+CODE_2A9EFA:        A6 00         LDX $00                   ;
+CODE_2A9EFC:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2A9EFF:        B1 02         LDA ($02),y               ;
+CODE_2A9F01:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2A9F04:        C2 20         REP #$20                  ;
+CODE_2A9F06:        E6 02         INC $02                   ;
+CODE_2A9F08:        E6 00         INC $00                   ;
+CODE_2A9F0A:        E2 20         SEP #$20                  ;
+CODE_2A9F0C:        B2 02         LDA ($02)                 ;
+CODE_2A9F0E:        A6 00         LDX $00                   ;
+CODE_2A9F10:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2A9F13:        B1 02         LDA ($02),y               ;
+CODE_2A9F15:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2A9F18:        E2 10         SEP #$10                  ;
+CODE_2A9F1A:        60            RTS                       ;
 
 DATA_2A9F1B:        db $21,$9F,$25,$9F,$29,$9F,$0D,$0E
                     db $14,$15,$0A,$0D,$2A,$14,$0A,$0A
                     db $11,$11
 
-CODE_2A9F2D:        SEP #$10                  
-CODE_2A9F2F:        LDA $0727                 
-CODE_2A9F32:        CMP #$01                  
-CODE_2A9F34:        BNE CODE_2A9F3B           
-CODE_2A9F36:        LDA #$18                  
-CODE_2A9F38:        STA $02C5                 
-CODE_2A9F3B:        LDX #$D0                  
-CODE_2A9F3D:        LDA #$23                  
-CODE_2A9F3F:        STA $00                   
-CODE_2A9F41:        JSR CODE_2A9924           
-CODE_2A9F44:        LDA #$24                  
-CODE_2A9F46:        STA $00                   
-CODE_2A9F48:        JSR CODE_2A9924           
-CODE_2A9F4B:        LDA #$01                  
-CODE_2A9F4D:        STA $00                   
-CODE_2A9F4F:        JSR CODE_2A9924           
-CODE_2A9F52:        JSR CODE_2A9930           
-CODE_2A9F55:        JSR CODE_2A9930           
-CODE_2A9F58:        JSR CODE_2A9930           
-CODE_2A9F5B:        LDY #$00                  
-CODE_2A9F5D:        LDA [$2B],y               
-CODE_2A9F5F:        CMP #$FF                  
-CODE_2A9F61:        BEQ CODE_2A9F6B           
-CODE_2A9F63:        JSR CODE_2A8E54           
-CODE_2A9F66:        JSR (PNTR_2A9F6D,x)             
-CODE_2A9F69:        BRA CODE_2A9F5B           
+CODE_2A9F2D:        E2 10         SEP #$10                  
+CODE_2A9F2F:        AD 27 07      LDA $0727                 
+CODE_2A9F32:        C9 01         CMP #$01                  
+CODE_2A9F34:        D0 05         BNE CODE_2A9F3B           
+CODE_2A9F36:        A9 18         LDA #$18                  
+CODE_2A9F38:        8D C5 02      STA $02C5                 
+CODE_2A9F3B:        A2 D0         LDX #$D0                  
+CODE_2A9F3D:        A9 23         LDA #$23                  
+CODE_2A9F3F:        85 00         STA $00                   
+CODE_2A9F41:        20 24 99      JSR CODE_2A9924           
+CODE_2A9F44:        A9 24         LDA #$24                  
+CODE_2A9F46:        85 00         STA $00                   
+CODE_2A9F48:        20 24 99      JSR CODE_2A9924           
+CODE_2A9F4B:        A9 01         LDA #$01                  
+CODE_2A9F4D:        85 00         STA $00                   
+CODE_2A9F4F:        20 24 99      JSR CODE_2A9924           
+CODE_2A9F52:        20 30 99      JSR CODE_2A9930           
+CODE_2A9F55:        20 30 99      JSR CODE_2A9930           
+CODE_2A9F58:        20 30 99      JSR CODE_2A9930           
+CODE_2A9F5B:        A0 00         LDY #$00                  
+CODE_2A9F5D:        B7 2B         LDA [$2B],y               
+CODE_2A9F5F:        C9 FF         CMP #$FF                  
+CODE_2A9F61:        F0 08         BEQ CODE_2A9F6B           
+CODE_2A9F63:        20 54 8E      JSR CODE_2A8E54           
+CODE_2A9F66:        FC 6D 9F      JSR (PNTR_2A9F6D,x)             
+CODE_2A9F69:        80 F0         BRA CODE_2A9F5B           
 
-CODE_2A9F6B:        PLB                       
-CODE_2A9F6C:        RTL                       
+CODE_2A9F6B:        AB            PLB                       
+CODE_2A9F6C:        6B            RTL                       
 
 PNTR_2A9F6D:        dw CODE_2A9F7D
                     dw CODE_2A9F84
@@ -3586,97 +3586,97 @@ PNTR_2A9F6D:        dw CODE_2A9F7D
                     dw CODE_2A9FA7
                     dw CODE_2AA066
 
-CODE_2A9F7D:        REP #$10                  ;
-CODE_2A9F7F:        LDY #$0000                ;
-CODE_2A9F82:        BRA CODE_2A9FAC           ;
+CODE_2A9F7D:        C2 10         REP #$10                  ;
+CODE_2A9F7F:        A0 00 00      LDY #$0000                ;
+CODE_2A9F82:        80 28         BRA CODE_2A9FAC           ;
 
-CODE_2A9F84:        REP #$10                  
-CODE_2A9F86:        LDY #$0008                
-CODE_2A9F89:        BRA CODE_2A9FAC           
+CODE_2A9F84:        C2 10         REP #$10                  
+CODE_2A9F86:        A0 08 00      LDY #$0008                
+CODE_2A9F89:        80 21         BRA CODE_2A9FAC           
 
-CODE_2A9F8B:        REP #$10                  
-CODE_2A9F8D:        LDY #$0010                
-CODE_2A9F90:        BRA CODE_2A9FAC           
+CODE_2A9F8B:        C2 10         REP #$10                  
+CODE_2A9F8D:        A0 10 00      LDY #$0010                
+CODE_2A9F90:        80 1A         BRA CODE_2A9FAC           
 
-CODE_2A9F92:        REP #$10                  
-CODE_2A9F94:        LDY #$0018                
-CODE_2A9F97:        BRA CODE_2A9FAC           
+CODE_2A9F92:        C2 10         REP #$10                  
+CODE_2A9F94:        A0 18 00      LDY #$0018                
+CODE_2A9F97:        80 13         BRA CODE_2A9FAC           
 
-CODE_2A9F99:        REP #$10                  
-CODE_2A9F9B:        LDY #$0020                
-CODE_2A9F9E:        BRA CODE_2A9FAC           
+CODE_2A9F99:        C2 10         REP #$10                  
+CODE_2A9F9B:        A0 20 00      LDY #$0020                
+CODE_2A9F9E:        80 0C         BRA CODE_2A9FAC           
 
-CODE_2A9FA0:        REP #$10                  
-CODE_2A9FA2:        LDY #$0028                
-CODE_2A9FA5:        BRA CODE_2A9FAC           
+CODE_2A9FA0:        C2 10         REP #$10                  
+CODE_2A9FA2:        A0 28 00      LDY #$0028                
+CODE_2A9FA5:        80 05         BRA CODE_2A9FAC           
 
-CODE_2A9FA7:        REP #$10                  
-CODE_2A9FA9:        LDY #$0030                
-CODE_2A9FAC:        LDA #$01                  
-CODE_2A9FAE:        STA $02                   
-CODE_2A9FB0:        LDX $00                   
-CODE_2A9FB2:        LDA #$04                  
-CODE_2A9FB4:        STA $04                   
-CODE_2A9FB6:        LDA.w DATA_2AA026,y               
-CODE_2A9FB9:        JSR CODE_2A8CD9           
-CODE_2A9FBC:        INX                       
-CODE_2A9FBD:        JSR CODE_2AA009           
-CODE_2A9FC0:        INY                       
-CODE_2A9FC1:        DEC $04                   
-CODE_2A9FC3:        BNE CODE_2A9FB6           
-CODE_2A9FC5:        REP #$20                  
-CODE_2A9FC7:        LDA $00                   
-CODE_2A9FC9:        CLC                       
-CODE_2A9FCA:        ADC #$0010                
-CODE_2A9FCD:        STA $00                   
-CODE_2A9FCF:        SEP #$20                  
-CODE_2A9FD1:        DEC $02                   
-CODE_2A9FD3:        BEQ CODE_2A9FB0           
-CODE_2A9FD5:        LDY #$0000                
-CODE_2A9FD8:        LDA #$04                  
-CODE_2A9FDA:        STA $04                   
-CODE_2A9FDC:        LDX $00                   
-CODE_2A9FDE:        LDA.w DATA_2AA05E,y               
-CODE_2A9FE1:        JSR CODE_2A8CD9           
-CODE_2A9FE4:        INX                       
-CODE_2A9FE5:        JSR CODE_2AA009           
-CODE_2A9FE8:        INY                       
-CODE_2A9FE9:        REP #$20                  
-CODE_2A9FEB:        TYA                       
-CODE_2A9FEC:        AND #$0007                
-CODE_2A9FEF:        TAY                       
-CODE_2A9FF0:        SEP #$20                  
-CODE_2A9FF2:        DEC $04                   
-CODE_2A9FF4:        BNE CODE_2A9FDE           
-CODE_2A9FF6:        REP #$20                  
-CODE_2A9FF8:        LDA $00                   
-CODE_2A9FFA:        CLC                       
-CODE_2A9FFB:        ADC #$0010                
-CODE_2A9FFE:        STA $00                   
-CODE_2AA000:        SEP #$20                  
-CODE_2AA002:        DEC $D8                   
-CODE_2AA004:        BNE CODE_2A9FD8           
-CODE_2AA006:        SEP #$10                  
-CODE_2AA008:        RTS                       
+CODE_2A9FA7:        C2 10         REP #$10                  
+CODE_2A9FA9:        A0 30 00      LDY #$0030                
+CODE_2A9FAC:        A9 01         LDA #$01                  
+CODE_2A9FAE:        85 02         STA $02                   
+CODE_2A9FB0:        A6 00         LDX $00                   
+CODE_2A9FB2:        A9 04         LDA #$04                  
+CODE_2A9FB4:        85 04         STA $04                   
+CODE_2A9FB6:        B9 26 A0      LDA.w DATA_2AA026,y               
+CODE_2A9FB9:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9FBC:        E8            INX                       
+CODE_2A9FBD:        20 09 A0      JSR CODE_2AA009           
+CODE_2A9FC0:        C8            INY                       
+CODE_2A9FC1:        C6 04         DEC $04                   
+CODE_2A9FC3:        D0 F1         BNE CODE_2A9FB6           
+CODE_2A9FC5:        C2 20         REP #$20                  
+CODE_2A9FC7:        A5 00         LDA $00                   
+CODE_2A9FC9:        18            CLC                       
+CODE_2A9FCA:        69 10 00      ADC #$0010                
+CODE_2A9FCD:        85 00         STA $00                   
+CODE_2A9FCF:        E2 20         SEP #$20                  
+CODE_2A9FD1:        C6 02         DEC $02                   
+CODE_2A9FD3:        F0 DB         BEQ CODE_2A9FB0           
+CODE_2A9FD5:        A0 00 00      LDY #$0000                
+CODE_2A9FD8:        A9 04         LDA #$04                  
+CODE_2A9FDA:        85 04         STA $04                   
+CODE_2A9FDC:        A6 00         LDX $00                   
+CODE_2A9FDE:        B9 5E A0      LDA.w DATA_2AA05E,y               
+CODE_2A9FE1:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2A9FE4:        E8            INX                       
+CODE_2A9FE5:        20 09 A0      JSR CODE_2AA009           
+CODE_2A9FE8:        C8            INY                       
+CODE_2A9FE9:        C2 20         REP #$20                  
+CODE_2A9FEB:        98            TYA                       
+CODE_2A9FEC:        29 07 00      AND #$0007                
+CODE_2A9FEF:        A8            TAY                       
+CODE_2A9FF0:        E2 20         SEP #$20                  
+CODE_2A9FF2:        C6 04         DEC $04                   
+CODE_2A9FF4:        D0 E8         BNE CODE_2A9FDE           
+CODE_2A9FF6:        C2 20         REP #$20                  
+CODE_2A9FF8:        A5 00         LDA $00                   
+CODE_2A9FFA:        18            CLC                       
+CODE_2A9FFB:        69 10 00      ADC #$0010                
+CODE_2A9FFE:        85 00         STA $00                   
+CODE_2AA000:        E2 20         SEP #$20                  
+CODE_2AA002:        C6 D8         DEC $D8                   
+CODE_2AA004:        D0 D2         BNE CODE_2A9FD8           
+CODE_2AA006:        E2 10         SEP #$10                  
+CODE_2AA008:        60            RTS                       
 
-CODE_2AA009:        REP #$20                  
-CODE_2AA00B:        TXA                       
-CODE_2AA00C:        AND #$000F                
-CODE_2AA00F:        BNE CODE_2AA023           
-CODE_2AA011:        LDA $DA                   
-CODE_2AA013:        BNE CODE_2AA01D           
-CODE_2AA015:        TXA                       
-CODE_2AA016:        CLC                       
-CODE_2AA017:        ADC #$01A0                
-CODE_2AA01A:        TAX                       
-CODE_2AA01B:        BRA CODE_2AA023           
+CODE_2AA009:        C2 20         REP #$20                  
+CODE_2AA00B:        8A            TXA                       
+CODE_2AA00C:        29 0F 00      AND #$000F                
+CODE_2AA00F:        D0 12         BNE CODE_2AA023           
+CODE_2AA011:        A5 DA         LDA $DA                   
+CODE_2AA013:        D0 08         BNE CODE_2AA01D           
+CODE_2AA015:        8A            TXA                       
+CODE_2AA016:        18            CLC                       
+CODE_2AA017:        69 A0 01      ADC #$01A0                
+CODE_2AA01A:        AA            TAX                       
+CODE_2AA01B:        80 06         BRA CODE_2AA023           
 
-CODE_2AA01D:        TXA                       
-CODE_2AA01E:        SEC                       
-CODE_2AA01F:        SBC #$01C0                
-CODE_2AA022:        TAX                       
-CODE_2AA023:        SEP #$20                  
-CODE_2AA025:        RTS                       
+CODE_2AA01D:        8A            TXA                       
+CODE_2AA01E:        38            SEC                       
+CODE_2AA01F:        E9 C0 01      SBC #$01C0                
+CODE_2AA022:        AA            TAX                       
+CODE_2AA023:        E2 20         SEP #$20                  
+CODE_2AA025:        60            RTS                       
 
 DATA_2AA026:        db $1D,$1E,$1F,$20,$21,$08,$09,$22 ;
                     db $29,$04,$0B,$0C,$07,$08,$09,$0F ;
@@ -3688,260 +3688,260 @@ DATA_2AA026:        db $1D,$1E,$1F,$20,$21,$08,$09,$22 ;
 
 DATA_2AA05E:        db $12,$13,$0D,$0E,$18,$19,$10,$11 ;
             
-CODE_2AA066:        REP #$10                  
-CODE_2AA068:        LDY #$0000                
-CODE_2AA06B:        LDX $00                   
-CODE_2AA06D:        LDA #$04                  
-CODE_2AA06F:        STA $02                   
-CODE_2AA071:        LDA $7F0000,x             
-CODE_2AA075:        CMP #$01                  
-CODE_2AA077:        BNE CODE_2AA07F           
-CODE_2AA079:        LDA.w DATA_2AA09B,y               
-CODE_2AA07C:        JSR CODE_2A8CD9           
-CODE_2AA07F:        INX                       
-CODE_2AA080:        INY                       
-CODE_2AA081:        CPY #$000C                
-CODE_2AA084:        BCS CODE_2AA098                   
-CODE_2AA086:        DEC $02                   
-CODE_2AA088:        BNE CODE_2AA071           
-CODE_2AA08A:        REP #$20                  
-CODE_2AA08C:        LDA $00                   
-CODE_2AA08E:        CLC                       
-CODE_2AA08F:        ADC #$0010                
-CODE_2AA092:        STA $00                   
-CODE_2AA094:        SEP #$20                  
-CODE_2AA096:        BRA CODE_2AA06B           
+CODE_2AA066:        C2 10         REP #$10                  
+CODE_2AA068:        A0 00 00      LDY #$0000                
+CODE_2AA06B:        A6 00         LDX $00                   
+CODE_2AA06D:        A9 04         LDA #$04                  
+CODE_2AA06F:        85 02         STA $02                   
+CODE_2AA071:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2AA075:        C9 01         CMP #$01                  
+CODE_2AA077:        D0 06         BNE CODE_2AA07F           
+CODE_2AA079:        B9 9B A0      LDA.w DATA_2AA09B,y               
+CODE_2AA07C:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA07F:        E8            INX                       
+CODE_2AA080:        C8            INY                       
+CODE_2AA081:        C0 0C 00      CPY #$000C                
+CODE_2AA084:        B0 12         BCS CODE_2AA098                   
+CODE_2AA086:        C6 02         DEC $02                   
+CODE_2AA088:        D0 E7         BNE CODE_2AA071           
+CODE_2AA08A:        C2 20         REP #$20                  
+CODE_2AA08C:        A5 00         LDA $00                   
+CODE_2AA08E:        18            CLC                       
+CODE_2AA08F:        69 10 00      ADC #$0010                
+CODE_2AA092:        85 00         STA $00                   
+CODE_2AA094:        E2 20         SEP #$20                  
+CODE_2AA096:        80 D3         BRA CODE_2AA06B           
 
-CODE_2AA098:        SEP #$10                  
-CODE_2AA09A:        RTS                       
+CODE_2AA098:        E2 10         SEP #$10                  
+CODE_2AA09A:        60            RTS                       
      
 DATA_2AA09B:        db $25,$26,$27,$28,$2B,$2C,$2D,$2E
                     db $2F,$2F,$30,$31
 
-CODE_2AA0A7:        SEP #$10                  
-CODE_2AA0A9:        LDX #$00                  
-CODE_2AA0AB:        LDA #$02                  
-CODE_2AA0AD:        STA $00                   
-CODE_2AA0AF:        LDA #$03                  
-CODE_2AA0B1:        STA $01                   
-CODE_2AA0B3:        STZ $02                   
-CODE_2AA0B5:        LDA #$01                  
-CODE_2AA0B7:        STA $03                   
-CODE_2AA0B9:        LDA $00                   
-CODE_2AA0BB:        JSR CODE_2A8D03           
-CODE_2AA0BE:        INX                       
-CODE_2AA0BF:        LDA $01                   
-CODE_2AA0C1:        JSR CODE_2A8D03           
-CODE_2AA0C4:        INX                       
-CODE_2AA0C5:        TXA                       
-CODE_2AA0C6:        AND #$0F                  
-CODE_2AA0C8:        BNE CODE_2AA0B9           
-CODE_2AA0CA:        LDA $02                   
-CODE_2AA0CC:        JSR CODE_2A8D03           
-CODE_2AA0CF:        INX                       
-CODE_2AA0D0:        LDA $03                   
-CODE_2AA0D2:        JSR CODE_2A8D03           
-CODE_2AA0D5:        INX                       
-CODE_2AA0D6:        TXA                       
-CODE_2AA0D7:        AND #$0F                  
-CODE_2AA0D9:        BNE CODE_2AA0CA           
-CODE_2AA0DB:        TXA                       
-CODE_2AA0DC:        BNE CODE_2AA0B9           
-CODE_2AA0DE:        LDA $00                   
-CODE_2AA0E0:        JSR CODE_2A8D25           
-CODE_2AA0E3:        INX                       
-CODE_2AA0E4:        LDA $01                   
-CODE_2AA0E6:        JSR CODE_2A8D25           
-CODE_2AA0E9:        INX                       
-CODE_2AA0EA:        TXA                       
-CODE_2AA0EB:        AND #$0F                  
-CODE_2AA0ED:        BNE CODE_2AA0DE           
-CODE_2AA0EF:        CPX #$B0                  
-CODE_2AA0F1:        BCS CODE_2AA106                   
-CODE_2AA0F3:        LDA $02                   
-CODE_2AA0F5:        JSR CODE_2A8D25           
-CODE_2AA0F8:        INX                       
-CODE_2AA0F9:        LDA $03                   
-CODE_2AA0FB:        JSR CODE_2A8D25           
-CODE_2AA0FE:        INX                       
-CODE_2AA0FF:        TXA                       
-CODE_2AA100:        AND #$0F                  
-CODE_2AA102:        BNE CODE_2AA0F3           
-CODE_2AA104:        BRA CODE_2AA0DE           
+CODE_2AA0A7:        E2 10         SEP #$10                  
+CODE_2AA0A9:        A2 00         LDX #$00                  
+CODE_2AA0AB:        A9 02         LDA #$02                  
+CODE_2AA0AD:        85 00         STA $00                   
+CODE_2AA0AF:        A9 03         LDA #$03                  
+CODE_2AA0B1:        85 01         STA $01                   
+CODE_2AA0B3:        64 02         STZ $02                   
+CODE_2AA0B5:        A9 01         LDA #$01                  
+CODE_2AA0B7:        85 03         STA $03                   
+CODE_2AA0B9:        A5 00         LDA $00                   
+CODE_2AA0BB:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AA0BE:        E8            INX                       
+CODE_2AA0BF:        A5 01         LDA $01                   
+CODE_2AA0C1:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AA0C4:        E8            INX                       
+CODE_2AA0C5:        8A            TXA                       
+CODE_2AA0C6:        29 0F         AND #$0F                  
+CODE_2AA0C8:        D0 EF         BNE CODE_2AA0B9           
+CODE_2AA0CA:        A5 02         LDA $02                   
+CODE_2AA0CC:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AA0CF:        E8            INX                       
+CODE_2AA0D0:        A5 03         LDA $03                   
+CODE_2AA0D2:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AA0D5:        E8            INX                       
+CODE_2AA0D6:        8A            TXA                       
+CODE_2AA0D7:        29 0F         AND #$0F                  
+CODE_2AA0D9:        D0 EF         BNE CODE_2AA0CA           
+CODE_2AA0DB:        8A            TXA                       
+CODE_2AA0DC:        D0 DB         BNE CODE_2AA0B9           
+CODE_2AA0DE:        A5 00         LDA $00                   
+CODE_2AA0E0:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AA0E3:        E8            INX                       
+CODE_2AA0E4:        A5 01         LDA $01                   
+CODE_2AA0E6:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AA0E9:        E8            INX                       
+CODE_2AA0EA:        8A            TXA                       
+CODE_2AA0EB:        29 0F         AND #$0F                  
+CODE_2AA0ED:        D0 EF         BNE CODE_2AA0DE           
+CODE_2AA0EF:        E0 B0         CPX #$B0                  
+CODE_2AA0F1:        B0 13         BCS CODE_2AA106                   
+CODE_2AA0F3:        A5 02         LDA $02                   
+CODE_2AA0F5:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AA0F8:        E8            INX                       
+CODE_2AA0F9:        A5 03         LDA $03                   
+CODE_2AA0FB:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AA0FE:        E8            INX                       
+CODE_2AA0FF:        8A            TXA                       
+CODE_2AA100:        29 0F         AND #$0F                  
+CODE_2AA102:        D0 EF         BNE CODE_2AA0F3           
+CODE_2AA104:        80 D8         BRA CODE_2AA0DE           
 
-CODE_2AA106:        LDY #$00                  
-CODE_2AA108:        LDA [$2B],y               
-CODE_2AA10A:        CMP #$FF                  
-CODE_2AA10C:        BEQ CODE_2AA116           
-CODE_2AA10E:        JSR CODE_2A8E54           
-CODE_2AA111:        JSR (PNTR_2AA118,x)             
-CODE_2AA114:        BRA CODE_2AA106           
+CODE_2AA106:        A0 00         LDY #$00                  
+CODE_2AA108:        B7 2B         LDA [$2B],y               
+CODE_2AA10A:        C9 FF         CMP #$FF                  
+CODE_2AA10C:        F0 08         BEQ CODE_2AA116           
+CODE_2AA10E:        20 54 8E      JSR CODE_2A8E54           
+CODE_2AA111:        FC 18 A1      JSR (PNTR_2AA118,x)             
+CODE_2AA114:        80 F0         BRA CODE_2AA106           
 
-CODE_2AA116:        PLB                       
-CODE_2AA117:        RTL                       
+CODE_2AA116:        AB            PLB                       
+CODE_2AA117:        6B            RTL                       
 
 PNTR_2AA118:        dw CODE_2AA120
                     dw CODE_2AA143
                     dw CODE_2AA153
                     dw CODE_2AA15F
 
-CODE_2AA120:        JSR CODE_2AA143           ;
-CODE_2AA123:        REP #$10                  ;
-CODE_2AA125:        LDA $DA                   ;
-CODE_2AA127:        BEQ CODE_2AA12B           ;
-CODE_2AA129:        STA $D8                   ;
-CODE_2AA12B:        JSR CODE_2AA136           ;
-CODE_2AA12E:        LDA #$04                  ;
-CODE_2AA130:        JSR CODE_2A8CD9           ;
-CODE_2AA133:        SEP #$10                  ;
-CODE_2AA135:        RTS                       ;
+CODE_2AA120:        20 43 A1      JSR CODE_2AA143           ;
+CODE_2AA123:        C2 10         REP #$10                  ;
+CODE_2AA125:        A5 DA         LDA $DA                   ;
+CODE_2AA127:        F0 02         BEQ CODE_2AA12B           ;
+CODE_2AA129:        85 D8         STA $D8                   ;
+CODE_2AA12B:        20 36 A1      JSR CODE_2AA136           ;
+CODE_2AA12E:        A9 04         LDA #$04                  ;
+CODE_2AA130:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA133:        E2 10         SEP #$10                  ;
+CODE_2AA135:        60            RTS                       ;
 
-CODE_2AA136:        REP #$20                  
-CODE_2AA138:        LDA $00                   
-CODE_2AA13A:        CLC                       
-CODE_2AA13B:        ADC $D8                   
-CODE_2AA13D:        STA $00                   
-CODE_2AA13F:        TAX                       
-CODE_2AA140:        SEP #$20                  
-CODE_2AA142:        RTS                       
+CODE_2AA136:        C2 20         REP #$20                  
+CODE_2AA138:        A5 00         LDA $00                   
+CODE_2AA13A:        18            CLC                       
+CODE_2AA13B:        65 D8         ADC $D8                   
+CODE_2AA13D:        85 00         STA $00                   
+CODE_2AA13F:        AA            TAX                       
+CODE_2AA140:        E2 20         SEP #$20                  
+CODE_2AA142:        60            RTS                       
 
-CODE_2AA143:        JSR CODE_2AA153           
-CODE_2AA146:        REP #$10                  
-CODE_2AA148:        JSR CODE_2AA136           
-CODE_2AA14B:        LDA #$04                  
-CODE_2AA14D:        JSR CODE_2A8CD9           
-CODE_2AA150:        SEP #$10                  
-CODE_2AA152:        RTS                       
+CODE_2AA143:        20 53 A1      JSR CODE_2AA153           
+CODE_2AA146:        C2 10         REP #$10                  
+CODE_2AA148:        20 36 A1      JSR CODE_2AA136           
+CODE_2AA14B:        A9 04         LDA #$04                  
+CODE_2AA14D:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA150:        E2 10         SEP #$10                  
+CODE_2AA152:        60            RTS                       
 
-CODE_2AA153:        REP #$10                  
-CODE_2AA155:        LDX $00                   
-CODE_2AA157:        LDA #$04                  
-CODE_2AA159:        JSR CODE_2A8CD9           
-CODE_2AA15C:        SEP #$10                  
-CODE_2AA15E:        RTS                       
+CODE_2AA153:        C2 10         REP #$10                  
+CODE_2AA155:        A6 00         LDX $00                   
+CODE_2AA157:        A9 04         LDA #$04                  
+CODE_2AA159:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA15C:        E2 10         SEP #$10                  
+CODE_2AA15E:        60            RTS                       
 
-CODE_2AA15F:        REP #$10                  
-CODE_2AA161:        JSR CODE_2AA153           
-CODE_2AA164:        JSR CODE_2AA136           
-CODE_2AA167:        JSR CODE_2AA153           
-CODE_2AA16A:        JSR CODE_2AA136           
-CODE_2AA16D:        JSR CODE_2AA153           
-CODE_2AA170:        LDA $DA                   
-CODE_2AA172:        BEQ CODE_2AA176           
-CODE_2AA174:        STA $D8                   
-CODE_2AA176:        JSR CODE_2AA136           
-CODE_2AA179:        LDA #$04                  
-CODE_2AA17B:        JSR CODE_2A8CD9           
-CODE_2AA17E:        SEP #$10                  
-CODE_2AA180:        RTS                       
+CODE_2AA15F:        C2 10         REP #$10                  
+CODE_2AA161:        20 53 A1      JSR CODE_2AA153           
+CODE_2AA164:        20 36 A1      JSR CODE_2AA136           
+CODE_2AA167:        20 53 A1      JSR CODE_2AA153           
+CODE_2AA16A:        20 36 A1      JSR CODE_2AA136           
+CODE_2AA16D:        20 53 A1      JSR CODE_2AA153           
+CODE_2AA170:        A5 DA         LDA $DA                   
+CODE_2AA172:        F0 02         BEQ CODE_2AA176           
+CODE_2AA174:        85 D8         STA $D8                   
+CODE_2AA176:        20 36 A1      JSR CODE_2AA136           
+CODE_2AA179:        A9 04         LDA #$04                  
+CODE_2AA17B:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA17E:        E2 10         SEP #$10                  
+CODE_2AA180:        60            RTS                       
 
-CODE_2AA181:        SEP #$10                  
-CODE_2AA183:        LDX #$40                  
-CODE_2AA185:        LDA #$3C                  
-CODE_2AA187:        STA $00                   
-CODE_2AA189:        LDA #$40                  
-CODE_2AA18B:        STA $01                   
-CODE_2AA18D:        LDA #$08                  
-CODE_2AA18F:        STA $04                   
-CODE_2AA191:        JSR CODE_2A974B           
-CODE_2AA194:        LDA #$41                  
-CODE_2AA196:        STA $00                   
-CODE_2AA198:        LDA #$42                  
-CODE_2AA19A:        STA $01                   
-CODE_2AA19C:        LDA #$08                  
-CODE_2AA19E:        STA $04                   
-CODE_2AA1A0:        JSR CODE_2A974B           
-CODE_2AA1A3:        LDA #$43                  
-CODE_2AA1A5:        STA $00                   
-CODE_2AA1A7:        JSR CODE_2A9930           
-CODE_2AA1AA:        INC $00                   
-CODE_2AA1AC:        JSR CODE_2A9930           
-CODE_2AA1AF:        JSR CODE_2A9930           
-CODE_2AA1B2:        LDY #$00                  
-CODE_2AA1B4:        LDA [$2B],y               
-CODE_2AA1B6:        CMP #$FF                  
-CODE_2AA1B8:        BEQ CODE_2AA1C2           
-CODE_2AA1BA:        JSR CODE_2A8E54           
-CODE_2AA1BD:        JSR (PNTR_2AA219,x)             
-CODE_2AA1C0:        BRA CODE_2AA1B2           
+CODE_2AA181:        E2 10         SEP #$10                  
+CODE_2AA183:        A2 40         LDX #$40                  
+CODE_2AA185:        A9 3C         LDA #$3C                  
+CODE_2AA187:        85 00         STA $00                   
+CODE_2AA189:        A9 40         LDA #$40                  
+CODE_2AA18B:        85 01         STA $01                   
+CODE_2AA18D:        A9 08         LDA #$08                  
+CODE_2AA18F:        85 04         STA $04                   
+CODE_2AA191:        20 4B 97      JSR CODE_2A974B           
+CODE_2AA194:        A9 41         LDA #$41                  
+CODE_2AA196:        85 00         STA $00                   
+CODE_2AA198:        A9 42         LDA #$42                  
+CODE_2AA19A:        85 01         STA $01                   
+CODE_2AA19C:        A9 08         LDA #$08                  
+CODE_2AA19E:        85 04         STA $04                   
+CODE_2AA1A0:        20 4B 97      JSR CODE_2A974B           
+CODE_2AA1A3:        A9 43         LDA #$43                  
+CODE_2AA1A5:        85 00         STA $00                   
+CODE_2AA1A7:        20 30 99      JSR CODE_2A9930           
+CODE_2AA1AA:        E6 00         INC $00                   
+CODE_2AA1AC:        20 30 99      JSR CODE_2A9930           
+CODE_2AA1AF:        20 30 99      JSR CODE_2A9930           
+CODE_2AA1B2:        A0 00         LDY #$00                  
+CODE_2AA1B4:        B7 2B         LDA [$2B],y               
+CODE_2AA1B6:        C9 FF         CMP #$FF                  
+CODE_2AA1B8:        F0 08         BEQ CODE_2AA1C2           
+CODE_2AA1BA:        20 54 8E      JSR CODE_2A8E54           
+CODE_2AA1BD:        FC 19 A2      JSR (PNTR_2AA219,x)             
+CODE_2AA1C0:        80 F0         BRA CODE_2AA1B2           
 
-CODE_2AA1C2:        LDA $1EBF                 
-CODE_2AA1C5:        CMP #$0B                  
-CODE_2AA1C7:        BEQ CODE_2AA1CD           
-CODE_2AA1C9:        CMP #$2F                  
-CODE_2AA1CB:        BNE CODE_2AA217           
-CODE_2AA1CD:        LDA #$00                  
-CODE_2AA1CF:        XBA                       
-CODE_2AA1D0:        REP #$10                  
-CODE_2AA1D2:        LDY #$00C0                
-CODE_2AA1D5:        LDX #$00D0                
-CODE_2AA1D8:        LDA #$AF                  
-CODE_2AA1DA:        MVN $7F, $7F                 
-CODE_2AA1DD:        LDA #$00                  
-CODE_2AA1DF:        XBA                       
-CODE_2AA1E0:        LDY #$0270                
-CODE_2AA1E3:        LDX #$0280                
-CODE_2AA1E6:        LDA #$AF                  
-CODE_2AA1E8:        MVN $7F, $7F                 
-CODE_2AA1EB:        LDA #$00                  
-CODE_2AA1ED:        XBA                       
-CODE_2AA1EE:        LDY #$0420                
-CODE_2AA1F1:        LDX #$0430                
-CODE_2AA1F4:        LDA #$AF                  
-CODE_2AA1F6:        MVN $7F, $7F                 
-CODE_2AA1F9:        LDA #$00                  
-CODE_2AA1FB:        XBA                       
-CODE_2AA1FC:        LDY #$05D0                
-CODE_2AA1FF:        LDX #$05E0                
-CODE_2AA202:        LDA #$AF                  
-CODE_2AA204:        MVN $7F, $7F                 
-CODE_2AA207:        LDA #$00                  
-CODE_2AA209:        XBA                       
-CODE_2AA20A:        LDY #$0780                
-CODE_2AA20D:        LDX #$0790                
-CODE_2AA210:        LDA #$AF                  
-CODE_2AA212:        MVN $7F, $7F                 
-CODE_2AA215:        SEP #$10                  
-CODE_2AA217:        PLB                       
-CODE_2AA218:        RTL                       
+CODE_2AA1C2:        AD BF 1E      LDA $1EBF                 
+CODE_2AA1C5:        C9 0B         CMP #$0B                  
+CODE_2AA1C7:        F0 04         BEQ CODE_2AA1CD           
+CODE_2AA1C9:        C9 2F         CMP #$2F                  
+CODE_2AA1CB:        D0 4A         BNE CODE_2AA217           
+CODE_2AA1CD:        A9 00         LDA #$00                  
+CODE_2AA1CF:        EB            XBA                       
+CODE_2AA1D0:        C2 10         REP #$10                  
+CODE_2AA1D2:        A0 C0 00      LDY #$00C0                
+CODE_2AA1D5:        A2 D0 00      LDX #$00D0                
+CODE_2AA1D8:        A9 AF         LDA #$AF                  
+CODE_2AA1DA:        54 7F 7F      MVN $7F, $7F                 
+CODE_2AA1DD:        A9 00         LDA #$00                  
+CODE_2AA1DF:        EB            XBA                       
+CODE_2AA1E0:        A0 70 02      LDY #$0270                
+CODE_2AA1E3:        A2 80 02      LDX #$0280                
+CODE_2AA1E6:        A9 AF         LDA #$AF                  
+CODE_2AA1E8:        54 7F 7F      MVN $7F, $7F                 
+CODE_2AA1EB:        A9 00         LDA #$00                  
+CODE_2AA1ED:        EB            XBA                       
+CODE_2AA1EE:        A0 20 04      LDY #$0420                
+CODE_2AA1F1:        A2 30 04      LDX #$0430                
+CODE_2AA1F4:        A9 AF         LDA #$AF                  
+CODE_2AA1F6:        54 7F 7F      MVN $7F, $7F                 
+CODE_2AA1F9:        A9 00         LDA #$00                  
+CODE_2AA1FB:        EB            XBA                       
+CODE_2AA1FC:        A0 D0 05      LDY #$05D0                
+CODE_2AA1FF:        A2 E0 05      LDX #$05E0                
+CODE_2AA202:        A9 AF         LDA #$AF                  
+CODE_2AA204:        54 7F 7F      MVN $7F, $7F                 
+CODE_2AA207:        A9 00         LDA #$00                  
+CODE_2AA209:        EB            XBA                       
+CODE_2AA20A:        A0 80 07      LDY #$0780                
+CODE_2AA20D:        A2 90 07      LDX #$0790                
+CODE_2AA210:        A9 AF         LDA #$AF                  
+CODE_2AA212:        54 7F 7F      MVN $7F, $7F                 
+CODE_2AA215:        E2 10         SEP #$10                  
+CODE_2AA217:        AB            PLB                       
+CODE_2AA218:        6B            RTL                       
 
 PNTR_2AA219:        dw CODE_2AA221               
                     dw CODE_2AA225               
                     dw CODE_2AA229                 
                     dw CODE_2AA22D
 
-CODE_2AA221:        LDY #$00                  ;
-CODE_2AA223:        BRA CODE_2AA22F           ;
+CODE_2AA221:        A0 00         LDY #$00                  ;
+CODE_2AA223:        80 0A         BRA CODE_2AA22F           ;
 
-CODE_2AA225:        LDY #$02                  ;
-CODE_2AA227:        BRA CODE_2AA22F           
+CODE_2AA225:        A0 02         LDY #$02                  ;
+CODE_2AA227:        80 06         BRA CODE_2AA22F           
 
-CODE_2AA229:        LDY #$04                  
-CODE_2AA22B:        BRA CODE_2AA22F           
+CODE_2AA229:        A0 04         LDY #$04                  
+CODE_2AA22B:        80 02         BRA CODE_2AA22F           
 
-CODE_2AA22D:        LDY #$06                  
-CODE_2AA22F:        LDA #$2A                  
-CODE_2AA231:        STA $08                   
-CODE_2AA233:        STA $0B                   
-CODE_2AA235:        STA $0E                   
-CODE_2AA237:        REP #$30                  
-CODE_2AA239:        LDA.w DATA_2AA268,y               
-CODE_2AA23C:        STA $06                   
-CODE_2AA23E:        LDA.w DATA_2AA270,y               
-CODE_2AA241:        STA $09                   
-CODE_2AA243:        LDA.w DATA_2AA278,y               
-CODE_2AA246:        STA $0C                   
-CODE_2AA248:        STZ $04                   
-CODE_2AA24A:        SEP #$20                  
-CODE_2AA24C:        LDA.w DATA_2AA260,y               
-CODE_2AA24F:        STA $0F                   
-CODE_2AA251:        LDX $00                   
-CODE_2AA253:        LDY #$0000                
-CODE_2AA256:        LDA [$0C]                 
-CODE_2AA258:        STA $02                   
-CODE_2AA25A:        JSR CODE_2A8FA7           
-CODE_2AA25D:        SEP #$10                  
-CODE_2AA25F:        RTS                       
+CODE_2AA22D:        A0 06         LDY #$06                  
+CODE_2AA22F:        A9 2A         LDA #$2A                  
+CODE_2AA231:        85 08         STA $08                   
+CODE_2AA233:        85 0B         STA $0B                   
+CODE_2AA235:        85 0E         STA $0E                   
+CODE_2AA237:        C2 30         REP #$30                  
+CODE_2AA239:        B9 68 A2      LDA.w DATA_2AA268,y               
+CODE_2AA23C:        85 06         STA $06                   
+CODE_2AA23E:        B9 70 A2      LDA.w DATA_2AA270,y               
+CODE_2AA241:        85 09         STA $09                   
+CODE_2AA243:        B9 78 A2      LDA.w DATA_2AA278,y               
+CODE_2AA246:        85 0C         STA $0C                   
+CODE_2AA248:        64 04         STZ $04                   
+CODE_2AA24A:        E2 20         SEP #$20                  
+CODE_2AA24C:        B9 60 A2      LDA.w DATA_2AA260,y               
+CODE_2AA24F:        85 0F         STA $0F                   
+CODE_2AA251:        A6 00         LDX $00                   
+CODE_2AA253:        A0 00 00      LDY #$0000                
+CODE_2AA256:        A7 0C         LDA [$0C]                 
+CODE_2AA258:        85 02         STA $02                   
+CODE_2AA25A:        20 A7 8F      JSR CODE_2A8FA7           
+CODE_2AA25D:        E2 10         SEP #$10                  
+CODE_2AA25F:        60            RTS                       
 
 DATA_2AA260:        db $07,$00,$06,$00,$04,$00,$05,$00 ;
 
@@ -3976,229 +3976,229 @@ DATA_2AA278:        db $23,$A3,$2A,$A3,$30,$A3,$34,$A3 ;
                     db $07 ;
 
                   
-CODE_2AA339:        SEP #$10                  
-CODE_2AA33B:        JSR CODE_2AA38B           
-CODE_2AA33E:        LDX #$40                  
-CODE_2AA340:        LDA #$05                  
-CODE_2AA342:        STA $00                   
-CODE_2AA344:        LDA $00                   
-CODE_2AA346:        JSR CODE_2A8D25           
-CODE_2AA349:        INC A                     
-CODE_2AA34A:        INX                       
-CODE_2AA34B:        JSR CODE_2A8D25           
-CODE_2AA34E:        CMP #$0C                  
-CODE_2AA350:        BNE CODE_2AA349           
-CODE_2AA352:        INX                       
-CODE_2AA353:        TXA                       
-CODE_2AA354:        AND #$0F                  
-CODE_2AA356:        BNE CODE_2AA344           
-CODE_2AA358:        REP #$10                  
-CODE_2AA35A:        LDX #$0146                
-CODE_2AA35D:        LDA #$07                  
-CODE_2AA35F:        STA $00                   
-CODE_2AA361:        JSR CODE_2A8CD9           
-CODE_2AA364:        INC A                     
-CODE_2AA365:        INX                       
-CODE_2AA366:        JSR CODE_2A8CD9           
-CODE_2AA369:        INC A                     
-CODE_2AA36A:        INX                       
-CODE_2AA36B:        JSR CODE_2A8CD9           
-CODE_2AA36E:        INC A                     
-CODE_2AA36F:        INX                       
-CODE_2AA370:        JSR CODE_2A8CD9           
-CODE_2AA373:        SEP #$10                  
-CODE_2AA375:        LDY #$00                  
-CODE_2AA377:        LDA [$2B],y               
-CODE_2AA379:        CMP #$FF                  
-CODE_2AA37B:        BEQ CODE_2AA385           
-CODE_2AA37D:        JSR CODE_2A8E54           
-CODE_2AA380:        JSR (PNTR_2AA387,x)             
-CODE_2AA383:        BRA CODE_2AA375           
+CODE_2AA339:        E2 10         SEP #$10                  
+CODE_2AA33B:        20 8B A3      JSR CODE_2AA38B           
+CODE_2AA33E:        A2 40         LDX #$40                  
+CODE_2AA340:        A9 05         LDA #$05                  
+CODE_2AA342:        85 00         STA $00                   
+CODE_2AA344:        A5 00         LDA $00                   
+CODE_2AA346:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AA349:        1A            INC A                     
+CODE_2AA34A:        E8            INX                       
+CODE_2AA34B:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AA34E:        C9 0C         CMP #$0C                  
+CODE_2AA350:        D0 F7         BNE CODE_2AA349           
+CODE_2AA352:        E8            INX                       
+CODE_2AA353:        8A            TXA                       
+CODE_2AA354:        29 0F         AND #$0F                  
+CODE_2AA356:        D0 EC         BNE CODE_2AA344           
+CODE_2AA358:        C2 10         REP #$10                  
+CODE_2AA35A:        A2 46 01      LDX #$0146                
+CODE_2AA35D:        A9 07         LDA #$07                  
+CODE_2AA35F:        85 00         STA $00                   
+CODE_2AA361:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA364:        1A            INC A                     
+CODE_2AA365:        E8            INX                       
+CODE_2AA366:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA369:        1A            INC A                     
+CODE_2AA36A:        E8            INX                       
+CODE_2AA36B:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA36E:        1A            INC A                     
+CODE_2AA36F:        E8            INX                       
+CODE_2AA370:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA373:        E2 10         SEP #$10                  
+CODE_2AA375:        A0 00         LDY #$00                  
+CODE_2AA377:        B7 2B         LDA [$2B],y               
+CODE_2AA379:        C9 FF         CMP #$FF                  
+CODE_2AA37B:        F0 08         BEQ CODE_2AA385           
+CODE_2AA37D:        20 54 8E      JSR CODE_2A8E54           
+CODE_2AA380:        FC 87 A3      JSR (PNTR_2AA387,x)             
+CODE_2AA383:        80 F0         BRA CODE_2AA375           
 
-CODE_2AA385:        PLB                       
-CODE_2AA386:        RTL                       
+CODE_2AA385:        AB            PLB                       
+CODE_2AA386:        6B            RTL                       
 
 PNTR_2AA387:        dw CODE_2AA3E1              
                     dw CODE_2AA40E
 
-CODE_2AA38B:        LDX #$B0
-CODE_2AA38D:        LDA #$41                  ;
-CODE_2AA38F:        STA $00                   ;
-CODE_2AA391:        JSR CODE_2A9924           ;
-CODE_2AA394:        LDA #$01                  
-CODE_2AA396:        STA $00                   
-CODE_2AA398:        JSR CODE_2A9924           
-CODE_2AA39B:        INC $00                   
-CODE_2AA39D:        JSR CODE_2A9924           
-CODE_2AA3A0:        INC $00                   
-CODE_2AA3A2:        JSR CODE_2A9924           
-CODE_2AA3A5:        INC $00                   
-CODE_2AA3A7:        JSR CODE_2A9924           
-CODE_2AA3AA:        JSR CODE_2A9930           
-CODE_2AA3AD:        CPX #$50                  
-CODE_2AA3AF:        BNE CODE_2AA3AA           
-CODE_2AA3B1:        LDX #$50                  
-CODE_2AA3B3:        LDA #$0D                  
-CODE_2AA3B5:        STA $00                   
-CODE_2AA3B7:        LDA #$0E                  
-CODE_2AA3B9:        STA $01                   
-CODE_2AA3BB:        LDA #$0F                  
-CODE_2AA3BD:        STA $02                   
-CODE_2AA3BF:        LDA #$10                  
-CODE_2AA3C1:        STA $03                   
-CODE_2AA3C3:        LDA #$04                  
-CODE_2AA3C5:        STA $04                   
-CODE_2AA3C7:        JSR CODE_2A975C           
-CODE_2AA3CA:        LDA #$11                  
-CODE_2AA3CC:        STA $00                   
-CODE_2AA3CE:        LDA #$12                  
-CODE_2AA3D0:        STA $01                   
-CODE_2AA3D2:        LDA #$08                  
-CODE_2AA3D4:        STA $04                   
-CODE_2AA3D6:        JSR CODE_2A974B           
-CODE_2AA3D9:        LDA #$14                  
-CODE_2AA3DB:        STA $00                   
-CODE_2AA3DD:        JSR CODE_2A9930           
-CODE_2AA3E0:        RTS                       
+CODE_2AA38B:        A2 B0         LDX #$B0
+CODE_2AA38D:        A9 41         LDA #$41                  ;
+CODE_2AA38F:        85 00         STA $00                   ;
+CODE_2AA391:        20 24 99      JSR CODE_2A9924           ;
+CODE_2AA394:        A9 01         LDA #$01                  
+CODE_2AA396:        85 00         STA $00                   
+CODE_2AA398:        20 24 99      JSR CODE_2A9924           
+CODE_2AA39B:        E6 00         INC $00                   
+CODE_2AA39D:        20 24 99      JSR CODE_2A9924           
+CODE_2AA3A0:        E6 00         INC $00                   
+CODE_2AA3A2:        20 24 99      JSR CODE_2A9924           
+CODE_2AA3A5:        E6 00         INC $00                   
+CODE_2AA3A7:        20 24 99      JSR CODE_2A9924           
+CODE_2AA3AA:        20 30 99      JSR CODE_2A9930           
+CODE_2AA3AD:        E0 50         CPX #$50                  
+CODE_2AA3AF:        D0 F9         BNE CODE_2AA3AA           
+CODE_2AA3B1:        A2 50         LDX #$50                  
+CODE_2AA3B3:        A9 0D         LDA #$0D                  
+CODE_2AA3B5:        85 00         STA $00                   
+CODE_2AA3B7:        A9 0E         LDA #$0E                  
+CODE_2AA3B9:        85 01         STA $01                   
+CODE_2AA3BB:        A9 0F         LDA #$0F                  
+CODE_2AA3BD:        85 02         STA $02                   
+CODE_2AA3BF:        A9 10         LDA #$10                  
+CODE_2AA3C1:        85 03         STA $03                   
+CODE_2AA3C3:        A9 04         LDA #$04                  
+CODE_2AA3C5:        85 04         STA $04                   
+CODE_2AA3C7:        20 5C 97      JSR CODE_2A975C           
+CODE_2AA3CA:        A9 11         LDA #$11                  
+CODE_2AA3CC:        85 00         STA $00                   
+CODE_2AA3CE:        A9 12         LDA #$12                  
+CODE_2AA3D0:        85 01         STA $01                   
+CODE_2AA3D2:        A9 08         LDA #$08                  
+CODE_2AA3D4:        85 04         STA $04                   
+CODE_2AA3D6:        20 4B 97      JSR CODE_2A974B           
+CODE_2AA3D9:        A9 14         LDA #$14                  
+CODE_2AA3DB:        85 00         STA $00                   
+CODE_2AA3DD:        20 30 99      JSR CODE_2A9930           
+CODE_2AA3E0:        60            RTS                       
 
-CODE_2AA3E1:        REP #$10                  
-CODE_2AA3E3:        LDX $00                   
-CODE_2AA3E5:        LDA #$3B                  
-CODE_2AA3E7:        JSR CODE_2A8CD9           
-CODE_2AA3EA:        LDA #$3E                  
-CODE_2AA3EC:        JSR CODE_2A8CEE           
-CODE_2AA3EF:        DEC $D8                   
-CODE_2AA3F1:        BEQ CODE_2AA400           
-CODE_2AA3F3:        INX                       
-CODE_2AA3F4:        LDA #$3C                  
-CODE_2AA3F6:        JSR CODE_2A8CD9           
-CODE_2AA3F9:        LDA #$3F                  
-CODE_2AA3FB:        JSR CODE_2A8CEE           
-CODE_2AA3FE:        BRA CODE_2AA3EF           
+CODE_2AA3E1:        C2 10         REP #$10                  
+CODE_2AA3E3:        A6 00         LDX $00                   
+CODE_2AA3E5:        A9 3B         LDA #$3B                  
+CODE_2AA3E7:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA3EA:        A9 3E         LDA #$3E                  
+CODE_2AA3EC:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2AA3EF:        C6 D8         DEC $D8                   
+CODE_2AA3F1:        F0 0D         BEQ CODE_2AA400           
+CODE_2AA3F3:        E8            INX                       
+CODE_2AA3F4:        A9 3C         LDA #$3C                  
+CODE_2AA3F6:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA3F9:        A9 3F         LDA #$3F                  
+CODE_2AA3FB:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2AA3FE:        80 EF         BRA CODE_2AA3EF           
 
-CODE_2AA400:        INX                       
-CODE_2AA401:        LDA #$3D                  
-CODE_2AA403:        JSR CODE_2A8CD9           
-CODE_2AA406:        LDA #$40                  
-CODE_2AA408:        JSR CODE_2A8CEE           
-CODE_2AA40B:        SEP #$10                  
-CODE_2AA40D:        RTS                       
+CODE_2AA400:        E8            INX                       
+CODE_2AA401:        A9 3D         LDA #$3D                  
+CODE_2AA403:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA406:        A9 40         LDA #$40                  
+CODE_2AA408:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2AA40B:        E2 10         SEP #$10                  
+CODE_2AA40D:        60            RTS                       
 
-CODE_2AA40E:        REP #$10                  
-CODE_2AA410:        LDX $00                   
-CODE_2AA412:        LDA #$35                  
-CODE_2AA414:        JSR CODE_2A8CD9           
-CODE_2AA417:        LDA #$38                  
-CODE_2AA419:        JSR CODE_2A8CEE           
-CODE_2AA41C:        DEC $D8                   
-CODE_2AA41E:        BEQ CODE_2AA43C           
-CODE_2AA420:        INX                       
-CODE_2AA421:        TXA                       
-CODE_2AA422:        AND #$0F                  
-CODE_2AA424:        BNE CODE_2AA430           
-CODE_2AA426:        REP #$20                  
-CODE_2AA428:        TXA                       
-CODE_2AA429:        CLC                       
-CODE_2AA42A:        ADC #$01A0                
-CODE_2AA42D:        TAX                       
-CODE_2AA42E:        SEP #$20                  
-CODE_2AA430:        LDA #$36                  
-CODE_2AA432:        JSR CODE_2A8CD9           
-CODE_2AA435:        LDA #$39                  
-CODE_2AA437:        JSR CODE_2A8CEE           
-CODE_2AA43A:        BRA CODE_2AA41C           
+CODE_2AA40E:        C2 10         REP #$10                  
+CODE_2AA410:        A6 00         LDX $00                   
+CODE_2AA412:        A9 35         LDA #$35                  
+CODE_2AA414:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA417:        A9 38         LDA #$38                  
+CODE_2AA419:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2AA41C:        C6 D8         DEC $D8                   
+CODE_2AA41E:        F0 1C         BEQ CODE_2AA43C           
+CODE_2AA420:        E8            INX                       
+CODE_2AA421:        8A            TXA                       
+CODE_2AA422:        29 0F         AND #$0F                  
+CODE_2AA424:        D0 0A         BNE CODE_2AA430           
+CODE_2AA426:        C2 20         REP #$20                  
+CODE_2AA428:        8A            TXA                       
+CODE_2AA429:        18            CLC                       
+CODE_2AA42A:        69 A0 01      ADC #$01A0                
+CODE_2AA42D:        AA            TAX                       
+CODE_2AA42E:        E2 20         SEP #$20                  
+CODE_2AA430:        A9 36         LDA #$36                  
+CODE_2AA432:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA435:        A9 39         LDA #$39                  
+CODE_2AA437:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2AA43A:        80 E0         BRA CODE_2AA41C           
 
-CODE_2AA43C:        INX                       
-CODE_2AA43D:        LDA #$37                  
-CODE_2AA43F:        JSR CODE_2A8CD9           
-CODE_2AA442:        LDA #$3A                  
-CODE_2AA444:        JSR CODE_2A8CEE           
-CODE_2AA447:        SEP #$10                  
-CODE_2AA449:        RTS                       
+CODE_2AA43C:        E8            INX                       
+CODE_2AA43D:        A9 37         LDA #$37                  
+CODE_2AA43F:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA442:        A9 3A         LDA #$3A                  
+CODE_2AA444:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2AA447:        E2 10         SEP #$10                  
+CODE_2AA449:        60            RTS                       
 
-CODE_2AA44A:        SEP #$10                  
-CODE_2AA44C:        JSR CODE_2AA38B           
-CODE_2AA44F:        LDX #$50                  
-CODE_2AA451:        LDA #$0F                  
-CODE_2AA453:        STA $00                   
-CODE_2AA455:        LDA #$10                  
-CODE_2AA457:        STA $01                   
-CODE_2AA459:        LDA #$0D                  
-CODE_2AA45B:        STA $02                   
-CODE_2AA45D:        LDA #$0E                  
-CODE_2AA45F:        STA $03                   
-CODE_2AA461:        LDA #$04                  
-CODE_2AA463:        STA $04                   
-CODE_2AA465:        JSR CODE_2A975C           
-CODE_2AA468:        LDY #$00                  
-CODE_2AA46A:        LDA [$2B],y               
-CODE_2AA46C:        CMP #$FF                  
-CODE_2AA46E:        BEQ CODE_2AA478           
-CODE_2AA470:        JSR CODE_2A8E54           
-CODE_2AA473:        JSR (PNTR_2AA4F9,x)             
-CODE_2AA476:        BRA CODE_2AA468           
+CODE_2AA44A:        E2 10         SEP #$10                  
+CODE_2AA44C:        20 8B A3      JSR CODE_2AA38B           
+CODE_2AA44F:        A2 50         LDX #$50                  
+CODE_2AA451:        A9 0F         LDA #$0F                  
+CODE_2AA453:        85 00         STA $00                   
+CODE_2AA455:        A9 10         LDA #$10                  
+CODE_2AA457:        85 01         STA $01                   
+CODE_2AA459:        A9 0D         LDA #$0D                  
+CODE_2AA45B:        85 02         STA $02                   
+CODE_2AA45D:        A9 0E         LDA #$0E                  
+CODE_2AA45F:        85 03         STA $03                   
+CODE_2AA461:        A9 04         LDA #$04                  
+CODE_2AA463:        85 04         STA $04                   
+CODE_2AA465:        20 5C 97      JSR CODE_2A975C           
+CODE_2AA468:        A0 00         LDY #$00                  
+CODE_2AA46A:        B7 2B         LDA [$2B],y               
+CODE_2AA46C:        C9 FF         CMP #$FF                  
+CODE_2AA46E:        F0 08         BEQ CODE_2AA478           
+CODE_2AA470:        20 54 8E      JSR CODE_2A8E54           
+CODE_2AA473:        FC F9 A4      JSR (PNTR_2AA4F9,x)             
+CODE_2AA476:        80 F0         BRA CODE_2AA468           
 
-CODE_2AA478:        LDA $0350                 
-CODE_2AA47B:        CMP #$19                  
-CODE_2AA47D:        BNE CODE_2AA4F7           
-CODE_2AA47F:        LDA #$00                  
-CODE_2AA481:        XBA                       
-CODE_2AA482:        INC $034F                 
-CODE_2AA485:        REP #$10                  
-CODE_2AA487:        LDY #$0000                
-CODE_2AA48A:        LDX #$00B0                
-CODE_2AA48D:        LDA #$CF                  
-CODE_2AA48F:        MVN $7F, $7F                 
-CODE_2AA492:        LDA #$00                  
-CODE_2AA494:        XBA                       
-CODE_2AA495:        LDY #$01B0                
-CODE_2AA498:        LDX #$0260                
-CODE_2AA49B:        LDA #$CF                  
-CODE_2AA49D:        MVN $7F, $7F                 
-CODE_2AA4A0:        SEP #$10                  
-CODE_2AA4A2:        LDA #$42                  
-CODE_2AA4A4:        STA $00                   
-CODE_2AA4A6:        LDA #$43                  
-CODE_2AA4A8:        STA $01                   
-CODE_2AA4AA:        REP #$20                  
-CODE_2AA4AC:        PHB                       
-CODE_2AA4AD:        LDY #$7F                  
-CODE_2AA4AF:        PHY                       
-CODE_2AA4B0:        PLB                       
-CODE_2AA4B1:        LDY #$00                  
-CODE_2AA4B3:        LDX #$00                  
-CODE_2AA4B5:        LDA $00                   
-CODE_2AA4B7:        STA $00D0,x               
-CODE_2AA4BA:        STA $00F0,x               
-CODE_2AA4BD:        STA $0110,x               
-CODE_2AA4C0:        STA $0130,x               
-CODE_2AA4C3:        STA $0150,x               
-CODE_2AA4C6:        STA $0170,x               
-CODE_2AA4C9:        STA $0190,x               
-CODE_2AA4CC:        STA $0280,x               
-CODE_2AA4CF:        STA $02A0,x               
-CODE_2AA4D2:        STA $02C0,x               
-CODE_2AA4D5:        STA $02E0,x               
-CODE_2AA4D8:        STA $0300,x               
-CODE_2AA4DB:        STA $0320,x               
-CODE_2AA4DE:        STA $0340,x               
-CODE_2AA4E1:        INX                       
-CODE_2AA4E2:        INX                       
-CODE_2AA4E3:        TXA                       
-CODE_2AA4E4:        AND #$000F                
-CODE_2AA4E7:        BNE CODE_2AA4B5           
-CODE_2AA4E9:        TYA                       
-CODE_2AA4EA:        BNE CODE_2AA4F4           
-CODE_2AA4EC:        INY                       
-CODE_2AA4ED:        LDA $00                   
-CODE_2AA4EF:        XBA                       
-CODE_2AA4F0:        STA $00                   
-CODE_2AA4F2:        BRA CODE_2AA4B5           
+CODE_2AA478:        AD 50 03      LDA $0350                 
+CODE_2AA47B:        C9 19         CMP #$19                  
+CODE_2AA47D:        D0 78         BNE CODE_2AA4F7           
+CODE_2AA47F:        A9 00         LDA #$00                  
+CODE_2AA481:        EB            XBA                       
+CODE_2AA482:        EE 4F 03      INC $034F                 
+CODE_2AA485:        C2 10         REP #$10                  
+CODE_2AA487:        A0 00 00      LDY #$0000                
+CODE_2AA48A:        A2 B0 00      LDX #$00B0                
+CODE_2AA48D:        A9 CF         LDA #$CF                  
+CODE_2AA48F:        54 7F 7F      MVN $7F, $7F                 
+CODE_2AA492:        A9 00         LDA #$00                  
+CODE_2AA494:        EB            XBA                       
+CODE_2AA495:        A0 B0 01      LDY #$01B0                
+CODE_2AA498:        A2 60 02      LDX #$0260                
+CODE_2AA49B:        A9 CF         LDA #$CF                  
+CODE_2AA49D:        54 7F 7F      MVN $7F, $7F                 
+CODE_2AA4A0:        E2 10         SEP #$10                  
+CODE_2AA4A2:        A9 42         LDA #$42                  
+CODE_2AA4A4:        85 00         STA $00                   
+CODE_2AA4A6:        A9 43         LDA #$43                  
+CODE_2AA4A8:        85 01         STA $01                   
+CODE_2AA4AA:        C2 20         REP #$20                  
+CODE_2AA4AC:        8B            PHB                       
+CODE_2AA4AD:        A0 7F         LDY #$7F                  
+CODE_2AA4AF:        5A            PHY                       
+CODE_2AA4B0:        AB            PLB                       
+CODE_2AA4B1:        A0 00         LDY #$00                  
+CODE_2AA4B3:        A2 00         LDX #$00                  
+CODE_2AA4B5:        A5 00         LDA $00                   
+CODE_2AA4B7:        9D D0 00      STA $00D0,x               
+CODE_2AA4BA:        9D F0 00      STA $00F0,x               
+CODE_2AA4BD:        9D 10 01      STA $0110,x               
+CODE_2AA4C0:        9D 30 01      STA $0130,x               
+CODE_2AA4C3:        9D 50 01      STA $0150,x               
+CODE_2AA4C6:        9D 70 01      STA $0170,x               
+CODE_2AA4C9:        9D 90 01      STA $0190,x               
+CODE_2AA4CC:        9D 80 02      STA $0280,x               
+CODE_2AA4CF:        9D A0 02      STA $02A0,x               
+CODE_2AA4D2:        9D C0 02      STA $02C0,x               
+CODE_2AA4D5:        9D E0 02      STA $02E0,x               
+CODE_2AA4D8:        9D 00 03      STA $0300,x               
+CODE_2AA4DB:        9D 20 03      STA $0320,x               
+CODE_2AA4DE:        9D 40 03      STA $0340,x               
+CODE_2AA4E1:        E8            INX                       
+CODE_2AA4E2:        E8            INX                       
+CODE_2AA4E3:        8A            TXA                       
+CODE_2AA4E4:        29 0F 00      AND #$000F                
+CODE_2AA4E7:        D0 CC         BNE CODE_2AA4B5           
+CODE_2AA4E9:        98            TYA                       
+CODE_2AA4EA:        D0 08         BNE CODE_2AA4F4           
+CODE_2AA4EC:        C8            INY                       
+CODE_2AA4ED:        A5 00         LDA $00                   
+CODE_2AA4EF:        EB            XBA                       
+CODE_2AA4F0:        85 00         STA $00                   
+CODE_2AA4F2:        80 C1         BRA CODE_2AA4B5           
 
-CODE_2AA4F4:        PLB                       
-CODE_2AA4F5:        SEP #$20                  
-CODE_2AA4F7:        PLB                       
-CODE_2AA4F8:        RTL                       
+CODE_2AA4F4:        AB            PLB                       
+CODE_2AA4F5:        E2 20         SEP #$20                  
+CODE_2AA4F7:        AB            PLB                       
+CODE_2AA4F8:        6B            RTL                       
 
 PNTR_2AA4F9:        dw CODE_2AA3E1              
                     dw CODE_2AA40E
@@ -4207,239 +4207,239 @@ PNTR_2AA4F9:        dw CODE_2AA3E1
                     dw CODE_2AA600
                     dw CODE_2AA65A
 
-CODE_2AA505:        REP #$10                  ;
-CODE_2AA507:        STZ $02                   ;
-CODE_2AA509:        LDX $00                   ;
-CODE_2AA50B:        LDA $7F0000,x             ;
-CODE_2AA50F:        CMP #$04                  ;
-CODE_2AA511:        BNE CODE_2AA562           ;
-CODE_2AA513:        LDA $02                   ;
-CODE_2AA515:        STA $03                   ;
-CODE_2AA517:        LDA #$16                  ;
-CODE_2AA519:        JSR CODE_2A8CD9           ;
-CODE_2AA51C:        LDA $03                   ;
-CODE_2AA51E:        BEQ CODE_2AA532           ;
-CODE_2AA520:        INX                       ;               
-CODE_2AA521:        LDA #$18                  
-CODE_2AA523:        JSR CODE_2A8CD9           
-CODE_2AA526:        DEC $03                   
-CODE_2AA528:        BEQ CODE_2AA532           
-CODE_2AA52A:        INX                       
-CODE_2AA52B:        LDA #$1A                  
-CODE_2AA52D:        JSR CODE_2A8CD9           
-CODE_2AA530:        BRA CODE_2AA526           
+CODE_2AA505:        C2 10         REP #$10                  ;
+CODE_2AA507:        64 02         STZ $02                   ;
+CODE_2AA509:        A6 00         LDX $00                   ;
+CODE_2AA50B:        BF 00 00 7F   LDA $7F0000,x             ;
+CODE_2AA50F:        C9 04         CMP #$04                  ;
+CODE_2AA511:        D0 4F         BNE CODE_2AA562           ;
+CODE_2AA513:        A5 02         LDA $02                   ;
+CODE_2AA515:        85 03         STA $03                   ;
+CODE_2AA517:        A9 16         LDA #$16                  ;
+CODE_2AA519:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA51C:        A5 03         LDA $03                   ;
+CODE_2AA51E:        F0 12         BEQ CODE_2AA532           ;
+CODE_2AA520:        E8            INX                       ;               
+CODE_2AA521:        A9 18         LDA #$18                  
+CODE_2AA523:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA526:        C6 03         DEC $03                   
+CODE_2AA528:        F0 08         BEQ CODE_2AA532           
+CODE_2AA52A:        E8            INX                       
+CODE_2AA52B:        A9 1A         LDA #$1A                  
+CODE_2AA52D:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA530:        80 F4         BRA CODE_2AA526           
 
-CODE_2AA532:        LDA $02                   
-CODE_2AA534:        STA $03                   
-CODE_2AA536:        LDA $03                   
-CODE_2AA538:        BEQ CODE_2AA54C           
-CODE_2AA53A:        DEC $03                   
-CODE_2AA53C:        BEQ CODE_2AA546           
-CODE_2AA53E:        INX                       
-CODE_2AA53F:        LDA #$1B                  
-CODE_2AA541:        JSR CODE_2A8CD9           
-CODE_2AA544:        BRA CODE_2AA536           
+CODE_2AA532:        A5 02         LDA $02                   
+CODE_2AA534:        85 03         STA $03                   
+CODE_2AA536:        A5 03         LDA $03                   
+CODE_2AA538:        F0 12         BEQ CODE_2AA54C           
+CODE_2AA53A:        C6 03         DEC $03                   
+CODE_2AA53C:        F0 08         BEQ CODE_2AA546           
+CODE_2AA53E:        E8            INX                       
+CODE_2AA53F:        A9 1B         LDA #$1B                  
+CODE_2AA541:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA544:        80 F0         BRA CODE_2AA536           
 
-CODE_2AA546:        INX                       
-CODE_2AA547:        LDA #$19                  
-CODE_2AA549:        JSR CODE_2A8CD9           
-CODE_2AA54C:        INX                       
-CODE_2AA54D:        LDA #$17                  
-CODE_2AA54F:        JSR CODE_2A8CD9           
-CODE_2AA552:        INC $02                   
-CODE_2AA554:        REP #$20                  
-CODE_2AA556:        LDA $00                   
-CODE_2AA558:        CLC                       
-CODE_2AA559:        ADC #$000F                
-CODE_2AA55C:        STA $00                   
-CODE_2AA55E:        SEP #$20                  
-CODE_2AA560:        BRA CODE_2AA509           
+CODE_2AA546:        E8            INX                       
+CODE_2AA547:        A9 19         LDA #$19                  
+CODE_2AA549:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA54C:        E8            INX                       
+CODE_2AA54D:        A9 17         LDA #$17                  
+CODE_2AA54F:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA552:        E6 02         INC $02                   
+CODE_2AA554:        C2 20         REP #$20                  
+CODE_2AA556:        A5 00         LDA $00                   
+CODE_2AA558:        18            CLC                       
+CODE_2AA559:        69 0F 00      ADC #$000F                
+CODE_2AA55C:        85 00         STA $00                   
+CODE_2AA55E:        E2 20         SEP #$20                  
+CODE_2AA560:        80 A7         BRA CODE_2AA509           
 
-CODE_2AA562:        INX                       
-CODE_2AA563:        LDA #$2D                  
-CODE_2AA565:        STA $02                   
-CODE_2AA567:        LDA $7EFFF0,x             
-CODE_2AA56B:        CMP #$1B                  
-CODE_2AA56D:        BEQ CODE_2AA57F           
-CODE_2AA56F:        LDA $02                   
-CODE_2AA571:        JSR CODE_2A8CD9           
-CODE_2AA574:        INX                       
-CODE_2AA575:        INC $02                   
-CODE_2AA577:        LDA $02                   
-CODE_2AA579:        CMP #$31                  
-CODE_2AA57B:        BEQ CODE_2AA563           
-CODE_2AA57D:        BRA CODE_2AA567           
+CODE_2AA562:        E8            INX                       
+CODE_2AA563:        A9 2D         LDA #$2D                  
+CODE_2AA565:        85 02         STA $02                   
+CODE_2AA567:        BF F0 FF 7E   LDA $7EFFF0,x             
+CODE_2AA56B:        C9 1B         CMP #$1B                  
+CODE_2AA56D:        F0 10         BEQ CODE_2AA57F           
+CODE_2AA56F:        A5 02         LDA $02                   
+CODE_2AA571:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA574:        E8            INX                       
+CODE_2AA575:        E6 02         INC $02                   
+CODE_2AA577:        A5 02         LDA $02                   
+CODE_2AA579:        C9 31         CMP #$31                  
+CODE_2AA57B:        F0 E6         BEQ CODE_2AA563           
+CODE_2AA57D:        80 E8         BRA CODE_2AA567           
 
-CODE_2AA57F:        LDA $02                   
-CODE_2AA581:        CLC                       
-CODE_2AA582:        ADC #$06                  
-CODE_2AA584:        CMP #$35                  
-CODE_2AA586:        BNE CODE_2AA58A           
-CODE_2AA588:        LDA #$31                  
-CODE_2AA58A:        STA $02                   
-CODE_2AA58C:        LDA $7EFFF0,x             
-CODE_2AA590:        CMP #$04                  
-CODE_2AA592:        BEQ CODE_2AA5A8           
-CODE_2AA594:        LDA $02                   
-CODE_2AA596:        JSR CODE_2A8CD9           
-CODE_2AA599:        INX                       
-CODE_2AA59A:        INC $02                   
-CODE_2AA59C:        LDA $02                   
-CODE_2AA59E:        CMP #$35                  
-CODE_2AA5A0:        BNE CODE_2AA58C           
-CODE_2AA5A2:        LDA #$31                  
-CODE_2AA5A4:        STA $02                   
-CODE_2AA5A6:        BRA CODE_2AA58C           
+CODE_2AA57F:        A5 02         LDA $02                   
+CODE_2AA581:        18            CLC                       
+CODE_2AA582:        69 06         ADC #$06                  
+CODE_2AA584:        C9 35         CMP #$35                  
+CODE_2AA586:        D0 02         BNE CODE_2AA58A           
+CODE_2AA588:        A9 31         LDA #$31                  
+CODE_2AA58A:        85 02         STA $02                   
+CODE_2AA58C:        BF F0 FF 7E   LDA $7EFFF0,x             
+CODE_2AA590:        C9 04         CMP #$04                  
+CODE_2AA592:        F0 14         BEQ CODE_2AA5A8           
+CODE_2AA594:        A5 02         LDA $02                   
+CODE_2AA596:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA599:        E8            INX                       
+CODE_2AA59A:        E6 02         INC $02                   
+CODE_2AA59C:        A5 02         LDA $02                   
+CODE_2AA59E:        C9 35         CMP #$35                  
+CODE_2AA5A0:        D0 EA         BNE CODE_2AA58C           
+CODE_2AA5A2:        A9 31         LDA #$31                  
+CODE_2AA5A4:        85 02         STA $02                   
+CODE_2AA5A6:        80 E4         BRA CODE_2AA58C           
 
-CODE_2AA5A8:        SEP #$10                  
-CODE_2AA5AA:        RTS                       
+CODE_2AA5A8:        E2 10         SEP #$10                  
+CODE_2AA5AA:        60            RTS                       
 
-CODE_2AA5AB:        REP #$10                  
-CODE_2AA5AD:        REP #$20                  
-CODE_2AA5AF:        LDA $DA                   
-CODE_2AA5B1:        ASL A                     
-CODE_2AA5B2:        TAY                       
-CODE_2AA5B3:        LDA.w DATA_2AA5EE,y               
-CODE_2AA5B6:        STA $02                   
-CODE_2AA5B8:        SEP #$20                  
-CODE_2AA5BA:        LDX $00                   
-CODE_2AA5BC:        LDA ($02)                 
-CODE_2AA5BE:        BMI CODE_2AA5EB           
-CODE_2AA5C0:        JSR CODE_2A8CD9           
-CODE_2AA5C3:        REP #$20                  
-CODE_2AA5C5:        INC $02                   
-CODE_2AA5C7:        SEP #$20                  
-CODE_2AA5C9:        INX                       
-CODE_2AA5CA:        TXA                       
-CODE_2AA5CB:        AND #$0F                  
-CODE_2AA5CD:        BNE CODE_2AA5BC           
-CODE_2AA5CF:        LDA $DA                   
-CODE_2AA5D1:        BNE CODE_2AA5DF           
-CODE_2AA5D3:        REP #$20                  
-CODE_2AA5D5:        TXA                       
-CODE_2AA5D6:        CLC                       
-CODE_2AA5D7:        ADC #$01A0                
-CODE_2AA5DA:        TAX                       
-CODE_2AA5DB:        SEP #$20                  
-CODE_2AA5DD:        BRA CODE_2AA5BC           
+CODE_2AA5AB:        C2 10         REP #$10                  
+CODE_2AA5AD:        C2 20         REP #$20                  
+CODE_2AA5AF:        A5 DA         LDA $DA                   
+CODE_2AA5B1:        0A            ASL A                     
+CODE_2AA5B2:        A8            TAY                       
+CODE_2AA5B3:        B9 EE A5      LDA.w DATA_2AA5EE,y               
+CODE_2AA5B6:        85 02         STA $02                   
+CODE_2AA5B8:        E2 20         SEP #$20                  
+CODE_2AA5BA:        A6 00         LDX $00                   
+CODE_2AA5BC:        B2 02         LDA ($02)                 
+CODE_2AA5BE:        30 2B         BMI CODE_2AA5EB           
+CODE_2AA5C0:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA5C3:        C2 20         REP #$20                  
+CODE_2AA5C5:        E6 02         INC $02                   
+CODE_2AA5C7:        E2 20         SEP #$20                  
+CODE_2AA5C9:        E8            INX                       
+CODE_2AA5CA:        8A            TXA                       
+CODE_2AA5CB:        29 0F         AND #$0F                  
+CODE_2AA5CD:        D0 ED         BNE CODE_2AA5BC           
+CODE_2AA5CF:        A5 DA         LDA $DA                   
+CODE_2AA5D1:        D0 0C         BNE CODE_2AA5DF           
+CODE_2AA5D3:        C2 20         REP #$20                  
+CODE_2AA5D5:        8A            TXA                       
+CODE_2AA5D6:        18            CLC                       
+CODE_2AA5D7:        69 A0 01      ADC #$01A0                
+CODE_2AA5DA:        AA            TAX                       
+CODE_2AA5DB:        E2 20         SEP #$20                  
+CODE_2AA5DD:        80 DD         BRA CODE_2AA5BC           
 
-CODE_2AA5DF:        REP #$20                  
-CODE_2AA5E1:        TXA                       
-CODE_2AA5E2:        SEC                       
-CODE_2AA5E3:        SBC #$01C0                
-CODE_2AA5E6:        TAX                       
-CODE_2AA5E7:        SEP #$20                  
-CODE_2AA5E9:        BRA CODE_2AA5BC           
+CODE_2AA5DF:        C2 20         REP #$20                  
+CODE_2AA5E1:        8A            TXA                       
+CODE_2AA5E2:        38            SEC                       
+CODE_2AA5E3:        E9 C0 01      SBC #$01C0                
+CODE_2AA5E6:        AA            TAX                       
+CODE_2AA5E7:        E2 20         SEP #$20                  
+CODE_2AA5E9:        80 D1         BRA CODE_2AA5BC           
 
-CODE_2AA5EB:        SEP #$10                  
-CODE_2AA5ED:        RTS                       
+CODE_2AA5EB:        E2 10         SEP #$10                  
+CODE_2AA5ED:        60            RTS                       
 
      
 DATA_2AA5EE:        db $F2,$A5,$FB,$A5,$26,$27,$2B,$2C
                     db $09,$0A,$0B,$0C,$FF,$26,$27,$28
                     db $29,$FF
 
-CODE_2AA600:        REP #$10                  
-CODE_2AA602:        LDX $00                   
-CODE_2AA604:        LDA #$1C                  
-CODE_2AA606:        JSR CODE_2A8CD9           
-CODE_2AA609:        REP #$20                  
-CODE_2AA60B:        LDA $00                   
-CODE_2AA60D:        CLC                       
-CODE_2AA60E:        ADC #$000F                
-CODE_2AA611:        STA $00                   
-CODE_2AA613:        TAX                       
-CODE_2AA614:        SEP #$20                  
-CODE_2AA616:        LDA $7F0000,x             
-CODE_2AA61A:        CMP #$19                  
-CODE_2AA61C:        BEQ CODE_2AA651           
-CODE_2AA61E:        LDA #$1D                  
-CODE_2AA620:        JSR CODE_2A8CD9           
-CODE_2AA623:        INX                       
-CODE_2AA624:        TXA                       
-CODE_2AA625:        AND #$0F                  
-CODE_2AA627:        BNE CODE_2AA633           
-CODE_2AA629:        REP #$20                  
-CODE_2AA62B:        TXA                       
-CODE_2AA62C:        SEC                       
-CODE_2AA62D:        SBC #$01C0                
-CODE_2AA630:        TAX                       
-CODE_2AA631:        SEP #$20                  
-CODE_2AA633:        LDA $7EFFF0,x             
-CODE_2AA637:        CMP #$04                  
-CODE_2AA639:        BEQ CODE_2AA642           
-CODE_2AA63B:        LDA #$1E                  
-CODE_2AA63D:        JSR CODE_2A8CD9           
-CODE_2AA640:        BRA CODE_2AA623           
+CODE_2AA600:        C2 10         REP #$10                  
+CODE_2AA602:        A6 00         LDX $00                   
+CODE_2AA604:        A9 1C         LDA #$1C                  
+CODE_2AA606:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA609:        C2 20         REP #$20                  
+CODE_2AA60B:        A5 00         LDA $00                   
+CODE_2AA60D:        18            CLC                       
+CODE_2AA60E:        69 0F 00      ADC #$000F                
+CODE_2AA611:        85 00         STA $00                   
+CODE_2AA613:        AA            TAX                       
+CODE_2AA614:        E2 20         SEP #$20                  
+CODE_2AA616:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2AA61A:        C9 19         CMP #$19                  
+CODE_2AA61C:        F0 33         BEQ CODE_2AA651           
+CODE_2AA61E:        A9 1D         LDA #$1D                  
+CODE_2AA620:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA623:        E8            INX                       
+CODE_2AA624:        8A            TXA                       
+CODE_2AA625:        29 0F         AND #$0F                  
+CODE_2AA627:        D0 0A         BNE CODE_2AA633           
+CODE_2AA629:        C2 20         REP #$20                  
+CODE_2AA62B:        8A            TXA                       
+CODE_2AA62C:        38            SEC                       
+CODE_2AA62D:        E9 C0 01      SBC #$01C0                
+CODE_2AA630:        AA            TAX                       
+CODE_2AA631:        E2 20         SEP #$20                  
+CODE_2AA633:        BF F0 FF 7E   LDA $7EFFF0,x             
+CODE_2AA637:        C9 04         CMP #$04                  
+CODE_2AA639:        F0 07         BEQ CODE_2AA642           
+CODE_2AA63B:        A9 1E         LDA #$1E                  
+CODE_2AA63D:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA640:        80 E1         BRA CODE_2AA623           
 
-CODE_2AA642:        LDA $7F0000,x             
-CODE_2AA646:        CMP #$04                  
-CODE_2AA648:        BNE CODE_2AA609           
-CODE_2AA64A:        LDA #$1F                  
-CODE_2AA64C:        JSR CODE_2A8CD9           
-CODE_2AA64F:        BRA CODE_2AA609           
+CODE_2AA642:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2AA646:        C9 04         CMP #$04                  
+CODE_2AA648:        D0 BF         BNE CODE_2AA609           
+CODE_2AA64A:        A9 1F         LDA #$1F                  
+CODE_2AA64C:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA64F:        80 B8         BRA CODE_2AA609           
 
-CODE_2AA651:        INX                       
-CODE_2AA652:        LDA #$25                  
-CODE_2AA654:        JSR CODE_2A8CD9           
-CODE_2AA657:        SEP #$10                  
-CODE_2AA659:        RTS                       
+CODE_2AA651:        E8            INX                       
+CODE_2AA652:        A9 25         LDA #$25                  
+CODE_2AA654:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA657:        E2 10         SEP #$10                  
+CODE_2AA659:        60            RTS                       
 
-CODE_2AA65A:        REP #$10                  
-CODE_2AA65C:        LDX $00                   
-CODE_2AA65E:        LDA #$20                  
-CODE_2AA660:        JSR CODE_2A8CD9           
-CODE_2AA663:        INX                       
-CODE_2AA664:        LDA #$21                  
-CODE_2AA666:        JSR CODE_2A8CD9           
-CODE_2AA669:        REP #$20                  
-CODE_2AA66B:        LDA $00                   
-CODE_2AA66D:        CLC                       
-CODE_2AA66E:        ADC #$000F                
-CODE_2AA671:        STA $00                   
-CODE_2AA673:        TAX                       
-CODE_2AA674:        SEP #$20                  
-CODE_2AA676:        LDA #$22                  
-CODE_2AA678:        JSR CODE_2A8CD9           
-CODE_2AA67B:        INX                       
-CODE_2AA67C:        LDA #$23                  
-CODE_2AA67E:        JSR CODE_2A8CD9           
-CODE_2AA681:        INX                       
-CODE_2AA682:        LDA #$24                  
-CODE_2AA684:        JSR CODE_2A8CD9           
-CODE_2AA687:        REP #$20                  
-CODE_2AA689:        LDA $00                   
-CODE_2AA68B:        CLC                       
-CODE_2AA68C:        ADC #$0011                
-CODE_2AA68F:        TAX                       
-CODE_2AA690:        SEP #$20                  
-CODE_2AA692:        LDA #$2A                  
-CODE_2AA694:        JSR CODE_2A8CD9           
-CODE_2AA697:        SEP #$10                  
-CODE_2AA699:        RTS                       
+CODE_2AA65A:        C2 10         REP #$10                  
+CODE_2AA65C:        A6 00         LDX $00                   
+CODE_2AA65E:        A9 20         LDA #$20                  
+CODE_2AA660:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA663:        E8            INX                       
+CODE_2AA664:        A9 21         LDA #$21                  
+CODE_2AA666:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA669:        C2 20         REP #$20                  
+CODE_2AA66B:        A5 00         LDA $00                   
+CODE_2AA66D:        18            CLC                       
+CODE_2AA66E:        69 0F 00      ADC #$000F                
+CODE_2AA671:        85 00         STA $00                   
+CODE_2AA673:        AA            TAX                       
+CODE_2AA674:        E2 20         SEP #$20                  
+CODE_2AA676:        A9 22         LDA #$22                  
+CODE_2AA678:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA67B:        E8            INX                       
+CODE_2AA67C:        A9 23         LDA #$23                  
+CODE_2AA67E:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA681:        E8            INX                       
+CODE_2AA682:        A9 24         LDA #$24                  
+CODE_2AA684:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA687:        C2 20         REP #$20                  
+CODE_2AA689:        A5 00         LDA $00                   
+CODE_2AA68B:        18            CLC                       
+CODE_2AA68C:        69 11 00      ADC #$0011                
+CODE_2AA68F:        AA            TAX                       
+CODE_2AA690:        E2 20         SEP #$20                  
+CODE_2AA692:        A9 2A         LDA #$2A                  
+CODE_2AA694:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA697:        E2 10         SEP #$10                  
+CODE_2AA699:        60            RTS                       
 
-CODE_2AA69A:        SEP #$10                  
-CODE_2AA69C:        LDA $0727                 
-CODE_2AA69F:        CMP #$05                  
-CODE_2AA6A1:        BNE CODE_2AA6A8           
-CODE_2AA6A3:        LDA #$12                  
-CODE_2AA6A5:        STA $02C5                 
-CODE_2AA6A8:        LDX #$40                  
-CODE_2AA6AA:        LDA #$28                  
-CODE_2AA6AC:        STA $00                   
-CODE_2AA6AE:        JSR CODE_2A9930           
-CODE_2AA6B1:        CPX #$80                  
-CODE_2AA6B3:        BNE CODE_2AA6AE           
-CODE_2AA6B5:        LDY #$00                  
-CODE_2AA6B7:        LDA [$2B],y               
-CODE_2AA6B9:        CMP #$FF                  
-CODE_2AA6BB:        BEQ CODE_2AA6C5           
-CODE_2AA6BD:        JSR CODE_2A8E54           
-CODE_2AA6C0:        JSR (PNTR_2AA6C7,x)             
-CODE_2AA6C3:        BRA CODE_2AA6B5           
+CODE_2AA69A:        E2 10         SEP #$10                  
+CODE_2AA69C:        AD 27 07      LDA $0727                 
+CODE_2AA69F:        C9 05         CMP #$05                  
+CODE_2AA6A1:        D0 05         BNE CODE_2AA6A8           
+CODE_2AA6A3:        A9 12         LDA #$12                  
+CODE_2AA6A5:        8D C5 02      STA $02C5                 
+CODE_2AA6A8:        A2 40         LDX #$40                  
+CODE_2AA6AA:        A9 28         LDA #$28                  
+CODE_2AA6AC:        85 00         STA $00                   
+CODE_2AA6AE:        20 30 99      JSR CODE_2A9930           
+CODE_2AA6B1:        E0 80         CPX #$80                  
+CODE_2AA6B3:        D0 F9         BNE CODE_2AA6AE           
+CODE_2AA6B5:        A0 00         LDY #$00                  
+CODE_2AA6B7:        B7 2B         LDA [$2B],y               
+CODE_2AA6B9:        C9 FF         CMP #$FF                  
+CODE_2AA6BB:        F0 08         BEQ CODE_2AA6C5           
+CODE_2AA6BD:        20 54 8E      JSR CODE_2A8E54           
+CODE_2AA6C0:        FC C7 A6      JSR (PNTR_2AA6C7,x)             
+CODE_2AA6C3:        80 F0         BRA CODE_2AA6B5           
 
-CODE_2AA6C5:        PLB                       
-CODE_2AA6C6:        RTL                       
+CODE_2AA6C5:        AB            PLB                       
+CODE_2AA6C6:        6B            RTL                       
 
 PNTR_2AA6C7:        dw CODE_2AA6D7
                     dw CODE_2AA755
@@ -4450,334 +4450,334 @@ PNTR_2AA6C7:        dw CODE_2AA6D7
                     dw CODE_2AA932
                     dw CODE_2AA938
 
-CODE_2AA6D7:        REP #$10                  ;
-CODE_2AA6D9:        LDX $00                   ;
-CODE_2AA6DB:        LDA $7F0000,x             ;
-CODE_2AA6DF:        BNE CODE_2AA6E5           ;
-CODE_2AA6E1:        LDA #$05                  ;
-CODE_2AA6E3:        BRA CODE_2AA6E7           ;
+CODE_2AA6D7:        C2 10         REP #$10                  ;
+CODE_2AA6D9:        A6 00         LDX $00                   ;
+CODE_2AA6DB:        BF 00 00 7F   LDA $7F0000,x             ;
+CODE_2AA6DF:        D0 04         BNE CODE_2AA6E5           ;
+CODE_2AA6E1:        A9 05         LDA #$05                  ;
+CODE_2AA6E3:        80 02         BRA CODE_2AA6E7           ;
 
-CODE_2AA6E5:        LDA #$0C                  ;
-CODE_2AA6E7:        JSR CODE_2A8CD9           ;
-CODE_2AA6EA:        INX                       ;
-CODE_2AA6EB:        TXA                       ;
-CODE_2AA6EC:        AND #$0F                  ;
-CODE_2AA6EE:        BNE CODE_2AA6FA           ;
-CODE_2AA6F0:        REP #$20                  ;
-CODE_2AA6F2:        TXA                       
-CODE_2AA6F3:        CLC                       
-CODE_2AA6F4:        ADC #$01A0                
-CODE_2AA6F7:        TAX                       
-CODE_2AA6F8:        SEP #$20                  
-CODE_2AA6FA:        LDA $7F0000,x             
-CODE_2AA6FE:        BNE CODE_2AA704           
-CODE_2AA700:        LDA #$2E                  
-CODE_2AA702:        BRA CODE_2AA706           
+CODE_2AA6E5:        A9 0C         LDA #$0C                  ;
+CODE_2AA6E7:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA6EA:        E8            INX                       ;
+CODE_2AA6EB:        8A            TXA                       ;
+CODE_2AA6EC:        29 0F         AND #$0F                  ;
+CODE_2AA6EE:        D0 0A         BNE CODE_2AA6FA           ;
+CODE_2AA6F0:        C2 20         REP #$20                  ;
+CODE_2AA6F2:        8A            TXA                       
+CODE_2AA6F3:        18            CLC                       
+CODE_2AA6F4:        69 A0 01      ADC #$01A0                
+CODE_2AA6F7:        AA            TAX                       
+CODE_2AA6F8:        E2 20         SEP #$20                  
+CODE_2AA6FA:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2AA6FE:        D0 04         BNE CODE_2AA704           
+CODE_2AA700:        A9 2E         LDA #$2E                  
+CODE_2AA702:        80 02         BRA CODE_2AA706           
 
-CODE_2AA704:        LDA #$0B                  
-CODE_2AA706:        JSR CODE_2A8CD9           
-CODE_2AA709:        REP #$20                  
-CODE_2AA70B:        LDA $00                   
-CODE_2AA70D:        CLC                       
-CODE_2AA70E:        ADC #$0010                
-CODE_2AA711:        STA $00                   
-CODE_2AA713:        TAX                       
-CODE_2AA714:        SEP #$20                  
-CODE_2AA716:        DEC $D8                   
-CODE_2AA718:        BEQ CODE_2AA736           
-CODE_2AA71A:        LDA #$19                  
-CODE_2AA71C:        JSR CODE_2A8CD9           
-CODE_2AA71F:        INX                       
-CODE_2AA720:        TXA                       
-CODE_2AA721:        AND #$0F                  
-CODE_2AA723:        BNE CODE_2AA72F           
-CODE_2AA725:        REP #$20                  
-CODE_2AA727:        TXA                       
-CODE_2AA728:        CLC                       
-CODE_2AA729:        ADC #$01A0                
-CODE_2AA72C:        TAX                       
-CODE_2AA72D:        SEP #$20                  
-CODE_2AA72F:        LDA #$06                  
-CODE_2AA731:        JSR CODE_2A8CD9           
-CODE_2AA734:        BRA CODE_2AA709           
+CODE_2AA704:        A9 0B         LDA #$0B                  
+CODE_2AA706:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA709:        C2 20         REP #$20                  
+CODE_2AA70B:        A5 00         LDA $00                   
+CODE_2AA70D:        18            CLC                       
+CODE_2AA70E:        69 10 00      ADC #$0010                
+CODE_2AA711:        85 00         STA $00                   
+CODE_2AA713:        AA            TAX                       
+CODE_2AA714:        E2 20         SEP #$20                  
+CODE_2AA716:        C6 D8         DEC $D8                   
+CODE_2AA718:        F0 1C         BEQ CODE_2AA736           
+CODE_2AA71A:        A9 19         LDA #$19                  
+CODE_2AA71C:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA71F:        E8            INX                       
+CODE_2AA720:        8A            TXA                       
+CODE_2AA721:        29 0F         AND #$0F                  
+CODE_2AA723:        D0 0A         BNE CODE_2AA72F           
+CODE_2AA725:        C2 20         REP #$20                  
+CODE_2AA727:        8A            TXA                       
+CODE_2AA728:        18            CLC                       
+CODE_2AA729:        69 A0 01      ADC #$01A0                
+CODE_2AA72C:        AA            TAX                       
+CODE_2AA72D:        E2 20         SEP #$20                  
+CODE_2AA72F:        A9 06         LDA #$06                  
+CODE_2AA731:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA734:        80 D3         BRA CODE_2AA709           
 
-CODE_2AA736:        LDA $DA                   
-CODE_2AA738:        BEQ CODE_2AA747           
-CODE_2AA73A:        LDA #$1E                  
-CODE_2AA73C:        JSR CODE_2A8CD9           
-CODE_2AA73F:        INX                       
-CODE_2AA740:        LDA #$1F                  
-CODE_2AA742:        JSR CODE_2A8CD9           
-CODE_2AA745:        BRA CODE_2AA752           
+CODE_2AA736:        A5 DA         LDA $DA                   
+CODE_2AA738:        F0 0D         BEQ CODE_2AA747           
+CODE_2AA73A:        A9 1E         LDA #$1E                  
+CODE_2AA73C:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA73F:        E8            INX                       
+CODE_2AA740:        A9 1F         LDA #$1F                  
+CODE_2AA742:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA745:        80 0B         BRA CODE_2AA752           
 
-CODE_2AA747:        LDA #$26                  
-CODE_2AA749:        JSR CODE_2A8CD9           
-CODE_2AA74C:        INX                       
-CODE_2AA74D:        LDA #$27                  
-CODE_2AA74F:        JSR CODE_2A8CD9           
-CODE_2AA752:        SEP #$10                  
-CODE_2AA754:        RTS                       
+CODE_2AA747:        A9 26         LDA #$26                  
+CODE_2AA749:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA74C:        E8            INX                       
+CODE_2AA74D:        A9 27         LDA #$27                  
+CODE_2AA74F:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA752:        E2 10         SEP #$10                  
+CODE_2AA754:        60            RTS                       
 
-CODE_2AA755:        REP #$10                  
-CODE_2AA757:        LDA $D8                   
-CODE_2AA759:        STA $DA                   
-CODE_2AA75B:        LDX $00                   
-CODE_2AA75D:        LDY #$0001                
-CODE_2AA760:        LDA #$19                  
-CODE_2AA762:        STA $02                   
-CODE_2AA764:        JSR CODE_2AA879           
-CODE_2AA767:        JSR CODE_2A8CD9           
-CODE_2AA76A:        DEC $DA                   
-CODE_2AA76C:        JSR CODE_2AA86E           
-CODE_2AA76F:        LDY #$0007                
-CODE_2AA772:        JSR CODE_2AA88F           
-CODE_2AA775:        JSR CODE_2A8CD9           
-CODE_2AA778:        DEC $DA                   
-CODE_2AA77A:        LDA #$13                  
-CODE_2AA77C:        STA $02                   
-CODE_2AA77E:        JSR CODE_2AA861           
-CODE_2AA781:        JSR CODE_2AA86E           
-CODE_2AA784:        LDA #$22                  
-CODE_2AA786:        JSR CODE_2A8CD9           
-CODE_2AA789:        LDA $D8                   
-CODE_2AA78B:        STA $DA                   
-CODE_2AA78D:        REP #$20                  
-CODE_2AA78F:        INC $00                   
-CODE_2AA791:        SEP #$20                  
-CODE_2AA793:        LDA $00                   
-CODE_2AA795:        AND #$0F                  
-CODE_2AA797:        BNE CODE_2AA7AA           
-CODE_2AA799:        REP #$20                  
-CODE_2AA79B:        LDA $00                   
-CODE_2AA79D:        SEC                       
-CODE_2AA79E:        SBC #$01C0                
-CODE_2AA7A1:        STA $00                   
-CODE_2AA7A3:        TAX                       
-CODE_2AA7A4:        SEP #$20                  
-CODE_2AA7A6:        LDA #$0E                  
-CODE_2AA7A8:        BRA CODE_2AA7B6           
+CODE_2AA755:        C2 10         REP #$10                  
+CODE_2AA757:        A5 D8         LDA $D8                   
+CODE_2AA759:        85 DA         STA $DA                   
+CODE_2AA75B:        A6 00         LDX $00                   
+CODE_2AA75D:        A0 01 00      LDY #$0001                
+CODE_2AA760:        A9 19         LDA #$19                  
+CODE_2AA762:        85 02         STA $02                   
+CODE_2AA764:        20 79 A8      JSR CODE_2AA879           
+CODE_2AA767:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA76A:        C6 DA         DEC $DA                   
+CODE_2AA76C:        20 6E A8      JSR CODE_2AA86E           
+CODE_2AA76F:        A0 07 00      LDY #$0007                
+CODE_2AA772:        20 8F A8      JSR CODE_2AA88F           
+CODE_2AA775:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA778:        C6 DA         DEC $DA                   
+CODE_2AA77A:        A9 13         LDA #$13                  
+CODE_2AA77C:        85 02         STA $02                   
+CODE_2AA77E:        20 61 A8      JSR CODE_2AA861           
+CODE_2AA781:        20 6E A8      JSR CODE_2AA86E           
+CODE_2AA784:        A9 22         LDA #$22                  
+CODE_2AA786:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA789:        A5 D8         LDA $D8                   
+CODE_2AA78B:        85 DA         STA $DA                   
+CODE_2AA78D:        C2 20         REP #$20                  
+CODE_2AA78F:        E6 00         INC $00                   
+CODE_2AA791:        E2 20         SEP #$20                  
+CODE_2AA793:        A5 00         LDA $00                   
+CODE_2AA795:        29 0F         AND #$0F                  
+CODE_2AA797:        D0 11         BNE CODE_2AA7AA           
+CODE_2AA799:        C2 20         REP #$20                  
+CODE_2AA79B:        A5 00         LDA $00                   
+CODE_2AA79D:        38            SEC                       
+CODE_2AA79E:        E9 C0 01      SBC #$01C0                
+CODE_2AA7A1:        85 00         STA $00                   
+CODE_2AA7A3:        AA            TAX                       
+CODE_2AA7A4:        E2 20         SEP #$20                  
+CODE_2AA7A6:        A9 0E         LDA #$0E                  
+CODE_2AA7A8:        80 0C         BRA CODE_2AA7B6           
 
-CODE_2AA7AA:        LDX $00                   
-CODE_2AA7AC:        LDA #$06                  
-CODE_2AA7AE:        STA $02                   
-CODE_2AA7B0:        LDY #$0002                
-CODE_2AA7B3:        JSR CODE_2AA879           
-CODE_2AA7B6:        JSR CODE_2A8CD9           
-CODE_2AA7B9:        DEC $DA                   
-CODE_2AA7BB:        JSR CODE_2AA86E           
-CODE_2AA7BE:        LDA #$08                  
-CODE_2AA7C0:        JSR CODE_2A8CD9           
-CODE_2AA7C3:        DEC $DA                   
-CODE_2AA7C5:        LDA #$14                  
-CODE_2AA7C7:        STA $02                   
-CODE_2AA7C9:        JSR CODE_2AA861           
-CODE_2AA7CC:        JSR CODE_2AA86E           
-CODE_2AA7CF:        LDA #$23                  
-CODE_2AA7D1:        JSR CODE_2A8CD9           
-CODE_2AA7D4:        REP #$20                  
-CODE_2AA7D6:        INC $00                   
-CODE_2AA7D8:        SEP #$20                  
-CODE_2AA7DA:        LDX $00                   
-CODE_2AA7DC:        LDA $D8                   
-CODE_2AA7DE:        STA $DA                   
-CODE_2AA7E0:        LDA #$13                  
-CODE_2AA7E2:        STA $02                   
-CODE_2AA7E4:        LDY #$0003                
-CODE_2AA7E7:        JSR CODE_2AA879           
-CODE_2AA7EA:        JSR CODE_2A8CD9           
-CODE_2AA7ED:        DEC $DA                   
-CODE_2AA7EF:        JSR CODE_2AA86E           
-CODE_2AA7F2:        LDA #$09                  
-CODE_2AA7F4:        JSR CODE_2A8CD9           
-CODE_2AA7F7:        DEC $DA                   
-CODE_2AA7F9:        LDA #$11                  
-CODE_2AA7FB:        STA $02                   
-CODE_2AA7FD:        JSR CODE_2AA861           
-CODE_2AA800:        JSR CODE_2AA86E           
-CODE_2AA803:        LDA #$24                  
-CODE_2AA805:        JSR CODE_2A8CD9           
-CODE_2AA808:        REP #$20                  
-CODE_2AA80A:        INC $00                   
-CODE_2AA80C:        SEP #$20                  
-CODE_2AA80E:        LDX $00                   
-CODE_2AA810:        LDA $D8                   
-CODE_2AA812:        STA $DA                   
-CODE_2AA814:        LDA #$14                  
-CODE_2AA816:        STA $02                   
-CODE_2AA818:        LDY #$0004                
-CODE_2AA81B:        JSR CODE_2AA879           
-CODE_2AA81E:        JSR CODE_2A8CD9           
-CODE_2AA821:        DEC $DA                   
-CODE_2AA823:        JSR CODE_2AA86E           
-CODE_2AA826:        LDA #$06                  
-CODE_2AA828:        STA $02                   
-CODE_2AA82A:        LDY #$000A                
-CODE_2AA82D:        JSR CODE_2AA88F           
-CODE_2AA830:        LDA $7F0000,x             
-CODE_2AA834:        CMP #$14                  
-CODE_2AA836:        BNE CODE_2AA83B           
-CODE_2AA838:        LDY #$001B                
-CODE_2AA83B:        TYA                       
-CODE_2AA83C:        JSR CODE_2A8CD9           
-CODE_2AA83F:        DEC $DA                   
-CODE_2AA841:        LDA #$12                  
-CODE_2AA843:        STA $02                   
-CODE_2AA845:        JSR CODE_2AA861           
-CODE_2AA848:        JSR CODE_2AA86E           
-CODE_2AA84B:        LDA #$25                  
-CODE_2AA84D:        JSR CODE_2A8CD9           
-CODE_2AA850:        INX                       
-CODE_2AA851:        LDA $7F0000,x             
-CODE_2AA855:        CMP #$2A                  
-CODE_2AA857:        BNE CODE_2AA85E           
-CODE_2AA859:        LDA #$2C                  
-CODE_2AA85B:        JSR CODE_2A8CD9           
-CODE_2AA85E:        SEP #$10                  
-CODE_2AA860:        RTS                       
+CODE_2AA7AA:        A6 00         LDX $00                   
+CODE_2AA7AC:        A9 06         LDA #$06                  
+CODE_2AA7AE:        85 02         STA $02                   
+CODE_2AA7B0:        A0 02 00      LDY #$0002                
+CODE_2AA7B3:        20 79 A8      JSR CODE_2AA879           
+CODE_2AA7B6:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA7B9:        C6 DA         DEC $DA                   
+CODE_2AA7BB:        20 6E A8      JSR CODE_2AA86E           
+CODE_2AA7BE:        A9 08         LDA #$08                  
+CODE_2AA7C0:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA7C3:        C6 DA         DEC $DA                   
+CODE_2AA7C5:        A9 14         LDA #$14                  
+CODE_2AA7C7:        85 02         STA $02                   
+CODE_2AA7C9:        20 61 A8      JSR CODE_2AA861           
+CODE_2AA7CC:        20 6E A8      JSR CODE_2AA86E           
+CODE_2AA7CF:        A9 23         LDA #$23                  
+CODE_2AA7D1:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA7D4:        C2 20         REP #$20                  
+CODE_2AA7D6:        E6 00         INC $00                   
+CODE_2AA7D8:        E2 20         SEP #$20                  
+CODE_2AA7DA:        A6 00         LDX $00                   
+CODE_2AA7DC:        A5 D8         LDA $D8                   
+CODE_2AA7DE:        85 DA         STA $DA                   
+CODE_2AA7E0:        A9 13         LDA #$13                  
+CODE_2AA7E2:        85 02         STA $02                   
+CODE_2AA7E4:        A0 03 00      LDY #$0003                
+CODE_2AA7E7:        20 79 A8      JSR CODE_2AA879           
+CODE_2AA7EA:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA7ED:        C6 DA         DEC $DA                   
+CODE_2AA7EF:        20 6E A8      JSR CODE_2AA86E           
+CODE_2AA7F2:        A9 09         LDA #$09                  
+CODE_2AA7F4:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA7F7:        C6 DA         DEC $DA                   
+CODE_2AA7F9:        A9 11         LDA #$11                  
+CODE_2AA7FB:        85 02         STA $02                   
+CODE_2AA7FD:        20 61 A8      JSR CODE_2AA861           
+CODE_2AA800:        20 6E A8      JSR CODE_2AA86E           
+CODE_2AA803:        A9 24         LDA #$24                  
+CODE_2AA805:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA808:        C2 20         REP #$20                  
+CODE_2AA80A:        E6 00         INC $00                   
+CODE_2AA80C:        E2 20         SEP #$20                  
+CODE_2AA80E:        A6 00         LDX $00                   
+CODE_2AA810:        A5 D8         LDA $D8                   
+CODE_2AA812:        85 DA         STA $DA                   
+CODE_2AA814:        A9 14         LDA #$14                  
+CODE_2AA816:        85 02         STA $02                   
+CODE_2AA818:        A0 04 00      LDY #$0004                
+CODE_2AA81B:        20 79 A8      JSR CODE_2AA879           
+CODE_2AA81E:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA821:        C6 DA         DEC $DA                   
+CODE_2AA823:        20 6E A8      JSR CODE_2AA86E           
+CODE_2AA826:        A9 06         LDA #$06                  
+CODE_2AA828:        85 02         STA $02                   
+CODE_2AA82A:        A0 0A 00      LDY #$000A                
+CODE_2AA82D:        20 8F A8      JSR CODE_2AA88F           
+CODE_2AA830:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2AA834:        C9 14         CMP #$14                  
+CODE_2AA836:        D0 03         BNE CODE_2AA83B           
+CODE_2AA838:        A0 1B 00      LDY #$001B                
+CODE_2AA83B:        98            TYA                       
+CODE_2AA83C:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA83F:        C6 DA         DEC $DA                   
+CODE_2AA841:        A9 12         LDA #$12                  
+CODE_2AA843:        85 02         STA $02                   
+CODE_2AA845:        20 61 A8      JSR CODE_2AA861           
+CODE_2AA848:        20 6E A8      JSR CODE_2AA86E           
+CODE_2AA84B:        A9 25         LDA #$25                  
+CODE_2AA84D:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA850:        E8            INX                       
+CODE_2AA851:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2AA855:        C9 2A         CMP #$2A                  
+CODE_2AA857:        D0 05         BNE CODE_2AA85E           
+CODE_2AA859:        A9 2C         LDA #$2C                  
+CODE_2AA85B:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA85E:        E2 10         SEP #$10                  
+CODE_2AA860:        60            RTS                       
 
-CODE_2AA861:        JSR CODE_2AA86E           
-CODE_2AA864:        LDA $02                   
-CODE_2AA866:        JSR CODE_2A8CD9           
-CODE_2AA869:        DEC $DA                   
-CODE_2AA86B:        BNE CODE_2AA861           
-CODE_2AA86D:        RTS                       
+CODE_2AA861:        20 6E A8      JSR CODE_2AA86E           
+CODE_2AA864:        A5 02         LDA $02                   
+CODE_2AA866:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA869:        C6 DA         DEC $DA                   
+CODE_2AA86B:        D0 F4         BNE CODE_2AA861           
+CODE_2AA86D:        60            RTS                       
 
-CODE_2AA86E:        REP #$20                  
-CODE_2AA870:        TXA                       
-CODE_2AA871:        CLC                       
-CODE_2AA872:        ADC #$0010                
-CODE_2AA875:        TAX                       
-CODE_2AA876:        SEP #$20                  
-CODE_2AA878:        RTS                       
+CODE_2AA86E:        C2 20         REP #$20                  
+CODE_2AA870:        8A            TXA                       
+CODE_2AA871:        18            CLC                       
+CODE_2AA872:        69 10 00      ADC #$0010                
+CODE_2AA875:        AA            TAX                       
+CODE_2AA876:        E2 20         SEP #$20                  
+CODE_2AA878:        60            RTS                       
 
-CODE_2AA879:        LDA $7F0000,x             
-CODE_2AA87D:        BEQ CODE_2AA88D           
-CODE_2AA87F:        CMP $02                   
-CODE_2AA881:        BEQ CODE_2AA888           
-CODE_2AA883:        TYA                       
-CODE_2AA884:        CLC                       
-CODE_2AA885:        ADC #$08                  
-CODE_2AA887:        TAY                       
-CODE_2AA888:        TYA                       
-CODE_2AA889:        CLC                       
-CODE_2AA88A:        ADC #$0C                  
-CODE_2AA88C:        TAY                       
-CODE_2AA88D:        TYA                       
-CODE_2AA88E:        RTS                       
+CODE_2AA879:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2AA87D:        F0 0E         BEQ CODE_2AA88D           
+CODE_2AA87F:        C5 02         CMP $02                   
+CODE_2AA881:        F0 05         BEQ CODE_2AA888           
+CODE_2AA883:        98            TYA                       
+CODE_2AA884:        18            CLC                       
+CODE_2AA885:        69 08         ADC #$08                  
+CODE_2AA887:        A8            TAY                       
+CODE_2AA888:        98            TYA                       
+CODE_2AA889:        18            CLC                       
+CODE_2AA88A:        69 0C         ADC #$0C                  
+CODE_2AA88C:        A8            TAY                       
+CODE_2AA88D:        98            TYA                       
+CODE_2AA88E:        60            RTS                       
 
-CODE_2AA88F:        LDA $7F0000,x             
-CODE_2AA893:        BEQ CODE_2AA8A3           
-CODE_2AA895:        CMP $02                   
-CODE_2AA897:        BEQ CODE_2AA89E           
-CODE_2AA899:        TYA                       
-CODE_2AA89A:        CLC                       
-CODE_2AA89B:        ADC #$02                  
-CODE_2AA89D:        TAY                       
-CODE_2AA89E:        TYA                       
-CODE_2AA89F:        CLC                       
-CODE_2AA8A0:        ADC #$13                  
-CODE_2AA8A2:        TAY                       
-CODE_2AA8A3:        TYA                       
-CODE_2AA8A4:        RTS                       
+CODE_2AA88F:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2AA893:        F0 0E         BEQ CODE_2AA8A3           
+CODE_2AA895:        C5 02         CMP $02                   
+CODE_2AA897:        F0 05         BEQ CODE_2AA89E           
+CODE_2AA899:        98            TYA                       
+CODE_2AA89A:        18            CLC                       
+CODE_2AA89B:        69 02         ADC #$02                  
+CODE_2AA89D:        A8            TAY                       
+CODE_2AA89E:        98            TYA                       
+CODE_2AA89F:        18            CLC                       
+CODE_2AA8A0:        69 13         ADC #$13                  
+CODE_2AA8A2:        A8            TAY                       
+CODE_2AA8A3:        98            TYA                       
+CODE_2AA8A4:        60            RTS                       
 
-CODE_2AA8A5:        REP #$10                  
-CODE_2AA8A7:        LDX $00                   
-CODE_2AA8A9:        LDA $7EFFFF,x             
-CODE_2AA8AD:        CMP #$25                  
-CODE_2AA8AF:        BEQ CODE_2AA8B5           
-CODE_2AA8B1:        LDA #$2A                  
-CODE_2AA8B3:        BRA CODE_2AA8B7           
+CODE_2AA8A5:        C2 10         REP #$10                  
+CODE_2AA8A7:        A6 00         LDX $00                   
+CODE_2AA8A9:        BF FF FF 7E   LDA $7EFFFF,x             
+CODE_2AA8AD:        C9 25         CMP #$25                  
+CODE_2AA8AF:        F0 04         BEQ CODE_2AA8B5           
+CODE_2AA8B1:        A9 2A         LDA #$2A                  
+CODE_2AA8B3:        80 02         BRA CODE_2AA8B7           
 
-CODE_2AA8B5:        LDA #$2C                  
-CODE_2AA8B7:        JSR CODE_2A8CD9           
-CODE_2AA8BA:        INX                       
-CODE_2AA8BB:        LDA #$2A                  
-CODE_2AA8BD:        JSR CODE_2A8CD9           
-CODE_2AA8C0:        INX                       
-CODE_2AA8C1:        LDA $7F0001,x             
-CODE_2AA8C5:        CMP #$22                  
-CODE_2AA8C7:        BEQ CODE_2AA8CD           
-CODE_2AA8C9:        LDA #$2A                  
-CODE_2AA8CB:        BRA CODE_2AA8CF           
+CODE_2AA8B5:        A9 2C         LDA #$2C                  
+CODE_2AA8B7:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA8BA:        E8            INX                       
+CODE_2AA8BB:        A9 2A         LDA #$2A                  
+CODE_2AA8BD:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA8C0:        E8            INX                       
+CODE_2AA8C1:        BF 01 00 7F   LDA $7F0001,x             
+CODE_2AA8C5:        C9 22         CMP #$22                  
+CODE_2AA8C7:        F0 04         BEQ CODE_2AA8CD           
+CODE_2AA8C9:        A9 2A         LDA #$2A                  
+CODE_2AA8CB:        80 02         BRA CODE_2AA8CF           
 
-CODE_2AA8CD:        LDA #$2B                  
-CODE_2AA8CF:        JSR CODE_2A8CD9           
-CODE_2AA8D2:        SEP #$10                  
-CODE_2AA8D4:        RTS                       
+CODE_2AA8CD:        A9 2B         LDA #$2B                  
+CODE_2AA8CF:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA8D2:        E2 10         SEP #$10                  
+CODE_2AA8D4:        60            RTS                       
 
-CODE_2AA8D5:        REP #$10                  
-CODE_2AA8D7:        LDX $00                   
-CODE_2AA8D9:        LDA $7F0000,x             
-CODE_2AA8DD:        CMP #$27                  
-CODE_2AA8DF:        BEQ CODE_2AA8E9           
-CODE_2AA8E1:        CMP #$28                  
-CODE_2AA8E3:        BNE CODE_2AA8EE           
-CODE_2AA8E5:        LDA #$21                  
-CODE_2AA8E7:        BRA CODE_2AA8EB           
+CODE_2AA8D5:        C2 10         REP #$10                  
+CODE_2AA8D7:        A6 00         LDX $00                   
+CODE_2AA8D9:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2AA8DD:        C9 27         CMP #$27                  
+CODE_2AA8DF:        F0 08         BEQ CODE_2AA8E9           
+CODE_2AA8E1:        C9 28         CMP #$28                  
+CODE_2AA8E3:        D0 09         BNE CODE_2AA8EE           
+CODE_2AA8E5:        A9 21         LDA #$21                  
+CODE_2AA8E7:        80 02         BRA CODE_2AA8EB           
 
-CODE_2AA8E9:        LDA #$29                  
-CODE_2AA8EB:        JSR CODE_2A8CD9           
-CODE_2AA8EE:        INX                       
-CODE_2AA8EF:        TXA                       
-CODE_2AA8F0:        AND #$0F                  
-CODE_2AA8F2:        BNE CODE_2AA8FE           
-CODE_2AA8F4:        REP #$20                  
-CODE_2AA8F6:        TXA                       
-CODE_2AA8F7:        CLC                       
-CODE_2AA8F8:        ADC #$01A0                
-CODE_2AA8FB:        TAX                       
-CODE_2AA8FC:        SEP #$20                  
-CODE_2AA8FE:        LDA $D8                   
-CODE_2AA900:        BEQ CODE_2AA916           
-CODE_2AA902:        DEC $D8                   
-CODE_2AA904:        LDA $7F0000,x             
-CODE_2AA908:        CMP #$28                  
-CODE_2AA90A:        BNE CODE_2AA911           
-CODE_2AA90C:        LDA #$2D                  
-CODE_2AA90E:        JSR CODE_2A8CD9           
-CODE_2AA911:        INX                       
-CODE_2AA912:        DEC $D8                   
-CODE_2AA914:        BNE CODE_2AA904           
-CODE_2AA916:        LDA $7F0000,x             
-CODE_2AA91A:        CMP #$28                  
-CODE_2AA91C:        BNE CODE_2AA923           
-CODE_2AA91E:        LDA #$20                  
-CODE_2AA920:        JSR CODE_2A8CD9           
-CODE_2AA923:        SEP #$10                  
-CODE_2AA925:        RTS                       
+CODE_2AA8E9:        A9 29         LDA #$29                  
+CODE_2AA8EB:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA8EE:        E8            INX                       
+CODE_2AA8EF:        8A            TXA                       
+CODE_2AA8F0:        29 0F         AND #$0F                  
+CODE_2AA8F2:        D0 0A         BNE CODE_2AA8FE           
+CODE_2AA8F4:        C2 20         REP #$20                  
+CODE_2AA8F6:        8A            TXA                       
+CODE_2AA8F7:        18            CLC                       
+CODE_2AA8F8:        69 A0 01      ADC #$01A0                
+CODE_2AA8FB:        AA            TAX                       
+CODE_2AA8FC:        E2 20         SEP #$20                  
+CODE_2AA8FE:        A5 D8         LDA $D8                   
+CODE_2AA900:        F0 14         BEQ CODE_2AA916           
+CODE_2AA902:        C6 D8         DEC $D8                   
+CODE_2AA904:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2AA908:        C9 28         CMP #$28                  
+CODE_2AA90A:        D0 05         BNE CODE_2AA911           
+CODE_2AA90C:        A9 2D         LDA #$2D                  
+CODE_2AA90E:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA911:        E8            INX                       
+CODE_2AA912:        C6 D8         DEC $D8                   
+CODE_2AA914:        D0 EE         BNE CODE_2AA904           
+CODE_2AA916:        BF 00 00 7F   LDA $7F0000,x             
+CODE_2AA91A:        C9 28         CMP #$28                  
+CODE_2AA91C:        D0 05         BNE CODE_2AA923           
+CODE_2AA91E:        A9 20         LDA #$20                  
+CODE_2AA920:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA923:        E2 10         SEP #$10                  
+CODE_2AA925:        60            RTS                       
 
-CODE_2AA926:        LDA #$2F                  
-CODE_2AA928:        STA $02                   
-CODE_2AA92A:        BRA CODE_2AA93C           
+CODE_2AA926:        A9 2F         LDA #$2F                  
+CODE_2AA928:        85 02         STA $02                   
+CODE_2AA92A:        80 10         BRA CODE_2AA93C           
 
-CODE_2AA92C:        LDA #$30                  
-CODE_2AA92E:        STA $02                   
-CODE_2AA930:        BRA CODE_2AA93C           
+CODE_2AA92C:        A9 30         LDA #$30                  
+CODE_2AA92E:        85 02         STA $02                   
+CODE_2AA930:        80 0A         BRA CODE_2AA93C           
 
-CODE_2AA932:        LDA #$31                  
-CODE_2AA934:        STA $02                   
-CODE_2AA936:        BRA CODE_2AA93C           
+CODE_2AA932:        A9 31         LDA #$31                  
+CODE_2AA934:        85 02         STA $02                   
+CODE_2AA936:        80 04         BRA CODE_2AA93C           
 
-CODE_2AA938:        LDA #$32                  
-CODE_2AA93A:        STA $02                   
-CODE_2AA93C:        REP #$10                  
-CODE_2AA93E:        LDX $00                   
-CODE_2AA940:        LDA $02                   
-CODE_2AA942:        JSR CODE_2A8CD9           
-CODE_2AA945:        SEP #$10                  
-CODE_2AA947:        RTS                       
+CODE_2AA938:        A9 32         LDA #$32                  
+CODE_2AA93A:        85 02         STA $02                   
+CODE_2AA93C:        C2 10         REP #$10                  
+CODE_2AA93E:        A6 00         LDX $00                   
+CODE_2AA940:        A5 02         LDA $02                   
+CODE_2AA942:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AA945:        E2 10         SEP #$10                  
+CODE_2AA947:        60            RTS                       
 
-CODE_2AA948:        SEP #$10                  
-CODE_2AA94A:        LDY #$00                  
-CODE_2AA94C:        LDA [$2B],y               
-CODE_2AA94E:        CMP #$FF                  
-CODE_2AA950:        BEQ CODE_2AA95A           
-CODE_2AA952:        JSR CODE_2A8E54           
-CODE_2AA955:        JSR (PNTR_2AA95C,x)             
-CODE_2AA958:        BRA CODE_2AA94A           
+CODE_2AA948:        E2 10         SEP #$10                  
+CODE_2AA94A:        A0 00         LDY #$00                  
+CODE_2AA94C:        B7 2B         LDA [$2B],y               
+CODE_2AA94E:        C9 FF         CMP #$FF                  
+CODE_2AA950:        F0 08         BEQ CODE_2AA95A           
+CODE_2AA952:        20 54 8E      JSR CODE_2A8E54           
+CODE_2AA955:        FC 5C A9      JSR (PNTR_2AA95C,x)             
+CODE_2AA958:        80 F0         BRA CODE_2AA94A           
 
-CODE_2AA95A:        PLB                       
-CODE_2AA95B:        RTL                       
+CODE_2AA95A:        AB            PLB                       
+CODE_2AA95B:        6B            RTL                       
 
 PNTR_2AA95C:        dw CODE_2AA966                   
                     dw CODE_2AA9B7          
@@ -4786,121 +4786,121 @@ PNTR_2AA95C:        dw CODE_2AA966
                     dw CODE_2AAA57
 
                
-CODE_2AA966:        REP #$30                  
-CODE_2AA968:        LDA #$A9AF                
-CODE_2AA96B:        STA $02                   
-CODE_2AA96D:        LDA #$A9B3                
-CODE_2AA970:        STA $04                   
-CODE_2AA972:        SEP #$20                  
-CODE_2AA974:        JSR CODE_2AA97A           
-CODE_2AA977:        SEP #$10                  
-CODE_2AA979:        RTS                       
+CODE_2AA966:        C2 30         REP #$30                  
+CODE_2AA968:        A9 AF A9      LDA #$A9AF                
+CODE_2AA96B:        85 02         STA $02                   
+CODE_2AA96D:        A9 B3 A9      LDA #$A9B3                
+CODE_2AA970:        85 04         STA $04                   
+CODE_2AA972:        E2 20         SEP #$20                  
+CODE_2AA974:        20 7A A9      JSR CODE_2AA97A           
+CODE_2AA977:        E2 10         SEP #$10                  
+CODE_2AA979:        60            RTS                       
 
-CODE_2AA97A:        LDX $00                   ;
-CODE_2AA97C:        LDY #$0000                ;
-CODE_2AA97F:        LDA ($02),y               ;
-CODE_2AA981:        JSR CODE_2A8CD9           ;
-CODE_2AA984:        LDA ($04),y               ;
-CODE_2AA986:        JSR CODE_2A8CEE           ;
-CODE_2AA989:        INX                       ;
-CODE_2AA98A:        TXA                       ;
-CODE_2AA98B:        AND #$0F                  ;
-CODE_2AA98D:        BNE CODE_2AA9A4           ;
-CODE_2AA98F:        REP #$20                  ;
-CODE_2AA991:        TXA                       ;
-CODE_2AA992:        CMP #$01B0                ;
-CODE_2AA995:        BCS CODE_2AA99D           ;
-CODE_2AA997:        CLC                       ;
-CODE_2AA998:        ADC #$01A0                ;
-CODE_2AA99B:        BRA CODE_2AA9A1           ;
+CODE_2AA97A:        A6 00         LDX $00                   ;
+CODE_2AA97C:        A0 00 00      LDY #$0000                ;
+CODE_2AA97F:        B1 02         LDA ($02),y               ;
+CODE_2AA981:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA984:        B1 04         LDA ($04),y               ;
+CODE_2AA986:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2AA989:        E8            INX                       ;
+CODE_2AA98A:        8A            TXA                       ;
+CODE_2AA98B:        29 0F         AND #$0F                  ;
+CODE_2AA98D:        D0 15         BNE CODE_2AA9A4           ;
+CODE_2AA98F:        C2 20         REP #$20                  ;
+CODE_2AA991:        8A            TXA                       ;
+CODE_2AA992:        C9 B0 01      CMP #$01B0                ;
+CODE_2AA995:        B0 06         BCS CODE_2AA99D           ;
+CODE_2AA997:        18            CLC                       ;
+CODE_2AA998:        69 A0 01      ADC #$01A0                ;
+CODE_2AA99B:        80 04         BRA CODE_2AA9A1           ;
 
-CODE_2AA99D:        SEC                       
-CODE_2AA99E:        SBC #$01C0                
-CODE_2AA9A1:        TAX                       
-CODE_2AA9A2:        SEP #$20                  
-CODE_2AA9A4:        INY                       
-CODE_2AA9A5:        TYA                       
-CODE_2AA9A6:        AND #$03                  
-CODE_2AA9A8:        BNE CODE_2AA97F           
-CODE_2AA9AA:        DEC $D8                   
-CODE_2AA9AC:        BNE CODE_2AA97C           
-CODE_2AA9AE:        RTS                       
+CODE_2AA99D:        38            SEC                       
+CODE_2AA99E:        E9 C0 01      SBC #$01C0                
+CODE_2AA9A1:        AA            TAX                       
+CODE_2AA9A2:        E2 20         SEP #$20                  
+CODE_2AA9A4:        C8            INY                       
+CODE_2AA9A5:        98            TYA                       
+CODE_2AA9A6:        29 03         AND #$03                  
+CODE_2AA9A8:        D0 D5         BNE CODE_2AA97F           
+CODE_2AA9AA:        C6 D8         DEC $D8                   
+CODE_2AA9AC:        D0 CE         BNE CODE_2AA97C           
+CODE_2AA9AE:        60            RTS                       
 
 DATA_2AA9AF:        db $04,$05,$06,$07
 
 DATA_2AA9B3:        db $02,$03,$00,$01
                  
-CODE_2AA9B7:        REP #$30                  
-CODE_2AA9B9:        LDA #$A9EE                
-CODE_2AA9BC:        STA $02                   
-CODE_2AA9BE:        LDA #$A9F2                
-CODE_2AA9C1:        STA $04                   
-CODE_2AA9C3:        SEP #$20                  
-CODE_2AA9C5:        JSR CODE_2AA9CB           
-CODE_2AA9C8:        SEP #$10                  
-CODE_2AA9CA:        RTS                       
+CODE_2AA9B7:        C2 30         REP #$30                  
+CODE_2AA9B9:        A9 EE A9      LDA #$A9EE                
+CODE_2AA9BC:        85 02         STA $02                   
+CODE_2AA9BE:        A9 F2 A9      LDA #$A9F2                
+CODE_2AA9C1:        85 04         STA $04                   
+CODE_2AA9C3:        E2 20         SEP #$20                  
+CODE_2AA9C5:        20 CB A9      JSR CODE_2AA9CB           
+CODE_2AA9C8:        E2 10         SEP #$10                  
+CODE_2AA9CA:        60            RTS                       
 
-CODE_2AA9CB:        LDY #$0000                ;
-CODE_2AA9CE:        LDX $00                   ;
-CODE_2AA9D0:        LDA ($02),y               ;
-CODE_2AA9D2:        JSR CODE_2A8CD9           ;
-CODE_2AA9D5:        INX                       ;
-CODE_2AA9D6:        LDA ($04),y               ;
-CODE_2AA9D8:        JSR CODE_2A8CD9           ;
-CODE_2AA9DB:        REP #$20                  ;
-CODE_2AA9DD:        LDA $00                   ;
-CODE_2AA9DF:        CLC                       ;
-CODE_2AA9E0:        ADC #$0010                ;
-CODE_2AA9E3:        STA $00                   ;
-CODE_2AA9E5:        SEP #$20                  ;
-CODE_2AA9E7:        INY                       ;
-CODE_2AA9E8:        TYA                       ;
-CODE_2AA9E9:        AND #$03                  ;
-CODE_2AA9EB:        BNE CODE_2AA9CE           ;
-CODE_2AA9ED:        RTS                       ;
+CODE_2AA9CB:        A0 00 00      LDY #$0000                ;
+CODE_2AA9CE:        A6 00         LDX $00                   ;
+CODE_2AA9D0:        B1 02         LDA ($02),y               ;
+CODE_2AA9D2:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA9D5:        E8            INX                       ;
+CODE_2AA9D6:        B1 04         LDA ($04),y               ;
+CODE_2AA9D8:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA9DB:        C2 20         REP #$20                  ;
+CODE_2AA9DD:        A5 00         LDA $00                   ;
+CODE_2AA9DF:        18            CLC                       ;
+CODE_2AA9E0:        69 10 00      ADC #$0010                ;
+CODE_2AA9E3:        85 00         STA $00                   ;
+CODE_2AA9E5:        E2 20         SEP #$20                  ;
+CODE_2AA9E7:        C8            INY                       ;
+CODE_2AA9E8:        98            TYA                       ;
+CODE_2AA9E9:        29 03         AND #$03                  ;
+CODE_2AA9EB:        D0 E1         BNE CODE_2AA9CE           ;
+CODE_2AA9ED:        60            RTS                       ;
 
 DATA_2AA9EE:        db $04,$08,$08,$02
 
 DATA_2AA9F2:        db $07,$09,$09,$01
 
-CODE_2AA9F6:        REP #$10                  ;
-CODE_2AA9F8:        LDX $00                   ;
-CODE_2AA9FA:        LDA #$04                  ;
-CODE_2AA9FC:        JSR CODE_2A8CD9           ;
-CODE_2AA9FF:        LDA #$02                  ;
-CODE_2AAA01:        JSR CODE_2A8CEE           ;
-CODE_2AAA04:        INX                       ;
-CODE_2AAA05:        LDA #$07                  ;
-CODE_2AAA07:        JSR CODE_2A8CD9           ;
-CODE_2AAA0A:        LDA #$01                  ;
-CODE_2AAA0C:        JSR CODE_2A8CEE           ;
-CODE_2AAA0F:        SEP #$10                  ;
-CODE_2AAA11:        RTS                       ;                       
+CODE_2AA9F6:        C2 10         REP #$10                  ;
+CODE_2AA9F8:        A6 00         LDX $00                   ;
+CODE_2AA9FA:        A9 04         LDA #$04                  ;
+CODE_2AA9FC:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AA9FF:        A9 02         LDA #$02                  ;
+CODE_2AAA01:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2AAA04:        E8            INX                       ;
+CODE_2AAA05:        A9 07         LDA #$07                  ;
+CODE_2AAA07:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AAA0A:        A9 01         LDA #$01                  ;
+CODE_2AAA0C:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2AAA0F:        E2 10         SEP #$10                  ;
+CODE_2AAA11:        60            RTS                       ;                       
 
-CODE_2AAA12:        REP #$30                  
-CODE_2AAA14:        LDA $D8                   
-CODE_2AAA16:        STA $DA                   
-CODE_2AAA18:        LDA #$AA47                
-CODE_2AAA1B:        STA $02                   
-CODE_2AAA1D:        LDA #$AA4B                
-CODE_2AAA20:        STA $04                   
-CODE_2AAA22:        SEP #$20                  
-CODE_2AAA24:        JSR CODE_2AA97A           
-CODE_2AAA27:        REP #$20                  
-CODE_2AAA29:        LDA $DA                   
-CODE_2AAA2B:        STA $D8                   
-CODE_2AAA2D:        LDA $00                   
-CODE_2AAA2F:        CLC                       
-CODE_2AAA30:        ADC #$0020                
-CODE_2AAA33:        STA $00                   
-CODE_2AAA35:        LDA #$AA4F                
-CODE_2AAA38:        STA $02                   
-CODE_2AAA3A:        LDA #$AA53                
-CODE_2AAA3D:        STA $04                   
-CODE_2AAA3F:        SEP #$20                  
-CODE_2AAA41:        JSR CODE_2AA97A           
-CODE_2AAA44:        SEP #$10                  
-CODE_2AAA46:        RTS                       
+CODE_2AAA12:        C2 30         REP #$30                  
+CODE_2AAA14:        A5 D8         LDA $D8                   
+CODE_2AAA16:        85 DA         STA $DA                   
+CODE_2AAA18:        A9 47 AA      LDA #$AA47                
+CODE_2AAA1B:        85 02         STA $02                   
+CODE_2AAA1D:        A9 4B AA      LDA #$AA4B                
+CODE_2AAA20:        85 04         STA $04                   
+CODE_2AAA22:        E2 20         SEP #$20                  
+CODE_2AAA24:        20 7A A9      JSR CODE_2AA97A           
+CODE_2AAA27:        C2 20         REP #$20                  
+CODE_2AAA29:        A5 DA         LDA $DA                   
+CODE_2AAA2B:        85 D8         STA $D8                   
+CODE_2AAA2D:        A5 00         LDA $00                   
+CODE_2AAA2F:        18            CLC                       
+CODE_2AAA30:        69 20 00      ADC #$0020                
+CODE_2AAA33:        85 00         STA $00                   
+CODE_2AAA35:        A9 4F AA      LDA #$AA4F                
+CODE_2AAA38:        85 02         STA $02                   
+CODE_2AAA3A:        A9 53 AA      LDA #$AA53                
+CODE_2AAA3D:        85 04         STA $04                   
+CODE_2AAA3F:        E2 20         SEP #$20                  
+CODE_2AAA41:        20 7A A9      JSR CODE_2AA97A           
+CODE_2AAA44:        E2 10         SEP #$10                  
+CODE_2AAA46:        60            RTS                       
 
 DATA_2AAA47:        db $04,$05,$06,$07
 
@@ -4910,89 +4910,89 @@ DATA_2AAA4F:        db $0E,$0F,$10,$11
 
 DATA_2AAA53:        db $02,$03,$00,$01
 
-CODE_2AAA57:        REP #$30                  ;
-CODE_2AAA59:        LDA #$AA87                ;
-CODE_2AAA5C:        STA $02                   ;
-CODE_2AAA5E:        LDA #$AA8B                ;
-CODE_2AAA61:        STA $04                   ;
-CODE_2AAA63:        LDA $00                   
-CODE_2AAA65:        PHA                       
-CODE_2AAA66:        SEP #$20                  
-CODE_2AAA68:        JSR CODE_2AA9CB           
-CODE_2AAA6B:        REP #$20                  
-CODE_2AAA6D:        PLA                       
-CODE_2AAA6E:        INC A                     
-CODE_2AAA6F:        INC A                     
-CODE_2AAA70:        STA $00                   
-CODE_2AAA72:        AND #$000F                
-CODE_2AAA75:        BNE CODE_2AAA7F           
-CODE_2AAA77:        LDA $00                   
-CODE_2AAA79:        CLC                       
-CODE_2AAA7A:        ADC #$01A0                
-CODE_2AAA7D:        STA $00                   
-CODE_2AAA7F:        SEP #$20                  
-CODE_2AAA81:        JSR CODE_2AA9CB           
-CODE_2AAA84:        SEP #$10                  
-CODE_2AAA86:        RTS                       
+CODE_2AAA57:        C2 30         REP #$30                  ;
+CODE_2AAA59:        A9 87 AA      LDA #$AA87                ;
+CODE_2AAA5C:        85 02         STA $02                   ;
+CODE_2AAA5E:        A9 8B AA      LDA #$AA8B                ;
+CODE_2AAA61:        85 04         STA $04                   ;
+CODE_2AAA63:        A5 00         LDA $00                   
+CODE_2AAA65:        48            PHA                       
+CODE_2AAA66:        E2 20         SEP #$20                  
+CODE_2AAA68:        20 CB A9      JSR CODE_2AA9CB           
+CODE_2AAA6B:        C2 20         REP #$20                  
+CODE_2AAA6D:        68            PLA                       
+CODE_2AAA6E:        1A            INC A                     
+CODE_2AAA6F:        1A            INC A                     
+CODE_2AAA70:        85 00         STA $00                   
+CODE_2AAA72:        29 0F 00      AND #$000F                
+CODE_2AAA75:        D0 08         BNE CODE_2AAA7F           
+CODE_2AAA77:        A5 00         LDA $00                   
+CODE_2AAA79:        18            CLC                       
+CODE_2AAA7A:        69 A0 01      ADC #$01A0                
+CODE_2AAA7D:        85 00         STA $00                   
+CODE_2AAA7F:        E2 20         SEP #$20                  
+CODE_2AAA81:        20 CB A9      JSR CODE_2AA9CB           
+CODE_2AAA84:        E2 10         SEP #$10                  
+CODE_2AAA86:        60            RTS                       
 
 DATA_2AAA87:        db $0A,$0C,$0D,$0A
 
 DATA_2AAA8B:        db $0B,$0C,$0D,$0B
                 
-CODE_2AAA8F:        SEP #$10                  
-CODE_2AAA91:        LDX #$10                  
-CODE_2AAA93:        LDA #$1B                  
-CODE_2AAA95:        STA $00                   
-CODE_2AAA97:        JSR CODE_2A9930           
-CODE_2AAA9A:        LDA #$1E                  
-CODE_2AAA9C:        STA $00                   
-CODE_2AAA9E:        JSR CODE_2A9930           
-CODE_2AAAA1:        LDX #$50                  
-CODE_2AAAA3:        LDA #$3B                  
-CODE_2AAAA5:        STA $00                   
-CODE_2AAAA7:        JSR CODE_2A9930           
-CODE_2AAAAA:        JSR CODE_2A9930           
-CODE_2AAAAD:        JSR CODE_2A9930           
-CODE_2AAAB0:        JSR CODE_2A9930           
-CODE_2AAAB3:        JSR CODE_2A9930           
-CODE_2AAAB6:        LDY #$00                  
-CODE_2AAAB8:        LDA [$2B],y               
-CODE_2AAABA:        CMP #$FF                  
-CODE_2AAABC:        BEQ CODE_2AAAC6           
-CODE_2AAABE:        JSR CODE_2A8E54           
-CODE_2AAAC1:        JSR (PNTR_2AAAC8,x)             
-CODE_2AAAC4:        BRA CODE_2AAAB6           
+CODE_2AAA8F:        E2 10         SEP #$10                  
+CODE_2AAA91:        A2 10         LDX #$10                  
+CODE_2AAA93:        A9 1B         LDA #$1B                  
+CODE_2AAA95:        85 00         STA $00                   
+CODE_2AAA97:        20 30 99      JSR CODE_2A9930           
+CODE_2AAA9A:        A9 1E         LDA #$1E                  
+CODE_2AAA9C:        85 00         STA $00                   
+CODE_2AAA9E:        20 30 99      JSR CODE_2A9930           
+CODE_2AAAA1:        A2 50         LDX #$50                  
+CODE_2AAAA3:        A9 3B         LDA #$3B                  
+CODE_2AAAA5:        85 00         STA $00                   
+CODE_2AAAA7:        20 30 99      JSR CODE_2A9930           
+CODE_2AAAAA:        20 30 99      JSR CODE_2A9930           
+CODE_2AAAAD:        20 30 99      JSR CODE_2A9930           
+CODE_2AAAB0:        20 30 99      JSR CODE_2A9930           
+CODE_2AAAB3:        20 30 99      JSR CODE_2A9930           
+CODE_2AAAB6:        A0 00         LDY #$00                  
+CODE_2AAAB8:        B7 2B         LDA [$2B],y               
+CODE_2AAABA:        C9 FF         CMP #$FF                  
+CODE_2AAABC:        F0 08         BEQ CODE_2AAAC6           
+CODE_2AAABE:        20 54 8E      JSR CODE_2A8E54           
+CODE_2AAAC1:        FC C8 AA      JSR (PNTR_2AAAC8,x)             
+CODE_2AAAC4:        80 F0         BRA CODE_2AAAB6           
 
-CODE_2AAAC6:        PLB                       
-CODE_2AAAC7:        RTL                       
+CODE_2AAAC6:        AB            PLB                       
+CODE_2AAAC7:        6B            RTL                       
 
 PNTR_2AAAC8:        dw CODE_2AAACE
                     dw CODE_2AAB8D                      
                     dw CODE_2AABB1   
 
-CODE_2AAACE:        LDA #$2A                  
-CODE_2AAAD0:        STA $08                   
-CODE_2AAAD2:        STA $0B                   
-CODE_2AAAD4:        STA $0E                   
-CODE_2AAAD6:        REP #$30                  
-CODE_2AAAD8:        LDX $D8                   
-CODE_2AAADA:        LDA.w DATA_2AAB0D,x               
-CODE_2AAADD:        STA $06                   
-CODE_2AAADF:        LDA.w DATA_2AAB19,x               
-CODE_2AAAE2:        STA $09                   
-CODE_2AAAE4:        LDA.w DATA_2AAB25,x               
-CODE_2AAAE7:        STA $0C                   
-CODE_2AAAE9:        STZ $04                   
-CODE_2AAAEB:        SEP #$20                  
-CODE_2AAAED:        LDA.w DATA_2AAB01,x               
-CODE_2AAAF0:        STA $0F                   
-CODE_2AAAF2:        LDX $00                   
-CODE_2AAAF4:        LDY #$0000                
-CODE_2AAAF7:        LDA [$0C]                 
-CODE_2AAAF9:        STA $02                   
-CODE_2AAAFB:        JSR CODE_2A8FA7           
-CODE_2AAAFE:        SEP #$10                  
-CODE_2AAB00:        RTS                       
+CODE_2AAACE:        A9 2A         LDA #$2A                  
+CODE_2AAAD0:        85 08         STA $08                   
+CODE_2AAAD2:        85 0B         STA $0B                   
+CODE_2AAAD4:        85 0E         STA $0E                   
+CODE_2AAAD6:        C2 30         REP #$30                  
+CODE_2AAAD8:        A6 D8         LDX $D8                   
+CODE_2AAADA:        BD 0D AB      LDA.w DATA_2AAB0D,x               
+CODE_2AAADD:        85 06         STA $06                   
+CODE_2AAADF:        BD 19 AB      LDA.w DATA_2AAB19,x               
+CODE_2AAAE2:        85 09         STA $09                   
+CODE_2AAAE4:        BD 25 AB      LDA.w DATA_2AAB25,x               
+CODE_2AAAE7:        85 0C         STA $0C                   
+CODE_2AAAE9:        64 04         STZ $04                   
+CODE_2AAAEB:        E2 20         SEP #$20                  
+CODE_2AAAED:        BD 01 AB      LDA.w DATA_2AAB01,x               
+CODE_2AAAF0:        85 0F         STA $0F                   
+CODE_2AAAF2:        A6 00         LDX $00                   
+CODE_2AAAF4:        A0 00 00      LDY #$0000                
+CODE_2AAAF7:        A7 0C         LDA [$0C]                 
+CODE_2AAAF9:        85 02         STA $02                   
+CODE_2AAAFB:        20 A7 8F      JSR CODE_2A8FA7           
+CODE_2AAAFE:        E2 10         SEP #$10                  
+CODE_2AAB00:        60            RTS                       
 
 DATA_2AAB01:        db $04,$00,$02,$00,$02,$00,$02,$00 ;
                     db $02,$00,$03,$00 ;
@@ -5017,269 +5017,269 @@ DATA_2AAB25:        db $7E,$AB,$82,$AB,$84,$AB,$86,$AB ;
                     db $00,$02,$03,$06,$02,$04,$04,$06 ;
                     db $06,$03,$01,$06,$07,$03,$06,$06 ;
 
-CODE_2AAB8D:        REP #$10                  
-CODE_2AAB8F:        LDX $00                   
-CODE_2AAB91:        LDA #$2B                  
-CODE_2AAB93:        STA $02                   
-CODE_2AAB95:        LDA #$37                  
-CODE_2AAB97:        STA $03                   
-CODE_2AAB99:        LDA $02                   
-CODE_2AAB9B:        JSR CODE_2A8CD9           
-CODE_2AAB9E:        LDA $03                   
-CODE_2AABA0:        JSR CODE_2A8CEE           
-CODE_2AABA3:        CMP #$3A                  
-CODE_2AABA5:        BEQ CODE_2AABAE           
-CODE_2AABA7:        INX                       
-CODE_2AABA8:        INC $02                   
-CODE_2AABAA:        INC $03                   
-CODE_2AABAC:        BRA CODE_2AAB99           
+CODE_2AAB8D:        C2 10         REP #$10                  
+CODE_2AAB8F:        A6 00         LDX $00                   
+CODE_2AAB91:        A9 2B         LDA #$2B                  
+CODE_2AAB93:        85 02         STA $02                   
+CODE_2AAB95:        A9 37         LDA #$37                  
+CODE_2AAB97:        85 03         STA $03                   
+CODE_2AAB99:        A5 02         LDA $02                   
+CODE_2AAB9B:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AAB9E:        A5 03         LDA $03                   
+CODE_2AABA0:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2AABA3:        C9 3A         CMP #$3A                  
+CODE_2AABA5:        F0 07         BEQ CODE_2AABAE           
+CODE_2AABA7:        E8            INX                       
+CODE_2AABA8:        E6 02         INC $02                   
+CODE_2AABAA:        E6 03         INC $03                   
+CODE_2AABAC:        80 EB         BRA CODE_2AAB99           
 
-CODE_2AABAE:        SEP #$10                  
-CODE_2AABB0:        RTS                       
+CODE_2AABAE:        E2 10         SEP #$10                  
+CODE_2AABB0:        60            RTS                       
 
-CODE_2AABB1:        REP #$10                  
-CODE_2AABB3:        LDX $00                   
-CODE_2AABB5:        LDY #$0004                
-CODE_2AABB8:        LDA #$1F                  
-CODE_2AABBA:        STA $02                   
-CODE_2AABBC:        JSR CODE_2AABEA           
-CODE_2AABBF:        LDY #$0008                
-CODE_2AABC2:        REP #$20                  
-CODE_2AABC4:        LDA $00                   
-CODE_2AABC6:        CLC                       
-CODE_2AABC7:        ADC #$000E                
-CODE_2AABCA:        STA $00                   
-CODE_2AABCC:        TAX                       
-CODE_2AABCD:        SEP #$20                  
-CODE_2AABCF:        JSR CODE_2AABEA           
-CODE_2AABD2:        LDY #$0008                
-CODE_2AABD5:        LDA #$2F                  
-CODE_2AABD7:        STA $02                   
-CODE_2AABD9:        REP #$20                  
-CODE_2AABDB:        LDA $00                   
-CODE_2AABDD:        CLC                       
-CODE_2AABDE:        ADC #$0010                
-CODE_2AABE1:        TAX                       
-CODE_2AABE2:        SEP #$20                  
-CODE_2AABE4:        JSR CODE_2AABEA           
-CODE_2AABE7:        SEP #$10                  
-CODE_2AABE9:        RTS                       
+CODE_2AABB1:        C2 10         REP #$10                  
+CODE_2AABB3:        A6 00         LDX $00                   
+CODE_2AABB5:        A0 04 00      LDY #$0004                
+CODE_2AABB8:        A9 1F         LDA #$1F                  
+CODE_2AABBA:        85 02         STA $02                   
+CODE_2AABBC:        20 EA AB      JSR CODE_2AABEA           
+CODE_2AABBF:        A0 08 00      LDY #$0008                
+CODE_2AABC2:        C2 20         REP #$20                  
+CODE_2AABC4:        A5 00         LDA $00                   
+CODE_2AABC6:        18            CLC                       
+CODE_2AABC7:        69 0E 00      ADC #$000E                
+CODE_2AABCA:        85 00         STA $00                   
+CODE_2AABCC:        AA            TAX                       
+CODE_2AABCD:        E2 20         SEP #$20                  
+CODE_2AABCF:        20 EA AB      JSR CODE_2AABEA           
+CODE_2AABD2:        A0 08 00      LDY #$0008                
+CODE_2AABD5:        A9 2F         LDA #$2F                  
+CODE_2AABD7:        85 02         STA $02                   
+CODE_2AABD9:        C2 20         REP #$20                  
+CODE_2AABDB:        A5 00         LDA $00                   
+CODE_2AABDD:        18            CLC                       
+CODE_2AABDE:        69 10 00      ADC #$0010                
+CODE_2AABE1:        AA            TAX                       
+CODE_2AABE2:        E2 20         SEP #$20                  
+CODE_2AABE4:        20 EA AB      JSR CODE_2AABEA           
+CODE_2AABE7:        E2 10         SEP #$10                  
+CODE_2AABE9:        60            RTS                       
 
-CODE_2AABEA:        LDA $02                   
-CODE_2AABEC:        JSR CODE_2A8CD9           
-CODE_2AABEF:        INC $02                   
-CODE_2AABF1:        INX                       
-CODE_2AABF2:        TXA                       
-CODE_2AABF3:        AND #$0F                  
-CODE_2AABF5:        BNE CODE_2AAC01           
-CODE_2AABF7:        REP #$20                  
-CODE_2AABF9:        TXA                       
-CODE_2AABFA:        SEC                       
-CODE_2AABFB:        SBC #$01C0                
-CODE_2AABFE:        TAX                       
-CODE_2AABFF:        SEP #$20                  
-CODE_2AAC01:        DEY                       
-CODE_2AAC02:        BNE CODE_2AABEA           
-CODE_2AAC04:        RTS                       
+CODE_2AABEA:        A5 02         LDA $02                   
+CODE_2AABEC:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AABEF:        E6 02         INC $02                   
+CODE_2AABF1:        E8            INX                       
+CODE_2AABF2:        8A            TXA                       
+CODE_2AABF3:        29 0F         AND #$0F                  
+CODE_2AABF5:        D0 0A         BNE CODE_2AAC01           
+CODE_2AABF7:        C2 20         REP #$20                  
+CODE_2AABF9:        8A            TXA                       
+CODE_2AABFA:        38            SEC                       
+CODE_2AABFB:        E9 C0 01      SBC #$01C0                
+CODE_2AABFE:        AA            TAX                       
+CODE_2AABFF:        E2 20         SEP #$20                  
+CODE_2AAC01:        88            DEY                       
+CODE_2AAC02:        D0 E6         BNE CODE_2AABEA           
+CODE_2AAC04:        60            RTS                       
 
-CODE_2AAC05:        SEP #$10                  
-CODE_2AAC07:        LDA #$00                  
-CODE_2AAC09:        STA $00                   
-CODE_2AAC0B:        INC A                     
-CODE_2AAC0C:        STA $01                   
-CODE_2AAC0E:        INC A                     
-CODE_2AAC0F:        STA $02                   
-CODE_2AAC11:        INC A                     
-CODE_2AAC12:        STA $03                   
-CODE_2AAC14:        LDX #$00                  
-CODE_2AAC16:        JSR CODE_2AAC59           
-CODE_2AAC19:        LDA #$04                  
-CODE_2AAC1B:        STA $00                   
-CODE_2AAC1D:        INC A                     
-CODE_2AAC1E:        STA $01                   
-CODE_2AAC20:        INC A                     
-CODE_2AAC21:        STA $02                   
-CODE_2AAC23:        INC A                     
-CODE_2AAC24:        STA $03                   
-CODE_2AAC26:        LDX #$10                  
-CODE_2AAC28:        JSR CODE_2AAC59           
-CODE_2AAC2B:        LDA #$08                  
-CODE_2AAC2D:        STA $00                   
-CODE_2AAC2F:        INC A                     
-CODE_2AAC30:        STA $01                   
-CODE_2AAC32:        INC A                     
-CODE_2AAC33:        STA $02                   
-CODE_2AAC35:        INC A                     
-CODE_2AAC36:        STA $03                   
-CODE_2AAC38:        LDX #$20                  
-CODE_2AAC3A:        JSR CODE_2AAC59           
-CODE_2AAC3D:        LDA #$0C                  
-CODE_2AAC3F:        STA $00                   
-CODE_2AAC41:        INC A                     
-CODE_2AAC42:        STA $01                   
-CODE_2AAC44:        INC A                     
-CODE_2AAC45:        STA $02                   
-CODE_2AAC47:        INC A                     
-CODE_2AAC48:        STA $03                   
-CODE_2AAC4A:        LDX #$30                  
-CODE_2AAC4C:        JSR CODE_2AAC59           
-CODE_2AAC4F:        TXA                       
-CODE_2AAC50:        CLC                       
-CODE_2AAC51:        ADC #$30                  
-CODE_2AAC53:        TAX                       
-CODE_2AAC54:        JSR CODE_2AAC8B           
-CODE_2AAC57:        PLB                       
-CODE_2AAC58:        RTL                       
+CODE_2AAC05:        E2 10         SEP #$10                  
+CODE_2AAC07:        A9 00         LDA #$00                  
+CODE_2AAC09:        85 00         STA $00                   
+CODE_2AAC0B:        1A            INC A                     
+CODE_2AAC0C:        85 01         STA $01                   
+CODE_2AAC0E:        1A            INC A                     
+CODE_2AAC0F:        85 02         STA $02                   
+CODE_2AAC11:        1A            INC A                     
+CODE_2AAC12:        85 03         STA $03                   
+CODE_2AAC14:        A2 00         LDX #$00                  
+CODE_2AAC16:        20 59 AC      JSR CODE_2AAC59           
+CODE_2AAC19:        A9 04         LDA #$04                  
+CODE_2AAC1B:        85 00         STA $00                   
+CODE_2AAC1D:        1A            INC A                     
+CODE_2AAC1E:        85 01         STA $01                   
+CODE_2AAC20:        1A            INC A                     
+CODE_2AAC21:        85 02         STA $02                   
+CODE_2AAC23:        1A            INC A                     
+CODE_2AAC24:        85 03         STA $03                   
+CODE_2AAC26:        A2 10         LDX #$10                  
+CODE_2AAC28:        20 59 AC      JSR CODE_2AAC59           
+CODE_2AAC2B:        A9 08         LDA #$08                  
+CODE_2AAC2D:        85 00         STA $00                   
+CODE_2AAC2F:        1A            INC A                     
+CODE_2AAC30:        85 01         STA $01                   
+CODE_2AAC32:        1A            INC A                     
+CODE_2AAC33:        85 02         STA $02                   
+CODE_2AAC35:        1A            INC A                     
+CODE_2AAC36:        85 03         STA $03                   
+CODE_2AAC38:        A2 20         LDX #$20                  
+CODE_2AAC3A:        20 59 AC      JSR CODE_2AAC59           
+CODE_2AAC3D:        A9 0C         LDA #$0C                  
+CODE_2AAC3F:        85 00         STA $00                   
+CODE_2AAC41:        1A            INC A                     
+CODE_2AAC42:        85 01         STA $01                   
+CODE_2AAC44:        1A            INC A                     
+CODE_2AAC45:        85 02         STA $02                   
+CODE_2AAC47:        1A            INC A                     
+CODE_2AAC48:        85 03         STA $03                   
+CODE_2AAC4A:        A2 30         LDX #$30                  
+CODE_2AAC4C:        20 59 AC      JSR CODE_2AAC59           
+CODE_2AAC4F:        8A            TXA                       
+CODE_2AAC50:        18            CLC                       
+CODE_2AAC51:        69 30         ADC #$30                  
+CODE_2AAC53:        AA            TAX                       
+CODE_2AAC54:        20 8B AC      JSR CODE_2AAC8B           
+CODE_2AAC57:        AB            PLB                       
+CODE_2AAC58:        6B            RTL                       
 
-CODE_2AAC59:        LDA $00                   
-CODE_2AAC5B:        JSR CODE_2A8D03           
-CODE_2AAC5E:        JSR CODE_2A8D25           
-CODE_2AAC61:        INX                       
-CODE_2AAC62:        LDA $01                   
-CODE_2AAC64:        JSR CODE_2A8D03           
-CODE_2AAC67:        JSR CODE_2A8D25           
-CODE_2AAC6A:        INX                       
-CODE_2AAC6B:        LDA $02                   
-CODE_2AAC6D:        JSR CODE_2A8D03           
-CODE_2AAC70:        JSR CODE_2A8D25           
-CODE_2AAC73:        INX                       
-CODE_2AAC74:        LDA $03                   
-CODE_2AAC76:        JSR CODE_2A8D03           
-CODE_2AAC79:        JSR CODE_2A8D25           
-CODE_2AAC7C:        INX                       
-CODE_2AAC7D:        TXA                       
-CODE_2AAC7E:        AND #$0F                  
-CODE_2AAC80:        BNE CODE_2AAC59           
-CODE_2AAC82:        TXA                       
-CODE_2AAC83:        CLC                       
-CODE_2AAC84:        ADC #$30                  
-CODE_2AAC86:        TAX                       
-CODE_2AAC87:        CPX #$B0                  
-CODE_2AAC89:        BCC CODE_2AAC59           
-CODE_2AAC8B:        LDA $00                   
-CODE_2AAC8D:        JSR CODE_2A8D03           
-CODE_2AAC90:        INX                       
-CODE_2AAC91:        LDA $01                   
-CODE_2AAC93:        JSR CODE_2A8D03           
-CODE_2AAC96:        INX                       
-CODE_2AAC97:        LDA $02                   
-CODE_2AAC99:        JSR CODE_2A8D03           
-CODE_2AAC9C:        INX                       
-CODE_2AAC9D:        LDA $03                   
-CODE_2AAC9F:        JSR CODE_2A8D03           
-CODE_2AACA2:        INX                       
-CODE_2AACA3:        TXA                       
-CODE_2AACA4:        AND #$0F                  
-CODE_2AACA6:        BNE CODE_2AAC8B           
-CODE_2AACA8:        RTS                       
+CODE_2AAC59:        A5 00         LDA $00                   
+CODE_2AAC5B:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAC5E:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AAC61:        E8            INX                       
+CODE_2AAC62:        A5 01         LDA $01                   
+CODE_2AAC64:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAC67:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AAC6A:        E8            INX                       
+CODE_2AAC6B:        A5 02         LDA $02                   
+CODE_2AAC6D:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAC70:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AAC73:        E8            INX                       
+CODE_2AAC74:        A5 03         LDA $03                   
+CODE_2AAC76:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAC79:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AAC7C:        E8            INX                       
+CODE_2AAC7D:        8A            TXA                       
+CODE_2AAC7E:        29 0F         AND #$0F                  
+CODE_2AAC80:        D0 D7         BNE CODE_2AAC59           
+CODE_2AAC82:        8A            TXA                       
+CODE_2AAC83:        18            CLC                       
+CODE_2AAC84:        69 30         ADC #$30                  
+CODE_2AAC86:        AA            TAX                       
+CODE_2AAC87:        E0 B0         CPX #$B0                  
+CODE_2AAC89:        90 CE         BCC CODE_2AAC59           
+CODE_2AAC8B:        A5 00         LDA $00                   
+CODE_2AAC8D:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAC90:        E8            INX                       
+CODE_2AAC91:        A5 01         LDA $01                   
+CODE_2AAC93:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAC96:        E8            INX                       
+CODE_2AAC97:        A5 02         LDA $02                   
+CODE_2AAC99:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAC9C:        E8            INX                       
+CODE_2AAC9D:        A5 03         LDA $03                   
+CODE_2AAC9F:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AACA2:        E8            INX                       
+CODE_2AACA3:        8A            TXA                       
+CODE_2AACA4:        29 0F         AND #$0F                  
+CODE_2AACA6:        D0 E3         BNE CODE_2AAC8B           
+CODE_2AACA8:        60            RTS                       
 
-CODE_2AACA9:        SEP #$10                  
-CODE_2AACAB:        LDX #$D0                  
-CODE_2AACAD:        LDA #$1B                  
-CODE_2AACAF:        STA $00                   
-CODE_2AACB1:        JSR CODE_2A9924           
-CODE_2AACB4:        JSR CODE_2A9924           
-CODE_2AACB7:        JSR CODE_2A9924           
-CODE_2AACBA:        JSR CODE_2A9930           
-CODE_2AACBD:        JSR CODE_2A9930           
-CODE_2AACC0:        JSR CODE_2A9930           
-CODE_2AACC3:        REP #$10                  
-CODE_2AACC5:        LDY #$0000                
-CODE_2AACC8:        LDX #$00B0                
-CODE_2AACCB:        REP #$20                  
-CODE_2AACCD:        LDA #$ADA3                
-CODE_2AACD0:        STA $00                   
-CODE_2AACD2:        SEP #$20                  
-CODE_2AACD4:        JSR CODE_2AAD96           
-CODE_2AACD7:        LDX #$00E1                
-CODE_2AACDA:        LDA #$19                  
-CODE_2AACDC:        JSR CODE_2A8CD9           
-CODE_2AACDF:        LDX #$00F8                
-CODE_2AACE2:        JSR CODE_2A8CD9           
-CODE_2AACE5:        INX                       
-CODE_2AACE6:        JSR CODE_2A8CD9           
-CODE_2AACE9:        LDX #$0296                
-CODE_2AACEC:        JSR CODE_2A8CD9           
-CODE_2AACEF:        LDX #$029A                
-CODE_2AACF2:        JSR CODE_2A8CD9           
-CODE_2AACF5:        INX                       
-CODE_2AACF6:        JSR CODE_2A8CD9           
-CODE_2AACF9:        LDX #$02A2                
-CODE_2AACFC:        JSR CODE_2A8CD9           
-CODE_2AACFF:        LDY #$0000                
-CODE_2AAD02:        LDX #$00E5                
-CODE_2AAD05:        LDA.w DATA_2AADD3,y               
-CODE_2AAD08:        JSR CODE_2A8CD9           
-CODE_2AAD0B:        INX                       
-CODE_2AAD0C:        INY                       
-CODE_2AAD0D:        CPY #$0008                
-CODE_2AAD10:        BNE CODE_2AAD05           
-CODE_2AAD12:        LDY #$0000                
-CODE_2AAD15:        LDX #$0260                
-CODE_2AAD18:        REP #$20                  
-CODE_2AAD1A:        LDA #$ADDB                
-CODE_2AAD1D:        STA $00                   
-CODE_2AAD1F:        SEP #$20                  
-CODE_2AAD21:        JSR CODE_2AAD96           
-CODE_2AAD24:        LDY #$0000                
-CODE_2AAD27:        LDX #$0291                
-CODE_2AAD2A:        LDA.w DATA_2AAE0B,y               
-CODE_2AAD2D:        JSR CODE_2A8CD9           
-CODE_2AAD30:        INX                       
-CODE_2AAD31:        INY                       
-CODE_2AAD32:        CPY #$0004                
-CODE_2AAD35:        BNE CODE_2AAD2A           
-CODE_2AAD37:        SEP #$10                  
-CODE_2AAD39:        LDX #$30                  
-CODE_2AAD3B:        LDA #$24                  
-CODE_2AAD3D:        STA $00                   
-CODE_2AAD3F:        JSR CODE_2A9930           
-CODE_2AAD42:        JSR CODE_2A9930           
-CODE_2AAD45:        JSR CODE_2A9930           
-CODE_2AAD48:        LDA #$2E                  
-CODE_2AAD4A:        STA $00                   
-CODE_2AAD4C:        JSR CODE_2A9930           
-CODE_2AAD4F:        LDA #$29                  
-CODE_2AAD51:        STA $00                   
-CODE_2AAD53:        JSR CODE_2A9930           
-CODE_2AAD56:        LDA #$26                  
-CODE_2AAD58:        STA $00                   
-CODE_2AAD5A:        JSR CODE_2A9930           
-CODE_2AAD5D:        LDY #$00                  
-CODE_2AAD5F:        LDA [$2B],y               
-CODE_2AAD61:        CMP #$FF                  
-CODE_2AAD63:        BEQ CODE_2AAD6D           
-CODE_2AAD65:        JSR CODE_2A8E54           
-CODE_2AAD68:        JSR CODE_2AAE0F           
-CODE_2AAD6B:        BRA CODE_2AAD5D           
+CODE_2AACA9:        E2 10         SEP #$10                  
+CODE_2AACAB:        A2 D0         LDX #$D0                  
+CODE_2AACAD:        A9 1B         LDA #$1B                  
+CODE_2AACAF:        85 00         STA $00                   
+CODE_2AACB1:        20 24 99      JSR CODE_2A9924           
+CODE_2AACB4:        20 24 99      JSR CODE_2A9924           
+CODE_2AACB7:        20 24 99      JSR CODE_2A9924           
+CODE_2AACBA:        20 30 99      JSR CODE_2A9930           
+CODE_2AACBD:        20 30 99      JSR CODE_2A9930           
+CODE_2AACC0:        20 30 99      JSR CODE_2A9930           
+CODE_2AACC3:        C2 10         REP #$10                  
+CODE_2AACC5:        A0 00 00      LDY #$0000                
+CODE_2AACC8:        A2 B0 00      LDX #$00B0                
+CODE_2AACCB:        C2 20         REP #$20                  
+CODE_2AACCD:        A9 A3 AD      LDA #$ADA3                
+CODE_2AACD0:        85 00         STA $00                   
+CODE_2AACD2:        E2 20         SEP #$20                  
+CODE_2AACD4:        20 96 AD      JSR CODE_2AAD96           
+CODE_2AACD7:        A2 E1 00      LDX #$00E1                
+CODE_2AACDA:        A9 19         LDA #$19                  
+CODE_2AACDC:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AACDF:        A2 F8 00      LDX #$00F8                
+CODE_2AACE2:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AACE5:        E8            INX                       
+CODE_2AACE6:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AACE9:        A2 96 02      LDX #$0296                
+CODE_2AACEC:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AACEF:        A2 9A 02      LDX #$029A                
+CODE_2AACF2:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AACF5:        E8            INX                       
+CODE_2AACF6:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AACF9:        A2 A2 02      LDX #$02A2                
+CODE_2AACFC:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AACFF:        A0 00 00      LDY #$0000                
+CODE_2AAD02:        A2 E5 00      LDX #$00E5                
+CODE_2AAD05:        B9 D3 AD      LDA.w DATA_2AADD3,y               
+CODE_2AAD08:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AAD0B:        E8            INX                       
+CODE_2AAD0C:        C8            INY                       
+CODE_2AAD0D:        C0 08 00      CPY #$0008                
+CODE_2AAD10:        D0 F3         BNE CODE_2AAD05           
+CODE_2AAD12:        A0 00 00      LDY #$0000                
+CODE_2AAD15:        A2 60 02      LDX #$0260                
+CODE_2AAD18:        C2 20         REP #$20                  
+CODE_2AAD1A:        A9 DB AD      LDA #$ADDB                
+CODE_2AAD1D:        85 00         STA $00                   
+CODE_2AAD1F:        E2 20         SEP #$20                  
+CODE_2AAD21:        20 96 AD      JSR CODE_2AAD96           
+CODE_2AAD24:        A0 00 00      LDY #$0000                
+CODE_2AAD27:        A2 91 02      LDX #$0291                
+CODE_2AAD2A:        B9 0B AE      LDA.w DATA_2AAE0B,y               
+CODE_2AAD2D:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AAD30:        E8            INX                       
+CODE_2AAD31:        C8            INY                       
+CODE_2AAD32:        C0 04 00      CPY #$0004                
+CODE_2AAD35:        D0 F3         BNE CODE_2AAD2A           
+CODE_2AAD37:        E2 10         SEP #$10                  
+CODE_2AAD39:        A2 30         LDX #$30                  
+CODE_2AAD3B:        A9 24         LDA #$24                  
+CODE_2AAD3D:        85 00         STA $00                   
+CODE_2AAD3F:        20 30 99      JSR CODE_2A9930           
+CODE_2AAD42:        20 30 99      JSR CODE_2A9930           
+CODE_2AAD45:        20 30 99      JSR CODE_2A9930           
+CODE_2AAD48:        A9 2E         LDA #$2E                  
+CODE_2AAD4A:        85 00         STA $00                   
+CODE_2AAD4C:        20 30 99      JSR CODE_2A9930           
+CODE_2AAD4F:        A9 29         LDA #$29                  
+CODE_2AAD51:        85 00         STA $00                   
+CODE_2AAD53:        20 30 99      JSR CODE_2A9930           
+CODE_2AAD56:        A9 26         LDA #$26                  
+CODE_2AAD58:        85 00         STA $00                   
+CODE_2AAD5A:        20 30 99      JSR CODE_2A9930           
+CODE_2AAD5D:        A0 00         LDY #$00                  
+CODE_2AAD5F:        B7 2B         LDA [$2B],y               
+CODE_2AAD61:        C9 FF         CMP #$FF                  
+CODE_2AAD63:        F0 08         BEQ CODE_2AAD6D           
+CODE_2AAD65:        20 54 8E      JSR CODE_2A8E54           
+CODE_2AAD68:        20 0F AE      JSR CODE_2AAE0F           
+CODE_2AAD6B:        80 F0         BRA CODE_2AAD5D           
 
-CODE_2AAD6D:        LDA $0350                 
-CODE_2AAD70:        CMP #$1E                  
-CODE_2AAD72:        BNE CODE_2AAD94           
-CODE_2AAD74:        LDA #$00                  
-CODE_2AAD76:        XBA                       
-CODE_2AAD77:        REP #$10                  
-CODE_2AAD79:        LDY #$0110                
-CODE_2AAD7C:        LDX #$0120                
-CODE_2AAD7F:        LDA #$EF                  
-CODE_2AAD81:        MVN $7F, $7F                 
-CODE_2AAD84:        LDA #$00                  
-CODE_2AAD86:        XBA                       
-CODE_2AAD87:        LDY #$02C0                
-CODE_2AAD8A:        LDX #$02D0                
-CODE_2AAD8D:        LDA #$EF                  
-CODE_2AAD8F:        MVN $7F, $7F                 
-CODE_2AAD92:        SEP #$10                  
-CODE_2AAD94:        PLB                       
-CODE_2AAD95:        RTL                       
+CODE_2AAD6D:        AD 50 03      LDA $0350                 
+CODE_2AAD70:        C9 1E         CMP #$1E                  
+CODE_2AAD72:        D0 20         BNE CODE_2AAD94           
+CODE_2AAD74:        A9 00         LDA #$00                  
+CODE_2AAD76:        EB            XBA                       
+CODE_2AAD77:        C2 10         REP #$10                  
+CODE_2AAD79:        A0 10 01      LDY #$0110                
+CODE_2AAD7C:        A2 20 01      LDX #$0120                
+CODE_2AAD7F:        A9 EF         LDA #$EF                  
+CODE_2AAD81:        54 7F 7F      MVN $7F, $7F                 
+CODE_2AAD84:        A9 00         LDA #$00                  
+CODE_2AAD86:        EB            XBA                       
+CODE_2AAD87:        A0 C0 02      LDY #$02C0                
+CODE_2AAD8A:        A2 D0 02      LDX #$02D0                
+CODE_2AAD8D:        A9 EF         LDA #$EF                  
+CODE_2AAD8F:        54 7F 7F      MVN $7F, $7F                 
+CODE_2AAD92:        E2 10         SEP #$10                  
+CODE_2AAD94:        AB            PLB                       
+CODE_2AAD95:        6B            RTL                       
 
-CODE_2AAD96:        LDA ($00),y               ;
-CODE_2AAD98:        JSR CODE_2A8CD9           ;
-CODE_2AAD9B:        INX                       ;
-CODE_2AAD9C:        INY                       ;
-CODE_2AAD9D:        CPY #$0030                ;
-CODE_2AADA0:        BNE CODE_2AAD96           ;
-CODE_2AADA2:        RTS                       ;
+CODE_2AAD96:        B1 00         LDA ($00),y               ;
+CODE_2AAD98:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AAD9B:        E8            INX                       ;
+CODE_2AAD9C:        C8            INY                       ;
+CODE_2AAD9D:        C0 30 00      CPY #$0030                ;
+CODE_2AADA0:        D0 F4         BNE CODE_2AAD96           ;
+CODE_2AADA2:        60            RTS                       ;
 
 DATA_2AADA3:        db $08,$08,$09,$00,$04,$09,$00,$00 ;
                     db $00,$00,$04,$08,$09,$00,$04,$08 ;
@@ -5298,48 +5298,48 @@ DATA_2AADD3:        db $19,$1D,$13,$0E,$0E,$15,$1A,$16 ;
 
 DATA_2AAE0B:        db $17,$0E,$15,$1C ;     
           
-CODE_2AAE0F:        REP #$10                  
-CODE_2AAE11:        INC $00                   
-CODE_2AAE13:        LDX $00                   
-CODE_2AAE15:        LDY #$0000                
-CODE_2AAE18:        LDA.w DATA_2AAE71,y               
-CODE_2AAE1B:        JSR CODE_2A8CD9           
-CODE_2AAE1E:        JSR CODE_2AAE80           
-CODE_2AAE21:        CPY #$0005                
-CODE_2AAE24:        BNE CODE_2AAE18           
-CODE_2AAE26:        INC $00                   
-CODE_2AAE28:        LDX $00                   
-CODE_2AAE2A:        DEC $D8                   
-CODE_2AAE2C:        LDY #$0000                
-CODE_2AAE2F:        LDA.w DATA_2AAE76,y               
-CODE_2AAE32:        JSR CODE_2A8CD9           
-CODE_2AAE35:        JSR CODE_2AAE80           
-CODE_2AAE38:        CPY #$0005                
-CODE_2AAE3B:        BNE CODE_2AAE2F           
-CODE_2AAE3D:        INC $00                   
-CODE_2AAE3F:        LDA $00                   
-CODE_2AAE41:        AND #$0F                  
-CODE_2AAE43:        BNE CODE_2AAE51           
-CODE_2AAE45:        REP #$20                  
-CODE_2AAE47:        LDA $00                   
-CODE_2AAE49:        SEC                       
-CODE_2AAE4A:        SBC #$01C0                
-CODE_2AAE4D:        STA $00                   
-CODE_2AAE4F:        SEP #$20                  
-CODE_2AAE51:        SEP #$20                  
-CODE_2AAE53:        LDX $00                   
-CODE_2AAE55:        DEC $D8                   
-CODE_2AAE57:        BNE CODE_2AAE2C           
-CODE_2AAE59:        LDY #$0000                
-CODE_2AAE5C:        LDA.w DATA_2AAE7B,y               
-CODE_2AAE5F:        JSR CODE_2A8CD9           
-CODE_2AAE62:        JSR CODE_2AAE80           
-CODE_2AAE65:        CPY #$0005                
-CODE_2AAE68:        BNE CODE_2AAE5C           
-CODE_2AAE6A:        INC $00                   
-CODE_2AAE6C:        LDX $00                   
-CODE_2AAE6E:        SEP #$10                  
-CODE_2AAE70:        RTS                       
+CODE_2AAE0F:        C2 10         REP #$10                  
+CODE_2AAE11:        E6 00         INC $00                   
+CODE_2AAE13:        A6 00         LDX $00                   
+CODE_2AAE15:        A0 00 00      LDY #$0000                
+CODE_2AAE18:        B9 71 AE      LDA.w DATA_2AAE71,y               
+CODE_2AAE1B:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AAE1E:        20 80 AE      JSR CODE_2AAE80           
+CODE_2AAE21:        C0 05 00      CPY #$0005                
+CODE_2AAE24:        D0 F2         BNE CODE_2AAE18           
+CODE_2AAE26:        E6 00         INC $00                   
+CODE_2AAE28:        A6 00         LDX $00                   
+CODE_2AAE2A:        C6 D8         DEC $D8                   
+CODE_2AAE2C:        A0 00 00      LDY #$0000                
+CODE_2AAE2F:        B9 76 AE      LDA.w DATA_2AAE76,y               
+CODE_2AAE32:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AAE35:        20 80 AE      JSR CODE_2AAE80           
+CODE_2AAE38:        C0 05 00      CPY #$0005                
+CODE_2AAE3B:        D0 F2         BNE CODE_2AAE2F           
+CODE_2AAE3D:        E6 00         INC $00                   
+CODE_2AAE3F:        A5 00         LDA $00                   
+CODE_2AAE41:        29 0F         AND #$0F                  
+CODE_2AAE43:        D0 0C         BNE CODE_2AAE51           
+CODE_2AAE45:        C2 20         REP #$20                  
+CODE_2AAE47:        A5 00         LDA $00                   
+CODE_2AAE49:        38            SEC                       
+CODE_2AAE4A:        E9 C0 01      SBC #$01C0                
+CODE_2AAE4D:        85 00         STA $00                   
+CODE_2AAE4F:        E2 20         SEP #$20                  
+CODE_2AAE51:        E2 20         SEP #$20                  
+CODE_2AAE53:        A6 00         LDX $00                   
+CODE_2AAE55:        C6 D8         DEC $D8                   
+CODE_2AAE57:        D0 D3         BNE CODE_2AAE2C           
+CODE_2AAE59:        A0 00 00      LDY #$0000                
+CODE_2AAE5C:        B9 7B AE      LDA.w DATA_2AAE7B,y               
+CODE_2AAE5F:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AAE62:        20 80 AE      JSR CODE_2AAE80           
+CODE_2AAE65:        C0 05 00      CPY #$0005                
+CODE_2AAE68:        D0 F2         BNE CODE_2AAE5C           
+CODE_2AAE6A:        E6 00         INC $00                   
+CODE_2AAE6C:        A6 00         LDX $00                   
+CODE_2AAE6E:        E2 10         SEP #$10                  
+CODE_2AAE70:        60            RTS                       
 
 DATA_2AAE71:        db $1E,$21,$25,$28,$2C ;
 
@@ -5347,238 +5347,238 @@ DATA_2AAE76:        db $1E,$22,$26,$29,$26 ;
 
 DATA_2AAE7B:        db $1E,$23,$27,$2A,$2D ;
 
-CODE_2AAE80:        REP #$20                  ;
-CODE_2AAE82:        TXA                       ;
-CODE_2AAE83:        CLC                       
-CODE_2AAE84:        ADC #$0010                  
-CODE_2AAE87:        TAX
-CODE_2AAE88:        SEP #$20                  
-CODE_2AAE8A:        INY                       
-CODE_2AAE8B:        RTS                       
+CODE_2AAE80:        C2 20         REP #$20                  ;
+CODE_2AAE82:        8A            TXA                       ;
+CODE_2AAE83:        18            CLC                       
+CODE_2AAE84:        69 10         ADC #$0010                  
+CODE_2AAE87:        AA            TAX
+CODE_2AAE88:        E2 20         SEP #$20                  
+CODE_2AAE8A:        C8            INY                       
+CODE_2AAE8B:        60            RTS                       
 
-CODE_2AAE8C:        SEP #$10                  
-CODE_2AAE8E:        LDA #$01                  
-CODE_2AAE90:        STA $02D9                 
-CODE_2AAE93:        LDX #$00                  
-CODE_2AAE95:        LDA #$13                  
-CODE_2AAE97:        STA $00                   
-CODE_2AAE99:        LDA #$14                  
-CODE_2AAE9B:        STA $01                   
-CODE_2AAE9D:        LDA #$15                  
-CODE_2AAE9F:        STA $02                   
-CODE_2AAEA1:        LDA #$16                  
-CODE_2AAEA3:        STA $03                   
-CODE_2AAEA5:        LDA #$04                  
-CODE_2AAEA7:        STA $04                   
-CODE_2AAEA9:        JSR CODE_2A975C           
-CODE_2AAEAC:        LDX #$10                  
-CODE_2AAEAE:        LDA #$17                  
-CODE_2AAEB0:        STA $00                   
-CODE_2AAEB2:        LDA #$18                  
-CODE_2AAEB4:        STA $01                   
-CODE_2AAEB6:        LDA #$08                  
-CODE_2AAEB8:        STA $04                   
-CODE_2AAEBA:        JSR CODE_2A9779           
-CODE_2AAEBD:        TXA                       
-CODE_2AAEBE:        CLC                       
-CODE_2AAEBF:        ADC #$10                  
-CODE_2AAEC1:        TAX                       
-CODE_2AAEC2:        CPX #$B0                  
-CODE_2AAEC4:        BNE CODE_2AAEB6           
-CODE_2AAEC6:        LDX #$20                  
-CODE_2AAEC8:        LDA #$13                  
-CODE_2AAECA:        STA $00                   
-CODE_2AAECC:        LDA #$16                  
-CODE_2AAECE:        STA $01                   
-CODE_2AAED0:        LDA #$08                  
-CODE_2AAED2:        STA $04                   
-CODE_2AAED4:        JSR CODE_2A9779           
-CODE_2AAED7:        TXA                       
-CODE_2AAED8:        CLC                       
-CODE_2AAED9:        ADC #$10                  
-CODE_2AAEDB:        TAX                       
-CODE_2AAEDC:        CPX #$A0                  
-CODE_2AAEDE:        BNE CODE_2AAED0           
-CODE_2AAEE0:        LDY #$00                  
-CODE_2AAEE2:        LDA [$2B],y               
-CODE_2AAEE4:        CMP #$FF                  
-CODE_2AAEE6:        BEQ CODE_2AAEF0           
-CODE_2AAEE8:        JSR CODE_2A8E54           
-CODE_2AAEEB:        JSR (PNTR_2AAEF2,x)             
-CODE_2AAEEE:        BRA CODE_2AAEE0           
+CODE_2AAE8C:        E2 10         SEP #$10                  
+CODE_2AAE8E:        A9 01         LDA #$01                  
+CODE_2AAE90:        8D D9 02      STA $02D9                 
+CODE_2AAE93:        A2 00         LDX #$00                  
+CODE_2AAE95:        A9 13         LDA #$13                  
+CODE_2AAE97:        85 00         STA $00                   
+CODE_2AAE99:        A9 14         LDA #$14                  
+CODE_2AAE9B:        85 01         STA $01                   
+CODE_2AAE9D:        A9 15         LDA #$15                  
+CODE_2AAE9F:        85 02         STA $02                   
+CODE_2AAEA1:        A9 16         LDA #$16                  
+CODE_2AAEA3:        85 03         STA $03                   
+CODE_2AAEA5:        A9 04         LDA #$04                  
+CODE_2AAEA7:        85 04         STA $04                   
+CODE_2AAEA9:        20 5C 97      JSR CODE_2A975C           
+CODE_2AAEAC:        A2 10         LDX #$10                  
+CODE_2AAEAE:        A9 17         LDA #$17                  
+CODE_2AAEB0:        85 00         STA $00                   
+CODE_2AAEB2:        A9 18         LDA #$18                  
+CODE_2AAEB4:        85 01         STA $01                   
+CODE_2AAEB6:        A9 08         LDA #$08                  
+CODE_2AAEB8:        85 04         STA $04                   
+CODE_2AAEBA:        20 79 97      JSR CODE_2A9779           
+CODE_2AAEBD:        8A            TXA                       
+CODE_2AAEBE:        18            CLC                       
+CODE_2AAEBF:        69 10         ADC #$10                  
+CODE_2AAEC1:        AA            TAX                       
+CODE_2AAEC2:        E0 B0         CPX #$B0                  
+CODE_2AAEC4:        D0 F0         BNE CODE_2AAEB6           
+CODE_2AAEC6:        A2 20         LDX #$20                  
+CODE_2AAEC8:        A9 13         LDA #$13                  
+CODE_2AAECA:        85 00         STA $00                   
+CODE_2AAECC:        A9 16         LDA #$16                  
+CODE_2AAECE:        85 01         STA $01                   
+CODE_2AAED0:        A9 08         LDA #$08                  
+CODE_2AAED2:        85 04         STA $04                   
+CODE_2AAED4:        20 79 97      JSR CODE_2A9779           
+CODE_2AAED7:        8A            TXA                       
+CODE_2AAED8:        18            CLC                       
+CODE_2AAED9:        69 10         ADC #$10                  
+CODE_2AAEDB:        AA            TAX                       
+CODE_2AAEDC:        E0 A0         CPX #$A0                  
+CODE_2AAEDE:        D0 F0         BNE CODE_2AAED0           
+CODE_2AAEE0:        A0 00         LDY #$00                  
+CODE_2AAEE2:        B7 2B         LDA [$2B],y               
+CODE_2AAEE4:        C9 FF         CMP #$FF                  
+CODE_2AAEE6:        F0 08         BEQ CODE_2AAEF0           
+CODE_2AAEE8:        20 54 8E      JSR CODE_2A8E54           
+CODE_2AAEEB:        FC F2 AE      JSR (PNTR_2AAEF2,x)             
+CODE_2AAEEE:        80 F0         BRA CODE_2AAEE0           
 
-CODE_2AAEF0:        PLB                       
-CODE_2AAEF1:        RTL                       
+CODE_2AAEF0:        AB            PLB                       
+CODE_2AAEF1:        6B            RTL                       
 
 PNTR_2AAEF2:        dw CODE_2AAEF6
                     dw CODE_2AAF39
 
-CODE_2AAEF6:        LDX $00                   ;
-CODE_2AAEF8:        LDA #$01                  ;
-CODE_2AAEFA:        JSR CODE_2A8D03           ;
-CODE_2AAEFD:        INX                       ;
-CODE_2AAEFE:        LDA #$02                  ;
-CODE_2AAF00:        JSR CODE_2A8D03           
-CODE_2AAF03:        LDA $00                   
-CODE_2AAF05:        CLC                       
-CODE_2AAF06:        ADC #$0F                  
-CODE_2AAF08:        TAX                       
-CODE_2AAF09:        STA $00                   
-CODE_2AAF0B:        STZ $01                   
-CODE_2AAF0D:        LDA #$04                  
-CODE_2AAF0F:        STA $02                   
-CODE_2AAF11:        LDY $01                   
-CODE_2AAF13:        LDA.w DATA_2AAF2D,y               
-CODE_2AAF16:        JSR CODE_2A8D03           
-CODE_2AAF19:        INX                       
-CODE_2AAF1A:        INC $01                   
-CODE_2AAF1C:        DEC $02                   
-CODE_2AAF1E:        BNE CODE_2AAF11           
-CODE_2AAF20:        LDA $00                   
-CODE_2AAF22:        CLC                       
-CODE_2AAF23:        ADC #$10                  
-CODE_2AAF25:        TAX                       
-CODE_2AAF26:        STA $00                   
-CODE_2AAF28:        DEC $D8                   
-CODE_2AAF2A:        BNE CODE_2AAF0D           
-CODE_2AAF2C:        RTS                       
+CODE_2AAEF6:        A6 00         LDX $00                   ;
+CODE_2AAEF8:        A9 01         LDA #$01                  ;
+CODE_2AAEFA:        20 03 8D      JSR CODE_2A8D03           ;
+CODE_2AAEFD:        E8            INX                       ;
+CODE_2AAEFE:        A9 02         LDA #$02                  ;
+CODE_2AAF00:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAF03:        A5 00         LDA $00                   
+CODE_2AAF05:        18            CLC                       
+CODE_2AAF06:        69 0F         ADC #$0F                  
+CODE_2AAF08:        AA            TAX                       
+CODE_2AAF09:        85 00         STA $00                   
+CODE_2AAF0B:        64 01         STZ $01                   
+CODE_2AAF0D:        A9 04         LDA #$04                  
+CODE_2AAF0F:        85 02         STA $02                   
+CODE_2AAF11:        A4 01         LDY $01                   
+CODE_2AAF13:        B9 2D AF      LDA.w DATA_2AAF2D,y               
+CODE_2AAF16:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAF19:        E8            INX                       
+CODE_2AAF1A:        E6 01         INC $01                   
+CODE_2AAF1C:        C6 02         DEC $02                   
+CODE_2AAF1E:        D0 F1         BNE CODE_2AAF11           
+CODE_2AAF20:        A5 00         LDA $00                   
+CODE_2AAF22:        18            CLC                       
+CODE_2AAF23:        69 10         ADC #$10                  
+CODE_2AAF25:        AA            TAX                       
+CODE_2AAF26:        85 00         STA $00                   
+CODE_2AAF28:        C6 D8         DEC $D8                   
+CODE_2AAF2A:        D0 E1         BNE CODE_2AAF0D           
+CODE_2AAF2C:        60            RTS                       
 
 DATA_2AAF2D:        db $05,$06,$07,$08,$0B,$0C,$0D,$0E
                     db $0F,$10,$11,$12
 
-CODE_2AAF39:        LDX $00                   
-CODE_2AAF3B:        LDA #$03                  
-CODE_2AAF3D:        JSR CODE_2A8D03           
-CODE_2AAF40:        INX                       
-CODE_2AAF41:        LDA #$04                  
-CODE_2AAF43:        JSR CODE_2A8D03           
-CODE_2AAF46:        LDA $00                   
-CODE_2AAF48:        CLC                       
-CODE_2AAF49:        ADC #$10                  
-CODE_2AAF4B:        TAX                       
-CODE_2AAF4C:        LDA #$09                  
-CODE_2AAF4E:        JSR CODE_2A8D03           
-CODE_2AAF51:        INX                       
-CODE_2AAF52:        LDA #$0A                  
-CODE_2AAF54:        JSR CODE_2A8D03           
-CODE_2AAF57:        RTS                       
+CODE_2AAF39:        A6 00         LDX $00                   
+CODE_2AAF3B:        A9 03         LDA #$03                  
+CODE_2AAF3D:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAF40:        E8            INX                       
+CODE_2AAF41:        A9 04         LDA #$04                  
+CODE_2AAF43:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAF46:        A5 00         LDA $00                   
+CODE_2AAF48:        18            CLC                       
+CODE_2AAF49:        69 10         ADC #$10                  
+CODE_2AAF4B:        AA            TAX                       
+CODE_2AAF4C:        A9 09         LDA #$09                  
+CODE_2AAF4E:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAF51:        E8            INX                       
+CODE_2AAF52:        A9 0A         LDA #$0A                  
+CODE_2AAF54:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAF57:        60            RTS                       
 
-CODE_2AAF58:        SEP #$10                  
-CODE_2AAF5A:        LDX #$07                  
-CODE_2AAF5C:        LDA #$06                  
-CODE_2AAF5E:        JSR CODE_2A8D03           
-CODE_2AAF61:        TXA                       
-CODE_2AAF62:        CLC                       
-CODE_2AAF63:        ADC #$10                  
-CODE_2AAF65:        TAX                       
-CODE_2AAF66:        CPX #$E0                  
-CODE_2AAF68:        BCC CODE_2AAF5C           
-CODE_2AAF6A:        LDX #$0F                  
-CODE_2AAF6C:        LDA #$06                  
-CODE_2AAF6E:        JSR CODE_2A8D03           
-CODE_2AAF71:        TXA                       
-CODE_2AAF72:        CLC                       
-CODE_2AAF73:        ADC #$10                  
-CODE_2AAF75:        TAX                       
-CODE_2AAF76:        CPX #$E0                  
-CODE_2AAF78:        BCC CODE_2AAF6C           
-CODE_2AAF7A:        LDX #$51                  
-CODE_2AAF7C:        LDA #$11                  
-CODE_2AAF7E:        STA $01                   
-CODE_2AAF80:        JSR CODE_2AAFF4           
-CODE_2AAF83:        LDX #$59                  
-CODE_2AAF85:        LDA #$11                  
-CODE_2AAF87:        STA $01                   
-CODE_2AAF89:        JSR CODE_2AAFF4           
-CODE_2AAF8C:        LDX #$D1                  
-CODE_2AAF8E:        LDA #$03                  
-CODE_2AAF90:        STA $01                   
-CODE_2AAF92:        JSR CODE_2AAFF4           
-CODE_2AAF95:        LDX #$D9                  
-CODE_2AAF97:        LDA #$03                  
-CODE_2AAF99:        STA $01                   
-CODE_2AAF9B:        JSR CODE_2AAFF4           
-CODE_2AAF9E:        LDX #$E0                  
-CODE_2AAFA0:        LDA #$11                  
-CODE_2AAFA2:        STA $00                   
-CODE_2AAFA4:        JSR CODE_2A9924           
-CODE_2AAFA7:        LDA #$29                  
-CODE_2AAFA9:        STA $00                   
-CODE_2AAFAB:        JSR CODE_2A9924           
-CODE_2AAFAE:        LDX #$00                  
-CODE_2AAFB0:        LDA #$2A                  
-CODE_2AAFB2:        STA $00                   
-CODE_2AAFB4:        JSR CODE_2AB003           
-CODE_2AAFB7:        LDA #$2A                  
-CODE_2AAFB9:        STA $00                   
-CODE_2AAFBB:        JSR CODE_2AB003           
-CODE_2AAFBE:        LDX #$10                  
-CODE_2AAFC0:        LDA #$32                  
-CODE_2AAFC2:        STA $00                   
-CODE_2AAFC4:        JSR CODE_2AB003           
-CODE_2AAFC7:        LDA #$32                  
-CODE_2AAFC9:        STA $00                   
-CODE_2AAFCB:        JSR CODE_2AB003           
-CODE_2AAFCE:        LDX #$90                  
-CODE_2AAFD0:        LDA #$11                  
-CODE_2AAFD2:        STA $00                   
-CODE_2AAFD4:        JSR CODE_2A9930           
-CODE_2AAFD7:        JSR CODE_2A9930           
-CODE_2AAFDA:        LDY #$00                  
-CODE_2AAFDC:        LDA [$2B],y               
-CODE_2AAFDE:        CMP #$FF                  
-CODE_2AAFE0:        BEQ CODE_2AAFEA           
-CODE_2AAFE2:        JSR CODE_2A8E54           
-CODE_2AAFE5:        JSR (PNTR_2AAFEC,x)             
-CODE_2AAFE8:        BRA CODE_2AAFDA           
+CODE_2AAF58:        E2 10         SEP #$10                  
+CODE_2AAF5A:        A2 07         LDX #$07                  
+CODE_2AAF5C:        A9 06         LDA #$06                  
+CODE_2AAF5E:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAF61:        8A            TXA                       
+CODE_2AAF62:        18            CLC                       
+CODE_2AAF63:        69 10         ADC #$10                  
+CODE_2AAF65:        AA            TAX                       
+CODE_2AAF66:        E0 E0         CPX #$E0                  
+CODE_2AAF68:        90 F2         BCC CODE_2AAF5C           
+CODE_2AAF6A:        A2 0F         LDX #$0F                  
+CODE_2AAF6C:        A9 06         LDA #$06                  
+CODE_2AAF6E:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AAF71:        8A            TXA                       
+CODE_2AAF72:        18            CLC                       
+CODE_2AAF73:        69 10         ADC #$10                  
+CODE_2AAF75:        AA            TAX                       
+CODE_2AAF76:        E0 E0         CPX #$E0                  
+CODE_2AAF78:        90 F2         BCC CODE_2AAF6C           
+CODE_2AAF7A:        A2 51         LDX #$51                  
+CODE_2AAF7C:        A9 11         LDA #$11                  
+CODE_2AAF7E:        85 01         STA $01                   
+CODE_2AAF80:        20 F4 AF      JSR CODE_2AAFF4           
+CODE_2AAF83:        A2 59         LDX #$59                  
+CODE_2AAF85:        A9 11         LDA #$11                  
+CODE_2AAF87:        85 01         STA $01                   
+CODE_2AAF89:        20 F4 AF      JSR CODE_2AAFF4           
+CODE_2AAF8C:        A2 D1         LDX #$D1                  
+CODE_2AAF8E:        A9 03         LDA #$03                  
+CODE_2AAF90:        85 01         STA $01                   
+CODE_2AAF92:        20 F4 AF      JSR CODE_2AAFF4           
+CODE_2AAF95:        A2 D9         LDX #$D9                  
+CODE_2AAF97:        A9 03         LDA #$03                  
+CODE_2AAF99:        85 01         STA $01                   
+CODE_2AAF9B:        20 F4 AF      JSR CODE_2AAFF4           
+CODE_2AAF9E:        A2 E0         LDX #$E0                  
+CODE_2AAFA0:        A9 11         LDA #$11                  
+CODE_2AAFA2:        85 00         STA $00                   
+CODE_2AAFA4:        20 24 99      JSR CODE_2A9924           
+CODE_2AAFA7:        A9 29         LDA #$29                  
+CODE_2AAFA9:        85 00         STA $00                   
+CODE_2AAFAB:        20 24 99      JSR CODE_2A9924           
+CODE_2AAFAE:        A2 00         LDX #$00                  
+CODE_2AAFB0:        A9 2A         LDA #$2A                  
+CODE_2AAFB2:        85 00         STA $00                   
+CODE_2AAFB4:        20 03 B0      JSR CODE_2AB003           
+CODE_2AAFB7:        A9 2A         LDA #$2A                  
+CODE_2AAFB9:        85 00         STA $00                   
+CODE_2AAFBB:        20 03 B0      JSR CODE_2AB003           
+CODE_2AAFBE:        A2 10         LDX #$10                  
+CODE_2AAFC0:        A9 32         LDA #$32                  
+CODE_2AAFC2:        85 00         STA $00                   
+CODE_2AAFC4:        20 03 B0      JSR CODE_2AB003           
+CODE_2AAFC7:        A9 32         LDA #$32                  
+CODE_2AAFC9:        85 00         STA $00                   
+CODE_2AAFCB:        20 03 B0      JSR CODE_2AB003           
+CODE_2AAFCE:        A2 90         LDX #$90                  
+CODE_2AAFD0:        A9 11         LDA #$11                  
+CODE_2AAFD2:        85 00         STA $00                   
+CODE_2AAFD4:        20 30 99      JSR CODE_2A9930           
+CODE_2AAFD7:        20 30 99      JSR CODE_2A9930           
+CODE_2AAFDA:        A0 00         LDY #$00                  
+CODE_2AAFDC:        B7 2B         LDA [$2B],y               
+CODE_2AAFDE:        C9 FF         CMP #$FF                  
+CODE_2AAFE0:        F0 08         BEQ CODE_2AAFEA           
+CODE_2AAFE2:        20 54 8E      JSR CODE_2A8E54           
+CODE_2AAFE5:        FC EC AF      JSR (PNTR_2AAFEC,x)             
+CODE_2AAFE8:        80 F0         BRA CODE_2AAFDA           
 
-CODE_2AAFEA:        PLB                       
-CODE_2AAFEB:        RTL                       
+CODE_2AAFEA:        AB            PLB                       
+CODE_2AAFEB:        6B            RTL                       
 
 PNTR_2AAFEC:        dw CODE_2AB011             
                     dw CODE_2AB064                 
                     dw CODE_2AB08B
                     dw CODE_2AB0DD
 
-CODE_2AAFF4:        LDA #$06                  ;
-CODE_2AAFF6:        STA $00                   ;
-CODE_2AAFF8:        LDA $01                   ;
-CODE_2AAFFA:        JSR CODE_2A8D03           ;
-CODE_2AAFFD:        INX                       ;
-CODE_2AAFFE:        DEC $00                   ;
-CODE_2AB000:        BNE CODE_2AAFFA           ;
-CODE_2AB002:        RTS                       ;
+CODE_2AAFF4:        A9 06         LDA #$06                  ;
+CODE_2AAFF6:        85 00         STA $00                   ;
+CODE_2AAFF8:        A5 01         LDA $01                   ;
+CODE_2AAFFA:        20 03 8D      JSR CODE_2A8D03           ;
+CODE_2AAFFD:        E8            INX                       ;
+CODE_2AAFFE:        C6 00         DEC $00                   ;
+CODE_2AB000:        D0 F8         BNE CODE_2AAFFA           ;
+CODE_2AB002:        60            RTS                       ;
 
-CODE_2AB003:        LDA $00                   
-CODE_2AB005:        JSR CODE_2A8D25           
-CODE_2AB008:        INC $00                   
-CODE_2AB00A:        INX                       
-CODE_2AB00B:        TXA                       
-CODE_2AB00C:        AND #$07                  
-CODE_2AB00E:        BNE CODE_2AB003           
-CODE_2AB010:        RTS                       
+CODE_2AB003:        A5 00         LDA $00                   
+CODE_2AB005:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB008:        E6 00         INC $00                   
+CODE_2AB00A:        E8            INX                       
+CODE_2AB00B:        8A            TXA                       
+CODE_2AB00C:        29 07         AND #$07                  
+CODE_2AB00E:        D0 F3         BNE CODE_2AB003           
+CODE_2AB010:        60            RTS                       
 
-CODE_2AB011:        LDX $00                   
-CODE_2AB013:        LDA $D8                   
-CODE_2AB015:        STA $02                   
-CODE_2AB017:        LDY $DA                   
-CODE_2AB019:        LDA.w DATA_2AB039,y               
-CODE_2AB01C:        CMP #$FF                  
-CODE_2AB01E:        BEQ CODE_2AB038           
-CODE_2AB020:        JSR CODE_2A8D03           
-CODE_2AB023:        INC $DA                   
-CODE_2AB025:        INX                       
-CODE_2AB026:        DEC $02                   
-CODE_2AB028:        BNE CODE_2AB017           
-CODE_2AB02A:        REP #$20                  
-CODE_2AB02C:        LDA $00                   
-CODE_2AB02E:        CLC                       
-CODE_2AB02F:        ADC #$0010                
-CODE_2AB032:        STA $00                   
-CODE_2AB034:        SEP #$20                  
-CODE_2AB036:        BRA CODE_2AB011           
+CODE_2AB011:        A6 00         LDX $00                   
+CODE_2AB013:        A5 D8         LDA $D8                   
+CODE_2AB015:        85 02         STA $02                   
+CODE_2AB017:        A4 DA         LDY $DA                   
+CODE_2AB019:        B9 39 B0      LDA.w DATA_2AB039,y               
+CODE_2AB01C:        C9 FF         CMP #$FF                  
+CODE_2AB01E:        F0 18         BEQ CODE_2AB038           
+CODE_2AB020:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB023:        E6 DA         INC $DA                   
+CODE_2AB025:        E8            INX                       
+CODE_2AB026:        C6 02         DEC $02                   
+CODE_2AB028:        D0 ED         BNE CODE_2AB017           
+CODE_2AB02A:        C2 20         REP #$20                  
+CODE_2AB02C:        A5 00         LDA $00                   
+CODE_2AB02E:        18            CLC                       
+CODE_2AB02F:        69 10 00      ADC #$0010                
+CODE_2AB032:        85 00         STA $00                   
+CODE_2AB034:        E2 20         SEP #$20                  
+CODE_2AB036:        80 D9         BRA CODE_2AB011           
 
-CODE_2AB038:        RTS                       
+CODE_2AB038:        60            RTS                       
      
 DATA_2AB039:        db $03,$03,$03,$03,$12,$03,$0D,$13
                     db $08,$05,$02,$14,$07,$05,$04,$07
@@ -5587,213 +5587,213 @@ DATA_2AB039:        db $03,$03,$03,$03,$12,$03,$0D,$13
                     db $0D,$04,$05,$04,$03,$0F,$02,$01
                     db $10,$01,$FF
 
-CODE_2AB064:        LDA #$15                  
-CODE_2AB066:        STA $02                   
-CODE_2AB068:        LDA $D8                   
-CODE_2AB06A:        STA $D9                   
-CODE_2AB06C:        LDX $00                   
-CODE_2AB06E:        LDA $02                   
-CODE_2AB070:        JSR CODE_2A8D03           
-CODE_2AB073:        INC $02                   
-CODE_2AB075:        INX                       
-CODE_2AB076:        DEC $D9                   
-CODE_2AB078:        BNE CODE_2AB06E           
-CODE_2AB07A:        REP #$20                  
-CODE_2AB07C:        LDA $00                   
-CODE_2AB07E:        CLC                       
-CODE_2AB07F:        ADC #$0010                
-CODE_2AB082:        STA $00                   
-CODE_2AB084:        SEP #$20                  
-CODE_2AB086:        DEC $DA                   
-CODE_2AB088:        BNE CODE_2AB068           
-CODE_2AB08A:        RTS                       
+CODE_2AB064:        A9 15         LDA #$15                  
+CODE_2AB066:        85 02         STA $02                   
+CODE_2AB068:        A5 D8         LDA $D8                   
+CODE_2AB06A:        85 D9         STA $D9                   
+CODE_2AB06C:        A6 00         LDX $00                   
+CODE_2AB06E:        A5 02         LDA $02                   
+CODE_2AB070:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB073:        E6 02         INC $02                   
+CODE_2AB075:        E8            INX                       
+CODE_2AB076:        C6 D9         DEC $D9                   
+CODE_2AB078:        D0 F4         BNE CODE_2AB06E           
+CODE_2AB07A:        C2 20         REP #$20                  
+CODE_2AB07C:        A5 00         LDA $00                   
+CODE_2AB07E:        18            CLC                       
+CODE_2AB07F:        69 10 00      ADC #$0010                
+CODE_2AB082:        85 00         STA $00                   
+CODE_2AB084:        E2 20         SEP #$20                  
+CODE_2AB086:        C6 DA         DEC $DA                   
+CODE_2AB088:        D0 DE         BNE CODE_2AB068           
+CODE_2AB08A:        60            RTS                       
 
-CODE_2AB08B:        LDX $00                   
-CODE_2AB08D:        LDA #$3A                  
-CODE_2AB08F:        JSR CODE_2A8D25           
-CODE_2AB092:        INX                       
-CODE_2AB093:        INC A                     
-CODE_2AB094:        JSR CODE_2A8D25           
-CODE_2AB097:        INX                       
-CODE_2AB098:        INC A                     
-CODE_2AB099:        JSR CODE_2A8D25           
-CODE_2AB09C:        INX                       
-CODE_2AB09D:        LDA #$54                  
-CODE_2AB09F:        JSR CODE_2A8D25           
-CODE_2AB0A2:        LDA $00                   
-CODE_2AB0A4:        CLC                       
-CODE_2AB0A5:        ADC #$10                  
-CODE_2AB0A7:        STA $00                   
-CODE_2AB0A9:        TAX                       
-CODE_2AB0AA:        LDA $D8                   
-CODE_2AB0AC:        STA $D9                   
-CODE_2AB0AE:        LDA #$40                  
-CODE_2AB0B0:        STA $02                   
-CODE_2AB0B2:        JSR CODE_2AB12F           
-CODE_2AB0B5:        INC $00                   
-CODE_2AB0B7:        LDX $00                   
-CODE_2AB0B9:        LDA $D8                   
-CODE_2AB0BB:        STA $D9                   
-CODE_2AB0BD:        INC $02                   
-CODE_2AB0BF:        JSR CODE_2AB12F           
-CODE_2AB0C2:        INC $00                   
-CODE_2AB0C4:        LDX $00                   
-CODE_2AB0C6:        LDA $D8                   
-CODE_2AB0C8:        STA $D9                   
-CODE_2AB0CA:        LDA #$54                  
-CODE_2AB0CC:        STA $02                   
-CODE_2AB0CE:        JSR CODE_2AB12F           
-CODE_2AB0D1:        INC $00                   
-CODE_2AB0D3:        LDX $00                   
-CODE_2AB0D5:        LDA $D8                   
-CODE_2AB0D7:        STA $D9                   
-CODE_2AB0D9:        JSR CODE_2AB12F           
-CODE_2AB0DC:        RTS                       
+CODE_2AB08B:        A6 00         LDX $00                   
+CODE_2AB08D:        A9 3A         LDA #$3A                  
+CODE_2AB08F:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB092:        E8            INX                       
+CODE_2AB093:        1A            INC A                     
+CODE_2AB094:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB097:        E8            INX                       
+CODE_2AB098:        1A            INC A                     
+CODE_2AB099:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB09C:        E8            INX                       
+CODE_2AB09D:        A9 54         LDA #$54                  
+CODE_2AB09F:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB0A2:        A5 00         LDA $00                   
+CODE_2AB0A4:        18            CLC                       
+CODE_2AB0A5:        69 10         ADC #$10                  
+CODE_2AB0A7:        85 00         STA $00                   
+CODE_2AB0A9:        AA            TAX                       
+CODE_2AB0AA:        A5 D8         LDA $D8                   
+CODE_2AB0AC:        85 D9         STA $D9                   
+CODE_2AB0AE:        A9 40         LDA #$40                  
+CODE_2AB0B0:        85 02         STA $02                   
+CODE_2AB0B2:        20 2F B1      JSR CODE_2AB12F           
+CODE_2AB0B5:        E6 00         INC $00                   
+CODE_2AB0B7:        A6 00         LDX $00                   
+CODE_2AB0B9:        A5 D8         LDA $D8                   
+CODE_2AB0BB:        85 D9         STA $D9                   
+CODE_2AB0BD:        E6 02         INC $02                   
+CODE_2AB0BF:        20 2F B1      JSR CODE_2AB12F           
+CODE_2AB0C2:        E6 00         INC $00                   
+CODE_2AB0C4:        A6 00         LDX $00                   
+CODE_2AB0C6:        A5 D8         LDA $D8                   
+CODE_2AB0C8:        85 D9         STA $D9                   
+CODE_2AB0CA:        A9 54         LDA #$54                  
+CODE_2AB0CC:        85 02         STA $02                   
+CODE_2AB0CE:        20 2F B1      JSR CODE_2AB12F           
+CODE_2AB0D1:        E6 00         INC $00                   
+CODE_2AB0D3:        A6 00         LDX $00                   
+CODE_2AB0D5:        A5 D8         LDA $D8                   
+CODE_2AB0D7:        85 D9         STA $D9                   
+CODE_2AB0D9:        20 2F B1      JSR CODE_2AB12F           
+CODE_2AB0DC:        60            RTS                       
 
-CODE_2AB0DD:        LDX $00                   
-CODE_2AB0DF:        LDA #$54                  
-CODE_2AB0E1:        JSR CODE_2A8D25           
-CODE_2AB0E4:        INX                       
-CODE_2AB0E5:        LDA #$3D                  
-CODE_2AB0E7:        JSR CODE_2A8D25           
-CODE_2AB0EA:        INX                       
-CODE_2AB0EB:        INC A                     
-CODE_2AB0EC:        JSR CODE_2A8D25           
-CODE_2AB0EF:        INX                       
-CODE_2AB0F0:        INC A                     
-CODE_2AB0F1:        JSR CODE_2A8D25           
-CODE_2AB0F4:        LDA $00                   
-CODE_2AB0F6:        CLC                       
-CODE_2AB0F7:        ADC #$10                  
-CODE_2AB0F9:        STA $00                   
-CODE_2AB0FB:        TAX                       
-CODE_2AB0FC:        LDA $D8                   
-CODE_2AB0FE:        STA $D9                   
-CODE_2AB100:        LDA #$54                  
-CODE_2AB102:        STA $02                   
-CODE_2AB104:        JSR CODE_2AB12F           
-CODE_2AB107:        INC $00                   
-CODE_2AB109:        LDX $00                   
-CODE_2AB10B:        LDA $D8                   
-CODE_2AB10D:        STA $D9                   
-CODE_2AB10F:        JSR CODE_2AB12F           
-CODE_2AB112:        INC $00                   
-CODE_2AB114:        LDX $00                   
-CODE_2AB116:        LDA $D8                   
-CODE_2AB118:        STA $D9                   
-CODE_2AB11A:        LDA #$42                  
-CODE_2AB11C:        STA $02                   
-CODE_2AB11E:        JSR CODE_2AB12F           
-CODE_2AB121:        INC $00                   
-CODE_2AB123:        LDX $00                   
-CODE_2AB125:        LDA $D8                   
-CODE_2AB127:        STA $D9                   
-CODE_2AB129:        INC $02                   
-CODE_2AB12B:        JSR CODE_2AB12F           
-CODE_2AB12E:        RTS                       
+CODE_2AB0DD:        A6 00         LDX $00                   
+CODE_2AB0DF:        A9 54         LDA #$54                  
+CODE_2AB0E1:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB0E4:        E8            INX                       
+CODE_2AB0E5:        A9 3D         LDA #$3D                  
+CODE_2AB0E7:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB0EA:        E8            INX                       
+CODE_2AB0EB:        1A            INC A                     
+CODE_2AB0EC:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB0EF:        E8            INX                       
+CODE_2AB0F0:        1A            INC A                     
+CODE_2AB0F1:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB0F4:        A5 00         LDA $00                   
+CODE_2AB0F6:        18            CLC                       
+CODE_2AB0F7:        69 10         ADC #$10                  
+CODE_2AB0F9:        85 00         STA $00                   
+CODE_2AB0FB:        AA            TAX                       
+CODE_2AB0FC:        A5 D8         LDA $D8                   
+CODE_2AB0FE:        85 D9         STA $D9                   
+CODE_2AB100:        A9 54         LDA #$54                  
+CODE_2AB102:        85 02         STA $02                   
+CODE_2AB104:        20 2F B1      JSR CODE_2AB12F           
+CODE_2AB107:        E6 00         INC $00                   
+CODE_2AB109:        A6 00         LDX $00                   
+CODE_2AB10B:        A5 D8         LDA $D8                   
+CODE_2AB10D:        85 D9         STA $D9                   
+CODE_2AB10F:        20 2F B1      JSR CODE_2AB12F           
+CODE_2AB112:        E6 00         INC $00                   
+CODE_2AB114:        A6 00         LDX $00                   
+CODE_2AB116:        A5 D8         LDA $D8                   
+CODE_2AB118:        85 D9         STA $D9                   
+CODE_2AB11A:        A9 42         LDA #$42                  
+CODE_2AB11C:        85 02         STA $02                   
+CODE_2AB11E:        20 2F B1      JSR CODE_2AB12F           
+CODE_2AB121:        E6 00         INC $00                   
+CODE_2AB123:        A6 00         LDX $00                   
+CODE_2AB125:        A5 D8         LDA $D8                   
+CODE_2AB127:        85 D9         STA $D9                   
+CODE_2AB129:        E6 02         INC $02                   
+CODE_2AB12B:        20 2F B1      JSR CODE_2AB12F           
+CODE_2AB12E:        60            RTS                       
 
-CODE_2AB12F:        LDA $0002                 
-CODE_2AB132:        JSR CODE_2A8D25           
-CODE_2AB135:        TXA                       
-CODE_2AB136:        CLC                       
-CODE_2AB137:        ADC #$10                  
-CODE_2AB139:        TAX                       
-CODE_2AB13A:        DEC $D9                   
-CODE_2AB13C:        BNE CODE_2AB12F           
-CODE_2AB13E:        RTS                       
+CODE_2AB12F:        AD 02 00      LDA $0002                 
+CODE_2AB132:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB135:        8A            TXA                       
+CODE_2AB136:        18            CLC                       
+CODE_2AB137:        69 10         ADC #$10                  
+CODE_2AB139:        AA            TAX                       
+CODE_2AB13A:        C6 D9         DEC $D9                   
+CODE_2AB13C:        D0 F1         BNE CODE_2AB12F           
+CODE_2AB13E:        60            RTS                       
 
-CODE_2AB13F:        SEP #$10                  
-CODE_2AB141:        LDX #$90                  
-CODE_2AB143:        LDA #$03                  
-CODE_2AB145:        STA $00                   
-CODE_2AB147:        JSR CODE_2AB1BD           
-CODE_2AB14A:        LDA #$07                  
-CODE_2AB14C:        STA $00                   
-CODE_2AB14E:        JSR CODE_2AB1BD           
-CODE_2AB151:        LDA #$0B                  
-CODE_2AB153:        STA $00                   
-CODE_2AB155:        JSR CODE_2AB1BD           
-CODE_2AB158:        LDA #$09                  
-CODE_2AB15A:        JSR CODE_2A8D03           
-CODE_2AB15D:        INX                       
-CODE_2AB15E:        LDA #$0A                  
-CODE_2AB160:        JSR CODE_2A8D03           
-CODE_2AB163:        INX                       
-CODE_2AB164:        LDA #$07                  
-CODE_2AB166:        JSR CODE_2A8D03           
-CODE_2AB169:        INX                       
-CODE_2AB16A:        LDA #$08                  
-CODE_2AB16C:        JSR CODE_2A8D03           
-CODE_2AB16F:        INX                       
-CODE_2AB170:        TXA                       
-CODE_2AB171:        AND #$0F                  
-CODE_2AB173:        BNE CODE_2AB158           
-CODE_2AB175:        LDA #$0F                  
-CODE_2AB177:        STA $00                   
-CODE_2AB179:        JSR CODE_2A9924           
-CODE_2AB17C:        JSR CODE_2A9924           
-CODE_2AB17F:        JSR CODE_2A9924           
-CODE_2AB182:        JSR CODE_2A9930           
-CODE_2AB185:        JSR CODE_2A9930           
-CODE_2AB188:        LDA #$18                  
-CODE_2AB18A:        STA $00                   
-CODE_2AB18C:        JSR CODE_2AB1D8           
-CODE_2AB18F:        LDA #$1C                  
-CODE_2AB191:        STA $00                   
-CODE_2AB193:        JSR CODE_2AB1D8           
-CODE_2AB196:        LDA #$20                  
-CODE_2AB198:        STA $00                   
-CODE_2AB19A:        JSR CODE_2AB1D8           
-CODE_2AB19D:        LDA #$24                  
-CODE_2AB19F:        STA $00                   
-CODE_2AB1A1:        JSR CODE_2AB1D8           
-CODE_2AB1A4:        LDA #$28                  
-CODE_2AB1A6:        STA $00                   
-CODE_2AB1A8:        JSR CODE_2AB1D8           
-CODE_2AB1AB:        LDY #$00                  
-CODE_2AB1AD:        LDA [$2B],y               
-CODE_2AB1AF:        CMP #$FF                  
-CODE_2AB1B1:        BEQ CODE_2AB1BB           
-CODE_2AB1B3:        JSR CODE_2A8E54           
-CODE_2AB1B6:        JSR (PNTR_2AB1F3,x)             
-CODE_2AB1B9:        BRA CODE_2AB1AB           
+CODE_2AB13F:        E2 10         SEP #$10                  
+CODE_2AB141:        A2 90         LDX #$90                  
+CODE_2AB143:        A9 03         LDA #$03                  
+CODE_2AB145:        85 00         STA $00                   
+CODE_2AB147:        20 BD B1      JSR CODE_2AB1BD           
+CODE_2AB14A:        A9 07         LDA #$07                  
+CODE_2AB14C:        85 00         STA $00                   
+CODE_2AB14E:        20 BD B1      JSR CODE_2AB1BD           
+CODE_2AB151:        A9 0B         LDA #$0B                  
+CODE_2AB153:        85 00         STA $00                   
+CODE_2AB155:        20 BD B1      JSR CODE_2AB1BD           
+CODE_2AB158:        A9 09         LDA #$09                  
+CODE_2AB15A:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB15D:        E8            INX                       
+CODE_2AB15E:        A9 0A         LDA #$0A                  
+CODE_2AB160:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB163:        E8            INX                       
+CODE_2AB164:        A9 07         LDA #$07                  
+CODE_2AB166:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB169:        E8            INX                       
+CODE_2AB16A:        A9 08         LDA #$08                  
+CODE_2AB16C:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB16F:        E8            INX                       
+CODE_2AB170:        8A            TXA                       
+CODE_2AB171:        29 0F         AND #$0F                  
+CODE_2AB173:        D0 E3         BNE CODE_2AB158           
+CODE_2AB175:        A9 0F         LDA #$0F                  
+CODE_2AB177:        85 00         STA $00                   
+CODE_2AB179:        20 24 99      JSR CODE_2A9924           
+CODE_2AB17C:        20 24 99      JSR CODE_2A9924           
+CODE_2AB17F:        20 24 99      JSR CODE_2A9924           
+CODE_2AB182:        20 30 99      JSR CODE_2A9930           
+CODE_2AB185:        20 30 99      JSR CODE_2A9930           
+CODE_2AB188:        A9 18         LDA #$18                  
+CODE_2AB18A:        85 00         STA $00                   
+CODE_2AB18C:        20 D8 B1      JSR CODE_2AB1D8           
+CODE_2AB18F:        A9 1C         LDA #$1C                  
+CODE_2AB191:        85 00         STA $00                   
+CODE_2AB193:        20 D8 B1      JSR CODE_2AB1D8           
+CODE_2AB196:        A9 20         LDA #$20                  
+CODE_2AB198:        85 00         STA $00                   
+CODE_2AB19A:        20 D8 B1      JSR CODE_2AB1D8           
+CODE_2AB19D:        A9 24         LDA #$24                  
+CODE_2AB19F:        85 00         STA $00                   
+CODE_2AB1A1:        20 D8 B1      JSR CODE_2AB1D8           
+CODE_2AB1A4:        A9 28         LDA #$28                  
+CODE_2AB1A6:        85 00         STA $00                   
+CODE_2AB1A8:        20 D8 B1      JSR CODE_2AB1D8           
+CODE_2AB1AB:        A0 00         LDY #$00                  
+CODE_2AB1AD:        B7 2B         LDA [$2B],y               
+CODE_2AB1AF:        C9 FF         CMP #$FF                  
+CODE_2AB1B1:        F0 08         BEQ CODE_2AB1BB           
+CODE_2AB1B3:        20 54 8E      JSR CODE_2A8E54           
+CODE_2AB1B6:        FC F3 B1      JSR (PNTR_2AB1F3,x)             
+CODE_2AB1B9:        80 F0         BRA CODE_2AB1AB           
 
-CODE_2AB1BB:        PLB                       
-CODE_2AB1BC:        RTL                       
+CODE_2AB1BB:        AB            PLB                       
+CODE_2AB1BC:        6B            RTL                       
 
-CODE_2AB1BD:        LDA $00                   
-CODE_2AB1BF:        JSR CODE_2A8D03           
-CODE_2AB1C2:        INC A                     
-CODE_2AB1C3:        INX                       
-CODE_2AB1C4:        JSR CODE_2A8D03           
-CODE_2AB1C7:        INC A                     
-CODE_2AB1C8:        INX                       
-CODE_2AB1C9:        JSR CODE_2A8D03           
-CODE_2AB1CC:        INC A                     
-CODE_2AB1CD:        INX                       
-CODE_2AB1CE:        JSR CODE_2A8D03           
-CODE_2AB1D1:        INX                       
-CODE_2AB1D2:        TXA                       
-CODE_2AB1D3:        AND #$0F                  
-CODE_2AB1D5:        BNE CODE_2AB1BD           
-CODE_2AB1D7:        RTS                       
+CODE_2AB1BD:        A5 00         LDA $00                   
+CODE_2AB1BF:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB1C2:        1A            INC A                     
+CODE_2AB1C3:        E8            INX                       
+CODE_2AB1C4:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB1C7:        1A            INC A                     
+CODE_2AB1C8:        E8            INX                       
+CODE_2AB1C9:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB1CC:        1A            INC A                     
+CODE_2AB1CD:        E8            INX                       
+CODE_2AB1CE:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB1D1:        E8            INX                       
+CODE_2AB1D2:        8A            TXA                       
+CODE_2AB1D3:        29 0F         AND #$0F                  
+CODE_2AB1D5:        D0 E6         BNE CODE_2AB1BD           
+CODE_2AB1D7:        60            RTS                       
 
-CODE_2AB1D8:        LDA $00                   
-CODE_2AB1DA:        JSR CODE_2A8D25           
-CODE_2AB1DD:        INC A                     
-CODE_2AB1DE:        INX                       
-CODE_2AB1DF:        JSR CODE_2A8D25           
-CODE_2AB1E2:        INC A                     
-CODE_2AB1E3:        INX                       
-CODE_2AB1E4:        JSR CODE_2A8D25           
-CODE_2AB1E7:        INC A                     
-CODE_2AB1E8:        INX                       
-CODE_2AB1E9:        JSR CODE_2A8D25           
-CODE_2AB1EC:        INX                       
-CODE_2AB1ED:        TXA                       
-CODE_2AB1EE:        AND #$0F                  
-CODE_2AB1F0:        BNE CODE_2AB1D8           
-CODE_2AB1F2:        RTS                       
+CODE_2AB1D8:        A5 00         LDA $00                   
+CODE_2AB1DA:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB1DD:        1A            INC A                     
+CODE_2AB1DE:        E8            INX                       
+CODE_2AB1DF:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB1E2:        1A            INC A                     
+CODE_2AB1E3:        E8            INX                       
+CODE_2AB1E4:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB1E7:        1A            INC A                     
+CODE_2AB1E8:        E8            INX                       
+CODE_2AB1E9:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB1EC:        E8            INX                       
+CODE_2AB1ED:        8A            TXA                       
+CODE_2AB1EE:        29 0F         AND #$0F                  
+CODE_2AB1F0:        D0 E6         BNE CODE_2AB1D8           
+CODE_2AB1F2:        60            RTS                       
 
 PNTR_2AB1F3:        dw CODE_2AB1FF
                     dw CODE_2AB205           
@@ -5802,145 +5802,145 @@ PNTR_2AB1F3:        dw CODE_2AB1FF
                     dw CODE_2AB20B
                     dw CODE_2AB211
 
-CODE_2AB1FF:        LDA #$01                  ;
-CODE_2AB201:        STA $03                   ;
-CODE_2AB203:        BRA CODE_2AB215           ;
+CODE_2AB1FF:        A9 01         LDA #$01                  ;
+CODE_2AB201:        85 03         STA $03                   ;
+CODE_2AB203:        80 10         BRA CODE_2AB215           ;
 
-CODE_2AB205:        LDA #$02                  ;
-CODE_2AB207:        STA $03                   ;
-CODE_2AB209:        BRA CODE_2AB215           ;
+CODE_2AB205:        A9 02         LDA #$02                  ;
+CODE_2AB207:        85 03         STA $03                   ;
+CODE_2AB209:        80 0A         BRA CODE_2AB215           ;
 
-CODE_2AB20B:        LDA #$2C                  ;
-CODE_2AB20D:        STA $03                   ;
-CODE_2AB20F:        BRA CODE_2AB215           ;
+CODE_2AB20B:        A9 2C         LDA #$2C                  ;
+CODE_2AB20D:        85 03         STA $03                   ;
+CODE_2AB20F:        80 04         BRA CODE_2AB215           ;
 
-CODE_2AB211:        LDA #$2D                  
-CODE_2AB213:        STA $03                   
-CODE_2AB215:        REP #$10                  
-CODE_2AB217:        LDX $00                   
-CODE_2AB219:        LDA $03                   
-CODE_2AB21B:        JSR CODE_2A8CD9           
-CODE_2AB21E:        LDA $D8                   
-CODE_2AB220:        BEQ CODE_2AB23E           
-CODE_2AB222:        CLC                       
-CODE_2AB223:        ADC $00                   
-CODE_2AB225:        STA $00                   
-CODE_2AB227:        LDX $00                   
-CODE_2AB229:        LDA $03                   
-CODE_2AB22B:        JSR CODE_2A8CD9           
-CODE_2AB22E:        LDA $DA                   
-CODE_2AB230:        BEQ CODE_2AB23E           
-CODE_2AB232:        CLC                       
-CODE_2AB233:        ADC $00                   
-CODE_2AB235:        STA $00                   
-CODE_2AB237:        LDX $00                   
-CODE_2AB239:        LDA $03                   
-CODE_2AB23B:        JSR CODE_2A8CD9           
-CODE_2AB23E:        SEP #$10                  
-CODE_2AB240:        RTS                       
+CODE_2AB211:        A9 2D         LDA #$2D                  
+CODE_2AB213:        85 03         STA $03                   
+CODE_2AB215:        C2 10         REP #$10                  
+CODE_2AB217:        A6 00         LDX $00                   
+CODE_2AB219:        A5 03         LDA $03                   
+CODE_2AB21B:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AB21E:        A5 D8         LDA $D8                   
+CODE_2AB220:        F0 1C         BEQ CODE_2AB23E           
+CODE_2AB222:        18            CLC                       
+CODE_2AB223:        65 00         ADC $00                   
+CODE_2AB225:        85 00         STA $00                   
+CODE_2AB227:        A6 00         LDX $00                   
+CODE_2AB229:        A5 03         LDA $03                   
+CODE_2AB22B:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AB22E:        A5 DA         LDA $DA                   
+CODE_2AB230:        F0 0C         BEQ CODE_2AB23E           
+CODE_2AB232:        18            CLC                       
+CODE_2AB233:        65 00         ADC $00                   
+CODE_2AB235:        85 00         STA $00                   
+CODE_2AB237:        A6 00         LDX $00                   
+CODE_2AB239:        A5 03         LDA $03                   
+CODE_2AB23B:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AB23E:        E2 10         SEP #$10                  
+CODE_2AB240:        60            RTS                       
 
-CODE_2AB241:        REP #$20                  
-CODE_2AB243:        LDA #$B2A3                
-CODE_2AB246:        STA $03                   
-CODE_2AB248:        INC A                     
-CODE_2AB249:        INC A                     
-CODE_2AB24A:        INC A                     
-CODE_2AB24B:        INC A                     
-CODE_2AB24C:        STA $05                   
-CODE_2AB24E:        SEP #$20                  
-CODE_2AB250:        BRA CODE_2AB261           
+CODE_2AB241:        C2 20         REP #$20                  
+CODE_2AB243:        A9 A3 B2      LDA #$B2A3                
+CODE_2AB246:        85 03         STA $03                   
+CODE_2AB248:        1A            INC A                     
+CODE_2AB249:        1A            INC A                     
+CODE_2AB24A:        1A            INC A                     
+CODE_2AB24B:        1A            INC A                     
+CODE_2AB24C:        85 05         STA $05                   
+CODE_2AB24E:        E2 20         SEP #$20                  
+CODE_2AB250:        80 0F         BRA CODE_2AB261           
 
-CODE_2AB252:        REP #$20                  
-CODE_2AB254:        LDA #$B2AB                
-CODE_2AB257:        STA $03                   
-CODE_2AB259:        INC A                     
-CODE_2AB25A:        INC A                     
-CODE_2AB25B:        INC A                     
-CODE_2AB25C:        INC A                     
-CODE_2AB25D:        STA $05                   
-CODE_2AB25F:        SEP #$20                  
-CODE_2AB261:        REP #$10                  
-CODE_2AB263:        LDY #$0000                
-CODE_2AB266:        LDX $00                   
-CODE_2AB268:        LDA ($03),y               
-CODE_2AB26A:        JSR CODE_2A8CD9           
-CODE_2AB26D:        LDA ($05),y               
-CODE_2AB26F:        JSR CODE_2A8CEE           
-CODE_2AB272:        INY                       
-CODE_2AB273:        CPY #$0004                
-CODE_2AB276:        BEQ CODE_2AB2A0           
-CODE_2AB278:        INC $00                   
-CODE_2AB27A:        LDA $00                   
-CODE_2AB27C:        AND #$0F                  
-CODE_2AB27E:        BNE CODE_2AB266           
-CODE_2AB280:        LDA $D8                   
-CODE_2AB282:        BNE CODE_2AB292           
-CODE_2AB284:        REP #$20                  
-CODE_2AB286:        LDA $00                   
-CODE_2AB288:        CLC                       
-CODE_2AB289:        ADC #$01A0                
-CODE_2AB28C:        STA $00                   
-CODE_2AB28E:        SEP #$20                  
-CODE_2AB290:        BRA CODE_2AB266           
+CODE_2AB252:        C2 20         REP #$20                  
+CODE_2AB254:        A9 AB B2      LDA #$B2AB                
+CODE_2AB257:        85 03         STA $03                   
+CODE_2AB259:        1A            INC A                     
+CODE_2AB25A:        1A            INC A                     
+CODE_2AB25B:        1A            INC A                     
+CODE_2AB25C:        1A            INC A                     
+CODE_2AB25D:        85 05         STA $05                   
+CODE_2AB25F:        E2 20         SEP #$20                  
+CODE_2AB261:        C2 10         REP #$10                  
+CODE_2AB263:        A0 00 00      LDY #$0000                
+CODE_2AB266:        A6 00         LDX $00                   
+CODE_2AB268:        B1 03         LDA ($03),y               
+CODE_2AB26A:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AB26D:        B1 05         LDA ($05),y               
+CODE_2AB26F:        20 EE 8C      JSR CODE_2A8CEE           
+CODE_2AB272:        C8            INY                       
+CODE_2AB273:        C0 04 00      CPY #$0004                
+CODE_2AB276:        F0 28         BEQ CODE_2AB2A0           
+CODE_2AB278:        E6 00         INC $00                   
+CODE_2AB27A:        A5 00         LDA $00                   
+CODE_2AB27C:        29 0F         AND #$0F                  
+CODE_2AB27E:        D0 E6         BNE CODE_2AB266           
+CODE_2AB280:        A5 D8         LDA $D8                   
+CODE_2AB282:        D0 0E         BNE CODE_2AB292           
+CODE_2AB284:        C2 20         REP #$20                  
+CODE_2AB286:        A5 00         LDA $00                   
+CODE_2AB288:        18            CLC                       
+CODE_2AB289:        69 A0 01      ADC #$01A0                
+CODE_2AB28C:        85 00         STA $00                   
+CODE_2AB28E:        E2 20         SEP #$20                  
+CODE_2AB290:        80 D4         BRA CODE_2AB266           
 
-CODE_2AB292:        REP #$20                  
-CODE_2AB294:        LDA $00                   
-CODE_2AB296:        SEC                       
-CODE_2AB297:        SBC #$01C0                
-CODE_2AB29A:        STA $00                   
-CODE_2AB29C:        SEP #$20                  
-CODE_2AB29E:        BRA CODE_2AB266           
+CODE_2AB292:        C2 20         REP #$20                  
+CODE_2AB294:        A5 00         LDA $00                   
+CODE_2AB296:        38            SEC                       
+CODE_2AB297:        E9 C0 01      SBC #$01C0                
+CODE_2AB29A:        85 00         STA $00                   
+CODE_2AB29C:        E2 20         SEP #$20                  
+CODE_2AB29E:        80 C6         BRA CODE_2AB266           
 
-CODE_2AB2A0:        SEP #$10                  
-CODE_2AB2A2:        RTS                       
+CODE_2AB2A0:        E2 10         SEP #$10                  
+CODE_2AB2A2:        60            RTS                       
 
 DATA_2AB2A3:        db $10,$11,$12,$13,$14,$15,$16,$17
 
 DATA_2AB2AB:        db $0D,$0E,$0B,$0C,$07,$08,$09,$0A
                 
-CODE_2AB2B3:        SEP #$10                  
-CODE_2AB2B5:        LDX #$F0                  
-CODE_2AB2B7:        LDA #$12                  
-CODE_2AB2B9:        JSR CODE_2A8D03           
-CODE_2AB2BC:        INX                       
-CODE_2AB2BD:        LDA #$13                  
-CODE_2AB2BF:        JSR CODE_2A8D03           
-CODE_2AB2C2:        INX                       
-CODE_2AB2C3:        LDA #$14                  
-CODE_2AB2C5:        JSR CODE_2A8D03           
-CODE_2AB2C8:        INX                       
-CODE_2AB2C9:        LDA #$15                  
-CODE_2AB2CB:        JSR CODE_2A8D03           
-CODE_2AB2CE:        INX                       
-CODE_2AB2CF:        TXA                       
-CODE_2AB2D0:        AND #$0F                  
-CODE_2AB2D2:        BNE CODE_2AB2B7           
-CODE_2AB2D4:        LDX #$00                  
-CODE_2AB2D6:        LDA #$16                  
-CODE_2AB2D8:        JSR CODE_2A8D25           
-CODE_2AB2DB:        INX                       
-CODE_2AB2DC:        LDA #$17                  
-CODE_2AB2DE:        JSR CODE_2A8D25           
-CODE_2AB2E1:        INX                       
-CODE_2AB2E2:        LDA #$18                  
-CODE_2AB2E4:        JSR CODE_2A8D25           
-CODE_2AB2E7:        INX                       
-CODE_2AB2E8:        LDA #$19                  
-CODE_2AB2EA:        JSR CODE_2A8D25           
-CODE_2AB2ED:        INX                       
-CODE_2AB2EE:        TXA                       
-CODE_2AB2EF:        AND #$0F                  
-CODE_2AB2F1:        BNE CODE_2AB2D6           
-CODE_2AB2F3:        LDY #$00                  
-CODE_2AB2F5:        LDA [$2B],y               
-CODE_2AB2F7:        CMP #$FF                  
-CODE_2AB2F9:        BEQ CODE_2AB303           
-CODE_2AB2FB:        JSR CODE_2A8E54           
-CODE_2AB2FE:        JSR (PNTR_2AB305,x)             
-CODE_2AB301:        BRA CODE_2AB2F3           
+CODE_2AB2B3:        E2 10         SEP #$10                  
+CODE_2AB2B5:        A2 F0         LDX #$F0                  
+CODE_2AB2B7:        A9 12         LDA #$12                  
+CODE_2AB2B9:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB2BC:        E8            INX                       
+CODE_2AB2BD:        A9 13         LDA #$13                  
+CODE_2AB2BF:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB2C2:        E8            INX                       
+CODE_2AB2C3:        A9 14         LDA #$14                  
+CODE_2AB2C5:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB2C8:        E8            INX                       
+CODE_2AB2C9:        A9 15         LDA #$15                  
+CODE_2AB2CB:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB2CE:        E8            INX                       
+CODE_2AB2CF:        8A            TXA                       
+CODE_2AB2D0:        29 0F         AND #$0F                  
+CODE_2AB2D2:        D0 E3         BNE CODE_2AB2B7           
+CODE_2AB2D4:        A2 00         LDX #$00                  
+CODE_2AB2D6:        A9 16         LDA #$16                  
+CODE_2AB2D8:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB2DB:        E8            INX                       
+CODE_2AB2DC:        A9 17         LDA #$17                  
+CODE_2AB2DE:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB2E1:        E8            INX                       
+CODE_2AB2E2:        A9 18         LDA #$18                  
+CODE_2AB2E4:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB2E7:        E8            INX                       
+CODE_2AB2E8:        A9 19         LDA #$19                  
+CODE_2AB2EA:        20 25 8D      JSR CODE_2A8D25           
+CODE_2AB2ED:        E8            INX                       
+CODE_2AB2EE:        8A            TXA                       
+CODE_2AB2EF:        29 0F         AND #$0F                  
+CODE_2AB2F1:        D0 E3         BNE CODE_2AB2D6           
+CODE_2AB2F3:        A0 00         LDY #$00                  
+CODE_2AB2F5:        B7 2B         LDA [$2B],y               
+CODE_2AB2F7:        C9 FF         CMP #$FF                  
+CODE_2AB2F9:        F0 08         BEQ CODE_2AB303           
+CODE_2AB2FB:        20 54 8E      JSR CODE_2A8E54           
+CODE_2AB2FE:        FC 05 B3      JSR (PNTR_2AB305,x)             
+CODE_2AB301:        80 F0         BRA CODE_2AB2F3           
 
-CODE_2AB303:        PLB                       
-CODE_2AB304:        RTL                       
+CODE_2AB303:        AB            PLB                       
+CODE_2AB304:        6B            RTL                       
 
      
 PNTR_2AB305:        dw CODE_2AA966
@@ -5952,186 +5952,186 @@ PNTR_2AB305:        dw CODE_2AA966
       dw CODE_2AB34D
       dw CODE_2AB369
 
-CODE_2AB315:        REP #$30                  ;
-CODE_2AB317:        LDA #$B329                ;
-CODE_2AB31A:        STA $02                   ;
-CODE_2AB31C:        LDA #$B32D                ;
-CODE_2AB31F:        STA $04                   ;
-CODE_2AB321:        SEP #$20                  ;
-CODE_2AB323:        JSR CODE_2AA97A           ;
-CODE_2AB326:        SEP #$10                  ;
-CODE_2AB328:        RTS                       ;
+CODE_2AB315:        C2 30         REP #$30                  ;
+CODE_2AB317:        A9 29 B3      LDA #$B329                ;
+CODE_2AB31A:        85 02         STA $02                   ;
+CODE_2AB31C:        A9 2D B3      LDA #$B32D                ;
+CODE_2AB31F:        85 04         STA $04                   ;
+CODE_2AB321:        E2 20         SEP #$20                  ;
+CODE_2AB323:        20 7A A9      JSR CODE_2AA97A           ;
+CODE_2AB326:        E2 10         SEP #$10                  ;
+CODE_2AB328:        60            RTS                       ;
 
            
 DATA_2AB329:        db $1A,$1B,$1C,$1D
 
 DATA_2AB32B:        db $1E,$1F,$20,$21
 
-CODE_2AB331:        REP #$30                  ;
-CODE_2AB333:        LDA #$B345                ;
-CODE_2AB336:        STA $02                   ;
-CODE_2AB338:        LDA #$B349                ;
-CODE_2AB33B:        STA $04                   ;
-CODE_2AB33D:        SEP #$20                  ;
-CODE_2AB33F:        JSR CODE_2AA9CB           ;
-CODE_2AB342:        SEP #$10                  ;
-CODE_2AB344:        RTS                       ;
+CODE_2AB331:        C2 30         REP #$30                  ;
+CODE_2AB333:        A9 45 B3      LDA #$B345                ;
+CODE_2AB336:        85 02         STA $02                   ;
+CODE_2AB338:        A9 49 B3      LDA #$B349                ;
+CODE_2AB33B:        85 04         STA $04                   ;
+CODE_2AB33D:        E2 20         SEP #$20                  ;
+CODE_2AB33F:        20 CB A9      JSR CODE_2AA9CB           ;
+CODE_2AB342:        E2 10         SEP #$10                  ;
+CODE_2AB344:        60            RTS                       ;
 
 DATA_2AB345:        db $1A,$22,$22,$1E
 
 DATA_2AB349:        db $1D,$23,$23,$21
 
-CODE_2AB34D:        REP #$10
-CODE_2AB34F:        LDX $00
-CODE_2AB351:        LDA #$1A
-CODE_2AB353:        JSR CODE_2A8CD9           ;
-CODE_2AB356:        LDA #$1E                  ;
-CODE_2AB358:        JSR CODE_2A8CEE           ;
-CODE_2AB35B:        INX                       ;
-CODE_2AB35C:        LDA #$1D                  ;
-CODE_2AB35E:        JSR CODE_2A8CD9           ;
-CODE_2AB361:        LDA #$21                  ;
-CODE_2AB363:        JSR CODE_2A8CEE           ;
-CODE_2AB366:        SEP #$10                  ;
-CODE_2AB368:        RTS                       ;
+CODE_2AB34D:        C2 10         REP #$10
+CODE_2AB34F:        A6 00         LDX $00
+CODE_2AB351:        A9 1A         LDA #$1A
+CODE_2AB353:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AB356:        A9 1E         LDA #$1E                  ;
+CODE_2AB358:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2AB35B:        E8            INX                       ;
+CODE_2AB35C:        A9 1D         LDA #$1D                  ;
+CODE_2AB35E:        20 D9 8C      JSR CODE_2A8CD9           ;
+CODE_2AB361:        A9 21         LDA #$21                  ;
+CODE_2AB363:        20 EE 8C      JSR CODE_2A8CEE           ;
+CODE_2AB366:        E2 10         SEP #$10                  ;
+CODE_2AB368:        60            RTS                       ;
 
-CODE_2AB369:        REP #$30                  
-CODE_2AB36B:        LDA #$B399                
-CODE_2AB36E:        STA $02                   
-CODE_2AB370:        LDA #$B39D                
-CODE_2AB373:        STA $04                   
-CODE_2AB375:        LDA $00                   
-CODE_2AB377:        PHA                       
-CODE_2AB378:        SEP #$20                  
-CODE_2AB37A:        JSR CODE_2AA9CB           
-CODE_2AB37D:        REP #$20                  
-CODE_2AB37F:        PLA                       
-CODE_2AB380:        INC A                     
-CODE_2AB381:        INC A                     
-CODE_2AB382:        STA $00                   
-CODE_2AB384:        AND #$000F                
-CODE_2AB387:        BNE CODE_2AB391           
-CODE_2AB389:        LDA $00                   
-CODE_2AB38B:        CLC                       
-CODE_2AB38C:        ADC #$01A0                
-CODE_2AB38F:        STA $00                   
-CODE_2AB391:        SEP #$20                  
-CODE_2AB393:        JSR CODE_2AA9CB           
-CODE_2AB396:        SEP #$10                  
-CODE_2AB398:        RTS                       
+CODE_2AB369:        C2 30         REP #$30                  
+CODE_2AB36B:        A9 99 B3      LDA #$B399                
+CODE_2AB36E:        85 02         STA $02                   
+CODE_2AB370:        A9 9D B3      LDA #$B39D                
+CODE_2AB373:        85 04         STA $04                   
+CODE_2AB375:        A5 00         LDA $00                   
+CODE_2AB377:        48            PHA                       
+CODE_2AB378:        E2 20         SEP #$20                  
+CODE_2AB37A:        20 CB A9      JSR CODE_2AA9CB           
+CODE_2AB37D:        C2 20         REP #$20                  
+CODE_2AB37F:        68            PLA                       
+CODE_2AB380:        1A            INC A                     
+CODE_2AB381:        1A            INC A                     
+CODE_2AB382:        85 00         STA $00                   
+CODE_2AB384:        29 0F 00      AND #$000F                
+CODE_2AB387:        D0 08         BNE CODE_2AB391           
+CODE_2AB389:        A5 00         LDA $00                   
+CODE_2AB38B:        18            CLC                       
+CODE_2AB38C:        69 A0 01      ADC #$01A0                
+CODE_2AB38F:        85 00         STA $00                   
+CODE_2AB391:        E2 20         SEP #$20                  
+CODE_2AB393:        20 CB A9      JSR CODE_2AA9CB           
+CODE_2AB396:        E2 10         SEP #$10                  
+CODE_2AB398:        60            RTS                       
 
 DATA_2AB399:        db $24,$26,$27,$24
 
 DATA_2AB39D:        db $25,$26,$27,$25
 
-CODE_2AB3A1:        LDA $0213                 
-CODE_2AB3A4:        BEQ CODE_2AB3B1           
-CODE_2AB3A6:        LDA #$05                  
-CODE_2AB3A8:        STA $0350                 
-CODE_2AB3AB:        SEP #$10                  
-CODE_2AB3AD:        PLB                       
-CODE_2AB3AE:        JMP CODE_2A8DB6           
+CODE_2AB3A1:        AD 13 02      LDA $0213                 
+CODE_2AB3A4:        F0 0B         BEQ CODE_2AB3B1           
+CODE_2AB3A6:        A9 05         LDA #$05                  
+CODE_2AB3A8:        8D 50 03      STA $0350                 
+CODE_2AB3AB:        E2 10         SEP #$10                  
+CODE_2AB3AD:        AB            PLB                       
+CODE_2AB3AE:        4C B6 8D      JMP CODE_2A8DB6           
 
-CODE_2AB3B1:        REP #$10                  
-CODE_2AB3B3:        LDA #$10                  
-CODE_2AB3B5:        STA $00                   
-CODE_2AB3B7:        STZ $01                   
-CODE_2AB3B9:        LDA #$08                  
-CODE_2AB3BB:        STA $02                   
-CODE_2AB3BD:        JSR CODE_2AB3DF           
-CODE_2AB3C0:        LDA #$01                  
-CODE_2AB3C2:        STA $00                   
-CODE_2AB3C4:        STZ $01                   
-CODE_2AB3C6:        LDA #$08                  
-CODE_2AB3C8:        STA $02                   
-CODE_2AB3CA:        JSR CODE_2AB3DF           
-CODE_2AB3CD:        LDY #$01B0                
-CODE_2AB3D0:        LDX #$0000                
-CODE_2AB3D3:        LDA #$01                  
-CODE_2AB3D5:        XBA                       
-CODE_2AB3D6:        LDA #$AF                  
-CODE_2AB3D8:        MVN $7F, $7F                 
-CODE_2AB3DB:        SEP #$10                  
-CODE_2AB3DD:        PLB                       
-CODE_2AB3DE:        RTL                       
+CODE_2AB3B1:        C2 10         REP #$10                  
+CODE_2AB3B3:        A9 10         LDA #$10                  
+CODE_2AB3B5:        85 00         STA $00                   
+CODE_2AB3B7:        64 01         STZ $01                   
+CODE_2AB3B9:        A9 08         LDA #$08                  
+CODE_2AB3BB:        85 02         STA $02                   
+CODE_2AB3BD:        20 DF B3      JSR CODE_2AB3DF           
+CODE_2AB3C0:        A9 01         LDA #$01                  
+CODE_2AB3C2:        85 00         STA $00                   
+CODE_2AB3C4:        64 01         STZ $01                   
+CODE_2AB3C6:        A9 08         LDA #$08                  
+CODE_2AB3C8:        85 02         STA $02                   
+CODE_2AB3CA:        20 DF B3      JSR CODE_2AB3DF           
+CODE_2AB3CD:        A0 B0 01      LDY #$01B0                
+CODE_2AB3D0:        A2 00 00      LDX #$0000                
+CODE_2AB3D3:        A9 01         LDA #$01                  
+CODE_2AB3D5:        EB            XBA                       
+CODE_2AB3D6:        A9 AF         LDA #$AF                  
+CODE_2AB3D8:        54 7F 7F      MVN $7F, $7F                 
+CODE_2AB3DB:        E2 10         SEP #$10                  
+CODE_2AB3DD:        AB            PLB                       
+CODE_2AB3DE:        6B            RTL                       
 
-CODE_2AB3DF:        LDX $00                   
-CODE_2AB3E1:        LDA #$01                  
-CODE_2AB3E3:        JSR CODE_2A8CD9           
-CODE_2AB3E6:        REP #$20                  
-CODE_2AB3E8:        TXA                       
-CODE_2AB3E9:        CLC                       
-CODE_2AB3EA:        ADC #$0020                
-CODE_2AB3ED:        TAX                       
-CODE_2AB3EE:        SEP #$20                  ;
-CODE_2AB3F0:        CPX #$01B0                ;
-CODE_2AB3F3:        BCC CODE_2AB3E1           ;
-CODE_2AB3F5:        INC $00                   ;
-CODE_2AB3F7:        INC $00                   ;
-CODE_2AB3F9:        DEC $02                   ;
-CODE_2AB3FB:        BNE CODE_2AB3DF           ;
-CODE_2AB3FD:        RTS                       ;
+CODE_2AB3DF:        A6 00         LDX $00                   
+CODE_2AB3E1:        A9 01         LDA #$01                  
+CODE_2AB3E3:        20 D9 8C      JSR CODE_2A8CD9           
+CODE_2AB3E6:        C2 20         REP #$20                  
+CODE_2AB3E8:        8A            TXA                       
+CODE_2AB3E9:        18            CLC                       
+CODE_2AB3EA:        69 20 00      ADC #$0020                
+CODE_2AB3ED:        AA            TAX                       
+CODE_2AB3EE:        E2 20         SEP #$20                  ;
+CODE_2AB3F0:        E0 B0 01      CPX #$01B0                ;
+CODE_2AB3F3:        90 EC         BCC CODE_2AB3E1           ;
+CODE_2AB3F5:        E6 00         INC $00                   ;
+CODE_2AB3F7:        E6 00         INC $00                   ;
+CODE_2AB3F9:        C6 02         DEC $02                   ;
+CODE_2AB3FB:        D0 E2         BNE CODE_2AB3DF           ;
+CODE_2AB3FD:        60            RTS                       ;
 
-CODE_2AB3FE:        SEP #$10                  
-CODE_2AB400:        LDX #$F0                  
-CODE_2AB402:        LDA #$29                  
-CODE_2AB404:        STA $00                   
-CODE_2AB406:        JSR CODE_2A9924           
-CODE_2AB409:        LDX #$00                  
-CODE_2AB40B:        LDA #$2A                  
-CODE_2AB40D:        STA $00                   
-CODE_2AB40F:        JSR CODE_2AB003           
-CODE_2AB412:        LDA #$2A                  
-CODE_2AB414:        STA $00                   
-CODE_2AB416:        JSR CODE_2AB003           
-CODE_2AB419:        LDX #$10                  
-CODE_2AB41B:        LDA #$32                  
-CODE_2AB41D:        STA $00                   
-CODE_2AB41F:        JSR CODE_2AB003           
-CODE_2AB422:        LDA #$32                  
-CODE_2AB424:        STA $00                   
-CODE_2AB426:        JSR CODE_2AB003           
-CODE_2AB429:        LDY #$00                  
-CODE_2AB42B:        LDA [$2B],y               
-CODE_2AB42D:        CMP #$FF                  
-CODE_2AB42F:        BEQ CODE_2AB439           
-CODE_2AB431:        JSR CODE_2A8E54           
-CODE_2AB434:        JSR (PNTR_2AB43B,x)             
-CODE_2AB437:        BRA CODE_2AB429           
+CODE_2AB3FE:        E2 10         SEP #$10                  
+CODE_2AB400:        A2 F0         LDX #$F0                  
+CODE_2AB402:        A9 29         LDA #$29                  
+CODE_2AB404:        85 00         STA $00                   
+CODE_2AB406:        20 24 99      JSR CODE_2A9924           
+CODE_2AB409:        A2 00         LDX #$00                  
+CODE_2AB40B:        A9 2A         LDA #$2A                  
+CODE_2AB40D:        85 00         STA $00                   
+CODE_2AB40F:        20 03 B0      JSR CODE_2AB003           
+CODE_2AB412:        A9 2A         LDA #$2A                  
+CODE_2AB414:        85 00         STA $00                   
+CODE_2AB416:        20 03 B0      JSR CODE_2AB003           
+CODE_2AB419:        A2 10         LDX #$10                  
+CODE_2AB41B:        A9 32         LDA #$32                  
+CODE_2AB41D:        85 00         STA $00                   
+CODE_2AB41F:        20 03 B0      JSR CODE_2AB003           
+CODE_2AB422:        A9 32         LDA #$32                  
+CODE_2AB424:        85 00         STA $00                   
+CODE_2AB426:        20 03 B0      JSR CODE_2AB003           
+CODE_2AB429:        A0 00         LDY #$00                  
+CODE_2AB42B:        B7 2B         LDA [$2B],y               
+CODE_2AB42D:        C9 FF         CMP #$FF                  
+CODE_2AB42F:        F0 08         BEQ CODE_2AB439           
+CODE_2AB431:        20 54 8E      JSR CODE_2A8E54           
+CODE_2AB434:        FC 3B B4      JSR (PNTR_2AB43B,x)             
+CODE_2AB437:        80 F0         BRA CODE_2AB429           
 
-CODE_2AB439:        PLB                       
-CODE_2AB43A:        RTL                       
+CODE_2AB439:        AB            PLB                       
+CODE_2AB43A:        6B            RTL                       
 
 PNTR_2AB43B:        dw CODE_2AB08B
                     dw CODE_2AB0DD
                     dw CODE_2AB441
 
                   
-CODE_2AB441:        LDX $00
-CODE_2AB443:        LDY $DA
-CODE_2AB445:        LDA DATA_2AB472,y               
-CODE_2AB448:        JSR CODE_2A8D03           
-CODE_2AB44B:        INX                       
-CODE_2AB44C:        LDY $DB                   
-CODE_2AB44E:        LDA DATA_2AB476,y               
-CODE_2AB451:        CMP #$FF                  
-CODE_2AB453:        BEQ CODE_2AB45D           
-CODE_2AB455:        JSR CODE_2A8D03           
-CODE_2AB458:        INX                       
-CODE_2AB459:        INC $DB                   
-CODE_2AB45B:        BRA CODE_2AB44C           
+CODE_2AB441:        A6 00         LDX $00
+CODE_2AB443:        A4 DA         LDY $DA
+CODE_2AB445:        B9 72 B4      LDA DATA_2AB472,y               
+CODE_2AB448:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB44B:        E8            INX                       
+CODE_2AB44C:        A4 DB         LDY $DB                   
+CODE_2AB44E:        B9 76 B4      LDA DATA_2AB476,y               
+CODE_2AB451:        C9 FF         CMP #$FF                  
+CODE_2AB453:        F0 08         BEQ CODE_2AB45D           
+CODE_2AB455:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB458:        E8            INX                       
+CODE_2AB459:        E6 DB         INC $DB                   
+CODE_2AB45B:        80 EF         BRA CODE_2AB44C           
 
-CODE_2AB45D:        LDA #$06                  
-CODE_2AB45F:        JSR CODE_2A8D03           
-CODE_2AB462:        LDA $00                   
-CODE_2AB464:        CLC                       
-CODE_2AB465:        ADC #$10                  
-CODE_2AB467:        STA $00                   
-CODE_2AB469:        INC $DA                   
-CODE_2AB46B:        INC $DB                   
-CODE_2AB46D:        DEC $D8                   
-CODE_2AB46F:        BNE CODE_2AB441           
-CODE_2AB471:        RTS                       
+CODE_2AB45D:        A9 06         LDA #$06                  
+CODE_2AB45F:        20 03 8D      JSR CODE_2A8D03           
+CODE_2AB462:        A5 00         LDA $00                   
+CODE_2AB464:        18            CLC                       
+CODE_2AB465:        69 10         ADC #$10                  
+CODE_2AB467:        85 00         STA $00                   
+CODE_2AB469:        E6 DA         INC $DA                   
+CODE_2AB46B:        E6 DB         INC $DB                   
+CODE_2AB46D:        C6 D8         DEC $D8                   
+CODE_2AB46F:        D0 D0         BNE CODE_2AB441           
+CODE_2AB471:        60            RTS                       
 
 DATA_2AB472:        db $01,$07,$08,$0D ; TODO: indices for next table, split next table
 
@@ -6139,85 +6139,85 @@ DATA_2AB476:        db $44,$45,$46,$47,$05,$FF,$48,$49
                     db $4A,$4B,$01,$FF,$4C,$4D,$4E,$4F
                     db $08,$FF,$50,$51,$52,$53,$01,$FF
 
-CODE_2AB48E:        LDA $0350
-CODE_2AB491:        BEQ CODE_2AB4FD           
-CODE_2AB493:        CMP #$12                  
-CODE_2AB495:        BNE CODE_2AB49E           
-CODE_2AB497:        JSL CODE_22E576           
-CODE_2AB49B:        JMP CODE_2AB4FD           
+CODE_2AB48E:        AD 50 03      LDA $0350
+CODE_2AB491:        F0 6A         BEQ CODE_2AB4FD           
+CODE_2AB493:        C9 12         CMP #$12                  
+CODE_2AB495:        D0 07         BNE CODE_2AB49E           
+CODE_2AB497:        22 76 E5 22   JSL CODE_22E576           
+CODE_2AB49B:        4C FD B4      JMP CODE_2AB4FD           
 
-CODE_2AB49E:        LDA $0425                 
-CODE_2AB4A1:        BNE CODE_2AB4FE           
-CODE_2AB4A3:        LDA $0212                 
-CODE_2AB4A6:        STA $0249                 
-CODE_2AB4A9:        LDA $0213                 
-CODE_2AB4AC:        ASL A                     
-CODE_2AB4AD:        ASL A                     
-CODE_2AB4AE:        ASL A                     
-CODE_2AB4AF:        ASL A                     
-CODE_2AB4B0:        STA $024B                 
-CODE_2AB4B3:        JSL CODE_2AB5B5           
-CODE_2AB4B7:        LDA $0350                 
-CODE_2AB4BA:        CMP #$02                  
-CODE_2AB4BC:        BEQ CODE_2AB4C8           
-CODE_2AB4BE:        CMP #$23                  
-CODE_2AB4C0:        BEQ CODE_2AB4C8           
-CODE_2AB4C2:        JSL CODE_29E9A3           
-CODE_2AB4C6:        BRA CODE_2AB4CC           
+CODE_2AB49E:        AD 25 04      LDA $0425                 
+CODE_2AB4A1:        D0 5B         BNE CODE_2AB4FE           
+CODE_2AB4A3:        AD 12 02      LDA $0212                 
+CODE_2AB4A6:        8D 49 02      STA $0249                 
+CODE_2AB4A9:        AD 13 02      LDA $0213                 
+CODE_2AB4AC:        0A            ASL A                     
+CODE_2AB4AD:        0A            ASL A                     
+CODE_2AB4AE:        0A            ASL A                     
+CODE_2AB4AF:        0A            ASL A                     
+CODE_2AB4B0:        8D 4B 02      STA $024B                 
+CODE_2AB4B3:        22 B5 B5 2A   JSL CODE_2AB5B5           
+CODE_2AB4B7:        AD 50 03      LDA $0350                 
+CODE_2AB4BA:        C9 02         CMP #$02                  
+CODE_2AB4BC:        F0 0A         BEQ CODE_2AB4C8           
+CODE_2AB4BE:        C9 23         CMP #$23                  
+CODE_2AB4C0:        F0 06         BEQ CODE_2AB4C8           
+CODE_2AB4C2:        22 A3 E9 29   JSL CODE_29E9A3           
+CODE_2AB4C6:        80 04         BRA CODE_2AB4CC           
 
-CODE_2AB4C8:        JSL CODE_22E2FE           
-CODE_2AB4CC:        LDA $0249                 
-CODE_2AB4CF:        CLC                       
-CODE_2AB4D0:        ADC.w DATA_2ACE95                 
-CODE_2AB4D3:        STA $0249                 
-CODE_2AB4D6:        LDA $0249                 
-CODE_2AB4D9:        AND #$08                  
-CODE_2AB4DB:        CMP.w DATA_2ACE97                 
-CODE_2AB4DE:        BNE CODE_2AB4E3           
-CODE_2AB4E0:        INC $024B                 
-CODE_2AB4E3:        DEC $0612                 
-CODE_2AB4E6:        BNE CODE_2AB4B3           
-CODE_2AB4E8:        LDA #$FF                  
-CODE_2AB4EA:        STA $0249                 
-CODE_2AB4ED:        LDA $0350                 
-CODE_2AB4F0:        CMP #$02                  
-CODE_2AB4F2:        BEQ CODE_2AB4F8           
-CODE_2AB4F4:        CMP #$23                  
-CODE_2AB4F6:        BNE CODE_2AB4FD           
-CODE_2AB4F8:        LDA #$51                  
-CODE_2AB4FA:        STA $2109                 
-CODE_2AB4FD:        RTL                       
+CODE_2AB4C8:        22 FE E2 22   JSL CODE_22E2FE           
+CODE_2AB4CC:        AD 49 02      LDA $0249                 
+CODE_2AB4CF:        18            CLC                       
+CODE_2AB4D0:        6D 95 CE      ADC.w DATA_2ACE95                 
+CODE_2AB4D3:        8D 49 02      STA $0249                 
+CODE_2AB4D6:        AD 49 02      LDA $0249                 
+CODE_2AB4D9:        29 08         AND #$08                  
+CODE_2AB4DB:        CD 97 CE      CMP.w DATA_2ACE97                 
+CODE_2AB4DE:        D0 03         BNE CODE_2AB4E3           
+CODE_2AB4E0:        EE 4B 02      INC $024B                 
+CODE_2AB4E3:        CE 12 06      DEC $0612                 
+CODE_2AB4E6:        D0 CB         BNE CODE_2AB4B3           
+CODE_2AB4E8:        A9 FF         LDA #$FF                  
+CODE_2AB4EA:        8D 49 02      STA $0249                 
+CODE_2AB4ED:        AD 50 03      LDA $0350                 
+CODE_2AB4F0:        C9 02         CMP #$02                  
+CODE_2AB4F2:        F0 04         BEQ CODE_2AB4F8           
+CODE_2AB4F4:        C9 23         CMP #$23                  
+CODE_2AB4F6:        D0 05         BNE CODE_2AB4FD           
+CODE_2AB4F8:        A9 51         LDA #$51                  
+CODE_2AB4FA:        8D 09 21      STA $2109                 
+CODE_2AB4FD:        6B            RTL                       
 
-CODE_2AB4FE:        STZ $25                   
-CODE_2AB500:        LDA #$70                  
-CODE_2AB502:        STA $0218                 
-CODE_2AB505:        CLC                       
-CODE_2AB506:        ADC #$08                  
-CODE_2AB508:        STA $0249                 
-CODE_2AB50B:        STZ $024B                 
-CODE_2AB50E:        JSR CODE_2AB67D           
-CODE_2AB511:        JSL CODE_29E9F8           
-CODE_2AB515:        LDA $0218                 
-CODE_2AB518:        CLC                       
-CODE_2AB519:        ADC #$08                  
-CODE_2AB51B:        STA $0218                 
-CODE_2AB51E:        AND #$08                  
-CODE_2AB520:        BNE CODE_2AB53A           
-CODE_2AB522:        LDA $024B                 
-CODE_2AB525:        CLC                       
-CODE_2AB526:        ADC #$10                  
-CODE_2AB528:        STA $024B                 
-CODE_2AB52B:        AND #$F0                  
-CODE_2AB52D:        BNE CODE_2AB53A           
-CODE_2AB52F:        INC $024B                 
-CODE_2AB532:        LDA #$0F                  
-CODE_2AB534:        AND $024B                 
-CODE_2AB537:        STA $024B                 
-CODE_2AB53A:        DEC $0612                 
-CODE_2AB53D:        BNE CODE_2AB50E           
-CODE_2AB53F:        STZ $0218                 
-CODE_2AB542:        STZ $0249                 
-CODE_2AB545:        RTL                       
+CODE_2AB4FE:        64 25         STZ $25                   
+CODE_2AB500:        A9 70         LDA #$70                  
+CODE_2AB502:        8D 18 02      STA $0218                 
+CODE_2AB505:        18            CLC                       
+CODE_2AB506:        69 08         ADC #$08                  
+CODE_2AB508:        8D 49 02      STA $0249                 
+CODE_2AB50B:        9C 4B 02      STZ $024B                 
+CODE_2AB50E:        20 7D B6      JSR CODE_2AB67D           
+CODE_2AB511:        22 F8 E9 29   JSL CODE_29E9F8           
+CODE_2AB515:        AD 18 02      LDA $0218                 
+CODE_2AB518:        18            CLC                       
+CODE_2AB519:        69 08         ADC #$08                  
+CODE_2AB51B:        8D 18 02      STA $0218                 
+CODE_2AB51E:        29 08         AND #$08                  
+CODE_2AB520:        D0 18         BNE CODE_2AB53A           
+CODE_2AB522:        AD 4B 02      LDA $024B                 
+CODE_2AB525:        18            CLC                       
+CODE_2AB526:        69 10         ADC #$10                  
+CODE_2AB528:        8D 4B 02      STA $024B                 
+CODE_2AB52B:        29 F0         AND #$F0                  
+CODE_2AB52D:        D0 0B         BNE CODE_2AB53A           
+CODE_2AB52F:        EE 4B 02      INC $024B                 
+CODE_2AB532:        A9 0F         LDA #$0F                  
+CODE_2AB534:        2D 4B 02      AND $024B                 
+CODE_2AB537:        8D 4B 02      STA $024B                 
+CODE_2AB53A:        CE 12 06      DEC $0612                 
+CODE_2AB53D:        D0 CF         BNE CODE_2AB50E           
+CODE_2AB53F:        9C 18 02      STZ $0218                 
+CODE_2AB542:        9C 49 02      STZ $0249                 
+CODE_2AB545:        6B            RTL                       
 
 DATA_2AB546:        db $10,$BD,$2A,$58,$BE,$2A,$30,$BF
                     db $2A,$30,$C2,$2A,$58,$C0,$2A,$20
@@ -6235,300 +6235,300 @@ DATA_2AB546:        db $10,$BD,$2A,$58,$BE,$2A,$30,$BF
                     db $2A,$30,$BF,$2A,$10,$BD,$2A
   
                
-CODE_2AB5B5:        PHB                       
-CODE_2AB5B6:        PHK                       
-CODE_2AB5B7:        PLB                       
-CODE_2AB5B8:        LDA $0249                 
-CODE_2AB5BB:        AND #$08                  
-CODE_2AB5BD:        LSR A                     
-CODE_2AB5BE:        LSR A                     
-CODE_2AB5BF:        LSR A                     
-CODE_2AB5C0:        STA $C2                   
-CODE_2AB5C2:        LDA $0350                 
-CODE_2AB5C5:        ASL A                     
-CODE_2AB5C6:        CLC                       
-CODE_2AB5C7:        ADC $0350                 
-CODE_2AB5CA:        TAY                       
-CODE_2AB5CB:        LDA.w DATA_2AB546-1,y               
-CODE_2AB5CE:        STA $08                   
-CODE_2AB5D0:        REP #$20                  
-CODE_2AB5D2:        LDA.w DATA_2AB546-3,y               
-CODE_2AB5D5:        STA $06                   
-CODE_2AB5D7:        SEP #$20                  
-CODE_2AB5D9:        LDX $25                   
-CODE_2AB5DB:        LDA $024B                 
-CODE_2AB5DE:        LSR A                     
-CODE_2AB5DF:        LSR A                     
-CODE_2AB5E0:        LSR A                     
-CODE_2AB5E1:        LSR A                     
-CODE_2AB5E2:        INC A                     
-CODE_2AB5E3:        AND #$0F                  
-CODE_2AB5E5:        TAY                       
-CODE_2AB5E6:        LDA #$7F                  
-CODE_2AB5E8:        STA $0F                   
-CODE_2AB5EA:        REP #$20                  
-CODE_2AB5EC:        STZ $0D                   
-CODE_2AB5EE:        DEY                       
-CODE_2AB5EF:        BEQ CODE_2AB5FB           
-CODE_2AB5F1:        LDA $0D                   
-CODE_2AB5F3:        CLC                       
-CODE_2AB5F4:        ADC #$01B0                
-CODE_2AB5F7:        STA $0D                   
-CODE_2AB5F9:        BRA CODE_2AB5EE           
+CODE_2AB5B5:        8B            PHB                       
+CODE_2AB5B6:        4B            PHK                       
+CODE_2AB5B7:        AB            PLB                       
+CODE_2AB5B8:        AD 49 02      LDA $0249                 
+CODE_2AB5BB:        29 08         AND #$08                  
+CODE_2AB5BD:        4A            LSR A                     
+CODE_2AB5BE:        4A            LSR A                     
+CODE_2AB5BF:        4A            LSR A                     
+CODE_2AB5C0:        85 C2         STA $C2                   
+CODE_2AB5C2:        AD 50 03      LDA $0350                 
+CODE_2AB5C5:        0A            ASL A                     
+CODE_2AB5C6:        18            CLC                       
+CODE_2AB5C7:        6D 50 03      ADC $0350                 
+CODE_2AB5CA:        A8            TAY                       
+CODE_2AB5CB:        B9 45 B5      LDA.w DATA_2AB546-1,y               
+CODE_2AB5CE:        85 08         STA $08                   
+CODE_2AB5D0:        C2 20         REP #$20                  
+CODE_2AB5D2:        B9 43 B5      LDA.w DATA_2AB546-3,y               
+CODE_2AB5D5:        85 06         STA $06                   
+CODE_2AB5D7:        E2 20         SEP #$20                  
+CODE_2AB5D9:        A6 25         LDX $25                   
+CODE_2AB5DB:        AD 4B 02      LDA $024B                 
+CODE_2AB5DE:        4A            LSR A                     
+CODE_2AB5DF:        4A            LSR A                     
+CODE_2AB5E0:        4A            LSR A                     
+CODE_2AB5E1:        4A            LSR A                     
+CODE_2AB5E2:        1A            INC A                     
+CODE_2AB5E3:        29 0F         AND #$0F                  
+CODE_2AB5E5:        A8            TAY                       
+CODE_2AB5E6:        A9 7F         LDA #$7F                  
+CODE_2AB5E8:        85 0F         STA $0F                   
+CODE_2AB5EA:        C2 20         REP #$20                  
+CODE_2AB5EC:        64 0D         STZ $0D                   
+CODE_2AB5EE:        88            DEY                       
+CODE_2AB5EF:        F0 0A         BEQ CODE_2AB5FB           
+CODE_2AB5F1:        A5 0D         LDA $0D                   
+CODE_2AB5F3:        18            CLC                       
+CODE_2AB5F4:        69 B0 01      ADC #$01B0                
+CODE_2AB5F7:        85 0D         STA $0D                   
+CODE_2AB5F9:        80 F3         BRA CODE_2AB5EE           
 
-CODE_2AB5FB:        LDA #$001A                
-CODE_2AB5FE:        STA $00                   
-CODE_2AB600:        LDA $024B                 
-CODE_2AB603:        AND #$000F                
-CODE_2AB606:        STA $09                   
-CODE_2AB608:        REP #$10                  
-CODE_2AB60A:        LDX #$0000                
-CODE_2AB60D:        LDY $09                   
-CODE_2AB60F:        LDA [$0D],y               
-CODE_2AB611:        AND #$00FF                
-CODE_2AB614:        ASL A                     
-CODE_2AB615:        ASL A                     
-CODE_2AB616:        ASL A                     
-CODE_2AB617:        TAY                       
-CODE_2AB618:        LDA $C2                   
-CODE_2AB61A:        AND #$00FF                
-CODE_2AB61D:        BEQ CODE_2AB623           
-CODE_2AB61F:        INY                       
-CODE_2AB620:        INY                       
-CODE_2AB621:        INY                       
-CODE_2AB622:        INY                       
-CODE_2AB623:        LDA [$06],y               
-CODE_2AB625:        STA $7F2002,x             
-CODE_2AB629:        INY                       
-CODE_2AB62A:        INY                       
-CODE_2AB62B:        LDA [$06],y               
-CODE_2AB62D:        STA $7F2004,x             
-CODE_2AB631:        LDA $09                   
-CODE_2AB633:        CLC                       
-CODE_2AB634:        ADC #$0010                
-CODE_2AB637:        STA $09                   
-CODE_2AB639:        INX                       
-CODE_2AB63A:        INX                       
-CODE_2AB63B:        INX                       
-CODE_2AB63C:        INX                       
-CODE_2AB63D:        DEC $00                   
-CODE_2AB63F:        BPL CODE_2AB60D           
-CODE_2AB641:        SEP #$30                  
-CODE_2AB643:        LDX $25                   
-CODE_2AB645:        LDA $024B                 
-CODE_2AB648:        AND #$0F                  
-CODE_2AB64A:        ASL A                     
-CODE_2AB64B:        ORA $C2                   
-CODE_2AB64D:        STA $7F2001               
-CODE_2AB651:        LDA $024B                 
-CODE_2AB654:        AND #$10                  
-CODE_2AB656:        BEQ CODE_2AB65A           
-CODE_2AB658:        LDA #$04                  
-CODE_2AB65A:        ORA #$10                  
-CODE_2AB65C:        STA $7F2000               
-CODE_2AB660:        LDA $0350                 
-CODE_2AB663:        CMP #$02                  
-CODE_2AB665:        BEQ CODE_2AB66B           
-CODE_2AB667:        CMP #$23                  
-CODE_2AB669:        BNE CODE_2AB67B           
-CODE_2AB66B:        REP #$20                  
-CODE_2AB66D:        LDA $7F2000               
-CODE_2AB671:        CLC                       
-CODE_2AB672:        ADC #$0040                
-CODE_2AB675:        STA $7F2000               
-CODE_2AB679:        SEP #$20                  
-CODE_2AB67B:        PLB                       
-CODE_2AB67C:        RTL                       
+CODE_2AB5FB:        A9 1A 00      LDA #$001A                
+CODE_2AB5FE:        85 00         STA $00                   
+CODE_2AB600:        AD 4B 02      LDA $024B                 
+CODE_2AB603:        29 0F 00      AND #$000F                
+CODE_2AB606:        85 09         STA $09                   
+CODE_2AB608:        C2 10         REP #$10                  
+CODE_2AB60A:        A2 00 00      LDX #$0000                
+CODE_2AB60D:        A4 09         LDY $09                   
+CODE_2AB60F:        B7 0D         LDA [$0D],y               
+CODE_2AB611:        29 FF 00      AND #$00FF                
+CODE_2AB614:        0A            ASL A                     
+CODE_2AB615:        0A            ASL A                     
+CODE_2AB616:        0A            ASL A                     
+CODE_2AB617:        A8            TAY                       
+CODE_2AB618:        A5 C2         LDA $C2                   
+CODE_2AB61A:        29 FF 00      AND #$00FF                
+CODE_2AB61D:        F0 04         BEQ CODE_2AB623           
+CODE_2AB61F:        C8            INY                       
+CODE_2AB620:        C8            INY                       
+CODE_2AB621:        C8            INY                       
+CODE_2AB622:        C8            INY                       
+CODE_2AB623:        B7 06         LDA [$06],y               
+CODE_2AB625:        9F 02 20 7F   STA $7F2002,x             
+CODE_2AB629:        C8            INY                       
+CODE_2AB62A:        C8            INY                       
+CODE_2AB62B:        B7 06         LDA [$06],y               
+CODE_2AB62D:        9F 04 20 7F   STA $7F2004,x             
+CODE_2AB631:        A5 09         LDA $09                   
+CODE_2AB633:        18            CLC                       
+CODE_2AB634:        69 10 00      ADC #$0010                
+CODE_2AB637:        85 09         STA $09                   
+CODE_2AB639:        E8            INX                       
+CODE_2AB63A:        E8            INX                       
+CODE_2AB63B:        E8            INX                       
+CODE_2AB63C:        E8            INX                       
+CODE_2AB63D:        C6 00         DEC $00                   
+CODE_2AB63F:        10 CC         BPL CODE_2AB60D           
+CODE_2AB641:        E2 30         SEP #$30                  
+CODE_2AB643:        A6 25         LDX $25                   
+CODE_2AB645:        AD 4B 02      LDA $024B                 
+CODE_2AB648:        29 0F         AND #$0F                  
+CODE_2AB64A:        0A            ASL A                     
+CODE_2AB64B:        05 C2         ORA $C2                   
+CODE_2AB64D:        8F 01 20 7F   STA $7F2001               
+CODE_2AB651:        AD 4B 02      LDA $024B                 
+CODE_2AB654:        29 10         AND #$10                  
+CODE_2AB656:        F0 02         BEQ CODE_2AB65A           
+CODE_2AB658:        A9 04         LDA #$04                  
+CODE_2AB65A:        09 10         ORA #$10                  
+CODE_2AB65C:        8F 00 20 7F   STA $7F2000               
+CODE_2AB660:        AD 50 03      LDA $0350                 
+CODE_2AB663:        C9 02         CMP #$02                  
+CODE_2AB665:        F0 04         BEQ CODE_2AB66B           
+CODE_2AB667:        C9 23         CMP #$23                  
+CODE_2AB669:        D0 10         BNE CODE_2AB67B           
+CODE_2AB66B:        C2 20         REP #$20                  
+CODE_2AB66D:        AF 00 20 7F   LDA $7F2000               
+CODE_2AB671:        18            CLC                       
+CODE_2AB672:        69 40 00      ADC #$0040                
+CODE_2AB675:        8F 00 20 7F   STA $7F2000               
+CODE_2AB679:        E2 20         SEP #$20                  
+CODE_2AB67B:        AB            PLB                       
+CODE_2AB67C:        6B            RTL                       
 
-CODE_2AB67D:        REP #$20                  
-CODE_2AB67F:        LDA $024B                 
-CODE_2AB682:        AND #$00F0                
-CODE_2AB685:        ASL A                     
-CODE_2AB686:        ASL A                     
-CODE_2AB687:        CLC                       
-CODE_2AB688:        ADC #$1000                
-CODE_2AB68B:        STA $7F2000               
-CODE_2AB68F:        XBA                       
-CODE_2AB690:        STA $7F2000               
-CODE_2AB694:        SEP #$20                  
-CODE_2AB696:        LDA $024B                 
-CODE_2AB699:        AND #$01                  
-CODE_2AB69B:        BEQ CODE_2AB6A7           
-CODE_2AB69D:        LDA $7F2000               
-CODE_2AB6A1:        EOR #$08                  
-CODE_2AB6A3:        STA $7F2000               
-CODE_2AB6A7:        LDA $0218                 
-CODE_2AB6AA:        AND #$08                  
-CODE_2AB6AC:        BEQ CODE_2AB6B9           
-CODE_2AB6AE:        LDA $7F2001               
-CODE_2AB6B2:        CLC                       
-CODE_2AB6B3:        ADC #$20                  
-CODE_2AB6B5:        STA $7F2001               
-CODE_2AB6B9:        PHB                       
-CODE_2AB6BA:        PHK                       
-CODE_2AB6BB:        PLB                       
-CODE_2AB6BC:        LDA $0350                 
-CODE_2AB6BF:        ASL A                     
-CODE_2AB6C0:        CLC                       
-CODE_2AB6C1:        ADC $0350                 
-CODE_2AB6C4:        TAY                       
-CODE_2AB6C5:        LDA.w DATA_2AB546-1,y               
-CODE_2AB6C8:        STA $0E                   
-CODE_2AB6CA:        REP #$20                  
-CODE_2AB6CC:        LDA.w DATA_2AB546-3,y               
-CODE_2AB6CF:        STA $0C                   
-CODE_2AB6D1:        STZ $D8                   
-CODE_2AB6D3:        SEP #$20                  
-CODE_2AB6D5:        LDA #$7F                  
-CODE_2AB6D7:        STA $DA                   
-CODE_2AB6D9:        LDA $024B                 
-CODE_2AB6DC:        AND #$0F                  
-CODE_2AB6DE:        TAY                       
-CODE_2AB6DF:        BEQ CODE_2AB6F0           
-CODE_2AB6E1:        REP #$20                  
-CODE_2AB6E3:        LDA $D8                   
-CODE_2AB6E5:        CLC                       
-CODE_2AB6E6:        ADC #$01B0                
-CODE_2AB6E9:        STA $D8                   
-CODE_2AB6EB:        SEP #$20                  
-CODE_2AB6ED:        DEY                       
-CODE_2AB6EE:        BNE CODE_2AB6E1           
-CODE_2AB6F0:        REP #$20                  
-CODE_2AB6F2:        LDA $024B                 
-CODE_2AB6F5:        AND #$00F0                
-CODE_2AB6F8:        STA $06                   
-CODE_2AB6FA:        STZ $08                   
-CODE_2AB6FC:        REP #$10                  
-CODE_2AB6FE:        LDY $06                   
-CODE_2AB700:        LDA [$D8],y               
-CODE_2AB702:        STA $0A                   
-CODE_2AB704:        INC $06                   
-CODE_2AB706:        LDA $0A                   
-CODE_2AB708:        AND #$00FF                
-CODE_2AB70B:        ASL A                     
-CODE_2AB70C:        ASL A                     
-CODE_2AB70D:        ASL A                     
-CODE_2AB70E:        TAY                       
-CODE_2AB70F:        LDX $08                   
-CODE_2AB711:        LDA $0218                 
-CODE_2AB714:        AND #$0008                
-CODE_2AB717:        BEQ CODE_2AB71B           
-CODE_2AB719:        INY                       
-CODE_2AB71A:        INY                       
-CODE_2AB71B:        LDA [$0C],y               
-CODE_2AB71D:        STA $7F2002,x             
-CODE_2AB721:        INY                       
-CODE_2AB722:        INY                       
-CODE_2AB723:        INY                       
-CODE_2AB724:        INY                       
-CODE_2AB725:        LDA [$0C],y               
-CODE_2AB727:        STA $7F2004,x             
-CODE_2AB72B:        INX                       
-CODE_2AB72C:        INX                       
-CODE_2AB72D:        INX                       
-CODE_2AB72E:        INX                       
-CODE_2AB72F:        STX $08                   
-CODE_2AB731:        CPX #$0040                
-CODE_2AB734:        BCC CODE_2AB6FE           
-CODE_2AB736:        SEP #$30                  
-CODE_2AB738:        PLB                       
-CODE_2AB739:        RTS                       
+CODE_2AB67D:        C2 20         REP #$20                  
+CODE_2AB67F:        AD 4B 02      LDA $024B                 
+CODE_2AB682:        29 F0 00      AND #$00F0                
+CODE_2AB685:        0A            ASL A                     
+CODE_2AB686:        0A            ASL A                     
+CODE_2AB687:        18            CLC                       
+CODE_2AB688:        69 00 10      ADC #$1000                
+CODE_2AB68B:        8F 00 20 7F   STA $7F2000               
+CODE_2AB68F:        EB            XBA                       
+CODE_2AB690:        8F 00 20 7F   STA $7F2000               
+CODE_2AB694:        E2 20         SEP #$20                  
+CODE_2AB696:        AD 4B 02      LDA $024B                 
+CODE_2AB699:        29 01         AND #$01                  
+CODE_2AB69B:        F0 0A         BEQ CODE_2AB6A7           
+CODE_2AB69D:        AF 00 20 7F   LDA $7F2000               
+CODE_2AB6A1:        49 08         EOR #$08                  
+CODE_2AB6A3:        8F 00 20 7F   STA $7F2000               
+CODE_2AB6A7:        AD 18 02      LDA $0218                 
+CODE_2AB6AA:        29 08         AND #$08                  
+CODE_2AB6AC:        F0 0B         BEQ CODE_2AB6B9           
+CODE_2AB6AE:        AF 01 20 7F   LDA $7F2001               
+CODE_2AB6B2:        18            CLC                       
+CODE_2AB6B3:        69 20         ADC #$20                  
+CODE_2AB6B5:        8F 01 20 7F   STA $7F2001               
+CODE_2AB6B9:        8B            PHB                       
+CODE_2AB6BA:        4B            PHK                       
+CODE_2AB6BB:        AB            PLB                       
+CODE_2AB6BC:        AD 50 03      LDA $0350                 
+CODE_2AB6BF:        0A            ASL A                     
+CODE_2AB6C0:        18            CLC                       
+CODE_2AB6C1:        6D 50 03      ADC $0350                 
+CODE_2AB6C4:        A8            TAY                       
+CODE_2AB6C5:        B9 45 B5      LDA.w DATA_2AB546-1,y               
+CODE_2AB6C8:        85 0E         STA $0E                   
+CODE_2AB6CA:        C2 20         REP #$20                  
+CODE_2AB6CC:        B9 43 B5      LDA.w DATA_2AB546-3,y               
+CODE_2AB6CF:        85 0C         STA $0C                   
+CODE_2AB6D1:        64 D8         STZ $D8                   
+CODE_2AB6D3:        E2 20         SEP #$20                  
+CODE_2AB6D5:        A9 7F         LDA #$7F                  
+CODE_2AB6D7:        85 DA         STA $DA                   
+CODE_2AB6D9:        AD 4B 02      LDA $024B                 
+CODE_2AB6DC:        29 0F         AND #$0F                  
+CODE_2AB6DE:        A8            TAY                       
+CODE_2AB6DF:        F0 0F         BEQ CODE_2AB6F0           
+CODE_2AB6E1:        C2 20         REP #$20                  
+CODE_2AB6E3:        A5 D8         LDA $D8                   
+CODE_2AB6E5:        18            CLC                       
+CODE_2AB6E6:        69 B0 01      ADC #$01B0                
+CODE_2AB6E9:        85 D8         STA $D8                   
+CODE_2AB6EB:        E2 20         SEP #$20                  
+CODE_2AB6ED:        88            DEY                       
+CODE_2AB6EE:        D0 F1         BNE CODE_2AB6E1           
+CODE_2AB6F0:        C2 20         REP #$20                  
+CODE_2AB6F2:        AD 4B 02      LDA $024B                 
+CODE_2AB6F5:        29 F0 00      AND #$00F0                
+CODE_2AB6F8:        85 06         STA $06                   
+CODE_2AB6FA:        64 08         STZ $08                   
+CODE_2AB6FC:        C2 10         REP #$10                  
+CODE_2AB6FE:        A4 06         LDY $06                   
+CODE_2AB700:        B7 D8         LDA [$D8],y               
+CODE_2AB702:        85 0A         STA $0A                   
+CODE_2AB704:        E6 06         INC $06                   
+CODE_2AB706:        A5 0A         LDA $0A                   
+CODE_2AB708:        29 FF 00      AND #$00FF                
+CODE_2AB70B:        0A            ASL A                     
+CODE_2AB70C:        0A            ASL A                     
+CODE_2AB70D:        0A            ASL A                     
+CODE_2AB70E:        A8            TAY                       
+CODE_2AB70F:        A6 08         LDX $08                   
+CODE_2AB711:        AD 18 02      LDA $0218                 
+CODE_2AB714:        29 08 00      AND #$0008                
+CODE_2AB717:        F0 02         BEQ CODE_2AB71B           
+CODE_2AB719:        C8            INY                       
+CODE_2AB71A:        C8            INY                       
+CODE_2AB71B:        B7 0C         LDA [$0C],y               
+CODE_2AB71D:        9F 02 20 7F   STA $7F2002,x             
+CODE_2AB721:        C8            INY                       
+CODE_2AB722:        C8            INY                       
+CODE_2AB723:        C8            INY                       
+CODE_2AB724:        C8            INY                       
+CODE_2AB725:        B7 0C         LDA [$0C],y               
+CODE_2AB727:        9F 04 20 7F   STA $7F2004,x             
+CODE_2AB72B:        E8            INX                       
+CODE_2AB72C:        E8            INX                       
+CODE_2AB72D:        E8            INX                       
+CODE_2AB72E:        E8            INX                       
+CODE_2AB72F:        86 08         STX $08                   
+CODE_2AB731:        E0 40 00      CPX #$0040                
+CODE_2AB734:        90 C8         BCC CODE_2AB6FE           
+CODE_2AB736:        E2 30         SEP #$30                  
+CODE_2AB738:        AB            PLB                       
+CODE_2AB739:        60            RTS                       
 
-CODE_2AB73A:        PHA                       
-CODE_2AB73B:        PHX                       
-CODE_2AB73C:        PHY                       
-CODE_2AB73D:        REP #$30                  
-CODE_2AB73F:        TYA                       
-CODE_2AB740:        AND #$00FF                
-CODE_2AB743:        ORA #$2000                
-CODE_2AB746:        TAY                       
-CODE_2AB747:        SEP #$20                  
-CODE_2AB749:        LDA #$00                  
-CODE_2AB74B:        STA [$2E],y               
-CODE_2AB74D:        SEP #$10                  
-CODE_2AB74F:        PLY                       
-CODE_2AB750:        PLX                       
-CODE_2AB751:        PLA                       
-CODE_2AB752:        RTL                       
+CODE_2AB73A:        48            PHA                       
+CODE_2AB73B:        DA            PHX                       
+CODE_2AB73C:        5A            PHY                       
+CODE_2AB73D:        C2 30         REP #$30                  
+CODE_2AB73F:        98            TYA                       
+CODE_2AB740:        29 FF 00      AND #$00FF                
+CODE_2AB743:        09 00 20      ORA #$2000                
+CODE_2AB746:        A8            TAY                       
+CODE_2AB747:        E2 20         SEP #$20                  
+CODE_2AB749:        A9 00         LDA #$00                  
+CODE_2AB74B:        97 2E         STA [$2E],y               
+CODE_2AB74D:        E2 10         SEP #$10                  
+CODE_2AB74F:        7A            PLY                       
+CODE_2AB750:        FA            PLX                       
+CODE_2AB751:        68            PLA                       
+CODE_2AB752:        6B            RTL                       
 
-CODE_2AB753:        PHX                       
-CODE_2AB754:        LDA $30                   
-CODE_2AB756:        STA $DA                   
-CODE_2AB758:        REP #$20                  
-CODE_2AB75A:        LDA $2E                   
-CODE_2AB75C:        STA $D8                   
-CODE_2AB75E:        SEP #$20                  
-CODE_2AB760:        LDA $0706                 
-CODE_2AB763:        AND #$0F                  
-CODE_2AB765:        TAX                       
-CODE_2AB766:        LDA.l DATA_2AB778,x             
-CODE_2AB76A:        STA $02                   
-CODE_2AB76C:        LDY $0700                 
-CODE_2AB76F:        LDA $02                   
-CODE_2AB771:        STA [$D8],y               
-CODE_2AB773:        JSR CODE_2A8AD2           
-CODE_2AB776:        PLX                       
-CODE_2AB777:        RTL                       
+CODE_2AB753:        DA            PHX                       
+CODE_2AB754:        A5 30         LDA $30                   
+CODE_2AB756:        85 DA         STA $DA                   
+CODE_2AB758:        C2 20         REP #$20                  
+CODE_2AB75A:        A5 2E         LDA $2E                   
+CODE_2AB75C:        85 D8         STA $D8                   
+CODE_2AB75E:        E2 20         SEP #$20                  
+CODE_2AB760:        AD 06 07      LDA $0706                 
+CODE_2AB763:        29 0F         AND #$0F                  
+CODE_2AB765:        AA            TAX                       
+CODE_2AB766:        BF 78 B7 2A   LDA.l DATA_2AB778,x             
+CODE_2AB76A:        85 02         STA $02                   
+CODE_2AB76C:        AC 00 07      LDY $0700                 
+CODE_2AB76F:        A5 02         LDA $02                   
+CODE_2AB771:        97 D8         STA [$D8],y               
+CODE_2AB773:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2AB776:        FA            PLX                       
+CODE_2AB777:        6B            RTL                       
 
 DATA_2AB778:        db $20,$21,$24,$25
 
-CODE_2AB77C:        LDY $0700              
-CODE_2AB77F:        LDA #$23                  
-CODE_2AB781:        STA [$2E],y               
-CODE_2AB783:        INY                       
-CODE_2AB784:        STA [$2E],y               
-CODE_2AB786:        RTL                       
+CODE_2AB77C:        AC 00 07      LDY $0700              
+CODE_2AB77F:        A9 23         LDA #$23                  
+CODE_2AB781:        97 2E         STA [$2E],y               
+CODE_2AB783:        C8            INY                       
+CODE_2AB784:        97 2E         STA [$2E],y               
+CODE_2AB786:        6B            RTL                       
 
-CODE_2AB787:        PHB                       
-CODE_2AB788:        PHK                       
-CODE_2AB789:        PLB                       
-CODE_2AB78A:        LDA [$2B]                 
-CODE_2AB78C:        STA $02                   
-CODE_2AB78E:        REP #$20                  
-CODE_2AB790:        STZ $DB                   
-CODE_2AB792:        INC $002B                 
-CODE_2AB795:        LDA $2E                   
-CODE_2AB797:        STA $D8                   
-CODE_2AB799:        SEP #$20                  
-CODE_2AB79B:        LDA $30                   
-CODE_2AB79D:        STA $DA                   
-CODE_2AB79F:        LDA $0706                 
-CODE_2AB7A2:        AND #$0F                  
-CODE_2AB7A4:        TAX                       
-CODE_2AB7A5:        CPX #$08                  
-CODE_2AB7A7:        BEQ CODE_2AB7C6           
-CODE_2AB7A9:        LDA.w DATA_2AB7EF,x               
-CODE_2AB7AC:        STA $03                   
-CODE_2AB7AE:        LDA.w DATA_2AB7F9,x               
-CODE_2AB7B1:        STA $DB                   
-CODE_2AB7B3:        LDY $0700                 
-CODE_2AB7B6:        LDA $03                   
-CODE_2AB7B8:        STA [$D8],y               
-CODE_2AB7BA:        JSR CODE_2A8AD2           
-CODE_2AB7BD:        DEC $02                   
-CODE_2AB7BF:        BMI CODE_2AB7ED           
-CODE_2AB7C1:        JSR CODE_2A86F5           
-CODE_2AB7C4:        BRA CODE_2AB7B6           
+CODE_2AB787:        8B            PHB                       
+CODE_2AB788:        4B            PHK                       
+CODE_2AB789:        AB            PLB                       
+CODE_2AB78A:        A7 2B         LDA [$2B]                 
+CODE_2AB78C:        85 02         STA $02                   
+CODE_2AB78E:        C2 20         REP #$20                  
+CODE_2AB790:        64 DB         STZ $DB                   
+CODE_2AB792:        EE 2B 00      INC $002B                 
+CODE_2AB795:        A5 2E         LDA $2E                   
+CODE_2AB797:        85 D8         STA $D8                   
+CODE_2AB799:        E2 20         SEP #$20                  
+CODE_2AB79B:        A5 30         LDA $30                   
+CODE_2AB79D:        85 DA         STA $DA                   
+CODE_2AB79F:        AD 06 07      LDA $0706                 
+CODE_2AB7A2:        29 0F         AND #$0F                  
+CODE_2AB7A4:        AA            TAX                       
+CODE_2AB7A5:        E0 08         CPX #$08                  
+CODE_2AB7A7:        F0 1D         BEQ CODE_2AB7C6           
+CODE_2AB7A9:        BD EF B7      LDA.w DATA_2AB7EF,x               
+CODE_2AB7AC:        85 03         STA $03                   
+CODE_2AB7AE:        BD F9 B7      LDA.w DATA_2AB7F9,x               
+CODE_2AB7B1:        85 DB         STA $DB                   
+CODE_2AB7B3:        AC 00 07      LDY $0700                 
+CODE_2AB7B6:        A5 03         LDA $03                   
+CODE_2AB7B8:        97 D8         STA [$D8],y               
+CODE_2AB7BA:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2AB7BD:        C6 02         DEC $02                   
+CODE_2AB7BF:        30 2C         BMI CODE_2AB7ED           
+CODE_2AB7C1:        20 F5 86      JSR CODE_2A86F5           
+CODE_2AB7C4:        80 F0         BRA CODE_2AB7B6           
 
-CODE_2AB7C6:        LDY $0700                 
-CODE_2AB7C9:        LDA #$22                  
-CODE_2AB7CB:        STA [$2E],y               
-CODE_2AB7CD:        JSR CODE_2A8AD2           
-CODE_2AB7D0:        JSL CODE_23BEBB           
-CODE_2AB7D4:        LDA [$2E],y               
-CODE_2AB7D6:        CMP #$C2                  
-CODE_2AB7D8:        BEQ CODE_2AB7D0           
-CODE_2AB7DA:        CMP #$F5                  
-CODE_2AB7DC:        BNE CODE_2AB7ED           
-CODE_2AB7DE:        REP #$20                  
-CODE_2AB7E0:        LDA $2E                   
-CODE_2AB7E2:        STA $D8                   
-CODE_2AB7E4:        SEP #$20                  
-CODE_2AB7E6:        LDA #$23                  
-CODE_2AB7E8:        STA [$2E],y               
-CODE_2AB7EA:        JSR CODE_2A8AD2           
-CODE_2AB7ED:        PLB                       
-CODE_2AB7EE:        RTL                       
+CODE_2AB7C6:        AC 00 07      LDY $0700                 
+CODE_2AB7C9:        A9 22         LDA #$22                  
+CODE_2AB7CB:        97 2E         STA [$2E],y               
+CODE_2AB7CD:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2AB7D0:        22 BB BE 23   JSL CODE_23BEBB           
+CODE_2AB7D4:        B7 2E         LDA [$2E],y               
+CODE_2AB7D6:        C9 C2         CMP #$C2                  
+CODE_2AB7D8:        F0 F6         BEQ CODE_2AB7D0           
+CODE_2AB7DA:        C9 F5         CMP #$F5                  
+CODE_2AB7DC:        D0 0F         BNE CODE_2AB7ED           
+CODE_2AB7DE:        C2 20         REP #$20                  
+CODE_2AB7E0:        A5 2E         LDA $2E                   
+CODE_2AB7E2:        85 D8         STA $D8                   
+CODE_2AB7E4:        E2 20         SEP #$20                  
+CODE_2AB7E6:        A9 23         LDA #$23                  
+CODE_2AB7E8:        97 2E         STA [$2E],y               
+CODE_2AB7EA:        20 D2 8A      JSR CODE_2A8AD2           
+CODE_2AB7ED:        AB            PLB                       
+CODE_2AB7EE:        6B            RTL                       
 
 DATA_2AB7EF:        db $02,$04,$05,$06,$07,$08,$0B,$0C ;
                     db $00,$0D ;
@@ -8640,538 +8640,538 @@ DATA_2AF031:        db $9D,$E3,$9D,$E3,$9D,$E3,$9D,$E3 ;
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF ;
 
-CODE_2AF800:        PHB             
-CODE_2AF801:        PHK                       
-CODE_2AF802:        PLB                       
-CODE_2AF803:        STZ $0202                 
-CODE_2AF806:        LDX #$03                  
-CODE_2AF808:        LDY #$22                  
-CODE_2AF80A:        LDA $0598                 
-CODE_2AF80D:        BEQ CODE_2AF818           
-CODE_2AF80F:        LDY #$23                  
-CODE_2AF811:        LDX #$03                  
-CODE_2AF813:        LDA #$33                  
-CODE_2AF815:        STA $0202                 
-CODE_2AF818:        STY $0200                 
-CODE_2AF81B:        STX $0201                 
-CODE_2AF81E:        LDA #$1C                  
-CODE_2AF820:        STA $0281                 
-CODE_2AF823:        STZ $0282                 
-CODE_2AF826:        STZ $0283                 
-CODE_2AF829:        STZ $0285                 
-CODE_2AF82C:        LDA #$3C                  
-CODE_2AF82E:        STA $0287                 
-CODE_2AF831:        STZ $0288                 
-CODE_2AF834:        LDA #$17                  
-CODE_2AF836:        STA $0208                 
-CODE_2AF839:        STA $020A                 
-CODE_2AF83C:        STZ $0209                 
-CODE_2AF83F:        STZ $020B                 
-CODE_2AF842:        LDA $0598                 
-CODE_2AF845:        BEQ CODE_2AF856           
-CODE_2AF847:        DEC $0208                 
-CODE_2AF84A:        DEC $020A                 
-CODE_2AF84D:        INC $0209                 
-CODE_2AF850:        INC $020B                 
-CODE_2AF853:        JMP CODE_2AFA1F   
+CODE_2AF800:        8B            PHB             
+CODE_2AF801:        4B            PHK                       
+CODE_2AF802:        AB            PLB                       
+CODE_2AF803:        9C 02 02      STZ $0202                 
+CODE_2AF806:        A2 03         LDX #$03                  
+CODE_2AF808:        A0 22         LDY #$22                  
+CODE_2AF80A:        AD 98 05      LDA $0598                 
+CODE_2AF80D:        F0 09         BEQ CODE_2AF818           
+CODE_2AF80F:        A0 23         LDY #$23                  
+CODE_2AF811:        A2 03         LDX #$03                  
+CODE_2AF813:        A9 33         LDA #$33                  
+CODE_2AF815:        8D 02 02      STA $0202                 
+CODE_2AF818:        8C 00 02      STY $0200                 
+CODE_2AF81B:        8E 01 02      STX $0201                 
+CODE_2AF81E:        A9 1C         LDA #$1C                  
+CODE_2AF820:        8D 81 02      STA $0281                 
+CODE_2AF823:        9C 82 02      STZ $0282                 
+CODE_2AF826:        9C 83 02      STZ $0283                 
+CODE_2AF829:        9C 85 02      STZ $0285                 
+CODE_2AF82C:        A9 3C         LDA #$3C                  
+CODE_2AF82E:        8D 87 02      STA $0287                 
+CODE_2AF831:        9C 88 02      STZ $0288                 
+CODE_2AF834:        A9 17         LDA #$17                  
+CODE_2AF836:        8D 08 02      STA $0208                 
+CODE_2AF839:        8D 0A 02      STA $020A                 
+CODE_2AF83C:        9C 09 02      STZ $0209                 
+CODE_2AF83F:        9C 0B 02      STZ $020B                 
+CODE_2AF842:        AD 98 05      LDA $0598                 
+CODE_2AF845:        F0 0F         BEQ CODE_2AF856           
+CODE_2AF847:        CE 08 02      DEC $0208                 
+CODE_2AF84A:        CE 0A 02      DEC $020A                 
+CODE_2AF84D:        EE 09 02      INC $0209                 
+CODE_2AF850:        EE 0B 02      INC $020B                 
+CODE_2AF853:        4C 1F FA      JMP CODE_2AFA1F   
         
-CODE_2AF856:        BRL CODE_2AFA19    
+CODE_2AF856:        82 C0 01      BRL CODE_2AFA19    
 
 DATA_2AF859:        db $F0,$00,$90,$F0,$E0,$90,$00 ;
 
 DATA_2AF860:        db $F0,$00,$92,$F0,$E0,$92,$00 ;
 
-CODE_2AF867:        PHB                       
-CODE_2AF868:        PHK                       
-CODE_2AF869:        PLB                       
-CODE_2AF86A:        LDA #$02                  
-CODE_2AF86C:        STA $92                   
-CODE_2AF86E:        REP #$30                  
-CODE_2AF870:        STZ $04                   
-CODE_2AF872:        STZ $0283                 
-CODE_2AF875:        LDA #$0060                
-CODE_2AF878:        STA $0E                   
-CODE_2AF87A:        SEC                       
-CODE_2AF87B:        SBC $0281                 
-CODE_2AF87E:        STA $0289                 
-CODE_2AF881:        CLC                       
-CODE_2AF882:        ADC $0281                 
-CODE_2AF885:        CLC                       
-CODE_2AF886:        ADC $0281                 
-CODE_2AF889:        STA $028B                 
-CODE_2AF88C:        LDA #$0080                
-CODE_2AF88F:        STA $028D                 
-CODE_2AF892:        LDA #$0100                
-CODE_2AF895:        STA $00                   
-CODE_2AF897:        STA $02                   
-CODE_2AF899:        LDA $0289                 
-CODE_2AF89C:        BPL CODE_2AF8AD           
-CODE_2AF89E:        LDA $0283                 
-CODE_2AF8A1:        CMP $0289                 
-CODE_2AF8A4:        BCS CODE_2AF8CD                   
-CODE_2AF8A6:        CMP $028B                 
-CODE_2AF8A9:        BCS CODE_2AF8CD                   
-CODE_2AF8AB:        BRA CODE_2AF8BA   
+CODE_2AF867:        8B            PHB                       
+CODE_2AF868:        4B            PHK                       
+CODE_2AF869:        AB            PLB                       
+CODE_2AF86A:        A9 02         LDA #$02                  
+CODE_2AF86C:        85 92         STA $92                   
+CODE_2AF86E:        C2 30         REP #$30                  
+CODE_2AF870:        64 04         STZ $04                   
+CODE_2AF872:        9C 83 02      STZ $0283                 
+CODE_2AF875:        A9 60 00      LDA #$0060                
+CODE_2AF878:        85 0E         STA $0E                   
+CODE_2AF87A:        38            SEC                       
+CODE_2AF87B:        ED 81 02      SBC $0281                 
+CODE_2AF87E:        8D 89 02      STA $0289                 
+CODE_2AF881:        18            CLC                       
+CODE_2AF882:        6D 81 02      ADC $0281                 
+CODE_2AF885:        18            CLC                       
+CODE_2AF886:        6D 81 02      ADC $0281                 
+CODE_2AF889:        8D 8B 02      STA $028B                 
+CODE_2AF88C:        A9 80 00      LDA #$0080                
+CODE_2AF88F:        8D 8D 02      STA $028D                 
+CODE_2AF892:        A9 00 01      LDA #$0100                
+CODE_2AF895:        85 00         STA $00                   
+CODE_2AF897:        85 02         STA $02                   
+CODE_2AF899:        AD 89 02      LDA $0289                 
+CODE_2AF89C:        10 0F         BPL CODE_2AF8AD           
+CODE_2AF89E:        AD 83 02      LDA $0283                 
+CODE_2AF8A1:        CD 89 02      CMP $0289                 
+CODE_2AF8A4:        B0 27         BCS CODE_2AF8CD                   
+CODE_2AF8A6:        CD 8B 02      CMP $028B                 
+CODE_2AF8A9:        B0 22         BCS CODE_2AF8CD                   
+CODE_2AF8AB:        80 0D         BRA CODE_2AF8BA   
         
-CODE_2AF8AD:        LDA $0283                 
-CODE_2AF8B0:        CMP $0289                 
-CODE_2AF8B3:        BCC CODE_2AF8CD           
-CODE_2AF8B5:        CMP $028B                 
-CODE_2AF8B8:        BCS CODE_2AF8CD                   
-CODE_2AF8BA:        LDA $0287                 
-CODE_2AF8BD:        CLC                       
-CODE_2AF8BE:        ADC $028D                 
-CODE_2AF8C1:        DEC A                     
-CODE_2AF8C2:        STA $02                   
-CODE_2AF8C4:        LDA $028D                 
-CODE_2AF8C7:        SEC                       
-CODE_2AF8C8:        SBC $0287                 
-CODE_2AF8CB:        STA $00                   
-CODE_2AF8CD:        LDA $0283                 
-CODE_2AF8D0:        DEC A                     
-CODE_2AF8D1:        ASL A                     
-CODE_2AF8D2:        CMP #$01C0                
-CODE_2AF8D5:        BCS CODE_2AF91D                   
-CODE_2AF8D7:        TAX                       
-CODE_2AF8D8:        LDA $00                   
-CODE_2AF8DA:        TAY                       
-CODE_2AF8DB:        BMI CODE_2AF8EC           
-CODE_2AF8DD:        AND #$FF00                
-CODE_2AF8E0:        BEQ CODE_2AF8EF           
-CODE_2AF8E2:        CMP #$0100                
-CODE_2AF8E5:        BNE CODE_2AF8EC           
-CODE_2AF8E7:        LDY #$00FF                
-CODE_2AF8EA:        BRA CODE_2AF8EF 
+CODE_2AF8AD:        AD 83 02      LDA $0283                 
+CODE_2AF8B0:        CD 89 02      CMP $0289                 
+CODE_2AF8B3:        90 18         BCC CODE_2AF8CD           
+CODE_2AF8B5:        CD 8B 02      CMP $028B                 
+CODE_2AF8B8:        B0 13         BCS CODE_2AF8CD                   
+CODE_2AF8BA:        AD 87 02      LDA $0287                 
+CODE_2AF8BD:        18            CLC                       
+CODE_2AF8BE:        6D 8D 02      ADC $028D                 
+CODE_2AF8C1:        3A            DEC A                     
+CODE_2AF8C2:        85 02         STA $02                   
+CODE_2AF8C4:        AD 8D 02      LDA $028D                 
+CODE_2AF8C7:        38            SEC                       
+CODE_2AF8C8:        ED 87 02      SBC $0287                 
+CODE_2AF8CB:        85 00         STA $00                   
+CODE_2AF8CD:        AD 83 02      LDA $0283                 
+CODE_2AF8D0:        3A            DEC A                     
+CODE_2AF8D1:        0A            ASL A                     
+CODE_2AF8D2:        C9 C0 01      CMP #$01C0                
+CODE_2AF8D5:        B0 46         BCS CODE_2AF91D                   
+CODE_2AF8D7:        AA            TAX                       
+CODE_2AF8D8:        A5 00         LDA $00                   
+CODE_2AF8DA:        A8            TAY                       
+CODE_2AF8DB:        30 0F         BMI CODE_2AF8EC           
+CODE_2AF8DD:        29 00 FF      AND #$FF00                
+CODE_2AF8E0:        F0 0D         BEQ CODE_2AF8EF           
+CODE_2AF8E2:        C9 00 01      CMP #$0100                
+CODE_2AF8E5:        D0 05         BNE CODE_2AF8EC           
+CODE_2AF8E7:        A0 FF 00      LDY #$00FF                
+CODE_2AF8EA:        80 03         BRA CODE_2AF8EF 
           
-CODE_2AF8EC:        LDY #$0000                
-CODE_2AF8EF:        TYA                       
-CODE_2AF8F0:        AND #$00FF                
-CODE_2AF8F3:        STA $06                   
-CODE_2AF8F5:        LDA $02                   
-CODE_2AF8F7:        TAY                       
-CODE_2AF8F8:        AND #$FF00                
-CODE_2AF8FB:        BEQ CODE_2AF908           
-CODE_2AF8FD:        LDY #$0000                
-CODE_2AF900:        CMP #$0100                
-CODE_2AF903:        BCC CODE_2AF908           
-CODE_2AF905:        LDY #$00FF                
-CODE_2AF908:        TYA                       
-CODE_2AF909:        AND #$00FF                
-CODE_2AF90C:        XBA                       
-CODE_2AF90D:        ORA $06                   
-CODE_2AF90F:        STA $06                   
-CODE_2AF911:        CMP #$FFFF                
-CODE_2AF914:        BNE CODE_2AF919           
-CODE_2AF916:        LDA #$00FF                
-CODE_2AF919:        STA $7F9200,x             
-CODE_2AF91D:        INC $0283                 
-CODE_2AF920:        LDA $0283                 
-CODE_2AF923:        CMP #$00E1                
-CODE_2AF926:        BCS CODE_2AF92B                   
-CODE_2AF928:        BRL CODE_2AF892  
+CODE_2AF8EC:        A0 00 00      LDY #$0000                
+CODE_2AF8EF:        98            TYA                       
+CODE_2AF8F0:        29 FF 00      AND #$00FF                
+CODE_2AF8F3:        85 06         STA $06                   
+CODE_2AF8F5:        A5 02         LDA $02                   
+CODE_2AF8F7:        A8            TAY                       
+CODE_2AF8F8:        29 00 FF      AND #$FF00                
+CODE_2AF8FB:        F0 0B         BEQ CODE_2AF908           
+CODE_2AF8FD:        A0 00 00      LDY #$0000                
+CODE_2AF900:        C9 00 01      CMP #$0100                
+CODE_2AF903:        90 03         BCC CODE_2AF908           
+CODE_2AF905:        A0 FF 00      LDY #$00FF                
+CODE_2AF908:        98            TYA                       
+CODE_2AF909:        29 FF 00      AND #$00FF                
+CODE_2AF90C:        EB            XBA                       
+CODE_2AF90D:        05 06         ORA $06                   
+CODE_2AF90F:        85 06         STA $06                   
+CODE_2AF911:        C9 FF FF      CMP #$FFFF                
+CODE_2AF914:        D0 03         BNE CODE_2AF919           
+CODE_2AF916:        A9 FF 00      LDA #$00FF                
+CODE_2AF919:        9F 00 92 7F   STA $7F9200,x             
+CODE_2AF91D:        EE 83 02      INC $0283                 
+CODE_2AF920:        AD 83 02      LDA $0283                 
+CODE_2AF923:        C9 E1 00      CMP #$00E1                
+CODE_2AF926:        B0 03         BCS CODE_2AF92B                   
+CODE_2AF928:        82 67 FF      BRL CODE_2AF892  
          
-CODE_2AF92B:        SEP #$30                  
-CODE_2AF92D:        LDA $0285                 
-CODE_2AF930:        BEQ CODE_2AF989           
-CODE_2AF932:        LDA #$F8                  
-CODE_2AF934:        CLC                       
-CODE_2AF935:        ADC $0287                 
-CODE_2AF938:        STA $0287                 
-CODE_2AF93B:        BPL CODE_2AF940           
-CODE_2AF93D:        STZ $0287                 
-CODE_2AF940:        LDA #$F8                  
-CODE_2AF942:        CLC                       
-CODE_2AF943:        ADC $0281                 
-CODE_2AF946:        STA $0281                 
-CODE_2AF949:        BPL CODE_2AF94E           
-CODE_2AF94B:        STZ $0281                 
-CODE_2AF94E:        LDA $0287                 
-CODE_2AF951:        ORA $0281                 
-CODE_2AF954:        BNE CODE_2AF989           
-CODE_2AF956:        INC $0728                 
-CODE_2AF959:        STZ $0285                 
-CODE_2AF95C:        STZ $0291                 
-CODE_2AF95F:        LDA $0598                 
-CODE_2AF962:        BNE CODE_2AF97F           
-CODE_2AF964:        LDA #$13                  
-CODE_2AF966:        STA $0208                 
-CODE_2AF969:        STZ $020A                 
-CODE_2AF96C:        LDA $0293                 
-CODE_2AF96F:        AND #$BF                  
-CODE_2AF971:        STA $0293                 
-CODE_2AF974:        STZ $0200                 
-CODE_2AF977:        STZ $0201                 
-CODE_2AF97A:        STZ $0202                 
-CODE_2AF97D:        BRA CODE_2AF9A2  
+CODE_2AF92B:        E2 30         SEP #$30                  
+CODE_2AF92D:        AD 85 02      LDA $0285                 
+CODE_2AF930:        F0 57         BEQ CODE_2AF989           
+CODE_2AF932:        A9 F8         LDA #$F8                  
+CODE_2AF934:        18            CLC                       
+CODE_2AF935:        6D 87 02      ADC $0287                 
+CODE_2AF938:        8D 87 02      STA $0287                 
+CODE_2AF93B:        10 03         BPL CODE_2AF940           
+CODE_2AF93D:        9C 87 02      STZ $0287                 
+CODE_2AF940:        A9 F8         LDA #$F8                  
+CODE_2AF942:        18            CLC                       
+CODE_2AF943:        6D 81 02      ADC $0281                 
+CODE_2AF946:        8D 81 02      STA $0281                 
+CODE_2AF949:        10 03         BPL CODE_2AF94E           
+CODE_2AF94B:        9C 81 02      STZ $0281                 
+CODE_2AF94E:        AD 87 02      LDA $0287                 
+CODE_2AF951:        0D 81 02      ORA $0281                 
+CODE_2AF954:        D0 33         BNE CODE_2AF989           
+CODE_2AF956:        EE 28 07      INC $0728                 
+CODE_2AF959:        9C 85 02      STZ $0285                 
+CODE_2AF95C:        9C 91 02      STZ $0291                 
+CODE_2AF95F:        AD 98 05      LDA $0598                 
+CODE_2AF962:        D0 1B         BNE CODE_2AF97F           
+CODE_2AF964:        A9 13         LDA #$13                  
+CODE_2AF966:        8D 08 02      STA $0208                 
+CODE_2AF969:        9C 0A 02      STZ $020A                 
+CODE_2AF96C:        AD 93 02      LDA $0293                 
+CODE_2AF96F:        29 BF         AND #$BF                  
+CODE_2AF971:        8D 93 02      STA $0293                 
+CODE_2AF974:        9C 00 02      STZ $0200                 
+CODE_2AF977:        9C 01 02      STZ $0201                 
+CODE_2AF97A:        9C 02 02      STZ $0202                 
+CODE_2AF97D:        80 23         BRA CODE_2AF9A2  
          
-CODE_2AF97F:        LDA $0598                 
-CODE_2AF982:        BEQ CODE_2AF989           
-CODE_2AF984:        LDA #$32                  
-CODE_2AF986:        STA $0202                 
-CODE_2AF989:        LDA $0598                 
-CODE_2AF98C:        BEQ CODE_2AF992           
-CODE_2AF98E:        LDA #$16                  
-CODE_2AF990:        BRA CODE_2AF994           
-CODE_2AF992:        LDA #$17                  
-CODE_2AF994:        STA $0208                 
-CODE_2AF997:        STA $020A                 
-CODE_2AF99A:        LDA $0293                 
-CODE_2AF99D:        ORA #$40                  
-CODE_2AF99F:        STA $0293                 
-CODE_2AF9A2:        PLB                       
-CODE_2AF9A3:        RTL      
+CODE_2AF97F:        AD 98 05      LDA $0598                 
+CODE_2AF982:        F0 05         BEQ CODE_2AF989           
+CODE_2AF984:        A9 32         LDA #$32                  
+CODE_2AF986:        8D 02 02      STA $0202                 
+CODE_2AF989:        AD 98 05      LDA $0598                 
+CODE_2AF98C:        F0 04         BEQ CODE_2AF992           
+CODE_2AF98E:        A9 16         LDA #$16                  
+CODE_2AF990:        80 02         BRA CODE_2AF994           
+CODE_2AF992:        A9 17         LDA #$17                  
+CODE_2AF994:        8D 08 02      STA $0208                 
+CODE_2AF997:        8D 0A 02      STA $020A                 
+CODE_2AF99A:        AD 93 02      LDA $0293                 
+CODE_2AF99D:        09 40         ORA #$40                  
+CODE_2AF99F:        8D 93 02      STA $0293                 
+CODE_2AF9A2:        AB            PLB                       
+CODE_2AF9A3:        6B            RTL      
 
 DATA_2AF9A4:        db $FF,$00,$00,$20,$00
 
-CODE_2AF9A9:        PHB                  
-CODE_2AF9AA:        PHK                       
-CODE_2AF9AB:        PLB                       
-CODE_2AF9AC:        LDA #$30                  
-CODE_2AF9AE:        STA $0202                 
-CODE_2AF9B1:        LDY #$23                  
-CODE_2AF9B3:        LDX $0291                 
-CODE_2AF9B6:        CPX #$03                  
-CODE_2AF9B8:        BEQ CODE_2AF9C1           
-CODE_2AF9BA:        LDA #$33                  
-CODE_2AF9BC:        STA $0202                 
-CODE_2AF9BF:        LDY #$33                  
-CODE_2AF9C1:        STY $0200                 
-CODE_2AF9C4:        LDA #$03                  
-CODE_2AF9C6:        STA $0201                 
-CODE_2AF9C9:        LDX $0291                 
-CODE_2AF9CC:        LDA.l DATA_2AF9A4-1,x             
-CODE_2AF9D0:        STA $0281                 
-CODE_2AF9D3:        STZ $0282                 
-CODE_2AF9D6:        STZ $0287                 
-CODE_2AF9D9:        STZ $0288                 
-CODE_2AF9DC:        STZ $0283                 
-CODE_2AF9DF:        STZ $0285                 
-CODE_2AF9E2:        STZ $028B                 
-CODE_2AF9E5:        LDA #$80                  
-CODE_2AF9E7:        STA $0294                 
-CODE_2AF9EA:        LDA #$80                  
-CODE_2AF9EC:        STA $0295                 
-CODE_2AF9EF:        STZ $0296                 
-CODE_2AF9F2:        CPX #$01                  
-CODE_2AF9F4:        BEQ CODE_2AF9FA           
-CODE_2AF9F6:        CPX #$04                  
-CODE_2AF9F8:        BCC CODE_2AFA19           
-CODE_2AF9FA:        LDA #$03                  
-CODE_2AF9FC:        STA $0201                 
-CODE_2AF9FF:        LDX $0726                 
-CODE_2AFA02:        LDA $43,x                 
-CODE_2AFA04:        CLC                       
-CODE_2AFA05:        ADC #$08                  
-CODE_2AFA07:        STA $0294                 
-CODE_2AFA0A:        LDA $47,x                 
-CODE_2AFA0C:        CLC                       
-CODE_2AFA0D:        ADC #$08                  
-CODE_2AFA0F:        STA $0295                 
-CODE_2AFA12:        LDA $45,x                 
-CODE_2AFA14:        ADC #$00                  
-CODE_2AFA16:        STA $0296                 
-CODE_2AFA19:        STZ $020B                 
-CODE_2AFA1C:        STZ $0209                 
-CODE_2AFA1F:        STZ $0203                 
-CODE_2AFA22:        STZ $0204                 
-CODE_2AFA25:        LDA #$41                  
-CODE_2AFA27:        STA $4370                 
-CODE_2AFA2A:        LDA #$26                  
-CODE_2AFA2C:        STA $4371                 
-CODE_2AFA2F:        LDA.b #DATA_2AF859                  
-CODE_2AFA31:        STA $4372                 
-CODE_2AFA34:        LDA.b #DATA_2AF859>>8                  
-CODE_2AFA36:        STA $4373                 
-CODE_2AFA39:        LDA.b #DATA_2AF859>>16                  
-CODE_2AFA3B:        STA $4374                 
-CODE_2AFA3E:        LDA #$7F                  
-CODE_2AFA40:        STA $4377                 
-CODE_2AFA43:        LDA #$41                  
-CODE_2AFA45:        STA $4360                 
-CODE_2AFA48:        LDA #$26                  
-CODE_2AFA4A:        STA $4361                 
-CODE_2AFA4D:        LDA.b #DATA_2AF860                  
-CODE_2AFA4F:        STA $4362                 
-CODE_2AFA52:        LDA.b #DATA_2AF860>>8                  
-CODE_2AFA54:        STA $4363                 
-CODE_2AFA57:        LDA.b #DATA_2AF860>>16                  
-CODE_2AFA59:        STA $4364                 
-CODE_2AFA5C:        LDA #$7F                  
-CODE_2AFA5E:        STA $4367                 
-CODE_2AFA61:        PLB                       
-CODE_2AFA62:        RTL     
+CODE_2AF9A9:        8B            PHB                  
+CODE_2AF9AA:        4B            PHK                       
+CODE_2AF9AB:        AB            PLB                       
+CODE_2AF9AC:        A9 30         LDA #$30                  
+CODE_2AF9AE:        8D 02 02      STA $0202                 
+CODE_2AF9B1:        A0 23         LDY #$23                  
+CODE_2AF9B3:        AE 91 02      LDX $0291                 
+CODE_2AF9B6:        E0 03         CPX #$03                  
+CODE_2AF9B8:        F0 07         BEQ CODE_2AF9C1           
+CODE_2AF9BA:        A9 33         LDA #$33                  
+CODE_2AF9BC:        8D 02 02      STA $0202                 
+CODE_2AF9BF:        A0 33         LDY #$33                  
+CODE_2AF9C1:        8C 00 02      STY $0200                 
+CODE_2AF9C4:        A9 03         LDA #$03                  
+CODE_2AF9C6:        8D 01 02      STA $0201                 
+CODE_2AF9C9:        AE 91 02      LDX $0291                 
+CODE_2AF9CC:        BF A3 F9 2A   LDA.l DATA_2AF9A4-1,x             
+CODE_2AF9D0:        8D 81 02      STA $0281                 
+CODE_2AF9D3:        9C 82 02      STZ $0282                 
+CODE_2AF9D6:        9C 87 02      STZ $0287                 
+CODE_2AF9D9:        9C 88 02      STZ $0288                 
+CODE_2AF9DC:        9C 83 02      STZ $0283                 
+CODE_2AF9DF:        9C 85 02      STZ $0285                 
+CODE_2AF9E2:        9C 8B 02      STZ $028B                 
+CODE_2AF9E5:        A9 80         LDA #$80                  
+CODE_2AF9E7:        8D 94 02      STA $0294                 
+CODE_2AF9EA:        A9 80         LDA #$80                  
+CODE_2AF9EC:        8D 95 02      STA $0295                 
+CODE_2AF9EF:        9C 96 02      STZ $0296                 
+CODE_2AF9F2:        E0 01         CPX #$01                  
+CODE_2AF9F4:        F0 04         BEQ CODE_2AF9FA           
+CODE_2AF9F6:        E0 04         CPX #$04                  
+CODE_2AF9F8:        90 1F         BCC CODE_2AFA19           
+CODE_2AF9FA:        A9 03         LDA #$03                  
+CODE_2AF9FC:        8D 01 02      STA $0201                 
+CODE_2AF9FF:        AE 26 07      LDX $0726                 
+CODE_2AFA02:        B5 43         LDA $43,x                 
+CODE_2AFA04:        18            CLC                       
+CODE_2AFA05:        69 08         ADC #$08                  
+CODE_2AFA07:        8D 94 02      STA $0294                 
+CODE_2AFA0A:        B5 47         LDA $47,x                 
+CODE_2AFA0C:        18            CLC                       
+CODE_2AFA0D:        69 08         ADC #$08                  
+CODE_2AFA0F:        8D 95 02      STA $0295                 
+CODE_2AFA12:        B5 45         LDA $45,x                 
+CODE_2AFA14:        69 00         ADC #$00                  
+CODE_2AFA16:        8D 96 02      STA $0296                 
+CODE_2AFA19:        9C 0B 02      STZ $020B                 
+CODE_2AFA1C:        9C 09 02      STZ $0209                 
+CODE_2AFA1F:        9C 03 02      STZ $0203                 
+CODE_2AFA22:        9C 04 02      STZ $0204                 
+CODE_2AFA25:        A9 41         LDA #$41                  
+CODE_2AFA27:        8D 70 43      STA $4370                 
+CODE_2AFA2A:        A9 26         LDA #$26                  
+CODE_2AFA2C:        8D 71 43      STA $4371                 
+CODE_2AFA2F:        A9 59         LDA.b #DATA_2AF859                  
+CODE_2AFA31:        8D 72 43      STA $4372                 
+CODE_2AFA34:        A9 F8         LDA.b #DATA_2AF859>>8                  
+CODE_2AFA36:        8D 73 43      STA $4373                 
+CODE_2AFA39:        A9 2A         LDA.b #DATA_2AF859>>16                  
+CODE_2AFA3B:        8D 74 43      STA $4374                 
+CODE_2AFA3E:        A9 7F         LDA #$7F                  
+CODE_2AFA40:        8D 77 43      STA $4377                 
+CODE_2AFA43:        A9 41         LDA #$41                  
+CODE_2AFA45:        8D 60 43      STA $4360                 
+CODE_2AFA48:        A9 26         LDA #$26                  
+CODE_2AFA4A:        8D 61 43      STA $4361                 
+CODE_2AFA4D:        A9 60         LDA.b #DATA_2AF860                  
+CODE_2AFA4F:        8D 62 43      STA $4362                 
+CODE_2AFA52:        A9 F8         LDA.b #DATA_2AF860>>8                  
+CODE_2AFA54:        8D 63 43      STA $4363                 
+CODE_2AFA57:        A9 2A         LDA.b #DATA_2AF860>>16                  
+CODE_2AFA59:        8D 64 43      STA $4364                 
+CODE_2AFA5C:        A9 7F         LDA #$7F                  
+CODE_2AFA5E:        8D 67 43      STA $4367                 
+CODE_2AFA61:        AB            PLB                       
+CODE_2AFA62:        6B            RTL     
 
-CODE_2AFA63:        PHB                       ;Windowing HDMA routine (TODO: For what?)
-CODE_2AFA64:        PHK                       ;
-CODE_2AFA65:        PLB                       ;
-CODE_2AFA66:        PHD                       ;
-CODE_2AFA67:        LDA #$22                  ;\ Color Addition Select
-CODE_2AFA69:        STA $0203                 ;/ Add Subscreen, prevent color math inside window
-CODE_2AFA6C:        REP #$30                  ;\
-CODE_2AFA6E:        LDA #$0200                ; | Direct page becomes $0200
-CODE_2AFA71:        TCD                       ;/
-CODE_2AFA72:        LDA #$9000                ;\ Pointer to windowing HDMA table, low and high byte
-CODE_2AFA75:        STA $AB                   ;/  ($9000)
-CODE_2AFA77:        LDA #$007F                ;\
-CODE_2AFA7A:        AND #$00FF                ; | Pointer to windowing HDMA table, bank byte
-CODE_2AFA7D:        TSB $AD                   ;/  ($7F)
-CODE_2AFA7F:        LDA $8B                   ;\
-CODE_2AFA81:        AND #$0001                ; |
-CODE_2AFA84:        BEQ CODE_2AFA93           ; | Pointer to windowing HDMA table, low and high byte
-CODE_2AFA86:        LDA #$9200                ; | ($9200)
-CODE_2AFA89:        STA $AB                   ;/
-CODE_2AFA8B:        LDA #$007F                ;\
-CODE_2AFA8E:        AND #$00FF                ; | Pointer to windowing HDMA table, bank byte
-CODE_2AFA91:        TSB $AD                   ;/  ($7F)
-CODE_2AFA93:        STZ $9D                   ;
-CODE_2AFA95:        STZ $A7                   ;
-CODE_2AFA97:        STZ $83                   ;
-CODE_2AFA99:        STZ $97                   ;
-CODE_2AFA9B:        LDA $81                   ;
-CODE_2AFA9D:        AND #$00FF                ;
-CODE_2AFAA0:        ASL A                     ;
-CODE_2AFAA1:        TAX                       ;
-CODE_2AFAA2:        LDA.l DATA_009780,x       ;
-CODE_2AFAA6:        STA $A9                   ;
-CODE_2AFAA8:        LDA $94                   ;
-CODE_2AFAAA:        AND #$00FF                ;
-CODE_2AFAAD:        STA $89                   ;
-CODE_2AFAAF:        LDA $96                   ;
-CODE_2AFAB1:        AND #$00FF                ;
-CODE_2AFAB4:        XBA                       ;
-CODE_2AFAB5:        STA $99                   ;
-CODE_2AFAB7:        LDA $95                   ;
-CODE_2AFAB9:        AND #$00FF                ;
-CODE_2AFABC:        ORA $99                   ;
-CODE_2AFABE:        STA $8D                   ;
-CODE_2AFAC0:        LDA $91                   ;
-CODE_2AFAC2:        AND #$00FF                ;
-CODE_2AFAC5:        CMP #$0002                ;
-CODE_2AFAC8:        BEQ CODE_2AFAD1           ;
-CODE_2AFACA:        LDA $8D                   ;
-CODE_2AFACC:        SEC                       ;
-CODE_2AFACD:        SBC $10                   ;
-CODE_2AFACF:        STA $8D                   ;
-CODE_2AFAD1:        LDA #$0100                ;
-CODE_2AFAD4:        STA $99                   ;
-CODE_2AFAD6:        STA $9B                   ;
-CODE_2AFAD8:        LDA $83                   ;
-CODE_2AFADA:        INC A                     ;
-CODE_2AFADB:        CMP $81                   ;
-CODE_2AFADD:        BCS CODE_2AFB15           ;
-CODE_2AFADF:        LDA $97                   ;
-CODE_2AFAE1:        CLC                       ;
-CODE_2AFAE2:        ADC $A9                   ;
-CODE_2AFAE4:        STA $97                   ;
-CODE_2AFAE6:        XBA                       ;
-CODE_2AFAE7:        AND #$00FF                ;
-CODE_2AFAEA:        LSR A                     ;
-CODE_2AFAEB:        SEP #$30                  ;
-CODE_2AFAED:        TAX                       ;
-CODE_2AFAEE:        LDA.l DATA_0096FF,x             ;
-CODE_2AFAF2:        STA $4202                 ;
-CODE_2AFAF5:        LDA $81                   ;
-CODE_2AFAF7:        STA $4203                 ;
-CODE_2AFAFA:        NOP                       ;
-CODE_2AFAFB:        NOP                       ;
-CODE_2AFAFC:        NOP                       ;
-CODE_2AFAFD:        NOP                       ;
-CODE_2AFAFE:        LDA $4217                 ;
-CODE_2AFB01:        STA $A1                   ;
-CODE_2AFB03:        STZ $A2                   ;
-CODE_2AFB05:        REP #$30                  ;
-CODE_2AFB07:        LDA $A1                   ;
-CODE_2AFB09:        CLC                       ;
-CODE_2AFB0A:        ADC $8D                   ;
-CODE_2AFB0C:        STA $9B                   ;
-CODE_2AFB0E:        LDA $8D                   ;
-CODE_2AFB10:        SEC                       ;
-CODE_2AFB11:        SBC $A1                   ;
-CODE_2AFB13:        STA $99                   ;
-CODE_2AFB15:        LDA $89                   ;
-CODE_2AFB17:        SEC                       ;
-CODE_2AFB18:        SBC $83                   ;
-CODE_2AFB1A:        DEC A                     ;
-CODE_2AFB1B:        ASL A                     ;
-CODE_2AFB1C:        STA $9D                   ;
-CODE_2AFB1E:        TAX                       ;
-CODE_2AFB1F:        LDA $99                   ;
-CODE_2AFB21:        TAY                       ;
-CODE_2AFB22:        BMI CODE_2AFB33           ;
-CODE_2AFB24:        AND #$FF00                ;
-CODE_2AFB27:        BEQ CODE_2AFB36           ;
-CODE_2AFB29:        CMP #$0100                ;
-CODE_2AFB2C:        BNE CODE_2AFB33           ;
-CODE_2AFB2E:        LDY #$00FF                ;
-CODE_2AFB31:        BRA CODE_2AFB36           ;
+CODE_2AFA63:        8B            PHB                       ;Windowing HDMA routine (TODO: For what?)
+CODE_2AFA64:        4B            PHK                       ;
+CODE_2AFA65:        AB            PLB                       ;
+CODE_2AFA66:        0B            PHD                       ;
+CODE_2AFA67:        A9 22         LDA #$22                  ;\ Color Addition Select
+CODE_2AFA69:        8D 03 02      STA $0203                 ;/ Add Subscreen, prevent color math inside window
+CODE_2AFA6C:        C2 30         REP #$30                  ;\
+CODE_2AFA6E:        A9 00 02      LDA #$0200                ; | Direct page becomes $0200
+CODE_2AFA71:        5B            TCD                       ;/
+CODE_2AFA72:        A9 00 90      LDA #$9000                ;\ Pointer to windowing HDMA table, low and high byte
+CODE_2AFA75:        85 AB         STA $AB                   ;/  ($9000)
+CODE_2AFA77:        A9 7F 00      LDA #$007F                ;\
+CODE_2AFA7A:        29 FF 00      AND #$00FF                ; | Pointer to windowing HDMA table, bank byte
+CODE_2AFA7D:        04 AD         TSB $AD                   ;/  ($7F)
+CODE_2AFA7F:        A5 8B         LDA $8B                   ;\
+CODE_2AFA81:        29 01 00      AND #$0001                ; |
+CODE_2AFA84:        F0 0D         BEQ CODE_2AFA93           ; | Pointer to windowing HDMA table, low and high byte
+CODE_2AFA86:        A9 00 92      LDA #$9200                ; | ($9200)
+CODE_2AFA89:        85 AB         STA $AB                   ;/
+CODE_2AFA8B:        A9 7F 00      LDA #$007F                ;\
+CODE_2AFA8E:        29 FF 00      AND #$00FF                ; | Pointer to windowing HDMA table, bank byte
+CODE_2AFA91:        04 AD         TSB $AD                   ;/  ($7F)
+CODE_2AFA93:        64 9D         STZ $9D                   ;
+CODE_2AFA95:        64 A7         STZ $A7                   ;
+CODE_2AFA97:        64 83         STZ $83                   ;
+CODE_2AFA99:        64 97         STZ $97                   ;
+CODE_2AFA9B:        A5 81         LDA $81                   ;
+CODE_2AFA9D:        29 FF 00      AND #$00FF                ;
+CODE_2AFAA0:        0A            ASL A                     ;
+CODE_2AFAA1:        AA            TAX                       ;
+CODE_2AFAA2:        BF 80 97 00   LDA.l DATA_009780,x       ;
+CODE_2AFAA6:        85 A9         STA $A9                   ;
+CODE_2AFAA8:        A5 94         LDA $94                   ;
+CODE_2AFAAA:        29 FF 00      AND #$00FF                ;
+CODE_2AFAAD:        85 89         STA $89                   ;
+CODE_2AFAAF:        A5 96         LDA $96                   ;
+CODE_2AFAB1:        29 FF 00      AND #$00FF                ;
+CODE_2AFAB4:        EB            XBA                       ;
+CODE_2AFAB5:        85 99         STA $99                   ;
+CODE_2AFAB7:        A5 95         LDA $95                   ;
+CODE_2AFAB9:        29 FF 00      AND #$00FF                ;
+CODE_2AFABC:        05 99         ORA $99                   ;
+CODE_2AFABE:        85 8D         STA $8D                   ;
+CODE_2AFAC0:        A5 91         LDA $91                   ;
+CODE_2AFAC2:        29 FF 00      AND #$00FF                ;
+CODE_2AFAC5:        C9 02 00      CMP #$0002                ;
+CODE_2AFAC8:        F0 07         BEQ CODE_2AFAD1           ;
+CODE_2AFACA:        A5 8D         LDA $8D                   ;
+CODE_2AFACC:        38            SEC                       ;
+CODE_2AFACD:        E5 10         SBC $10                   ;
+CODE_2AFACF:        85 8D         STA $8D                   ;
+CODE_2AFAD1:        A9 00 01      LDA #$0100                ;
+CODE_2AFAD4:        85 99         STA $99                   ;
+CODE_2AFAD6:        85 9B         STA $9B                   ;
+CODE_2AFAD8:        A5 83         LDA $83                   ;
+CODE_2AFADA:        1A            INC A                     ;
+CODE_2AFADB:        C5 81         CMP $81                   ;
+CODE_2AFADD:        B0 36         BCS CODE_2AFB15           ;
+CODE_2AFADF:        A5 97         LDA $97                   ;
+CODE_2AFAE1:        18            CLC                       ;
+CODE_2AFAE2:        65 A9         ADC $A9                   ;
+CODE_2AFAE4:        85 97         STA $97                   ;
+CODE_2AFAE6:        EB            XBA                       ;
+CODE_2AFAE7:        29 FF 00      AND #$00FF                ;
+CODE_2AFAEA:        4A            LSR A                     ;
+CODE_2AFAEB:        E2 30         SEP #$30                  ;
+CODE_2AFAED:        AA            TAX                       ;
+CODE_2AFAEE:        BF FF 96 00   LDA.l DATA_0096FF,x             ;
+CODE_2AFAF2:        8D 02 42      STA $4202                 ;
+CODE_2AFAF5:        A5 81         LDA $81                   ;
+CODE_2AFAF7:        8D 03 42      STA $4203                 ;
+CODE_2AFAFA:        EA            NOP                       ;
+CODE_2AFAFB:        EA            NOP                       ;
+CODE_2AFAFC:        EA            NOP                       ;
+CODE_2AFAFD:        EA            NOP                       ;
+CODE_2AFAFE:        AD 17 42      LDA $4217                 ;
+CODE_2AFB01:        85 A1         STA $A1                   ;
+CODE_2AFB03:        64 A2         STZ $A2                   ;
+CODE_2AFB05:        C2 30         REP #$30                  ;
+CODE_2AFB07:        A5 A1         LDA $A1                   ;
+CODE_2AFB09:        18            CLC                       ;
+CODE_2AFB0A:        65 8D         ADC $8D                   ;
+CODE_2AFB0C:        85 9B         STA $9B                   ;
+CODE_2AFB0E:        A5 8D         LDA $8D                   ;
+CODE_2AFB10:        38            SEC                       ;
+CODE_2AFB11:        E5 A1         SBC $A1                   ;
+CODE_2AFB13:        85 99         STA $99                   ;
+CODE_2AFB15:        A5 89         LDA $89                   ;
+CODE_2AFB17:        38            SEC                       ;
+CODE_2AFB18:        E5 83         SBC $83                   ;
+CODE_2AFB1A:        3A            DEC A                     ;
+CODE_2AFB1B:        0A            ASL A                     ;
+CODE_2AFB1C:        85 9D         STA $9D                   ;
+CODE_2AFB1E:        AA            TAX                       ;
+CODE_2AFB1F:        A5 99         LDA $99                   ;
+CODE_2AFB21:        A8            TAY                       ;
+CODE_2AFB22:        30 0F         BMI CODE_2AFB33           ;
+CODE_2AFB24:        29 00 FF      AND #$FF00                ;
+CODE_2AFB27:        F0 0D         BEQ CODE_2AFB36           ;
+CODE_2AFB29:        C9 00 01      CMP #$0100                ;
+CODE_2AFB2C:        D0 05         BNE CODE_2AFB33           ;
+CODE_2AFB2E:        A0 FF 00      LDY #$00FF                ;
+CODE_2AFB31:        80 03         BRA CODE_2AFB36           ;
 
-CODE_2AFB33:        LDY #$0000                ;
-CODE_2AFB36:        TYA                       ;
-CODE_2AFB37:        AND #$00FF                ;
-CODE_2AFB3A:        STA $9F                   ;
-CODE_2AFB3C:        LDA $9B                   ;
-CODE_2AFB3E:        TAY                       ;
-CODE_2AFB3F:        AND #$FF00                ;
-CODE_2AFB42:        BEQ CODE_2AFB47           ;
-CODE_2AFB44:        LDY #$00FF                ;
-CODE_2AFB47:        TYA                       ;
-CODE_2AFB48:        AND #$00FF                ;
-CODE_2AFB4B:        XBA                       ;
-CODE_2AFB4C:        ORA $9F                   ;
-CODE_2AFB4E:        STA $9F                   ;
-CODE_2AFB50:        CPX #$01C0                ;
-CODE_2AFB53:        BCS CODE_2AFB60           ;
-CODE_2AFB55:        CMP #$FFFF                ;
-CODE_2AFB58:        BNE CODE_2AFB5D           ;
-CODE_2AFB5A:        LDA #$00FF                ;
-CODE_2AFB5D:        TXY                       ;
-CODE_2AFB5E:        STA [$AB],y               ;
-CODE_2AFB60:        LDA $89                   ;
-CODE_2AFB62:        CLC                       ;
-CODE_2AFB63:        ADC $83                   ;
-CODE_2AFB65:        DEC A                     ;
-CODE_2AFB66:        ASL A                     ;
-CODE_2AFB67:        STA $A7                   ;
-CODE_2AFB69:        CMP #$01C0                ;
-CODE_2AFB6C:        BCS CODE_2AFB7C           ;
-CODE_2AFB6E:        TAX                       ;
-CODE_2AFB6F:        LDA $9F                   ;
-CODE_2AFB71:        CMP #$FFFF                ;
-CODE_2AFB74:        BNE CODE_2AFB79           ;
-CODE_2AFB76:        LDA #$00FF                ;
-CODE_2AFB79:        TXY                       ;
-CODE_2AFB7A:        STA [$AB],y               ;
-CODE_2AFB7C:        INC $83                   ;
-CODE_2AFB7E:        LDA $9D                   ;
-CODE_2AFB80:        CMP #$01C0                ;
-CODE_2AFB83:        BCC CODE_2AFB8C           ;
-CODE_2AFB85:        LDA $A7                   ;
-CODE_2AFB87:        CMP #$01C0                ;
-CODE_2AFB8A:        BCS CODE_2AFB8F           ;
-CODE_2AFB8C:        BRL CODE_2AFAD1           ;
+CODE_2AFB33:        A0 00 00      LDY #$0000                ;
+CODE_2AFB36:        98            TYA                       ;
+CODE_2AFB37:        29 FF 00      AND #$00FF                ;
+CODE_2AFB3A:        85 9F         STA $9F                   ;
+CODE_2AFB3C:        A5 9B         LDA $9B                   ;
+CODE_2AFB3E:        A8            TAY                       ;
+CODE_2AFB3F:        29 00 FF      AND #$FF00                ;
+CODE_2AFB42:        F0 03         BEQ CODE_2AFB47           ;
+CODE_2AFB44:        A0 FF 00      LDY #$00FF                ;
+CODE_2AFB47:        98            TYA                       ;
+CODE_2AFB48:        29 FF 00      AND #$00FF                ;
+CODE_2AFB4B:        EB            XBA                       ;
+CODE_2AFB4C:        05 9F         ORA $9F                   ;
+CODE_2AFB4E:        85 9F         STA $9F                   ;
+CODE_2AFB50:        E0 C0 01      CPX #$01C0                ;
+CODE_2AFB53:        B0 0B         BCS CODE_2AFB60           ;
+CODE_2AFB55:        C9 FF FF      CMP #$FFFF                ;
+CODE_2AFB58:        D0 03         BNE CODE_2AFB5D           ;
+CODE_2AFB5A:        A9 FF 00      LDA #$00FF                ;
+CODE_2AFB5D:        9B            TXY                       ;
+CODE_2AFB5E:        97 AB         STA [$AB],y               ;
+CODE_2AFB60:        A5 89         LDA $89                   ;
+CODE_2AFB62:        18            CLC                       ;
+CODE_2AFB63:        65 83         ADC $83                   ;
+CODE_2AFB65:        3A            DEC A                     ;
+CODE_2AFB66:        0A            ASL A                     ;
+CODE_2AFB67:        85 A7         STA $A7                   ;
+CODE_2AFB69:        C9 C0 01      CMP #$01C0                ;
+CODE_2AFB6C:        B0 0E         BCS CODE_2AFB7C           ;
+CODE_2AFB6E:        AA            TAX                       ;
+CODE_2AFB6F:        A5 9F         LDA $9F                   ;
+CODE_2AFB71:        C9 FF FF      CMP #$FFFF                ;
+CODE_2AFB74:        D0 03         BNE CODE_2AFB79           ;
+CODE_2AFB76:        A9 FF 00      LDA #$00FF                ;
+CODE_2AFB79:        9B            TXY                       ;
+CODE_2AFB7A:        97 AB         STA [$AB],y               ;
+CODE_2AFB7C:        E6 83         INC $83                   ;
+CODE_2AFB7E:        A5 9D         LDA $9D                   ;
+CODE_2AFB80:        C9 C0 01      CMP #$01C0                ;
+CODE_2AFB83:        90 07         BCC CODE_2AFB8C           ;
+CODE_2AFB85:        A5 A7         LDA $A7                   ;
+CODE_2AFB87:        C9 C0 01      CMP #$01C0                ;
+CODE_2AFB8A:        B0 03         BCS CODE_2AFB8F           ;
+CODE_2AFB8C:        82 42 FF      BRL CODE_2AFAD1           ;
 
-CODE_2AFB8F:        SEP #$30                  ;
-CODE_2AFB91:        LDA $91                   ;
-CODE_2AFB93:        DEC A                     ;
-CODE_2AFB94:        BEQ CODE_2AFC04           ;
-CODE_2AFB96:        CMP #$03                  ;
-CODE_2AFB98:        BEQ CODE_2AFC04           ;
-CODE_2AFB9A:        CMP #$04                  ;
-CODE_2AFB9C:        BEQ CODE_2AFC14           ;
-CODE_2AFB9E:        LDA $81                   ;
-CODE_2AFBA0:        CLC                       ;
-CODE_2AFBA1:        ADC #$08                  ;
-CODE_2AFBA3:        STA $81                   ;
-CODE_2AFBA5:        BCS CODE_2AFBAA           ;
-CODE_2AFBA7:        JMP CODE_2AFC28           ;
+CODE_2AFB8F:        E2 30         SEP #$30                  ;
+CODE_2AFB91:        A5 91         LDA $91                   ;
+CODE_2AFB93:        3A            DEC A                     ;
+CODE_2AFB94:        F0 6E         BEQ CODE_2AFC04           ;
+CODE_2AFB96:        C9 03         CMP #$03                  ;
+CODE_2AFB98:        F0 6A         BEQ CODE_2AFC04           ;
+CODE_2AFB9A:        C9 04         CMP #$04                  ;
+CODE_2AFB9C:        F0 76         BEQ CODE_2AFC14           ;
+CODE_2AFB9E:        A5 81         LDA $81                   ;
+CODE_2AFBA0:        18            CLC                       ;
+CODE_2AFBA1:        69 08         ADC #$08                  ;
+CODE_2AFBA3:        85 81         STA $81                   ;
+CODE_2AFBA5:        B0 03         BCS CODE_2AFBAA           ;
+CODE_2AFBA7:        4C 28 FC      JMP CODE_2AFC28           ;
 
-CODE_2AFBAA:        LDA #$38                  ;
-CODE_2AFBAC:        STA $1050                 ;
-CODE_2AFBAF:        STZ $85                   ;
-CODE_2AFBB1:        STZ $91                   ;
-CODE_2AFBB3:        STZ $93                   ;
-CODE_2AFBB5:        STZ $00                   ;
-CODE_2AFBB7:        STZ $01                   ;
-CODE_2AFBB9:        STZ $02                   ;
-CODE_2AFBBB:        LDA #$02                  ;
-CODE_2AFBBD:        STA $0203                 ;
-CODE_2AFBC0:        LDA #$11                  ;
-CODE_2AFBC2:        LDX $02BF                 ;
-CODE_2AFBC5:        CPX #$01                  ;
-CODE_2AFBC7:        BEQ CODE_2AFBEF           ;
-CODE_2AFBC9:        CPX #$05                  ;
-CODE_2AFBCB:        BEQ CODE_2AFBEF           ;
-CODE_2AFBCD:        CPX #$06                  ;
-CODE_2AFBCF:        BEQ CODE_2AFBEF           ;
-CODE_2AFBD1:        CPX #$09                  ;
-CODE_2AFBD3:        BEQ CODE_2AFBF3           ;
-CODE_2AFBD5:        CPX #$0A                  ;
-CODE_2AFBD7:        BEQ CODE_2AFBF3           ;
-CODE_2AFBD9:        CPX #$0B                  ;
-CODE_2AFBDB:        BEQ CODE_2AFBF3           ;
-CODE_2AFBDD:        CPX #$0C                  ;
-CODE_2AFBDF:        BEQ CODE_2AFBF3           ;
-CODE_2AFBE1:        CPX #$0F                  ;
-CODE_2AFBE3:        BEQ CODE_2AFBF3           ;
-CODE_2AFBE5:        CPX #$03                  ;
-CODE_2AFBE7:        BEQ CODE_2AFBFC           ;
-CODE_2AFBE9:        CPX #$04                  ;
-CODE_2AFBEB:        BEQ CODE_2AFBFC           ;
-CODE_2AFBED:        BRA CODE_2AFBF1           ;
+CODE_2AFBAA:        A9 38         LDA #$38                  ;
+CODE_2AFBAC:        8D 50 10      STA $1050                 ;
+CODE_2AFBAF:        64 85         STZ $85                   ;
+CODE_2AFBB1:        64 91         STZ $91                   ;
+CODE_2AFBB3:        64 93         STZ $93                   ;
+CODE_2AFBB5:        64 00         STZ $00                   ;
+CODE_2AFBB7:        64 01         STZ $01                   ;
+CODE_2AFBB9:        64 02         STZ $02                   ;
+CODE_2AFBBB:        A9 02         LDA #$02                  ;
+CODE_2AFBBD:        8D 03 02      STA $0203                 ;
+CODE_2AFBC0:        A9 11         LDA #$11                  ;
+CODE_2AFBC2:        AE BF 02      LDX $02BF                 ;
+CODE_2AFBC5:        E0 01         CPX #$01                  ;
+CODE_2AFBC7:        F0 26         BEQ CODE_2AFBEF           ;
+CODE_2AFBC9:        E0 05         CPX #$05                  ;
+CODE_2AFBCB:        F0 22         BEQ CODE_2AFBEF           ;
+CODE_2AFBCD:        E0 06         CPX #$06                  ;
+CODE_2AFBCF:        F0 1E         BEQ CODE_2AFBEF           ;
+CODE_2AFBD1:        E0 09         CPX #$09                  ;
+CODE_2AFBD3:        F0 1E         BEQ CODE_2AFBF3           ;
+CODE_2AFBD5:        E0 0A         CPX #$0A                  ;
+CODE_2AFBD7:        F0 1A         BEQ CODE_2AFBF3           ;
+CODE_2AFBD9:        E0 0B         CPX #$0B                  ;
+CODE_2AFBDB:        F0 16         BEQ CODE_2AFBF3           ;
+CODE_2AFBDD:        E0 0C         CPX #$0C                  ;
+CODE_2AFBDF:        F0 12         BEQ CODE_2AFBF3           ;
+CODE_2AFBE1:        E0 0F         CPX #$0F                  ;
+CODE_2AFBE3:        F0 0E         BEQ CODE_2AFBF3           ;
+CODE_2AFBE5:        E0 03         CPX #$03                  ;
+CODE_2AFBE7:        F0 13         BEQ CODE_2AFBFC           ;
+CODE_2AFBE9:        E0 04         CPX #$04                  ;
+CODE_2AFBEB:        F0 0F         BEQ CODE_2AFBFC           ;
+CODE_2AFBED:        80 02         BRA CODE_2AFBF1           ;
 
-CODE_2AFBEF:        ORA #$02                  ;
-CODE_2AFBF1:        ORA #$04                  ;
-CODE_2AFBF3:        STA $08                   ;
-CODE_2AFBF5:        STZ $0A                   ;
-CODE_2AFBF7:        STZ $028C                 ;
-CODE_2AFBFA:        BRA CODE_2AFC71           ;
+CODE_2AFBEF:        09 02         ORA #$02                  ;
+CODE_2AFBF1:        09 04         ORA #$04                  ;
+CODE_2AFBF3:        85 08         STA $08                   ;
+CODE_2AFBF5:        64 0A         STZ $0A                   ;
+CODE_2AFBF7:        9C 8C 02      STZ $028C                 ;
+CODE_2AFBFA:        80 75         BRA CODE_2AFC71           ;
 
-CODE_2AFBFC:        LDA #$13                  ;
-CODE_2AFBFE:        STA $08                   ;
-CODE_2AFC00:        STZ $0A                   ;
-CODE_2AFC02:        BRA CODE_2AFC71           ;
+CODE_2AFBFC:        A9 13         LDA #$13                  ;
+CODE_2AFBFE:        85 08         STA $08                   ;
+CODE_2AFC00:        64 0A         STZ $0A                   ;
+CODE_2AFC02:        80 6D         BRA CODE_2AFC71           ;
 
-CODE_2AFC04:        LDA $81                   ;
-CODE_2AFC06:        SEC                       ;
-CODE_2AFC07:        SBC #$06                  ;
-CODE_2AFC09:        STA $81                   ;
-CODE_2AFC0B:        BCS CODE_2AFC28           ;
-CODE_2AFC0D:        LDA #$FF                  ;
-CODE_2AFC0F:        STA $1050                 ;
-CODE_2AFC12:        BRA CODE_2AFC28           ;
+CODE_2AFC04:        A5 81         LDA $81                   ;
+CODE_2AFC06:        38            SEC                       ;
+CODE_2AFC07:        E9 06         SBC #$06                  ;
+CODE_2AFC09:        85 81         STA $81                   ;
+CODE_2AFC0B:        B0 1B         BCS CODE_2AFC28           ;
+CODE_2AFC0D:        A9 FF         LDA #$FF                  ;
+CODE_2AFC0F:        8D 50 10      STA $1050                 ;
+CODE_2AFC12:        80 14         BRA CODE_2AFC28           ;
 
-CODE_2AFC14:        LDA $81                   ;
-CODE_2AFC16:        CLC                       ;
-CODE_2AFC17:        ADC #$0A                  ;
-CODE_2AFC19:        STA $81                   ;
-CODE_2AFC1B:        CMP #$20                  ;
-CODE_2AFC1D:        BCC CODE_2AFC28           ;
-CODE_2AFC1F:        LDA #$20                  ;
-CODE_2AFC21:        STA $81                   ;
-CODE_2AFC23:        LDA #$FF                  ;
-CODE_2AFC25:        STA $1050                 ;
-CODE_2AFC28:        LDX #$17                  ;
-CODE_2AFC2A:        LDA $02BF                 ;
-CODE_2AFC2D:        CMP #$01                  ;
-CODE_2AFC2F:        BNE CODE_2AFC3B           ;
-CODE_2AFC31:        BRA CODE_2AFC35           ;
+CODE_2AFC14:        A5 81         LDA $81                   ;
+CODE_2AFC16:        18            CLC                       ;
+CODE_2AFC17:        69 0A         ADC #$0A                  ;
+CODE_2AFC19:        85 81         STA $81                   ;
+CODE_2AFC1B:        C9 20         CMP #$20                  ;
+CODE_2AFC1D:        90 09         BCC CODE_2AFC28           ;
+CODE_2AFC1F:        A9 20         LDA #$20                  ;
+CODE_2AFC21:        85 81         STA $81                   ;
+CODE_2AFC23:        A9 FF         LDA #$FF                  ;
+CODE_2AFC25:        8D 50 10      STA $1050                 ;
+CODE_2AFC28:        A2 17         LDX #$17                  ;
+CODE_2AFC2A:        AD BF 02      LDA $02BF                 ;
+CODE_2AFC2D:        C9 01         CMP #$01                  ;
+CODE_2AFC2F:        D0 0A         BNE CODE_2AFC3B           ;
+CODE_2AFC31:        80 02         BRA CODE_2AFC35           ;
 
-CODE_2AFC33:        LDX #$15                  ;
-CODE_2AFC35:        LDY #$13                  ;
-CODE_2AFC37:        STY $09                   ;
-CODE_2AFC39:        BRA CODE_2AFC5B           ;
+CODE_2AFC33:        A2 15         LDX #$15                  ;
+CODE_2AFC35:        A0 13         LDY #$13                  ;
+CODE_2AFC37:        84 09         STY $09                   ;
+CODE_2AFC39:        80 20         BRA CODE_2AFC5B           ;
 
-CODE_2AFC3B:        CMP #$02                  ;
-CODE_2AFC3D:        BEQ CODE_2AFC33           ;
-CODE_2AFC3F:        CMP #$07                  ;
-CODE_2AFC41:        BEQ CODE_2AFC35           ;
-CODE_2AFC43:        CMP #$09                  ;
-CODE_2AFC45:        BEQ CODE_2AFC55           ;
-CODE_2AFC47:        CMP #$0A                  ;
-CODE_2AFC49:        BEQ CODE_2AFC55           ;
-CODE_2AFC4B:        CMP #$0B                  ;
-CODE_2AFC4D:        BEQ CODE_2AFC55           ;
-CODE_2AFC4F:        CMP #$0C                  ;
-CODE_2AFC51:        BEQ CODE_2AFC55           ;
-CODE_2AFC53:        BRA CODE_2AFC5B           ;
+CODE_2AFC3B:        C9 02         CMP #$02                  ;
+CODE_2AFC3D:        F0 F4         BEQ CODE_2AFC33           ;
+CODE_2AFC3F:        C9 07         CMP #$07                  ;
+CODE_2AFC41:        F0 F2         BEQ CODE_2AFC35           ;
+CODE_2AFC43:        C9 09         CMP #$09                  ;
+CODE_2AFC45:        F0 0E         BEQ CODE_2AFC55           ;
+CODE_2AFC47:        C9 0A         CMP #$0A                  ;
+CODE_2AFC49:        F0 0A         BEQ CODE_2AFC55           ;
+CODE_2AFC4B:        C9 0B         CMP #$0B                  ;
+CODE_2AFC4D:        F0 06         BEQ CODE_2AFC55           ;
+CODE_2AFC4F:        C9 0C         CMP #$0C                  ;
+CODE_2AFC51:        F0 02         BEQ CODE_2AFC55           ;
+CODE_2AFC53:        80 06         BRA CODE_2AFC5B           ;
 
-CODE_2AFC55:        LDX #$11                  ;
-CODE_2AFC57:        LDY #$06                  ;
-CODE_2AFC59:        STY $09                   ;
-CODE_2AFC5B:        STX $08                   ;
-CODE_2AFC5D:        STX $0A                   ;
-CODE_2AFC5F:        LDY #$17                  ;
-CODE_2AFC61:        STY $0B                   ;
-CODE_2AFC63:        LDY #$80                  ;
-CODE_2AFC65:        LDA $8B                   ;
-CODE_2AFC67:        AND #$01                  ;
-CODE_2AFC69:        BEQ CODE_2AFC6D           ;
-CODE_2AFC6B:        LDY #$40                  ;
-CODE_2AFC6D:        STY $93                   ;
-CODE_2AFC6F:        INC $8B                   ;
-CODE_2AFC71:        PLD                       ;
-CODE_2AFC72:        PLB                       ;
-CODE_2AFC73:        RTL                       ;
+CODE_2AFC55:        A2 11         LDX #$11                  ;
+CODE_2AFC57:        A0 06         LDY #$06                  ;
+CODE_2AFC59:        84 09         STY $09                   ;
+CODE_2AFC5B:        86 08         STX $08                   ;
+CODE_2AFC5D:        86 0A         STX $0A                   ;
+CODE_2AFC5F:        A0 17         LDY #$17                  ;
+CODE_2AFC61:        84 0B         STY $0B                   ;
+CODE_2AFC63:        A0 80         LDY #$80                  ;
+CODE_2AFC65:        A5 8B         LDA $8B                   ;
+CODE_2AFC67:        29 01         AND #$01                  ;
+CODE_2AFC69:        F0 02         BEQ CODE_2AFC6D           ;
+CODE_2AFC6B:        A0 40         LDY #$40                  ;
+CODE_2AFC6D:        84 93         STY $93                   ;
+CODE_2AFC6F:        E6 8B         INC $8B                   ;
+CODE_2AFC71:        2B            PLD                       ;
+CODE_2AFC72:        AB            PLB                       ;
+CODE_2AFC73:        6B            RTL                       ;
 
 DATA_2AFC74:        db $F9,$07,$F6,$0A,$F4,$0C,$F2,$0E
                     db $F1,$0F,$EF,$11,$EE,$12,$ED,$13
@@ -9181,183 +9181,183 @@ DATA_2AFC74:        db $F9,$07,$F6,$0A,$F4,$0C,$F2,$0E
                     db $E5,$1B,$E5,$1B,$E5,$1B,$E5,$1B
                     db $E5,$1B,$E5,$1B,$E5,$1B
 
-CODE_2AFCAA:        PHB                       
-CODE_2AFCAB:        PHK                       
-CODE_2AFCAC:        PLB                       
-CODE_2AFCAD:        REP #$30                  
-CODE_2AFCAF:        LDA #$0001                
-CODE_2AFCB2:        STA $0283                 
-CODE_2AFCB5:        STZ $04                   
-CODE_2AFCB7:        LDA $0726                 
-CODE_2AFCBA:        AND #$00FF                
-CODE_2AFCBD:        TAX                       
-CODE_2AFCBE:        LDA $43,x                 
-CODE_2AFCC0:        AND #$00FF                
-CODE_2AFCC3:        STA $028B                 
-CODE_2AFCC6:        SEC                       
-CODE_2AFCC7:        SBC #$0010                
-CODE_2AFCCA:        STA $0289                 
-CODE_2AFCCD:        LDA $45,x                 
-CODE_2AFCCF:        AND #$00FF                
-CODE_2AFCD2:        XBA                       
-CODE_2AFCD3:        STA $D8                   
-CODE_2AFCD5:        LDA $47,x                 
-CODE_2AFCD7:        AND #$00FF                
-CODE_2AFCDA:        ORA $D8                   
-CODE_2AFCDC:        CLC                       
-CODE_2AFCDD:        ADC #$0008                
-CODE_2AFCE0:        SEC                       
-CODE_2AFCE1:        SBC $0210                 
-CODE_2AFCE4:        STA $028D                 
-CODE_2AFCE7:        LDA #$0100                
-CODE_2AFCEA:        STA $00                   
-CODE_2AFCEC:        STA $02                   
-CODE_2AFCEE:        LDA $04                   
-CODE_2AFCF0:        CMP #$0034                
-CODE_2AFCF3:        BCS CODE_2AFCFD                   
-CODE_2AFCF5:        LDA $0283                 
-CODE_2AFCF8:        CMP $0289                 
-CODE_2AFCFB:        BCS CODE_2AFD0D                   
-CODE_2AFCFD:        LDA $0283                 
-CODE_2AFD00:        DEC A                     
-CODE_2AFD01:        ASL A                     
-CODE_2AFD02:        TAX                       
-CODE_2AFD03:        LDA #$00FF                
-CODE_2AFD06:        STA $7F9000,x             
-CODE_2AFD0A:        BRL CODE_2AFD75 
+CODE_2AFCAA:        8B            PHB                       
+CODE_2AFCAB:        4B            PHK                       
+CODE_2AFCAC:        AB            PLB                       
+CODE_2AFCAD:        C2 30         REP #$30                  
+CODE_2AFCAF:        A9 01 00      LDA #$0001                
+CODE_2AFCB2:        8D 83 02      STA $0283                 
+CODE_2AFCB5:        64 04         STZ $04                   
+CODE_2AFCB7:        AD 26 07      LDA $0726                 
+CODE_2AFCBA:        29 FF 00      AND #$00FF                
+CODE_2AFCBD:        AA            TAX                       
+CODE_2AFCBE:        B5 43         LDA $43,x                 
+CODE_2AFCC0:        29 FF 00      AND #$00FF                
+CODE_2AFCC3:        8D 8B 02      STA $028B                 
+CODE_2AFCC6:        38            SEC                       
+CODE_2AFCC7:        E9 10 00      SBC #$0010                
+CODE_2AFCCA:        8D 89 02      STA $0289                 
+CODE_2AFCCD:        B5 45         LDA $45,x                 
+CODE_2AFCCF:        29 FF 00      AND #$00FF                
+CODE_2AFCD2:        EB            XBA                       
+CODE_2AFCD3:        85 D8         STA $D8                   
+CODE_2AFCD5:        B5 47         LDA $47,x                 
+CODE_2AFCD7:        29 FF 00      AND #$00FF                
+CODE_2AFCDA:        05 D8         ORA $D8                   
+CODE_2AFCDC:        18            CLC                       
+CODE_2AFCDD:        69 08 00      ADC #$0008                
+CODE_2AFCE0:        38            SEC                       
+CODE_2AFCE1:        ED 10 02      SBC $0210                 
+CODE_2AFCE4:        8D 8D 02      STA $028D                 
+CODE_2AFCE7:        A9 00 01      LDA #$0100                
+CODE_2AFCEA:        85 00         STA $00                   
+CODE_2AFCEC:        85 02         STA $02                   
+CODE_2AFCEE:        A5 04         LDA $04                   
+CODE_2AFCF0:        C9 34 00      CMP #$0034                
+CODE_2AFCF3:        B0 08         BCS CODE_2AFCFD                   
+CODE_2AFCF5:        AD 83 02      LDA $0283                 
+CODE_2AFCF8:        CD 89 02      CMP $0289                 
+CODE_2AFCFB:        B0 10         BCS CODE_2AFD0D                   
+CODE_2AFCFD:        AD 83 02      LDA $0283                 
+CODE_2AFD00:        3A            DEC A                     
+CODE_2AFD01:        0A            ASL A                     
+CODE_2AFD02:        AA            TAX                       
+CODE_2AFD03:        A9 FF 00      LDA #$00FF                
+CODE_2AFD06:        9F 00 90 7F   STA $7F9000,x             
+CODE_2AFD0A:        82 68 00      BRL CODE_2AFD75 
           
-CODE_2AFD0D:        LDX $04                   
-CODE_2AFD0F:        LDA.l DATA_2AFC74,x             
-CODE_2AFD13:        AND #$00FF                
-CODE_2AFD16:        STA $D8                   
-CODE_2AFD18:        LDA.l DATA_2AFC74+1,x             
-CODE_2AFD1C:        AND #$FF00                
-CODE_2AFD1F:        XBA                       
-CODE_2AFD20:        CLC                       
-CODE_2AFD21:        ADC $028D                 
-CODE_2AFD24:        AND #$00FF                
-CODE_2AFD27:        STA $00                   
-CODE_2AFD29:        LDA $028D                 
-CODE_2AFD2C:        SEC                       
-CODE_2AFD2D:        SBC $D8                   
-CODE_2AFD2F:        AND #$00FF                
-CODE_2AFD32:        STA $02                   
-CODE_2AFD34:        LDA $04                   
-CODE_2AFD36:        LSR A                     
-CODE_2AFD37:        STA $D8                   
-CODE_2AFD39:        INC $04                   
-CODE_2AFD3B:        INC $04                   
-CODE_2AFD3D:        LDA $0283                 
-CODE_2AFD40:        DEC A                     
-CODE_2AFD41:        ASL A                     
-CODE_2AFD42:        TAX                       
-CODE_2AFD43:        LDA $02                   
-CODE_2AFD45:        AND #$00FF                
-CODE_2AFD48:        XBA                       
-CODE_2AFD49:        ORA $00                   
-CODE_2AFD4B:        STA $7F9000,x             
-CODE_2AFD4F:        STA $DA                   
-CODE_2AFD51:        LDA $028B                 
-CODE_2AFD54:        CLC                       
-CODE_2AFD55:        ADC #$0020                
-CODE_2AFD58:        SEC                       
-CODE_2AFD59:        SBC $D8                   
-CODE_2AFD5B:        DEC A                     
-CODE_2AFD5C:        ASL A                     
-CODE_2AFD5D:        TAX                       
-CODE_2AFD5E:        LDA $DA                   
-CODE_2AFD60:        STA $7F9000,x             
-CODE_2AFD64:        LDA $04                   
-CODE_2AFD66:        CMP #$0034                
-CODE_2AFD69:        BCC CODE_2AFD75           
-CODE_2AFD6B:        LDA $028B                 
-CODE_2AFD6E:        CLC                       
-CODE_2AFD6F:        ADC #$0020                
-CODE_2AFD72:        STA $0283                 
-CODE_2AFD75:        INC $0283                 
-CODE_2AFD78:        LDA $0283                 
-CODE_2AFD7B:        CMP #$00E1                
-CODE_2AFD7E:        BCS CODE_2AFD83                   
-CODE_2AFD80:        BRL CODE_2AFCE7  
+CODE_2AFD0D:        A6 04         LDX $04                   
+CODE_2AFD0F:        BF 74 FC 2A   LDA.l DATA_2AFC74,x             
+CODE_2AFD13:        29 FF 00      AND #$00FF                
+CODE_2AFD16:        85 D8         STA $D8                   
+CODE_2AFD18:        BF 75 FC 2A   LDA.l DATA_2AFC74+1,x             
+CODE_2AFD1C:        29 00 FF      AND #$FF00                
+CODE_2AFD1F:        EB            XBA                       
+CODE_2AFD20:        18            CLC                       
+CODE_2AFD21:        6D 8D 02      ADC $028D                 
+CODE_2AFD24:        29 FF 00      AND #$00FF                
+CODE_2AFD27:        85 00         STA $00                   
+CODE_2AFD29:        AD 8D 02      LDA $028D                 
+CODE_2AFD2C:        38            SEC                       
+CODE_2AFD2D:        E5 D8         SBC $D8                   
+CODE_2AFD2F:        29 FF 00      AND #$00FF                
+CODE_2AFD32:        85 02         STA $02                   
+CODE_2AFD34:        A5 04         LDA $04                   
+CODE_2AFD36:        4A            LSR A                     
+CODE_2AFD37:        85 D8         STA $D8                   
+CODE_2AFD39:        E6 04         INC $04                   
+CODE_2AFD3B:        E6 04         INC $04                   
+CODE_2AFD3D:        AD 83 02      LDA $0283                 
+CODE_2AFD40:        3A            DEC A                     
+CODE_2AFD41:        0A            ASL A                     
+CODE_2AFD42:        AA            TAX                       
+CODE_2AFD43:        A5 02         LDA $02                   
+CODE_2AFD45:        29 FF 00      AND #$00FF                
+CODE_2AFD48:        EB            XBA                       
+CODE_2AFD49:        05 00         ORA $00                   
+CODE_2AFD4B:        9F 00 90 7F   STA $7F9000,x             
+CODE_2AFD4F:        85 DA         STA $DA                   
+CODE_2AFD51:        AD 8B 02      LDA $028B                 
+CODE_2AFD54:        18            CLC                       
+CODE_2AFD55:        69 20 00      ADC #$0020                
+CODE_2AFD58:        38            SEC                       
+CODE_2AFD59:        E5 D8         SBC $D8                   
+CODE_2AFD5B:        3A            DEC A                     
+CODE_2AFD5C:        0A            ASL A                     
+CODE_2AFD5D:        AA            TAX                       
+CODE_2AFD5E:        A5 DA         LDA $DA                   
+CODE_2AFD60:        9F 00 90 7F   STA $7F9000,x             
+CODE_2AFD64:        A5 04         LDA $04                   
+CODE_2AFD66:        C9 34 00      CMP #$0034                
+CODE_2AFD69:        90 0A         BCC CODE_2AFD75           
+CODE_2AFD6B:        AD 8B 02      LDA $028B                 
+CODE_2AFD6E:        18            CLC                       
+CODE_2AFD6F:        69 20 00      ADC #$0020                
+CODE_2AFD72:        8D 83 02      STA $0283                 
+CODE_2AFD75:        EE 83 02      INC $0283                 
+CODE_2AFD78:        AD 83 02      LDA $0283                 
+CODE_2AFD7B:        C9 E1 00      CMP #$00E1                
+CODE_2AFD7E:        B0 03         BCS CODE_2AFD83                   
+CODE_2AFD80:        82 64 FF      BRL CODE_2AFCE7  
          
-CODE_2AFD83:        SEP #$30                  
-CODE_2AFD85:        LDA #$13                  
-CODE_2AFD87:        STA $0208                 
-CODE_2AFD8A:        STA $020A                 
-CODE_2AFD8D:        LDA #$80                  
-CODE_2AFD8F:        STA $0293                 
-CODE_2AFD92:        PLB                       
-CODE_2AFD93:        RTL
+CODE_2AFD83:        E2 30         SEP #$30                  
+CODE_2AFD85:        A9 13         LDA #$13                  
+CODE_2AFD87:        8D 08 02      STA $0208                 
+CODE_2AFD8A:        8D 0A 02      STA $020A                 
+CODE_2AFD8D:        A9 80         LDA #$80                  
+CODE_2AFD8F:        8D 93 02      STA $0293                 
+CODE_2AFD92:        AB            PLB                       
+CODE_2AFD93:        6B            RTL
                        
-CODE_2AFD94:        REP #$30                  
-CODE_2AFD96:        LDX #$0000                
-CODE_2AFD99:        LDA #$00FF                
-CODE_2AFD9C:        STA $7F9000,x             
-CODE_2AFDA0:        STA $7F9002,x             
-CODE_2AFDA4:        STA $7F9004,x             
-CODE_2AFDA8:        STA $7F9006,x             
-CODE_2AFDAC:        STA $7F9008,x             
-CODE_2AFDB0:        STA $7F900A,x             
-CODE_2AFDB4:        STA $7F900C,x             
-CODE_2AFDB8:        STA $7F900E,x             
-CODE_2AFDBC:        STA $7F9010,x             
-CODE_2AFDC0:        STA $7F9012,x             
-CODE_2AFDC4:        STA $7F9014,x             
-CODE_2AFDC8:        STA $7F9016,x             
-CODE_2AFDCC:        STA $7F9018,x             
-CODE_2AFDD0:        STA $7F901A,x             
-CODE_2AFDD4:        STA $7F901C,x             
-CODE_2AFDD8:        STA $7F901E,x             
-CODE_2AFDDC:        TXA                       
-CODE_2AFDDD:        CLC                       
-CODE_2AFDDE:        ADC #$0020                
-CODE_2AFDE1:        TAX                       
-CODE_2AFDE2:        CPX #$01C0                
-CODE_2AFDE5:        BNE CODE_2AFD9C           
-CODE_2AFDE7:        SEP #$30                  
-CODE_2AFDE9:        RTL
+CODE_2AFD94:        C2 30         REP #$30                  
+CODE_2AFD96:        A2 00 00      LDX #$0000                
+CODE_2AFD99:        A9 FF 00      LDA #$00FF                
+CODE_2AFD9C:        9F 00 90 7F   STA $7F9000,x             
+CODE_2AFDA0:        9F 02 90 7F   STA $7F9002,x             
+CODE_2AFDA4:        9F 04 90 7F   STA $7F9004,x             
+CODE_2AFDA8:        9F 06 90 7F   STA $7F9006,x             
+CODE_2AFDAC:        9F 08 90 7F   STA $7F9008,x             
+CODE_2AFDB0:        9F 0A 90 7F   STA $7F900A,x             
+CODE_2AFDB4:        9F 0C 90 7F   STA $7F900C,x             
+CODE_2AFDB8:        9F 0E 90 7F   STA $7F900E,x             
+CODE_2AFDBC:        9F 10 90 7F   STA $7F9010,x             
+CODE_2AFDC0:        9F 12 90 7F   STA $7F9012,x             
+CODE_2AFDC4:        9F 14 90 7F   STA $7F9014,x             
+CODE_2AFDC8:        9F 16 90 7F   STA $7F9016,x             
+CODE_2AFDCC:        9F 18 90 7F   STA $7F9018,x             
+CODE_2AFDD0:        9F 1A 90 7F   STA $7F901A,x             
+CODE_2AFDD4:        9F 1C 90 7F   STA $7F901C,x             
+CODE_2AFDD8:        9F 1E 90 7F   STA $7F901E,x             
+CODE_2AFDDC:        8A            TXA                       
+CODE_2AFDDD:        18            CLC                       
+CODE_2AFDDE:        69 20 00      ADC #$0020                
+CODE_2AFDE1:        AA            TAX                       
+CODE_2AFDE2:        E0 C0 01      CPX #$01C0                
+CODE_2AFDE5:        D0 B5         BNE CODE_2AFD9C           
+CODE_2AFDE7:        E2 30         SEP #$30                  
+CODE_2AFDE9:        6B            RTL
 
 DATA_2AFDEA:        db $FC,$0C,$FC,$0C,$FC,$0C,$A9,$0C
                     db $A9,$0C,$FC,$0C,$A9,$0C,$A9,$0C
               
-CODE_2AFDFA:        REP #$30                  
-CODE_2AFDFC:        LDX #$0000                
-CODE_2AFDFF:        TXY                       
-CODE_2AFE00:        LDA [$D8],y               
-CODE_2AFE02:        STA $DB                   
-CODE_2AFE04:        PHX                       
-CODE_2AFE05:        LDA $DB                   
-CODE_2AFE07:        AND #$C000                
-CODE_2AFE0A:        ASL A                     
-CODE_2AFE0B:        ROL A                     
-CODE_2AFE0C:        ROL A                     
-CODE_2AFE0D:        ROL A                     
-CODE_2AFE0E:        ROL A                     
-CODE_2AFE0F:        TAX                       
-CODE_2AFE10:        LDA.l DATA_2AFDEA,x             
-CODE_2AFE14:        STA $00                   
-CODE_2AFE16:        LDA.l DATA_2AFDEA+2,x             
-CODE_2AFE1A:        PLX                       
-CODE_2AFE1B:        STA $7FA002,x             
-CODE_2AFE1F:        LDA $00                   
-CODE_2AFE21:        STA $7FA000,x             
-CODE_2AFE25:        ASL $DB                   
-CODE_2AFE27:        ASL $DB                   
-CODE_2AFE29:        INX                       
-CODE_2AFE2A:        INX                       
-CODE_2AFE2B:        INX                       
-CODE_2AFE2C:        INX                       
-CODE_2AFE2D:        TXA                       
-CODE_2AFE2E:        LSR A                     
-CODE_2AFE2F:        AND #$000F                
-CODE_2AFE32:        BNE CODE_2AFE04           
-CODE_2AFE34:        INY                       
-CODE_2AFE35:        INY                       
-CODE_2AFE36:        TYA                       
-CODE_2AFE37:        CMP #$0040                
-CODE_2AFE3A:        BNE CODE_2AFE00           
-CODE_2AFE3C:        SEP #$30                  
-CODE_2AFE3E:        RTL 
+CODE_2AFDFA:        C2 30         REP #$30                  
+CODE_2AFDFC:        A2 00 00      LDX #$0000                
+CODE_2AFDFF:        9B            TXY                       
+CODE_2AFE00:        B7 D8         LDA [$D8],y               
+CODE_2AFE02:        85 DB         STA $DB                   
+CODE_2AFE04:        DA            PHX                       
+CODE_2AFE05:        A5 DB         LDA $DB                   
+CODE_2AFE07:        29 00 C0      AND #$C000                
+CODE_2AFE0A:        0A            ASL A                     
+CODE_2AFE0B:        2A            ROL A                     
+CODE_2AFE0C:        2A            ROL A                     
+CODE_2AFE0D:        2A            ROL A                     
+CODE_2AFE0E:        2A            ROL A                     
+CODE_2AFE0F:        AA            TAX                       
+CODE_2AFE10:        BF EA FD 2A   LDA.l DATA_2AFDEA,x             
+CODE_2AFE14:        85 00         STA $00                   
+CODE_2AFE16:        BF EC FD 2A   LDA.l DATA_2AFDEA+2,x             
+CODE_2AFE1A:        FA            PLX                       
+CODE_2AFE1B:        9F 02 A0 7F   STA $7FA002,x             
+CODE_2AFE1F:        A5 00         LDA $00                   
+CODE_2AFE21:        9F 00 A0 7F   STA $7FA000,x             
+CODE_2AFE25:        06 DB         ASL $DB                   
+CODE_2AFE27:        06 DB         ASL $DB                   
+CODE_2AFE29:        E8            INX                       
+CODE_2AFE2A:        E8            INX                       
+CODE_2AFE2B:        E8            INX                       
+CODE_2AFE2C:        E8            INX                       
+CODE_2AFE2D:        8A            TXA                       
+CODE_2AFE2E:        4A            LSR A                     
+CODE_2AFE2F:        29 0F 00      AND #$000F                
+CODE_2AFE32:        D0 D0         BNE CODE_2AFE04           
+CODE_2AFE34:        C8            INY                       
+CODE_2AFE35:        C8            INY                       
+CODE_2AFE36:        98            TYA                       
+CODE_2AFE37:        C9 40 00      CMP #$0040                
+CODE_2AFE3A:        D0 C4         BNE CODE_2AFE00           
+CODE_2AFE3C:        E2 30         SEP #$30                  
+CODE_2AFE3E:        6B            RTL 
 
 DATA_2AFE3F:        db $58,$A0,$F4,$32,$60,$A0,$F5,$32
                     db $68,$A0,$F6,$32,$70,$A0,$F7,$32
@@ -9365,21 +9365,21 @@ DATA_2AFE3F:        db $58,$A0,$F4,$32,$60,$A0,$F5,$32
                     db $90,$A0,$F9,$32,$98,$A0,$FA,$32
                     db $A0,$A0,$F8,$32
 
-CODE_2AFE63:        LDX #$23                  ;
-CODE_2AFE65:        LDA.l DATA_2AFE3F,x       ;
-CODE_2AFE69:        STA $0900,x               ;
-CODE_2AFE6C:        DEX                       ;
-CODE_2AFE6D:        BPL CODE_2AFE65           ;
-CODE_2AFE6F:        STZ $0A60                 ;
-CODE_2AFE72:        STZ $0A61                 ;
-CODE_2AFE75:        STZ $0A62                 ;
-CODE_2AFE78:        STZ $0A63                 ;
-CODE_2AFE7B:        STZ $0A64                 ;
-CODE_2AFE7E:        STZ $0A65                 ;
-CODE_2AFE81:        STZ $0A66                 ;
-CODE_2AFE84:        STZ $0A67                 ;
-CODE_2AFE87:        STZ $0A68                 ;
-CODE_2AFE8A:        RTL                       ;
+CODE_2AFE63:        A2 23         LDX #$23                  ;
+CODE_2AFE65:        BF 3F FE 2A   LDA.l DATA_2AFE3F,x       ;
+CODE_2AFE69:        9D 00 09      STA $0900,x               ;
+CODE_2AFE6C:        CA            DEX                       ;
+CODE_2AFE6D:        10 F6         BPL CODE_2AFE65           ;
+CODE_2AFE6F:        9C 60 0A      STZ $0A60                 ;
+CODE_2AFE72:        9C 61 0A      STZ $0A61                 ;
+CODE_2AFE75:        9C 62 0A      STZ $0A62                 ;
+CODE_2AFE78:        9C 63 0A      STZ $0A63                 ;
+CODE_2AFE7B:        9C 64 0A      STZ $0A64                 ;
+CODE_2AFE7E:        9C 65 0A      STZ $0A65                 ;
+CODE_2AFE81:        9C 66 0A      STZ $0A66                 ;
+CODE_2AFE84:        9C 67 0A      STZ $0A67                 ;
+CODE_2AFE87:        9C 68 0A      STZ $0A68                 ;
+CODE_2AFE8A:        6B            RTL                       ;
 
 DATA_2AFE8B:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF

@@ -1,525 +1,525 @@
 ;Super Mario Bros. 2
 
-CODE_158000:        LDA $0724                 
-CODE_158003:        BNE CODE_158079           
-CODE_158005:        LDA $0772                 
-CODE_158008:        BEQ CODE_158017           
-CODE_15800A:        LDX #$02                  
-CODE_15800C:        LDA $02B2,x               
-CODE_15800F:        STA $0725,x               
-CODE_158012:        DEX                       
-CODE_158013:        BPL CODE_15800C           
-CODE_158015:        BRA CODE_15802F      
+CODE_158000:        AD 24 07      LDA $0724                 
+CODE_158003:        D0 74         BNE CODE_158079           
+CODE_158005:        AD 72 07      LDA $0772                 
+CODE_158008:        F0 0D         BEQ CODE_158017           
+CODE_15800A:        A2 02         LDX #$02                  
+CODE_15800C:        BD B2 02      LDA $02B2,x               
+CODE_15800F:        9D 25 07      STA $0725,x               
+CODE_158012:        CA            DEX                       
+CODE_158013:        10 F7         BPL CODE_15800C           
+CODE_158015:        80 18         BRA CODE_15802F      
      
-CODE_158017:        LDX $0535                 
-CODE_15801A:        LDA.l DATA_11D01A,x             
-CODE_15801E:        STA $0725                 
-CODE_158021:        LDA.l DATA_11D024,x             
-CODE_158025:        STA $0726                 
-CODE_158028:        LDA.l DATA_11D02E,x             
-CODE_15802C:        STA $0727                 
-CODE_15802F:        LDA $0535                 
-CODE_158032:        LDY #$01                  
-CODE_158034:        JSR CODE_158107           
-CODE_158037:        LDA $0533                 
-CODE_15803A:        CMP #$06                  
-CODE_15803C:        BEQ CODE_158046           
-CODE_15803E:        CMP #$07                  
-CODE_158040:        BEQ CODE_158046           
-CODE_158042:        CMP #$0C                  
-CODE_158044:        BNE CODE_158052           
-CODE_158046:        LDA $0534                 
-CODE_158049:        BNE CODE_158052           
-CODE_15804B:        LDA #$10                  ; \ Layer 3 Y pos = #$0010.
-CODE_15804D:        STA $020A                 ; /
-CODE_158050:        BRA CODE_158055         
+CODE_158017:        AE 35 05      LDX $0535                 
+CODE_15801A:        BF 1A D0 11   LDA.l DATA_11D01A,x             
+CODE_15801E:        8D 25 07      STA $0725                 
+CODE_158021:        BF 24 D0 11   LDA.l DATA_11D024,x             
+CODE_158025:        8D 26 07      STA $0726                 
+CODE_158028:        BF 2E D0 11   LDA.l DATA_11D02E,x             
+CODE_15802C:        8D 27 07      STA $0727                 
+CODE_15802F:        AD 35 05      LDA $0535                 
+CODE_158032:        A0 01         LDY #$01                  
+CODE_158034:        20 07 81      JSR CODE_158107           
+CODE_158037:        AD 33 05      LDA $0533                 
+CODE_15803A:        C9 06         CMP #$06                  
+CODE_15803C:        F0 08         BEQ CODE_158046           
+CODE_15803E:        C9 07         CMP #$07                  
+CODE_158040:        F0 04         BEQ CODE_158046           
+CODE_158042:        C9 0C         CMP #$0C                  
+CODE_158044:        D0 0C         BNE CODE_158052           
+CODE_158046:        AD 34 05      LDA $0534                 
+CODE_158049:        D0 07         BNE CODE_158052           
+CODE_15804B:        A9 10         LDA #$10                  ; \ Layer 3 Y pos = #$0010.
+CODE_15804D:        8D 0A 02      STA $020A                 ; /
+CODE_158050:        80 03         BRA CODE_158055         
   
-CODE_158052:        STZ $020A                 
-CODE_158055:        STZ $020B                 
-CODE_158058:        INC $0724                 
-CODE_15805B:        LDA $0535                 
-CODE_15805E:        STA $0728                 
-CODE_158061:        LDA #$01                  
-CODE_158063:        STA $0729                 
-CODE_158066:        LSR A                     
-CODE_158067:        STA $06                   
-CODE_158069:        LDA #$FF                  
-CODE_15806B:        STA $072A                 
-CODE_15806E:        LDA #$0F                  
-CODE_158070:        STA $072B                 
-CODE_158073:        JSR CODE_158083           
-CODE_158076:        JSR CODE_1583F2           
-CODE_158079:        JSL CODE_1581BD           
-CODE_15807D:        LDA $0729                 
-CODE_158080:        BNE CODE_158082           
-CODE_158082:        RTL    
+CODE_158052:        9C 0A 02      STZ $020A                 
+CODE_158055:        9C 0B 02      STZ $020B                 
+CODE_158058:        EE 24 07      INC $0724                 
+CODE_15805B:        AD 35 05      LDA $0535                 
+CODE_15805E:        8D 28 07      STA $0728                 
+CODE_158061:        A9 01         LDA #$01                  
+CODE_158063:        8D 29 07      STA $0729                 
+CODE_158066:        4A            LSR A                     
+CODE_158067:        85 06         STA $06                   
+CODE_158069:        A9 FF         LDA #$FF                  
+CODE_15806B:        8D 2A 07      STA $072A                 
+CODE_15806E:        A9 0F         LDA #$0F                  
+CODE_158070:        8D 2B 07      STA $072B                 
+CODE_158073:        20 83 80      JSR CODE_158083           
+CODE_158076:        20 F2 83      JSR CODE_1583F2           
+CODE_158079:        22 BD 81 15   JSL CODE_1581BD           
+CODE_15807D:        AD 29 07      LDA $0729                 
+CODE_158080:        D0 00         BNE CODE_158082           
+CODE_158082:        6B            RTL    
                    
-CODE_158083:        LDA $0535                 
-CODE_158086:        BNE CODE_158093           
-CODE_158088:        LDA $072C                 
-CODE_15808B:        BPL CODE_158090           
-CODE_15808D:        JMP CODE_158100           
+CODE_158083:        AD 35 05      LDA $0535                 
+CODE_158086:        D0 0B         BNE CODE_158093           
+CODE_158088:        AD 2C 07      LDA $072C                 
+CODE_15808B:        10 03         BPL CODE_158090           
+CODE_15808D:        4C 00 81      JMP CODE_158100           
 
-CODE_158090:        LDA $0535                 
-CODE_158093:        CMP $0541                 
-CODE_158096:        BNE CODE_15809D           
-CODE_158098:        LDA $072C                 
-CODE_15809B:        BPL CODE_158100           
-CODE_15809D:        LDX #$02                  
-CODE_15809F:        LDA $072C                 
-CODE_1580A2:        BPL CODE_1580AA           
-CODE_1580A4:        LDA #$FF                  
-CODE_1580A6:        STA $0B                   
-CODE_1580A8:        BNE CODE_1580AC           
-CODE_1580AA:        STZ $0B                   
-CODE_1580AC:        LDA $072C                 
-CODE_1580AF:        AND #$F0                  
-CODE_1580B1:        CLC                       
-CODE_1580B2:        ADC $0725,x               
-CODE_1580B5:        PHP                       
-CODE_1580B6:        ADC $0B                   
-CODE_1580B8:        PLP                       
-CODE_1580B9:        STA $0C                   
-CODE_1580BB:        LDA $0B                   
-CODE_1580BD:        BNE CODE_1580D1           
-CODE_1580BF:        BCC CODE_1580E3           
-CODE_1580C1:        LDA $0725,x               
-CODE_1580C4:        AND #$0F                  
-CODE_1580C6:        CMP #$09                  
-CODE_1580C8:        BNE CODE_1580E3           
-CODE_1580CA:        LDA $0C                   
-CODE_1580CC:        AND #$F0                  
-CODE_1580CE:        JMP CODE_1580E5           
+CODE_158090:        AD 35 05      LDA $0535                 
+CODE_158093:        CD 41 05      CMP $0541                 
+CODE_158096:        D0 05         BNE CODE_15809D           
+CODE_158098:        AD 2C 07      LDA $072C                 
+CODE_15809B:        10 63         BPL CODE_158100           
+CODE_15809D:        A2 02         LDX #$02                  
+CODE_15809F:        AD 2C 07      LDA $072C                 
+CODE_1580A2:        10 06         BPL CODE_1580AA           
+CODE_1580A4:        A9 FF         LDA #$FF                  
+CODE_1580A6:        85 0B         STA $0B                   
+CODE_1580A8:        D0 02         BNE CODE_1580AC           
+CODE_1580AA:        64 0B         STZ $0B                   
+CODE_1580AC:        AD 2C 07      LDA $072C                 
+CODE_1580AF:        29 F0         AND #$F0                  
+CODE_1580B1:        18            CLC                       
+CODE_1580B2:        7D 25 07      ADC $0725,x               
+CODE_1580B5:        08            PHP                       
+CODE_1580B6:        65 0B         ADC $0B                   
+CODE_1580B8:        28            PLP                       
+CODE_1580B9:        85 0C         STA $0C                   
+CODE_1580BB:        A5 0B         LDA $0B                   
+CODE_1580BD:        D0 12         BNE CODE_1580D1           
+CODE_1580BF:        90 22         BCC CODE_1580E3           
+CODE_1580C1:        BD 25 07      LDA $0725,x               
+CODE_1580C4:        29 0F         AND #$0F                  
+CODE_1580C6:        C9 09         CMP #$09                  
+CODE_1580C8:        D0 19         BNE CODE_1580E3           
+CODE_1580CA:        A5 0C         LDA $0C                   
+CODE_1580CC:        29 F0         AND #$F0                  
+CODE_1580CE:        4C E5 80      JMP CODE_1580E5           
 
-CODE_1580D1:        BCS CODE_1580E3                   
-CODE_1580D3:        LDA $0725,x               
-CODE_1580D6:        AND #$0F                  
-CODE_1580D8:        BNE CODE_1580E3           
-CODE_1580DA:        LDA $0C                   
-CODE_1580DC:        AND #$F0                  
-CODE_1580DE:        ADC #$09                  
-CODE_1580E0:        JMP CODE_1580E5           
+CODE_1580D1:        B0 10         BCS CODE_1580E3                   
+CODE_1580D3:        BD 25 07      LDA $0725,x               
+CODE_1580D6:        29 0F         AND #$0F                  
+CODE_1580D8:        D0 09         BNE CODE_1580E3           
+CODE_1580DA:        A5 0C         LDA $0C                   
+CODE_1580DC:        29 F0         AND #$F0                  
+CODE_1580DE:        69 09         ADC #$09                  
+CODE_1580E0:        4C E5 80      JMP CODE_1580E5           
 
-CODE_1580E3:        LDA $0C                   
-CODE_1580E5:        STA $0725,x               
-CODE_1580E8:        DEX                       
-CODE_1580E9:        BPL CODE_1580AC           
-CODE_1580EB:        LDA $072C                 
-CODE_1580EE:        BPL CODE_158100           
-CODE_1580F0:        DEC $0728                 
-CODE_1580F3:        LDA $0205                 
-CODE_1580F6:        EOR #$01                  
-CODE_1580F8:        STA $0205                 
-CODE_1580FB:        LDA #$01                  
-CODE_1580FD:        STA $072B                 
-CODE_158100:        STZ $072C                 
-CODE_158103:        JSR CODE_15832E           
-CODE_158106:        RTS
+CODE_1580E3:        A5 0C         LDA $0C                   
+CODE_1580E5:        9D 25 07      STA $0725,x               
+CODE_1580E8:        CA            DEX                       
+CODE_1580E9:        10 C1         BPL CODE_1580AC           
+CODE_1580EB:        AD 2C 07      LDA $072C                 
+CODE_1580EE:        10 10         BPL CODE_158100           
+CODE_1580F0:        CE 28 07      DEC $0728                 
+CODE_1580F3:        AD 05 02      LDA $0205                 
+CODE_1580F6:        49 01         EOR #$01                  
+CODE_1580F8:        8D 05 02      STA $0205                 
+CODE_1580FB:        A9 01         LDA #$01                  
+CODE_1580FD:        8D 2B 07      STA $072B                 
+CODE_158100:        9C 2C 07      STZ $072C                 
+CODE_158103:        20 2E 83      JSR CODE_15832E           
+CODE_158106:        60            RTS
                        
-CODE_158107:        LSR A                     
-CODE_158108:        BCS CODE_158124                   
-CODE_15810A:        CPY #$01                  
-CODE_15810C:        BEQ CODE_158113           
-CODE_15810E:        LDA $0628                 
-CODE_158111:        BEQ CODE_15811A           
-CODE_158113:        LDA #$01                  
-CODE_158115:        STA $0205                 
-CODE_158118:        BRA CODE_15811D           
-CODE_15811A:        STZ $0205                 
-CODE_15811D:        STZ $020B                 
-CODE_158120:        LDA #$00                  
-CODE_158122:        BRA CODE_15813D           
+CODE_158107:        4A            LSR A                     
+CODE_158108:        B0 1A         BCS CODE_158124                   
+CODE_15810A:        C0 01         CPY #$01                  
+CODE_15810C:        F0 05         BEQ CODE_158113           
+CODE_15810E:        AD 28 06      LDA $0628                 
+CODE_158111:        F0 07         BEQ CODE_15811A           
+CODE_158113:        A9 01         LDA #$01                  
+CODE_158115:        8D 05 02      STA $0205                 
+CODE_158118:        80 03         BRA CODE_15811D           
+CODE_15811A:        9C 05 02      STZ $0205                 
+CODE_15811D:        9C 0B 02      STZ $020B                 
+CODE_158120:        A9 00         LDA #$00                  
+CODE_158122:        80 19         BRA CODE_15813D           
 
-CODE_158124:        CPY #$01                  
-CODE_158126:        BEQ CODE_15812D           
-CODE_158128:        STZ $0205                 
-CODE_15812B:        BRA CODE_15813A           
+CODE_158124:        C0 01         CPY #$01                  
+CODE_158126:        F0 05         BEQ CODE_15812D           
+CODE_158128:        9C 05 02      STZ $0205                 
+CODE_15812B:        80 0D         BRA CODE_15813A           
 
-CODE_15812D:        LDA #$01                  
-CODE_15812F:        STA $0205                 
-CODE_158132:        STA $020B                 
-CODE_158135:        LDA #$40                  
-CODE_158137:        STA $0204                 
-CODE_15813A:        LDA.w DATA_119B3C,y               
-CODE_15813D:        STA $0730                 
-CODE_158140:        RTS
+CODE_15812D:        A9 01         LDA #$01                  
+CODE_15812F:        8D 05 02      STA $0205                 
+CODE_158132:        8D 0B 02      STA $020B                 
+CODE_158135:        A9 40         LDA #$40                  
+CODE_158137:        8D 04 02      STA $0204                 
+CODE_15813A:        B9 3C 9B      LDA.w DATA_119B3C,y               
+CODE_15813D:        8D 30 07      STA $0730                 
+CODE_158140:        60            RTS
                        
-CODE_158141:        LDA $0204                 
-CODE_158144:        STA $0732                 
-CODE_158147:        LDA $0205                 
-CODE_15814A:        STA $0733                 
-CODE_15814D:        LDA $0734                 
-CODE_158150:        STA $0735                 
-CODE_158153:        INC $0736                 
-CODE_158156:        LDA.w DATA_119B3E                 
-CODE_158159:        STA $0535                 
-CODE_15815C:        JSR CODE_158107           
-CODE_15815F:        LDA #$00                  
-CODE_158161:        STA $0204                 
-CODE_158164:        STA $0737                 
-CODE_158167:        LDA.w DATA_119B3E                 
-CODE_15816A:        STA $0734                 
-CODE_15816D:        LDA.w DATA_119B3E                 
-CODE_158170:        STA $0725                 
-CODE_158173:        LDA #$E0                  
-CODE_158175:        STA $0730                 
-CODE_158178:        LDA.w DATA_119B3E                 
-CODE_15817B:        CLC                       
-CODE_15817C:        ADC #$F0                  
-CODE_15817E:        STA $072A                 
-CODE_158181:        RTL
+CODE_158141:        AD 04 02      LDA $0204                 
+CODE_158144:        8D 32 07      STA $0732                 
+CODE_158147:        AD 05 02      LDA $0205                 
+CODE_15814A:        8D 33 07      STA $0733                 
+CODE_15814D:        AD 34 07      LDA $0734                 
+CODE_158150:        8D 35 07      STA $0735                 
+CODE_158153:        EE 36 07      INC $0736                 
+CODE_158156:        AD 3E 9B      LDA.w DATA_119B3E                 
+CODE_158159:        8D 35 05      STA $0535                 
+CODE_15815C:        20 07 81      JSR CODE_158107           
+CODE_15815F:        A9 00         LDA #$00                  
+CODE_158161:        8D 04 02      STA $0204                 
+CODE_158164:        8D 37 07      STA $0737                 
+CODE_158167:        AD 3E 9B      LDA.w DATA_119B3E                 
+CODE_15816A:        8D 34 07      STA $0734                 
+CODE_15816D:        AD 3E 9B      LDA.w DATA_119B3E                 
+CODE_158170:        8D 25 07      STA $0725                 
+CODE_158173:        A9 E0         LDA #$E0                  
+CODE_158175:        8D 30 07      STA $0730                 
+CODE_158178:        AD 3E 9B      LDA.w DATA_119B3E                 
+CODE_15817B:        18            CLC                       
+CODE_15817C:        69 F0         ADC #$F0                  
+CODE_15817E:        8D 2A 07      STA $072A                 
+CODE_158181:        6B            RTL
                        
-CODE_158182:        LDA $0732                 
-CODE_158185:        STA $0204                 
-CODE_158188:        STA $0737                 
-CODE_15818B:        LDA $0733                 
-CODE_15818E:        STA $0205                 
-CODE_158191:        LDA $0735                 
-CODE_158194:        STA $0734                 
-CODE_158197:        LDA $0736                 
-CODE_15819A:        BNE CODE_1581BC           
-CODE_15819C:        INC $0738                 
-CODE_15819F:        INC $0736                 
-CODE_1581A2:        INC $D5                   
-CODE_1581A4:        LDA $0726                 
-CODE_1581A7:        STA $0725                 
-CODE_1581AA:        LDA #$10                  
-CODE_1581AC:        STA $01                   
-CODE_1581AE:        LDA #$F0                  
-CODE_1581B0:        STA $0730                 
-CODE_1581B3:        STA $072B                 
-CODE_1581B6:        LDA $0727                 
-CODE_1581B9:        STA $072A                 
-CODE_1581BC:        RTL
+CODE_158182:        AD 32 07      LDA $0732                 
+CODE_158185:        8D 04 02      STA $0204                 
+CODE_158188:        8D 37 07      STA $0737                 
+CODE_15818B:        AD 33 07      LDA $0733                 
+CODE_15818E:        8D 05 02      STA $0205                 
+CODE_158191:        AD 35 07      LDA $0735                 
+CODE_158194:        8D 34 07      STA $0734                 
+CODE_158197:        AD 36 07      LDA $0736                 
+CODE_15819A:        D0 20         BNE CODE_1581BC           
+CODE_15819C:        EE 38 07      INC $0738                 
+CODE_15819F:        EE 36 07      INC $0736                 
+CODE_1581A2:        E6 D5         INC $D5                   
+CODE_1581A4:        AD 26 07      LDA $0726                 
+CODE_1581A7:        8D 25 07      STA $0725                 
+CODE_1581AA:        A9 10         LDA #$10                  
+CODE_1581AC:        85 01         STA $01                   
+CODE_1581AE:        A9 F0         LDA #$F0                  
+CODE_1581B0:        8D 30 07      STA $0730                 
+CODE_1581B3:        8D 2B 07      STA $072B                 
+CODE_1581B6:        AD 27 07      LDA $0727                 
+CODE_1581B9:        8D 2A 07      STA $072A                 
+CODE_1581BC:        6B            RTL
                        
-CODE_1581BD:        LDX #$00                  
-CODE_1581BF:        STX $0739                 
-CODE_1581C2:        STX $073A                 
-CODE_1581C5:        STX $D8                   
-CODE_1581C7:        JSL CODE_158236           
-CODE_1581CB:        JSL CODE_15826D           
-CODE_1581CF:        LDA $0730                 
-CODE_1581D2:        CMP $073B                 
-CODE_1581D5:        BNE CODE_1581F1           
-CODE_1581D7:        BRA CODE_1581F1           
+CODE_1581BD:        A2 00         LDX #$00                  
+CODE_1581BF:        8E 39 07      STX $0739                 
+CODE_1581C2:        8E 3A 07      STX $073A                 
+CODE_1581C5:        86 D8         STX $D8                   
+CODE_1581C7:        22 36 82 15   JSL CODE_158236           
+CODE_1581CB:        22 6D 82 15   JSL CODE_15826D           
+CODE_1581CF:        AD 30 07      LDA $0730                 
+CODE_1581D2:        CD 3B 07      CMP $073B                 
+CODE_1581D5:        D0 1A         BNE CODE_1581F1           
+CODE_1581D7:        80 18         BRA CODE_1581F1           
 
-CODE_1581D9:        LDA $072B                 
-CODE_1581DC:        CLC                       
-CODE_1581DD:        ADC #$01                  
-CODE_1581DF:        CMP $073C                 
-CODE_1581E2:        BNE CODE_1581F1           
-CODE_1581E4:        STZ $0729                 
-CODE_1581E7:        STZ $0736                 
-CODE_1581EA:        STZ $0738                 
-CODE_1581ED:        INC $0739                 
-CODE_1581F0:        RTL
+CODE_1581D9:        AD 2B 07      LDA $072B                 
+CODE_1581DC:        18            CLC                       
+CODE_1581DD:        69 01         ADC #$01                  
+CODE_1581DF:        CD 3C 07      CMP $073C                 
+CODE_1581E2:        D0 0D         BNE CODE_1581F1           
+CODE_1581E4:        9C 29 07      STZ $0729                 
+CODE_1581E7:        9C 36 07      STZ $0736                 
+CODE_1581EA:        9C 38 07      STZ $0738                 
+CODE_1581ED:        EE 39 07      INC $0739                 
+CODE_1581F0:        6B            RTL
                        
-CODE_1581F1:        LDA $0725                 
-CODE_1581F4:        CMP $072A                 
-CODE_1581F7:        BEQ CODE_1581E4           
-CODE_1581F9:        LDX #$00                  
-CODE_1581FB:        JSL CODE_15821B           
-CODE_1581FF:        RTL                       
+CODE_1581F1:        AD 25 07      LDA $0725                 
+CODE_1581F4:        CD 2A 07      CMP $072A                 
+CODE_1581F7:        F0 EB         BEQ CODE_1581E4           
+CODE_1581F9:        A2 00         LDX #$00                  
+CODE_1581FB:        22 1B 82 15   JSL CODE_15821B           
+CODE_1581FF:        6B            RTL                       
 
-CODE_158200:        LDA $0725,x               
-CODE_158203:        SEC                       
-CODE_158204:        SBC #$10                  
-CODE_158206:        STA $0725,x               
-CODE_158209:        BCS CODE_15821A                   
-CODE_15820B:        DEC $0725,x               
-CODE_15820E:        LDA $0725,x               
-CODE_158211:        CMP #$EF                  
-CODE_158213:        BNE CODE_15821A           
-CODE_158215:        LDA #$F9                  
-CODE_158217:        STA $0725,x               
-CODE_15821A:        RTL                       
+CODE_158200:        BD 25 07      LDA $0725,x               
+CODE_158203:        38            SEC                       
+CODE_158204:        E9 10         SBC #$10                  
+CODE_158206:        9D 25 07      STA $0725,x               
+CODE_158209:        B0 0F         BCS CODE_15821A                   
+CODE_15820B:        DE 25 07      DEC $0725,x               
+CODE_15820E:        BD 25 07      LDA $0725,x               
+CODE_158211:        C9 EF         CMP #$EF                  
+CODE_158213:        D0 05         BNE CODE_15821A           
+CODE_158215:        A9 F9         LDA #$F9                  
+CODE_158217:        9D 25 07      STA $0725,x               
+CODE_15821A:        6B            RTL                       
 
-CODE_15821B:        LDA $0725,x               
-CODE_15821E:        CLC                       
-CODE_15821F:        ADC #$10                  
-CODE_158221:        STA $0725,x               
-CODE_158224:        BCC CODE_158235           
-CODE_158226:        INC $0725,x               
-CODE_158229:        LDA $0725,x               
-CODE_15822C:        CMP #$0A                  
-CODE_15822E:        BNE CODE_158235           
-CODE_158230:        LDA #$00                  
-CODE_158232:        STA $0725,x               
-CODE_158235:        RTL                       
+CODE_15821B:        BD 25 07      LDA $0725,x               
+CODE_15821E:        18            CLC                       
+CODE_15821F:        69 10         ADC #$10                  
+CODE_158221:        9D 25 07      STA $0725,x               
+CODE_158224:        90 0F         BCC CODE_158235           
+CODE_158226:        FE 25 07      INC $0725,x               
+CODE_158229:        BD 25 07      LDA $0725,x               
+CODE_15822C:        C9 0A         CMP #$0A                  
+CODE_15822E:        D0 05         BNE CODE_158235           
+CODE_158230:        A9 00         LDA #$00                  
+CODE_158232:        9D 25 07      STA $0725,x               
+CODE_158235:        6B            RTL                       
 
-CODE_158236:        STY $0F                   
-CODE_158238:        LDA $0725,x               
-CODE_15823B:        AND #$0F                  
-CODE_15823D:        TAY                       
-CODE_15823E:        LDA.w DATA_11AB1B,y               
-CODE_158241:        STA $073F                 
-CODE_158244:        LDA.w DATA_11AB25,y               
-CODE_158247:        STA $0740                 
-CODE_15824A:        LDA #$7F                  
-CODE_15824C:        STA $0741                 
-CODE_15824F:        LDA $0725,x               
-CODE_158252:        LSR A                     
-CODE_158253:        LSR A                     
-CODE_158254:        LSR A                     
-CODE_158255:        LSR A                     
-CODE_158256:        STA $0742                 
-CODE_158259:        ASL A                     
-CODE_15825A:        STA $073C                 
-CODE_15825D:        LDY #$00                  
-CODE_15825F:        LDA $0725,x               
-CODE_158262:        LSR A                     
-CODE_158263:        BCS CODE_158267                   
-CODE_158265:        LDY #$04                  
-CODE_158267:        STY $073B                 
-CODE_15826A:        LDY $0F                   
-CODE_15826C:        RTL                       
+CODE_158236:        84 0F         STY $0F                   
+CODE_158238:        BD 25 07      LDA $0725,x               
+CODE_15823B:        29 0F         AND #$0F                  
+CODE_15823D:        A8            TAY                       
+CODE_15823E:        B9 1B AB      LDA.w DATA_11AB1B,y               
+CODE_158241:        8D 3F 07      STA $073F                 
+CODE_158244:        B9 25 AB      LDA.w DATA_11AB25,y               
+CODE_158247:        8D 40 07      STA $0740                 
+CODE_15824A:        A9 7F         LDA #$7F                  
+CODE_15824C:        8D 41 07      STA $0741                 
+CODE_15824F:        BD 25 07      LDA $0725,x               
+CODE_158252:        4A            LSR A                     
+CODE_158253:        4A            LSR A                     
+CODE_158254:        4A            LSR A                     
+CODE_158255:        4A            LSR A                     
+CODE_158256:        8D 42 07      STA $0742                 
+CODE_158259:        0A            ASL A                     
+CODE_15825A:        8D 3C 07      STA $073C                 
+CODE_15825D:        A0 00         LDY #$00                  
+CODE_15825F:        BD 25 07      LDA $0725,x               
+CODE_158262:        4A            LSR A                     
+CODE_158263:        B0 02         BCS CODE_158267                   
+CODE_158265:        A0 04         LDY #$04                  
+CODE_158267:        8C 3B 07      STY $073B                 
+CODE_15826A:        A4 0F         LDY $0F                   
+CODE_15826C:        6B            RTL                       
 
-CODE_15826D:        LDA $7F0800               
-CODE_158271:        TAX                       
-CODE_158272:        LDA $073F                 
-CODE_158275:        STA $C4                   
-CODE_158277:        LDA $0740                 
-CODE_15827A:        STA $C5                   
-CODE_15827C:        LDA $0741                 
-CODE_15827F:        STA $C6                   
-CODE_158281:        REP #$20                  
-CODE_158283:        LDA $073B                 
-CODE_158286:        CLC                       
-CODE_158287:        ADC #$0048                
-CODE_15828A:        STA $7F0802,x             
-CODE_15828E:        XBA                       
-CODE_15828F:        CLC                       
-CODE_158290:        ADC #$0001                
-CODE_158293:        XBA                       
-CODE_158294:        STA $7F0842,x             
-CODE_158298:        INX                       
-CODE_158299:        INX                       
-CODE_15829A:        LDA #$3C00                
-CODE_15829D:        STA $7F0802,x             
-CODE_1582A1:        STA $7F0842,x             
-CODE_1582A5:        INX                       
-CODE_1582A6:        INX                       
-CODE_1582A7:        SEP #$20                  
-CODE_1582A9:        STZ $0743                 
-CODE_1582AC:        STZ $074F                 
-CODE_1582AF:        LDA $0744                 
-CODE_1582B2:        STA $00                   
-CODE_1582B4:        LDA $0745                 
-CODE_1582B7:        STA $01                   
-CODE_1582B9:        LDA $0746                 
-CODE_1582BC:        STA $02                   
-CODE_1582BE:        LDY $0742                 
-CODE_1582C1:        REP #$30                  
-CODE_1582C3:        LDA [$C4],y               
-CODE_1582C5:        AND #$00FF                
-CODE_1582C8:        CMP #$00FF                
-CODE_1582CB:        BNE CODE_1582DD           
-CODE_1582CD:        LDA.l DATA_15934F               
-CODE_1582D1:        STA $00                   
-CODE_1582D3:        LDA #$0015                
-CODE_1582D6:        STA $02                   
-CODE_1582D8:        LDY #$0000                
-CODE_1582DB:        BRA CODE_1582E1           
+CODE_15826D:        AF 00 08 7F   LDA $7F0800               
+CODE_158271:        AA            TAX                       
+CODE_158272:        AD 3F 07      LDA $073F                 
+CODE_158275:        85 C4         STA $C4                   
+CODE_158277:        AD 40 07      LDA $0740                 
+CODE_15827A:        85 C5         STA $C5                   
+CODE_15827C:        AD 41 07      LDA $0741                 
+CODE_15827F:        85 C6         STA $C6                   
+CODE_158281:        C2 20         REP #$20                  
+CODE_158283:        AD 3B 07      LDA $073B                 
+CODE_158286:        18            CLC                       
+CODE_158287:        69 48 00      ADC #$0048                
+CODE_15828A:        9F 02 08 7F   STA $7F0802,x             
+CODE_15828E:        EB            XBA                       
+CODE_15828F:        18            CLC                       
+CODE_158290:        69 01 00      ADC #$0001                
+CODE_158293:        EB            XBA                       
+CODE_158294:        9F 42 08 7F   STA $7F0842,x             
+CODE_158298:        E8            INX                       
+CODE_158299:        E8            INX                       
+CODE_15829A:        A9 00 3C      LDA #$3C00                
+CODE_15829D:        9F 02 08 7F   STA $7F0802,x             
+CODE_1582A1:        9F 42 08 7F   STA $7F0842,x             
+CODE_1582A5:        E8            INX                       
+CODE_1582A6:        E8            INX                       
+CODE_1582A7:        E2 20         SEP #$20                  
+CODE_1582A9:        9C 43 07      STZ $0743                 
+CODE_1582AC:        9C 4F 07      STZ $074F                 
+CODE_1582AF:        AD 44 07      LDA $0744                 
+CODE_1582B2:        85 00         STA $00                   
+CODE_1582B4:        AD 45 07      LDA $0745                 
+CODE_1582B7:        85 01         STA $01                   
+CODE_1582B9:        AD 46 07      LDA $0746                 
+CODE_1582BC:        85 02         STA $02                   
+CODE_1582BE:        AC 42 07      LDY $0742                 
+CODE_1582C1:        C2 30         REP #$30                  
+CODE_1582C3:        B7 C4         LDA [$C4],y               
+CODE_1582C5:        29 FF 00      AND #$00FF                
+CODE_1582C8:        C9 FF 00      CMP #$00FF                
+CODE_1582CB:        D0 10         BNE CODE_1582DD           
+CODE_1582CD:        AF 4F 93 15   LDA.l DATA_15934F               
+CODE_1582D1:        85 00         STA $00                   
+CODE_1582D3:        A9 15 00      LDA #$0015                
+CODE_1582D6:        85 02         STA $02                   
+CODE_1582D8:        A0 00 00      LDY #$0000                
+CODE_1582DB:        80 04         BRA CODE_1582E1           
 
-CODE_1582DD:        ASL A                     
-CODE_1582DE:        ASL A                     
-CODE_1582DF:        ASL A                     
-CODE_1582E0:        TAY                       
-CODE_1582E1:        LDA [$00],y               
-CODE_1582E3:        STA $7F0802,x             
-CODE_1582E7:        INY                       
-CODE_1582E8:        INY                       
-CODE_1582E9:        LDA [$00],y               
-CODE_1582EB:        STA $7F0842,x             
-CODE_1582EF:        INY                       
-CODE_1582F0:        INY                       
-CODE_1582F1:        LDA [$00],y               
-CODE_1582F3:        STA $7F0804,x             
-CODE_1582F7:        INY                       
-CODE_1582F8:        INY                       
-CODE_1582F9:        LDA [$00],y               
-CODE_1582FB:        STA $7F0844,x             
-CODE_1582FF:        SEP #$30                  
-CODE_158301:        INC $0743                 
-CODE_158304:        INX                       
-CODE_158305:        INX                       
-CODE_158306:        INX                       
-CODE_158307:        INX                       
-CODE_158308:        LDA $0742                 
-CODE_15830B:        CLC                       
-CODE_15830C:        ADC #$10                  
-CODE_15830E:        STA $0742                 
-CODE_158311:        LDA $0743                 
-CODE_158314:        CMP #$0F                  
-CODE_158316:        BCC CODE_1582AF           
-CODE_158318:        LDA #$FF                  
-CODE_15831A:        STA $7F0842,x             
-CODE_15831E:        TXA                       
-CODE_15831F:        CLC                       
-CODE_158320:        ADC #$40                  
-CODE_158322:        STA $7F0800               
-CODE_158326:        INC $073A                 
-CODE_158329:        RTL                       
+CODE_1582DD:        0A            ASL A                     
+CODE_1582DE:        0A            ASL A                     
+CODE_1582DF:        0A            ASL A                     
+CODE_1582E0:        A8            TAY                       
+CODE_1582E1:        B7 00         LDA [$00],y               
+CODE_1582E3:        9F 02 08 7F   STA $7F0802,x             
+CODE_1582E7:        C8            INY                       
+CODE_1582E8:        C8            INY                       
+CODE_1582E9:        B7 00         LDA [$00],y               
+CODE_1582EB:        9F 42 08 7F   STA $7F0842,x             
+CODE_1582EF:        C8            INY                       
+CODE_1582F0:        C8            INY                       
+CODE_1582F1:        B7 00         LDA [$00],y               
+CODE_1582F3:        9F 04 08 7F   STA $7F0804,x             
+CODE_1582F7:        C8            INY                       
+CODE_1582F8:        C8            INY                       
+CODE_1582F9:        B7 00         LDA [$00],y               
+CODE_1582FB:        9F 44 08 7F   STA $7F0844,x             
+CODE_1582FF:        E2 30         SEP #$30                  
+CODE_158301:        EE 43 07      INC $0743                 
+CODE_158304:        E8            INX                       
+CODE_158305:        E8            INX                       
+CODE_158306:        E8            INX                       
+CODE_158307:        E8            INX                       
+CODE_158308:        AD 42 07      LDA $0742                 
+CODE_15830B:        18            CLC                       
+CODE_15830C:        69 10         ADC #$10                  
+CODE_15830E:        8D 42 07      STA $0742                 
+CODE_158311:        AD 43 07      LDA $0743                 
+CODE_158314:        C9 0F         CMP #$0F                  
+CODE_158316:        90 97         BCC CODE_1582AF           
+CODE_158318:        A9 FF         LDA #$FF                  
+CODE_15831A:        9F 42 08 7F   STA $7F0842,x             
+CODE_15831E:        8A            TXA                       
+CODE_15831F:        18            CLC                       
+CODE_158320:        69 40         ADC #$40                  
+CODE_158322:        8F 00 08 7F   STA $7F0800               
+CODE_158326:        EE 3A 07      INC $073A                 
+CODE_158329:        6B            RTL                       
 
 DATA_15832A:        db $00,$40,$80,$C0
 
-CODE_15832E:        LDA $0772                 
-CODE_158331:        BEQ CODE_158342           
-CODE_158333:        LDA $0200                 
-CODE_158336:        STA $0204                 
-CODE_158339:        LDA $0201                 
-CODE_15833C:        STA $0205                 
-CODE_15833F:        BRL CODE_1583E6           
+CODE_15832E:        AD 72 07      LDA $0772                 
+CODE_158331:        F0 0F         BEQ CODE_158342           
+CODE_158333:        AD 00 02      LDA $0200                 
+CODE_158336:        8D 04 02      STA $0204                 
+CODE_158339:        AD 01 02      LDA $0201                 
+CODE_15833C:        8D 05 02      STA $0205                 
+CODE_15833F:        82 A4 00      BRL CODE_1583E6           
 
-CODE_158342:        LDA $0535                 
-CODE_158345:        AND #$04                  
-CODE_158347:        BNE CODE_158399           
-CODE_158349:        LDA $0535                 
-CODE_15834C:        AND #$07                  
-CODE_15834E:        BNE CODE_158365           
-CODE_158350:        LDA $0201                 
-CODE_158353:        BNE CODE_158365           
-CODE_158355:        STZ $0205                 
-CODE_158358:        LDA $0200                 
-CODE_15835B:        LSR A                     
-CODE_15835C:        LSR A                     
-CODE_15835D:        ORA #$C0                  
-CODE_15835F:        STA $0204                 
-CODE_158362:        JMP CODE_1583E6           
+CODE_158342:        AD 35 05      LDA $0535                 
+CODE_158345:        29 04         AND #$04                  
+CODE_158347:        D0 50         BNE CODE_158399           
+CODE_158349:        AD 35 05      LDA $0535                 
+CODE_15834C:        29 07         AND #$07                  
+CODE_15834E:        D0 15         BNE CODE_158365           
+CODE_158350:        AD 01 02      LDA $0201                 
+CODE_158353:        D0 10         BNE CODE_158365           
+CODE_158355:        9C 05 02      STZ $0205                 
+CODE_158358:        AD 00 02      LDA $0200                 
+CODE_15835B:        4A            LSR A                     
+CODE_15835C:        4A            LSR A                     
+CODE_15835D:        09 C0         ORA #$C0                  
+CODE_15835F:        8D 04 02      STA $0204                 
+CODE_158362:        4C E6 83      JMP CODE_1583E6           
 
-CODE_158365:        LDA #$01                  
-CODE_158367:        STA $0205                 
-CODE_15836A:        LDA $0200                 
-CODE_15836D:        LSR A                     
-CODE_15836E:        LSR A                     
-CODE_15836F:        STA $0204                 
-CODE_158372:        LDA $0535                 
-CODE_158375:        AND #$03                  
-CODE_158377:        TAX                       
-CODE_158378:        LDA $0535                 
-CODE_15837B:        AND #$01                  
-CODE_15837D:        BEQ CODE_158386           
-CODE_15837F:        LDA $0201                 
-CODE_158382:        BEQ CODE_15838C           
-CODE_158384:        BRA CODE_15838B           
+CODE_158365:        A9 01         LDA #$01                  
+CODE_158367:        8D 05 02      STA $0205                 
+CODE_15836A:        AD 00 02      LDA $0200                 
+CODE_15836D:        4A            LSR A                     
+CODE_15836E:        4A            LSR A                     
+CODE_15836F:        8D 04 02      STA $0204                 
+CODE_158372:        AD 35 05      LDA $0535                 
+CODE_158375:        29 03         AND #$03                  
+CODE_158377:        AA            TAX                       
+CODE_158378:        AD 35 05      LDA $0535                 
+CODE_15837B:        29 01         AND #$01                  
+CODE_15837D:        F0 07         BEQ CODE_158386           
+CODE_15837F:        AD 01 02      LDA $0201                 
+CODE_158382:        F0 08         BEQ CODE_15838C           
+CODE_158384:        80 05         BRA CODE_15838B           
 
-CODE_158386:        LDA $0201                 
-CODE_158389:        BNE CODE_15838C           
-CODE_15838B:        DEX                       
-CODE_15838C:        LDA.l DATA_15832A,x             
-CODE_158390:        CLC                       
-CODE_158391:        ADC $0204                 
-CODE_158394:        STA $0204                 
-CODE_158397:        BRA CODE_1583E6           
+CODE_158386:        AD 01 02      LDA $0201                 
+CODE_158389:        D0 01         BNE CODE_15838C           
+CODE_15838B:        CA            DEX                       
+CODE_15838C:        BF 2A 83 15   LDA.l DATA_15832A,x             
+CODE_158390:        18            CLC                       
+CODE_158391:        6D 04 02      ADC $0204                 
+CODE_158394:        8D 04 02      STA $0204                 
+CODE_158397:        80 4D         BRA CODE_1583E6           
 
-CODE_158399:        LDA $0535                 
-CODE_15839C:        CMP #$04                  
-CODE_15839E:        BNE CODE_1583B6           
-CODE_1583A0:        LDA $0201                 
-CODE_1583A3:        BNE CODE_1583B6           
-CODE_1583A5:        LDA #$01                  
-CODE_1583A7:        STA $0205                 
-CODE_1583AA:        LDA $0200                 
-CODE_1583AD:        LSR A                     
-CODE_1583AE:        LSR A                     
-CODE_1583AF:        ORA #$C0                  
-CODE_1583B1:        STA $0204                 
-CODE_1583B4:        BRA CODE_1583E6           
+CODE_158399:        AD 35 05      LDA $0535                 
+CODE_15839C:        C9 04         CMP #$04                  
+CODE_15839E:        D0 16         BNE CODE_1583B6           
+CODE_1583A0:        AD 01 02      LDA $0201                 
+CODE_1583A3:        D0 11         BNE CODE_1583B6           
+CODE_1583A5:        A9 01         LDA #$01                  
+CODE_1583A7:        8D 05 02      STA $0205                 
+CODE_1583AA:        AD 00 02      LDA $0200                 
+CODE_1583AD:        4A            LSR A                     
+CODE_1583AE:        4A            LSR A                     
+CODE_1583AF:        09 C0         ORA #$C0                  
+CODE_1583B1:        8D 04 02      STA $0204                 
+CODE_1583B4:        80 30         BRA CODE_1583E6           
 
-CODE_1583B6:        STZ $0205                 
-CODE_1583B9:        LDA $0200                 
-CODE_1583BC:        LSR A                     
-CODE_1583BD:        LSR A                     
-CODE_1583BE:        STA $0204                 
-CODE_1583C1:        LDA $0535                 
-CODE_1583C4:        AND #$03                  
-CODE_1583C6:        TAX                       
-CODE_1583C7:        LDA $0535                 
-CODE_1583CA:        AND #$01                  
-CODE_1583CC:        BEQ CODE_1583D5           
-CODE_1583CE:        LDA $0201                 
-CODE_1583D1:        BEQ CODE_1583DB           
-CODE_1583D3:        BRA CODE_1583DA           
+CODE_1583B6:        9C 05 02      STZ $0205                 
+CODE_1583B9:        AD 00 02      LDA $0200                 
+CODE_1583BC:        4A            LSR A                     
+CODE_1583BD:        4A            LSR A                     
+CODE_1583BE:        8D 04 02      STA $0204                 
+CODE_1583C1:        AD 35 05      LDA $0535                 
+CODE_1583C4:        29 03         AND #$03                  
+CODE_1583C6:        AA            TAX                       
+CODE_1583C7:        AD 35 05      LDA $0535                 
+CODE_1583CA:        29 01         AND #$01                  
+CODE_1583CC:        F0 07         BEQ CODE_1583D5           
+CODE_1583CE:        AD 01 02      LDA $0201                 
+CODE_1583D1:        F0 08         BEQ CODE_1583DB           
+CODE_1583D3:        80 05         BRA CODE_1583DA           
 
-CODE_1583D5:        LDA $0201                 
-CODE_1583D8:        BNE CODE_1583DB           
-CODE_1583DA:        DEX                       
-CODE_1583DB:        LDA.l DATA_15832A,x             
-CODE_1583DF:        CLC                       
-CODE_1583E0:        ADC $0204                 
-CODE_1583E3:        STA $0204                 
-CODE_1583E6:        LDA $0204                 
-CODE_1583E9:        AND #$F0                  
-CODE_1583EB:        STA $0750                 
-CODE_1583EE:        STZ $0751                 
-CODE_1583F1:        RTS                       
+CODE_1583D5:        AD 01 02      LDA $0201                 
+CODE_1583D8:        D0 01         BNE CODE_1583DB           
+CODE_1583DA:        CA            DEX                       
+CODE_1583DB:        BF 2A 83 15   LDA.l DATA_15832A,x             
+CODE_1583DF:        18            CLC                       
+CODE_1583E0:        6D 04 02      ADC $0204                 
+CODE_1583E3:        8D 04 02      STA $0204                 
+CODE_1583E6:        AD 04 02      LDA $0204                 
+CODE_1583E9:        29 F0         AND #$F0                  
+CODE_1583EB:        8D 50 07      STA $0750                 
+CODE_1583EE:        9C 51 07      STZ $0751                 
+CODE_1583F1:        60            RTS                       
 
-CODE_1583F2:        LDX $0533                ; \ Get room + level number into index.
-CODE_1583F5:        LDA.l DATA_11D098,x      ;  |
-CODE_1583F9:        CLC                      ;  |
-CODE_1583FA:        ADC $0534                ;  |
-CODE_1583FD:        TAX                      ;  |
-CODE_1583FE:        LDA.l DATA_15916B,x      ;  | Load which set of Layer 3 Map16 tiles to use (the cloud tiles or the light beams of the shining door) 
-CODE_158402:        ASL A                    ;  | Multiply by 2.
-CODE_158403:        TAX                      ;  |
-CODE_158404:        LDA.l PNTR_159233,x        ;  | Get low byte of Map16 table.   
-CODE_158408:        STA $0744                ;  |
-CODE_15840B:        INX                      ;  |
-CODE_15840C:        LDA.l PNTR_159233,x        ;  | Get high byte of Map16 table.   
-CODE_158410:        STA $0745                ;  |
-CODE_158413:        LDA #$15                 ;  | Bank number = $15.
-CODE_158415:        STA $0746                ; /
-CODE_158418:        RTS                      ; Return.
+CODE_1583F2:        AE 33 05      LDX $0533                ; \ Get room + level number into index.
+CODE_1583F5:        BF 98 D0 11   LDA.l DATA_11D098,x      ;  |
+CODE_1583F9:        18            CLC                      ;  |
+CODE_1583FA:        6D 34 05      ADC $0534                ;  |
+CODE_1583FD:        AA            TAX                      ;  |
+CODE_1583FE:        BF 6B 91 15   LDA.l DATA_15916B,x      ;  | Load which set of Layer 3 Map16 tiles to use (the cloud tiles or the light beams of the shining door) 
+CODE_158402:        0A            ASL A                    ;  | Multiply by 2.
+CODE_158403:        AA            TAX                      ;  |
+CODE_158404:        BF 33 92 15   LDA.l PNTR_159233,x        ;  | Get low byte of Map16 table.   
+CODE_158408:        8D 44 07      STA $0744                ;  |
+CODE_15840B:        E8            INX                      ;  |
+CODE_15840C:        BF 33 92 15   LDA.l PNTR_159233,x        ;  | Get high byte of Map16 table.   
+CODE_158410:        8D 45 07      STA $0745                ;  |
+CODE_158413:        A9 15         LDA #$15                 ;  | Bank number = $15.
+CODE_158415:        8D 46 07      STA $0746                ; /
+CODE_158418:        60            RTS                      ; Return.
 
-CODE_158419:        LDX #$44                  
-CODE_15841B:        LDY #$00                  
-CODE_15841D:        LDA $0628                 
-CODE_158420:        CMP #$01                  
-CODE_158422:        BNE CODE_158428           
-CODE_158424:        LDX #$84                  
-CODE_158426:        BRA CODE_15842F           
+CODE_158419:        A2 44         LDX #$44                  
+CODE_15841B:        A0 00         LDY #$00                  
+CODE_15841D:        AD 28 06      LDA $0628                 
+CODE_158420:        C9 01         CMP #$01                  
+CODE_158422:        D0 04         BNE CODE_158428           
+CODE_158424:        A2 84         LDX #$84                  
+CODE_158426:        80 07         BRA CODE_15842F           
 
-CODE_158428:        LDA $EB                   
-CODE_15842A:        BEQ CODE_15842F           
-CODE_15842C:        LDX #$40                  
-CODE_15842E:        INY                       
-CODE_15842F:        STX $03                   
-CODE_158431:        STZ $04                   
-CODE_158433:        TYA                       
-CODE_158434:        ORA #$80                  
-CODE_158436:        STA $2115                 
-CODE_158439:        LDA #$7F                  
-CODE_15843B:        STA $4314                 
-CODE_15843E:        REP #$10                  
-CODE_158440:        LDX #$1801                
-CODE_158443:        STX $4310                 
-CODE_158446:        LDX #$0002                
-CODE_158449:        LDA $7F0800,x             
-CODE_15844D:        BMI CODE_15847F           
-CODE_15844F:        REP #$20                  
-CODE_158451:        LDA $7F0800,x             
-CODE_158455:        XBA                       
-CODE_158456:        STA $2116                 
-CODE_158459:        LDA $7F0802,x             
-CODE_15845D:        XBA                       
-CODE_15845E:        STA $4315                 
-CODE_158461:        TXA                       
-CODE_158462:        CLC                       
-CODE_158463:        ADC #$0004                
-CODE_158466:        CLC                       
-CODE_158467:        ADC #$0800                
-CODE_15846A:        STA $4312                 
-CODE_15846D:        TXA                       
-CODE_15846E:        CLC                       
-CODE_15846F:        ADC $03                   
-CODE_158471:        TAX                       
-CODE_158472:        SEP #$20                  
-CODE_158474:        LDA #$02                  
-CODE_158476:        STA $420B                 
-CODE_158479:        LDA $7F0800,x             
-CODE_15847D:        BPL CODE_15844F           
-CODE_15847F:        SEP #$30                  
-CODE_158481:        RTL                       
+CODE_158428:        A5 EB         LDA $EB                   
+CODE_15842A:        F0 03         BEQ CODE_15842F           
+CODE_15842C:        A2 40         LDX #$40                  
+CODE_15842E:        C8            INY                       
+CODE_15842F:        86 03         STX $03                   
+CODE_158431:        64 04         STZ $04                   
+CODE_158433:        98            TYA                       
+CODE_158434:        09 80         ORA #$80                  
+CODE_158436:        8D 15 21      STA $2115                 
+CODE_158439:        A9 7F         LDA #$7F                  
+CODE_15843B:        8D 14 43      STA $4314                 
+CODE_15843E:        C2 10         REP #$10                  
+CODE_158440:        A2 01 18      LDX #$1801                
+CODE_158443:        8E 10 43      STX $4310                 
+CODE_158446:        A2 02 00      LDX #$0002                
+CODE_158449:        BF 00 08 7F   LDA $7F0800,x             
+CODE_15844D:        30 30         BMI CODE_15847F           
+CODE_15844F:        C2 20         REP #$20                  
+CODE_158451:        BF 00 08 7F   LDA $7F0800,x             
+CODE_158455:        EB            XBA                       
+CODE_158456:        8D 16 21      STA $2116                 
+CODE_158459:        BF 02 08 7F   LDA $7F0802,x             
+CODE_15845D:        EB            XBA                       
+CODE_15845E:        8D 15 43      STA $4315                 
+CODE_158461:        8A            TXA                       
+CODE_158462:        18            CLC                       
+CODE_158463:        69 04 00      ADC #$0004                
+CODE_158466:        18            CLC                       
+CODE_158467:        69 00 08      ADC #$0800                
+CODE_15846A:        8D 12 43      STA $4312                 
+CODE_15846D:        8A            TXA                       
+CODE_15846E:        18            CLC                       
+CODE_15846F:        65 03         ADC $03                   
+CODE_158471:        AA            TAX                       
+CODE_158472:        E2 20         SEP #$20                  
+CODE_158474:        A9 02         LDA #$02                  
+CODE_158476:        8D 0B 42      STA $420B                 
+CODE_158479:        BF 00 08 7F   LDA $7F0800,x             
+CODE_15847D:        10 D0         BPL CODE_15844F           
+CODE_15847F:        E2 30         SEP #$30                  
+CODE_158481:        6B            RTL                       
 
 DATA_158482:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty.
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  |
@@ -538,366 +538,366 @@ DATA_158482:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty.
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  |
                     db $FF,$FF,$FF,$FF,$FF,$FF              ; /
 
-CODE_158500:        LDA $0724
-CODE_158503:        BNE CODE_158554
-CODE_158505:        LDA #$02
-CODE_158507:        STA $073B               
-CODE_15850A:        LDA $0772   
-CODE_15850D:        BNE CODE_158523           
-CODE_15850F:        LDX $0535                 
-CODE_158512:        LDA.l DATA_11D038,x             
-CODE_158516:        STA $0725                 
-CODE_158519:        STA $0726                 
-CODE_15851C:        LDA.l DATA_11D042,x             
-CODE_158520:        STA $0727                 
-CODE_158523:        LDA $0535                 
-CODE_158526:        LDY #$00                  
-CODE_158528:        JSR CODE_158107           
-CODE_15852B:        LDA #$02                  
-CODE_15852D:        STA $0747                 
-CODE_158530:        LDA #$00                  
-CODE_158532:        STA $0748                 
-CODE_158535:        LDA #$20                  
-CODE_158537:        STA $073D                 
-CODE_15853A:        LDA #$A0                  
-CODE_15853C:        STA $073E                 
-CODE_15853F:        INC $0724                 
-CODE_158542:        LDA #$E0                  
-CODE_158544:        STA $E2                   
-CODE_158546:        LDA #$01                  
-CODE_158548:        STA $E4                   
-CODE_15854A:        STA $0729                 
-CODE_15854D:        LSR A                     
-CODE_15854E:        STA $073C                 
-CODE_158551:        JSR CODE_1583F2           
-CODE_158554:        STZ $06                   
-CODE_158556:        LDA #$FF                  
-CODE_158558:        STA $072A                 
-CODE_15855B:        LDA #$A0                  
-CODE_15855D:        STA $072B                 
-CODE_158560:        JSL CODE_1585F8           
-CODE_158564:        LDA $0729                 
-CODE_158567:        BNE CODE_158571           
-CODE_158569:        LDA #$E8                  
-CODE_15856B:        STA $E1                   
-CODE_15856D:        LDA #$C8                  
-CODE_15856F:        STA $E2                   
-CODE_158571:        RTL                       
+CODE_158500:        AD 24 07      LDA $0724
+CODE_158503:        D0 4F         BNE CODE_158554
+CODE_158505:        A9 02         LDA #$02
+CODE_158507:        8D 3B 07      STA $073B               
+CODE_15850A:        AD 72 07      LDA $0772   
+CODE_15850D:        D0 14         BNE CODE_158523           
+CODE_15850F:        AE 35 05      LDX $0535                 
+CODE_158512:        BF 38 D0 11   LDA.l DATA_11D038,x             
+CODE_158516:        8D 25 07      STA $0725                 
+CODE_158519:        8D 26 07      STA $0726                 
+CODE_15851C:        BF 42 D0 11   LDA.l DATA_11D042,x             
+CODE_158520:        8D 27 07      STA $0727                 
+CODE_158523:        AD 35 05      LDA $0535                 
+CODE_158526:        A0 00         LDY #$00                  
+CODE_158528:        20 07 81      JSR CODE_158107           
+CODE_15852B:        A9 02         LDA #$02                  
+CODE_15852D:        8D 47 07      STA $0747                 
+CODE_158530:        A9 00         LDA #$00                  
+CODE_158532:        8D 48 07      STA $0748                 
+CODE_158535:        A9 20         LDA #$20                  
+CODE_158537:        8D 3D 07      STA $073D                 
+CODE_15853A:        A9 A0         LDA #$A0                  
+CODE_15853C:        8D 3E 07      STA $073E                 
+CODE_15853F:        EE 24 07      INC $0724                 
+CODE_158542:        A9 E0         LDA #$E0                  
+CODE_158544:        85 E2         STA $E2                   
+CODE_158546:        A9 01         LDA #$01                  
+CODE_158548:        85 E4         STA $E4                   
+CODE_15854A:        8D 29 07      STA $0729                 
+CODE_15854D:        4A            LSR A                     
+CODE_15854E:        8D 3C 07      STA $073C                 
+CODE_158551:        20 F2 83      JSR CODE_1583F2           
+CODE_158554:        64 06         STZ $06                   
+CODE_158556:        A9 FF         LDA #$FF                  
+CODE_158558:        8D 2A 07      STA $072A                 
+CODE_15855B:        A9 A0         LDA #$A0                  
+CODE_15855D:        8D 2B 07      STA $072B                 
+CODE_158560:        22 F8 85 15   JSL CODE_1585F8           
+CODE_158564:        AD 29 07      LDA $0729                 
+CODE_158567:        D0 08         BNE CODE_158571           
+CODE_158569:        A9 E8         LDA #$E8                  
+CODE_15856B:        85 E1         STA $E1                   
+CODE_15856D:        A9 C8         LDA #$C8                  
+CODE_15856F:        85 E2         STA $E2                   
+CODE_158571:        6B            RTL                       
 
-CODE_158572:        LDA $020A                 
-CODE_158575:        STA $0731                 
-CODE_158578:        LDA $0204                 
-CODE_15857B:        STA $0732                 
-CODE_15857E:        LDA $0749                 
-CODE_158581:        STA $074B                 
-CODE_158584:        LDA $074A                 
-CODE_158587:        STA $074C                 
-CODE_15858A:        LDA $0734                 
-CODE_15858D:        STA $074D                 
-CODE_158590:        STZ $020A                 
-CODE_158593:        STZ $0204                 
-CODE_158596:        RTL                       
+CODE_158572:        AD 0A 02      LDA $020A                 
+CODE_158575:        8D 31 07      STA $0731                 
+CODE_158578:        AD 04 02      LDA $0204                 
+CODE_15857B:        8D 32 07      STA $0732                 
+CODE_15857E:        AD 49 07      LDA $0749                 
+CODE_158581:        8D 4B 07      STA $074B                 
+CODE_158584:        AD 4A 07      LDA $074A                 
+CODE_158587:        8D 4C 07      STA $074C                 
+CODE_15858A:        AD 34 07      LDA $0734                 
+CODE_15858D:        8D 4D 07      STA $074D                 
+CODE_158590:        9C 0A 02      STZ $020A                 
+CODE_158593:        9C 04 02      STZ $0204                 
+CODE_158596:        6B            RTL                       
 
-CODE_158597:        LDA $0731                 
-CODE_15859A:        STA $020A                 
-CODE_15859D:        LDA $0732                 
-CODE_1585A0:        STA $0204                 
-CODE_1585A3:        LDA $074B                 
-CODE_1585A6:        STA $0749                 
-CODE_1585A9:        LDA $074C                 
-CODE_1585AC:        STA $074A                 
-CODE_1585AF:        LDA $074D                 
-CODE_1585B2:        STA $0734                 
-CODE_1585B5:        RTL                       
+CODE_158597:        AD 31 07      LDA $0731                 
+CODE_15859A:        8D 0A 02      STA $020A                 
+CODE_15859D:        AD 32 07      LDA $0732                 
+CODE_1585A0:        8D 04 02      STA $0204                 
+CODE_1585A3:        AD 4B 07      LDA $074B                 
+CODE_1585A6:        8D 49 07      STA $0749                 
+CODE_1585A9:        AD 4C 07      LDA $074C                 
+CODE_1585AC:        8D 4A 07      STA $074A                 
+CODE_1585AF:        AD 4D 07      LDA $074D                 
+CODE_1585B2:        8D 34 07      STA $0734                 
+CODE_1585B5:        6B            RTL                       
 
-CODE_1585B6:        LDA $0726                 
-CODE_1585B9:        AND #$10                  
-CODE_1585BB:        BEQ CODE_1585C4           
-CODE_1585BD:        LDA $E1                   
-CODE_1585BF:        SEC                       
-CODE_1585C0:        SBC #$08                  
-CODE_1585C2:        STA $E1                   
-CODE_1585C4:        LDA #$01                  
-CODE_1585C6:        STA $E4                   
-CODE_1585C8:        LDA $0726                 
-CODE_1585CB:        STA $0725                 
-CODE_1585CE:        LDA #$10                  
-CODE_1585D0:        STA $01                   
-CODE_1585D2:        LDX #$00                  
-CODE_1585D4:        JSL CODE_15873F           
-CODE_1585D8:        LDA $073D                 
-CODE_1585DB:        STA $073C                 
-CODE_1585DE:        LDA $E1                   
-CODE_1585E0:        STA $E2                   
-CODE_1585E2:        LDA #$F0                  
-CODE_1585E4:        STA $0730                 
-CODE_1585E7:        STA $072B                 
-CODE_1585EA:        LDA $0727                 
-CODE_1585ED:        STA $072A                 
-CODE_1585F0:        INC $074F                 
-CODE_1585F3:        LDA #$01                  
-CODE_1585F5:        STA $06                   
-CODE_1585F7:        RTL                       
+CODE_1585B6:        AD 26 07      LDA $0726                 
+CODE_1585B9:        29 10         AND #$10                  
+CODE_1585BB:        F0 07         BEQ CODE_1585C4           
+CODE_1585BD:        A5 E1         LDA $E1                   
+CODE_1585BF:        38            SEC                       
+CODE_1585C0:        E9 08         SBC #$08                  
+CODE_1585C2:        85 E1         STA $E1                   
+CODE_1585C4:        A9 01         LDA #$01                  
+CODE_1585C6:        85 E4         STA $E4                   
+CODE_1585C8:        AD 26 07      LDA $0726                 
+CODE_1585CB:        8D 25 07      STA $0725                 
+CODE_1585CE:        A9 10         LDA #$10                  
+CODE_1585D0:        85 01         STA $01                   
+CODE_1585D2:        A2 00         LDX #$00                  
+CODE_1585D4:        22 3F 87 15   JSL CODE_15873F           
+CODE_1585D8:        AD 3D 07      LDA $073D                 
+CODE_1585DB:        8D 3C 07      STA $073C                 
+CODE_1585DE:        A5 E1         LDA $E1                   
+CODE_1585E0:        85 E2         STA $E2                   
+CODE_1585E2:        A9 F0         LDA #$F0                  
+CODE_1585E4:        8D 30 07      STA $0730                 
+CODE_1585E7:        8D 2B 07      STA $072B                 
+CODE_1585EA:        AD 27 07      LDA $0727                 
+CODE_1585ED:        8D 2A 07      STA $072A                 
+CODE_1585F0:        EE 4F 07      INC $074F                 
+CODE_1585F3:        A9 01         LDA #$01                  
+CODE_1585F5:        85 06         STA $06                   
+CODE_1585F7:        6B            RTL                       
 
-CODE_1585F8:        LDX #$00                  
-CODE_1585FA:        STX $0739                 
-CODE_1585FD:        JSL CODE_1586F1           
-CODE_158601:        JSL CODE_15876F           
-CODE_158605:        LDX #$00                  
-CODE_158607:        JSL CODE_15866E           
-CODE_15860B:        LDA $0730                 
-CODE_15860E:        CMP $073B                 
-CODE_158611:        BNE CODE_158635           
-CODE_158613:        LDA $072B                 
-CODE_158616:        CLC                       
-CODE_158617:        ADC #$20                  
-CODE_158619:        CMP $073C                 
-CODE_15861C:        BNE CODE_158635           
-CODE_15861E:        LDA $06                   
-CODE_158620:        TAX                       
-CODE_158621:        BEQ CODE_158628           
-CODE_158623:        LDA $0519                 
-CODE_158626:        STA $E1                   
-CODE_158628:        INC $0739                 
-CODE_15862B:        STZ $0729                 
-CODE_15862E:        STZ $0736                 
-CODE_158631:        STZ $0738                 
-CODE_158634:        RTL                       
+CODE_1585F8:        A2 00         LDX #$00                  
+CODE_1585FA:        8E 39 07      STX $0739                 
+CODE_1585FD:        22 F1 86 15   JSL CODE_1586F1           
+CODE_158601:        22 6F 87 15   JSL CODE_15876F           
+CODE_158605:        A2 00         LDX #$00                  
+CODE_158607:        22 6E 86 15   JSL CODE_15866E           
+CODE_15860B:        AD 30 07      LDA $0730                 
+CODE_15860E:        CD 3B 07      CMP $073B                 
+CODE_158611:        D0 22         BNE CODE_158635           
+CODE_158613:        AD 2B 07      LDA $072B                 
+CODE_158616:        18            CLC                       
+CODE_158617:        69 20         ADC #$20                  
+CODE_158619:        CD 3C 07      CMP $073C                 
+CODE_15861C:        D0 17         BNE CODE_158635           
+CODE_15861E:        A5 06         LDA $06                   
+CODE_158620:        AA            TAX                       
+CODE_158621:        F0 05         BEQ CODE_158628           
+CODE_158623:        AD 19 05      LDA $0519                 
+CODE_158626:        85 E1         STA $E1                   
+CODE_158628:        EE 39 07      INC $0739                 
+CODE_15862B:        9C 29 07      STZ $0729                 
+CODE_15862E:        9C 36 07      STZ $0736                 
+CODE_158631:        9C 38 07      STZ $0738                 
+CODE_158634:        6B            RTL                       
 
-CODE_158635:        LDA $073C                 
-CODE_158638:        AND #$20                  
-CODE_15863A:        BNE CODE_15864A           
-CODE_15863C:        LDA $0725                 
-CODE_15863F:        CMP $072A                 
-CODE_158642:        BEQ CODE_15861E           
-CODE_158644:        LDX #$00                  
-CODE_158646:        JSL CODE_1586CA           
-CODE_15864A:        RTL                       
+CODE_158635:        AD 3C 07      LDA $073C                 
+CODE_158638:        29 20         AND #$20                  
+CODE_15863A:        D0 0E         BNE CODE_15864A           
+CODE_15863C:        AD 25 07      LDA $0725                 
+CODE_15863F:        CD 2A 07      CMP $072A                 
+CODE_158642:        F0 DA         BEQ CODE_15861E           
+CODE_158644:        A2 00         LDX #$00                  
+CODE_158646:        22 CA 86 15   JSL CODE_1586CA           
+CODE_15864A:        6B            RTL                       
 
-CODE_15864B:        LDA $073D,x               
-CODE_15864E:        SEC                       
-CODE_15864F:        SBC #$20                  
-CODE_158651:        STA $073D,x               
-CODE_158654:        BCS CODE_15866D                   
-CODE_158656:        LDA $0747,x               
-CODE_158659:        SEC                       
-CODE_15865A:        SBC #$01                  
-CODE_15865C:        CMP #$FF                  
-CODE_15865E:        BNE CODE_158664           
-CODE_158660:        LDA #$0B                  
-CODE_158662:        BRA CODE_15866A           
+CODE_15864B:        BD 3D 07      LDA $073D,x               
+CODE_15864E:        38            SEC                       
+CODE_15864F:        E9 20         SBC #$20                  
+CODE_158651:        9D 3D 07      STA $073D,x               
+CODE_158654:        B0 17         BCS CODE_15866D                   
+CODE_158656:        BD 47 07      LDA $0747,x               
+CODE_158659:        38            SEC                       
+CODE_15865A:        E9 01         SBC #$01                  
+CODE_15865C:        C9 FF         CMP #$FF                  
+CODE_15865E:        D0 04         BNE CODE_158664           
+CODE_158660:        A9 0B         LDA #$0B                  
+CODE_158662:        80 06         BRA CODE_15866A           
 
-CODE_158664:        CMP #$07                  
-CODE_158666:        BNE CODE_15869C           
-CODE_158668:        LDA #$03                  
-CODE_15866A:        STA $0747,x               
-CODE_15866D:        RTL                       
+CODE_158664:        C9 07         CMP #$07                  
+CODE_158666:        D0 34         BNE CODE_15869C           
+CODE_158668:        A9 03         LDA #$03                  
+CODE_15866A:        9D 47 07      STA $0747,x               
+CODE_15866D:        6B            RTL                       
 
-CODE_15866E:        LDA $073C,x               
-CODE_158671:        CLC                       
-CODE_158672:        ADC #$20                  
-CODE_158674:        STA $073C,x               
-CODE_158677:        BCC CODE_15869F           
-CODE_158679:        CPX #$00                  
-CODE_15867B:        BNE CODE_158687           
-CODE_15867D:        LDA $073B                 
-CODE_158680:        CLC                       
-CODE_158681:        ADC #$01                  
-CODE_158683:        STA $073B                 
-CODE_158686:        RTL                       
+CODE_15866E:        BD 3C 07      LDA $073C,x               
+CODE_158671:        18            CLC                       
+CODE_158672:        69 20         ADC #$20                  
+CODE_158674:        9D 3C 07      STA $073C,x               
+CODE_158677:        90 26         BCC CODE_15869F           
+CODE_158679:        E0 00         CPX #$00                  
+CODE_15867B:        D0 0A         BNE CODE_158687           
+CODE_15867D:        AD 3B 07      LDA $073B                 
+CODE_158680:        18            CLC                       
+CODE_158681:        69 01         ADC #$01                  
+CODE_158683:        8D 3B 07      STA $073B                 
+CODE_158686:        6B            RTL                       
 
-CODE_158687:        DEX                       
-CODE_158688:        LDA $0747,x               
-CODE_15868B:        CLC                       
-CODE_15868C:        ADC #$01                  
-CODE_15868E:        CMP #$04                  
-CODE_158690:        BNE CODE_158696           
-CODE_158692:        LDA #$08                  
-CODE_158694:        BRA CODE_15869C           
-CODE_158696:        CMP #$0C                  
-CODE_158698:        BNE CODE_15869C           
-CODE_15869A:        LDA #$00                  
-CODE_15869C:        STA $0747,x               
-CODE_15869F:        RTL                       
+CODE_158687:        CA            DEX                       
+CODE_158688:        BD 47 07      LDA $0747,x               
+CODE_15868B:        18            CLC                       
+CODE_15868C:        69 01         ADC #$01                  
+CODE_15868E:        C9 04         CMP #$04                  
+CODE_158690:        D0 04         BNE CODE_158696           
+CODE_158692:        A9 08         LDA #$08                  
+CODE_158694:        80 06         BRA CODE_15869C           
+CODE_158696:        C9 0C         CMP #$0C                  
+CODE_158698:        D0 02         BNE CODE_15869C           
+CODE_15869A:        A9 00         LDA #$00                  
+CODE_15869C:        9D 47 07      STA $0747,x               
+CODE_15869F:        6B            RTL                       
 
-CODE_1586A0:        LDA $0726,x               
-CODE_1586A3:        SEC                       
-CODE_1586A4:        SBC #$10                  
-CODE_1586A6:        STA $0726,x               
-CODE_1586A9:        AND #$F0                  
-CODE_1586AB:        CMP #$F0                  
-CODE_1586AD:        BNE CODE_1586C9           
-CODE_1586AF:        LDA $0726,x               
-CODE_1586B2:        AND #$0F                  
-CODE_1586B4:        CLC                       
-CODE_1586B5:        ADC #$E0                  
-CODE_1586B7:        STA $0726,x               
-CODE_1586BA:        DEC $0726,x               
-CODE_1586BD:        LDA $0726,x               
-CODE_1586C0:        CMP #$DF                  
-CODE_1586C2:        BNE CODE_1586C9           
-CODE_1586C4:        LDA #$E9                  
-CODE_1586C6:        STA $0726,x               
-CODE_1586C9:        RTL                       
+CODE_1586A0:        BD 26 07      LDA $0726,x               
+CODE_1586A3:        38            SEC                       
+CODE_1586A4:        E9 10         SBC #$10                  
+CODE_1586A6:        9D 26 07      STA $0726,x               
+CODE_1586A9:        29 F0         AND #$F0                  
+CODE_1586AB:        C9 F0         CMP #$F0                  
+CODE_1586AD:        D0 1A         BNE CODE_1586C9           
+CODE_1586AF:        BD 26 07      LDA $0726,x               
+CODE_1586B2:        29 0F         AND #$0F                  
+CODE_1586B4:        18            CLC                       
+CODE_1586B5:        69 E0         ADC #$E0                  
+CODE_1586B7:        9D 26 07      STA $0726,x               
+CODE_1586BA:        DE 26 07      DEC $0726,x               
+CODE_1586BD:        BD 26 07      LDA $0726,x               
+CODE_1586C0:        C9 DF         CMP #$DF                  
+CODE_1586C2:        D0 05         BNE CODE_1586C9           
+CODE_1586C4:        A9 E9         LDA #$E9                  
+CODE_1586C6:        9D 26 07      STA $0726,x               
+CODE_1586C9:        6B            RTL                       
 
-CODE_1586CA:        LDA $0725,x               
-CODE_1586CD:        CLC                       
-CODE_1586CE:        ADC #$10                  
-CODE_1586D0:        STA $0725,x               
-CODE_1586D3:        AND #$F0                  
-CODE_1586D5:        CMP #$F0                  
-CODE_1586D7:        BNE CODE_1586F0           
-CODE_1586D9:        LDA $0725,x               
-CODE_1586DC:        AND #$0F                  
-CODE_1586DE:        STA $0725,x               
-CODE_1586E1:        INC $0725,x               
-CODE_1586E4:        LDA $0725,x               
-CODE_1586E7:        CMP #$0A                  
-CODE_1586E9:        BNE CODE_1586F0           
-CODE_1586EB:        LDA #$00                  
-CODE_1586ED:        STA $0725,x               
-CODE_1586F0:        RTL                       
+CODE_1586CA:        BD 25 07      LDA $0725,x               
+CODE_1586CD:        18            CLC                       
+CODE_1586CE:        69 10         ADC #$10                  
+CODE_1586D0:        9D 25 07      STA $0725,x               
+CODE_1586D3:        29 F0         AND #$F0                  
+CODE_1586D5:        C9 F0         CMP #$F0                  
+CODE_1586D7:        D0 17         BNE CODE_1586F0           
+CODE_1586D9:        BD 25 07      LDA $0725,x               
+CODE_1586DC:        29 0F         AND #$0F                  
+CODE_1586DE:        9D 25 07      STA $0725,x               
+CODE_1586E1:        FE 25 07      INC $0725,x               
+CODE_1586E4:        BD 25 07      LDA $0725,x               
+CODE_1586E7:        C9 0A         CMP #$0A                  
+CODE_1586E9:        D0 05         BNE CODE_1586F0           
+CODE_1586EB:        A9 00         LDA #$00                  
+CODE_1586ED:        9D 25 07      STA $0725,x               
+CODE_1586F0:        6B            RTL                       
 
-CODE_1586F1:        PHX                       
-CODE_1586F2:        LDA $0725,x               
-CODE_1586F5:        AND #$0F                  
-CODE_1586F7:        TAY                       
-CODE_1586F8:        LDA.w DATA_11AB1B,y               
-CODE_1586FB:        STA $073F                 
-CODE_1586FE:        LDA.w DATA_11AB25,y               
-CODE_158701:        STA $0740                 
-CODE_158704:        LDA #$7F                  
-CODE_158706:        STA $0741                 
-CODE_158709:        LDA $0725,x               
-CODE_15870C:        AND #$F0                  
-CODE_15870E:        STA $0742                 
-CODE_158711:        CPX #$00                  
-CODE_158713:        BNE CODE_158730           
-CODE_158715:        LDA $073B                 
-CODE_158718:        CMP #$FF                  
-CODE_15871A:        BNE CODE_158720           
-CODE_15871C:        LDA #$0B                  
-CODE_15871E:        BRA CODE_158734           
+CODE_1586F1:        DA            PHX                       
+CODE_1586F2:        BD 25 07      LDA $0725,x               
+CODE_1586F5:        29 0F         AND #$0F                  
+CODE_1586F7:        A8            TAY                       
+CODE_1586F8:        B9 1B AB      LDA.w DATA_11AB1B,y               
+CODE_1586FB:        8D 3F 07      STA $073F                 
+CODE_1586FE:        B9 25 AB      LDA.w DATA_11AB25,y               
+CODE_158701:        8D 40 07      STA $0740                 
+CODE_158704:        A9 7F         LDA #$7F                  
+CODE_158706:        8D 41 07      STA $0741                 
+CODE_158709:        BD 25 07      LDA $0725,x               
+CODE_15870C:        29 F0         AND #$F0                  
+CODE_15870E:        8D 42 07      STA $0742                 
+CODE_158711:        E0 00         CPX #$00                  
+CODE_158713:        D0 1B         BNE CODE_158730           
+CODE_158715:        AD 3B 07      LDA $073B                 
+CODE_158718:        C9 FF         CMP #$FF                  
+CODE_15871A:        D0 04         BNE CODE_158720           
+CODE_15871C:        A9 0B         LDA #$0B                  
+CODE_15871E:        80 14         BRA CODE_158734           
 
-CODE_158720:        CMP #$04                  
-CODE_158722:        BNE CODE_158728           
-CODE_158724:        LDA #$08                  
-CODE_158726:        BRA CODE_158734           
+CODE_158720:        C9 04         CMP #$04                  
+CODE_158722:        D0 04         BNE CODE_158728           
+CODE_158724:        A9 08         LDA #$08                  
+CODE_158726:        80 0C         BRA CODE_158734           
 
-CODE_158728:        CMP #$0C                  
-CODE_15872A:        BNE CODE_158734           
-CODE_15872C:        LDA #$00                  
-CODE_15872E:        BRA CODE_158734           
+CODE_158728:        C9 0C         CMP #$0C                  
+CODE_15872A:        D0 08         BNE CODE_158734           
+CODE_15872C:        A9 00         LDA #$00                  
+CODE_15872E:        80 04         BRA CODE_158734           
 
-CODE_158730:        DEX                       
-CODE_158731:        LDA $0747,x               
-CODE_158734:        STA $073B                 
-CODE_158737:        PLX                       
-CODE_158738:        LDA $073C,x               
-CODE_15873B:        STA $073C                 
-CODE_15873E:        RTL                       
+CODE_158730:        CA            DEX                       
+CODE_158731:        BD 47 07      LDA $0747,x               
+CODE_158734:        8D 3B 07      STA $073B                 
+CODE_158737:        FA            PLX                       
+CODE_158738:        BD 3C 07      LDA $073C,x               
+CODE_15873B:        8D 3C 07      STA $073C                 
+CODE_15873E:        6B            RTL                       
 
-CODE_15873F:        LDA $0725,x               
-CODE_158742:        AND #$10                  
-CODE_158744:        BEQ CODE_15873E           
-CODE_158746:        LDA $0725,x               
-CODE_158749:        STA $03                   
-CODE_15874B:        SEC                       
-CODE_15874C:        SBC $01                   
-CODE_15874E:        STA $0725,x               
-CODE_158751:        JSL CODE_1586F1           
-CODE_158755:        LDA #$0F                  
-CODE_158757:        STA $E3                   
-CODE_158759:        LDA #$00                  
-CODE_15875B:        STA $0743                 
-CODE_15875E:        DEC $E3                   
-CODE_158760:        LDA $E3                   
-CODE_158762:        BPL CODE_15875E           
-CODE_158764:        LDA $03                   
-CODE_158766:        STA $0725,x               
-CODE_158769:        DEC $E4                   
-CODE_15876B:        JML CODE_1586F1           
+CODE_15873F:        BD 25 07      LDA $0725,x               
+CODE_158742:        29 10         AND #$10                  
+CODE_158744:        F0 F8         BEQ CODE_15873E           
+CODE_158746:        BD 25 07      LDA $0725,x               
+CODE_158749:        85 03         STA $03                   
+CODE_15874B:        38            SEC                       
+CODE_15874C:        E5 01         SBC $01                   
+CODE_15874E:        9D 25 07      STA $0725,x               
+CODE_158751:        22 F1 86 15   JSL CODE_1586F1           
+CODE_158755:        A9 0F         LDA #$0F                  
+CODE_158757:        85 E3         STA $E3                   
+CODE_158759:        A9 00         LDA #$00                  
+CODE_15875B:        8D 43 07      STA $0743                 
+CODE_15875E:        C6 E3         DEC $E3                   
+CODE_158760:        A5 E3         LDA $E3                   
+CODE_158762:        10 FA         BPL CODE_15875E           
+CODE_158764:        A5 03         LDA $03                   
+CODE_158766:        9D 25 07      STA $0725,x               
+CODE_158769:        C6 E4         DEC $E4                   
+CODE_15876B:        5C F1 86 15   JML CODE_1586F1           
 
-CODE_15876F:        LDA $7F0800               
-CODE_158773:        TAX                       
-CODE_158774:        LDA $073F                 
-CODE_158777:        STA $C4                   
-CODE_158779:        LDA $0740                 
-CODE_15877C:        STA $C5                   
-CODE_15877E:        LDA $0741                 
-CODE_158781:        STA $C6                   
-CODE_158783:        LDA $073B                 
-CODE_158786:        CLC                       
-CODE_158787:        ADC #$48                  
-CODE_158789:        STA $7F0802,x             
-CODE_15878D:        INX                       
-CODE_15878E:        LDA $073C                 
-CODE_158791:        STA $7F0802,x             
-CODE_158795:        INX                       
-CODE_158796:        LDA #$00                  
-CODE_158798:        STA $7F0802,x             
-CODE_15879C:        INX                       
-CODE_15879D:        LDA #$40                  
-CODE_15879F:        STA $7F0802,x             
-CODE_1587A3:        INX                       
-CODE_1587A4:        STZ $0743                 
-CODE_1587A7:        LDA #$0F                  
-CODE_1587A9:        STA $E3                   
-CODE_1587AB:        LDA $0744                 ; \ Map16 table into [$00]
-CODE_1587AE:        STA $00                   ;  |
-CODE_1587B0:        LDA $0745                 ;  |
-CODE_1587B3:        STA $01                   ;  |
-CODE_1587B5:        LDA $0746                 ;  |
-CODE_1587B8:        STA $02                   ; /
-CODE_1587BA:        LDY $0742                 
-CODE_1587BD:        REP #$30                  ; Accumulator and Index = 16-bit.
-CODE_1587BF:        LDA [$C4],y               ; \ Check if tile in Layer 3 Map16 table is #$FF...
-CODE_1587C1:        AND #$00FF                ;  |
-CODE_1587C4:        CMP #$00FF                ;  |
-CODE_1587C7:        BNE CODE_1587D9           ; / If not, branch.
-CODE_1587C9:        LDA.l DATA_15934F           ; \ Load value for empty tile.
-CODE_1587CD:        STA $00                   ;  | ($159351 is empty tile)
-CODE_1587CF:        LDA #$0015                ;  |
-CODE_1587D2:        STA $02                   ; /
-CODE_1587D4:        LDY #$0000                ; Y = #$0000.
-CODE_1587D7:        BRA CODE_1587DD           
+CODE_15876F:        AF 00 08 7F   LDA $7F0800               
+CODE_158773:        AA            TAX                       
+CODE_158774:        AD 3F 07      LDA $073F                 
+CODE_158777:        85 C4         STA $C4                   
+CODE_158779:        AD 40 07      LDA $0740                 
+CODE_15877C:        85 C5         STA $C5                   
+CODE_15877E:        AD 41 07      LDA $0741                 
+CODE_158781:        85 C6         STA $C6                   
+CODE_158783:        AD 3B 07      LDA $073B                 
+CODE_158786:        18            CLC                       
+CODE_158787:        69 48         ADC #$48                  
+CODE_158789:        9F 02 08 7F   STA $7F0802,x             
+CODE_15878D:        E8            INX                       
+CODE_15878E:        AD 3C 07      LDA $073C                 
+CODE_158791:        9F 02 08 7F   STA $7F0802,x             
+CODE_158795:        E8            INX                       
+CODE_158796:        A9 00         LDA #$00                  
+CODE_158798:        9F 02 08 7F   STA $7F0802,x             
+CODE_15879C:        E8            INX                       
+CODE_15879D:        A9 40         LDA #$40                  
+CODE_15879F:        9F 02 08 7F   STA $7F0802,x             
+CODE_1587A3:        E8            INX                       
+CODE_1587A4:        9C 43 07      STZ $0743                 
+CODE_1587A7:        A9 0F         LDA #$0F                  
+CODE_1587A9:        85 E3         STA $E3                   
+CODE_1587AB:        AD 44 07      LDA $0744                 ; \ Map16 table into [$00]
+CODE_1587AE:        85 00         STA $00                   ;  |
+CODE_1587B0:        AD 45 07      LDA $0745                 ;  |
+CODE_1587B3:        85 01         STA $01                   ;  |
+CODE_1587B5:        AD 46 07      LDA $0746                 ;  |
+CODE_1587B8:        85 02         STA $02                   ; /
+CODE_1587BA:        AC 42 07      LDY $0742                 
+CODE_1587BD:        C2 30         REP #$30                  ; Accumulator and Index = 16-bit.
+CODE_1587BF:        B7 C4         LDA [$C4],y               ; \ Check if tile in Layer 3 Map16 table is #$FF...
+CODE_1587C1:        29 FF 00      AND #$00FF                ;  |
+CODE_1587C4:        C9 FF 00      CMP #$00FF                ;  |
+CODE_1587C7:        D0 10         BNE CODE_1587D9           ; / If not, branch.
+CODE_1587C9:        AF 4F 93 15   LDA.l DATA_15934F           ; \ Load value for empty tile.
+CODE_1587CD:        85 00         STA $00                   ;  | ($159351 is empty tile)
+CODE_1587CF:        A9 15 00      LDA #$0015                ;  |
+CODE_1587D2:        85 02         STA $02                   ; /
+CODE_1587D4:        A0 00 00      LDY #$0000                ; Y = #$0000.
+CODE_1587D7:        80 04         BRA CODE_1587DD           
 
-CODE_1587D9:        ASL A                     ; \ Multiply Map16 num by 8.
-CODE_1587DA:        ASL A                     ;  |
-CODE_1587DB:        ASL A                     ;  |
-CODE_1587DC:        TAY                       ; / Into Y index.
-CODE_1587DD:        LDA $074F                 
-CODE_1587E0:        AND #$00FF                
-CODE_1587E3:        BEQ CODE_1587E9           
-CODE_1587E5:        INY                       
-CODE_1587E6:        INY                       
-CODE_1587E7:        INY                       
-CODE_1587E8:        INY                       
-CODE_1587E9:        REP #$20                  ; Accumulator = 16-bit.
-CODE_1587EB:        LDA [$00],y               
-CODE_1587ED:        STA $7F0802,x             
-CODE_1587F1:        SEP #$20                  ; Accumulator = 8-bit.
-CODE_1587F3:        INC $0743                 
-CODE_1587F6:        INX                       
-CODE_1587F7:        INX                       
-CODE_1587F8:        INY                       
-CODE_1587F9:        INY                       
-CODE_1587FA:        LDA $0743                 
-CODE_1587FD:        LSR A                     
-CODE_1587FE:        BCS CODE_1587E9                   
-CODE_158800:        INC $0742                 
-CODE_158803:        SEP #$30                  ; Accumulator and Index = 8-bit.
-CODE_158805:        LDA $0743                 
-CODE_158808:        CMP #$20                  
-CODE_15880A:        BCC CODE_1587AB           
-CODE_15880C:        LDA #$FF                  ; \ End upload.
-CODE_15880E:        STA $7F0802,x             ; /
-CODE_158812:        TXA                       ; \ Amount of tiles transferred...
-CODE_158813:        STA $7F0800               ; / Into $7F0800.
-CODE_158817:        LDA $074F                 
-CODE_15881A:        EOR #$01                  
-CODE_15881C:        STA $074F                 
-CODE_15881F:        RTL                       
+CODE_1587D9:        0A            ASL A                     ; \ Multiply Map16 num by 8.
+CODE_1587DA:        0A            ASL A                     ;  |
+CODE_1587DB:        0A            ASL A                     ;  |
+CODE_1587DC:        A8            TAY                       ; / Into Y index.
+CODE_1587DD:        AD 4F 07      LDA $074F                 
+CODE_1587E0:        29 FF 00      AND #$00FF                
+CODE_1587E3:        F0 04         BEQ CODE_1587E9           
+CODE_1587E5:        C8            INY                       
+CODE_1587E6:        C8            INY                       
+CODE_1587E7:        C8            INY                       
+CODE_1587E8:        C8            INY                       
+CODE_1587E9:        C2 20         REP #$20                  ; Accumulator = 16-bit.
+CODE_1587EB:        B7 00         LDA [$00],y               
+CODE_1587ED:        9F 02 08 7F   STA $7F0802,x             
+CODE_1587F1:        E2 20         SEP #$20                  ; Accumulator = 8-bit.
+CODE_1587F3:        EE 43 07      INC $0743                 
+CODE_1587F6:        E8            INX                       
+CODE_1587F7:        E8            INX                       
+CODE_1587F8:        C8            INY                       
+CODE_1587F9:        C8            INY                       
+CODE_1587FA:        AD 43 07      LDA $0743                 
+CODE_1587FD:        4A            LSR A                     
+CODE_1587FE:        B0 E9         BCS CODE_1587E9                   
+CODE_158800:        EE 42 07      INC $0742                 
+CODE_158803:        E2 30         SEP #$30                  ; Accumulator and Index = 8-bit.
+CODE_158805:        AD 43 07      LDA $0743                 
+CODE_158808:        C9 20         CMP #$20                  
+CODE_15880A:        90 9F         BCC CODE_1587AB           
+CODE_15880C:        A9 FF         LDA #$FF                  ; \ End upload.
+CODE_15880E:        9F 02 08 7F   STA $7F0802,x             ; /
+CODE_158812:        8A            TXA                       ; \ Amount of tiles transferred...
+CODE_158813:        8F 00 08 7F   STA $7F0800               ; / Into $7F0800.
+CODE_158817:        AD 4F 07      LDA $074F                 
+CODE_15881A:        49 01         EOR #$01                  
+CODE_15881C:        8D 4F 07      STA $074F                 
+CODE_15881F:        6B            RTL                       
 
 DATA_158820:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty data.
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  | Free to use if hacked.
@@ -1330,1168 +1330,1168 @@ DATA_1593DF:        db $20,$19,$71,$18,$43,$16,$14,$19      ; \
 DATA_1593F4:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty data.
                     db $FF,$FF,$FF,$FF                      ; /
 
-CODE_159400:        LDA $0533
-CODE_159403:        CMP #$0E                  
-CODE_159405:        BNE CODE_159411           
-CODE_159407:        LDA $0534                 
-CODE_15940A:        CMP #$03                  
-CODE_15940C:        BNE CODE_159411           
-CODE_15940E:        JMP CODE_159E65           
+CODE_159400:        AD 33 05      LDA $0533
+CODE_159403:        C9 0E         CMP #$0E                  
+CODE_159405:        D0 0A         BNE CODE_159411           
+CODE_159407:        AD 34 05      LDA $0534                 
+CODE_15940A:        C9 03         CMP #$03                  
+CODE_15940C:        D0 03         BNE CODE_159411           
+CODE_15940E:        4C 65 9E      JMP CODE_159E65           
 
-CODE_159411:        STZ $0542                 
-CODE_159414:        LDA #$FF                  
-CODE_159416:        STA $0756                 
-CODE_159419:        STZ $09                   
-CODE_15941B:        STZ $0757                 
-CODE_15941E:        LDA ($D9),y               
-CODE_159420:        CMP #$FF                  
-CODE_159422:        BNE CODE_159433           
-CODE_159424:        LDA $0541                 
-CODE_159427:        INC A                     
-CODE_159428:        INC A                     
-CODE_159429:        STA $0542                 
-CODE_15942C:        STZ $0E                   
-CODE_15942E:        STZ $02C8                 
-CODE_159431:        BRA CODE_159479           
+CODE_159411:        9C 42 05      STZ $0542                 
+CODE_159414:        A9 FF         LDA #$FF                  
+CODE_159416:        8D 56 07      STA $0756                 
+CODE_159419:        64 09         STZ $09                   
+CODE_15941B:        9C 57 07      STZ $0757                 
+CODE_15941E:        B1 D9         LDA ($D9),y               
+CODE_159420:        C9 FF         CMP #$FF                  
+CODE_159422:        D0 0F         BNE CODE_159433           
+CODE_159424:        AD 41 05      LDA $0541                 
+CODE_159427:        1A            INC A                     
+CODE_159428:        1A            INC A                     
+CODE_159429:        8D 42 05      STA $0542                 
+CODE_15942C:        64 0E         STZ $0E                   
+CODE_15942E:        9C C8 02      STZ $02C8                 
+CODE_159431:        80 46         BRA CODE_159479           
 
-CODE_159433:        LDA ($D9),y               
-CODE_159435:        AND #$F0                  
-CODE_159437:        BEQ CODE_15945D           
-CODE_159439:        CMP #$F0                  
-CODE_15943B:        BNE CODE_159461           
-CODE_15943D:        STZ $02C8                 
-CODE_159440:        LDA ($D9),y               
-CODE_159442:        AND #$0F                  
-CODE_159444:        STY $0F                   
-CODE_159446:        JSL CODE_12F69F           
-CODE_15944A:        LDY $0F                   
-CODE_15944C:        LDA ($D9),y               
-CODE_15944E:        AND #$0F                  
-CODE_159450:        CMP #$02                  
-CODE_159452:        BCC CODE_159479           
-CODE_159454:        CMP #$06                  
-CODE_159456:        BEQ CODE_15945D           
-CODE_159458:        CMP #$05                  
-CODE_15945A:        BNE CODE_15945E           
-CODE_15945C:        INY                       
-CODE_15945D:        INY                       
-CODE_15945E:        INY                       
-CODE_15945F:        BRA CODE_15941B           
+CODE_159433:        B1 D9         LDA ($D9),y               
+CODE_159435:        29 F0         AND #$F0                  
+CODE_159437:        F0 24         BEQ CODE_15945D           
+CODE_159439:        C9 F0         CMP #$F0                  
+CODE_15943B:        D0 24         BNE CODE_159461           
+CODE_15943D:        9C C8 02      STZ $02C8                 
+CODE_159440:        B1 D9         LDA ($D9),y               
+CODE_159442:        29 0F         AND #$0F                  
+CODE_159444:        84 0F         STY $0F                   
+CODE_159446:        22 9F F6 12   JSL CODE_12F69F           
+CODE_15944A:        A4 0F         LDY $0F                   
+CODE_15944C:        B1 D9         LDA ($D9),y               
+CODE_15944E:        29 0F         AND #$0F                  
+CODE_159450:        C9 02         CMP #$02                  
+CODE_159452:        90 25         BCC CODE_159479           
+CODE_159454:        C9 06         CMP #$06                  
+CODE_159456:        F0 05         BEQ CODE_15945D           
+CODE_159458:        C9 05         CMP #$05                  
+CODE_15945A:        D0 02         BNE CODE_15945E           
+CODE_15945C:        C8            INY                       
+CODE_15945D:        C8            INY                       
+CODE_15945E:        C8            INY                       
+CODE_15945F:        80 BA         BRA CODE_15941B           
 
-CODE_159461:        CLC                       
-CODE_159462:        ADC $09                   
-CODE_159464:        BCC CODE_15946A           
-CODE_159466:        ADC #$0F                  
-CODE_159468:        BRA CODE_159470           
+CODE_159461:        18            CLC                       
+CODE_159462:        65 09         ADC $09                   
+CODE_159464:        90 04         BCC CODE_15946A           
+CODE_159466:        69 0F         ADC #$0F                  
+CODE_159468:        80 06         BRA CODE_159470           
 
-CODE_15946A:        CMP #$F0                  
-CODE_15946C:        BNE CODE_159473           
-CODE_15946E:        LDA #$00                  
-CODE_159470:        INC $0542                 
-CODE_159473:        STA $09                   
-CODE_159475:        INY                       
-CODE_159476:        INY                       
-CODE_159477:        BRA CODE_15941B           
+CODE_15946A:        C9 F0         CMP #$F0                  
+CODE_15946C:        D0 05         BNE CODE_159473           
+CODE_15946E:        A9 00         LDA #$00                  
+CODE_159470:        EE 42 05      INC $0542                 
+CODE_159473:        85 09         STA $09                   
+CODE_159475:        C8            INY                       
+CODE_159476:        C8            INY                       
+CODE_159477:        80 A2         BRA CODE_15941B           
 
-CODE_159479:        LDA $E5                   
-CODE_15947B:        INC A                     
-CODE_15947C:        CMP $0E                   
-CODE_15947E:        BCC CODE_159489           
-CODE_159480:        LDA ($D9),y               
-CODE_159482:        CMP #$FF                  
-CODE_159484:        BEQ CODE_159489           
-CODE_159486:        JSR CODE_159691           
-CODE_159489:        JSR CODE_1594EC           
-CODE_15948C:        JSR CODE_159995           
-CODE_15948F:        LDA $0764                 
-CODE_159492:        BEQ CODE_15949A           
-CODE_159494:        JSL CODE_12F7CE           
-CODE_159498:        BRA CODE_1594A6           
+CODE_159479:        A5 E5         LDA $E5                   
+CODE_15947B:        1A            INC A                     
+CODE_15947C:        C5 0E         CMP $0E                   
+CODE_15947E:        90 09         BCC CODE_159489           
+CODE_159480:        B1 D9         LDA ($D9),y               
+CODE_159482:        C9 FF         CMP #$FF                  
+CODE_159484:        F0 03         BEQ CODE_159489           
+CODE_159486:        20 91 96      JSR CODE_159691           
+CODE_159489:        20 EC 94      JSR CODE_1594EC           
+CODE_15948C:        20 95 99      JSR CODE_159995           
+CODE_15948F:        AD 64 07      LDA $0764                 
+CODE_159492:        F0 06         BEQ CODE_15949A           
+CODE_159494:        22 CE F7 12   JSL CODE_12F7CE           
+CODE_159498:        80 0C         BRA CODE_1594A6           
 
-CODE_15949A:        LDA $EB                   
-CODE_15949C:        BEQ CODE_1594A3           
-CODE_15949E:        JSR CODE_159517           
-CODE_1594A1:        BRA CODE_1594A6           
+CODE_15949A:        A5 EB         LDA $EB                   
+CODE_15949C:        F0 05         BEQ CODE_1594A3           
+CODE_15949E:        20 17 95      JSR CODE_159517           
+CODE_1594A1:        80 03         BRA CODE_1594A6           
 
-CODE_1594A3:        JSR CODE_1599F1           
-CODE_1594A6:        STZ $0757                 
-CODE_1594A9:        LDA $EB                   
-CODE_1594AB:        BEQ CODE_1594BB           
-CODE_1594AD:        INC $E5                   
-CODE_1594AF:        LDA $E5                   
-CODE_1594B1:        CMP #$10                  
-CODE_1594B3:        BNE CODE_1594C0           
-CODE_1594B5:        INC $E9                   
-CODE_1594B7:        STZ $E5                   
-CODE_1594B9:        BRA CODE_1594C0           
+CODE_1594A3:        20 F1 99      JSR CODE_1599F1           
+CODE_1594A6:        9C 57 07      STZ $0757                 
+CODE_1594A9:        A5 EB         LDA $EB                   
+CODE_1594AB:        F0 0E         BEQ CODE_1594BB           
+CODE_1594AD:        E6 E5         INC $E5                   
+CODE_1594AF:        A5 E5         LDA $E5                   
+CODE_1594B1:        C9 10         CMP #$10                  
+CODE_1594B3:        D0 0B         BNE CODE_1594C0           
+CODE_1594B5:        E6 E9         INC $E9                   
+CODE_1594B7:        64 E5         STZ $E5                   
+CODE_1594B9:        80 05         BRA CODE_1594C0           
 
-CODE_1594BB:        LDA #$10                  
-CODE_1594BD:        JSR CODE_15967D           
-CODE_1594C0:        LDA $E9                   
-CODE_1594C2:        CMP $0542                 
-CODE_1594C5:        BNE CODE_159489           
-CODE_1594C7:        LDA $EB                   
-CODE_1594C9:        BEQ CODE_1594D3           
-CODE_1594CB:        LDA $E5                   
-CODE_1594CD:        CMP $0E                   
-CODE_1594CF:        BCC CODE_159479           
-CODE_1594D1:        BCS CODE_1594D9                   
-CODE_1594D3:        LDA $E6                   
-CODE_1594D5:        CMP $0E                   
-CODE_1594D7:        BCC CODE_159479           
-CODE_1594D9:        LDA ($D9),y               
-CODE_1594DB:        CMP #$FF                  
-CODE_1594DD:        BEQ CODE_1594EB           
-CODE_1594DF:        INY                       
-CODE_1594E0:        LDA ($D9),y               
-CODE_1594E2:        AND #$1F                  
-CODE_1594E4:        STA $0543                 
-CODE_1594E7:        INY                       
-CODE_1594E8:        JMP CODE_15941B           
+CODE_1594BB:        A9 10         LDA #$10                  
+CODE_1594BD:        20 7D 96      JSR CODE_15967D           
+CODE_1594C0:        A5 E9         LDA $E9                   
+CODE_1594C2:        CD 42 05      CMP $0542                 
+CODE_1594C5:        D0 C2         BNE CODE_159489           
+CODE_1594C7:        A5 EB         LDA $EB                   
+CODE_1594C9:        F0 08         BEQ CODE_1594D3           
+CODE_1594CB:        A5 E5         LDA $E5                   
+CODE_1594CD:        C5 0E         CMP $0E                   
+CODE_1594CF:        90 A8         BCC CODE_159479           
+CODE_1594D1:        B0 06         BCS CODE_1594D9                   
+CODE_1594D3:        A5 E6         LDA $E6                   
+CODE_1594D5:        C5 0E         CMP $0E                   
+CODE_1594D7:        90 A0         BCC CODE_159479           
+CODE_1594D9:        B1 D9         LDA ($D9),y               
+CODE_1594DB:        C9 FF         CMP #$FF                  
+CODE_1594DD:        F0 0C         BEQ CODE_1594EB           
+CODE_1594DF:        C8            INY                       
+CODE_1594E0:        B1 D9         LDA ($D9),y               
+CODE_1594E2:        29 1F         AND #$1F                  
+CODE_1594E4:        8D 43 05      STA $0543                 
+CODE_1594E7:        C8            INY                       
+CODE_1594E8:        4C 1B 94      JMP CODE_15941B           
 
-CODE_1594EB:        RTL                       
+CODE_1594EB:        6B            RTL                       
 
-CODE_1594EC:        STY $0713                 
-CODE_1594EF:        LDX $E9                   
-CODE_1594F1:        LDY $0534                 
-CODE_1594F4:        LDA.w DATA_11AB11,y               
-CODE_1594F7:        CLC                       
-CODE_1594F8:        ADC.w DATA_11AAFB,x               
-CODE_1594FB:        STA $02                   
-CODE_1594FD:        LDA.w DATA_11AAF0,x               
-CODE_159500:        STA $01                   
-CODE_159502:        LDA.w DATA_11AB06,x               
-CODE_159505:        STA $03                   
-CODE_159507:        LDA $E6                   
-CODE_159509:        CLC                       
-CODE_15950A:        ADC $E5                   
-CODE_15950C:        STA $E7                   
-CODE_15950E:        LDY $0713                 
-CODE_159511:        RTS                       
+CODE_1594EC:        8C 13 07      STY $0713                 
+CODE_1594EF:        A6 E9         LDX $E9                   
+CODE_1594F1:        AC 34 05      LDY $0534                 
+CODE_1594F4:        B9 11 AB      LDA.w DATA_11AB11,y               
+CODE_1594F7:        18            CLC                       
+CODE_1594F8:        7D FB AA      ADC.w DATA_11AAFB,x               
+CODE_1594FB:        85 02         STA $02                   
+CODE_1594FD:        BD F0 AA      LDA.w DATA_11AAF0,x               
+CODE_159500:        85 01         STA $01                   
+CODE_159502:        BD 06 AB      LDA.w DATA_11AB06,x               
+CODE_159505:        85 03         STA $03                   
+CODE_159507:        A5 E6         LDA $E6                   
+CODE_159509:        18            CLC                       
+CODE_15950A:        65 E5         ADC $E5                   
+CODE_15950C:        85 E7         STA $E7                   
+CODE_15950E:        AC 13 07      LDY $0713                 
+CODE_159511:        60            RTS                       
 
 DATA_159512:        db $0F,$1E,$2D,$3C,$4B
 
-CODE_159517:        STY $04                   
-CODE_159519:        INC $0756                 
-CODE_15951C:        LDA $0543                 
-CODE_15951F:        ASL A                     
-CODE_159520:        TAX                       
-CODE_159521:        LDA.l PNTR_15A90E,x             
-CODE_159525:        STA $C4                   
-CODE_159527:        INX                       
-CODE_159528:        LDA.l PNTR_15A90E,x             
-CODE_15952C:        STA $C5                   
-CODE_15952E:        LDA #$15                  
-CODE_159530:        STA $C6                   
-CODE_159532:        LDA $02C8                 
-CODE_159535:        BNE CODE_15954D           
-CODE_159537:        LDA $075A                 
-CODE_15953A:        BEQ CODE_159541           
-CODE_15953C:        STZ $075A                 
-CODE_15953F:        BRA CODE_159577           
+CODE_159517:        84 04         STY $04                   
+CODE_159519:        EE 56 07      INC $0756                 
+CODE_15951C:        AD 43 05      LDA $0543                 
+CODE_15951F:        0A            ASL A                     
+CODE_159520:        AA            TAX                       
+CODE_159521:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
+CODE_159525:        85 C4         STA $C4                   
+CODE_159527:        E8            INX                       
+CODE_159528:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
+CODE_15952C:        85 C5         STA $C5                   
+CODE_15952E:        A9 15         LDA #$15                  
+CODE_159530:        85 C6         STA $C6                   
+CODE_159532:        AD C8 02      LDA $02C8                 
+CODE_159535:        D0 16         BNE CODE_15954D           
+CODE_159537:        AD 5A 07      LDA $075A                 
+CODE_15953A:        F0 05         BEQ CODE_159541           
+CODE_15953C:        9C 5A 07      STZ $075A                 
+CODE_15953F:        80 36         BRA CODE_159577           
 
-CODE_159541:        LDA $0757                 
-CODE_159544:        CMP #$01                  
-CODE_159546:        BNE CODE_159561           
-CODE_159548:        INC $075A                 
-CODE_15954B:        BRA CODE_159561           
+CODE_159541:        AD 57 07      LDA $0757                 
+CODE_159544:        C9 01         CMP #$01                  
+CODE_159546:        D0 19         BNE CODE_159561           
+CODE_159548:        EE 5A 07      INC $075A                 
+CODE_15954B:        80 14         BRA CODE_159561           
 
-CODE_15954D:        LDA $0757                 
-CODE_159550:        BEQ CODE_159561           
-CODE_159552:        CMP #$FF                  
-CODE_159554:        BEQ CODE_159561           
-CODE_159556:        CMP #$01                  
-CODE_159558:        BEQ CODE_15955E           
-CODE_15955A:        LDX #$04                  
-CODE_15955C:        BRA CODE_159567           
+CODE_15954D:        AD 57 07      LDA $0757                 
+CODE_159550:        F0 0F         BEQ CODE_159561           
+CODE_159552:        C9 FF         CMP #$FF                  
+CODE_159554:        F0 0B         BEQ CODE_159561           
+CODE_159556:        C9 01         CMP #$01                  
+CODE_159558:        F0 04         BEQ CODE_15955E           
+CODE_15955A:        A2 04         LDX #$04                  
+CODE_15955C:        80 09         BRA CODE_159567           
 
-CODE_15955E:        INC $075A                 
-CODE_159561:        LDA $0756                 
-CODE_159564:        AND #$03                  
-CODE_159566:        TAX                       
-CODE_159567:        LDA.l DATA_159512,x             
-CODE_15956B:        REP #$20                  
-CODE_15956D:        AND #$00FF                
-CODE_159570:        CLC                       
-CODE_159571:        ADC $C4                   
-CODE_159573:        STA $C4                   
-CODE_159575:        SEP #$20                  
-CODE_159577:        LDY $E7                   
-CODE_159579:        JSR CODE_15958C           
-CODE_15957C:        LDY $E7                   
-CODE_15957E:        JSR CODE_1597B7           
-CODE_159581:        LDA $02C8                 
-CODE_159584:        BNE CODE_159589           
-CODE_159586:        INC $02C8                 
-CODE_159589:        LDY $04                   
-CODE_15958B:        RTS                       
+CODE_15955E:        EE 5A 07      INC $075A                 
+CODE_159561:        AD 56 07      LDA $0756                 
+CODE_159564:        29 03         AND #$03                  
+CODE_159566:        AA            TAX                       
+CODE_159567:        BF 12 95 15   LDA.l DATA_159512,x             
+CODE_15956B:        C2 20         REP #$20                  
+CODE_15956D:        29 FF 00      AND #$00FF                
+CODE_159570:        18            CLC                       
+CODE_159571:        65 C4         ADC $C4                   
+CODE_159573:        85 C4         STA $C4                   
+CODE_159575:        E2 20         SEP #$20                  
+CODE_159577:        A4 E7         LDY $E7                   
+CODE_159579:        20 8C 95      JSR CODE_15958C           
+CODE_15957C:        A4 E7         LDY $E7                   
+CODE_15957E:        20 B7 97      JSR CODE_1597B7           
+CODE_159581:        AD C8 02      LDA $02C8                 
+CODE_159584:        D0 03         BNE CODE_159589           
+CODE_159586:        EE C8 02      INC $02C8                 
+CODE_159589:        A4 04         LDY $04                   
+CODE_15958B:        60            RTS                       
 
-CODE_15958C:        STZ $0713                 
-CODE_15958F:        LDA $C4                   
-CODE_159591:        STA $0716                 
-CODE_159594:        LDA $C5                   
-CODE_159596:        STA $0717                 
-CODE_159599:        LDA $0757                 
-CODE_15959C:        AND #$F0                  
-CODE_15959E:        BNE CODE_1595AF           
-CODE_1595A0:        LDA $075B                 
-CODE_1595A3:        AND #$0F                  
-CODE_1595A5:        BEQ CODE_1595C2           
-CODE_1595A7:        LDA #$0E                  
-CODE_1595A9:        SEC                       
-CODE_1595AA:        SBC $075C                 
-CODE_1595AD:        BRA CODE_1595BC           
+CODE_15958C:        9C 13 07      STZ $0713                 
+CODE_15958F:        A5 C4         LDA $C4                   
+CODE_159591:        8D 16 07      STA $0716                 
+CODE_159594:        A5 C5         LDA $C5                   
+CODE_159596:        8D 17 07      STA $0717                 
+CODE_159599:        AD 57 07      LDA $0757                 
+CODE_15959C:        29 F0         AND #$F0                  
+CODE_15959E:        D0 0F         BNE CODE_1595AF           
+CODE_1595A0:        AD 5B 07      LDA $075B                 
+CODE_1595A3:        29 0F         AND #$0F                  
+CODE_1595A5:        F0 1B         BEQ CODE_1595C2           
+CODE_1595A7:        A9 0E         LDA #$0E                  
+CODE_1595A9:        38            SEC                       
+CODE_1595AA:        ED 5C 07      SBC $075C                 
+CODE_1595AD:        80 0D         BRA CODE_1595BC           
 
-CODE_1595AF:        LDA $075B                 
-CODE_1595B2:        AND #$0F                  
-CODE_1595B4:        BNE CODE_1595A7           
-CODE_1595B6:        LDA #$0E                  
-CODE_1595B8:        SEC                       
-CODE_1595B9:        SBC $0758                 
-CODE_1595BC:        STA $0715                 
-CODE_1595BF:        STZ $0757                 
-CODE_1595C2:        LDA $0715                 
-CODE_1595C5:        BEQ CODE_1595FE           
-CODE_1595C7:        CMP $0713                 
-CODE_1595CA:        BPL CODE_1595FE           
-CODE_1595CC:        LDA $C4                   
-CODE_1595CE:        STA $0716                 
-CODE_1595D1:        LDA $C5                   
-CODE_1595D3:        STA $0717                 
-CODE_1595D6:        LDA $0543                 
-CODE_1595D9:        ASL A                     
-CODE_1595DA:        TAX                       
-CODE_1595DB:        LDA.l PNTR_15A90E,x             
-CODE_1595DF:        STA $C4                   
-CODE_1595E1:        INX                       
-CODE_1595E2:        LDA.l PNTR_15A90E,x             
-CODE_1595E6:        STA $C5                   
-CODE_1595E8:        LDA $0756                 
-CODE_1595EB:        AND #$03                  
-CODE_1595ED:        TAX                       
-CODE_1595EE:        LDA.l DATA_159512,x             
-CODE_1595F2:        REP #$20                  
-CODE_1595F4:        AND #$00FF                
-CODE_1595F7:        CLC                       
-CODE_1595F8:        ADC $C4                   
-CODE_1595FA:        STA $C4                   
-CODE_1595FC:        SEP #$20                  
-CODE_1595FE:        STY $0714                 
-CODE_159601:        LDY $0713                 
-CODE_159604:        LDA [$C4],y               
-CODE_159606:        LDY $0714                 
-CODE_159609:        STA [$01],y               
-CODE_15960B:        CMP #$40                  
-CODE_15960D:        BEQ CODE_159625           
-CODE_15960F:        REP #$30                  
-CODE_159611:        TYA                       
-CODE_159612:        AND #$00FF                
-CODE_159615:        CLC                       
-CODE_159616:        ADC #$7000                
-CODE_159619:        TAY                       
-CODE_15961A:        SEP #$20                  
-CODE_15961C:        LDA #$01                  
-CODE_15961E:        STA [$01],y               
-CODE_159620:        SEP #$10                  
-CODE_159622:        LDY $0714                 
-CODE_159625:        LDA $0716                 
-CODE_159628:        STA $C4                   
-CODE_15962A:        LDA $0717                 
-CODE_15962D:        STA $C5                   
-CODE_15962F:        TYA                       
-CODE_159630:        CLC                       
-CODE_159631:        ADC #$10                  
-CODE_159633:        TAY                       
-CODE_159634:        INC $0713                 
-CODE_159637:        LDA $0713                 
-CODE_15963A:        CMP #$0F                  
-CODE_15963C:        BEQ CODE_159641           
-CODE_15963E:        BRL CODE_1595C2           
-CODE_159641:        LDA $0757                 
-CODE_159644:        STA $075B                 
-CODE_159647:        LDA $0758                 
-CODE_15964A:        STA $075C                 
-CODE_15964D:        STZ $0715                 
-CODE_159650:        RTS                       
+CODE_1595AF:        AD 5B 07      LDA $075B                 
+CODE_1595B2:        29 0F         AND #$0F                  
+CODE_1595B4:        D0 F1         BNE CODE_1595A7           
+CODE_1595B6:        A9 0E         LDA #$0E                  
+CODE_1595B8:        38            SEC                       
+CODE_1595B9:        ED 58 07      SBC $0758                 
+CODE_1595BC:        8D 15 07      STA $0715                 
+CODE_1595BF:        9C 57 07      STZ $0757                 
+CODE_1595C2:        AD 15 07      LDA $0715                 
+CODE_1595C5:        F0 37         BEQ CODE_1595FE           
+CODE_1595C7:        CD 13 07      CMP $0713                 
+CODE_1595CA:        10 32         BPL CODE_1595FE           
+CODE_1595CC:        A5 C4         LDA $C4                   
+CODE_1595CE:        8D 16 07      STA $0716                 
+CODE_1595D1:        A5 C5         LDA $C5                   
+CODE_1595D3:        8D 17 07      STA $0717                 
+CODE_1595D6:        AD 43 05      LDA $0543                 
+CODE_1595D9:        0A            ASL A                     
+CODE_1595DA:        AA            TAX                       
+CODE_1595DB:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
+CODE_1595DF:        85 C4         STA $C4                   
+CODE_1595E1:        E8            INX                       
+CODE_1595E2:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
+CODE_1595E6:        85 C5         STA $C5                   
+CODE_1595E8:        AD 56 07      LDA $0756                 
+CODE_1595EB:        29 03         AND #$03                  
+CODE_1595ED:        AA            TAX                       
+CODE_1595EE:        BF 12 95 15   LDA.l DATA_159512,x             
+CODE_1595F2:        C2 20         REP #$20                  
+CODE_1595F4:        29 FF 00      AND #$00FF                
+CODE_1595F7:        18            CLC                       
+CODE_1595F8:        65 C4         ADC $C4                   
+CODE_1595FA:        85 C4         STA $C4                   
+CODE_1595FC:        E2 20         SEP #$20                  
+CODE_1595FE:        8C 14 07      STY $0714                 
+CODE_159601:        AC 13 07      LDY $0713                 
+CODE_159604:        B7 C4         LDA [$C4],y               
+CODE_159606:        AC 14 07      LDY $0714                 
+CODE_159609:        97 01         STA [$01],y               
+CODE_15960B:        C9 40         CMP #$40                  
+CODE_15960D:        F0 16         BEQ CODE_159625           
+CODE_15960F:        C2 30         REP #$30                  
+CODE_159611:        98            TYA                       
+CODE_159612:        29 FF 00      AND #$00FF                
+CODE_159615:        18            CLC                       
+CODE_159616:        69 00 70      ADC #$7000                
+CODE_159619:        A8            TAY                       
+CODE_15961A:        E2 20         SEP #$20                  
+CODE_15961C:        A9 01         LDA #$01                  
+CODE_15961E:        97 01         STA [$01],y               
+CODE_159620:        E2 10         SEP #$10                  
+CODE_159622:        AC 14 07      LDY $0714                 
+CODE_159625:        AD 16 07      LDA $0716                 
+CODE_159628:        85 C4         STA $C4                   
+CODE_15962A:        AD 17 07      LDA $0717                 
+CODE_15962D:        85 C5         STA $C5                   
+CODE_15962F:        98            TYA                       
+CODE_159630:        18            CLC                       
+CODE_159631:        69 10         ADC #$10                  
+CODE_159633:        A8            TAY                       
+CODE_159634:        EE 13 07      INC $0713                 
+CODE_159637:        AD 13 07      LDA $0713                 
+CODE_15963A:        C9 0F         CMP #$0F                  
+CODE_15963C:        F0 03         BEQ CODE_159641           
+CODE_15963E:        82 81 FF      BRL CODE_1595C2           
+CODE_159641:        AD 57 07      LDA $0757                 
+CODE_159644:        8D 5B 07      STA $075B                 
+CODE_159647:        AD 58 07      LDA $0758                 
+CODE_15964A:        8D 5C 07      STA $075C                 
+CODE_15964D:        9C 15 07      STZ $0715                 
+CODE_159650:        60            RTS                       
 
-CODE_159651:        INY                       
-CODE_159652:        TYA                       
-CODE_159653:        AND #$0F                  
-CODE_159655:        BNE CODE_159668           
-CODE_159657:        TYA                       
-CODE_159658:        SEC                       
-CODE_159659:        SBC #$10                  
-CODE_15965B:        TAY                       
-CODE_15965C:        STX $0B                   
-CODE_15965E:        LDX $E9                   
-CODE_159660:        INX                       
-CODE_159661:        STX $0D                   
-CODE_159663:        JSR CODE_1594F1           
-CODE_159666:        LDX $0B                   
-CODE_159668:        RTS                       
+CODE_159651:        C8            INY                       
+CODE_159652:        98            TYA                       
+CODE_159653:        29 0F         AND #$0F                  
+CODE_159655:        D0 11         BNE CODE_159668           
+CODE_159657:        98            TYA                       
+CODE_159658:        38            SEC                       
+CODE_159659:        E9 10         SBC #$10                  
+CODE_15965B:        A8            TAY                       
+CODE_15965C:        86 0B         STX $0B                   
+CODE_15965E:        A6 E9         LDX $E9                   
+CODE_159660:        E8            INX                       
+CODE_159661:        86 0D         STX $0D                   
+CODE_159663:        20 F1 94      JSR CODE_1594F1           
+CODE_159666:        A6 0B         LDX $0B                   
+CODE_159668:        60            RTS                       
 
-CODE_159669:        TYA                       
-CODE_15966A:        CLC                       
-CODE_15966B:        ADC #$10                  
-CODE_15966D:        TAY                       
-CODE_15966E:        CMP #$F0                  
-CODE_159670:        BCC CODE_15967C           
-CODE_159672:        LDX $E9                   
-CODE_159674:        INX                       
-CODE_159675:        JSR CODE_1594F1           
-CODE_159678:        TYA                       
-CODE_159679:        AND #$0F                  
-CODE_15967B:        TAY                       
-CODE_15967C:        RTS                       
+CODE_159669:        98            TYA                       
+CODE_15966A:        18            CLC                       
+CODE_15966B:        69 10         ADC #$10                  
+CODE_15966D:        A8            TAY                       
+CODE_15966E:        C9 F0         CMP #$F0                  
+CODE_159670:        90 0A         BCC CODE_15967C           
+CODE_159672:        A6 E9         LDX $E9                   
+CODE_159674:        E8            INX                       
+CODE_159675:        20 F1 94      JSR CODE_1594F1           
+CODE_159678:        98            TYA                       
+CODE_159679:        29 0F         AND #$0F                  
+CODE_15967B:        A8            TAY                       
+CODE_15967C:        60            RTS                       
 
-CODE_15967D:        CLC                       
-CODE_15967E:        ADC $E6                   
-CODE_159680:        BCC CODE_159686           
-CODE_159682:        ADC #$0F                  
-CODE_159684:        BRA CODE_15968C           
-CODE_159686:        CMP #$F0                  
-CODE_159688:        BNE CODE_15968E           
-CODE_15968A:        LDA #$00                  
-CODE_15968C:        INC $E9                   
-CODE_15968E:        STA $E6                   
-CODE_159690:        RTS                       
+CODE_15967D:        18            CLC                       
+CODE_15967E:        65 E6         ADC $E6                   
+CODE_159680:        90 04         BCC CODE_159686           
+CODE_159682:        69 0F         ADC #$0F                  
+CODE_159684:        80 06         BRA CODE_15968C           
+CODE_159686:        C9 F0         CMP #$F0                  
+CODE_159688:        D0 04         BNE CODE_15968E           
+CODE_15968A:        A9 00         LDA #$00                  
+CODE_15968C:        E6 E9         INC $E9                   
+CODE_15968E:        85 E6         STA $E6                   
+CODE_159690:        60            RTS                       
 
-CODE_159691:        STY $0712                 
-CODE_159694:        INY                       
-CODE_159695:        LDA ($D9),y               
-CODE_159697:        CMP #$FF                  
-CODE_159699:        BNE CODE_15969E           
-CODE_15969B:        BRL CODE_1597AD           
+CODE_159691:        8C 12 07      STY $0712                 
+CODE_159694:        C8            INY                       
+CODE_159695:        B1 D9         LDA ($D9),y               
+CODE_159697:        C9 FF         CMP #$FF                  
+CODE_159699:        D0 03         BNE CODE_15969E           
+CODE_15969B:        82 0F 01      BRL CODE_1597AD           
 
-CODE_15969E:        AND #$1F                  
-CODE_1596A0:        ASL A                     
-CODE_1596A1:        TAX                       
-CODE_1596A2:        LDA.l PNTR_15A90E,x             
-CODE_1596A6:        STA $C4                   
-CODE_1596A8:        INX                       
-CODE_1596A9:        LDA.l PNTR_15A90E,x             
-CODE_1596AD:        STA $C5                   
-CODE_1596AF:        LDA #$15                  
-CODE_1596B1:        STA $C6                   
-CODE_1596B3:        STZ $0716                 
-CODE_1596B6:        STZ $0717                 
-CODE_1596B9:        STZ $071A                 
-CODE_1596BC:        LDY #$00                  
-CODE_1596BE:        LDA [$C4],y               
-CODE_1596C0:        CMP #$40                  
-CODE_1596C2:        BEQ CODE_1596CC           
-CODE_1596C4:        LDX $071A                 
-CODE_1596C7:        INC $0716,x               
-CODE_1596CA:        BRA CODE_1596DE           
+CODE_15969E:        29 1F         AND #$1F                  
+CODE_1596A0:        0A            ASL A                     
+CODE_1596A1:        AA            TAX                       
+CODE_1596A2:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
+CODE_1596A6:        85 C4         STA $C4                   
+CODE_1596A8:        E8            INX                       
+CODE_1596A9:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
+CODE_1596AD:        85 C5         STA $C5                   
+CODE_1596AF:        A9 15         LDA #$15                  
+CODE_1596B1:        85 C6         STA $C6                   
+CODE_1596B3:        9C 16 07      STZ $0716                 
+CODE_1596B6:        9C 17 07      STZ $0717                 
+CODE_1596B9:        9C 1A 07      STZ $071A                 
+CODE_1596BC:        A0 00         LDY #$00                  
+CODE_1596BE:        B7 C4         LDA [$C4],y               
+CODE_1596C0:        C9 40         CMP #$40                  
+CODE_1596C2:        F0 08         BEQ CODE_1596CC           
+CODE_1596C4:        AE 1A 07      LDX $071A                 
+CODE_1596C7:        FE 16 07      INC $0716,x               
+CODE_1596CA:        80 12         BRA CODE_1596DE           
 
-CODE_1596CC:        CPY #$00                  
-CODE_1596CE:        BEQ CODE_1596D8           
-CODE_1596D0:        DEY                       
-CODE_1596D1:        LDA [$C4],y               
-CODE_1596D3:        CMP #$40                  
-CODE_1596D5:        BEQ CODE_1596DD           
-CODE_1596D7:        INY                       
-CODE_1596D8:        INC $071A                 
-CODE_1596DB:        BRA CODE_1596DE           
+CODE_1596CC:        C0 00         CPY #$00                  
+CODE_1596CE:        F0 08         BEQ CODE_1596D8           
+CODE_1596D0:        88            DEY                       
+CODE_1596D1:        B7 C4         LDA [$C4],y               
+CODE_1596D3:        C9 40         CMP #$40                  
+CODE_1596D5:        F0 06         BEQ CODE_1596DD           
+CODE_1596D7:        C8            INY                       
+CODE_1596D8:        EE 1A 07      INC $071A                 
+CODE_1596DB:        80 01         BRA CODE_1596DE           
 
-CODE_1596DD:        INY                       
-CODE_1596DE:        INY                       
-CODE_1596DF:        CPY #$0F                  
-CODE_1596E1:        BNE CODE_1596BE           
-CODE_1596E3:        LDA $0716                 
-CODE_1596E6:        CMP #$0F                  
-CODE_1596E8:        BNE CODE_1596ED           
-CODE_1596EA:        STA $0717                 
-CODE_1596ED:        LDA $0543                 
-CODE_1596F0:        ASL A                     
-CODE_1596F1:        TAX                       
-CODE_1596F2:        LDA.l PNTR_15A90E,x             
-CODE_1596F6:        STA $C4                   
-CODE_1596F8:        INX                       
-CODE_1596F9:        LDA.l PNTR_15A90E,x             
-CODE_1596FD:        STA $C5                   
-CODE_1596FF:        LDA #$15                  
-CODE_159701:        STA $C6                   
-CODE_159703:        STZ $0718                 
-CODE_159706:        STZ $0719                 
-CODE_159709:        STZ $071A                 
-CODE_15970C:        LDY #$00                  
-CODE_15970E:        LDA [$C4],y               
-CODE_159710:        CMP #$40                  
-CODE_159712:        BEQ CODE_15971C           
-CODE_159714:        LDX $071A                 
-CODE_159717:        INC $0718,x               
-CODE_15971A:        BRA CODE_15972E           
-CODE_15971C:        CPY #$00                  
-CODE_15971E:        BEQ CODE_159728           
-CODE_159720:        DEY                       
-CODE_159721:        LDA [$C4],y               
-CODE_159723:        CMP #$40                  
-CODE_159725:        BEQ CODE_15972D           
-CODE_159727:        INY                       
-CODE_159728:        INC $071A                 
-CODE_15972B:        BRA CODE_15972E           
+CODE_1596DD:        C8            INY                       
+CODE_1596DE:        C8            INY                       
+CODE_1596DF:        C0 0F         CPY #$0F                  
+CODE_1596E1:        D0 DB         BNE CODE_1596BE           
+CODE_1596E3:        AD 16 07      LDA $0716                 
+CODE_1596E6:        C9 0F         CMP #$0F                  
+CODE_1596E8:        D0 03         BNE CODE_1596ED           
+CODE_1596EA:        8D 17 07      STA $0717                 
+CODE_1596ED:        AD 43 05      LDA $0543                 
+CODE_1596F0:        0A            ASL A                     
+CODE_1596F1:        AA            TAX                       
+CODE_1596F2:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
+CODE_1596F6:        85 C4         STA $C4                   
+CODE_1596F8:        E8            INX                       
+CODE_1596F9:        BF 0E A9 15   LDA.l PNTR_15A90E,x             
+CODE_1596FD:        85 C5         STA $C5                   
+CODE_1596FF:        A9 15         LDA #$15                  
+CODE_159701:        85 C6         STA $C6                   
+CODE_159703:        9C 18 07      STZ $0718                 
+CODE_159706:        9C 19 07      STZ $0719                 
+CODE_159709:        9C 1A 07      STZ $071A                 
+CODE_15970C:        A0 00         LDY #$00                  
+CODE_15970E:        B7 C4         LDA [$C4],y               
+CODE_159710:        C9 40         CMP #$40                  
+CODE_159712:        F0 08         BEQ CODE_15971C           
+CODE_159714:        AE 1A 07      LDX $071A                 
+CODE_159717:        FE 18 07      INC $0718,x               
+CODE_15971A:        80 12         BRA CODE_15972E           
+CODE_15971C:        C0 00         CPY #$00                  
+CODE_15971E:        F0 08         BEQ CODE_159728           
+CODE_159720:        88            DEY                       
+CODE_159721:        B7 C4         LDA [$C4],y               
+CODE_159723:        C9 40         CMP #$40                  
+CODE_159725:        F0 06         BEQ CODE_15972D           
+CODE_159727:        C8            INY                       
+CODE_159728:        EE 1A 07      INC $071A                 
+CODE_15972B:        80 01         BRA CODE_15972E           
 
-CODE_15972D:        INY                       
-CODE_15972E:        INY                       
-CODE_15972F:        CPY #$0F                  
-CODE_159731:        BNE CODE_15970E           
-CODE_159733:        LDA $0718                 
-CODE_159736:        CMP #$0F                  
-CODE_159738:        BNE CODE_15973D           
-CODE_15973A:        STA $0719                 
-CODE_15973D:        LDA $0719                 
-CODE_159740:        CMP $0717                 
-CODE_159743:        BEQ CODE_159754           
-CODE_159745:        BMI CODE_159761           
-CODE_159747:        LDA #$10                  
-CODE_159749:        STA $0757                 
-CODE_15974C:        LDA $0717                 
-CODE_15974F:        STA $0758                 
-CODE_159752:        BRA CODE_15976C           
+CODE_15972D:        C8            INY                       
+CODE_15972E:        C8            INY                       
+CODE_15972F:        C0 0F         CPY #$0F                  
+CODE_159731:        D0 DB         BNE CODE_15970E           
+CODE_159733:        AD 18 07      LDA $0718                 
+CODE_159736:        C9 0F         CMP #$0F                  
+CODE_159738:        D0 03         BNE CODE_15973D           
+CODE_15973A:        8D 19 07      STA $0719                 
+CODE_15973D:        AD 19 07      LDA $0719                 
+CODE_159740:        CD 17 07      CMP $0717                 
+CODE_159743:        F0 0F         BEQ CODE_159754           
+CODE_159745:        30 1A         BMI CODE_159761           
+CODE_159747:        A9 10         LDA #$10                  
+CODE_159749:        8D 57 07      STA $0757                 
+CODE_15974C:        AD 17 07      LDA $0717                 
+CODE_15974F:        8D 58 07      STA $0758                 
+CODE_159752:        80 18         BRA CODE_15976C           
 
-CODE_159754:        LDA #$FF                  
-CODE_159756:        STA $0757                 
-CODE_159759:        LDA $0717                 
-CODE_15975C:        STA $0758                 
-CODE_15975F:        BRA CODE_15976C           
+CODE_159754:        A9 FF         LDA #$FF                  
+CODE_159756:        8D 57 07      STA $0757                 
+CODE_159759:        AD 17 07      LDA $0717                 
+CODE_15975C:        8D 58 07      STA $0758                 
+CODE_15975F:        80 0B         BRA CODE_15976C           
 
-CODE_159761:        LDA #$01                  
-CODE_159763:        STA $0757                 
-CODE_159766:        LDA $0719                 
-CODE_159769:        STA $0758                 
-CODE_15976C:        LDA $0718                 
-CODE_15976F:        CMP $0716                 
-CODE_159772:        BEQ CODE_159788           
-CODE_159774:        BMI CODE_159797           
-CODE_159776:        LDA $0716                 
-CODE_159779:        BEQ CODE_1597AD           
-CODE_15977B:        LDA #$10                  
-CODE_15977D:        STA $075D                 
-CODE_159780:        LDA $0716                 
-CODE_159783:        STA $075E                 
-CODE_159786:        BRA CODE_1597AD           
+CODE_159761:        A9 01         LDA #$01                  
+CODE_159763:        8D 57 07      STA $0757                 
+CODE_159766:        AD 19 07      LDA $0719                 
+CODE_159769:        8D 58 07      STA $0758                 
+CODE_15976C:        AD 18 07      LDA $0718                 
+CODE_15976F:        CD 16 07      CMP $0716                 
+CODE_159772:        F0 14         BEQ CODE_159788           
+CODE_159774:        30 21         BMI CODE_159797           
+CODE_159776:        AD 16 07      LDA $0716                 
+CODE_159779:        F0 32         BEQ CODE_1597AD           
+CODE_15977B:        A9 10         LDA #$10                  
+CODE_15977D:        8D 5D 07      STA $075D                 
+CODE_159780:        AD 16 07      LDA $0716                 
+CODE_159783:        8D 5E 07      STA $075E                 
+CODE_159786:        80 25         BRA CODE_1597AD           
 
-CODE_159788:        LDA $0718                 
-CODE_15978B:        BEQ CODE_1597AD           
-CODE_15978D:        STA $075E                 
-CODE_159790:        LDA #$FF                  
-CODE_159792:        STA $075D                 
-CODE_159795:        BRA CODE_1597AD           
+CODE_159788:        AD 18 07      LDA $0718                 
+CODE_15978B:        F0 20         BEQ CODE_1597AD           
+CODE_15978D:        8D 5E 07      STA $075E                 
+CODE_159790:        A9 FF         LDA #$FF                  
+CODE_159792:        8D 5D 07      STA $075D                 
+CODE_159795:        80 16         BRA CODE_1597AD           
 
-CODE_159797:        LDA $0718                 
-CODE_15979A:        BEQ CODE_1597AD           
-CODE_15979C:        LDA #$11                  
-CODE_15979E:        STA $075D                 
-CODE_1597A1:        LDA $0718                 
-CODE_1597A4:        STA $075E                 
-CODE_1597A7:        LDA $0716                 
-CODE_1597AA:        STA $0763                 
-CODE_1597AD:        LDY $0712                 
-CODE_1597B0:        RTS                       
+CODE_159797:        AD 18 07      LDA $0718                 
+CODE_15979A:        F0 11         BEQ CODE_1597AD           
+CODE_15979C:        A9 11         LDA #$11                  
+CODE_15979E:        8D 5D 07      STA $075D                 
+CODE_1597A1:        AD 18 07      LDA $0718                 
+CODE_1597A4:        8D 5E 07      STA $075E                 
+CODE_1597A7:        AD 16 07      LDA $0716                 
+CODE_1597AA:        8D 63 07      STA $0763                 
+CODE_1597AD:        AC 12 07      LDY $0712                 
+CODE_1597B0:        60            RTS                       
 
 DATA_1597B1:        db $05,$06
 
 DATA_1597B3:        db $11,$12,$04,$10
 
-CODE_1597B7:        STZ $0713                 
-CODE_1597BA:        LDA $075D                 
-CODE_1597BD:        AND #$F0                  
-CODE_1597BF:        BNE CODE_1597CB           
-CODE_1597C1:        LDA $075F                 
-CODE_1597C4:        AND #$0F                  
-CODE_1597C6:        BNE CODE_1597D6           
-CODE_1597C8:        BRL CODE_159882           
+CODE_1597B7:        9C 13 07      STZ $0713                 
+CODE_1597BA:        AD 5D 07      LDA $075D                 
+CODE_1597BD:        29 F0         AND #$F0                  
+CODE_1597BF:        D0 0A         BNE CODE_1597CB           
+CODE_1597C1:        AD 5F 07      LDA $075F                 
+CODE_1597C4:        29 0F         AND #$0F                  
+CODE_1597C6:        D0 0E         BNE CODE_1597D6           
+CODE_1597C8:        82 B7 00      BRL CODE_159882           
 
-CODE_1597CB:        LDA $075E                 
-CODE_1597CE:        STA $0715                 
-CODE_1597D1:        STZ $0761                 
-CODE_1597D4:        BRA CODE_1597E3           
+CODE_1597CB:        AD 5E 07      LDA $075E                 
+CODE_1597CE:        8D 15 07      STA $0715                 
+CODE_1597D1:        9C 61 07      STZ $0761                 
+CODE_1597D4:        80 0D         BRA CODE_1597E3           
 
-CODE_1597D6:        LDA $0760                 
-CODE_1597D9:        STA $0715                 
-CODE_1597DC:        LDA #$01                  
-CODE_1597DE:        STA $0761                 
-CODE_1597E1:        BRA CODE_15981C           
+CODE_1597D6:        AD 60 07      LDA $0760                 
+CODE_1597D9:        8D 15 07      STA $0715                 
+CODE_1597DC:        A9 01         LDA #$01                  
+CODE_1597DE:        8D 61 07      STA $0761                 
+CODE_1597E1:        80 39         BRA CODE_15981C           
 
-CODE_1597E3:        TYA                       
-CODE_1597E4:        AND #$10                  
-CODE_1597E6:        BNE CODE_159802           
-CODE_1597E8:        LDA [$01],y               
-CODE_1597EA:        CMP #$07                  
-CODE_1597EC:        BNE CODE_1597F5           
-CODE_1597EE:        LDA $0756                 
-CODE_1597F1:        AND #$01                  
-CODE_1597F3:        BRA CODE_159855           
+CODE_1597E3:        98            TYA                       
+CODE_1597E4:        29 10         AND #$10                  
+CODE_1597E6:        D0 1A         BNE CODE_159802           
+CODE_1597E8:        B7 01         LDA [$01],y               
+CODE_1597EA:        C9 07         CMP #$07                  
+CODE_1597EC:        D0 07         BNE CODE_1597F5           
+CODE_1597EE:        AD 56 07      LDA $0756                 
+CODE_1597F1:        29 01         AND #$01                  
+CODE_1597F3:        80 60         BRA CODE_159855           
 
-CODE_1597F5:        CMP #$13                  
-CODE_1597F7:        BNE CODE_159863           
-CODE_1597F9:        LDA $0756                 
-CODE_1597FC:        AND #$01                  
-CODE_1597FE:        EOR #$01                  
-CODE_159800:        BRA CODE_159855           
+CODE_1597F5:        C9 13         CMP #$13                  
+CODE_1597F7:        D0 6A         BNE CODE_159863           
+CODE_1597F9:        AD 56 07      LDA $0756                 
+CODE_1597FC:        29 01         AND #$01                  
+CODE_1597FE:        49 01         EOR #$01                  
+CODE_159800:        80 53         BRA CODE_159855           
 
-CODE_159802:        LDA [$01],y               
-CODE_159804:        CMP #$07                  
-CODE_159806:        BNE CODE_159811           
-CODE_159808:        LDA $0756                 
-CODE_15980B:        AND #$01                  
-CODE_15980D:        EOR #$01                  
-CODE_15980F:        BRA CODE_15985C           
+CODE_159802:        B7 01         LDA [$01],y               
+CODE_159804:        C9 07         CMP #$07                  
+CODE_159806:        D0 09         BNE CODE_159811           
+CODE_159808:        AD 56 07      LDA $0756                 
+CODE_15980B:        29 01         AND #$01                  
+CODE_15980D:        49 01         EOR #$01                  
+CODE_15980F:        80 4B         BRA CODE_15985C           
 
-CODE_159811:        CMP #$13                  
-CODE_159813:        BNE CODE_159863           
-CODE_159815:        LDA $0756                 
-CODE_159818:        AND #$01                  
-CODE_15981A:        BRA CODE_15985C           
-CODE_15981C:        TYA                       
-CODE_15981D:        AND #$10                  
-CODE_15981F:        BNE CODE_15983B           
-CODE_159821:        LDA [$01],y               
-CODE_159823:        CMP #$04                  
-CODE_159825:        BNE CODE_15982E           
-CODE_159827:        LDA $0756                 
-CODE_15982A:        AND #$01                  
-CODE_15982C:        BRA CODE_159855           
+CODE_159811:        C9 13         CMP #$13                  
+CODE_159813:        D0 4E         BNE CODE_159863           
+CODE_159815:        AD 56 07      LDA $0756                 
+CODE_159818:        29 01         AND #$01                  
+CODE_15981A:        80 40         BRA CODE_15985C           
+CODE_15981C:        98            TYA                       
+CODE_15981D:        29 10         AND #$10                  
+CODE_15981F:        D0 1A         BNE CODE_15983B           
+CODE_159821:        B7 01         LDA [$01],y               
+CODE_159823:        C9 04         CMP #$04                  
+CODE_159825:        D0 07         BNE CODE_15982E           
+CODE_159827:        AD 56 07      LDA $0756                 
+CODE_15982A:        29 01         AND #$01                  
+CODE_15982C:        80 27         BRA CODE_159855           
 
-CODE_15982E:        CMP #$10                  
-CODE_159830:        BNE CODE_159863           
-CODE_159832:        LDA $0756                 
-CODE_159835:        AND #$01                  
-CODE_159837:        EOR #$01                  
-CODE_159839:        BRA CODE_159855           
+CODE_15982E:        C9 10         CMP #$10                  
+CODE_159830:        D0 31         BNE CODE_159863           
+CODE_159832:        AD 56 07      LDA $0756                 
+CODE_159835:        29 01         AND #$01                  
+CODE_159837:        49 01         EOR #$01                  
+CODE_159839:        80 1A         BRA CODE_159855           
 
-CODE_15983B:        LDA [$01],y               
-CODE_15983D:        CMP #$04                  
-CODE_15983F:        BNE CODE_15984A           
-CODE_159841:        LDA $0756                 
-CODE_159844:        AND #$01                  
-CODE_159846:        EOR #$01                  
-CODE_159848:        BRA CODE_15985C           
+CODE_15983B:        B7 01         LDA [$01],y               
+CODE_15983D:        C9 04         CMP #$04                  
+CODE_15983F:        D0 09         BNE CODE_15984A           
+CODE_159841:        AD 56 07      LDA $0756                 
+CODE_159844:        29 01         AND #$01                  
+CODE_159846:        49 01         EOR #$01                  
+CODE_159848:        80 12         BRA CODE_15985C           
 
-CODE_15984A:        CMP #$10                  
-CODE_15984C:        BNE CODE_159863           
-CODE_15984E:        LDA $0756                 
-CODE_159851:        AND #$01                  
-CODE_159853:        BRA CODE_15985C           
+CODE_15984A:        C9 10         CMP #$10                  
+CODE_15984C:        D0 15         BNE CODE_159863           
+CODE_15984E:        AD 56 07      LDA $0756                 
+CODE_159851:        29 01         AND #$01                  
+CODE_159853:        80 07         BRA CODE_15985C           
 
-CODE_159855:        TAX                       
-CODE_159856:        LDA.l DATA_1597B1,x             
-CODE_15985A:        BRA CODE_159861           
+CODE_159855:        AA            TAX                       
+CODE_159856:        BF B1 97 15   LDA.l DATA_1597B1,x             
+CODE_15985A:        80 05         BRA CODE_159861           
 
-CODE_15985C:        TAX                       
-CODE_15985D:        LDA.l DATA_1597B3,x             
-CODE_159861:        STA [$01],y               
-CODE_159863:        LDA $EB                   
-CODE_159865:        BNE CODE_15986A           
-CODE_159867:        INY                       
-CODE_159868:        BRA CODE_15986F           
-CODE_15986A:        TYA                       
-CODE_15986B:        CLC                       
-CODE_15986C:        ADC #$10                  
-CODE_15986E:        TAY                       
-CODE_15986F:        INC $0713                 
-CODE_159872:        LDA $0713                 
-CODE_159875:        CMP $0715                 
-CODE_159878:        BPL CODE_159882           
-CODE_15987A:        LDA $0761                 
-CODE_15987D:        BNE CODE_15981C           
-CODE_15987F:        BRL CODE_1597E3           
-CODE_159882:        LDA $075D                 
-CODE_159885:        STA $075F                 
-CODE_159888:        LDA $075E                 
-CODE_15988B:        STA $0760                 
-CODE_15988E:        STZ $075D                 
-CODE_159891:        STZ $0715                 
-CODE_159894:        RTS                       
+CODE_15985C:        AA            TAX                       
+CODE_15985D:        BF B3 97 15   LDA.l DATA_1597B3,x             
+CODE_159861:        97 01         STA [$01],y               
+CODE_159863:        A5 EB         LDA $EB                   
+CODE_159865:        D0 03         BNE CODE_15986A           
+CODE_159867:        C8            INY                       
+CODE_159868:        80 05         BRA CODE_15986F           
+CODE_15986A:        98            TYA                       
+CODE_15986B:        18            CLC                       
+CODE_15986C:        69 10         ADC #$10                  
+CODE_15986E:        A8            TAY                       
+CODE_15986F:        EE 13 07      INC $0713                 
+CODE_159872:        AD 13 07      LDA $0713                 
+CODE_159875:        CD 15 07      CMP $0715                 
+CODE_159878:        10 08         BPL CODE_159882           
+CODE_15987A:        AD 61 07      LDA $0761                 
+CODE_15987D:        D0 9D         BNE CODE_15981C           
+CODE_15987F:        82 61 FF      BRL CODE_1597E3           
+CODE_159882:        AD 5D 07      LDA $075D                 
+CODE_159885:        8D 5F 07      STA $075F                 
+CODE_159888:        AD 5E 07      LDA $075E                 
+CODE_15988B:        8D 60 07      STA $0760                 
+CODE_15988E:        9C 5D 07      STZ $075D                 
+CODE_159891:        9C 15 07      STZ $0715                 
+CODE_159894:        60            RTS                       
 
-CODE_159895:        STY $0712                 
-CODE_159898:        JSR CODE_159929           
-CODE_15989B:        LDA $0713                 
-CODE_15989E:        BEQ CODE_1598DE           
-CODE_1598A0:        LDA [$01],y               
-CODE_1598A2:        CMP #$01                  
-CODE_1598A4:        BEQ CODE_1598C4           
-CODE_1598A6:        CMP #$02                  
-CODE_1598A8:        BEQ CODE_1598C4           
-CODE_1598AA:        CMP #$05                  
-CODE_1598AC:        BEQ CODE_1598C8           
-CODE_1598AE:        CMP #$06                  
-CODE_1598B0:        BEQ CODE_1598C8           
-CODE_1598B2:        CMP #$11                  
-CODE_1598B4:        BEQ CODE_1598C8           
-CODE_1598B6:        CMP #$12                  
-CODE_1598B8:        BEQ CODE_1598C8           
-CODE_1598BA:        CMP #$15                  
-CODE_1598BC:        BEQ CODE_1598D7           
-CODE_1598BE:        CMP #$16                  
-CODE_1598C0:        BEQ CODE_1598D7           
-CODE_1598C2:        BRA CODE_1598DE           
+CODE_159895:        8C 12 07      STY $0712                 
+CODE_159898:        20 29 99      JSR CODE_159929           
+CODE_15989B:        AD 13 07      LDA $0713                 
+CODE_15989E:        F0 3E         BEQ CODE_1598DE           
+CODE_1598A0:        B7 01         LDA [$01],y               
+CODE_1598A2:        C9 01         CMP #$01                  
+CODE_1598A4:        F0 1E         BEQ CODE_1598C4           
+CODE_1598A6:        C9 02         CMP #$02                  
+CODE_1598A8:        F0 1A         BEQ CODE_1598C4           
+CODE_1598AA:        C9 05         CMP #$05                  
+CODE_1598AC:        F0 1A         BEQ CODE_1598C8           
+CODE_1598AE:        C9 06         CMP #$06                  
+CODE_1598B0:        F0 16         BEQ CODE_1598C8           
+CODE_1598B2:        C9 11         CMP #$11                  
+CODE_1598B4:        F0 12         BEQ CODE_1598C8           
+CODE_1598B6:        C9 12         CMP #$12                  
+CODE_1598B8:        F0 0E         BEQ CODE_1598C8           
+CODE_1598BA:        C9 15         CMP #$15                  
+CODE_1598BC:        F0 19         BEQ CODE_1598D7           
+CODE_1598BE:        C9 16         CMP #$16                  
+CODE_1598C0:        F0 15         BEQ CODE_1598D7           
+CODE_1598C2:        80 1A         BRA CODE_1598DE           
 
-CODE_1598C4:        LDA #$03                  
-CODE_1598C6:        BRA CODE_1598D9           
+CODE_1598C4:        A9 03         LDA #$03                  
+CODE_1598C6:        80 11         BRA CODE_1598D9           
 
-CODE_1598C8:        LDA $0712                 
-CODE_1598CB:        AND #$10                  
-CODE_1598CD:        BNE CODE_1598D3           
-CODE_1598CF:        LDA #$07                  
-CODE_1598D1:        BRA CODE_1598D9           
+CODE_1598C8:        AD 12 07      LDA $0712                 
+CODE_1598CB:        29 10         AND #$10                  
+CODE_1598CD:        D0 04         BNE CODE_1598D3           
+CODE_1598CF:        A9 07         LDA #$07                  
+CODE_1598D1:        80 06         BRA CODE_1598D9           
 
-CODE_1598D3:        LDA #$13                  
-CODE_1598D5:        BRA CODE_1598D9           
+CODE_1598D3:        A9 13         LDA #$13                  
+CODE_1598D5:        80 02         BRA CODE_1598D9           
 
-CODE_1598D7:        LDA #$17                  
-CODE_1598D9:        LDY $0712                 
-CODE_1598DC:        STA [$01],y               
-CODE_1598DE:        RTL                       
+CODE_1598D7:        A9 17         LDA #$17                  
+CODE_1598D9:        AC 12 07      LDY $0712                 
+CODE_1598DC:        97 01         STA [$01],y               
+CODE_1598DE:        6B            RTL                       
 
-CODE_1598DF:        STY $0712                 
-CODE_1598E2:        JSR CODE_159929           
-CODE_1598E5:        LDA $0713                 
-CODE_1598E8:        BEQ CODE_159928           
-CODE_1598EA:        LDA [$01],y               
-CODE_1598EC:        CMP #$01                  
-CODE_1598EE:        BEQ CODE_15990E           
-CODE_1598F0:        CMP #$02                  
-CODE_1598F2:        BEQ CODE_15990E           
-CODE_1598F4:        CMP #$05                  
-CODE_1598F6:        BEQ CODE_159912           
-CODE_1598F8:        CMP #$06                  
-CODE_1598FA:        BEQ CODE_159912           
-CODE_1598FC:        CMP #$11                  
-CODE_1598FE:        BEQ CODE_159912           
-CODE_159900:        CMP #$12                  
-CODE_159902:        BEQ CODE_159912           
-CODE_159904:        CMP #$15                  
-CODE_159906:        BEQ CODE_159921           
-CODE_159908:        CMP #$16                  
-CODE_15990A:        BEQ CODE_159921           
-CODE_15990C:        BRA CODE_159928           
+CODE_1598DF:        8C 12 07      STY $0712                 
+CODE_1598E2:        20 29 99      JSR CODE_159929           
+CODE_1598E5:        AD 13 07      LDA $0713                 
+CODE_1598E8:        F0 3E         BEQ CODE_159928           
+CODE_1598EA:        B7 01         LDA [$01],y               
+CODE_1598EC:        C9 01         CMP #$01                  
+CODE_1598EE:        F0 1E         BEQ CODE_15990E           
+CODE_1598F0:        C9 02         CMP #$02                  
+CODE_1598F2:        F0 1A         BEQ CODE_15990E           
+CODE_1598F4:        C9 05         CMP #$05                  
+CODE_1598F6:        F0 1A         BEQ CODE_159912           
+CODE_1598F8:        C9 06         CMP #$06                  
+CODE_1598FA:        F0 16         BEQ CODE_159912           
+CODE_1598FC:        C9 11         CMP #$11                  
+CODE_1598FE:        F0 12         BEQ CODE_159912           
+CODE_159900:        C9 12         CMP #$12                  
+CODE_159902:        F0 0E         BEQ CODE_159912           
+CODE_159904:        C9 15         CMP #$15                  
+CODE_159906:        F0 19         BEQ CODE_159921           
+CODE_159908:        C9 16         CMP #$16                  
+CODE_15990A:        F0 15         BEQ CODE_159921           
+CODE_15990C:        80 1A         BRA CODE_159928           
 
-CODE_15990E:        LDA #$00                  
-CODE_159910:        BRA CODE_159923           
+CODE_15990E:        A9 00         LDA #$00                  
+CODE_159910:        80 11         BRA CODE_159923           
 
-CODE_159912:        LDA $0712                 
-CODE_159915:        AND #$10                  
-CODE_159917:        BNE CODE_15991D           
-CODE_159919:        LDA #$04                  
-CODE_15991B:        BRA CODE_159923           
-CODE_15991D:        LDA #$10                  
-CODE_15991F:        BRA CODE_159923           
-CODE_159921:        LDA #$14                  
-CODE_159923:        LDY $0712                 
-CODE_159926:        STA [$01],y               
-CODE_159928:        RTL                       
+CODE_159912:        AD 12 07      LDA $0712                 
+CODE_159915:        29 10         AND #$10                  
+CODE_159917:        D0 04         BNE CODE_15991D           
+CODE_159919:        A9 04         LDA #$04                  
+CODE_15991B:        80 06         BRA CODE_159923           
+CODE_15991D:        A9 10         LDA #$10                  
+CODE_15991F:        80 02         BRA CODE_159923           
+CODE_159921:        A9 14         LDA #$14                  
+CODE_159923:        AC 12 07      LDY $0712                 
+CODE_159926:        97 01         STA [$01],y               
+CODE_159928:        6B            RTL                       
 
-CODE_159929:        REP #$30                  
-CODE_15992B:        TYA                       
-CODE_15992C:        AND #$00FF                
-CODE_15992F:        CLC                       
-CODE_159930:        ADC #$7000                
-CODE_159933:        TAY                       
-CODE_159934:        SEP #$20                  
-CODE_159936:        LDA [$01],y               
-CODE_159938:        STA $0713                 
-CODE_15993B:        SEP #$10                  
-CODE_15993D:        RTS                       
+CODE_159929:        C2 30         REP #$30                  
+CODE_15992B:        98            TYA                       
+CODE_15992C:        29 FF 00      AND #$00FF                
+CODE_15992F:        18            CLC                       
+CODE_159930:        69 00 70      ADC #$7000                
+CODE_159933:        A8            TAY                       
+CODE_159934:        E2 20         SEP #$20                  
+CODE_159936:        B7 01         LDA [$01],y               
+CODE_159938:        8D 13 07      STA $0713                 
+CODE_15993B:        E2 10         SEP #$10                  
+CODE_15993D:        60            RTS                       
 
-CODE_15993E:        LDA $0533                 
-CODE_159941:        ASL A                     
-CODE_159942:        TAX                       
-CODE_159943:        LDA.l PNTR_15B3F8,x             
-CODE_159947:        STA $01                   
-CODE_159949:        INX                       
-CODE_15994A:        LDA.l PNTR_15B3F8,x             
-CODE_15994E:        STA $02                   
-CODE_159950:        LDA #$15                  
-CODE_159952:        STA $03                   
-CODE_159954:        LDA #$7E                  
-CODE_159956:        STA $0F                   
-CODE_159958:        REP #$10                  
-CODE_15995A:        LDY #$0000                
-CODE_15995D:        REP #$30                  
-CODE_15995F:        LDA [$01],y               
-CODE_159961:        CMP #$FFFF                
-CODE_159964:        BEQ CODE_159992           
-CODE_159966:        AND #$FF00                
-CODE_159969:        CMP #$FE00                
-CODE_15996C:        BNE CODE_159978           
-CODE_15996E:        LDA [$01],y               
-CODE_159970:        AND #$00FF                
-CODE_159973:        STA $0721                 
-CODE_159976:        INY                       
-CODE_159977:        INY                       
-CODE_159978:        LDA [$01],y               
-CODE_15997A:        STA $0D                   
-CODE_15997C:        SEP #$20                  
-CODE_15997E:        LDA $0721                 
-CODE_159981:        STA [$0D]                 
-CODE_159983:        LDA $0E                   
-CODE_159985:        CLC                       
-CODE_159986:        ADC #$70                  
-CODE_159988:        STA $0E                   
-CODE_15998A:        LDA #$01                  
-CODE_15998C:        STA [$0D]                 
-CODE_15998E:        INY                       
-CODE_15998F:        INY                       
-CODE_159990:        BRA CODE_15995D           
+CODE_15993E:        AD 33 05      LDA $0533                 
+CODE_159941:        0A            ASL A                     
+CODE_159942:        AA            TAX                       
+CODE_159943:        BF F8 B3 15   LDA.l PNTR_15B3F8,x             
+CODE_159947:        85 01         STA $01                   
+CODE_159949:        E8            INX                       
+CODE_15994A:        BF F8 B3 15   LDA.l PNTR_15B3F8,x             
+CODE_15994E:        85 02         STA $02                   
+CODE_159950:        A9 15         LDA #$15                  
+CODE_159952:        85 03         STA $03                   
+CODE_159954:        A9 7E         LDA #$7E                  
+CODE_159956:        85 0F         STA $0F                   
+CODE_159958:        C2 10         REP #$10                  
+CODE_15995A:        A0 00 00      LDY #$0000                
+CODE_15995D:        C2 30         REP #$30                  
+CODE_15995F:        B7 01         LDA [$01],y               
+CODE_159961:        C9 FF FF      CMP #$FFFF                
+CODE_159964:        F0 2C         BEQ CODE_159992           
+CODE_159966:        29 00 FF      AND #$FF00                
+CODE_159969:        C9 00 FE      CMP #$FE00                
+CODE_15996C:        D0 0A         BNE CODE_159978           
+CODE_15996E:        B7 01         LDA [$01],y               
+CODE_159970:        29 FF 00      AND #$00FF                
+CODE_159973:        8D 21 07      STA $0721                 
+CODE_159976:        C8            INY                       
+CODE_159977:        C8            INY                       
+CODE_159978:        B7 01         LDA [$01],y               
+CODE_15997A:        85 0D         STA $0D                   
+CODE_15997C:        E2 20         SEP #$20                  
+CODE_15997E:        AD 21 07      LDA $0721                 
+CODE_159981:        87 0D         STA [$0D]                 
+CODE_159983:        A5 0E         LDA $0E                   
+CODE_159985:        18            CLC                       
+CODE_159986:        69 70         ADC #$70                  
+CODE_159988:        85 0E         STA $0E                   
+CODE_15998A:        A9 01         LDA #$01                  
+CODE_15998C:        87 0D         STA [$0D]                 
+CODE_15998E:        C8            INY                       
+CODE_15998F:        C8            INY                       
+CODE_159990:        80 CB         BRA CODE_15995D           
 
-CODE_159992:        SEP #$30                  
-CODE_159994:        RTL                       
+CODE_159992:        E2 30         SEP #$30                  
+CODE_159994:        6B            RTL                       
 
-CODE_159995:        STY $0712                 
-CODE_159998:        LDA $01                   
-CODE_15999A:        STA $0713                 
-CODE_15999D:        LDA $02                   
-CODE_15999F:        STA $0714                 
-CODE_1599A2:        LDA $03                   
-CODE_1599A4:        STA $0715                 
-CODE_1599A7:        STZ $0764                 
-CODE_1599AA:        LDA $0533                 
-CODE_1599AD:        ASL A                     
-CODE_1599AE:        TAX                       
-CODE_1599AF:        LDA.l PNTR_15B3A8,x             
-CODE_1599B3:        STA $01                   
-CODE_1599B5:        INX                       
-CODE_1599B6:        LDA.l PNTR_15B3A8,x             
-CODE_1599BA:        STA $02                   
-CODE_1599BC:        LDA #$15                  
-CODE_1599BE:        STA $03                   
-CODE_1599C0:        LDY #$00                  
-CODE_1599C2:        LDA [$01],y               
-CODE_1599C4:        CMP #$FF                  
-CODE_1599C6:        BEQ CODE_1599DE           
-CODE_1599C8:        CMP $0534                 
-CODE_1599CB:        BNE CODE_1599DA           
-CODE_1599CD:        INY                       
-CODE_1599CE:        LDA [$01],y               
-CODE_1599D0:        CMP $0543                 
-CODE_1599D3:        BNE CODE_1599DB           
-CODE_1599D5:        INC $0764                 
-CODE_1599D8:        BRA CODE_1599DE           
+CODE_159995:        8C 12 07      STY $0712                 
+CODE_159998:        A5 01         LDA $01                   
+CODE_15999A:        8D 13 07      STA $0713                 
+CODE_15999D:        A5 02         LDA $02                   
+CODE_15999F:        8D 14 07      STA $0714                 
+CODE_1599A2:        A5 03         LDA $03                   
+CODE_1599A4:        8D 15 07      STA $0715                 
+CODE_1599A7:        9C 64 07      STZ $0764                 
+CODE_1599AA:        AD 33 05      LDA $0533                 
+CODE_1599AD:        0A            ASL A                     
+CODE_1599AE:        AA            TAX                       
+CODE_1599AF:        BF A8 B3 15   LDA.l PNTR_15B3A8,x             
+CODE_1599B3:        85 01         STA $01                   
+CODE_1599B5:        E8            INX                       
+CODE_1599B6:        BF A8 B3 15   LDA.l PNTR_15B3A8,x             
+CODE_1599BA:        85 02         STA $02                   
+CODE_1599BC:        A9 15         LDA #$15                  
+CODE_1599BE:        85 03         STA $03                   
+CODE_1599C0:        A0 00         LDY #$00                  
+CODE_1599C2:        B7 01         LDA [$01],y               
+CODE_1599C4:        C9 FF         CMP #$FF                  
+CODE_1599C6:        F0 16         BEQ CODE_1599DE           
+CODE_1599C8:        CD 34 05      CMP $0534                 
+CODE_1599CB:        D0 0D         BNE CODE_1599DA           
+CODE_1599CD:        C8            INY                       
+CODE_1599CE:        B7 01         LDA [$01],y               
+CODE_1599D0:        CD 43 05      CMP $0543                 
+CODE_1599D3:        D0 06         BNE CODE_1599DB           
+CODE_1599D5:        EE 64 07      INC $0764                 
+CODE_1599D8:        80 04         BRA CODE_1599DE           
 
-CODE_1599DA:        INY                       
-CODE_1599DB:        INY                       
-CODE_1599DC:        BRA CODE_1599C2           
+CODE_1599DA:        C8            INY                       
+CODE_1599DB:        C8            INY                       
+CODE_1599DC:        80 E4         BRA CODE_1599C2           
 
-CODE_1599DE:        LDY $0712                 
-CODE_1599E1:        LDA $0713                 
-CODE_1599E4:        STA $01                   
-CODE_1599E6:        LDA $0714                 
-CODE_1599E9:        STA $02                   
-CODE_1599EB:        LDA $0715                 
-CODE_1599EE:        STA $03                   
-CODE_1599F0:        RTS                       
+CODE_1599DE:        AC 12 07      LDY $0712                 
+CODE_1599E1:        AD 13 07      LDA $0713                 
+CODE_1599E4:        85 01         STA $01                   
+CODE_1599E6:        AD 14 07      LDA $0714                 
+CODE_1599E9:        85 02         STA $02                   
+CODE_1599EB:        AD 15 07      LDA $0715                 
+CODE_1599EE:        85 03         STA $03                   
+CODE_1599F0:        60            RTS                       
 
-CODE_1599F1:        STY $04                   
-CODE_1599F3:        INC $0756                 
-CODE_1599F6:        LDA $0533                 
-CODE_1599F9:        CMP #$0D                  
-CODE_1599FB:        BNE CODE_159A18           
-CODE_1599FD:        LDA $0534                 
-CODE_159A00:        CMP #$03                  
-CODE_159A02:        BNE CODE_159A18           
-CODE_159A04:        LDA $E9                   
-CODE_159A06:        CMP #$01                  
-CODE_159A08:        BNE CODE_159A0E           
-CODE_159A0A:        LDA #$1F                  
-CODE_159A0C:        BRA CODE_159A1B           
+CODE_1599F1:        84 04         STY $04                   
+CODE_1599F3:        EE 56 07      INC $0756                 
+CODE_1599F6:        AD 33 05      LDA $0533                 
+CODE_1599F9:        C9 0D         CMP #$0D                  
+CODE_1599FB:        D0 1B         BNE CODE_159A18           
+CODE_1599FD:        AD 34 05      LDA $0534                 
+CODE_159A00:        C9 03         CMP #$03                  
+CODE_159A02:        D0 14         BNE CODE_159A18           
+CODE_159A04:        A5 E9         LDA $E9                   
+CODE_159A06:        C9 01         CMP #$01                  
+CODE_159A08:        D0 04         BNE CODE_159A0E           
+CODE_159A0A:        A9 1F         LDA #$1F                  
+CODE_159A0C:        80 0D         BRA CODE_159A1B           
 
-CODE_159A0E:        LDA $E9                   
-CODE_159A10:        CMP #$02                  
-CODE_159A12:        BNE CODE_159A18           
-CODE_159A14:        LDA #$20                  
-CODE_159A16:        BRA CODE_159A1B           
+CODE_159A0E:        A5 E9         LDA $E9                   
+CODE_159A10:        C9 02         CMP #$02                  
+CODE_159A12:        D0 04         BNE CODE_159A18           
+CODE_159A14:        A9 20         LDA #$20                  
+CODE_159A16:        80 03         BRA CODE_159A1B           
 
-CODE_159A18:        LDA $0543                 
-CODE_159A1B:        ASL A                     
-CODE_159A1C:        TAX                       
-CODE_159A1D:        LDA.l PNTR_15B106,x             
-CODE_159A21:        STA $C4                   
-CODE_159A23:        INX                       
-CODE_159A24:        LDA.l PNTR_15B106,x             
-CODE_159A28:        STA $C5                   
-CODE_159A2A:        LDA #$15                  
-CODE_159A2C:        STA $C6                   
-CODE_159A2E:        LDA $0756                 
-CODE_159A31:        AND #$01                  
-CODE_159A33:        ASL A                     
-CODE_159A34:        ASL A                     
-CODE_159A35:        ASL A                     
-CODE_159A36:        ASL A                     
-CODE_159A37:        REP #$20                  
-CODE_159A39:        AND #$00FF                
-CODE_159A3C:        CLC                       
-CODE_159A3D:        ADC $C4                   
-CODE_159A3F:        STA $C4                   
-CODE_159A41:        SEP #$20                  
-CODE_159A43:        LDY $E7                   
-CODE_159A45:        JSR CODE_159A4B           
-CODE_159A48:        LDY $04                   
-CODE_159A4A:        RTS                       
+CODE_159A18:        AD 43 05      LDA $0543                 
+CODE_159A1B:        0A            ASL A                     
+CODE_159A1C:        AA            TAX                       
+CODE_159A1D:        BF 06 B1 15   LDA.l PNTR_15B106,x             
+CODE_159A21:        85 C4         STA $C4                   
+CODE_159A23:        E8            INX                       
+CODE_159A24:        BF 06 B1 15   LDA.l PNTR_15B106,x             
+CODE_159A28:        85 C5         STA $C5                   
+CODE_159A2A:        A9 15         LDA #$15                  
+CODE_159A2C:        85 C6         STA $C6                   
+CODE_159A2E:        AD 56 07      LDA $0756                 
+CODE_159A31:        29 01         AND #$01                  
+CODE_159A33:        0A            ASL A                     
+CODE_159A34:        0A            ASL A                     
+CODE_159A35:        0A            ASL A                     
+CODE_159A36:        0A            ASL A                     
+CODE_159A37:        C2 20         REP #$20                  
+CODE_159A39:        29 FF 00      AND #$00FF                
+CODE_159A3C:        18            CLC                       
+CODE_159A3D:        65 C4         ADC $C4                   
+CODE_159A3F:        85 C4         STA $C4                   
+CODE_159A41:        E2 20         SEP #$20                  
+CODE_159A43:        A4 E7         LDY $E7                   
+CODE_159A45:        20 4B 9A      JSR CODE_159A4B           
+CODE_159A48:        A4 04         LDY $04                   
+CODE_159A4A:        60            RTS                       
 
-CODE_159A4B:        STZ $0713                 
-CODE_159A4E:        STY $0714                 
-CODE_159A51:        LDY $0713                 
-CODE_159A54:        LDA [$C4],y               
-CODE_159A56:        CMP #$9D                  
-CODE_159A58:        BNE CODE_159A6A           
-CODE_159A5A:        LDX $0533                 
-CODE_159A5D:        CPX #$06                  
-CODE_159A5F:        BNE CODE_159A6A           
-CODE_159A61:        LDX $0534                 
-CODE_159A64:        CPX #$01                  
-CODE_159A66:        BNE CODE_159A6A           
-CODE_159A68:        LDA #$05                  
-CODE_159A6A:        LDY $0714                 
-CODE_159A6D:        STA [$01],y               
-CODE_159A6F:        CMP #$40                  
-CODE_159A71:        BNE CODE_159A76           
-CODE_159A73:        JMP CODE_159AF8           
+CODE_159A4B:        9C 13 07      STZ $0713                 
+CODE_159A4E:        8C 14 07      STY $0714                 
+CODE_159A51:        AC 13 07      LDY $0713                 
+CODE_159A54:        B7 C4         LDA [$C4],y               
+CODE_159A56:        C9 9D         CMP #$9D                  
+CODE_159A58:        D0 10         BNE CODE_159A6A           
+CODE_159A5A:        AE 33 05      LDX $0533                 
+CODE_159A5D:        E0 06         CPX #$06                  
+CODE_159A5F:        D0 09         BNE CODE_159A6A           
+CODE_159A61:        AE 34 05      LDX $0534                 
+CODE_159A64:        E0 01         CPX #$01                  
+CODE_159A66:        D0 02         BNE CODE_159A6A           
+CODE_159A68:        A9 05         LDA #$05                  
+CODE_159A6A:        AC 14 07      LDY $0714                 
+CODE_159A6D:        97 01         STA [$01],y               
+CODE_159A6F:        C9 40         CMP #$40                  
+CODE_159A71:        D0 03         BNE CODE_159A76           
+CODE_159A73:        4C F8 9A      JMP CODE_159AF8           
 
-CODE_159A76:        CMP #$9D                  
-CODE_159A78:        BEQ CODE_159AF8           
-CODE_159A7A:        CMP #$05                  
-CODE_159A7C:        BNE CODE_159AB4           
-CODE_159A7E:        LDA $0543                 
-CODE_159A81:        CMP #$0C                  
-CODE_159A83:        BEQ CODE_159AF8           
-CODE_159A85:        CMP #$0A                  
-CODE_159A87:        BNE CODE_159A92           
-CODE_159A89:        TYA                       
-CODE_159A8A:        AND #$0F                  
-CODE_159A8C:        CMP #$0F                  
-CODE_159A8E:        BNE CODE_159AF8           
-CODE_159A90:        BRA CODE_159AB4           
+CODE_159A76:        C9 9D         CMP #$9D                  
+CODE_159A78:        F0 7E         BEQ CODE_159AF8           
+CODE_159A7A:        C9 05         CMP #$05                  
+CODE_159A7C:        D0 36         BNE CODE_159AB4           
+CODE_159A7E:        AD 43 05      LDA $0543                 
+CODE_159A81:        C9 0C         CMP #$0C                  
+CODE_159A83:        F0 73         BEQ CODE_159AF8           
+CODE_159A85:        C9 0A         CMP #$0A                  
+CODE_159A87:        D0 09         BNE CODE_159A92           
+CODE_159A89:        98            TYA                       
+CODE_159A8A:        29 0F         AND #$0F                  
+CODE_159A8C:        C9 0F         CMP #$0F                  
+CODE_159A8E:        D0 68         BNE CODE_159AF8           
+CODE_159A90:        80 22         BRA CODE_159AB4           
 
-CODE_159A92:        CMP #$11                  
-CODE_159A94:        BNE CODE_159AA3           
-CODE_159A96:        TYA                       
-CODE_159A97:        AND #$0F                  
-CODE_159A99:        CMP #$06                  
-CODE_159A9B:        BMI CODE_159AE5           
-CODE_159A9D:        CMP #$0F                  
-CODE_159A9F:        BEQ CODE_159AE5           
-CODE_159AA1:        BRA CODE_159AF8           
+CODE_159A92:        C9 11         CMP #$11                  
+CODE_159A94:        D0 0D         BNE CODE_159AA3           
+CODE_159A96:        98            TYA                       
+CODE_159A97:        29 0F         AND #$0F                  
+CODE_159A99:        C9 06         CMP #$06                  
+CODE_159A9B:        30 48         BMI CODE_159AE5           
+CODE_159A9D:        C9 0F         CMP #$0F                  
+CODE_159A9F:        F0 44         BEQ CODE_159AE5           
+CODE_159AA1:        80 55         BRA CODE_159AF8           
 
-CODE_159AA3:        CMP #$0B                  
-CODE_159AA5:        BNE CODE_159AE5           
-CODE_159AA7:        TYA                       
-CODE_159AA8:        AND #$0F                  
-CODE_159AAA:        CMP #$07                  
-CODE_159AAC:        BEQ CODE_159AE5           
-CODE_159AAE:        CMP #$0F                  
-CODE_159AB0:        BEQ CODE_159AE5           
-CODE_159AB2:        BRA CODE_159AF8           
+CODE_159AA3:        C9 0B         CMP #$0B                  
+CODE_159AA5:        D0 3E         BNE CODE_159AE5           
+CODE_159AA7:        98            TYA                       
+CODE_159AA8:        29 0F         AND #$0F                  
+CODE_159AAA:        C9 07         CMP #$07                  
+CODE_159AAC:        F0 37         BEQ CODE_159AE5           
+CODE_159AAE:        C9 0F         CMP #$0F                  
+CODE_159AB0:        F0 33         BEQ CODE_159AE5           
+CODE_159AB2:        80 44         BRA CODE_159AF8           
 
-CODE_159AB4:        CMP #$06                  
-CODE_159AB6:        BNE CODE_159AE5           
-CODE_159AB8:        LDA $0533                 
-CODE_159ABB:        CMP #$06                  
-CODE_159ABD:        BNE CODE_159AE5           
-CODE_159ABF:        LDA $E9                   
-CODE_159AC1:        CMP #$09                  
-CODE_159AC3:        BCC CODE_159AE5           
-CODE_159AC5:        BNE CODE_159AF8           
-CODE_159AC7:        TYA                       
-CODE_159AC8:        AND #$F0                  
-CODE_159ACA:        CMP #$C0                  
-CODE_159ACC:        BNE CODE_159AD4           
-CODE_159ACE:        LDA #$05                  
-CODE_159AD0:        STA [$01],y               
-CODE_159AD2:        BRA CODE_159AF8           
+CODE_159AB4:        C9 06         CMP #$06                  
+CODE_159AB6:        D0 2D         BNE CODE_159AE5           
+CODE_159AB8:        AD 33 05      LDA $0533                 
+CODE_159ABB:        C9 06         CMP #$06                  
+CODE_159ABD:        D0 26         BNE CODE_159AE5           
+CODE_159ABF:        A5 E9         LDA $E9                   
+CODE_159AC1:        C9 09         CMP #$09                  
+CODE_159AC3:        90 20         BCC CODE_159AE5           
+CODE_159AC5:        D0 31         BNE CODE_159AF8           
+CODE_159AC7:        98            TYA                       
+CODE_159AC8:        29 F0         AND #$F0                  
+CODE_159ACA:        C9 C0         CMP #$C0                  
+CODE_159ACC:        D0 06         BNE CODE_159AD4           
+CODE_159ACE:        A9 05         LDA #$05                  
+CODE_159AD0:        97 01         STA [$01],y               
+CODE_159AD2:        80 24         BRA CODE_159AF8           
 
-CODE_159AD4:        CPY #$D0                  
-CODE_159AD6:        BCC CODE_159AE5           
-CODE_159AD8:        TYA                       
-CODE_159AD9:        AND #$0F                  
-CODE_159ADB:        BEQ CODE_159AE5           
-CODE_159ADD:        CMP #$06                  
-CODE_159ADF:        BCC CODE_159AF8           
+CODE_159AD4:        C0 D0         CPY #$D0                  
+CODE_159AD6:        90 0D         BCC CODE_159AE5           
+CODE_159AD8:        98            TYA                       
+CODE_159AD9:        29 0F         AND #$0F                  
+CODE_159ADB:        F0 08         BEQ CODE_159AE5           
+CODE_159ADD:        C9 06         CMP #$06                  
+CODE_159ADF:        90 17         BCC CODE_159AF8           
 
-CODE_159AE1:        CMP #$0A                  
-CODE_159AE3:        BCS CODE_159AF8                   
-CODE_159AE5:        LDA $02                   
-CODE_159AE7:        STA $0715                 
-CODE_159AEA:        CLC                       
-CODE_159AEB:        ADC #$70                  
-CODE_159AED:        STA $02                   
-CODE_159AEF:        LDA #$01                  
-CODE_159AF1:        STA [$01],y               
-CODE_159AF3:        LDA $0715                 
-CODE_159AF6:        STA $02                   
-CODE_159AF8:        INY                       
-CODE_159AF9:        TYA                       
-CODE_159AFA:        AND #$0F                  
-CODE_159AFC:        STA $0713                 
-CODE_159AFF:        BEQ CODE_159B04           
-CODE_159B01:        JMP CODE_159A4E           
+CODE_159AE1:        C9 0A         CMP #$0A                  
+CODE_159AE3:        B0 13         BCS CODE_159AF8                   
+CODE_159AE5:        A5 02         LDA $02                   
+CODE_159AE7:        8D 15 07      STA $0715                 
+CODE_159AEA:        18            CLC                       
+CODE_159AEB:        69 70         ADC #$70                  
+CODE_159AED:        85 02         STA $02                   
+CODE_159AEF:        A9 01         LDA #$01                  
+CODE_159AF1:        97 01         STA [$01],y               
+CODE_159AF3:        AD 15 07      LDA $0715                 
+CODE_159AF6:        85 02         STA $02                   
+CODE_159AF8:        C8            INY                       
+CODE_159AF9:        98            TYA                       
+CODE_159AFA:        29 0F         AND #$0F                  
+CODE_159AFC:        8D 13 07      STA $0713                 
+CODE_159AFF:        F0 03         BEQ CODE_159B04           
+CODE_159B01:        4C 4E 9A      JMP CODE_159A4E           
 
-CODE_159B04:        RTS                       
+CODE_159B04:        60            RTS                       
 
-CODE_159B05:        LDA $05                   
-CODE_159B07:        STA $0717                 
-CODE_159B0A:        LDA $06                   
-CODE_159B0C:        STA $0718                 
-CODE_159B0F:        LDY #$00                  
-CODE_159B11:        LDA $076B                 
-CODE_159B14:        ASL A                     
-CODE_159B15:        TAX                       
-CODE_159B16:        LDA.l PNTR_15C440,x             
-CODE_159B1A:        STA $05                   
-CODE_159B1C:        INX                       
-CODE_159B1D:        LDA.l PNTR_15C440,x             
-CODE_159B21:        STA $06                   
-CODE_159B23:        LDA #$15                  
-CODE_159B25:        STA $07                   
-CODE_159B27:        LDA [$05],y               
-CODE_159B29:        CMP #$FF                  
-CODE_159B2B:        BEQ CODE_159B38           
-CODE_159B2D:        STA $076D                 
-CODE_159B30:        PHY                       
-CODE_159B31:        JSR CODE_159B43           
-CODE_159B34:        PLY                       
-CODE_159B35:        INY                       
-CODE_159B36:        BRA CODE_159B11           
+CODE_159B05:        A5 05         LDA $05                   
+CODE_159B07:        8D 17 07      STA $0717                 
+CODE_159B0A:        A5 06         LDA $06                   
+CODE_159B0C:        8D 18 07      STA $0718                 
+CODE_159B0F:        A0 00         LDY #$00                  
+CODE_159B11:        AD 6B 07      LDA $076B                 
+CODE_159B14:        0A            ASL A                     
+CODE_159B15:        AA            TAX                       
+CODE_159B16:        BF 40 C4 15   LDA.l PNTR_15C440,x             
+CODE_159B1A:        85 05         STA $05                   
+CODE_159B1C:        E8            INX                       
+CODE_159B1D:        BF 40 C4 15   LDA.l PNTR_15C440,x             
+CODE_159B21:        85 06         STA $06                   
+CODE_159B23:        A9 15         LDA #$15                  
+CODE_159B25:        85 07         STA $07                   
+CODE_159B27:        B7 05         LDA [$05],y               
+CODE_159B29:        C9 FF         CMP #$FF                  
+CODE_159B2B:        F0 0B         BEQ CODE_159B38           
+CODE_159B2D:        8D 6D 07      STA $076D                 
+CODE_159B30:        5A            PHY                       
+CODE_159B31:        20 43 9B      JSR CODE_159B43           
+CODE_159B34:        7A            PLY                       
+CODE_159B35:        C8            INY                       
+CODE_159B36:        80 D9         BRA CODE_159B11           
 
-CODE_159B38:        LDA $0717                 
-CODE_159B3B:        STA $05                   
-CODE_159B3D:        LDA $0718                 
-CODE_159B40:        STA $06                   
-CODE_159B42:        RTL                       
+CODE_159B38:        AD 17 07      LDA $0717                 
+CODE_159B3B:        85 05         STA $05                   
+CODE_159B3D:        AD 18 07      LDA $0718                 
+CODE_159B40:        85 06         STA $06                   
+CODE_159B42:        6B            RTL                       
 
-CODE_159B43:        ASL A                     
-CODE_159B44:        TAX                       
-CODE_159B45:        LDA.l PNTR_15C140,x             
-CODE_159B49:        STA $05                   
-CODE_159B4B:        INX                       
-CODE_159B4C:        LDA.l PNTR_15C140,x             
-CODE_159B50:        STA $06                   
-CODE_159B52:        LDA #$15                  
-CODE_159B54:        STA $07                   
-CODE_159B56:        LDY #$00                  
-CODE_159B58:        LDA [$05],y               
-CODE_159B5A:        STA $E7                   
-CODE_159B5C:        INY                       
-CODE_159B5D:        LDA [$05],y               
-CODE_159B5F:        AND #$F0                  
-CODE_159B61:        LSR A                     
-CODE_159B62:        LSR A                     
-CODE_159B63:        LSR A                     
-CODE_159B64:        LSR A                     
-CODE_159B65:        STA $0E                   
-CODE_159B67:        STA $0D                   
-CODE_159B69:        LDA [$05],y               
-CODE_159B6B:        AND #$0F                  
-CODE_159B6D:        STA $0F                   
-CODE_159B6F:        JSR CODE_159B76           
-CODE_159B72:        STZ $02E4                 
-CODE_159B75:        RTS                       
+CODE_159B43:        0A            ASL A                     
+CODE_159B44:        AA            TAX                       
+CODE_159B45:        BF 40 C1 15   LDA.l PNTR_15C140,x             
+CODE_159B49:        85 05         STA $05                   
+CODE_159B4B:        E8            INX                       
+CODE_159B4C:        BF 40 C1 15   LDA.l PNTR_15C140,x             
+CODE_159B50:        85 06         STA $06                   
+CODE_159B52:        A9 15         LDA #$15                  
+CODE_159B54:        85 07         STA $07                   
+CODE_159B56:        A0 00         LDY #$00                  
+CODE_159B58:        B7 05         LDA [$05],y               
+CODE_159B5A:        85 E7         STA $E7                   
+CODE_159B5C:        C8            INY                       
+CODE_159B5D:        B7 05         LDA [$05],y               
+CODE_159B5F:        29 F0         AND #$F0                  
+CODE_159B61:        4A            LSR A                     
+CODE_159B62:        4A            LSR A                     
+CODE_159B63:        4A            LSR A                     
+CODE_159B64:        4A            LSR A                     
+CODE_159B65:        85 0E         STA $0E                   
+CODE_159B67:        85 0D         STA $0D                   
+CODE_159B69:        B7 05         LDA [$05],y               
+CODE_159B6B:        29 0F         AND #$0F                  
+CODE_159B6D:        85 0F         STA $0F                   
+CODE_159B6F:        20 76 9B      JSR CODE_159B76           
+CODE_159B72:        9C E4 02      STZ $02E4                 
+CODE_159B75:        60            RTS                       
 
-CODE_159B76:        LDA #$02                  
-CODE_159B78:        STA $02E3                 
-CODE_159B7B:        LDA $E7                   
-CODE_159B7D:        STA $02E2                 
-CODE_159B80:        STA $0C                   
-CODE_159B82:        STZ $076C                 
-CODE_159B85:        LDY $02E2                 
-CODE_159B88:        LDA [$C4],y               
-CODE_159B8A:        CMP #$5B                  
-CODE_159B8C:        BEQ CODE_159BC6           
-CODE_159B8E:        LDY $02E3                 
-CODE_159B91:        LDA [$05],y               
-CODE_159B93:        CMP #$40                  
-CODE_159B95:        BEQ CODE_159BA9           
-CODE_159B97:        CMP #$AB                  
-CODE_159B99:        BEQ CODE_159BA9           
-CODE_159B9B:        CMP #$9D                  
-CODE_159B9D:        BEQ CODE_159BA9           
-CODE_159B9F:        CMP #$9C                  
-CODE_159BA1:        BEQ CODE_159BA9           
-CODE_159BA3:        CLC                       
-CODE_159BA4:        ADC #$2C                  
-CODE_159BA6:        INC $076C                 
-CODE_159BA9:        LDY $02E2                 
-CODE_159BAC:        STA [$C4],y               
-CODE_159BAE:        LDX $076C                 
-CODE_159BB1:        BEQ CODE_159BC6           
-CODE_159BB3:        LDA $C5                   
-CODE_159BB5:        STA $0714                 
-CODE_159BB8:        CLC                       
-CODE_159BB9:        ADC #$70                  
-CODE_159BBB:        STA $C5                   
-CODE_159BBD:        LDA #$01                  
-CODE_159BBF:        STA [$C4],y               
-CODE_159BC1:        LDA $0714                 
-CODE_159BC4:        STA $C5                   
-CODE_159BC6:        INC $02E3                 
-CODE_159BC9:        LDY $02E2                 
-CODE_159BCC:        JSR CODE_159BEF           
-CODE_159BCF:        STY $02E2                 
-CODE_159BD2:        DEC $0E                   
-CODE_159BD4:        LDA $0E                   
-CODE_159BD6:        BPL CODE_159B82           
-CODE_159BD8:        DEC $0F                   
-CODE_159BDA:        LDA $0F                   
-CODE_159BDC:        BMI CODE_159BEE           
-CODE_159BDE:        LDY $0C                   
-CODE_159BE0:        JSR CODE_159C04           
-CODE_159BE3:        STY $0C                   
-CODE_159BE5:        STY $02E2                 
-CODE_159BE8:        LDA $0D                   
-CODE_159BEA:        STA $0E                   
-CODE_159BEC:        BRA CODE_159B82           
+CODE_159B76:        A9 02         LDA #$02                  
+CODE_159B78:        8D E3 02      STA $02E3                 
+CODE_159B7B:        A5 E7         LDA $E7                   
+CODE_159B7D:        8D E2 02      STA $02E2                 
+CODE_159B80:        85 0C         STA $0C                   
+CODE_159B82:        9C 6C 07      STZ $076C                 
+CODE_159B85:        AC E2 02      LDY $02E2                 
+CODE_159B88:        B7 C4         LDA [$C4],y               
+CODE_159B8A:        C9 5B         CMP #$5B                  
+CODE_159B8C:        F0 38         BEQ CODE_159BC6           
+CODE_159B8E:        AC E3 02      LDY $02E3                 
+CODE_159B91:        B7 05         LDA [$05],y               
+CODE_159B93:        C9 40         CMP #$40                  
+CODE_159B95:        F0 12         BEQ CODE_159BA9           
+CODE_159B97:        C9 AB         CMP #$AB                  
+CODE_159B99:        F0 0E         BEQ CODE_159BA9           
+CODE_159B9B:        C9 9D         CMP #$9D                  
+CODE_159B9D:        F0 0A         BEQ CODE_159BA9           
+CODE_159B9F:        C9 9C         CMP #$9C                  
+CODE_159BA1:        F0 06         BEQ CODE_159BA9           
+CODE_159BA3:        18            CLC                       
+CODE_159BA4:        69 2C         ADC #$2C                  
+CODE_159BA6:        EE 6C 07      INC $076C                 
+CODE_159BA9:        AC E2 02      LDY $02E2                 
+CODE_159BAC:        97 C4         STA [$C4],y               
+CODE_159BAE:        AE 6C 07      LDX $076C                 
+CODE_159BB1:        F0 13         BEQ CODE_159BC6           
+CODE_159BB3:        A5 C5         LDA $C5                   
+CODE_159BB5:        8D 14 07      STA $0714                 
+CODE_159BB8:        18            CLC                       
+CODE_159BB9:        69 70         ADC #$70                  
+CODE_159BBB:        85 C5         STA $C5                   
+CODE_159BBD:        A9 01         LDA #$01                  
+CODE_159BBF:        97 C4         STA [$C4],y               
+CODE_159BC1:        AD 14 07      LDA $0714                 
+CODE_159BC4:        85 C5         STA $C5                   
+CODE_159BC6:        EE E3 02      INC $02E3                 
+CODE_159BC9:        AC E2 02      LDY $02E2                 
+CODE_159BCC:        20 EF 9B      JSR CODE_159BEF           
+CODE_159BCF:        8C E2 02      STY $02E2                 
+CODE_159BD2:        C6 0E         DEC $0E                   
+CODE_159BD4:        A5 0E         LDA $0E                   
+CODE_159BD6:        10 AA         BPL CODE_159B82           
+CODE_159BD8:        C6 0F         DEC $0F                   
+CODE_159BDA:        A5 0F         LDA $0F                   
+CODE_159BDC:        30 10         BMI CODE_159BEE           
+CODE_159BDE:        A4 0C         LDY $0C                   
+CODE_159BE0:        20 04 9C      JSR CODE_159C04           
+CODE_159BE3:        84 0C         STY $0C                   
+CODE_159BE5:        8C E2 02      STY $02E2                 
+CODE_159BE8:        A5 0D         LDA $0D                   
+CODE_159BEA:        85 0E         STA $0E                   
+CODE_159BEC:        80 94         BRA CODE_159B82           
 
-CODE_159BEE:        RTS                       
+CODE_159BEE:        60            RTS                       
 
-CODE_159BEF:        TYA                       
-CODE_159BF0:        CLC                       
-CODE_159BF1:        ADC #$10                  
-CODE_159BF3:        TAY                       
-CODE_159BF4:        CMP #$F0                  
-CODE_159BF6:        BCC CODE_159C03           
-CODE_159BF8:        INC $E9                   
-CODE_159BFA:        LDX $E9                   
-CODE_159BFC:        JSR CODE_159C2D           
-CODE_159BFF:        TYA                       
-CODE_159C00:        AND #$0F                  
-CODE_159C02:        TAY                       
-CODE_159C03:        RTS                       
+CODE_159BEF:        98            TYA                       
+CODE_159BF0:        18            CLC                       
+CODE_159BF1:        69 10         ADC #$10                  
+CODE_159BF3:        A8            TAY                       
+CODE_159BF4:        C9 F0         CMP #$F0                  
+CODE_159BF6:        90 0B         BCC CODE_159C03           
+CODE_159BF8:        E6 E9         INC $E9                   
+CODE_159BFA:        A6 E9         LDX $E9                   
+CODE_159BFC:        20 2D 9C      JSR CODE_159C2D           
+CODE_159BFF:        98            TYA                       
+CODE_159C00:        29 0F         AND #$0F                  
+CODE_159C02:        A8            TAY                       
+CODE_159C03:        60            RTS                       
 
-CODE_159C04:        INY                       
-CODE_159C05:        LDA $0628                 
-CODE_159C08:        BEQ CODE_159C0E           
-CODE_159C0A:        LDX #$0A                  
-CODE_159C0C:        BRA CODE_159C29           
-CODE_159C0E:        LDA $076D                 
-CODE_159C11:        CMP #$07                  
-CODE_159C13:        BEQ CODE_159C27           
-CODE_159C15:        CMP #$08                  
-CODE_159C17:        BEQ CODE_159C27           
-CODE_159C19:        DEC $E9                   
-CODE_159C1B:        LDX $E9                   
-CODE_159C1D:        CPX #$FF                  
-CODE_159C1F:        BNE CODE_159C29           
-CODE_159C21:        LDX #$00                  
-CODE_159C23:        STX $E9                   
-CODE_159C25:        BRA CODE_159C29           
+CODE_159C04:        C8            INY                       
+CODE_159C05:        AD 28 06      LDA $0628                 
+CODE_159C08:        F0 04         BEQ CODE_159C0E           
+CODE_159C0A:        A2 0A         LDX #$0A                  
+CODE_159C0C:        80 1B         BRA CODE_159C29           
+CODE_159C0E:        AD 6D 07      LDA $076D                 
+CODE_159C11:        C9 07         CMP #$07                  
+CODE_159C13:        F0 12         BEQ CODE_159C27           
+CODE_159C15:        C9 08         CMP #$08                  
+CODE_159C17:        F0 0E         BEQ CODE_159C27           
+CODE_159C19:        C6 E9         DEC $E9                   
+CODE_159C1B:        A6 E9         LDX $E9                   
+CODE_159C1D:        E0 FF         CPX #$FF                  
+CODE_159C1F:        D0 08         BNE CODE_159C29           
+CODE_159C21:        A2 00         LDX #$00                  
+CODE_159C23:        86 E9         STX $E9                   
+CODE_159C25:        80 02         BRA CODE_159C29           
 
-CODE_159C27:        LDX #$01                  
-CODE_159C29:        JSR CODE_159C2D           
-CODE_159C2C:        RTS                       
+CODE_159C27:        A2 01         LDX #$01                  
+CODE_159C29:        20 2D 9C      JSR CODE_159C2D           
+CODE_159C2C:        60            RTS                       
 
-CODE_159C2D:        PHY                       
-CODE_159C2E:        LDA $0628                 
-CODE_159C31:        BEQ CODE_159C37           
-CODE_159C33:        LDY #$00                  
-CODE_159C35:        BRA CODE_159C3A           
-CODE_159C37:        LDY $0534                 
-CODE_159C3A:        LDA.w DATA_11AB11,y               
-CODE_159C3D:        CLC                       
-CODE_159C3E:        ADC.w DATA_11AAFB,x               
-CODE_159C41:        STA $C5                   
-CODE_159C43:        LDA.w DATA_11AAF0,x               
-CODE_159C46:        STA $C4                   
-CODE_159C48:        LDA.w DATA_11AB06,x               
-CODE_159C4B:        STA $C6                   
-CODE_159C4D:        PLY                       
-CODE_159C4E:        RTS                       
+CODE_159C2D:        5A            PHY                       
+CODE_159C2E:        AD 28 06      LDA $0628                 
+CODE_159C31:        F0 04         BEQ CODE_159C37           
+CODE_159C33:        A0 00         LDY #$00                  
+CODE_159C35:        80 03         BRA CODE_159C3A           
+CODE_159C37:        AC 34 05      LDY $0534                 
+CODE_159C3A:        B9 11 AB      LDA.w DATA_11AB11,y               
+CODE_159C3D:        18            CLC                       
+CODE_159C3E:        7D FB AA      ADC.w DATA_11AAFB,x               
+CODE_159C41:        85 C5         STA $C5                   
+CODE_159C43:        BD F0 AA      LDA.w DATA_11AAF0,x               
+CODE_159C46:        85 C4         STA $C4                   
+CODE_159C48:        BD 06 AB      LDA.w DATA_11AB06,x               
+CODE_159C4B:        85 C6         STA $C6                   
+CODE_159C4D:        7A            PLY                       
+CODE_159C4E:        60            RTS                       
 
 DATA_159C4F:        db $15,$16
 
 DATA_159C51:        db $01,$02
 
-CODE_159C53:        LDA $0533                 
-CODE_159C56:        CMP #$05                  
-CODE_159C58:        BNE CODE_159C85           
-CODE_159C5A:        LDA #$11                  
-CODE_159C5C:        STA $00                   
-CODE_159C5E:        LDA #$C1                  
-CODE_159C60:        STA $03                   
-CODE_159C62:        LDA #$6D                  
-CODE_159C64:        STA $01                   
-CODE_159C66:        STA $04                   
-CODE_159C68:        LDA #$7E                  
-CODE_159C6A:        STA $02                   
-CODE_159C6C:        STA $05                   
-CODE_159C6E:        LDY #$00                  
-CODE_159C70:        TYA                       
-CODE_159C71:        AND #$01                  
-CODE_159C73:        TAX                       
-CODE_159C74:        LDA.l DATA_159C4F,x             
-CODE_159C78:        STA [$00],y               
-CODE_159C7A:        LDA.l DATA_159C51,x             
-CODE_159C7E:        STA [$03],y               
-CODE_159C80:        INY                       
-CODE_159C81:        CPY #$0E                  
-CODE_159C83:        BNE CODE_159C70           
-CODE_159C85:        RTL                       
+CODE_159C53:        AD 33 05      LDA $0533                 
+CODE_159C56:        C9 05         CMP #$05                  
+CODE_159C58:        D0 2B         BNE CODE_159C85           
+CODE_159C5A:        A9 11         LDA #$11                  
+CODE_159C5C:        85 00         STA $00                   
+CODE_159C5E:        A9 C1         LDA #$C1                  
+CODE_159C60:        85 03         STA $03                   
+CODE_159C62:        A9 6D         LDA #$6D                  
+CODE_159C64:        85 01         STA $01                   
+CODE_159C66:        85 04         STA $04                   
+CODE_159C68:        A9 7E         LDA #$7E                  
+CODE_159C6A:        85 02         STA $02                   
+CODE_159C6C:        85 05         STA $05                   
+CODE_159C6E:        A0 00         LDY #$00                  
+CODE_159C70:        98            TYA                       
+CODE_159C71:        29 01         AND #$01                  
+CODE_159C73:        AA            TAX                       
+CODE_159C74:        BF 4F 9C 15   LDA.l DATA_159C4F,x             
+CODE_159C78:        97 00         STA [$00],y               
+CODE_159C7A:        BF 51 9C 15   LDA.l DATA_159C51,x             
+CODE_159C7E:        97 03         STA [$03],y               
+CODE_159C80:        C8            INY                       
+CODE_159C81:        C0 0E         CPY #$0E                  
+CODE_159C83:        D0 EB         BNE CODE_159C70           
+CODE_159C85:        6B            RTL                       
 
 DATA_159C86:        db $F1,$F2,$F3,$F4,$EF,$F0
 
-CODE_159C8C:        LDA $0533
-CODE_159C8F:        CMP #$13
-CODE_159C91:        BNE CODE_159C85
-CODE_159C93:        LDA $0534
-CODE_159C96:        CMP #$05                  
-CODE_159C98:        BNE CODE_159C85           
-CODE_159C9A:        STZ $0712                 
-CODE_159C9D:        STZ $0713                 
-CODE_159CA0:        STZ $0714                 
-CODE_159CA3:        LDX #$00                  
-CODE_159CA5:        JSR CODE_159C2D           
-CODE_159CA8:        REP #$20                  
-CODE_159CAA:        LDA $0712                 
-CODE_159CAD:        AND #$00FF                
-CODE_159CB0:        ASL A                     
-CODE_159CB1:        ASL A                     
-CODE_159CB2:        ASL A                     
-CODE_159CB3:        ASL A                     
-CODE_159CB4:        CLC                       
-CODE_159CB5:        ADC $C4                   
-CODE_159CB7:        STA $C4                   
-CODE_159CB9:        SEP #$20                  
-CODE_159CBB:        LDA $0541                 
-CODE_159CBE:        STA $0715                 
-CODE_159CC1:        LDA $0713                 
-CODE_159CC4:        STA $0714                 
-CODE_159CC7:        LDY #$00                  
-CODE_159CC9:        LDA [$C4],y               
-CODE_159CCB:        CMP #$AA                  
-CODE_159CCD:        BEQ CODE_159CD7           
-CODE_159CCF:        CMP #$DD                  
-CODE_159CD1:        BEQ CODE_159CD7           
-CODE_159CD3:        CMP #$2D                  
-CODE_159CD5:        BNE CODE_159CE0           
-CODE_159CD7:        LDX $0714                 
-CODE_159CDA:        LDA.l DATA_159C86,x             
-CODE_159CDE:        STA [$C4],y               
-CODE_159CE0:        INC $0714                 
-CODE_159CE3:        LDA $0714                 
-CODE_159CE6:        CMP #$06                  
-CODE_159CE8:        BNE CODE_159CED           
-CODE_159CEA:        STZ $0714                 
-CODE_159CED:        INY                       
-CODE_159CEE:        CPY #$10                  
-CODE_159CF0:        BNE CODE_159CC9           
-CODE_159CF2:        REP #$20                  
-CODE_159CF4:        LDA $C4                   
-CODE_159CF6:        CLC                       
-CODE_159CF7:        ADC #$00F0                
-CODE_159CFA:        STA $C4                   
-CODE_159CFC:        SEP #$20                  
-CODE_159CFE:        DEC $0715                 
-CODE_159D01:        BPL CODE_159CC7           
-CODE_159D03:        INC $0713                 
-CODE_159D06:        LDA $0713                 
-CODE_159D09:        CMP #$06                  
-CODE_159D0B:        BNE CODE_159D10           
-CODE_159D0D:        STZ $0713                 
-CODE_159D10:        INC $0712                 
-CODE_159D13:        LDA $0712                 
-CODE_159D16:        CMP #$0F                  
-CODE_159D18:        BNE CODE_159CA3           
-CODE_159D1A:        RTL                       
+CODE_159C8C:        AD 33 05      LDA $0533
+CODE_159C8F:        C9 13         CMP #$13
+CODE_159C91:        D0 F2         BNE CODE_159C85
+CODE_159C93:        AD 34 05      LDA $0534
+CODE_159C96:        C9 05         CMP #$05                  
+CODE_159C98:        D0 EB         BNE CODE_159C85           
+CODE_159C9A:        9C 12 07      STZ $0712                 
+CODE_159C9D:        9C 13 07      STZ $0713                 
+CODE_159CA0:        9C 14 07      STZ $0714                 
+CODE_159CA3:        A2 00         LDX #$00                  
+CODE_159CA5:        20 2D 9C      JSR CODE_159C2D           
+CODE_159CA8:        C2 20         REP #$20                  
+CODE_159CAA:        AD 12 07      LDA $0712                 
+CODE_159CAD:        29 FF 00      AND #$00FF                
+CODE_159CB0:        0A            ASL A                     
+CODE_159CB1:        0A            ASL A                     
+CODE_159CB2:        0A            ASL A                     
+CODE_159CB3:        0A            ASL A                     
+CODE_159CB4:        18            CLC                       
+CODE_159CB5:        65 C4         ADC $C4                   
+CODE_159CB7:        85 C4         STA $C4                   
+CODE_159CB9:        E2 20         SEP #$20                  
+CODE_159CBB:        AD 41 05      LDA $0541                 
+CODE_159CBE:        8D 15 07      STA $0715                 
+CODE_159CC1:        AD 13 07      LDA $0713                 
+CODE_159CC4:        8D 14 07      STA $0714                 
+CODE_159CC7:        A0 00         LDY #$00                  
+CODE_159CC9:        B7 C4         LDA [$C4],y               
+CODE_159CCB:        C9 AA         CMP #$AA                  
+CODE_159CCD:        F0 08         BEQ CODE_159CD7           
+CODE_159CCF:        C9 DD         CMP #$DD                  
+CODE_159CD1:        F0 04         BEQ CODE_159CD7           
+CODE_159CD3:        C9 2D         CMP #$2D                  
+CODE_159CD5:        D0 09         BNE CODE_159CE0           
+CODE_159CD7:        AE 14 07      LDX $0714                 
+CODE_159CDA:        BF 86 9C 15   LDA.l DATA_159C86,x             
+CODE_159CDE:        97 C4         STA [$C4],y               
+CODE_159CE0:        EE 14 07      INC $0714                 
+CODE_159CE3:        AD 14 07      LDA $0714                 
+CODE_159CE6:        C9 06         CMP #$06                  
+CODE_159CE8:        D0 03         BNE CODE_159CED           
+CODE_159CEA:        9C 14 07      STZ $0714                 
+CODE_159CED:        C8            INY                       
+CODE_159CEE:        C0 10         CPY #$10                  
+CODE_159CF0:        D0 D7         BNE CODE_159CC9           
+CODE_159CF2:        C2 20         REP #$20                  
+CODE_159CF4:        A5 C4         LDA $C4                   
+CODE_159CF6:        18            CLC                       
+CODE_159CF7:        69 F0 00      ADC #$00F0                
+CODE_159CFA:        85 C4         STA $C4                   
+CODE_159CFC:        E2 20         SEP #$20                  
+CODE_159CFE:        CE 15 07      DEC $0715                 
+CODE_159D01:        10 C4         BPL CODE_159CC7           
+CODE_159D03:        EE 13 07      INC $0713                 
+CODE_159D06:        AD 13 07      LDA $0713                 
+CODE_159D09:        C9 06         CMP #$06                  
+CODE_159D0B:        D0 03         BNE CODE_159D10           
+CODE_159D0D:        9C 13 07      STZ $0713                 
+CODE_159D10:        EE 12 07      INC $0712                 
+CODE_159D13:        AD 12 07      LDA $0712                 
+CODE_159D16:        C9 0F         CMP #$0F                  
+CODE_159D18:        D0 89         BNE CODE_159CA3           
+CODE_159D1A:        6B            RTL                       
 
 DATA_159D1B:        db $00,$01,$02,$03,$04,$05,$06,$07
                     db $08,$09,$0A,$0B,$10,$11,$12,$13
@@ -2501,430 +2501,430 @@ DATA_159D33:        db $20,$21,$22,$23,$24,$25,$26,$27
                     db $28,$29,$2A,$2B,$20,$21,$22,$23
                     db $24,$25,$26,$27,$28,$29,$2A,$2B
 
-CODE_159D4B:        STY $0712                 
-CODE_159D4E:        STX $0715                 
-CODE_159D51:        LDA $050F                 
-CODE_159D54:        CMP #$0A                  
-CODE_159D56:        BNE CODE_159DBC           
-CODE_159D58:        LDA $0534                 
-CODE_159D5B:        CMP #$02                  
-CODE_159D5D:        BNE CODE_159D66           
-CODE_159D5F:        TYA                       
-CODE_159D60:        AND #$F0                  
-CODE_159D62:        CMP #$90                  
-CODE_159D64:        BEQ CODE_159DBC           
-CODE_159D66:        TYA                       
-CODE_159D67:        CLC                       
-CODE_159D68:        ADC #$10                  
-CODE_159D6A:        TAY                       
-CODE_159D6B:        LDA [$01],y               
-CODE_159D6D:        CMP #$40                  
-CODE_159D6F:        BEQ CODE_159DBC           
-CODE_159D71:        STA $0716                 
-CODE_159D74:        LDA $01                   
-CODE_159D76:        STA $0713                 
-CODE_159D79:        LDA $02                   
-CODE_159D7B:        STA $0714                 
-CODE_159D7E:        REP #$20                  
-CODE_159D80:        LDA $01                   
-CODE_159D82:        CLC                       
-CODE_159D83:        ADC #$7000                
-CODE_159D86:        STA $01                   
-CODE_159D88:        SEP #$20                  
-CODE_159D8A:        LDA [$01],y               
-CODE_159D8C:        BEQ CODE_159DB2           
-CODE_159D8E:        LDA $0713                 
-CODE_159D91:        STA $01                   
-CODE_159D93:        LDA $0714                 
-CODE_159D96:        STA $02                   
-CODE_159D98:        LDA $0716                 
-CODE_159D9B:        SEC                       
-CODE_159D9C:        SBC #$5C                  
-CODE_159D9E:        LDX #$17                  
-CODE_159DA0:        CMP.l DATA_159D1B,x             
-CODE_159DA4:        BEQ CODE_159DA9           
-CODE_159DA6:        DEX                       
-CODE_159DA7:        BPL CODE_159DA0           
-CODE_159DA9:        LDA.l DATA_159D33,x             
-CODE_159DAD:        CLC                       
-CODE_159DAE:        ADC #$5C                  
-CODE_159DB0:        STA [$01],y               
-CODE_159DB2:        LDA $0713                 
-CODE_159DB5:        STA $01                   
-CODE_159DB7:        LDA $0714                 
-CODE_159DBA:        STA $02                   
-CODE_159DBC:        LDY $0712                 
-CODE_159DBF:        LDX $0715                 
-CODE_159DC2:        RTL                       
+CODE_159D4B:        8C 12 07      STY $0712                 
+CODE_159D4E:        8E 15 07      STX $0715                 
+CODE_159D51:        AD 0F 05      LDA $050F                 
+CODE_159D54:        C9 0A         CMP #$0A                  
+CODE_159D56:        D0 64         BNE CODE_159DBC           
+CODE_159D58:        AD 34 05      LDA $0534                 
+CODE_159D5B:        C9 02         CMP #$02                  
+CODE_159D5D:        D0 07         BNE CODE_159D66           
+CODE_159D5F:        98            TYA                       
+CODE_159D60:        29 F0         AND #$F0                  
+CODE_159D62:        C9 90         CMP #$90                  
+CODE_159D64:        F0 56         BEQ CODE_159DBC           
+CODE_159D66:        98            TYA                       
+CODE_159D67:        18            CLC                       
+CODE_159D68:        69 10         ADC #$10                  
+CODE_159D6A:        A8            TAY                       
+CODE_159D6B:        B7 01         LDA [$01],y               
+CODE_159D6D:        C9 40         CMP #$40                  
+CODE_159D6F:        F0 4B         BEQ CODE_159DBC           
+CODE_159D71:        8D 16 07      STA $0716                 
+CODE_159D74:        A5 01         LDA $01                   
+CODE_159D76:        8D 13 07      STA $0713                 
+CODE_159D79:        A5 02         LDA $02                   
+CODE_159D7B:        8D 14 07      STA $0714                 
+CODE_159D7E:        C2 20         REP #$20                  
+CODE_159D80:        A5 01         LDA $01                   
+CODE_159D82:        18            CLC                       
+CODE_159D83:        69 00 70      ADC #$7000                
+CODE_159D86:        85 01         STA $01                   
+CODE_159D88:        E2 20         SEP #$20                  
+CODE_159D8A:        B7 01         LDA [$01],y               
+CODE_159D8C:        F0 24         BEQ CODE_159DB2           
+CODE_159D8E:        AD 13 07      LDA $0713                 
+CODE_159D91:        85 01         STA $01                   
+CODE_159D93:        AD 14 07      LDA $0714                 
+CODE_159D96:        85 02         STA $02                   
+CODE_159D98:        AD 16 07      LDA $0716                 
+CODE_159D9B:        38            SEC                       
+CODE_159D9C:        E9 5C         SBC #$5C                  
+CODE_159D9E:        A2 17         LDX #$17                  
+CODE_159DA0:        DF 1B 9D 15   CMP.l DATA_159D1B,x             
+CODE_159DA4:        F0 03         BEQ CODE_159DA9           
+CODE_159DA6:        CA            DEX                       
+CODE_159DA7:        10 F7         BPL CODE_159DA0           
+CODE_159DA9:        BF 33 9D 15   LDA.l DATA_159D33,x             
+CODE_159DAD:        18            CLC                       
+CODE_159DAE:        69 5C         ADC #$5C                  
+CODE_159DB0:        97 01         STA [$01],y               
+CODE_159DB2:        AD 13 07      LDA $0713                 
+CODE_159DB5:        85 01         STA $01                   
+CODE_159DB7:        AD 14 07      LDA $0714                 
+CODE_159DBA:        85 02         STA $02                   
+CODE_159DBC:        AC 12 07      LDY $0712                 
+CODE_159DBF:        AE 15 07      LDX $0715                 
+CODE_159DC2:        6B            RTL                       
 
 DATA_159DC3:        db $06,$05,$12,$11,$0A
 
 DATA_159DC8:        db $01,$02
 
-CODE_159DCA:        STZ $0714                 
-CODE_159DCD:        STZ $0716                 
-CODE_159DD0:        LDX $E9                   
-CODE_159DD2:        JSR CODE_159E48           
-CODE_159DD5:        LDA $050E                 
-CODE_159DD8:        STA $07                   
-CODE_159DDA:        LDY $E7                   
-CODE_159DDC:        LDX #$00                  
-CODE_159DDE:        TYA                       
-CODE_159DDF:        AND #$10                  
-CODE_159DE1:        BEQ CODE_159DE5           
-CODE_159DE3:        INX                       
-CODE_159DE4:        INX                       
-CODE_159DE5:        TYA                       
-CODE_159DE6:        AND #$01                  
-CODE_159DE8:        BEQ CODE_159DEB           
-CODE_159DEA:        INX                       
-CODE_159DEB:        LDA $0714                 
-CODE_159DEE:        BEQ CODE_159DF2           
-CODE_159DF0:        LDX #$04                  
-CODE_159DF2:        LDA $0716                 
-CODE_159DF5:        BNE CODE_159E07           
-CODE_159DF7:        LDA [$01],y               
-CODE_159DF9:        CMP #$40                  
-CODE_159DFB:        BNE CODE_159E07           
-CODE_159DFD:        TXA                       
-CODE_159DFE:        AND #$01                  
-CODE_159E00:        TAX                       
-CODE_159E01:        LDA.l DATA_159DC8,x             
-CODE_159E05:        BRA CODE_159E0B           
+CODE_159DCA:        9C 14 07      STZ $0714                 
+CODE_159DCD:        9C 16 07      STZ $0716                 
+CODE_159DD0:        A6 E9         LDX $E9                   
+CODE_159DD2:        20 48 9E      JSR CODE_159E48           
+CODE_159DD5:        AD 0E 05      LDA $050E                 
+CODE_159DD8:        85 07         STA $07                   
+CODE_159DDA:        A4 E7         LDY $E7                   
+CODE_159DDC:        A2 00         LDX #$00                  
+CODE_159DDE:        98            TYA                       
+CODE_159DDF:        29 10         AND #$10                  
+CODE_159DE1:        F0 02         BEQ CODE_159DE5           
+CODE_159DE3:        E8            INX                       
+CODE_159DE4:        E8            INX                       
+CODE_159DE5:        98            TYA                       
+CODE_159DE6:        29 01         AND #$01                  
+CODE_159DE8:        F0 01         BEQ CODE_159DEB           
+CODE_159DEA:        E8            INX                       
+CODE_159DEB:        AD 14 07      LDA $0714                 
+CODE_159DEE:        F0 02         BEQ CODE_159DF2           
+CODE_159DF0:        A2 04         LDX #$04                  
+CODE_159DF2:        AD 16 07      LDA $0716                 
+CODE_159DF5:        D0 10         BNE CODE_159E07           
+CODE_159DF7:        B7 01         LDA [$01],y               
+CODE_159DF9:        C9 40         CMP #$40                  
+CODE_159DFB:        D0 0A         BNE CODE_159E07           
+CODE_159DFD:        8A            TXA                       
+CODE_159DFE:        29 01         AND #$01                  
+CODE_159E00:        AA            TAX                       
+CODE_159E01:        BF C8 9D 15   LDA.l DATA_159DC8,x             
+CODE_159E05:        80 04         BRA CODE_159E0B           
 
-CODE_159E07:        LDA.l DATA_159DC3,x             
-CODE_159E0B:        STA [$01],y               
-CODE_159E0D:        LDA $02                   
-CODE_159E0F:        STA $0715                 
-CODE_159E12:        CLC                       
-CODE_159E13:        ADC #$70                  
-CODE_159E15:        STA $02                   
-CODE_159E17:        LDA $0714                 
-CODE_159E1A:        BNE CODE_159E20           
-CODE_159E1C:        LDA #$01                  
-CODE_159E1E:        BRA CODE_159E22           
+CODE_159E07:        BF C3 9D 15   LDA.l DATA_159DC3,x             
+CODE_159E0B:        97 01         STA [$01],y               
+CODE_159E0D:        A5 02         LDA $02                   
+CODE_159E0F:        8D 15 07      STA $0715                 
+CODE_159E12:        18            CLC                       
+CODE_159E13:        69 70         ADC #$70                  
+CODE_159E15:        85 02         STA $02                   
+CODE_159E17:        AD 14 07      LDA $0714                 
+CODE_159E1A:        D0 04         BNE CODE_159E20           
+CODE_159E1C:        A9 01         LDA #$01                  
+CODE_159E1E:        80 02         BRA CODE_159E22           
 
-CODE_159E20:        LDA #$00                  
-CODE_159E22:        STA [$01],y               
-CODE_159E24:        LDA $0715                 
-CODE_159E27:        STA $02                   
-CODE_159E29:        JSR CODE_159651           
-CODE_159E2C:        DEC $07                   
-CODE_159E2E:        BPL CODE_159DDC           
-CODE_159E30:        LDA #$01                  
-CODE_159E32:        STA $0716                 
-CODE_159E35:        LDA $E7                   
-CODE_159E37:        CLC                       
-CODE_159E38:        ADC #$10                  
-CODE_159E3A:        STA $E7                   
-CODE_159E3C:        CMP #$C0                  
-CODE_159E3E:        BCC CODE_159DD0           
-CODE_159E40:        INC $0714                 
-CODE_159E43:        CMP #$D0                  
-CODE_159E45:        BCC CODE_159DD0           
-CODE_159E47:        RTL                       
+CODE_159E20:        A9 00         LDA #$00                  
+CODE_159E22:        97 01         STA [$01],y               
+CODE_159E24:        AD 15 07      LDA $0715                 
+CODE_159E27:        85 02         STA $02                   
+CODE_159E29:        20 51 96      JSR CODE_159651           
+CODE_159E2C:        C6 07         DEC $07                   
+CODE_159E2E:        10 AC         BPL CODE_159DDC           
+CODE_159E30:        A9 01         LDA #$01                  
+CODE_159E32:        8D 16 07      STA $0716                 
+CODE_159E35:        A5 E7         LDA $E7                   
+CODE_159E37:        18            CLC                       
+CODE_159E38:        69 10         ADC #$10                  
+CODE_159E3A:        85 E7         STA $E7                   
+CODE_159E3C:        C9 C0         CMP #$C0                  
+CODE_159E3E:        90 90         BCC CODE_159DD0           
+CODE_159E40:        EE 14 07      INC $0714                 
+CODE_159E43:        C9 D0         CMP #$D0                  
+CODE_159E45:        90 89         BCC CODE_159DD0           
+CODE_159E47:        6B            RTL                       
 
-CODE_159E48:        STY $02F5                 
-CODE_159E4B:        LDY $0534                 
-CODE_159E4E:        LDA.w DATA_11AB11,y               
-CODE_159E51:        CLC                       
-CODE_159E52:        ADC.w DATA_11AAFB,x               
-CODE_159E55:        STA $02                   
-CODE_159E57:        LDA.w DATA_11AAF0,x               
-CODE_159E5A:        STA $01                   
-CODE_159E5C:        LDA.w DATA_11AB06,x               
-CODE_159E5F:        STA $03                   
-CODE_159E61:        LDY $02F5                 
-CODE_159E64:        RTS                       
+CODE_159E48:        8C F5 02      STY $02F5                 
+CODE_159E4B:        AC 34 05      LDY $0534                 
+CODE_159E4E:        B9 11 AB      LDA.w DATA_11AB11,y               
+CODE_159E51:        18            CLC                       
+CODE_159E52:        7D FB AA      ADC.w DATA_11AAFB,x               
+CODE_159E55:        85 02         STA $02                   
+CODE_159E57:        BD F0 AA      LDA.w DATA_11AAF0,x               
+CODE_159E5A:        85 01         STA $01                   
+CODE_159E5C:        BD 06 AB      LDA.w DATA_11AB06,x               
+CODE_159E5F:        85 03         STA $03                   
+CODE_159E61:        AC F5 02      LDY $02F5                 
+CODE_159E64:        60            RTS                       
 
-CODE_159E65:        STZ $E9                   
-CODE_159E67:        JSR CODE_1594EC           
-CODE_159E6A:        STZ $0F                   
-CODE_159E6C:        LDX $0F                   
-CODE_159E6E:        LDA.l DATA_15C5CE,x             
-CODE_159E72:        CMP #$FF                  
-CODE_159E74:        BEQ CODE_159E9C           
-CODE_159E76:        ASL A                     
-CODE_159E77:        TAX                       
-CODE_159E78:        LDA.l PNTR_15C466,x             
-CODE_159E7C:        STA $C4                   
-CODE_159E7E:        INX                       
-CODE_159E7F:        LDA.l PNTR_15C466,x             
-CODE_159E83:        STA $C5                   
-CODE_159E85:        LDA #$15                  
-CODE_159E87:        STA $C6                   
-CODE_159E89:        LDX $0F                   
-CODE_159E8B:        INX                       
-CODE_159E8C:        LDA.l DATA_15C5CE,x             
-CODE_159E90:        DEC A                     
-CODE_159E91:        STA $0E                   
-CODE_159E93:        JSR CODE_159E9D           
-CODE_159E96:        INC $0F                   
-CODE_159E98:        INC $0F                   
-CODE_159E9A:        BRA CODE_159E6C           
+CODE_159E65:        64 E9         STZ $E9                   
+CODE_159E67:        20 EC 94      JSR CODE_1594EC           
+CODE_159E6A:        64 0F         STZ $0F                   
+CODE_159E6C:        A6 0F         LDX $0F                   
+CODE_159E6E:        BF CE C5 15   LDA.l DATA_15C5CE,x             
+CODE_159E72:        C9 FF         CMP #$FF                  
+CODE_159E74:        F0 26         BEQ CODE_159E9C           
+CODE_159E76:        0A            ASL A                     
+CODE_159E77:        AA            TAX                       
+CODE_159E78:        BF 66 C4 15   LDA.l PNTR_15C466,x             
+CODE_159E7C:        85 C4         STA $C4                   
+CODE_159E7E:        E8            INX                       
+CODE_159E7F:        BF 66 C4 15   LDA.l PNTR_15C466,x             
+CODE_159E83:        85 C5         STA $C5                   
+CODE_159E85:        A9 15         LDA #$15                  
+CODE_159E87:        85 C6         STA $C6                   
+CODE_159E89:        A6 0F         LDX $0F                   
+CODE_159E8B:        E8            INX                       
+CODE_159E8C:        BF CE C5 15   LDA.l DATA_15C5CE,x             
+CODE_159E90:        3A            DEC A                     
+CODE_159E91:        85 0E         STA $0E                   
+CODE_159E93:        20 9D 9E      JSR CODE_159E9D           
+CODE_159E96:        E6 0F         INC $0F                   
+CODE_159E98:        E6 0F         INC $0F                   
+CODE_159E9A:        80 D0         BRA CODE_159E6C           
 
-CODE_159E9C:        RTL                       
+CODE_159E9C:        6B            RTL                       
 
-CODE_159E9D:        LDY #$00                  
-CODE_159E9F:        LDA [$C4],y               
-CODE_159EA1:        STA [$01],y               
-CODE_159EA3:        INY                       
-CODE_159EA4:        CPY #$10                  
-CODE_159EA6:        BMI CODE_159E9F           
-CODE_159EA8:        REP #$20                  
-CODE_159EAA:        LDA $01                   
-CODE_159EAC:        CLC                       
-CODE_159EAD:        ADC #$0010                
-CODE_159EB0:        STA $01                   
-CODE_159EB2:        SEP #$20                  
-CODE_159EB4:        DEC $0E                   
-CODE_159EB6:        BPL CODE_159E9D           
-CODE_159EB8:        RTS                       
+CODE_159E9D:        A0 00         LDY #$00                  
+CODE_159E9F:        B7 C4         LDA [$C4],y               
+CODE_159EA1:        97 01         STA [$01],y               
+CODE_159EA3:        C8            INY                       
+CODE_159EA4:        C0 10         CPY #$10                  
+CODE_159EA6:        30 F7         BMI CODE_159E9F           
+CODE_159EA8:        C2 20         REP #$20                  
+CODE_159EAA:        A5 01         LDA $01                   
+CODE_159EAC:        18            CLC                       
+CODE_159EAD:        69 10 00      ADC #$0010                
+CODE_159EB0:        85 01         STA $01                   
+CODE_159EB2:        E2 20         SEP #$20                  
+CODE_159EB4:        C6 0E         DEC $0E                   
+CODE_159EB6:        10 E5         BPL CODE_159E9D           
+CODE_159EB8:        60            RTS                       
 
-CODE_159EB9:        LDA $0533                 
-CODE_159EBC:        CMP #$13                  
-CODE_159EBE:        BEQ CODE_159EDD           
-CODE_159EC0:        CMP #$12                  
-CODE_159EC2:        BNE CODE_159EC7           
-CODE_159EC4:        JMP CODE_159FC3           
+CODE_159EB9:        AD 33 05      LDA $0533                 
+CODE_159EBC:        C9 13         CMP #$13                  
+CODE_159EBE:        F0 1D         BEQ CODE_159EDD           
+CODE_159EC0:        C9 12         CMP #$12                  
+CODE_159EC2:        D0 03         BNE CODE_159EC7           
+CODE_159EC4:        4C C3 9F      JMP CODE_159FC3           
 
-CODE_159EC7:        CMP #$01                  
-CODE_159EC9:        BNE CODE_159ECE           
-CODE_159ECB:        JMP CODE_159FF2           
+CODE_159EC7:        C9 01         CMP #$01                  
+CODE_159EC9:        D0 03         BNE CODE_159ECE           
+CODE_159ECB:        4C F2 9F      JMP CODE_159FF2           
 
-CODE_159ECE:        CMP #$02                  
-CODE_159ED0:        BNE CODE_159ED5           
-CODE_159ED2:        JMP CODE_15A037           
+CODE_159ECE:        C9 02         CMP #$02                  
+CODE_159ED0:        D0 03         BNE CODE_159ED5           
+CODE_159ED2:        4C 37 A0      JMP CODE_15A037           
 
-CODE_159ED5:        CMP #$0D                  
-CODE_159ED7:        BNE CODE_159EDC           
-CODE_159ED9:        JMP CODE_15A03F           
+CODE_159ED5:        C9 0D         CMP #$0D                  
+CODE_159ED7:        D0 03         BNE CODE_159EDC           
+CODE_159ED9:        4C 3F A0      JMP CODE_15A03F           
 
-CODE_159EDC:        RTL                       
+CODE_159EDC:        6B            RTL                       
 
-CODE_159EDD:        STZ $0F                   
-CODE_159EDF:        LDX #$00                  
-CODE_159EE1:        LDA.l PNTR_15C625,x             
-CODE_159EE5:        STA $04                   
-CODE_159EE7:        INX                       
-CODE_159EE8:        LDA.l PNTR_15C625,x             
-CODE_159EEC:        STA $05                   
-CODE_159EEE:        INX                       
-CODE_159EEF:        LDA.l PNTR_15C625,x             
-CODE_159EF3:        STA $06                   
-CODE_159EF5:        LDY #$00                  
-CODE_159EF7:        LDA [$04],y               
-CODE_159EF9:        CMP #$FF                  
-CODE_159EFB:        BEQ CODE_159F60           
-CODE_159EFD:        CMP #$01                  
-CODE_159EFF:        BEQ CODE_159F19           
-CODE_159F01:        INY                       
-CODE_159F02:        LDA [$04],y               
-CODE_159F04:        ASL A                     
-CODE_159F05:        TAX                       
-CODE_159F06:        LDA.l PNTR_15C890,x             
-CODE_159F0A:        STA $C4                   
-CODE_159F0C:        INX                       
-CODE_159F0D:        LDA.l PNTR_15C890,x             
-CODE_159F11:        STA $C5                   
-CODE_159F13:        LDA #$15                  
-CODE_159F15:        STA $C6                   
-CODE_159F17:        BRA CODE_159F2F           
+CODE_159EDD:        64 0F         STZ $0F                   
+CODE_159EDF:        A2 00         LDX #$00                  
+CODE_159EE1:        BF 25 C6 15   LDA.l PNTR_15C625,x             
+CODE_159EE5:        85 04         STA $04                   
+CODE_159EE7:        E8            INX                       
+CODE_159EE8:        BF 25 C6 15   LDA.l PNTR_15C625,x             
+CODE_159EEC:        85 05         STA $05                   
+CODE_159EEE:        E8            INX                       
+CODE_159EEF:        BF 25 C6 15   LDA.l PNTR_15C625,x             
+CODE_159EF3:        85 06         STA $06                   
+CODE_159EF5:        A0 00         LDY #$00                  
+CODE_159EF7:        B7 04         LDA [$04],y               
+CODE_159EF9:        C9 FF         CMP #$FF                  
+CODE_159EFB:        F0 63         BEQ CODE_159F60           
+CODE_159EFD:        C9 01         CMP #$01                  
+CODE_159EFF:        F0 18         BEQ CODE_159F19           
+CODE_159F01:        C8            INY                       
+CODE_159F02:        B7 04         LDA [$04],y               
+CODE_159F04:        0A            ASL A                     
+CODE_159F05:        AA            TAX                       
+CODE_159F06:        BF 90 C8 15   LDA.l PNTR_15C890,x             
+CODE_159F0A:        85 C4         STA $C4                   
+CODE_159F0C:        E8            INX                       
+CODE_159F0D:        BF 90 C8 15   LDA.l PNTR_15C890,x             
+CODE_159F11:        85 C5         STA $C5                   
+CODE_159F13:        A9 15         LDA #$15                  
+CODE_159F15:        85 C6         STA $C6                   
+CODE_159F17:        80 16         BRA CODE_159F2F           
 
-CODE_159F19:        INY                       
-CODE_159F1A:        LDA [$04],y               
-CODE_159F1C:        ASL A                     
-CODE_159F1D:        TAX                       
-CODE_159F1E:        LDA.l PNTR_15C8B4,x             
-CODE_159F22:        STA $C4                   
-CODE_159F24:        INX                       
-CODE_159F25:        LDA.l PNTR_15C8B4,x             
-CODE_159F29:        STA $C5                   
-CODE_159F2B:        LDA #$15                  
-CODE_159F2D:        STA $C6                   
-CODE_159F2F:        INY                       
-CODE_159F30:        LDA [$04],y               
-CODE_159F32:        DEC A                     
-CODE_159F33:        STA $0721                 
-CODE_159F36:        INY                       
-CODE_159F37:        LDA [$04],y               
-CODE_159F39:        STA $01                   
-CODE_159F3B:        INY                       
-CODE_159F3C:        LDA [$04],y               
-CODE_159F3E:        STA $02                   
-CODE_159F40:        LDA #$7E                  
-CODE_159F42:        STA $03                   
-CODE_159F44:        LDY #$00                  
-CODE_159F46:        LDA [$04],y               
-CODE_159F48:        BNE CODE_159F4F           
-CODE_159F4A:        JSR CODE_159F61           
-CODE_159F4D:        BRA CODE_159F52           
+CODE_159F19:        C8            INY                       
+CODE_159F1A:        B7 04         LDA [$04],y               
+CODE_159F1C:        0A            ASL A                     
+CODE_159F1D:        AA            TAX                       
+CODE_159F1E:        BF B4 C8 15   LDA.l PNTR_15C8B4,x             
+CODE_159F22:        85 C4         STA $C4                   
+CODE_159F24:        E8            INX                       
+CODE_159F25:        BF B4 C8 15   LDA.l PNTR_15C8B4,x             
+CODE_159F29:        85 C5         STA $C5                   
+CODE_159F2B:        A9 15         LDA #$15                  
+CODE_159F2D:        85 C6         STA $C6                   
+CODE_159F2F:        C8            INY                       
+CODE_159F30:        B7 04         LDA [$04],y               
+CODE_159F32:        3A            DEC A                     
+CODE_159F33:        8D 21 07      STA $0721                 
+CODE_159F36:        C8            INY                       
+CODE_159F37:        B7 04         LDA [$04],y               
+CODE_159F39:        85 01         STA $01                   
+CODE_159F3B:        C8            INY                       
+CODE_159F3C:        B7 04         LDA [$04],y               
+CODE_159F3E:        85 02         STA $02                   
+CODE_159F40:        A9 7E         LDA #$7E                  
+CODE_159F42:        85 03         STA $03                   
+CODE_159F44:        A0 00         LDY #$00                  
+CODE_159F46:        B7 04         LDA [$04],y               
+CODE_159F48:        D0 05         BNE CODE_159F4F           
+CODE_159F4A:        20 61 9F      JSR CODE_159F61           
+CODE_159F4D:        80 03         BRA CODE_159F52           
 
-CODE_159F4F:        JSR CODE_159F88           
-CODE_159F52:        REP #$20                  
-CODE_159F54:        LDA $04                   
-CODE_159F56:        CLC                       
-CODE_159F57:        ADC #$0005                
-CODE_159F5A:        STA $04                   
-CODE_159F5C:        SEP #$20                  
-CODE_159F5E:        BRA CODE_159EF5           
+CODE_159F4F:        20 88 9F      JSR CODE_159F88           
+CODE_159F52:        C2 20         REP #$20                  
+CODE_159F54:        A5 04         LDA $04                   
+CODE_159F56:        18            CLC                       
+CODE_159F57:        69 05 00      ADC #$0005                
+CODE_159F5A:        85 04         STA $04                   
+CODE_159F5C:        E2 20         SEP #$20                  
+CODE_159F5E:        80 95         BRA CODE_159EF5           
 
-CODE_159F60:        RTL                       
+CODE_159F60:        6B            RTL                       
 
-CODE_159F61:        STZ $0712                 
-CODE_159F64:        LDA $0712                 
-CODE_159F67:        AND #$01                  
-CODE_159F69:        TAY                       
-CODE_159F6A:        LDA [$C4],y               
-CODE_159F6C:        STA [$01]                 
-CODE_159F6E:        JSR CODE_15A06B           
-CODE_159F71:        DEC $0721                 
-CODE_159F74:        BMI CODE_159F87           
-CODE_159F76:        INC $0712                 
-CODE_159F79:        REP #$20                  
-CODE_159F7B:        LDA $01                   
-CODE_159F7D:        CLC                       
-CODE_159F7E:        ADC #$0010                
-CODE_159F81:        STA $01                   
-CODE_159F83:        SEP #$20                  
-CODE_159F85:        BRA CODE_159F64           
-CODE_159F87:        RTS                       
+CODE_159F61:        9C 12 07      STZ $0712                 
+CODE_159F64:        AD 12 07      LDA $0712                 
+CODE_159F67:        29 01         AND #$01                  
+CODE_159F69:        A8            TAY                       
+CODE_159F6A:        B7 C4         LDA [$C4],y               
+CODE_159F6C:        87 01         STA [$01]                 
+CODE_159F6E:        20 6B A0      JSR CODE_15A06B           
+CODE_159F71:        CE 21 07      DEC $0721                 
+CODE_159F74:        30 11         BMI CODE_159F87           
+CODE_159F76:        EE 12 07      INC $0712                 
+CODE_159F79:        C2 20         REP #$20                  
+CODE_159F7B:        A5 01         LDA $01                   
+CODE_159F7D:        18            CLC                       
+CODE_159F7E:        69 10 00      ADC #$0010                
+CODE_159F81:        85 01         STA $01                   
+CODE_159F83:        E2 20         SEP #$20                  
+CODE_159F85:        80 DD         BRA CODE_159F64           
+CODE_159F87:        60            RTS                       
 
-CODE_159F88:        STZ $0712                 
-CODE_159F8B:        LDA $0712                 
-CODE_159F8E:        AND #$01                  
-CODE_159F90:        TAY                       
-CODE_159F91:        LDA [$C4],y               
-CODE_159F93:        STA [$01]                 
-CODE_159F95:        JSR CODE_15A06B           
-CODE_159F98:        DEC $0721                 
-CODE_159F9B:        BMI CODE_159FC0           
-CODE_159F9D:        INC $0712                 
-CODE_159FA0:        LDA $01                   
-CODE_159FA2:        AND #$0F                  
-CODE_159FA4:        CMP #$0F                  
-CODE_159FA6:        BEQ CODE_159FAC           
-CODE_159FA8:        INC $01                   
-CODE_159FAA:        BRA CODE_159F8B           
+CODE_159F88:        9C 12 07      STZ $0712                 
+CODE_159F8B:        AD 12 07      LDA $0712                 
+CODE_159F8E:        29 01         AND #$01                  
+CODE_159F90:        A8            TAY                       
+CODE_159F91:        B7 C4         LDA [$C4],y               
+CODE_159F93:        87 01         STA [$01]                 
+CODE_159F95:        20 6B A0      JSR CODE_15A06B           
+CODE_159F98:        CE 21 07      DEC $0721                 
+CODE_159F9B:        30 23         BMI CODE_159FC0           
+CODE_159F9D:        EE 12 07      INC $0712                 
+CODE_159FA0:        A5 01         LDA $01                   
+CODE_159FA2:        29 0F         AND #$0F                  
+CODE_159FA4:        C9 0F         CMP #$0F                  
+CODE_159FA6:        F0 04         BEQ CODE_159FAC           
+CODE_159FA8:        E6 01         INC $01                   
+CODE_159FAA:        80 DF         BRA CODE_159F8B           
 
-CODE_159FAC:        LDA $01                   
-CODE_159FAE:        AND #$F0                  
-CODE_159FB0:        STA $01                   
-CODE_159FB2:        REP #$20                  
-CODE_159FB4:        LDA $01                   
-CODE_159FB6:        CLC                       
-CODE_159FB7:        ADC #$00F0                
-CODE_159FBA:        STA $01                   
-CODE_159FBC:        SEP #$20                  
-CODE_159FBE:        BRA CODE_159F8B           
+CODE_159FAC:        A5 01         LDA $01                   
+CODE_159FAE:        29 F0         AND #$F0                  
+CODE_159FB0:        85 01         STA $01                   
+CODE_159FB2:        C2 20         REP #$20                  
+CODE_159FB4:        A5 01         LDA $01                   
+CODE_159FB6:        18            CLC                       
+CODE_159FB7:        69 F0 00      ADC #$00F0                
+CODE_159FBA:        85 01         STA $01                   
+CODE_159FBC:        E2 20         SEP #$20                  
+CODE_159FBE:        80 CB         BRA CODE_159F8B           
 
-CODE_159FC0:        RTS                       
+CODE_159FC0:        60            RTS                       
 
 DATA_159FC1:        db $07,$13
       
-CODE_159FC3:        LDA #$20                  
-CODE_159FC5:        STA $01                   
-CODE_159FC7:        LDA #$57                  
-CODE_159FC9:        STA $02                   
-CODE_159FCB:        LDA #$7E                  
-CODE_159FCD:        STA $03                   
-CODE_159FCF:        STZ $0712                 
-CODE_159FD2:        LDA $0712                 
-CODE_159FD5:        AND #$01                  
-CODE_159FD7:        TAX                       
-CODE_159FD8:        LDA $0712                 
-CODE_159FDB:        ASL A                     
-CODE_159FDC:        ASL A                     
-CODE_159FDD:        ASL A                     
-CODE_159FDE:        ASL A                     
-CODE_159FDF:        TAY                       
-CODE_159FE0:        LDA.l DATA_159FC1,x             
-CODE_159FE4:        STA [$01],y               
-CODE_159FE6:        INC $0712                 
-CODE_159FE9:        CPY #$A0                  
-CODE_159FEB:        BNE CODE_159FD2           
-CODE_159FED:        RTL                       
+CODE_159FC3:        A9 20         LDA #$20                  
+CODE_159FC5:        85 01         STA $01                   
+CODE_159FC7:        A9 57         LDA #$57                  
+CODE_159FC9:        85 02         STA $02                   
+CODE_159FCB:        A9 7E         LDA #$7E                  
+CODE_159FCD:        85 03         STA $03                   
+CODE_159FCF:        9C 12 07      STZ $0712                 
+CODE_159FD2:        AD 12 07      LDA $0712                 
+CODE_159FD5:        29 01         AND #$01                  
+CODE_159FD7:        AA            TAX                       
+CODE_159FD8:        AD 12 07      LDA $0712                 
+CODE_159FDB:        0A            ASL A                     
+CODE_159FDC:        0A            ASL A                     
+CODE_159FDD:        0A            ASL A                     
+CODE_159FDE:        0A            ASL A                     
+CODE_159FDF:        A8            TAY                       
+CODE_159FE0:        BF C1 9F 15   LDA.l DATA_159FC1,x             
+CODE_159FE4:        97 01         STA [$01],y               
+CODE_159FE6:        EE 12 07      INC $0712                 
+CODE_159FE9:        C0 A0         CPY #$A0                  
+CODE_159FEB:        D0 E5         BNE CODE_159FD2           
+CODE_159FED:        6B            RTL                       
 
 DATA_159FEE:        db $11,$05
 
 DATA_159FF0:        db $12,$06
 
-CODE_159FF2:        STZ $0713                 
-CODE_159FF5:        LDA #$9F                  
-CODE_159FF7:        STA $01                   
-CODE_159FF9:        LDA #$26                  
-CODE_159FFB:        STA $02                   
-CODE_159FFD:        LDA #$7E                  
-CODE_159FFF:        STA $03                   
-CODE_15A001:        STZ $0712                 
-CODE_15A004:        LDA $0712                 
-CODE_15A007:        AND #$01                  
-CODE_15A009:        CLC                       
-CODE_15A00A:        ADC $0713                 
-CODE_15A00D:        TAX                       
-CODE_15A00E:        LDA $0712                 
-CODE_15A011:        ASL A                     
-CODE_15A012:        ASL A                     
-CODE_15A013:        ASL A                     
-CODE_15A014:        ASL A                     
-CODE_15A015:        TAY                       
-CODE_15A016:        LDA.l DATA_159FEE,x             
-CODE_15A01A:        STA [$01],y               
-CODE_15A01C:        INC $0712                 
-CODE_15A01F:        CPY #$C0                  
-CODE_15A021:        BNE CODE_15A004           
-CODE_15A023:        LDA $0713                 
-CODE_15A026:        BNE CODE_15A036           
-CODE_15A028:        STZ $01                   
-CODE_15A02A:        LDA #$36                  
-CODE_15A02C:        STA $02                   
-CODE_15A02E:        INC $0713                 
-CODE_15A031:        INC $0713                 
-CODE_15A034:        BRA CODE_159FFD           
+CODE_159FF2:        9C 13 07      STZ $0713                 
+CODE_159FF5:        A9 9F         LDA #$9F                  
+CODE_159FF7:        85 01         STA $01                   
+CODE_159FF9:        A9 26         LDA #$26                  
+CODE_159FFB:        85 02         STA $02                   
+CODE_159FFD:        A9 7E         LDA #$7E                  
+CODE_159FFF:        85 03         STA $03                   
+CODE_15A001:        9C 12 07      STZ $0712                 
+CODE_15A004:        AD 12 07      LDA $0712                 
+CODE_15A007:        29 01         AND #$01                  
+CODE_15A009:        18            CLC                       
+CODE_15A00A:        6D 13 07      ADC $0713                 
+CODE_15A00D:        AA            TAX                       
+CODE_15A00E:        AD 12 07      LDA $0712                 
+CODE_15A011:        0A            ASL A                     
+CODE_15A012:        0A            ASL A                     
+CODE_15A013:        0A            ASL A                     
+CODE_15A014:        0A            ASL A                     
+CODE_15A015:        A8            TAY                       
+CODE_15A016:        BF EE 9F 15   LDA.l DATA_159FEE,x             
+CODE_15A01A:        97 01         STA [$01],y               
+CODE_15A01C:        EE 12 07      INC $0712                 
+CODE_15A01F:        C0 C0         CPY #$C0                  
+CODE_15A021:        D0 E1         BNE CODE_15A004           
+CODE_15A023:        AD 13 07      LDA $0713                 
+CODE_15A026:        D0 0E         BNE CODE_15A036           
+CODE_15A028:        64 01         STZ $01                   
+CODE_15A02A:        A9 36         LDA #$36                  
+CODE_15A02C:        85 02         STA $02                   
+CODE_15A02E:        EE 13 07      INC $0713                 
+CODE_15A031:        EE 13 07      INC $0713                 
+CODE_15A034:        80 C7         BRA CODE_159FFD           
 
-CODE_15A036:        RTL                       
+CODE_15A036:        6B            RTL                       
 
-CODE_15A037:        STZ $01                   
-CODE_15A039:        LDA #$20                  
-CODE_15A03B:        STA $02                   
-CODE_15A03D:        BRA CODE_15A047           
+CODE_15A037:        64 01         STZ $01                   
+CODE_15A039:        A9 20         LDA #$20                  
+CODE_15A03B:        85 02         STA $02                   
+CODE_15A03D:        80 08         BRA CODE_15A047           
 
-CODE_15A03F:        LDA #$7F                  
-CODE_15A041:        STA $01                   
-CODE_15A043:        LDA #$33                  
-CODE_15A045:        STA $02                   
-CODE_15A047:        LDA #$7E                  
-CODE_15A049:        STA $0003                 
-CODE_15A04C:        STZ $0712                 
-CODE_15A04F:        LDA $0712                 
-CODE_15A052:        AND #$01                  
-CODE_15A054:        TAX                       
-CODE_15A055:        LDA $0712                 
-CODE_15A058:        ASL A                     
-CODE_15A059:        ASL A                     
-CODE_15A05A:        ASL A                     
-CODE_15A05B:        ASL A                     
-CODE_15A05C:        TAY                       
-CODE_15A05D:        LDA.l DATA_159FF0,x             
-CODE_15A061:        STA [$01],y               
-CODE_15A063:        INC $0712                 
-CODE_15A066:        CPY #$A0                  
-CODE_15A068:        BNE CODE_15A04F           
-CODE_15A06A:        RTL                       
+CODE_15A03F:        A9 7F         LDA #$7F                  
+CODE_15A041:        85 01         STA $01                   
+CODE_15A043:        A9 33         LDA #$33                  
+CODE_15A045:        85 02         STA $02                   
+CODE_15A047:        A9 7E         LDA #$7E                  
+CODE_15A049:        8D 03 00      STA $0003                 
+CODE_15A04C:        9C 12 07      STZ $0712                 
+CODE_15A04F:        AD 12 07      LDA $0712                 
+CODE_15A052:        29 01         AND #$01                  
+CODE_15A054:        AA            TAX                       
+CODE_15A055:        AD 12 07      LDA $0712                 
+CODE_15A058:        0A            ASL A                     
+CODE_15A059:        0A            ASL A                     
+CODE_15A05A:        0A            ASL A                     
+CODE_15A05B:        0A            ASL A                     
+CODE_15A05C:        A8            TAY                       
+CODE_15A05D:        BF F0 9F 15   LDA.l DATA_159FF0,x             
+CODE_15A061:        97 01         STA [$01],y               
+CODE_15A063:        EE 12 07      INC $0712                 
+CODE_15A066:        C0 A0         CPY #$A0                  
+CODE_15A068:        D0 E5         BNE CODE_15A04F           
+CODE_15A06A:        6B            RTL                       
 
-CODE_15A06B:        LDY #$00                  
-CODE_15A06D:        STA $076E                 
-CODE_15A070:        LDA $02                   
-CODE_15A072:        STA $076F                 
-CODE_15A075:        CLC                       
-CODE_15A076:        ADC #$70                  
-CODE_15A078:        STA $02                   
-CODE_15A07A:        LDA #$01                  
-CODE_15A07C:        STA [$01],y               
-CODE_15A07E:        LDA $076F                 
-CODE_15A081:        STA $02                   
-CODE_15A083:        LDA $076E                 
-CODE_15A086:        RTS                       
+CODE_15A06B:        A0 00         LDY #$00                  
+CODE_15A06D:        8D 6E 07      STA $076E                 
+CODE_15A070:        A5 02         LDA $02                   
+CODE_15A072:        8D 6F 07      STA $076F                 
+CODE_15A075:        18            CLC                       
+CODE_15A076:        69 70         ADC #$70                  
+CODE_15A078:        85 02         STA $02                   
+CODE_15A07A:        A9 01         LDA #$01                  
+CODE_15A07C:        97 01         STA [$01],y               
+CODE_15A07E:        AD 6F 07      LDA $076F                 
+CODE_15A081:        85 02         STA $02                   
+CODE_15A083:        AD 6E 07      LDA $076E                 
+CODE_15A086:        60            RTS                       
 
 DATA_15A087:        db $04,$10,$14
 
@@ -2932,56 +2932,56 @@ DATA_15A08A:        db $06,$05,$15
 
 DATA_15A08D:        db $12,$11,$16
                
-CODE_15A090:        STZ $0719                 
-CODE_15A093:        LDA $E7              
-CODE_15A095:        TAY                 
-CODE_15A096:        AND #$F0                  
-CODE_15A098:        CMP #$C0                  
-CODE_15A09A:        BEQ CODE_15A0A5           
-CODE_15A09C:        AND #$10                  
-CODE_15A09E:        LSR A                     
-CODE_15A09F:        LSR A                     
-CODE_15A0A0:        LSR A                     
-CODE_15A0A1:        LSR A                     
-CODE_15A0A2:        TAX                       
-CODE_15A0A3:        BRA CODE_15A0AA 
+CODE_15A090:        9C 19 07      STZ $0719                 
+CODE_15A093:        A5 E7         LDA $E7              
+CODE_15A095:        A8            TAY                 
+CODE_15A096:        29 F0         AND #$F0                  
+CODE_15A098:        C9 C0         CMP #$C0                  
+CODE_15A09A:        F0 09         BEQ CODE_15A0A5           
+CODE_15A09C:        29 10         AND #$10                  
+CODE_15A09E:        4A            LSR A                     
+CODE_15A09F:        4A            LSR A                     
+CODE_15A0A0:        4A            LSR A                     
+CODE_15A0A1:        4A            LSR A                     
+CODE_15A0A2:        AA            TAX                       
+CODE_15A0A3:        80 05         BRA CODE_15A0AA 
           
-CODE_15A0A5:        INC $0719                 
-CODE_15A0A8:        LDX #$02                  
-CODE_15A0AA:        LDA.l DATA_15A087,x             
-CODE_15A0AE:        STA [$01],y               
-CODE_15A0B0:        JSR CODE_15A06D           
-CODE_15A0B3:        INY                       
-CODE_15A0B4:        LDA $0719                 
-CODE_15A0B7:        BNE CODE_15A0BF           
-CODE_15A0B9:        TYA                       
-CODE_15A0BA:        AND #$01                  
-CODE_15A0BC:        TAX                       
-CODE_15A0BD:        BRA CODE_15A0C1           
+CODE_15A0A5:        EE 19 07      INC $0719                 
+CODE_15A0A8:        A2 02         LDX #$02                  
+CODE_15A0AA:        BF 87 A0 15   LDA.l DATA_15A087,x             
+CODE_15A0AE:        97 01         STA [$01],y               
+CODE_15A0B0:        20 6D A0      JSR CODE_15A06D           
+CODE_15A0B3:        C8            INY                       
+CODE_15A0B4:        AD 19 07      LDA $0719                 
+CODE_15A0B7:        D0 06         BNE CODE_15A0BF           
+CODE_15A0B9:        98            TYA                       
+CODE_15A0BA:        29 01         AND #$01                  
+CODE_15A0BC:        AA            TAX                       
+CODE_15A0BD:        80 02         BRA CODE_15A0C1           
 
-CODE_15A0BF:        LDX #$02                  
-CODE_15A0C1:        TYA                       
-CODE_15A0C2:        AND #$10                  
-CODE_15A0C4:        BNE CODE_15A0CC           
-CODE_15A0C6:        LDA.l DATA_15A08A,x             
-CODE_15A0CA:        BRA CODE_15A0D0
+CODE_15A0BF:        A2 02         LDX #$02                  
+CODE_15A0C1:        98            TYA                       
+CODE_15A0C2:        29 10         AND #$10                  
+CODE_15A0C4:        D0 06         BNE CODE_15A0CC           
+CODE_15A0C6:        BF 8A A0 15   LDA.l DATA_15A08A,x             
+CODE_15A0CA:        80 04         BRA CODE_15A0D0
            
-CODE_15A0CC:        LDA.l DATA_15A08D,x             
-CODE_15A0D0:        STA [$01],y               
-CODE_15A0D2:        JSR CODE_15A06D           
-CODE_15A0D5:        INY                       
-CODE_15A0D6:        TYA                       
-CODE_15A0D7:        AND #$0F                  
-CODE_15A0D9:        BNE CODE_15A0B4           
-CODE_15A0DB:        LDA $0719                 
-CODE_15A0DE:        BNE CODE_15A0E9           
-CODE_15A0E0:        LDA $E7                   
-CODE_15A0E2:        CLC                       
-CODE_15A0E3:        ADC #$10                  
-CODE_15A0E5:        STA $E7                   
-CODE_15A0E7:        BRA CODE_15A093
+CODE_15A0CC:        BF 8D A0 15   LDA.l DATA_15A08D,x             
+CODE_15A0D0:        97 01         STA [$01],y               
+CODE_15A0D2:        20 6D A0      JSR CODE_15A06D           
+CODE_15A0D5:        C8            INY                       
+CODE_15A0D6:        98            TYA                       
+CODE_15A0D7:        29 0F         AND #$0F                  
+CODE_15A0D9:        D0 D9         BNE CODE_15A0B4           
+CODE_15A0DB:        AD 19 07      LDA $0719                 
+CODE_15A0DE:        D0 09         BNE CODE_15A0E9           
+CODE_15A0E0:        A5 E7         LDA $E7                   
+CODE_15A0E2:        18            CLC                       
+CODE_15A0E3:        69 10         ADC #$10                  
+CODE_15A0E5:        85 E7         STA $E7                   
+CODE_15A0E7:        80 AA         BRA CODE_15A093
            
-CODE_15A0E9:        RTL                       
+CODE_15A0E9:        6B            RTL                       
 
 DATA_15A0EA:        db $02,$05,$08,$0B,$0E,$11
 
@@ -2996,307 +2996,307 @@ DATA_15A105:        db $BA,$BD,$BE,$BB,$BC,$BF,$BA,$BD
 DATA_15A114:        db $BB,$BC,$BF,$BA,$BD,$BE,$BB,$BC
                     db $BF,$BA,$BD,$BE,$BB,$BC,$BF
 
-CODE_15A123:        LDX #$05            
-CODE_15A125:        LDA $0533
-CODE_15A128:        CMP.l DATA_15A0EA,x             
-CODE_15A12C:        BEQ CODE_15A132           
-CODE_15A12E:        DEX                       
-CODE_15A12F:        BPL CODE_15A128           
-CODE_15A131:        RTL                       
+CODE_15A123:        A2 05         LDX #$05            
+CODE_15A125:        AD 33 05      LDA $0533
+CODE_15A128:        DF EA A0 15   CMP.l DATA_15A0EA,x             
+CODE_15A12C:        F0 04         BEQ CODE_15A132           
+CODE_15A12E:        CA            DEX                       
+CODE_15A12F:        10 F7         BPL CODE_15A128           
+CODE_15A131:        6B            RTL                       
 
-CODE_15A132:        LDA $0534                 
-CODE_15A135:        CMP.l DATA_15A0F0,x             
-CODE_15A139:        BNE CODE_15A131           
-CODE_15A13B:        STZ $E9                   
-CODE_15A13D:        LDX $E9                   
-CODE_15A13F:        JSR CODE_15A177           
-CODE_15A142:        STZ $E7                   
-CODE_15A144:        LDA $E7                   
-CODE_15A146:        TAY                       
-CODE_15A147:        LSR A                     
-CODE_15A148:        LSR A                     
-CODE_15A149:        LSR A                     
-CODE_15A14A:        LSR A                     
-CODE_15A14B:        TAX                       
-CODE_15A14C:        LDA [$01],y               
-CODE_15A14E:        CMP.l DATA_15A0F6,x             
-CODE_15A152:        BNE CODE_15A166           
-CODE_15A154:        LDA $E7                   
-CODE_15A156:        AND #$01                  
-CODE_15A158:        BNE CODE_15A160           
-CODE_15A15A:        LDA.l DATA_15A105,x             
-CODE_15A15E:        BRA CODE_15A164           
+CODE_15A132:        AD 34 05      LDA $0534                 
+CODE_15A135:        DF F0 A0 15   CMP.l DATA_15A0F0,x             
+CODE_15A139:        D0 F6         BNE CODE_15A131           
+CODE_15A13B:        64 E9         STZ $E9                   
+CODE_15A13D:        A6 E9         LDX $E9                   
+CODE_15A13F:        20 77 A1      JSR CODE_15A177           
+CODE_15A142:        64 E7         STZ $E7                   
+CODE_15A144:        A5 E7         LDA $E7                   
+CODE_15A146:        A8            TAY                       
+CODE_15A147:        4A            LSR A                     
+CODE_15A148:        4A            LSR A                     
+CODE_15A149:        4A            LSR A                     
+CODE_15A14A:        4A            LSR A                     
+CODE_15A14B:        AA            TAX                       
+CODE_15A14C:        B7 01         LDA [$01],y               
+CODE_15A14E:        DF F6 A0 15   CMP.l DATA_15A0F6,x             
+CODE_15A152:        D0 12         BNE CODE_15A166           
+CODE_15A154:        A5 E7         LDA $E7                   
+CODE_15A156:        29 01         AND #$01                  
+CODE_15A158:        D0 06         BNE CODE_15A160           
+CODE_15A15A:        BF 05 A1 15   LDA.l DATA_15A105,x             
+CODE_15A15E:        80 04         BRA CODE_15A164           
 
-CODE_15A160:        LDA.l DATA_15A114,x             
-CODE_15A164:        STA [$01],y               
-CODE_15A166:        INC $E7                   
-CODE_15A168:        LDA $E7                   
-CODE_15A16A:        CMP #$F0                  
-CODE_15A16C:        BNE CODE_15A146           
-CODE_15A16E:        LDA $E9                   
-CODE_15A170:        BNE CODE_15A176           
-CODE_15A172:        INC $E9                   
-CODE_15A174:        BRA CODE_15A13D           
+CODE_15A160:        BF 14 A1 15   LDA.l DATA_15A114,x             
+CODE_15A164:        97 01         STA [$01],y               
+CODE_15A166:        E6 E7         INC $E7                   
+CODE_15A168:        A5 E7         LDA $E7                   
+CODE_15A16A:        C9 F0         CMP #$F0                  
+CODE_15A16C:        D0 D8         BNE CODE_15A146           
+CODE_15A16E:        A5 E9         LDA $E9                   
+CODE_15A170:        D0 04         BNE CODE_15A176           
+CODE_15A172:        E6 E9         INC $E9                   
+CODE_15A174:        80 C7         BRA CODE_15A13D           
 
-CODE_15A176:        RTL                       
+CODE_15A176:        6B            RTL                       
 
-CODE_15A177:        STY $02F5                 
-CODE_15A17A:        LDY $0534                 
-CODE_15A17D:        LDA.w DATA_11AB11,y               
-CODE_15A180:        CLC                       
-CODE_15A181:        ADC.w DATA_11AAFB,x               
-CODE_15A184:        STA $02                   
-CODE_15A186:        LDA.w DATA_11AAF0,x               
-CODE_15A189:        STA $01                   
-CODE_15A18B:        LDA.w DATA_11AB06,x               
-CODE_15A18E:        STA $03                   
-CODE_15A190:        LDY $02F5                 
-CODE_15A193:        RTS                       
+CODE_15A177:        8C F5 02      STY $02F5                 
+CODE_15A17A:        AC 34 05      LDY $0534                 
+CODE_15A17D:        B9 11 AB      LDA.w DATA_11AB11,y               
+CODE_15A180:        18            CLC                       
+CODE_15A181:        7D FB AA      ADC.w DATA_11AAFB,x               
+CODE_15A184:        85 02         STA $02                   
+CODE_15A186:        BD F0 AA      LDA.w DATA_11AAF0,x               
+CODE_15A189:        85 01         STA $01                   
+CODE_15A18B:        BD 06 AB      LDA.w DATA_11AB06,x               
+CODE_15A18E:        85 03         STA $03                   
+CODE_15A190:        AC F5 02      LDY $02F5                 
+CODE_15A193:        60            RTS                       
 
 DATA_15A194:        db $5C,$2F,$7E,$36,$86,$4C,$63,$4E
                     db $44,$51
 
 DATA_15A19E:        db $03,$05,$0D,$04,$07
 
-CODE_15A1A3:        LDA $0533                 
-CODE_15A1A6:        CMP #$0E                  
-CODE_15A1A8:        BNE CODE_15A1EF           
-CODE_15A1AA:        LDX #$04                  
-CODE_15A1AC:        STX $0714                 
-CODE_15A1AF:        TXA                       
-CODE_15A1B0:        ASL A                     
-CODE_15A1B1:        TAX                       
-CODE_15A1B2:        REP #$20                  
-CODE_15A1B4:        LDA.l DATA_15A194,x             
-CODE_15A1B8:        STA $01                   
-CODE_15A1BA:        SEP #$20                  
-CODE_15A1BC:        LDA #$7E                  
-CODE_15A1BE:        STA $03                   
-CODE_15A1C0:        LDX $0714                 
-CODE_15A1C3:        LDA $01                   
-CODE_15A1C5:        AND #$0F                  
-CODE_15A1C7:        TAY                       
-CODE_15A1C8:        LDA $01                   
-CODE_15A1CA:        AND #$F0                  
-CODE_15A1CC:        STA $01                   
-CODE_15A1CE:        LDA #$B2                  
-CODE_15A1D0:        STA [$01],y               
-CODE_15A1D2:        JSR CODE_15A1F0           
-CODE_15A1D5:        LDA.l DATA_15A19E,x             
-CODE_15A1D9:        STA $0713                 
-CODE_15A1DC:        LDA #$FD                  
-CODE_15A1DE:        STA [$01],y               
-CODE_15A1E0:        JSR CODE_15A1F0           
-CODE_15A1E3:        DEC $0713                 
-CODE_15A1E6:        BPL CODE_15A1DC           
-CODE_15A1E8:        LDA #$FE                  
-CODE_15A1EA:        STA [$01],y               
-CODE_15A1EC:        DEX                       
-CODE_15A1ED:        BPL CODE_15A1AC           
-CODE_15A1EF:        RTL                       
+CODE_15A1A3:        AD 33 05      LDA $0533                 
+CODE_15A1A6:        C9 0E         CMP #$0E                  
+CODE_15A1A8:        D0 45         BNE CODE_15A1EF           
+CODE_15A1AA:        A2 04         LDX #$04                  
+CODE_15A1AC:        8E 14 07      STX $0714                 
+CODE_15A1AF:        8A            TXA                       
+CODE_15A1B0:        0A            ASL A                     
+CODE_15A1B1:        AA            TAX                       
+CODE_15A1B2:        C2 20         REP #$20                  
+CODE_15A1B4:        BF 94 A1 15   LDA.l DATA_15A194,x             
+CODE_15A1B8:        85 01         STA $01                   
+CODE_15A1BA:        E2 20         SEP #$20                  
+CODE_15A1BC:        A9 7E         LDA #$7E                  
+CODE_15A1BE:        85 03         STA $03                   
+CODE_15A1C0:        AE 14 07      LDX $0714                 
+CODE_15A1C3:        A5 01         LDA $01                   
+CODE_15A1C5:        29 0F         AND #$0F                  
+CODE_15A1C7:        A8            TAY                       
+CODE_15A1C8:        A5 01         LDA $01                   
+CODE_15A1CA:        29 F0         AND #$F0                  
+CODE_15A1CC:        85 01         STA $01                   
+CODE_15A1CE:        A9 B2         LDA #$B2                  
+CODE_15A1D0:        97 01         STA [$01],y               
+CODE_15A1D2:        20 F0 A1      JSR CODE_15A1F0           
+CODE_15A1D5:        BF 9E A1 15   LDA.l DATA_15A19E,x             
+CODE_15A1D9:        8D 13 07      STA $0713                 
+CODE_15A1DC:        A9 FD         LDA #$FD                  
+CODE_15A1DE:        97 01         STA [$01],y               
+CODE_15A1E0:        20 F0 A1      JSR CODE_15A1F0           
+CODE_15A1E3:        CE 13 07      DEC $0713                 
+CODE_15A1E6:        10 F4         BPL CODE_15A1DC           
+CODE_15A1E8:        A9 FE         LDA #$FE                  
+CODE_15A1EA:        97 01         STA [$01],y               
+CODE_15A1EC:        CA            DEX                       
+CODE_15A1ED:        10 BD         BPL CODE_15A1AC           
+CODE_15A1EF:        6B            RTL                       
 
-CODE_15A1F0:        INY                       
-CODE_15A1F1:        TYA                       
-CODE_15A1F2:        AND #$0F                  
-CODE_15A1F4:        BNE CODE_15A1F8           
-CODE_15A1F6:        LDY #$F0                  
-CODE_15A1F8:        RTS                       
+CODE_15A1F0:        C8            INY                       
+CODE_15A1F1:        98            TYA                       
+CODE_15A1F2:        29 0F         AND #$0F                  
+CODE_15A1F4:        D0 02         BNE CODE_15A1F8           
+CODE_15A1F6:        A0 F0         LDY #$F0                  
+CODE_15A1F8:        60            RTS                       
 
-CODE_15A1F9:        LDA $0533                 
-CODE_15A1FC:        CMP #$06                  
-CODE_15A1FE:        BNE CODE_15A22F           
-CODE_15A200:        LDA $0534                 
-CODE_15A203:        CMP #$01                  
-CODE_15A205:        BNE CODE_15A22F           
-CODE_15A207:        LDA #$7E                  
-CODE_15A209:        STA $03                   
-CODE_15A20B:        LDA #$31                  
-CODE_15A20D:        STA $02                   
-CODE_15A20F:        LDA #$80                  
-CODE_15A211:        STA $01                   
-CODE_15A213:        REP #$10                  
-CODE_15A215:        LDY #$02DF                
-CODE_15A218:        LDA [$01],y               
-CODE_15A21A:        CMP #$04                  
-CODE_15A21C:        BNE CODE_15A222           
-CODE_15A21E:        LDA #$1C                  
-CODE_15A220:        BRA CODE_15A228           
+CODE_15A1F9:        AD 33 05      LDA $0533                 
+CODE_15A1FC:        C9 06         CMP #$06                  
+CODE_15A1FE:        D0 2F         BNE CODE_15A22F           
+CODE_15A200:        AD 34 05      LDA $0534                 
+CODE_15A203:        C9 01         CMP #$01                  
+CODE_15A205:        D0 28         BNE CODE_15A22F           
+CODE_15A207:        A9 7E         LDA #$7E                  
+CODE_15A209:        85 03         STA $03                   
+CODE_15A20B:        A9 31         LDA #$31                  
+CODE_15A20D:        85 02         STA $02                   
+CODE_15A20F:        A9 80         LDA #$80                  
+CODE_15A211:        85 01         STA $01                   
+CODE_15A213:        C2 10         REP #$10                  
+CODE_15A215:        A0 DF 02      LDY #$02DF                
+CODE_15A218:        B7 01         LDA [$01],y               
+CODE_15A21A:        C9 04         CMP #$04                  
+CODE_15A21C:        D0 04         BNE CODE_15A222           
+CODE_15A21E:        A9 1C         LDA #$1C                  
+CODE_15A220:        80 06         BRA CODE_15A228           
 
-CODE_15A222:        CMP #$07                  
-CODE_15A224:        BNE CODE_15A22A           
-CODE_15A226:        LDA #$1D                  
-CODE_15A228:        STA [$01],y               
-CODE_15A22A:        DEY                       
-CODE_15A22B:        BPL CODE_15A218           
-CODE_15A22D:        SEP #$10                  
-CODE_15A22F:        RTL                       
+CODE_15A222:        C9 07         CMP #$07                  
+CODE_15A224:        D0 04         BNE CODE_15A22A           
+CODE_15A226:        A9 1D         LDA #$1D                  
+CODE_15A228:        97 01         STA [$01],y               
+CODE_15A22A:        88            DEY                       
+CODE_15A22B:        10 EB         BPL CODE_15A218           
+CODE_15A22D:        E2 10         SEP #$10                  
+CODE_15A22F:        6B            RTL                       
 
 DATA_15A230:        db $BA,$BB,$BC,$BD,$BE,$BF,$70,$F5
                     db $3F,$76,$62,$63,$A4,$A5,$CA,$CE
                     db $C7,$C9,$D2,$D3
 
-CODE_15A244:        LDX #$97
-CODE_15A246:        LDA $0533                 
-CODE_15A249:        CMP.l DATA_15C8D8,x             
-CODE_15A24D:        BNE CODE_15A298           
-CODE_15A24F:        LDA $0534                 
-CODE_15A252:        CMP.l DATA_15C970,x             
-CODE_15A256:        BNE CODE_15A298           
-CODE_15A258:        STX $0719                 
-CODE_15A25B:        REP #$30                  
-CODE_15A25D:        TXA                       
-CODE_15A25E:        AND #$00FF                
-CODE_15A261:        ASL A                     
-CODE_15A262:        TAX                       
-CODE_15A263:        LDA.l DATA_15CA08,x             
-CODE_15A267:        STA $01                   
-CODE_15A269:        SEP #$30                  
-CODE_15A26B:        LDA #$7E                  
-CODE_15A26D:        STA $03                   
-CODE_15A26F:        LDX $0719                 
-CODE_15A272:        LDA.l DATA_15CB38,x             
-CODE_15A276:        STA $071A                 
-CODE_15A279:        LDX #$13                  
-CODE_15A27B:        CMP.l DATA_15A230,x             
-CODE_15A27F:        BEQ CODE_15A293           
-CODE_15A281:        DEX                       
-CODE_15A282:        BPL CODE_15A27B           
-CODE_15A284:        LDX $0534                 
-CODE_15A287:        LDA.l DATA_11AB11,x             
-CODE_15A28B:        CLC                       
-CODE_15A28C:        ADC $02                   
-CODE_15A28E:        STA $02                   
-CODE_15A290:        LDA $071A                 
-CODE_15A293:        STA [$01]                 
-CODE_15A295:        LDX $0719                 
-CODE_15A298:        DEX                       
-CODE_15A299:        CPX #$FF                  
-CODE_15A29B:        BEQ CODE_15A2A0           
-CODE_15A29D:        BRL CODE_15A246           
+CODE_15A244:        A2 97         LDX #$97
+CODE_15A246:        AD 33 05      LDA $0533                 
+CODE_15A249:        DF D8 C8 15   CMP.l DATA_15C8D8,x             
+CODE_15A24D:        D0 49         BNE CODE_15A298           
+CODE_15A24F:        AD 34 05      LDA $0534                 
+CODE_15A252:        DF 70 C9 15   CMP.l DATA_15C970,x             
+CODE_15A256:        D0 40         BNE CODE_15A298           
+CODE_15A258:        8E 19 07      STX $0719                 
+CODE_15A25B:        C2 30         REP #$30                  
+CODE_15A25D:        8A            TXA                       
+CODE_15A25E:        29 FF 00      AND #$00FF                
+CODE_15A261:        0A            ASL A                     
+CODE_15A262:        AA            TAX                       
+CODE_15A263:        BF 08 CA 15   LDA.l DATA_15CA08,x             
+CODE_15A267:        85 01         STA $01                   
+CODE_15A269:        E2 30         SEP #$30                  
+CODE_15A26B:        A9 7E         LDA #$7E                  
+CODE_15A26D:        85 03         STA $03                   
+CODE_15A26F:        AE 19 07      LDX $0719                 
+CODE_15A272:        BF 38 CB 15   LDA.l DATA_15CB38,x             
+CODE_15A276:        8D 1A 07      STA $071A                 
+CODE_15A279:        A2 13         LDX #$13                  
+CODE_15A27B:        DF 30 A2 15   CMP.l DATA_15A230,x             
+CODE_15A27F:        F0 12         BEQ CODE_15A293           
+CODE_15A281:        CA            DEX                       
+CODE_15A282:        10 F7         BPL CODE_15A27B           
+CODE_15A284:        AE 34 05      LDX $0534                 
+CODE_15A287:        BF 11 AB 11   LDA.l DATA_11AB11,x             
+CODE_15A28B:        18            CLC                       
+CODE_15A28C:        65 02         ADC $02                   
+CODE_15A28E:        85 02         STA $02                   
+CODE_15A290:        AD 1A 07      LDA $071A                 
+CODE_15A293:        87 01         STA [$01]                 
+CODE_15A295:        AE 19 07      LDX $0719                 
+CODE_15A298:        CA            DEX                       
+CODE_15A299:        E0 FF         CPX #$FF                  
+CODE_15A29B:        F0 03         BEQ CODE_15A2A0           
+CODE_15A29D:        82 A6 FF      BRL CODE_15A246           
 
-CODE_15A2A0:        RTL                       
+CODE_15A2A0:        6B            RTL                       
 
 DATA_15A2A1:        db $28,$29,$26,$2A,$2B,$27
      
-CODE_15A2A7:        REP #$20                 
-CODE_15A2A9:        LDA $01           
-CODE_15A2AB:        CLC                       
-CODE_15A2AC:        ADC #$0050                  
-CODE_15A2AF:        STA $01                 
-CODE_15A2B1:        SEP #$20
-CODE_15A2B3:        LDY $E7
-CODE_15A2B5:        LDX #$00                  
-CODE_15A2B7:        LDA.l DATA_15A2A1,x             
-CODE_15A2BB:        STA [$01],y               
-CODE_15A2BD:        JSR CODE_15A06D           
-CODE_15A2C0:        PHY                       
-CODE_15A2C1:        TYA                       
-CODE_15A2C2:        CLC                       
-CODE_15A2C3:        ADC #$20                  
-CODE_15A2C5:        TAY                       
-CODE_15A2C6:        LDA.l DATA_15A2A1,x             
-CODE_15A2CA:        STA [$01],y               
-CODE_15A2CC:        JSR CODE_15A06D           
-CODE_15A2CF:        PLY                       
-CODE_15A2D0:        INY                       
-CODE_15A2D1:        INX                       
-CODE_15A2D2:        CPX #$06                  
-CODE_15A2D4:        BEQ CODE_15A2E5           
-CODE_15A2D6:        CPX #$03                  
-CODE_15A2D8:        BNE CODE_15A2B7           
-CODE_15A2DA:        LDA $01                   
-CODE_15A2DC:        CLC                       
-CODE_15A2DD:        ADC #$10                  
-CODE_15A2DF:        STA $01                   
-CODE_15A2E1:        LDY $E7                   
-CODE_15A2E3:        BRA CODE_15A2B7           
+CODE_15A2A7:        C2 20         REP #$20                 
+CODE_15A2A9:        A5 01         LDA $01           
+CODE_15A2AB:        18            CLC                       
+CODE_15A2AC:        69 50         ADC #$0050                  
+CODE_15A2AF:        85 01         STA $01                 
+CODE_15A2B1:        E2 20         SEP #$20
+CODE_15A2B3:        A4 E7         LDY $E7
+CODE_15A2B5:        A2 00         LDX #$00                  
+CODE_15A2B7:        BF A1 A2 15   LDA.l DATA_15A2A1,x             
+CODE_15A2BB:        97 01         STA [$01],y               
+CODE_15A2BD:        20 6D A0      JSR CODE_15A06D           
+CODE_15A2C0:        5A            PHY                       
+CODE_15A2C1:        98            TYA                       
+CODE_15A2C2:        18            CLC                       
+CODE_15A2C3:        69 20         ADC #$20                  
+CODE_15A2C5:        A8            TAY                       
+CODE_15A2C6:        BF A1 A2 15   LDA.l DATA_15A2A1,x             
+CODE_15A2CA:        97 01         STA [$01],y               
+CODE_15A2CC:        20 6D A0      JSR CODE_15A06D           
+CODE_15A2CF:        7A            PLY                       
+CODE_15A2D0:        C8            INY                       
+CODE_15A2D1:        E8            INX                       
+CODE_15A2D2:        E0 06         CPX #$06                  
+CODE_15A2D4:        F0 0F         BEQ CODE_15A2E5           
+CODE_15A2D6:        E0 03         CPX #$03                  
+CODE_15A2D8:        D0 DD         BNE CODE_15A2B7           
+CODE_15A2DA:        A5 01         LDA $01                   
+CODE_15A2DC:        18            CLC                       
+CODE_15A2DD:        69 10         ADC #$10                  
+CODE_15A2DF:        85 01         STA $01                   
+CODE_15A2E1:        A4 E7         LDY $E7                   
+CODE_15A2E3:        80 D2         BRA CODE_15A2B7           
 
-CODE_15A2E5:        RTL                       
+CODE_15A2E5:        6B            RTL                       
 
-CODE_15A2E6:        LDA #$02                  
-CODE_15A2E8:        STA $0712                 
-CODE_15A2EB:        STZ $0713                 
-CODE_15A2EE:        STZ $0714                 
-CODE_15A2F1:        LDX #$00                  
-CODE_15A2F3:        JSR CODE_15A3D4           
-CODE_15A2F6:        LDY $04EE                 
-CODE_15A2F9:        TYA                       
-CODE_15A2FA:        JSR CODE_15A395           
-CODE_15A2FD:        STY $142A                 
-CODE_15A300:        STA $142C                 
-CODE_15A303:        LDA #$15                  
-CODE_15A305:        STA $142D                 
-CODE_15A308:        CPY #$BF                  
-CODE_15A30A:        BNE CODE_15A313           
-CODE_15A30C:        LDA #$BD                  
-CODE_15A30E:        STA $142A                 
-CODE_15A311:        LDA #$09                  
-CODE_15A313:        STA $142B                 
-CODE_15A316:        INC $062B                 
-CODE_15A319:        LDA $062B                 
-CODE_15A31C:        JSR CODE_15A395           
-CODE_15A31F:        CPY #$BF                  
-CODE_15A321:        BNE CODE_15A326           
-CODE_15A323:        TAX                       
-CODE_15A324:        TYA                       
-CODE_15A325:        TXY                       
-CODE_15A326:        STY $1408                 
-CODE_15A329:        STA $140A                 
-CODE_15A32C:        LDX #$15                  
-CODE_15A32E:        CMP #$BF                  
-CODE_15A330:        BNE CODE_15A339           
-CODE_15A332:        LDA #$BD                  
-CODE_15A334:        STA $140A                 
-CODE_15A337:        LDX #$09                  
-CODE_15A339:        STX $140B                 
-CODE_15A33C:        LDA #$15                  
-CODE_15A33E:        CPY #$BF                  
-CODE_15A340:        BNE CODE_15A349           
-CODE_15A342:        LDA #$BD                  
-CODE_15A344:        STA $1408                 
-CODE_15A347:        LDA #$09                  
-CODE_15A349:        STA $1409                 
-CODE_15A34C:        LDA #$01                  
-CODE_15A34E:        STA $11                   
-CODE_15A350:        LDA #$01                  
-CODE_15A352:        STA $1DE3                 
-CODE_15A355:        JSL CODE_118014           
-CODE_15A359:        LDA #$04                  
-CODE_15A35B:        STA $0782                 
-CODE_15A35E:        LDA.w DATA_15CAFC                 
-CODE_15A361:        STA $11                   
-CODE_15A363:        LDA #$0A                  
-CODE_15A365:        STA $0783                 
-CODE_15A368:        JSL CODE_118014           
-CODE_15A36C:        JSR CODE_15A3B9           
-CODE_15A36F:        INC $0713                 
-CODE_15A372:        DEC $0783                 
-CODE_15A375:        BNE CODE_15A368           
-CODE_15A377:        DEC $0782                 
-CODE_15A37A:        BPL CODE_15A35E           
-CODE_15A37C:        DEC $0712                 
-CODE_15A37F:        BPL CODE_15A316           
-CODE_15A381:        LDA #$FF                  
-CODE_15A383:        STA $0796                 
-CODE_15A386:        LDX #$0A                  
-CODE_15A388:        JSR CODE_15A3D4           
-CODE_15A38B:        LDA.w DATA_11CAFB                 
-CODE_15A38E:        STA $11                   
-CODE_15A390:        JSL CODE_118014           
-CODE_15A394:        RTL                       
+CODE_15A2E6:        A9 02         LDA #$02                  
+CODE_15A2E8:        8D 12 07      STA $0712                 
+CODE_15A2EB:        9C 13 07      STZ $0713                 
+CODE_15A2EE:        9C 14 07      STZ $0714                 
+CODE_15A2F1:        A2 00         LDX #$00                  
+CODE_15A2F3:        20 D4 A3      JSR CODE_15A3D4           
+CODE_15A2F6:        AC EE 04      LDY $04EE                 
+CODE_15A2F9:        98            TYA                       
+CODE_15A2FA:        20 95 A3      JSR CODE_15A395           
+CODE_15A2FD:        8C 2A 14      STY $142A                 
+CODE_15A300:        8D 2C 14      STA $142C                 
+CODE_15A303:        A9 15         LDA #$15                  
+CODE_15A305:        8D 2D 14      STA $142D                 
+CODE_15A308:        C0 BF         CPY #$BF                  
+CODE_15A30A:        D0 07         BNE CODE_15A313           
+CODE_15A30C:        A9 BD         LDA #$BD                  
+CODE_15A30E:        8D 2A 14      STA $142A                 
+CODE_15A311:        A9 09         LDA #$09                  
+CODE_15A313:        8D 2B 14      STA $142B                 
+CODE_15A316:        EE 2B 06      INC $062B                 
+CODE_15A319:        AD 2B 06      LDA $062B                 
+CODE_15A31C:        20 95 A3      JSR CODE_15A395           
+CODE_15A31F:        C0 BF         CPY #$BF                  
+CODE_15A321:        D0 03         BNE CODE_15A326           
+CODE_15A323:        AA            TAX                       
+CODE_15A324:        98            TYA                       
+CODE_15A325:        9B            TXY                       
+CODE_15A326:        8C 08 14      STY $1408                 
+CODE_15A329:        8D 0A 14      STA $140A                 
+CODE_15A32C:        A2 15         LDX #$15                  
+CODE_15A32E:        C9 BF         CMP #$BF                  
+CODE_15A330:        D0 07         BNE CODE_15A339           
+CODE_15A332:        A9 BD         LDA #$BD                  
+CODE_15A334:        8D 0A 14      STA $140A                 
+CODE_15A337:        A2 09         LDX #$09                  
+CODE_15A339:        8E 0B 14      STX $140B                 
+CODE_15A33C:        A9 15         LDA #$15                  
+CODE_15A33E:        C0 BF         CPY #$BF                  
+CODE_15A340:        D0 07         BNE CODE_15A349           
+CODE_15A342:        A9 BD         LDA #$BD                  
+CODE_15A344:        8D 08 14      STA $1408                 
+CODE_15A347:        A9 09         LDA #$09                  
+CODE_15A349:        8D 09 14      STA $1409                 
+CODE_15A34C:        A9 01         LDA #$01                  
+CODE_15A34E:        85 11         STA $11                   
+CODE_15A350:        A9 01         LDA #$01                  
+CODE_15A352:        8D E3 1D      STA $1DE3                 
+CODE_15A355:        22 14 80 11   JSL CODE_118014           
+CODE_15A359:        A9 04         LDA #$04                  
+CODE_15A35B:        8D 82 07      STA $0782                 
+CODE_15A35E:        AD FC CA      LDA.w DATA_15CAFC                 
+CODE_15A361:        85 11         STA $11                   
+CODE_15A363:        A9 0A         LDA #$0A                  
+CODE_15A365:        8D 83 07      STA $0783                 
+CODE_15A368:        22 14 80 11   JSL CODE_118014           
+CODE_15A36C:        20 B9 A3      JSR CODE_15A3B9           
+CODE_15A36F:        EE 13 07      INC $0713                 
+CODE_15A372:        CE 83 07      DEC $0783                 
+CODE_15A375:        D0 F1         BNE CODE_15A368           
+CODE_15A377:        CE 82 07      DEC $0782                 
+CODE_15A37A:        10 E2         BPL CODE_15A35E           
+CODE_15A37C:        CE 12 07      DEC $0712                 
+CODE_15A37F:        10 95         BPL CODE_15A316           
+CODE_15A381:        A9 FF         LDA #$FF                  
+CODE_15A383:        8D 96 07      STA $0796                 
+CODE_15A386:        A2 0A         LDX #$0A                  
+CODE_15A388:        20 D4 A3      JSR CODE_15A3D4           
+CODE_15A38B:        AD FB CA      LDA.w DATA_11CAFB                 
+CODE_15A38E:        85 11         STA $11                   
+CODE_15A390:        22 14 80 11   JSL CODE_118014           
+CODE_15A394:        6B            RTL                       
 
-CODE_15A395:        LDY #$C0                  
-CODE_15A397:        CMP #$0A                  
-CODE_15A399:        BCC CODE_15A3A0           
-CODE_15A39B:        SBC #$0A                  
-CODE_15A39D:        INY                       
-CODE_15A39E:        BRA CODE_15A397           
+CODE_15A395:        A0 C0         LDY #$C0                  
+CODE_15A397:        C9 0A         CMP #$0A                  
+CODE_15A399:        90 05         BCC CODE_15A3A0           
+CODE_15A39B:        E9 0A         SBC #$0A                  
+CODE_15A39D:        C8            INY                       
+CODE_15A39E:        80 F7         BRA CODE_15A397           
 
-CODE_15A3A0:        ORA #$C0                  
-CODE_15A3A2:        CPY #$C0                  
-CODE_15A3A4:        BNE CODE_15A3A8           
-CODE_15A3A6:        LDY #$BF                  
-CODE_15A3A8:        RTS                       
+CODE_15A3A0:        09 C0         ORA #$C0                  
+CODE_15A3A2:        C0 C0         CPY #$C0                  
+CODE_15A3A4:        D0 02         BNE CODE_15A3A8           
+CODE_15A3A6:        A0 BF         LDY #$BF                  
+CODE_15A3A8:        60            RTS                       
 
 DATA_15A3A9:        dw $125F
 
@@ -3305,29 +3305,29 @@ DATA_15A3AB:        dw $12FF
 DATA_15A3AD:        dw $1B7F,$125F,$12FF,$35AD
                     dw $4631,$56B5
 
-CODE_15A3B9:        LDA $0713                 
-CODE_15A3BC:        CMP #$06                  
-CODE_15A3BE:        BNE CODE_15A3C6           
-CODE_15A3C0:        STZ $0713                 
-CODE_15A3C3:        INC $0714                 
-CODE_15A3C6:        LDA $0714                 
-CODE_15A3C9:        CMP #$03                  
-CODE_15A3CB:        BNE CODE_15A3D2           
-CODE_15A3CD:        LDA #$00                  
-CODE_15A3CF:        STA $0714                 
-CODE_15A3D2:        ASL A                     
-CODE_15A3D3:        TAX                       
-CODE_15A3D4:        REP #$20                  
-CODE_15A3D6:        LDA.l DATA_15A3A9,x             
-CODE_15A3DA:        STA $0B1A                 
-CODE_15A3DD:        LDA.l DATA_15A3AB,x             
-CODE_15A3E1:        STA $0B1C                 
-CODE_15A3E4:        LDA.l DATA_15A3AD,x             
-CODE_15A3E8:        STA $0B1E                 
-CODE_15A3EB:        SEP #$20                  
-CODE_15A3ED:        LDA #$01                  
-CODE_15A3EF:        STA $02A9                 
-CODE_15A3F2:        RTS                       
+CODE_15A3B9:        AD 13 07      LDA $0713                 
+CODE_15A3BC:        C9 06         CMP #$06                  
+CODE_15A3BE:        D0 06         BNE CODE_15A3C6           
+CODE_15A3C0:        9C 13 07      STZ $0713                 
+CODE_15A3C3:        EE 14 07      INC $0714                 
+CODE_15A3C6:        AD 14 07      LDA $0714                 
+CODE_15A3C9:        C9 03         CMP #$03                  
+CODE_15A3CB:        D0 05         BNE CODE_15A3D2           
+CODE_15A3CD:        A9 00         LDA #$00                  
+CODE_15A3CF:        8D 14 07      STA $0714                 
+CODE_15A3D2:        0A            ASL A                     
+CODE_15A3D3:        AA            TAX                       
+CODE_15A3D4:        C2 20         REP #$20                  
+CODE_15A3D6:        BF A9 A3 15   LDA.l DATA_15A3A9,x             
+CODE_15A3DA:        8D 1A 0B      STA $0B1A                 
+CODE_15A3DD:        BF AB A3 15   LDA.l DATA_15A3AB,x             
+CODE_15A3E1:        8D 1C 0B      STA $0B1C                 
+CODE_15A3E4:        BF AD A3 15   LDA.l DATA_15A3AD,x             
+CODE_15A3E8:        8D 1E 0B      STA $0B1E                 
+CODE_15A3EB:        E2 20         SEP #$20                  
+CODE_15A3ED:        A9 01         LDA #$01                  
+CODE_15A3EF:        8D A9 02      STA $02A9                 
+CODE_15A3F2:        60            RTS                       
 
 DATA_15A3F3:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty data.
                     db $FF,$FF,$FF,$FF,$FF                  ; /
@@ -5071,211 +5071,211 @@ DATA_15CBD0:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty.
 
 DATA_15D000:        db $8C,$68,$A6,$6A,$6A,$A6,$68
 
-CODE_15D007:        PHX                       
-CODE_15D008:        LDX $12                   
-CODE_15D00A:        LDA $90,x                 
-CODE_15D00C:        CMP #$36                  
-CODE_15D00E:        BNE CODE_15D038           
-CODE_15D010:        LDA $79,x                 
-CODE_15D012:        BEQ CODE_15D038           
-CODE_15D014:        INC $079E                 
-CODE_15D017:        LDA $079E                 
-CODE_15D01A:        CMP #$0E                  
-CODE_15D01C:        BCC CODE_15D023           
-CODE_15D01E:        LDA #$00                  
-CODE_15D020:        STA $079E                 
-CODE_15D023:        LSR A                     
-CODE_15D024:        TAX                       
-CODE_15D025:        LDA.l DATA_15D000,x             
-CODE_15D029:        STA $0712                 
-CODE_15D02C:        CPX #$04                  
-CODE_15D02E:        BCC CODE_15D038           
-CODE_15D030:        LDA $0713                 
-CODE_15D033:        ORA #$40                  
-CODE_15D035:        STA $0713                 
-CODE_15D038:        PLX                       
-CODE_15D039:        RTL                       
+CODE_15D007:        DA            PHX                       
+CODE_15D008:        A6 12         LDX $12                   
+CODE_15D00A:        B5 90         LDA $90,x                 
+CODE_15D00C:        C9 36         CMP #$36                  
+CODE_15D00E:        D0 28         BNE CODE_15D038           
+CODE_15D010:        B5 79         LDA $79,x                 
+CODE_15D012:        F0 24         BEQ CODE_15D038           
+CODE_15D014:        EE 9E 07      INC $079E                 
+CODE_15D017:        AD 9E 07      LDA $079E                 
+CODE_15D01A:        C9 0E         CMP #$0E                  
+CODE_15D01C:        90 05         BCC CODE_15D023           
+CODE_15D01E:        A9 00         LDA #$00                  
+CODE_15D020:        8D 9E 07      STA $079E                 
+CODE_15D023:        4A            LSR A                     
+CODE_15D024:        AA            TAX                       
+CODE_15D025:        BF 00 D0 15   LDA.l DATA_15D000,x             
+CODE_15D029:        8D 12 07      STA $0712                 
+CODE_15D02C:        E0 04         CPX #$04                  
+CODE_15D02E:        90 08         BCC CODE_15D038           
+CODE_15D030:        AD 13 07      LDA $0713                 
+CODE_15D033:        09 40         ORA #$40                  
+CODE_15D035:        8D 13 07      STA $0713                 
+CODE_15D038:        FA            PLX                       
+CODE_15D039:        6B            RTL                       
 
-CODE_15D03A:        PHB                       
-CODE_15D03B:        PHK                       
-CODE_15D03C:        PLB                       
-CODE_15D03D:        PHX                       
-CODE_15D03E:        PHY                       
-CODE_15D03F:        LDA #$01                  
-CODE_15D041:        STA $85                   
-CODE_15D043:        LDA $0779                 
-CODE_15D046:        ASL A                     
-CODE_15D047:        TAX                       
-CODE_15D048:        LDA.w PNTR_15D055,x               
-CODE_15D04B:        STA $00                   
-CODE_15D04D:        LDA.w PNTR_15D055+1,x               
-CODE_15D050:        STA $01                   
-CODE_15D052:        JMP ($0000)               
+CODE_15D03A:        8B            PHB                       
+CODE_15D03B:        4B            PHK                       
+CODE_15D03C:        AB            PLB                       
+CODE_15D03D:        DA            PHX                       
+CODE_15D03E:        5A            PHY                       
+CODE_15D03F:        A9 01         LDA #$01                  
+CODE_15D041:        85 85         STA $85                   
+CODE_15D043:        AD 79 07      LDA $0779                 
+CODE_15D046:        0A            ASL A                     
+CODE_15D047:        AA            TAX                       
+CODE_15D048:        BD 55 D0      LDA.w PNTR_15D055,x               
+CODE_15D04B:        85 00         STA $00                   
+CODE_15D04D:        BD 56 D0      LDA.w PNTR_15D055+1,x               
+CODE_15D050:        85 01         STA $01                   
+CODE_15D052:        6C 00 00      JMP ($0000)               
 
 PNTR_15D055:        dw CODE_15D067
                     dw CODE_15D084
                     dw CODE_15D05D
                     dw CODE_15D072
 
-CODE_15D05D:        DEC $0795
-CODE_15D060:        BPL CODE_15D084           
-CODE_15D062:        INC $0779                 
-CODE_15D065:        BRA CODE_15D084           
+CODE_15D05D:        CE 95 07      DEC $0795
+CODE_15D060:        10 22         BPL CODE_15D084           
+CODE_15D062:        EE 79 07      INC $0779                 
+CODE_15D065:        80 1D         BRA CODE_15D084           
 
-CODE_15D067:        STZ $04BE                 
-CODE_15D06A:        INC $0779                 
-CODE_15D06D:        INC $041B                 
-CODE_15D070:        BRA CODE_15D084           
+CODE_15D067:        9C BE 04      STZ $04BE                 
+CODE_15D06A:        EE 79 07      INC $0779                 
+CODE_15D06D:        EE 1B 04      INC $041B                 
+CODE_15D070:        80 12         BRA CODE_15D084           
 
-CODE_15D072:        DEC $04BE                 
-CODE_15D075:        LDA $04BE                 
-CODE_15D078:        BPL CODE_15D084           
-CODE_15D07A:        LDA #$FF                  
-CODE_15D07C:        STA $0778                 
-CODE_15D07F:        STZ $041B                 
-CODE_15D082:        BRA CODE_15D084           
+CODE_15D072:        CE BE 04      DEC $04BE                 
+CODE_15D075:        AD BE 04      LDA $04BE                 
+CODE_15D078:        10 0A         BPL CODE_15D084           
+CODE_15D07A:        A9 FF         LDA #$FF                  
+CODE_15D07C:        8D 78 07      STA $0778                 
+CODE_15D07F:        9C 1B 04      STZ $041B                 
+CODE_15D082:        80 00         BRA CODE_15D084           
 
-CODE_15D084:        REP #$10                  
-CODE_15D086:        LDY #$01FC                
-CODE_15D089:        LDX #$0007                
-CODE_15D08C:        LDA $04C1                 
-CODE_15D08F:        STA $00                   
-CODE_15D091:        LDA $04BF                 
-CODE_15D094:        STA $01                   
-CODE_15D096:        LDA $0779                 
-CODE_15D099:        CMP #$03                  
-CODE_15D09B:        BNE CODE_15D0A0           
-CODE_15D09D:        LDY #$007C                
-CODE_15D0A0:        JSR CODE_15D197           
-CODE_15D0A3:        LDA.l DATA_15D1AD,x             
-CODE_15D0A7:        CPX #$0002                
-CODE_15D0AA:        BCC CODE_15D0B0           
-CODE_15D0AC:        SEC                       
-CODE_15D0AD:        SBC $04BE                 
-CODE_15D0B0:        CMP #$60                  
-CODE_15D0B2:        BCS CODE_15D0B6                   
-CODE_15D0B4:        LDA #$F0                  
-CODE_15D0B6:        DEC A                     
-CODE_15D0B7:        STA $0801,y               
-CODE_15D0BA:        LDA.l DATA_15D1B5,x             
-CODE_15D0BE:        STA $0802,y               
-CODE_15D0C1:        LDA.l DATA_15D1BD,x             
-CODE_15D0C5:        STA $0803,y               
-CODE_15D0C8:        LDA #$04                  
-CODE_15D0CA:        XBA                       
-CODE_15D0CB:        LDA.l DATA_15D1A5,x             
-CODE_15D0CF:        REP #$20                  
-CODE_15D0D1:        SEC                       
-CODE_15D0D2:        SBC $00                   
-CODE_15D0D4:        STA $02                   
-CODE_15D0D6:        SEP #$20                  
-CODE_15D0D8:        STA $0800,y               
-CODE_15D0DB:        PHY                       
-CODE_15D0DC:        REP #$20                  
-CODE_15D0DE:        TYA                       
-CODE_15D0DF:        LSR A                     
-CODE_15D0E0:        LSR A                     
-CODE_15D0E1:        TAY                       
-CODE_15D0E2:        SEP #$20                  
-CODE_15D0E4:        LDA $03                   
-CODE_15D0E6:        BEQ CODE_15D0EA           
-CODE_15D0E8:        LDA #$01                  
-CODE_15D0EA:        ORA #$02                  
-CODE_15D0EC:        STA $0A20,y               
-CODE_15D0EF:        PLY                       
-CODE_15D0F0:        DEX                       
-CODE_15D0F1:        BPL CODE_15D0A0           
-CODE_15D0F3:        LDA $0779                 
-CODE_15D0F6:        CMP #$01                  
-CODE_15D0F8:        BNE CODE_15D10C           
-CODE_15D0FA:        INC $04BE                 
-CODE_15D0FD:        LDA $04BE                 
-CODE_15D100:        CMP #$20                  
-CODE_15D102:        BCC CODE_15D10C           
-CODE_15D104:        INC $0779                 
-CODE_15D107:        LDA #$10                  
-CODE_15D109:        STA $0795                 
-CODE_15D10C:        LDA $0778                 
-CODE_15D10F:        BPL CODE_15D117           
-CODE_15D111:        STZ $0779                 
-CODE_15D114:        STZ $04BE                 
-CODE_15D117:        SEP #$10                  
-CODE_15D119:        PLY                       
-CODE_15D11A:        PLX                       
-CODE_15D11B:        PLB                       
-CODE_15D11C:        RTL                       
+CODE_15D084:        C2 10         REP #$10                  
+CODE_15D086:        A0 FC 01      LDY #$01FC                
+CODE_15D089:        A2 07 00      LDX #$0007                
+CODE_15D08C:        AD C1 04      LDA $04C1                 
+CODE_15D08F:        85 00         STA $00                   
+CODE_15D091:        AD BF 04      LDA $04BF                 
+CODE_15D094:        85 01         STA $01                   
+CODE_15D096:        AD 79 07      LDA $0779                 
+CODE_15D099:        C9 03         CMP #$03                  
+CODE_15D09B:        D0 03         BNE CODE_15D0A0           
+CODE_15D09D:        A0 7C 00      LDY #$007C                
+CODE_15D0A0:        20 97 D1      JSR CODE_15D197           
+CODE_15D0A3:        BF AD D1 15   LDA.l DATA_15D1AD,x             
+CODE_15D0A7:        E0 02 00      CPX #$0002                
+CODE_15D0AA:        90 04         BCC CODE_15D0B0           
+CODE_15D0AC:        38            SEC                       
+CODE_15D0AD:        ED BE 04      SBC $04BE                 
+CODE_15D0B0:        C9 60         CMP #$60                  
+CODE_15D0B2:        B0 02         BCS CODE_15D0B6                   
+CODE_15D0B4:        A9 F0         LDA #$F0                  
+CODE_15D0B6:        3A            DEC A                     
+CODE_15D0B7:        99 01 08      STA $0801,y               
+CODE_15D0BA:        BF B5 D1 15   LDA.l DATA_15D1B5,x             
+CODE_15D0BE:        99 02 08      STA $0802,y               
+CODE_15D0C1:        BF BD D1 15   LDA.l DATA_15D1BD,x             
+CODE_15D0C5:        99 03 08      STA $0803,y               
+CODE_15D0C8:        A9 04         LDA #$04                  
+CODE_15D0CA:        EB            XBA                       
+CODE_15D0CB:        BF A5 D1 15   LDA.l DATA_15D1A5,x             
+CODE_15D0CF:        C2 20         REP #$20                  
+CODE_15D0D1:        38            SEC                       
+CODE_15D0D2:        E5 00         SBC $00                   
+CODE_15D0D4:        85 02         STA $02                   
+CODE_15D0D6:        E2 20         SEP #$20                  
+CODE_15D0D8:        99 00 08      STA $0800,y               
+CODE_15D0DB:        5A            PHY                       
+CODE_15D0DC:        C2 20         REP #$20                  
+CODE_15D0DE:        98            TYA                       
+CODE_15D0DF:        4A            LSR A                     
+CODE_15D0E0:        4A            LSR A                     
+CODE_15D0E1:        A8            TAY                       
+CODE_15D0E2:        E2 20         SEP #$20                  
+CODE_15D0E4:        A5 03         LDA $03                   
+CODE_15D0E6:        F0 02         BEQ CODE_15D0EA           
+CODE_15D0E8:        A9 01         LDA #$01                  
+CODE_15D0EA:        09 02         ORA #$02                  
+CODE_15D0EC:        99 20 0A      STA $0A20,y               
+CODE_15D0EF:        7A            PLY                       
+CODE_15D0F0:        CA            DEX                       
+CODE_15D0F1:        10 AD         BPL CODE_15D0A0           
+CODE_15D0F3:        AD 79 07      LDA $0779                 
+CODE_15D0F6:        C9 01         CMP #$01                  
+CODE_15D0F8:        D0 12         BNE CODE_15D10C           
+CODE_15D0FA:        EE BE 04      INC $04BE                 
+CODE_15D0FD:        AD BE 04      LDA $04BE                 
+CODE_15D100:        C9 20         CMP #$20                  
+CODE_15D102:        90 08         BCC CODE_15D10C           
+CODE_15D104:        EE 79 07      INC $0779                 
+CODE_15D107:        A9 10         LDA #$10                  
+CODE_15D109:        8D 95 07      STA $0795                 
+CODE_15D10C:        AD 78 07      LDA $0778                 
+CODE_15D10F:        10 06         BPL CODE_15D117           
+CODE_15D111:        9C 79 07      STZ $0779                 
+CODE_15D114:        9C BE 04      STZ $04BE                 
+CODE_15D117:        E2 10         SEP #$10                  
+CODE_15D119:        7A            PLY                       
+CODE_15D11A:        FA            PLX                       
+CODE_15D11B:        AB            PLB                       
+CODE_15D11C:        6B            RTL                       
 
-CODE_15D11D:        LDA $0779                 
-CODE_15D120:        BNE CODE_15D196           
-CODE_15D122:        LDA $0533                 
-CODE_15D125:        CMP #$11                  
-CODE_15D127:        BNE CODE_15D196           
-CODE_15D129:        LDA $0534                 
-CODE_15D12C:        CMP #$01                  
-CODE_15D12E:        BNE CODE_15D196           
-CODE_15D130:        LDA $14                   
-CODE_15D132:        CMP #$04                  
-CODE_15D134:        BCC CODE_15D196           
-CODE_15D136:        PHB                       
-CODE_15D137:        PHK                       
-CODE_15D138:        PLB                       
-CODE_15D139:        PHX                       
-CODE_15D13A:        PHY                       
-CODE_15D13B:        REP #$10                  
-CODE_15D13D:        LDX #$0007                
-CODE_15D140:        LDY #$01FC                
-CODE_15D143:        LDA $04C1                 
-CODE_15D146:        STA $00                   
-CODE_15D148:        LDA $04BF                 
-CODE_15D14B:        STA $01                   
-CODE_15D14D:        JSR CODE_15D197           
-CODE_15D150:        LDA.l DATA_15D1AD,x             
-CODE_15D154:        DEC A                     
-CODE_15D155:        STA $0801,y               
-CODE_15D158:        LDA.l DATA_15D1B5,x             
-CODE_15D15C:        STA $0802,y               
-CODE_15D15F:        LDA.l DATA_15D1BD,x             
-CODE_15D163:        STA $0803,y               
-CODE_15D166:        LDA #$04                  
-CODE_15D168:        XBA                       
-CODE_15D169:        LDA.l DATA_15D1A5,x             
-CODE_15D16D:        REP #$20                  
-CODE_15D16F:        SEC                       
-CODE_15D170:        SBC $00                   
-CODE_15D172:        STA $02                   
-CODE_15D174:        SEP #$20                  
-CODE_15D176:        STA $0800,y               
-CODE_15D179:        PHY                       
-CODE_15D17A:        REP #$20                  
-CODE_15D17C:        TYA                       
-CODE_15D17D:        LSR A                     
-CODE_15D17E:        LSR A                     
-CODE_15D17F:        TAY                       
-CODE_15D180:        SEP #$20                  
-CODE_15D182:        LDA $03                   
-CODE_15D184:        BEQ CODE_15D188           
-CODE_15D186:        LDA #$01                  
-CODE_15D188:        ORA #$02                  
-CODE_15D18A:        STA $0A20,y               
-CODE_15D18D:        PLY                       
-CODE_15D18E:        DEX                       
-CODE_15D18F:        BPL CODE_15D14D           
-CODE_15D191:        SEP #$10                  
-CODE_15D193:        PLY                       
-CODE_15D194:        PLX                       
-CODE_15D195:        PLB                       
-CODE_15D196:        RTL                       
+CODE_15D11D:        AD 79 07      LDA $0779                 
+CODE_15D120:        D0 74         BNE CODE_15D196           
+CODE_15D122:        AD 33 05      LDA $0533                 
+CODE_15D125:        C9 11         CMP #$11                  
+CODE_15D127:        D0 6D         BNE CODE_15D196           
+CODE_15D129:        AD 34 05      LDA $0534                 
+CODE_15D12C:        C9 01         CMP #$01                  
+CODE_15D12E:        D0 66         BNE CODE_15D196           
+CODE_15D130:        A5 14         LDA $14                   
+CODE_15D132:        C9 04         CMP #$04                  
+CODE_15D134:        90 60         BCC CODE_15D196           
+CODE_15D136:        8B            PHB                       
+CODE_15D137:        4B            PHK                       
+CODE_15D138:        AB            PLB                       
+CODE_15D139:        DA            PHX                       
+CODE_15D13A:        5A            PHY                       
+CODE_15D13B:        C2 10         REP #$10                  
+CODE_15D13D:        A2 07 00      LDX #$0007                
+CODE_15D140:        A0 FC 01      LDY #$01FC                
+CODE_15D143:        AD C1 04      LDA $04C1                 
+CODE_15D146:        85 00         STA $00                   
+CODE_15D148:        AD BF 04      LDA $04BF                 
+CODE_15D14B:        85 01         STA $01                   
+CODE_15D14D:        20 97 D1      JSR CODE_15D197           
+CODE_15D150:        BF AD D1 15   LDA.l DATA_15D1AD,x             
+CODE_15D154:        3A            DEC A                     
+CODE_15D155:        99 01 08      STA $0801,y               
+CODE_15D158:        BF B5 D1 15   LDA.l DATA_15D1B5,x             
+CODE_15D15C:        99 02 08      STA $0802,y               
+CODE_15D15F:        BF BD D1 15   LDA.l DATA_15D1BD,x             
+CODE_15D163:        99 03 08      STA $0803,y               
+CODE_15D166:        A9 04         LDA #$04                  
+CODE_15D168:        EB            XBA                       
+CODE_15D169:        BF A5 D1 15   LDA.l DATA_15D1A5,x             
+CODE_15D16D:        C2 20         REP #$20                  
+CODE_15D16F:        38            SEC                       
+CODE_15D170:        E5 00         SBC $00                   
+CODE_15D172:        85 02         STA $02                   
+CODE_15D174:        E2 20         SEP #$20                  
+CODE_15D176:        99 00 08      STA $0800,y               
+CODE_15D179:        5A            PHY                       
+CODE_15D17A:        C2 20         REP #$20                  
+CODE_15D17C:        98            TYA                       
+CODE_15D17D:        4A            LSR A                     
+CODE_15D17E:        4A            LSR A                     
+CODE_15D17F:        A8            TAY                       
+CODE_15D180:        E2 20         SEP #$20                  
+CODE_15D182:        A5 03         LDA $03                   
+CODE_15D184:        F0 02         BEQ CODE_15D188           
+CODE_15D186:        A9 01         LDA #$01                  
+CODE_15D188:        09 02         ORA #$02                  
+CODE_15D18A:        99 20 0A      STA $0A20,y               
+CODE_15D18D:        7A            PLY                       
+CODE_15D18E:        CA            DEX                       
+CODE_15D18F:        10 BC         BPL CODE_15D14D           
+CODE_15D191:        E2 10         SEP #$10                  
+CODE_15D193:        7A            PLY                       
+CODE_15D194:        FA            PLX                       
+CODE_15D195:        AB            PLB                       
+CODE_15D196:        6B            RTL                       
 
-CODE_15D197:        LDA $0801,y               
-CODE_15D19A:        CMP #$F0                  
-CODE_15D19C:        BEQ CODE_15D1A4           
-CODE_15D19E:        DEY                       
-CODE_15D19F:        DEY                       
-CODE_15D1A0:        DEY                       
-CODE_15D1A1:        DEY                       
-CODE_15D1A2:        BRA CODE_15D197           
+CODE_15D197:        B9 01 08      LDA $0801,y               
+CODE_15D19A:        C9 F0         CMP #$F0                  
+CODE_15D19C:        F0 06         BEQ CODE_15D1A4           
+CODE_15D19E:        88            DEY                       
+CODE_15D19F:        88            DEY                       
+CODE_15D1A0:        88            DEY                       
+CODE_15D1A1:        88            DEY                       
+CODE_15D1A2:        80 F3         BRA CODE_15D197           
 
-CODE_15D1A4:        RTS                       
+CODE_15D1A4:        60            RTS                       
 
 DATA_15D1A5:        db $90,$A0,$90,$A0,$90,$A0,$90,$A0
 
@@ -5285,37 +5285,37 @@ DATA_15D1B5:        db $A0,$A2,$A4,$A6,$62,$64,$66,$AE
 
 DATA_15D1BD:        db $27,$27,$27,$27,$26,$26,$26,$27
 
-CODE_15D1C5:        LDA $0533                 
-CODE_15D1C8:        CMP #$11                  
-CODE_15D1CA:        BNE CODE_15D1F9           
-CODE_15D1CC:        LDA $0534                 
-CODE_15D1CF:        CMP #$02                  
-CODE_15D1D1:        BEQ CODE_15D1E9           
-CODE_15D1D3:        CMP #$01                  
-CODE_15D1D5:        BNE CODE_15D1F9           
-CODE_15D1D7:        LDA $14                   
-CODE_15D1D9:        CMP #$04                  
-CODE_15D1DB:        BNE CODE_15D1F9           
-CODE_15D1DD:        LDA $28                   
-CODE_15D1DF:        CMP #$90                  
-CODE_15D1E1:        BCC CODE_15D1F9           
-CODE_15D1E3:        CMP #$A0                  
-CODE_15D1E5:        BCS CODE_15D1F9                   
-CODE_15D1E7:        SEC                       
-CODE_15D1E8:        RTL                       
+CODE_15D1C5:        AD 33 05      LDA $0533                 
+CODE_15D1C8:        C9 11         CMP #$11                  
+CODE_15D1CA:        D0 2D         BNE CODE_15D1F9           
+CODE_15D1CC:        AD 34 05      LDA $0534                 
+CODE_15D1CF:        C9 02         CMP #$02                  
+CODE_15D1D1:        F0 16         BEQ CODE_15D1E9           
+CODE_15D1D3:        C9 01         CMP #$01                  
+CODE_15D1D5:        D0 22         BNE CODE_15D1F9           
+CODE_15D1D7:        A5 14         LDA $14                   
+CODE_15D1D9:        C9 04         CMP #$04                  
+CODE_15D1DB:        D0 1C         BNE CODE_15D1F9           
+CODE_15D1DD:        A5 28         LDA $28                   
+CODE_15D1DF:        C9 90         CMP #$90                  
+CODE_15D1E1:        90 16         BCC CODE_15D1F9           
+CODE_15D1E3:        C9 A0         CMP #$A0                  
+CODE_15D1E5:        B0 12         BCS CODE_15D1F9                   
+CODE_15D1E7:        38            SEC                       
+CODE_15D1E8:        6B            RTL                       
 
-CODE_15D1E9:        LDA $14                   
-CODE_15D1EB:        BNE CODE_15D1F9           
-CODE_15D1ED:        LDA $28                   
-CODE_15D1EF:        CMP #$50                  
-CODE_15D1F1:        BCC CODE_15D1F9           
-CODE_15D1F3:        CMP #$60                  
-CODE_15D1F5:        BCS CODE_15D1F9                   
-CODE_15D1F7:        SEC                       
-CODE_15D1F8:        RTL                       
+CODE_15D1E9:        A5 14         LDA $14                   
+CODE_15D1EB:        D0 0C         BNE CODE_15D1F9           
+CODE_15D1ED:        A5 28         LDA $28                   
+CODE_15D1EF:        C9 50         CMP #$50                  
+CODE_15D1F1:        90 06         BCC CODE_15D1F9           
+CODE_15D1F3:        C9 60         CMP #$60                  
+CODE_15D1F5:        B0 02         BCS CODE_15D1F9                   
+CODE_15D1F7:        38            SEC                       
+CODE_15D1F8:        6B            RTL                       
 
-CODE_15D1F9:        CLC                       
-CODE_15D1FA:        RTL                       
+CODE_15D1F9:        18            CLC                       
+CODE_15D1FA:        6B            RTL                       
 
 DATA_15D1FB:        db $A6
 
@@ -5328,98 +5328,98 @@ DATA_15D1FE:        db $A9,$AA,$AB,$AC,$AD,$B6
                     db $BC,$BB,$BA,$B9,$B8,$B7,$B6,$AD
                     db $AC,$AB,$AA,$A9,$A8,$A7,$A6
 
-CODE_15D21B:        SEP #$30                  
-CODE_15D21D:        SEC                       
-CODE_15D21E:        RTL                       
-CODE_15D21F:        LDA $EB                   
-CODE_15D221:        BNE CODE_15D226           
-CODE_15D223:        STZ $021F                 
-CODE_15D226:        LDA $021F                 
-CODE_15D229:        XBA                       
-CODE_15D22A:        LDA $0429                 
-CODE_15D22D:        REP #$20                  
-CODE_15D22F:        CMP #$0180                
-CODE_15D232:        BCC CODE_15D239           
-CODE_15D234:        CMP #$FF80                
-CODE_15D237:        BCC CODE_15D21B           
-CODE_15D239:        LDA $02F8                 
-CODE_15D23C:        STA $070B                 
-CODE_15D23F:        SEP #$20                  
-CODE_15D241:        LDA $10                   
-CODE_15D243:        LSR A                     
-CODE_15D244:        LSR A                     
-CODE_15D245:        AND #$07                  
-CODE_15D247:        LDY $3D,x                 
-CODE_15D249:        BMI CODE_15D24B           
-CODE_15D24B:        TAX                       
-CODE_15D24C:        ASL A                     
-CODE_15D24D:        ASL A                     
-CODE_15D24E:        STA $0E                   
-CODE_15D250:        STZ $0F                   
-CODE_15D252:        LDA.w DATA_119AA6,x               
-CODE_15D255:        LDX $12                   
-CODE_15D257:        STA $6F,x                 
-CODE_15D259:        LDA $044A,x               
-CODE_15D25C:        AND #$02                  
-CODE_15D25E:        LSR A                     
-CODE_15D25F:        LDX $ED                   
-CODE_15D261:        BEQ CODE_15D265           
-CODE_15D263:        LDA #$00                  
-CODE_15D265:        ADC $0429                 
-CODE_15D268:        STA $0713                 
-CODE_15D26B:        LDA $042C                 
-CODE_15D26E:        LDX $EE                   
-CODE_15D270:        BEQ CODE_15D274           
-CODE_15D272:        LDA #$F0                  
-CODE_15D274:        REP #$10                  
-CODE_15D276:        LDY $070B                 
-CODE_15D279:        STA $0801,y               
-CODE_15D27C:        STA $0805,y               
-CODE_15D27F:        STA $0712                 
-CODE_15D282:        LDA $0713                 
-CODE_15D285:        STA $0800,y               
-CODE_15D288:        CLC                       
-CODE_15D289:        ADC #$08                  
-CODE_15D28B:        STA $0804,y               
-CODE_15D28E:        STA $0713                 
-CODE_15D291:        LDX $0E                   
-CODE_15D293:        LDA.l DATA_15D1FB,x             
-CODE_15D297:        STA $0802,y               
-CODE_15D29A:        LDA.l DATA_15D1FC,x             
-CODE_15D29E:        STA $0806,y               
-CODE_15D2A1:        LDA #$00                  
-CODE_15D2A3:        LDX $0E                   
-CODE_15D2A5:        CPX #$0010                
-CODE_15D2A8:        BCC CODE_15D2AC           
-CODE_15D2AA:        LDA #$40                  
-CODE_15D2AC:        ORA #$2D                  
-CODE_15D2AE:        STA $0803,y               
-CODE_15D2B1:        STA $0807,y               
-CODE_15D2B4:        STA $0714                 
-CODE_15D2B7:        JSL CODE_14E483           
-CODE_15D2BB:        REP #$10                  
-CODE_15D2BD:        LDY $02F8                 
-CODE_15D2C0:        STY $070D                 
-CODE_15D2C3:        LDA $0712                 
-CODE_15D2C6:        STA $0801,y               
-CODE_15D2C9:        STA $0805,y               
-CODE_15D2CC:        LDA $0713                 
-CODE_15D2CF:        CLC                       
-CODE_15D2D0:        ADC #$08                  
-CODE_15D2D2:        STA $0800,y               
-CODE_15D2D5:        CLC                       
-CODE_15D2D6:        ADC #$08                  
-CODE_15D2D8:        STA $0804,y               
-CODE_15D2DB:        LDX $0E                   
-CODE_15D2DD:        LDA.l DATA_15D1FD,x             
-CODE_15D2E1:        STA $0802,y               
-CODE_15D2E4:        LDA.l DATA_15D1FE,x             
-CODE_15D2E8:        STA $0806,y               
-CODE_15D2EB:        LDA $0714                 
-CODE_15D2EE:        STA $0803,y               
-CODE_15D2F1:        STA $0807,y               
-CODE_15D2F4:        CLC                       
-CODE_15D2F5:        RTL                       
+CODE_15D21B:        E2 30         SEP #$30                  
+CODE_15D21D:        38            SEC                       
+CODE_15D21E:        6B            RTL                       
+CODE_15D21F:        A5 EB         LDA $EB                   
+CODE_15D221:        D0 03         BNE CODE_15D226           
+CODE_15D223:        9C 1F 02      STZ $021F                 
+CODE_15D226:        AD 1F 02      LDA $021F                 
+CODE_15D229:        EB            XBA                       
+CODE_15D22A:        AD 29 04      LDA $0429                 
+CODE_15D22D:        C2 20         REP #$20                  
+CODE_15D22F:        C9 80 01      CMP #$0180                
+CODE_15D232:        90 05         BCC CODE_15D239           
+CODE_15D234:        C9 80 FF      CMP #$FF80                
+CODE_15D237:        90 E2         BCC CODE_15D21B           
+CODE_15D239:        AD F8 02      LDA $02F8                 
+CODE_15D23C:        8D 0B 07      STA $070B                 
+CODE_15D23F:        E2 20         SEP #$20                  
+CODE_15D241:        A5 10         LDA $10                   
+CODE_15D243:        4A            LSR A                     
+CODE_15D244:        4A            LSR A                     
+CODE_15D245:        29 07         AND #$07                  
+CODE_15D247:        B4 3D         LDY $3D,x                 
+CODE_15D249:        30 00         BMI CODE_15D24B           
+CODE_15D24B:        AA            TAX                       
+CODE_15D24C:        0A            ASL A                     
+CODE_15D24D:        0A            ASL A                     
+CODE_15D24E:        85 0E         STA $0E                   
+CODE_15D250:        64 0F         STZ $0F                   
+CODE_15D252:        BD A6 9A      LDA.w DATA_119AA6,x               
+CODE_15D255:        A6 12         LDX $12                   
+CODE_15D257:        95 6F         STA $6F,x                 
+CODE_15D259:        BD 4A 04      LDA $044A,x               
+CODE_15D25C:        29 02         AND #$02                  
+CODE_15D25E:        4A            LSR A                     
+CODE_15D25F:        A6 ED         LDX $ED                   
+CODE_15D261:        F0 02         BEQ CODE_15D265           
+CODE_15D263:        A9 00         LDA #$00                  
+CODE_15D265:        6D 29 04      ADC $0429                 
+CODE_15D268:        8D 13 07      STA $0713                 
+CODE_15D26B:        AD 2C 04      LDA $042C                 
+CODE_15D26E:        A6 EE         LDX $EE                   
+CODE_15D270:        F0 02         BEQ CODE_15D274           
+CODE_15D272:        A9 F0         LDA #$F0                  
+CODE_15D274:        C2 10         REP #$10                  
+CODE_15D276:        AC 0B 07      LDY $070B                 
+CODE_15D279:        99 01 08      STA $0801,y               
+CODE_15D27C:        99 05 08      STA $0805,y               
+CODE_15D27F:        8D 12 07      STA $0712                 
+CODE_15D282:        AD 13 07      LDA $0713                 
+CODE_15D285:        99 00 08      STA $0800,y               
+CODE_15D288:        18            CLC                       
+CODE_15D289:        69 08         ADC #$08                  
+CODE_15D28B:        99 04 08      STA $0804,y               
+CODE_15D28E:        8D 13 07      STA $0713                 
+CODE_15D291:        A6 0E         LDX $0E                   
+CODE_15D293:        BF FB D1 15   LDA.l DATA_15D1FB,x             
+CODE_15D297:        99 02 08      STA $0802,y               
+CODE_15D29A:        BF FC D1 15   LDA.l DATA_15D1FC,x             
+CODE_15D29E:        99 06 08      STA $0806,y               
+CODE_15D2A1:        A9 00         LDA #$00                  
+CODE_15D2A3:        A6 0E         LDX $0E                   
+CODE_15D2A5:        E0 10 00      CPX #$0010                
+CODE_15D2A8:        90 02         BCC CODE_15D2AC           
+CODE_15D2AA:        A9 40         LDA #$40                  
+CODE_15D2AC:        09 2D         ORA #$2D                  
+CODE_15D2AE:        99 03 08      STA $0803,y               
+CODE_15D2B1:        99 07 08      STA $0807,y               
+CODE_15D2B4:        8D 14 07      STA $0714                 
+CODE_15D2B7:        22 83 E4 14   JSL CODE_14E483           
+CODE_15D2BB:        C2 10         REP #$10                  
+CODE_15D2BD:        AC F8 02      LDY $02F8                 
+CODE_15D2C0:        8C 0D 07      STY $070D                 
+CODE_15D2C3:        AD 12 07      LDA $0712                 
+CODE_15D2C6:        99 01 08      STA $0801,y               
+CODE_15D2C9:        99 05 08      STA $0805,y               
+CODE_15D2CC:        AD 13 07      LDA $0713                 
+CODE_15D2CF:        18            CLC                       
+CODE_15D2D0:        69 08         ADC #$08                  
+CODE_15D2D2:        99 00 08      STA $0800,y               
+CODE_15D2D5:        18            CLC                       
+CODE_15D2D6:        69 08         ADC #$08                  
+CODE_15D2D8:        99 04 08      STA $0804,y               
+CODE_15D2DB:        A6 0E         LDX $0E                   
+CODE_15D2DD:        BF FD D1 15   LDA.l DATA_15D1FD,x             
+CODE_15D2E1:        99 02 08      STA $0802,y               
+CODE_15D2E4:        BF FE D1 15   LDA.l DATA_15D1FE,x             
+CODE_15D2E8:        99 06 08      STA $0806,y               
+CODE_15D2EB:        AD 14 07      LDA $0714                 
+CODE_15D2EE:        99 03 08      STA $0803,y               
+CODE_15D2F1:        99 07 08      STA $0807,y               
+CODE_15D2F4:        18            CLC                       
+CODE_15D2F5:        6B            RTL                       
 
 DATA_15D2F6:        db $58,$C8,$DF,$30,$60,$C8,$79,$31
                     db $68,$C8,$2F,$31,$70,$C8,$CF,$30
@@ -5427,21 +5427,21 @@ DATA_15D2F6:        db $58,$C8,$DF,$30,$60,$C8,$79,$31
                     db $90,$C8,$C8,$30,$98,$C8,$1F,$31
                     db $A0,$C8,$3F,$31
 
-CODE_15D31A:        LDX #$23
-CODE_15D31C:        LDA.l DATA_15D2F6,x             
-CODE_15D320:        STA $0900,x               
-CODE_15D323:        DEX                       
-CODE_15D324:        BPL CODE_15D31C           
-CODE_15D326:        STZ $0A60                 
-CODE_15D329:        STZ $0A61                 
-CODE_15D32C:        STZ $0A62                 
-CODE_15D32F:        STZ $0A63                 
-CODE_15D332:        STZ $0A64                 
-CODE_15D335:        STZ $0A65                 
-CODE_15D338:        STZ $0A66                 
-CODE_15D33B:        STZ $0A67                 
-CODE_15D33E:        STZ $0A68                 
-CODE_15D341:        RTL                       
+CODE_15D31A:        A2 23         LDX #$23
+CODE_15D31C:        BF F6 D2 15   LDA.l DATA_15D2F6,x             
+CODE_15D320:        9D 00 09      STA $0900,x               
+CODE_15D323:        CA            DEX                       
+CODE_15D324:        10 F6         BPL CODE_15D31C           
+CODE_15D326:        9C 60 0A      STZ $0A60                 
+CODE_15D329:        9C 61 0A      STZ $0A61                 
+CODE_15D32C:        9C 62 0A      STZ $0A62                 
+CODE_15D32F:        9C 63 0A      STZ $0A63                 
+CODE_15D332:        9C 64 0A      STZ $0A64                 
+CODE_15D335:        9C 65 0A      STZ $0A65                 
+CODE_15D338:        9C 66 0A      STZ $0A66                 
+CODE_15D33B:        9C 67 0A      STZ $0A67                 
+CODE_15D33E:        9C 68 0A      STZ $0A68                 
+CODE_15D341:        6B            RTL                       
 
 DATA_15D342:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty data.
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  | 3262 bytes full of $FF.
