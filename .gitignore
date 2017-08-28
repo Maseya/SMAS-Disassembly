@@ -1,0 +1,4 @@
+# ignore common ROM files.
+*.sfc
+*.smc
+*.fig
