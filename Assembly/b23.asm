@@ -266,21 +266,21 @@ CODE_23826E:    RTL                         ; $23:826E: 6B          ;
 CODE_23826F:    LDA $0729                   ; $23:826F: AD 29 07    ;
 CODE_238272:    JSL CODE_20FB3A         ; $23:8272: 22 3A FB 20 ; ExecutePtrLong
 
-PNTR_238276:        dl CODE_2382C5
-                    dl CODE_238631
-                    dl CODE_29AC7A
-                    dl CODE_29ADFC
-                    dl CODE_29AE52
-                    dl CODE_29AEAA
-                    dl CODE_23863B
-                    dl CODE_29AF05
-                    dl CODE_238652
-                    dl CODE_29B17F
-                    dl CODE_23863B
-                    dl CODE_2387E4
-                    dl CODE_23882E
-                    dl CODE_238A4E
-                    dl CODE_29A9AE
+PNTR_238276:    dl CODE_2382C5                                  ;
+                dl CODE_238631                                  ;
+                dl CODE_29AC7A                                  ;
+                dl CODE_29ADFC                                  ;
+                dl CODE_29AE52                                  ;
+                dl CODE_29AEAA                                  ;
+                dl CODE_23863B                                  ;
+                dl CODE_29AF05                                  ;
+                dl CODE_238652                                  ;
+                dl CODE_29B17F                                  ;
+                dl CODE_23863B                                  ;
+                dl CODE_2387E4                                  ;
+                dl CODE_23882E                                  ;
+                dl CODE_238A4E                                  ;
+                dl CODE_29A9AE                                  ;
 
 CODE_2382A3:    LDA $0727                   ; $23:82A3: AD 27 07    ;
 CODE_2382A6:    CMP #$04                    ; $23:82A6: C9 04       ;
@@ -301,9 +301,9 @@ CODE_2382C4:    RTL                         ; $23:82C4: 6B          ;
 CODE_2382C5:    LDA $0728                   ; $23:82C5: AD 28 07    ;
 CODE_2382C8:    JSL CODE_20FB1F         ; $23:82C8: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_2382CC:        dw CODE_2382D2
-                    dw CODE_238338
-                    dw CODE_2383D1
+PNTR_2382CC:    dw CODE_2382D2                                  ;
+                dw CODE_238338                                  ;
+                dw CODE_2383D1                                  ;
 
 CODE_2382D2:    JSR CODE_238306         ; $23:82D2: 20 06 83    ;
 CODE_2382D5:    LDA $0711                   ; $23:82D5: AD 11 07    ;
@@ -456,15 +456,15 @@ CODE_23840C:    RTL                         ; $23:840C: 6B          ;
 CODE_23840D:    LDA $0728                   ; $23:840D: AD 28 07    ;
 CODE_238410:    JSL CODE_20FB3A         ; $23:8410: 22 3A FB 20 ; ExecutePtrLong
 
-PNTR_238414:        dl CODE_23842F
-                    dl CODE_238441
-                    dl CODE_238606
-                    dl CODE_23860B
-                    dl CODE_29AAFE
-                    dl CODE_29ABE7
-                    dl CODE_29AC4C
-                    dl CODE_29AC61
-                    dl CODE_2383F2
+PNTR_238414:    dl CODE_23842F                                  ;
+                dl CODE_238441                                  ;
+                dl CODE_238606                                  ;
+                dl CODE_23860B                                  ;
+                dl CODE_29AAFE                                  ;
+                dl CODE_29ABE7                                  ;
+                dl CODE_29AC4C                                  ;
+                dl CODE_29AC61                                  ;
+                dl CODE_2383F2                                  ;
 
 CODE_23842F:    DEC $02D8                   ; $23:842F: CE D8 02    ;
 CODE_238432:    BNE CODE_23843A             ; $23:8432: D0 06       ;
@@ -885,7 +885,7 @@ CODE_2387D9:    STZ $0204                   ; $23:87D9: 9C 04 02    ;
 CODE_2387DC:    STZ $020B                   ; $23:87DC: 9C 0B 02    ;
 CODE_2387DF:    RTL                         ; $23:87DF: 6B          ;
 
-DATA_2387E0:        db $00,$00,$FF,$7F
+DATA_2387E0:    db $00,$00,$FF,$7F                              ;
 
 CODE_2387E4:    LDA $7E396D             ; $23:87E4: AF 6D 39 7E ;
 CODE_2387E8:    BEQ CODE_2387F4         ; $23:87E8: F0 0A       ;
@@ -959,19 +959,19 @@ CODE_238883:    RTL                         ; $23:8883: 6B          ;
 CODE_238884:    LDA $0728                   ; $23:8884: AD 28 07    ;
 CODE_238887:    JSL CODE_20FB3A         ; $23:8887: 22 3A FB 20 ; ExecutePtrLong
 
-PNTR_23888B:        dl CODE_238A0E
-                    dl CODE_238A4E
+PNTR_23888B:    dl CODE_238A0E                                  ;
+                dl CODE_238A4E                                  ;
 
 CODE_238891:    LDA $0417                   ; $23:8891: AD 17 04    ;
 CODE_238894:    JSL CODE_20FB1F         ; $23:8894: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_238898:        dw CODE_2388A6
-                    dw CODE_2388A6
-                    dw CODE_238922
-                    dw CODE_238922
-                    dw CODE_238951
-                    dw CODE_238956
-                    dw CODE_2389FE
+PNTR_238898:    dw CODE_2388A6                                  ;
+                dw CODE_2388A6                                  ;
+                dw CODE_238922                                  ;
+                dw CODE_238922                                  ;
+                dw CODE_238951                                  ;
+                dw CODE_238956                                  ;
+                dw CODE_2389FE                                  ;
 
 CODE_2388A6:    LDX $20                     ; $23:88A6: A6 20       ;
 CODE_2388A8:    LDA $24                 ; $23:88A8: A5 24       ;
@@ -1751,7 +1751,7 @@ CODE_238EF2:    STX $1203                   ; $23:8EF2: 8E 03 12    ;
 CODE_238EF5:    STZ $1200                   ; $23:8EF5: 9C 00 12    ;
 CODE_238EF8:    RTS                         ; $23:8EF8: 60          ;
 
-DATA_238EF9:        db $AA,$AF,$B7
+DATA_238EF9:    db $AA,$AF,$B7                                  ;
 
 CODE_238EFC:    LDX $0726               ; $23:8EFC: AE 26 07    ;
 CODE_238EFF:    LDA $43,x               ; $23:8EFF: B5 43       ;
@@ -2015,9 +2015,9 @@ CODE_2390F5:    LDA #$0001                  ; $23:90F5: A9 01 00    ;
 CODE_2390F8:    STA $1500                   ; $23:90F8: 8D 00 15    ;
 CODE_2390FB:    RTS                         ; $23:90FB: 60          ;
 
-DATA_2390FC:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF
+DATA_2390FC:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF                              ;
 
 CODE_239110:    LDX #$00                ; $23:9110: A2 00       ;
 CODE_239112:    LDA #$09                ; $23:9112: A9 09       ;
@@ -2047,7 +2047,7 @@ CODE_239141:    DEX                         ; $23:9141: CA          ;
 CODE_239142:    TXA                         ; $23:9142: 8A          ;
 CODE_239143:    JSL CODE_20FB3A         ; $23:9143: 22 3A FB 20 ; ExecutePtrLong
 
-PNTR_239147:        dl CODE_2392D2
+PNTR_239147:    dl CODE_2392D2                                  ;
 
 CODE_23914A:    JSR CODE_23914E         ; $23:914A: 20 4E 91    ;
 CODE_23914D:    RTL                     ; $23:914D: 6B          ;
@@ -2055,13 +2055,13 @@ CODE_23914D:    RTL                     ; $23:914D: 6B          ;
 CODE_23914E:    LDA $0706                   ; $23:914E: AD 06 07    ;
 CODE_239151:    JSL CODE_20FB3A         ; $23:9151: 22 3A FB 20 ; ExecutePtrLong
 
-PNTR_239155:        dl CODE_2391EF
-                    dl CODE_23922C
-                    dl CODE_23924F
-                    dl CODE_23928C
-                    dl CODE_23916A
-                    dl CODE_2391AF
-                    dl CODE_2392AF
+PNTR_239155:    dl CODE_2391EF                                  ;
+                dl CODE_23922C                                  ;
+                dl CODE_23924F                                  ;
+                dl CODE_23928C                                  ;
+                dl CODE_23916A                                  ;
+                dl CODE_2391AF                                  ;
+                dl CODE_2392AF                                  ;
 
 CODE_23916A:    LDA #$00                    ; $23:916A: A9 00       ;
 CODE_23916C:    STA $00                     ; $23:916C: 85 00       ;
@@ -2332,10 +2332,10 @@ CODE_23934E:    RTL                         ; $23:934E: 6B          ;
 CODE_23934F:    LDA $1034                   ; $23:934F: AD 34 10    ;
 CODE_239352:    JSL CODE_20FB1F         ; $23:9352: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_239356:        dw CODE_23935E
-                    dw CODE_239362
-                    dw CODE_23936B
-                    dw CODE_23936F
+PNTR_239356:    dw CODE_23935E                                  ;
+                dw CODE_239362                                  ;
+                dw CODE_23936B                                  ;
+                dw CODE_23936F                                  ;
 
 CODE_23935E:    JSR CODE_239373         ; $23:935E: 20 73 93    ;
 CODE_239361:    RTS                         ; $23:9361: 60          ;
@@ -2505,16 +2505,16 @@ CODE_2394A1:    RTL                         ; $23:94A1: 6B          ;
 CODE_2394A2:    LDA $1040                   ; $23:94A2: AD 40 10    ;
 CODE_2394A5:    JSL CODE_20FB1F         ; $23:94A5: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_2394A9:        dw CODE_2394BD
-                    dw CODE_239513
-                    dw CODE_2395F5
-                    dw CODE_239752
-                    dw CODE_239853
-                    dw CODE_2396EB
-                    dw CODE_2395B0
-                    dw CODE_239513
-                    dw CODE_2394FC
-                    dw CODE_2395B1
+PNTR_2394A9:    dw CODE_2394BD                                  ;
+                dw CODE_239513                                  ;
+                dw CODE_2395F5                                  ;
+                dw CODE_239752                                  ;
+                dw CODE_239853                                  ;
+                dw CODE_2396EB                                  ;
+                dw CODE_2395B0                                  ;
+                dw CODE_239513                                  ;
+                dw CODE_2394FC                                  ;
+                dw CODE_2395B1                                  ;
   
 CODE_2394BD:    LDA #$51                ; $23:94BD: A9 51       ;
 CODE_2394BF:    STA $2109                   ; $23:94BF: 8D 09 21    ;
@@ -2840,8 +2840,8 @@ CODE_239771:    RTS                         ; $23:9771: 60          ;
 CODE_239772:    LDA $0059                   ; $23:9772: AD 59 00    ;
 CODE_239775:    JSL CODE_20FB1F         ; $23:9775: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_239779:        dw CODE_23977D
-                    dw CODE_2397B1
+PNTR_239779:    dw CODE_23977D                                  ;
+                dw CODE_2397B1                                  ;
 
 CODE_23977D:    LDA $7E3991             ; $23:977D: AF 91 39 7E ;
 CODE_239781:    TAY                     ; $23:9781: A8          ;
@@ -3073,14 +3073,14 @@ CODE_23995A:    ASL A                       ; $23:995A: 0A          ;
 CODE_23995B:    TAX                         ; $23:995B: AA          ;
 CODE_23995C:    JMP (PNTR_23995F,x)                 ; $23:995C: 7C 5F 99    ;
 
-PNTR_23995F:        dw CODE_239963
-                    dw CODE_23997B
+PNTR_23995F:    dw CODE_239963                                  ;
+                dw CODE_23997B                                  ;
 
 CODE_239963:    LDA $100A               ; $23:9963: AD 0A 10    ;
 CODE_239966:    JSL CODE_20FB1F         ; $23:9966: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_23996A:        dw CODE_23996E
-                    dw CODE_239972
+PNTR_23996A:    dw CODE_23996E                                  ;
+                dw CODE_239972                                  ;
 
 CODE_23996E:    INC $100A                   ; $23:996E: EE 0A 10    ;
 CODE_239971:    RTS                         ; $23:9971: 60          ;
@@ -3096,12 +3096,12 @@ CODE_239982:    ASL A                       ; $23:9982: 0A          ;
 CODE_239983:    TAX                         ; $23:9983: AA          ;
 CODE_239984:    JMP (PNTR_239987,x)                 ; $23:9984: 7C 87 99    ;
 
-PNTR_239987:        dw CODE_239993
-                    dw CODE_2399D5
-                    dw CODE_239B98
-                    dw CODE_239BB5
-                    dw CODE_239BCD
-                    dw CODE_239BE1
+PNTR_239987:    dw CODE_239993                                  ;
+                dw CODE_2399D5                                  ;
+                dw CODE_239B98                                  ;
+                dw CODE_239BB5                                  ;
+                dw CODE_239BCD                                  ;
+                dw CODE_239BE1                                  ;
    
 CODE_239993:    STZ $100C                   ; $23:9993: 9C 0C 10    ;
 CODE_239996:    STZ $100D                   ; $23:9996: 9C 0D 10    ;
@@ -3176,12 +3176,12 @@ CODE_239A3B:    RTS                         ; $23:9A3B: 60          ;
 CODE_239A3C:    LDA $100C,x                 ; $23:9A3C: BD 0C 10    ;
 CODE_239A3F:    JSL CODE_20FB1F         ; $23:9A3F: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_239A43:        dw CODE_239A4F
-                    dw CODE_239A6F
-                    dw CODE_239A7A
-                    dw CODE_239ABB
-                    dw CODE_239AE5
-                    dw CODE_239B6D
+PNTR_239A43:    dw CODE_239A4F                                  ;
+                dw CODE_239A6F                                  ;
+                dw CODE_239A7A                                  ;
+                dw CODE_239ABB                                  ;
+                dw CODE_239AE5                                  ;
+                dw CODE_239B6D                                  ;
 
 CODE_239A4F:    CPX #$02                ; $23:9A4F: E0 02       ;
 CODE_239A51:    BNE CODE_239A6C         ; $23:9A51: D0 19       ;
@@ -3372,7 +3372,7 @@ CODE_239BD7:    RTS                         ; $23:9BD7: 60          ;
 CODE_239BD8:    DEC $02D8                   ; $23:9BD8: CE D8 02    ;
 CODE_239BDB:    RTS                         ; $23:9BDB: 60          ;
 
-DATA_239BDC:        db $32,$34,$36,$00,$38   
+DATA_239BDC:    db $32,$34,$36,$00,$38                          ;
 
 CODE_239BE1:    LDA $1012                   ; $23:9BE1: AD 12 10    ;
 CODE_239BE4:    BEQ CODE_239C14             ; $23:9BE4: F0 2E       ;
@@ -3615,9 +3615,9 @@ CODE_239DEB:    RTL                         ; $23:9DEB: 6B          ;
 CODE_239DEC:    LDA $1041                   ; $23:9DEC: AD 41 10    ;
 CODE_239DEF:    JSL CODE_20FB1F         ; $23:9DEF: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_239DF3:        dw CODE_239DF9
-                    dw CODE_239E18
-                    dw CODE_239E36
+PNTR_239DF3:    dw CODE_239DF9                                  ;
+                dw CODE_239E18                                  ;
+                dw CODE_239E36                                  ;
 
 CODE_239DF9:    LDA $0742               ; $23:9DF9: AD 42 07    ;Flag to shuffle N-Space cards
 CODE_239DFC:    BNE CODE_239E0F         ; $23:9DFC: D0 11       ;$00 means N-Spade was cleared and it's time to shuffle
@@ -3680,15 +3680,15 @@ CODE_239E75:    RTL                         ; $23:9E75: 6B          ;
 CODE_239E76:    LDA $1034                   ; $23:9E76: AD 34 10    ;
 CODE_239E79:    JSL CODE_20FB1F         ; $23:9E79: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_239E7D:        dw CODE_239E8F
-                    dw CODE_239E99
-                    dw CODE_239EC4
-                    dw CODE_239EF0
-                    dw CODE_239EF7
-                    dw CODE_239F46
-                    dw CODE_239F7E
-                    dw CODE_239F86
-                    dw CODE_239FA6
+PNTR_239E7D:    dw CODE_239E8F                                  ;
+                dw CODE_239E99                                  ;
+                dw CODE_239EC4                                  ;
+                dw CODE_239EF0                                  ;
+                dw CODE_239EF7                                  ;
+                dw CODE_239F46                                  ;
+                dw CODE_239F7E                                  ;
+                dw CODE_239F86                                  ;
+                dw CODE_239FA6                                  ;
    
 CODE_239E8F:    JSR CODE_23A269         ; $23:9E8F: 20 69 A2    ;
 CODE_239E92:    JSR CODE_23A309             ; $23:9E92: 20 09 A3    ;
@@ -4367,7 +4367,7 @@ CODE_23A44C:    BCS CODE_23A450                     ; $23:A44C: B0 02       ;
 CODE_23A44E:    STA $00                     ; $23:A44E: 85 00       ;
 CODE_23A450:    RTS                         ; $23:A450: 60          ;
 
-DATA_23A451:        db $01,$02,$09
+DATA_23A451:    db $01,$02,$09                                  ;
 
 CODE_23A454:    LDY $1028               ; $23:A454: AC 28 10    ;
 CODE_23A457:    LDA $1E84,y                     ; $23:A457: B9 84 1E    ;
@@ -4444,18 +4444,18 @@ CODE_23A4ED:    RTS                         ; $23:A4ED: 60          ;
 CODE_23A4EE:    CLC                         ; $23:A4EE: 18          ;
 CODE_23A4EF:    RTS                         ; $23:A4EF: 60          ;
 
-DATA_23A4F0:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
+DATA_23A4F0:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
 
-DATA_23A540:        db $32,$50,$AD,$C1,$32,$50,$AD,$C1
+DATA_23A540:    db $32,$50,$AD,$C1,$32,$50,$AD,$C1              ;
 
 CODE_23A548:    LDX #$00                ; $23:A548: A2 00       ; prepare battle level data
 CODE_23A54A:    LDA #$02                    ; $23:A54A: A9 02       ;
@@ -4491,39 +4491,39 @@ CODE_23A57F:    DEX                         ; $23:A57F: CA          ;
 CODE_23A580:    TXA                         ; $23:A580: 8A          ;
 CODE_23A581:    JSL CODE_20FB3A         ; $23:A581: 22 3A FB 20 ; ExecutePtrLong
 
-PNTR_23A585:        dl CODE_23A5FE
-                    dl CODE_23A603
-                    dl CODE_23A608
-                    dl CODE_23A920
-                    dl CODE_23A61F
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl $000000
-                    dl CODE_23A6C1
-                    dl CODE_23A6C1
-                    dl CODE_23A6C1
-                    dl CODE_23A728
-                    dl CODE_23A728
-                    dl CODE_23A81D
-                    dl CODE_23A81D
-                    dl CODE_23A8AE
-                    dl CODE_23A8AE
+PNTR_23A585:    dl CODE_23A5FE                                  ;
+                dl CODE_23A603                                  ;
+                dl CODE_23A608                                  ;
+                dl CODE_23A920                                  ;
+                dl CODE_23A61F                                  ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl $000000                                      ;
+                dl CODE_23A6C1                                  ;
+                dl CODE_23A6C1                                  ;
+                dl CODE_23A6C1                                  ;
+                dl CODE_23A728                                  ;
+                dl CODE_23A728                                  ;
+                dl CODE_23A81D                                  ;
+                dl CODE_23A81D                                  ;
+                dl CODE_23A8AE                                  ;
+                dl CODE_23A8AE                                  ;
 
 CODE_23A5E8:    LDA $0E                     ; $23:A5E8: A5 0E       ;
 CODE_23A5EA:    AND #$E0                    ; $23:A5EA: 29 E0       ;
@@ -4533,10 +4533,10 @@ CODE_23A5EE:    ADC $0706                   ; $23:A5EE: 6D 06 07    ;
 CODE_23A5F1:    TAX                         ; $23:A5F1: AA          ;
 CODE_23A5F2:    JSL CODE_20FB1F         ; $23:A5F2: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_23A5F6:        dw CODE_23A635
-                    dw CODE_23A63A
-                    dw CODE_23A658
-                    dw CODE_23A660
+PNTR_23A5F6:    dw CODE_23A635                                  ;
+                dw CODE_23A63A                                  ;
+                dw CODE_23A658                                  ;
+                dw CODE_23A660                                  ;
 
 CODE_23A5FE:    LDX #$00                ; $23:A5FE: A2 00       ;
 CODE_23A600:    JMP CODE_23A60A         ; $23:A600: 4C 0A A6    ;
@@ -6458,7 +6458,7 @@ CODE_23B497:    BEQ CODE_23B49D             ; $23:B497: F0 04       ;
 CODE_23B499:    JSL CODE_2AB73A             ; $23:B499: 22 3A B7 2A ;
 CODE_23B49D:    RTL                         ; $23:B49D: 6B          ;
 
-DATA_23B49E:        db $09,$0A,$02,$05,$04
+DATA_23B49E:    db $09,$0A,$02,$05,$04                          ;
 
 CODE_23B4A3:    LDA $2E                 ; $23:B4A3: A5 2E       ;
 CODE_23B4A5:    STA $00                 ; $23:B4A5: 85 00       ;
@@ -7814,10 +7814,10 @@ CODE_23BEDE:    LDA $0706                   ; $23:BEDE: AD 06 07    ;
 CODE_23BEE1:    STA $1F66,y                 ; $23:BEE1: 99 66 1F    ;
 CODE_23BEE4:    RTL                         ; $23:BEE4: 6B          ;
 
-DATA_23BEE5:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF
+DATA_23BEE5:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF                                  ;
 
 CODE_23BF00:    LDA $82                 ; $23:BF00: A5 82       ;
 CODE_23BF02:    CMP #$B8                ; $23:BF02: C9 B8       ;
@@ -8072,14 +8072,14 @@ CODE_23C136:    LDA $13                     ; $23:C136: A5 13       ;
 CODE_23C138:    STA $0542                   ; $23:C138: 8D 42 05    ;
 CODE_23C13B:    RTS                         ; $23:C13B: 60          ;
 
-PNTR_23C13C:        dw CODE_23C173
-                    dw CODE_23C167
-                    dw CODE_23C174
-                    dw CODE_23C17B
-                    dw CODE_23C182
-                    dw CODE_23C189
-                    dw CODE_23C190
-                    dw CODE_23C19F
+PNTR_23C13C:    dw CODE_23C173                                  ;
+                dw CODE_23C167                                  ;
+                dw CODE_23C174                                  ;
+                dw CODE_23C17B                                  ;
+                dw CODE_23C182                                  ;
+                dw CODE_23C189                                  ;
+                dw CODE_23C190                                  ;
+                dw CODE_23C19F                                  ;
 
 CODE_23C14C:    PHB                     ; $23:C14C: 8B          ;
 CODE_23C14D:    PHK                         ; $23:C14D: 4B          ;
@@ -8439,15 +8439,15 @@ CODE_23C44B:    LDA #$00                    ; $23:C44B: A9 00       ;
 CODE_23C44D:    STA $057B                   ; $23:C44D: 8D 7B 05    ;
 CODE_23C450:    RTS                         ; $23:C450: 60          ;
 
-PNTR_23C451:        dw DATA_3C88A0
-                    dw DATA_3C88E0
-                    dw DATA_3C8920
-                    dw DATA_3C88A0
-                    dw DATA_3C88E0
-                    dw DATA_3C88C0
-                    dw DATA_3C8900
-                    dw DATA_3C88C0
-                    dw DATA_3C8940
+PNTR_23C451:    dw DATA_3C88A0                                  ;
+                dw DATA_3C88E0                                  ;
+                dw DATA_3C8920                                  ;
+                dw DATA_3C88A0                                  ;
+                dw DATA_3C88E0                                  ;
+                dw DATA_3C88C0                                  ;
+                dw DATA_3C8900                                  ;
+                dw DATA_3C88C0                                  ;
+                dw DATA_3C8940                                  ;
 
 CODE_23C463:    JSR CODE_23C467                     ; $23:C463: 20 67 C4    ;
 CODE_23C466:    RTL                         ; $23:C466: 6B          ;
@@ -8903,21 +8903,21 @@ CODE_23C811:    PLB                         ; $23:C811: AB          ;
 CODE_23C812:    PLX                         ; $23:C812: FA          ;
 CODE_23C813:    JMP ($0000)                 ; $23:C813: 6C 00 00    ;
 
-PNTR_23C816:        dw CODE_23C834
-                    dw CODE_23C85F
-                    dw CODE_23C86A
-                    dw CODE_23C884
-                    dw CODE_23C892
-                    dw CODE_23C972
-                    dw CODE_23C86A
-                    dw CODE_23C855
-                    dw CODE_23C855
-                    dw CODE_23C877
-                    dw CODE_23C855
-                    dw CODE_23C8D2
-                    dw CODE_23C982
-                    dw CODE_23C877
-                    dw CODE_23C98F
+PNTR_23C816:    dw CODE_23C834                                  ;
+                dw CODE_23C85F                                  ;
+                dw CODE_23C86A                                  ;
+                dw CODE_23C884                                  ;
+                dw CODE_23C892                                  ;
+                dw CODE_23C972                                  ;
+                dw CODE_23C86A                                  ;
+                dw CODE_23C855                                  ;
+                dw CODE_23C855                                  ;
+                dw CODE_23C877                                  ;
+                dw CODE_23C855                                  ;
+                dw CODE_23C8D2                                  ;
+                dw CODE_23C982                                  ;
+                dw CODE_23C877                                  ;
+                dw CODE_23C98F                                  ;
 
 CODE_23C834:    JSR CODE_23C9D8         ; $23:C834: 20 D8 C9    ;
 CODE_23C837:    JSR CODE_23CAB6         ; $23:C837: 20 B6 CA    ;
@@ -10727,18 +10727,18 @@ CODE_23D65D:    STA $01                     ; $23:D65D: 85 01       ;
 CODE_23D65F:    PLB                         ; $23:D65F: AB          ;
 CODE_23D660:    JMP ($0000)                 ; $23:D660: 6C 00 00    ;
 
-PNTR_23D663:        dw CODE_23D67B
-                    dw CODE_23D67E
-                    dw CODE_23D68C
-                    dw CODE_23D69A
-                    dw CODE_23D6A2
-                    dw CODE_23D6C2
-                    dw CODE_23D6D2
-                    dw CODE_23D74D
-                    dw CODE_23D757
-                    dw CODE_23D76B
-                    dw CODE_23D777
-                    dw CODE_23D7C8
+PNTR_23D663:    dw CODE_23D67B                                  ;
+                dw CODE_23D67E                                  ;
+                dw CODE_23D68C                                  ;
+                dw CODE_23D69A                                  ;
+                dw CODE_23D6A2                                  ;
+                dw CODE_23D6C2                                  ;
+                dw CODE_23D6D2                                  ;
+                dw CODE_23D74D                                  ;
+                dw CODE_23D757                                  ;
+                dw CODE_23D76B                                  ;
+                dw CODE_23D777                                  ;
+                dw CODE_23D7C8                                  ;
 
 CODE_23D67B:    LDY #$01                ; $23:D67B: A0 01       ;
 CODE_23D67D:    RTS                     ; $23:D67D: 60          ;
@@ -11876,10 +11876,10 @@ CODE_23DF43:    SEP #$20                    ; $23:DF43: E2 20       ;
 CODE_23DF45:    PLB                         ; $23:DF45: AB          ;
 CODE_23DF46:    RTS                         ; $23:DF46: 60          ;
 
-DATA_23DF47:        db $80,$03,$5A,$16,$5B,$16,$00,$00
-                    db $80,$03,$5A,$56,$5B,$56,$00,$00
-                    db $80,$03,$5B,$16,$5A,$96,$00,$00
-                    db $80,$03,$5B,$56,$5A,$D6,$FF,$FF
+DATA_23DF47:    db $80,$03,$5A,$16,$5B,$16,$00,$00              ;
+                db $80,$03,$5A,$56,$5B,$56,$00,$00              ;
+                db $80,$03,$5B,$16,$5A,$96,$00,$00              ;
+                db $80,$03,$5B,$56,$5A,$D6,$FF,$FF              ;
 
 CODE_23DF67:    PHB                         ; $23:DF67: 8B          ;
 CODE_23DF68:    PHK                         ; $23:DF68: 4B          ;
@@ -11954,9 +11954,9 @@ CODE_23DFEA:    PLX                         ; $23:DFEA: FA          ;
 CODE_23DFEB:    PLB                         ; $23:DFEB: AB          ;
 CODE_23DFEC:    RTL                         ; $23:DFEC: 6B          ;
 
-DATA_23DFED:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF
+DATA_23DFED:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF                                  ;
 
 CODE_23E000:    JSR CODE_23E071         ; $23:E000: 20 71 E0    ;
 CODE_23E003:    LDX #$00                    ; $23:E003: A2 00       ;
@@ -12199,11 +12199,11 @@ CODE_23E1E5:    RTL                         ; $23:E1E5: 6B          ;
 CODE_23E1E6:    LDA $0075                   ; $23:E1E6: AD 75 00    ;
 CODE_23E1E9:    JSL CODE_20FB1F         ; $23:E1E9: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_23E1ED:        dw CODE_23E1FD
-                    dw CODE_23E2AB
+PNTR_23E1ED:    dw CODE_23E1FD                                  ;
+                dw CODE_23E2AB                                  ;
 
-DATA_23E1F1:        db $00,$01,$02,$00,$03,$04,$05,$00
-                    db $00,$01,$05,$00
+DATA_23E1F1:    db $00,$01,$02,$00,$03,$04,$05,$00              ;
+                db $00,$01,$05,$00                              ;
 
 CODE_23E1FD:    REP #$30                ; $23:E1FD: C2 30       ;
 CODE_23E1FF:    LDA #$0058              ; $23:E1FF: A9 58 00    ;
@@ -12226,18 +12226,18 @@ CODE_23E226:    STA $199A                   ; $23:E226: 8D 9A 19    ;
 CODE_23E229:    TXA                         ; $23:E229: 8A          ;
 CODE_23E22A:    JSL CODE_20FB1F         ; $23:E22A: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_23E22E:        dw CODE_23E24B
-                    dw CODE_23E24B
-                    dw CODE_23E24B
-                    dw CODE_23E28E
-                    dw CODE_23E24B
-                    dw CODE_23E24B
-                    dw CODE_23E24B
-                    dw CODE_23E246
-                    dw CODE_23E24B
-                    dw CODE_23E24B
-                    dw CODE_23E24B
-                    dw CODE_23E24C
+PNTR_23E22E:    dw CODE_23E24B                                  ;
+                dw CODE_23E24B                                  ;
+                dw CODE_23E24B                                  ;
+                dw CODE_23E28E                                  ;
+                dw CODE_23E24B                                  ;
+                dw CODE_23E24B                                  ;
+                dw CODE_23E24B                                  ;
+                dw CODE_23E246                                  ;
+                dw CODE_23E24B                                  ;
+                dw CODE_23E24B                                  ;
+                dw CODE_23E24B                                  ;
+                dw CODE_23E24C                                  ;
 
 CODE_23E246:    LDA #$01                ; $23:E246: A9 01       ;
 CODE_23E248:    STA $1A6D               ; $23:E248: 8D 6D 1A    ;
@@ -12295,18 +12295,18 @@ CODE_23E2AE:    JSR CODE_23E000             ; $23:E2AE: 20 00 E0    ;
 CODE_23E2B1:    LDA $1F26                   ; $23:E2B1: AD 26 1F    ;
 CODE_23E2B4:    JSL CODE_20FB1F         ; $23:E2B4: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_23E2B8:        dw CODE_23E2D0
-                    dw CODE_23E2D0
-                    dw CODE_23E2D0
-                    dw CODE_23E2FA
-                    dw CODE_23E2D0
-                    dw CODE_23E2D0
-                    dw CODE_23E2D0
-                    dw CODE_23E2ED
-                    dw CODE_23E2D0
-                    dw CODE_23E2D0
-                    dw CODE_23E2D0
-                    dw CODE_23E2E3
+PNTR_23E2B8:    dw CODE_23E2D0                                  ;
+                dw CODE_23E2D0                                  ;
+                dw CODE_23E2D0                                  ;
+                dw CODE_23E2FA                                  ;
+                dw CODE_23E2D0                                  ;
+                dw CODE_23E2D0                                  ;
+                dw CODE_23E2D0                                  ;
+                dw CODE_23E2ED                                  ;
+                dw CODE_23E2D0                                  ;
+                dw CODE_23E2D0                                  ;
+                dw CODE_23E2D0                                  ;
+                dw CODE_23E2E3                                  ;
 
 CODE_23E2D0:    JSR CODE_23E3FA         ; $23:E2D0: 20 FA E3    ;
 CODE_23E2D3:    JSR CODE_23ED04                 ; $23:E2D3: 20 04 ED    ;
@@ -12547,10 +12547,10 @@ CODE_23E4D5:    RTS                         ; $23:E4D5: 60          ;
 CODE_23E4D6:    LDA $1800,x                 ; $23:E4D6: BD 00 18    ;
 CODE_23E4D9:    JSL CODE_20FB1F         ; $23:E4D9: 22 1F FB 20 ; ExecutePtrShort
 
-DATA_23E4DD:        dw CODE_23E4E5
-                    dw CODE_23E51E
-                    dw CODE_23E82C
-                    dw CODE_23E78E
+DATA_23E4DD:    dw CODE_23E4E5                                  ;
+                dw CODE_23E51E                                  ;
+                dw CODE_23E82C                                  ;
+                dw CODE_23E78E                                  ;
 
 CODE_23E4E5:    LDY $18E7,x             ; $23:E4E5: BC E7 18    ;
 CODE_23E4E8:    BEQ CODE_23E4F4             ; $23:E4E8: F0 0A       ;
@@ -13536,10 +13536,10 @@ CODE_23ECE3:    PLA                         ; $23:ECE3: 68          ;
 CODE_23ECE4:    TAX                         ; $23:ECE4: AA          ;
 CODE_23ECE5:    RTS                         ; $23:ECE5: 60          ;
 
-DATA_23ECE6:        db $00,$00,$00,$00,$00,$01,$01,$01
-                    db $01,$01,$00,$01,$00,$01,$00,$00
-                    db $02,$00,$02,$00,$01,$02,$01,$02
-                    db $01,$02,$02,$02,$02,$02    
+DATA_23ECE6:    db $00,$00,$00,$00,$00,$01,$01,$01              ;
+                db $01,$01,$00,$01,$00,$01,$00,$00              ;
+                db $02,$00,$02,$00,$01,$02,$01,$02              ;
+                db $01,$02,$02,$02,$02,$02                      ;
 
 CODE_23ED04:    LDA $18CB                   ; $23:ED04: AD CB 18    ;
 CODE_23ED07:    ORA $18CC                   ; $23:ED07: 0D CC 18    ;
@@ -13633,9 +13633,9 @@ CODE_23EDCB:    LDA.l DATA_23ECE6,x                 ; $23:EDCB: BF E6 EC 23 ;
 CODE_23EDCF:    PLX                         ; $23:EDCF: FA          ;
 CODE_23EDD0:    JSL CODE_20FB1F         ; $23:EDD0: 22 1F FB 20 ; ExecutePtrShort
 
-DATA_23EDD4:        dw CODE_23EE02
-                    dw CODE_23EDF6
-                    dw CODE_23EDDA
+DATA_23EDD4:    dw CODE_23EE02                                  ;
+                dw CODE_23EDF6                                  ;
+                dw CODE_23EDDA                                  ;
 
 CODE_23EDDA:    JSR CODE_23EE02         ; $23:EDDA: 20 02 EE    ;
 CODE_23EDDD:    TXA                     ; $23:EDDD: 8A          ;
@@ -13722,10 +13722,10 @@ CODE_23EE87:    LDA $1802,x                 ; $23:EE87: BD 02 18    ;
 CODE_23EE8A:    BEQ CODE_23EE76             ; $23:EE8A: F0 EA       ;
 CODE_23EE8C:    JSL CODE_20FB1F         ; $23:EE8C: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_23EE90:        dw CODE_23EE76
-                    dw CODE_23EE98
-                    dw CODE_23F605
-                    dw CODE_23F69D
+PNTR_23EE90:    dw CODE_23EE76                                  ;
+                dw CODE_23EE98                                  ;
+                dw CODE_23F605                                  ;
+                dw CODE_23F69D                                  ;
 
 CODE_23EE98:    LDA $18CD,x             ; $23:EE98: BD CD 18    ;
 CODE_23EE9B:    ORA $197C,x             ; $23:EE9B: 1D 7C 19    ;
@@ -13760,22 +13760,22 @@ CODE_23EEE0:    STA $1962,x                 ; $23:EEE0: 9D 62 19    ;
 CODE_23EEE3:    LDA $18BB,x                 ; $23:EEE3: BD BB 18    ;
 CODE_23EEE6:    JSL CODE_20FB1F         ; $23:EEE6: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_23EEEA:        dw CODE_23F129
-                    dw CODE_23F074
-                    dw CODE_23F129
-                    dw CODE_23F08E
-                    dw CODE_23F79C
-                    dw CODE_23F79C
-                    dw CODE_23F79C
-                    dw CODE_23F79C
-                    dw CODE_23F79C
-                    dw CODE_23F79C
-                    dw CODE_23EF34
-                    dw CODE_23EF9B
-                    dw CODE_23EF3A
-                    dw CODE_23EF35
-                    dw CODE_23EF3A
-                    dw CODE_23EF0A
+PNTR_23EEEA:    dw CODE_23F129                                  ;
+                dw CODE_23F074                                  ;
+                dw CODE_23F129                                  ;
+                dw CODE_23F08E                                  ;
+                dw CODE_23F79C                                  ;
+                dw CODE_23F79C                                  ;
+                dw CODE_23F79C                                  ;
+                dw CODE_23F79C                                  ;
+                dw CODE_23F79C                                  ;
+                dw CODE_23F79C                                  ;
+                dw CODE_23EF34                                  ;
+                dw CODE_23EF9B                                  ;
+                dw CODE_23EF3A                                  ;
+                dw CODE_23EF35                                  ;
+                dw CODE_23EF3A                                  ;
+                dw CODE_23EF0A                                  ;
 
 CODE_23EF0A:    JSR CODE_23F971         ; $23:EF0A: 20 71 F9    ;
 CODE_23EF0D:    JSR CODE_23F977             ; $23:EF0D: 20 77 F9    ;
@@ -15088,194 +15088,194 @@ CODE_23FA11:    CPY $0004                   ; $23:FA11: CC 04 00    ;
 CODE_23FA14:    BNE CODE_23F9E8             ; $23:FA14: D0 D2       ;
 CODE_23FA16:    RTS                         ; $23:FA16: 60          ;
 
-DATA_23FA17:        db $6C,$80,$74,$80,$7C,$80,$84,$80
-                    db $8C,$80,$6C,$88,$74,$88,$7C,$88
-                    db $84,$88,$8C,$88,$2D,$23,$C6,$22
-                    db $C2,$22,$2E,$23,$2F,$23,$3D,$23
-                    db $D6,$22,$D2,$22,$3E,$23,$3F,$23
+DATA_23FA17:    db $6C,$80,$74,$80,$7C,$80,$84,$80              ;
+                db $8C,$80,$6C,$88,$74,$88,$7C,$88              ;
+                db $84,$88,$8C,$88,$2D,$23,$C6,$22              ;
+                db $C2,$22,$2E,$23,$2F,$23,$3D,$23              ;
+                db $D6,$22,$D2,$22,$3E,$23,$3F,$23              ;
 
-DATA_23FA3F:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF
+DATA_23FA3F:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF                                          ;

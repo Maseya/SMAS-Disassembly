@@ -30,21 +30,21 @@ CODE_128037:    STZ $64                     ; $12:8037: 64 64       ;
 CODE_128039:    LDA $50                 ; $12:8039: A5 50       ; \ Execute pointer depending on player status.
 CODE_12803B:    JSL CODE_118776         ; $12:803B: 22 76 87 11 ; /
 
-PNTR_12803F:        dw CODE_128071                          ; 00 - Walk normal.
-                    dw CODE_12813B                          ; 01 - Climbing, normal.
-                    dw CODE_128109                          ; 02 - Picking something up.
-                    dw CODE_1281F1                          ; 03 - Climbing, entering new room.
-                    dw CODE_1281A7                          ; 04 - Moving inside a jar.
-                    dw CODE_1281D5                          ; 05 - Moving out of a jar.
-                    dw CODE_12822C                          ; 06 - Player walking into Hawkmouth.
-                    dw CODE_1280DE                          ; 07 - Dying.
-                    dw CODE_12824D                          ; 08 - Hurt / growing.
+PNTR_12803F:    dw CODE_128071                                  ; 00 - Walk normal.
+                dw CODE_12813B                                  ; 01 - Climbing, normal.
+                dw CODE_128109                                  ; 02 - Picking something up.
+                dw CODE_1281F1                                  ; 03 - Climbing, entering new room.
+                dw CODE_1281A7                                  ; 04 - Moving inside a jar.
+                dw CODE_1281D5                                  ; 05 - Moving out of a jar.
+                dw CODE_12822C                                  ; 06 - Player walking into Hawkmouth.
+                dw CODE_1280DE                                  ; 07 - Dying.
+                dw CODE_12824D                                  ; 08 - Hurt / growing.
 
-DATA_128051:        db $00,$00,$00,$00,$40,$40,$40,$00
-                    db $C0,$C0,$C0,$00,$00,$00,$00,$00
+DATA_128051:    db $00,$00,$00,$00,$40,$40,$40,$00              ;
+                db $C0,$C0,$C0,$00,$00,$00,$00,$00              ;
 
-DATA_128061:        db $00,$40,$C0,$00,$00,$40,$C0,$00
-                    db $00,$40,$C0,$00,$00,$00,$00,$00
+DATA_128061:    db $00,$40,$C0,$00,$00,$40,$C0,$00              ;
+                db $00,$40,$C0,$00,$00,$00,$00,$00              ;
 
 CODE_128071:    JSL CODE_14DE60             ; $12:8071: 22 60 DE 14 ;
 CODE_128075:    LDA $700007                 ; $12:8075: AF 07 00 70 ;
@@ -1169,14 +1169,14 @@ CODE_12891A:    STA $0536                   ; $12:891A: 8D 36 05    ;
 CODE_12891D:    TYA                         ; $12:891D: 98          ;
 CODE_12891E:    JSL CODE_118776         ; $12:891E: 22 76 87 11 ;
 
-PNTR_128922:        dw CODE_128B1D
-                    dw CODE_128B30
-                    dw CODE_128B4F
-                    dw CODE_128B4F
-                    dw CODE_128B4F
-                    dw CODE_128B4F
-                    dw CODE_128B4F
-                    dw CODE_128B4F        
+PNTR_128922:    dw CODE_128B1D                                  ;
+                dw CODE_128B30                                  ;
+                dw CODE_128B4F                                  ;
+                dw CODE_128B4F                                  ;
+                dw CODE_128B4F                                  ;
+                dw CODE_128B4F                                  ;
+                dw CODE_128B4F                                  ;
+                dw CODE_128B4F                                  ;
       
 CODE_128932:    LDA $0778                   ; $12:8932: AD 78 07    ;
 CODE_128935:    CMP #$05                    ; $12:8935: C9 05       ;
@@ -1193,10 +1193,10 @@ CODE_128946:    STY $071E                   ; $12:8946: 8C 1E 07    ;
 CODE_128949:    LDA $0779                   ; $12:8949: AD 79 07    ;
 CODE_12894C:    JSL CODE_118776         ; $12:894C: 22 76 87 11 ;
 
-PNTR_128950:        dw CODE_128958
-                    dw CODE_12896E
-                    dw CODE_128AA2
-                    dw CODE_128995  
+PNTR_128950:    dw CODE_128958                                  ;
+                dw CODE_12896E                                  ;
+                dw CODE_128AA2                                  ;
+                dw CODE_128995                                  ;
              
 CODE_128958:    STZ $077A                   ; $12:8958: 9C 7A 07    ;
 CODE_12895B:    INC $0779                   ; $12:895B: EE 79 07    ;
@@ -1250,8 +1250,8 @@ CODE_1289C9:    BEQ CODE_1289CC             ; $12:89C9: F0 01       ;
 CODE_1289CB:    NOP                         ; $12:89CB: EA          ;
 CODE_1289CC:    RTS                     ; $12:89CC: 60          ;
                        
-DATA_1289CD:        db $48,$58,$49,$59,$4A,$5A,$4B,$5B
-                    db $4C,$5C,$4D,$5D,$4E,$5E,$4F,$5F
+DATA_1289CD:    db $48,$58,$49,$59,$4A,$5A,$4B,$5B              ;
+                db $4C,$5C,$4D,$5D,$4E,$5E,$4F,$5F              ;
           
 CODE_1289DD:    PHY                     ; $12:89DD: 5A          ;
 CODE_1289DE:    PHX                     ; $12:89DE: DA          ;
@@ -1777,12 +1777,12 @@ CODE_128E14:    RTL                     ; $12:8E14: 6B          ;
 CODE_128E15:    LDA $0536                   ; $12:8E15: AD 36 05    ;
 CODE_128E18:    JSL CODE_118776         ; $12:8E18: 22 76 87 11 ;
 
-PNTR_128E1C:        dw CODE_128E28
-                    dw CODE_128E60
-                    dw CODE_128ECD
-                    dw CODE_128EDA
-                    dw CODE_128EFC
-                    dw CODE_128F17
+PNTR_128E1C:    dw CODE_128E28                                  ;
+                dw CODE_128E60                                  ;
+                dw CODE_128ECD                                  ;
+                dw CODE_128EDA                                  ;
+                dw CODE_128EFC                                  ;
+                dw CODE_128F17                                  ;
              
 CODE_128E28:    LDA #$01                    ; $12:8E28: A9 01       ;
 CODE_128E2A:    STA $9D                     ; $12:8E2A: 85 9D       ;
@@ -2239,7 +2239,7 @@ CODE_1291D6:    JML CODE_008139             ; $12:91D6: 5C 39 81 00 ;
 
 CODE_1291DA:    BRL CODE_128F50             ; $12:91DA: 82 73 FD    ;
 
-DATA_1291DD:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF          ; Empty data.
+DATA_1291DD:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF                  ; Empty data.
              
 CODE_1291E4:    LDA #$80                ; $12:91E4: A9 80       ; Force blank.
 CODE_1291E6:    BRA CODE_1291EA             ; $12:91E6: 80 02       ;
@@ -2352,11 +2352,11 @@ CODE_1292DB:    JSL CODE_14E14A             ; $12:92DB: 22 4A E1 14 ;
 CODE_1292DF:    LDA $50                     ; $12:92DF: A5 50       ;
 CODE_1292E1:    JSL CODE_118776         ; $12:92E1: 22 76 87 11 ;
 
-PNTR_1292E5:        dw CODE_1292EF
-                    dw CODE_12930B
-                    dw CODE_129337
-                    dw CODE_129354
-                    dw CODE_129376             
+PNTR_1292E5:    dw CODE_1292EF                                  ;
+                dw CODE_12930B                                  ;
+                dw CODE_129337                                  ;
+                dw CODE_129354                                  ;
+                dw CODE_129376                                  ;
 
 CODE_1292EF:    JSR CODE_1283D1                 ; $12:92EF: 20 D1 83    ;
 CODE_1292F2:    JSR CODE_1280D2             ; $12:92F2: 20 D2 80    ;
@@ -2664,9 +2664,9 @@ CODE_12954A:    JSR CODE_12965D             ; $12:954A: 20 5D 96    ;
 CODE_12954D:    LDA $E6                     ; $12:954D: A5 E6       ;
 CODE_12954F:    JSL CODE_118776         ; $12:954F: 22 76 87 11 ;
 
-PNTR_129553:        dw CODE_129526
-                    dw CODE_129559
-                    dw CODE_1295D8
+PNTR_129553:    dw CODE_129526                                  ;
+                dw CODE_129559                                  ;
+                dw CODE_1295D8                                  ;
            
 CODE_129559:    JSR CODE_1280D2                         ; $12:9559: 20 D2 80    ;
 CODE_12955C:    LDA $14                     ; $12:955C: A5 14       ;
@@ -3031,15 +3031,15 @@ CODE_129839:    LDA #$C9                    ; $12:9839: A9 C9       ;
 CODE_12983B:    STA $01                     ; $12:983B: 85 01       ;
 CODE_12983D:    RTS                     ; $12:983D: 60          ;
                        
-DATA_12983E:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty data.
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  |
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  |
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  |
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  |
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  |
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  |      
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  |
-                    db $FF,$FF                              ; /
+DATA_12983E:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty data.
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |      
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
+                db $FF,$FF                                      ; /
 
 CODE_129880:    TXA                     ; $12:9880: 8A          ;
 CODE_129881:    CLC                     ; $12:9881: 18          ;
@@ -3358,10 +3358,10 @@ CODE_129AE1:    JSR CODE_1299D5             ; $12:9AE1: 20 D5 99    ;
 CODE_129AE4:    LDX $12                     ; $12:9AE4: A6 12       ;
 CODE_129AE6:    RTS                     ; $12:9AE6: 60          ;
                        
-DATA_129AE7:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty.
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  |
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  |
-                    db $FF                                  ; /
+DATA_129AE7:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
+                db $FF                                          ; /
 
 CODE_129B00:    LDA $04AE               ; $12:9B00: AD AE 04    ;
 CODE_129B03:    BEQ CODE_129B09             ; $12:9B03: F0 04       ;
@@ -3604,10 +3604,10 @@ CODE_129D0C:    SEC                         ; $12:9D0C: 38          ;
 CODE_129D0D:    SBC #$47                    ; $12:9D0D: E9 47       ;
 CODE_129D0F:    JSL CODE_118776         ; $12:9D0F: 22 76 87 11 ;
 
-PNTR_129D13:        dw CODE_12AA48
-                    dw CODE_12AA79
-                    dw CODE_129D1B
-                    dw CODE_12DAF6          
+PNTR_129D13:    dw CODE_12AA48                                  ;
+                dw CODE_12AA79                                  ;
+                dw CODE_129D1B                                  ;
+                dw CODE_12DAF6                                  ;
 
 CODE_129D1B:    LDA #$00                    ; $12:9D1B: A9 00       ;
 CODE_129D1D:    STA $04B9                   ; $12:9D1D: 8D B9 04    ;
@@ -3638,24 +3638,24 @@ CODE_129D4F:    RTS                     ; $12:9D4F: 60          ;
 CODE_129D50:    LDA $51,x               ; $12:9D50: B5 51       ; \ Load sprite status.
 CODE_129D52:    JSL CODE_118776         ; $12:9D52: 22 76 87 11 ; / Execute pointer.
 
-PNTR_129D56:        dw CODE_129D20                          ; 00 - Non-existant sprite, init. (Return.)
-                    dw CODE_12A84C                          ; 01 - Main routine.
-                    dw CODE_12A024                          ; 02 - Sprite falling off screen.
-                    dw CODE_12A164                          ; 03 - Flat
-                    dw CODE_12A2BF                          ; 04 - Explode
-                    dw CODE_12A483                          ; 05 - Disappear in a puff of smoke
-                    dw CODE_12A6AB                          ; 06 - Dissolving sand
-                    dw CODE_12A276                          ; 07 - Stop interacting
-                    dw CODE_12A1AC                          ; 08 - Disappear in two puffs of smoke
-                    dw CODE_12A0C2                          ; 09 - Disappear abruptly
+PNTR_129D56:    dw CODE_129D20                                  ; 00 - Non-existant sprite, init. (Return.)
+                dw CODE_12A84C                                  ; 01 - Main routine.
+                dw CODE_12A024                                  ; 02 - Sprite falling off screen.
+                dw CODE_12A164                                  ; 03 - Flat
+                dw CODE_12A2BF                                  ; 04 - Explode
+                dw CODE_12A483                                  ; 05 - Disappear in a puff of smoke
+                dw CODE_12A6AB                                  ; 06 - Dissolving sand
+                dw CODE_12A276                                  ; 07 - Stop interacting
+                dw CODE_12A1AC                                  ; 08 - Disappear in two puffs of smoke
+                dw CODE_12A0C2                                  ; 09 - Disappear abruptly
 
 CODE_129D6A:    LDA $04B8                   ; $12:9D6A: AD B8 04    ;
 CODE_129D6D:    BNE CODE_129DC0             ; $12:9D6D: D0 51       ;
 CODE_129D6F:    LDA $EB                     ; $12:9D6F: A5 EB       ;
 CODE_129D71:    JSL CODE_118776             ; $12:9D71: 22 76 87 11 ;
 
-PNTR_129D75:        dw CODE_129E02
-                    dw CODE_129D79       
+PNTR_129D75:    dw CODE_129E02                                  ;
+                dw CODE_129D79                                  ;
 
 CODE_129D79:    LDY $6E                     ; $12:9D79: A4 6E       ;
 CODE_129D7B:    LDA $04C1                   ; $12:9D7B: AD C1       ;
@@ -3869,77 +3869,77 @@ CODE_129EE4:    INC $51,x               ; $12:9EE4: F6 51       ; Sprite status 
 CODE_129EE6:    LDA $90,x               ; $12:9EE6: B5 90       ; Jump to routine based on sprite number.
 CODE_129EE8:    JSL CODE_118776             ; $12:9EE8: 22 76 87 11 ;
 
-PNTR_129EEC:        dw CODE_129F96                          ; 00 - Heart                          
-                    dw CODE_129F96                          ; 01 - Shy Guy, red
-                    dw CODE_129F96                          ; 02 - Tweeter
-                    dw CODE_129F96                          ; 03 - Shy Guy, blue
-                    dw CODE_129F96                          ; 04 - Porcupo
-                    dw CODE_129F96                          ; 05 - Snifit, red
-                    dw CODE_12AC85                          ; 06 - Snifit, grey
-                    dw CODE_129F96                          ; 07 - Snifit, blue
-                    dw CODE_129F96                          ; 08 - Ostro with red Shyguy
-                    dw CODE_12A01C                          ; 09 - Bob-Omb
-                    dw CODE_129F96                          ; 0A - Albatoss with Bob-Omb
-                    dw CODE_12B27D                          ; 0B - Albatoss, coming from left
-                    dw CODE_12B276                          ; 0C - Albatoss, coming from right
-                    dw CODE_129F96                          ; 0D - Ninji, running
-                    dw CODE_12AC85                          ; 0E - Ninji, jumping
-                    dw CODE_129FE3                          ; 0F - Beezo, gold
-                    dw CODE_129F96                          ; 10 - Beezo, red.
-                    dw CODE_129F96                          ; 11 - Wart Bubble.
-                    dw CODE_129F96                          ; 12 - Pidgit, carpet.
-                    dw CODE_12AE10                          ; 13 - Trouter.
-                    dw CODE_129F96                          ; 14 - Hoopster.
-                    dw CODE_12A9CB                          ; 15 - Shyguy generator.
-                    dw CODE_12A9CB                          ; 16 - Bob-omb Generator
-                    dw CODE_12A00F                          ; 17 - Phanto
-                    dw CODE_12CCBA                          ; 18 - Cobrat, jar
-                    dw CODE_12CCBA                          ; 19 - Cobrat, sand
-                    dw CODE_12CDE8                          ; 1A - Pokey
-                    dw CODE_129F96                          ; 1B - Bullet
-                    dw CODE_12AF2D                          ; 1C - Birdo
-                    dw CODE_12C7F8                          ; 1D - Mouser
-                    dw CODE_129F96                          ; 1E - Egg
-                    dw CODE_12CA80                          ; 1F - Triclyde
-                    dw CODE_129F96                          ; 20 - Fireball
-                    dw CODE_12C270                          ; 21 - Clawglip
-                    dw CODE_129F96                          ; 22 - Rock
-                    dw CODE_12AC85                          ; 23 - Panser, red
-                    dw CODE_129F96                          ; 24 - Panser, blue
-                    dw CODE_12AC85                          ; 25 - Panser, green
-                    dw CODE_129F96                          ; 26 - Autobomb with Shyguy
-                    dw CODE_129F96                          ; 27 - Autobomb fire
-                    dw CODE_12D595                          ; 28 - Whale spout
-                    dw CODE_129F96                          ; 29 - Flurry
-                    dw CODE_12D2FD                          ; 2A - Fryguy
-                    dw CODE_12D2FD                          ; 2B - Small Fryguy.
-                    dw CODE_12DB43                          ; 2C - Wart.
-                    dw CODE_12D800                          ; 2D - Hawkmouth boss.
-                    dw CODE_12A9D3                          ; 2E - Sparky, right, slow.
-                    dw CODE_12A9D3                          ; 2F - Sparky, right, fast.
-                    dw CODE_12A9D3                          ; 30 - Sparky, left, slow.
-                    dw CODE_12A9D3                          ; 31 - Sparky, left, fast.
-                    dw CODE_129F96                          ; 32 - Small vegetable.
-                    dw CODE_129F96                          ; 33 - Fresh vegetable.
-                    dw CODE_129F96                          ; 34 - Vegetable thrower vegetable.
-                    dw CODE_129F96                          ; 35 - Shell
-                    dw CODE_129F96                          ; 36 - Coin
-                    dw CODE_129F96                          ; 37 - Bomb
-                    dw CODE_129F96                          ; 38 - Rocket
-                    dw CODE_129F96                          ; 39 - Mushroom block
-                    dw CODE_129F96                          ; 3A - POW block
-                    dw CODE_12BA59                          ; 3B - Rolling log
-                    dw CODE_129F96                          ; 3C - Door to dark room
-                    dw CODE_12ABAA                          ; 3D - Key
-                    dw CODE_129F96                          ; 3E - Potion
-                    dw CODE_12AC85                          ; 3F - Mushroom
-                    dw CODE_12AC85                          ; 40 - 1-Up
-                    dw CODE_129F96                          ; 41 - Pidgit's carpet
-                    dw CODE_12AC78                          ; 42 - Hawkmouth, face to the right
-                    dw CODE_12AC78                          ; 43 - Hawkmouth, face to the left
-                    dw CODE_12ABCA                          ; 44 - Crystal ball
-                    dw CODE_12ABCA                          ; 45 - Star
-                    dw CODE_12ABCA                          ; 46 - Stopwatch
+PNTR_129EEC:    dw CODE_129F96                                  ; 00 - Heart                          
+                dw CODE_129F96                                  ; 01 - Shy Guy, red
+                dw CODE_129F96                                  ; 02 - Tweeter
+                dw CODE_129F96                                  ; 03 - Shy Guy, blue
+                dw CODE_129F96                                  ; 04 - Porcupo
+                dw CODE_129F96                                  ; 05 - Snifit, red
+                dw CODE_12AC85                                  ; 06 - Snifit, grey
+                dw CODE_129F96                                  ; 07 - Snifit, blue
+                dw CODE_129F96                                  ; 08 - Ostro with red Shyguy
+                dw CODE_12A01C                                  ; 09 - Bob-Omb
+                dw CODE_129F96                                  ; 0A - Albatoss with Bob-Omb
+                dw CODE_12B27D                                  ; 0B - Albatoss, coming from left
+                dw CODE_12B276                                  ; 0C - Albatoss, coming from right
+                dw CODE_129F96                                  ; 0D - Ninji, running
+                dw CODE_12AC85                                  ; 0E - Ninji, jumping
+                dw CODE_129FE3                                  ; 0F - Beezo, gold
+                dw CODE_129F96                                  ; 10 - Beezo, red.
+                dw CODE_129F96                                  ; 11 - Wart Bubble.
+                dw CODE_129F96                                  ; 12 - Pidgit, carpet.
+                dw CODE_12AE10                                  ; 13 - Trouter.
+                dw CODE_129F96                                  ; 14 - Hoopster.
+                dw CODE_12A9CB                                  ; 15 - Shyguy generator.
+                dw CODE_12A9CB                                  ; 16 - Bob-omb Generator
+                dw CODE_12A00F                                  ; 17 - Phanto
+                dw CODE_12CCBA                                  ; 18 - Cobrat, jar
+                dw CODE_12CCBA                                  ; 19 - Cobrat, sand
+                dw CODE_12CDE8                                  ; 1A - Pokey
+                dw CODE_129F96                                  ; 1B - Bullet
+                dw CODE_12AF2D                                  ; 1C - Birdo
+                dw CODE_12C7F8                                  ; 1D - Mouser
+                dw CODE_129F96                                  ; 1E - Egg
+                dw CODE_12CA80                                  ; 1F - Triclyde
+                dw CODE_129F96                                  ; 20 - Fireball
+                dw CODE_12C270                                  ; 21 - Clawglip
+                dw CODE_129F96                                  ; 22 - Rock
+                dw CODE_12AC85                                  ; 23 - Panser, red
+                dw CODE_129F96                                  ; 24 - Panser, blue
+                dw CODE_12AC85                                  ; 25 - Panser, green
+                dw CODE_129F96                                  ; 26 - Autobomb with Shyguy
+                dw CODE_129F96                                  ; 27 - Autobomb fire
+                dw CODE_12D595                                  ; 28 - Whale spout
+                dw CODE_129F96                                  ; 29 - Flurry
+                dw CODE_12D2FD                                  ; 2A - Fryguy
+                dw CODE_12D2FD                                  ; 2B - Small Fryguy.
+                dw CODE_12DB43                                  ; 2C - Wart.
+                dw CODE_12D800                                  ; 2D - Hawkmouth boss.
+                dw CODE_12A9D3                                  ; 2E - Sparky, right, slow.
+                dw CODE_12A9D3                                  ; 2F - Sparky, right, fast.
+                dw CODE_12A9D3                                  ; 30 - Sparky, left, slow.
+                dw CODE_12A9D3                                  ; 31 - Sparky, left, fast.
+                dw CODE_129F96                                  ; 32 - Small vegetable.
+                dw CODE_129F96                                  ; 33 - Fresh vegetable.
+                dw CODE_129F96                                  ; 34 - Vegetable thrower vegetable.
+                dw CODE_129F96                                  ; 35 - Shell
+                dw CODE_129F96                                  ; 36 - Coin
+                dw CODE_129F96                                  ; 37 - Bomb
+                dw CODE_129F96                                  ; 38 - Rocket
+                dw CODE_129F96                                  ; 39 - Mushroom block
+                dw CODE_129F96                                  ; 3A - POW block
+                dw CODE_12BA59                                  ; 3B - Rolling log
+                dw CODE_129F96                                  ; 3C - Door to dark room
+                dw CODE_12ABAA                                  ; 3D - Key
+                dw CODE_129F96                                  ; 3E - Potion
+                dw CODE_12AC85                                  ; 3F - Mushroom
+                dw CODE_12AC85                                  ; 40 - 1-Up
+                dw CODE_129F96                                  ; 41 - Pidgit's carpet
+                dw CODE_12AC78                                  ; 42 - Hawkmouth, face to the right
+                dw CODE_12AC78                                  ; 43 - Hawkmouth, face to the left
+                dw CODE_12ABCA                                  ; 44 - Crystal ball
+                dw CODE_12ABCA                                  ; 45 - Star
+                dw CODE_12ABCA                                  ; 46 - Stopwatch
                        
 CODE_129F7A:    LDY $90,x                   ; $12:9F7A: B4 90       ;
 CODE_129F7C:    LDA.w DATA_11CC45,y             ; $12:9F7C: B9 45 CC    ;
@@ -4105,9 +4105,9 @@ CODE_12A0C9:    JMP CODE_12A5B2             ; $12:A0C9: 4C B2 A5    ;
 CODE_12A0CC:    JSR CODE_12A0DA             ; $12:A0CC: 20 DA A0    ;
 CODE_12A0CF:    JMP CODE_12A4A1             ; $12:A0CF: 4C A1 A4    ;
 
-DATA_12A0D2:        db $00,$00,$EC,$EA
+DATA_12A0D2:    db $00,$00,$EC,$EA                              ;
 
-DATA_12A0D6:        db $00,$00,$F6,$00
+DATA_12A0D6:    db $00,$00,$F6,$00                              ;
                  
 CODE_12A0DA:    LDA $86,x                   ; $12:A0DA: B5 86       ;
 CODE_12A0DC:    AND #$18                ; $12:A0DC: 29 18       ;
@@ -4208,7 +4208,7 @@ CODE_12A1A0:    LDA #$00                    ; $12:A1A0: A9 00       ;
 CODE_12A1A2:    JSL CODE_13FBC2             ; $12:A1A2: 22 C2 FB 13 ;
 CODE_12A1A6:    JMP CODE_12A83B             ; $12:A1A6: 4C 3B A8    ;
 
-DATA_12A1A9:        db $40,$2E,$2C
+DATA_12A1A9:    db $40,$2E,$2C                                  ;
              
 CODE_12A1AC:    JSR CODE_12A745                     ; $12:A1AC: 20 45 A7    ;
 CODE_12A1AF:    LDA $86,x                   ; $12:A1AF: B5 86       ;
@@ -4329,11 +4329,11 @@ CODE_12A2AB:    STA $6F,x                   ; $12:A2AB: 95 6F       ;
 CODE_12A2AD:    JSR CODE_12B4EA             ; $12:A2AD: 20 EA B4    ;
 CODE_12A2B0:    JMP CODE_12DE6A         ; $12:A2B0: 4C 6A DE    ;
          
-DATA_12A2B3:        db $C6,$C8,$E6,$E8                      ; Tilemap of "BOMB"
+DATA_12A2B3:    db $C6,$C8,$E6,$E8                              ; Tilemap of "BOMB"
 
-DATA_12A2B7:        db $F8,$08,$F8,$08                      ; XDisp of "BOMB"
+DATA_12A2B7:    db $F8,$08,$F8,$08                              ; XDisp of "BOMB"
 
-DATA_12A2BB:        db $F0,$F0,$00,$00                      ; YDisp of "BOMB"
+DATA_12A2BB:    db $F0,$F0,$00,$00                              ; YDisp of "BOMB"
                  
 CODE_12A2BF:    JSR CODE_12A745             ; $12:A2BF: 20 45 A7    ;
 CODE_12A2C2:    LDA $ED                     ; $12:A2C2: A5 ED       ;
@@ -5161,77 +5161,77 @@ CODE_12A934:    JMP CODE_12DE6A         ; $12:A934: 4C 6A DE    ;
 CODE_12A937:    LDA $90,x                   ; $12:A937: B5 90       ;
 CODE_12A939:    JSL CODE_118776         ; $12:A939: 22 76 87 11 ;
 
-PNTR_12A93D:        dw CODE_12AEC3                          ; 00 - Heart.
-                    dw CODE_12B4D1                          ; 01 - Red Shyguy.
-                    dw CODE_12B4D1                          ; 02 - Tweeter.
-                    dw CODE_12B4D1                          ; 03 - Blue Shyguy.
-                    dw CODE_12B4D1                          ; 04 - Porcupo.
-                    dw CODE_12B4D1                          ; 05 - Red Snifit.
-                    dw CODE_12B4D1                          ; 06 - Grey snifit.
-                    dw CODE_12B4D1                          ; 07 - Blue snifit.
-                    dw CODE_12C97A                          ; 08 - Ostro with Red Shyguy.
-                    dw CODE_12B4A3                          ; 09 - Bob-Omb
-                    dw CODE_12B29D                          ; 0A - Albatoss with Bob-Omb
-                    dw CODE_12B29D                          ; 0B - Albatoss, coming from left.
-                    dw CODE_12B29D                          ; 0C - Albatoss, coming from right.
-                    dw CODE_12B43E                          ; 0D - Ninji, walking.
-                    dw CODE_12B41A                          ; 0E - Ninji, jumping.
-                    dw CODE_12B46E                          ; 0F - Beezo, gold
-                    dw CODE_12B46E                          ; 10 - Beezo, red
-                    dw CODE_12DC1C                          ; 11 - Wart's bubble
-                    dw CODE_12C613                          ; 12 - Pidgit, carpet.
-                    dw CODE_12AE26                          ; 13 - Trouter
-                    dw CODE_12AE5D                          ; 14 - Hoopster
-                    dw CODE_12AC25                          ; 15 - Shyguy generator
-                    dw CODE_12AC25                          ; 16 - Bob-omb generator
-                    dw CODE_12B373                          ; 17 - Phanto 
-                    dw CODE_12CD44                          ; 18 - Cobrat, jar
-                    dw CODE_12CCC5                          ; 19 - Cobrat, sand
-                    dw CODE_12CDF0                          ; 1A - Pokey
-                    dw CODE_12B2F3                          ; 1B - Bullet
-                    dw CODE_12AF56                          ; 1C - Birdo
-                    dw CODE_12C808                          ; 1D - Mouser
-                    dw CODE_12B2F3                          ; 1E - Egg
-                    dw CODE_12CA91                          ; 1F - Triclyde
-                    dw CODE_12AACE                          ; 20 - Fireball
-                    dw CODE_12C286                          ; 21 - Clawglip
-                    dw CODE_12C469                          ; 22 - Rock
-                    dw CODE_12AB21                          ; 23 - Panser, red
-                    dw CODE_12AB19                          ; 24 - Panser, blue
-                    dw CODE_12AB21                          ; 25 - Panser, green
-                    dw CODE_12D440                          ; 26 - Autobomb with Shyguy
-                    dw CODE_12B2E6                          ; 27 - Autobomb fire
-                    dw CODE_12D59D                          ; 28 - Whale spout
-                    dw CODE_12D796                          ; 29 - Flurry
-                    dw CODE_12D30A                          ; 2A - Fryguy
-                    dw CODE_12D3C4                          ; 2B - Small Fryguy,
-                    dw CODE_12DB51                          ; 2C - Wart.
-                    dw CODE_12D809                          ; 2D - Hawkmouth boss.
-                    dw CODE_12A9E3                          ; 2E - Sparky, right, slow.
-                    dw CODE_12A9E3                          ; 2F - Sparky, right, fast.
-                    dw CODE_12A9E3                          ; 30 - Sparky, left, slow.
-                    dw CODE_12A9E3                          ; 31 - Sparky, left, fast.
-                    dw CODE_12B13D                          ; 32 - Small vegetable.
-                    dw CODE_12B13D                          ; 33 - Fresh vegetable.
-                    dw CODE_12B13D                          ; 34 - Vegetable thrower vegetable.
-                    dw CODE_12B9E9                          ; 35 - Shell
-                    dw CODE_12B027                          ; 36 - Coin
-                    dw CODE_12B0D6                          ; 37 - Bomb
-                    dw CODE_12CFC3                          ; 38 - Rocket
-                    dw CODE_12B717                          ; 39 - Mushroom block
-                    dw CODE_12B717                          ; 3A - POW block
-                    dw CODE_12BA64                          ; 3B - Rolling log
-                    dw CODE_12B7BA                          ; 3C - Door to dark room
-                    dw CODE_12B0D3                          ; 3D - Key
-                    dw CODE_12B151                          ; 3E - Potion
-                    dw CODE_12B064                          ; 3F - Mushroom
-                    dw CODE_12B038                          ; 40 - 1-Up
-                    dw CODE_12C4F6                          ; 41 - Pidgit's carpet
-                    dw CODE_12AC8D                          ; 42 - Hawkmouth, face to the right
-                    dw CODE_12AC8D                          ; 43 - Hawkmouth, face to the left
-                    dw CODE_12B05E                          ; 44 - Crystal ball
-                    dw CODE_12AC11                          ; 45 - Star
-                    dw CODE_12B064                          ; 46 - Stopwatch
+PNTR_12A93D:    dw CODE_12AEC3                                  ; 00 - Heart.
+                dw CODE_12B4D1                                  ; 01 - Red Shyguy.
+                dw CODE_12B4D1                                  ; 02 - Tweeter.
+                dw CODE_12B4D1                                  ; 03 - Blue Shyguy.
+                dw CODE_12B4D1                                  ; 04 - Porcupo.
+                dw CODE_12B4D1                                  ; 05 - Red Snifit.
+                dw CODE_12B4D1                                  ; 06 - Grey snifit.
+                dw CODE_12B4D1                                  ; 07 - Blue snifit.
+                dw CODE_12C97A                                  ; 08 - Ostro with Red Shyguy.
+                dw CODE_12B4A3                                  ; 09 - Bob-Omb
+                dw CODE_12B29D                                  ; 0A - Albatoss with Bob-Omb
+                dw CODE_12B29D                                  ; 0B - Albatoss, coming from left.
+                dw CODE_12B29D                                  ; 0C - Albatoss, coming from right.
+                dw CODE_12B43E                                  ; 0D - Ninji, walking.
+                dw CODE_12B41A                                  ; 0E - Ninji, jumping.
+                dw CODE_12B46E                                  ; 0F - Beezo, gold
+                dw CODE_12B46E                                  ; 10 - Beezo, red
+                dw CODE_12DC1C                                  ; 11 - Wart's bubble
+                dw CODE_12C613                                  ; 12 - Pidgit, carpet.
+                dw CODE_12AE26                                  ; 13 - Trouter
+                dw CODE_12AE5D                                  ; 14 - Hoopster
+                dw CODE_12AC25                                  ; 15 - Shyguy generator
+                dw CODE_12AC25                                  ; 16 - Bob-omb generator
+                dw CODE_12B373                                  ; 17 - Phanto 
+                dw CODE_12CD44                                  ; 18 - Cobrat, jar
+                dw CODE_12CCC5                                  ; 19 - Cobrat, sand
+                dw CODE_12CDF0                                  ; 1A - Pokey
+                dw CODE_12B2F3                                  ; 1B - Bullet
+                dw CODE_12AF56                                  ; 1C - Birdo
+                dw CODE_12C808                                  ; 1D - Mouser
+                dw CODE_12B2F3                                  ; 1E - Egg
+                dw CODE_12CA91                                  ; 1F - Triclyde
+                dw CODE_12AACE                                  ; 20 - Fireball
+                dw CODE_12C286                                  ; 21 - Clawglip
+                dw CODE_12C469                                  ; 22 - Rock
+                dw CODE_12AB21                                  ; 23 - Panser, red
+                dw CODE_12AB19                                  ; 24 - Panser, blue
+                dw CODE_12AB21                                  ; 25 - Panser, green
+                dw CODE_12D440                                  ; 26 - Autobomb with Shyguy
+                dw CODE_12B2E6                                  ; 27 - Autobomb fire
+                dw CODE_12D59D                                  ; 28 - Whale spout
+                dw CODE_12D796                                  ; 29 - Flurry
+                dw CODE_12D30A                                  ; 2A - Fryguy
+                dw CODE_12D3C4                                  ; 2B - Small Fryguy,
+                dw CODE_12DB51                                  ; 2C - Wart.
+                dw CODE_12D809                                  ; 2D - Hawkmouth boss.
+                dw CODE_12A9E3                                  ; 2E - Sparky, right, slow.
+                dw CODE_12A9E3                                  ; 2F - Sparky, right, fast.
+                dw CODE_12A9E3                                  ; 30 - Sparky, left, slow.
+                dw CODE_12A9E3                                  ; 31 - Sparky, left, fast.
+                dw CODE_12B13D                                  ; 32 - Small vegetable.
+                dw CODE_12B13D                                  ; 33 - Fresh vegetable.
+                dw CODE_12B13D                                  ; 34 - Vegetable thrower vegetable.
+                dw CODE_12B9E9                                  ; 35 - Shell
+                dw CODE_12B027                                  ; 36 - Coin
+                dw CODE_12B0D6                                  ; 37 - Bomb
+                dw CODE_12CFC3                                  ; 38 - Rocket
+                dw CODE_12B717                                  ; 39 - Mushroom block
+                dw CODE_12B717                                  ; 3A - POW block
+                dw CODE_12BA64                                  ; 3B - Rolling log
+                dw CODE_12B7BA                                  ; 3C - Door to dark room
+                dw CODE_12B0D3                                  ; 3D - Key
+                dw CODE_12B151                                  ; 3E - Potion
+                dw CODE_12B064                                  ; 3F - Mushroom
+                dw CODE_12B038                                  ; 40 - 1-Up
+                dw CODE_12C4F6                                  ; 41 - Pidgit's carpet
+                dw CODE_12AC8D                                  ; 42 - Hawkmouth, face to the right
+                dw CODE_12AC8D                                  ; 43 - Hawkmouth, face to the left
+                dw CODE_12B05E                                  ; 44 - Crystal ball
+                dw CODE_12AC11                                  ; 45 - Star
+                dw CODE_12B064                                  ; 46 - Stopwatch
 
 CODE_12A9CB:    JSR CODE_129F96             ; $12:A9CB: 20 96 9F    ;
 CODE_12A9CE:    LDA #$50                    ; $12:A9CE: A9 50       ;
@@ -7114,15 +7114,15 @@ CODE_12B8D6:    STA $0628                   ; $12:B8D6: 8D 28 06    ;
 CODE_12B8D9:    LDX $12                     ; $12:B8D9: A6 12       ;
 CODE_12B8DB:    RTS                     ; $12:B8DB: 60          ;
 
-DATA_12B8DC:        db $A2,$B2,$A4,$B4,$A3,$B3,$A5,$B5
+DATA_12B8DC:    db $A2,$B2,$A4,$B4,$A3,$B3,$A5,$B5              ;
       
-DATA_12B8E4:        db $A2,$B2,$8B,$9B,$A3,$B3,$A5,$B5
+DATA_12B8E4:    db $A2,$B2,$8B,$9B,$A3,$B3,$A5,$B5              ;
 
-DATA_12B8EC:        db $00,$00,$00,$00,$08,$08,$08,$08
+DATA_12B8EC:    db $00,$00,$00,$00,$08,$08,$08,$08              ;
 
-DATA_12B8F4:        db $00,$08,$10,$18,$00,$08,$10,$18
+DATA_12B8F4:    db $00,$08,$10,$18,$00,$08,$10,$18              ;
                        
-DATA_12B8FC:        db $22,$22,$26,$26,$22,$22,$22,$22
+DATA_12B8FC:    db $22,$22,$26,$26,$22,$22,$22,$22              ;
         
 CODE_12B904:    AND #$08                    ; $12:B904: 29 08       ;
 CODE_12B906:    STA $00                     ; $12:B906: 85 00       ;
@@ -7235,7 +7235,7 @@ CODE_12B9E2:    RTS                     ; $12:B9E2: 60          ;
 CODE_12B9E3:    PLA                         ; $12:B9E3: 68          ;
 CODE_12B9E4:    RTS                     ; $12:B9E4: 60          ;
                        
-DATA_12B9E5:        db $2E,$C6,$C8,$C6
+DATA_12B9E5:    db $2E,$C6,$C8,$C6                              ;
 
 CODE_12B9E9:    JSR CODE_12DDAB                     ; $12:B9E9: 20 AB DD    ;
 CODE_12B9EC:    JSR CODE_12BA46                                     ; $12:B9EC: 20 46 BA    ;
@@ -7466,7 +7466,7 @@ CODE_12BB95:    STZ $0248                   ; $12:BB95: 9C 48 02    ;
 CODE_12BB98:    STZ $0249                   ; $12:BB98: 9C 49 02    ;
 CODE_12BB9B:    RTS                     ; $12:BB9B: 60          ;
            
-DATA_12BB9C:        db $68,$BA,$BE,$C2
+DATA_12BB9C:    db $68,$BA,$BE,$C2                              ;
                               
 CODE_12BBA0:    LDA $51,x               ; $12:BBA0: B5 51       ;
 CODE_12BBA2:    CMP #$01                ; $12:BBA2: C9 01       ;
@@ -7535,11 +7535,11 @@ CODE_12BC0F:    JSR CODE_12BDC9             ; $12:BC0F: 20 C9 BD    ;
 CODE_12BC12:    LDA #$00                    ; $12:BC12: A9 00       ;
 CODE_12BC14:    BRA CODE_12BC25             ; $12:BC14: 80 0F       ;
 
-DATA_12BC16:        db $26,$26,$28
+DATA_12BC16:    db $26,$26,$28                                  ;
 
-DATA_12BC19:        db $F8,$F8,$FB,$18,$18,$15
+DATA_12BC19:    db $F8,$F8,$FB,$18,$18,$15                      ;
 
-DATA_12BC1F:        db $02,$03,$06,$FE,$FD,$FA
+DATA_12BC1F:    db $02,$03,$06,$FE,$FD,$FA                      ;
              
 CODE_12BC25:    LDY #$00                    ; $12:BC25: A0 00       ;
 CODE_12BC27:    CMP #$00                    ; $12:BC27: C9 00       ;
@@ -8340,8 +8340,8 @@ CODE_12C259:    JMP CODE_12C1EF             ; $12:C259: 4C EF C1    ;
 CODE_12C25C:    JSR CODE_12B1F9             ; $12:C25C: 20 F9 B1    ;
 CODE_12C25F:    RTL                     ; $12:C25F: 6B          ;
                        
-DATA_12C260:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty.
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; /
+DATA_12C260:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; /
           
 CODE_12C270:    JSR CODE_12AF2D             ; $12:C270: 20 2D AF    ;
 CODE_12C273:    LDA #$04                    ; $12:C273: A9 04       ;
@@ -9950,19 +9950,19 @@ CODE_12CF95:    AND #$00FF                  ; $12:CF95: 29 FF 00    ;
 CODE_12CF98:    SEP #$20                    ; $12:CF98: E2 20       ;
 CODE_12CF9A:    RTS                     ; $12:CF9A: 60          ;
                        
-DATA_12CF9B:        db $FF
+DATA_12CF9B:    db $FF                                          ;
 
-DATA_12CF9C:        db $FF
+DATA_12CF9C:    db $FF                                          ;
 
-DATA_12CF9D:        db $FF
+DATA_12CF9D:    db $FF                                          ;
 
-DATA_12CF9E:        db $FF,$88,$88,$88,$FF,$98,$98,$98
-                    db $FF,$84,$94,$85,$94,$94,$85,$95
-                    db $85,$85,$95,$84,$95,$95,$84,$94
-                    db $84
+DATA_12CF9E:    db $FF,$88,$88,$88,$FF,$98,$98,$98              ;
+                db $FF,$84,$94,$85,$94,$94,$85,$95              ;
+                db $85,$85,$95,$84,$95,$95,$84,$94              ;
+                db $84                                          ;
 
-DATA_12CFB7:        db $00,$01,$00,$01,$01,$02,$01,$02
-                    db $03,$04,$05,$06            
+DATA_12CFB7:    db $00,$01,$00,$01,$01,$02,$01,$02              ;
+                db $03,$04,$05,$06                              ;
                  
 CODE_12CFC3:    LDA $B1,x                       ; $12:CFC3: B5 B1       ;
 CODE_12CFC5:    BNE CODE_12CFCA                 ; $12:CFC5: D0 03       ;
@@ -10215,11 +10215,11 @@ CODE_12D1F5:    STZ $02F9                   ; $12:D1F5: 9C F9 02    ;
 CODE_12D1F8:    LDX #$94                    ; $12:D1F8: A2 94       ;
 CODE_12D1FA:    JMP CODE_12BED0             ; $12:D1FA: 4C D0 BE    ;
  
-DATA_12D1FD:        db $7C,$DC,$80,$E0
+DATA_12D1FD:    db $7C,$DC,$80,$E0                              ;
 
-DATA_12D201:        db $80,$E0,$7C,$DC
+DATA_12D201:    db $80,$E0,$7C,$DC                              ;
 
-DATA_12D205:        db $EC,$EE,$EC,$EE
+DATA_12D205:    db $EC,$EE,$EC,$EE                              ;
               
 CODE_12D209:    LDA $046E,x             ; $12:D209: BD 6E 04    ;
 CODE_12D20C:    STA $071E                   ; $12:D20C: 8D 1E 07    ;
@@ -11567,10 +11567,10 @@ CODE_12DD70:    SEP #$10                    ; $12:DD70: E2 10       ;
 CODE_12DD72:    LDX $12                     ; $12:DD72: A6 12       ;
 CODE_12DD74:    RTS                     ; $12:DD74: 60          ;
                        
-DATA_12DD75:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty.
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  |
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ;  |
-                    db $FF,$FF,$FF                          ; /
+DATA_12DD75:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
+                db $FF,$FF,$FF                                  ; /
           
 CODE_12DD90:    JSR CODE_12DE5A                 ; $12:DD90: 20 5A DE    ;
 CODE_12DD93:    TAY                         ; $12:DD93: A8          ;
@@ -11845,11 +11845,11 @@ CODE_12DFA9:    TAY                         ; $12:DFA9: A8          ;
 CODE_12DFAA:    LDA $120B,y                 ; $12:DFAA: B9 0B 12    ;
 CODE_12DFAD:    JSL CODE_118776         ; $12:DFAD: 22 76 87 11 ;
 
-PNTR_12DFB1:        dw CODE_12E018
-                    dw CODE_12E22F
-                    dw CODE_12E1A2
-                    dw CODE_12E229
-                    dw CODE_12DFBB            
+PNTR_12DFB1:    dw CODE_12E018                                  ;
+                dw CODE_12E22F                                  ;
+                dw CODE_12E1A2                                  ;
+                dw CODE_12E229                                  ;
+                dw CODE_12DFBB                                  ;
 
 CODE_12DFBB:    TXA                     ; $12:DFBB: 8A          ;
 CODE_12DFBC:    BNE CODE_12E017             ; $12:DFBC: D0 59       ;
@@ -12427,71 +12427,71 @@ CODE_12E453:    BPL CODE_12E44D             ; $12:E453: 10 F8       ;
 CODE_12E455:    CLC                         ; $12:E455: 18          ;
 CODE_12E456:    RTS                     ; $12:E456: 60          ;
                        
-DATA_12E457:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty.
-                    db $FF                                  ; /
+DATA_12E457:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
+                db $FF                                          ; /
            
 CODE_12E460:    ASL A                   ; $12:E460: 0A          ;
 CODE_12E461:    TAX                     ; $12:E461: AA          ;
 CODE_12E462:    JMP (PNTR_12E465,x)                     ; $12:E462: 7C 65 E4    ;
 
-PNTR_12E465:        dw CODE_12E7E9                          ; 30-3F - Horizontal bricks.
-                    dw CODE_12E7E9                          ; 40-4F - Horizontal X-blocks.
-                    dw CODE_12E7E9                          ; 50-5F - Horizontal multiple vegetables.
-                    dw CODE_12E7E9                          ; 60-6F - Horizontal bridge.
-                    dw CODE_12E7E9                          ; 70-7F - Horizontal spikes.
-                    dw CODE_12E89A                          ; 80-8F - Vertical bricks.
-                    dw CODE_12E89A                          ; 90-9F - Vertical bricks.
-                    dw CODE_12E89A                          ; A0-AF - Vertical ladders.
-                    dw CODE_12EDA1                          ; B0-BF - Horizontal whales.
-                    dw CODE_12E994                          ; C0-CF - Horizontal green platforms.
-                    dw CODE_12E958                          ; D0-DF - Horizontal logs.
-                    dw CODE_12E958                          ; E0-EF - Horizontal clouds.
-                    dw CODE_12EC18                          ; F0-FF - Horizontal waterfalls.
+PNTR_12E465:    dw CODE_12E7E9                                  ; 30-3F - Horizontal bricks.
+                dw CODE_12E7E9                                  ; 40-4F - Horizontal X-blocks.
+                dw CODE_12E7E9                                  ; 50-5F - Horizontal multiple vegetables.
+                dw CODE_12E7E9                                  ; 60-6F - Horizontal bridge.
+                dw CODE_12E7E9                                  ; 70-7F - Horizontal spikes.
+                dw CODE_12E89A                                  ; 80-8F - Vertical bricks.
+                dw CODE_12E89A                                  ; 90-9F - Vertical bricks.
+                dw CODE_12E89A                                  ; A0-AF - Vertical ladders.
+                dw CODE_12EDA1                                  ; B0-BF - Horizontal whales.
+                dw CODE_12E994                                  ; C0-CF - Horizontal green platforms.
+                dw CODE_12E958                                  ; D0-DF - Horizontal logs.
+                dw CODE_12E958                                  ; E0-EF - Horizontal clouds.
+                dw CODE_12EC18                                  ; F0-FF - Horizontal waterfalls.
                   
 CODE_12E47F:    ASL A                   ; $12:E47F: 0A          ;
 CODE_12E480:    TAX                     ; $12:E480: AA          ;
 CODE_12E481:    JMP (PNTR_12E484,x)     ; $12:E481: 7C 84 E4    ;
 
-PNTR_12E484:        dw CODE_12E921
-                    dw CODE_12E921
-                    dw CODE_12E921
-                    dw CODE_12E921
-                    dw CODE_12E921
-                    dw CODE_12E921
-                    dw CODE_12EB07
-                    dw CODE_12EB07
-                    dw CODE_12EB07
-                    dw CODE_12EF72
-                    dw CODE_12EF72
-                    dw CODE_12EF72
-                    dw CODE_12EB32
-                    dw CODE_12EB32
-                    dw CODE_12ED1C
-                    dw CODE_12F040        
+PNTR_12E484:    dw CODE_12E921                                  ;
+                dw CODE_12E921                                  ;
+                dw CODE_12E921                                  ;
+                dw CODE_12E921                                  ;
+                dw CODE_12E921                                  ;
+                dw CODE_12E921                                  ;
+                dw CODE_12EB07                                  ;
+                dw CODE_12EB07                                  ;
+                dw CODE_12EB07                                  ;
+                dw CODE_12EF72                                  ;
+                dw CODE_12EF72                                  ;
+                dw CODE_12EF72                                  ;
+                dw CODE_12EB32                                  ;
+                dw CODE_12EB32                                  ;
+                dw CODE_12ED1C                                  ;
+                dw CODE_12F040                                  ;
                      
 CODE_12E4A4:    LDA $050F               ; $12:E4A4: AD 0F 05    ;
 CODE_12E4A7:    ASL A                   ; $12:E4A7: 0A          ;
 CODE_12E4A8:    TAX                     ; $12:E4A8: AA          ;
 CODE_12E4A9:    JMP (PNTR_12E4AC,x)     ; $12:E4A9: 7C AC E4    ;
 
-PNTR_12E4AC:        dw CODE_12EACF
-                    dw CODE_12EAEF
-                    dw CODE_12EB7F
-                    dw CODE_12E7F7
-                    dw CODE_12E870
-                    dw CODE_12EA71
-                    dw CODE_12EA71
-                    dw CODE_12EC63
-                    dw CODE_12EBC6
-                    dw CODE_12EBC6
-                    dw CODE_12F06A
-                    dw CODE_12F091
-                    dw CODE_12EF72
-                    dw CODE_12EF72
-                    dw CODE_12EF23
-                    dw CODE_12EE90
+PNTR_12E4AC:    dw CODE_12EACF                                  ;
+                dw CODE_12EAEF                                  ;
+                dw CODE_12EB7F                                  ;
+                dw CODE_12E7F7                                  ;
+                dw CODE_12E870                                  ;
+                dw CODE_12EA71                                  ;
+                dw CODE_12EA71                                  ;
+                dw CODE_12EC63                                  ;
+                dw CODE_12EBC6                                  ;
+                dw CODE_12EBC6                                  ;
+                dw CODE_12F06A                                  ;
+                dw CODE_12F091                                  ;
+                dw CODE_12EF72                                  ;
+                dw CODE_12EF72                                  ;
+                dw CODE_12EF23                                  ;
+                dw CODE_12EE90                                  ;
 
-DATA_12E4CC:        db $3D,$3C          
+DATA_12E4CC:    db $3D,$3C                                      ;
                            
 CODE_12E4CE:    LDA $050F               ; $12:E4CE: AD 0F 05    ; \ Get object type number (0 = bricks, 1 = X-blocks, etc. C = waterfalls) * 4 into $0F.
 CODE_12E4D1:    ASL                     ; $12:E4D1: 0A          ;  |
@@ -12600,11 +12600,11 @@ CODE_12E5A8:    STA [$01],y                 ; $12:E5A8: 97 01       ;
 CODE_12E5AA:    JSR CODE_12F13A             ; $12:E5AA: 20 3A F1    ;
 CODE_12E5AD:    RTS                     ; $12:E5AD: 60          ;
            
-DATA_12E5AE:        db $04,$10
+DATA_12E5AE:    db $04,$10                                      ;
 
-DATA_12E5B0:        db $07,$13
+DATA_12E5B0:    db $07,$13                                      ;
 
-DATA_12E5B2:        db $09,$18            
+DATA_12E5B2:    db $09,$18                                      ;
               
 CODE_12E5B4:    STA $0721                   ; $12:E5B4: 8D 21 07    ;
 CODE_12E5B7:    CMP #$AE                    ; $12:E5B7: C9 AE       ;
@@ -13038,7 +13038,7 @@ CODE_12E8FA:    DEC $050E                   ; $12:E8FA: CE 0E 05    ;
 CODE_12E8FD:    BPL CODE_12E8F4             ; $12:E8FD: 10 F5       ;
 CODE_12E8FF:    RTS                     ; $12:E8FF: 60          ;
                        
-DATA_12E900:        db $07,$13
+DATA_12E900:    db $07,$13                                      ;
                  
 CODE_12E902:    LDY $E7                     ; $12:E902: A4 E7       ;
 CODE_12E904:    TYA                         ; $12:E904: 98          ;
@@ -14113,7 +14113,7 @@ CODE_12F16A:    LDA $076E                   ; $12:F16A: AD 6E 07    ;
 CODE_12F16D:    RTS                     ; $12:F16D: 60          ;
                     
    
-DATA_12F16E:        db $20,$1C,$1C,$1C,$1C,$21     
+DATA_12F16E:    db $20,$1C,$1C,$1C,$1C,$21                      ;
 
            
 CODE_12F174:    STZ $08                     ; $12:F174: 64 08       ;
@@ -14173,10 +14173,10 @@ CODE_12F1DD:    STA [$01],y                 ; $12:F1DD: 97 01       ;
 CODE_12F1DF:    INC $0719                   ; $12:F1DF: EE 19 07    ;
 CODE_12F1E2:    RTS                     ; $12:F1E2: 60          ;
            
-DATA_12F1E3:        db $00,$02,$02,$02,$04,$00,$02,$02
-                    db $02,$04
+DATA_12F1E3:    db $00,$02,$02,$02,$04,$00,$02,$02              ;
+                db $02,$04                                      ;
 
-DATA_12F1ED:        db $1B,$1A,$1D,$1D,$1F,$1E
+DATA_12F1ED:    db $1B,$1A,$1D,$1D,$1F,$1E                      ;
                           
 CODE_12F1F3:    LDA $0768                   ; $12:F1F3: AD 68 07    ;
 CODE_12F1F6:    BEQ CODE_12F22F                 ; $12:F1F6: F0 37       ;
@@ -14204,9 +14204,9 @@ CODE_12F22A:    STA $02                     ; $12:F22A: 85 02       ;
 CODE_12F22C:    LDY $0717                   ; $12:F22C: AC 17 07    ;
 CODE_12F22F:    RTS                     ; $12:F22F: 60          ;
 
-DATA_12F230:        dw $4040,$4040,$0000,$0000              ; Tiles with which the level is blanked out. $40 = low byte, $00 = high byte. Blank tile.
+DATA_12F230:    dw $4040,$4040,$0000,$0000                      ; Tiles with which the level is blanked out. $40 = low byte, $00 = high byte. Blank tile.
 
-DATA_12F238:        dw $2000,$5800,$9000,$C800              ; Which area of the Layer 1 tables is affected. $7E2000-$7E8FFF = low bytes, $7E9000-$7EFFFF = high bytes.
+DATA_12F238:    dw $2000,$5800,$9000,$C800                      ; Which area of the Layer 1 tables is affected. $7E2000-$7E8FFF = low bytes, $7E9000-$7EFFFF = high bytes.
                           
 CODE_12F240:    LDA $00FE               ; $12:F240: AD FE 00    ; \ Use brightness as an index.
 CODE_12F243:    EOR #$0F                ; $12:F243: 49 0F       ;  | But only values #$0F, #$0D, #$0B and #$09 are used as brightness. (And there are XORd with #$0F)
@@ -14756,25 +14756,25 @@ CODE_12F68C:    ASL A                   ; $12:F68C: 0A          ; \ Jump to code
 CODE_12F68D:    TAX                     ; $12:F68D: AA          ;  | ... X position of special object.
 CODE_12F68E:    JMP (PNTR_12F691,x)     ; $12:F68E: 7C 91 F6    ; /
 
-PNTR_12F691:        dw CODE_12F6C6
-                    dw CODE_12F6C6
-                    dw CODE_12F6B4
-                    dw CODE_12F6B2
-                    dw CODE_12F704
-                    dw CODE_12F6C9
-                    dw CODE_12F6C6                
+PNTR_12F691:    dw CODE_12F6C6                                  ;
+                dw CODE_12F6C6                                  ;
+                dw CODE_12F6B4                                  ;
+                dw CODE_12F6B2                                  ;
+                dw CODE_12F704                                  ;
+                dw CODE_12F6C9                                  ;
+                dw CODE_12F6C6                                  ;
 
 CODE_12F69F:    ASL A                       ; $12:F69F: 0A          ;
 CODE_12F6A0:    TAX                         ; $12:F6A0: AA          ;
 CODE_12F6A1:    JMP (PNTR_12F6A4,x)                 ; $12:F6A1: 7C A4 F6    ;
 
-PNTR_12F6A4:        dw CODE_12F6EA
-                    dw CODE_12F6EF
-                    dw CODE_12F6BC
-                    dw CODE_12F6B9
-                    dw CODE_12F709
-                    dw CODE_12F70E
-                    dw CODE_12F70F
+PNTR_12F6A4:    dw CODE_12F6EA                                  ;
+                dw CODE_12F6EF                                  ;
+                dw CODE_12F6BC                                  ;
+                dw CODE_12F6B9                                  ;
+                dw CODE_12F709                                  ;
+                dw CODE_12F70E                                  ;
+                dw CODE_12F70F                                  ;
                
 CODE_12F6B2:    INC $E9                 ; $12:F6B2: E6 E9       ;
 CODE_12F6B4:    INC $E9                 ; $12:F6B4: E6 E9       ;
@@ -15344,9 +15344,9 @@ CODE_12FABD:    DEX                         ; $12:FABD: CA          ;
 CODE_12FABE:    BPL CODE_12FAB6             ; $12:FABE: 10 F6       ;
 CODE_12FAC0:    RTL                     ; $12:FAC0: 6B          ;
        
-DATA_12FAC1:        db $03,$04,$05,$0D,$0F,$0F,$0F,$01
+DATA_12FAC1:    db $03,$04,$05,$0D,$0F,$0F,$0F,$01              ;
 
-DATA_12FAC9:        db $01,$03,$03,$04,$03,$05,$06,$03
+DATA_12FAC9:    db $01,$03,$03,$04,$03,$05,$06,$03              ;
                       
 CODE_12FAD1:    JSR CODE_12F263             ; $12:FAD1: 20 63 F2    ;
 CODE_12FAD4:    LDX $0533               ; $12:FAD4: AE 33 05    ; \ Get index to object data...
@@ -15437,10 +15437,10 @@ CODE_12FB83:    STZ $04                     ; $12:FB83: 64 04       ;
 CODE_12FB85:    JSR CODE_12FBA4             ; $12:FB85: 20 A4 FB    ;
 CODE_12FB88:    RTL                     ; $12:FB88: 6B          ;
                        
-DATA_12FB89:        db $09,$0A,$0B,$13,$14,$1C,$1D,$05
-                    db $03,$2B,$2D,$21,$26,$27,$22,$25
-                    db $2A,$23,$24,$28,$50,$00,$01,$29
-                    db $04,$02,$12
+DATA_12FB89:    db $09,$0A,$0B,$13,$14,$1C,$1D,$05              ;
+                db $03,$2B,$2D,$21,$26,$27,$22,$25              ;
+                db $2A,$23,$24,$28,$50,$00,$01,$29              ;
+                db $04,$02,$12                                  ;
 
 CODE_12FBA4:    LDY #$03                ; $12:FBA4: A0 03       ;
 CODE_12FBA6:    STY $04                 ; $12:FBA6: 84 04       ;
@@ -15607,9 +15607,9 @@ CODE_12FCE6:    LDY #$10                    ; $12:FCE6: A0 10       ;
 CODE_12FCE8:    STA [$01],y                 ; $12:FCE8: 97 01       ;
 CODE_12FCEA:    RTS                     ; $12:FCEA: 60          ;
                        
-DATA_12FCEB:        db $03,$0D,$0D,$0D,$11,$11             ; 2-1, 5-2, 5-2, 5-2, 6-3, 6-3.
+DATA_12FCEB:    db $03,$0D,$0D,$0D,$11,$11                      ; 2-1, 5-2, 5-2, 5-2, 6-3, 6-3.
 
-DATA_12FCF1:        db $00,$02,$03,$04,$03,$04             ; First room, third room, fourth room, fifth room, fourth room, fifth room.
+DATA_12FCF1:    db $00,$02,$03,$04,$03,$04                      ; First room, third room, fourth room, fifth room, fourth room, fifth room.
                 
 CODE_12FCF7:    JSR CODE_12F5EB         ; $12:FCF7: 20 EB F5    ;
 CODE_12FCFA:    LDY #$00                        ; $12:FCFA: A0 00       ;
@@ -15895,9 +15895,9 @@ CODE_12FF47:    DEX                         ; $12:FF47: CA          ;
 CODE_12FF48:    BPL CODE_12FF3B             ; $12:FF48: 10 F1       ;
 CODE_12FF4A:    RTS                     ; $12:FF4A: 60          ;
                        
-DATA_12FF4B:        db $03,$0D
+DATA_12FF4B:    db $03,$0D                                      ;
 
-DATA_12FF4D:        db $04,$04
+DATA_12FF4D:    db $04,$04                                      ;
                 
 CODE_12FF4F:    LDX #$01                    ; $12:FF4F: A2 01       ;
 CODE_12FF51:    LDA $0533                   ; $12:FF51: AD 33 05    ;
@@ -15985,5 +15985,5 @@ CODE_12FFED:    BRA CODE_12FFF1         ; $12:FFED: 80 02       ;
 CODE_12FFEF:    LDA #$3E                    ; $12:FFEF: A9 3E       ;
 CODE_12FFF1:    RTS                     ; $12:FFF1: 60          ;
                        
-DATA_12FFF2:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF      ; \ Empty data.
-                    db $FF,$FF,$FF,$FF,$FF,$FF              ; /
+DATA_12FFF2:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty data.
+                db $FF,$FF,$FF,$FF,$FF,$FF                      ; /

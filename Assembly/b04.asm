@@ -238,13 +238,13 @@ CODE_048236:    INC $160C               ; $04:8236: EE 0C 16    ;
 CODE_048239:    STA $2142               ; $04:8239: 8D 42 21    ;
 CODE_04823C:    BRA CODE_0481BF         ; $04:823C: 80 81       ;
 
-DATA_04823E:        db $00,$00,$00,$00,$31,$00,$00,$00
+DATA_04823E:    db $00,$00,$00,$00,$31,$00,$00,$00              ;
 
-DATA_048246:        db $00,$00,$10,$00,$20,$00,$30,$00
+DATA_048246:    db $00,$00,$10,$00,$20,$00,$30,$00              ;
 
-DATA_04824E:        db $31,$00,$31,$00,$31,$00,$31,$00
+DATA_04824E:    db $31,$00,$31,$00,$31,$00,$31,$00              ;
 
-DATA_048256:        db $10,$00,$10,$00,$10,$00,$10,$00
+DATA_048256:    db $10,$00,$10,$00,$10,$00,$10,$00              ;
 
 CODE_04825E:    STZ $420C               ; $04:825E: 9C 0C 42    ;
 CODE_048261:    STZ $1203               ; $04:8261: 9C 03 12    ;Disable HDMA channels
@@ -357,12 +357,12 @@ CODE_04835C:    SEP #$10                ; $04:835C: E2 10       ;8-bit XY
 CODE_04835E:    PLB                     ; $04:835E: AB          ;pull program bank
 CODE_04835F:    RTL                     ; $04:835F: 6B          ;return
 
-DATA_048360:        db $00,$03,$06,$09,$09,$06,$03,$00
+DATA_048360:    db $00,$03,$06,$09,$09,$06,$03,$00              ;
 
-DATA_048368:        db $0C,$0C,$0C,$1C,$0C,$0C,$0C,$1C ;The very small pauses between going up and down 1 time
+DATA_048368:    db $0C,$0C,$0C,$1C,$0C,$0C,$0C,$1C              ;The very small pauses between going up and down 1 time
                                                        ;in the underwater HDMA wavy gradient effect
 
-DATA_048370:        db $01,$01,$01,$01,$FF,$FF,$FF,$FF
+DATA_048370:    db $01,$01,$01,$01,$FF,$FF,$FF,$FF              ;
 
 CODE_048378:    PHB                     ; $04:8378: 8B          ;
 CODE_048379:    PHK                     ; $04:8379: 4B          ;
@@ -386,78 +386,78 @@ CODE_0483A0:    STA $15E2               ; $04:83A0: 8D E2 15    ;
 CODE_0483A3:    PLB                     ; $04:83A3: AB          ;
 CODE_0483A4:    RTL                     ; $04:83A4: 6B          ;
 
-DATA_0483A5:        db $27,$92,$85,$02,$94,$85,$00     ;Unknown
+DATA_0483A5:    db $27,$92,$85,$02,$94,$85,$00                  ;Unknown
 
-DATA_0483AC:        db $40,$00,$14,$08,$01,$14,$08,$02 ;Red indirect pointers. Scanline - ram address (word) - scanline - etc
-                    db $14,$08,$03,$14,$06,$04,$14,$06
-                    db $05,$14,$06,$06,$14,$06,$07,$14
-                    db $08,$08,$14,$04,$09,$14,$04,$0A
-                    db $14,$04,$0B,$14,$04,$0C,$14,$04
-                    db $0D,$14,$03,$0E,$14,$01,$0F,$14
-                    db $00,$20,$00,$14,$02,$01,$14,$02
-                    db $02,$14,$03,$03,$14,$03,$04,$14
-                    db $04,$05,$14,$04,$06,$14,$05,$07
-                    db $14,$06,$08,$14,$07,$09,$14,$08
-                    db $0A,$14,$09,$0B,$14,$0A,$0C,$14
-                    db $0B,$0D,$14,$0C,$0E,$14,$01,$0F
-                    db $14,$00
+DATA_0483AC:    db $40,$00,$14,$08,$01,$14,$08,$02              ;Red indirect pointers. Scanline - ram address (word) - scanline - etc
+                db $14,$08,$03,$14,$06,$04,$14,$06              ;
+                db $05,$14,$06,$06,$14,$06,$07,$14              ;
+                db $08,$08,$14,$04,$09,$14,$04,$0A              ;
+                db $14,$04,$0B,$14,$04,$0C,$14,$04              ;
+                db $0D,$14,$03,$0E,$14,$01,$0F,$14              ;
+                db $00,$20,$00,$14,$02,$01,$14,$02              ;
+                db $02,$14,$03,$03,$14,$03,$04,$14              ;
+                db $04,$05,$14,$04,$06,$14,$05,$07              ;
+                db $14,$06,$08,$14,$07,$09,$14,$08              ;
+                db $0A,$14,$09,$0B,$14,$0A,$0C,$14              ;
+                db $0B,$0D,$14,$0C,$0E,$14,$01,$0F              ;
+                db $14,$00                                      ;
 
-DATA_04840E:        db $40,$60,$14,$08,$61,$14,$08,$62 ;green indirect pointers
-                    db $14,$08,$63,$14,$06,$64,$14,$06
-                    db $65,$14,$06,$66,$14,$06,$67,$14
-                    db $08,$68,$14,$04,$69,$14,$04,$6A
-                    db $14,$04,$6B,$14,$04,$6C,$14,$04
-                    db $6D,$14,$03,$6E,$14,$01,$6F,$14
-                    db $00,$20,$60,$14,$02,$61,$14,$02
-                    db $62,$14,$03,$63,$14,$03,$64,$14
-                    db $04,$65,$14,$04,$66,$14,$05,$67
-                    db $14,$06,$68,$14,$07,$69,$14,$08
-                    db $6A,$14,$09,$6B,$14,$0A,$6C,$14
-                    db $0B,$6D,$14,$0C,$6E,$14,$01,$6F
-                    db $14,$00
+DATA_04840E:    db $40,$60,$14,$08,$61,$14,$08,$62              ;green indirect pointers
+                db $14,$08,$63,$14,$06,$64,$14,$06              ;
+                db $65,$14,$06,$66,$14,$06,$67,$14              ;
+                db $08,$68,$14,$04,$69,$14,$04,$6A              ;
+                db $14,$04,$6B,$14,$04,$6C,$14,$04              ;
+                db $6D,$14,$03,$6E,$14,$01,$6F,$14              ;
+                db $00,$20,$60,$14,$02,$61,$14,$02              ;
+                db $62,$14,$03,$63,$14,$03,$64,$14              ;
+                db $04,$65,$14,$04,$66,$14,$05,$67              ;
+                db $14,$06,$68,$14,$07,$69,$14,$08              ;
+                db $6A,$14,$09,$6B,$14,$0A,$6C,$14              ;
+                db $0B,$6D,$14,$0C,$6E,$14,$01,$6F              ;
+                db $14,$00                                      ;
 
-DATA_048470:        db $40,$C0,$14,$08,$C1,$14,$08,$C2 ;blue indirect pointers
-                    db $14,$08,$C3,$14,$06,$C4,$14,$06
-                    db $C5,$14,$06,$C6,$14,$06,$C7,$14
-                    db $08,$C8,$14,$04,$C9,$14,$04,$CA
-                    db $14,$04,$CB,$14,$04,$CC,$14,$04
-                    db $CD,$14,$03,$CE,$14,$01,$CF,$14
-                    db $00,$20,$C0,$14,$02,$C1,$14,$02
-                    db $C2,$14,$03,$C3,$14,$03,$C4,$14
-                    db $04,$C5,$14,$04,$C6,$14,$05,$C7
-                    db $14,$06,$C8,$14,$07,$C9,$14,$08
-                    db $CA,$14,$09,$CB,$14,$0A,$CC,$14
-                    db $0B,$CD,$14,$0C,$CE,$14,$01,$CF
-                    db $14,$00
+DATA_048470:    db $40,$C0,$14,$08,$C1,$14,$08,$C2              ;blue indirect pointers
+                db $14,$08,$C3,$14,$06,$C4,$14,$06              ;
+                db $C5,$14,$06,$C6,$14,$06,$C7,$14              ;
+                db $08,$C8,$14,$04,$C9,$14,$04,$CA              ;
+                db $14,$04,$CB,$14,$04,$CC,$14,$04              ;
+                db $CD,$14,$03,$CE,$14,$01,$CF,$14              ;
+                db $00,$20,$C0,$14,$02,$C1,$14,$02              ;
+                db $C2,$14,$03,$C3,$14,$03,$C4,$14              ;
+                db $04,$C5,$14,$04,$C6,$14,$05,$C7              ;
+                db $14,$06,$C8,$14,$07,$C9,$14,$08              ;
+                db $CA,$14,$09,$CB,$14,$0A,$CC,$14              ;
+                db $0B,$CD,$14,$0C,$CE,$14,$01,$CF              ;
+                db $14,$00                                      ;
 
-DATA_0484D2:        db $2A,$2B,$2C,$2D,$2E,$2F,$30,$31 ;red intensity stuff. Actual data of $2132
-                    db $32,$33,$34,$35,$36,$37,$38,$38 ;bgrc cccc
-                    db $27,$26,$25,$24,$23,$22,$21,$20
-                    db $20,$20,$20,$20,$20,$20,$20,$20
-                    db $38,$2B,$2A,$29,$28,$27,$26,$25
-                    db $24,$23,$22,$21,$20,$20,$20,$20
-                    db $3A,$3B,$3C,$3D,$3E,$3F,$3F,$3F
-                    db $3F,$3F,$3F,$3F,$3F,$3F,$3F,$3F
+DATA_0484D2:    db $2A,$2B,$2C,$2D,$2E,$2F,$30,$31              ;red intensity stuff. Actual data of $2132
+                db $32,$33,$34,$35,$36,$37,$38,$38              ;bgrc cccc
+                db $27,$26,$25,$24,$23,$22,$21,$20              ;
+                db $20,$20,$20,$20,$20,$20,$20,$20              ;
+                db $38,$2B,$2A,$29,$28,$27,$26,$25              ;
+                db $24,$23,$22,$21,$20,$20,$20,$20              ;
+                db $3A,$3B,$3C,$3D,$3E,$3F,$3F,$3F              ;
+                db $3F,$3F,$3F,$3F,$3F,$3F,$3F,$3F              ;
 
-DATA_048512:        db $51,$52,$53,$54,$55,$56,$57,$58 ;green intensity stuff
-                    db $59,$5A,$5B,$5C,$5D,$5E,$5F,$5F
-                    db $47,$46,$45,$44,$43,$42,$41,$40
-                    db $40,$40,$40,$40,$40,$40,$40,$40
-                    db $5F,$51,$50,$4F,$4E,$4D,$4C,$4B
-                    db $4A,$49,$48,$47,$46,$45,$44,$43
-                    db $5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F
-                    db $5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F
+DATA_048512:    db $51,$52,$53,$54,$55,$56,$57,$58              ;green intensity stuff
+                db $59,$5A,$5B,$5C,$5D,$5E,$5F,$5F              ;
+                db $47,$46,$45,$44,$43,$42,$41,$40              ;
+                db $40,$40,$40,$40,$40,$40,$40,$40              ;
+                db $5F,$51,$50,$4F,$4E,$4D,$4C,$4B              ;
+                db $4A,$49,$48,$47,$46,$45,$44,$43              ;
+                db $5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F              ;
+                db $5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F              ;
 
-DATA_048552:        db $94,$95,$96,$97,$98,$99,$9A,$9B ;blue intensity stuff
-                    db $9C,$9D,$9E,$9F,$9F,$9F,$9F,$9F
-                    db $8D,$8C,$8B,$8A,$89,$88,$87,$86
-                    db $85,$84,$83,$82,$81,$80,$80,$80
-                    db $9F,$9C,$9B,$9A,$99,$98,$97,$96
-                    db $95,$94,$93,$92,$91,$90,$8F,$8E
-                    db $9F,$9F,$9F,$9F,$9F,$9F,$9F,$9F
-                    db $9F,$9F,$9F,$9F,$9F,$9F,$9F,$9F
+DATA_048552:    db $94,$95,$96,$97,$98,$99,$9A,$9B              ;blue intensity stuff
+                db $9C,$9D,$9E,$9F,$9F,$9F,$9F,$9F              ;
+                db $8D,$8C,$8B,$8A,$89,$88,$87,$86              ;
+                db $85,$84,$83,$82,$81,$80,$80,$80              ;
+                db $9F,$9C,$9B,$9A,$99,$98,$97,$96              ;
+                db $95,$94,$93,$92,$91,$90,$8F,$8E              ;
+                db $9F,$9F,$9F,$9F,$9F,$9F,$9F,$9F              ;
+                db $9F,$9F,$9F,$9F,$9F,$9F,$9F,$9F              ;
 
-DATA_048592:        db $FF,$00,$00,$FF                 ;???
+DATA_048592:    db $FF,$00,$00,$FF                              ;???
 
 CODE_048596:    INC $075A               ; $04:8596: EE 5A 07    ;\ Increase lives by 1 & make sure
 CODE_048599:    LDA $075A               ; $04:8599: AD 5A 07    ; |it doesn't get past 128.
@@ -467,18 +467,18 @@ CODE_0485A0:    LDA #$7F                ; $04:85A0: A9 7F       ; |
 CODE_0485A2:    STA $075A               ; $04:85A2: 8D 5A 07    ; |
 CODE_0485A5:    RTL                     ; $04:85A5: 6B          ;/
 
-DATA_0485A6:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF
+DATA_0485A6:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF                                      ;
 
 CODE_048600:    LDA $1680               ; $04:8600: AD 80 16    ;\
 CODE_048603:    BMI CODE_048629         ; $04:8603: 30 24       ; |"pause" flag after rescuing princess
@@ -579,9 +579,9 @@ CODE_0486D4:    INC $075D               ; $04:86D4: EE 5D 07    ;
 CODE_0486D7:    PLB                     ; $04:86D7: AB          ;
 CODE_0486D8:    RTL                     ; $04:86D8: 6B          ;
 
-DATA_0486D9:        db $00,$06
+DATA_0486D9:    db $00,$06                                      ;
 
-DATA_0486DB:        db $50,$6C,$0C,$2B
+DATA_0486DB:    db $50,$6C,$0C,$2B                              ;
 
 CODE_0486DF:    PHB                     ; $04:86DF: 8B          ;
 CODE_0486E0:    PHK                     ; $04:86E0: 4B          ;
@@ -601,11 +601,11 @@ CODE_0486F9:    SEP #$30                ; $04:86F9: E2 30       ;
 CODE_0486FB:    PLB                     ; $04:86FB: AB          ;
 CODE_0486FC:    RTL                     ; $04:86FC: 6B          ;
 
-DATA_0486FD:        dw $CD09,$0F00,$02A1,$02A2
-                    dw $02A3,$02A4,$02A5,$02A6
-                    dw $02A7,$02A8,$0D0A,$0700
-                    dw $02A9,$02AA,$02AB,$02AC
-                    dw $FFFF
+DATA_0486FD:    dw $CD09,$0F00,$02A1,$02A2                      ;
+                dw $02A3,$02A4,$02A5,$02A6                      ;
+                dw $02A7,$02A8,$0D0A,$0700                      ;
+                dw $02A9,$02AA,$02AB,$02AC                      ;
+                dw $FFFF                                        ;
 
 CODE_04871F:    LDA $0B9A               ; $04:871F: AD 9A 0B    ;
 CODE_048722:    CMP #$30                ; $04:8722: C9 30       ;
@@ -772,11 +772,11 @@ CODE_048871:    LDA #$01                ; $04:8871: A9 01       ;
 CODE_048873:    STA $0EC9               ; $04:8873: 8D C9 0E    ;
 CODE_048876:    RTL                     ; $04:8876: 6B          ;
 
-DATA_048877:        db $58,$43,$00,$09,$16,$20,$0A,$20
-                    db $1B,$20,$12,$20,$18,$20,$FF
+DATA_048877:    db $58,$43,$00,$09,$16,$20,$0A,$20              ;
+                db $1B,$20,$12,$20,$18,$20,$FF                  ;
 
-DATA_048886:        db $58,$43,$00,$09,$15,$20,$1E,$20
-                    db $12,$20,$10,$20,$12,$20,$FF
+DATA_048886:    db $58,$43,$00,$09,$15,$20,$1E,$20              ;
+                db $12,$20,$10,$20,$12,$20,$FF                  ;
 
 CODE_048895:    PHB                     ; $04:8895: 8B          ;
 CODE_048896:    PHK                     ; $04:8896: 4B          ;
@@ -868,70 +868,70 @@ CODE_048945:    SEP #$20                ; $04:8945: E2 20       ;
 CODE_048947:    PLB                     ; $04:8947: AB          ;
 CODE_048948:    RTL                     ; $04:8948: 6B          ;
 
-DATA_048949:        dw $0000,$FFFA,$FFF4,$FFEE ;HDMA underwater wavy table
-                    dw $FFE7,$FFE1,$FFDB,$FFD5 ;uses one addition-subtraction instruction only
-                    dw $FFCF,$FFC8,$FFC2,$FFBC
-                    dw $FFB6,$FFB0,$FFAA,$FFA4
-                    dw $FF9F,$FF99,$FF93,$FF8D
-                    dw $FF88,$FF82,$FF7D,$FF78
-                    dw $FF72,$FF6D,$FF68,$FF63
-                    dw $FF5E,$FF59,$FF55,$FF50
-                    dw $FF4B,$FF47,$FF43,$FF3F
-                    dw $FF3B,$FF37,$FF33,$FF2F
-                    dw $FF2C,$FF28,$FF25,$FF22
-                    dw $FF1F,$FF1C,$FF19,$FF16
-                    dw $FF14,$FF12,$FF0F,$FF0D
-                    dw $FF0C,$FF0A,$FF08,$FF07
-                    dw $FF05,$FF04,$FF03,$FF02
-                    dw $FF02,$FF01,$FF01,$FF01
-                    dw $FF01,$FF01,$FF01,$FF01
-                    dw $FF02,$FF02,$FF03,$FF04
-                    dw $FF05,$FF07,$FF08,$FF0A
-                    dw $FF0C,$FF0D,$FF0F,$FF12
-                    dw $FF14,$FF16,$FF19,$FF1C
-                    dw $FF1F,$FF22,$FF25,$FF28
-                    dw $FF2C,$FF2F,$FF33,$FF37
-                    dw $FF3B,$FF3F,$FF43,$FF47
-                    dw $FF4B,$FF50,$FF55,$FF59
-                    dw $FF5E,$FF63,$FF68,$FF6D
-                    dw $FF72,$FF78,$FF7D,$FF82
-                    dw $FF88,$FF8D,$FF93,$FF99
-                    dw $FF9F,$FFA4,$FFAA,$FFB0
-                    dw $FFB6,$FFBC,$FFC2,$FFC8
-                    dw $FFCF,$FFD5,$FFDB,$FFE1
-                    dw $FFE7,$FFEE,$FFF4,$FFFA
-                    dw $0000,$0006,$000C,$0012
-                    dw $0019,$001F,$0025,$002B
-                    dw $0031,$0038,$003E,$0044
-                    dw $004A,$0050,$0056,$005C
-                    dw $0061,$0067,$006D,$0073
-                    dw $0078,$007E,$0083,$0088
-                    dw $008E,$0093,$0098,$009D
-                    dw $00A2,$00A7,$00AB,$00B0
-                    dw $00B5,$00B9,$00BD,$00C1
-                    dw $00C5,$00C9,$00CD,$00D1
-                    dw $00D4,$00D8,$00DB,$00DE
-                    dw $00E1,$00E4,$00E7,$00EA
-                    dw $00EC,$00EE,$00F1,$00F3
-                    dw $00F4,$00F6,$00F8,$00F9
-                    dw $00FB,$00FC,$00FD,$00FE
-                    dw $00FE,$00FF,$00FF,$00FF
-                    dw $00FF,$00FF,$00FF,$00FF
-                    dw $00FE,$00FE,$00FD,$00FC
-                    dw $00FB,$00F9,$00F8,$00F6
-                    dw $00F4,$00F3,$00F1,$00EE
-                    dw $00EC,$00EA,$00E7,$00E4
-                    dw $00E1,$00DE,$00DB,$00D8
-                    dw $00D4,$00D1,$00CD,$00C9
-                    dw $00C5,$00C1,$00BD,$00B9
-                    dw $00B5,$00B0,$00AB,$00A7
-                    dw $00A2,$009D,$0098,$0093
-                    dw $008E,$0088,$0083,$007E
-                    dw $0078,$0073,$006D,$0067
-                    dw $0061,$005C,$0056,$0050
-                    dw $004A,$0044,$003E,$0038
-                    dw $0031,$002B,$0025,$001F
-                    dw $0019,$0012,$000C,$0006
+DATA_048949:    dw $0000,$FFFA,$FFF4,$FFEE                      ;HDMA underwater wavy table
+                dw $FFE7,$FFE1,$FFDB,$FFD5                      ;uses one addition-subtraction instruction only
+                dw $FFCF,$FFC8,$FFC2,$FFBC                      ;
+                dw $FFB6,$FFB0,$FFAA,$FFA4                      ;
+                dw $FF9F,$FF99,$FF93,$FF8D                      ;
+                dw $FF88,$FF82,$FF7D,$FF78                      ;
+                dw $FF72,$FF6D,$FF68,$FF63                      ;
+                dw $FF5E,$FF59,$FF55,$FF50                      ;
+                dw $FF4B,$FF47,$FF43,$FF3F                      ;
+                dw $FF3B,$FF37,$FF33,$FF2F                      ;
+                dw $FF2C,$FF28,$FF25,$FF22                      ;
+                dw $FF1F,$FF1C,$FF19,$FF16                      ;
+                dw $FF14,$FF12,$FF0F,$FF0D                      ;
+                dw $FF0C,$FF0A,$FF08,$FF07                      ;
+                dw $FF05,$FF04,$FF03,$FF02                      ;
+                dw $FF02,$FF01,$FF01,$FF01                      ;
+                dw $FF01,$FF01,$FF01,$FF01                      ;
+                dw $FF02,$FF02,$FF03,$FF04                      ;
+                dw $FF05,$FF07,$FF08,$FF0A                      ;
+                dw $FF0C,$FF0D,$FF0F,$FF12                      ;
+                dw $FF14,$FF16,$FF19,$FF1C                      ;
+                dw $FF1F,$FF22,$FF25,$FF28                      ;
+                dw $FF2C,$FF2F,$FF33,$FF37                      ;
+                dw $FF3B,$FF3F,$FF43,$FF47                      ;
+                dw $FF4B,$FF50,$FF55,$FF59                      ;
+                dw $FF5E,$FF63,$FF68,$FF6D                      ;
+                dw $FF72,$FF78,$FF7D,$FF82                      ;
+                dw $FF88,$FF8D,$FF93,$FF99                      ;
+                dw $FF9F,$FFA4,$FFAA,$FFB0                      ;
+                dw $FFB6,$FFBC,$FFC2,$FFC8                      ;
+                dw $FFCF,$FFD5,$FFDB,$FFE1                      ;
+                dw $FFE7,$FFEE,$FFF4,$FFFA                      ;
+                dw $0000,$0006,$000C,$0012                      ;
+                dw $0019,$001F,$0025,$002B                      ;
+                dw $0031,$0038,$003E,$0044                      ;
+                dw $004A,$0050,$0056,$005C                      ;
+                dw $0061,$0067,$006D,$0073                      ;
+                dw $0078,$007E,$0083,$0088                      ;
+                dw $008E,$0093,$0098,$009D                      ;
+                dw $00A2,$00A7,$00AB,$00B0                      ;
+                dw $00B5,$00B9,$00BD,$00C1                      ;
+                dw $00C5,$00C9,$00CD,$00D1                      ;
+                dw $00D4,$00D8,$00DB,$00DE                      ;
+                dw $00E1,$00E4,$00E7,$00EA                      ;
+                dw $00EC,$00EE,$00F1,$00F3                      ;
+                dw $00F4,$00F6,$00F8,$00F9                      ;
+                dw $00FB,$00FC,$00FD,$00FE                      ;
+                dw $00FE,$00FF,$00FF,$00FF                      ;
+                dw $00FF,$00FF,$00FF,$00FF                      ;
+                dw $00FE,$00FE,$00FD,$00FC                      ;
+                dw $00FB,$00F9,$00F8,$00F6                      ;
+                dw $00F4,$00F3,$00F1,$00EE                      ;
+                dw $00EC,$00EA,$00E7,$00E4                      ;
+                dw $00E1,$00DE,$00DB,$00D8                      ;
+                dw $00D4,$00D1,$00CD,$00C9                      ;
+                dw $00C5,$00C1,$00BD,$00B9                      ;
+                dw $00B5,$00B0,$00AB,$00A7                      ;
+                dw $00A2,$009D,$0098,$0093                      ;
+                dw $008E,$0088,$0083,$007E                      ;
+                dw $0078,$0073,$006D,$0067                      ;
+                dw $0061,$005C,$0056,$0050                      ;
+                dw $004A,$0044,$003E,$0038                      ;
+                dw $0031,$002B,$0025,$001F                      ;
+                dw $0019,$0012,$000C,$0006                      ;
 
 CODE_048B49:    PHB                     ; $04:8B49: 8B          ;
 CODE_048B4A:    PHK                     ; $04:8B4A: 4B          ;
@@ -1099,21 +1099,21 @@ CODE_048C9D:    RTS                     ; $04:8C9D: 60          ;
 ;Portion of gate at brown castle 8x8 tilemap at level end. Give priority so Mario goes behind the scenes.
 
 ;Small castle
-DATA_048C9E:        db $00,$00,$80,$07,$62,$2E,$72,$2E ;$00,$00,$80,$07. Those byte combinations are unknown
-                    db $73,$2E,$72,$2E,$00,$00,$80,$07 ;Remaining: Tile, properties, tile, properties, etc.
-                    db $63,$2E,$73,$2E,$72,$2E,$73,$2E
-                    db $00,$00,$80,$07,$64,$2E,$74,$2E
-                    db $4E,$2E,$74,$2E,$FF,$FF
+DATA_048C9E:    db $00,$00,$80,$07,$62,$2E,$72,$2E              ;$00,$00,$80,$07. Those byte combinations are unknown
+                db $73,$2E,$72,$2E,$00,$00,$80,$07              ;Remaining: Tile, properties, tile, properties, etc.
+                db $63,$2E,$73,$2E,$72,$2E,$73,$2E              ;
+                db $00,$00,$80,$07,$64,$2E,$74,$2E              ;
+                db $4E,$2E,$74,$2E,$FF,$FF                      ;
 
 ;Big castle
-DATA_048CC4:        db $00,$00,$80,$07,$73,$2E,$72,$2E
-                    db $73,$2E,$72,$2E,$00,$00,$80,$07
-                    db $72,$2E,$73,$2E,$72,$2E,$73,$2E
-                    db $00,$00,$80,$07,$5E,$2E,$66,$2E
-                    db $67,$6E,$66,$AE,$FF,$FF
+DATA_048CC4:    db $00,$00,$80,$07,$73,$2E,$72,$2E              ;
+                db $73,$2E,$72,$2E,$00,$00,$80,$07              ;
+                db $72,$2E,$73,$2E,$72,$2E,$73,$2E              ;
+                db $00,$00,$80,$07,$5E,$2E,$66,$2E              ;
+                db $67,$6E,$66,$AE,$FF,$FF                      ;
 
-PNTR_048CEA:        dw DATA_048C9E ;small castle
-                    dw DATA_048CC4 ;big castle
+PNTR_048CEA:    dw DATA_048C9E                                  ;small castle
+                dw DATA_048CC4                                  ;big castle
 
 CODE_048CEE:    PHB                     ; $04:8CEE: 8B          ;
 CODE_048CEF:    PHK                     ; $04:8CEF: 4B          ;
@@ -1272,54 +1272,54 @@ CODE_048E3E:    LDY $F7                 ; $04:8E3E: A4 F7       ;
 CODE_048E40:    JMP ($0000)             ; $04:8E40: 6C 00 00    ;
 
 ;todo
-PNTR_048E43:        dw CODE_048EB5                          ;$00 - 
-                    dw CODE_048EA3                          ;$01 - 
-                    dw CODE_048EA3                          ;$02 - 
-                    dw CODE_048EA3                          ;$03 - 
-                    dw CODE_048EA3                          ;$04 - 
-                    dw CODE_048EA3                          ;$05 - 
-                    dw CODE_048EA3                          ;$06 - 
-                    dw CODE_048EA3                          ;$07 - 
-                    dw CODE_048EBB                          ;$08 - 
-                    dw CODE_048EA5                          ;$09 - 
-                    dw CODE_048EA3                          ;$0A - 
-                    dw CODE_048EA3                          ;$0B - 
-                    dw CODE_048EA3                          ;$0C - 
-                    dw CODE_048EA3                          ;$0D - 
-                    dw CODE_048EA3                          ;$0E - 
-                    dw CODE_048EA3                          ;$0F - 
-                    dw CODE_048F44                          ;$10 - related to castles at level end/begin?
-                    dw CODE_048EA3                          ;$11 - 
-                    dw CODE_048EA3                          ;$12 - 
-                    dw CODE_048EA3                          ;$13 - 
-                    dw CODE_048FD2                          ;$14 - 
-                    dw CODE_048EA3                          ;$15 - 
-                    dw CODE_048EA3                          ;$16 - 
-                    dw CODE_048EA3                          ;$17 - 
-                    dw CODE_04901B                          ;$18 - Stone Stairs object
-                    dw CODE_04903E                          ;$19 - 
-                    dw CODE_04907A                          ;$1A - 
-                    dw CODE_0490A0                          ;$1B - 
-                    dw CODE_0490C2                          ;$1C - 
-                    dw CODE_0490EB                          ;$1D - 
-                    dw CODE_049121                          ;$1E - 
-                    dw CODE_04915C                          ;$1F - 
-                    dw CODE_04917E                          ;$20 - 
-                    dw CODE_048EA3                          ;$21 - 
-                    dw CODE_048EA3                          ;$22 - 
-                    dw CODE_048EA3                          ;$23 - 
-                    dw CODE_048EA3                          ;$24 - 
-                    dw CODE_048EA3                          ;$25 - 
-                    dw CODE_048EA3                          ;$26 - 
-                    dw CODE_048EA3                          ;$27 - 
-                    dw CODE_0491B3                          ;$28 - 
-                    dw CODE_048EA3                          ;$29 - 
-                    dw CODE_048EA3                          ;$2A - 
-                    dw CODE_048EA3                          ;$2B - 
-                    dw CODE_048EA3                          ;$2C - 
-                    dw CODE_048EA3                          ;$2D - 
-                    dw CODE_048EA3                          ;$2E - 
-                    dw CODE_048EA3                          ;$2F - 
+PNTR_048E43:    dw CODE_048EB5                                  ;$00 - 
+                dw CODE_048EA3                                  ;$01 - 
+                dw CODE_048EA3                                  ;$02 - 
+                dw CODE_048EA3                                  ;$03 - 
+                dw CODE_048EA3                                  ;$04 - 
+                dw CODE_048EA3                                  ;$05 - 
+                dw CODE_048EA3                                  ;$06 - 
+                dw CODE_048EA3                                  ;$07 - 
+                dw CODE_048EBB                                  ;$08 - 
+                dw CODE_048EA5                                  ;$09 - 
+                dw CODE_048EA3                                  ;$0A - 
+                dw CODE_048EA3                                  ;$0B - 
+                dw CODE_048EA3                                  ;$0C - 
+                dw CODE_048EA3                                  ;$0D - 
+                dw CODE_048EA3                                  ;$0E - 
+                dw CODE_048EA3                                  ;$0F - 
+                dw CODE_048F44                                  ;$10 - related to castles at level end/begin?
+                dw CODE_048EA3                                  ;$11 - 
+                dw CODE_048EA3                                  ;$12 - 
+                dw CODE_048EA3                                  ;$13 - 
+                dw CODE_048FD2                                  ;$14 - 
+                dw CODE_048EA3                                  ;$15 - 
+                dw CODE_048EA3                                  ;$16 - 
+                dw CODE_048EA3                                  ;$17 - 
+                dw CODE_04901B                                  ;$18 - Stone Stairs object
+                dw CODE_04903E                                  ;$19 - 
+                dw CODE_04907A                                  ;$1A - 
+                dw CODE_0490A0                                  ;$1B - 
+                dw CODE_0490C2                                  ;$1C - 
+                dw CODE_0490EB                                  ;$1D - 
+                dw CODE_049121                                  ;$1E - 
+                dw CODE_04915C                                  ;$1F - 
+                dw CODE_04917E                                  ;$20 - 
+                dw CODE_048EA3                                  ;$21 - 
+                dw CODE_048EA3                                  ;$22 - 
+                dw CODE_048EA3                                  ;$23 - 
+                dw CODE_048EA3                                  ;$24 - 
+                dw CODE_048EA3                                  ;$25 - 
+                dw CODE_048EA3                                  ;$26 - 
+                dw CODE_048EA3                                  ;$27 - 
+                dw CODE_0491B3                                  ;$28 - 
+                dw CODE_048EA3                                  ;$29 - 
+                dw CODE_048EA3                                  ;$2A - 
+                dw CODE_048EA3                                  ;$2B - 
+                dw CODE_048EA3                                  ;$2C - 
+                dw CODE_048EA3                                  ;$2D - 
+                dw CODE_048EA3                                  ;$2E - 
+                dw CODE_048EA3                                  ;$2F - 
 
 CODE_048EA3:    PLB                     ; $04:8EA3: AB          ;
 CODE_048EA4:    RTL                     ; $04:8EA4: 6B          ;
@@ -1351,21 +1351,21 @@ CODE_048ED0:    JSL CODE_03AD0B         ; $04:8ED0: 22 0B AD 03 ;
 CODE_048ED4:    PLB                     ; $04:8ED4: AB          ;
 CODE_048ED5:    RTL                     ; $04:8ED5: 6B          ;
 
-DATA_048ED6:        db $00,$00,$00,$DF,$C6,$C5,$DE,$00 ;small castle/top of big castle map16 tilemap
-                    db $00,$00,$00,$00,$00,$D4,$DB,$DA
-                    db $D0,$00,$00,$00,$00,$00,$E3,$E2
-                    db $C7,$C4,$E1,$E0,$00,$00,$00,$00
-                    db $D4,$D3,$CD,$CC,$D1,$D0,$00,$00
-                    db $E6,$00,$D9,$D8,$DD,$DC,$D6,$D5
+DATA_048ED6:    db $00,$00,$00,$DF,$C6,$C5,$DE,$00              ;small castle/top of big castle map16 tilemap
+                db $00,$00,$00,$00,$00,$D4,$DB,$DA              ;
+                db $D0,$00,$00,$00,$00,$00,$E3,$E2              ;
+                db $C7,$C4,$E1,$E0,$00,$00,$00,$00              ;
+                db $D4,$D3,$CD,$CC,$D1,$D0,$00,$00              ;
+                db $E6,$00,$D9,$D8,$DD,$DC,$D6,$D5              ;
 
-DATA_048F06:        db $E5,$E4,$CB,$CA,$C9,$C8,$C7,$C4 ;bottom of big castle tilemap.
-                    db $C3,$C2,$C1,$C0,$D4,$D3,$D2,$CD ;first 2 bytes are for the leftmost flag, which
-                    db $CC,$CD,$CC,$D2,$D1,$D0,$D9,$D8 ;belongs to the top.
-                    db $D7,$DD,$DC,$DD,$DC,$D7,$D6,$D5
-                    db $D9,$D8,$D7,$D7,$D7,$D7,$D7,$D7
-                    db $D6,$D5,$D9,$D8,$CF,$CE,$CF,$CE
-                    db $CF,$CE,$D6,$D5,$D9,$D8,$DD,$DC
-                    db $DD,$DC,$DD,$DC,$D6,$D5
+DATA_048F06:    db $E5,$E4,$CB,$CA,$C9,$C8,$C7,$C4              ;bottom of big castle tilemap.
+                db $C3,$C2,$C1,$C0,$D4,$D3,$D2,$CD              ;first 2 bytes are for the leftmost flag, which
+                db $CC,$CD,$CC,$D2,$D1,$D0,$D9,$D8              ;belongs to the top.
+                db $D7,$DD,$DC,$DD,$DC,$D7,$D6,$D5              ;
+                db $D9,$D8,$D7,$D7,$D7,$D7,$D7,$D7              ;
+                db $D6,$D5,$D9,$D8,$CF,$CE,$CF,$CE              ;
+                db $CF,$CE,$D6,$D5,$D9,$D8,$DD,$DC              ;
+                db $DD,$DC,$DD,$DC,$D6,$D5                      ;
 
 CODE_048F44:    JSR CODE_0491C0         ; $04:8F44: 20 C0 91    ;
 CODE_048F47:    STY $07                 ; $04:8F47: 84 07       ;
@@ -1464,11 +1464,11 @@ CODE_049005:    BRA CODE_048FEF         ; $04:9005: 80 E8       ;
 CODE_049007:    PLB                     ; $04:9007: AB          ;
 CODE_049008:    RTL                     ; $04:9008: 6B          ;
 
-DATA_049009:        db $07,$07,$06,$05,$04,$03,$02,$01 ;Y-length of the 'cemented stairs' segments.
-                    db $00                             ;1 byte more means 1 additional block down
+DATA_049009:    db $07,$07,$06,$05,$04,$03,$02,$01              ;Y-length of the 'cemented stairs' segments.
+                db $00                                          ;1 byte more means 1 additional block down
 
-DATA_049012:        db $03,$03,$04,$05,$06,$07,$08,$09 ;Y-PLACEMENT of the cemented stair blocks relative from the top
-                    db $0A                             ;1 Byte more means 16 pixels lower
+DATA_049012:    db $03,$03,$04,$05,$06,$07,$08,$09              ;Y-PLACEMENT of the cemented stair blocks relative from the top
+                db $0A                                          ;1 Byte more means 16 pixels lower
 
 ;Stone Stairs object
 CODE_04901B:    JSR CODE_0491C0         ; $04:901B: 20 C0 91    ;
@@ -1639,11 +1639,11 @@ CODE_04916E:    BPL CODE_049165         ; $04:916E: 10 F5       ;
 CODE_049170:    PLB                     ; $04:9170: AB          ;
 CODE_049171:    RTL                     ; $04:9171: 6B          ;
 
-DATA_049172:        db $19,$18,$00,$00                      ;
+DATA_049172:    db $19,$18,$00,$00                              ;
 
-DATA_049176:        db $19,$22,$21,$20                      ; > Level X-2 'go to the surface' pipe tilemap
+DATA_049176:    db $19,$22,$21,$20                              ; > Level X-2 'go to the surface' pipe tilemap
 
-DATA_04917A:        db $19,$25,$24,$23                      ;
+DATA_04917A:    db $19,$25,$24,$23                              ;
 
 CODE_04917E:    LDY #$03                ; $04:917E: A0 03       ;
 CODE_049180:    JSL CODE_03AD13         ; $04:9180: 22 13 AD 03 ;
@@ -1775,21 +1775,21 @@ CODE_04927B:    PLX                     ; $04:927B: FA          ;
 CODE_04927C:    PLB                     ; $04:927C: AB          ;
 CODE_04927D:    RTL                     ; $04:927D: 6B          ;
 
-DATA_04927E:        db $68,$04,$14,$05,$1A,$0D,$70,$06
-                    db $76,$00,$00,$00,$18,$0B,$70,$06
-                    db $02,$0F,$02,$0F,$9C,$0B,$70,$06
-                    db $68,$04,$14,$05,$E0,$08,$70,$06
-                    db $82,$01,$82,$01,$1A,$0D,$70,$06
-                    db $68,$04,$68,$04,$9C,$0B,$70,$06
-                    db $82,$01,$00,$00,$18,$0B,$70,$06
-                    db $68,$04,$82,$01,$C6,$02,$56,$07
-                    db $00,$01,$02,$03,$01,$01,$01,$01
-                    db $01
+DATA_04927E:    db $68,$04,$14,$05,$1A,$0D,$70,$06              ;
+                db $76,$00,$00,$00,$18,$0B,$70,$06              ;
+                db $02,$0F,$02,$0F,$9C,$0B,$70,$06              ;
+                db $68,$04,$14,$05,$E0,$08,$70,$06              ;
+                db $82,$01,$82,$01,$1A,$0D,$70,$06              ;
+                db $68,$04,$68,$04,$9C,$0B,$70,$06              ;
+                db $82,$01,$00,$00,$18,$0B,$70,$06              ;
+                db $68,$04,$82,$01,$C6,$02,$56,$07              ;
+                db $00,$01,$02,$03,$01,$01,$01,$01              ;
+                db $01                                          ;
 
-DATA_0492C7:        db $02,$03,$0E,$06,$05,$08,$10,$06
-                    db $27,$27,$27,$06,$02,$03,$0D,$06
-                    db $05,$05,$0E,$06,$2B,$2B,$2B,$06
-                    db $05,$08,$10,$06,$02,$05,$0C,$04
+DATA_0492C7:    db $02,$03,$0E,$06,$05,$08,$10,$06              ;
+                db $27,$27,$27,$06,$02,$03,$0D,$06              ;
+                db $05,$05,$0E,$06,$2B,$2B,$2B,$06              ;
+                db $05,$08,$10,$06,$02,$05,$0C,$04              ;
 
 CODE_0492E7:    PHB                     ; $04:92E7: 8B          ;
 CODE_0492E8:    PHK                     ; $04:92E8: 4B          ;
@@ -2057,7 +2057,7 @@ CODE_04955D:    JSR CODE_049BBC         ; $04:955D: 20 BC 9B    ;
 CODE_049560:    JSR CODE_049BBC         ; $04:9560: 20 BC 9B    ;
 CODE_049563:    RTS                     ; $04:9563: 60          ;
 
-DATA_049564:        db $F8,$00,$20,$F8,$F0,$20,$00          ;indirect hdma table. points to ram 7F2000 and beyond in continuous mode
+DATA_049564:    db $F8,$00,$20,$F8,$F0,$20,$00                  ;indirect hdma table. points to ram 7F2000 and beyond in continuous mode
 
 CODE_04956B:    PHB                     ; $04:956B: 8B          ;
 CODE_04956C:    PHK                     ; $04:956C: 4B          ;
@@ -2187,10 +2187,10 @@ CODE_049672:    CPY #$0020              ; $04:9672: C0 20 00    ;
 CODE_049675:    BNE CODE_049668         ; $04:9675: D0 F1       ;
 CODE_049677:    BRA CODE_049699         ; $04:9677: 80 20       ;
 
-DATA_049679:        dw $772F,$7FFF,$14A5,$57F0              ;\
-                    dw $0340,$0200,$46BF,$365D              ; |Bonus room Luigi background palette
-                    dw $25BB,$04EF,$0D73,$4F7F              ; |
-                    dw $7F0F,$4E06,$001E,$0012              ;/
+DATA_049679:    dw $772F,$7FFF,$14A5,$57F0                      ;\
+                dw $0340,$0200,$46BF,$365D                      ; |Bonus room Luigi background palette
+                dw $25BB,$04EF,$0D73,$4F7F                      ; |
+                dw $7F0F,$4E06,$001E,$0012                      ;/
 
 CODE_049699:    LDA $42                 ; $04:9699: A5 42       ;
 CODE_04969B:    LSR A                   ; $04:969B: 4A          ;
@@ -2349,97 +2349,97 @@ CODE_0497C9:    SEP #$30                ; $04:97C9: E2 30       ;
 CODE_0497CB:    PLB                     ; $04:97CB: AB          ;
 CODE_0497CC:    RTS                     ; $04:97CC: 60          ;
 
-DATA_0497CD:        dw $0100,$0302,$1004,$1211
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$1004,$1211
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$031B,$3904,$1211
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$3604,$3706
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$0504,$2E06
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$0504,$0706
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$3604,$3706
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$4135,$3604,$3706
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$0504,$0731
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$0504,$3806
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$3A04,$3B06
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$0504,$2B06
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$0504,$0706
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$4034,$3D04,$2D06
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$1904,$1A06
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0326,$0528,$2A29
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$3604,$3706
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$3604,$3706
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$2726,$0528,$2A29
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$0504,$0706
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$4034,$3D04,$2D06
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$0504,$3C06
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$4135,$3D04,$2D06
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$0302,$1904,$1A06
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$4135,$3604,$3706
-                    dw $0908,$0B0A,$0D0C,$0F0E
-                    dw $0100,$1413,$1504,$1606
-                    dw $1708,$0B0A,$180C,$0F0E
-                    dw $0100,$1413,$1504,$1606
-                    dw $1708,$0B0A,$180C,$0F0E
-                    dw $0100,$1413,$1904,$1A06
-                    dw $1708,$0B0A,$180C,$0F0E
-                    dw $0100,$1C1B,$1D04,$1F1E
-                    dw $2008,$0B0A,$210C,$0F0E
-                    dw $0100,$1C1B,$1D04,$1F1E
-                    dw $2008,$0B0A,$210C,$0F0E
-                    dw $0100,$1C1B,$1D04,$1F1E
-                    dw $2008,$0B0A,$210C,$0F0E
-                    dw $0100,$1C1B,$1D04,$1F1E
-                    dw $2008,$0B0A,$210C,$0F0E
-                    dw $0100,$1C1B,$1D04,$1F1E
-                    dw $2008,$0B0A,$210C,$0F0E
-                    dw $0100,$1C1B,$2F04,$301E
-                    dw $2008,$0B0A,$210C,$0F0E
+DATA_0497CD:    dw $0100,$0302,$1004,$1211                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$1004,$1211                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$031B,$3904,$1211                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$3604,$3706                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$0504,$2E06                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$0504,$0706                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$3604,$3706                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$4135,$3604,$3706                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$0504,$0731                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$0504,$3806                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$3A04,$3B06                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$0504,$2B06                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$0504,$0706                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$4034,$3D04,$2D06                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$1904,$1A06                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0326,$0528,$2A29                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$3604,$3706                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$3604,$3706                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$2726,$0528,$2A29                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$0504,$0706                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$4034,$3D04,$2D06                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$0504,$3C06                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$4135,$3D04,$2D06                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$0302,$1904,$1A06                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$4135,$3604,$3706                      ;
+                dw $0908,$0B0A,$0D0C,$0F0E                      ;
+                dw $0100,$1413,$1504,$1606                      ;
+                dw $1708,$0B0A,$180C,$0F0E                      ;
+                dw $0100,$1413,$1504,$1606                      ;
+                dw $1708,$0B0A,$180C,$0F0E                      ;
+                dw $0100,$1413,$1904,$1A06                      ;
+                dw $1708,$0B0A,$180C,$0F0E                      ;
+                dw $0100,$1C1B,$1D04,$1F1E                      ;
+                dw $2008,$0B0A,$210C,$0F0E                      ;
+                dw $0100,$1C1B,$1D04,$1F1E                      ;
+                dw $2008,$0B0A,$210C,$0F0E                      ;
+                dw $0100,$1C1B,$1D04,$1F1E                      ;
+                dw $2008,$0B0A,$210C,$0F0E                      ;
+                dw $0100,$1C1B,$1D04,$1F1E                      ;
+                dw $2008,$0B0A,$210C,$0F0E                      ;
+                dw $0100,$1C1B,$1D04,$1F1E                      ;
+                dw $2008,$0B0A,$210C,$0F0E                      ;
+                dw $0100,$1C1B,$2F04,$301E                      ;
+                dw $2008,$0B0A,$210C,$0F0E                      ;
 
-DATA_0499ED:        dw $7FF8,$7FF8,$0000,$0000             ;Background colors, indexed by 0744 or BA
-                    dw $3908,$7FF8,$3908,$3908             ;Light blue x2, black, indigo, light blue, indigo * 2
+DATA_0499ED:    dw $7FF8,$7FF8,$0000,$0000                      ;Background colors, indexed by 0744 or BA
+                dw $3908,$7FF8,$3908,$3908                      ;Light blue x2, black, indigo, light blue, indigo * 2
 
-DATA_0499FD:        dw $0000,$7FFF,$0C63,$0155             ;Mario palette
-                    dw $1A1C,$1B3E,$2D9C,$3ABF
-                    dw $0000,$152F,$0014,$0C19
-                    dw $1C9F,$762E,$5D68,$44E6
+DATA_0499FD:    dw $0000,$7FFF,$0C63,$0155                      ;Mario palette
+                dw $1A1C,$1B3E,$2D9C,$3ABF                      ;
+                dw $0000,$152F,$0014,$0C19                      ;
+                dw $1C9F,$762E,$5D68,$44E6                      ;
 
-                    dw $0000,$7FFF,$0C63,$0155             ;Luigi palette
-                    dw $1A1C,$1B3E,$2D9C,$3ABF
-                    dw $0000,$152F,$1E60,$3304
-                    dw $4388,$7655,$7190,$58CA
+                dw $0000,$7FFF,$0C63,$0155                      ;Luigi palette
+                dw $1A1C,$1B3E,$2D9C,$3ABF                      ;
+                dw $0000,$152F,$1E60,$3304                      ;
+                dw $4388,$7655,$7190,$58CA                      ;
 
-                    dw $0000,$7FFF,$0C63,$0155             ;Fire Mario palette
-                    dw $1A1C,$1B3E,$2D9C,$3ABF
-                    dw $0000,$152F,$3ED9,$4F5D
-                    dw $639F,$0D9F,$001D,$0015
+                dw $0000,$7FFF,$0C63,$0155                      ;Fire Mario palette
+                dw $1A1C,$1B3E,$2D9C,$3ABF                      ;
+                dw $0000,$152F,$3ED9,$4F5D                      ;
+                dw $639F,$0D9F,$001D,$0015                      ;
 
-                    dw $0000,$7FFF,$0C63,$0155             ;Fire Luigi palette
-                    dw $1A1C,$1B3E,$2D9C,$3ABF
-                    dw $0000,$152F,$3ED9,$4F5D
-                    dw $639F,$0352,$02AD,$0208
+                dw $0000,$7FFF,$0C63,$0155                      ;Fire Luigi palette
+                dw $1A1C,$1B3E,$2D9C,$3ABF                      ;
+                dw $0000,$152F,$3ED9,$4F5D                      ;
+                dw $639F,$0352,$02AD,$0208                      ;
 
 CODE_049A7D:    LDA $0E22               ; $04:9A7D: AD 22 0E    ;
 CODE_049A80:    BEQ CODE_049A85         ; $04:9A80: F0 03       ;
@@ -2677,1167 +2677,1167 @@ CODE_049C4F:    LDA #$01                ; $04:9C4F: A9 01       ;
 CODE_049C51:    STA $0EF9               ; $04:9C51: 8D F9 0E    ;
 CODE_049C54:    RTS                     ; $04:9C54: 60          ;
 
-DATA_049C55:        dw $8D0A,$0B00,$0024,$0024
-                    dw $1E45,$1E46,$1E47,$0024
-                    dw $AD0A,$0B00,$1E4A,$1E4B
-                    dw $1E48,$1E49,$1E59,$0024
-                    dw $CD0A,$0B00,$1E5A,$1E5B
-                    dw $1E69,$1E6A,$1E6F,$0024
-                    dw $ED0A,$0B00,$0024,$1E6B
-                    dw $1E4C,$1E4D,$1E4E,$1E4F
-                    dw $0D0B,$0B00,$0024,$0024
-                    dw $1E5C,$1E5D,$1E5E,$1E5F
-                    dw $2D0B,$0B00,$0024,$1E7A
-                    dw $1E6C,$1E6D,$1E6E,$0024
-                    dw $4D0B,$0B00,$0024,$1E7B
-                    dw $1E7C,$1E7D,$1E7E,$0024
-                    dw $FFFF
+DATA_049C55:    dw $8D0A,$0B00,$0024,$0024                      ;
+                dw $1E45,$1E46,$1E47,$0024                      ;
+                dw $AD0A,$0B00,$1E4A,$1E4B                      ;
+                dw $1E48,$1E49,$1E59,$0024                      ;
+                dw $CD0A,$0B00,$1E5A,$1E5B                      ;
+                dw $1E69,$1E6A,$1E6F,$0024                      ;
+                dw $ED0A,$0B00,$0024,$1E6B                      ;
+                dw $1E4C,$1E4D,$1E4E,$1E4F                      ;
+                dw $0D0B,$0B00,$0024,$0024                      ;
+                dw $1E5C,$1E5D,$1E5E,$1E5F                      ;
+                dw $2D0B,$0B00,$0024,$1E7A                      ;
+                dw $1E6C,$1E6D,$1E6E,$0024                      ;
+                dw $4D0B,$0B00,$0024,$1E7B                      ;
+                dw $1E7C,$1E7D,$1E7E,$0024                      ;
+                dw $FFFF                                        ;
 
-DATA_049CC7:        dw $4D0A,$0B00,$0024,$1680
-                    dw $1681,$1682,$0024,$0024
-                    dw $6D0A,$0B00,$0024,$1683
-                    dw $1684,$1685,$0024,$0024
-                    dw $8D0A,$0B00,$0024,$1686
-                    dw $1687,$1688,$0024,$0024
-                    dw $AD0A,$0B00,$0024,$1689
-                    dw $168A,$168B,$168C,$0024
-                    dw $CD0A,$0B00,$0024,$168D
-                    dw $168E,$168F,$1690,$0024
-                    dw $ED0A,$0B00,$1691,$1692
-                    dw $1693,$1694,$1695,$0024
-                    dw $0D0B,$0B00,$1696,$1697
-                    dw $1698,$1699,$0024,$0024
-                    dw $2D0B,$0B00,$0024,$169A
-                    dw $169B,$169C,$0024,$0024
-                    dw $4D0B,$0B00,$0024,$169D
-                    dw $169E,$169F,$16A0,$0024
-                    dw $FFFF
+DATA_049CC7:    dw $4D0A,$0B00,$0024,$1680                      ;
+                dw $1681,$1682,$0024,$0024                      ;
+                dw $6D0A,$0B00,$0024,$1683                      ;
+                dw $1684,$1685,$0024,$0024                      ;
+                dw $8D0A,$0B00,$0024,$1686                      ;
+                dw $1687,$1688,$0024,$0024                      ;
+                dw $AD0A,$0B00,$0024,$1689                      ;
+                dw $168A,$168B,$168C,$0024                      ;
+                dw $CD0A,$0B00,$0024,$168D                      ;
+                dw $168E,$168F,$1690,$0024                      ;
+                dw $ED0A,$0B00,$1691,$1692                      ;
+                dw $1693,$1694,$1695,$0024                      ;
+                dw $0D0B,$0B00,$1696,$1697                      ;
+                dw $1698,$1699,$0024,$0024                      ;
+                dw $2D0B,$0B00,$0024,$169A                      ;
+                dw $169B,$169C,$0024,$0024                      ;
+                dw $4D0B,$0B00,$0024,$169D                      ;
+                dw $169E,$169F,$16A0,$0024                      ;
+                dw $FFFF                                        ;
 
-DATA_049D59:        dw $F30A,$0900,$1A40,$1A41
-                    dw $1A42,$1A43,$1A44,$130B
-                    dw $1100,$1A50,$1A51,$1A52
-                    dw $1A53,$1A54,$1A55,$1A56
-                    dw $1A57,$1A58,$330B,$1100
-                    dw $1A60,$1A61,$1A62,$1A63
-                    dw $1A64,$1A65,$1A66,$1A67
-                    dw $1A68,$530B,$1300,$1A70
-                    dw $1A71,$1A72,$1A73,$1A74
-                    dw $1A75,$1A76,$1A77,$1A78
-                    dw $1A79,$FFFF
+DATA_049D59:    dw $F30A,$0900,$1A40,$1A41                      ;
+                dw $1A42,$1A43,$1A44,$130B                      ;
+                dw $1100,$1A50,$1A51,$1A52                      ;
+                dw $1A53,$1A54,$1A55,$1A56                      ;
+                dw $1A57,$1A58,$330B,$1100                      ;
+                dw $1A60,$1A61,$1A62,$1A63                      ;
+                dw $1A64,$1A65,$1A66,$1A67                      ;
+                dw $1A68,$530B,$1300,$1A70                      ;
+                dw $1A71,$1A72,$1A73,$1A74                      ;
+                dw $1A75,$1A76,$1A77,$1A78                      ;
+                dw $1A79,$FFFF                                  ;
 
-DATA_049DAD:        dw $C801,$1E40,$0024,$E801
-                    dw $1E40,$0024,$0802,$1E40
-                    dw $0024,$2802,$1E40,$0024
-                    dw $4802,$1E40,$0024,$6802
-                    dw $1E40,$0024,$8802,$1E40
-                    dw $0024,$A802,$1E40,$0024
-                    dw $C802,$1E40,$0024,$E802
-                    dw $1E40,$0024,$FFFF
+DATA_049DAD:    dw $C801,$1E40,$0024,$E801                      ;
+                dw $1E40,$0024,$0802,$1E40                      ;
+                dw $0024,$2802,$1E40,$0024                      ;
+                dw $4802,$1E40,$0024,$6802                      ;
+                dw $1E40,$0024,$8802,$1E40                      ;
+                dw $0024,$A802,$1E40,$0024                      ;
+                dw $C802,$1E40,$0024,$E802                      ;
+                dw $1E40,$0024,$FFFF                            ;
 
-DATA_049DEB:        dw $E801,$1F00,$18EC,$18ED
-                    dw $18EE,$18EF,$18EC,$18ED
-                    dw $18EE,$18EF,$18EC,$18ED
-                    dw $18EE,$18EF,$18EC,$18ED
-                    dw $18EE,$18EF,$4C02,$0B80
-                    dw $1D4A,$1D5A,$1D4A,$1D5A
-                    dw $1082,$1084,$4D02,$0B80
-                    dw $1D4B,$1D5B,$1D4B,$1D5B
-                    dw $1083,$1085,$080A,$1E40
-                    dw $1900,$280A,$1E40,$1900
-                    dw $480A,$1E40,$1901,$680A
-                    dw $1E40,$1901,$880A,$1E40
-                    dw $1901,$A80A,$1E40,$1901
-                    dw $C80A,$1E40,$1901,$E80A
-                    dw $1E40,$1901,$FFFF,$CA09
-                    dw $0900,$1DDF,$1DC3,$1DC0
-                    dw $1DC1,$1DCA,$EA09,$0B00
-                    dw $1DDC,$1DD3,$1DD0,$1DD1
-                    dw $1DDA,$1DDB,$090A,$0D00
-                    dw $1DDD,$1DE2,$1DE3,$1DE0
-                    dw $1DE1,$1DE2,$1DF8,$290A
-                    dw $0D00,$1DDE,$1DF2,$1DF3
-                    dw $1DF0,$1DF1,$1DF2,$1DF3
-                    dw $490A,$1B00,$1DE9,$1DC6
-                    dw $1DC7,$1DC4,$1DC5,$1DC6
-                    dw $1DC7,$1DE8,$0024,$0024
-                    dw $1DE9,$1DEA,$1DEB,$1DE8
-                    dw $690A,$1B00,$1DF9,$1DD6
-                    dw $1DD7,$1DD4,$1DD5,$1DD6
-                    dw $1DD7,$1DF8,$0024,$0024
-                    dw $1DF9,$1DFA,$1DFB,$1DF8
-                    dw $890A,$1B00,$1DE5,$1DE6
-                    dw $1DE7,$1DE4,$1DE5,$1DE6
-                    dw $1DE7,$1DE4,$0024,$0024
-                    dw $1DE5,$1DE6,$1DE7,$1DE4
-                    dw $A90A,$1B00,$1DF5,$1DF6
-                    dw $1DF7,$1DF4,$1DF5,$1DF6
-                    dw $1DF7,$1DF4,$0024,$0024
-                    dw $1DF5,$1DF6,$1DF7,$1DF4
-                    dw $C802,$1F00,$0A08,$0A09
-                    dw $0A08,$0A09,$0A08,$0A09
-                    dw $0A08,$0A09,$0A08,$0A09
-                    dw $0A08,$0A09,$0A08,$0A09
-                    dw $0A08,$0A09,$E802,$1F00
-                    dw $0A18,$0A19,$0A18,$0A19
-                    dw $0A18,$0A19,$0A18,$0A19
-                    dw $0A18,$0A19,$0A18,$0A19
-                    dw $0A18,$0A19,$0A18,$0A19
-                    dw $FFFF,$CA09,$0900,$1DDF
-                    dw $1DC3,$1DC0,$1DC1,$1DCA
-                    dw $EA09,$0B00,$1DDC,$1DD3
-                    dw $1DD0,$1DD1,$1DDA,$1DDB
-                    dw $090A,$0D00,$1DDD,$1DE2
-                    dw $1DE3,$1DE0,$1DE1,$1DE2
-                    dw $1DF8,$290A,$0D00,$1DDE
-                    dw $1DF2,$1DF3,$1DF0,$1DF1
-                    dw $1DF2,$1DF3,$490A,$1B00
-                    dw $1DE9,$1DC6,$1DC7,$1DC4
-                    dw $1DC5,$1DC6,$1DC7,$1DE8
-                    dw $0024,$0024,$1DE9,$1DEA
-                    dw $1DEB,$1DE8,$690A,$1B00
-                    dw $1DF9,$1DD6,$1DD7,$1DD4
-                    dw $1DD5,$1DD6,$1DD7,$1DF8
-                    dw $0024,$0024,$1DF9,$1DFA
-                    dw $1DFB,$1DF8,$890A,$1B00
-                    dw $1DE5,$1DE6,$1DE7,$1DE4
-                    dw $1DE5,$1DE6,$1DE7,$1DE4
-                    dw $0024,$0024,$1DE5,$1DE6
-                    dw $1DE7,$1DE4,$A90A,$1B00
-                    dw $1DF5,$1DF6,$1DF7,$1DF4
-                    dw $1DF5,$1DF6,$1DF7,$1DF4
-                    dw $0024,$0024,$1DF5,$1DF6
-                    dw $1DF7,$1DF4,$0A02,$0B80
-                    dw $08B8,$08BA,$08BA,$08BC
-                    dw $0CBE,$0CBE,$0B02,$0B80
-                    dw $08B9,$08BB,$08BB,$08BD
-                    dw $0CBF,$0CBF,$9202,$0700
-                    dw $1214,$1215,$1214,$1215
-                    dw $B202,$0700,$1216,$1217
-                    dw $1216,$1217,$C802,$1F00
-                    dw $0A08,$0A09,$0A08,$0A09
-                    dw $0A08,$0A09,$0A08,$0A09
-                    dw $0A08,$0A09,$0A08,$0A09
-                    dw $0A08,$0A09,$0A08,$0A09
-                    dw $E802,$1F00,$0A18,$0A19
-                    dw $0A18,$0A19,$0A18,$0A19
-                    dw $0A18,$0A19,$0A18,$0A19
-                    dw $0A18,$0A19,$0A18,$0A19
-                    dw $0A18,$0A19,$FFFF,$C809
-                    dw $1F00,$1DC2,$1DC3,$1DC0
-                    dw $1DC1,$1DC2,$1DC3,$1DC0
-                    dw $1DC1,$1DC2,$1DC3,$1DC0
-                    dw $1DC1,$1DC2,$1DC3,$1DC0
-                    dw $1DC1,$E809,$1F00,$1DD2
-                    dw $1DD3,$1DD0,$1DD1,$1DD2
-                    dw $1DD3,$1DD0,$1DD1,$1DD2
-                    dw $1DD3,$1DD0,$1DD1,$1DD2
-                    dw $1DD3,$1DD0,$1DD1,$080A
-                    dw $1F00,$1DE2,$1DE1,$1DE2
-                    dw $1DE1,$1DE2,$1DE1,$1DE2
-                    dw $1DE1,$1DE2,$1DE1,$1DE2
-                    dw $1DE1,$1DE2,$1DE1,$1DE2
-                    dw $1DE1,$280A,$1F00,$1DD2
-                    dw $1DD1,$1DE4,$1DE5,$1DD2
-                    dw $1D82,$1D83,$1D84,$1D85
-                    dw $1D80,$1D81,$1DD1,$1DE4
-                    dw $1DE5,$1DD2,$1DD1,$480A
-                    dw $1F00,$1DE2,$1DE1,$1DF4
-                    dw $1DF5,$1DE2,$1DDC,$1DDD
-                    dw $1DDE,$1DDF,$1D90,$1D91
-                    dw $1DE1,$1DF4,$1DF5,$1DE2
-                    dw $1DE1,$680A,$1F00,$1DD2
-                    dw $1DD1,$1DD8,$1DE8,$1DD2
-                    dw $1DEC,$1DED,$1DEE,$1DEF
-                    dw $1DA0,$1DA1,$1DD1,$1DD8
-                    dw $1DE8,$1DD2,$1DD1,$880A
-                    dw $1F00,$1DE2,$1DE1,$1DE2
-                    dw $1DE1,$1DE2,$1DFC,$1DFD
-                    dw $1DFE,$1DFF,$1DB0,$1DB1
-                    dw $1DE1,$1DE2,$1DE1,$1DE2
-                    dw $1DE1,$A80A,$1F00,$1DF0
-                    dw $1DF1,$1DF2,$1DF3,$1DF0
-                    dw $1DF1,$1DF2,$1DF3,$1DF0
-                    dw $1DF1,$1DF2,$1DF3,$1DF0
-                    dw $1DF1,$1DF2,$1DF3,$0A02
-                    dw $0B80,$08B8,$08BA,$08BA
-                    dw $08BC,$0CBE,$0CBE,$0B02
-                    dw $0B80,$08B9,$08BB,$08BB
-                    dw $08BD,$0CBF,$0CBF,$9202
-                    dw $0700,$1214,$1215,$1214
-                    dw $1215,$B202,$0700,$1216
-                    dw $1217,$1216,$1217,$C802
-                    dw $1F00,$0A08,$0A09,$0A08
-                    dw $0A09,$0A08,$0A09,$0A08
-                    dw $0A09,$0A08,$0A09,$0A08
-                    dw $0A09,$0A08,$0A09,$0A08
-                    dw $0A09,$E802,$1F00,$0A18
-                    dw $0A19,$0A18,$0A19,$0A18
-                    dw $0A19,$0A18,$0A19,$0A18
-                    dw $0A19,$0A18,$0A19,$0A18
-                    dw $0A19,$0A18,$0A19,$FFFF
-                    dw $EB01,$0300,$10D6,$10D7
-                    dw $0A02,$0700,$10D8,$10D9
-                    dw $10DA,$10DB,$2A02,$0700
-                    dw $10DC,$10DD,$10DE,$10DF
-                    dw $5302,$0700,$1501,$1502
-                    dw $1503,$1504,$7202,$0B00
-                    dw $1510,$1511,$150A,$1505
-                    dw $1514,$1515,$9102,$0D00
-                    dw $1506,$1516,$150A,$1512
-                    dw $150A,$150A,$150D,$B002
-                    dw $0F00,$1506,$1516,$150A
-                    dw $150A,$9512,$1519,$150A
-                    dw $151D,$C802,$1F00,$0A08
-                    dw $0A09,$0A08,$0A09,$0A08
-                    dw $0A09,$0A08,$0A09,$0A08
-                    dw $0A09,$0A08,$0A09,$0A08
-                    dw $0A09,$0A08,$0A09,$E802
-                    dw $1F00,$0A18,$0A19,$0A18
-                    dw $0A19,$0A18,$0A19,$0A18
-                    dw $0A19,$0A18,$0A19,$0A18
-                    dw $0A19,$0A18,$0A19,$0A18
-                    dw $0A19,$FFFF,$C801,$1E40
-                    dw $0C47,$CD01,$0700,$0868
-                    dw $0869,$0897,$086A,$E801
-                    dw $0D80,$0C45,$0C47,$0C45
-                    dw $0C47,$0C45,$0C47,$0C45
-                    dw $E901,$1D00,$1D32,$1D33
-                    dw $1D30,$1D31,$8864,$8865
-                    dw $8866,$8867,$1D32,$1D33
-                    dw $1D30,$1D31,$1D32,$1D33
-                    dw $1D30,$0902,$1D00,$1D02
-                    dw $1D03,$1D00,$1D01,$8860
-                    dw $8861,$8862,$8863,$1D02
-                    dw $1D03,$1D48,$1D49,$1D4A
-                    dw $1D4B,$1D00,$2902,$1D00
-                    dw $153A,$1D13,$1D10,$1D11
-                    dw $1D12,$1D13,$1D10,$1D11
-                    dw $1D12,$1D13,$1D58,$1D59
-                    dw $1D5A,$1D5B,$1D10,$4902
-                    dw $1D00,$1D22,$1D23,$1D20
-                    dw $1D21,$1D22,$1D23,$1D20
-                    dw $1D21,$1D22,$1D23,$1D68
-                    dw $1D69,$1D6A,$1D6B,$1D20
-                    dw $6902,$1D00,$1D32,$1D33
-                    dw $151D,$151D,$1D32,$1D33
-                    dw $1D30,$1D31,$1D32,$1D33
-                    dw $1D78,$1D79,$1D7A,$1D7B
-                    dw $1D30,$8902,$1D00,$1D02
-                    dw $1D03,$1528,$1529,$1D02
-                    dw $1D03,$1D00,$1D01,$1D02
-                    dw $1D03,$1D00,$1D01,$1D02
-                    dw $1D03,$1D00,$A902,$1D00
-                    dw $1D12,$1D13,$1D10,$1D11
-                    dw $1D12,$1D13,$1D10,$1D11
-                    dw $1D12,$1D13,$1D10,$1D11
-                    dw $1D12,$1D13,$1D10,$C802
-                    dw $1F00,$0A08,$0A09,$0A08
-                    dw $0A09,$0A08,$0A09,$0A08
-                    dw $0A09,$0A08,$0A09,$0A08
-                    dw $0A09,$0A08,$0A09,$0A08
-                    dw $0A09,$E802,$1F00,$0A18
-                    dw $0A19,$0A18,$0A19,$0A18
-                    dw $0A19,$0A18,$0A19,$0A18
-                    dw $0A19,$0A18,$0A19,$0A18
-                    dw $0A19,$0A18,$0A19,$FFFF
-                    dw $C801,$1F00,$09E6,$09E7
-                    dw $09E8,$09E9,$09E6,$09E7
-                    dw $09E8,$09E9,$09E6,$09E7
-                    dw $09E8,$09E9,$09E6,$09E7
-                    dw $09E8,$09E9,$E801,$1F00
-                    dw $09F6,$09F7,$09F8,$09F9
-                    dw $09F6,$09F7,$09F8,$09F9
-                    dw $09F6,$09F7,$09F8,$09F9
-                    dw $09F6,$09F7,$09F8,$09F9
-                    dw $080A,$1E40,$1534,$280A
-                    dw $1E40,$1534,$480A,$1E40
-                    dw $1534,$680A,$1E40,$1534
-                    dw $880A,$1E40,$1534,$A80A
-                    dw $1E40,$1534,$CB0A,$1840
-                    dw $1534,$EB0A,$0E40,$1534
-                    dw $0B0A,$0EC0,$1536,$0C0A
-                    dw $0EC0,$1537,$0D0A,$0EC0
-                    dw $1528,$130A,$0CC0,$1536
-                    dw $140A,$0CC0,$1537,$150A
-                    dw $0CC0,$1528,$C802,$1F00
-                    dw $09CA,$09CB,$09CA,$09C3
-                    dw $0024,$0024,$0024,$0024
-                    dw $09C0,$09CB,$09CA,$09C3
-                    dw $189B,$189C,$189B,$189C
-                    dw $E802,$1F00,$09DA,$09DB
-                    dw $09DA,$09D3,$18E0,$18E1
-                    dw $18E0,$18E1,$09D0,$09DB
-                    dw $09DA,$09D3,$189D,$189E
-                    dw $189D,$189E,$FFFF,$C809
-                    dw $1E40,$1534,$E809,$1E40
-                    dw $1534,$080A,$1E40,$1534
-                    dw $280A,$1E40,$1534,$480A
-                    dw $1E40,$1534,$680A,$1E40
-                    dw $1534,$880A,$1E40,$1534
-                    dw $A80A,$1E40,$1534,$CB0A
-                    dw $1840,$1534,$EB0A,$0E40
-                    dw $1534,$CE09,$09C0,$1536
-                    dw $CF09,$09C0,$1537,$6E0A
-                    dw $0300,$9526,$9527,$8D0A
-                    dw $0700,$9524,$9516,$9517
-                    dw $9518,$AD0A,$0700,$1532
-                    dw $1522,$1522,$1523,$D209
-                    dw $0B00,$1DA8,$1DA9,$1D8A
-                    dw $1D8B,$5DA9,$1DAC,$F209
-                    dw $0B00,$1DA8,$1DB9,$1DB9
-                    dw $1DB9,$1DBA,$1DAC,$120A
-                    dw $0B00,$1DA8,$1D89,$1D8A
-                    dw $1D8B,$5D89,$1D9C,$320A
-                    dw $0B00,$1DA8,$1D99,$1D9A
-                    dw $1D9B,$5D99,$1DAC,$520A
-                    dw $0B00,$1DA8,$1DA9,$1D8A
-                    dw $1D8B,$5DA9,$1DAC,$720A
-                    dw $0B00,$1DB8,$1DB9,$1DB9
-                    dw $1DB9,$1DB9,$1DBA,$E909
-                    dw $0700,$1DB0,$1DB1,$5DB1
-                    dw $5DB0,$090A,$0700,$1DB2
-                    dw $1CE8,$1CE9,$5DB2,$290A
-                    dw $0700,$1DB3,$1CEA,$1CEB
-                    dw $5DB3,$490A,$0700,$1D34
-                    dw $1D8E,$1D8F,$1D34,$C80A
-                    dw $1F00,$1510,$1511,$1510
-                    dw $1511,$1510,$1511,$1510
-                    dw $1511,$1510,$1511,$1510
-                    dw $1511,$1510,$1511,$1510
-                    dw $1511,$E80A,$1F00,$1520
-                    dw $1521,$1520,$1521,$1520
-                    dw $1521,$1520,$1521,$1520
-                    dw $1521,$1520,$1521,$1520
-                    dw $1521,$1520,$1521,$C802
-                    dw $1F00,$09CA,$09CB,$09CA
-                    dw $09C3,$0024,$0024,$0024
-                    dw $0024,$09C0,$09CB,$09CA
-                    dw $09C3,$189B,$189C,$189B
-                    dw $189C,$E802,$1F00,$09DA
-                    dw $09DB,$09DA,$09D3,$18E0
-                    dw $18E1,$18E0,$18E1,$09D0
-                    dw $09DB,$09DA,$09D3,$189D
-                    dw $189E,$189D,$189E,$FFFF
-                    dw $0802,$0B00,$186B,$182C
-                    dw $186C,$186D,$186E,$186F
-                    dw $2802,$0B00,$1870,$182D
-                    dw $1871,$1872,$1873,$1874
-                    dw $4A02,$0300,$1875,$1876
-                    dw $6A02,$09C0,$189F,$6B02
-                    dw $09C0,$589F,$5002,$0B00
-                    dw $186B,$182C,$186C,$186D
-                    dw $186E,$186F,$7002,$0B00
-                    dw $1870,$182D,$1871,$1872
-                    dw $1873,$1874,$9202,$0300
-                    dw $1875,$1876,$B202,$0300
-                    dw $189F,$589F,$C802,$1F00
-                    dw $186B,$182C,$186C,$186D
-                    dw $186E,$182C,$186C,$186D
-                    dw $186E,$182C,$186C,$186D
-                    dw $186E,$182C,$186C,$186F
-                    dw $E802,$1F00,$1870,$182D
-                    dw $1871,$1872,$1873,$182D
-                    dw $1871,$1872,$1873,$182D
-                    dw $1871,$1872,$1873,$182D
-                    dw $1873,$1874,$CA09,$0B00
-                    dw $1DCA,$1DCB,$1DCC,$1DCD
-                    dw $1DCE,$1DCF,$EA09,$0B00
-                    dw $1DDA,$1DDB,$1DDC,$1DDD
-                    dw $1DDE,$1DDF,$0C0A,$0B80
-                    dw $1DF2,$1DE2,$1DE2,$1DE2
-                    dw $1DE2,$1DE2,$0D0A,$0B80
-                    dw $1DF3,$1DE3,$1DE3,$1DE3
-                    dw $1DE3,$1DE3,$F109,$0B00
-                    dw $1DCA,$1DCB,$1DCC,$1DCD
-                    dw $1DCE,$1DCF,$110A,$0B00
-                    dw $1DDA,$1DDB,$1DDC,$1DDD
-                    dw $1DDE,$1DDF,$330A,$0B80
-                    dw $1DF2,$1DE2,$1DE2,$1DE2
-                    dw $1DE2,$1DE2,$340A,$0B80
-                    dw $1DF3,$1DE3,$1DE3,$1DE3
-                    dw $1DE3,$1DE3,$FFFF,$0802
-                    dw $0B00,$186B,$182C,$186C
-                    dw $186D,$186E,$186F,$2802
-                    dw $0B00,$1870,$182D,$1871
-                    dw $1872,$1873,$1874,$5002
-                    dw $0B00,$186B,$182C,$186C
-                    dw $186D,$186E,$186F,$7002
-                    dw $0B00,$1870,$182D,$1871
-                    dw $1872,$1873,$1874,$C802
-                    dw $1F00,$186B,$182C,$186C
-                    dw $186D,$186E,$182C,$186C
-                    dw $186D,$186E,$182C,$186C
-                    dw $186D,$186E,$182C,$186C
-                    dw $186F,$E802,$1F00,$1870
-                    dw $182D,$1871,$1872,$1873
-                    dw $182D,$1871,$1872,$1873
-                    dw $182D,$1871,$1872,$1873
-                    dw $182D,$1873,$1874,$CA09
-                    dw $0B00,$1DCA,$1DCB,$1DCC
-                    dw $1DCD,$1DCE,$1DCF,$EA09
-                    dw $0B00,$1DDA,$1DDB,$1DDC
-                    dw $1DDD,$1DDE,$1DDF,$0C0A
-                    dw $0B80,$1DF2,$1DE2,$1DE2
-                    dw $1DE2,$1DE2,$1DE2,$0D0A
-                    dw $0B80,$1DF3,$1DE3,$1DE3
-                    dw $1DE3,$1DE3,$1DE3,$F109
-                    dw $0B00,$1DCA,$1DCB,$1DCC
-                    dw $1DCD,$1DCE,$1DCF,$110A
-                    dw $0B00,$1DDA,$1DDB,$1DDC
-                    dw $1DDD,$1DDE,$1DDF,$330A
-                    dw $0B80,$1DF2,$1DE2,$1DE2
-                    dw $1DE2,$1DE2,$1DE2,$340A
-                    dw $0B80,$1DF3,$1DE3,$1DE3
-                    dw $1DE3,$1DE3,$1DE3,$FFFF
-                    dw $C802,$0300,$0CAB,$0CAD
-                    dw $E802,$0300,$0CAC,$0CAE
-                    dw $CA02,$1B40,$3221,$AA02
-                    dw $0100,$0881,$AB02,$1940
-                    dw $2A20,$0E0A,$0F80,$1DE0
-                    dw $1DF0,$1DC3,$1DD3,$1DE3
-                    dw $1DF3,$1DC1,$1DE2,$0F0A
-                    dw $0F80,$1DE1,$5DF0,$1DC4
-                    dw $1DD4,$1DE4,$1DF4,$1DD0
-                    dw $1DF2,$4D0A,$0100,$1DC2
-                    dw $500A,$0100,$1DC5,$CD0A
-                    dw $0100,$1DC0,$D00A,$0100
-                    dw $1DD1,$540A,$0B80,$15CA
-                    dw $15F1,$15C6,$15D6,$15E6
-                    dw $15F6,$550A,$0B80,$15CB
-                    dw $55F1,$15C7,$15D7,$15E7
-                    dw $15F7,$FFFF,$0902,$1300
-                    dw $104B,$104D,$104D,$104D
-                    dw $104D,$104D,$104D,$104D
-                    dw $104D,$1050,$2902,$1300
-                    dw $104C,$104E,$104F,$104A
-                    dw $104F,$104A,$104F,$104A
-                    dw $104E,$1051,$4D02,$0780
-                    dw $1204,$1210,$1200,$1210
-                    dw $4E02,$0780,$1207,$1213
-                    dw $1203,$1213,$C802,$1F00
-                    dw $104B,$104D,$104D,$104D
-                    dw $104D,$104D,$104D,$104D
-                    dw $104D,$104D,$104D,$104D
-                    dw $104D,$104D,$104D,$1050
-                    dw $E802,$1F00,$104C,$104E
-                    dw $104F,$104A,$104F,$104A
-                    dw $104F,$104A,$104F,$104A
-                    dw $104F,$104A,$104F,$104A
-                    dw $104E,$1051,$EA09,$0100
-                    dw $1CC0,$F609,$0100,$1CC4
-                    dw $D509,$0100,$1CC1,$CF09
-                    dw $0100,$1CC6,$150A,$0100
-                    dw $1CC2,$710A,$0100,$1CC5
-                    dw $360A,$0100,$1CC5,$500A
-                    dw $0100,$1CC4,$540A,$0100
-                    dw $1CC7,$770A,$0100,$1CC3
-                    dw $6F0A,$0100,$1CC4,$930A
-                    dw $0100,$1CC2,$890A,$0100
-                    dw $1CC5,$6B0A,$0100,$1CC1
-                    dw $480A,$0100,$1CC0,$FFFF
-                    dw $0902,$1300,$104B,$104D
-                    dw $104D,$104D,$104D,$104D
-                    dw $104D,$104D,$104D,$1050
-                    dw $2902,$1300,$104C,$104E
-                    dw $104F,$104A,$104F,$104A
-                    dw $104F,$104A,$104E,$1051
-                    dw $4D02,$0780,$1204,$1210
-                    dw $1200,$1210,$4E02,$0780
-                    dw $1207,$1213,$1203,$1213
-                    dw $C802,$1F00,$104B,$104D
-                    dw $104D,$104D,$104D,$104D
-                    dw $104D,$104D,$104D,$104D
-                    dw $104D,$104D,$104D,$104D
-                    dw $104D,$1050,$E802,$1F00
-                    dw $104C,$104E,$104F,$104A
-                    dw $104F,$104A,$104F,$104A
-                    dw $104F,$104A,$104F,$104A
-                    dw $104F,$104A,$104E,$1051
-                    dw $FFFF,$0902,$1300,$104B
-                    dw $104D,$104D,$104D,$104D
-                    dw $104D,$104D,$104D,$104D
-                    dw $1050,$2902,$1300,$104C
-                    dw $104E,$104F,$104A,$104F
-                    dw $104A,$104F,$104A,$104E
-                    dw $1051,$4D02,$0780,$1204
-                    dw $1210,$1200,$1210,$4E02
-                    dw $0780,$1207,$1213,$1203
-                    dw $1213,$C802,$1F00,$104B
-                    dw $104D,$104D,$104D,$104D
-                    dw $104D,$104D,$104D,$104D
-                    dw $104D,$104D,$104D,$104D
-                    dw $104D,$104D,$1050,$E802
-                    dw $1F00,$104C,$104E,$104F
-                    dw $104A,$104F,$104A,$104F
-                    dw $104A,$104F,$104A,$104F
-                    dw $104A,$104F,$104A,$104E
-                    dw $1051,$680A,$1F00,$1DD4
-                    dw $1DD5,$1DC1,$1DC2,$1CCA
-                    dw $1CCB,$1CCA,$1CCB,$1CCA
-                    dw $1CCB,$1CCA,$1CCB,$1DC0
-                    dw $1DD1,$1DD2,$1DD3,$880A
-                    dw $1F00,$1DE8,$1DE9,$1DEA
-                    dw $1DEB,$1DE0,$1DE1,$1DE4
-                    dw $1DE5,$1DE0,$1DE1,$1DE4
-                    dw $1DE5,$1DE8,$1DE9,$1DEA
-                    dw $1DEB,$A80A,$1F00,$1DF8
-                    dw $1DF9,$1DFA,$1DFB,$1DF0
-                    dw $1DF1,$1DF4,$1DF5,$1DF0
-                    dw $1DF1,$1DF4,$1DF5,$1DF8
-                    dw $1DF9,$1DFA,$1DFB,$C80A
-                    dw $1F00,$1DC8,$1DC9,$1DCA
-                    dw $1DCB,$1DE2,$1DE3,$1DE6
-                    dw $1DE7,$1DE2,$1DE3,$1DE6
-                    dw $1DE7,$1DC8,$1DC9,$1DCA
-                    dw $1DCB,$E80A,$1F00,$1DD8
-                    dw $1DD9,$1DDA,$1DDB,$1DF2
-                    dw $1DF3,$1DF6,$1DF7,$1DF2
-                    dw $1DF3,$1DF6,$1DF7,$1DD8
-                    dw $1DD9,$1DDA,$1DDB,$FFFF
-                    dw $8A02,$0B00,$1214,$1215
-                    dw $1214,$1215,$1214,$1215
-                    dw $AA02,$0B00,$1216,$1217
-                    dw $1216,$1217,$1216,$1217
-                    dw $4C02,$0780,$08B8,$08BC
-                    dw $0CBE,$0CBE,$4D02,$0780
-                    dw $08B9,$08BD,$0CBF,$0CBF
-                    dw $F301,$0300,$10D6,$10D7
-                    dw $1202,$0700,$10D8,$10D9
-                    dw $10DA,$10DB,$3202,$0700
-                    dw $10DC,$10DD,$10DE,$10DF
-                    dw $C802,$1F00,$0A08,$0A09
-                    dw $0A08,$0A09,$0A08,$0A09
-                    dw $0A08,$0A09,$0A08,$0A09
-                    dw $0A08,$0A09,$0A08,$0A09
-                    dw $0A08,$0A09,$E802,$1F00
-                    dw $0A18,$0A19,$0A18,$0A19
-                    dw $0A18,$0A19,$0A18,$0A19
-                    dw $0A18,$0A19,$0A18,$0A19
-                    dw $0A18,$0A19,$0A18,$0A19
-                    dw $FFFF,$0A02,$0B80,$08B8
-                    dw $08BA,$08BA,$08BC,$0CBE
-                    dw $0CBE,$0B02,$0B80,$08B9
-                    dw $08BB,$08BB,$08BD,$0CBF
-                    dw $0CBF,$9202,$0700,$1214
-                    dw $1215,$1214,$1215,$B202
-                    dw $0700,$1216,$1217,$1216
-                    dw $1217,$C802,$1F00,$0A08
-                    dw $0A09,$0A08,$0A09,$0A08
-                    dw $0A09,$0A08,$0A09,$0A08
-                    dw $0A09,$0A08,$0A09,$0A08
-                    dw $0A09,$0A08,$0A09,$E802
-                    dw $1F00,$0A18,$0A19,$0A18
-                    dw $0A19,$0A18,$0A19,$0A18
-                    dw $0A19,$0A18,$0A19,$0A18
-                    dw $0A19,$0A18,$0A19,$0A18
-                    dw $0A19,$FFFF
+DATA_049DEB:    dw $E801,$1F00,$18EC,$18ED                      ;
+                dw $18EE,$18EF,$18EC,$18ED                      ;
+                dw $18EE,$18EF,$18EC,$18ED                      ;
+                dw $18EE,$18EF,$18EC,$18ED                      ;
+                dw $18EE,$18EF,$4C02,$0B80                      ;
+                dw $1D4A,$1D5A,$1D4A,$1D5A                      ;
+                dw $1082,$1084,$4D02,$0B80                      ;
+                dw $1D4B,$1D5B,$1D4B,$1D5B                      ;
+                dw $1083,$1085,$080A,$1E40                      ;
+                dw $1900,$280A,$1E40,$1900                      ;
+                dw $480A,$1E40,$1901,$680A                      ;
+                dw $1E40,$1901,$880A,$1E40                      ;
+                dw $1901,$A80A,$1E40,$1901                      ;
+                dw $C80A,$1E40,$1901,$E80A                      ;
+                dw $1E40,$1901,$FFFF,$CA09                      ;
+                dw $0900,$1DDF,$1DC3,$1DC0                      ;
+                dw $1DC1,$1DCA,$EA09,$0B00                      ;
+                dw $1DDC,$1DD3,$1DD0,$1DD1                      ;
+                dw $1DDA,$1DDB,$090A,$0D00                      ;
+                dw $1DDD,$1DE2,$1DE3,$1DE0                      ;
+                dw $1DE1,$1DE2,$1DF8,$290A                      ;
+                dw $0D00,$1DDE,$1DF2,$1DF3                      ;
+                dw $1DF0,$1DF1,$1DF2,$1DF3                      ;
+                dw $490A,$1B00,$1DE9,$1DC6                      ;
+                dw $1DC7,$1DC4,$1DC5,$1DC6                      ;
+                dw $1DC7,$1DE8,$0024,$0024                      ;
+                dw $1DE9,$1DEA,$1DEB,$1DE8                      ;
+                dw $690A,$1B00,$1DF9,$1DD6                      ;
+                dw $1DD7,$1DD4,$1DD5,$1DD6                      ;
+                dw $1DD7,$1DF8,$0024,$0024                      ;
+                dw $1DF9,$1DFA,$1DFB,$1DF8                      ;
+                dw $890A,$1B00,$1DE5,$1DE6                      ;
+                dw $1DE7,$1DE4,$1DE5,$1DE6                      ;
+                dw $1DE7,$1DE4,$0024,$0024                      ;
+                dw $1DE5,$1DE6,$1DE7,$1DE4                      ;
+                dw $A90A,$1B00,$1DF5,$1DF6                      ;
+                dw $1DF7,$1DF4,$1DF5,$1DF6                      ;
+                dw $1DF7,$1DF4,$0024,$0024                      ;
+                dw $1DF5,$1DF6,$1DF7,$1DF4                      ;
+                dw $C802,$1F00,$0A08,$0A09                      ;
+                dw $0A08,$0A09,$0A08,$0A09                      ;
+                dw $0A08,$0A09,$0A08,$0A09                      ;
+                dw $0A08,$0A09,$0A08,$0A09                      ;
+                dw $0A08,$0A09,$E802,$1F00                      ;
+                dw $0A18,$0A19,$0A18,$0A19                      ;
+                dw $0A18,$0A19,$0A18,$0A19                      ;
+                dw $0A18,$0A19,$0A18,$0A19                      ;
+                dw $0A18,$0A19,$0A18,$0A19                      ;
+                dw $FFFF,$CA09,$0900,$1DDF                      ;
+                dw $1DC3,$1DC0,$1DC1,$1DCA                      ;
+                dw $EA09,$0B00,$1DDC,$1DD3                      ;
+                dw $1DD0,$1DD1,$1DDA,$1DDB                      ;
+                dw $090A,$0D00,$1DDD,$1DE2                      ;
+                dw $1DE3,$1DE0,$1DE1,$1DE2                      ;
+                dw $1DF8,$290A,$0D00,$1DDE                      ;
+                dw $1DF2,$1DF3,$1DF0,$1DF1                      ;
+                dw $1DF2,$1DF3,$490A,$1B00                      ;
+                dw $1DE9,$1DC6,$1DC7,$1DC4                      ;
+                dw $1DC5,$1DC6,$1DC7,$1DE8                      ;
+                dw $0024,$0024,$1DE9,$1DEA                      ;
+                dw $1DEB,$1DE8,$690A,$1B00                      ;
+                dw $1DF9,$1DD6,$1DD7,$1DD4                      ;
+                dw $1DD5,$1DD6,$1DD7,$1DF8                      ;
+                dw $0024,$0024,$1DF9,$1DFA                      ;
+                dw $1DFB,$1DF8,$890A,$1B00                      ;
+                dw $1DE5,$1DE6,$1DE7,$1DE4                      ;
+                dw $1DE5,$1DE6,$1DE7,$1DE4                      ;
+                dw $0024,$0024,$1DE5,$1DE6                      ;
+                dw $1DE7,$1DE4,$A90A,$1B00                      ;
+                dw $1DF5,$1DF6,$1DF7,$1DF4                      ;
+                dw $1DF5,$1DF6,$1DF7,$1DF4                      ;
+                dw $0024,$0024,$1DF5,$1DF6                      ;
+                dw $1DF7,$1DF4,$0A02,$0B80                      ;
+                dw $08B8,$08BA,$08BA,$08BC                      ;
+                dw $0CBE,$0CBE,$0B02,$0B80                      ;
+                dw $08B9,$08BB,$08BB,$08BD                      ;
+                dw $0CBF,$0CBF,$9202,$0700                      ;
+                dw $1214,$1215,$1214,$1215                      ;
+                dw $B202,$0700,$1216,$1217                      ;
+                dw $1216,$1217,$C802,$1F00                      ;
+                dw $0A08,$0A09,$0A08,$0A09                      ;
+                dw $0A08,$0A09,$0A08,$0A09                      ;
+                dw $0A08,$0A09,$0A08,$0A09                      ;
+                dw $0A08,$0A09,$0A08,$0A09                      ;
+                dw $E802,$1F00,$0A18,$0A19                      ;
+                dw $0A18,$0A19,$0A18,$0A19                      ;
+                dw $0A18,$0A19,$0A18,$0A19                      ;
+                dw $0A18,$0A19,$0A18,$0A19                      ;
+                dw $0A18,$0A19,$FFFF,$C809                      ;
+                dw $1F00,$1DC2,$1DC3,$1DC0                      ;
+                dw $1DC1,$1DC2,$1DC3,$1DC0                      ;
+                dw $1DC1,$1DC2,$1DC3,$1DC0                      ;
+                dw $1DC1,$1DC2,$1DC3,$1DC0                      ;
+                dw $1DC1,$E809,$1F00,$1DD2                      ;
+                dw $1DD3,$1DD0,$1DD1,$1DD2                      ;
+                dw $1DD3,$1DD0,$1DD1,$1DD2                      ;
+                dw $1DD3,$1DD0,$1DD1,$1DD2                      ;
+                dw $1DD3,$1DD0,$1DD1,$080A                      ;
+                dw $1F00,$1DE2,$1DE1,$1DE2                      ;
+                dw $1DE1,$1DE2,$1DE1,$1DE2                      ;
+                dw $1DE1,$1DE2,$1DE1,$1DE2                      ;
+                dw $1DE1,$1DE2,$1DE1,$1DE2                      ;
+                dw $1DE1,$280A,$1F00,$1DD2                      ;
+                dw $1DD1,$1DE4,$1DE5,$1DD2                      ;
+                dw $1D82,$1D83,$1D84,$1D85                      ;
+                dw $1D80,$1D81,$1DD1,$1DE4                      ;
+                dw $1DE5,$1DD2,$1DD1,$480A                      ;
+                dw $1F00,$1DE2,$1DE1,$1DF4                      ;
+                dw $1DF5,$1DE2,$1DDC,$1DDD                      ;
+                dw $1DDE,$1DDF,$1D90,$1D91                      ;
+                dw $1DE1,$1DF4,$1DF5,$1DE2                      ;
+                dw $1DE1,$680A,$1F00,$1DD2                      ;
+                dw $1DD1,$1DD8,$1DE8,$1DD2                      ;
+                dw $1DEC,$1DED,$1DEE,$1DEF                      ;
+                dw $1DA0,$1DA1,$1DD1,$1DD8                      ;
+                dw $1DE8,$1DD2,$1DD1,$880A                      ;
+                dw $1F00,$1DE2,$1DE1,$1DE2                      ;
+                dw $1DE1,$1DE2,$1DFC,$1DFD                      ;
+                dw $1DFE,$1DFF,$1DB0,$1DB1                      ;
+                dw $1DE1,$1DE2,$1DE1,$1DE2                      ;
+                dw $1DE1,$A80A,$1F00,$1DF0                      ;
+                dw $1DF1,$1DF2,$1DF3,$1DF0                      ;
+                dw $1DF1,$1DF2,$1DF3,$1DF0                      ;
+                dw $1DF1,$1DF2,$1DF3,$1DF0                      ;
+                dw $1DF1,$1DF2,$1DF3,$0A02                      ;
+                dw $0B80,$08B8,$08BA,$08BA                      ;
+                dw $08BC,$0CBE,$0CBE,$0B02                      ;
+                dw $0B80,$08B9,$08BB,$08BB                      ;
+                dw $08BD,$0CBF,$0CBF,$9202                      ;
+                dw $0700,$1214,$1215,$1214                      ;
+                dw $1215,$B202,$0700,$1216                      ;
+                dw $1217,$1216,$1217,$C802                      ;
+                dw $1F00,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$E802,$1F00,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$FFFF                      ;
+                dw $EB01,$0300,$10D6,$10D7                      ;
+                dw $0A02,$0700,$10D8,$10D9                      ;
+                dw $10DA,$10DB,$2A02,$0700                      ;
+                dw $10DC,$10DD,$10DE,$10DF                      ;
+                dw $5302,$0700,$1501,$1502                      ;
+                dw $1503,$1504,$7202,$0B00                      ;
+                dw $1510,$1511,$150A,$1505                      ;
+                dw $1514,$1515,$9102,$0D00                      ;
+                dw $1506,$1516,$150A,$1512                      ;
+                dw $150A,$150A,$150D,$B002                      ;
+                dw $0F00,$1506,$1516,$150A                      ;
+                dw $150A,$9512,$1519,$150A                      ;
+                dw $151D,$C802,$1F00,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$E802                      ;
+                dw $1F00,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$FFFF,$C801,$1E40                      ;
+                dw $0C47,$CD01,$0700,$0868                      ;
+                dw $0869,$0897,$086A,$E801                      ;
+                dw $0D80,$0C45,$0C47,$0C45                      ;
+                dw $0C47,$0C45,$0C47,$0C45                      ;
+                dw $E901,$1D00,$1D32,$1D33                      ;
+                dw $1D30,$1D31,$8864,$8865                      ;
+                dw $8866,$8867,$1D32,$1D33                      ;
+                dw $1D30,$1D31,$1D32,$1D33                      ;
+                dw $1D30,$0902,$1D00,$1D02                      ;
+                dw $1D03,$1D00,$1D01,$8860                      ;
+                dw $8861,$8862,$8863,$1D02                      ;
+                dw $1D03,$1D48,$1D49,$1D4A                      ;
+                dw $1D4B,$1D00,$2902,$1D00                      ;
+                dw $153A,$1D13,$1D10,$1D11                      ;
+                dw $1D12,$1D13,$1D10,$1D11                      ;
+                dw $1D12,$1D13,$1D58,$1D59                      ;
+                dw $1D5A,$1D5B,$1D10,$4902                      ;
+                dw $1D00,$1D22,$1D23,$1D20                      ;
+                dw $1D21,$1D22,$1D23,$1D20                      ;
+                dw $1D21,$1D22,$1D23,$1D68                      ;
+                dw $1D69,$1D6A,$1D6B,$1D20                      ;
+                dw $6902,$1D00,$1D32,$1D33                      ;
+                dw $151D,$151D,$1D32,$1D33                      ;
+                dw $1D30,$1D31,$1D32,$1D33                      ;
+                dw $1D78,$1D79,$1D7A,$1D7B                      ;
+                dw $1D30,$8902,$1D00,$1D02                      ;
+                dw $1D03,$1528,$1529,$1D02                      ;
+                dw $1D03,$1D00,$1D01,$1D02                      ;
+                dw $1D03,$1D00,$1D01,$1D02                      ;
+                dw $1D03,$1D00,$A902,$1D00                      ;
+                dw $1D12,$1D13,$1D10,$1D11                      ;
+                dw $1D12,$1D13,$1D10,$1D11                      ;
+                dw $1D12,$1D13,$1D10,$1D11                      ;
+                dw $1D12,$1D13,$1D10,$C802                      ;
+                dw $1F00,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$E802,$1F00,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$FFFF                      ;
+                dw $C801,$1F00,$09E6,$09E7                      ;
+                dw $09E8,$09E9,$09E6,$09E7                      ;
+                dw $09E8,$09E9,$09E6,$09E7                      ;
+                dw $09E8,$09E9,$09E6,$09E7                      ;
+                dw $09E8,$09E9,$E801,$1F00                      ;
+                dw $09F6,$09F7,$09F8,$09F9                      ;
+                dw $09F6,$09F7,$09F8,$09F9                      ;
+                dw $09F6,$09F7,$09F8,$09F9                      ;
+                dw $09F6,$09F7,$09F8,$09F9                      ;
+                dw $080A,$1E40,$1534,$280A                      ;
+                dw $1E40,$1534,$480A,$1E40                      ;
+                dw $1534,$680A,$1E40,$1534                      ;
+                dw $880A,$1E40,$1534,$A80A                      ;
+                dw $1E40,$1534,$CB0A,$1840                      ;
+                dw $1534,$EB0A,$0E40,$1534                      ;
+                dw $0B0A,$0EC0,$1536,$0C0A                      ;
+                dw $0EC0,$1537,$0D0A,$0EC0                      ;
+                dw $1528,$130A,$0CC0,$1536                      ;
+                dw $140A,$0CC0,$1537,$150A                      ;
+                dw $0CC0,$1528,$C802,$1F00                      ;
+                dw $09CA,$09CB,$09CA,$09C3                      ;
+                dw $0024,$0024,$0024,$0024                      ;
+                dw $09C0,$09CB,$09CA,$09C3                      ;
+                dw $189B,$189C,$189B,$189C                      ;
+                dw $E802,$1F00,$09DA,$09DB                      ;
+                dw $09DA,$09D3,$18E0,$18E1                      ;
+                dw $18E0,$18E1,$09D0,$09DB                      ;
+                dw $09DA,$09D3,$189D,$189E                      ;
+                dw $189D,$189E,$FFFF,$C809                      ;
+                dw $1E40,$1534,$E809,$1E40                      ;
+                dw $1534,$080A,$1E40,$1534                      ;
+                dw $280A,$1E40,$1534,$480A                      ;
+                dw $1E40,$1534,$680A,$1E40                      ;
+                dw $1534,$880A,$1E40,$1534                      ;
+                dw $A80A,$1E40,$1534,$CB0A                      ;
+                dw $1840,$1534,$EB0A,$0E40                      ;
+                dw $1534,$CE09,$09C0,$1536                      ;
+                dw $CF09,$09C0,$1537,$6E0A                      ;
+                dw $0300,$9526,$9527,$8D0A                      ;
+                dw $0700,$9524,$9516,$9517                      ;
+                dw $9518,$AD0A,$0700,$1532                      ;
+                dw $1522,$1522,$1523,$D209                      ;
+                dw $0B00,$1DA8,$1DA9,$1D8A                      ;
+                dw $1D8B,$5DA9,$1DAC,$F209                      ;
+                dw $0B00,$1DA8,$1DB9,$1DB9                      ;
+                dw $1DB9,$1DBA,$1DAC,$120A                      ;
+                dw $0B00,$1DA8,$1D89,$1D8A                      ;
+                dw $1D8B,$5D89,$1D9C,$320A                      ;
+                dw $0B00,$1DA8,$1D99,$1D9A                      ;
+                dw $1D9B,$5D99,$1DAC,$520A                      ;
+                dw $0B00,$1DA8,$1DA9,$1D8A                      ;
+                dw $1D8B,$5DA9,$1DAC,$720A                      ;
+                dw $0B00,$1DB8,$1DB9,$1DB9                      ;
+                dw $1DB9,$1DB9,$1DBA,$E909                      ;
+                dw $0700,$1DB0,$1DB1,$5DB1                      ;
+                dw $5DB0,$090A,$0700,$1DB2                      ;
+                dw $1CE8,$1CE9,$5DB2,$290A                      ;
+                dw $0700,$1DB3,$1CEA,$1CEB                      ;
+                dw $5DB3,$490A,$0700,$1D34                      ;
+                dw $1D8E,$1D8F,$1D34,$C80A                      ;
+                dw $1F00,$1510,$1511,$1510                      ;
+                dw $1511,$1510,$1511,$1510                      ;
+                dw $1511,$1510,$1511,$1510                      ;
+                dw $1511,$1510,$1511,$1510                      ;
+                dw $1511,$E80A,$1F00,$1520                      ;
+                dw $1521,$1520,$1521,$1520                      ;
+                dw $1521,$1520,$1521,$1520                      ;
+                dw $1521,$1520,$1521,$1520                      ;
+                dw $1521,$1520,$1521,$C802                      ;
+                dw $1F00,$09CA,$09CB,$09CA                      ;
+                dw $09C3,$0024,$0024,$0024                      ;
+                dw $0024,$09C0,$09CB,$09CA                      ;
+                dw $09C3,$189B,$189C,$189B                      ;
+                dw $189C,$E802,$1F00,$09DA                      ;
+                dw $09DB,$09DA,$09D3,$18E0                      ;
+                dw $18E1,$18E0,$18E1,$09D0                      ;
+                dw $09DB,$09DA,$09D3,$189D                      ;
+                dw $189E,$189D,$189E,$FFFF                      ;
+                dw $0802,$0B00,$186B,$182C                      ;
+                dw $186C,$186D,$186E,$186F                      ;
+                dw $2802,$0B00,$1870,$182D                      ;
+                dw $1871,$1872,$1873,$1874                      ;
+                dw $4A02,$0300,$1875,$1876                      ;
+                dw $6A02,$09C0,$189F,$6B02                      ;
+                dw $09C0,$589F,$5002,$0B00                      ;
+                dw $186B,$182C,$186C,$186D                      ;
+                dw $186E,$186F,$7002,$0B00                      ;
+                dw $1870,$182D,$1871,$1872                      ;
+                dw $1873,$1874,$9202,$0300                      ;
+                dw $1875,$1876,$B202,$0300                      ;
+                dw $189F,$589F,$C802,$1F00                      ;
+                dw $186B,$182C,$186C,$186D                      ;
+                dw $186E,$182C,$186C,$186D                      ;
+                dw $186E,$182C,$186C,$186D                      ;
+                dw $186E,$182C,$186C,$186F                      ;
+                dw $E802,$1F00,$1870,$182D                      ;
+                dw $1871,$1872,$1873,$182D                      ;
+                dw $1871,$1872,$1873,$182D                      ;
+                dw $1871,$1872,$1873,$182D                      ;
+                dw $1873,$1874,$CA09,$0B00                      ;
+                dw $1DCA,$1DCB,$1DCC,$1DCD                      ;
+                dw $1DCE,$1DCF,$EA09,$0B00                      ;
+                dw $1DDA,$1DDB,$1DDC,$1DDD                      ;
+                dw $1DDE,$1DDF,$0C0A,$0B80                      ;
+                dw $1DF2,$1DE2,$1DE2,$1DE2                      ;
+                dw $1DE2,$1DE2,$0D0A,$0B80                      ;
+                dw $1DF3,$1DE3,$1DE3,$1DE3                      ;
+                dw $1DE3,$1DE3,$F109,$0B00                      ;
+                dw $1DCA,$1DCB,$1DCC,$1DCD                      ;
+                dw $1DCE,$1DCF,$110A,$0B00                      ;
+                dw $1DDA,$1DDB,$1DDC,$1DDD                      ;
+                dw $1DDE,$1DDF,$330A,$0B80                      ;
+                dw $1DF2,$1DE2,$1DE2,$1DE2                      ;
+                dw $1DE2,$1DE2,$340A,$0B80                      ;
+                dw $1DF3,$1DE3,$1DE3,$1DE3                      ;
+                dw $1DE3,$1DE3,$FFFF,$0802                      ;
+                dw $0B00,$186B,$182C,$186C                      ;
+                dw $186D,$186E,$186F,$2802                      ;
+                dw $0B00,$1870,$182D,$1871                      ;
+                dw $1872,$1873,$1874,$5002                      ;
+                dw $0B00,$186B,$182C,$186C                      ;
+                dw $186D,$186E,$186F,$7002                      ;
+                dw $0B00,$1870,$182D,$1871                      ;
+                dw $1872,$1873,$1874,$C802                      ;
+                dw $1F00,$186B,$182C,$186C                      ;
+                dw $186D,$186E,$182C,$186C                      ;
+                dw $186D,$186E,$182C,$186C                      ;
+                dw $186D,$186E,$182C,$186C                      ;
+                dw $186F,$E802,$1F00,$1870                      ;
+                dw $182D,$1871,$1872,$1873                      ;
+                dw $182D,$1871,$1872,$1873                      ;
+                dw $182D,$1871,$1872,$1873                      ;
+                dw $182D,$1873,$1874,$CA09                      ;
+                dw $0B00,$1DCA,$1DCB,$1DCC                      ;
+                dw $1DCD,$1DCE,$1DCF,$EA09                      ;
+                dw $0B00,$1DDA,$1DDB,$1DDC                      ;
+                dw $1DDD,$1DDE,$1DDF,$0C0A                      ;
+                dw $0B80,$1DF2,$1DE2,$1DE2                      ;
+                dw $1DE2,$1DE2,$1DE2,$0D0A                      ;
+                dw $0B80,$1DF3,$1DE3,$1DE3                      ;
+                dw $1DE3,$1DE3,$1DE3,$F109                      ;
+                dw $0B00,$1DCA,$1DCB,$1DCC                      ;
+                dw $1DCD,$1DCE,$1DCF,$110A                      ;
+                dw $0B00,$1DDA,$1DDB,$1DDC                      ;
+                dw $1DDD,$1DDE,$1DDF,$330A                      ;
+                dw $0B80,$1DF2,$1DE2,$1DE2                      ;
+                dw $1DE2,$1DE2,$1DE2,$340A                      ;
+                dw $0B80,$1DF3,$1DE3,$1DE3                      ;
+                dw $1DE3,$1DE3,$1DE3,$FFFF                      ;
+                dw $C802,$0300,$0CAB,$0CAD                      ;
+                dw $E802,$0300,$0CAC,$0CAE                      ;
+                dw $CA02,$1B40,$3221,$AA02                      ;
+                dw $0100,$0881,$AB02,$1940                      ;
+                dw $2A20,$0E0A,$0F80,$1DE0                      ;
+                dw $1DF0,$1DC3,$1DD3,$1DE3                      ;
+                dw $1DF3,$1DC1,$1DE2,$0F0A                      ;
+                dw $0F80,$1DE1,$5DF0,$1DC4                      ;
+                dw $1DD4,$1DE4,$1DF4,$1DD0                      ;
+                dw $1DF2,$4D0A,$0100,$1DC2                      ;
+                dw $500A,$0100,$1DC5,$CD0A                      ;
+                dw $0100,$1DC0,$D00A,$0100                      ;
+                dw $1DD1,$540A,$0B80,$15CA                      ;
+                dw $15F1,$15C6,$15D6,$15E6                      ;
+                dw $15F6,$550A,$0B80,$15CB                      ;
+                dw $55F1,$15C7,$15D7,$15E7                      ;
+                dw $15F7,$FFFF,$0902,$1300                      ;
+                dw $104B,$104D,$104D,$104D                      ;
+                dw $104D,$104D,$104D,$104D                      ;
+                dw $104D,$1050,$2902,$1300                      ;
+                dw $104C,$104E,$104F,$104A                      ;
+                dw $104F,$104A,$104F,$104A                      ;
+                dw $104E,$1051,$4D02,$0780                      ;
+                dw $1204,$1210,$1200,$1210                      ;
+                dw $4E02,$0780,$1207,$1213                      ;
+                dw $1203,$1213,$C802,$1F00                      ;
+                dw $104B,$104D,$104D,$104D                      ;
+                dw $104D,$104D,$104D,$104D                      ;
+                dw $104D,$104D,$104D,$104D                      ;
+                dw $104D,$104D,$104D,$1050                      ;
+                dw $E802,$1F00,$104C,$104E                      ;
+                dw $104F,$104A,$104F,$104A                      ;
+                dw $104F,$104A,$104F,$104A                      ;
+                dw $104F,$104A,$104F,$104A                      ;
+                dw $104E,$1051,$EA09,$0100                      ;
+                dw $1CC0,$F609,$0100,$1CC4                      ;
+                dw $D509,$0100,$1CC1,$CF09                      ;
+                dw $0100,$1CC6,$150A,$0100                      ;
+                dw $1CC2,$710A,$0100,$1CC5                      ;
+                dw $360A,$0100,$1CC5,$500A                      ;
+                dw $0100,$1CC4,$540A,$0100                      ;
+                dw $1CC7,$770A,$0100,$1CC3                      ;
+                dw $6F0A,$0100,$1CC4,$930A                      ;
+                dw $0100,$1CC2,$890A,$0100                      ;
+                dw $1CC5,$6B0A,$0100,$1CC1                      ;
+                dw $480A,$0100,$1CC0,$FFFF                      ;
+                dw $0902,$1300,$104B,$104D                      ;
+                dw $104D,$104D,$104D,$104D                      ;
+                dw $104D,$104D,$104D,$1050                      ;
+                dw $2902,$1300,$104C,$104E                      ;
+                dw $104F,$104A,$104F,$104A                      ;
+                dw $104F,$104A,$104E,$1051                      ;
+                dw $4D02,$0780,$1204,$1210                      ;
+                dw $1200,$1210,$4E02,$0780                      ;
+                dw $1207,$1213,$1203,$1213                      ;
+                dw $C802,$1F00,$104B,$104D                      ;
+                dw $104D,$104D,$104D,$104D                      ;
+                dw $104D,$104D,$104D,$104D                      ;
+                dw $104D,$104D,$104D,$104D                      ;
+                dw $104D,$1050,$E802,$1F00                      ;
+                dw $104C,$104E,$104F,$104A                      ;
+                dw $104F,$104A,$104F,$104A                      ;
+                dw $104F,$104A,$104F,$104A                      ;
+                dw $104F,$104A,$104E,$1051                      ;
+                dw $FFFF,$0902,$1300,$104B                      ;
+                dw $104D,$104D,$104D,$104D                      ;
+                dw $104D,$104D,$104D,$104D                      ;
+                dw $1050,$2902,$1300,$104C                      ;
+                dw $104E,$104F,$104A,$104F                      ;
+                dw $104A,$104F,$104A,$104E                      ;
+                dw $1051,$4D02,$0780,$1204                      ;
+                dw $1210,$1200,$1210,$4E02                      ;
+                dw $0780,$1207,$1213,$1203                      ;
+                dw $1213,$C802,$1F00,$104B                      ;
+                dw $104D,$104D,$104D,$104D                      ;
+                dw $104D,$104D,$104D,$104D                      ;
+                dw $104D,$104D,$104D,$104D                      ;
+                dw $104D,$104D,$1050,$E802                      ;
+                dw $1F00,$104C,$104E,$104F                      ;
+                dw $104A,$104F,$104A,$104F                      ;
+                dw $104A,$104F,$104A,$104F                      ;
+                dw $104A,$104F,$104A,$104E                      ;
+                dw $1051,$680A,$1F00,$1DD4                      ;
+                dw $1DD5,$1DC1,$1DC2,$1CCA                      ;
+                dw $1CCB,$1CCA,$1CCB,$1CCA                      ;
+                dw $1CCB,$1CCA,$1CCB,$1DC0                      ;
+                dw $1DD1,$1DD2,$1DD3,$880A                      ;
+                dw $1F00,$1DE8,$1DE9,$1DEA                      ;
+                dw $1DEB,$1DE0,$1DE1,$1DE4                      ;
+                dw $1DE5,$1DE0,$1DE1,$1DE4                      ;
+                dw $1DE5,$1DE8,$1DE9,$1DEA                      ;
+                dw $1DEB,$A80A,$1F00,$1DF8                      ;
+                dw $1DF9,$1DFA,$1DFB,$1DF0                      ;
+                dw $1DF1,$1DF4,$1DF5,$1DF0                      ;
+                dw $1DF1,$1DF4,$1DF5,$1DF8                      ;
+                dw $1DF9,$1DFA,$1DFB,$C80A                      ;
+                dw $1F00,$1DC8,$1DC9,$1DCA                      ;
+                dw $1DCB,$1DE2,$1DE3,$1DE6                      ;
+                dw $1DE7,$1DE2,$1DE3,$1DE6                      ;
+                dw $1DE7,$1DC8,$1DC9,$1DCA                      ;
+                dw $1DCB,$E80A,$1F00,$1DD8                      ;
+                dw $1DD9,$1DDA,$1DDB,$1DF2                      ;
+                dw $1DF3,$1DF6,$1DF7,$1DF2                      ;
+                dw $1DF3,$1DF6,$1DF7,$1DD8                      ;
+                dw $1DD9,$1DDA,$1DDB,$FFFF                      ;
+                dw $8A02,$0B00,$1214,$1215                      ;
+                dw $1214,$1215,$1214,$1215                      ;
+                dw $AA02,$0B00,$1216,$1217                      ;
+                dw $1216,$1217,$1216,$1217                      ;
+                dw $4C02,$0780,$08B8,$08BC                      ;
+                dw $0CBE,$0CBE,$4D02,$0780                      ;
+                dw $08B9,$08BD,$0CBF,$0CBF                      ;
+                dw $F301,$0300,$10D6,$10D7                      ;
+                dw $1202,$0700,$10D8,$10D9                      ;
+                dw $10DA,$10DB,$3202,$0700                      ;
+                dw $10DC,$10DD,$10DE,$10DF                      ;
+                dw $C802,$1F00,$0A08,$0A09                      ;
+                dw $0A08,$0A09,$0A08,$0A09                      ;
+                dw $0A08,$0A09,$0A08,$0A09                      ;
+                dw $0A08,$0A09,$0A08,$0A09                      ;
+                dw $0A08,$0A09,$E802,$1F00                      ;
+                dw $0A18,$0A19,$0A18,$0A19                      ;
+                dw $0A18,$0A19,$0A18,$0A19                      ;
+                dw $0A18,$0A19,$0A18,$0A19                      ;
+                dw $0A18,$0A19,$0A18,$0A19                      ;
+                dw $FFFF,$0A02,$0B80,$08B8                      ;
+                dw $08BA,$08BA,$08BC,$0CBE                      ;
+                dw $0CBE,$0B02,$0B80,$08B9                      ;
+                dw $08BB,$08BB,$08BD,$0CBF                      ;
+                dw $0CBF,$9202,$0700,$1214                      ;
+                dw $1215,$1214,$1215,$B202                      ;
+                dw $0700,$1216,$1217,$1216                      ;
+                dw $1217,$C802,$1F00,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$0A08                      ;
+                dw $0A09,$0A08,$0A09,$E802                      ;
+                dw $1F00,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$0A18,$0A19,$0A18                      ;
+                dw $0A19,$FFFF                                  ;
 
-DATA_04AD6F:        dw $EB01,$0240,$0024,$0A02
-                    dw $0640,$0024,$2A02,$0640
-                    dw $0024,$5302,$0640,$0024
-                    dw $7202,$0A40,$0024,$9102
-                    dw $0C40,$0024,$B002,$0E40
-                    dw $0024,$FFFF
+DATA_04AD6F:    dw $EB01,$0240,$0024,$0A02                      ;
+                dw $0640,$0024,$2A02,$0640                      ;
+                dw $0024,$5302,$0640,$0024                      ;
+                dw $7202,$0A40,$0024,$9102                      ;
+                dw $0C40,$0024,$B002,$0E40                      ;
+                dw $0024,$FFFF                                  ;
 
-DATA_04AD9B:        dw $EB09,$0900,$1CC0,$0024
-                    dw $1CC5,$0024,$1CC3,$0C0A
-                    dw $0500,$1CC2,$0024,$1CC1
-                    dw $290A,$0100,$1CC2,$4B0A
-                    dw $0100,$1CC1,$140A,$0100
-                    dw $1CC5,$530A,$0700,$1CC3
-                    dw $0024,$1CC4,$0024,$680A
-                    dw $1F00,$15C6,$15C7,$15C8
-                    dw $15C9,$15CA,$15CB,$1CC6
-                    dw $15CD,$15C6,$15C7,$15C8
-                    dw $15C9,$15CA,$15CB,$15CC
-                    dw $15CD,$880A,$1F00,$15D6
-                    dw $15D7,$15D8,$15D9,$15DA
-                    dw $15DB,$15DC,$15DD,$15D6
-                    dw $15D7,$15D8,$15D9,$15DA
-                    dw $15DB,$15DC,$15DD,$A80A
-                    dw $1F00,$15E6,$15E7,$15E8
-                    dw $15E9,$15EA,$15EB,$15EC
-                    dw $15ED,$15E6,$15E7,$15E8
-                    dw $15E9,$15EA,$15EB,$15EC
-                    dw $15ED,$FFFF
+DATA_04AD9B:    dw $EB09,$0900,$1CC0,$0024                      ;
+                dw $1CC5,$0024,$1CC3,$0C0A                      ;
+                dw $0500,$1CC2,$0024,$1CC1                      ;
+                dw $290A,$0100,$1CC2,$4B0A                      ;
+                dw $0100,$1CC1,$140A,$0100                      ;
+                dw $1CC5,$530A,$0700,$1CC3                      ;
+                dw $0024,$1CC4,$0024,$680A                      ;
+                dw $1F00,$15C6,$15C7,$15C8                      ;
+                dw $15C9,$15CA,$15CB,$1CC6                      ;
+                dw $15CD,$15C6,$15C7,$15C8                      ;
+                dw $15C9,$15CA,$15CB,$15CC                      ;
+                dw $15CD,$880A,$1F00,$15D6                      ;
+                dw $15D7,$15D8,$15D9,$15DA                      ;
+                dw $15DB,$15DC,$15DD,$15D6                      ;
+                dw $15D7,$15D8,$15D9,$15DA                      ;
+                dw $15DB,$15DC,$15DD,$A80A                      ;
+                dw $1F00,$15E6,$15E7,$15E8                      ;
+                dw $15E9,$15EA,$15EB,$15EC                      ;
+                dw $15ED,$15E6,$15E7,$15E8                      ;
+                dw $15E9,$15EA,$15EB,$15EC                      ;
+                dw $15ED,$FFFF                                  ;
 
-DATA_04AE3F:        dw $0000,$0020,$0040,$0060
-                    dw $0080,$00A0,$00C0,$00E0
-                    dw $0100,$0120,$0140,$0160
-                    dw $0180,$01A0,$01C0,$01E0
-                    dw $0200,$0220,$0240,$0260
-                    dw $0280,$02A0,$02C0,$02E0
-                    dw $0300,$0320,$0340,$03A0
-                    dw $03E0,$03C0,$03E0,$0420
-                    dw $0360,$0380,$02E0,$02E0
-                    dw $02E0,$02E0,$0500,$0520
-                    dw $0540,$0560,$0580,$05C0
-                    dw $05E0,$0600,$0620,$0640
-                    dw $0660,$0740,$0780,$07A0
-                    dw $0460,$04A0,$04C0,$04E0
-                    dw $05A0,$0680,$06A0,$06C0
-                    dw $06E0,$0700,$0400,$0720
-                    dw $0440,$0480
+DATA_04AE3F:    dw $0000,$0020,$0040,$0060                      ;
+                dw $0080,$00A0,$00C0,$00E0                      ;
+                dw $0100,$0120,$0140,$0160                      ;
+                dw $0180,$01A0,$01C0,$01E0                      ;
+                dw $0200,$0220,$0240,$0260                      ;
+                dw $0280,$02A0,$02C0,$02E0                      ;
+                dw $0300,$0320,$0340,$03A0                      ;
+                dw $03E0,$03C0,$03E0,$0420                      ;
+                dw $0360,$0380,$02E0,$02E0                      ;
+                dw $02E0,$02E0,$0500,$0520                      ;
+                dw $0540,$0560,$0580,$05C0                      ;
+                dw $05E0,$0600,$0620,$0640                      ;
+                dw $0660,$0740,$0780,$07A0                      ;
+                dw $0460,$04A0,$04C0,$04E0                      ;
+                dw $05A0,$0680,$06A0,$06C0                      ;
+                dw $06E0,$0700,$0400,$0720                      ;
+                dw $0440,$0480                                  ;
 
-DATA_04AEC3:        dw $42DD,$7FFF,$1084,$3800 ;THIS TABLE AND THE NEXT ONE LOOKS LIKE PALETTE DATA
-                    dw $7708,$035F,$0259,$3800
+DATA_04AEC3:    dw $42DD,$7FFF,$1084,$3800                      ;THIS TABLE AND THE NEXT ONE LOOKS LIKE PALETTE DATA
+                dw $7708,$035F,$0259,$3800                      ;
 
-DATA_04AED3:        dw $7708,$7FFF,$73B9,$6335
-                    dw $7708,$7FFF,$722B,$65C8
-                    dw $7708,$7FFF,$1084,$1BDF
-                    dw $027F,$0139,$1ADA,$0DF3
-                    dw $050D,$4F7F,$3298,$15B1
-                    dw $3FFF,$45BF,$20D4,$2D3A
-                    dw $7BAF,$7FFF,$1084,$57F3
-                    dw $0340,$01A0,$0000,$0000
-                    dw $0000,$04D0,$0554,$11D8
-                    dw $125C,$2BAA,$3800,$0A62
-                    dw $7BAF,$7FFF,$0842,$2B30
-                    dw $14B8,$0D3F,$029F,$035F
-                    dw $0008,$008E,$1575,$1A3A
-                    dw $3F5F,$5AD6,$2529,$3DEF
-                    dw $7BAF,$7FFF,$1084,$7FB8
-                    dw $72B0,$32FC,$2256,$11CF
-                    dw $054B,$09E6,$1AAB,$2B30
-                    dw $3BB4,$287F,$000E,$0015
-                    dw $7BAF,$376D,$1084,$22A9
-                    dw $219B,$1538,$04B4,$0470
-                    dw $040C,$21C2,$3246,$3EA9
-                    dw $4B0C,$534E,$01C3,$1646
-                    dw $772F,$7FFF,$1084,$729F
-                    dw $51B8,$30B0,$7E97,$6DB0
-                    dw $54EA,$294A,$4210,$5EF7
-                    dw $6F7B,$571F,$251C,$3E3F
-                    dw $7BAF,$7FFF,$1084,$778C
-                    dw $6F4A,$6708,$5EC6,$5684
-                    dw $4E42,$21C2,$3246,$42CA
-                    dw $4F2D,$6372,$1084,$1084
-                    dw $45BC,$7FFF,$14A5,$01A5
-                    dw $0249,$02CD,$4631,$5AD6
-                    dw $0000,$0351,$0019,$011F
-                    dw $061F,$129F,$017A,$0113
-                    dw $45BC,$7FFF,$14A5,$008D
-                    dw $0112,$19D9,$2A9E,$36FF
-                    dw $0000,$7FFF,$0813,$2D9B
-                    dw $465F,$539F,$1B9F,$1A5F
-                    dw $45BC,$7FFF,$14A5,$013B
-                    dw $027F,$179F,$0135,$265E
-                    dw $0000,$0C9B,$0135,$261D
-                    dw $42DF,$6ADF,$4A1D,$28FA
-                    dw $734E,$7FFF,$14A5,$3D84
-                    dw $5229,$27BF,$31BB,$3ABF
-                    dw $0000,$152F,$355D,$525F
-                    dw $169B,$1C9F,$0C19,$0C19
-                    dw $45BC,$7FFF,$14A5,$013B
-                    dw $027F,$179F,$0135,$265E
-                    dw $0000,$0C9B,$0220,$0EE0
-                    dw $23A0,$6ADF,$4A1D,$28FA
-                    dw $45BC,$7FFF,$14A5,$0203
-                    dw $0F0A,$2BF1,$0135,$265E
-                    dw $0000,$3F5F,$294A,$4631
-                    dw $6318,$1A3A,$1575,$008E
-                    dw $45BC,$7FFF,$14A5,$0055
-                    dw $0C3E,$3D9F,$0135,$265E
-                    dw $0000,$42DF,$4025,$74D2
-                    dw $7EB2,$261D,$1557,$00AF
-                    dw $45BC,$7FFF,$14A5,$0111
-                    dw $0DB9,$22DD,$2D9C,$3ABF
-                    dw $0000,$0000,$14EC,$1DD4
-                    dw $369A,$20BC,$1096,$000F
-                    dw $7F92,$7FFF,$1084,$5B0C
-                    dw $568A,$5208,$4DA6,$4944
-                    dw $44E2,$0887,$14EA,$214D
-                    dw $298F,$2936,$0831,$1CD3
-                    dw $7F92,$7FFF,$1084,$722B
-                    dw $65C8,$5D86,$7F36,$6DB0
-                    dw $54EA,$294A,$4210,$5EF7
-                    dw $6F7B,$52FF,$35BC,$469C
-                    dw $7F92,$7FFF,$0000,$0A1F
-                    dw $011D,$0013,$0000,$0000
-                    dw $0000,$0887,$14EA,$214D
-                    dw $298F,$4280,$2940,$35E0
-                    dw $772F,$7FFF,$1084,$57F0
-                    dw $0340,$01A0,$1BDF,$027F
-                    dw $0139,$3CE1,$5186,$662B
-                    dw $7AD0,$2BAA,$3800,$0A62
-                    dw $772F,$7FFF,$1084,$0000
-                    dw $0000,$0000,$1ADA,$0DF3
-                    dw $050D,$3961,$4E06,$62AB
-                    dw $7750,$5AD6,$2529,$3DEF
-                    dw $772F,$7FFF,$0000,$264E
-                    dw $49EC,$41AA,$3968,$3126
-                    dw $28E4,$1C41,$28A3,$3506
-                    dw $3D48,$0525,$0D88,$19EB
-                    dw $772F,$6739,$0000,$2CC5
-                    dw $3D89,$3DCD,$4E51,$2EF8
-                    dw $1E74,$1C41,$28A3,$3506
-                    dw $3D48,$4210,$2108,$318C
-                    dw $45BC,$7FFF,$14A5,$2CE0
-                    dw $41A3,$5648,$6AED,$7F71
-                    dw $0000,$7FFF,$3013,$4D9B
-                    dw $625F,$539F,$1B9F,$1A5F
-                    dw $45BC,$7FFF,$14A5,$1E22
-                    dw $2F01,$3FE0,$0135,$1A9F
-                    dw $0000,$7750,$294A,$4631
-                    dw $6318,$62AB,$4E06,$3961
-                    dw $772F,$7FFF,$1084,$3B1F
-                    dw $035F,$029F,$11D7,$0153
-                    dw $00CF,$0000,$0000,$0000
-                    dw $0000,$0000,$0000,$0000
-                    dw $772F,$7FFF,$14A5,$05BF
-                    dw $001E,$0017,$46BF,$365D
-                    dw $25BB,$04EF,$0D73,$4F7F
-                    dw $7F0F,$0000,$0000,$0000
-                    dw $45BC,$7FFF,$14C5,$256D
-                    dw $3A12,$4A96,$5B1A,$6B9E
-                    dw $0000,$7FFF,$210E,$35B7
-                    dw $4E79,$539F,$1B9F,$1A5F
-                    dw $45BC,$7FFF,$14A5,$1E22
-                    dw $2F01,$3FE0,$0135,$1A9F
-                    dw $0000,$5B1A,$294A,$4631
-                    dw $6318,$4A96,$3A12,$256D
-                    dw $7708,$7FFF,$1084,$57F3
-                    dw $0340,$01A0,$0000,$0000
-                    dw $0000,$1D28,$2DAC,$3E30
-                    dw $4EB4,$2BAA,$3800,$0A62
-                    dw $7708,$15EF,$114C,$012E
-                    dw $00EC,$00AA,$090A,$1D63
-                    dw $1521,$0864,$10A6,$18E8
-                    dw $212A,$296C,$31AE,$39F0
-                    dw $7708,$7FFF,$1084,$097F
-                    dw $005A,$000F,$7E97,$6DB0
-                    dw $54EA,$256D,$3A12,$4A96
-                    dw $5B1A,$571F,$251C,$3E3F
-                    dw $7BAF,$7FFF,$1084,$0000
-                    dw $0000,$0000,$0000,$0000
-                    dw $0000,$294A,$4210,$5EF7
-                    dw $6F7B,$5AD6,$2529,$3DEF
-                    dw $7708,$7FFF,$3DAD,$314A
-                    dw $24E7,$01F6,$0192,$012F
-                    dw $00AC,$0864,$10A6,$18E8
-                    dw $212A,$296C,$0088,$00CA
-                    dw $7BAF,$7FFF,$0842,$2B30
-                    dw $14B8,$0D3F,$029F,$035F
-                    dw $0008,$008E,$1575,$1A3A
-                    dw $3F5F,$6F7B,$5AD6,$3DEF
-                    dw $7708,$7FFF,$1084,$77BD
-                    dw $5EF7,$3DEF,$1BDF,$027F
-                    dw $0139,$0492,$0D17,$25DD
-                    dw $3A7F,$6F7B,$3800,$5294
-                    dw $3908,$7FFF,$0842,$2B30
-                    dw $14B8,$0D3F,$029F,$035F
-                    dw $0008,$008E,$1575,$1A3A
-                    dw $3F5F,$6F7B,$5AD6,$3DEF
-                    dw $7708,$7FFF,$1084,$77BD
-                    dw $5EF7,$3DEF,$1BDF,$027F
-                    dw $0139,$0492,$0D17,$25DD
-                    dw $3A7F,$6F7B,$3800,$5294
-                    dw $3908,$4D4B,$18C6,$4509
-                    dw $4D2D,$44EB,$3CA9,$7FFF
-                    dw $73B9,$21C2,$3246,$42CA
-                    dw $4F2D,$6372,$30C3,$3904
-                    dw $3C63,$7F7B,$7E73,$5D6B
-                    dw $6FFB,$4FF3,$2EEB,$0DE3
-                    dw $3FFF,$1EF7,$0A52,$01CE
-                    dw $6F7F,$4E7F,$2D77,$0C75
-                    dw $7708,$7FFF,$1084,$57F3
-                    dw $0340,$01A0,$1BDF,$027F
-                    dw $0139,$04D0,$0554,$11D8
-                    dw $125C,$2BAA,$3800,$0A62
-                    dw $7708,$7FFF,$1084,$0000
-                    dw $0000,$0000,$1ADA,$0DF3
-                    dw $050D,$008E,$1575,$1A3A
-                    dw $3F5F,$5AD6,$2529,$3DEF
-                    dw $7708,$7FFF,$1084,$7FB8
-                    dw $72B0,$32FC,$2256,$11CF
-                    dw $054B,$5AD6,$6739,$739C
-                    dw $7FFF,$287F,$000E,$0015
-                    dw $7BAF,$7FFF,$1084,$5B5B
-                    dw $46D7,$435F,$32DF,$225B
-                    dw $11D7,$01B3,$0A37,$1ABB
-                    dw $2F5F,$1D3C,$0034,$0CB8
-                    dw $7BAF,$7FFF,$1CE7,$4EFF
-                    dw $42BF,$53FF,$479D,$3B3A
-                    dw $2ED7,$2E7E,$3ADF,$473F
-                    dw $4B9F,$0000,$0000,$0000
-                    dw $7BAF,$7F38,$216D,$7FBF
-                    dw $7F38,$5B3B,$4AB7,$3A33
-                    dw $29AF,$2A13,$3A97,$4B1B
-                    dw $5B9E,$76B4,$69C9,$7230
-                    dw $7BAF,$7FFF,$1084,$2B96
-                    dw $1713,$3B9D,$12F8,$0A74
-                    dw $01F0,$2A03,$3A87,$4B0B
-                    dw $576E,$6BB3,$020B,$028F
-                    dw $7BAF,$130F,$05C5,$0A8B
-                    dw $01F8,$0172,$010D,$7FFF
-                    dw $73B9,$21C2,$3246,$3EA9
-                    dw $4B0C,$5FB1,$0589,$0A29
-                    dw $7BAF,$7FFF,$1084,$7FFF
-                    dw $6FD9,$7FFF,$777B,$66F7
-                    dw $5673,$4E7F,$5EFF,$6F7F
-                    dw $7FFF,$6372,$4ED1,$5F55
-                    dw $7BAF,$7FFF,$1907,$5B57
-                    dw $577C,$46F8,$3674,$25F0
-                    dw $156C,$296D,$39F1,$4A75
-                    dw $5AF9,$6B7D,$3A4F,$4AD3
-                    dw $7708,$15EF,$114C,$012E
-                    dw $00EC,$00AA,$090A,$1D63
-                    dw $1521,$0C63,$14A3,$1CE5
-                    dw $2527,$2D69,$35AB,$3DED
-                    dw $7708,$0C63,$1CE5,$2D69
-                    dw $2527,$1D0B,$18EA,$10A8
-                    dw $0866,$0C63,$14A3,$1CE5
-                    dw $2527,$2D69,$00D6,$015A
-                    dw $7F92,$7FFF,$0842,$4631
-                    dw $3DEF,$35AD,$2D6B,$2529
-                    dw $1CE7,$10EA,$1D4D,$29B0
-                    dw $3613,$3208,$1942,$25A5
-                    dw $7F92,$7FFF,$29F8,$67FF
-                    dw $4BDF,$3B7E,$331B,$26B8
-                    dw $1A55,$2E79,$3ADC,$473F
-                    dw $539F,$4F1F,$365B,$42BE
-                    dw $7F92,$7FFF,$29F8,$6BFF
-                    dw $5FFC,$53B9,$4756,$3AF3
-                    dw $2E90,$2E79,$3ADC,$473F
-                    dw $539F,$4F1F,$365B,$42BE
-                    dw $7BAF,$7FFF,$1084,$29F9
-                    dw $1975,$1A98,$0E15,$0191
-                    dw $010D,$184D,$20D1,$2955
-                    dw $31D9,$3A5D,$006E,$08F1
-                    dw $7BAF,$02D4,$1084,$7FFF
-                    dw $3E99,$2E15,$1D91,$092E
-                    dw $00AA,$21C2,$3246,$3EA9
-                    dw $4B0C,$534E,$6739,$739C
-                    dw $45BC,$7FFF,$0C63,$40C0
-                    dw $5565,$65E9,$4631,$5AD6
-                    dw $0000,$766D,$0012,$101A
-                    dw $311F,$367A,$21D5,$0D30
-                    dw $7708,$7FFF,$1084,$53BF
-                    dw $033E,$025C,$4A5F,$315F
-                    dw $001D,$004A,$04B2,$0A1C
-                    dw $133D,$677F,$017C,$0019
-                    dw $1084,$7FFF,$04CA,$0155
-                    dw $1A1C,$1B3E,$2DFF,$471F
-                    dw $56B5,$1173,$1242,$3329
-                    dw $1C9F,$0C18,$79E6,$5144
-                    dw $7BAF,$7FFF,$1084,$53BF
-                    dw $033E,$025C,$0000,$0000
-                    dw $0000,$1058,$015F,$0E1F
-                    dw $140E,$02BF,$017C,$0019
-                    dw $1084,$7FFF,$0C63,$0113
-                    dw $11DA,$1B3E,$2DFF,$471F
-                    dw $5EF7,$152F,$0012,$0C19
-                    dw $1C9F,$762D,$7189,$5905
+DATA_04AED3:    dw $7708,$7FFF,$73B9,$6335                      ;
+                dw $7708,$7FFF,$722B,$65C8                      ;
+                dw $7708,$7FFF,$1084,$1BDF                      ;
+                dw $027F,$0139,$1ADA,$0DF3                      ;
+                dw $050D,$4F7F,$3298,$15B1                      ;
+                dw $3FFF,$45BF,$20D4,$2D3A                      ;
+                dw $7BAF,$7FFF,$1084,$57F3                      ;
+                dw $0340,$01A0,$0000,$0000                      ;
+                dw $0000,$04D0,$0554,$11D8                      ;
+                dw $125C,$2BAA,$3800,$0A62                      ;
+                dw $7BAF,$7FFF,$0842,$2B30                      ;
+                dw $14B8,$0D3F,$029F,$035F                      ;
+                dw $0008,$008E,$1575,$1A3A                      ;
+                dw $3F5F,$5AD6,$2529,$3DEF                      ;
+                dw $7BAF,$7FFF,$1084,$7FB8                      ;
+                dw $72B0,$32FC,$2256,$11CF                      ;
+                dw $054B,$09E6,$1AAB,$2B30                      ;
+                dw $3BB4,$287F,$000E,$0015                      ;
+                dw $7BAF,$376D,$1084,$22A9                      ;
+                dw $219B,$1538,$04B4,$0470                      ;
+                dw $040C,$21C2,$3246,$3EA9                      ;
+                dw $4B0C,$534E,$01C3,$1646                      ;
+                dw $772F,$7FFF,$1084,$729F                      ;
+                dw $51B8,$30B0,$7E97,$6DB0                      ;
+                dw $54EA,$294A,$4210,$5EF7                      ;
+                dw $6F7B,$571F,$251C,$3E3F                      ;
+                dw $7BAF,$7FFF,$1084,$778C                      ;
+                dw $6F4A,$6708,$5EC6,$5684                      ;
+                dw $4E42,$21C2,$3246,$42CA                      ;
+                dw $4F2D,$6372,$1084,$1084                      ;
+                dw $45BC,$7FFF,$14A5,$01A5                      ;
+                dw $0249,$02CD,$4631,$5AD6                      ;
+                dw $0000,$0351,$0019,$011F                      ;
+                dw $061F,$129F,$017A,$0113                      ;
+                dw $45BC,$7FFF,$14A5,$008D                      ;
+                dw $0112,$19D9,$2A9E,$36FF                      ;
+                dw $0000,$7FFF,$0813,$2D9B                      ;
+                dw $465F,$539F,$1B9F,$1A5F                      ;
+                dw $45BC,$7FFF,$14A5,$013B                      ;
+                dw $027F,$179F,$0135,$265E                      ;
+                dw $0000,$0C9B,$0135,$261D                      ;
+                dw $42DF,$6ADF,$4A1D,$28FA                      ;
+                dw $734E,$7FFF,$14A5,$3D84                      ;
+                dw $5229,$27BF,$31BB,$3ABF                      ;
+                dw $0000,$152F,$355D,$525F                      ;
+                dw $169B,$1C9F,$0C19,$0C19                      ;
+                dw $45BC,$7FFF,$14A5,$013B                      ;
+                dw $027F,$179F,$0135,$265E                      ;
+                dw $0000,$0C9B,$0220,$0EE0                      ;
+                dw $23A0,$6ADF,$4A1D,$28FA                      ;
+                dw $45BC,$7FFF,$14A5,$0203                      ;
+                dw $0F0A,$2BF1,$0135,$265E                      ;
+                dw $0000,$3F5F,$294A,$4631                      ;
+                dw $6318,$1A3A,$1575,$008E                      ;
+                dw $45BC,$7FFF,$14A5,$0055                      ;
+                dw $0C3E,$3D9F,$0135,$265E                      ;
+                dw $0000,$42DF,$4025,$74D2                      ;
+                dw $7EB2,$261D,$1557,$00AF                      ;
+                dw $45BC,$7FFF,$14A5,$0111                      ;
+                dw $0DB9,$22DD,$2D9C,$3ABF                      ;
+                dw $0000,$0000,$14EC,$1DD4                      ;
+                dw $369A,$20BC,$1096,$000F                      ;
+                dw $7F92,$7FFF,$1084,$5B0C                      ;
+                dw $568A,$5208,$4DA6,$4944                      ;
+                dw $44E2,$0887,$14EA,$214D                      ;
+                dw $298F,$2936,$0831,$1CD3                      ;
+                dw $7F92,$7FFF,$1084,$722B                      ;
+                dw $65C8,$5D86,$7F36,$6DB0                      ;
+                dw $54EA,$294A,$4210,$5EF7                      ;
+                dw $6F7B,$52FF,$35BC,$469C                      ;
+                dw $7F92,$7FFF,$0000,$0A1F                      ;
+                dw $011D,$0013,$0000,$0000                      ;
+                dw $0000,$0887,$14EA,$214D                      ;
+                dw $298F,$4280,$2940,$35E0                      ;
+                dw $772F,$7FFF,$1084,$57F0                      ;
+                dw $0340,$01A0,$1BDF,$027F                      ;
+                dw $0139,$3CE1,$5186,$662B                      ;
+                dw $7AD0,$2BAA,$3800,$0A62                      ;
+                dw $772F,$7FFF,$1084,$0000                      ;
+                dw $0000,$0000,$1ADA,$0DF3                      ;
+                dw $050D,$3961,$4E06,$62AB                      ;
+                dw $7750,$5AD6,$2529,$3DEF                      ;
+                dw $772F,$7FFF,$0000,$264E                      ;
+                dw $49EC,$41AA,$3968,$3126                      ;
+                dw $28E4,$1C41,$28A3,$3506                      ;
+                dw $3D48,$0525,$0D88,$19EB                      ;
+                dw $772F,$6739,$0000,$2CC5                      ;
+                dw $3D89,$3DCD,$4E51,$2EF8                      ;
+                dw $1E74,$1C41,$28A3,$3506                      ;
+                dw $3D48,$4210,$2108,$318C                      ;
+                dw $45BC,$7FFF,$14A5,$2CE0                      ;
+                dw $41A3,$5648,$6AED,$7F71                      ;
+                dw $0000,$7FFF,$3013,$4D9B                      ;
+                dw $625F,$539F,$1B9F,$1A5F                      ;
+                dw $45BC,$7FFF,$14A5,$1E22                      ;
+                dw $2F01,$3FE0,$0135,$1A9F                      ;
+                dw $0000,$7750,$294A,$4631                      ;
+                dw $6318,$62AB,$4E06,$3961                      ;
+                dw $772F,$7FFF,$1084,$3B1F                      ;
+                dw $035F,$029F,$11D7,$0153                      ;
+                dw $00CF,$0000,$0000,$0000                      ;
+                dw $0000,$0000,$0000,$0000                      ;
+                dw $772F,$7FFF,$14A5,$05BF                      ;
+                dw $001E,$0017,$46BF,$365D                      ;
+                dw $25BB,$04EF,$0D73,$4F7F                      ;
+                dw $7F0F,$0000,$0000,$0000                      ;
+                dw $45BC,$7FFF,$14C5,$256D                      ;
+                dw $3A12,$4A96,$5B1A,$6B9E                      ;
+                dw $0000,$7FFF,$210E,$35B7                      ;
+                dw $4E79,$539F,$1B9F,$1A5F                      ;
+                dw $45BC,$7FFF,$14A5,$1E22                      ;
+                dw $2F01,$3FE0,$0135,$1A9F                      ;
+                dw $0000,$5B1A,$294A,$4631                      ;
+                dw $6318,$4A96,$3A12,$256D                      ;
+                dw $7708,$7FFF,$1084,$57F3                      ;
+                dw $0340,$01A0,$0000,$0000                      ;
+                dw $0000,$1D28,$2DAC,$3E30                      ;
+                dw $4EB4,$2BAA,$3800,$0A62                      ;
+                dw $7708,$15EF,$114C,$012E                      ;
+                dw $00EC,$00AA,$090A,$1D63                      ;
+                dw $1521,$0864,$10A6,$18E8                      ;
+                dw $212A,$296C,$31AE,$39F0                      ;
+                dw $7708,$7FFF,$1084,$097F                      ;
+                dw $005A,$000F,$7E97,$6DB0                      ;
+                dw $54EA,$256D,$3A12,$4A96                      ;
+                dw $5B1A,$571F,$251C,$3E3F                      ;
+                dw $7BAF,$7FFF,$1084,$0000                      ;
+                dw $0000,$0000,$0000,$0000                      ;
+                dw $0000,$294A,$4210,$5EF7                      ;
+                dw $6F7B,$5AD6,$2529,$3DEF                      ;
+                dw $7708,$7FFF,$3DAD,$314A                      ;
+                dw $24E7,$01F6,$0192,$012F                      ;
+                dw $00AC,$0864,$10A6,$18E8                      ;
+                dw $212A,$296C,$0088,$00CA                      ;
+                dw $7BAF,$7FFF,$0842,$2B30                      ;
+                dw $14B8,$0D3F,$029F,$035F                      ;
+                dw $0008,$008E,$1575,$1A3A                      ;
+                dw $3F5F,$6F7B,$5AD6,$3DEF                      ;
+                dw $7708,$7FFF,$1084,$77BD                      ;
+                dw $5EF7,$3DEF,$1BDF,$027F                      ;
+                dw $0139,$0492,$0D17,$25DD                      ;
+                dw $3A7F,$6F7B,$3800,$5294                      ;
+                dw $3908,$7FFF,$0842,$2B30                      ;
+                dw $14B8,$0D3F,$029F,$035F                      ;
+                dw $0008,$008E,$1575,$1A3A                      ;
+                dw $3F5F,$6F7B,$5AD6,$3DEF                      ;
+                dw $7708,$7FFF,$1084,$77BD                      ;
+                dw $5EF7,$3DEF,$1BDF,$027F                      ;
+                dw $0139,$0492,$0D17,$25DD                      ;
+                dw $3A7F,$6F7B,$3800,$5294                      ;
+                dw $3908,$4D4B,$18C6,$4509                      ;
+                dw $4D2D,$44EB,$3CA9,$7FFF                      ;
+                dw $73B9,$21C2,$3246,$42CA                      ;
+                dw $4F2D,$6372,$30C3,$3904                      ;
+                dw $3C63,$7F7B,$7E73,$5D6B                      ;
+                dw $6FFB,$4FF3,$2EEB,$0DE3                      ;
+                dw $3FFF,$1EF7,$0A52,$01CE                      ;
+                dw $6F7F,$4E7F,$2D77,$0C75                      ;
+                dw $7708,$7FFF,$1084,$57F3                      ;
+                dw $0340,$01A0,$1BDF,$027F                      ;
+                dw $0139,$04D0,$0554,$11D8                      ;
+                dw $125C,$2BAA,$3800,$0A62                      ;
+                dw $7708,$7FFF,$1084,$0000                      ;
+                dw $0000,$0000,$1ADA,$0DF3                      ;
+                dw $050D,$008E,$1575,$1A3A                      ;
+                dw $3F5F,$5AD6,$2529,$3DEF                      ;
+                dw $7708,$7FFF,$1084,$7FB8                      ;
+                dw $72B0,$32FC,$2256,$11CF                      ;
+                dw $054B,$5AD6,$6739,$739C                      ;
+                dw $7FFF,$287F,$000E,$0015                      ;
+                dw $7BAF,$7FFF,$1084,$5B5B                      ;
+                dw $46D7,$435F,$32DF,$225B                      ;
+                dw $11D7,$01B3,$0A37,$1ABB                      ;
+                dw $2F5F,$1D3C,$0034,$0CB8                      ;
+                dw $7BAF,$7FFF,$1CE7,$4EFF                      ;
+                dw $42BF,$53FF,$479D,$3B3A                      ;
+                dw $2ED7,$2E7E,$3ADF,$473F                      ;
+                dw $4B9F,$0000,$0000,$0000                      ;
+                dw $7BAF,$7F38,$216D,$7FBF                      ;
+                dw $7F38,$5B3B,$4AB7,$3A33                      ;
+                dw $29AF,$2A13,$3A97,$4B1B                      ;
+                dw $5B9E,$76B4,$69C9,$7230                      ;
+                dw $7BAF,$7FFF,$1084,$2B96                      ;
+                dw $1713,$3B9D,$12F8,$0A74                      ;
+                dw $01F0,$2A03,$3A87,$4B0B                      ;
+                dw $576E,$6BB3,$020B,$028F                      ;
+                dw $7BAF,$130F,$05C5,$0A8B                      ;
+                dw $01F8,$0172,$010D,$7FFF                      ;
+                dw $73B9,$21C2,$3246,$3EA9                      ;
+                dw $4B0C,$5FB1,$0589,$0A29                      ;
+                dw $7BAF,$7FFF,$1084,$7FFF                      ;
+                dw $6FD9,$7FFF,$777B,$66F7                      ;
+                dw $5673,$4E7F,$5EFF,$6F7F                      ;
+                dw $7FFF,$6372,$4ED1,$5F55                      ;
+                dw $7BAF,$7FFF,$1907,$5B57                      ;
+                dw $577C,$46F8,$3674,$25F0                      ;
+                dw $156C,$296D,$39F1,$4A75                      ;
+                dw $5AF9,$6B7D,$3A4F,$4AD3                      ;
+                dw $7708,$15EF,$114C,$012E                      ;
+                dw $00EC,$00AA,$090A,$1D63                      ;
+                dw $1521,$0C63,$14A3,$1CE5                      ;
+                dw $2527,$2D69,$35AB,$3DED                      ;
+                dw $7708,$0C63,$1CE5,$2D69                      ;
+                dw $2527,$1D0B,$18EA,$10A8                      ;
+                dw $0866,$0C63,$14A3,$1CE5                      ;
+                dw $2527,$2D69,$00D6,$015A                      ;
+                dw $7F92,$7FFF,$0842,$4631                      ;
+                dw $3DEF,$35AD,$2D6B,$2529                      ;
+                dw $1CE7,$10EA,$1D4D,$29B0                      ;
+                dw $3613,$3208,$1942,$25A5                      ;
+                dw $7F92,$7FFF,$29F8,$67FF                      ;
+                dw $4BDF,$3B7E,$331B,$26B8                      ;
+                dw $1A55,$2E79,$3ADC,$473F                      ;
+                dw $539F,$4F1F,$365B,$42BE                      ;
+                dw $7F92,$7FFF,$29F8,$6BFF                      ;
+                dw $5FFC,$53B9,$4756,$3AF3                      ;
+                dw $2E90,$2E79,$3ADC,$473F                      ;
+                dw $539F,$4F1F,$365B,$42BE                      ;
+                dw $7BAF,$7FFF,$1084,$29F9                      ;
+                dw $1975,$1A98,$0E15,$0191                      ;
+                dw $010D,$184D,$20D1,$2955                      ;
+                dw $31D9,$3A5D,$006E,$08F1                      ;
+                dw $7BAF,$02D4,$1084,$7FFF                      ;
+                dw $3E99,$2E15,$1D91,$092E                      ;
+                dw $00AA,$21C2,$3246,$3EA9                      ;
+                dw $4B0C,$534E,$6739,$739C                      ;
+                dw $45BC,$7FFF,$0C63,$40C0                      ;
+                dw $5565,$65E9,$4631,$5AD6                      ;
+                dw $0000,$766D,$0012,$101A                      ;
+                dw $311F,$367A,$21D5,$0D30                      ;
+                dw $7708,$7FFF,$1084,$53BF                      ;
+                dw $033E,$025C,$4A5F,$315F                      ;
+                dw $001D,$004A,$04B2,$0A1C                      ;
+                dw $133D,$677F,$017C,$0019                      ;
+                dw $1084,$7FFF,$04CA,$0155                      ;
+                dw $1A1C,$1B3E,$2DFF,$471F                      ;
+                dw $56B5,$1173,$1242,$3329                      ;
+                dw $1C9F,$0C18,$79E6,$5144                      ;
+                dw $7BAF,$7FFF,$1084,$53BF                      ;
+                dw $033E,$025C,$0000,$0000                      ;
+                dw $0000,$1058,$015F,$0E1F                      ;
+                dw $140E,$02BF,$017C,$0019                      ;
+                dw $1084,$7FFF,$0C63,$0113                      ;
+                dw $11DA,$1B3E,$2DFF,$471F                      ;
+                dw $5EF7,$152F,$0012,$0C19                      ;
+                dw $1C9F,$762D,$7189,$5905                      ;
 
-DATA_04B683:        dw $04D0,$20B1,$23C1,$14D1
-                    dw $0492,$23A2,$14B2,$47C2
-                    dw $2083,$1493,$47A3,$0474
-                    dw $1484,$4794,$0455,$0965
-                    dw $0675,$4785,$17D5,$2046
-                    dw $1456,$0C66,$1476,$4786
-                    dw $17C6,$14D6,$2147,$0157
-                    dw $4767,$10B7,$14C7,$2248
-                    dw $0858,$1A68,$4778,$13B8
-                    dw $1559,$1B69,$4779,$10A9
-                    dw $14B9,$204A,$145A,$476A
-                    dw $18AA,$224B,$085B,$476B
-                    dw $109B,$14AB,$065C,$476C
-                    dw $178C,$029C,$055D,$086D
-                    dw $477D,$198D,$039D,$1AAD
-                    dw $08BD,$226E,$087E,$478E
-                    dw $199E,$2FAE,$11BE,$08CE
-                    dw $217F,$478F,$19CF,$A060
-                    dw $1470,$4780,$2161,$2C71
-                    dw $4781,$2162,$2D72,$4782
-                    dw $0563,$0873,$1A83,$4793
-                    dw $2274,$0B84,$2294,$08A4
-                    dw $47B4,$21A5,$47B5,$05A6
-                    dw $08B6,$47C6,$22B7,$08C7
-                    dw $07D7,$2018,$2928,$22C8
-                    dw $08D8,$2009,$1419,$0C29
-                    dw $0939,$05D9,$210A,$2C1A
-                    dw $072A,$0A3A,$210B,$2D1B
-                    dw $072B,$0A3B,$220C,$081C
-                    dw $1A2C,$2B3C,$221D,$0B2D
-                    dw $A0D0,$20A1,$63B1,$14D1
-                    dw $0482,$2392,$14A2,$47B2
-                    dw $0433,$2343,$0953,$2063
-                    dw $2373,$1483,$4793,$2024
-                    dw $0234,$4744,$0C54,$1464
-                    dw $2225,$0335,$4745,$0536
-                    dw $0846,$4756,$2037,$1947
-                    dw $0857,$4767,$0428,$1438
-                    dw $4748,$2229,$0839,$4749
-                    dw $053A,$104A,$145A,$476A
-                    dw $1A8A,$109A,$14AA,$203B
-                    dw $144B,$475B,$1A7B,$0B8B
-                    dw $219B,$109C,$213C,$014C
-                    dw $475C,$0A7C,$008C,$059C
-                    dw $08AC,$1ABC,$08CC,$053D
-                    dw $084D,$075D,$1A6D,$0B7D
-                    dw $22AD,$0BBD,$06CD,$1ADD
-                    dw $224E,$245E,$0B6E,$05CE
-                    dw $0BDE,$84B0,$23C0,$29D0
-                    dw $20A1,$47B1,$2082,$0F92
-                    dw $14A2,$47B2,$2013,$0923
-                    dw $0473,$0283,$4793,$2004
-                    dw $1414,$0724,$2934,$1574
-                    dw $0384,$4794,$2105,$0115
-                    dw $0725,$0A35,$0465,$4775
-                    dw $1885,$0506,$0816,$1A26
-                    dw $0B36,$0666,$1076,$1186
-                    dw $0896,$47A6,$2217,$0B27
-                    dw $2167,$1877,$4787,$2058
-                    dw $1468,$1978,$0888,$4798
-                    dw $1AA8,$08B8,$0439,$0F49
-                    dw $1459,$4769,$1189,$1F99
-                    dw $1BA9,$19B9,$08C9,$272A
-                    dw $283A,$474A,$08AA,$13CA
-                    dw $223B,$084B,$475B,$1A6B
-                    dw $087B,$11AB,$1CBB,$08CB
-                    dw $054C,$245C,$0B6C,$057C
-                    dw $088C,$479C,$19CC,$228D
-                    dw $089D,$47AD,$059E,$08AE
-                    dw $1ABE,$08CE,$07DE,$22AF
-                    dw $0BBF,$05CF,$0BDF,$A0D0
-                    dw $2091,$29A1,$20C1,$14D1
-                    dw $0472,$2382,$1492,$0CA2
-                    dw $0FB2,$14C2,$07D2,$2043
-                    dw $0953,$2063,$1473,$4783
-                    dw $0434,$1444,$0C54,$1D64
-                    dw $1474,$4784,$2025,$1435
-                    dw $2C45,$4755,$2226,$0836
-                    dw $2D46,$4756,$0537,$0847
-                    dw $4757,$1797,$2EA7,$2248
-                    dw $0858,$1A68,$4778,$1088
-                    dw $1498,$0CA8,$1559,$1B69
-                    dw $4779,$1889,$0199,$204A
-                    dw $145A,$476A,$198A,$089A
-                    dw $1AAA,$214B,$015B,$476B
-                    dw $199B,$1BAB,$054C,$085C
-                    dw $476C,$225D,$256D,$287D
-                    dw $478D,$227E,$088E,$1A9E
-                    dw $08AE,$07BE,$1ACE,$08DE
-                    dw $058F,$0B9F,$05AF,$24BF
-                    dw $0BCF,$05DF,$84A1,$09B1
-                    dw $20D1,$0402,$2312,$2922
-                    dw $2092,$14A2,$0CB2,$0FC2
-                    dw $14D2,$2103,$2C13,$0A23
-                    dw $2063,$2373,$2683,$2893
-                    dw $01A3,$47B3,$2104,$2D14
-                    dw $0A24,$2054,$1464,$4774
-                    dw $1194,$08A4,$0505,$2415
-                    dw $0B25,$2155,$0165,$4775
-                    dw $2256,$0866,$4776,$1786
-                    dw $1496,$0567,$0877,$1987
-                    dw $0897,$47A7,$2068,$1478
-                    dw $4788,$1198,$08A8,$0459
-                    dw $1469,$2C79,$4789,$18A9
-                    dw $225A,$086A,$2D7A,$478A
-                    dw $19AA,$08BA,$226B,$087B
-                    dw $478B,$11BB,$1BCB,$08DB
-                    dw $227C,$088C,$479C,$1AAC
-                    dw $08BC,$19DC,$058D,$249D
-                    dw $0BAD,$05BD,$08CD,$07DD
-                    dw $22CE,$08DE,$22DF,$A0D0
-                    dw $04B1,$0FC1,$14D1,$20A2
-                    dw $14B2,$47C2,$0493,$47A3
-                    dw $2194,$01A4,$47B4,$2295
-                    dw $08A5,$47B5,$22A6,$08B6
-                    dw $47C6,$0477,$0987,$15B7
-                    dw $08C7,$07D7,$2068,$1478
-                    dw $0C88,$0998,$20A8,$14B8
-                    dw $19C8,$08D8,$2049,$0F59
-                    dw $1469,$4779,$0C99,$14A9
-                    dw $043A,$144A,$475A,$063B
-                    dw $474B,$202C,$143C,$2C4C
-                    dw $475C,$222D,$083D,$2D4D
-                    dw $475D,$1A7D,$088D,$053E
-                    dw $474E,$1A6E,$0B7E,$158E
-                    dw $089E,$224F,$085F,$0C6F
-                    dw $237F,$148F,$199F,$08AF
-                    dw $47BF,$A040,$1450,$4760
-                    dw $19A0,$1CB0,$08C0,$07D0
-                    dw $2031,$1441,$4751,$2132
-                    dw $4742,$0152,$2233,$0843
-                    dw $4753,$0544,$0854,$4764
-                    dw $2045,$1455,$4765,$0436
-                    dw $0E46,$1456,$4766,$1776
-                    dw $1486,$2027,$4737,$1067
-                    dw $1477,$0528,$2438,$0848
-                    dw $4758,$1868,$0549,$1059
-                    dw $1469,$2C79,$4789,$225A
-                    dw $086A,$2D7A,$478A,$056B
-                    dw $087B,$478B,$227C,$088C
-                    dw $1A9C,$24AC,$08BC,$47CC
-                    dw $058D,$0B9D,$22BD,$08CD
-                    dw $07DD,$05CE,$08DE,$22DF
-                    dw $A0D2,$2053,$0963,$04C3
-                    dw $14D3,$0444,$1454,$0C64
-                    dw $2374,$0984,$0494,$09A4
-                    dw $05C4,$08D4,$2035,$1445
-                    dw $4755,$1075,$0E85,$1495
-                    dw $0CA5,$29B5,$20C5,$14D5
-                    dw $2136,$4746,$1476,$0CB6
-                    dw $14C6,$2027,$4737,$0157
-                    dw $0528,$0838,$4748,$10A8
-                    dw $2EB8,$2239,$0849,$1A59
-                    dw $0869,$4779,$1799,$14A9
-                    dw $0CB9,$054A,$0B5A,$226A
-                    dw $087A,$178A,$149A,$47AA
-                    dw $046B,$147B,$198B,$089B
-                    dw $47AB,$056C,$247C,$178C
-                    dw $149C,$47AC,$047D,$148D
-                    dw $479D,$217E,$478E,$2C9E
-                    dw $217F,$478F,$2D9F,$8570
-                    dw $0880,$4790,$2071,$1981
-                    dw $0891,$1AA1,$08B1,$47C1
-                    dw $0452,$0F62,$1472,$4782
-                    dw $1992,$1BA2,$19B2,$08C2
-                    dw $2043,$0253,$4763,$19C3
-                    dw $08D3,$0544,$0354,$4764
-                    dw $19D4,$2255,$1B65,$4775
-                    dw $0566,$0876,$4786,$2277
-                    dw $0887,$1A97,$08A7,$47B7
-                    dw $0588,$0B98,$05A8,$08B8
-                    dw $47C8,$22B9,$08C9,$07D9
-                    dw $05CA,$0BDA,$8420,$2330
-                    dw $0940,$2011,$1421,$0731
-                    dw $0C41,$0951,$2112,$0122
-                    dw $0732,$0742,$0A52,$0513
-                    dw $0823,$0733,$0743,$0B53
-                    dw $04A3,$23B3,$09C3,$2224
-                    dw $2434,$0B44,$2094,$14A4
-                    dw $07B4,$17C4,$0FD4,$2085
-                    dw $1495,$47A5,$14C5,$2286
-                    dw $0896,$47A6,$2067,$0977
-                    dw $0487,$1397,$47A7,$2058
-                    dw $1468,$0C78,$1488,$1398
-                    dw $47A8,$0449,$1459,$4769
-                    dw $1789,$1499,$2CA9,$064A
-                    dw $475A,$198A,$089A,$2DAA
-                    dw $203B,$144B,$475B,$199B
-                    dw $08AB,$213C,$474C,$105C
-                    dw $2E6C,$107C,$148C,$109C
-                    dw $14AC,$053D,$104D,$145D
-                    dw $0C6D,$147D,$478D,$149D
-                    dw $064E,$475E,$2C6E,$054F
-                    dw $085F,$2D6F,$477F,$A250
-                    dw $0860,$4770,$0661,$4771
-                    dw $2052,$1162,$1F72,$0882
-                    dw $4792,$2153,$4763,$1983
-                    dw $1F93,$08A3,$0554,$0864
-                    dw $4774,$19A4,$08B4,$2265
-                    dw $0875,$4785,$13B5,$0676
-                    dw $4786,$11B6,$08C6,$0467
-                    dw $1477,$2C87,$4797,$19C7
-                    dw $08D7,$2268,$0878,$2D88
-                    dw $4798,$11D8,$0579,$0889
-                    dw $4799,$207A,$148A,$479A
-                    dw $227B,$248B,$089B,$47AB
-                    dw $219C,$47AC,$1ABC,$08CC
-                    dw $229D,$24AD,$2BBD,$22CD
-                    dw $08DD,$05DE,$FFFF
+DATA_04B683:    dw $04D0,$20B1,$23C1,$14D1                      ;
+                dw $0492,$23A2,$14B2,$47C2                      ;
+                dw $2083,$1493,$47A3,$0474                      ;
+                dw $1484,$4794,$0455,$0965                      ;
+                dw $0675,$4785,$17D5,$2046                      ;
+                dw $1456,$0C66,$1476,$4786                      ;
+                dw $17C6,$14D6,$2147,$0157                      ;
+                dw $4767,$10B7,$14C7,$2248                      ;
+                dw $0858,$1A68,$4778,$13B8                      ;
+                dw $1559,$1B69,$4779,$10A9                      ;
+                dw $14B9,$204A,$145A,$476A                      ;
+                dw $18AA,$224B,$085B,$476B                      ;
+                dw $109B,$14AB,$065C,$476C                      ;
+                dw $178C,$029C,$055D,$086D                      ;
+                dw $477D,$198D,$039D,$1AAD                      ;
+                dw $08BD,$226E,$087E,$478E                      ;
+                dw $199E,$2FAE,$11BE,$08CE                      ;
+                dw $217F,$478F,$19CF,$A060                      ;
+                dw $1470,$4780,$2161,$2C71                      ;
+                dw $4781,$2162,$2D72,$4782                      ;
+                dw $0563,$0873,$1A83,$4793                      ;
+                dw $2274,$0B84,$2294,$08A4                      ;
+                dw $47B4,$21A5,$47B5,$05A6                      ;
+                dw $08B6,$47C6,$22B7,$08C7                      ;
+                dw $07D7,$2018,$2928,$22C8                      ;
+                dw $08D8,$2009,$1419,$0C29                      ;
+                dw $0939,$05D9,$210A,$2C1A                      ;
+                dw $072A,$0A3A,$210B,$2D1B                      ;
+                dw $072B,$0A3B,$220C,$081C                      ;
+                dw $1A2C,$2B3C,$221D,$0B2D                      ;
+                dw $A0D0,$20A1,$63B1,$14D1                      ;
+                dw $0482,$2392,$14A2,$47B2                      ;
+                dw $0433,$2343,$0953,$2063                      ;
+                dw $2373,$1483,$4793,$2024                      ;
+                dw $0234,$4744,$0C54,$1464                      ;
+                dw $2225,$0335,$4745,$0536                      ;
+                dw $0846,$4756,$2037,$1947                      ;
+                dw $0857,$4767,$0428,$1438                      ;
+                dw $4748,$2229,$0839,$4749                      ;
+                dw $053A,$104A,$145A,$476A                      ;
+                dw $1A8A,$109A,$14AA,$203B                      ;
+                dw $144B,$475B,$1A7B,$0B8B                      ;
+                dw $219B,$109C,$213C,$014C                      ;
+                dw $475C,$0A7C,$008C,$059C                      ;
+                dw $08AC,$1ABC,$08CC,$053D                      ;
+                dw $084D,$075D,$1A6D,$0B7D                      ;
+                dw $22AD,$0BBD,$06CD,$1ADD                      ;
+                dw $224E,$245E,$0B6E,$05CE                      ;
+                dw $0BDE,$84B0,$23C0,$29D0                      ;
+                dw $20A1,$47B1,$2082,$0F92                      ;
+                dw $14A2,$47B2,$2013,$0923                      ;
+                dw $0473,$0283,$4793,$2004                      ;
+                dw $1414,$0724,$2934,$1574                      ;
+                dw $0384,$4794,$2105,$0115                      ;
+                dw $0725,$0A35,$0465,$4775                      ;
+                dw $1885,$0506,$0816,$1A26                      ;
+                dw $0B36,$0666,$1076,$1186                      ;
+                dw $0896,$47A6,$2217,$0B27                      ;
+                dw $2167,$1877,$4787,$2058                      ;
+                dw $1468,$1978,$0888,$4798                      ;
+                dw $1AA8,$08B8,$0439,$0F49                      ;
+                dw $1459,$4769,$1189,$1F99                      ;
+                dw $1BA9,$19B9,$08C9,$272A                      ;
+                dw $283A,$474A,$08AA,$13CA                      ;
+                dw $223B,$084B,$475B,$1A6B                      ;
+                dw $087B,$11AB,$1CBB,$08CB                      ;
+                dw $054C,$245C,$0B6C,$057C                      ;
+                dw $088C,$479C,$19CC,$228D                      ;
+                dw $089D,$47AD,$059E,$08AE                      ;
+                dw $1ABE,$08CE,$07DE,$22AF                      ;
+                dw $0BBF,$05CF,$0BDF,$A0D0                      ;
+                dw $2091,$29A1,$20C1,$14D1                      ;
+                dw $0472,$2382,$1492,$0CA2                      ;
+                dw $0FB2,$14C2,$07D2,$2043                      ;
+                dw $0953,$2063,$1473,$4783                      ;
+                dw $0434,$1444,$0C54,$1D64                      ;
+                dw $1474,$4784,$2025,$1435                      ;
+                dw $2C45,$4755,$2226,$0836                      ;
+                dw $2D46,$4756,$0537,$0847                      ;
+                dw $4757,$1797,$2EA7,$2248                      ;
+                dw $0858,$1A68,$4778,$1088                      ;
+                dw $1498,$0CA8,$1559,$1B69                      ;
+                dw $4779,$1889,$0199,$204A                      ;
+                dw $145A,$476A,$198A,$089A                      ;
+                dw $1AAA,$214B,$015B,$476B                      ;
+                dw $199B,$1BAB,$054C,$085C                      ;
+                dw $476C,$225D,$256D,$287D                      ;
+                dw $478D,$227E,$088E,$1A9E                      ;
+                dw $08AE,$07BE,$1ACE,$08DE                      ;
+                dw $058F,$0B9F,$05AF,$24BF                      ;
+                dw $0BCF,$05DF,$84A1,$09B1                      ;
+                dw $20D1,$0402,$2312,$2922                      ;
+                dw $2092,$14A2,$0CB2,$0FC2                      ;
+                dw $14D2,$2103,$2C13,$0A23                      ;
+                dw $2063,$2373,$2683,$2893                      ;
+                dw $01A3,$47B3,$2104,$2D14                      ;
+                dw $0A24,$2054,$1464,$4774                      ;
+                dw $1194,$08A4,$0505,$2415                      ;
+                dw $0B25,$2155,$0165,$4775                      ;
+                dw $2256,$0866,$4776,$1786                      ;
+                dw $1496,$0567,$0877,$1987                      ;
+                dw $0897,$47A7,$2068,$1478                      ;
+                dw $4788,$1198,$08A8,$0459                      ;
+                dw $1469,$2C79,$4789,$18A9                      ;
+                dw $225A,$086A,$2D7A,$478A                      ;
+                dw $19AA,$08BA,$226B,$087B                      ;
+                dw $478B,$11BB,$1BCB,$08DB                      ;
+                dw $227C,$088C,$479C,$1AAC                      ;
+                dw $08BC,$19DC,$058D,$249D                      ;
+                dw $0BAD,$05BD,$08CD,$07DD                      ;
+                dw $22CE,$08DE,$22DF,$A0D0                      ;
+                dw $04B1,$0FC1,$14D1,$20A2                      ;
+                dw $14B2,$47C2,$0493,$47A3                      ;
+                dw $2194,$01A4,$47B4,$2295                      ;
+                dw $08A5,$47B5,$22A6,$08B6                      ;
+                dw $47C6,$0477,$0987,$15B7                      ;
+                dw $08C7,$07D7,$2068,$1478                      ;
+                dw $0C88,$0998,$20A8,$14B8                      ;
+                dw $19C8,$08D8,$2049,$0F59                      ;
+                dw $1469,$4779,$0C99,$14A9                      ;
+                dw $043A,$144A,$475A,$063B                      ;
+                dw $474B,$202C,$143C,$2C4C                      ;
+                dw $475C,$222D,$083D,$2D4D                      ;
+                dw $475D,$1A7D,$088D,$053E                      ;
+                dw $474E,$1A6E,$0B7E,$158E                      ;
+                dw $089E,$224F,$085F,$0C6F                      ;
+                dw $237F,$148F,$199F,$08AF                      ;
+                dw $47BF,$A040,$1450,$4760                      ;
+                dw $19A0,$1CB0,$08C0,$07D0                      ;
+                dw $2031,$1441,$4751,$2132                      ;
+                dw $4742,$0152,$2233,$0843                      ;
+                dw $4753,$0544,$0854,$4764                      ;
+                dw $2045,$1455,$4765,$0436                      ;
+                dw $0E46,$1456,$4766,$1776                      ;
+                dw $1486,$2027,$4737,$1067                      ;
+                dw $1477,$0528,$2438,$0848                      ;
+                dw $4758,$1868,$0549,$1059                      ;
+                dw $1469,$2C79,$4789,$225A                      ;
+                dw $086A,$2D7A,$478A,$056B                      ;
+                dw $087B,$478B,$227C,$088C                      ;
+                dw $1A9C,$24AC,$08BC,$47CC                      ;
+                dw $058D,$0B9D,$22BD,$08CD                      ;
+                dw $07DD,$05CE,$08DE,$22DF                      ;
+                dw $A0D2,$2053,$0963,$04C3                      ;
+                dw $14D3,$0444,$1454,$0C64                      ;
+                dw $2374,$0984,$0494,$09A4                      ;
+                dw $05C4,$08D4,$2035,$1445                      ;
+                dw $4755,$1075,$0E85,$1495                      ;
+                dw $0CA5,$29B5,$20C5,$14D5                      ;
+                dw $2136,$4746,$1476,$0CB6                      ;
+                dw $14C6,$2027,$4737,$0157                      ;
+                dw $0528,$0838,$4748,$10A8                      ;
+                dw $2EB8,$2239,$0849,$1A59                      ;
+                dw $0869,$4779,$1799,$14A9                      ;
+                dw $0CB9,$054A,$0B5A,$226A                      ;
+                dw $087A,$178A,$149A,$47AA                      ;
+                dw $046B,$147B,$198B,$089B                      ;
+                dw $47AB,$056C,$247C,$178C                      ;
+                dw $149C,$47AC,$047D,$148D                      ;
+                dw $479D,$217E,$478E,$2C9E                      ;
+                dw $217F,$478F,$2D9F,$8570                      ;
+                dw $0880,$4790,$2071,$1981                      ;
+                dw $0891,$1AA1,$08B1,$47C1                      ;
+                dw $0452,$0F62,$1472,$4782                      ;
+                dw $1992,$1BA2,$19B2,$08C2                      ;
+                dw $2043,$0253,$4763,$19C3                      ;
+                dw $08D3,$0544,$0354,$4764                      ;
+                dw $19D4,$2255,$1B65,$4775                      ;
+                dw $0566,$0876,$4786,$2277                      ;
+                dw $0887,$1A97,$08A7,$47B7                      ;
+                dw $0588,$0B98,$05A8,$08B8                      ;
+                dw $47C8,$22B9,$08C9,$07D9                      ;
+                dw $05CA,$0BDA,$8420,$2330                      ;
+                dw $0940,$2011,$1421,$0731                      ;
+                dw $0C41,$0951,$2112,$0122                      ;
+                dw $0732,$0742,$0A52,$0513                      ;
+                dw $0823,$0733,$0743,$0B53                      ;
+                dw $04A3,$23B3,$09C3,$2224                      ;
+                dw $2434,$0B44,$2094,$14A4                      ;
+                dw $07B4,$17C4,$0FD4,$2085                      ;
+                dw $1495,$47A5,$14C5,$2286                      ;
+                dw $0896,$47A6,$2067,$0977                      ;
+                dw $0487,$1397,$47A7,$2058                      ;
+                dw $1468,$0C78,$1488,$1398                      ;
+                dw $47A8,$0449,$1459,$4769                      ;
+                dw $1789,$1499,$2CA9,$064A                      ;
+                dw $475A,$198A,$089A,$2DAA                      ;
+                dw $203B,$144B,$475B,$199B                      ;
+                dw $08AB,$213C,$474C,$105C                      ;
+                dw $2E6C,$107C,$148C,$109C                      ;
+                dw $14AC,$053D,$104D,$145D                      ;
+                dw $0C6D,$147D,$478D,$149D                      ;
+                dw $064E,$475E,$2C6E,$054F                      ;
+                dw $085F,$2D6F,$477F,$A250                      ;
+                dw $0860,$4770,$0661,$4771                      ;
+                dw $2052,$1162,$1F72,$0882                      ;
+                dw $4792,$2153,$4763,$1983                      ;
+                dw $1F93,$08A3,$0554,$0864                      ;
+                dw $4774,$19A4,$08B4,$2265                      ;
+                dw $0875,$4785,$13B5,$0676                      ;
+                dw $4786,$11B6,$08C6,$0467                      ;
+                dw $1477,$2C87,$4797,$19C7                      ;
+                dw $08D7,$2268,$0878,$2D88                      ;
+                dw $4798,$11D8,$0579,$0889                      ;
+                dw $4799,$207A,$148A,$479A                      ;
+                dw $227B,$248B,$089B,$47AB                      ;
+                dw $219C,$47AC,$1ABC,$08CC                      ;
+                dw $229D,$24AD,$2BBD,$22CD                      ;
+                dw $08DD,$05DE,$FFFF                            ;
 
-DATA_04BD09:        dw $085C,$085C,$085C,$085C
-                    dw $0855,$0856,$0855,$4856
-                    dw $0854,$0853,$0855,$0856
-                    dw $0855,$4856,$4854,$0853
-                    dw $085C,$0857,$0857,$0854
-                    dw $4857,$4854,$085C,$4857
-                    dw $4857,$4854,$0857,$0854
-                    dw $0853,$0853,$0853,$0853
-                    dw $0853,$0853,$4854,$0853
-                    dw $8850,$8851,$0853,$8852
-                    dw $0853,$C852,$0853,$8852
-                    dw $0853,$C852,$C850,$C851
-                    dw $0853,$8854,$0853,$0853
-                    dw $C854,$4854,$C857,$4857
-                    dw $8858,$0858,$0853,$0853
-                    dw $8857,$0857,$8854,$0854
-                    dw $0853,$085B,$085B,$0854
-                    dw $485B,$4854,$8853,$485B
-                    dw $0853,$8854,$4854,$0853
-                    dw $485B,$4854,$085B,$0854
-                    dw $0854,$0853,$0853,$0853
-                    dw $4857,$4854,$0857,$485B
-                    dw $4857,$085B,$0857,$0854
-                    dw $0859,$0858,$085A,$0853
-                    dw $485A,$0853,$085A,$0853
-                    dw $485A,$0853,$4859,$4858
-                    dw $0853,$0853,$0853,$C854
-                    dw $C854,$C85B,$C85B,$0853
-                    dw $C854,$4854,$C85B,$485B
-                    dw $885B,$085B,$8854,$0854
-                    dw $C854,$0853,$8854,$0853
-                    dw $0853,$0853,$C858,$4858
-                    dw $0851,$0850,$0852,$0853
-                    dw $4852,$0853,$0852,$0853
-                    dw $4852,$0853,$4851,$4850
-                    dw $8850,$0850,$0853,$0853
-                    dw $0853,$0853,$C850,$4850
-                    dw $C854,$085B,$C857,$4857
-                    dw $8857,$0857,$8854,$485B
-                    dw $085C,$0857,$085C,$4857
-                    dw $0854,$0853,$4854,$0853
-                    dw $8857,$085C,$8854,$8857
-                    dw $C854,$C857,$8854,$8857
-                    dw $C854,$C857,$C857,$085C
-                    dw $0853,$0853,$0855,$0856
-                    dw $0855,$4856,$0853,$0853
-                    dw $8858,$8859,$0853,$885A
-                    dw $0853,$C85A,$C858,$C859
+DATA_04BD09:    dw $085C,$085C,$085C,$085C                      ;
+                dw $0855,$0856,$0855,$4856                      ;
+                dw $0854,$0853,$0855,$0856                      ;
+                dw $0855,$4856,$4854,$0853                      ;
+                dw $085C,$0857,$0857,$0854                      ;
+                dw $4857,$4854,$085C,$4857                      ;
+                dw $4857,$4854,$0857,$0854                      ;
+                dw $0853,$0853,$0853,$0853                      ;
+                dw $0853,$0853,$4854,$0853                      ;
+                dw $8850,$8851,$0853,$8852                      ;
+                dw $0853,$C852,$0853,$8852                      ;
+                dw $0853,$C852,$C850,$C851                      ;
+                dw $0853,$8854,$0853,$0853                      ;
+                dw $C854,$4854,$C857,$4857                      ;
+                dw $8858,$0858,$0853,$0853                      ;
+                dw $8857,$0857,$8854,$0854                      ;
+                dw $0853,$085B,$085B,$0854                      ;
+                dw $485B,$4854,$8853,$485B                      ;
+                dw $0853,$8854,$4854,$0853                      ;
+                dw $485B,$4854,$085B,$0854                      ;
+                dw $0854,$0853,$0853,$0853                      ;
+                dw $4857,$4854,$0857,$485B                      ;
+                dw $4857,$085B,$0857,$0854                      ;
+                dw $0859,$0858,$085A,$0853                      ;
+                dw $485A,$0853,$085A,$0853                      ;
+                dw $485A,$0853,$4859,$4858                      ;
+                dw $0853,$0853,$0853,$C854                      ;
+                dw $C854,$C85B,$C85B,$0853                      ;
+                dw $C854,$4854,$C85B,$485B                      ;
+                dw $885B,$085B,$8854,$0854                      ;
+                dw $C854,$0853,$8854,$0853                      ;
+                dw $0853,$0853,$C858,$4858                      ;
+                dw $0851,$0850,$0852,$0853                      ;
+                dw $4852,$0853,$0852,$0853                      ;
+                dw $4852,$0853,$4851,$4850                      ;
+                dw $8850,$0850,$0853,$0853                      ;
+                dw $0853,$0853,$C850,$4850                      ;
+                dw $C854,$085B,$C857,$4857                      ;
+                dw $8857,$0857,$8854,$485B                      ;
+                dw $085C,$0857,$085C,$4857                      ;
+                dw $0854,$0853,$4854,$0853                      ;
+                dw $8857,$085C,$8854,$8857                      ;
+                dw $C854,$C857,$8854,$8857                      ;
+                dw $C854,$C857,$C857,$085C                      ;
+                dw $0853,$0853,$0855,$0856                      ;
+                dw $0855,$4856,$0853,$0853                      ;
+                dw $8858,$8859,$0853,$885A                      ;
+                dw $0853,$C85A,$C858,$C859                      ;
 
-DATA_04BE89:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;Empty
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF
+DATA_04BE89:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;Empty
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF                  ;
 
-DATA_04C000:        db $26,$AC,$26,$26,$26,$72,$72,$72
-                    db $13,$59,$8B
+DATA_04C000:    db $26,$AC,$26,$26,$26,$72,$72,$72              ;
+                db $13,$59,$8B                                  ;
 
 ;level number and map type handler.
 CODE_04C00B:    PHB                     ; $04:C00B: 8B          ;\
@@ -4008,1006 +4008,1006 @@ CODE_04C11B:    RTS                     ; $04:C11B: 60          ;
 ;; themselves follow
 ;;
 
-DATA_04C11C:        db DATA_04C124-DATA_04C124 ; World 1 | Relative indices to level numbers grouped by world.
-                    db DATA_04C129-DATA_04C124 ; World 2
-                    db DATA_04C12E-DATA_04C124 ; World 3
-                    db DATA_04C132-DATA_04C124 ; World 4
-                    db DATA_04C137-DATA_04C124 ; World 5
-                    db DATA_04C13B-DATA_04C124 ; World 6
-                    db DATA_04C13F-DATA_04C124 ; World 7
-                    db DATA_04C144-DATA_04C124 ; World 8
+DATA_04C11C:    db DATA_04C124-DATA_04C124                      ; World 1 | Relative indices to level numbers grouped by world.
+                db DATA_04C129-DATA_04C124                      ; World 2
+                db DATA_04C12E-DATA_04C124                      ; World 3
+                db DATA_04C132-DATA_04C124                      ; World 4
+                db DATA_04C137-DATA_04C124                      ; World 5
+                db DATA_04C13B-DATA_04C124                      ; World 6
+                db DATA_04C13F-DATA_04C124                      ; World 7
+                db DATA_04C144-DATA_04C124                      ; World 8
 
-DATA_04C124:        db $25,$29,$C0,$26,$60             ; "World 1 Levels" They get stored in $7E:0750
+DATA_04C124:    db $25,$29,$C0,$26,$60                          ; "World 1 Levels" They get stored in $7E:0750
 
-DATA_04C129:        db $28,$29,$01,$27,$62             ; "World 2 Levels"
+DATA_04C129:    db $28,$29,$01,$27,$62                          ; "World 2 Levels"
 
-DATA_04C12E:        db $24,$35,$20,$63                 ; "World 3 Levels"
+DATA_04C12E:    db $24,$35,$20,$63                              ; "World 3 Levels"
 
-DATA_04C132:        db $22,$29,$41,$2C,$61             ; "World 4 Levels"
+DATA_04C132:    db $22,$29,$41,$2C,$61                          ; "World 4 Levels"
 
-DATA_04C137:        db $2A,$31,$26,$62                 ; "World 5 Levels"
+DATA_04C137:    db $2A,$31,$26,$62                              ; "World 5 Levels"
 
-DATA_04C13B:        db $2E,$23,$2D,$60                 ; "World 6 Levels"
+DATA_04C13B:    db $2E,$23,$2D,$60                              ; "World 6 Levels"
 
-DATA_04C13F:        db $33,$29,$01,$27,$64             ; "World 7 Levels"
+DATA_04C13F:    db $33,$29,$01,$27,$64                          ; "World 7 Levels"
 
-DATA_04C144:        db $30,$32,$21,$65                 ; "World 8 Levels"
+DATA_04C144:    db $30,$32,$21,$65                              ; "World 8 Levels"
 
-DATA_04C148:        db DATA_04C16B-DATA_04C14C         ; Relative indices to level sprite data pointer tables
-                    db DATA_04C152-DATA_04C14C         ; Grouped by level type
-                    db DATA_04C168-DATA_04C14C
-                    db DATA_04C14C-DATA_04C14C
+DATA_04C148:    db DATA_04C16B-DATA_04C14C                      ; Relative indices to level sprite data pointer tables
+                db DATA_04C152-DATA_04C14C                      ; Grouped by level type
+                db DATA_04C168-DATA_04C14C                      ;
+                db DATA_04C14C-DATA_04C14C                      ;
 
-DATA_04C14C:        db DATA_04C1D8                     ; The castle levels sprite data offset low
-                    db DATA_04C1FF
-                    db DATA_04C218
-                    db DATA_04C247
-                    db DATA_04C272
-                    db DATA_04C287
+DATA_04C14C:    db DATA_04C1D8                                  ; The castle levels sprite data offset low
+                db DATA_04C1FF                                  ;
+                db DATA_04C218                                  ;
+                db DATA_04C247                                  ;
+                db DATA_04C272                                  ;
+                db DATA_04C287                                  ;
 
-DATA_04C152:        db DATA_04C2C1                     ; The overworld levels sprite data offset low
-                    db DATA_04C2E6
-                    db DATA_04C303
-                    db DATA_04C311
-                    db DATA_04C338
-                    db DATA_04C369
-                    db DATA_04C387
-                    db DATA_04C3A4
-                    db DATA_04C3B9
-                    db DATA_04C3E4-1
-                    db DATA_04C3E4
-                    db DATA_04C408
-                    db DATA_04C411
-                    db DATA_04C436
-                    db DATA_04C459
-                    db DATA_04C462
-                    db DATA_04C463
-                    db DATA_04C49D
-                    db DATA_04C4C8
-                    db DATA_04C4F6
-                    db DATA_04C512
-                    db DATA_04C51B
+DATA_04C152:    db DATA_04C2C1                                  ; The overworld levels sprite data offset low
+                db DATA_04C2E6                                  ;
+                db DATA_04C303                                  ;
+                db DATA_04C311                                  ;
+                db DATA_04C338                                  ;
+                db DATA_04C369                                  ;
+                db DATA_04C387                                  ;
+                db DATA_04C3A4                                  ;
+                db DATA_04C3B9                                  ;
+                db DATA_04C3E4-1                                ;
+                db DATA_04C3E4                                  ;
+                db DATA_04C408                                  ;
+                db DATA_04C411                                  ;
+                db DATA_04C436                                  ;
+                db DATA_04C459                                  ;
+                db DATA_04C462                                  ;
+                db DATA_04C463                                  ;
+                db DATA_04C49D                                  ;
+                db DATA_04C4C8                                  ;
+                db DATA_04C4F6                                  ;
+                db DATA_04C512                                  ;
+                db DATA_04C51B                                  ;
 
-DATA_04C168:        db DATA_04C540                     ; The underground levels sprite data offset low
-                    db DATA_04C56D
-                    db DATA_04C59B
+DATA_04C168:    db DATA_04C540                                  ; The underground levels sprite data offset low
+                db DATA_04C56D                                  ;
+                db DATA_04C59B                                  ;
 
-DATA_04C16B:        db DATA_04C5C8                     ; The underwater levels sprite data offset low
-                    db DATA_04C5D9
-                    db DATA_04C603
+DATA_04C16B:    db DATA_04C5C8                                  ; The underwater levels sprite data offset low
+                db DATA_04C5D9                                  ;
+                db DATA_04C603                                  ;
 
-DATA_04C16E:        db DATA_04C1D8>>8                  ; The castle levels sprite data offset high
-                    db DATA_04C1FF>>8
-                    db DATA_04C218>>8
-                    db DATA_04C247>>8
-                    db DATA_04C272>>8
-                    db DATA_04C287>>8
+DATA_04C16E:    db DATA_04C1D8>>8                               ; The castle levels sprite data offset high
+                db DATA_04C1FF>>8                               ;
+                db DATA_04C218>>8                               ;
+                db DATA_04C247>>8                               ;
+                db DATA_04C272>>8                               ;
+                db DATA_04C287>>8                               ;
 
-DATA_04C174:        db DATA_04C2C1>>8                  ; The overworld levels sprite data offset high
-                    db DATA_04C2E6>>8
-                    db DATA_04C303>>8
-                    db DATA_04C311>>8
-                    db DATA_04C338>>8
-                    db DATA_04C369>>8
-                    db DATA_04C387>>8
-                    db DATA_04C3A4>>8
-                    db DATA_04C3B9>>8
-                    db DATA_04C3E4-1>>8
-                    db DATA_04C3E4>>8
-                    db DATA_04C408>>8
-                    db DATA_04C411>>8
-                    db DATA_04C436>>8
-                    db DATA_04C459>>8
-                    db DATA_04C462>>8
-                    db DATA_04C463>>8
-                    db DATA_04C49D>>8
-                    db DATA_04C4C8>>8
-                    db DATA_04C4F6>>8
-                    db DATA_04C512>>8
-                    db DATA_04C51B>>8
+DATA_04C174:    db DATA_04C2C1>>8                               ; The overworld levels sprite data offset high
+                db DATA_04C2E6>>8                               ;
+                db DATA_04C303>>8                               ;
+                db DATA_04C311>>8                               ;
+                db DATA_04C338>>8                               ;
+                db DATA_04C369>>8                               ;
+                db DATA_04C387>>8                               ;
+                db DATA_04C3A4>>8                               ;
+                db DATA_04C3B9>>8                               ;
+                db DATA_04C3E4-1>>8                             ;
+                db DATA_04C3E4>>8                               ;
+                db DATA_04C408>>8                               ;
+                db DATA_04C411>>8                               ;
+                db DATA_04C436>>8                               ;
+                db DATA_04C459>>8                               ;
+                db DATA_04C462>>8                               ;
+                db DATA_04C463>>8                               ;
+                db DATA_04C49D>>8                               ;
+                db DATA_04C4C8>>8                               ;
+                db DATA_04C4F6>>8                               ;
+                db DATA_04C512>>8                               ;
+                db DATA_04C51B>>8                               ;
 
-DATA_04C18A:        db DATA_04C540>>8                  ; The underground levels sprite data offset high
-                    db DATA_04C56D>>8
-                    db DATA_04C59B>>8
+DATA_04C18A:    db DATA_04C540>>8                               ; The underground levels sprite data offset high
+                db DATA_04C56D>>8                               ;
+                db DATA_04C59B>>8                               ;
 
-DATA_04C18D:        db DATA_04C5C8>>8                  ; The underwater levels sprite data offset high
-                    db DATA_04C5D9>>8
-                    db DATA_04C603>>8
+DATA_04C18D:    db DATA_04C5C8>>8                               ; The underwater levels sprite data offset high
+                db DATA_04C5D9>>8                               ;
+                db DATA_04C603>>8                               ;
 
-DATA_04C190:        db DATA_04C194-DATA_04C194         ; Relative indices to level object data pointer tables
-                    db DATA_04C197-DATA_04C194         ; Grouped by level type
-                    db DATA_04C1AD-DATA_04C194
-                    db DATA_04C1B0-DATA_04C194
+DATA_04C190:    db DATA_04C194-DATA_04C194                      ; Relative indices to level object data pointer tables
+                db DATA_04C197-DATA_04C194                      ; Grouped by level type
+                db DATA_04C1AD-DATA_04C194                      ;
+                db DATA_04C1B0-DATA_04C194                      ;
 
-DATA_04C194:        db DATA_04D608                     ; Underwater levels objects offset low
-                    db DATA_04D671
-                    db DATA_04D70D
+DATA_04C194:    db DATA_04D608                                  ; Underwater levels objects offset low
+                db DATA_04D671                                  ;
+                db DATA_04D70D                                  ;
 
-DATA_04C197:        db DATA_04CC0B                     ; Overworld levels objects offset low
-                    db DATA_04CC74
-                    db DATA_04CCC3
-                    db DATA_04CD1B
-                    db DATA_04CDB0
-                    db DATA_04CE2F
-                    db DATA_04CE9A
-                    db DATA_04CEF1
-                    db DATA_04CF7A
-                    db DATA_04CFE7
-                    db DATA_04CFF1
-                    db DATA_04D035
-                    db DATA_04D04A
-                    db DATA_04D0BB
-                    db DATA_04D128
-                    db DATA_04D1A3
-                    db DATA_04D1D5
-                    db DATA_04D26D
-                    db DATA_04D2EB
-                    db DATA_04D36B
-                    db DATA_04D3CA
-                    db DATA_04D3F5
+DATA_04C197:    db DATA_04CC0B                                  ; Overworld levels objects offset low
+                db DATA_04CC74                                  ;
+                db DATA_04CCC3                                  ;
+                db DATA_04CD1B                                  ;
+                db DATA_04CDB0                                  ;
+                db DATA_04CE2F                                  ;
+                db DATA_04CE9A                                  ;
+                db DATA_04CEF1                                  ;
+                db DATA_04CF7A                                  ;
+                db DATA_04CFE7                                  ;
+                db DATA_04CFF1                                  ;
+                db DATA_04D035                                  ;
+                db DATA_04D04A                                  ;
+                db DATA_04D0BB                                  ;
+                db DATA_04D128                                  ;
+                db DATA_04D1A3                                  ;
+                db DATA_04D1D5                                  ;
+                db DATA_04D26D                                  ;
+                db DATA_04D2EB                                  ;
+                db DATA_04D36B                                  ;
+                db DATA_04D3CA                                  ;
+                db DATA_04D3F5                                  ;
 
-DATA_04C1AD:        db DATA_04D42D                     ; Underground levels objects offset low
-                    db DATA_04D4D2
-                    db DATA_04D576
+DATA_04C1AD:    db DATA_04D42D                                  ; Underground levels objects offset low
+                db DATA_04D4D2                                  ;
+                db DATA_04D576                                  ;
 
-DATA_04C1B0:        db DATA_04C617                     ; Castle levels objects offset low
-                    db DATA_04C6D2
-                    db DATA_04C7FA
-                    db DATA_04C8D8
-                    db DATA_04C9D4
-                    db DATA_04CB01
+DATA_04C1B0:    db DATA_04C617                                  ; Castle levels objects offset low
+                db DATA_04C6D2                                  ;
+                db DATA_04C7FA                                  ;
+                db DATA_04C8D8                                  ;
+                db DATA_04C9D4                                  ;
+                db DATA_04CB01                                  ;
 
-DATA_04C1B6:        db DATA_04D608>>8                  ; Underwater levels objects offset high
-                    db DATA_04D671>>8
-                    db DATA_04D70D>>8
+DATA_04C1B6:    db DATA_04D608>>8                               ; Underwater levels objects offset high
+                db DATA_04D671>>8                               ;
+                db DATA_04D70D>>8                               ;
 
-DATA_04C1B9:        db DATA_04CC0B>>8                  ; Overworld levels objects offset high
-                    db DATA_04CC74>>8
-                    db DATA_04CCC3>>8
-                    db DATA_04CD1B>>8
-                    db DATA_04CDB0>>8
-                    db DATA_04CE2F>>8
-                    db DATA_04CE9A>>8
-                    db DATA_04CEF1>>8
-                    db DATA_04CF7A>>8
-                    db DATA_04CFE7>>8
-                    db DATA_04CFF1>>8
-                    db DATA_04D035>>8
-                    db DATA_04D04A>>8
-                    db DATA_04D0BB>>8
-                    db DATA_04D128>>8
-                    db DATA_04D1A3>>8
-                    db DATA_04D1D5>>8
-                    db DATA_04D26D>>8
-                    db DATA_04D2EB>>8
-                    db DATA_04D36B>>8
-                    db DATA_04D3CA>>8
-                    db DATA_04D3F5>>8
+DATA_04C1B9:    db DATA_04CC0B>>8                               ; Overworld levels objects offset high
+                db DATA_04CC74>>8                               ;
+                db DATA_04CCC3>>8                               ;
+                db DATA_04CD1B>>8                               ;
+                db DATA_04CDB0>>8                               ;
+                db DATA_04CE2F>>8                               ;
+                db DATA_04CE9A>>8                               ;
+                db DATA_04CEF1>>8                               ;
+                db DATA_04CF7A>>8                               ;
+                db DATA_04CFE7>>8                               ;
+                db DATA_04CFF1>>8                               ;
+                db DATA_04D035>>8                               ;
+                db DATA_04D04A>>8                               ;
+                db DATA_04D0BB>>8                               ;
+                db DATA_04D128>>8                               ;
+                db DATA_04D1A3>>8                               ;
+                db DATA_04D1D5>>8                               ;
+                db DATA_04D26D>>8                               ;
+                db DATA_04D2EB>>8                               ;
+                db DATA_04D36B>>8                               ;
+                db DATA_04D3CA>>8                               ;
+                db DATA_04D3F5>>8                               ;
 
-DATA_04C1CF:        db DATA_04D42D>>8                  ; Underground levels objects offset high
-                    db DATA_04D4D2>>8
-                    db DATA_04D576>>8
+DATA_04C1CF:    db DATA_04D42D>>8                               ; Underground levels objects offset high
+                db DATA_04D4D2>>8                               ;
+                db DATA_04D576>>8                               ;
 
-DATA_04C1D2:        db DATA_04C617>>8                  ; Castle levels objects offset high
-                    db DATA_04C6D2>>8
-                    db DATA_04C7FA>>8
-                    db DATA_04C8D8>>8
-                    db DATA_04C9D4>>8
-                    db DATA_04CB01>>8
+DATA_04C1D2:    db DATA_04C617>>8                               ; Castle levels objects offset high
+                db DATA_04C6D2>>8                               ;
+                db DATA_04C7FA>>8                               ;
+                db DATA_04C8D8>>8                               ;
+                db DATA_04C9D4>>8                               ;
+                db DATA_04CB01>>8                               ;
 
 ;SMB1 LEVEL SPRITE DATA. Ends with FF.
 
-DATA_04C1D8:        db $76,$DD,$BB,$4C,$EA,$1D,$1B,$CC          ; 1-4 & 6-4, Level #60
-                    db $56,$5D,$16,$9D,$C6,$1D,$36,$9D
-                    db $C9,$1D,$04,$DB,$49,$1D,$84,$1B
-                    db $C9,$5D,$88,$95,$0F,$08,$30,$4C
-                    db $78,$2D,$A6,$28,$90,$B5,$FF
+DATA_04C1D8:    db $76,$DD,$BB,$4C,$EA,$1D,$1B,$CC              ; 1-4 & 6-4, Level #60
+                db $56,$5D,$16,$9D,$C6,$1D,$36,$9D              ;
+                db $C9,$1D,$04,$DB,$49,$1D,$84,$1B              ;
+                db $C9,$5D,$88,$95,$0F,$08,$30,$4C              ;
+                db $78,$2D,$A6,$28,$90,$B5,$FF                  ;
 
-DATA_04C1FF:        db $0F,$03,$56,$1B,$C9,$1B,$0F,$07          ; 4-4, Level #61
-                    db $36,$1B,$AA,$1B,$48,$95,$0F,$0A
-                    db $2A,$1B,$5B,$0C,$78,$2D,$90,$B5
-                    db $FF
+DATA_04C1FF:    db $0F,$03,$56,$1B,$C9,$1B,$0F,$07              ; 4-4, Level #61
+                db $36,$1B,$AA,$1B,$48,$95,$0F,$0A              ;
+                db $2A,$1B,$5B,$0C,$78,$2D,$90,$B5              ;
+                db $FF                                          ;
 
-DATA_04C218:        db $0B,$8C,$4B,$4C,$77,$5F,$EB,$0C          ; 2-4, Level #62
-                    db $BD,$DB,$19,$9D,$75,$1D,$7D,$5B
-                    db $D9,$1D,$3D,$DD,$99,$1D,$26,$9D
-                    db $5A,$2B,$8A,$2C,$CA,$1B,$20,$95
-                    db $7B,$5C,$DB,$4C,$1B,$CC,$3B,$CC
-                    db $78,$2D,$A6,$28,$90,$B5,$FF
+DATA_04C218:    db $0B,$8C,$4B,$4C,$77,$5F,$EB,$0C              ; 2-4, Level #62
+                db $BD,$DB,$19,$9D,$75,$1D,$7D,$5B              ;
+                db $D9,$1D,$3D,$DD,$99,$1D,$26,$9D              ;
+                db $5A,$2B,$8A,$2C,$CA,$1B,$20,$95              ;
+                db $7B,$5C,$DB,$4C,$1B,$CC,$3B,$CC              ;
+                db $78,$2D,$A6,$28,$90,$B5,$FF                  ;
 
-DATA_04C247:        db $0B,$8C,$3B,$1D,$8B,$1D,$AB,$0C          ; 3-4, Level #63
-                    db $DB,$1D,$0F,$03,$65,$1D,$6B,$1B
-                    db $05,$9D,$0B,$1B,$05,$9B,$0B,$1D
-                    db $8B,$0C,$1B,$8C,$70,$15,$7B,$0C
-                    db $DB,$0C,$0F,$08,$78,$2D,$A6,$28
-                    db $90,$B5,$FF
+DATA_04C247:    db $0B,$8C,$3B,$1D,$8B,$1D,$AB,$0C              ; 3-4, Level #63
+                db $DB,$1D,$0F,$03,$65,$1D,$6B,$1B              ;
+                db $05,$9D,$0B,$1B,$05,$9B,$0B,$1D              ;
+                db $8B,$0C,$1B,$8C,$70,$15,$7B,$0C              ;
+                db $DB,$0C,$0F,$08,$78,$2D,$A6,$28              ;
+                db $90,$B5,$FF                                  ;
 
-DATA_04C272:        db $27,$A9,$4B,$0C,$68,$29,$0F,$06          ; 7-4, Level #64
-                    db $77,$1B,$0F,$0B,$60,$15,$4B,$8C
-                    db $78,$2D,$90,$B5,$FF
+DATA_04C272:    db $27,$A9,$4B,$0C,$68,$29,$0F,$06              ; 7-4, Level #64
+                db $77,$1B,$0F,$0B,$60,$15,$4B,$8C              ;
+                db $78,$2D,$90,$B5,$FF                          ;
 
-DATA_04C287:        db $0F,$03,$8E,$65,$E1,$BB,$38,$6C          ; 8-4, Level #65
-                    db $A8,$3E,$E5,$E7,$0F,$08,$0B,$02
-                    db $2B,$02,$5E,$65,$E1,$BB,$0E,$DB
-                    db $0E,$BB,$8E,$DB,$0E,$FE,$65,$EC
-                    db $0F,$0D,$4E,$65,$E1,$0F,$0E,$4E
-                    db $02,$E0,$0F,$10,$FE,$E5,$E1,$1B
-                    db $85,$7B,$0C,$5B,$95,$78,$2D,$D0
-                    db $B5,$FF
+DATA_04C287:    db $0F,$03,$8E,$65,$E1,$BB,$38,$6C              ; 8-4, Level #65
+                db $A8,$3E,$E5,$E7,$0F,$08,$0B,$02              ;
+                db $2B,$02,$5E,$65,$E1,$BB,$0E,$DB              ;
+                db $0E,$BB,$8E,$DB,$0E,$FE,$65,$EC              ;
+                db $0F,$0D,$4E,$65,$E1,$0F,$0E,$4E              ;
+                db $02,$E0,$0F,$10,$FE,$E5,$E1,$1B              ;
+                db $85,$7B,$0C,$5B,$95,$78,$2D,$D0              ;
+                db $B5,$FF                                      ;
 
-DATA_04C2C1:        db $A5,$86,$E4,$28,$18,$A8,$45,$83          ; 3-3, Level #20
-                    db $69,$03,$C6,$29,$9B,$83,$16,$A4
-                    db $88,$24,$E9,$28,$05,$A8,$7B,$28
-                    db $24,$8F,$C8,$03,$E8,$03,$46,$A8
-                    db $85,$24,$C8,$24,$FF
+DATA_04C2C1:    db $A5,$86,$E4,$28,$18,$A8,$45,$83              ; 3-3, Level #20
+                db $69,$03,$C6,$29,$9B,$83,$16,$A4              ;
+                db $88,$24,$E9,$28,$05,$A8,$7B,$28              ;
+                db $24,$8F,$C8,$03,$E8,$03,$46,$A8              ;
+                db $85,$24,$C8,$24,$FF                          ;
 
-DATA_04C2E6:        db $EB,$8E,$0F,$03,$FB,$05,$17,$85          ; 8-3, Level #21
-                    db $DB,$8E,$0F,$07,$57,$05,$7B,$05
-                    db $9B,$80,$2B,$85,$FB,$05,$0F,$0B
-                    db $1B,$05,$9B,$05,$FF
+DATA_04C2E6:    db $EB,$8E,$0F,$03,$FB,$05,$17,$85              ; 8-3, Level #21
+                db $DB,$8E,$0F,$07,$57,$05,$7B,$05              ;
+                db $9B,$80,$2B,$85,$FB,$05,$0F,$0B              ;
+                db $1B,$05,$9B,$05,$FF                          ;
 
-DATA_04C303:        db $2E,$C2,$66,$E2,$11,$0F,$07,$02          ; 4-1, Level #22
-                    db $11,$0F,$0C,$12,$11,$FF
+DATA_04C303:    db $2E,$C2,$66,$E2,$11,$0F,$07,$02              ; 4-1, Level #22
+                db $11,$0F,$0C,$12,$11,$FF                      ;
 
-DATA_04C311:        db $0E,$C2,$A8,$AB,$00,$BB,$8E,$6B          ; 6-2, Level #23
-                    db $82,$DE,$00,$A0,$33,$86,$43,$06
-                    db $3E,$B4,$A0,$CB,$02,$0F,$07,$7E
-                    db $42,$A6,$83,$02,$0F,$0A,$3B,$02
-                    db $CB,$37,$0F,$0C,$E3,$0E,$FF
+DATA_04C311:    db $0E,$C2,$A8,$AB,$00,$BB,$8E,$6B              ; 6-2, Level #23
+                db $82,$DE,$00,$A0,$33,$86,$43,$06              ;
+                db $3E,$B4,$A0,$CB,$02,$0F,$07,$7E              ;
+                db $42,$A6,$83,$02,$0F,$0A,$3B,$02              ;
+                db $CB,$37,$0F,$0C,$E3,$0E,$FF                  ;
 
-DATA_04C338:        db $9B,$8E,$CA,$0E,$EE,$42,$44,$5B          ; 3-1, Level #24
-                    db $86,$80,$B8,$1B,$80,$50,$BA,$10
-                    db $B7,$5B,$00,$17,$85,$4B,$05,$FE
-                    db $34,$40,$B7,$86,$C6,$06,$5B,$80
-                    db $83,$00,$D0,$38,$5B,$8E,$8A,$0E
-                    db $A6,$00,$BB,$0E,$C5,$80,$F3,$00
-                    db $FF
+DATA_04C338:    db $9B,$8E,$CA,$0E,$EE,$42,$44,$5B              ; 3-1, Level #24
+                db $86,$80,$B8,$1B,$80,$50,$BA,$10              ;
+                db $B7,$5B,$00,$17,$85,$4B,$05,$FE              ;
+                db $34,$40,$B7,$86,$C6,$06,$5B,$80              ;
+                db $83,$00,$D0,$38,$5B,$8E,$8A,$0E              ;
+                db $A6,$00,$BB,$0E,$C5,$80,$F3,$00              ;
+                db $FF                                          ;
 
-DATA_04C369:        db $1E,$C2,$00,$6B,$06,$8B,$86,$63          ; 1-1, Level #25
-                    db $B7,$0F,$05,$03,$06,$23,$06,$4B
-                    db $B7,$BB,$00,$5B,$B7,$FB,$37,$3B
-                    db $B7,$0F,$0B,$1B,$37,$FF
+DATA_04C369:    db $1E,$C2,$00,$6B,$06,$8B,$86,$63              ; 1-1, Level #25
+                db $B7,$0F,$05,$03,$06,$23,$06,$4B              ;
+                db $B7,$BB,$00,$5B,$B7,$FB,$37,$3B              ;
+                db $B7,$0F,$0B,$1B,$37,$FF                      ;
 
-DATA_04C387:        db $2B,$D7,$E3,$03,$C2,$86,$E2,$06          ; 1-3 & 5-3, Level #26
-                    db $76,$A5,$A3,$8F,$03,$86,$2B,$57
-                    db $68,$28,$E9,$28,$E5,$83,$24,$8F
-                    db $36,$A8,$5B,$03,$FF
+DATA_04C387:    db $2B,$D7,$E3,$03,$C2,$86,$E2,$06              ; 1-3 & 5-3, Level #26
+                db $76,$A5,$A3,$8F,$03,$86,$2B,$57              ;
+                db $68,$28,$E9,$28,$E5,$83,$24,$8F              ;
+                db $36,$A8,$5B,$03,$FF                          ;
 
-DATA_04C3A4:        db $0F,$02,$78,$40,$48,$CE,$F8,$C3          ; 2-3 & 7-3, Level #27
-                    db $F8,$C3,$0F,$07,$7B,$43,$C6,$D0
-                    db $0F,$8A,$C8,$50,$FF
+DATA_04C3A4:    db $0F,$02,$78,$40,$48,$CE,$F8,$C3              ; 2-3 & 7-3, Level #27
+                db $F8,$C3,$0F,$07,$7B,$43,$C6,$D0              ;
+                db $0F,$8A,$C8,$50,$FF                          ;
 
-DATA_04C3B9:        db $85,$86,$0B,$80,$1B,$00,$DB,$37          ; 2-1, Level #28
-                    db $77,$80,$EB,$37,$FE,$2B,$20,$2B
-                    db $80,$7B,$38,$AB,$B8,$77,$86,$FE
-                    db $42,$20,$49,$86,$8B,$06,$9B,$80
-                    db $7B,$8E,$5B,$B7,$9B,$0E,$BB,$0E
-                    db $9B,$80,$FF
+DATA_04C3B9:    db $85,$86,$0B,$80,$1B,$00,$DB,$37              ; 2-1, Level #28
+                db $77,$80,$EB,$37,$FE,$2B,$20,$2B              ;
+                db $80,$7B,$38,$AB,$B8,$77,$86,$FE              ;
+                db $42,$20,$49,$86,$8B,$06,$9B,$80              ;
+                db $7B,$8E,$5B,$B7,$9B,$0E,$BB,$0E              ;
+                db $9B,$80,$FF                                  ;
 
-DATA_04C3E4:        db $0B,$80,$60,$38,$10,$B8,$C0,$3B          ; 5-1, Level #2A
-                    db $DB,$8E,$40,$B8,$F0,$38,$7B,$8E
-                    db $A0,$B8,$C0,$B8,$FB,$00,$A0,$B8
-                    db $30,$BB,$EE,$42,$88,$0F,$0B,$2B
-                    db $0E,$67,$0E,$FF
+DATA_04C3E4:    db $0B,$80,$60,$38,$10,$B8,$C0,$3B              ; 5-1, Level #2A
+                db $DB,$8E,$40,$B8,$F0,$38,$7B,$8E              ;
+                db $A0,$B8,$C0,$B8,$FB,$00,$A0,$B8              ;
+                db $30,$BB,$EE,$42,$88,$0F,$0B,$2B              ;
+                db $0E,$67,$0E,$FF                              ;
 
-DATA_04C408:        db $0A,$AA,$0E,$28,$2A,$0E,$31,$88          ; Sky Bonus Area (Day), Level #2B
-                    db $FF
+DATA_04C408:    db $0A,$AA,$0E,$28,$2A,$0E,$31,$88              ; Sky Bonus Area (Day), Level #2B
+                db $FF                                          ;
 
-DATA_04C411:        db $C7,$83,$D7,$03,$42,$8F,$7A,$03          ; 4-3, Level #2C
-                    db $05,$A4,$78,$24,$A6,$25,$E4,$25
-                    db $4B,$83,$E3,$03,$05,$A4,$89,$24
-                    db $B5,$24,$09,$A4,$65,$24,$C9,$24
-                    db $0F,$08,$85,$25,$FF
+DATA_04C411:    db $C7,$83,$D7,$03,$42,$8F,$7A,$03              ; 4-3, Level #2C
+                db $05,$A4,$78,$24,$A6,$25,$E4,$25              ;
+                db $4B,$83,$E3,$03,$05,$A4,$89,$24              ;
+                db $B5,$24,$09,$A4,$65,$24,$C9,$24              ;
+                db $0F,$08,$85,$25,$FF                          ;
 
-DATA_04C436:        db $CC,$A5,$B5,$A8,$07,$A8,$76,$28          ; 6-3, Level #2D
-                    db $CC,$25,$65,$A4,$A9,$24,$E5,$24
-                    db $19,$A4,$0F,$07,$95,$28,$E6,$24
-                    db $19,$A4,$D7,$29,$16,$A9,$58,$29
-                    db $97,$29,$FF
+DATA_04C436:    db $CC,$A5,$B5,$A8,$07,$A8,$76,$28              ; 6-3, Level #2D
+                db $CC,$25,$65,$A4,$A9,$24,$E5,$24              ;
+                db $19,$A4,$0F,$07,$95,$28,$E6,$24              ;
+                db $19,$A4,$D7,$29,$16,$A9,$58,$29              ;
+                db $97,$29,$FF                                  ;
 
-DATA_04C459:        db $0F,$02,$02,$11,$0F,$07,$02,$11          ; 6-1, Level #2E
-                    db $FF
+DATA_04C459:    db $0F,$02,$02,$11,$0F,$07,$02,$11              ; 6-1, Level #2E
+                db $FF                                          ;
 
-DATA_04C462:        db $FF                        ; 4-2 Warp Zone, Level #2F
+DATA_04C462:    db $FF                                          ; 4-2 Warp Zone, Level #2F
 
-DATA_04C463:        db $2B,$82,$AB,$38,$DE,$42,$E2,$1B          ; 8-1, Level #30
-                    db $86,$EB,$3B,$DB,$80,$8B,$B8,$1B
-                    db $82,$FB,$B8,$7B,$80,$FB,$3C,$5B
-                    db $80,$7B,$B8,$1B,$8E,$CB,$0E,$1B
-                    db $8E,$0F,$0D,$2B,$3B,$BB,$B8,$EB
-                    db $82,$4B,$B8,$BB,$38,$3B,$B7,$BB
-                    db $02,$0F,$13,$1B,$00,$CB,$80,$6B
-                    db $BC,$FF
+DATA_04C463:    db $2B,$82,$AB,$38,$DE,$42,$E2,$1B              ; 8-1, Level #30
+                db $86,$EB,$3B,$DB,$80,$8B,$B8,$1B              ;
+                db $82,$FB,$B8,$7B,$80,$FB,$3C,$5B              ;
+                db $80,$7B,$B8,$1B,$8E,$CB,$0E,$1B              ;
+                db $8E,$0F,$0D,$2B,$3B,$BB,$B8,$EB              ;
+                db $82,$4B,$B8,$BB,$38,$3B,$B7,$BB              ;
+                db $02,$0F,$13,$1B,$00,$CB,$80,$6B              ;
+                db $BC,$FF                                      ;
 
-DATA_04C49D:        db $7B,$80,$AE,$00,$80,$8B,$8E,$E8          ; 5-2, Level #31
-                    db $05,$F9,$86,$17,$86,$16,$85,$4E
-                    db $2B,$80,$AB,$8E,$87,$85,$C3,$05
-                    db $8B,$82,$9B,$02,$AB,$02,$BB,$86
-                    db $CB,$06,$D3,$03,$3B,$8E,$6B,$0E
-                    db $A7,$8E,$FF
+DATA_04C49D:    db $7B,$80,$AE,$00,$80,$8B,$8E,$E8              ; 5-2, Level #31
+                db $05,$F9,$86,$17,$86,$16,$85,$4E              ;
+                db $2B,$80,$AB,$8E,$87,$85,$C3,$05              ;
+                db $8B,$82,$9B,$02,$AB,$02,$BB,$86              ;
+                db $CB,$06,$D3,$03,$3B,$8E,$6B,$0E              ;
+                db $A7,$8E,$FF                                  ;
 
-DATA_04C4C8:        db $29,$8E,$52,$11,$83,$0E,$0F,$03          ; 8-2, Level #32
-                    db $9B,$0E,$2B,$8E,$5B,$0E,$CB,$8E
-                    db $FB,$0E,$FB,$82,$9B,$82,$BB,$02
-                    db $FE,$42,$E8,$BB,$8E,$0F,$0A,$AB
-                    db $0E,$CB,$0E,$F9,$0E,$88,$86,$A6
-                    db $06,$DB,$02,$B6,$8E,$FF
+DATA_04C4C8:    db $29,$8E,$52,$11,$83,$0E,$0F,$03              ; 8-2, Level #32
+                db $9B,$0E,$2B,$8E,$5B,$0E,$CB,$8E              ;
+                db $FB,$0E,$FB,$82,$9B,$82,$BB,$02              ;
+                db $FE,$42,$E8,$BB,$8E,$0F,$0A,$AB              ;
+                db $0E,$CB,$0E,$F9,$0E,$88,$86,$A6              ;
+                db $06,$DB,$02,$B6,$8E,$FF                      ;
 
-DATA_04C4F6:        db $AB,$CE,$DE,$42,$C0,$CB,$CE,$5B          ; 7-1, Level #33
-                    db $8E,$1B,$CE,$4B,$85,$67,$45,$0F
-                    db $07,$2B,$00,$7B,$85,$97,$05,$0F
-                    db $0A,$92,$02,$FF
+DATA_04C4F6:    db $AB,$CE,$DE,$42,$C0,$CB,$CE,$5B              ; 7-1, Level #33
+                db $8E,$1B,$CE,$4B,$85,$67,$45,$0F              ;
+                db $07,$2B,$00,$7B,$85,$97,$05,$0F              ;
+                db $0A,$92,$02,$FF                              ;
 
-DATA_04C512:        db $0A,$AA,$0E,$24,$4A,$1E,$23,$AA          ; Sky Bonus Area (Night), Level #34
-                    db $FF
+DATA_04C512:    db $0A,$AA,$0E,$24,$4A,$1E,$23,$AA              ; Sky Bonus Area (Night), Level #34
+                db $FF                                          ;
 
-DATA_04C51B:        db $1B,$80,$BB,$38,$4B,$BC,$EB,$3B          ; 3-2, Level #35
-                    db $0F,$04,$2B,$00,$AB,$38,$EB,$00
-                    db $CB,$8E,$FB,$80,$AB,$B8,$6B,$80
-                    db $FB,$3C,$9B,$BB,$5B,$BC,$FB,$00
-                    db $6B,$B8,$FB,$38,$FF
+DATA_04C51B:    db $1B,$80,$BB,$38,$4B,$BC,$EB,$3B              ; 3-2, Level #35
+                db $0F,$04,$2B,$00,$AB,$38,$EB,$00              ;
+                db $CB,$8E,$FB,$80,$AB,$B8,$6B,$80              ;
+                db $FB,$3C,$9B,$BB,$5B,$BC,$FB,$00              ;
+                db $6B,$B8,$FB,$38,$FF                          ;
 
-DATA_04C540:        db $0B,$86,$1A,$06,$DB,$06,$DE,$C2          ; 1-2, Level #C0
-                    db $02,$F0,$3B,$BB,$80,$EB,$06,$0B
-                    db $86,$93,$06,$F0,$39,$0F,$06,$60
-                    db $B8,$1B,$86,$A0,$B9,$B7,$27,$BD
-                    db $27,$2B,$83,$A1,$26,$A9,$26,$EE
-                    db $25,$0B,$27,$B4,$FF
+DATA_04C540:    db $0B,$86,$1A,$06,$DB,$06,$DE,$C2              ; 1-2, Level #C0
+                db $02,$F0,$3B,$BB,$80,$EB,$06,$0B              ;
+                db $86,$93,$06,$F0,$39,$0F,$06,$60              ;
+                db $B8,$1B,$86,$A0,$B9,$B7,$27,$BD              ;
+                db $27,$2B,$83,$A1,$26,$A9,$26,$EE              ;
+                db $25,$0B,$27,$B4,$FF                          ;
 
-DATA_04C56D:        db $0F,$02,$1E,$2F,$60,$E0,$3A          ; 4-2, Level #C1
-                    db $A5,$A7,$DB,$80,$3B,$82,$8B,$02
-                    db $FE,$42,$68,$70,$BB,$25,$A7,$2C
-                    db $27,$B2,$26,$B9,$26,$9B,$80,$A8
-                    db $82,$B5,$27,$BC,$27,$B0,$BB,$3B
-                    db $82,$87,$34,$EE,$25,$6B,$FF
+DATA_04C56D:    db $0F,$02,$1E,$2F,$60,$E0,$3A                  ; 4-2, Level #C1
+                db $A5,$A7,$DB,$80,$3B,$82,$8B,$02              ;
+                db $FE,$42,$68,$70,$BB,$25,$A7,$2C              ;
+                db $27,$B2,$26,$B9,$26,$9B,$80,$A8              ;
+                db $82,$B5,$27,$BC,$27,$B0,$BB,$3B              ;
+                db $82,$87,$34,$EE,$25,$6B,$FF                  ;
 
-DATA_04C59B:        db $1E,$A5,$0A,$2E,$28,$27,$2E,$33          ; Underground Bonus Area, Level #C2
-                    db $C7,$0F,$03,$1E,$40,$07,$2E,$30
-                    db $E7,$0F,$05,$1E,$24,$44,$0F,$07
-                    db $1E,$22,$6A,$2E,$23,$AB,$0F,$09
-                    db $1E,$41,$68,$1E,$2A,$8A,$2E,$23
-                    db $A2,$2E,$32,$EA,$FF
+DATA_04C59B:    db $1E,$A5,$0A,$2E,$28,$27,$2E,$33              ; Underground Bonus Area, Level #C2
+                db $C7,$0F,$03,$1E,$40,$07,$2E,$30              ;
+                db $E7,$0F,$05,$1E,$24,$44,$0F,$07              ;
+                db $1E,$22,$6A,$2E,$23,$AB,$0F,$09              ;
+                db $1E,$41,$68,$1E,$2A,$8A,$2E,$23              ;
+                db $A2,$2E,$32,$EA,$FF                          ;
 
-DATA_04C5C8:        db $3B,$87,$66,$27,$CC,$27,$EE,$31          ; Underwater Bonus Area, Level #00
-                    db $87,$EE,$23,$A7,$3B,$87,$DB,$07
-                    db $FF
+DATA_04C5C8:    db $3B,$87,$66,$27,$CC,$27,$EE,$31              ; Underwater Bonus Area, Level #00
+                db $87,$EE,$23,$A7,$3B,$87,$DB,$07              ;
+                db $FF                                          ;
 
-DATA_04C5D9:        db $0F,$01,$2E,$25,$2B,$2E,$25,$4B          ; 2-2 & 7-2, Level #01
-                    db $4E,$25,$CB,$6B,$07,$97,$47,$E9
-                    db $87,$47,$C7,$7A,$07,$D6,$C7,$78
-                    db $07,$38,$87,$AB,$47,$E3,$07,$9B
-                    db $87,$0F,$09,$68,$47,$DB,$C7,$3B
-                    db $C7,$FF
+DATA_04C5D9:    db $0F,$01,$2E,$25,$2B,$2E,$25,$4B              ; 2-2 & 7-2, Level #01
+                db $4E,$25,$CB,$6B,$07,$97,$47,$E9              ;
+                db $87,$47,$C7,$7A,$07,$D6,$C7,$78              ;
+                db $07,$38,$87,$AB,$47,$E3,$07,$9B              ;
+                db $87,$0F,$09,$68,$47,$DB,$C7,$3B              ;
+                db $C7,$FF                                      ;
 
-DATA_04C603:        db $47,$9B,$CB,$07,$FA,$1D,$86,$9B          ; 8-4 Underwater, Level #02
-                    db $3A,$87,$56,$07,$88,$1B,$07,$9D
-                    db $2E,$65,$F0,$FF
+DATA_04C603:    db $47,$9B,$CB,$07,$FA,$1D,$86,$9B              ; 8-4 Underwater, Level #02
+                db $3A,$87,$56,$07,$88,$1B,$07,$9D              ;
+                db $2E,$65,$F0,$FF                              ;
 
 ;SMB1 LEVEL OBJECT DATA. Ends with FD.
  
-DATA_04C617:        db $9B,$07,$0F,$52,$32,$0F,$63,$32 ; 1-4 & 6-4, Level #60
-                    db $0F,$74,$32,$CF,$80,$36,$CE,$03
-                    db $DC,$51,$EE,$07,$FF,$80,$38,$7F
-                    db $30,$B4,$74,$0A,$7E,$06,$7F,$20
-                    db $34,$9F,$80,$36,$9E,$0A,$CE,$06
-                    db $DF,$80,$38,$E4,$00,$E8,$0A,$FF
-                    db $80,$36,$FE,$0A,$2E,$89,$3F,$70
-                    db $38,$4E,$0B,$5F,$10,$34,$54,$0A
-                    db $14,$8A,$C4,$0A,$34,$8A,$7F,$71
-                    db $3A,$7F,$20,$34,$7E,$06,$C7,$0A
-                    db $0F,$10,$B4,$02,$0A,$47,$0A,$8F
-                    db $10,$34,$82,$0A,$C7,$0A,$0E,$87
-                    db $1F,$10,$34,$7F,$20,$34,$7F,$A1
-                    db $3A,$7F,$80,$36,$7E,$02,$A7,$02
-                    db $B3,$02,$D7,$02,$E3,$02,$07,$82
-                    db $13,$02,$3E,$06,$3F,$A1,$3C,$4F
-                    db $80,$38,$7F,$A1,$3A,$7F,$80,$36
-                    db $7E,$02,$AE,$07,$AF,$A1,$3C,$BF
-                    db $80,$38,$BF,$10,$34,$FE,$0A,$FF
-                    db $20,$34,$FF,$80,$36,$0D,$C4,$CD
-                    db $43,$CE,$09,$DE,$0B,$DF,$70,$38
-                    db $DD,$42,$EF,$20,$34,$FF,$20,$34
-                    db $FF,$A1,$3A,$FF,$70,$36,$FE,$02
-                    db $5D,$C7,$FD
+DATA_04C617:    db $9B,$07,$0F,$52,$32,$0F,$63,$32              ; 1-4 & 6-4, Level #60
+                db $0F,$74,$32,$CF,$80,$36,$CE,$03              ;
+                db $DC,$51,$EE,$07,$FF,$80,$38,$7F              ;
+                db $30,$B4,$74,$0A,$7E,$06,$7F,$20              ;
+                db $34,$9F,$80,$36,$9E,$0A,$CE,$06              ;
+                db $DF,$80,$38,$E4,$00,$E8,$0A,$FF              ;
+                db $80,$36,$FE,$0A,$2E,$89,$3F,$70              ;
+                db $38,$4E,$0B,$5F,$10,$34,$54,$0A              ;
+                db $14,$8A,$C4,$0A,$34,$8A,$7F,$71              ;
+                db $3A,$7F,$20,$34,$7E,$06,$C7,$0A              ;
+                db $0F,$10,$B4,$02,$0A,$47,$0A,$8F              ;
+                db $10,$34,$82,$0A,$C7,$0A,$0E,$87              ;
+                db $1F,$10,$34,$7F,$20,$34,$7F,$A1              ;
+                db $3A,$7F,$80,$36,$7E,$02,$A7,$02              ;
+                db $B3,$02,$D7,$02,$E3,$02,$07,$82              ;
+                db $13,$02,$3E,$06,$3F,$A1,$3C,$4F              ;
+                db $80,$38,$7F,$A1,$3A,$7F,$80,$36              ;
+                db $7E,$02,$AE,$07,$AF,$A1,$3C,$BF              ;
+                db $80,$38,$BF,$10,$34,$FE,$0A,$FF              ;
+                db $20,$34,$FF,$80,$36,$0D,$C4,$CD              ;
+                db $43,$CE,$09,$DE,$0B,$DF,$70,$38              ;
+                db $DD,$42,$EF,$20,$34,$FF,$20,$34              ;
+                db $FF,$A1,$3A,$FF,$70,$36,$FE,$02              ;
+                db $5D,$C7,$FD                                  ;
 
-DATA_04C6D2:        db $5B,$07,$0F,$52,$32,$0F,$63,$32 ; 4-4, Level #61
-                    db $0F,$74,$32,$5E,$0A,$5F,$20,$34
-                    db $6F,$80,$36,$68,$64,$9F,$80,$38
-                    db $AF,$80,$36,$CE,$06,$DF,$80,$38
-                    db $FF,$A1,$3A,$FF,$80,$36,$FE,$02
-                    db $0D,$01,$1E,$0E,$24,$63,$34,$63
-                    db $44,$63,$54,$63,$64,$63,$74,$63
-                    db $7E,$02,$94,$63,$B4,$63,$D4,$63
-                    db $F4,$63,$14,$E3,$2E,$0E,$34,$63
-                    db $44,$63,$54,$63,$5E,$02,$64,$35
-                    db $88,$72,$BE,$0E,$C4,$63,$D4,$63
-                    db $E4,$63,$F4,$63,$04,$E3,$14,$63
-                    db $24,$63,$34,$63,$44,$63,$54,$63
-                    db $64,$63,$74,$63,$84,$63,$94,$63
-                    db $A4,$63,$B4,$63,$C4,$63,$D4,$63
-                    db $E4,$63,$F4,$63,$0D,$04,$04,$63
-                    db $14,$63,$24,$63,$34,$63,$44,$63
-                    db $54,$63,$64,$63,$74,$63,$84,$63
-                    db $94,$63,$A4,$63,$AE,$02,$CE,$08
-                    db $CF,$A1,$3C,$CD,$4B,$DF,$10,$34
-                    db $DF,$80,$38,$FF,$A1,$3A,$FF,$80
-                    db $36,$FF,$20,$34,$FE,$02,$0D,$05
-                    db $68,$31,$7E,$0A,$7F,$B0,$36,$96
-                    db $31,$A9,$63,$A8,$33,$D5,$30,$EE
-                    db $02,$E6,$62,$F4,$61,$FF,$B0,$38
-                    db $04,$B1,$08,$3F,$44,$33,$94,$63
-                    db $A4,$31,$E4,$31,$04,$BF,$08,$3F
-                    db $04,$BF,$08,$3F,$CD,$4B,$03,$E4
-                    db $0E,$03,$1F,$10,$34,$2E,$01,$2F
-                    db $10,$34,$7E,$06,$7F,$A1,$3C,$8F
-                    db $00,$34,$8F,$80,$38,$BE,$02,$BF
-                    db $A1,$3A,$BF,$80,$36,$DE,$06,$DF
-                    db $A1,$3C,$EF,$80,$38,$FE,$0A,$FF
-                    db $80,$36,$0D,$C4,$CD,$43,$CE,$09
-                    db $DF,$70,$38,$DE,$0B,$DD,$42,$EF
-                    db $20,$34,$FF,$20,$34,$FE,$02,$FF
-                    db $A1,$3A,$FF,$70,$36,$5D,$C7,$FD
+DATA_04C6D2:    db $5B,$07,$0F,$52,$32,$0F,$63,$32              ; 4-4, Level #61
+                db $0F,$74,$32,$5E,$0A,$5F,$20,$34              ;
+                db $6F,$80,$36,$68,$64,$9F,$80,$38              ;
+                db $AF,$80,$36,$CE,$06,$DF,$80,$38              ;
+                db $FF,$A1,$3A,$FF,$80,$36,$FE,$02              ;
+                db $0D,$01,$1E,$0E,$24,$63,$34,$63              ;
+                db $44,$63,$54,$63,$64,$63,$74,$63              ;
+                db $7E,$02,$94,$63,$B4,$63,$D4,$63              ;
+                db $F4,$63,$14,$E3,$2E,$0E,$34,$63              ;
+                db $44,$63,$54,$63,$5E,$02,$64,$35              ;
+                db $88,$72,$BE,$0E,$C4,$63,$D4,$63              ;
+                db $E4,$63,$F4,$63,$04,$E3,$14,$63              ;
+                db $24,$63,$34,$63,$44,$63,$54,$63              ;
+                db $64,$63,$74,$63,$84,$63,$94,$63              ;
+                db $A4,$63,$B4,$63,$C4,$63,$D4,$63              ;
+                db $E4,$63,$F4,$63,$0D,$04,$04,$63              ;
+                db $14,$63,$24,$63,$34,$63,$44,$63              ;
+                db $54,$63,$64,$63,$74,$63,$84,$63              ;
+                db $94,$63,$A4,$63,$AE,$02,$CE,$08              ;
+                db $CF,$A1,$3C,$CD,$4B,$DF,$10,$34              ;
+                db $DF,$80,$38,$FF,$A1,$3A,$FF,$80              ;
+                db $36,$FF,$20,$34,$FE,$02,$0D,$05              ;
+                db $68,$31,$7E,$0A,$7F,$B0,$36,$96              ;
+                db $31,$A9,$63,$A8,$33,$D5,$30,$EE              ;
+                db $02,$E6,$62,$F4,$61,$FF,$B0,$38              ;
+                db $04,$B1,$08,$3F,$44,$33,$94,$63              ;
+                db $A4,$31,$E4,$31,$04,$BF,$08,$3F              ;
+                db $04,$BF,$08,$3F,$CD,$4B,$03,$E4              ;
+                db $0E,$03,$1F,$10,$34,$2E,$01,$2F              ;
+                db $10,$34,$7E,$06,$7F,$A1,$3C,$8F              ;
+                db $00,$34,$8F,$80,$38,$BE,$02,$BF              ;
+                db $A1,$3A,$BF,$80,$36,$DE,$06,$DF              ;
+                db $A1,$3C,$EF,$80,$38,$FE,$0A,$FF              ;
+                db $80,$36,$0D,$C4,$CD,$43,$CE,$09              ;
+                db $DF,$70,$38,$DE,$0B,$DD,$42,$EF              ;
+                db $20,$34,$FF,$20,$34,$FE,$02,$FF              ;
+                db $A1,$3A,$FF,$70,$36,$5D,$C7,$FD              ;
 
-DATA_04C7FA:        db $9B,$07,$0F,$52,$32,$0F,$63,$32 ; 2-4 & 5-4, Level #62
-                    db $0F,$74,$32,$FF,$80,$36,$FF,$00
-                    db $34,$FE,$00,$27,$B1,$65,$32,$75
-                    db $0A,$71,$00,$B7,$31,$0F,$80,$B8
-                    db $1F,$A1,$3A,$1F,$80,$36,$1E,$04
-                    db $2F,$00,$34,$57,$3B,$BB,$0A,$17
-                    db $8A,$27,$3A,$6F,$30,$34,$73,$0A
-                    db $7B,$0A,$D7,$0A,$E7,$3A,$3B,$8A
-                    db $97,$0A,$FE,$08,$FF,$A1,$3C,$0F
-                    db $80,$B8,$24,$0A,$2E,$00,$2F,$10
-                    db $34,$3E,$40,$3F,$80,$36,$38,$64
-                    db $6F,$F0,$00,$9F,$F0,$00,$BE,$43
-                    db $C8,$0A,$CF,$80,$38,$CE,$07,$DF
-                    db $10,$34,$FE,$07,$2E,$81,$2F,$10
-                    db $34,$2F,$A1,$3A,$2F,$80,$36,$66
-                    db $42,$6A,$42,$79,$0A,$BE,$00,$BF
-                    db $B0,$36,$C8,$64,$F8,$64,$FF,$80
-                    db $38,$0F,$80,$B6,$08,$64,$2E,$07
-                    db $3F,$10,$34,$3F,$80,$38,$7F,$A1
-                    db $3A,$7F,$80,$36,$7E,$03,$9E,$07
-                    db $9F,$A1,$3C,$AF,$80,$38,$BF,$A1
-                    db $3A,$BF,$80,$36,$BE,$03,$DE,$07
-                    db $DF,$A1,$3C,$EF,$80,$38,$FE,$0A
-                    db $FF,$20,$34,$FF,$80,$36,$03,$A5
-                    db $0D,$44,$CD,$43,$CE,$09,$DF,$70
-                    db $38,$DD,$42,$DE,$0B,$EF,$20,$34
-                    db $FE,$02,$FF,$20,$34,$FF,$A1,$3A
-                    db $FF,$70,$36,$5D,$C7,$FD
+DATA_04C7FA:    db $9B,$07,$0F,$52,$32,$0F,$63,$32              ; 2-4 & 5-4, Level #62
+                db $0F,$74,$32,$FF,$80,$36,$FF,$00              ;
+                db $34,$FE,$00,$27,$B1,$65,$32,$75              ;
+                db $0A,$71,$00,$B7,$31,$0F,$80,$B8              ;
+                db $1F,$A1,$3A,$1F,$80,$36,$1E,$04              ;
+                db $2F,$00,$34,$57,$3B,$BB,$0A,$17              ;
+                db $8A,$27,$3A,$6F,$30,$34,$73,$0A              ;
+                db $7B,$0A,$D7,$0A,$E7,$3A,$3B,$8A              ;
+                db $97,$0A,$FE,$08,$FF,$A1,$3C,$0F              ;
+                db $80,$B8,$24,$0A,$2E,$00,$2F,$10              ;
+                db $34,$3E,$40,$3F,$80,$36,$38,$64              ;
+                db $6F,$F0,$00,$9F,$F0,$00,$BE,$43              ;
+                db $C8,$0A,$CF,$80,$38,$CE,$07,$DF              ;
+                db $10,$34,$FE,$07,$2E,$81,$2F,$10              ;
+                db $34,$2F,$A1,$3A,$2F,$80,$36,$66              ;
+                db $42,$6A,$42,$79,$0A,$BE,$00,$BF              ;
+                db $B0,$36,$C8,$64,$F8,$64,$FF,$80              ;
+                db $38,$0F,$80,$B6,$08,$64,$2E,$07              ;
+                db $3F,$10,$34,$3F,$80,$38,$7F,$A1              ;
+                db $3A,$7F,$80,$36,$7E,$03,$9E,$07              ;
+                db $9F,$A1,$3C,$AF,$80,$38,$BF,$A1              ;
+                db $3A,$BF,$80,$36,$BE,$03,$DE,$07              ;
+                db $DF,$A1,$3C,$EF,$80,$38,$FE,$0A              ;
+                db $FF,$20,$34,$FF,$80,$36,$03,$A5              ;
+                db $0D,$44,$CD,$43,$CE,$09,$DF,$70              ;
+                db $38,$DD,$42,$DE,$0B,$EF,$20,$34              ;
+                db $FE,$02,$FF,$20,$34,$FF,$A1,$3A              ;
+                db $FF,$70,$36,$5D,$C7,$FD                      ;
 
-DATA_04C8D8:        db $9B,$07,$0F,$52,$32,$0F,$63,$32 ; 3-4, Level #63
-                    db $0F,$74,$32,$FF,$20,$34,$FF,$80
-                    db $36,$FE,$06,$0C,$81,$0C,$51,$2F
-                    db $80,$38,$39,$0A,$4F,$80,$36,$5C
-                    db $01,$5C,$51,$7F,$80,$38,$89,$0A
-                    db $9F,$80,$36,$AC,$01,$AC,$51,$CF
-                    db $80,$38,$D9,$0A,$EF,$80,$36,$FC
-                    db $01,$FC,$51,$1F,$80,$B8,$2E,$03
-                    db $3F,$10,$34,$3F,$A1,$3A,$3F,$80
-                    db $36,$A7,$01,$B7,$00,$C7,$01,$DF
-                    db $20,$34,$DF,$B0,$36,$DE,$0A,$FE
-                    db $02,$0F,$B0,$B8,$4E,$03,$5F,$10
-                    db $34,$5F,$A2,$34,$63,$0A,$69,$0A
-                    db $7E,$02,$7F,$20,$34,$EE,$03,$FF
-                    db $10,$34,$FF,$A2,$34,$03,$8A,$09
-                    db $0A,$1E,$02,$1F,$20,$34,$EE,$03
-                    db $FF,$10,$34,$FF,$A2,$34,$03,$8A
-                    db $09,$0A,$14,$42,$1E,$02,$1F,$20
-                    db $34,$7F,$B0,$36,$7E,$0A,$9E,$07
-                    db $AF,$20,$34,$AF,$80,$38,$FE,$0A
-                    db $FF,$20,$34,$FF,$80,$36,$2E,$86
-                    db $3F,$80,$38,$5E,$0A,$5F,$80,$36
-                    db $8E,$06,$9F,$80,$38,$BE,$0A,$BF
-                    db $80,$36,$EE,$07,$EF,$80,$38,$FF
-                    db $10,$34,$3E,$83,$3F,$A1,$3A,$3F
-                    db $80,$36,$5E,$07,$5F,$A1,$3C,$6F
-                    db $80,$38,$FE,$0A,$FF,$20,$34,$FF
-                    db $80,$36,$0D,$C4,$41,$52,$51,$52
-                    db $CD,$43,$CE,$09,$DF,$70,$38,$DE
-                    db $0B,$DD,$42,$EF,$20,$34,$FE,$02
-                    db $FF,$20,$34,$FF,$A1,$3A,$FF,$70
-                    db $36,$5D,$C7,$FD
+DATA_04C8D8:    db $9B,$07,$0F,$52,$32,$0F,$63,$32              ; 3-4, Level #63
+                db $0F,$74,$32,$FF,$20,$34,$FF,$80              ;
+                db $36,$FE,$06,$0C,$81,$0C,$51,$2F              ;
+                db $80,$38,$39,$0A,$4F,$80,$36,$5C              ;
+                db $01,$5C,$51,$7F,$80,$38,$89,$0A              ;
+                db $9F,$80,$36,$AC,$01,$AC,$51,$CF              ;
+                db $80,$38,$D9,$0A,$EF,$80,$36,$FC              ;
+                db $01,$FC,$51,$1F,$80,$B8,$2E,$03              ;
+                db $3F,$10,$34,$3F,$A1,$3A,$3F,$80              ;
+                db $36,$A7,$01,$B7,$00,$C7,$01,$DF              ;
+                db $20,$34,$DF,$B0,$36,$DE,$0A,$FE              ;
+                db $02,$0F,$B0,$B8,$4E,$03,$5F,$10              ;
+                db $34,$5F,$A2,$34,$63,$0A,$69,$0A              ;
+                db $7E,$02,$7F,$20,$34,$EE,$03,$FF              ;
+                db $10,$34,$FF,$A2,$34,$03,$8A,$09              ;
+                db $0A,$1E,$02,$1F,$20,$34,$EE,$03              ;
+                db $FF,$10,$34,$FF,$A2,$34,$03,$8A              ;
+                db $09,$0A,$14,$42,$1E,$02,$1F,$20              ;
+                db $34,$7F,$B0,$36,$7E,$0A,$9E,$07              ;
+                db $AF,$20,$34,$AF,$80,$38,$FE,$0A              ;
+                db $FF,$20,$34,$FF,$80,$36,$2E,$86              ;
+                db $3F,$80,$38,$5E,$0A,$5F,$80,$36              ;
+                db $8E,$06,$9F,$80,$38,$BE,$0A,$BF              ;
+                db $80,$36,$EE,$07,$EF,$80,$38,$FF              ;
+                db $10,$34,$3E,$83,$3F,$A1,$3A,$3F              ;
+                db $80,$36,$5E,$07,$5F,$A1,$3C,$6F              ;
+                db $80,$38,$FE,$0A,$FF,$20,$34,$FF              ;
+                db $80,$36,$0D,$C4,$41,$52,$51,$52              ;
+                db $CD,$43,$CE,$09,$DF,$70,$38,$DE              ;
+                db $0B,$DD,$42,$EF,$20,$34,$FE,$02              ;
+                db $FF,$20,$34,$FF,$A1,$3A,$FF,$70              ;
+                db $36,$5D,$C7,$FD                              ;
 
-DATA_04C9D4:        db $5B,$07,$0F,$52,$32,$0F,$63,$32 ; 7-4, Level #64
-                    db $0F,$74,$32,$FE,$0A,$FF,$20,$34
-                    db $FF,$80,$36,$AE,$86,$BF,$80,$38
-                    db $BE,$07,$CF,$20,$34,$FF,$20,$34
-                    db $FF,$A1,$3A,$FF,$80,$36,$FE,$02
-                    db $0D,$02,$27,$32,$46,$61,$55,$62
-                    db $5E,$0E,$64,$39,$65,$39,$66,$39
-                    db $67,$39,$04,$E3,$1E,$02,$14,$63
-                    db $68,$3C,$74,$3A,$7D,$4B,$5E,$8E
-                    db $64,$39,$65,$39,$66,$39,$67,$39
-                    db $7D,$4B,$04,$B7,$05,$37,$06,$37
-                    db $07,$37,$7E,$02,$84,$62,$94,$61
-                    db $A4,$31,$BD,$4B,$CE,$06,$CF,$A1
-                    db $3C,$DF,$80,$38,$FF,$A1,$3A,$FF
-                    db $80,$36,$FE,$02,$0D,$06,$34,$31
-                    db $3E,$0A,$3F,$B0,$36,$64,$32,$75
-                    db $0A,$7B,$61,$A4,$33,$AE,$02,$BF
-                    db $B0,$38,$DE,$0E,$E4,$35,$E5,$35
-                    db $E6,$35,$E7,$35,$3E,$82,$64,$32
-                    db $78,$32,$B4,$36,$C8,$36,$DD,$4B
-                    db $44,$B2,$58,$32,$94,$63,$A4,$3E
-                    db $BA,$30,$C9,$61,$CE,$06,$CF,$A1
-                    db $3C,$DF,$80,$38,$DD,$4B,$CE,$86
-                    db $DD,$4B,$FE,$02,$FF,$A1,$3A,$FF
-                    db $80,$36,$2E,$86,$2F,$A1,$3C,$3F
-                    db $80,$38,$5E,$02,$5F,$A1,$3A,$5F
-                    db $80,$36,$7E,$06,$7F,$A1,$3C,$8F
-                    db $80,$38,$FE,$02,$FF,$A1,$3A,$FF
-                    db $80,$36,$1E,$86,$1F,$A1,$3C,$2F
-                    db $80,$38,$3E,$02,$3F,$A1,$3A,$3F
-                    db $80,$36,$5E,$06,$5F,$A1,$3C,$6F
-                    db $80,$38,$7E,$02,$7F,$A1,$3A,$7F
-                    db $80,$36,$9E,$06,$9F,$A1,$3C,$AF
-                    db $80,$38,$FE,$0A,$FF,$80,$36,$0D
-                    db $C4,$CD,$43,$CE,$09,$DE,$0B,$DD
-                    db $42,$DF,$70,$38,$EF,$20,$34,$FE
-                    db $02,$FF,$20,$34,$FF,$A1,$3A,$FF
-                    db $70,$36,$5D,$C7,$FD
+DATA_04C9D4:    db $5B,$07,$0F,$52,$32,$0F,$63,$32              ; 7-4, Level #64
+                db $0F,$74,$32,$FE,$0A,$FF,$20,$34              ;
+                db $FF,$80,$36,$AE,$86,$BF,$80,$38              ;
+                db $BE,$07,$CF,$20,$34,$FF,$20,$34              ;
+                db $FF,$A1,$3A,$FF,$80,$36,$FE,$02              ;
+                db $0D,$02,$27,$32,$46,$61,$55,$62              ;
+                db $5E,$0E,$64,$39,$65,$39,$66,$39              ;
+                db $67,$39,$04,$E3,$1E,$02,$14,$63              ;
+                db $68,$3C,$74,$3A,$7D,$4B,$5E,$8E              ;
+                db $64,$39,$65,$39,$66,$39,$67,$39              ;
+                db $7D,$4B,$04,$B7,$05,$37,$06,$37              ;
+                db $07,$37,$7E,$02,$84,$62,$94,$61              ;
+                db $A4,$31,$BD,$4B,$CE,$06,$CF,$A1              ;
+                db $3C,$DF,$80,$38,$FF,$A1,$3A,$FF              ;
+                db $80,$36,$FE,$02,$0D,$06,$34,$31              ;
+                db $3E,$0A,$3F,$B0,$36,$64,$32,$75              ;
+                db $0A,$7B,$61,$A4,$33,$AE,$02,$BF              ;
+                db $B0,$38,$DE,$0E,$E4,$35,$E5,$35              ;
+                db $E6,$35,$E7,$35,$3E,$82,$64,$32              ;
+                db $78,$32,$B4,$36,$C8,$36,$DD,$4B              ;
+                db $44,$B2,$58,$32,$94,$63,$A4,$3E              ;
+                db $BA,$30,$C9,$61,$CE,$06,$CF,$A1              ;
+                db $3C,$DF,$80,$38,$DD,$4B,$CE,$86              ;
+                db $DD,$4B,$FE,$02,$FF,$A1,$3A,$FF              ;
+                db $80,$36,$2E,$86,$2F,$A1,$3C,$3F              ;
+                db $80,$38,$5E,$02,$5F,$A1,$3A,$5F              ;
+                db $80,$36,$7E,$06,$7F,$A1,$3C,$8F              ;
+                db $80,$38,$FE,$02,$FF,$A1,$3A,$FF              ;
+                db $80,$36,$1E,$86,$1F,$A1,$3C,$2F              ;
+                db $80,$38,$3E,$02,$3F,$A1,$3A,$3F              ;
+                db $80,$36,$5E,$06,$5F,$A1,$3C,$6F              ;
+                db $80,$38,$7E,$02,$7F,$A1,$3A,$7F              ;
+                db $80,$36,$9E,$06,$9F,$A1,$3C,$AF              ;
+                db $80,$38,$FE,$0A,$FF,$80,$36,$0D              ;
+                db $C4,$CD,$43,$CE,$09,$DE,$0B,$DD              ;
+                db $42,$DF,$70,$38,$EF,$20,$34,$FE              ;
+                db $02,$FF,$20,$34,$FF,$A1,$3A,$FF              ;
+                db $70,$36,$5D,$C7,$FD                          ;
 
-DATA_04CB01:        db $5B,$06,$0F,$52,$32,$0F,$63,$32 ; 8-4, Level #65
-                    db $0F,$74,$32,$5F,$80,$36,$5E,$0A
-                    db $BF,$B0,$38,$BE,$02,$0D,$01,$2F
-                    db $B0,$36,$39,$73,$5F,$B0,$38,$0D
-                    db $03,$2F,$B0,$36,$39,$7B,$4D,$4B
-                    db $5F,$B0,$38,$DE,$06,$DF,$A1,$3C
-                    db $EF,$80,$38,$1F,$80,$B6,$1E,$0A
-                    db $AE,$06,$BF,$80,$38,$C4,$33,$0F
-                    db $80,$B6,$16,$7E,$3F,$80,$38,$9F
-                    db $80,$36,$A5,$77,$CF,$80,$38,$FF
-                    db $A1,$3A,$FF,$80,$36,$FE,$02,$FE
-                    db $82,$0D,$07,$2F,$B0,$36,$39,$73
-                    db $5F,$B0,$38,$9F,$B0,$36,$A8,$74
-                    db $CF,$B0,$38,$ED,$4B,$3F,$B0,$B6
-                    db $49,$7B,$6F,$B0,$38,$DF,$B0,$36
-                    db $E8,$74,$FE,$0A,$2E,$82,$2F,$B0
-                    db $38,$67,$02,$84,$7A,$87,$31,$0D
-                    db $0B,$FE,$02,$0D,$0C,$2F,$B0,$36
-                    db $39,$73,$5E,$06,$5F,$A1,$3C,$5F
-                    db $B0,$38,$6F,$80,$38,$BF,$80,$36
-                    db $C6,$76,$EF,$80,$38,$3F,$80,$B6
-                    db $45,$7F,$6F,$80,$38,$BF,$80,$36
-                    db $BE,$0A,$DD,$48,$FE,$06,$0F,$80
-                    db $B8,$3D,$4B,$3F,$80,$36,$46,$7E
-                    db $6F,$80,$38,$AD,$4A,$FF,$A1,$BA
-                    db $FF,$80,$36,$FE,$02,$2F,$B0,$B6
-                    db $39,$73,$5F,$B0,$38,$9F,$B0,$36
-                    db $A9,$7B,$CF,$B0,$38,$4E,$8A,$4F
-                    db $B0,$36,$9E,$07,$AF,$20,$34,$AF
-                    db $80,$38,$FE,$0A,$FF,$20,$34,$FF
-                    db $80,$36,$0D,$C4,$CD,$43,$CE,$09
-                    db $DF,$70,$38,$DE,$0B,$DD,$42,$EF
-                    db $20,$34,$FE,$02,$FF,$20,$34,$5D
-                    db $C7,$FD
+DATA_04CB01:    db $5B,$06,$0F,$52,$32,$0F,$63,$32              ; 8-4, Level #65
+                db $0F,$74,$32,$5F,$80,$36,$5E,$0A              ;
+                db $BF,$B0,$38,$BE,$02,$0D,$01,$2F              ;
+                db $B0,$36,$39,$73,$5F,$B0,$38,$0D              ;
+                db $03,$2F,$B0,$36,$39,$7B,$4D,$4B              ;
+                db $5F,$B0,$38,$DE,$06,$DF,$A1,$3C              ;
+                db $EF,$80,$38,$1F,$80,$B6,$1E,$0A              ;
+                db $AE,$06,$BF,$80,$38,$C4,$33,$0F              ;
+                db $80,$B6,$16,$7E,$3F,$80,$38,$9F              ;
+                db $80,$36,$A5,$77,$CF,$80,$38,$FF              ;
+                db $A1,$3A,$FF,$80,$36,$FE,$02,$FE              ;
+                db $82,$0D,$07,$2F,$B0,$36,$39,$73              ;
+                db $5F,$B0,$38,$9F,$B0,$36,$A8,$74              ;
+                db $CF,$B0,$38,$ED,$4B,$3F,$B0,$B6              ;
+                db $49,$7B,$6F,$B0,$38,$DF,$B0,$36              ;
+                db $E8,$74,$FE,$0A,$2E,$82,$2F,$B0              ;
+                db $38,$67,$02,$84,$7A,$87,$31,$0D              ;
+                db $0B,$FE,$02,$0D,$0C,$2F,$B0,$36              ;
+                db $39,$73,$5E,$06,$5F,$A1,$3C,$5F              ;
+                db $B0,$38,$6F,$80,$38,$BF,$80,$36              ;
+                db $C6,$76,$EF,$80,$38,$3F,$80,$B6              ;
+                db $45,$7F,$6F,$80,$38,$BF,$80,$36              ;
+                db $BE,$0A,$DD,$48,$FE,$06,$0F,$80              ;
+                db $B8,$3D,$4B,$3F,$80,$36,$46,$7E              ;
+                db $6F,$80,$38,$AD,$4A,$FF,$A1,$BA              ;
+                db $FF,$80,$36,$FE,$02,$2F,$B0,$B6              ;
+                db $39,$73,$5F,$B0,$38,$9F,$B0,$36              ;
+                db $A9,$7B,$CF,$B0,$38,$4E,$8A,$4F              ;
+                db $B0,$36,$9E,$07,$AF,$20,$34,$AF              ;
+                db $80,$38,$FE,$0A,$FF,$20,$34,$FF              ;
+                db $80,$36,$0D,$C4,$CD,$43,$CE,$09              ;
+                db $DF,$70,$38,$DE,$0B,$DD,$42,$EF              ;
+                db $20,$34,$FE,$02,$FF,$20,$34,$5D              ;
+                db $C7,$FD                                      ;
 
-DATA_04CC0B:        db $94,$11,$0F,$F6,$20,$FE,$10,$28 ; 3-3, Level #20
-                    db $94,$65,$15,$EB,$12,$FA,$41,$4A
-                    db $96,$54,$40,$A4,$42,$B7,$13,$E9
-                    db $19,$F5,$15,$11,$80,$47,$42,$71
-                    db $13,$80,$41,$15,$92,$1B,$1F,$24
-                    db $40,$55,$12,$64,$40,$95,$12,$A4
-                    db $40,$D2,$12,$E1,$40,$13,$C0,$2C
-                    db $17,$2F,$F2,$10,$49,$13,$83,$40
-                    db $9F,$F4,$10,$A3,$40,$17,$92,$83
-                    db $13,$92,$41,$B9,$14,$C5,$12,$C8
-                    db $40,$D4,$40,$4B,$92,$78,$1B,$9C
-                    db $94,$9F,$F1,$10,$DF,$F4,$10,$FE
-                    db $11,$7D,$C1,$9F,$F0,$20,$9D,$C7
-                    db $FD
+DATA_04CC0B:    db $94,$11,$0F,$F6,$20,$FE,$10,$28              ; 3-3, Level #20
+                db $94,$65,$15,$EB,$12,$FA,$41,$4A              ;
+                db $96,$54,$40,$A4,$42,$B7,$13,$E9              ;
+                db $19,$F5,$15,$11,$80,$47,$42,$71              ;
+                db $13,$80,$41,$15,$92,$1B,$1F,$24              ;
+                db $40,$55,$12,$64,$40,$95,$12,$A4              ;
+                db $40,$D2,$12,$E1,$40,$13,$C0,$2C              ;
+                db $17,$2F,$F2,$10,$49,$13,$83,$40              ;
+                db $9F,$F4,$10,$A3,$40,$17,$92,$83              ;
+                db $13,$92,$41,$B9,$14,$C5,$12,$C8              ;
+                db $40,$D4,$40,$4B,$92,$78,$1B,$9C              ;
+                db $94,$9F,$F1,$10,$DF,$F4,$10,$FE              ;
+                db $11,$7D,$C1,$9F,$F0,$20,$9D,$C7              ;
+                db $FD                                          ;
 
-DATA_04CC74:        db $90,$B1,$0F,$F6,$20,$29,$91,$28 ; 8-3, Level #21
-                    db $92,$57,$F3,$C3,$25,$C7,$27,$23
-                    db $84,$33,$20,$5C,$01,$77,$63,$88
-                    db $62,$99,$61,$AA,$60,$BC,$01,$69
-                    db $91,$F8,$62,$D7,$E3,$E7,$63,$33
-                    db $A7,$37,$27,$43,$04,$CC,$01,$E7
-                    db $73,$0C,$81,$0D,$0A,$88,$72,$E7
-                    db $87,$39,$E1,$4E,$00,$69,$60,$87
-                    db $60,$A5,$60,$C3,$31,$FE,$31,$6D
-                    db $C1,$8F,$F0,$20,$8D,$C7,$FD
+DATA_04CC74:    db $90,$B1,$0F,$F6,$20,$29,$91,$28              ; 8-3, Level #21
+                db $92,$57,$F3,$C3,$25,$C7,$27,$23              ;
+                db $84,$33,$20,$5C,$01,$77,$63,$88              ;
+                db $62,$99,$61,$AA,$60,$BC,$01,$69              ;
+                db $91,$F8,$62,$D7,$E3,$E7,$63,$33              ;
+                db $A7,$37,$27,$43,$04,$CC,$01,$E7              ;
+                db $73,$0C,$81,$0D,$0A,$88,$72,$E7              ;
+                db $87,$39,$E1,$4E,$00,$69,$60,$87              ;
+                db $60,$A5,$60,$C3,$31,$FE,$31,$6D              ;
+                db $C1,$8F,$F0,$20,$8D,$C7,$FD                  ;
 
-DATA_04CCC3:        db $52,$21,$0F,$F0,$20,$6E,$40,$58 ; 4-1, Level #22
-                    db $F2,$93,$01,$97,$00,$0C,$81,$97
-                    db $40,$A6,$41,$C7,$40,$0D,$04,$03
-                    db $01,$07,$01,$23,$01,$27,$01,$EC
-                    db $03,$AC,$F3,$C3,$03,$78,$E2,$94
-                    db $43,$47,$F3,$74,$43,$47,$FB,$74
-                    db $43,$2C,$F1,$4C,$63,$47,$00,$57
-                    db $21,$5C,$01,$7C,$72,$39,$F1,$EC
-                    db $02,$4C,$81,$D8,$62,$EC,$01,$0D
-                    db $0D,$0F,$F8,$30,$C7,$07,$ED,$4A
-                    db $1D,$C1,$5F,$F6,$20,$1D,$C7,$FD
+DATA_04CCC3:    db $52,$21,$0F,$F0,$20,$6E,$40,$58              ; 4-1, Level #22
+                db $F2,$93,$01,$97,$00,$0C,$81,$97              ;
+                db $40,$A6,$41,$C7,$40,$0D,$04,$03              ;
+                db $01,$07,$01,$23,$01,$27,$01,$EC              ;
+                db $03,$AC,$F3,$C3,$03,$78,$E2,$94              ;
+                db $43,$47,$F3,$74,$43,$47,$FB,$74              ;
+                db $43,$2C,$F1,$4C,$63,$47,$00,$57              ;
+                db $21,$5C,$01,$7C,$72,$39,$F1,$EC              ;
+                db $02,$4C,$81,$D8,$62,$EC,$01,$0D              ;
+                db $0D,$0F,$F8,$30,$C7,$07,$ED,$4A              ;
+                db $1D,$C1,$5F,$F6,$20,$1D,$C7,$FD              ;
 
-DATA_04CD1B:        db $54,$21,$0F,$F6,$20,$A7,$22,$37 ; 6-2, Level #23
-                    db $FB,$73,$20,$83,$07,$87,$02,$93
-                    db $20,$C7,$73,$04,$F1,$06,$31,$39
-                    db $71,$59,$71,$E7,$73,$37,$A0,$47
-                    db $04,$86,$7C,$E5,$71,$E7,$31,$33
-                    db $A4,$39,$71,$A9,$71,$D3,$23,$08
-                    db $F2,$13,$05,$27,$02,$49,$71,$75
-                    db $75,$E8,$72,$67,$F3,$99,$71,$E7
-                    db $20,$F4,$72,$F7,$31,$17,$A0,$33
-                    db $20,$39,$71,$73,$28,$BC,$05,$39
-                    db $F1,$79,$71,$A6,$21,$C3,$06,$D3
-                    db $20,$DC,$00,$FC,$00,$07,$A2,$13
-                    db $21,$5F,$F2,$30,$8C,$00,$98,$7A
-                    db $C7,$63,$D9,$61,$03,$A2,$07,$22
-                    db $74,$72,$77,$31,$E7,$73,$39,$F1
-                    db $58,$72,$77,$73,$D8,$72,$7F,$F6
-                    db $B0,$97,$73,$B6,$64,$C5,$65,$D4
-                    db $66,$E3,$67,$F3,$67,$8D,$C1,$CF
-                    db $F6,$20,$9D,$C7,$FD
+DATA_04CD1B:    db $54,$21,$0F,$F6,$20,$A7,$22,$37              ; 6-2, Level #23
+                db $FB,$73,$20,$83,$07,$87,$02,$93              ;
+                db $20,$C7,$73,$04,$F1,$06,$31,$39              ;
+                db $71,$59,$71,$E7,$73,$37,$A0,$47              ;
+                db $04,$86,$7C,$E5,$71,$E7,$31,$33              ;
+                db $A4,$39,$71,$A9,$71,$D3,$23,$08              ;
+                db $F2,$13,$05,$27,$02,$49,$71,$75              ;
+                db $75,$E8,$72,$67,$F3,$99,$71,$E7              ;
+                db $20,$F4,$72,$F7,$31,$17,$A0,$33              ;
+                db $20,$39,$71,$73,$28,$BC,$05,$39              ;
+                db $F1,$79,$71,$A6,$21,$C3,$06,$D3              ;
+                db $20,$DC,$00,$FC,$00,$07,$A2,$13              ;
+                db $21,$5F,$F2,$30,$8C,$00,$98,$7A              ;
+                db $C7,$63,$D9,$61,$03,$A2,$07,$22              ;
+                db $74,$72,$77,$31,$E7,$73,$39,$F1              ;
+                db $58,$72,$77,$73,$D8,$72,$7F,$F6              ;
+                db $B0,$97,$73,$B6,$64,$C5,$65,$D4              ;
+                db $66,$E3,$67,$F3,$67,$8D,$C1,$CF              ;
+                db $F6,$20,$9D,$C7,$FD                          ;
 
-DATA_04CDB0:        db $52,$31,$0F,$F0,$20,$6E,$66,$07 ; 3-1, Level #24
-                    db $81,$36,$01,$66,$00,$A7,$22,$08
-                    db $F2,$67,$7B,$DC,$02,$98,$F2,$D7
-                    db $20,$39,$F1,$9F,$F3,$30,$DC,$27
-                    db $DC,$57,$23,$83,$57,$64,$6C,$51
-                    db $87,$63,$99,$61,$A3,$06,$B3,$21
-                    db $77,$F3,$F3,$21,$F7,$2A,$13,$81
-                    db $23,$22,$53,$00,$63,$22,$E9,$0B
-                    db $0C,$83,$13,$21,$16,$22,$33,$05
-                    db $8F,$F5,$30,$8F,$90,$12,$EC,$01
-                    db $63,$A0,$67,$20,$73,$01,$77,$01
-                    db $83,$20,$87,$20,$B3,$20,$B7,$20
-                    db $C3,$01,$C7,$00,$D3,$20,$D7,$20
-                    db $67,$A0,$77,$07,$87,$22,$E8,$62
-                    db $F5,$65,$1C,$82,$7F,$F8,$30,$8D
-                    db $C1,$CF,$F6,$20,$8D,$C7,$FD
+DATA_04CDB0:    db $52,$31,$0F,$F0,$20,$6E,$66,$07              ; 3-1, Level #24
+                db $81,$36,$01,$66,$00,$A7,$22,$08              ;
+                db $F2,$67,$7B,$DC,$02,$98,$F2,$D7              ;
+                db $20,$39,$F1,$9F,$F3,$30,$DC,$27              ;
+                db $DC,$57,$23,$83,$57,$64,$6C,$51              ;
+                db $87,$63,$99,$61,$A3,$06,$B3,$21              ;
+                db $77,$F3,$F3,$21,$F7,$2A,$13,$81              ;
+                db $23,$22,$53,$00,$63,$22,$E9,$0B              ;
+                db $0C,$83,$13,$21,$16,$22,$33,$05              ;
+                db $8F,$F5,$30,$8F,$90,$12,$EC,$01              ;
+                db $63,$A0,$67,$20,$73,$01,$77,$01              ;
+                db $83,$20,$87,$20,$B3,$20,$B7,$20              ;
+                db $C3,$01,$C7,$00,$D3,$20,$D7,$20              ;
+                db $67,$A0,$77,$07,$87,$22,$E8,$62              ;
+                db $F5,$65,$1C,$82,$7F,$F8,$30,$8D              ;
+                db $C1,$CF,$F6,$20,$8D,$C7,$FD                  ;
 
-DATA_04CE2F:        db $50,$21,$07,$81,$47,$24,$57,$00 ; 1-1, Level #25
-                    db $63,$01,$77,$01,$C9,$71,$68,$F2
-                    db $E7,$73,$97,$FB,$06,$83,$5C,$01
-                    db $D7,$22,$E7,$00,$03,$A7,$6C,$02
-                    db $B3,$22,$E3,$01,$E7,$07,$47,$A0
-                    db $57,$06,$A7,$01,$D3,$00,$D7,$01
-                    db $07,$81,$67,$20,$93,$22,$03,$A3
-                    db $1C,$61,$17,$21,$6F,$F3,$30,$C7
-                    db $63,$D8,$62,$E9,$61,$FA,$60,$4F
-                    db $F3,$B0,$87,$63,$9C,$01,$B7,$63
-                    db $C8,$62,$D9,$61,$EA,$60,$39,$F1
-                    db $87,$21,$A7,$01,$B7,$20,$39,$F1
-                    db $5F,$F8,$30,$6D,$C1,$AF,$F6,$20
-                    db $7D,$C7,$FD
+DATA_04CE2F:    db $50,$21,$07,$81,$47,$24,$57,$00              ; 1-1, Level #25
+                db $63,$01,$77,$01,$C9,$71,$68,$F2              ;
+                db $E7,$73,$97,$FB,$06,$83,$5C,$01              ;
+                db $D7,$22,$E7,$00,$03,$A7,$6C,$02              ;
+                db $B3,$22,$E3,$01,$E7,$07,$47,$A0              ;
+                db $57,$06,$A7,$01,$D3,$00,$D7,$01              ;
+                db $07,$81,$67,$20,$93,$22,$03,$A3              ;
+                db $1C,$61,$17,$21,$6F,$F3,$30,$C7              ;
+                db $63,$D8,$62,$E9,$61,$FA,$60,$4F              ;
+                db $F3,$B0,$87,$63,$9C,$01,$B7,$63              ;
+                db $C8,$62,$D9,$61,$EA,$60,$39,$F1              ;
+                db $87,$21,$A7,$01,$B7,$20,$39,$F1              ;
+                db $5F,$F8,$30,$6D,$C1,$AF,$F6,$20              ;
+                db $7D,$C7,$FD                                  ;
 
-DATA_04CE9A:        db $90,$11,$0F,$F6,$20,$FE,$10,$2A ; 1-3 & 5-3, Level #26
-                    db $93,$87,$17,$A3,$14,$B2,$42,$0A
-                    db $92,$19,$40,$36,$14,$50,$41,$82
-                    db $16,$2B,$93,$24,$41,$BB,$14,$B8
-                    db $00,$C2,$43,$C3,$13,$1B,$94,$67
-                    db $12,$C4,$15,$53,$C1,$D2,$41,$12
-                    db $C1,$29,$13,$85,$17,$1B,$92,$1A
-                    db $42,$47,$13,$83,$41,$A7,$13,$0E
-                    db $91,$A7,$63,$B7,$63,$C5,$65,$D5
-                    db $65,$DD,$4A,$E3,$67,$F3,$67,$8D
-                    db $C1,$AF,$F0,$20,$AD,$C7,$FD
+DATA_04CE9A:    db $90,$11,$0F,$F6,$20,$FE,$10,$2A              ; 1-3 & 5-3, Level #26
+                db $93,$87,$17,$A3,$14,$B2,$42,$0A              ;
+                db $92,$19,$40,$36,$14,$50,$41,$82              ;
+                db $16,$2B,$93,$24,$41,$BB,$14,$B8              ;
+                db $00,$C2,$43,$C3,$13,$1B,$94,$67              ;
+                db $12,$C4,$15,$53,$C1,$D2,$41,$12              ;
+                db $C1,$29,$13,$85,$17,$1B,$92,$1A              ;
+                db $42,$47,$13,$83,$41,$A7,$13,$0E              ;
+                db $91,$A7,$63,$B7,$63,$C5,$65,$D5              ;
+                db $65,$DD,$4A,$E3,$67,$F3,$67,$8D              ;
+                db $C1,$AF,$F0,$20,$AD,$C7,$FD                  ;
 
-DATA_04CEF1:        db $90,$11,$0F,$F6,$20,$6E,$10,$8B ; 2-3 & 7-3, Level #27
-                    db $17,$AF,$F2,$30,$D8,$62,$E8,$62
-                    db $FC,$3F,$AD,$C8,$F8,$64,$0C,$BE
-                    db $43,$43,$F8,$64,$0C,$BE,$73,$40
-                    db $84,$40,$93,$40,$A4,$40,$B3,$40
-                    db $F8,$64,$48,$E4,$5C,$39,$83,$40
-                    db $92,$41,$B3,$40,$F8,$64,$48,$E4
-                    db $5C,$39,$F8,$64,$13,$C2,$37,$65
-                    db $4C,$24,$63,$00,$97,$65,$C3,$42
-                    db $0B,$97,$AC,$32,$F8,$64,$0C,$BE
-                    db $53,$45,$9D,$48,$F8,$64,$2A,$E2
-                    db $3C,$47,$56,$43,$BA,$62,$F8,$64
-                    db $0C,$B7,$88,$64,$BC,$31,$D4,$45
-                    db $FC,$31,$3C,$B1,$78,$64,$8C,$38
-                    db $0B,$9C,$1A,$33,$18,$61,$28,$61
-                    db $39,$60,$5D,$4A,$EE,$11,$0F,$F8
-                    db $B0,$1D,$C1,$3F,$F0,$20,$3D,$C7
-                    db $FD
+DATA_04CEF1:    db $90,$11,$0F,$F6,$20,$6E,$10,$8B              ; 2-3 & 7-3, Level #27
+                db $17,$AF,$F2,$30,$D8,$62,$E8,$62              ;
+                db $FC,$3F,$AD,$C8,$F8,$64,$0C,$BE              ;
+                db $43,$43,$F8,$64,$0C,$BE,$73,$40              ;
+                db $84,$40,$93,$40,$A4,$40,$B3,$40              ;
+                db $F8,$64,$48,$E4,$5C,$39,$83,$40              ;
+                db $92,$41,$B3,$40,$F8,$64,$48,$E4              ;
+                db $5C,$39,$F8,$64,$13,$C2,$37,$65              ;
+                db $4C,$24,$63,$00,$97,$65,$C3,$42              ;
+                db $0B,$97,$AC,$32,$F8,$64,$0C,$BE              ;
+                db $53,$45,$9D,$48,$F8,$64,$2A,$E2              ;
+                db $3C,$47,$56,$43,$BA,$62,$F8,$64              ;
+                db $0C,$B7,$88,$64,$BC,$31,$D4,$45              ;
+                db $FC,$31,$3C,$B1,$78,$64,$8C,$38              ;
+                db $0B,$9C,$1A,$33,$18,$61,$28,$61              ;
+                db $39,$60,$5D,$4A,$EE,$11,$0F,$F8              ;
+                db $B0,$1D,$C1,$3F,$F0,$20,$3D,$C7              ;
+                db $FD                                          ;
 
-DATA_04CF7A:        db $52,$31,$0F,$F0,$20,$6E,$40,$F7 ; 2-1, Level #28
-                    db $20,$07,$84,$17,$20,$4F,$F4,$30
-                    db $5F,$80,$12,$C3,$03,$C7,$02,$D3
-                    db $22,$27,$E3,$39,$61,$E7,$73,$5C
-                    db $E4,$57,$00,$6C,$73,$47,$A0,$53
-                    db $06,$63,$22,$A7,$73,$FC,$73,$13
-                    db $A1,$33,$05,$43,$21,$5C,$72,$C3
-                    db $23,$CC,$03,$77,$FB,$AC,$02,$39
-                    db $F1,$A7,$73,$D3,$04,$E8,$72,$E3
-                    db $22,$26,$F4,$BC,$02,$8C,$81,$A8
-                    db $62,$17,$87,$43,$24,$A7,$01,$C3
-                    db $04,$08,$F2,$97,$21,$A3,$02,$C9
-                    db $0B,$E1,$69,$F1,$69,$8D,$C1,$CF
-                    db $F6,$20,$9D,$C7,$FD
+DATA_04CF7A:    db $52,$31,$0F,$F0,$20,$6E,$40,$F7              ; 2-1, Level #28
+                db $20,$07,$84,$17,$20,$4F,$F4,$30              ;
+                db $5F,$80,$12,$C3,$03,$C7,$02,$D3              ;
+                db $22,$27,$E3,$39,$61,$E7,$73,$5C              ;
+                db $E4,$57,$00,$6C,$73,$47,$A0,$53              ;
+                db $06,$63,$22,$A7,$73,$FC,$73,$13              ;
+                db $A1,$33,$05,$43,$21,$5C,$72,$C3              ;
+                db $23,$CC,$03,$77,$FB,$AC,$02,$39              ;
+                db $F1,$A7,$73,$D3,$04,$E8,$72,$E3              ;
+                db $22,$26,$F4,$BC,$02,$8C,$81,$A8              ;
+                db $62,$17,$87,$43,$24,$A7,$01,$C3              ;
+                db $04,$08,$F2,$97,$21,$A3,$02,$C9              ;
+                db $0B,$E1,$69,$F1,$69,$8D,$C1,$CF              ;
+                db $F6,$20,$9D,$C7,$FD                          ;
 
-DATA_04CFE7:        db $38,$11,$0F,$F6,$20,$AD,$40,$3D ; Pipe entrance, Level #29
-                    db $C7,$FD
+DATA_04CFE7:    db $38,$11,$0F,$F6,$20,$AD,$40,$3D              ; Pipe entrance, Level #29
+                db $C7,$FD                                      ;
 
-DATA_04CFF1:        db $95,$B1,$0F,$F6,$20,$0D,$02,$C8 ; 5-1, Level #2A
-                    db $72,$1C,$81,$38,$72,$0D,$05,$97
-                    db $34,$98,$62,$A3,$20,$B3,$06,$C3
-                    db $20,$CC,$03,$F9,$91,$2C,$81,$48
-                    db $62,$0D,$09,$37,$63,$47,$03,$57
-                    db $21,$8C,$02,$C5,$79,$C7,$31,$F9
-                    db $11,$39,$F1,$A9,$11,$6F,$F4,$B0
-                    db $D3,$65,$E3,$65,$7D,$C1,$BF,$F6
-                    db $20,$8D,$C7,$FD
+DATA_04CFF1:    db $95,$B1,$0F,$F6,$20,$0D,$02,$C8              ; 5-1, Level #2A
+                db $72,$1C,$81,$38,$72,$0D,$05,$97              ;
+                db $34,$98,$62,$A3,$20,$B3,$06,$C3              ;
+                db $20,$CC,$03,$F9,$91,$2C,$81,$48              ;
+                db $62,$0D,$09,$37,$63,$47,$03,$57              ;
+                db $21,$8C,$02,$C5,$79,$C7,$31,$F9              ;
+                db $11,$39,$F1,$A9,$11,$6F,$F4,$B0              ;
+                db $D3,$65,$E3,$65,$7D,$C1,$BF,$F6              ;
+                db $20,$8D,$C7,$FD                              ;
 
-DATA_04D035:        db $00,$C1,$4C,$00,$F4,$4F,$0D,$02 ; Sky Bonus Area (Day), Level #2B
-                    db $02,$42,$43,$4F,$52,$C2,$DE,$00
-                    db $5A,$C2,$4D,$C7,$FD
+DATA_04D035:    db $00,$C1,$4C,$00,$F4,$4F,$0D,$02              ; Sky Bonus Area (Day), Level #2B
+                db $02,$42,$43,$4F,$52,$C2,$DE,$00              ;
+                db $5A,$C2,$4D,$C7,$FD                          ;
 
-DATA_04D04A:        db $90,$51,$0F,$F6,$20,$EE,$10,$0B ; 4-3, Level #2C
-                    db $94,$33,$14,$42,$42,$77,$16,$86
-                    db $44,$02,$92,$4A,$16,$69,$42,$73
-                    db $14,$B0,$00,$C7,$12,$05,$C0,$1C
-                    db $17,$1F,$F1,$10,$36,$12,$8F,$F4
-                    db $10,$91,$40,$1B,$94,$35,$12,$34
-                    db $42,$60,$42,$61,$12,$87,$12,$96
-                    db $40,$A3,$14,$1C,$98,$1F,$F1,$10
-                    db $47,$12,$9F,$F5,$10,$CC,$15,$CF
-                    db $F1,$10,$05,$C0,$1F,$F5,$10,$39
-                    db $12,$7C,$16,$7F,$F1,$10,$82,$40
-                    db $98,$12,$DF,$F5,$10,$16,$C4,$17
-                    db $14,$54,$12,$9B,$16,$28,$94,$CE
-                    db $01,$3D,$C1,$5F,$F0,$20,$5D,$C7
-                    db $FD
+DATA_04D04A:    db $90,$51,$0F,$F6,$20,$EE,$10,$0B              ; 4-3, Level #2C
+                db $94,$33,$14,$42,$42,$77,$16,$86              ;
+                db $44,$02,$92,$4A,$16,$69,$42,$73              ;
+                db $14,$B0,$00,$C7,$12,$05,$C0,$1C              ;
+                db $17,$1F,$F1,$10,$36,$12,$8F,$F4              ;
+                db $10,$91,$40,$1B,$94,$35,$12,$34              ;
+                db $42,$60,$42,$61,$12,$87,$12,$96              ;
+                db $40,$A3,$14,$1C,$98,$1F,$F1,$10              ;
+                db $47,$12,$9F,$F5,$10,$CC,$15,$CF              ;
+                db $F1,$10,$05,$C0,$1F,$F5,$10,$39              ;
+                db $12,$7C,$16,$7F,$F1,$10,$82,$40              ;
+                db $98,$12,$DF,$F5,$10,$16,$C4,$17              ;
+                db $14,$54,$12,$9B,$16,$28,$94,$CE              ;
+                db $01,$3D,$C1,$5F,$F0,$20,$5D,$C7              ;
+                db $FD                                          ;
 
-DATA_04D0BB:        db $97,$11,$0F,$F6,$20,$FE,$10,$2B ; 6-3, Level #2D
-                    db $92,$57,$12,$8B,$12,$C0,$41,$F7
-                    db $13,$5B,$92,$69,$0B,$BB,$12,$B2
-                    db $46,$19,$93,$71,$00,$17,$94,$7C
-                    db $14,$7F,$F1,$10,$93,$41,$BF,$F5
-                    db $10,$FC,$13,$FF,$F1,$10,$2F,$F5
-                    db $90,$50,$42,$51,$12,$58,$14,$A6
-                    db $12,$DB,$12,$1B,$93,$46,$43,$7B
-                    db $12,$8D,$49,$B7,$14,$1B,$94,$49
-                    db $0B,$BB,$12,$FC,$13,$FF,$F2,$10
-                    db $03,$C1,$2F,$F5,$10,$43,$12,$4B
-                    db $13,$77,$13,$9D,$4A,$15,$C1,$A1
-                    db $41,$C3,$12,$FE,$01,$7D,$C1,$9F
-                    db $F0,$20,$9D,$C7,$FD
+DATA_04D0BB:    db $97,$11,$0F,$F6,$20,$FE,$10,$2B              ; 6-3, Level #2D
+                db $92,$57,$12,$8B,$12,$C0,$41,$F7              ;
+                db $13,$5B,$92,$69,$0B,$BB,$12,$B2              ;
+                db $46,$19,$93,$71,$00,$17,$94,$7C              ;
+                db $14,$7F,$F1,$10,$93,$41,$BF,$F5              ;
+                db $10,$FC,$13,$FF,$F1,$10,$2F,$F5              ;
+                db $90,$50,$42,$51,$12,$58,$14,$A6              ;
+                db $12,$DB,$12,$1B,$93,$46,$43,$7B              ;
+                db $12,$8D,$49,$B7,$14,$1B,$94,$49              ;
+                db $0B,$BB,$12,$FC,$13,$FF,$F2,$10              ;
+                db $03,$C1,$2F,$F5,$10,$43,$12,$4B              ;
+                db $13,$77,$13,$9D,$4A,$15,$C1,$A1              ;
+                db $41,$C3,$12,$FE,$01,$7D,$C1,$9F              ;
+                db $F0,$20,$9D,$C7,$FD                          ;
 
-DATA_04D128:        db $52,$21,$0F,$F0,$20,$6E,$44,$0C ; 6-1, Level #2E
-                    db $F1,$4C,$01,$AA,$35,$D9,$34,$EE
-                    db $20,$08,$B3,$37,$32,$43,$04,$4E
-                    db $21,$53,$20,$7C,$01,$97,$21,$B7
-                    db $07,$9C,$81,$E7,$42,$5F,$F3,$B0
-                    db $97,$63,$AC,$02,$C5,$41,$49,$E0
-                    db $58,$61,$76,$64,$85,$65,$94,$66
-                    db $A4,$22,$A6,$03,$C8,$22,$DC,$02
-                    db $68,$F2,$96,$42,$13,$82,$17,$02
-                    db $AF,$F4,$30,$F6,$21,$FC,$06,$26
-                    db $80,$2A,$24,$36,$01,$8C,$00,$FF
-                    db $F5,$30,$4E,$A0,$55,$21,$77,$20
-                    db $87,$07,$89,$22,$AE,$21,$4C,$82
-                    db $9F,$F4,$30,$EC,$01,$03,$E7,$13
-                    db $67,$8D,$4A,$AD,$41,$EF,$F6,$20
-                    db $BD,$C7,$FD
+DATA_04D128:    db $52,$21,$0F,$F0,$20,$6E,$44,$0C              ; 6-1, Level #2E
+                db $F1,$4C,$01,$AA,$35,$D9,$34,$EE              ;
+                db $20,$08,$B3,$37,$32,$43,$04,$4E              ;
+                db $21,$53,$20,$7C,$01,$97,$21,$B7              ;
+                db $07,$9C,$81,$E7,$42,$5F,$F3,$B0              ;
+                db $97,$63,$AC,$02,$C5,$41,$49,$E0              ;
+                db $58,$61,$76,$64,$85,$65,$94,$66              ;
+                db $A4,$22,$A6,$03,$C8,$22,$DC,$02              ;
+                db $68,$F2,$96,$42,$13,$82,$17,$02              ;
+                db $AF,$F4,$30,$F6,$21,$FC,$06,$26              ;
+                db $80,$2A,$24,$36,$01,$8C,$00,$FF              ;
+                db $F5,$30,$4E,$A0,$55,$21,$77,$20              ;
+                db $87,$07,$89,$22,$AE,$21,$4C,$82              ;
+                db $9F,$F4,$30,$EC,$01,$03,$E7,$13              ;
+                db $67,$8D,$4A,$AD,$41,$EF,$F6,$20              ;
+                db $BD,$C7,$FD                                  ;
 
-DATA_04D1A3:        db $10,$51,$4C,$00,$C7,$12,$C6,$42 ; 4-2 Warpzone, Level #2F
-                    db $03,$92,$02,$42,$29,$12,$63,$12
-                    db $62,$42,$69,$14,$A5,$12,$A4,$42
-                    db $E2,$14,$E1,$44,$F8,$16,$37,$C1
-                    db $8F,$F8,$30,$02,$BB,$28,$7A,$68
-                    db $7A,$A8,$7A,$E0,$6A,$F0,$6A,$6D
-                    db $C5,$FD
+DATA_04D1A3:    db $10,$51,$4C,$00,$C7,$12,$C6,$42              ; 4-2 Warpzone, Level #2F
+                db $03,$92,$02,$42,$29,$12,$63,$12              ;
+                db $62,$42,$69,$14,$A5,$12,$A4,$42              ;
+                db $E2,$14,$E1,$44,$F8,$16,$37,$C1              ;
+                db $8F,$F8,$30,$02,$BB,$28,$7A,$68              ;
+                db $7A,$A8,$7A,$E0,$6A,$F0,$6A,$6D              ;
+                db $C5,$FD                                      ;
 
-DATA_04D1D5:        db $92,$31,$0F,$F0,$20,$6E,$40,$0D ; 8-1, Level #30
-                    db $02,$37,$73,$EC,$00,$0C,$80,$3C
-                    db $00,$6C,$00,$9C,$00,$06,$C0,$C7
-                    db $73,$06,$83,$28,$72,$96,$40,$E7
-                    db $73,$26,$C0,$87,$7B,$D2,$41,$39
-                    db $F1,$C8,$F2,$97,$E3,$A3,$23,$E7
-                    db $02,$E3,$07,$F3,$22,$37,$E3,$9C
-                    db $00,$BC,$00,$EC,$00,$0C,$80,$3C
-                    db $00,$86,$21,$A6,$06,$B6,$24,$5C
-                    db $80,$7C,$00,$9C,$00,$29,$E1,$DC
-                    db $05,$F6,$41,$DC,$80,$E8,$72,$0C
-                    db $81,$27,$73,$4C,$01,$66,$74,$0D
-                    db $11,$3F,$F5,$30,$B6,$41,$2C,$82
-                    db $36,$40,$7C,$02,$86,$40,$F9,$61
-                    db $39,$E1,$AC,$04,$C6,$41,$0C,$83
-                    db $16,$41,$88,$F2,$39,$F1,$7C,$00
-                    db $89,$61,$9C,$00,$A7,$63,$BC,$00
-                    db $C5,$65,$DC,$00,$E3,$67,$F3,$67
-                    db $8D,$C1,$CF,$F6,$20,$8D,$C7,$FD
+DATA_04D1D5:    db $92,$31,$0F,$F0,$20,$6E,$40,$0D              ; 8-1, Level #30
+                db $02,$37,$73,$EC,$00,$0C,$80,$3C              ;
+                db $00,$6C,$00,$9C,$00,$06,$C0,$C7              ;
+                db $73,$06,$83,$28,$72,$96,$40,$E7              ;
+                db $73,$26,$C0,$87,$7B,$D2,$41,$39              ;
+                db $F1,$C8,$F2,$97,$E3,$A3,$23,$E7              ;
+                db $02,$E3,$07,$F3,$22,$37,$E3,$9C              ;
+                db $00,$BC,$00,$EC,$00,$0C,$80,$3C              ;
+                db $00,$86,$21,$A6,$06,$B6,$24,$5C              ;
+                db $80,$7C,$00,$9C,$00,$29,$E1,$DC              ;
+                db $05,$F6,$41,$DC,$80,$E8,$72,$0C              ;
+                db $81,$27,$73,$4C,$01,$66,$74,$0D              ;
+                db $11,$3F,$F5,$30,$B6,$41,$2C,$82              ;
+                db $36,$40,$7C,$02,$86,$40,$F9,$61              ;
+                db $39,$E1,$AC,$04,$C6,$41,$0C,$83              ;
+                db $16,$41,$88,$F2,$39,$F1,$7C,$00              ;
+                db $89,$61,$9C,$00,$A7,$63,$BC,$00              ;
+                db $C5,$65,$DC,$00,$E3,$67,$F3,$67              ;
+                db $8D,$C1,$CF,$F6,$20,$8D,$C7,$FD              ;
 
-DATA_04D26D:        db $55,$B1,$0F,$F6,$20,$CF,$F3,$30 ; 5-2, Level #31
-                    db $DF,$80,$12,$07,$B2,$15,$11,$52
-                    db $42,$99,$0B,$AC,$02,$D3,$24,$D6
-                    db $42,$D7,$25,$23,$84,$CF,$F3,$30
-                    db $07,$E3,$19,$61,$78,$7A,$EF,$F3
-                    db $30,$2C,$81,$46,$64,$55,$65,$65
-                    db $65,$EC,$74,$47,$82,$53,$05,$63
-                    db $21,$62,$41,$96,$22,$9A,$41,$CC
-                    db $03,$B9,$91,$39,$F1,$63,$26,$67
-                    db $27,$D3,$06,$FC,$01,$18,$E2,$D9
-                    db $07,$E9,$04,$0C,$86,$37,$22,$93
-                    db $24,$87,$84,$AC,$02,$C2,$41,$C3
-                    db $23,$D9,$71,$FC,$01,$7F,$F1,$B0
-                    db $9C,$00,$A7,$63,$B6,$64,$CC,$00
-                    db $D4,$66,$E3,$67,$F3,$67,$8D,$C1
-                    db $CF,$F6,$20,$9D,$C7,$FD
+DATA_04D26D:    db $55,$B1,$0F,$F6,$20,$CF,$F3,$30              ; 5-2, Level #31
+                db $DF,$80,$12,$07,$B2,$15,$11,$52              ;
+                db $42,$99,$0B,$AC,$02,$D3,$24,$D6              ;
+                db $42,$D7,$25,$23,$84,$CF,$F3,$30              ;
+                db $07,$E3,$19,$61,$78,$7A,$EF,$F3              ;
+                db $30,$2C,$81,$46,$64,$55,$65,$65              ;
+                db $65,$EC,$74,$47,$82,$53,$05,$63              ;
+                db $21,$62,$41,$96,$22,$9A,$41,$CC              ;
+                db $03,$B9,$91,$39,$F1,$63,$26,$67              ;
+                db $27,$D3,$06,$FC,$01,$18,$E2,$D9              ;
+                db $07,$E9,$04,$0C,$86,$37,$22,$93              ;
+                db $24,$87,$84,$AC,$02,$C2,$41,$C3              ;
+                db $23,$D9,$71,$FC,$01,$7F,$F1,$B0              ;
+                db $9C,$00,$A7,$63,$B6,$64,$CC,$00              ;
+                db $D4,$66,$E3,$67,$F3,$67,$8D,$C1              ;
+                db $CF,$F6,$20,$9D,$C7,$FD                      ;
 
-DATA_04D2EB:        db $50,$B1,$0F,$F6,$20,$FC,$00,$1F ; 8-2, Level #32
-                    db $F3,$B0,$5C,$00,$65,$65,$74,$66
-                    db $83,$67,$93,$67,$DC,$73,$4C,$80
-                    db $B3,$20,$C9,$0B,$C3,$08,$D3,$2F
-                    db $DC,$00,$2C,$80,$4C,$00,$8C,$00
-                    db $D3,$2E,$ED,$4A,$FC,$00,$D7,$A1
-                    db $EC,$01,$4C,$80,$59,$11,$D8,$11
-                    db $DA,$10,$37,$A0,$47,$04,$99,$11
-                    db $E7,$21,$3A,$90,$67,$20,$76,$10
-                    db $77,$60,$87,$07,$D8,$12,$39,$F1
-                    db $AC,$00,$E9,$71,$0C,$80,$2C,$00
-                    db $4C,$05,$C7,$7B,$39,$F1,$EC,$00
-                    db $F9,$11,$0C,$82,$6F,$F4,$30,$F8
-                    db $11,$FA,$10,$7F,$F2,$B0,$AC,$00
-                    db $B6,$64,$CC,$01,$E3,$67,$F3,$67
-                    db $8D,$C1,$CF,$F6,$20,$8D,$C7,$FD
+DATA_04D2EB:    db $50,$B1,$0F,$F6,$20,$FC,$00,$1F              ; 8-2, Level #32
+                db $F3,$B0,$5C,$00,$65,$65,$74,$66              ;
+                db $83,$67,$93,$67,$DC,$73,$4C,$80              ;
+                db $B3,$20,$C9,$0B,$C3,$08,$D3,$2F              ;
+                db $DC,$00,$2C,$80,$4C,$00,$8C,$00              ;
+                db $D3,$2E,$ED,$4A,$FC,$00,$D7,$A1              ;
+                db $EC,$01,$4C,$80,$59,$11,$D8,$11              ;
+                db $DA,$10,$37,$A0,$47,$04,$99,$11              ;
+                db $E7,$21,$3A,$90,$67,$20,$76,$10              ;
+                db $77,$60,$87,$07,$D8,$12,$39,$F1              ;
+                db $AC,$00,$E9,$71,$0C,$80,$2C,$00              ;
+                db $4C,$05,$C7,$7B,$39,$F1,$EC,$00              ;
+                db $F9,$11,$0C,$82,$6F,$F4,$30,$F8              ;
+                db $11,$FA,$10,$7F,$F2,$B0,$AC,$00              ;
+                db $B6,$64,$CC,$01,$E3,$67,$F3,$67              ;
+                db $8D,$C1,$CF,$F6,$20,$8D,$C7,$FD              ;
 
-DATA_04D36B:        db $52,$B1,$0F,$F0,$20,$6E,$45,$39 ; 7-1, Level #33
-                    db $91,$B3,$04,$C3,$21,$C8,$11,$CA
-                    db $10,$49,$91,$7C,$73,$E8,$12,$88
-                    db $91,$8A,$10,$E7,$21,$05,$91,$07
-                    db $30,$17,$07,$27,$20,$49,$11,$9C
-                    db $01,$C8,$72,$23,$A6,$27,$26,$D3
-                    db $03,$D8,$7A,$89,$91,$D8,$72,$39
-                    db $F1,$A9,$11,$09,$F1,$63,$24,$67
-                    db $24,$D8,$62,$28,$91,$2A,$10,$56
-                    db $21,$70,$04,$79,$0B,$8C,$00,$94
-                    db $21,$9F,$F5,$30,$2F,$F8,$B0,$3D
-                    db $C1,$7F,$F6,$20,$3D,$C7,$FD
+DATA_04D36B:    db $52,$B1,$0F,$F0,$20,$6E,$45,$39              ; 7-1, Level #33
+                db $91,$B3,$04,$C3,$21,$C8,$11,$CA              ;
+                db $10,$49,$91,$7C,$73,$E8,$12,$88              ;
+                db $91,$8A,$10,$E7,$21,$05,$91,$07              ;
+                db $30,$17,$07,$27,$20,$49,$11,$9C              ;
+                db $01,$C8,$72,$23,$A6,$27,$26,$D3              ;
+                db $03,$D8,$7A,$89,$91,$D8,$72,$39              ;
+                db $F1,$A9,$11,$09,$F1,$63,$24,$67              ;
+                db $24,$D8,$62,$28,$91,$2A,$10,$56              ;
+                db $21,$70,$04,$79,$0B,$8C,$00,$94              ;
+                db $21,$9F,$F5,$30,$2F,$F8,$B0,$3D              ;
+                db $C1,$7F,$F6,$20,$3D,$C7,$FD                  ;
 
-DATA_04D3CA:        db $06,$C1,$4C,$00,$F4,$4F,$0D,$02 ; Sky Bonus Area (Night), Level  #34
-                    db $06,$20,$24,$4F,$35,$A0,$36,$20
-                    db $53,$46,$D5,$20,$D6,$20,$34,$A1
-                    db $73,$49,$74,$20,$94,$20,$B4,$20
-                    db $D4,$20,$F4,$20,$2E,$80,$59,$42
-                    db $4D,$C7,$FD
+DATA_04D3CA:    db $06,$C1,$4C,$00,$F4,$4F,$0D,$02              ; Sky Bonus Area (Night), Level  #34
+                db $06,$20,$24,$4F,$35,$A0,$36,$20              ;
+                db $53,$46,$D5,$20,$D6,$20,$34,$A1              ;
+                db $73,$49,$74,$20,$94,$20,$B4,$20              ;
+                db $D4,$20,$F4,$20,$2E,$80,$59,$42              ;
+                db $4D,$C7,$FD                                  ;
 
-DATA_04D3F5:        db $96,$31,$0F,$F6,$20,$0D,$03,$1A ; 3-2, Level #35
-                    db $60,$77,$42,$C4,$00,$C8,$62,$B9
-                    db $E1,$D3,$06,$D7,$07,$F9,$61,$0C
-                    db $81,$4E,$B1,$8E,$B1,$BC,$01,$E4
-                    db $50,$E9,$61,$0C,$81,$0D,$0A,$84
-                    db $43,$98,$72,$0D,$0C,$0F,$F8,$30
-                    db $1D,$C1,$5F,$F6,$20,$1D,$C7,$FD
+DATA_04D3F5:    db $96,$31,$0F,$F6,$20,$0D,$03,$1A              ; 3-2, Level #35
+                db $60,$77,$42,$C4,$00,$C8,$62,$B9              ;
+                db $E1,$D3,$06,$D7,$07,$F9,$61,$0C              ;
+                db $81,$4E,$B1,$8E,$B1,$BC,$01,$E4              ;
+                db $50,$E9,$61,$0C,$81,$0D,$0A,$84              ;
+                db $43,$98,$72,$0D,$0C,$0F,$F8,$30              ;
+                db $1D,$C1,$5F,$F6,$20,$1D,$C7,$FD              ;
 
-DATA_04D42D:        db $48,$0F,$0E,$01,$5E,$02,$A7,$00 ; 1-2, Level #C0
-                    db $BC,$73,$1A,$E0,$39,$61,$58,$62
-                    db $77,$63,$97,$63,$B8,$62,$D6,$07
-                    db $F8,$62,$19,$E1,$75,$52,$86,$40
-                    db $87,$50,$95,$52,$93,$43,$A5,$21
-                    db $C5,$52,$D6,$40,$D7,$20,$E5,$06
-                    db $E6,$51,$3E,$8D,$5E,$03,$67,$52
-                    db $77,$52,$7E,$02,$9E,$03,$A6,$43
-                    db $A7,$23,$DE,$05,$FE,$02,$1E,$83
-                    db $33,$54,$46,$40,$47,$21,$56,$04
-                    db $5E,$02,$83,$54,$93,$52,$96,$07
-                    db $97,$50,$BE,$03,$C7,$23,$FE,$02
-                    db $0C,$82,$43,$45,$45,$24,$46,$24
-                    db $90,$08,$95,$51,$78,$FA,$D7,$73
-                    db $39,$F1,$8C,$01,$A8,$52,$B8,$52
-                    db $CC,$01,$5F,$F3,$B0,$97,$63,$9E
-                    db $00,$0E,$81,$16,$24,$66,$04,$8E
-                    db $00,$FE,$01,$08,$D2,$0E,$06,$6F
-                    db $F7,$40,$9E,$0F,$0E,$82,$2D,$47
-                    db $28,$7A,$68,$7A,$A8,$7A,$AE,$01
-                    db $DE,$0F,$6D,$C5,$FD
+DATA_04D42D:    db $48,$0F,$0E,$01,$5E,$02,$A7,$00              ; 1-2, Level #C0
+                db $BC,$73,$1A,$E0,$39,$61,$58,$62              ;
+                db $77,$63,$97,$63,$B8,$62,$D6,$07              ;
+                db $F8,$62,$19,$E1,$75,$52,$86,$40              ;
+                db $87,$50,$95,$52,$93,$43,$A5,$21              ;
+                db $C5,$52,$D6,$40,$D7,$20,$E5,$06              ;
+                db $E6,$51,$3E,$8D,$5E,$03,$67,$52              ;
+                db $77,$52,$7E,$02,$9E,$03,$A6,$43              ;
+                db $A7,$23,$DE,$05,$FE,$02,$1E,$83              ;
+                db $33,$54,$46,$40,$47,$21,$56,$04              ;
+                db $5E,$02,$83,$54,$93,$52,$96,$07              ;
+                db $97,$50,$BE,$03,$C7,$23,$FE,$02              ;
+                db $0C,$82,$43,$45,$45,$24,$46,$24              ;
+                db $90,$08,$95,$51,$78,$FA,$D7,$73              ;
+                db $39,$F1,$8C,$01,$A8,$52,$B8,$52              ;
+                db $CC,$01,$5F,$F3,$B0,$97,$63,$9E              ;
+                db $00,$0E,$81,$16,$24,$66,$04,$8E              ;
+                db $00,$FE,$01,$08,$D2,$0E,$06,$6F              ;
+                db $F7,$40,$9E,$0F,$0E,$82,$2D,$47              ;
+                db $28,$7A,$68,$7A,$A8,$7A,$AE,$01              ;
+                db $DE,$0F,$6D,$C5,$FD                          ;
 
-DATA_04D4D2:        db $48,$0F,$0E,$01,$5E,$02,$BC,$01 ; 4-2, Level #C1
-                    db $FC,$01,$2C,$82,$41,$52,$4E,$04
-                    db $67,$25,$68,$24,$69,$24,$BA,$42
-                    db $C7,$04,$DE,$0B,$B2,$87,$FE,$02
-                    db $2C,$E1,$2C,$71,$67,$01,$77,$00
-                    db $87,$01,$8E,$00,$EE,$01,$F6,$02
-                    db $03,$85,$05,$02,$13,$21,$16,$02
-                    db $27,$02,$2E,$02,$88,$72,$C7,$20
-                    db $D7,$07,$E4,$76,$07,$A0,$17,$06
-                    db $48,$7A,$76,$20,$98,$72,$79,$E1
-                    db $88,$62,$9C,$01,$B7,$73,$DC,$01
-                    db $F8,$62,$FE,$01,$08,$E2,$0E,$00
-                    db $6E,$02,$73,$20,$77,$23,$83,$04
-                    db $93,$20,$AE,$00,$FE,$0A,$0E,$82
-                    db $39,$71,$A8,$72,$E7,$73,$0C,$81
-                    db $8F,$F2,$30,$AE,$00,$FE,$04,$04
-                    db $D1,$17,$04,$26,$49,$27,$29,$DF
-                    db $F3,$30,$FE,$02,$44,$F6,$7C,$01
-                    db $8E,$06,$BF,$F7,$40,$EE,$0F,$4D
-                    db $C7,$0E,$82,$68,$7A,$AE,$01,$DE
-                    db $0F,$6D,$C5,$FD
+DATA_04D4D2:    db $48,$0F,$0E,$01,$5E,$02,$BC,$01              ; 4-2, Level #C1
+                db $FC,$01,$2C,$82,$41,$52,$4E,$04              ;
+                db $67,$25,$68,$24,$69,$24,$BA,$42              ;
+                db $C7,$04,$DE,$0B,$B2,$87,$FE,$02              ;
+                db $2C,$E1,$2C,$71,$67,$01,$77,$00              ;
+                db $87,$01,$8E,$00,$EE,$01,$F6,$02              ;
+                db $03,$85,$05,$02,$13,$21,$16,$02              ;
+                db $27,$02,$2E,$02,$88,$72,$C7,$20              ;
+                db $D7,$07,$E4,$76,$07,$A0,$17,$06              ;
+                db $48,$7A,$76,$20,$98,$72,$79,$E1              ;
+                db $88,$62,$9C,$01,$B7,$73,$DC,$01              ;
+                db $F8,$62,$FE,$01,$08,$E2,$0E,$00              ;
+                db $6E,$02,$73,$20,$77,$23,$83,$04              ;
+                db $93,$20,$AE,$00,$FE,$0A,$0E,$82              ;
+                db $39,$71,$A8,$72,$E7,$73,$0C,$81              ;
+                db $8F,$F2,$30,$AE,$00,$FE,$04,$04              ;
+                db $D1,$17,$04,$26,$49,$27,$29,$DF              ;
+                db $F3,$30,$FE,$02,$44,$F6,$7C,$01              ;
+                db $8E,$06,$BF,$F7,$40,$EE,$0F,$4D              ;
+                db $C7,$0E,$82,$68,$7A,$AE,$01,$DE              ;
+                db $0F,$6D,$C5,$FD                              ;
 
-DATA_04D576:        db $48,$01,$0E,$01,$00,$5A,$3E,$06 ; Underground Bonus Area, Level #C2
-                    db $45,$46,$47,$46,$53,$44,$AE,$01
-                    db $DF,$FA,$40,$4D,$C7,$0E,$81,$00
-                    db $5A,$2E,$04,$37,$28,$3A,$48,$46
-                    db $47,$C7,$07,$CE,$0F,$DF,$FA,$40
-                    db $4D,$C7,$0E,$81,$00,$5A,$33,$53
-                    db $43,$51,$46,$40,$47,$50,$53,$04
-                    db $55,$40,$56,$50,$62,$43,$64,$40
-                    db $65,$50,$71,$41,$73,$51,$83,$51
-                    db $94,$40,$95,$50,$A3,$50,$A5,$40
-                    db $A6,$50,$B3,$51,$B6,$40,$B7,$50
-                    db $C3,$53,$DF,$FA,$40,$4D,$C7,$0E
-                    db $81,$00,$5A,$2E,$02,$36,$47,$37
-                    db $52,$3A,$49,$47,$25,$A7,$52,$D7
-                    db $04,$DF,$FA,$40,$4D,$C7,$0E,$81
-                    db $00,$5A,$3E,$02,$44,$51,$53,$44
-                    db $54,$44,$55,$24,$A1,$54,$AE,$01
-                    db $B4,$21,$DF,$FA,$40,$E5,$07,$4D
-                    db $C7,$FD
+DATA_04D576:    db $48,$01,$0E,$01,$00,$5A,$3E,$06              ; Underground Bonus Area, Level #C2
+                db $45,$46,$47,$46,$53,$44,$AE,$01              ;
+                db $DF,$FA,$40,$4D,$C7,$0E,$81,$00              ;
+                db $5A,$2E,$04,$37,$28,$3A,$48,$46              ;
+                db $47,$C7,$07,$CE,$0F,$DF,$FA,$40              ;
+                db $4D,$C7,$0E,$81,$00,$5A,$33,$53              ;
+                db $43,$51,$46,$40,$47,$50,$53,$04              ;
+                db $55,$40,$56,$50,$62,$43,$64,$40              ;
+                db $65,$50,$71,$41,$73,$51,$83,$51              ;
+                db $94,$40,$95,$50,$A3,$50,$A5,$40              ;
+                db $A6,$50,$B3,$51,$B6,$40,$B7,$50              ;
+                db $C3,$53,$DF,$FA,$40,$4D,$C7,$0E              ;
+                db $81,$00,$5A,$2E,$02,$36,$47,$37              ;
+                db $52,$3A,$49,$47,$25,$A7,$52,$D7              ;
+                db $04,$DF,$FA,$40,$4D,$C7,$0E,$81              ;
+                db $00,$5A,$3E,$02,$44,$51,$53,$44              ;
+                db $54,$44,$55,$24,$A1,$54,$AE,$01              ;
+                db $B4,$21,$DF,$FA,$40,$E5,$07,$4D              ;
+                db $C7,$FD                                      ;
 
-DATA_04D608:        db $41,$01,$B4,$34,$C8,$52,$F2,$51 ; Underwater Bonus Area, Level #00
-                    db $47,$D3,$6C,$03,$65,$49,$9E,$07
-                    db $AF,$02,$3E,$AF,$82,$3E,$BE,$01
-                    db $BF,$02,$3E,$BF,$82,$3E,$CC,$03
-                    db $FE,$07,$0D,$C9,$0F,$02,$3E,$0F
-                    db $82,$3E,$1E,$01,$1F,$02,$3E,$1F
-                    db $82,$3E,$6C,$01,$62,$35,$63,$53
-                    db $8A,$41,$AC,$01,$B3,$53,$E9,$51
-                    db $26,$C3,$27,$33,$63,$43,$64,$33
-                    db $BA,$60,$C9,$61,$CE,$0B,$DE,$0F
-                    db $DF,$03,$3E,$DF,$73,$3E,$E5,$09
-                    db $EF,$04,$3E,$EF,$73,$3E,$FF,$0A
-                    db $3E,$0F,$0A,$BE,$7D,$4A,$7D,$47
-                    db $FD
+DATA_04D608:    db $41,$01,$B4,$34,$C8,$52,$F2,$51              ; Underwater Bonus Area, Level #00
+                db $47,$D3,$6C,$03,$65,$49,$9E,$07              ;
+                db $AF,$02,$3E,$AF,$82,$3E,$BE,$01              ;
+                db $BF,$02,$3E,$BF,$82,$3E,$CC,$03              ;
+                db $FE,$07,$0D,$C9,$0F,$02,$3E,$0F              ;
+                db $82,$3E,$1E,$01,$1F,$02,$3E,$1F              ;
+                db $82,$3E,$6C,$01,$62,$35,$63,$53              ;
+                db $8A,$41,$AC,$01,$B3,$53,$E9,$51              ;
+                db $26,$C3,$27,$33,$63,$43,$64,$33              ;
+                db $BA,$60,$C9,$61,$CE,$0B,$DE,$0F              ;
+                db $DF,$03,$3E,$DF,$73,$3E,$E5,$09              ;
+                db $EF,$04,$3E,$EF,$73,$3E,$FF,$0A              ;
+                db $3E,$0F,$0A,$BE,$7D,$4A,$7D,$47              ;
+                db $FD                                          ;
 
-DATA_04D671:        db $41,$01,$B8,$52,$EA,$41,$27,$B2 ; 2-2 & 7-2, Level #01
-                    db $B3,$42,$16,$D4,$4A,$42,$A5,$51
-                    db $A7,$31,$27,$D3,$08,$E2,$16,$64
-                    db $2C,$04,$38,$42,$76,$64,$88,$62
-                    db $DE,$07,$EF,$02,$3E,$EF,$82,$3E
-                    db $FE,$01,$FF,$02,$3E,$FF,$82,$3E
-                    db $0D,$C9,$23,$32,$31,$51,$98,$52
-                    db $0D,$C9,$59,$42,$63,$53,$67,$31
-                    db $14,$C2,$36,$31,$87,$53,$17,$E3
-                    db $29,$61,$30,$62,$3C,$08,$42,$37
-                    db $59,$40,$6A,$42,$99,$40,$C9,$61
-                    db $D7,$63,$39,$D1,$58,$52,$C3,$67
-                    db $D3,$31,$DC,$06,$F7,$42,$FA,$42
-                    db $23,$B1,$43,$67,$C3,$34,$C7,$34
-                    db $D1,$51,$43,$B3,$47,$33,$9A,$30
-                    db $A9,$61,$B8,$62,$BE,$0B,$CE,$0F
-                    db $CF,$03,$3E,$CF,$73,$3E,$D5,$09
-                    db $DF,$04,$3E,$DF,$73,$3E,$EF,$0A
-                    db $3E,$FF,$0A,$3E,$0F,$0A,$BE,$0D
-                    db $4A,$7D,$47,$FD
+DATA_04D671:    db $41,$01,$B8,$52,$EA,$41,$27,$B2              ; 2-2 & 7-2, Level #01
+                db $B3,$42,$16,$D4,$4A,$42,$A5,$51              ;
+                db $A7,$31,$27,$D3,$08,$E2,$16,$64              ;
+                db $2C,$04,$38,$42,$76,$64,$88,$62              ;
+                db $DE,$07,$EF,$02,$3E,$EF,$82,$3E              ;
+                db $FE,$01,$FF,$02,$3E,$FF,$82,$3E              ;
+                db $0D,$C9,$23,$32,$31,$51,$98,$52              ;
+                db $0D,$C9,$59,$42,$63,$53,$67,$31              ;
+                db $14,$C2,$36,$31,$87,$53,$17,$E3              ;
+                db $29,$61,$30,$62,$3C,$08,$42,$37              ;
+                db $59,$40,$6A,$42,$99,$40,$C9,$61              ;
+                db $D7,$63,$39,$D1,$58,$52,$C3,$67              ;
+                db $D3,$31,$DC,$06,$F7,$42,$FA,$42              ;
+                db $23,$B1,$43,$67,$C3,$34,$C7,$34              ;
+                db $D1,$51,$43,$B3,$47,$33,$9A,$30              ;
+                db $A9,$61,$B8,$62,$BE,$0B,$CE,$0F              ;
+                db $CF,$03,$3E,$CF,$73,$3E,$D5,$09              ;
+                db $DF,$04,$3E,$DF,$73,$3E,$EF,$0A              ;
+                db $3E,$FF,$0A,$3E,$0F,$0A,$BE,$0D              ;
+                db $4A,$7D,$47,$FD                              ;
 
-DATA_04D70D:        db $49,$0F,$1E,$01,$1F,$00,$34,$2F ; 8-4 Underwater, Level #02
-                    db $B0,$34,$2F,$C0,$34,$39,$73,$5E
-                    db $07,$5F,$A1,$3C,$5F,$B0,$38,$6F
-                    db $80,$38,$6F,$00,$34,$AE,$0B,$AF
-                    db $71,$3C,$BF,$30,$34,$1E,$82,$1F
-                    db $20,$34,$1F,$A1,$3A,$1F,$70,$36
-                    db $6E,$88,$6F,$A1,$3C,$7F,$10,$34
-                    db $7F,$80,$38,$9E,$02,$9F,$20,$34
-                    db $9F,$A1,$3A,$9F,$80,$36,$0D,$04
-                    db $2E,$0B,$2F,$A1,$3C,$3F,$10,$34
-                    db $3F,$70,$38,$3E,$0B,$4F,$40,$34
-                    db $45,$09,$5F,$42,$28,$5F,$50,$34
-                    db $6F,$42,$28,$7F,$42,$28,$ED,$47
-                    db $FD
+DATA_04D70D:    db $49,$0F,$1E,$01,$1F,$00,$34,$2F              ; 8-4 Underwater, Level #02
+                db $B0,$34,$2F,$C0,$34,$39,$73,$5E              ;
+                db $07,$5F,$A1,$3C,$5F,$B0,$38,$6F              ;
+                db $80,$38,$6F,$00,$34,$AE,$0B,$AF              ;
+                db $71,$3C,$BF,$30,$34,$1E,$82,$1F              ;
+                db $20,$34,$1F,$A1,$3A,$1F,$70,$36              ;
+                db $6E,$88,$6F,$A1,$3C,$7F,$10,$34              ;
+                db $7F,$80,$38,$9E,$02,$9F,$20,$34              ;
+                db $9F,$A1,$3A,$9F,$80,$36,$0D,$04              ;
+                db $2E,$0B,$2F,$A1,$3C,$3F,$10,$34              ;
+                db $3F,$70,$38,$3E,$0B,$4F,$40,$34              ;
+                db $45,$09,$5F,$42,$28,$5F,$50,$34              ;
+                db $6F,$42,$28,$7F,$42,$28,$ED,$47              ;
+                db $FD                                          ;
 
-DATA_04D776:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ; empty
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF
+DATA_04D776:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; empty
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF                                      ;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; From here on starts duplicate code of $00C000
@@ -5077,15 +5077,15 @@ CODE_04D87C:    INC $1200               ; $04:D87C: EE 00 12    ;
 CODE_04D87F:    JSR CODE_04D8C3         ; $04:D87F: 20 C3 D8    ;
 CODE_04D882:    RTL                     ; $04:D882: 6B          ; Return
 
-DATA_04D883:        dw $734E,$7FFF,$14A5,$5D68 ; Mario palette of princess kiss sequence
-                    dw $762E,$27BF,$31BB,$3ABF
-                    dw $0000,$152F,$355D,$525F
-                    dw $169B,$1C9F,$0C19,$0C19
+DATA_04D883:    dw $734E,$7FFF,$14A5,$5D68                      ; Mario palette of princess kiss sequence
+                dw $762E,$27BF,$31BB,$3ABF                      ;
+                dw $0000,$152F,$355D,$525F                      ;
+                dw $169B,$1C9F,$0C19,$0C19                      ;
 
-DATA_04D8A3:        dw $734E,$7FFF,$14A5,$5588 ; Luigi palette of princess kiss sequence
-                    dw $724D,$27BF,$31BB,$3ABF
-                    dw $0000,$152F,$355D,$525F
-                    dw $169B,$3303,$1A40,$1C9F
+DATA_04D8A3:    dw $734E,$7FFF,$14A5,$5588                      ; Luigi palette of princess kiss sequence
+                dw $724D,$27BF,$31BB,$3ABF                      ;
+                dw $0000,$152F,$355D,$525F                      ;
+                dw $169B,$3303,$1A40,$1C9F                      ;
 
 CODE_04D8C3:    PHB                     ; $04:D8C3: 8B          ;\  Upload the stripe image message of princess peach to the player
 CODE_04D8C4:    PHK                     ; $04:D8C4: 4B          ; | Exact same copy of 00C0C3. Please refer to bank 00.
@@ -5139,102 +5139,102 @@ CODE_04D923:    PLX                     ; $04:D923: FA          ; |
 CODE_04D924:    PLB                     ; $04:D924: AB          ; |
 CODE_04D925:    RTS                     ; $04:D925: 60          ;/
 
-DATA_04D926:        dw DATA_04D92E-DATA_04D92E              ;Relative indices to next table
-                    dw DATA_04D9D2-DATA_04D92E
-                    dw DATA_04DA84-DATA_04D92E
-                    dw DATA_04DB28-DATA_04D92E
+DATA_04D926:    dw DATA_04D92E-DATA_04D92E                      ;Relative indices to next table
+                dw DATA_04D9D2-DATA_04D92E                      ;
+                dw DATA_04DA84-DATA_04D92E                      ;
+                dw DATA_04DB28-DATA_04D92E                      ;
 
-DATA_04D92E:        db $59,$05,$00,$11,$1D,$20,$11,$20 ; "Thank you Mario! The kingdom is saved!
-                    db $0A,$20,$17,$20,$14,$20,$28,$20 ;  Now try a more difficult quest..." text.
-                    db $22,$20,$18,$20,$1E,$20,$59,$45
-                    db $00,$0B,$16,$20,$0A,$20,$1B,$20 ; Encoded in stripe image.
-                    db $12,$20,$18,$20,$26,$20,$59,$85
-                    db $00,$15,$1D,$20,$11,$20,$0E,$20
-                    db $28,$20,$14,$20,$12,$20,$17,$20
-                    db $10,$20,$0D,$20,$18,$20,$16,$20
-                    db $59,$C5,$00,$11,$12,$20,$1C,$20
-                    db $28,$20,$1C,$20,$0A,$20,$1F,$20
-                    db $0E,$20,$0D,$20,$26,$20,$5A,$05
-                    db $00,$0D,$17,$20,$18,$20,$20,$20
-                    db $28,$20,$1D,$20,$1B,$20,$22,$20
-                    db $5A,$45,$00,$0B,$0A,$20,$28,$20
-                    db $16,$20,$18,$20,$1B,$20,$0E,$20
-                    db $5A,$85,$00,$11,$0D,$20,$12,$20
-                    db $0F,$20,$0F,$20,$12,$20,$0C,$20
-                    db $1E,$20,$15,$20,$1D,$20,$5A,$C5
-                    db $00,$0F,$1A,$20,$1E,$20,$0E,$20
-                    db $1C,$20,$1D,$20,$29,$20,$29,$20
-                    db $29,$20,$FF,$FF
+DATA_04D92E:    db $59,$05,$00,$11,$1D,$20,$11,$20              ; "Thank you Mario! The kingdom is saved!
+                db $0A,$20,$17,$20,$14,$20,$28,$20              ;  Now try a more difficult quest..." text.
+                db $22,$20,$18,$20,$1E,$20,$59,$45              ;
+                db $00,$0B,$16,$20,$0A,$20,$1B,$20              ; Encoded in stripe image.
+                db $12,$20,$18,$20,$26,$20,$59,$85              ;
+                db $00,$15,$1D,$20,$11,$20,$0E,$20              ;
+                db $28,$20,$14,$20,$12,$20,$17,$20              ;
+                db $10,$20,$0D,$20,$18,$20,$16,$20              ;
+                db $59,$C5,$00,$11,$12,$20,$1C,$20              ;
+                db $28,$20,$1C,$20,$0A,$20,$1F,$20              ;
+                db $0E,$20,$0D,$20,$26,$20,$5A,$05              ;
+                db $00,$0D,$17,$20,$18,$20,$20,$20              ;
+                db $28,$20,$1D,$20,$1B,$20,$22,$20              ;
+                db $5A,$45,$00,$0B,$0A,$20,$28,$20              ;
+                db $16,$20,$18,$20,$1B,$20,$0E,$20              ;
+                db $5A,$85,$00,$11,$0D,$20,$12,$20              ;
+                db $0F,$20,$0F,$20,$12,$20,$0C,$20              ;
+                db $1E,$20,$15,$20,$1D,$20,$5A,$C5              ;
+                db $00,$0F,$1A,$20,$1E,$20,$0E,$20              ;
+                db $1C,$20,$1D,$20,$29,$20,$29,$20              ;
+                db $29,$20,$FF,$FF                              ;
 
-DATA_04D9D2:        db $59,$05,$00,$11,$1D,$20,$11,$20 ; "Thank you Mario for restoring peace to our
-                    db $0A,$20,$17,$20,$14,$20,$28,$20 ;  kingdom. Hurrah to our hero, Mario!" text
-                    db $22,$20,$18,$20,$1E,$20,$59,$45
-                    db $00,$11,$16,$20,$0A,$20,$1B,$20 ; Encoded in stripe image
-                    db $12,$20,$18,$20,$28,$20,$0F,$20
-                    db $18,$20,$1B,$20,$59,$85,$00,$11
-                    db $1B,$20,$0E,$20,$1C,$20,$1D,$20
-                    db $18,$20,$1B,$20,$12,$20,$17,$20
-                    db $10,$20,$59,$C5,$00,$0F,$19,$20
-                    db $0E,$20,$0A,$20,$0C,$20,$0E,$20
-                    db $28,$20,$1D,$20,$18,$20,$5A,$05
-                    db $00,$05,$18,$20,$1E,$20,$1B,$20
-                    db $5A,$45,$00,$0F,$14,$20,$12,$20
-                    db $17,$20,$10,$20,$0D,$20,$18,$20
-                    db $16,$20,$29,$20,$5A,$85,$00,$11
-                    db $11,$20,$1E,$20,$1B,$20,$1B,$20
-                    db $0A,$20,$11,$20,$28,$20,$1D,$20
-                    db $18,$20,$5A,$C5,$00,$11,$18,$20
-                    db $1E,$20,$1B,$20,$28,$20,$11,$20
-                    db $0E,$20,$1B,$20,$18,$20,$2B,$20
-                    db $5B,$05,$00,$0B,$16,$20,$0A,$20
-                    db $1B,$20,$12,$20,$18,$20,$26,$20
-                    db $FF,$FF
+DATA_04D9D2:    db $59,$05,$00,$11,$1D,$20,$11,$20              ; "Thank you Mario for restoring peace to our
+                db $0A,$20,$17,$20,$14,$20,$28,$20              ;  kingdom. Hurrah to our hero, Mario!" text
+                db $22,$20,$18,$20,$1E,$20,$59,$45              ;
+                db $00,$11,$16,$20,$0A,$20,$1B,$20              ; Encoded in stripe image
+                db $12,$20,$18,$20,$28,$20,$0F,$20              ;
+                db $18,$20,$1B,$20,$59,$85,$00,$11              ;
+                db $1B,$20,$0E,$20,$1C,$20,$1D,$20              ;
+                db $18,$20,$1B,$20,$12,$20,$17,$20              ;
+                db $10,$20,$59,$C5,$00,$0F,$19,$20              ;
+                db $0E,$20,$0A,$20,$0C,$20,$0E,$20              ;
+                db $28,$20,$1D,$20,$18,$20,$5A,$05              ;
+                db $00,$05,$18,$20,$1E,$20,$1B,$20              ;
+                db $5A,$45,$00,$0F,$14,$20,$12,$20              ;
+                db $17,$20,$10,$20,$0D,$20,$18,$20              ;
+                db $16,$20,$29,$20,$5A,$85,$00,$11              ;
+                db $11,$20,$1E,$20,$1B,$20,$1B,$20              ;
+                db $0A,$20,$11,$20,$28,$20,$1D,$20              ;
+                db $18,$20,$5A,$C5,$00,$11,$18,$20              ;
+                db $1E,$20,$1B,$20,$28,$20,$11,$20              ;
+                db $0E,$20,$1B,$20,$18,$20,$2B,$20              ;
+                db $5B,$05,$00,$0B,$16,$20,$0A,$20              ;
+                db $1B,$20,$12,$20,$18,$20,$26,$20              ;
+                db $FF,$FF                                      ;
 
-DATA_04DA84:        db $59,$05,$00,$11,$1D,$20,$11,$20 ; "Thank you Luigi! The kingdom is saved!
-                    db $0A,$20,$17,$20,$14,$20,$28,$20 ;  Now try a more difficult quest..." text
-                    db $22,$20,$18,$20,$1E,$20,$59,$45
-                    db $00,$0B,$15,$20,$1E,$20,$12,$20 ; Encoded in stripe image
-                    db $10,$20,$12,$20,$26,$20,$59,$85
-                    db $00,$15,$1D,$20,$11,$20,$0E,$20
-                    db $28,$20,$14,$20,$12,$20,$17,$20
-                    db $10,$20,$0D,$20,$18,$20,$16,$20
-                    db $59,$C5,$00,$11,$12,$20,$1C,$20
-                    db $28,$20,$1C,$20,$0A,$20,$1F,$20
-                    db $0E,$20,$0D,$20,$26,$20,$5A,$05
-                    db $00,$0D,$17,$20,$18,$20,$20,$20
-                    db $28,$20,$1D,$20,$1B,$20,$22,$20
-                    db $5A,$45,$00,$0B,$0A,$20,$28,$20
-                    db $16,$20,$18,$20,$1B,$20,$0E,$20
-                    db $5A,$85,$00,$11,$0D,$20,$12,$20
-                    db $0F,$20,$0F,$20,$12,$20,$0C,$20
-                    db $1E,$20,$15,$20,$1D,$20,$5A,$C5
-                    db $00,$0F,$1A,$20,$1E,$20,$0E,$20
-                    db $1C,$20,$1D,$20,$29,$20,$29,$20
-                    db $29,$20,$FF,$FF
+DATA_04DA84:    db $59,$05,$00,$11,$1D,$20,$11,$20              ; "Thank you Luigi! The kingdom is saved!
+                db $0A,$20,$17,$20,$14,$20,$28,$20              ;  Now try a more difficult quest..." text
+                db $22,$20,$18,$20,$1E,$20,$59,$45              ;
+                db $00,$0B,$15,$20,$1E,$20,$12,$20              ; Encoded in stripe image
+                db $10,$20,$12,$20,$26,$20,$59,$85              ;
+                db $00,$15,$1D,$20,$11,$20,$0E,$20              ;
+                db $28,$20,$14,$20,$12,$20,$17,$20              ;
+                db $10,$20,$0D,$20,$18,$20,$16,$20              ;
+                db $59,$C5,$00,$11,$12,$20,$1C,$20              ;
+                db $28,$20,$1C,$20,$0A,$20,$1F,$20              ;
+                db $0E,$20,$0D,$20,$26,$20,$5A,$05              ;
+                db $00,$0D,$17,$20,$18,$20,$20,$20              ;
+                db $28,$20,$1D,$20,$1B,$20,$22,$20              ;
+                db $5A,$45,$00,$0B,$0A,$20,$28,$20              ;
+                db $16,$20,$18,$20,$1B,$20,$0E,$20              ;
+                db $5A,$85,$00,$11,$0D,$20,$12,$20              ;
+                db $0F,$20,$0F,$20,$12,$20,$0C,$20              ;
+                db $1E,$20,$15,$20,$1D,$20,$5A,$C5              ;
+                db $00,$0F,$1A,$20,$1E,$20,$0E,$20              ;
+                db $1C,$20,$1D,$20,$29,$20,$29,$20              ;
+                db $29,$20,$FF,$FF                              ;
 
-DATA_04DB28:        db $59,$05,$00,$11,$1D,$20,$11,$20 ; "Thank you Luigi for restoring peace to our
-                    db $0A,$20,$17,$20,$14,$20,$28,$20 ;  kingdom. Hurrah to our hero, Luigi!" text
-                    db $22,$20,$18,$20,$1E,$20,$59,$45
-                    db $00,$11,$15,$20,$1E,$20,$12,$20 ; Encoded in stripe image.
-                    db $10,$20,$12,$20,$28,$20,$0F,$20
-                    db $18,$20,$1B,$20,$59,$85,$00,$11
-                    db $1B,$20,$0E,$20,$1C,$20,$1D,$20
-                    db $18,$20,$1B,$20,$12,$20,$17,$20
-                    db $10,$20,$59,$C5,$00,$0F,$19,$20
-                    db $0E,$20,$0A,$20,$0C,$20,$0E,$20
-                    db $28,$20,$1D,$20,$18,$20,$5A,$05
-                    db $00,$05,$18,$20,$1E,$20,$1B,$20
-                    db $5A,$45,$00,$0F,$14,$20,$12,$20
-                    db $17,$20,$10,$20,$0D,$20,$18,$20
-                    db $16,$20,$29,$20,$5A,$85,$00,$11
-                    db $11,$20,$1E,$20,$1B,$20,$1B,$20
-                    db $0A,$20,$11,$20,$28,$20,$1D,$20
-                    db $18,$20,$5A,$C5,$00,$11,$18,$20
-                    db $1E,$20,$1B,$20,$28,$20,$11,$20
-                    db $0E,$20,$1B,$20,$18,$20,$2B,$20
-                    db $5B,$05,$00,$0B,$15,$20,$1E,$20
-                    db $12,$20,$10,$20,$12,$20,$26,$20
-                    db $FF,$FF
+DATA_04DB28:    db $59,$05,$00,$11,$1D,$20,$11,$20              ; "Thank you Luigi for restoring peace to our
+                db $0A,$20,$17,$20,$14,$20,$28,$20              ;  kingdom. Hurrah to our hero, Luigi!" text
+                db $22,$20,$18,$20,$1E,$20,$59,$45              ;
+                db $00,$11,$15,$20,$1E,$20,$12,$20              ; Encoded in stripe image.
+                db $10,$20,$12,$20,$28,$20,$0F,$20              ;
+                db $18,$20,$1B,$20,$59,$85,$00,$11              ;
+                db $1B,$20,$0E,$20,$1C,$20,$1D,$20              ;
+                db $18,$20,$1B,$20,$12,$20,$17,$20              ;
+                db $10,$20,$59,$C5,$00,$0F,$19,$20              ;
+                db $0E,$20,$0A,$20,$0C,$20,$0E,$20              ;
+                db $28,$20,$1D,$20,$18,$20,$5A,$05              ;
+                db $00,$05,$18,$20,$1E,$20,$1B,$20              ;
+                db $5A,$45,$00,$0F,$14,$20,$12,$20              ;
+                db $17,$20,$10,$20,$0D,$20,$18,$20              ;
+                db $16,$20,$29,$20,$5A,$85,$00,$11              ;
+                db $11,$20,$1E,$20,$1B,$20,$1B,$20              ;
+                db $0A,$20,$11,$20,$28,$20,$1D,$20              ;
+                db $18,$20,$5A,$C5,$00,$11,$18,$20              ;
+                db $1E,$20,$1B,$20,$28,$20,$11,$20              ;
+                db $0E,$20,$1B,$20,$18,$20,$2B,$20              ;
+                db $5B,$05,$00,$0B,$15,$20,$1E,$20              ;
+                db $12,$20,$10,$20,$12,$20,$26,$20              ;
+                db $FF,$FF                                      ;
 
 CODE_04DBDA:    PHX                     ; $04:DBDA: DA          ;
 CODE_04DBDB:    LDA $0F85               ; $04:DBDB: AD 85 0F    ;
@@ -5281,11 +5281,11 @@ CODE_04DC3A:    STA $0219               ; $04:DC3A: 8D 19 02    ;
 CODE_04DC3D:    PLX                     ; $04:DC3D: FA          ;
 CODE_04DC3E:    RTL                     ; $04:DC3E: 6B          ;
 
-DATA_04DC3F:        db $18,$A0,$08,$01,$28,$10,$03,$00      ;Mario rescued peach movements duration.
-                    db $10,$A0,$08,$01,$28,$1E,$02,$00      ;Note to self: look deeper in this
+DATA_04DC3F:    db $18,$A0,$08,$01,$28,$10,$03,$00              ;Mario rescued peach movements duration.
+                db $10,$A0,$08,$01,$28,$1E,$02,$00              ;Note to self: look deeper in this
 
-DATA_04DC4F:        db $01,$00,$41,$C1,$C9,$01,$01,$00      ;The movements
-                    db $01,$00,$41,$C1,$C9,$01,$01,$00
+DATA_04DC4F:    db $01,$00,$41,$C1,$C9,$01,$01,$00              ;The movements
+                db $01,$00,$41,$C1,$C9,$01,$01,$00              ;
 
 CODE_04DC5F:    DEC $0F88               ; $04:DC5F: CE 88 0F    ;
 CODE_04DC62:    LDA $0F88               ; $04:DC62: AD 88 0F    ;
@@ -5307,13 +5307,13 @@ CODE_04DC88:    LDA.l PNTR_04DC91+1,x   ; $04:DC88: BF 92 DC 04 ;
 CODE_04DC8C:    STA $01                 ; $04:DC8C: 85 01       ;
 CODE_04DC8E:    JMP ($0000)             ; $04:DC8E: 6C 00 00    ;
 
-PNTR_04DC91:        dw CODE_04DC9F
-                    dw CODE_04DC9F
-                    dw CODE_04DC9F
-                    dw CODE_04DCB0
-                    dw CODE_04DCA0
-                    dw CODE_04DC9F
-                    dw CODE_04DC9F
+PNTR_04DC91:    dw CODE_04DC9F                                  ;
+                dw CODE_04DC9F                                  ;
+                dw CODE_04DC9F                                  ;
+                dw CODE_04DCB0                                  ;
+                dw CODE_04DCA0                                  ;
+                dw CODE_04DC9F                                  ;
+                dw CODE_04DC9F                                  ;
 
 CODE_04DC9F:    RTL                     ; $04:DC9F: 6B          ;
 
@@ -5327,7 +5327,7 @@ CODE_04DCAC:    JSL CODE_03C187         ; $04:DCAC: 22 87 C1 03 ;
 CODE_04DCB0:    DEC $021A               ; $04:DCB0: CE 1A 02    ;
 CODE_04DCB3:    RTL                     ; $04:DCB3: 6B          ;
 
-DATA_04DCB4:        db $00,$30,$37,$1A,$10,$60,$FF
+DATA_04DCB4:    db $00,$30,$37,$1A,$10,$60,$FF                  ;
 
 CODE_04DCBB:    PHX                     ; $04:DCBB: DA          ;
 CODE_04DCBC:    LDA $03AE               ; $04:DCBC: AD AE 03    ;
@@ -5394,7 +5394,7 @@ CODE_04DD49:    STA $09EE               ; $04:DD49: 8D EE 09    ;
 CODE_04DD4C:    PLX                     ; $04:DD4C: FA          ;
 CODE_04DD4D:    RTL                     ; $04:DD4D: 6B          ;
 
-DATA_04DD4E:        db $88,$88,$80,$82,$86,$86,$86
+DATA_04DD4E:    db $88,$88,$80,$82,$86,$86,$86                  ;
 
 CODE_04DD55:    LDA $0F83               ; $04:DD55: AD 83 0F    ;
 CODE_04DD58:    CMP #$0A                ; $04:DD58: C9 0A       ;
@@ -5421,17 +5421,17 @@ CODE_04DD84:    PLX                     ; $04:DD84: FA          ;
 CODE_04DD85:    PLB                     ; $04:DD85: AB          ;
 CODE_04DD86:    RTL                     ; $04:DD86: 6B          ;
 
-DATA_04DD87:        db $08,$00,$2F,$00,$2F,$00,$2F,$00
-                    db $2F,$00,$2F,$00,$2F,$00,$1E,$00
-                    db $1E,$00,$1A,$00
+DATA_04DD87:    db $08,$00,$2F,$00,$2F,$00,$2F,$00              ;
+                db $2F,$00,$2F,$00,$2F,$00,$1E,$00              ;
+                db $1E,$00,$1A,$00                              ;
 
-DATA_04DD9B:        dw $A000,$D100,$D800,$E000
-                    dw $E800,$F000,$F800,$D000
-                    dw $D800,$E800
+DATA_04DD9B:    dw $A000,$D100,$D800,$E000                      ;
+                dw $E800,$F000,$F800,$D000                      ;
+                dw $D800,$E800                                  ;
 
-DATA_04DDAF:        dw $3000,$6080,$6400,$6800
-                    dw $6C00,$7000,$7400,$7800
-                    dw $7C00,$0400
+DATA_04DDAF:    dw $3000,$6080,$6400,$6800                      ;
+                dw $6C00,$7000,$7400,$7800                      ;
+                dw $7C00,$0400                                  ;
 
 CODE_04DDC3:    PHB                     ; $04:DDC3: 8B          ;
 CODE_04DDC4:    PHK                     ; $04:DDC4: 4B          ;
@@ -5456,17 +5456,17 @@ CODE_04DDEE:    PLX                     ; $04:DDEE: FA          ;
 CODE_04DDEF:    PLB                     ; $04:DDEF: AB          ;
 CODE_04DDF0:    RTL                     ; $04:DDF0: 6B          ;
 
-DATA_04DDF1:        db $08,$00,$07,$00,$07,$00,$07,$00
-                    db $07,$00,$07,$00,$07,$00,$07,$00
-                    db $07,$00,$07,$00
+DATA_04DDF1:    db $08,$00,$07,$00,$07,$00,$07,$00              ;
+                db $07,$00,$07,$00,$07,$00,$07,$00              ;
+                db $07,$00,$07,$00                              ;
 
-DATA_04DE05:        dw $A000,$8100,$8800,$9000
-                    dw $9800,$A000,$A800,$B000
-                    dw $B800,$B800
+DATA_04DE05:    dw $A000,$8100,$8800,$9000                      ;
+                dw $9800,$A000,$A800,$B000                      ;
+                dw $B800,$B800                                  ;
 
-DATA_04DE19:        dw $3000,$6080,$6400,$6800
-                    dw $6C00,$7000,$7400,$7800
-                    dw $7C00,$7C00
+DATA_04DE19:    dw $3000,$6080,$6400,$6800                      ;
+                dw $6C00,$7000,$7400,$7800                      ;
+                dw $7C00,$7C00                                  ;
 
 CODE_04DE2D:    LDA #$2E                ; $04:DE2D: A9 2E       ;
 CODE_04DE2F:    STA $25                 ; $04:DE2F: 85 25       ;
@@ -5983,409 +5983,409 @@ CODE_04E24F:    LDA #$89                ; $04:E24F: A9 89       ;
 CODE_04E251:    STA $0812               ; $04:E251: 8D 12 08    ;
 CODE_04E254:    RTS                     ; $04:E254: 60          ;
 
-DATA_04E255:        db $5F,$5E,$5D,$5C
+DATA_04E255:    db $5F,$5E,$5D,$5C                              ;
 
-DATA_04E259:        db $00,$02,$00,$FE
+DATA_04E259:    db $00,$02,$00,$FE                              ;
 
-DATA_04E25D:        db $50,$30,$08,$08,$20,$20,$08,$08
-                    db $FF
+DATA_04E25D:    db $50,$30,$08,$08,$20,$20,$08,$08              ;
+                db $FF                                          ;
 
-DATA_04E266:        db $50,$30,$08,$08,$20,$20,$08,$08
-                    db $0C,$08,$08,$0C,$08,$08,$0C,$FF
+DATA_04E266:    db $50,$30,$08,$08,$20,$20,$08,$08              ;
+                db $0C,$08,$08,$0C,$08,$08,$0C,$FF              ;
 
-DATA_04E276:        db $60,$08,$08,$10,$14,$10,$14,$10
-                    db $14,$FF
+DATA_04E276:    db $60,$08,$08,$10,$14,$10,$14,$10              ;
+                db $14,$FF                                      ;
 
-DATA_04E280:        dw $0000,$008A,$011C,$01AE
-                    dw $0244,$02D2,$0360,$045F
-                    dw $055E,$055E,$055E,$055E
-                    dw $055E,$055E,$055E,$055E
+DATA_04E280:    dw $0000,$008A,$011C,$01AE                      ;
+                dw $0244,$02D2,$0360,$045F                      ;
+                dw $055E,$055E,$055E,$055E                      ;
+                dw $055E,$055E,$055E,$055E                      ;
 
-DATA_04E2A0:        dw $06BE,$0789,$07CE,$06FF
-                    dw $0744,$06FF,$0744,$06FF
-                    dw $0744,$06FF
+DATA_04E2A0:    dw $06BE,$0789,$07CE,$06FF                      ;
+                dw $0744,$06FF,$0744,$06FF                      ;
+                dw $0744,$06FF                                  ;
 
-DATA_04E2B4:        dw $0041,$00CB,$015D,$01F3
-                    dw $0289,$0317,$03A5,$04A4
-                    dw $05A3
+DATA_04E2B4:    dw $0041,$00CB,$015D,$01F3                      ;
+                dw $0289,$0317,$03A5,$04A4                      ;
+                dw $05A3                                        ;
 
-DATA_04E2C6:        dw $0041,$00CB,$015D,$01F3
-                    dw $0289,$0317,$03F6,$04F5
-                    dw $05F4,$03F6,$04F5,$05F4
-                    dw $03F6,$04F5,$05F4,$065D
+DATA_04E2C6:    dw $0041,$00CB,$015D,$01F3                      ;
+                dw $0289,$0317,$03F6,$04F5                      ;
+                dw $05F4,$03F6,$04F5,$05F4                      ;
+                dw $03F6,$04F5,$05F4,$065D                      ;
 
-DATA_04E2E6:        dw $0813,$091E,$0977,$086C
-                    dw $08C5,$086C,$08C5,$086C
-                    dw $08C5,$086C
+DATA_04E2E6:    dw $0813,$091E,$0977,$086C                      ;
+                dw $08C5,$086C,$08C5,$086C                      ;
+                dw $08C5,$086C                                  ;
                                                        ;Tilemap for Mario and Princess image frames
-DATA_04E2FA:        db $E8,$EC,$A0,$06,$E8,$FC,$A2,$06 ;These tables are for the Princess kiss Mario-
-                    db $E8,$0C,$A4,$06,$F8,$EC,$C0,$06 ; Sequence. This is table 0, next one is 1 etc
-                    db $F8,$FC,$C2,$06,$F8,$0C,$C4,$06 ;The even-numbered tables are for the Princess
-                    db $08,$EC,$E0,$06,$08,$FC,$E2,$06 ;The odd-numbered tables are for Mario/Luigi.
-                    db $08,$0C,$E4,$06,$10,$CC,$8D,$06 ;The format of these bytes are the following:
-                    db $10,$D4,$8E,$06,$10,$E4,$AC,$06 ;$XX,$YY,$TT,$PP
-                    db $10,$F4,$AE,$06,$18,$F4,$CC,$06 ;XX = Xpos, YY = Ypos, TT = Tile, PP = Priority
-                    db $18,$04,$CE,$06,$18,$14,$EC,$06 ;basically the OAM format.
-                    db $FF
+DATA_04E2FA:    db $E8,$EC,$A0,$06,$E8,$FC,$A2,$06              ;These tables are for the Princess kiss Mario-
+                db $E8,$0C,$A4,$06,$F8,$EC,$C0,$06              ; Sequence. This is table 0, next one is 1 etc
+                db $F8,$FC,$C2,$06,$F8,$0C,$C4,$06              ;The even-numbered tables are for the Princess
+                db $08,$EC,$E0,$06,$08,$FC,$E2,$06              ;The odd-numbered tables are for Mario/Luigi.
+                db $08,$0C,$E4,$06,$10,$CC,$8D,$06              ;The format of these bytes are the following:
+                db $10,$D4,$8E,$06,$10,$E4,$AC,$06              ;$XX,$YY,$TT,$PP
+                db $10,$F4,$AE,$06,$18,$F4,$CC,$06              ;XX = Xpos, YY = Ypos, TT = Tile, PP = Priority
+                db $18,$04,$CE,$06,$18,$14,$EC,$06              ;basically the OAM format.
+                db $FF                                          ;
 
-DATA_04E33B:        db $D8,$D0,$0A,$06,$D8,$E0,$08,$06 ;These huge tables took ages to sort out...
-                    db $E8,$C0,$28,$06,$E8,$D0,$2A,$06
-                    db $E8,$E0,$2A,$46,$E8,$F0,$28,$46
-                    db $F8,$C0,$48,$06,$F8,$D0,$4A,$06
-                    db $F8,$E0,$4A,$46,$F8,$F0,$48,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04E33B:    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;These huge tables took ages to sort out...
+                db $E8,$C0,$28,$06,$E8,$D0,$2A,$06              ;
+                db $E8,$E0,$2A,$46,$E8,$F0,$28,$46              ;
+                db $F8,$C0,$48,$06,$F8,$D0,$4A,$06              ;
+                db $F8,$E0,$4A,$46,$F8,$F0,$48,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04E384:        db $E8,$EC,$A0,$06,$E8,$FC,$A2,$06
-                    db $E8,$0C,$A4,$06,$F8,$EC,$C0,$06
-                    db $F8,$FC,$C2,$06,$F8,$0C,$C4,$06
-                    db $08,$EC,$E0,$06,$08,$FC,$E2,$06
-                    db $08,$0C,$E4,$06,$10,$CC,$8D,$06
-                    db $10,$D4,$8E,$06,$10,$E4,$AC,$06
-                    db $10,$F4,$AE,$06,$18,$F4,$CC,$06
-                    db $18,$04,$CE,$06,$18,$14,$EC,$06
-                    db $FF
+DATA_04E384:    db $E8,$EC,$A0,$06,$E8,$FC,$A2,$06              ;
+                db $E8,$0C,$A4,$06,$F8,$EC,$C0,$06              ;
+                db $F8,$FC,$C2,$06,$F8,$0C,$C4,$06              ;
+                db $08,$EC,$E0,$06,$08,$FC,$E2,$06              ;
+                db $08,$0C,$E4,$06,$10,$CC,$8D,$06              ;
+                db $10,$D4,$8E,$06,$10,$E4,$AC,$06              ;
+                db $10,$F4,$AE,$06,$18,$F4,$CC,$06              ;
+                db $18,$04,$CE,$06,$18,$14,$EC,$06              ;
+                db $FF                                          ;
 
-DATA_04E3C5:        db $F0,$D0,$14,$06,$F0,$E0,$16,$06
-                    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$2A,$06
-                    db $E8,$E0,$2A,$46,$E8,$F0,$28,$46
-                    db $F8,$C0,$48,$06,$F8,$D0,$4A,$06
-                    db $F8,$E0,$4A,$46,$F8,$F0,$48,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04E3C5:    db $F0,$D0,$14,$06,$F0,$E0,$16,$06              ;
+                db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$2A,$06              ;
+                db $E8,$E0,$2A,$46,$E8,$F0,$28,$46              ;
+                db $F8,$C0,$48,$06,$F8,$D0,$4A,$06              ;
+                db $F8,$E0,$4A,$46,$F8,$F0,$48,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04E416:        db $E8,$EB,$A0,$06,$E8,$FB,$A2,$06
-                    db $E8,$0B,$A4,$06,$F8,$EB,$C0,$06
-                    db $F8,$FB,$C2,$06,$F8,$0B,$C4,$06
-                    db $08,$EB,$E0,$06,$08,$FB,$E2,$06
-                    db $08,$0B,$E4,$06,$10,$CB,$8D,$06
-                    db $10,$D3,$8E,$06,$10,$E3,$AC,$06
-                    db $10,$F3,$AE,$06,$18,$F3,$CC,$06
-                    db $18,$03,$CE,$06,$18,$13,$EC,$06
-                    db $FF
+DATA_04E416:    db $E8,$EB,$A0,$06,$E8,$FB,$A2,$06              ;
+                db $E8,$0B,$A4,$06,$F8,$EB,$C0,$06              ;
+                db $F8,$FB,$C2,$06,$F8,$0B,$C4,$06              ;
+                db $08,$EB,$E0,$06,$08,$FB,$E2,$06              ;
+                db $08,$0B,$E4,$06,$10,$CB,$8D,$06              ;
+                db $10,$D3,$8E,$06,$10,$E3,$AC,$06              ;
+                db $10,$F3,$AE,$06,$18,$F3,$CC,$06              ;
+                db $18,$03,$CE,$06,$18,$13,$EC,$06              ;
+                db $FF                                          ;
 
-DATA_04E457:        db $F0,$D0,$14,$06,$F0,$E0,$16,$06
-                    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$2A,$06
-                    db $E8,$E0,$2A,$46,$E8,$F0,$28,$46
-                    db $F8,$C0,$48,$06,$F8,$D0,$4A,$06
-                    db $F8,$E0,$4A,$46,$F8,$F0,$48,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04E457:    db $F0,$D0,$14,$06,$F0,$E0,$16,$06              ;
+                db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$2A,$06              ;
+                db $E8,$E0,$2A,$46,$E8,$F0,$28,$46              ;
+                db $F8,$C0,$48,$06,$F8,$D0,$4A,$06              ;
+                db $F8,$E0,$4A,$46,$F8,$F0,$48,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04E4A8:        db $00,$D5,$EE,$06,$00,$D5,$EE,$06
-                    db $10,$DB,$88,$06,$10,$E2,$89,$06
-                    db $E8,$EA,$A0,$06,$E8,$FA,$A2,$06
-                    db $E8,$0A,$A4,$06,$F8,$EA,$C0,$06
-                    db $F8,$FA,$C2,$06,$F8,$0A,$C4,$06
-                    db $08,$EA,$E0,$06,$08,$FA,$E2,$06
-                    db $08,$0A,$E4,$06,$10,$F2,$8B,$06
-                    db $18,$F2,$CC,$06,$18,$02,$CE,$06
-                    db $18,$12,$EC,$06,$FF
+DATA_04E4A8:    db $00,$D5,$EE,$06,$00,$D5,$EE,$06              ;
+                db $10,$DB,$88,$06,$10,$E2,$89,$06              ;
+                db $E8,$EA,$A0,$06,$E8,$FA,$A2,$06              ;
+                db $E8,$0A,$A4,$06,$F8,$EA,$C0,$06              ;
+                db $F8,$FA,$C2,$06,$F8,$0A,$C4,$06              ;
+                db $08,$EA,$E0,$06,$08,$FA,$E2,$06              ;
+                db $08,$0A,$E4,$06,$10,$F2,$8B,$06              ;
+                db $18,$F2,$CC,$06,$18,$02,$CE,$06              ;
+                db $18,$12,$EC,$06,$FF                          ;
 
-DATA_04E4ED:        db $F0,$D0,$14,$06,$F0,$E0,$16,$06
-                    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$2A,$06
-                    db $E8,$E0,$2A,$46,$E8,$F0,$28,$46
-                    db $F8,$C0,$48,$06,$F8,$D0,$4A,$06
-                    db $F8,$E0,$4A,$46,$F8,$F0,$48,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04E4ED:    db $F0,$D0,$14,$06,$F0,$E0,$16,$06              ;
+                db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$2A,$06              ;
+                db $E8,$E0,$2A,$46,$E8,$F0,$28,$46              ;
+                db $F8,$C0,$48,$06,$F8,$D0,$4A,$06              ;
+                db $F8,$E0,$4A,$46,$F8,$F0,$48,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04E53D:        db $00,$D4,$EE,$06,$00,$D4,$EE,$06
-                    db $10,$DA,$88,$06,$10,$E1,$89,$06
-                    db $E8,$E9,$A0,$06,$E8,$F9,$A2,$06
-                    db $E8,$09,$A4,$06,$F8,$E9,$C0,$06
-                    db $F8,$F9,$C2,$06,$F8,$09,$C4,$06
-                    db $08,$E9,$E0,$06,$08,$F9,$E2,$06
-                    db $08,$09,$E4,$06,$10,$F1,$8B,$06
-                    db $18,$F1,$CC,$06,$18,$01,$CE,$06
-                    db $18,$11,$EC,$06,$FF
+DATA_04E53D:    db $00,$D4,$EE,$06,$00,$D4,$EE,$06              ;
+                db $10,$DA,$88,$06,$10,$E1,$89,$06              ;
+                db $E8,$E9,$A0,$06,$E8,$F9,$A2,$06              ;
+                db $E8,$09,$A4,$06,$F8,$E9,$C0,$06              ;
+                db $F8,$F9,$C2,$06,$F8,$09,$C4,$06              ;
+                db $08,$E9,$E0,$06,$08,$F9,$E2,$06              ;
+                db $08,$09,$E4,$06,$10,$F1,$8B,$06              ;
+                db $18,$F1,$CC,$06,$18,$01,$CE,$06              ;
+                db $18,$11,$EC,$06,$FF                          ;
 
-DATA_04E583:        db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$2A,$06
-                    db $E8,$E0,$2A,$46,$E8,$F0,$28,$46
-                    db $F8,$C0,$48,$06,$F8,$D0,$4A,$06
-                    db $F8,$E0,$4A,$46,$F8,$F0,$48,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04E583:    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$2A,$06              ;
+                db $E8,$E0,$2A,$46,$E8,$F0,$28,$46              ;
+                db $F8,$C0,$48,$06,$F8,$D0,$4A,$06              ;
+                db $F8,$E0,$4A,$46,$F8,$F0,$48,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04E5CC:        db $00,$D3,$EE,$06,$00,$D3,$EE,$06
-                    db $10,$D9,$88,$06,$10,$E0,$89,$06
-                    db $E8,$E8,$A6,$06,$E8,$F8,$A8,$06
-                    db $E8,$08,$AA,$06,$F8,$E8,$C6,$06
-                    db $F8,$F8,$C8,$06,$F8,$08,$CA,$06
-                    db $08,$E8,$E6,$06,$08,$F8,$E8,$06
-                    db $08,$08,$EA,$06,$10,$F0,$8B,$06
-                    db $18,$F0,$CC,$06,$18,$00,$CE,$06
-                    db $18,$10,$EC,$06,$FF
+DATA_04E5CC:    db $00,$D3,$EE,$06,$00,$D3,$EE,$06              ;
+                db $10,$D9,$88,$06,$10,$E0,$89,$06              ;
+                db $E8,$E8,$A6,$06,$E8,$F8,$A8,$06              ;
+                db $E8,$08,$AA,$06,$F8,$E8,$C6,$06              ;
+                db $F8,$F8,$C8,$06,$F8,$08,$CA,$06              ;
+                db $08,$E8,$E6,$06,$08,$F8,$E8,$06              ;
+                db $08,$08,$EA,$06,$10,$F0,$8B,$06              ;
+                db $18,$F0,$CC,$06,$18,$00,$CE,$06              ;
+                db $18,$10,$EC,$06,$FF                          ;
 
-DATA_04E611:        db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$2A,$06
-                    db $E8,$E0,$2A,$46,$E8,$F0,$28,$46
-                    db $F8,$C0,$48,$06,$F8,$D0,$4A,$06
-                    db $F8,$E0,$4A,$46,$F8,$F0,$48,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04E611:    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$2A,$06              ;
+                db $E8,$E0,$2A,$46,$E8,$F0,$28,$46              ;
+                db $F8,$C0,$48,$06,$F8,$D0,$4A,$06              ;
+                db $F8,$E0,$4A,$46,$F8,$F0,$48,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04E65A:        db $00,$D3,$EE,$06,$00,$D3,$EE,$06
-                    db $10,$D9,$88,$06,$10,$E0,$89,$06
-                    db $E8,$E8,$A6,$06,$E8,$F8,$A8,$06
-                    db $E8,$08,$AA,$06,$F8,$E8,$C6,$06
-                    db $F8,$F8,$C8,$06,$F8,$08,$CA,$06
-                    db $08,$E8,$E6,$06,$08,$F8,$E8,$06
-                    db $08,$08,$EA,$06,$10,$F0,$8B,$06
-                    db $18,$F0,$CC,$06,$18,$00,$CE,$06
-                    db $18,$10,$EC,$06,$FF
+DATA_04E65A:    db $00,$D3,$EE,$06,$00,$D3,$EE,$06              ;
+                db $10,$D9,$88,$06,$10,$E0,$89,$06              ;
+                db $E8,$E8,$A6,$06,$E8,$F8,$A8,$06              ;
+                db $E8,$08,$AA,$06,$F8,$E8,$C6,$06              ;
+                db $F8,$F8,$C8,$06,$F8,$08,$CA,$06              ;
+                db $08,$E8,$E6,$06,$08,$F8,$E8,$06              ;
+                db $08,$08,$EA,$06,$10,$F0,$8B,$06              ;
+                db $18,$F0,$CC,$06,$18,$00,$CE,$06              ;
+                db $18,$10,$EC,$06,$FF                          ;
 
-DATA_04E69F:        db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$0E,$06
-                    db $E8,$E0,$0E,$46,$00,$D0,$3E,$06
-                    db $00,$E0,$3E,$46,$E8,$F0,$28,$46
-                    db $F8,$C0,$48,$06,$F8,$D0,$2E,$06
-                    db $F8,$E0,$2E,$46,$F8,$F0,$48,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04E69F:    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$0E,$06              ;
+                db $E8,$E0,$0E,$46,$00,$D0,$3E,$06              ;
+                db $00,$E0,$3E,$46,$E8,$F0,$28,$46              ;
+                db $F8,$C0,$48,$06,$F8,$D0,$2E,$06              ;
+                db $F8,$E0,$2E,$46,$F8,$F0,$48,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04E6F0:        db $F0,$D0,$42,$06,$F0,$E0,$42,$46
-                    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$0C,$06
-                    db $E8,$D0,$2A,$06,$E8,$E0,$0C,$46
-                    db $E8,$E0,$2A,$46,$E8,$F0,$28,$46
-                    db $F8,$C0,$48,$06,$F8,$D0,$2C,$06
-                    db $F8,$D0,$4A,$06,$F8,$E0,$2C,$46
-                    db $F8,$E0,$4A,$46,$F8,$F0,$48,$46
-                    db $00,$D0,$60,$06,$00,$E0,$60,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04E6F0:    db $F0,$D0,$42,$06,$F0,$E0,$42,$46              ;
+                db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$0C,$06              ;
+                db $E8,$D0,$2A,$06,$E8,$E0,$0C,$46              ;
+                db $E8,$E0,$2A,$46,$E8,$F0,$28,$46              ;
+                db $F8,$C0,$48,$06,$F8,$D0,$2C,$06              ;
+                db $F8,$D0,$4A,$06,$F8,$E0,$2C,$46              ;
+                db $F8,$E0,$4A,$46,$F8,$F0,$48,$46              ;
+                db $00,$D0,$60,$06,$00,$E0,$60,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04E759:        db $00,$D3,$EE,$06,$00,$D3,$EE,$06
-                    db $10,$D9,$88,$06,$10,$E0,$89,$06
-                    db $E8,$E8,$A6,$06,$E8,$F8,$A8,$06
-                    db $E8,$08,$AA,$06,$F8,$E8,$C6,$06
-                    db $F8,$F8,$C8,$06,$F8,$08,$CA,$06
-                    db $08,$E8,$E6,$06,$08,$F8,$E8,$06
-                    db $08,$08,$EA,$06,$10,$F0,$8B,$06
-                    db $18,$F0,$CC,$06,$18,$00,$CE,$06
-                    db $18,$10,$EC,$06,$FF
+DATA_04E759:    db $00,$D3,$EE,$06,$00,$D3,$EE,$06              ;
+                db $10,$D9,$88,$06,$10,$E0,$89,$06              ;
+                db $E8,$E8,$A6,$06,$E8,$F8,$A8,$06              ;
+                db $E8,$08,$AA,$06,$F8,$E8,$C6,$06              ;
+                db $F8,$F8,$C8,$06,$F8,$08,$CA,$06              ;
+                db $08,$E8,$E6,$06,$08,$F8,$E8,$06              ;
+                db $08,$08,$EA,$06,$10,$F0,$8B,$06              ;
+                db $18,$F0,$CC,$06,$18,$00,$CE,$06              ;
+                db $18,$10,$EC,$06,$FF                          ;
 
-DATA_04E79E:        db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$00,$D0,$3C,$06
-                    db $00,$E0,$3C,$46,$E8,$D0,$0C,$06
-                    db $E8,$E0,$0C,$46,$E8,$F0,$28,$46
-                    db $F8,$C0,$48,$06,$F8,$D0,$2C,$06
-                    db $F8,$E0,$2C,$46,$F8,$F0,$48,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04E79E:    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$00,$D0,$3C,$06              ;
+                db $00,$E0,$3C,$46,$E8,$D0,$0C,$06              ;
+                db $E8,$E0,$0C,$46,$E8,$F0,$28,$46              ;
+                db $F8,$C0,$48,$06,$F8,$D0,$2C,$06              ;
+                db $F8,$E0,$2C,$46,$F8,$F0,$48,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04E7EF:        db $F0,$D0,$62,$06,$F0,$E0,$62,$46
-                    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$0C,$06
-                    db $E8,$D0,$2A,$06,$E8,$E0,$0C,$46
-                    db $E8,$E0,$2A,$46,$E8,$F0,$28,$46
-                    db $F8,$C0,$48,$06,$F8,$D0,$2C,$06
-                    db $F8,$D0,$4A,$06,$F8,$E0,$2C,$46
-                    db $F8,$E0,$4A,$46,$F8,$F0,$48,$46
-                    db $00,$D0,$60,$06,$00,$E0,$60,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04E7EF:    db $F0,$D0,$62,$06,$F0,$E0,$62,$46              ;
+                db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$0C,$06              ;
+                db $E8,$D0,$2A,$06,$E8,$E0,$0C,$46              ;
+                db $E8,$E0,$2A,$46,$E8,$F0,$28,$46              ;
+                db $F8,$C0,$48,$06,$F8,$D0,$2C,$06              ;
+                db $F8,$D0,$4A,$06,$F8,$E0,$2C,$46              ;
+                db $F8,$E0,$4A,$46,$F8,$F0,$48,$46              ;
+                db $00,$D0,$60,$06,$00,$E0,$60,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04E858:        db $00,$D3,$EE,$06,$00,$D3,$EE,$06
-                    db $10,$D9,$88,$06,$10,$E0,$89,$06
-                    db $E8,$E8,$A6,$06,$E8,$F8,$A8,$06
-                    db $E8,$08,$AA,$06,$F8,$E8,$C6,$06
-                    db $F8,$F8,$C8,$06,$F8,$08,$CA,$06
-                    db $08,$E8,$E6,$06,$08,$F8,$E8,$06
-                    db $08,$08,$EA,$06,$10,$F0,$8B,$06
-                    db $18,$F0,$CC,$06,$18,$00,$CE,$06
-                    db $18,$10,$EC,$06,$FF
+DATA_04E858:    db $00,$D3,$EE,$06,$00,$D3,$EE,$06              ;
+                db $10,$D9,$88,$06,$10,$E0,$89,$06              ;
+                db $E8,$E8,$A6,$06,$E8,$F8,$A8,$06              ;
+                db $E8,$08,$AA,$06,$F8,$E8,$C6,$06              ;
+                db $F8,$F8,$C8,$06,$F8,$08,$CA,$06              ;
+                db $08,$E8,$E6,$06,$08,$F8,$E8,$06              ;
+                db $08,$08,$EA,$06,$10,$F0,$8B,$06              ;
+                db $18,$F0,$CC,$06,$18,$00,$CE,$06              ;
+                db $18,$10,$EC,$06,$FF                          ;
 
-DATA_04E89D:        db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$0C,$06
-                    db $E8,$E0,$0C,$46,$00,$D0,$3C,$06
-                    db $00,$E0,$3C,$46,$E8,$F0,$28,$46
-                    db $F8,$C0,$48,$06,$F8,$D0,$2C,$06
-                    db $F8,$E0,$2C,$46,$F8,$F0,$48,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04E89D:    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$0C,$06              ;
+                db $E8,$E0,$0C,$46,$00,$D0,$3C,$06              ;
+                db $00,$E0,$3C,$46,$E8,$F0,$28,$46              ;
+                db $F8,$C0,$48,$06,$F8,$D0,$2C,$06              ;
+                db $F8,$E0,$2C,$46,$F8,$F0,$48,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04E8EE:        db $F0,$D0,$40,$06,$F0,$E0,$40,$46
-                    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$0C,$06
-                    db $E8,$D0,$2A,$06,$E8,$E0,$0C,$46
-                    db $E8,$E0,$2A,$46,$E8,$F0,$28,$46
-                    db $F8,$C0,$48,$06,$F8,$D0,$2C,$06
-                    db $F8,$D0,$4A,$06,$F8,$E0,$2C,$46
-                    db $F8,$E0,$4A,$46,$F8,$F0,$48,$46
-                    db $00,$D0,$60,$06,$00,$E0,$60,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04E8EE:    db $F0,$D0,$40,$06,$F0,$E0,$40,$46              ;
+                db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$0C,$06              ;
+                db $E8,$D0,$2A,$06,$E8,$E0,$0C,$46              ;
+                db $E8,$E0,$2A,$46,$E8,$F0,$28,$46              ;
+                db $F8,$C0,$48,$06,$F8,$D0,$2C,$06              ;
+                db $F8,$D0,$4A,$06,$F8,$E0,$2C,$46              ;
+                db $F8,$E0,$4A,$46,$F8,$F0,$48,$46              ;
+                db $00,$D0,$60,$06,$00,$E0,$60,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04E957:        db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$0C,$06
-                    db $E8,$D0,$2A,$06,$E8,$E0,$0C,$46
-                    db $E8,$E0,$2A,$46,$E8,$F0,$28,$46
-                    db $F8,$C0,$48,$06,$F8,$D0,$2C,$06
-                    db $F8,$D0,$4A,$06,$F8,$E0,$2C,$46
-                    db $F8,$E0,$4A,$46,$F8,$F0,$48,$46
-                    db $00,$D0,$60,$06,$00,$E0,$60,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04E957:    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$0C,$06              ;
+                db $E8,$D0,$2A,$06,$E8,$E0,$0C,$46              ;
+                db $E8,$E0,$2A,$46,$E8,$F0,$28,$46              ;
+                db $F8,$C0,$48,$06,$F8,$D0,$2C,$06              ;
+                db $F8,$D0,$4A,$06,$F8,$E0,$2C,$46              ;
+                db $F8,$E0,$4A,$46,$F8,$F0,$48,$46              ;
+                db $00,$D0,$60,$06,$00,$E0,$60,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04E9B8:        db $E8,$EA,$A0,$06,$E8,$FA,$A2,$06
-                    db $E8,$0A,$A4,$06,$F8,$EA,$C0,$06
-                    db $F8,$FA,$C2,$06,$F8,$0A,$C4,$06
-                    db $08,$EA,$E0,$06,$08,$FA,$E2,$06
-                    db $08,$0A,$E4,$06,$10,$CA,$8D,$06
-                    db $10,$D2,$8E,$06,$10,$E2,$AC,$06
-                    db $10,$F2,$AE,$06,$18,$F2,$CC,$06
-                    db $18,$02,$CE,$06,$18,$12,$EC,$06
-                    db $FF
+DATA_04E9B8:    db $E8,$EA,$A0,$06,$E8,$FA,$A2,$06              ;
+                db $E8,$0A,$A4,$06,$F8,$EA,$C0,$06              ;
+                db $F8,$FA,$C2,$06,$F8,$0A,$C4,$06              ;
+                db $08,$EA,$E0,$06,$08,$FA,$E2,$06              ;
+                db $08,$0A,$E4,$06,$10,$CA,$8D,$06              ;
+                db $10,$D2,$8E,$06,$10,$E2,$AC,$06              ;
+                db $10,$F2,$AE,$06,$18,$F2,$CC,$06              ;
+                db $18,$02,$CE,$06,$18,$12,$EC,$06              ;
+                db $FF                                          ;
 
-DATA_04E9F9:        db $00,$D2,$EE,$06,$00,$D2,$EE,$06
-                    db $10,$D8,$88,$06,$10,$E0,$89,$06
-                    db $E8,$E8,$A6,$06,$E8,$F8,$A8,$06
-                    db $E8,$08,$AA,$06,$F8,$E8,$C6,$06
-                    db $F8,$F8,$C8,$06,$F8,$08,$CA,$06
-                    db $08,$E8,$E6,$06,$08,$F8,$E8,$06
-                    db $08,$08,$EA,$06,$10,$F0,$8B,$06
-                    db $18,$F0,$CC,$06,$18,$00,$CE,$06
-                    db $18,$10,$EC,$06,$FF
+DATA_04E9F9:    db $00,$D2,$EE,$06,$00,$D2,$EE,$06              ;
+                db $10,$D8,$88,$06,$10,$E0,$89,$06              ;
+                db $E8,$E8,$A6,$06,$E8,$F8,$A8,$06              ;
+                db $E8,$08,$AA,$06,$F8,$E8,$C6,$06              ;
+                db $F8,$F8,$C8,$06,$F8,$08,$CA,$06              ;
+                db $08,$E8,$E6,$06,$08,$F8,$E8,$06              ;
+                db $08,$08,$EA,$06,$10,$F0,$8B,$06              ;
+                db $18,$F0,$CC,$06,$18,$00,$CE,$06              ;
+                db $18,$10,$EC,$06,$FF                          ;
 
-DATA_04EA3E:        db $00,$D2,$EE,$06,$00,$D2,$EE,$06
-                    db $10,$D8,$88,$06,$10,$E0,$89,$06
-                    db $E8,$E8,$A0,$06,$E8,$F8,$A2,$06
-                    db $E8,$08,$A4,$06,$F8,$E8,$C0,$06
-                    db $F8,$F8,$C2,$06,$F8,$08,$C4,$06
-                    db $08,$E8,$E0,$06,$08,$F8,$E2,$06
-                    db $08,$08,$E4,$06,$10,$F0,$8B,$06
-                    db $18,$F0,$CC,$06,$18,$00,$CE,$06
-                    db $18,$10,$EC,$06,$FF
+DATA_04EA3E:    db $00,$D2,$EE,$06,$00,$D2,$EE,$06              ;
+                db $10,$D8,$88,$06,$10,$E0,$89,$06              ;
+                db $E8,$E8,$A0,$06,$E8,$F8,$A2,$06              ;
+                db $E8,$08,$A4,$06,$F8,$E8,$C0,$06              ;
+                db $F8,$F8,$C2,$06,$F8,$08,$C4,$06              ;
+                db $08,$E8,$E0,$06,$08,$F8,$E2,$06              ;
+                db $08,$08,$E4,$06,$10,$F0,$8B,$06              ;
+                db $18,$F0,$CC,$06,$18,$00,$CE,$06              ;
+                db $18,$10,$EC,$06,$FF                          ;
 
-DATA_04EA83:        db $00,$D3,$EE,$06,$00,$D3,$EE,$06
-                    db $10,$D9,$88,$06,$10,$E1,$89,$06
-                    db $E8,$E9,$A6,$06,$E8,$F9,$A8,$06
-                    db $E8,$09,$AA,$06,$F8,$E9,$C6,$06
-                    db $F8,$F9,$C8,$06,$F8,$09,$CA,$06
-                    db $08,$E9,$E6,$06,$08,$F9,$E8,$06
-                    db $08,$09,$EA,$06,$10,$F1,$8B,$06
-                    db $18,$F1,$CC,$06,$18,$01,$CE,$06
-                    db $18,$11,$EC,$06,$FF
+DATA_04EA83:    db $00,$D3,$EE,$06,$00,$D3,$EE,$06              ;
+                db $10,$D9,$88,$06,$10,$E1,$89,$06              ;
+                db $E8,$E9,$A6,$06,$E8,$F9,$A8,$06              ;
+                db $E8,$09,$AA,$06,$F8,$E9,$C6,$06              ;
+                db $F8,$F9,$C8,$06,$F8,$09,$CA,$06              ;
+                db $08,$E9,$E6,$06,$08,$F9,$E8,$06              ;
+                db $08,$09,$EA,$06,$10,$F1,$8B,$06              ;
+                db $18,$F1,$CC,$06,$18,$01,$CE,$06              ;
+                db $18,$11,$EC,$06,$FF                          ;
 
-DATA_04EAC8:        db $00,$D2,$EE,$06,$00,$D2,$EE,$06
-                    db $10,$D8,$88,$06,$10,$E0,$89,$06
-                    db $E8,$E8,$A6,$06,$E8,$F8,$A8,$06
-                    db $E8,$08,$AA,$06,$F8,$E8,$C6,$06
-                    db $F8,$F8,$C8,$06,$F8,$08,$CA,$06
-                    db $08,$E8,$E6,$06,$08,$F8,$E8,$06
-                    db $08,$08,$EA,$06,$10,$F0,$8B,$06
-                    db $18,$F0,$CC,$06,$18,$00,$CE,$06
-                    db $18,$10,$EC,$06,$FF
+DATA_04EAC8:    db $00,$D2,$EE,$06,$00,$D2,$EE,$06              ;
+                db $10,$D8,$88,$06,$10,$E0,$89,$06              ;
+                db $E8,$E8,$A6,$06,$E8,$F8,$A8,$06              ;
+                db $E8,$08,$AA,$06,$F8,$E8,$C6,$06              ;
+                db $F8,$F8,$C8,$06,$F8,$08,$CA,$06              ;
+                db $08,$E8,$E6,$06,$08,$F8,$E8,$06              ;
+                db $08,$08,$EA,$06,$10,$F0,$8B,$06              ;
+                db $18,$F0,$CC,$06,$18,$00,$CE,$06              ;
+                db $18,$10,$EC,$06,$FF                          ;
 
-DATA_04EB0D:        db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$0C,$06
-                    db $E8,$E0,$34,$06,$E8,$E0,$2A,$46
-                    db $E8,$F0,$28,$46,$F0,$E0,$44,$06
-                    db $F8,$C0,$48,$06,$F8,$F0,$48,$46
-                    db $00,$D0,$3C,$06,$00,$E0,$64,$06
-                    db $F8,$D0,$2C,$06,$F8,$E0,$4A,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04EB0D:    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$0C,$06              ;
+                db $E8,$E0,$34,$06,$E8,$E0,$2A,$46              ;
+                db $E8,$F0,$28,$46,$F0,$E0,$44,$06              ;
+                db $F8,$C0,$48,$06,$F8,$F0,$48,$46              ;
+                db $00,$D0,$3C,$06,$00,$E0,$64,$06              ;
+                db $F8,$D0,$2C,$06,$F8,$E0,$4A,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04EB66:        db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $F0,$E0,$10,$06,$E8,$D0,$36,$06
-                    db $E8,$E0,$36,$46,$E8,$E0,$2A,$46
-                    db $E8,$F0,$28,$46,$F0,$D0,$46,$06
-                    db $E8,$C0,$28,$06,$F8,$C0,$48,$06
-                    db $00,$E0,$12,$06,$F8,$E0,$4A,$46
-                    db $F8,$F0,$48,$46,$00,$D0,$66,$06
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04EB66:    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $F0,$E0,$10,$06,$E8,$D0,$36,$06              ;
+                db $E8,$E0,$36,$46,$E8,$E0,$2A,$46              ;
+                db $E8,$F0,$28,$46,$F0,$D0,$46,$06              ;
+                db $E8,$C0,$28,$06,$F8,$C0,$48,$06              ;
+                db $00,$E0,$12,$06,$F8,$E0,$4A,$46              ;
+                db $F8,$F0,$48,$46,$00,$D0,$66,$06              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04EBBF:        db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $F0,$E0,$10,$06,$E8,$C0,$28,$06
-                    db $E8,$D0,$36,$06,$E8,$E0,$36,$46
-                    db $E8,$E0,$2A,$46,$E8,$F0,$28,$46
-                    db $F0,$D0,$46,$06,$F8,$C0,$48,$06
-                    db $00,$E0,$12,$06,$F8,$E0,$4A,$46
-                    db $F8,$F0,$48,$46,$00,$D0,$66,$06
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04EBBF:    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $F0,$E0,$10,$06,$E8,$C0,$28,$06              ;
+                db $E8,$D0,$36,$06,$E8,$E0,$36,$46              ;
+                db $E8,$E0,$2A,$46,$E8,$F0,$28,$46              ;
+                db $F0,$D0,$46,$06,$F8,$C0,$48,$06              ;
+                db $00,$E0,$12,$06,$F8,$E0,$4A,$46              ;
+                db $F8,$F0,$48,$46,$00,$D0,$66,$06              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04EC18:        db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$0C,$06
-                    db $E8,$E0,$34,$06,$E8,$E0,$2A,$46
-                    db $E8,$F0,$28,$46,$F0,$E0,$44,$06
-                    db $F8,$C0,$48,$06,$F8,$F0,$48,$46
-                    db $00,$D0,$3C,$06,$00,$E0,$64,$06
-                    db $F8,$D0,$2C,$06,$F8,$E0,$4A,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04EC18:    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$0C,$06              ;
+                db $E8,$E0,$34,$06,$E8,$E0,$2A,$46              ;
+                db $E8,$F0,$28,$46,$F0,$E0,$44,$06              ;
+                db $F8,$C0,$48,$06,$F8,$F0,$48,$46              ;
+                db $00,$D0,$3C,$06,$00,$E0,$64,$06              ;
+                db $F8,$D0,$2C,$06,$F8,$E0,$4A,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
-DATA_04EC71:        db $D8,$D0,$0A,$06,$D8,$E0,$08,$06
-                    db $E8,$C0,$28,$06,$E8,$D0,$0C,$06
-                    db $E8,$E0,$34,$06,$E8,$E0,$2A,$46
-                    db $E8,$F0,$28,$46,$F0,$E0,$44,$06
-                    db $F8,$C0,$48,$06,$F8,$F0,$48,$46
-                    db $00,$D0,$3C,$06,$00,$E0,$64,$06
-                    db $F8,$D0,$2C,$06,$F8,$E0,$4A,$46
-                    db $08,$C0,$68,$06,$08,$D0,$6A,$06
-                    db $08,$E0,$6A,$46,$08,$F0,$68,$46
-                    db $18,$C0,$6E,$46,$18,$D0,$6C,$46
-                    db $18,$E0,$6C,$06,$18,$F0,$6E,$06
-                    db $FF
+DATA_04EC71:    db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;
+                db $E8,$C0,$28,$06,$E8,$D0,$0C,$06              ;
+                db $E8,$E0,$34,$06,$E8,$E0,$2A,$46              ;
+                db $E8,$F0,$28,$46,$F0,$E0,$44,$06              ;
+                db $F8,$C0,$48,$06,$F8,$F0,$48,$46              ;
+                db $00,$D0,$3C,$06,$00,$E0,$64,$06              ;
+                db $F8,$D0,$2C,$06,$F8,$E0,$4A,$46              ;
+                db $08,$C0,$68,$06,$08,$D0,$6A,$06              ;
+                db $08,$E0,$6A,$46,$08,$F0,$68,$46              ;
+                db $18,$C0,$6E,$46,$18,$D0,$6C,$46              ;
+                db $18,$E0,$6C,$06,$18,$F0,$6E,$06              ;
+                db $FF                                          ;
 
 CODE_04ECCA:    LDA #$1E                ; $04:ECCA: A9 1E       ;
 CODE_04ECCC:    STA $0287               ; $04:ECCC: 8D 87 02    ;
@@ -6448,10 +6448,10 @@ CODE_04ED54:    STX $420B               ; $04:ED54: 8E 0B 42    ;
 CODE_04ED57:    SEP #$20                ; $04:ED57: E2 20       ;
 CODE_04ED59:    RTL                     ; $04:ED59: 6B          ;
 
-DATA_04ED5A:        dw $C800,$C800,$C800,$C800
-                    dw $E800,$E000,$E000,$D000
-                    dw $C800,$E800,$E000,$E000
-                    dw $D000,$D000,$D000,$D000
+DATA_04ED5A:    dw $C800,$C800,$C800,$C800                      ;
+                dw $E800,$E000,$E000,$D000                      ;
+                dw $C800,$E800,$E000,$E000                      ;
+                dw $D000,$D000,$D000,$D000                      ;
 
 CODE_04ED7A:    LDA $0F7E               ; $04:ED7A: AD 7E 0F    ;
 CODE_04ED7D:    BEQ CODE_04ED82         ; $04:ED7D: F0 03       ;
@@ -6552,21 +6552,21 @@ CODE_04EE3D:    LDA PNTR_04EE45+1,x     ; $04:EE3D: BD 46 EE    ;
 CODE_04EE40:    STA $01                 ; $04:EE40: 85 01       ;
 CODE_04EE42:    JMP ($0000)             ; $04:EE42: 6C 00 00    ;
 
-PNTR_04EE45:        dw CODE_04EE61
-                    dw CODE_04EEE4
-                    dw CODE_04EF85
-                    dw CODE_04F15A
-                    dw CODE_04F3A1
-                    dw CODE_04F5FA
-                    dw CODE_04F896
-                    dw CODE_04EE61
-                    dw CODE_04EE61
-                    dw CODE_04F3A1
-                    dw CODE_04F5FA
-                    dw CODE_04F896
-                    dw CODE_04EE61
+PNTR_04EE45:    dw CODE_04EE61                                  ;
+                dw CODE_04EEE4                                  ;
+                dw CODE_04EF85                                  ;
+                dw CODE_04F15A                                  ;
+                dw CODE_04F3A1                                  ;
+                dw CODE_04F5FA                                  ;
+                dw CODE_04F896                                  ;
+                dw CODE_04EE61                                  ;
+                dw CODE_04EE61                                  ;
+                dw CODE_04F3A1                                  ;
+                dw CODE_04F5FA                                  ;
+                dw CODE_04F896                                  ;
+                dw CODE_04EE61                                  ;
 
-DATA_04EE5F:        db $90,$00
+DATA_04EE5F:    db $90,$00                                      ;
 
 CODE_04EE61:    JSR CODE_04FA7B         ; $04:EE61: 20 7B FA    ;
 CODE_04EE64:    LDA $0F7F               ; $04:EE64: AD 7F 0F    ;
@@ -7158,19 +7158,19 @@ CODE_04F373:    STA $0DCC               ; $04:F373: 8D CC 0D    ;
 CODE_04F376:    STA $0DD0               ; $04:F376: 8D D0 0D    ;
 CODE_04F379:    RTS                     ; $04:F379: 60          ;
 
-PNTR_04F37A:        dw CODE_04F30A
-                    dw CODE_04F31D
-                    dw CODE_04F332
-                    dw CODE_04F342
-                    dw CODE_04F354
-                    dw CODE_04F361
-                    dw CODE_04F370
+PNTR_04F37A:    dw CODE_04F30A                                  ;
+                dw CODE_04F31D                                  ;
+                dw CODE_04F332                                  ;
+                dw CODE_04F342                                  ;
+                dw CODE_04F354                                  ;
+                dw CODE_04F361                                  ;
+                dw CODE_04F370                                  ;
 
-DATA_04F388:        db $40,$48,$58,$60,$70,$78,$BF ;
+DATA_04F388:    db $40,$48,$58,$60,$70,$78,$BF                  ;
 
-DATA_04F38F:        db $97,$EA,$A2,$EA,$AD,$EA,$B8,$B6 ;
-                    db $B8,$B6,$C0,$C9,$B3,$EA,$A8,$EA ;
-                    db $9D,$EA ;
+DATA_04F38F:    db $97,$EA,$A2,$EA,$AD,$EA,$B8,$B6              ;
+                db $B8,$B6,$C0,$C9,$B3,$EA,$A8,$EA              ;
+                db $9D,$EA                                      ;
 
 CODE_04F3A1:    JSR CODE_04FA7B         ; $04:F3A1: 20 7B FA    ;
 CODE_04F3A4:    LDA $0F7F               ; $04:F3A4: AD 7F 0F    ;
@@ -7377,7 +7377,7 @@ CODE_04F57E:    DEX                     ; $04:F57E: CA          ;
 CODE_04F57F:    BPL CODE_04F558         ; $04:F57F: 10 D7       ;
 CODE_04F581:    RTS                     ; $04:F581: 60          ;
 
-DATA_04F582:        db $F5,$E4,$F4,$E5
+DATA_04F582:    db $F5,$E4,$F4,$E5                              ;
 
 CODE_04F586:    LDY $0B9D               ; $04:F586: AC 9D 0B    ;
 CODE_04F589:    LDA DATA_04EE5F,y       ; $04:F589: B9 5F EE    ;
@@ -7418,11 +7418,11 @@ CODE_04F5D5:    DEC $00                 ; $04:F5D5: C6 00       ;
 CODE_04F5D7:    BNE CODE_04F5BF         ; $04:F5D7: D0 E6       ;
 CODE_04F5D9:    RTS                     ; $04:F5D9: 60          ;
 
-DATA_04F5DA:        db $CE,$CE,$EE,$EE,$E0,$E2,$E0,$E2
-                    db $EE,$EE,$CE,$CE,$E2,$E0,$E2,$E0
+DATA_04F5DA:    db $CE,$CE,$EE,$EE,$E0,$E2,$E0,$E2              ;
+                db $EE,$EE,$CE,$CE,$E2,$E0,$E2,$E0              ;
 
-DATA_04F5EA:        db $2D,$4D,$2D,$4D,$2D,$2D,$AD,$AD
-                    db $AD,$CD,$AD,$CD,$4D,$4D,$CD,$CD
+DATA_04F5EA:    db $2D,$4D,$2D,$4D,$2D,$2D,$AD,$AD              ;
+                db $AD,$CD,$AD,$CD,$4D,$4D,$CD,$CD              ;
 
 CODE_04F5FA:    JSR CODE_04FA7B         ; $04:F5FA: 20 7B FA    ;
 CODE_04F5FD:    LDA $0F7F               ; $04:F5FD: AD 7F 0F    ;
@@ -7849,10 +7849,10 @@ CODE_04F9B1:    DEX                     ; $04:F9B1: CA          ;
 CODE_04F9B2:    BNE CODE_04F96E         ; $04:F9B2: D0 BA       ;
 CODE_04F9B4:    RTS                     ; $04:F9B4: 60          ;
 
-DATA_04F9B5:        db $98,$C0,$E4,$2D,$90,$C0,$A1,$2D
-                    db $99,$BF,$E4,$2D,$90,$C0,$A1,$2D
-                    db $9B,$BF,$E2,$2D,$90,$C0,$E0,$2D
-                    db $90,$C0,$E0,$2D,$90,$C0,$E0,$2D
+DATA_04F9B5:    db $98,$C0,$E4,$2D,$90,$C0,$A1,$2D              ;
+                db $99,$BF,$E4,$2D,$90,$C0,$A1,$2D              ;
+                db $9B,$BF,$E2,$2D,$90,$C0,$E0,$2D              ;
+                db $90,$C0,$E0,$2D,$90,$C0,$E0,$2D              ;
 
 CODE_04F9D5:    LDA $0BA6               ; $04:F9D5: AD A6 0B    ;
 CODE_04F9D8:    BEQ CODE_04F9E1         ; $04:F9D8: F0 07       ;
@@ -7909,13 +7909,13 @@ CODE_04FA46:    STA $0D08,y             ; $04:FA46: 99 08 0D    ;
 CODE_04FA49:    PLX                     ; $04:FA49: FA          ;
 CODE_04FA4A:    RTS                     ; $04:FA4A: 60          ;
 
-DATA_04FA4B:        db $B6,$B6,$C9,$B7,$B7,$CB,$B8,$B9
-                    db $EC,$B9,$B8,$EC,$E3,$E2,$E4,$F3
-                    db $F2,$E6,$E2,$E3,$E4,$F2,$F3,$E6
+DATA_04FA4B:    db $B6,$B6,$C9,$B7,$B7,$CB,$B8,$B9              ;
+                db $EC,$B9,$B8,$EC,$E3,$E2,$E4,$F3              ;
+                db $F2,$E6,$E2,$E3,$E4,$F2,$F3,$E6              ;
 
-DATA_04FA63:        db $2D,$6D,$2D,$2D,$6D,$2D,$2D,$2D
-                    db $2D,$6D,$6D,$6D,$6D,$6D,$6D,$6D
-                    db $6D,$6D,$2D,$2D,$2D,$2D,$2D,$2D
+DATA_04FA63:    db $2D,$6D,$2D,$2D,$6D,$2D,$2D,$2D              ;
+                db $2D,$6D,$6D,$6D,$6D,$6D,$6D,$6D              ;
+                db $6D,$6D,$2D,$2D,$2D,$2D,$2D,$2D              ;
 
 CODE_04FA7B:    DEC $0F7D               ; $04:FA7B: CE 7D 0F    ;
 CODE_04FA7E:    LDA $0F7D               ; $04:FA7E: AD 7D 0F    ;
@@ -7937,10 +7937,10 @@ CODE_04FA9F:    LDA PNTR_04FAA7+1,x     ; $04:FA9F: BD A8 FA    ;
 CODE_04FAA2:    STA $01                 ; $04:FAA2: 85 01       ;
 CODE_04FAA4:    JMP ($0000)             ; $04:FAA4: 6C 00 00    ;
 
-PNTR_04FAA7:        dw CODE_04FAAF
-                    dw CODE_04FB18
-                    dw CODE_04FB5E
-                    dw CODE_04FB77
+PNTR_04FAA7:    dw CODE_04FAAF                                  ;
+                dw CODE_04FB18                                  ;
+                dw CODE_04FB5E                                  ;
+                dw CODE_04FB77                                  ;
 
 CODE_04FAAF:    LDA #$94                ; $04:FAAF: A9 94       ;
 CODE_04FAB1:    STA $0958               ; $04:FAB1: 8D 58 09    ;
@@ -8078,19 +8078,19 @@ CODE_04FBDC:    LDA PNTR_04FBE4+1,x     ; $04:FBDC: BD E5 FB    ;
 CODE_04FBDF:    STA $01                 ; $04:FBDF: 85 01       ;
 CODE_04FBE1:    JMP ($0000)             ; $04:FBE1: 6C 00 00    ;
 
-PNTR_04FBE4:        dw CODE_04FBFE
-                    dw CODE_04FC26
-                    dw CODE_04FC4E
-                    dw CODE_04FC7C
-                    dw CODE_04FCAE
-                    dw CODE_04FCD4
-                    dw CODE_04FCEE
-                    dw CODE_04FBFE
-                    dw CODE_04FBFE
-                    dw CODE_04FCAE
-                    dw CODE_04FCD4
-                    dw CODE_04FCEE
-                    dw CODE_04FBFE
+PNTR_04FBE4:    dw CODE_04FBFE                                  ;
+                dw CODE_04FC26                                  ;
+                dw CODE_04FC4E                                  ;
+                dw CODE_04FC7C                                  ;
+                dw CODE_04FCAE                                  ;
+                dw CODE_04FCD4                                  ;
+                dw CODE_04FCEE                                  ;
+                dw CODE_04FBFE                                  ;
+                dw CODE_04FBFE                                  ;
+                dw CODE_04FCAE                                  ;
+                dw CODE_04FCD4                                  ;
+                dw CODE_04FCEE                                  ;
+                dw CODE_04FBFE                                  ;
 
 CODE_04FBFE:    LDA $021A               ; $04:FBFE: AD 1A 02    ;
 CODE_04FC01:    SEC                     ; $04:FC01: 38          ;
@@ -8320,70 +8320,70 @@ CODE_04FDE8:    STZ $2112               ; $04:FDE8: 9C 12 21    ;Store zero to B
 CODE_04FDEB:    STZ $2112               ; $04:FDEB: 9C 12 21    ;Store zero to BG3 Y-scrolling
 CODE_04FDEE:    RTL                     ; $04:FDEE: 6B          ;Return
 
-DATA_04FDEF:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;Empty Data, I am sure.
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;BANK 4 FINISHED.
-                    db $FF
+DATA_04FDEF:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;Empty Data, I am sure.
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;BANK 4 FINISHED.
+                db $FF                                          ;

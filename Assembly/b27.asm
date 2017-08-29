@@ -62,31 +62,31 @@ CODE_27807C:    RTL                         ; $27:807C: 6B          ;
 
 CODE_27807D:    JSL CODE_20FB1F         ; $27:807D: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_278081:        dw CODE_278144
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_2780B3
-                    dw CODE_278145
-                    dw CODE_2781B5
-                    dw CODE_278216
-                    dw CODE_278216
-                    dw CODE_278216
-                    dw CODE_278216
+PNTR_278081:    dw CODE_278144                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_2780B3                                  ;
+                dw CODE_278145                                  ;
+                dw CODE_2781B5                                  ;
+                dw CODE_278216                                  ;
+                dw CODE_278216                                  ;
+                dw CODE_278216                                  ;
+                dw CODE_278216                                  ;
 
 CODE_2780B3:    LDX $0564                   ; $27:80B3: AE 64 05    ;
 CODE_2780B6:    DEX                         ; $27:80B6: CA          ;
@@ -441,59 +441,59 @@ CODE_278352:    ADC #$07                    ; $27:8352: 69 07       ;
 CODE_278354:    STA $1600                   ; $27:8354: 8D 00 16    ;
 CODE_278357:    RTS                         ; $27:8357: 60          ;
 
-DATA_278358:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
+DATA_278358:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
 
 CODE_278500:    LDA $0554                   ; $27:8500: AD 54 05    ;
 CODE_278503:    ORA $0551                   ; $27:8503: 0D 51 05    ;
@@ -516,12 +516,12 @@ CODE_278525:    RTL                         ; $27:8525: 6B          ;
 CODE_278526:    LDA $1A01                   ; $27:8526: AD 01 1A    ;
 CODE_278529:    JSL CODE_20FB1F         ; $27:8529: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_27852D:        dw CODE_27855A
-                    dw CODE_27855A
-                    dw CODE_27888F
-                    dw CODE_27876F
-                    dw CODE_278723
-                    dw CODE_27882D
+PNTR_27852D:    dw CODE_27855A                                  ;
+                dw CODE_27855A                                  ;
+                dw CODE_27888F                                  ;
+                dw CODE_27876F                                  ;
+                dw CODE_278723                                  ;
+                dw CODE_27882D                                  ;
 
 CODE_278539:    DEC $1A67               ; $27:8539: CE 67 1A    ;
 CODE_27853C:    BPL CODE_278559             ; $27:853C: 10 1B       ;
@@ -1014,27 +1014,27 @@ CODE_278953:    ADC #$00                    ; $27:8953: 69 00       ;
 CODE_278955:    STA $1A12                   ; $27:8955: 8D 12 1A    ;
 CODE_278958:    RTS                         ; $27:8958: 60          ;
 
-DATA_278959:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF
+DATA_278959:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF                  ;
 
 CODE_278A00:    LDA $17                 ; $27:8A00: A5 17       ;
 CODE_278A02:    AND #$03                ; $27:8A02: 29 03       ;
@@ -1794,7 +1794,7 @@ CODE_278FC0:    RTL                         ; $27:8FC0: 6B          ;
 
 CODE_278FC1:    JMP CODE_278FD3             ; $27:8FC1: 4C D3 8F    ;
 
-DATA_278FC4:        db $35
+DATA_278FC4:    db $35                                          ;
 
 CODE_278FC5:    BEQ CODE_278FD3         ; $27:8FC5: F0 0C       ;
 CODE_278FC7:    LDA $18                 ; $27:8FC7: A5 18       ;
@@ -1944,15 +1944,15 @@ CODE_279115:    JSL CODE_27A27C             ; $27:9115: 22 7C A2 27 ;
 CODE_279119:    LDA $0661,x                 ; $27:9119: BD 61 06    ;
 CODE_27911C:    JSL CODE_20FB1F         ; $27:911C: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_279120:        dw CODE_279B7B
-                    dw CODE_279B7D
-                    dw CODE_279D14
-                    dw CODE_2791E8
-                    dw CODE_2795A1
-                    dw CODE_2793E1
-                    dw CODE_27974A
-                    dw CODE_27980F
-                    dw CODE_279132
+PNTR_279120:    dw CODE_279B7B                                  ;
+                dw CODE_279B7D                                  ;
+                dw CODE_279D14                                  ;
+                dw CODE_2791E8                                  ;
+                dw CODE_2795A1                                  ;
+                dw CODE_2793E1                                  ;
+                dw CODE_27974A                                  ;
+                dw CODE_27980F                                  ;
+                dw CODE_279132                                  ;
 
 CODE_279132:    LDA $0518,x                 ; $27:9132: BD 18 05    ;
 CODE_279135:    BNE CODE_27913A             ; $27:9135: D0 03       ;
@@ -2679,16 +2679,16 @@ CODE_27975E:    STA $0669,x                 ; $27:975E: 9D 69 06    ;
 CODE_279761:    PLA                         ; $27:9761: 68          ;
 CODE_279762:    JSL CODE_20FB1F         ; $27:9762: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_279766:        dw CODE_27977A
-                    dw CODE_2797B8
-                    dw CODE_2797B2
-                    dw CODE_2797AC
-                    dw CODE_2797A5
-                    dw CODE_279781
-                    dw CODE_27978D
-                    dw CODE_279794
-                    dw CODE_27979F
-                    dw CODE_279788
+PNTR_279766:    dw CODE_27977A                                  ;
+                dw CODE_2797B8                                  ;
+                dw CODE_2797B2                                  ;
+                dw CODE_2797AC                                  ;
+                dw CODE_2797A5                                  ;
+                dw CODE_279781                                  ;
+                dw CODE_27978D                                  ;
+                dw CODE_279794                                  ;
+                dw CODE_27979F                                  ;
+                dw CODE_279788                                  ;
 
 CODE_27977A:    JSL CODE_279D6E         ; $27:977A: 22 6E 9D 27 ;
 CODE_27977E:    JMP CODE_2797BB             ; $27:977E: 4C BB 97    ;
@@ -3431,21 +3431,21 @@ CODE_279D8E:    STA $02                     ; $27:9D8E: 85 02       ;
 CODE_279D90:    PLX                         ; $27:9D90: FA          ;
 CODE_279D91:    JML [$0000]                 ; $27:9D91: DC 00 00    ;
 
-PNTR_279D94:        dl CODE_28B625
-                    dl CODE_279EBB
-                    dl CODE_279F51
-                    dl CODE_28BB64
-                    dl CODE_279B7C
-                    dl CODE_279DC1
-                    dl CODE_279F6B
-                    dl CODE_279B7C
-                    dl CODE_28BFD9
-                    dl CODE_279B7C
-                    dl CODE_279EDD
-                    dl CODE_28CE71
-                    dl CODE_279B7C
-                    dl CODE_28B3A6
-                    dl CODE_28BD52           
+PNTR_279D94:    dl CODE_28B625                                  ;
+                dl CODE_279EBB                                  ;
+                dl CODE_279F51                                  ;
+                dl CODE_28BB64                                  ;
+                dl CODE_279B7C                                  ;
+                dl CODE_279DC1                                  ;
+                dl CODE_279F6B                                  ;
+                dl CODE_279B7C                                  ;
+                dl CODE_28BFD9                                  ;
+                dl CODE_279B7C                                  ;
+                dl CODE_279EDD                                  ;
+                dl CODE_28CE71                                  ;
+                dl CODE_279B7C                                  ;
+                dl CODE_28B3A6                                  ;
+                dl CODE_28BD52                                  ;
 
 CODE_279DC1:    RTL                         ; $27:9DC1: 6B          ;
 
@@ -5078,9 +5078,9 @@ CODE_27AA59:    SEP #$10                    ; $27:AA59: E2 10       ;
 CODE_27AA5B:    LDX $9B                     ; $27:AA5B: A6 9B       ;
 CODE_27AA5D:    RTS                         ; $27:AA5D: 60          ;
 
-DATA_27AA5E:        db $FF,$02,$13,$14,$26,$32,$4D,$60
-                    db $62,$71,$85,$90,$A5,$C6,$C9,$CF
-                    db $E4,$E5,$E6,$E8,$EB,$ED
+DATA_27AA5E:    db $FF,$02,$13,$14,$26,$32,$4D,$60              ;
+                db $62,$71,$85,$90,$A5,$C6,$C9,$CF              ;
+                db $E4,$E5,$E6,$E8,$EB,$ED                      ;
 
 CODE_27AA74:    PHB                     ; $27:AA74: 8B          ;
 CODE_27AA75:    PHK                     ; $27:AA75: 4B          ;
@@ -5096,7 +5096,7 @@ CODE_27AA82:    PLX                         ; $27:AA82: FA          ;
 CODE_27AA83:    PLB                         ; $27:AA83: AB          ;
 CODE_27AA84:    RTL                         ; $27:AA84: 6B          ;
 
-DATA_27AA85:        db $02,$04,$03,$04,$00,$04,$01,$04
+DATA_27AA85:    db $02,$04,$03,$04,$00,$04,$01,$04              ;
 
 CODE_27AA8D:    PHB                         ; $27:AA8D: 8B          ;
 CODE_27AA8E:    PHK                         ; $27:AA8E: 4B          ;
@@ -5111,180 +5111,180 @@ CODE_27AA9A:    PLX                         ; $27:AA9A: FA          ;
 CODE_27AA9B:    PLB                         ; $27:AA9B: AB          ;
 CODE_27AA9C:    RTL                         ; $27:AA9C: 6B          ;
 
-DATA_27AA9D:        db $00,$01,$02,$01
+DATA_27AA9D:    db $00,$01,$02,$01                              ;
 
-DATA_27AAA1:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF
+DATA_27AAA1:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF                  ;
 
 CODE_27B000:    LDA $BF                 ; $27:B000: A5 BF       ;
 CODE_27B002:    BNE CODE_27B07F         ; $27:B002: D0 7B       ;
@@ -5572,7 +5572,7 @@ CODE_27B21D:    LDA #$01                    ; $27:B21D: A9 01       ;
 CODE_27B21F:    STA $1500                   ; $27:B21F: 8D 00 15    ;
 CODE_27B222:    RTS                         ; $27:B222: 60          ;
 
-DATA_27B223:        db $08,$77,$FF
+DATA_27B223:    db $08,$77,$FF                                  ;
 
 CODE_27B226:    ADC.l DATA_08F000+$18,x ; $27:B226: 7F 18 F0 08 ;INVALID: this points to graphics data???
 CODE_27B22A:    TYA                         ; $27:B22A: 98          ;
@@ -7718,8 +7718,8 @@ CODE_27C386:    SEP #$10                    ; $27:C386: E2 10       ;
 CODE_27C388:    LDX $9B                     ; $27:C388: A6 9B       ;
 CODE_27C38A:    RTS                         ; $27:C38A: 60          ;
 
-DATA_27C38B:        db $E0,$E0,$E0,$E0,$E2,$E2,$E2,$E2
-                    db $E4,$E4,$E4,$E4,$E4,$E4,$E4,$E4
+DATA_27C38B:    db $E0,$E0,$E0,$E0,$E2,$E2,$E2,$E2              ;
+                db $E4,$E4,$E4,$E4,$E4,$E4,$E4,$E4              ;
 
 CODE_27C39B:    LDA $9C                     ; $27:C39B: A5 9C       ;
 CODE_27C39D:    BEQ CODE_27C3B2             ; $27:C39D: F0 13       ;
@@ -8013,31 +8013,31 @@ CODE_27C5D3:    JMP CODE_27D37F             ; $27:C5D3: 4C 7F D3    ;
 CODE_27C5D6:    LDA $1FC8,x             ; $27:C5D6: BD C8 1F    ; Extended sprites
 CODE_27C5D9:    JSL CODE_20FB1F         ; $27:C5D9: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_27C5DD:        dw CODE_27C545                          ; $00 - None
-                    dw CODE_27D175                          ; $01 - Hammer
-                    dw CODE_27D442                          ; $02 - Boomerang
-                    dw CODE_27D508                          ; $03 - Boomerang??
-                    dw CODE_27D576                          ; $04 - Nipper Plant fireball
-                    dw CODE_27D576                          ; $05 - Venus Fire Trap fireball
-                    dw CODE_27D013                          ; $06 - Baby Goomba
-                    dw CODE_27CF6B                          ; $07 - Ptooie spiked ball (uninteractable)
-                    dw CODE_27CE2B                          ; $08 -
-                    dw CODE_27CEC9                          ; $09 -
-                    dw CODE_27CD7B                          ; $0A - Wrench
-                    dw CODE_27CC31                          ; $0B - Cannonball
-                    dw CODE_27D576                          ; $0C - Fire Bros. fireball
-                    dw CODE_27C91B                          ; $0D -
-                    dw CODE_27CB74                          ; $0E -
-                    dw CODE_27CAAE                          ; $0F -
-                    dw CODE_27C995                          ; $10 - Magic Wand
-                    dw CODE_27C7A7                          ; $11 - Enemy morphed into coin (at level end when there are enemies present)
-                    dw CODE_27D576                          ; $12 - 
-                    dw CODE_27C7A7                          ; $13 - Brick shatter
-                    dw CODE_27C6D6                          ; $14 -
-                    dw CODE_27C60F                          ; $15 - Bowser statue laser
-                    dw CODE_27D672                          ; $16 - Puff of smoke
-                    dw CODE_27DFF2                          ; $17 - Podoboo fire trail
-                    dw CODE_27E05B                          ; $18 - Podoboo lava splash
+PNTR_27C5DD:    dw CODE_27C545                                  ; $00 - None
+                dw CODE_27D175                                  ; $01 - Hammer
+                dw CODE_27D442                                  ; $02 - Boomerang
+                dw CODE_27D508                                  ; $03 - Boomerang??
+                dw CODE_27D576                                  ; $04 - Nipper Plant fireball
+                dw CODE_27D576                                  ; $05 - Venus Fire Trap fireball
+                dw CODE_27D013                                  ; $06 - Baby Goomba
+                dw CODE_27CF6B                                  ; $07 - Ptooie spiked ball (uninteractable)
+                dw CODE_27CE2B                                  ; $08 -
+                dw CODE_27CEC9                                  ; $09 -
+                dw CODE_27CD7B                                  ; $0A - Wrench
+                dw CODE_27CC31                                  ; $0B - Cannonball
+                dw CODE_27D576                                  ; $0C - Fire Bros. fireball
+                dw CODE_27C91B                                  ; $0D -
+                dw CODE_27CB74                                  ; $0E -
+                dw CODE_27CAAE                                  ; $0F -
+                dw CODE_27C995                                  ; $10 - Magic Wand
+                dw CODE_27C7A7                                  ; $11 - Enemy morphed into coin (at level end when there are enemies present)
+                dw CODE_27D576                                  ; $12 - 
+                dw CODE_27C7A7                                  ; $13 - Brick shatter
+                dw CODE_27C6D6                                  ; $14 -
+                dw CODE_27C60F                                  ; $15 - Bowser statue laser
+                dw CODE_27D672                                  ; $16 - Puff of smoke
+                dw CODE_27DFF2                                  ; $17 - Podoboo fire trail
+                dw CODE_27E05B                                  ; $18 - Podoboo lava splash
 
 CODE_27C60F:    JSR CODE_27C67F         ; $27:C60F: 20 7F C6    ;Draw GFX for laser sprite
 CODE_27C612:    LDA $9C                 ; $27:C612: A5 9C       ;\
@@ -10303,28 +10303,28 @@ CODE_27D863:    DEC $1A57,x                 ; $27:D863: DE 57 1A    ;
 CODE_27D866:    PLA                         ; $27:D866: 68          ;
 CODE_27D867:    JSL CODE_20FB1F         ; $27:D867: 22 1F FB 20 ; ExecutePtrShort
 
-PNTR_27D86B:        dw CODE_27D84F
-                    dw CODE_27DBE4
-                    dw CODE_27DBE4
-                    dw CODE_27DB84
-                    dw CODE_27DA57
-                    dw CODE_27D9E9
-                    dw CODE_27D9E9
-                    dw CODE_27D8ED
-                    dw CODE_27D8ED
-                    dw CODE_27D8ED
-                    dw CODE_27D8ED
-                    dw CODE_27D8ED
-                    dw CODE_27D8ED
-                    dw CODE_27D8ED
-                    dw CODE_27D8ED
-                    dw CODE_27D8ED
-                    dw CODE_27D8ED
-                    dw CODE_27D8ED
-                    dw CODE_27D8ED
-                    dw CODE_27D8ED
-                    dw CODE_27D8ED
-                    dw CODE_27D897
+PNTR_27D86B:    dw CODE_27D84F                                  ;
+                dw CODE_27DBE4                                  ;
+                dw CODE_27DBE4                                  ;
+                dw CODE_27DB84                                  ;
+                dw CODE_27DA57                                  ;
+                dw CODE_27D9E9                                  ;
+                dw CODE_27D9E9                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D8ED                                  ;
+                dw CODE_27D897                                  ;
 
 CODE_27D897:    LDA $1A35,x             ; $27:D897: BD 35 1A    ;\
 CODE_27D89A:    CMP $0210               ; $27:D89A: CD 10 02    ; |
@@ -10936,16 +10936,16 @@ CODE_27DDAF:    LDA #$10                    ; $27:DDAF: A9 10       ;
 CODE_27DDB1:    STA $0C                     ; $27:DDB1: 85 0C       ;
 CODE_27DDB3:    RTS                         ; $27:DDB3: 60          ;
 
-DATA_27DDB4:        dw $FFFF
-                    dw $0002
-                    dw $0005
-                    dw $0008
-                    dw $0008
-                    dw $0005
-                    dw $0002
-                    dw $FFFF
+DATA_27DDB4:    dw $FFFF                                        ;
+                dw $0002                                        ;
+                dw $0005                                        ;
+                dw $0008                                        ;
+                dw $0008                                        ;
+                dw $0005                                        ;
+                dw $0002                                        ;
+                dw $FFFF                                        ;
 
-DATA_27DDC4:        db $FA,$FB,$FC,$FD
+DATA_27DDC4:    db $FA,$FB,$FC,$FD                              ;
 
 CODE_27DDC8:    STZ $D8                 ; $27:DDC8: 64 D8       ;
 CODE_27DDCA:    LDA $BC                     ; $27:DDCA: A5 BC       ;
@@ -11218,13 +11218,13 @@ CODE_27DFDC:    LDA.w DATA_21DFE3,x                 ; $27:DFDC: BD E3 DF    ;
 CODE_27DFDF:    STA $0802,y                 ; $27:DFDF: 99 02 08    ;
 CODE_27DFE2:    RTS                         ; $27:DFE2: 60          ;
 
-DATA_27DFE3:        db $20,$E6,$E8,$60                       
+DATA_27DFE3:    db $20,$E6,$E8,$60                              ;
 
-DATA_27DFE7:        db $61,$21,$20,$21,$21
+DATA_27DFE7:    db $61,$21,$20,$21,$21                          ;
 
-DATA_27DFEC:        db $CC,$CD,$FD
+DATA_27DFEC:    db $CC,$CD,$FD                                  ;
 
-DATA_27DFEF:        db $23,$23,$21
+DATA_27DFEF:    db $23,$23,$21                                  ;
 
 CODE_27DFF2:    LDA $9C                 ; $27:DFF2: A5 9C       ;
 CODE_27DFF4:    BNE CODE_27E00F         ; $27:DFF4: D0 19       ;
@@ -11388,19 +11388,19 @@ CODE_27E13F:    SEP #$10                    ; $27:E13F: E2 10       ;
 CODE_27E141:    PLB                         ; $27:E141: AB          ;
 CODE_27E142:    RTS                         ; $27:E142: 60          ;
 
-DATA_27E143:        db $0F,$00,$0E,$00,$0D,$00,$0C,$00
-                    db $0B,$00,$0A,$00
+DATA_27E143:    db $0F,$00,$0E,$00,$0D,$00,$0C,$00              ;
+                db $0B,$00,$0A,$00                              ;
 
-DATA_27E14F:        db $12,$00,$10,$00,$0E,$00,$0C,$00
-                    db $0A,$00,$08,$00
+DATA_27E14F:    db $12,$00,$10,$00,$0E,$00,$0C,$00              ;
+                db $0A,$00,$08,$00                              ;
 
-DATA_27E15B:        db $0A,$09,$09,$0A,$0B,$0C
+DATA_27E15B:    db $0A,$09,$09,$0A,$0B,$0C                      ;
 
-DATA_27E161:        db $06,$05,$04,$06,$08,$0A
+DATA_27E161:    db $06,$05,$04,$06,$08,$0A                      ;
 
-DATA_27E167:        db $1D,$1D,$D1,$D1,$D0,$D0
+DATA_27E167:    db $1D,$1D,$D1,$D1,$D0,$D0                      ;
 
-DATA_27E16D:        db $22,$22,$23,$23,$23,$23
+DATA_27E16D:    db $22,$22,$23,$23,$23,$23                      ;
 
 CODE_27E173:    PHB                     ; $27:E173: 8B          ;
 CODE_27E174:    LDA #$27                    ; $27:E174: A9 27       ;
@@ -11466,980 +11466,980 @@ CODE_27E1DC:    PLX                         ; $27:E1DC: FA          ;
 CODE_27E1DD:    PLB                         ; $27:E1DD: AB          ;
 CODE_27E1DE:    RTL                         ; $27:E1DE: 6B          ;
 
-DATA_27E1DF:        db $58,$68,$68,$58,$68,$68,$50,$60
-                    db $70
+DATA_27E1DF:    db $58,$68,$68,$58,$68,$68,$50,$60              ;
+                db $70                                          ;
 
-DATA_27E1E8:        db $A0,$A2,$A2,$A4,$A6,$A6,$A8,$AA
-                    db $AC
+DATA_27E1E8:    db $A0,$A2,$A2,$A4,$A6,$A6,$A8,$AA              ;
+                db $AC                                          ;
 
-DATA_27E1F1:        db $80,$90,$98
+DATA_27E1F1:    db $80,$90,$98                                  ;
 
-DATA_27E1F4:        db $AE,$8C,$8D
+DATA_27E1F4:    db $AE,$8C,$8D                                  ;
 
-DATA_27E1F7:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF ;
-                    db $FF,$00,$FF,$00,$FF,$02,$FF,$00 ;
-                    db $FF,$02,$FF,$01,$FF,$00,$FF,$00 ;
-                    db $FF,$00,$FF,$00,$FF,$00,$FF,$00 ;
-                    db $FF,$00,$FF,$01,$FF,$00,$FF,$00 ;
-                    db $FF,$00,$0E,$25,$06,$FF,$01,$5B ;
-                    db $0D,$14,$5A,$13,$14,$5B,$26,$16 ;
-                    db $5A,$29,$16,$FF ;
+DATA_27E1F7:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$00,$FF,$00,$FF,$02,$FF,$00              ;
+                db $FF,$02,$FF,$01,$FF,$00,$FF,$00              ;
+                db $FF,$00,$FF,$00,$FF,$00,$FF,$00              ;
+                db $FF,$00,$FF,$01,$FF,$00,$FF,$00              ;
+                db $FF,$00,$0E,$25,$06,$FF,$01,$5B              ;
+                db $0D,$14,$5A,$13,$14,$5B,$26,$16              ;
+                db $5A,$29,$16,$FF                              ;
 
-DATA_27E5E3:        db $01,$34,$0D,$14,$FF,$01,$34,$0D ;
-                    db $04,$FF,$01,$70,$0A,$17,$2A,$10 ;
-                    db $16,$A0,$2C,$12,$73,$3E,$10,$74 ;
-                    db $40,$10,$73,$42,$10,$74,$44,$10 ;
-                    db $73,$46,$10,$74,$50,$10,$73,$55 ;
-                    db $16,$74,$5C,$16,$73,$5D,$16,$74 ;
-                    db $5E,$16,$73,$5F,$16,$74,$60,$16 ;
-                    db $41,$68,$15,$FF,$01,$6C,$14,$0F ;
-                    db $BC,$5E,$0F,$D3,$61,$00,$FF,$01 ;
-                    db $FF,$01,$FF,$01,$FF,$01,$FF,$01 ;
-                    db $FF,$01,$D3,$00,$30,$5F,$11,$14 ;
-                    db $60,$14,$14,$6C,$34,$18,$6C,$36 ;
-                    db $18,$6C,$38,$18,$FF,$01,$3C,$08 ;
-                    db $15,$3C,$38,$11,$FF,$01,$58,$0D ;
-                    db $04,$58,$11,$11,$6C,$1B,$18,$61 ;
-                    db $1C,$16,$6C,$1D,$18,$72,$21,$17 ;
-                    db $6C,$29,$18,$6F,$2A,$06,$6D,$2B ;
-                    db $13,$6C,$2D,$18,$6D,$3B,$13,$6D ;
-                    db $3C,$13,$6D,$48,$14,$6D,$4B,$14 ;
-                    db $72,$4B,$18,$70,$4D,$14,$70,$4F ;
-                    db $14,$72,$57,$14,$72,$59,$14,$6C ;
-                    db $59,$18,$58,$5E,$08,$6F,$65,$11 ;
-                    db $6C,$6E,$18,$6C,$70,$18,$81,$79 ;
-                    db $13,$81,$7B,$13,$41,$88,$15,$FF ;
-                    db $01,$25,$02,$0C,$FF,$01,$25,$02 ;
-                    db $0D,$FF,$01,$25,$02,$0E,$FF,$01 ;
-                    db $25,$02,$0F,$FF,$01,$25,$02,$10 ;
-                    db $FF,$01,$25,$02,$11,$FF,$01,$25 ;
-                    db $02,$05,$FF,$01,$25,$02,$04,$FF ;
-                    db $01,$25,$02,$07,$FF,$01,$25,$02 ;
-                    db $08,$FF,$01,$25,$02,$06,$FF,$01 ;
-                    db $25,$02,$0B,$FF,$01,$25,$02,$09 ;
-                    db $FF,$01,$25,$02,$0A,$FF,$01,$25 ;
-                    db $02,$02,$FF,$01,$25,$02,$03,$FF ;
-                    db $01,$25,$02,$01,$FF,$01,$25,$02 ;
-                    db $12,$FF,$01,$25,$02,$13,$FF,$01 ;
-                    db $25,$02,$14,$FF,$01,$25,$02,$15 ;
-                    db $FF,$01,$25,$02,$16,$FF,$01,$25 ;
-                    db $02,$17,$FF,$01,$6D,$12,$19,$83 ;
-                    db $56,$12,$41,$68,$15,$FF,$01,$6E ;
-                    db $0C,$19,$6E,$12,$19,$6D,$19,$06 ;
-                    db $6D,$1C,$03,$55,$25,$19,$55,$27 ;
-                    db $19,$55,$29,$19,$6C,$38,$19,$6C ;
-                    db $3A,$19,$6D,$4C,$06,$6E,$4E,$19 ;
-                    db $6E,$51,$19,$6E,$54,$19,$6D,$56 ;
-                    db $06,$55,$5D,$0A,$6C,$63,$07,$71 ;
-                    db $64,$19,$FF,$01,$41,$18,$15,$FF ;
-                    db $01,$71,$0C,$19,$71,$10,$19,$71 ;
-                    db $12,$19,$2B,$1C,$09,$2B,$23,$18 ;
-                    db $71,$2F,$19,$71,$32,$19,$71,$35 ;
-                    db $19,$71,$38,$19,$71,$4F,$19,$71 ;
-                    db $51,$19,$71,$53,$19,$71,$55,$19 ;
-                    db $2B,$5F,$18,$71,$6C,$19,$FF,$01 ;
-                    db $6E,$11,$16,$6C,$19,$19,$6C,$18 ;
-                    db $15,$A0,$26,$16,$6C,$2E,$14,$72 ;
-                    db $32,$19,$72,$33,$19,$6E,$42,$19 ;
-                    db $6C,$4C,$19,$72,$4B,$15,$A0,$56 ;
-                    db $17,$A0,$5E,$16,$72,$54,$19,$6C ;
-                    db $5D,$19,$6D,$6D,$15,$6D,$6A,$19 ;
-                    db $6E,$78,$16,$A0,$78,$17,$6C,$82 ;
-                    db $13,$6D,$81,$16,$6E,$8D,$13,$6E ;
-                    db $9E,$19,$41,$A8,$15,$FF,$01,$77 ;
-                    db $0B,$12,$77,$0F,$13,$61,$0B,$15 ;
-                    db $A0,$14,$06,$A0,$1A,$17,$A0,$22 ;
-                    db $05,$A2,$29,$06,$6C,$20,$09,$77 ;
-                    db $2D,$12,$61,$26,$15,$77,$21,$16 ;
-                    db $6C,$32,$09,$6C,$34,$09,$77,$30 ;
-                    db $16,$FF,$01,$41,$38,$15,$FF,$01 ;
-                    db $41,$38,$15,$FF,$01,$7A,$18,$14 ;
-                    db $7A,$16,$18,$7E,$11,$18,$7D,$26 ;
-                    db $16,$7A,$2D,$13,$7C,$30,$18,$7C ;
-                    db $32,$18,$7E,$42,$18,$7A,$4B,$18 ;
-                    db $7C,$4A,$14,$7C,$54,$18,$7A,$5C ;
-                    db $18,$7D,$56,$17,$7D,$5E,$16,$7B ;
-                    db $69,$18,$7B,$6D,$14,$7E,$78,$15 ;
-                    db $7D,$78,$17,$7B,$80,$15,$7A,$81 ;
-                    db $12,$7E,$8C,$12,$7E,$9E,$18,$41 ;
-                    db $A8,$15,$FF,$01,$A2,$0C,$16,$2B ;
-                    db $08,$18,$A2,$0D,$09,$A6,$12,$08 ;
-                    db $A2,$17,$09,$71,$1C,$18,$71,$1E ;
-                    db $18,$71,$20,$18,$A2,$22,$16,$71 ;
-                    db $26,$0A,$71,$28,$0A,$71,$2A,$0A ;
-                    db $55,$32,$09,$A2,$36,$15,$55,$3C ;
-                    db $17,$2B,$3D,$0A,$A6,$42,$14,$A0 ;
-                    db $4A,$16,$71,$4D,$0A,$71,$51,$0A ;
-                    db $71,$55,$0A,$A2,$59,$17,$2B,$5C ;
-                    db $0A,$71,$64,$18,$A6,$66,$07,$71 ;
-                    db $6A,$0A,$FF,$01,$6C,$0D,$19,$82 ;
-                    db $15,$18,$6D,$27,$14,$6C,$32,$18 ;
-                    db $72,$3A,$19,$73,$42,$19,$73,$4A ;
-                    db $19,$82,$57,$17,$72,$65,$19,$72 ;
-                    db $67,$19,$6D,$68,$13,$74,$79,$19 ;
-                    db $6C,$78,$18,$07,$96,$18,$41,$98 ;
-                    db $15,$FF,$01,$3E,$08,$17,$41,$28 ;
-                    db $15,$FF,$01,$98,$0A,$13,$41,$48 ;
-                    db $15,$FF,$01,$A0,$11,$18,$A4,$15 ;
-                    db $14,$A6,$17,$14,$A0,$1E,$15,$A0 ;
-                    db $26,$17,$A3,$29,$11,$A0,$2C,$18 ;
-                    db $A3,$2F,$11,$A0,$32,$17,$A6,$3C ;
-                    db $13,$A0,$45,$18,$A2,$47,$16,$A4 ;
-                    db $49,$14,$39,$4C,$14,$A3,$58,$15 ;
-                    db $2A,$5C,$18,$A2,$5D,$16,$2A,$6A ;
-                    db $16,$A6,$6C,$17,$39,$6F,$19,$A7 ;
-                    db $78,$11,$A0,$78,$15,$33,$80,$19 ;
-                    db $33,$82,$19,$33,$88,$19,$A2,$8B ;
-                    db $16,$46,$98,$16,$2A,$A0,$18,$A6 ;
-                    db $A3,$15,$33,$AD,$19,$3D,$AF,$16 ;
-                    db $41,$C8,$15,$FF,$01,$6E,$12,$07 ;
-                    db $A1,$16,$08,$BC,$20,$09,$74,$22 ;
-                    db $04,$55,$2D,$0A,$55,$33,$0A,$77 ;
-                    db $36,$18,$BC,$3A,$0A,$55,$3D,$0A ;
-                    db $55,$46,$06,$BC,$46,$0A,$55,$4E ;
-                    db $04,$55,$56,$0A,$55,$5A,$0A,$77 ;
-                    db $5B,$15,$55,$69,$0A,$77,$6D,$14 ;
-                    db $6C,$6F,$0A,$6E,$7A,$0A,$6E,$7E ;
-                    db $05,$77,$83,$18,$77,$8A,$14,$FF ;
-                    db $01,$41,$18,$15,$FF,$01,$41,$48 ;
-                    db $15,$FF,$01,$41,$48,$15,$FF,$01 ;
-                    db $40,$0B,$18,$89,$14,$19,$89,$1A ;
-                    db $15,$89,$27,$14,$33,$30,$0C,$33 ;
-                    db $34,$0A,$33,$3A,$07,$40,$3C,$06 ;
-                    db $89,$44,$08,$89,$54,$09,$39,$63 ;
-                    db $19,$39,$68,$19,$74,$6B,$0D,$39 ;
-                    db $6D,$19,$41,$88,$15,$33,$88,$19 ;
-                    db $FF,$01,$D6,$32,$0D,$52,$33,$0F ;
-                    db $BA,$34,$0F,$FF,$01,$41,$18,$15 ;
-                    db $FF,$01,$A4,$16,$13,$A0,$1C,$16 ;
-                    db $A4,$20,$13,$A0,$24,$12,$6E,$33 ;
-                    db $19,$BC,$37,$16,$BC,$37,$18,$BC ;
-                    db $3C,$14,$BC,$3C,$19,$BC,$4F,$18 ;
-                    db $BC,$50,$13,$2F,$51,$12,$6D,$59 ;
-                    db $16,$A4,$5F,$14,$6E,$6A,$17,$BC ;
-                    db $6B,$18,$6F,$6E,$14,$BC,$72,$13 ;
-                    db $BC,$72,$16,$BC,$7A,$15,$BC,$7A ;
-                    db $18,$6C,$7F,$19,$A2,$91,$15,$41 ;
-                    db $A8,$15,$FF,$01,$29,$0F,$16,$29 ;
-                    db $12,$11,$29,$1E,$10,$29,$20,$16 ;
-                    db $29,$31,$14,$29,$33,$16,$29,$3E ;
-                    db $19,$6C,$41,$18,$29,$51,$19,$6C ;
-                    db $53,$18,$29,$55,$19,$29,$59,$15 ;
-                    db $A6,$60,$17,$29,$6A,$19,$A6,$6C ;
-                    db $16,$29,$75,$17,$29,$79,$15,$29 ;
-                    db $7D,$13,$6E,$7E,$11,$41,$98,$15 ;
-                    db $29,$98,$19,$FF,$01,$41,$18,$15 ;
-                    db $FF,$01,$D3,$08,$50,$6C,$22,$15 ;
-                    db $6C,$24,$15,$6F,$2C,$11,$6C,$3A ;
-                    db $10,$72,$3B,$14,$72,$3C,$14,$28 ;
-                    db $46,$0C,$6D,$4E,$08,$6C,$52,$0D ;
-                    db $58,$57,$09,$6D,$5F,$09,$6C,$62 ;
-                    db $09,$6C,$63,$09,$72,$6C,$0D,$72 ;
-                    db $6D,$0D,$58,$77,$06,$41,$88,$15 ;
-                    db $FF,$01,$6C,$11,$18,$73,$15,$18 ;
-                    db $6D,$20,$14,$6C,$23,$18,$A0,$25 ;
-                    db $15,$A2,$2B,$16,$A4,$32,$16,$6D ;
-                    db $3F,$18,$73,$44,$18,$70,$4E,$18 ;
-                    db $A6,$52,$14,$6D,$5E,$12,$70,$66 ;
-                    db $18,$A2,$69,$16,$6F,$74,$16,$6D ;
-                    db $7D,$18,$6D,$7F,$18,$6E,$8B,$11 ;
-                    db $41,$A8,$15,$FF,$01,$72,$0E,$19 ;
-                    db $A6,$16,$17,$72,$21,$19,$6D,$24 ;
-                    db $16,$72,$34,$18,$72,$37,$18,$73 ;
-                    db $3B,$18,$6E,$53,$13,$6E,$56,$13 ;
-                    db $6E,$59,$13,$6C,$5C,$19,$A0,$70 ;
-                    db $18,$A4,$74,$17,$6D,$83,$17,$41 ;
-                    db $A8,$15,$FF,$01,$41,$38,$15,$FF ;
-                    db $01,$41,$28,$15,$FF,$01,$41,$18 ;
-                    db $15,$FF,$01,$72,$1A,$12,$6C,$18 ;
-                    db $19,$C0,$10,$19,$C1,$13,$19,$6D ;
-                    db $2D,$13,$C0,$34,$12,$C1,$37,$12 ;
-                    db $41,$58,$15,$FF,$01,$41,$58,$15 ;
-                    db $FF,$01,$82,$02,$18,$41,$18,$15 ;
-                    db $FF,$01,$FF,$01,$D3,$00,$50,$2D ;
-                    db $00,$19,$64,$10,$19,$64,$1C,$19 ;
-                    db $43,$22,$19,$6C,$2F,$13,$43,$52 ;
-                    db $19,$92,$52,$15,$6D,$63,$15,$43 ;
-                    db $6C,$19,$43,$86,$19,$43,$96,$19 ;
-                    db $92,$9E,$11,$FF,$01,$41,$28,$15 ;
-                    db $FF,$01,$70,$10,$0F,$70,$13,$12 ;
-                    db $70,$23,$0F,$70,$25,$19,$A2,$31 ;
-                    db $13,$70,$32,$0A,$70,$34,$19,$70 ;
-                    db $3B,$14,$70,$40,$0F,$70,$4B,$13 ;
-                    db $70,$4E,$16,$68,$63,$0C,$70,$67 ;
-                    db $0F,$68,$6E,$0C,$A0,$72,$0F,$FF ;
-                    db $01,$40,$0C,$18,$40,$0F,$18,$40 ;
-                    db $1E,$18,$40,$26,$18,$40,$37,$14 ;
-                    db $40,$3B,$14,$6C,$4A,$18,$40,$50 ;
-                    db $18,$33,$50,$08,$33,$51,$08,$A6 ;
-                    db $65,$18,$FF,$01,$77,$0D,$16,$6A ;
-                    db $17,$14,$66,$1C,$14,$A1,$23,$04 ;
-                    db $63,$24,$16,$65,$28,$17,$66,$31 ;
-                    db $16,$A3,$33,$08,$77,$44,$14,$6A ;
-                    db $4E,$14,$65,$57,$18,$77,$58,$14 ;
-                    db $A0,$65,$09,$66,$65,$16,$A4,$6C ;
-                    db $08,$63,$6C,$13,$FF,$01,$81,$0C ;
-                    db $14,$81,$09,$18,$BA,$0D,$14,$FF ;
-                    db $01,$43,$10,$18,$43,$17,$18,$A3 ;
-                    db $18,$14,$29,$18,$0E,$42,$22,$0B ;
-                    db $29,$23,$17,$A4,$2C,$18,$29,$2F ;
-                    db $09,$A7,$34,$0E,$77,$4D,$0F,$77 ;
-                    db $47,$15,$77,$53,$11,$77,$51,$15 ;
-                    db $77,$5E,$0F,$77,$63,$0D,$77,$6B ;
-                    db $12,$77,$70,$14,$77,$76,$0F,$77 ;
-                    db $78,$16,$77,$7E,$12,$77,$8D,$0F ;
-                    db $A3,$80,$10,$A2,$84,$11,$A3,$88 ;
-                    db $10,$A2,$8C,$12,$29,$A0,$0F,$29 ;
-                    db $A6,$0F,$29,$A4,$0F,$A4,$A8,$10 ;
-                    db $42,$AD,$0F,$29,$BC,$09,$FF,$01 ;
-                    db $C1,$19,$13,$72,$20,$18,$C1,$2B ;
-                    db $13,$73,$39,$15,$A4,$4A,$11,$72 ;
-                    db $53,$17,$72,$55,$10,$73,$61,$14 ;
-                    db $72,$6B,$16,$72,$6C,$17,$A4,$6E ;
-                    db $16,$72,$7E,$18,$A4,$81,$17,$C1 ;
-                    db $8B,$14,$74,$9D,$19,$41,$A8,$15 ;
-                    db $FF,$01,$2B,$10,$15,$83,$3F,$12 ;
-                    db $B6,$63,$12,$6B,$75,$16,$83,$91 ;
-                    db $11,$B6,$B7,$11,$41,$C8,$15,$FF ;
-                    db $01,$6C,$13,$13,$6C,$17,$15,$6C ;
-                    db $1A,$16,$6C,$1E,$19,$6C,$33,$13 ;
-                    db $6C,$37,$15,$6E,$3C,$17,$6E,$3F ;
-                    db $18,$71,$51,$14,$71,$57,$17,$71 ;
-                    db $59,$18,$A6,$60,$19,$83,$65,$12 ;
-                    db $C0,$92,$18,$C1,$94,$18,$6E,$B3 ;
-                    db $17,$6E,$B7,$17,$41,$C8,$15,$FF ;
-                    db $01,$81,$0C,$18,$BA,$0D,$14,$FF ;
-                    db $01,$D3,$00,$51,$70,$18,$09,$70 ;
-                    db $1B,$09,$A2,$20,$0C,$A2,$25,$10 ;
-                    db $A6,$29,$12,$A2,$2E,$12,$43,$58 ;
-                    db $11,$43,$65,$0E,$70,$77,$0C,$70 ;
-                    db $79,$0D,$D3,$7C,$51,$FF,$01,$70 ;
-                    db $0B,$12,$70,$0D,$12,$41,$18,$15 ;
-                    db $FF,$01,$6C,$38,$06,$A3,$3C,$08 ;
-                    db $A3,$40,$06,$A3,$46,$04,$A3,$4A ;
-                    db $05,$A3,$4C,$06,$A3,$4E,$07,$41 ;
-                    db $88,$15,$FF,$01,$6C,$1B,$16,$6C ;
-                    db $1F,$0A,$6C,$1F,$10,$6C,$21,$10 ;
-                    db $6C,$28,$0C,$6C,$2A,$0C,$6C,$5C ;
-                    db $0B,$6C,$5E,$0B,$6C,$5D,$13,$6C ;
-                    db $69,$11,$6C,$64,$16,$6C,$66,$17 ;
-                    db $6C,$70,$18,$FF,$01,$70,$12,$13 ;
-                    db $70,$15,$10,$70,$19,$10,$A4,$1F ;
-                    db $16,$A3,$25,$0F,$A3,$2C,$0C,$70 ;
-                    db $2B,$0F,$70,$32,$12,$70,$34,$14 ;
-                    db $A4,$37,$18,$6C,$4C,$09,$6C,$50 ;
-                    db $0B,$6C,$56,$09,$6C,$65,$0B,$A4 ;
-                    db $64,$14,$A2,$66,$16,$A2,$6C,$17 ;
-                    db $70,$6A,$18,$A2,$71,$15,$70,$76 ;
-                    db $18,$A0,$78,$17,$A1,$78,$13,$FF ;
-                    db $01,$C0,$17,$14,$C1,$19,$14,$C0 ;
-                    db $2C,$17,$6C,$33,$17,$6C,$3B,$18 ;
-                    db $6C,$41,$17,$C1,$47,$17,$A0,$6B ;
-                    db $16,$A0,$70,$17,$41,$88,$15,$FF ;
-                    db $01,$70,$12,$0D,$70,$16,$0D,$A0 ;
-                    db $19,$11,$A1,$26,$09,$A1,$2B,$05 ;
-                    db $A0,$2B,$0B,$70,$28,$0C,$70,$2A ;
-                    db $0C,$70,$27,$09,$70,$2D,$05,$A0 ;
-                    db $41,$07,$70,$50,$0C,$A1,$54,$09 ;
-                    db $70,$68,$10,$A1,$6A,$0E,$70,$6F ;
-                    db $10,$A0,$70,$0F,$A1,$72,$0C,$FF ;
-                    db $01,$AF,$02,$11,$A4,$1A,$1A,$6F ;
-                    db $1B,$12,$A4,$29,$19,$A4,$2C,$19 ;
-                    db $6C,$37,$19,$5D,$51,$12,$6E,$7E ;
-                    db $16,$6E,$9E,$16,$41,$D8,$15,$FF ;
-                    db $01,$70,$12,$16,$70,$17,$18,$68 ;
-                    db $15,$13,$70,$22,$15,$80,$25,$14 ;
-                    db $68,$33,$10,$69,$48,$10,$70,$4B ;
-                    db $16,$6F,$50,$13,$6F,$65,$13,$69 ;
-                    db $61,$11,$70,$71,$18,$70,$71,$18 ;
-                    db $69,$7E,$14,$69,$86,$17,$70,$88 ;
-                    db $15,$FF,$01,$D4,$00,$1E,$72,$0F ;
-                    db $15,$A4,$13,$19,$A6,$26,$19,$77 ;
-                    db $38,$17,$26,$33,$14,$80,$39,$13 ;
-                    db $77,$48,$18,$77,$55,$17,$77,$5F ;
-                    db $18,$77,$67,$17,$80,$60,$13,$80 ;
-                    db $69,$12,$FF,$01,$72,$2E,$13,$72 ;
-                    db $30,$15,$72,$31,$16,$72,$42,$16 ;
-                    db $72,$43,$17,$6E,$60,$16,$77,$84 ;
-                    db $18,$40,$95,$14,$A1,$99,$12,$A1 ;
-                    db $9D,$12,$A5,$A8,$16,$A3,$AE,$16 ;
-                    db $40,$AA,$19,$A6,$B4,$17,$40,$C4 ;
-                    db $15,$40,$CF,$14,$40,$D2,$19,$A3 ;
-                    db $D7,$15,$A3,$E0,$15,$40,$E0,$18 ;
-                    db $40,$EA,$18,$FF,$01,$AF,$02,$11 ;
-                    db $74,$2E,$05,$A6,$3A,$0A,$A6,$40 ;
-                    db $0A,$A6,$46,$0A,$A6,$50,$0B,$A6 ;
-                    db $56,$0F,$A6,$5C,$13,$A6,$8D,$13 ;
-                    db $BB,$92,$01,$A6,$93,$0F,$A6,$99 ;
-                    db $0B,$80,$C1,$19,$41,$E8,$15,$FF ;
-                    db $01,$70,$0E,$0F,$70,$11,$12,$70 ;
-                    db $13,$14,$70,$15,$16,$A3,$27,$10 ;
-                    db $70,$2C,$12,$A0,$2D,$16,$6C,$48 ;
-                    db $09,$6C,$4A,$0A,$6C,$54,$09,$6C ;
-                    db $6C,$0A,$A6,$75,$15,$A3,$7D,$14 ;
-                    db $FF,$01,$D3,$00,$51,$D4,$01,$2C ;
-                    db $2D,$06,$19,$6C,$12,$15,$6C,$38 ;
-                    db $16,$3E,$54,$18,$FF,$01,$3F,$08 ;
-                    db $0A,$3F,$14,$0F,$2F,$1D,$0A,$3F ;
-                    db $23,$0F,$FF,$01,$FF,$01,$94,$18 ;
-                    db $05,$FF,$01,$98,$16,$14,$94,$48 ;
-                    db $09,$99,$58,$09,$FF,$01,$94,$27 ;
-                    db $14,$99,$37,$14,$FF,$01,$94,$37 ;
-                    db $10,$98,$77,$14,$FF,$01,$94,$35 ;
-                    db $14,$98,$57,$14,$9A,$65,$06,$FF ;
-                    db $01,$9A,$44,$09,$98,$67,$14,$FF ;
-                    db $01,$98,$18,$05,$94,$48,$05,$FF ;
-                    db $01,$72,$0F,$17,$72,$11,$18,$A2 ;
-                    db $14,$17,$A6,$22,$17,$72,$34,$15 ;
-                    db $72,$36,$16,$72,$38,$17,$77,$41 ;
-                    db $19,$6C,$52,$14,$6C,$54,$15,$6C ;
-                    db $56,$16,$74,$65,$18,$A5,$66,$11 ;
-                    db $73,$6B,$18,$83,$92,$12,$41,$C8 ;
-                    db $15,$FF,$01,$46,$10,$15,$6C,$1A ;
-                    db $17,$33,$21,$17,$33,$23,$17,$33 ;
-                    db $27,$16,$39,$2A,$15,$39,$2F,$16 ;
-                    db $29,$37,$15,$29,$3D,$14,$29,$43 ;
-                    db $13,$40,$4A,$18,$40,$54,$18,$40 ;
-                    db $5D,$18,$33,$65,$12,$33,$68,$12 ;
-                    db $33,$6B,$12,$40,$74,$18,$40,$7A ;
-                    db $19,$40,$7F,$19,$41,$A8,$15,$FF ;
-                    db $01,$D3,$00,$60,$3B,$00,$19,$3C ;
-                    db $0B,$11,$3C,$0F,$17,$44,$1B,$15 ;
-                    db $6F,$2F,$13,$64,$37,$19,$64,$3C ;
-                    db $19,$64,$4A,$19,$64,$4E,$19,$64 ;
-                    db $5C,$19,$64,$5F,$19,$44,$52,$15 ;
-                    db $6F,$6B,$10,$64,$6A,$19,$64,$6F ;
-                    db $19,$A4,$7B,$13,$FF,$01,$3C,$0B ;
-                    db $08,$64,$12,$1A,$41,$28,$15,$FF ;
-                    db $01,$D3,$00,$00,$93,$1D,$14,$6D ;
-                    db $29,$12,$6D,$3B,$12,$6D,$3C,$18 ;
-                    db $6F,$44,$14,$6D,$54,$14,$6E,$6E ;
-                    db $14,$6F,$76,$12,$93,$7A,$13,$D3 ;
-                    db $00,$00,$FF,$01,$80,$10,$16,$41 ;
-                    db $28,$15,$FF,$01,$27,$12,$18,$6D ;
-                    db $13,$13,$6D,$2B,$17,$6D,$35,$18 ;
-                    db $27,$5A,$19,$27,$6A,$18,$6F,$6D ;
-                    db $15,$6F,$71,$13,$41,$88,$15,$FF ;
-                    db $01,$2F,$0E,$10,$8B,$15,$15,$8C ;
-                    db $1C,$11,$8B,$2F,$15,$8C,$34,$11 ;
-                    db $60,$48,$17,$8C,$4B,$11,$60,$57 ;
-                    db $13,$2F,$57,$16,$8C,$61,$15,$8B ;
-                    db $77,$18,$FF,$01,$4B,$1D,$24,$FF ;
-                    db $01,$41,$58,$15,$FF,$01,$6D,$12 ;
-                    db $10,$6D,$1C,$15,$6F,$29,$13,$6D ;
-                    db $38,$18,$73,$43,$12,$73,$44,$12 ;
-                    db $6D,$4B,$16,$27,$5B,$15,$27,$62 ;
-                    db $13,$72,$6F,$10,$72,$71,$10,$6D ;
-                    db $79,$10,$6D,$79,$18,$74,$8B,$14 ;
-                    db $74,$8D,$14,$41,$A8,$15,$FF,$01 ;
-                    db $D4,$00,$1C,$6E,$12,$15,$6E,$17 ;
-                    db $15,$74,$14,$17,$6E,$2D,$16,$A7 ;
-                    db $30,$11,$A6,$37,$17,$74,$4E,$17 ;
-                    db $58,$52,$13,$A2,$54,$17,$A7,$69 ;
-                    db $10,$6E,$70,$15,$74,$78,$17,$41 ;
-                    db $98,$15,$FF,$01,$6D,$1D,$15,$6F ;
-                    db $29,$16,$6D,$37,$13,$6D,$38,$18 ;
-                    db $FF,$01,$6D,$1D,$16,$6F,$29,$17 ;
-                    db $6D,$37,$14,$6D,$38,$19,$FF,$01 ;
-                    db $D3,$00,$02,$2C,$0F,$18,$2C,$14 ;
-                    db $15,$2C,$1C,$13,$2C,$2A,$11,$24 ;
-                    db $2C,$14,$2C,$3A,$19,$6D,$30,$16 ;
-                    db $2C,$49,$15,$2C,$4E,$0C,$2C,$4D ;
-                    db $12,$24,$50,$10,$2C,$53,$0D,$6D ;
-                    db $5C,$07,$2C,$67,$0A,$2C,$69,$07 ;
-                    db $2C,$79,$11,$2C,$78,$15,$2C,$88 ;
-                    db $16,$FF,$01,$3C,$09,$0E,$6D,$1E ;
-                    db $06,$3C,$11,$08,$3C,$14,$10,$3C ;
-                    db $27,$06,$3C,$27,$13,$27,$3E,$08 ;
-                    db $3C,$31,$03,$28,$4A,$11,$6D,$52 ;
-                    db $0E,$3C,$57,$0A,$3C,$56,$18,$3C ;
-                    db $5F,$14,$27,$7B,$11,$3C,$78,$09 ;
-                    db $3C,$74,$18,$41,$88,$15,$FF,$01 ;
-                    db $46,$14,$16,$2A,$24,$18,$A2,$2A ;
-                    db $17,$A4,$3A,$16,$2A,$46,$18,$2A ;
-                    db $4A,$18,$2A,$5C,$18,$73,$63,$19 ;
-                    db $2A,$65,$18,$46,$6C,$16,$41,$88 ;
-                    db $15,$FF,$01,$D3,$00,$53,$64,$11 ;
-                    db $19,$64,$19,$19,$64,$23,$19,$58 ;
-                    db $40,$13,$6F,$4B,$12,$59,$57,$10 ;
-                    db $44,$5D,$15,$58,$6B,$11,$64,$6B ;
-                    db $19,$43,$76,$19,$FF,$01,$41,$28 ;
-                    db $15,$FF,$01,$6D,$13,$12,$6D,$1A ;
-                    db $18,$3C,$21,$13,$6F,$30,$11,$6C ;
-                    db $36,$18,$44,$4D,$18,$6F,$5C,$0D ;
-                    db $37,$74,$14,$44,$78,$12,$6F,$82 ;
-                    db $15,$41,$98,$15,$6C,$98,$18,$FF ;
-                    db $01,$D3,$00,$00,$D4,$01,$2C,$36 ;
-                    db $17,$14,$36,$23,$16,$36,$25,$13 ;
-                    db $36,$27,$19,$36,$2F,$15,$6D,$43 ;
-                    db $15,$36,$44,$18,$36,$4B,$14,$36 ;
-                    db $56,$16,$36,$58,$15,$36,$61,$13 ;
-                    db $36,$6D,$18,$36,$6F,$15,$36,$70 ;
-                    db $1A,$6F,$75,$13,$6D,$7C,$16,$FF ;
-                    db $01,$92,$12,$16,$92,$19,$18,$72 ;
-                    db $1E,$12,$72,$23,$12,$72,$24,$12 ;
-                    db $44,$2E,$13,$37,$3F,$19,$3C,$46 ;
-                    db $18,$3C,$4D,$16,$91,$62,$15,$91 ;
-                    db $6B,$16,$58,$77,$10,$91,$75,$16 ;
-                    db $91,$7E,$15,$91,$87,$15,$91,$90 ;
-                    db $16,$41,$A8,$15,$FF,$01,$D3,$00 ;
-                    db $09,$77,$12,$10,$66,$18,$16,$77 ;
-                    db $1D,$17,$61,$1F,$11,$77,$2D,$15 ;
-                    db $D2,$34,$11,$61,$3B,$11,$D2,$3C ;
-                    db $0C,$6D,$44,$09,$6F,$51,$03,$6D ;
-                    db $56,$07,$6C,$58,$07,$6D,$61,$09 ;
-                    db $66,$6C,$11,$66,$72,$11,$77,$77 ;
-                    db $15,$FF,$01,$82,$03,$18,$82,$0E ;
-                    db $18,$41,$18,$15,$FF,$01,$29,$2B ;
-                    db $19,$41,$38,$15,$FF,$01,$6D,$0B ;
-                    db $13,$6D,$12,$14,$6D,$24,$14,$6D ;
-                    db $26,$14,$40,$33,$19,$40,$3C,$18 ;
-                    db $73,$45,$19,$6F,$52,$17,$40,$5E ;
-                    db $17,$40,$65,$17,$40,$6B,$17,$40 ;
-                    db $74,$17,$92,$81,$15,$6D,$84,$15 ;
-                    db $41,$A8,$15,$FF,$01,$D3,$00,$0A ;
-                    db $D4,$01,$4E,$58,$26,$0C,$58,$6F ;
-                    db $02,$FF,$01,$6E,$06,$17,$41,$28 ;
-                    db $15,$FF,$01,$6D,$26,$0D,$41,$58 ;
-                    db $15,$FF,$01,$A0,$0A,$16,$A0,$12 ;
-                    db $17,$A0,$22,$18,$A0,$34,$18,$A0 ;
-                    db $48,$18,$A0,$4C,$18,$A0,$5C,$18 ;
-                    db $A0,$6E,$18,$A0,$96,$18,$A0,$B8 ;
-                    db $18,$FF,$01,$D3,$00,$54,$77,$11 ;
-                    db $16,$77,$17,$14,$66,$1A,$0E,$77 ;
-                    db $1C,$17,$63,$22,$15,$6A,$29,$10 ;
-                    db $77,$2A,$14,$77,$32,$16,$66,$41 ;
-                    db $0E,$66,$43,$0F,$77,$48,$16,$77 ;
-                    db $4C,$14,$77,$50,$17,$D2,$57,$15 ;
-                    db $77,$60,$16,$66,$65,$0E,$66,$69 ;
-                    db $0E,$D2,$72,$15,$6A,$78,$12,$FF ;
-                    db $01,$6F,$09,$07,$6C,$02,$10,$6C ;
-                    db $04,$10,$A2,$0E,$27,$57,$07,$2C ;
-                    db $56,$0E,$2F,$56,$0A,$33,$6D,$01 ;
-                    db $36,$6F,$04,$43,$6D,$0C,$48,$6D ;
-                    db $07,$57,$A2,$08,$5E,$57,$02,$60 ;
-                    db $56,$08,$60,$6D,$03,$6D,$FF,$01 ;
-                    db $D3,$00,$0F,$B5,$0F,$0F,$67,$14 ;
-                    db $18,$63,$2E,$13,$6A,$36,$13,$BB ;
-                    db $3F,$0F,$63,$56,$0D,$6A,$63,$0C ;
-                    db $6A,$69,$10,$B5,$6F,$0F,$67,$7E ;
-                    db $18,$63,$8A,$13,$67,$97,$15,$FF ;
-                    db $01,$77,$0D,$12,$63,$16,$15,$65 ;
-                    db $1E,$17,$62,$24,$11,$77,$2F,$14 ;
-                    db $77,$31,$0C,$66,$36,$0D,$65,$48 ;
-                    db $18,$77,$49,$0D,$77,$5D,$0D,$66 ;
-                    db $5E,$12,$61,$6C,$10,$63,$75,$15 ;
-                    db $77,$79,$0F,$FF,$01,$56,$08,$0D ;
-                    db $A2,$09,$2E,$A2,$09,$37,$56,$06 ;
-                    db $2F,$FF,$01,$65,$14,$09,$62,$1D ;
-                    db $06,$65,$24,$09,$62,$30,$11,$66 ;
-                    db $33,$0C,$67,$3A,$18,$67,$4E,$18 ;
-                    db $66,$4E,$0C,$61,$67,$0A,$67,$70 ;
-                    db $18,$62,$7B,$05,$65,$7D,$12,$FF ;
-                    db $01,$6C,$0F,$10,$6C,$07,$10,$6C ;
-                    db $0E,$20,$FF,$01,$57,$0B,$0D,$56 ;
-                    db $05,$0F,$A0,$04,$42,$6D,$05,$52 ;
-                    db $56,$0B,$5B,$A0,$04,$61,$6C,$0D ;
-                    db $67,$6C,$0F,$67,$FF,$01,$83,$2A ;
-                    db $12,$6D,$55,$18,$6D,$60,$18,$6F ;
-                    db $69,$14,$6F,$75,$10,$FF,$01,$83 ;
-                    db $0F,$12,$41,$18,$15,$FF,$01,$D3 ;
-                    db $00,$12,$D6,$2B,$07,$52,$2C,$16 ;
-                    db $BA,$2D,$16,$FF,$01,$7F,$0C,$16 ;
-                    db $7C,$10,$17,$7B,$18,$15,$A6,$26 ;
-                    db $07,$7E,$30,$17,$7C,$42,$0F,$7E ;
-                    db $46,$11,$7B,$58,$13,$7B,$5F,$15 ;
-                    db $7B,$64,$13,$A6,$72,$15,$7A,$7A ;
-                    db $17,$FF,$01,$D3,$00,$55,$BB,$0A ;
-                    db $00,$6C,$1B,$18,$6D,$20,$10,$B7 ;
-                    db $21,$00,$B7,$3A,$00,$BB,$50,$00 ;
-                    db $58,$5E,$14,$58,$6D,$11,$58,$79 ;
-                    db $16,$FF ;
+DATA_27E5E3:    db $01,$34,$0D,$14,$FF,$01,$34,$0D              ;
+                db $04,$FF,$01,$70,$0A,$17,$2A,$10              ;
+                db $16,$A0,$2C,$12,$73,$3E,$10,$74              ;
+                db $40,$10,$73,$42,$10,$74,$44,$10              ;
+                db $73,$46,$10,$74,$50,$10,$73,$55              ;
+                db $16,$74,$5C,$16,$73,$5D,$16,$74              ;
+                db $5E,$16,$73,$5F,$16,$74,$60,$16              ;
+                db $41,$68,$15,$FF,$01,$6C,$14,$0F              ;
+                db $BC,$5E,$0F,$D3,$61,$00,$FF,$01              ;
+                db $FF,$01,$FF,$01,$FF,$01,$FF,$01              ;
+                db $FF,$01,$D3,$00,$30,$5F,$11,$14              ;
+                db $60,$14,$14,$6C,$34,$18,$6C,$36              ;
+                db $18,$6C,$38,$18,$FF,$01,$3C,$08              ;
+                db $15,$3C,$38,$11,$FF,$01,$58,$0D              ;
+                db $04,$58,$11,$11,$6C,$1B,$18,$61              ;
+                db $1C,$16,$6C,$1D,$18,$72,$21,$17              ;
+                db $6C,$29,$18,$6F,$2A,$06,$6D,$2B              ;
+                db $13,$6C,$2D,$18,$6D,$3B,$13,$6D              ;
+                db $3C,$13,$6D,$48,$14,$6D,$4B,$14              ;
+                db $72,$4B,$18,$70,$4D,$14,$70,$4F              ;
+                db $14,$72,$57,$14,$72,$59,$14,$6C              ;
+                db $59,$18,$58,$5E,$08,$6F,$65,$11              ;
+                db $6C,$6E,$18,$6C,$70,$18,$81,$79              ;
+                db $13,$81,$7B,$13,$41,$88,$15,$FF              ;
+                db $01,$25,$02,$0C,$FF,$01,$25,$02              ;
+                db $0D,$FF,$01,$25,$02,$0E,$FF,$01              ;
+                db $25,$02,$0F,$FF,$01,$25,$02,$10              ;
+                db $FF,$01,$25,$02,$11,$FF,$01,$25              ;
+                db $02,$05,$FF,$01,$25,$02,$04,$FF              ;
+                db $01,$25,$02,$07,$FF,$01,$25,$02              ;
+                db $08,$FF,$01,$25,$02,$06,$FF,$01              ;
+                db $25,$02,$0B,$FF,$01,$25,$02,$09              ;
+                db $FF,$01,$25,$02,$0A,$FF,$01,$25              ;
+                db $02,$02,$FF,$01,$25,$02,$03,$FF              ;
+                db $01,$25,$02,$01,$FF,$01,$25,$02              ;
+                db $12,$FF,$01,$25,$02,$13,$FF,$01              ;
+                db $25,$02,$14,$FF,$01,$25,$02,$15              ;
+                db $FF,$01,$25,$02,$16,$FF,$01,$25              ;
+                db $02,$17,$FF,$01,$6D,$12,$19,$83              ;
+                db $56,$12,$41,$68,$15,$FF,$01,$6E              ;
+                db $0C,$19,$6E,$12,$19,$6D,$19,$06              ;
+                db $6D,$1C,$03,$55,$25,$19,$55,$27              ;
+                db $19,$55,$29,$19,$6C,$38,$19,$6C              ;
+                db $3A,$19,$6D,$4C,$06,$6E,$4E,$19              ;
+                db $6E,$51,$19,$6E,$54,$19,$6D,$56              ;
+                db $06,$55,$5D,$0A,$6C,$63,$07,$71              ;
+                db $64,$19,$FF,$01,$41,$18,$15,$FF              ;
+                db $01,$71,$0C,$19,$71,$10,$19,$71              ;
+                db $12,$19,$2B,$1C,$09,$2B,$23,$18              ;
+                db $71,$2F,$19,$71,$32,$19,$71,$35              ;
+                db $19,$71,$38,$19,$71,$4F,$19,$71              ;
+                db $51,$19,$71,$53,$19,$71,$55,$19              ;
+                db $2B,$5F,$18,$71,$6C,$19,$FF,$01              ;
+                db $6E,$11,$16,$6C,$19,$19,$6C,$18              ;
+                db $15,$A0,$26,$16,$6C,$2E,$14,$72              ;
+                db $32,$19,$72,$33,$19,$6E,$42,$19              ;
+                db $6C,$4C,$19,$72,$4B,$15,$A0,$56              ;
+                db $17,$A0,$5E,$16,$72,$54,$19,$6C              ;
+                db $5D,$19,$6D,$6D,$15,$6D,$6A,$19              ;
+                db $6E,$78,$16,$A0,$78,$17,$6C,$82              ;
+                db $13,$6D,$81,$16,$6E,$8D,$13,$6E              ;
+                db $9E,$19,$41,$A8,$15,$FF,$01,$77              ;
+                db $0B,$12,$77,$0F,$13,$61,$0B,$15              ;
+                db $A0,$14,$06,$A0,$1A,$17,$A0,$22              ;
+                db $05,$A2,$29,$06,$6C,$20,$09,$77              ;
+                db $2D,$12,$61,$26,$15,$77,$21,$16              ;
+                db $6C,$32,$09,$6C,$34,$09,$77,$30              ;
+                db $16,$FF,$01,$41,$38,$15,$FF,$01              ;
+                db $41,$38,$15,$FF,$01,$7A,$18,$14              ;
+                db $7A,$16,$18,$7E,$11,$18,$7D,$26              ;
+                db $16,$7A,$2D,$13,$7C,$30,$18,$7C              ;
+                db $32,$18,$7E,$42,$18,$7A,$4B,$18              ;
+                db $7C,$4A,$14,$7C,$54,$18,$7A,$5C              ;
+                db $18,$7D,$56,$17,$7D,$5E,$16,$7B              ;
+                db $69,$18,$7B,$6D,$14,$7E,$78,$15              ;
+                db $7D,$78,$17,$7B,$80,$15,$7A,$81              ;
+                db $12,$7E,$8C,$12,$7E,$9E,$18,$41              ;
+                db $A8,$15,$FF,$01,$A2,$0C,$16,$2B              ;
+                db $08,$18,$A2,$0D,$09,$A6,$12,$08              ;
+                db $A2,$17,$09,$71,$1C,$18,$71,$1E              ;
+                db $18,$71,$20,$18,$A2,$22,$16,$71              ;
+                db $26,$0A,$71,$28,$0A,$71,$2A,$0A              ;
+                db $55,$32,$09,$A2,$36,$15,$55,$3C              ;
+                db $17,$2B,$3D,$0A,$A6,$42,$14,$A0              ;
+                db $4A,$16,$71,$4D,$0A,$71,$51,$0A              ;
+                db $71,$55,$0A,$A2,$59,$17,$2B,$5C              ;
+                db $0A,$71,$64,$18,$A6,$66,$07,$71              ;
+                db $6A,$0A,$FF,$01,$6C,$0D,$19,$82              ;
+                db $15,$18,$6D,$27,$14,$6C,$32,$18              ;
+                db $72,$3A,$19,$73,$42,$19,$73,$4A              ;
+                db $19,$82,$57,$17,$72,$65,$19,$72              ;
+                db $67,$19,$6D,$68,$13,$74,$79,$19              ;
+                db $6C,$78,$18,$07,$96,$18,$41,$98              ;
+                db $15,$FF,$01,$3E,$08,$17,$41,$28              ;
+                db $15,$FF,$01,$98,$0A,$13,$41,$48              ;
+                db $15,$FF,$01,$A0,$11,$18,$A4,$15              ;
+                db $14,$A6,$17,$14,$A0,$1E,$15,$A0              ;
+                db $26,$17,$A3,$29,$11,$A0,$2C,$18              ;
+                db $A3,$2F,$11,$A0,$32,$17,$A6,$3C              ;
+                db $13,$A0,$45,$18,$A2,$47,$16,$A4              ;
+                db $49,$14,$39,$4C,$14,$A3,$58,$15              ;
+                db $2A,$5C,$18,$A2,$5D,$16,$2A,$6A              ;
+                db $16,$A6,$6C,$17,$39,$6F,$19,$A7              ;
+                db $78,$11,$A0,$78,$15,$33,$80,$19              ;
+                db $33,$82,$19,$33,$88,$19,$A2,$8B              ;
+                db $16,$46,$98,$16,$2A,$A0,$18,$A6              ;
+                db $A3,$15,$33,$AD,$19,$3D,$AF,$16              ;
+                db $41,$C8,$15,$FF,$01,$6E,$12,$07              ;
+                db $A1,$16,$08,$BC,$20,$09,$74,$22              ;
+                db $04,$55,$2D,$0A,$55,$33,$0A,$77              ;
+                db $36,$18,$BC,$3A,$0A,$55,$3D,$0A              ;
+                db $55,$46,$06,$BC,$46,$0A,$55,$4E              ;
+                db $04,$55,$56,$0A,$55,$5A,$0A,$77              ;
+                db $5B,$15,$55,$69,$0A,$77,$6D,$14              ;
+                db $6C,$6F,$0A,$6E,$7A,$0A,$6E,$7E              ;
+                db $05,$77,$83,$18,$77,$8A,$14,$FF              ;
+                db $01,$41,$18,$15,$FF,$01,$41,$48              ;
+                db $15,$FF,$01,$41,$48,$15,$FF,$01              ;
+                db $40,$0B,$18,$89,$14,$19,$89,$1A              ;
+                db $15,$89,$27,$14,$33,$30,$0C,$33              ;
+                db $34,$0A,$33,$3A,$07,$40,$3C,$06              ;
+                db $89,$44,$08,$89,$54,$09,$39,$63              ;
+                db $19,$39,$68,$19,$74,$6B,$0D,$39              ;
+                db $6D,$19,$41,$88,$15,$33,$88,$19              ;
+                db $FF,$01,$D6,$32,$0D,$52,$33,$0F              ;
+                db $BA,$34,$0F,$FF,$01,$41,$18,$15              ;
+                db $FF,$01,$A4,$16,$13,$A0,$1C,$16              ;
+                db $A4,$20,$13,$A0,$24,$12,$6E,$33              ;
+                db $19,$BC,$37,$16,$BC,$37,$18,$BC              ;
+                db $3C,$14,$BC,$3C,$19,$BC,$4F,$18              ;
+                db $BC,$50,$13,$2F,$51,$12,$6D,$59              ;
+                db $16,$A4,$5F,$14,$6E,$6A,$17,$BC              ;
+                db $6B,$18,$6F,$6E,$14,$BC,$72,$13              ;
+                db $BC,$72,$16,$BC,$7A,$15,$BC,$7A              ;
+                db $18,$6C,$7F,$19,$A2,$91,$15,$41              ;
+                db $A8,$15,$FF,$01,$29,$0F,$16,$29              ;
+                db $12,$11,$29,$1E,$10,$29,$20,$16              ;
+                db $29,$31,$14,$29,$33,$16,$29,$3E              ;
+                db $19,$6C,$41,$18,$29,$51,$19,$6C              ;
+                db $53,$18,$29,$55,$19,$29,$59,$15              ;
+                db $A6,$60,$17,$29,$6A,$19,$A6,$6C              ;
+                db $16,$29,$75,$17,$29,$79,$15,$29              ;
+                db $7D,$13,$6E,$7E,$11,$41,$98,$15              ;
+                db $29,$98,$19,$FF,$01,$41,$18,$15              ;
+                db $FF,$01,$D3,$08,$50,$6C,$22,$15              ;
+                db $6C,$24,$15,$6F,$2C,$11,$6C,$3A              ;
+                db $10,$72,$3B,$14,$72,$3C,$14,$28              ;
+                db $46,$0C,$6D,$4E,$08,$6C,$52,$0D              ;
+                db $58,$57,$09,$6D,$5F,$09,$6C,$62              ;
+                db $09,$6C,$63,$09,$72,$6C,$0D,$72              ;
+                db $6D,$0D,$58,$77,$06,$41,$88,$15              ;
+                db $FF,$01,$6C,$11,$18,$73,$15,$18              ;
+                db $6D,$20,$14,$6C,$23,$18,$A0,$25              ;
+                db $15,$A2,$2B,$16,$A4,$32,$16,$6D              ;
+                db $3F,$18,$73,$44,$18,$70,$4E,$18              ;
+                db $A6,$52,$14,$6D,$5E,$12,$70,$66              ;
+                db $18,$A2,$69,$16,$6F,$74,$16,$6D              ;
+                db $7D,$18,$6D,$7F,$18,$6E,$8B,$11              ;
+                db $41,$A8,$15,$FF,$01,$72,$0E,$19              ;
+                db $A6,$16,$17,$72,$21,$19,$6D,$24              ;
+                db $16,$72,$34,$18,$72,$37,$18,$73              ;
+                db $3B,$18,$6E,$53,$13,$6E,$56,$13              ;
+                db $6E,$59,$13,$6C,$5C,$19,$A0,$70              ;
+                db $18,$A4,$74,$17,$6D,$83,$17,$41              ;
+                db $A8,$15,$FF,$01,$41,$38,$15,$FF              ;
+                db $01,$41,$28,$15,$FF,$01,$41,$18              ;
+                db $15,$FF,$01,$72,$1A,$12,$6C,$18              ;
+                db $19,$C0,$10,$19,$C1,$13,$19,$6D              ;
+                db $2D,$13,$C0,$34,$12,$C1,$37,$12              ;
+                db $41,$58,$15,$FF,$01,$41,$58,$15              ;
+                db $FF,$01,$82,$02,$18,$41,$18,$15              ;
+                db $FF,$01,$FF,$01,$D3,$00,$50,$2D              ;
+                db $00,$19,$64,$10,$19,$64,$1C,$19              ;
+                db $43,$22,$19,$6C,$2F,$13,$43,$52              ;
+                db $19,$92,$52,$15,$6D,$63,$15,$43              ;
+                db $6C,$19,$43,$86,$19,$43,$96,$19              ;
+                db $92,$9E,$11,$FF,$01,$41,$28,$15              ;
+                db $FF,$01,$70,$10,$0F,$70,$13,$12              ;
+                db $70,$23,$0F,$70,$25,$19,$A2,$31              ;
+                db $13,$70,$32,$0A,$70,$34,$19,$70              ;
+                db $3B,$14,$70,$40,$0F,$70,$4B,$13              ;
+                db $70,$4E,$16,$68,$63,$0C,$70,$67              ;
+                db $0F,$68,$6E,$0C,$A0,$72,$0F,$FF              ;
+                db $01,$40,$0C,$18,$40,$0F,$18,$40              ;
+                db $1E,$18,$40,$26,$18,$40,$37,$14              ;
+                db $40,$3B,$14,$6C,$4A,$18,$40,$50              ;
+                db $18,$33,$50,$08,$33,$51,$08,$A6              ;
+                db $65,$18,$FF,$01,$77,$0D,$16,$6A              ;
+                db $17,$14,$66,$1C,$14,$A1,$23,$04              ;
+                db $63,$24,$16,$65,$28,$17,$66,$31              ;
+                db $16,$A3,$33,$08,$77,$44,$14,$6A              ;
+                db $4E,$14,$65,$57,$18,$77,$58,$14              ;
+                db $A0,$65,$09,$66,$65,$16,$A4,$6C              ;
+                db $08,$63,$6C,$13,$FF,$01,$81,$0C              ;
+                db $14,$81,$09,$18,$BA,$0D,$14,$FF              ;
+                db $01,$43,$10,$18,$43,$17,$18,$A3              ;
+                db $18,$14,$29,$18,$0E,$42,$22,$0B              ;
+                db $29,$23,$17,$A4,$2C,$18,$29,$2F              ;
+                db $09,$A7,$34,$0E,$77,$4D,$0F,$77              ;
+                db $47,$15,$77,$53,$11,$77,$51,$15              ;
+                db $77,$5E,$0F,$77,$63,$0D,$77,$6B              ;
+                db $12,$77,$70,$14,$77,$76,$0F,$77              ;
+                db $78,$16,$77,$7E,$12,$77,$8D,$0F              ;
+                db $A3,$80,$10,$A2,$84,$11,$A3,$88              ;
+                db $10,$A2,$8C,$12,$29,$A0,$0F,$29              ;
+                db $A6,$0F,$29,$A4,$0F,$A4,$A8,$10              ;
+                db $42,$AD,$0F,$29,$BC,$09,$FF,$01              ;
+                db $C1,$19,$13,$72,$20,$18,$C1,$2B              ;
+                db $13,$73,$39,$15,$A4,$4A,$11,$72              ;
+                db $53,$17,$72,$55,$10,$73,$61,$14              ;
+                db $72,$6B,$16,$72,$6C,$17,$A4,$6E              ;
+                db $16,$72,$7E,$18,$A4,$81,$17,$C1              ;
+                db $8B,$14,$74,$9D,$19,$41,$A8,$15              ;
+                db $FF,$01,$2B,$10,$15,$83,$3F,$12              ;
+                db $B6,$63,$12,$6B,$75,$16,$83,$91              ;
+                db $11,$B6,$B7,$11,$41,$C8,$15,$FF              ;
+                db $01,$6C,$13,$13,$6C,$17,$15,$6C              ;
+                db $1A,$16,$6C,$1E,$19,$6C,$33,$13              ;
+                db $6C,$37,$15,$6E,$3C,$17,$6E,$3F              ;
+                db $18,$71,$51,$14,$71,$57,$17,$71              ;
+                db $59,$18,$A6,$60,$19,$83,$65,$12              ;
+                db $C0,$92,$18,$C1,$94,$18,$6E,$B3              ;
+                db $17,$6E,$B7,$17,$41,$C8,$15,$FF              ;
+                db $01,$81,$0C,$18,$BA,$0D,$14,$FF              ;
+                db $01,$D3,$00,$51,$70,$18,$09,$70              ;
+                db $1B,$09,$A2,$20,$0C,$A2,$25,$10              ;
+                db $A6,$29,$12,$A2,$2E,$12,$43,$58              ;
+                db $11,$43,$65,$0E,$70,$77,$0C,$70              ;
+                db $79,$0D,$D3,$7C,$51,$FF,$01,$70              ;
+                db $0B,$12,$70,$0D,$12,$41,$18,$15              ;
+                db $FF,$01,$6C,$38,$06,$A3,$3C,$08              ;
+                db $A3,$40,$06,$A3,$46,$04,$A3,$4A              ;
+                db $05,$A3,$4C,$06,$A3,$4E,$07,$41              ;
+                db $88,$15,$FF,$01,$6C,$1B,$16,$6C              ;
+                db $1F,$0A,$6C,$1F,$10,$6C,$21,$10              ;
+                db $6C,$28,$0C,$6C,$2A,$0C,$6C,$5C              ;
+                db $0B,$6C,$5E,$0B,$6C,$5D,$13,$6C              ;
+                db $69,$11,$6C,$64,$16,$6C,$66,$17              ;
+                db $6C,$70,$18,$FF,$01,$70,$12,$13              ;
+                db $70,$15,$10,$70,$19,$10,$A4,$1F              ;
+                db $16,$A3,$25,$0F,$A3,$2C,$0C,$70              ;
+                db $2B,$0F,$70,$32,$12,$70,$34,$14              ;
+                db $A4,$37,$18,$6C,$4C,$09,$6C,$50              ;
+                db $0B,$6C,$56,$09,$6C,$65,$0B,$A4              ;
+                db $64,$14,$A2,$66,$16,$A2,$6C,$17              ;
+                db $70,$6A,$18,$A2,$71,$15,$70,$76              ;
+                db $18,$A0,$78,$17,$A1,$78,$13,$FF              ;
+                db $01,$C0,$17,$14,$C1,$19,$14,$C0              ;
+                db $2C,$17,$6C,$33,$17,$6C,$3B,$18              ;
+                db $6C,$41,$17,$C1,$47,$17,$A0,$6B              ;
+                db $16,$A0,$70,$17,$41,$88,$15,$FF              ;
+                db $01,$70,$12,$0D,$70,$16,$0D,$A0              ;
+                db $19,$11,$A1,$26,$09,$A1,$2B,$05              ;
+                db $A0,$2B,$0B,$70,$28,$0C,$70,$2A              ;
+                db $0C,$70,$27,$09,$70,$2D,$05,$A0              ;
+                db $41,$07,$70,$50,$0C,$A1,$54,$09              ;
+                db $70,$68,$10,$A1,$6A,$0E,$70,$6F              ;
+                db $10,$A0,$70,$0F,$A1,$72,$0C,$FF              ;
+                db $01,$AF,$02,$11,$A4,$1A,$1A,$6F              ;
+                db $1B,$12,$A4,$29,$19,$A4,$2C,$19              ;
+                db $6C,$37,$19,$5D,$51,$12,$6E,$7E              ;
+                db $16,$6E,$9E,$16,$41,$D8,$15,$FF              ;
+                db $01,$70,$12,$16,$70,$17,$18,$68              ;
+                db $15,$13,$70,$22,$15,$80,$25,$14              ;
+                db $68,$33,$10,$69,$48,$10,$70,$4B              ;
+                db $16,$6F,$50,$13,$6F,$65,$13,$69              ;
+                db $61,$11,$70,$71,$18,$70,$71,$18              ;
+                db $69,$7E,$14,$69,$86,$17,$70,$88              ;
+                db $15,$FF,$01,$D4,$00,$1E,$72,$0F              ;
+                db $15,$A4,$13,$19,$A6,$26,$19,$77              ;
+                db $38,$17,$26,$33,$14,$80,$39,$13              ;
+                db $77,$48,$18,$77,$55,$17,$77,$5F              ;
+                db $18,$77,$67,$17,$80,$60,$13,$80              ;
+                db $69,$12,$FF,$01,$72,$2E,$13,$72              ;
+                db $30,$15,$72,$31,$16,$72,$42,$16              ;
+                db $72,$43,$17,$6E,$60,$16,$77,$84              ;
+                db $18,$40,$95,$14,$A1,$99,$12,$A1              ;
+                db $9D,$12,$A5,$A8,$16,$A3,$AE,$16              ;
+                db $40,$AA,$19,$A6,$B4,$17,$40,$C4              ;
+                db $15,$40,$CF,$14,$40,$D2,$19,$A3              ;
+                db $D7,$15,$A3,$E0,$15,$40,$E0,$18              ;
+                db $40,$EA,$18,$FF,$01,$AF,$02,$11              ;
+                db $74,$2E,$05,$A6,$3A,$0A,$A6,$40              ;
+                db $0A,$A6,$46,$0A,$A6,$50,$0B,$A6              ;
+                db $56,$0F,$A6,$5C,$13,$A6,$8D,$13              ;
+                db $BB,$92,$01,$A6,$93,$0F,$A6,$99              ;
+                db $0B,$80,$C1,$19,$41,$E8,$15,$FF              ;
+                db $01,$70,$0E,$0F,$70,$11,$12,$70              ;
+                db $13,$14,$70,$15,$16,$A3,$27,$10              ;
+                db $70,$2C,$12,$A0,$2D,$16,$6C,$48              ;
+                db $09,$6C,$4A,$0A,$6C,$54,$09,$6C              ;
+                db $6C,$0A,$A6,$75,$15,$A3,$7D,$14              ;
+                db $FF,$01,$D3,$00,$51,$D4,$01,$2C              ;
+                db $2D,$06,$19,$6C,$12,$15,$6C,$38              ;
+                db $16,$3E,$54,$18,$FF,$01,$3F,$08              ;
+                db $0A,$3F,$14,$0F,$2F,$1D,$0A,$3F              ;
+                db $23,$0F,$FF,$01,$FF,$01,$94,$18              ;
+                db $05,$FF,$01,$98,$16,$14,$94,$48              ;
+                db $09,$99,$58,$09,$FF,$01,$94,$27              ;
+                db $14,$99,$37,$14,$FF,$01,$94,$37              ;
+                db $10,$98,$77,$14,$FF,$01,$94,$35              ;
+                db $14,$98,$57,$14,$9A,$65,$06,$FF              ;
+                db $01,$9A,$44,$09,$98,$67,$14,$FF              ;
+                db $01,$98,$18,$05,$94,$48,$05,$FF              ;
+                db $01,$72,$0F,$17,$72,$11,$18,$A2              ;
+                db $14,$17,$A6,$22,$17,$72,$34,$15              ;
+                db $72,$36,$16,$72,$38,$17,$77,$41              ;
+                db $19,$6C,$52,$14,$6C,$54,$15,$6C              ;
+                db $56,$16,$74,$65,$18,$A5,$66,$11              ;
+                db $73,$6B,$18,$83,$92,$12,$41,$C8              ;
+                db $15,$FF,$01,$46,$10,$15,$6C,$1A              ;
+                db $17,$33,$21,$17,$33,$23,$17,$33              ;
+                db $27,$16,$39,$2A,$15,$39,$2F,$16              ;
+                db $29,$37,$15,$29,$3D,$14,$29,$43              ;
+                db $13,$40,$4A,$18,$40,$54,$18,$40              ;
+                db $5D,$18,$33,$65,$12,$33,$68,$12              ;
+                db $33,$6B,$12,$40,$74,$18,$40,$7A              ;
+                db $19,$40,$7F,$19,$41,$A8,$15,$FF              ;
+                db $01,$D3,$00,$60,$3B,$00,$19,$3C              ;
+                db $0B,$11,$3C,$0F,$17,$44,$1B,$15              ;
+                db $6F,$2F,$13,$64,$37,$19,$64,$3C              ;
+                db $19,$64,$4A,$19,$64,$4E,$19,$64              ;
+                db $5C,$19,$64,$5F,$19,$44,$52,$15              ;
+                db $6F,$6B,$10,$64,$6A,$19,$64,$6F              ;
+                db $19,$A4,$7B,$13,$FF,$01,$3C,$0B              ;
+                db $08,$64,$12,$1A,$41,$28,$15,$FF              ;
+                db $01,$D3,$00,$00,$93,$1D,$14,$6D              ;
+                db $29,$12,$6D,$3B,$12,$6D,$3C,$18              ;
+                db $6F,$44,$14,$6D,$54,$14,$6E,$6E              ;
+                db $14,$6F,$76,$12,$93,$7A,$13,$D3              ;
+                db $00,$00,$FF,$01,$80,$10,$16,$41              ;
+                db $28,$15,$FF,$01,$27,$12,$18,$6D              ;
+                db $13,$13,$6D,$2B,$17,$6D,$35,$18              ;
+                db $27,$5A,$19,$27,$6A,$18,$6F,$6D              ;
+                db $15,$6F,$71,$13,$41,$88,$15,$FF              ;
+                db $01,$2F,$0E,$10,$8B,$15,$15,$8C              ;
+                db $1C,$11,$8B,$2F,$15,$8C,$34,$11              ;
+                db $60,$48,$17,$8C,$4B,$11,$60,$57              ;
+                db $13,$2F,$57,$16,$8C,$61,$15,$8B              ;
+                db $77,$18,$FF,$01,$4B,$1D,$24,$FF              ;
+                db $01,$41,$58,$15,$FF,$01,$6D,$12              ;
+                db $10,$6D,$1C,$15,$6F,$29,$13,$6D              ;
+                db $38,$18,$73,$43,$12,$73,$44,$12              ;
+                db $6D,$4B,$16,$27,$5B,$15,$27,$62              ;
+                db $13,$72,$6F,$10,$72,$71,$10,$6D              ;
+                db $79,$10,$6D,$79,$18,$74,$8B,$14              ;
+                db $74,$8D,$14,$41,$A8,$15,$FF,$01              ;
+                db $D4,$00,$1C,$6E,$12,$15,$6E,$17              ;
+                db $15,$74,$14,$17,$6E,$2D,$16,$A7              ;
+                db $30,$11,$A6,$37,$17,$74,$4E,$17              ;
+                db $58,$52,$13,$A2,$54,$17,$A7,$69              ;
+                db $10,$6E,$70,$15,$74,$78,$17,$41              ;
+                db $98,$15,$FF,$01,$6D,$1D,$15,$6F              ;
+                db $29,$16,$6D,$37,$13,$6D,$38,$18              ;
+                db $FF,$01,$6D,$1D,$16,$6F,$29,$17              ;
+                db $6D,$37,$14,$6D,$38,$19,$FF,$01              ;
+                db $D3,$00,$02,$2C,$0F,$18,$2C,$14              ;
+                db $15,$2C,$1C,$13,$2C,$2A,$11,$24              ;
+                db $2C,$14,$2C,$3A,$19,$6D,$30,$16              ;
+                db $2C,$49,$15,$2C,$4E,$0C,$2C,$4D              ;
+                db $12,$24,$50,$10,$2C,$53,$0D,$6D              ;
+                db $5C,$07,$2C,$67,$0A,$2C,$69,$07              ;
+                db $2C,$79,$11,$2C,$78,$15,$2C,$88              ;
+                db $16,$FF,$01,$3C,$09,$0E,$6D,$1E              ;
+                db $06,$3C,$11,$08,$3C,$14,$10,$3C              ;
+                db $27,$06,$3C,$27,$13,$27,$3E,$08              ;
+                db $3C,$31,$03,$28,$4A,$11,$6D,$52              ;
+                db $0E,$3C,$57,$0A,$3C,$56,$18,$3C              ;
+                db $5F,$14,$27,$7B,$11,$3C,$78,$09              ;
+                db $3C,$74,$18,$41,$88,$15,$FF,$01              ;
+                db $46,$14,$16,$2A,$24,$18,$A2,$2A              ;
+                db $17,$A4,$3A,$16,$2A,$46,$18,$2A              ;
+                db $4A,$18,$2A,$5C,$18,$73,$63,$19              ;
+                db $2A,$65,$18,$46,$6C,$16,$41,$88              ;
+                db $15,$FF,$01,$D3,$00,$53,$64,$11              ;
+                db $19,$64,$19,$19,$64,$23,$19,$58              ;
+                db $40,$13,$6F,$4B,$12,$59,$57,$10              ;
+                db $44,$5D,$15,$58,$6B,$11,$64,$6B              ;
+                db $19,$43,$76,$19,$FF,$01,$41,$28              ;
+                db $15,$FF,$01,$6D,$13,$12,$6D,$1A              ;
+                db $18,$3C,$21,$13,$6F,$30,$11,$6C              ;
+                db $36,$18,$44,$4D,$18,$6F,$5C,$0D              ;
+                db $37,$74,$14,$44,$78,$12,$6F,$82              ;
+                db $15,$41,$98,$15,$6C,$98,$18,$FF              ;
+                db $01,$D3,$00,$00,$D4,$01,$2C,$36              ;
+                db $17,$14,$36,$23,$16,$36,$25,$13              ;
+                db $36,$27,$19,$36,$2F,$15,$6D,$43              ;
+                db $15,$36,$44,$18,$36,$4B,$14,$36              ;
+                db $56,$16,$36,$58,$15,$36,$61,$13              ;
+                db $36,$6D,$18,$36,$6F,$15,$36,$70              ;
+                db $1A,$6F,$75,$13,$6D,$7C,$16,$FF              ;
+                db $01,$92,$12,$16,$92,$19,$18,$72              ;
+                db $1E,$12,$72,$23,$12,$72,$24,$12              ;
+                db $44,$2E,$13,$37,$3F,$19,$3C,$46              ;
+                db $18,$3C,$4D,$16,$91,$62,$15,$91              ;
+                db $6B,$16,$58,$77,$10,$91,$75,$16              ;
+                db $91,$7E,$15,$91,$87,$15,$91,$90              ;
+                db $16,$41,$A8,$15,$FF,$01,$D3,$00              ;
+                db $09,$77,$12,$10,$66,$18,$16,$77              ;
+                db $1D,$17,$61,$1F,$11,$77,$2D,$15              ;
+                db $D2,$34,$11,$61,$3B,$11,$D2,$3C              ;
+                db $0C,$6D,$44,$09,$6F,$51,$03,$6D              ;
+                db $56,$07,$6C,$58,$07,$6D,$61,$09              ;
+                db $66,$6C,$11,$66,$72,$11,$77,$77              ;
+                db $15,$FF,$01,$82,$03,$18,$82,$0E              ;
+                db $18,$41,$18,$15,$FF,$01,$29,$2B              ;
+                db $19,$41,$38,$15,$FF,$01,$6D,$0B              ;
+                db $13,$6D,$12,$14,$6D,$24,$14,$6D              ;
+                db $26,$14,$40,$33,$19,$40,$3C,$18              ;
+                db $73,$45,$19,$6F,$52,$17,$40,$5E              ;
+                db $17,$40,$65,$17,$40,$6B,$17,$40              ;
+                db $74,$17,$92,$81,$15,$6D,$84,$15              ;
+                db $41,$A8,$15,$FF,$01,$D3,$00,$0A              ;
+                db $D4,$01,$4E,$58,$26,$0C,$58,$6F              ;
+                db $02,$FF,$01,$6E,$06,$17,$41,$28              ;
+                db $15,$FF,$01,$6D,$26,$0D,$41,$58              ;
+                db $15,$FF,$01,$A0,$0A,$16,$A0,$12              ;
+                db $17,$A0,$22,$18,$A0,$34,$18,$A0              ;
+                db $48,$18,$A0,$4C,$18,$A0,$5C,$18              ;
+                db $A0,$6E,$18,$A0,$96,$18,$A0,$B8              ;
+                db $18,$FF,$01,$D3,$00,$54,$77,$11              ;
+                db $16,$77,$17,$14,$66,$1A,$0E,$77              ;
+                db $1C,$17,$63,$22,$15,$6A,$29,$10              ;
+                db $77,$2A,$14,$77,$32,$16,$66,$41              ;
+                db $0E,$66,$43,$0F,$77,$48,$16,$77              ;
+                db $4C,$14,$77,$50,$17,$D2,$57,$15              ;
+                db $77,$60,$16,$66,$65,$0E,$66,$69              ;
+                db $0E,$D2,$72,$15,$6A,$78,$12,$FF              ;
+                db $01,$6F,$09,$07,$6C,$02,$10,$6C              ;
+                db $04,$10,$A2,$0E,$27,$57,$07,$2C              ;
+                db $56,$0E,$2F,$56,$0A,$33,$6D,$01              ;
+                db $36,$6F,$04,$43,$6D,$0C,$48,$6D              ;
+                db $07,$57,$A2,$08,$5E,$57,$02,$60              ;
+                db $56,$08,$60,$6D,$03,$6D,$FF,$01              ;
+                db $D3,$00,$0F,$B5,$0F,$0F,$67,$14              ;
+                db $18,$63,$2E,$13,$6A,$36,$13,$BB              ;
+                db $3F,$0F,$63,$56,$0D,$6A,$63,$0C              ;
+                db $6A,$69,$10,$B5,$6F,$0F,$67,$7E              ;
+                db $18,$63,$8A,$13,$67,$97,$15,$FF              ;
+                db $01,$77,$0D,$12,$63,$16,$15,$65              ;
+                db $1E,$17,$62,$24,$11,$77,$2F,$14              ;
+                db $77,$31,$0C,$66,$36,$0D,$65,$48              ;
+                db $18,$77,$49,$0D,$77,$5D,$0D,$66              ;
+                db $5E,$12,$61,$6C,$10,$63,$75,$15              ;
+                db $77,$79,$0F,$FF,$01,$56,$08,$0D              ;
+                db $A2,$09,$2E,$A2,$09,$37,$56,$06              ;
+                db $2F,$FF,$01,$65,$14,$09,$62,$1D              ;
+                db $06,$65,$24,$09,$62,$30,$11,$66              ;
+                db $33,$0C,$67,$3A,$18,$67,$4E,$18              ;
+                db $66,$4E,$0C,$61,$67,$0A,$67,$70              ;
+                db $18,$62,$7B,$05,$65,$7D,$12,$FF              ;
+                db $01,$6C,$0F,$10,$6C,$07,$10,$6C              ;
+                db $0E,$20,$FF,$01,$57,$0B,$0D,$56              ;
+                db $05,$0F,$A0,$04,$42,$6D,$05,$52              ;
+                db $56,$0B,$5B,$A0,$04,$61,$6C,$0D              ;
+                db $67,$6C,$0F,$67,$FF,$01,$83,$2A              ;
+                db $12,$6D,$55,$18,$6D,$60,$18,$6F              ;
+                db $69,$14,$6F,$75,$10,$FF,$01,$83              ;
+                db $0F,$12,$41,$18,$15,$FF,$01,$D3              ;
+                db $00,$12,$D6,$2B,$07,$52,$2C,$16              ;
+                db $BA,$2D,$16,$FF,$01,$7F,$0C,$16              ;
+                db $7C,$10,$17,$7B,$18,$15,$A6,$26              ;
+                db $07,$7E,$30,$17,$7C,$42,$0F,$7E              ;
+                db $46,$11,$7B,$58,$13,$7B,$5F,$15              ;
+                db $7B,$64,$13,$A6,$72,$15,$7A,$7A              ;
+                db $17,$FF,$01,$D3,$00,$55,$BB,$0A              ;
+                db $00,$6C,$1B,$18,$6D,$20,$10,$B7              ;
+                db $21,$00,$B7,$3A,$00,$BB,$50,$00              ;
+                db $58,$5E,$14,$58,$6D,$11,$58,$79              ;
+                db $16,$FF                                      ;
 
-DATA_27F48D:        db $01,$6C,$0B,$18,$6B,$22,$16,$6B ;
-                    db $2E,$13,$6B,$30,$13,$6B,$32,$13 ;
-                    db $A4,$36,$18,$6B,$3D,$13,$6B,$41 ;
-                    db $13,$83,$4F,$12,$6B,$55,$13,$BC ;
-                    db $60,$18,$6B,$64,$18,$BC,$66,$17 ;
-                    db $6B,$6A,$18,$41,$88,$15,$FF,$01 ;
-                    db $86,$11,$17,$86,$25,$17,$FF,$01 ;
-                    db $D3,$00,$52,$D4,$01,$18,$7B,$10 ;
-                    db $14,$3B,$12,$19,$7B,$16,$15,$7F ;
-                    db $1B,$16,$A6,$2E,$16,$A6,$3C,$14 ;
-                    db $BB,$48,$19,$7F,$50,$14,$B4,$5C ;
-                    db $19,$7F,$63,$16,$B4,$65,$19,$BB ;
-                    db $7C,$19,$FF,$01,$D3,$00,$07,$9F ;
-                    db $16,$16,$9F,$18,$14,$9F,$1B,$13 ;
-                    db $9F,$1D,$16,$9F,$20,$17,$9F,$23 ;
-                    db $18,$9F,$26,$16,$9F,$29,$18,$9F ;
-                    db $2C,$17,$9F,$2E,$16,$9F,$30,$15 ;
-                    db $9F,$33,$15,$9F,$36,$16,$6F,$37 ;
-                    db $14,$9F,$39,$18,$9F,$3C,$18,$9F ;
-                    db $3F,$18,$58,$5D,$17,$FF,$01,$D3 ;
-                    db $00,$20,$6F,$0A,$10,$28,$10,$11 ;
-                    db $28,$14,$0D,$38,$18,$08,$28,$1C ;
-                    db $06,$28,$2C,$11,$28,$33,$0C,$28 ;
-                    db $37,$0A,$27,$4C,$13,$28,$4E,$0F ;
-                    db $58,$56,$14,$27,$58,$07,$38,$5D ;
-                    db $05,$28,$74,$11,$28,$7A,$0A,$58 ;
-                    db $7E,$14,$27,$90,$12,$37,$95,$0E ;
-                    db $38,$96,$0B,$FF,$01,$65,$06,$17 ;
-                    db $83,$0F,$03,$B6,$16,$03,$B6,$27 ;
-                    db $0B,$83,$30,$0B,$65,$44,$17,$FF ;
-                    db $01,$D3,$00,$10,$FF,$01,$D3,$00 ;
-                    db $10,$FF,$01,$25,$00,$80,$FF,$01 ;
-                    db $6D,$24,$17,$25,$20,$80,$FF,$01 ;
-                    db $6B,$10,$15,$6B,$18,$14,$FF,$01 ;
-                    db $7A,$10,$13,$7E,$15,$0F,$7E,$1E ;
-                    db $17,$7F,$22,$15,$BC,$2C,$17,$BD ;
-                    db $33,$16,$BC,$3A,$15,$BD,$42,$17 ;
-                    db $7F,$47,$18,$BC,$55,$17,$BC,$56 ;
-                    db $16,$BC,$5D,$18,$BD,$5C,$13,$A2 ;
-                    db $51,$16,$7F,$60,$15,$BD,$66,$14 ;
-                    db $BD,$6A,$17,$7F,$73,$15,$BC,$79 ;
-                    db $14,$FF,$01,$D3,$00,$12,$FF,$01 ;
-                    db $D3,$00,$10,$FF,$01,$63,$0F,$13 ;
-                    db $63,$17,$17,$FF,$01,$91,$06,$12 ;
-                    db $91,$12,$15,$91,$1C,$17,$90,$28 ;
-                    db $13,$92,$2F,$15,$91,$2F,$19,$90 ;
-                    db $37,$17,$91,$44,$17,$91,$45,$05 ;
-                    db $90,$5D,$13,$6F,$61,$11,$93,$65 ;
-                    db $15,$90,$6C,$17,$93,$73,$19,$6E ;
-                    db $7C,$16,$FF,$01,$A2,$0C,$13,$A6 ;
-                    db $15,$14,$A5,$1C,$10,$A1,$20,$15 ;
-                    db $A6,$25,$15,$6F,$34,$11,$FF,$01 ;
-                    db $A4,$0A,$14,$A4,$12,$14,$A0,$1E ;
-                    db $15,$A5,$2C,$12,$A2,$31,$15,$A4 ;
-                    db $33,$13,$A4,$3A,$14,$FF,$01,$9E ;
-                    db $0E,$0D,$9E,$12,$0F,$9E,$19,$10 ;
-                    db $9E,$17,$0D,$9E,$1E,$11,$9E,$23 ;
-                    db $10,$9E,$2B,$0F,$9E,$25,$0B,$9E ;
-                    db $33,$0F,$FF,$01,$87,$0D,$14,$81 ;
-                    db $1B,$18,$81,$1D,$14,$82,$2D,$13 ;
-                    db $86,$37,$13,$FF,$01,$BB,$04,$19 ;
-                    db $B4,$17,$19,$B4,$5C,$19,$BB,$70 ;
-                    db $19,$FF,$01,$D6,$0C,$03,$52,$0D ;
-                    db $15,$BA,$0E,$15,$FF,$01,$52,$0B ;
-                    db $13,$BA,$0C,$13,$FF,$01,$52,$0B ;
-                    db $13,$BA,$0C,$13,$FF,$01,$81,$0A ;
-                    db $17,$BA,$0D,$14,$FF,$01,$D3,$00 ;
-                    db $12,$FF ;
+DATA_27F48D:    db $01,$6C,$0B,$18,$6B,$22,$16,$6B              ;
+                db $2E,$13,$6B,$30,$13,$6B,$32,$13              ;
+                db $A4,$36,$18,$6B,$3D,$13,$6B,$41              ;
+                db $13,$83,$4F,$12,$6B,$55,$13,$BC              ;
+                db $60,$18,$6B,$64,$18,$BC,$66,$17              ;
+                db $6B,$6A,$18,$41,$88,$15,$FF,$01              ;
+                db $86,$11,$17,$86,$25,$17,$FF,$01              ;
+                db $D3,$00,$52,$D4,$01,$18,$7B,$10              ;
+                db $14,$3B,$12,$19,$7B,$16,$15,$7F              ;
+                db $1B,$16,$A6,$2E,$16,$A6,$3C,$14              ;
+                db $BB,$48,$19,$7F,$50,$14,$B4,$5C              ;
+                db $19,$7F,$63,$16,$B4,$65,$19,$BB              ;
+                db $7C,$19,$FF,$01,$D3,$00,$07,$9F              ;
+                db $16,$16,$9F,$18,$14,$9F,$1B,$13              ;
+                db $9F,$1D,$16,$9F,$20,$17,$9F,$23              ;
+                db $18,$9F,$26,$16,$9F,$29,$18,$9F              ;
+                db $2C,$17,$9F,$2E,$16,$9F,$30,$15              ;
+                db $9F,$33,$15,$9F,$36,$16,$6F,$37              ;
+                db $14,$9F,$39,$18,$9F,$3C,$18,$9F              ;
+                db $3F,$18,$58,$5D,$17,$FF,$01,$D3              ;
+                db $00,$20,$6F,$0A,$10,$28,$10,$11              ;
+                db $28,$14,$0D,$38,$18,$08,$28,$1C              ;
+                db $06,$28,$2C,$11,$28,$33,$0C,$28              ;
+                db $37,$0A,$27,$4C,$13,$28,$4E,$0F              ;
+                db $58,$56,$14,$27,$58,$07,$38,$5D              ;
+                db $05,$28,$74,$11,$28,$7A,$0A,$58              ;
+                db $7E,$14,$27,$90,$12,$37,$95,$0E              ;
+                db $38,$96,$0B,$FF,$01,$65,$06,$17              ;
+                db $83,$0F,$03,$B6,$16,$03,$B6,$27              ;
+                db $0B,$83,$30,$0B,$65,$44,$17,$FF              ;
+                db $01,$D3,$00,$10,$FF,$01,$D3,$00              ;
+                db $10,$FF,$01,$25,$00,$80,$FF,$01              ;
+                db $6D,$24,$17,$25,$20,$80,$FF,$01              ;
+                db $6B,$10,$15,$6B,$18,$14,$FF,$01              ;
+                db $7A,$10,$13,$7E,$15,$0F,$7E,$1E              ;
+                db $17,$7F,$22,$15,$BC,$2C,$17,$BD              ;
+                db $33,$16,$BC,$3A,$15,$BD,$42,$17              ;
+                db $7F,$47,$18,$BC,$55,$17,$BC,$56              ;
+                db $16,$BC,$5D,$18,$BD,$5C,$13,$A2              ;
+                db $51,$16,$7F,$60,$15,$BD,$66,$14              ;
+                db $BD,$6A,$17,$7F,$73,$15,$BC,$79              ;
+                db $14,$FF,$01,$D3,$00,$12,$FF,$01              ;
+                db $D3,$00,$10,$FF,$01,$63,$0F,$13              ;
+                db $63,$17,$17,$FF,$01,$91,$06,$12              ;
+                db $91,$12,$15,$91,$1C,$17,$90,$28              ;
+                db $13,$92,$2F,$15,$91,$2F,$19,$90              ;
+                db $37,$17,$91,$44,$17,$91,$45,$05              ;
+                db $90,$5D,$13,$6F,$61,$11,$93,$65              ;
+                db $15,$90,$6C,$17,$93,$73,$19,$6E              ;
+                db $7C,$16,$FF,$01,$A2,$0C,$13,$A6              ;
+                db $15,$14,$A5,$1C,$10,$A1,$20,$15              ;
+                db $A6,$25,$15,$6F,$34,$11,$FF,$01              ;
+                db $A4,$0A,$14,$A4,$12,$14,$A0,$1E              ;
+                db $15,$A5,$2C,$12,$A2,$31,$15,$A4              ;
+                db $33,$13,$A4,$3A,$14,$FF,$01,$9E              ;
+                db $0E,$0D,$9E,$12,$0F,$9E,$19,$10              ;
+                db $9E,$17,$0D,$9E,$1E,$11,$9E,$23              ;
+                db $10,$9E,$2B,$0F,$9E,$25,$0B,$9E              ;
+                db $33,$0F,$FF,$01,$87,$0D,$14,$81              ;
+                db $1B,$18,$81,$1D,$14,$82,$2D,$13              ;
+                db $86,$37,$13,$FF,$01,$BB,$04,$19              ;
+                db $B4,$17,$19,$B4,$5C,$19,$BB,$70              ;
+                db $19,$FF,$01,$D6,$0C,$03,$52,$0D              ;
+                db $15,$BA,$0E,$15,$FF,$01,$52,$0B              ;
+                db $13,$BA,$0C,$13,$FF,$01,$52,$0B              ;
+                db $13,$BA,$0C,$13,$FF,$01,$81,$0A              ;
+                db $17,$BA,$0D,$14,$FF,$01,$D3,$00              ;
+                db $12,$FF                                      ;
 
-DATA_27F6A7:        db $00,$82,$69,$18,$41,$78,$15,$FF ;
-                    db $01,$41,$18,$15,$FF,$00,$D4,$00 ;
-                    db $2E,$39,$0E,$0A,$33,$1D,$08,$33 ;
-                    db $23,$06,$A6,$24,$05,$66,$2E,$13 ;
-                    db $39,$36,$02,$A6,$3C,$07,$6E,$49 ;
-                    db $08,$39,$55,$18,$39,$58,$18,$A6 ;
-                    db $5A,$03,$A6,$60,$09,$A6,$64,$04 ;
-                    db $A1,$66,$11,$A6,$6A,$08,$A2,$6E ;
-                    db $07,$39,$71,$04,$A6,$72,$04,$A6 ;
-                    db $78,$07,$FF,$01,$81,$0B,$16,$81 ;
-                    db $07,$18,$BA,$0D,$14,$FF,$01,$81 ;
-                    db $0B,$16,$BA,$0D,$14,$FF,$00,$41 ;
-                    db $48,$15,$FF,$00,$6E,$0A,$14,$72 ;
-                    db $11,$05,$72,$1B,$05,$73,$1F,$09 ;
-                    db $72,$25,$05,$72,$29,$11,$72,$2D ;
-                    db $11,$73,$3A,$16,$73,$3D,$16,$6E ;
-                    db $55,$11,$72,$61,$05,$72,$6B,$05 ;
-                    db $72,$75,$05,$72,$7F,$05,$41,$B8 ;
-                    db $15,$FF,$00,$6B,$12,$17,$6B,$19 ;
-                    db $15,$6B,$1F,$16,$6B,$24,$18,$6B ;
-                    db $29,$17,$6B,$2E,$16,$6D,$34,$19 ;
-                    db $6B,$40,$18,$59,$47,$19,$72,$56 ;
-                    db $11,$59,$5D,$19,$72,$64,$11,$59 ;
-                    db $83,$14,$A0,$9E,$17,$6B,$A1,$18 ;
-                    db $A0,$A4,$18,$6B,$B8,$19,$41,$B8 ;
-                    db $15,$FF,$00,$89,$09,$19,$89,$19 ;
-                    db $19,$6D,$22,$17,$89,$34,$19,$72 ;
-                    db $34,$13,$72,$35,$19,$72,$43,$11 ;
-                    db $72,$43,$17,$6D,$52,$11,$6D,$52 ;
-                    db $13,$6D,$64,$13,$6D,$69,$15,$6D ;
-                    db $6F,$17,$41,$98,$15,$89,$9A,$19 ;
-                    db $FF,$00,$59,$0F,$13,$6D,$12,$17 ;
-                    db $59,$29,$13,$59,$29,$19,$59,$47 ;
-                    db $12,$6C,$42,$17,$6C,$48,$17,$6B ;
-                    db $63,$13,$6C,$62,$13,$6C,$6F,$14 ;
-                    db $6B,$6C,$13,$6B,$6C,$18,$6B,$7D ;
-                    db $14,$6B,$80,$17,$6C,$8B,$13,$6C ;
-                    db $8D,$13,$FF,$00,$3F,$11,$19,$3F ;
-                    db $1A,$19,$3F,$1C,$19,$8A,$1F,$11 ;
-                    db $3F,$28,$19,$3F,$2E,$16,$8A,$3D ;
-                    db $11,$2F,$42,$12,$3F,$4C,$16,$8A ;
-                    db $60,$01,$2F,$6D,$01,$8A,$76,$01 ;
-                    db $8A,$7A,$02,$8A,$7E,$03,$8A,$86 ;
-                    db $03,$4B,$AD,$18,$FF,$00,$D3,$04 ;
-                    db $31,$2F,$0C,$11,$2F,$1E,$11,$FF ;
-                    db $00,$73,$11,$17,$6D,$14,$16,$77 ;
-                    db $16,$0A,$6D,$1A,$16,$6D,$23,$17 ;
-                    db $82,$30,$18,$6E,$3A,$19,$6D,$44 ;
-                    db $17,$82,$4E,$15,$6F,$55,$04,$6F ;
-                    db $58,$04,$A4,$5E,$15,$82,$6B,$15 ;
-                    db $82,$95,$18,$41,$98,$15,$FF,$00 ;
-                    db $81,$18,$09,$6B,$18,$11,$6B,$18 ;
-                    db $15,$6B,$25,$18,$6B,$29,$18,$6C ;
-                    db $2D,$08,$6C,$31,$0A,$FF,$00,$41 ;
-                    db $18,$15,$FF,$00,$41,$18,$15,$FF ;
-                    db $00,$D5,$0A,$16,$FF,$00,$4C,$4C ;
-                    db $27,$FF,$00,$9E,$06,$17,$9E,$0B ;
-                    db $15,$9E,$0D,$11,$53,$12,$0F,$53 ;
-                    db $18,$0F,$9E,$1E,$12,$9E,$24,$16 ;
-                    db $9E,$2C,$15,$9E,$2E,$11,$3F,$28 ;
-                    db $17,$9E,$32,$11,$9E,$36,$12,$53 ;
-                    db $3A,$0F,$2F,$47,$17,$9E,$4B,$14 ;
-                    db $9E,$4E,$17,$9E,$51,$14,$53,$56 ;
-                    db $0F,$53,$5E,$0F,$9E,$63,$11,$2F ;
-                    db $6F,$15,$9E,$6A,$10,$9E,$71,$12 ;
-                    db $9E,$78,$13,$53,$79,$0F,$3F,$7E ;
-                    db $17,$FF,$00,$8A,$09,$04,$5B,$14 ;
-                    db $15,$5A,$1C,$15,$5B,$23,$15,$8A ;
-                    db $24,$04,$5A,$28,$15,$4B,$4D,$17 ;
-                    db $FF,$00,$8A,$3E,$12,$5A,$45,$15 ;
-                    db $8A,$4B,$12,$FF,$00,$9E,$12,$12 ;
-                    db $9E,$18,$12,$9E,$1F,$12,$9E,$27 ;
-                    db $11,$5B,$38,$15,$5A,$47,$16,$9E ;
-                    db $51,$11,$9E,$53,$14,$9E,$5E,$11 ;
-                    db $5A,$5B,$17,$3F,$6B,$18,$4B,$9D ;
-                    db $17,$FF,$00,$D3,$01,$30,$D3,$1C ;
-                    db $30,$D6,$44,$0C,$BA,$45,$11,$52 ;
-                    db $4A,$18,$FF,$00,$32,$2A,$17,$32 ;
-                    db $2D,$13,$31,$2D,$15,$31,$30,$11 ;
-                    db $32,$3A,$15,$31,$3D,$13,$32,$42 ;
-                    db $18,$32,$43,$13,$31,$45,$16,$FF ;
-                    db $00,$5A,$11,$14,$77,$17,$13,$77 ;
-                    db $1F,$17,$5A,$25,$14,$77,$29,$13 ;
-                    db $4C,$5C,$28,$FF,$00,$5A,$10,$14 ;
-                    db $5B,$19,$15,$3F,$14,$18,$8A,$2B ;
-                    db $11,$2F,$3F,$14,$3F,$36,$18,$8A ;
-                    db $48,$11,$2F,$4F,$14,$3F,$5C,$18 ;
-                    db $3F,$55,$18,$8A,$6B,$11,$3F,$68 ;
-                    db $18,$3F,$72,$18,$3F,$74,$18,$3F ;
-                    db $7D,$18,$4C,$AD,$17,$FF,$00,$77 ;
-                    db $21,$17,$77,$3A,$17,$77,$4C,$17 ;
-                    db $FF,$00,$9E,$0D,$13,$8A,$16,$12 ;
-                    db $5B,$11,$14,$5A,$23,$14,$5B,$2A ;
-                    db $0F,$8A,$32,$0D,$5A,$3B,$0F,$5A ;
-                    db $3B,$14,$2F,$49,$11,$8A,$4D,$0F ;
-                    db $5B,$4C,$15,$8A,$5B,$0F,$5B,$5C ;
-                    db $17,$8A,$70,$0F,$FF,$00,$4B,$3C ;
-                    db $17,$FF,$00,$98,$06,$14,$98,$17 ;
-                    db $11,$98,$2A,$0A,$98,$37,$14,$98 ;
-                    db $47,$14,$98,$56,$11,$98,$6A,$14 ;
-                    db $98,$73,$0A,$FF,$00,$A2,$0C,$14 ;
-                    db $A2,$13,$17,$2F,$14,$10,$5B,$18 ;
-                    db $15,$A2,$1D,$15,$A6,$25,$16,$A2 ;
-                    db $2A,$13,$A2,$31,$18,$8A,$35,$0F ;
-                    db $A2,$39,$14,$2F,$46,$16,$A2,$48 ;
-                    db $18,$A2,$4C,$18,$A0,$58,$15,$A3 ;
-                    db $58,$11,$A6,$60,$14,$A2,$66,$16 ;
-                    db $8A,$72,$0F,$2F,$7F,$10,$2F,$83 ;
-                    db $14,$A2,$87,$19,$FF,$00,$5A,$10 ;
-                    db $15,$3F,$11,$18,$3F,$13,$18,$5A ;
-                    db $19,$15,$8A,$1A,$0F,$4B,$3C,$27 ;
-                    db $FF,$00,$60,$13,$15,$51,$1F,$15 ;
-                    db $2F,$26,$12,$2F,$2D,$12,$31,$38 ;
-                    db $17,$31,$3E,$15,$32,$3E,$17,$2F ;
-                    db $44,$16,$31,$4D,$15,$5A,$54,$15 ;
-                    db $8A,$5A,$10,$5B,$64,$14,$5F,$7C ;
-                    db $16,$31,$7A,$15,$31,$81,$15,$4B ;
-                    db $AC,$37,$FF,$00,$D3,$08,$40,$2F ;
-                    db $04,$14,$2F,$0C,$14,$2F,$0D,$17 ;
-                    db $FF,$00,$9E,$0C,$15,$3A,$09,$16 ;
-                    db $9E,$10,$13,$9E,$15,$0F,$9E,$1A ;
-                    db $09,$9E,$1D,$06,$30,$46,$02,$5B ;
-                    db $48,$08,$5B,$48,$12,$5A,$41,$0D ;
-                    db $4C,$7C,$17,$FF,$00,$51,$08,$16 ;
-                    db $5B,$17,$14,$5B,$1E,$15,$5F,$25 ;
-                    db $0A,$5B,$30,$12,$FF,$00,$08,$0C ;
-                    db $0B,$4C,$6C,$17,$FF,$00,$8A,$0C ;
-                    db $04,$5B,$14,$15,$5A,$1C,$15,$5B ;
-                    db $23,$15,$8A,$24,$04,$5A,$28,$15 ;
-                    db $FF,$00,$8A,$0A,$11,$5B,$10,$14 ;
-                    db $FF,$00,$3F,$2A,$16,$3F,$39,$16 ;
-                    db $3F,$49,$16,$3F,$54,$19,$3F,$5B ;
-                    db $19,$3F,$62,$12,$3F,$63,$12,$3F ;
-                    db $6C,$15,$5B,$6E,$14,$4B,$8D,$27 ;
-                    db $FF,$00,$30,$10,$10,$30,$18,$10 ;
-                    db $30,$27,$14,$8B,$22,$14,$8B,$30 ;
-                    db $15,$30,$32,$10,$30,$3A,$11,$8C ;
-                    db $41,$10,$30,$4C,$14,$8A,$52,$13 ;
-                    db $30,$53,$14,$8C,$5C,$15,$4B,$8C ;
-                    db $17,$FF,$00,$5A,$11,$16,$5F,$1C ;
-                    db $16,$60,$28,$16,$3F,$31,$18,$5A ;
-                    db $35,$17,$8F,$4C,$10,$8B,$50,$18 ;
-                    db $8A,$52,$10,$8F,$5C,$10,$2F,$83 ;
-                    db $17,$3F,$87,$13,$8A,$9A,$10,$5F ;
-                    db $A0,$15,$3F,$A8,$13,$08,$AA,$13 ;
-                    db $5B,$B4,$17,$3F,$B9,$14,$4B,$EC ;
-                    db $38,$FF,$00,$9E,$14,$13,$9E,$1E ;
-                    db $11,$8A,$2E,$10,$9E,$32,$12,$9E ;
-                    db $38,$13,$08,$3B,$15,$9E,$3C,$12 ;
-                    db $9E,$49,$13,$9E,$4E,$12,$8A,$52 ;
-                    db $10,$9E,$57,$13,$9E,$5C,$10,$9E ;
-                    db $5E,$13,$9E,$69,$12,$08,$74,$16 ;
-                    db $5E,$A2,$14,$08,$AA,$13,$2F,$B2 ;
-                    db $12,$60,$B7,$16,$08,$C4,$13,$8B ;
-                    db $CD,$18,$08,$CE,$13,$FF,$00,$D0 ;
-                    db $18,$14,$D0,$1D,$14,$D0,$22,$14 ;
-                    db $2E,$31,$10,$30,$4E,$15,$5A,$55 ;
-                    db $13,$5A,$58,$0D,$5A,$5B,$07,$9E ;
-                    db $6A,$09,$9E,$6E,$09,$9E,$74,$09 ;
-                    db $9E,$7A,$09,$51,$89,$12,$8B,$9A ;
-                    db $0F,$9E,$A1,$13,$5A,$A8,$18,$9E ;
-                    db $AA,$13,$9E,$AF,$13,$18,$CC,$0B ;
-                    db $18,$EC,$0B,$FF,$00,$3F,$04,$18 ;
-                    db $3F,$0A,$18,$8C,$16,$10,$D0,$40 ;
-                    db $15,$75,$62,$16,$75,$6C,$16,$75 ;
-                    db $73,$17,$75,$7E,$15,$D0,$A3,$16 ;
-                    db $75,$D1,$17,$75,$D6,$16,$75,$D9 ;
-                    db $16,$75,$E1,$14,$75,$E5,$17,$FF ;
-                    db $00,$B8,$03,$03,$AE,$0E,$09,$BE ;
-                    db $09,$09,$BE,$0D,$0C,$BE,$15,$0C ;
-                    db $BE,$1D,$08,$AB,$16,$02,$AC,$21 ;
-                    db $0A,$BF,$29,$0A,$BE,$26,$07,$BE ;
-                    db $29,$07,$AA,$28,$0D,$AB,$2E,$03 ;
-                    db $BE,$34,$0C,$BE,$38,$06,$BE,$3C ;
-                    db $09,$AE,$4F,$0A,$BE,$43,$0D,$BE ;
-                    db $46,$0D,$AB,$4C,$04,$AE,$5E,$08 ;
-                    db $BE,$5A,$0F,$AB,$58,$03,$AE,$64 ;
-                    db $08,$AE,$69,$08,$BE,$60,$0C,$AA ;
-                    db $64,$0F,$AE,$72,$08,$AE,$77,$08 ;
-                    db $AB,$7B,$03,$BF,$80,$06,$AB,$86 ;
-                    db $04,$AB,$96,$02,$FF,$00,$09,$16 ;
-                    db $14,$FF,$00,$0E,$0D,$08,$FF,$00 ;
-                    db $D3,$00,$03,$C4,$17,$0F,$AC,$18 ;
-                    db $0D,$C8,$24,$15,$C8,$27,$15,$BC ;
-                    db $2D,$0C,$CA,$38,$07,$CB,$3C,$08 ;
-                    db $C8,$44,$0F,$BF,$49,$0A,$CA,$4E ;
-                    db $0D,$CA,$5D,$0A,$C9,$5F,$10,$BC ;
-                    db $5A,$0E,$CA,$61,$0A,$C9,$62,$10 ;
-                    db $CB,$66,$0A,$C8,$65,$10,$CB,$6A ;
-                    db $0A,$C8,$68,$10,$BC,$70,$0C,$FF ;
-                    db $00,$D3,$00,$0B,$C4,$13,$0D,$AA ;
-                    db $16,$13,$C4,$18,$0D,$BC,$1E,$0C ;
-                    db $C4,$24,$10,$C6,$28,$09,$AA,$29 ;
-                    db $14,$BC,$2C,$0D,$C6,$2D,$09,$BF ;
-                    db $38,$0A,$AA,$3D,$14,$C5,$47,$12 ;
-                    db $BC,$4D,$10,$C5,$4F,$12,$FF,$00 ;
-                    db $D3,$00,$04,$BC,$15,$0D,$BC,$18 ;
-                    db $0B,$C9,$21,$0A,$BC,$29,$0B,$BC ;
-                    db $2F,$0D,$BC,$33,$0A,$BC,$36,$0F ;
-                    db $BC,$42,$11,$BC,$42,$13,$BC,$42 ;
-                    db $15,$BC,$53,$10,$BC,$53,$12,$BE ;
-                    db $63,$0F,$BE,$65,$0F,$BE,$67,$0F ;
-                    db $BC,$6E,$0C,$BC,$71,$0B,$FF,$00 ;
-                    db $D3,$00,$01,$BE,$19,$11,$BE,$1B ;
-                    db $11,$BE,$1D,$11,$BC,$1F,$0E,$C8 ;
-                    db $29,$0F,$CB,$2D,$10,$CB,$30,$10 ;
-                    db $BC,$37,$0E,$CA,$3B,$0A,$CA,$3F ;
-                    db $0A,$C8,$3C,$10,$C8,$40,$10,$AE ;
-                    db $4B,$0C,$B1,$4D,$11,$AC,$54,$10 ;
-                    db $BE,$66,$0C,$BE,$68,$0C,$BE,$6A ;
-                    db $0C,$AC,$6B,$11,$FF,$00,$D3,$00 ;
-                    db $05,$B1,$14,$0B,$AA,$15,$0F,$AA ;
-                    db $14,$11,$B1,$1B,$0D,$AE,$26,$0A ;
-                    db $9D,$29,$0D,$9D,$2C,$0D,$9D,$2F ;
-                    db $0D,$B1,$39,$11,$AC,$3F,$11,$B2 ;
-                    db $3D,$0E,$BE,$3A,$0B,$B2,$4A,$0E ;
-                    db $B1,$49,$0A,$B2,$55,$0C,$AC,$57 ;
-                    db $0E,$B1,$52,$11,$9D,$58,$11,$B1 ;
-                    db $6B,$0B,$AC,$6A,$0D,$B1,$68,$10 ;
-                    db $9D,$62,$11,$AA,$77,$13,$FF,$00 ;
-                    db $D3,$00,$06,$AA,$13,$0F,$AA,$11 ;
-                    db $11,$AE,$18,$0F,$AE,$2E,$0D,$AE ;
-                    db $34,$0F,$AB,$3B,$0A,$B1,$42,$12 ;
-                    db $9D,$49,$14,$9D,$53,$15,$B2,$55 ;
-                    db $15,$9D,$57,$15,$AC,$5D,$12,$B1 ;
-                    db $6A,$06,$FF,$00,$D3,$00,$0C,$9D ;
-                    db $17,$07,$9D,$1E,$07,$AE,$14,$08 ;
-                    db $AA,$15,$0A,$AE,$2E,$08,$AA,$30 ;
-                    db $0D,$9D,$33,$08,$AA,$3F,$0E,$9D ;
-                    db $43,$0B,$BE,$55,$0D,$BE,$5B,$0D ;
-                    db $AE,$5A,$0A,$BE,$69,$0A,$AE,$75 ;
-                    db $0B,$BE,$85,$0D,$BE,$8B,$09,$AA ;
-                    db $8A,$0D,$AA,$90,$09,$AE,$96,$0A ;
-                    db $AE,$A0,$08,$AE,$AA,$0B,$AE,$BD ;
-                    db $0D,$AE,$C1,$0A,$AE,$C4,$07,$AA ;
-                    db $DB,$0D,$FF,$01,$D3,$00,$0D,$B1 ;
-                    db $0B,$15,$AD,$0E,$17,$B1,$11,$16 ;
-                    db $AD,$14,$19,$B1,$18,$18,$AD,$22 ;
-                    db $17,$B1,$26,$16,$AD,$2E,$17,$B1 ;
-                    db $31,$16,$B1,$3A,$13,$AD,$43,$14 ;
-                    db $B1,$45,$15,$B1,$4C,$16,$AD,$51 ;
-                    db $16,$B1,$53,$17,$B1,$64,$16,$B1 ;
-                    db $64,$17,$AD,$68,$11,$B1,$6A,$12 ;
-                    db $B1,$74,$18,$AD,$7C,$17,$B1,$7F ;
-                    db $16,$AD,$84,$12,$B1,$87,$11,$AD ;
-                    db $8F,$19,$B1,$92,$18,$AD,$96,$14 ;
-                    db $B1,$99,$13,$AD,$A3,$16,$B1,$A6 ;
-                    db $15,$AA,$BE,$17,$FF,$01,$D3,$00 ;
-                    db $0E,$BE,$0D,$13,$C2,$08,$14,$C6 ;
-                    db $15,$12,$C6,$19,$12,$C2,$1C,$14 ;
-                    db $BE,$20,$13,$CF,$22,$12,$BE,$2A ;
-                    db $12,$CD,$2F,$12,$C2,$42,$15,$C2 ;
-                    db $47,$13,$BE,$4C,$12,$BE,$52,$11 ;
-                    db $BE,$57,$13,$BE,$5C,$12,$CD,$5F ;
-                    db $12,$C3,$73,$13,$BE,$78,$12,$CE ;
-                    db $7F,$15,$C2,$80,$14,$C2,$81,$13 ;
-                    db $C2,$82,$12,$CD,$8F,$12,$50,$95 ;
-                    db $13,$50,$97,$11,$FF,$01,$D3,$00 ;
-                    db $14,$C2,$0D,$16,$C6,$15,$10,$C4 ;
-                    db $1A,$16,$C4,$1B,$16,$C4,$1C,$16 ;
-                    db $C7,$21,$11,$CF,$23,$16,$C2,$2B ;
-                    db $16,$C2,$2C,$15,$C7,$34,$10,$AD ;
-                    db $35,$17,$AD,$3D,$17,$AD,$41,$17 ;
-                    db $AD,$49,$17,$AD,$4D,$17,$C7,$53 ;
-                    db $11,$C6,$58,$11,$C7,$5A,$11,$C4 ;
-                    db $61,$16,$C4,$67,$16,$C5,$68,$16 ;
-                    db $CF,$6D,$16,$C4,$73,$16,$C2,$76 ;
-                    db $15,$C2,$79,$13,$AD,$7D,$13,$FF ;
-                    db $01,$D3,$00,$13,$C2,$15,$16,$C4 ;
-                    db $17,$15,$CF,$1A,$16,$C2,$20,$16 ;
-                    db $CE,$23,$15,$C4,$26,$16,$C2,$2A ;
-                    db $16,$C4,$2D,$15,$AC,$34,$17,$AD ;
-                    db $39,$17,$CF,$3B,$16,$C2,$41,$16 ;
-                    db $AD,$44,$15,$C2,$4E,$16,$AD,$51 ;
-                    db $15,$C2,$59,$18,$C2,$5B,$16,$AD ;
-                    db $5E,$15,$CF,$60,$16,$C2,$66,$16 ;
-                    db $AD,$6B,$15,$C2,$76,$16,$AD,$7B ;
-                    db $15,$C5,$7F,$16,$CF,$80,$16,$C2 ;
-                    db $86,$16,$AD,$8B,$15,$CF,$8F,$16 ;
-                    db $CE,$96,$16,$AD,$98,$15,$C5,$9A ;
-                    db $14,$CF,$9B,$16,$C2,$A9,$18,$C3 ;
-                    db $B1,$14,$AD,$B5,$13,$C4,$B7,$12 ;
-                    db $C5,$B8,$12,$C5,$B9,$15,$FF,$01 ;
-                    db $0E,$0D,$08,$FF,$01,$0E,$0D,$06 ;
-                    db $FF,$01,$0E,$0D,$08,$FF,$01,$0E ;
-                    db $0D,$08,$FF,$01,$0E,$0D,$07,$FF ;
-                    db $01,$0E,$0D,$07,$FF,$01,$D3,$00 ;
-                    db $11,$B8,$01,$03,$AA,$3E,$0B,$FF ;
-                    db $01,$82,$03,$17,$82,$0C,$17,$BA ;
-                    db $0F,$11,$FF,$01,$4C,$0C,$47,$FF ;
-                    db $01,$4B,$0C,$17,$FF,$01,$4C,$0C ;
-                    db $27,$FF,$01,$82,$0C,$17,$D6,$0D ;
-                    db $09,$BA,$0E,$17,$FF,$01,$D3,$00 ;
-                    db $50,$2D,$04,$19,$6D,$19,$10,$6D ;
-                    db $1D,$10,$3E,$10,$18,$6C,$39,$11 ;
-                    db $3E,$31,$18,$74,$43,$11,$74,$45 ;
-                    db $11,$3E,$4C,$18,$92,$55,$11,$92 ;
-                    db $59,$12,$6D,$63,$10,$27,$72,$13 ;
-                    db $FF,$01,$41,$38,$15,$FF,$FF,$FF ;
-                    db $FF ;
+DATA_27F6A7:    db $00,$82,$69,$18,$41,$78,$15,$FF              ;
+                db $01,$41,$18,$15,$FF,$00,$D4,$00              ;
+                db $2E,$39,$0E,$0A,$33,$1D,$08,$33              ;
+                db $23,$06,$A6,$24,$05,$66,$2E,$13              ;
+                db $39,$36,$02,$A6,$3C,$07,$6E,$49              ;
+                db $08,$39,$55,$18,$39,$58,$18,$A6              ;
+                db $5A,$03,$A6,$60,$09,$A6,$64,$04              ;
+                db $A1,$66,$11,$A6,$6A,$08,$A2,$6E              ;
+                db $07,$39,$71,$04,$A6,$72,$04,$A6              ;
+                db $78,$07,$FF,$01,$81,$0B,$16,$81              ;
+                db $07,$18,$BA,$0D,$14,$FF,$01,$81              ;
+                db $0B,$16,$BA,$0D,$14,$FF,$00,$41              ;
+                db $48,$15,$FF,$00,$6E,$0A,$14,$72              ;
+                db $11,$05,$72,$1B,$05,$73,$1F,$09              ;
+                db $72,$25,$05,$72,$29,$11,$72,$2D              ;
+                db $11,$73,$3A,$16,$73,$3D,$16,$6E              ;
+                db $55,$11,$72,$61,$05,$72,$6B,$05              ;
+                db $72,$75,$05,$72,$7F,$05,$41,$B8              ;
+                db $15,$FF,$00,$6B,$12,$17,$6B,$19              ;
+                db $15,$6B,$1F,$16,$6B,$24,$18,$6B              ;
+                db $29,$17,$6B,$2E,$16,$6D,$34,$19              ;
+                db $6B,$40,$18,$59,$47,$19,$72,$56              ;
+                db $11,$59,$5D,$19,$72,$64,$11,$59              ;
+                db $83,$14,$A0,$9E,$17,$6B,$A1,$18              ;
+                db $A0,$A4,$18,$6B,$B8,$19,$41,$B8              ;
+                db $15,$FF,$00,$89,$09,$19,$89,$19              ;
+                db $19,$6D,$22,$17,$89,$34,$19,$72              ;
+                db $34,$13,$72,$35,$19,$72,$43,$11              ;
+                db $72,$43,$17,$6D,$52,$11,$6D,$52              ;
+                db $13,$6D,$64,$13,$6D,$69,$15,$6D              ;
+                db $6F,$17,$41,$98,$15,$89,$9A,$19              ;
+                db $FF,$00,$59,$0F,$13,$6D,$12,$17              ;
+                db $59,$29,$13,$59,$29,$19,$59,$47              ;
+                db $12,$6C,$42,$17,$6C,$48,$17,$6B              ;
+                db $63,$13,$6C,$62,$13,$6C,$6F,$14              ;
+                db $6B,$6C,$13,$6B,$6C,$18,$6B,$7D              ;
+                db $14,$6B,$80,$17,$6C,$8B,$13,$6C              ;
+                db $8D,$13,$FF,$00,$3F,$11,$19,$3F              ;
+                db $1A,$19,$3F,$1C,$19,$8A,$1F,$11              ;
+                db $3F,$28,$19,$3F,$2E,$16,$8A,$3D              ;
+                db $11,$2F,$42,$12,$3F,$4C,$16,$8A              ;
+                db $60,$01,$2F,$6D,$01,$8A,$76,$01              ;
+                db $8A,$7A,$02,$8A,$7E,$03,$8A,$86              ;
+                db $03,$4B,$AD,$18,$FF,$00,$D3,$04              ;
+                db $31,$2F,$0C,$11,$2F,$1E,$11,$FF              ;
+                db $00,$73,$11,$17,$6D,$14,$16,$77              ;
+                db $16,$0A,$6D,$1A,$16,$6D,$23,$17              ;
+                db $82,$30,$18,$6E,$3A,$19,$6D,$44              ;
+                db $17,$82,$4E,$15,$6F,$55,$04,$6F              ;
+                db $58,$04,$A4,$5E,$15,$82,$6B,$15              ;
+                db $82,$95,$18,$41,$98,$15,$FF,$00              ;
+                db $81,$18,$09,$6B,$18,$11,$6B,$18              ;
+                db $15,$6B,$25,$18,$6B,$29,$18,$6C              ;
+                db $2D,$08,$6C,$31,$0A,$FF,$00,$41              ;
+                db $18,$15,$FF,$00,$41,$18,$15,$FF              ;
+                db $00,$D5,$0A,$16,$FF,$00,$4C,$4C              ;
+                db $27,$FF,$00,$9E,$06,$17,$9E,$0B              ;
+                db $15,$9E,$0D,$11,$53,$12,$0F,$53              ;
+                db $18,$0F,$9E,$1E,$12,$9E,$24,$16              ;
+                db $9E,$2C,$15,$9E,$2E,$11,$3F,$28              ;
+                db $17,$9E,$32,$11,$9E,$36,$12,$53              ;
+                db $3A,$0F,$2F,$47,$17,$9E,$4B,$14              ;
+                db $9E,$4E,$17,$9E,$51,$14,$53,$56              ;
+                db $0F,$53,$5E,$0F,$9E,$63,$11,$2F              ;
+                db $6F,$15,$9E,$6A,$10,$9E,$71,$12              ;
+                db $9E,$78,$13,$53,$79,$0F,$3F,$7E              ;
+                db $17,$FF,$00,$8A,$09,$04,$5B,$14              ;
+                db $15,$5A,$1C,$15,$5B,$23,$15,$8A              ;
+                db $24,$04,$5A,$28,$15,$4B,$4D,$17              ;
+                db $FF,$00,$8A,$3E,$12,$5A,$45,$15              ;
+                db $8A,$4B,$12,$FF,$00,$9E,$12,$12              ;
+                db $9E,$18,$12,$9E,$1F,$12,$9E,$27              ;
+                db $11,$5B,$38,$15,$5A,$47,$16,$9E              ;
+                db $51,$11,$9E,$53,$14,$9E,$5E,$11              ;
+                db $5A,$5B,$17,$3F,$6B,$18,$4B,$9D              ;
+                db $17,$FF,$00,$D3,$01,$30,$D3,$1C              ;
+                db $30,$D6,$44,$0C,$BA,$45,$11,$52              ;
+                db $4A,$18,$FF,$00,$32,$2A,$17,$32              ;
+                db $2D,$13,$31,$2D,$15,$31,$30,$11              ;
+                db $32,$3A,$15,$31,$3D,$13,$32,$42              ;
+                db $18,$32,$43,$13,$31,$45,$16,$FF              ;
+                db $00,$5A,$11,$14,$77,$17,$13,$77              ;
+                db $1F,$17,$5A,$25,$14,$77,$29,$13              ;
+                db $4C,$5C,$28,$FF,$00,$5A,$10,$14              ;
+                db $5B,$19,$15,$3F,$14,$18,$8A,$2B              ;
+                db $11,$2F,$3F,$14,$3F,$36,$18,$8A              ;
+                db $48,$11,$2F,$4F,$14,$3F,$5C,$18              ;
+                db $3F,$55,$18,$8A,$6B,$11,$3F,$68              ;
+                db $18,$3F,$72,$18,$3F,$74,$18,$3F              ;
+                db $7D,$18,$4C,$AD,$17,$FF,$00,$77              ;
+                db $21,$17,$77,$3A,$17,$77,$4C,$17              ;
+                db $FF,$00,$9E,$0D,$13,$8A,$16,$12              ;
+                db $5B,$11,$14,$5A,$23,$14,$5B,$2A              ;
+                db $0F,$8A,$32,$0D,$5A,$3B,$0F,$5A              ;
+                db $3B,$14,$2F,$49,$11,$8A,$4D,$0F              ;
+                db $5B,$4C,$15,$8A,$5B,$0F,$5B,$5C              ;
+                db $17,$8A,$70,$0F,$FF,$00,$4B,$3C              ;
+                db $17,$FF,$00,$98,$06,$14,$98,$17              ;
+                db $11,$98,$2A,$0A,$98,$37,$14,$98              ;
+                db $47,$14,$98,$56,$11,$98,$6A,$14              ;
+                db $98,$73,$0A,$FF,$00,$A2,$0C,$14              ;
+                db $A2,$13,$17,$2F,$14,$10,$5B,$18              ;
+                db $15,$A2,$1D,$15,$A6,$25,$16,$A2              ;
+                db $2A,$13,$A2,$31,$18,$8A,$35,$0F              ;
+                db $A2,$39,$14,$2F,$46,$16,$A2,$48              ;
+                db $18,$A2,$4C,$18,$A0,$58,$15,$A3              ;
+                db $58,$11,$A6,$60,$14,$A2,$66,$16              ;
+                db $8A,$72,$0F,$2F,$7F,$10,$2F,$83              ;
+                db $14,$A2,$87,$19,$FF,$00,$5A,$10              ;
+                db $15,$3F,$11,$18,$3F,$13,$18,$5A              ;
+                db $19,$15,$8A,$1A,$0F,$4B,$3C,$27              ;
+                db $FF,$00,$60,$13,$15,$51,$1F,$15              ;
+                db $2F,$26,$12,$2F,$2D,$12,$31,$38              ;
+                db $17,$31,$3E,$15,$32,$3E,$17,$2F              ;
+                db $44,$16,$31,$4D,$15,$5A,$54,$15              ;
+                db $8A,$5A,$10,$5B,$64,$14,$5F,$7C              ;
+                db $16,$31,$7A,$15,$31,$81,$15,$4B              ;
+                db $AC,$37,$FF,$00,$D3,$08,$40,$2F              ;
+                db $04,$14,$2F,$0C,$14,$2F,$0D,$17              ;
+                db $FF,$00,$9E,$0C,$15,$3A,$09,$16              ;
+                db $9E,$10,$13,$9E,$15,$0F,$9E,$1A              ;
+                db $09,$9E,$1D,$06,$30,$46,$02,$5B              ;
+                db $48,$08,$5B,$48,$12,$5A,$41,$0D              ;
+                db $4C,$7C,$17,$FF,$00,$51,$08,$16              ;
+                db $5B,$17,$14,$5B,$1E,$15,$5F,$25              ;
+                db $0A,$5B,$30,$12,$FF,$00,$08,$0C              ;
+                db $0B,$4C,$6C,$17,$FF,$00,$8A,$0C              ;
+                db $04,$5B,$14,$15,$5A,$1C,$15,$5B              ;
+                db $23,$15,$8A,$24,$04,$5A,$28,$15              ;
+                db $FF,$00,$8A,$0A,$11,$5B,$10,$14              ;
+                db $FF,$00,$3F,$2A,$16,$3F,$39,$16              ;
+                db $3F,$49,$16,$3F,$54,$19,$3F,$5B              ;
+                db $19,$3F,$62,$12,$3F,$63,$12,$3F              ;
+                db $6C,$15,$5B,$6E,$14,$4B,$8D,$27              ;
+                db $FF,$00,$30,$10,$10,$30,$18,$10              ;
+                db $30,$27,$14,$8B,$22,$14,$8B,$30              ;
+                db $15,$30,$32,$10,$30,$3A,$11,$8C              ;
+                db $41,$10,$30,$4C,$14,$8A,$52,$13              ;
+                db $30,$53,$14,$8C,$5C,$15,$4B,$8C              ;
+                db $17,$FF,$00,$5A,$11,$16,$5F,$1C              ;
+                db $16,$60,$28,$16,$3F,$31,$18,$5A              ;
+                db $35,$17,$8F,$4C,$10,$8B,$50,$18              ;
+                db $8A,$52,$10,$8F,$5C,$10,$2F,$83              ;
+                db $17,$3F,$87,$13,$8A,$9A,$10,$5F              ;
+                db $A0,$15,$3F,$A8,$13,$08,$AA,$13              ;
+                db $5B,$B4,$17,$3F,$B9,$14,$4B,$EC              ;
+                db $38,$FF,$00,$9E,$14,$13,$9E,$1E              ;
+                db $11,$8A,$2E,$10,$9E,$32,$12,$9E              ;
+                db $38,$13,$08,$3B,$15,$9E,$3C,$12              ;
+                db $9E,$49,$13,$9E,$4E,$12,$8A,$52              ;
+                db $10,$9E,$57,$13,$9E,$5C,$10,$9E              ;
+                db $5E,$13,$9E,$69,$12,$08,$74,$16              ;
+                db $5E,$A2,$14,$08,$AA,$13,$2F,$B2              ;
+                db $12,$60,$B7,$16,$08,$C4,$13,$8B              ;
+                db $CD,$18,$08,$CE,$13,$FF,$00,$D0              ;
+                db $18,$14,$D0,$1D,$14,$D0,$22,$14              ;
+                db $2E,$31,$10,$30,$4E,$15,$5A,$55              ;
+                db $13,$5A,$58,$0D,$5A,$5B,$07,$9E              ;
+                db $6A,$09,$9E,$6E,$09,$9E,$74,$09              ;
+                db $9E,$7A,$09,$51,$89,$12,$8B,$9A              ;
+                db $0F,$9E,$A1,$13,$5A,$A8,$18,$9E              ;
+                db $AA,$13,$9E,$AF,$13,$18,$CC,$0B              ;
+                db $18,$EC,$0B,$FF,$00,$3F,$04,$18              ;
+                db $3F,$0A,$18,$8C,$16,$10,$D0,$40              ;
+                db $15,$75,$62,$16,$75,$6C,$16,$75              ;
+                db $73,$17,$75,$7E,$15,$D0,$A3,$16              ;
+                db $75,$D1,$17,$75,$D6,$16,$75,$D9              ;
+                db $16,$75,$E1,$14,$75,$E5,$17,$FF              ;
+                db $00,$B8,$03,$03,$AE,$0E,$09,$BE              ;
+                db $09,$09,$BE,$0D,$0C,$BE,$15,$0C              ;
+                db $BE,$1D,$08,$AB,$16,$02,$AC,$21              ;
+                db $0A,$BF,$29,$0A,$BE,$26,$07,$BE              ;
+                db $29,$07,$AA,$28,$0D,$AB,$2E,$03              ;
+                db $BE,$34,$0C,$BE,$38,$06,$BE,$3C              ;
+                db $09,$AE,$4F,$0A,$BE,$43,$0D,$BE              ;
+                db $46,$0D,$AB,$4C,$04,$AE,$5E,$08              ;
+                db $BE,$5A,$0F,$AB,$58,$03,$AE,$64              ;
+                db $08,$AE,$69,$08,$BE,$60,$0C,$AA              ;
+                db $64,$0F,$AE,$72,$08,$AE,$77,$08              ;
+                db $AB,$7B,$03,$BF,$80,$06,$AB,$86              ;
+                db $04,$AB,$96,$02,$FF,$00,$09,$16              ;
+                db $14,$FF,$00,$0E,$0D,$08,$FF,$00              ;
+                db $D3,$00,$03,$C4,$17,$0F,$AC,$18              ;
+                db $0D,$C8,$24,$15,$C8,$27,$15,$BC              ;
+                db $2D,$0C,$CA,$38,$07,$CB,$3C,$08              ;
+                db $C8,$44,$0F,$BF,$49,$0A,$CA,$4E              ;
+                db $0D,$CA,$5D,$0A,$C9,$5F,$10,$BC              ;
+                db $5A,$0E,$CA,$61,$0A,$C9,$62,$10              ;
+                db $CB,$66,$0A,$C8,$65,$10,$CB,$6A              ;
+                db $0A,$C8,$68,$10,$BC,$70,$0C,$FF              ;
+                db $00,$D3,$00,$0B,$C4,$13,$0D,$AA              ;
+                db $16,$13,$C4,$18,$0D,$BC,$1E,$0C              ;
+                db $C4,$24,$10,$C6,$28,$09,$AA,$29              ;
+                db $14,$BC,$2C,$0D,$C6,$2D,$09,$BF              ;
+                db $38,$0A,$AA,$3D,$14,$C5,$47,$12              ;
+                db $BC,$4D,$10,$C5,$4F,$12,$FF,$00              ;
+                db $D3,$00,$04,$BC,$15,$0D,$BC,$18              ;
+                db $0B,$C9,$21,$0A,$BC,$29,$0B,$BC              ;
+                db $2F,$0D,$BC,$33,$0A,$BC,$36,$0F              ;
+                db $BC,$42,$11,$BC,$42,$13,$BC,$42              ;
+                db $15,$BC,$53,$10,$BC,$53,$12,$BE              ;
+                db $63,$0F,$BE,$65,$0F,$BE,$67,$0F              ;
+                db $BC,$6E,$0C,$BC,$71,$0B,$FF,$00              ;
+                db $D3,$00,$01,$BE,$19,$11,$BE,$1B              ;
+                db $11,$BE,$1D,$11,$BC,$1F,$0E,$C8              ;
+                db $29,$0F,$CB,$2D,$10,$CB,$30,$10              ;
+                db $BC,$37,$0E,$CA,$3B,$0A,$CA,$3F              ;
+                db $0A,$C8,$3C,$10,$C8,$40,$10,$AE              ;
+                db $4B,$0C,$B1,$4D,$11,$AC,$54,$10              ;
+                db $BE,$66,$0C,$BE,$68,$0C,$BE,$6A              ;
+                db $0C,$AC,$6B,$11,$FF,$00,$D3,$00              ;
+                db $05,$B1,$14,$0B,$AA,$15,$0F,$AA              ;
+                db $14,$11,$B1,$1B,$0D,$AE,$26,$0A              ;
+                db $9D,$29,$0D,$9D,$2C,$0D,$9D,$2F              ;
+                db $0D,$B1,$39,$11,$AC,$3F,$11,$B2              ;
+                db $3D,$0E,$BE,$3A,$0B,$B2,$4A,$0E              ;
+                db $B1,$49,$0A,$B2,$55,$0C,$AC,$57              ;
+                db $0E,$B1,$52,$11,$9D,$58,$11,$B1              ;
+                db $6B,$0B,$AC,$6A,$0D,$B1,$68,$10              ;
+                db $9D,$62,$11,$AA,$77,$13,$FF,$00              ;
+                db $D3,$00,$06,$AA,$13,$0F,$AA,$11              ;
+                db $11,$AE,$18,$0F,$AE,$2E,$0D,$AE              ;
+                db $34,$0F,$AB,$3B,$0A,$B1,$42,$12              ;
+                db $9D,$49,$14,$9D,$53,$15,$B2,$55              ;
+                db $15,$9D,$57,$15,$AC,$5D,$12,$B1              ;
+                db $6A,$06,$FF,$00,$D3,$00,$0C,$9D              ;
+                db $17,$07,$9D,$1E,$07,$AE,$14,$08              ;
+                db $AA,$15,$0A,$AE,$2E,$08,$AA,$30              ;
+                db $0D,$9D,$33,$08,$AA,$3F,$0E,$9D              ;
+                db $43,$0B,$BE,$55,$0D,$BE,$5B,$0D              ;
+                db $AE,$5A,$0A,$BE,$69,$0A,$AE,$75              ;
+                db $0B,$BE,$85,$0D,$BE,$8B,$09,$AA              ;
+                db $8A,$0D,$AA,$90,$09,$AE,$96,$0A              ;
+                db $AE,$A0,$08,$AE,$AA,$0B,$AE,$BD              ;
+                db $0D,$AE,$C1,$0A,$AE,$C4,$07,$AA              ;
+                db $DB,$0D,$FF,$01,$D3,$00,$0D,$B1              ;
+                db $0B,$15,$AD,$0E,$17,$B1,$11,$16              ;
+                db $AD,$14,$19,$B1,$18,$18,$AD,$22              ;
+                db $17,$B1,$26,$16,$AD,$2E,$17,$B1              ;
+                db $31,$16,$B1,$3A,$13,$AD,$43,$14              ;
+                db $B1,$45,$15,$B1,$4C,$16,$AD,$51              ;
+                db $16,$B1,$53,$17,$B1,$64,$16,$B1              ;
+                db $64,$17,$AD,$68,$11,$B1,$6A,$12              ;
+                db $B1,$74,$18,$AD,$7C,$17,$B1,$7F              ;
+                db $16,$AD,$84,$12,$B1,$87,$11,$AD              ;
+                db $8F,$19,$B1,$92,$18,$AD,$96,$14              ;
+                db $B1,$99,$13,$AD,$A3,$16,$B1,$A6              ;
+                db $15,$AA,$BE,$17,$FF,$01,$D3,$00              ;
+                db $0E,$BE,$0D,$13,$C2,$08,$14,$C6              ;
+                db $15,$12,$C6,$19,$12,$C2,$1C,$14              ;
+                db $BE,$20,$13,$CF,$22,$12,$BE,$2A              ;
+                db $12,$CD,$2F,$12,$C2,$42,$15,$C2              ;
+                db $47,$13,$BE,$4C,$12,$BE,$52,$11              ;
+                db $BE,$57,$13,$BE,$5C,$12,$CD,$5F              ;
+                db $12,$C3,$73,$13,$BE,$78,$12,$CE              ;
+                db $7F,$15,$C2,$80,$14,$C2,$81,$13              ;
+                db $C2,$82,$12,$CD,$8F,$12,$50,$95              ;
+                db $13,$50,$97,$11,$FF,$01,$D3,$00              ;
+                db $14,$C2,$0D,$16,$C6,$15,$10,$C4              ;
+                db $1A,$16,$C4,$1B,$16,$C4,$1C,$16              ;
+                db $C7,$21,$11,$CF,$23,$16,$C2,$2B              ;
+                db $16,$C2,$2C,$15,$C7,$34,$10,$AD              ;
+                db $35,$17,$AD,$3D,$17,$AD,$41,$17              ;
+                db $AD,$49,$17,$AD,$4D,$17,$C7,$53              ;
+                db $11,$C6,$58,$11,$C7,$5A,$11,$C4              ;
+                db $61,$16,$C4,$67,$16,$C5,$68,$16              ;
+                db $CF,$6D,$16,$C4,$73,$16,$C2,$76              ;
+                db $15,$C2,$79,$13,$AD,$7D,$13,$FF              ;
+                db $01,$D3,$00,$13,$C2,$15,$16,$C4              ;
+                db $17,$15,$CF,$1A,$16,$C2,$20,$16              ;
+                db $CE,$23,$15,$C4,$26,$16,$C2,$2A              ;
+                db $16,$C4,$2D,$15,$AC,$34,$17,$AD              ;
+                db $39,$17,$CF,$3B,$16,$C2,$41,$16              ;
+                db $AD,$44,$15,$C2,$4E,$16,$AD,$51              ;
+                db $15,$C2,$59,$18,$C2,$5B,$16,$AD              ;
+                db $5E,$15,$CF,$60,$16,$C2,$66,$16              ;
+                db $AD,$6B,$15,$C2,$76,$16,$AD,$7B              ;
+                db $15,$C5,$7F,$16,$CF,$80,$16,$C2              ;
+                db $86,$16,$AD,$8B,$15,$CF,$8F,$16              ;
+                db $CE,$96,$16,$AD,$98,$15,$C5,$9A              ;
+                db $14,$CF,$9B,$16,$C2,$A9,$18,$C3              ;
+                db $B1,$14,$AD,$B5,$13,$C4,$B7,$12              ;
+                db $C5,$B8,$12,$C5,$B9,$15,$FF,$01              ;
+                db $0E,$0D,$08,$FF,$01,$0E,$0D,$06              ;
+                db $FF,$01,$0E,$0D,$08,$FF,$01,$0E              ;
+                db $0D,$08,$FF,$01,$0E,$0D,$07,$FF              ;
+                db $01,$0E,$0D,$07,$FF,$01,$D3,$00              ;
+                db $11,$B8,$01,$03,$AA,$3E,$0B,$FF              ;
+                db $01,$82,$03,$17,$82,$0C,$17,$BA              ;
+                db $0F,$11,$FF,$01,$4C,$0C,$47,$FF              ;
+                db $01,$4B,$0C,$17,$FF,$01,$4C,$0C              ;
+                db $27,$FF,$01,$82,$0C,$17,$D6,$0D              ;
+                db $09,$BA,$0E,$17,$FF,$01,$D3,$00              ;
+                db $50,$2D,$04,$19,$6D,$19,$10,$6D              ;
+                db $1D,$10,$3E,$10,$18,$6C,$39,$11              ;
+                db $3E,$31,$18,$74,$43,$11,$74,$45              ;
+                db $11,$3E,$4C,$18,$92,$55,$11,$92              ;
+                db $59,$12,$6D,$63,$10,$27,$72,$13              ;
+                db $FF,$01,$41,$38,$15,$FF,$FF,$FF              ;
+                db $FF                                          ;
