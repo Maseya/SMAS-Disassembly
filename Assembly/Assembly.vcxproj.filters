@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="_ROM.asm" />
+    <None Include="b00.asm" />
+    <None Include="b0A.asm" />
+    <None Include="b0B.asm" />
+    <None Include="b0C.asm" />
+    <None Include="b0D.asm" />
+    <None Include="b0E.asm" />
+    <None Include="b0F.asm" />
+    <None Include="b01.asm" />
+    <None Include="b1A.asm" />
+    <None Include="b1B.asm" />
+    <None Include="b1C.asm" />
+    <None Include="b1D.asm" />
+    <None Include="b1E.asm" />
+    <None Include="b1F.asm" />
+    <None Include="b02.asm" />
+    <None Include="b2A.asm" />
+    <None Include="b2B.asm" />
+    <None Include="b2C.asm" />
+    <None Include="b2D.asm" />
+    <None Include="b2E.asm" />
+    <None Include="b2F.asm" />
+    <None Include="b03.asm" />
+    <None Include="b3A.asm" />
+    <None Include="b3B.asm" />
+    <None Include="b3C.asm" />
+    <None Include="b3D.asm" />
+    <None Include="b3E.asm" />
+    <None Include="b3F.asm" />
+    <None Include="b04.asm" />
+    <None Include="b05.asm" />
+    <None Include="b06.asm" />
+    <None Include="b07.asm" />
+    <None Include="b08.asm" />
+    <None Include="b09.asm" />
+    <None Include="b10.asm" />
+    <None Include="b11.asm" />
+    <None Include="b12.asm" />
+    <None Include="b13.asm" />
+    <None Include="b14.asm" />
+    <None Include="b15.asm" />
+    <None Include="b16.asm" />
+    <None Include="b17.asm" />
+    <None Include="b18.asm" />
+    <None Include="b19.asm" />
+    <None Include="b20.asm" />
+    <None Include="b21.asm" />
+    <None Include="b22.asm" />
+    <None Include="b23.asm" />
+    <None Include="b24.asm" />
+    <None Include="b25.asm" />
+    <None Include="b26.asm" />
+    <None Include="b27.asm" />
+    <None Include="b28.asm" />
+    <None Include="b29.asm" />
+    <None Include="b30.asm" />
+    <None Include="b31.asm" />
+    <None Include="b32.asm" />
+    <None Include="b33.asm" />
+    <None Include="b34.asm" />
+    <None Include="b35.asm" />
+    <None Include="b36.asm" />
+    <None Include="b37.asm" />
+    <None Include="b38.asm" />
+    <None Include="b39.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="SPC-700.txt" />
+  </ItemGroup>
+</Project>
