@@ -8,15 +8,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SMASDIS", "SMASDIS\SMASDIS.vcxproj", "{5D84CCF8-5B0D-4139-AE41-C1FACBB6115C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assembly", "Assembly\Assembly.vcxproj", "{5D84CCF8-5B0D-4139-AE41-C1FACBB6115C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Default|SNES = Default|SNES
+		Default|x86 = Default|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5D84CCF8-5B0D-4139-AE41-C1FACBB6115C}.Default|SNES.ActiveCfg = Default|Win32
-		{5D84CCF8-5B0D-4139-AE41-C1FACBB6115C}.Default|SNES.Build.0 = Default|Win32
+		{5D84CCF8-5B0D-4139-AE41-C1FACBB6115C}.Default|x86.ActiveCfg = Default|Win32
+		{5D84CCF8-5B0D-4139-AE41-C1FACBB6115C}.Default|x86.Build.0 = Default|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
