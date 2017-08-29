@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Default|Win32">
+      <Configuration>Default</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{5D84CCF8-5B0D-4139-AE41-C1FACBB6115C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Default|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Default|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Default|Win32'">
+    <NMakeOutput>$(SolutionDir)SMAS.sfc</NMakeOutput>
+    <NMakePreprocessorDefinitions>
+    </NMakePreprocessorDefinitions>
+    <NMakeBuildCommandLine>$(SolutionDir)Assembly\asar.exe $(SolutionDir)Assembly\_ROM.asm $(NMakeOutput)</NMakeBuildCommandLine>
+    <OutDir>$(SolutionDir)Output\</OutDir>
+    <IntDir>$(OutDir)</IntDir>
+    <ExecutablePath />
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+    <LibraryWPath />
+    <SourcePath />
+    <ExcludePath />
+    <NMakeCleanCommandLine>if EXIST $(NMakeOutput) del $(NMakeOutput)</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>if EXIST $(NMakeOutput) del $(NMakeOutput)
+$(SolutionDir)Assembly\asar.exe $(SolutionDir)Assembly\_ROM.asm $(NMakeOutput)</NMakeReBuildCommandLine>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="b00.asm" />
+    <None Include="b01.asm" />
+    <None Include="b02.asm" />
+    <None Include="b03.asm" />
+    <None Include="b04.asm" />
+    <None Include="b05.asm" />
+    <None Include="b06.asm" />
+    <None Include="b07.asm" />
+    <None Include="b08.asm" />
+    <None Include="b09.asm" />
+    <None Include="b0A.asm" />
+    <None Include="b0B.asm" />
+    <None Include="b0C.asm" />
+    <None Include="b0D.asm" />
+    <None Include="b0E.asm" />
+    <None Include="b0F.asm" />
+    <None Include="b10.asm" />
+    <None Include="b11.asm" />
+    <None Include="b12.asm" />
+    <None Include="b13.asm" />
+    <None Include="b14.asm" />
+    <None Include="b15.asm" />
+    <None Include="b16.asm" />
+    <None Include="b17.asm" />
+    <None Include="b18.asm" />
+    <None Include="b19.asm" />
+    <None Include="b1A.asm" />
+    <None Include="b1B.asm" />
+    <None Include="b1C.asm" />
+    <None Include="b1D.asm" />
+    <None Include="b1E.asm" />
+    <None Include="b1F.asm" />
+    <None Include="b20.asm" />
+    <None Include="b21.asm" />
+    <None Include="b22.asm" />
+    <None Include="b23.asm" />
+    <None Include="b24.asm" />
+    <None Include="b25.asm" />
+    <None Include="b26.asm" />
+    <None Include="b27.asm" />
+    <None Include="b28.asm" />
+    <None Include="b29.asm" />
+    <None Include="b2A.asm" />
+    <None Include="b2B.asm" />
+    <None Include="b2C.asm" />
+    <None Include="b2D.asm" />
+    <None Include="b2E.asm" />
+    <None Include="b2F.asm" />
+    <None Include="b30.asm" />
+    <None Include="b31.asm" />
+    <None Include="b32.asm" />
+    <None Include="b33.asm" />
+    <None Include="b34.asm" />
+    <None Include="b35.asm" />
+    <None Include="b36.asm" />
+    <None Include="b37.asm" />
+    <None Include="b38.asm" />
+    <None Include="b39.asm" />
+    <None Include="b3A.asm" />
+    <None Include="b3B.asm" />
+    <None Include="b3C.asm" />
+    <None Include="b3D.asm" />
+    <None Include="b3E.asm" />
+    <None Include="b3F.asm" />
+    <None Include="_ROM.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="SPC-700.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
