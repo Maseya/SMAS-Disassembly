@@ -9,7 +9,7 @@
 ;;; MiOr              wiiqwertyuiop
 ;;; Dotsarecool       and probably others who I forgot, sorry.
 ;;;
-;;;
+;;; 
 
 ; This bank consists of the Presents screen, the Hall screen and the game selection
 ; as well as other miscellaneous stuff such as setting up the SPC-700
