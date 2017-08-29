@@ -4343,7 +4343,7 @@ CODE_03AB2F:        4C 77 AB      JMP CODE_03AB77           ;Render
 
 DATA_03AB32:        db $06,$07,$08
 
-DATA_03AB35:        db $FD,$10,$8D                          ;Bowser bridge map16 tiles: Axe, Axechainrope Thing, Bridge
+DATA_03AB35:        db $FD,$10,$8D                          ;Bowser bridge map16 tiles: Axe, Bridge Chain, Bridge
 
 ;
 CODE_03AB38:        A0 0C         LDY #$0C                  ;
@@ -5850,7 +5850,7 @@ CODE_03B70E:        A9 01         LDA #$01                  ;\Set the "Mario thr
 CODE_03B710:        95 C6         STA $C6,x                 ;/
 CODE_03B712:        AC 02 02      LDY $0202                 ;\Mario's direction
 CODE_03B715:        88            DEY                       ; |Decrease with 1
-CODE_03B716:        B9 E4 B6      LDA DATA_03B6E4,y               ; |Load Horizontal speeds
+CODE_03B716:        B9 E4 B6      LDA DATA_03B6E4,y         ; |Load Horizontal speeds
 CODE_03B719:        95 68         STA $68,x                 ;/Store into Fireball horizontal speed
 CODE_03B71B:        A9 04         LDA #$04                  ;\Y-speed of the fireball when it gets thrown
 CODE_03B71D:        95 AB         STA $AB,x                 ;/Which is of course, downwards
@@ -6437,7 +6437,7 @@ CODE_03BBF7:        29 F7         AND #$F7                  ;
 CODE_03BBF9:        99 29 00      STA $0029,y               ;
 CODE_03BBFC:        B6 47         LDX $47,y                 ;\
 CODE_03BBFE:        CA            DEX                       ; |
-CODE_03BBFF:        BD 8C BB      LDA DATA_03BB8C,x               ; | Hammer bros hammer x-speed depending on direction
+CODE_03BBFF:        BD 8C BB      LDA DATA_03BB8C,x         ; | Hammer bros hammer x-speed depending on direction
 CODE_03BC02:        A6 9E         LDX $9E                   ; |
 CODE_03BC04:        95 6E         STA $6E,x                 ;/
 CODE_03BC06:        D6 39         DEC $39,x                 ;
@@ -7110,7 +7110,7 @@ CODE_03C151:        80 00         BRA CODE_03C153           ;
 CODE_03C153:        A0 01         LDY #$01                  ;
 CODE_03C155:        A9 50         LDA #$50                  ;
 CODE_03C157:        85 00         STA $00                   ;
-CODE_03C159:        B9 4D C1      LDA DATA_03C14D,y               ;
+CODE_03C159:        B9 4D C1      LDA DATA_03C14D,y         ;
 CODE_03C15C:        85 02         STA $02                   ;
 CODE_03C15E:        A9 00         LDA #$00                  ;
 CODE_03C160:        4C 8B C1      JMP CODE_03C18B           ;Impose gravity
@@ -7710,61 +7710,61 @@ CODE_03C62C:        6C 04 00      JMP ($0004)               ;/
 
 ;SMB1 SPRITE INIT POINTER TABLE
 
-PNTR_03C62F:        dw CODE_03C6D3            ;00 - Green Koopa
-                    dw CODE_03C6D3            ;01 - Red Koopa (Falls from edges)
-                    dw CODE_03C6D3            ;02 - Buzzy Beetle
-                    dw CODE_03C6E3            ;03 - Red Koopa (Stays on edges)
-                    dw CODE_03C69D            ;04 - Green Koopa (Doesn't move)
-                    dw CODE_03C6ED            ;05 - Hammer Bros
-                    dw CODE_03C69E            ;06 - Goomba
-                    dw CODE_03C705            ;07 - Blooper
-                    dw CODE_03C72E            ;08 - Bullet Bill
-                    dw CODE_03C69D            ;09 - Yellow Paratroopa (Doesn't move)
-                    dw CODE_03C738            ;0A - Green Cheep-Cheep
-                    dw CODE_03C738            ;0B - Red Cheep-Cheep 
-                    dw CODE_03C6A4            ;0C - Podoboo
-                    dw CODE_03CB99            ;0D - piranha Plant
-                    dw CODE_03CBF2            ;0E - Green Paratroopa
-                    dw CODE_03C70B            ;0F - Red Vertical Flying Paratroopa
-                    dw CODE_03C700            ;10 - Green Horizontal Flying Paratroopa
-                    dw CODE_03C749            ;11 - Lakitu
-                    dw CODE_03CBB5            ;12 - Spiny
-                    dw CODE_03C69D            ;13 - Nothing?
-                    dw CODE_03CBB5            ;14 - Red Flying Cheep Cheep Generator
-                    dw CODE_03CBB5            ;15 - Bowser's Fire Generator
-                    dw CODE_03CBB5            ;16 - Firework Generator
-                    dw CODE_03CBB5            ;17 - Bullet Bill/Cheep Cheep Generator
-                    dw CODE_03CBD9            ;18 - Disable Lakitu Generator
-                    dw CODE_03C69D            ;19 - Nothing
-                    dw CODE_03C69D            ;1A - Nothing
-                    dw CODE_03C821            ;1B - Firebar (Clockwise)
-                    dw CODE_03C821            ;1C - Fast Firebar (Clockwise)
-                    dw CODE_03C821            ;1D - Firebar (Counter-Clockwise)
-                    dw CODE_03C821            ;1E - Fast Firebar (Counter-Clockwise)
-                    dw CODE_03C81E            ;1F - Long Firebar (Clockwise)
-                    dw CODE_03C69D            ;20 - Nothing? Related to the firebars above?
-                    dw CODE_03C69D            ;21 - Nothing? Related to the firebars above?
-                    dw CODE_03C69D            ;22 - Nothing? Related to the firebars above?
-                    dw CODE_03C69D            ;23 - Nothing?
-                    dw CODE_03CC00            ;24 - Balance Lift
-                    dw CODE_03CC35            ;25 - Lift (Up then down)
-                    dw CODE_03CC63            ;26 - Lift (Up)
-                    dw CODE_03CC69            ;27 - Lift (Down)
-                    dw CODE_03CC2E            ;28 - Lift (Left then right and so on)
-                    dw CODE_03CC26            ;29 - Lift (Fall)
-                    dw CODE_03CC2E            ;2A - Lift (Right)
-                    dw CODE_03CC6F            ;2B - Short Lift (Up)
-                    dw CODE_03CC7B            ;2C - Short Lift (Down)
-                    dw CODE_03C918            ;2D - Bowser
-                    dw CODE_03BD9B            ;2E - Powerup Object
-                    dw CODE_03B9FD            ;2F - Vine
-                    dw CODE_03C69D            ;30 - Flagpole
-                    dw CODE_03C69D            ;31 - Star Flag
-                    dw CODE_03C69D            ;32 - Springboard
-                    dw CODE_03C69D            ;33 - Bullet Bill (Just shot)
-                    dw CODE_03C69D            ;34 - Warp Zone
-                    dw CODE_03C6C0            ;35 - Toad (World 1-7), Princess (World 8)
-                    dw CODE_03CCA7            ;36 - ??? what is this i dont even?
+PNTR_03C62F:        dw CODE_03C6D3            ; $00 - Green Koopa
+                    dw CODE_03C6D3            ; $01 - Red Koopa (Falls from edges)
+                    dw CODE_03C6D3            ; $02 - Buzzy Beetle
+                    dw CODE_03C6E3            ; $03 - Red Koopa (Stays on edges)
+                    dw CODE_03C69D            ; $04 - Green Koopa (Doesn't move)
+                    dw CODE_03C6ED            ; $05 - Hammer Bros
+                    dw CODE_03C69E            ; $06 - Goomba
+                    dw CODE_03C705            ; $07 - Blooper
+                    dw CODE_03C72E            ; $08 - Bullet Bill
+                    dw CODE_03C69D            ; $09 - Yellow Paratroopa (Doesn't move)
+                    dw CODE_03C738            ; $0A - Green Cheep-Cheep
+                    dw CODE_03C738            ; $0B - Red Cheep-Cheep 
+                    dw CODE_03C6A4            ; $0C - Podoboo
+                    dw CODE_03CB99            ; $0D - piranha Plant
+                    dw CODE_03CBF2            ; $0E - Green Paratroopa
+                    dw CODE_03C70B            ; $0F - Red Vertical Flying Paratroopa
+                    dw CODE_03C700            ; $10 - Green Horizontal Flying Paratroopa
+                    dw CODE_03C749            ; $11 - Lakitu
+                    dw CODE_03CBB5            ; $12 - Spiny
+                    dw CODE_03C69D            ; $13 - Nothing?
+                    dw CODE_03CBB5            ; $14 - Red Flying Cheep Cheep Generator
+                    dw CODE_03CBB5            ; $15 - Bowser's Fire Generator
+                    dw CODE_03CBB5            ; $16 - Firework Generator
+                    dw CODE_03CBB5            ; $17 - Bullet Bill/Cheep Cheep Generator
+                    dw CODE_03CBD9            ; $18 - Disable Lakitu Generator
+                    dw CODE_03C69D            ; $19 - Nothing
+                    dw CODE_03C69D            ; $1A - Nothing
+                    dw CODE_03C821            ; $1B - Firebar (Clockwise)
+                    dw CODE_03C821            ; $1C - Fast Firebar (Clockwise)
+                    dw CODE_03C821            ; $1D - Firebar (Counter-Clockwise)
+                    dw CODE_03C821            ; $1E - Fast Firebar (Counter-Clockwise)
+                    dw CODE_03C81E            ; $1F - Long Firebar (Clockwise)
+                    dw CODE_03C69D            ; $20 - Nothing? Related to the firebars above?
+                    dw CODE_03C69D            ; $21 - Nothing? Related to the firebars above?
+                    dw CODE_03C69D            ; $22 - Nothing? Related to the firebars above?
+                    dw CODE_03C69D            ; $23 - Nothing?
+                    dw CODE_03CC00            ; $24 - Balance Lift
+                    dw CODE_03CC35            ; $25 - Lift (Up then down)
+                    dw CODE_03CC63            ; $26 - Lift (Up)
+                    dw CODE_03CC69            ; $27 - Lift (Down)
+                    dw CODE_03CC2E            ; $28 - Lift (Left then right and so on)
+                    dw CODE_03CC26            ; $29 - Lift (Fall)
+                    dw CODE_03CC2E            ; $2A - Lift (Right)
+                    dw CODE_03CC6F            ; $2B - Short Lift (Up)
+                    dw CODE_03CC7B            ; $2C - Short Lift (Down)
+                    dw CODE_03C918            ; $2D - Bowser
+                    dw CODE_03BD9B            ; $2E - Powerup Object
+                    dw CODE_03B9FD            ; $2F - Vine
+                    dw CODE_03C69D            ; $30 - Flagpole
+                    dw CODE_03C69D            ; $31 - Star Flag
+                    dw CODE_03C69D            ; $32 - Springboard
+                    dw CODE_03C69D            ; $33 - Bullet Bill (Just shot)
+                    dw CODE_03C69D            ; $34 - Warp Zone
+                    dw CODE_03C6C0            ; $35 - Toad (World 1-7), Princess (World 8)
+                    dw CODE_03CCA7            ; $36 - ??? what is this i dont even?
 
 CODE_03C69D:        60            RTS                       ;
 
@@ -8080,20 +8080,20 @@ CODE_03C914:        9D 38 02      STA $0238,x               ;
 CODE_03C917:        60            RTS                       ;
 
 CODE_03C918:        20 46 C9      JSR CODE_03C946           ;Find a free sprite slot and place the sprite in the level.
-CODE_03C91B:        8E 68 03      STX $0368                 ;
+CODE_03C91B:        8E 68 03      STX $0368                 ;Index of Bowser's sprite
 CODE_03C91E:        9C 63 03      STZ $0363                 ;
 CODE_03C921:        9C 69 03      STZ $0369                 ;
 CODE_03C924:        BD 1A 02      LDA $021A,x               ;
 CODE_03C927:        8D 66 03      STA $0366                 ;
-CODE_03C92A:        A9 DF         LDA #$DF                  ;
-CODE_03C92C:        8D 9C 07      STA $079C                 ;
+CODE_03C92A:        A9 DF         LDA #$DF                  ;\
+CODE_03C92C:        8D 9C 07      STA $079C                 ;/ Time until next Bowser's fireball
 CODE_03C92F:        95 47         STA $47,x                 ;
 CODE_03C931:        A9 20         LDA #$20                  ;
 CODE_03C933:        8D 64 03      STA $0364                 ;
 CODE_03C936:        9D 92 07      STA $0792,x               ;
 CODE_03C939:        9D 57 02      STA $0257,x               ;
-CODE_03C93C:        A9 05         LDA #$05                  ;
-CODE_03C93E:        8D 83 02      STA $0283                 ;
+CODE_03C93C:        A9 05         LDA #$05                  ;\
+CODE_03C93E:        8D 83 02      STA $0283                 ;/ Bowser's health vs player's fireballs
 CODE_03C941:        4A            LSR A                     ;
 CODE_03C942:        8D 65 03      STA $0365                 ;
 CODE_03C945:        60            RTS                       ;
@@ -8397,19 +8397,19 @@ CODE_03CBBA:        38            SEC                       ;\ Subtract sprite b
 CODE_03CBBB:        E9 12         SBC #$12                  ;/
 CODE_03CBBD:        0A            ASL A                     ;\ Multiply by 2
 CODE_03CBBE:        A8            TAY                       ;/ To use it as an index
-CODE_03CBBF:        B9 CC CB      LDA PNTR_03CBCC,y               ;\
+CODE_03CBBF:        B9 CC CB      LDA PNTR_03CBCC,y         ;\
 CODE_03CBC2:        85 04         STA $04                   ; |
-CODE_03CBC4:        B9 CD CB      LDA PNTR_03CBCC+1,y               ; | Jump to pointer tables below.
+CODE_03CBC4:        B9 CD CB      LDA PNTR_03CBCC+1,y       ; | Jump to pointer tables below.
 CODE_03CBC7:        85 05         STA $05                   ; |
 CODE_03CBC9:        6C 04 00      JMP ($0004)               ;/
 
 ;MAIN Routines for generators 12-17 (redirected from INIT routine pointer table)
-PNTR_03CBCC:        dw CODE_03C768            ;12 - Lakitu generator (?)
-                    dw CODE_03CBD8            ;13 - Nothing at all (crashes)
-                    dw CODE_03C870            ;14 - Red flying cheep cheep generator
-                    dw CODE_03C976            ;15 - Bowser's fire generator
-                    dw CODE_03CA50            ;16 - Fireworks generator
-                    dw CODE_03CAB1            ;17 - Bullet bill/swimming cheep cheep generator
+PNTR_03CBCC:        dw CODE_03C768            ; $12 - Lakitu generator (?)
+                    dw CODE_03CBD8            ; $13 - Nothing at all (crashes)
+                    dw CODE_03C870            ; $14 - Red flying cheep cheep generator
+                    dw CODE_03C976            ; $15 - Bowser's fire generator
+                    dw CODE_03CA50            ; $16 - Fireworks generator
+                    dw CODE_03CAB1            ; $17 - Bullet bill/swimming cheep cheep generator
 
 CODE_03CBD8:        60            RTS                       ;Return
 
@@ -8536,39 +8536,39 @@ CODE_03CCC1:        6C 04 00      JMP ($0004)               ;/
 
 ;MAIN ROUTINES for sprites $14-$35
 PNTR_03CCC4:        dw CODE_03CD12            ;Sprites $0-$14
-                    dw CODE_03CD73            ;$15 - Bowser's fire generator
-                    dw CODE_03D761            ;$16 - Fireworks generator
-                    dw CODE_03CD08            ;$17 - Bullet Bill/Cheep Cheep generator
-                    dw CODE_03CD08            ;$18 - Disable Lakitu generator (nothing in MAIN though)
-                    dw CODE_03CD08            ;$19 - Nothing
-                    dw CODE_03CD08            ;$1A - Nothing
-                    dw CODE_03CD85            ;$1B - Firebar (Clockwise)
-                    dw CODE_03CD85            ;$1C - Fast Firebar (Clockwise)
-                    dw CODE_03CD85            ;$1D - Firebar (Counter-Clockwise)
-                    dw CODE_03CD85            ;$1E - Fast Firebar (Counter-Clockwise)
-                    dw CODE_03CD85            ;$1F - Long Fire Bar (Clockwise)
-                    dw CODE_03CD85            ;$20 - Nothing? Related to the firebars above?
-                    dw CODE_03CD85            ;$21 - Nothing? Related to the firebars above?
-                    dw CODE_03CD85            ;$22 - Nothing? Related to the firebars above?
-                    dw CODE_03CD08            ;$23 - Nothing.
-                    dw CODE_03CDA3            ;$24 - Lift (Balance)
-                    dw CODE_03CDA3            ;$25 - Lift (Down then Up)
-                    dw CODE_03CDA3            ;$26 - Lift (Continuous up)
-                    dw CODE_03CDA3            ;$27 - Lift (Continuous down)
-                    dw CODE_03CDA3            ;$28 - Lift (Left the Right)
-                    dw CODE_03CDA3            ;$29 - Lift (Fall)
-                    dw CODE_03CDA3            ;$2A - Lift (Continuous right)
-                    dw CODE_03CD8B            ;$2B - Short lift (Up)
-                    dw CODE_03CD8B            ;$2C - Short lift (Down)
-                    dw CODE_03D55E            ;$2D - Bowser
-                    dw CODE_03BDC3            ;$2E - ???
-                    dw CODE_03BA31            ;$2F - ???
-                    dw CODE_03CD08            ;$30 - Flagpole?
-                    dw CODE_03D7AF            ;$31 - Timer->Score and level end controller sprite + end level flag?
-                    dw CODE_03B991            ;$32 - Red springboard
-                    dw CODE_03CD08            ;$33 - Nothing
-                    dw CODE_03B839            ;$34 - Warp Zone
-                    dw CODE_03CD09            ;$35 - Toad/Princess
+                    dw CODE_03CD73            ; $15 - Bowser's fire generator
+                    dw CODE_03D761            ; $16 - Fireworks generator
+                    dw CODE_03CD08            ; $17 - Bullet Bill/Cheep Cheep generator
+                    dw CODE_03CD08            ; $18 - Disable Lakitu generator (nothing in MAIN though)
+                    dw CODE_03CD08            ; $19 - Nothing
+                    dw CODE_03CD08            ; $1A - Nothing
+                    dw CODE_03CD85            ; $1B - Firebar (Clockwise)
+                    dw CODE_03CD85            ; $1C - Fast Firebar (Clockwise)
+                    dw CODE_03CD85            ; $1D - Firebar (Counter-Clockwise)
+                    dw CODE_03CD85            ; $1E - Fast Firebar (Counter-Clockwise)
+                    dw CODE_03CD85            ; $1F - Long Fire Bar (Clockwise)
+                    dw CODE_03CD85            ; $20 - Nothing? Related to the firebars above?
+                    dw CODE_03CD85            ; $21 - Nothing? Related to the firebars above?
+                    dw CODE_03CD85            ; $22 - Nothing? Related to the firebars above?
+                    dw CODE_03CD08            ; $23 - Nothing.
+                    dw CODE_03CDA3            ; $24 - Lift (Balance)
+                    dw CODE_03CDA3            ; $25 - Lift (Down then Up)
+                    dw CODE_03CDA3            ; $26 - Lift (Continuous up)
+                    dw CODE_03CDA3            ; $27 - Lift (Continuous down)
+                    dw CODE_03CDA3            ; $28 - Lift (Left the Right)
+                    dw CODE_03CDA3            ; $29 - Lift (Fall)
+                    dw CODE_03CDA3            ; $2A - Lift (Continuous right)
+                    dw CODE_03CD8B            ; $2B - Short lift (Up)
+                    dw CODE_03CD8B            ; $2C - Short lift (Down)
+                    dw CODE_03D55E            ; $2D - Bowser
+                    dw CODE_03BDC3            ; $2E - ???
+                    dw CODE_03BA31            ; $2F - ???
+                    dw CODE_03CD08            ; $30 - Flagpole?
+                    dw CODE_03D7AF            ; $31 - Timer->Score and level end controller sprite + end level flag?
+                    dw CODE_03B991            ; $32 - Red springboard
+                    dw CODE_03CD08            ; $33 - Nothing
+                    dw CODE_03B839            ; $34 - Warp Zone
+                    dw CODE_03CD09            ; $35 - Toad/Princess 
 
 CODE_03CD08:        60            RTS                       ;
 
@@ -9607,21 +9607,21 @@ CODE_03D557:        4C 79 D6      JMP CODE_03D679           ;
 
 DATA_03D55A:        db $21,$41,$11,$31
 
-CODE_03D55E:        B5 29         LDA $29,x                 ;
-CODE_03D560:        29 20         AND #$20                  ;
-CODE_03D562:        F0 15         BEQ CODE_03D579           ;
-CODE_03D564:        BD 38 02      LDA $0238,x               ;
-CODE_03D567:        C9 E0         CMP #$E0                  ;
-CODE_03D569:        90 92         BCC CODE_03D4FD           ;
-CODE_03D56B:        A2 08         LDX #$08                  ;
-CODE_03D56D:        20 E2 CD      JSR CODE_03CDE2           ; Erase sprite
-CODE_03D570:        CA            DEX                       ;
-CODE_03D571:        10 FA         BPL CODE_03D56D           ;
-CODE_03D573:        8D CB 06      STA $06CB                 ;
-CODE_03D576:        A6 9E         LDX $9E                   ;
+CODE_03D55E:        B5 29         LDA $29,x                 ;\
+CODE_03D560:        29 20         AND #$20                  ; | 
+CODE_03D562:        F0 15         BEQ CODE_03D579           ;/ 
+CODE_03D564:        BD 38 02      LDA $0238,x               ;\
+CODE_03D567:        C9 E0         CMP #$E0                  ; |
+CODE_03D569:        90 92         BCC CODE_03D4FD           ; | If Bowser reaches a certain Y position
+CODE_03D56B:        A2 08         LDX #$08                  ; | 
+CODE_03D56D:        20 E2 CD      JSR CODE_03CDE2           ; | Erase all current sprites
+CODE_03D570:        CA            DEX                       ; |
+CODE_03D571:        10 FA         BPL CODE_03D56D           ;/
+CODE_03D573:        8D CB 06      STA $06CB                 ;Routine always returns #$00, so zero out generators
+CODE_03D576:        A6 9E         LDX $9E                   ;Restore current sprite index
 CODE_03D578:        60            RTS                       ;
 
-CODE_03D579:        9C CB 06      STZ $06CB                 ;
+CODE_03D579:        9C CB 06      STZ $06CB                 ;Zero out generators
 CODE_03D57C:        AD 47 07      LDA $0747                 ;
 CODE_03D57F:        F0 03         BEQ CODE_03D584           ;
 CODE_03D581:        4C 36 D6      JMP CODE_03D636           ;
@@ -9650,9 +9650,9 @@ CODE_03D5B2:        A9 01         LDA #$01                  ;
 CODE_03D5B4:        95 47         STA $47,x                 ;
 CODE_03D5B6:        A9 02         LDA #$02                  ;
 CODE_03D5B8:        8D 65 03      STA $0365                 ;
-CODE_03D5BB:        A9 20         LDA #$20                  ;
-CODE_03D5BD:        9D 92 07      STA $0792,x               ;
-CODE_03D5C0:        8D 9C 07      STA $079C                 ;
+CODE_03D5BB:        A9 20         LDA #$20                  ;\
+CODE_03D5BD:        9D 92 07      STA $0792,x               ; |
+CODE_03D5C0:        8D 9C 07      STA $079C                 ;/ Time until next Bowser's fireball
 CODE_03D5C3:        BD 1A 02      LDA $021A,x               ;
 CODE_03D5C6:        C9 B0         CMP #$B0                  ;
 CODE_03D5C8:        B0 41         BCS CODE_03D60B           ;
@@ -9709,19 +9709,19 @@ CODE_03D639:        C9 01         CMP #$01                  ;
 CODE_03D63B:        D0 0A         BNE CODE_03D647           ;
 CODE_03D63D:        DE 38 02      DEC $0238,x               ;
 CODE_03D640:        20 26 C7      JSR CODE_03C726           ;
-CODE_03D643:        A9 FE         LDA #$FE                  ;
-CODE_03D645:        95 A1         STA $A1,x                 ;
-CODE_03D647:        AD 5F 07      LDA $075F                 ;
-CODE_03D64A:        C9 07         CMP #$07                  ;
-CODE_03D64C:        F0 04         BEQ CODE_03D652           ;
-CODE_03D64E:        C9 05         CMP #$05                  ;
-CODE_03D650:        B0 27         BCS CODE_03D679           ;
+CODE_03D643:        A9 FE         LDA #$FE                  ;\ Bowser jumps
+CODE_03D645:        95 A1         STA $A1,x                 ;/ 
+CODE_03D647:        AD 5F 07      LDA $075F                 ;\ Check if world 8
+CODE_03D64A:        C9 07         CMP #$07                  ; | Branch, in order for real Bowser to throw hammers and fireballs simultaneously
+CODE_03D64C:        F0 04         BEQ CODE_03D652           ;/
+CODE_03D64E:        C9 05         CMP #$05                  ;\ Check if world 6 or 7
+CODE_03D650:        B0 27         BCS CODE_03D679           ;/ Branch, in order for Bowser to throw hammers only
 CODE_03D652:        AD 9C 07      LDA $079C                 ;
 CODE_03D655:        D0 22         BNE CODE_03D679           ;
 CODE_03D657:        A9 20         LDA #$20                  ;
 CODE_03D659:        8D 9C 07      STA $079C                 ;
 CODE_03D65C:        AD 63 03      LDA $0363                 ;
-CODE_03D65F:        49 80         EOR #$80                  ;
+CODE_03D65F:        49 80         EOR #$80                  ; Bit 7 stops horizontal movement?
 CODE_03D661:        8D 63 03      STA $0363                 ;
 CODE_03D664:        30 E1         BMI CODE_03D647           ;
 CODE_03D666:        20 F9 D6      JSR CODE_03D6F9           ;Get timer delay of next fireball spawn
@@ -9729,7 +9729,7 @@ CODE_03D669:        AC CC 06      LDY $06CC                 ;\If hard mode (afte
 CODE_03D66C:        F0 03         BEQ CODE_03D671           ; |
 CODE_03D66E:        38            SEC                       ; |Timer -= #$10;
 CODE_03D66F:        E9 10         SBC #$10                  ; |
-CODE_03D671:        8D 9C 07      STA $079C                 ;/ store into time until next sprite gets generated
+CODE_03D671:        8D 9C 07      STA $079C                 ;/ store into time until next fireball gets generated
 CODE_03D674:        A9 15         LDA #$15                  ;\Activate bowser fire generator
 CODE_03D676:        8D CB 06      STA $06CB                 ;/
 CODE_03D679:        20 D4 D6      JSR CODE_03D6D4           ;
@@ -9791,14 +9791,14 @@ CODE_03D6ED:        4C 55 DE      JMP CODE_03DE55           ;
 
 CODE_03D6F0:        60            RTS                       ;
 
-DATA_03D6F1:        db $BF,$40,$BF,$BF,$BF,$40,$40,$BF      ;How fast the bowser fire generates.
+DATA_03D6F1:        db $BF,$40,$BF,$BF,$BF,$40,$40,$BF      ; How fast the bowser fire generates.
 
 CODE_03D6F9:        AC 67 03      LDY $0367                 ;\
 CODE_03D6FC:        EE 67 03      INC $0367                 ; |Get timer delay of next fireball spawn
 CODE_03D6FF:        AD 67 03      LDA $0367                 ; |Returns: Timer delay in A
 CODE_03D702:        29 07         AND #$07                  ; |
 CODE_03D704:        8D 67 03      STA $0367                 ; |
-CODE_03D707:        B9 F1 D6      LDA DATA_03D6F1,y               ; |
+CODE_03D707:        B9 F1 D6      LDA DATA_03D6F1,y         ; |
 CODE_03D70A:        60            RTS                       ;/
 
 CODE_03D70B:        EC 4D 0F      CPX $0F4D                 ;
@@ -10576,7 +10576,7 @@ CODE_03DD2E:        8D CB 06      STA $06CB                 ;
 CODE_03DD31:        A9 FE         LDA #$FE                  ;
 CODE_03DD33:        95 A1         STA $A1,x                 ;
 CODE_03DD35:        AC 5F 07      LDY $075F                 ;\
-CODE_03DD38:        B9 CD DC      LDA DATA_03DCCD,y               ; |
+CODE_03DD38:        B9 CD DC      LDA DATA_03DCCD,y         ; |
 CODE_03DD3B:        95 1C         STA $1C,x                 ;/Sprite to generate: Bowser killed sprite depending on the world
 CODE_03DD3D:        8E FC 02      STX $02FC                 ;
 CODE_03DD40:        EE FC 02      INC $02FC                 ;
@@ -12187,12 +12187,12 @@ CODE_03E9D2:        4C DB E9      JMP CODE_03E9DB           ;
 CODE_03E9D5:        A0 08         LDY #$08                  ;
 CODE_03E9D7:        84 00         STY $00                   ;
 CODE_03E9D9:        A0 04         LDY #$04                  ;
-CODE_03E9DB:        BD 1A 02      LDA $021A,x               ;
+CODE_03E9DB:        BD 1A 02      LDA $021A,x               ; Sprite X position low
 CODE_03E9DE:        38            SEC                       ;
-CODE_03E9DF:        ED 1C 07      SBC $071C                 ;
+CODE_03E9DF:        ED 1C 07      SBC $071C                 ; Horizontal X coordinate of left side of the screen, low byte.	
 CODE_03E9E2:        85 01         STA $01                   ;
-CODE_03E9E4:        B5 79         LDA $79,x                 ;
-CODE_03E9E6:        ED 1A 07      SBC $071A                 ;
+CODE_03E9E4:        B5 79         LDA $79,x                 ; Sprite X position high
+CODE_03E9E6:        ED 1A 07      SBC $071A                 ; Horizontal X coordinate of left side of the screen, high byte.	
 CODE_03E9E9:        30 06         BMI CODE_03E9F1           ;
 CODE_03E9EB:        05 01         ORA $01                   ;
 CODE_03E9ED:        F0 02         BEQ CODE_03E9F1           ;
