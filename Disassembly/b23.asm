@@ -7948,11 +7948,11 @@ CODE_23C01B:        05 BF         ORA $BF
 CODE_23C01D:        8D 56 05      STA $0556                 
 CODE_23C020:        80 02         BRA CODE_23C024           
 
-CODE_23C022:        A5 BF         LDA $BF                   
-CODE_23C024:        0D 71 05      ORA $0571                 
+CODE_23C022:        A5 BF         LDA $BF                   ; Player death animation phase
+CODE_23C024:        0D 71 05      ORA $0571                 ; 
 CODE_23C027:        0D 54 05      ORA $0554                 
 CODE_23C02A:        0D 55 05      ORA $0555                 
-CODE_23C02D:        0D 51 05      ORA $0551                 
+CODE_23C02D:        0D 51 05      ORA $0551                 ; Player growing/shrinking animation timer
 CODE_23C030:        8D 9C 00      STA $009C                 
 CODE_23C033:        D0 03         BNE CODE_23C038           
 CODE_23C035:        EE 65 05      INC $0565                 
@@ -8011,7 +8011,7 @@ CODE_23C0AD:        AD 56 05      LDA $0556
 CODE_23C0B0:        05 BF         ORA $BF                   
 CODE_23C0B2:        0D 54 05      ORA $0554                 
 CODE_23C0B5:        0D 55 05      ORA $0555                 
-CODE_23C0B8:        0D 51 05      ORA $0551                 
+CODE_23C0B8:        0D 51 05      ORA $0551                 ; Player growing/shrinking animation timer
 CODE_23C0BB:        0D 59 05      ORA $0559                 
 CODE_23C0BE:        0D 71 05      ORA $0571                 
 CODE_23C0C1:        0D 5A 05      ORA $055A                 

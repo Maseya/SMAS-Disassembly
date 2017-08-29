@@ -1271,7 +1271,15 @@ CODE_048E3C:        A6 9E         LDX $9E                   ;Sprite index in X
 CODE_048E3E:        A4 F7         LDY $F7                   ;
 CODE_048E40:        6C 00 00      JMP ($0000)               ;
 
-;todo
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; SMB1 OBJECT DATA - TODO: what type?
+;;
+;; Each "Object" is composed out of (multiple) map16 tiles. These objects are defined in the level
+;; data, then are generated programmatically in the level from there. For example, the level end
+;; staircase is made of multiple cement blocks, but it's defined as one object.
+;;
+
 PNTR_048E43:        dw CODE_048EB5                          ;$00 - 
                     dw CODE_048EA3                          ;$01 - 
                     dw CODE_048EA3                          ;$02 - 
@@ -1288,7 +1296,7 @@ PNTR_048E43:        dw CODE_048EB5                          ;$00 -
                     dw CODE_048EA3                          ;$0D - 
                     dw CODE_048EA3                          ;$0E - 
                     dw CODE_048EA3                          ;$0F - 
-                    dw CODE_048F44                          ;$10 - related to castles at level end/begin?
+                    dw CODE_048F44                          ;$10 - Level begin/end small/big castle object
                     dw CODE_048EA3                          ;$11 - 
                     dw CODE_048EA3                          ;$12 - 
                     dw CODE_048EA3                          ;$13 - 
@@ -1341,13 +1349,13 @@ CODE_048EBC:        48            PHA                       ;
 CODE_048EBD:        A2 01         LDX #$01                  ;
 CODE_048EBF:        A0 0F         LDY #$0F                  ;
 CODE_048EC1:        A9 44         LDA #$44                  ;
-CODE_048EC3:        22 0B AD 03   JSL CODE_03AD0B           ;
+CODE_048EC3:        22 0B AD 03   JSL CODE_03AD0B           ; Place tile into levle
 CODE_048EC7:        68            PLA                       ;
 CODE_048EC8:        AA            TAX                       ;
 CODE_048EC9:        20 C0 91      JSR CODE_0491C0           ;
 CODE_048ECC:        A2 01         LDX #$01                  ;
 CODE_048ECE:        A9 40         LDA #$40                  ;
-CODE_048ED0:        22 0B AD 03   JSL CODE_03AD0B           ;
+CODE_048ED0:        22 0B AD 03   JSL CODE_03AD0B           ; Place tile into level
 CODE_048ED4:        AB            PLB                       ;
 CODE_048ED5:        6B            RTL                       ;
 
@@ -1464,11 +1472,11 @@ CODE_049005:        80 E8         BRA CODE_048FEF           ;
 CODE_049007:        AB            PLB                       ;
 CODE_049008:        6B            RTL                       ;
 
-DATA_049009:        db $07,$07,$06,$05,$04,$03,$02,$01 ;Y-length of the 'cemented stairs' segments.
-                    db $00                             ;1 byte more means 1 additional block down
+DATA_049009:        db $07,$07,$06,$05,$04,$03,$02,$01      ;Height of the 'cement block stairs' segments.
+                    db $00                                  ;Each number defines the amount of cement blocks
 
-DATA_049012:        db $03,$03,$04,$05,$06,$07,$08,$09 ;Y-PLACEMENT of the cemented stair blocks relative from the top
-                    db $0A                             ;1 Byte more means 16 pixels lower
+DATA_049012:        db $03,$03,$04,$05,$06,$07,$08,$09      ;Y-placement of the cement block stair blocks
+                    db $0A                                  ;The higher the number, the lower the placement
 
 ;Stone Stairs object
 CODE_04901B:        20 C0 91      JSR CODE_0491C0           ;
@@ -1482,7 +1490,7 @@ CODE_04902F:        BE 12 90      LDX DATA_049012,y               ;
 CODE_049032:        B9 09 90      LDA DATA_049009,y               ;
 CODE_049035:        A8            TAY                       ;
 CODE_049036:        A9 64         LDA #$64                  ;
-CODE_049038:        22 0B AD 03   JSL CODE_03AD0B           ;
+CODE_049038:        22 0B AD 03   JSL CODE_03AD0B           ; Place tile into levle
 CODE_04903C:        AB            PLB                       ;
 CODE_04903D:        6B            RTL                       ;
 
@@ -1660,7 +1668,7 @@ CODE_049196:        C9 00         CMP #$00                  ;
 CODE_049198:        F0 09         BEQ CODE_0491A3           ;
 CODE_04919A:        A2 00         LDX #$00                  ;
 CODE_04919C:        A4 05         LDY $05                   ;
-CODE_04919E:        22 0B AD 03   JSL CODE_03AD0B           ;
+CODE_04919E:        22 0B AD 03   JSL CODE_03AD0B           ; Place tile into level
 CODE_0491A2:        18            CLC                       ;
 CODE_0491A3:        A4 06         LDY $06                   ;
 CODE_0491A5:        B9 76 91      LDA DATA_049176,y         ;
@@ -1673,7 +1681,7 @@ CODE_0491B2:        6B            RTL                       ;
 CODE_0491B3:        20 C0 91      JSR CODE_0491C0           ;
 CODE_0491B6:        A2 02         LDX #$02                  ;
 CODE_0491B8:        A9 77         LDA #$77                  ;
-CODE_0491BA:        22 0B AD 03   JSL CODE_03AD0B           ;
+CODE_0491BA:        22 0B AD 03   JSL CODE_03AD0B           ; Place tile into level
 CODE_0491BE:        AB            PLB                       ;
 CODE_0491BF:        6B            RTL                       ;
 
@@ -3888,18 +3896,18 @@ CODE_04C051:        A8            TAY                       ;Transfer A to Y to 
 CODE_04C052:        AD 50 07      LDA $0750                 ;\Load level number again
 CODE_04C055:        29 1F         AND #$1F                  ; |AND with $1F to get the level number WITHOUT map type
 CODE_04C057:        8D 4F 07      STA $074F                 ;/Store into a RAM address to hold it.
-CODE_04C05A:        B9 48 C1      LDA DATA_04C148,y               ;\ 
+CODE_04C05A:        B9 48 C1      LDA DATA_04C148,y         ;\ 
 CODE_04C05D:        18            CLC                       ; |Load the map type offsets
 CODE_04C05E:        6D 4F 07      ADC $074F                 ; |Add the offsets with level number
 CODE_04C061:        A8            TAY                       ;/| Use it as an index again...
-CODE_04C062:        B9 4C C1      LDA DATA_04C14C,y               ;\|
+CODE_04C062:        B9 4C C1      LDA DATA_04C14C,y         ;\|
 CODE_04C065:        85 FD         STA $FD                   ; |Load pointers to enemy data
-CODE_04C067:        B9 6E C1      LDA DATA_04C16E,y               ; |in $FD-$FF
+CODE_04C067:        B9 6E C1      LDA DATA_04C16E,y         ; |in $FD-$FF
 CODE_04C06A:        85 FE         STA $FE                   ; |
-CODE_04C06C:        A9 04         LDA #$04                  ; |$FF is a constant: #$04
+CODE_04C06C:        A9 04         LDA.b #DATA_04C14C>>16    ; |$FF is a constant: #$04
 CODE_04C06E:        85 FF         STA $FF                   ;/
 CODE_04C070:        A4 5C         LDY $5C                   ;\Load map type again
-CODE_04C072:        B9 90 C1      LDA DATA_04C190,y               ; |
+CODE_04C072:        B9 90 C1      LDA DATA_04C190,y         ; |
 CODE_04C075:        18            CLC                       ; |Load something again
 CODE_04C076:        6D 4F 07      ADC $074F                 ; |add the level number to it
 CODE_04C079:        A8            TAY                       ; |Use it as an index
@@ -3915,11 +3923,11 @@ CODE_04C08A:        90 06         BCC CODE_04C092           ;/Light Blue and Und
 CODE_04C08C:        E6 BA         INC $BA                   ;\
 CODE_04C08E:        E6 BA         INC $BA                   ; |Set BG palette and music
 CODE_04C090:        E6 BA         INC $BA                   ;/
-CODE_04C092:        B9 94 C1      LDA DATA_04C194,y               ;\
+CODE_04C092:        B9 94 C1      LDA DATA_04C194,y         ;\
 CODE_04C095:        85 FA         STA $FA                   ; |
-CODE_04C097:        B9 B6 C1      LDA DATA_04C1B6,y               ; |Setup the pointer of the level header
+CODE_04C097:        B9 B6 C1      LDA DATA_04C1B6,y         ; |Setup the pointer of the level header
 CODE_04C09A:        85 FB         STA $FB                   ; |and the level object data.
-CODE_04C09C:        A9 04         LDA #$04                  ; |24-bits pointer at $FA
+CODE_04C09C:        A9 04         LDA.b #DATA_04C194>>16    ; |24-bits pointer at $FA
 CODE_04C09E:        85 FC         STA $FC                   ;/ Bank is constant: $04
 CODE_04C0A0:        A0 00         LDY #$00                  ;\
 CODE_04C0A2:        B7 FA         LDA [$FA],y               ; |Load level haeder
@@ -4054,7 +4062,7 @@ DATA_04C152:        db DATA_04C2C1                     ; The overworld levels sp
                     db DATA_04C387
                     db DATA_04C3A4
                     db DATA_04C3B9
-                    db DATA_04C3E4-1
+                    db DATA_04C3E3
                     db DATA_04C3E4
                     db DATA_04C408
                     db DATA_04C411
@@ -4092,7 +4100,7 @@ DATA_04C174:        db DATA_04C2C1>>8                  ; The overworld levels sp
                     db DATA_04C387>>8
                     db DATA_04C3A4>>8
                     db DATA_04C3B9>>8
-                    db DATA_04C3E4-1>>8
+                    db DATA_04C3E3>>8
                     db DATA_04C3E4>>8
                     db DATA_04C408>>8
                     db DATA_04C411>>8
@@ -4195,7 +4203,14 @@ DATA_04C1D2:        db DATA_04C617>>8                  ; Castle levels objects o
                     db DATA_04C9D4>>8
                     db DATA_04CB01>>8
 
-;SMB1 LEVEL SPRITE DATA. Ends with FF.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; SMB1 LEVEL SPRITE DATA
+;;
+;; Sprite data ends with $FF
+;; TODO: Format?
+;;
 
 DATA_04C1D8:        db $76,$DD,$BB,$4C,$EA,$1D,$1B,$CC          ; 1-4 & 6-4, Level #60
                     db $56,$5D,$16,$9D,$C6,$1D,$36,$9D
@@ -4282,7 +4297,9 @@ DATA_04C3B9:        db $85,$86,$0B,$80,$1B,$00,$DB,$37          ; 2-1, Level #28
                     db $80,$7B,$38,$AB,$B8,$77,$86,$FE
                     db $42,$20,$49,$86,$8B,$06,$9B,$80
                     db $7B,$8E,$5B,$B7,$9B,$0E,$BB,$0E
-                    db $9B,$80,$FF
+                    db $9B,$80
+
+DATA_04C3E3:        db $FF                                      ; ???
 
 DATA_04C3E4:        db $0B,$80,$60,$38,$10,$B8,$C0,$3B          ; 5-1, Level #2A
                     db $DB,$8E,$40,$B8,$F0,$38,$7B,$8E
@@ -4383,7 +4400,13 @@ DATA_04C603:        db $47,$9B,$CB,$07,$FA,$1D,$86,$9B          ; 8-4 Underwater
                     db $3A,$87,$56,$07,$88,$1B,$07,$9D
                     db $2E,$65,$F0,$FF
 
-;SMB1 LEVEL OBJECT DATA. Ends with FD.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; SMB1 LEVEL OBJECT DATA. 
+;;
+;; The first two bytes are the level header. Object data ends with $FD
+;; TODO: Format?
  
 DATA_04C617:        db $9B,$07,$0F,$52,$32,$0F,$63,$32 ; 1-4 & 6-4, Level #60
                     db $0F,$74,$32,$CF,$80,$36,$CE,$03

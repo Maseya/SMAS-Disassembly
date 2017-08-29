@@ -4622,11 +4622,11 @@ DATA_05CEFB:        db $2A,$6A,$6A,$2A,$2A,$00,$00,$00 ;
 
 DATA_05CF1B:        db $00,$10,$20,$30,$20 ;
 
-DATA_05CF20:        db $C0,$E0,$C4,$C2,$E2,$C5,$C6,$E6 ;
-                    db $D4,$C8,$E8,$D5,$CA,$EA,$E4,$C8 ;
-                    db $EC,$E5,$CC,$E0,$F4,$CE,$E2,$F5 ;
-                    db $C0,$E0,$C4,$EE,$E2,$C5,$CC,$E0 ;
-                    db $94,$A4,$E2,$95,$80,$A0,$84,$82 ;
+DATA_05CF20:        db $C0,$E0,$C4,$C2,$E2,$C5,$C6,$E6 ; Bowser consists of 6 tiles: [3][6]
+                    db $D4,$C8,$E8,$D5,$CA,$EA,$E4,$C8 ;                           [  1][  4]
+                    db $EC,$E5,$CC,$E0,$F4,$CE,$E2,$F5 ;                           [  2][  5]
+                    db $C0,$E0,$C4,$EE,$E2,$C5,$CC,$E0 ; Where 3 and 6 are his 8x8 hair tiles
+                    db $94,$A4,$E2,$95,$80,$A0,$84,$82 ; This table is indexed by $DD
                     db $A2,$85,$C2,$E2,$C5,$C0,$E0,$C4 ;
                     db $C8,$E8,$D5,$C6,$E6,$D4,$C8,$EC ;
                     db $E5,$CA,$EA,$E4,$CE,$E2,$F5,$CC ;
@@ -4662,7 +4662,7 @@ DATA_05CFCE:        db $27,$27,$26,$27,$27,$27,$26,$27 ;
 
 DATA_05CFDB:        db $27,$27,$27,$27,$26,$27,$27,$27 ;
                     db $26,$27,$27,$27,$26 ;
-
+;TODO: Bowser's "dizzy" routine?
 CODE_05CFE8:        DA            PHX                       ;
 CODE_05CFE9:        EE CA 03      INC $03CA                 ;
 CODE_05CFEC:        AD CA 03      LDA $03CA                 ;
@@ -4775,10 +4775,10 @@ CODE_05D0C9:        B5 47         LDA $47,x                 ;
 CODE_05D0CB:        85 DE         STA $DE                   ;
 CODE_05D0CD:        C9 01         CMP #$01                  ;
 CODE_05D0CF:        F0 04         BEQ CODE_05D0D5           ;
-CODE_05D0D1:        A9 61         LDA #$61                  ;
+CODE_05D0D1:        A9 61         LDA #$61                  ; Flip OAM X
 CODE_05D0D3:        80 02         BRA CODE_05D0D7           ;
-
-CODE_05D0D5:        A9 21         LDA #$21                  ;
+; TODO: Bowser's oam routine?
+CODE_05D0D5:        A9 21         LDA #$21                  ; Set palette and priority
 CODE_05D0D7:        99 03 09      STA $0903,y               ;
 CODE_05D0DA:        99 07 09      STA $0907,y               ;
 CODE_05D0DD:        99 0B 09      STA $090B,y               ;
@@ -4799,14 +4799,14 @@ CODE_05D0F9:        85 DD         STA $DD                   ;
 CODE_05D0FB:        A5 DE         LDA $DE                   ;
 CODE_05D0FD:        C9 01         CMP #$01                  ;
 CODE_05D0FF:        F0 0B         BEQ CODE_05D10C           ;
-CODE_05D101:        A5 DD         LDA $DD                   ;
+CODE_05D101:        A5 DD         LDA $DD                   ; Index to Bowser's OAM tile data
 CODE_05D103:        18            CLC                       ;
 CODE_05D104:        69 2A         ADC #$2A                  ;
 CODE_05D106:        85 DD         STA $DD                   ;
 CODE_05D108:        38            SEC                       ;
 CODE_05D109:        E9 06         SBC #$06                  ;
 CODE_05D10B:        AA            TAX                       ;
-CODE_05D10C:        BD 20 CF      LDA DATA_05CF20,x               ;
+CODE_05D10C:        BD 20 CF      LDA DATA_05CF20,x         ; Bowser's tilemap
 CODE_05D10F:        99 02 09      STA $0902,y               ;
 CODE_05D112:        A9 02         LDA #$02                  ;
 CODE_05D114:        99 00 0D      STA $0D00,y               ;
@@ -7038,7 +7038,7 @@ CODE_05E6D6:        85 01         STA $01                   ; |
 CODE_05E6D8:        6C 00 00      JMP ($0000)               ;/
 
 PNTR_05E6DB:        dw CODE_05E71B                          ;$00 - Unused?
-                    dw CODE_05E73C                          ;$01 - Mario bonus background
+                    dw CODE_05E73C                          ;$01 - Mario bonus background + cave FG
                     dw CODE_05E727                          ;$02 - Hills background & SUPER MARIO BROS banner
                     dw CODE_05E73C                          ;$03 - Underground background
                     dw CODE_05E74F                          ;$04 - Castle FG & BG tileset
@@ -7061,14 +7061,14 @@ PNTR_05E6DB:        dw CODE_05E71B                          ;$00 - Unused?
                     dw CODE_05E71B                          ;$15 - Game Over and Time Up text
                     dw CODE_05E71B                          ;$16 - Starry night background
                     dw CODE_05E71B                          ;$17 - Grass foreground
-                    dw CODE_05E73C                          ;$18 - Luigi bonus background
-                    dw CODE_05E71B                          ;$19 -
-                    dw CODE_05E71B                          ;$1A -
-                    dw CODE_05E71B                          ;$1B -
-                    dw CODE_05E71B                          ;$1C -
-                    dw CODE_05E71B                          ;$1D -
-                    dw CODE_05E71B                          ;$1E -
-                    dw CODE_05E71B                          ;$1F -
+                    dw CODE_05E73C                          ;$18 - Luigi bonus background + cave FG
+                    dw CODE_05E71B                          ;$19 - Unused?
+                    dw CODE_05E71B                          ;$1A - Unused?
+                    dw CODE_05E71B                          ;$1B - Unused?
+                    dw CODE_05E71B                          ;$1C - Unused?
+                    dw CODE_05E71B                          ;$1D - Unused?
+                    dw CODE_05E71B                          ;$1E - Unused?
+                    dw CODE_05E71B                          ;$1F - Unused?
 
 ;Disable graphics animations so that GFX uploads normally
 ;without animation interfering

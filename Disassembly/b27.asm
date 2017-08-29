@@ -496,7 +496,7 @@ DATA_278358:        db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
                     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
 
 CODE_278500:        AD 54 05      LDA $0554                 
-CODE_278503:        0D 51 05      ORA $0551                 
+CODE_278503:        0D 51 05      ORA $0551                 ; Player growing/shrinking animation timer
 CODE_278506:        05 9C         ORA $9C                   
 CODE_278508:        F0 0D         BEQ CODE_278517           
 CODE_27850A:        AD 02 1A      LDA $1A02                 
@@ -2281,7 +2281,7 @@ CODE_2793F2:        29 04         AND #$04
 CODE_2793F4:        F0 15         BEQ CODE_27940B           
 CODE_2793F6:        B5 8C         LDA $8C,x                 
 CODE_2793F8:        D0 09         BNE CODE_279403           
-CODE_2793FA:        22 37 A8 27   JSL CODE_27A837           
+CODE_2793FA:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_2793FE:        B9 B3 AF      LDA.w DATA_21AFB3,y               
 CODE_279401:        95 8C         STA $8C,x                 
 CODE_279403:        22 67 8B 27   JSL CODE_278B67           
@@ -2492,7 +2492,7 @@ CODE_2795D1:        A9 02         LDA #$02
 CODE_2795D3:        9D 61 06      STA $0661,x               
 CODE_2795D6:        A9 E0         LDA #$E0                  
 CODE_2795D8:        95 9E         STA $9E,x                 
-CODE_2795DA:        22 37 A8 27   JSL CODE_27A837           
+CODE_2795DA:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_2795DE:        B9 C1 AF      LDA.w DATA_21AFC1,y               
 CODE_2795E1:        95 8C         STA $8C,x                 
 CODE_2795E3:        45 8B         EOR $8B                   
@@ -2539,7 +2539,7 @@ CODE_279638:        F0 01         BEQ CODE_27963B
 CODE_27963A:        C8            INY                       
 CODE_27963B:        4C 47 96      JMP CODE_279647           
 
-CODE_27963E:        22 37 A8 27   JSL CODE_27A837           
+CODE_27963E:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_279642:        B9 BF AF      LDA.w DATA_21AFBF,y               
 CODE_279645:        85 BD         STA $BD                   
 CODE_279647:        B9 BD AF      LDA.w DATA_21AFBD,y               
@@ -2642,7 +2642,7 @@ CODE_27970E:        A9 10         LDA #$10
 CODE_279710:        9D 20 05      STA $0520,x               
 CODE_279713:        98            TYA                       
 CODE_279714:        AA            TAX                       
-CODE_279715:        22 37 A8 27   JSL CODE_27A837           
+CODE_279715:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_279719:        B9 D9 AF      LDA.w DATA_21AFD9,y               
 CODE_27971C:        95 8C         STA $8C,x                 
 CODE_27971E:        A6 9B         LDX $9B                   
@@ -2872,7 +2872,7 @@ CODE_2798EC:        95 8C         STA $8C,x
 CODE_2798EE:        F0 0F         BEQ CODE_2798FF           
 CODE_2798F0:        A9 02         LDA #$02                  
 CODE_2798F2:        9D 61 06      STA $0661,x               
-CODE_2798F5:        22 37 A8 27   JSL CODE_27A837           
+CODE_2798F5:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_2798F9:        B9 DF AF      LDA.w DATA_21AFDF,y               
 CODE_2798FC:        9D 79 06      STA $0679,x               
 CODE_2798FF:        68            PLA                       
@@ -2896,7 +2896,7 @@ CODE_27991F:        C9 F3         CMP #$F3
 CODE_279921:        D0 57         BNE CODE_27997A           
 CODE_279923:        A9 D0         LDA #$D0                  
 CODE_279925:        95 9E         STA $9E,x                 
-CODE_279927:        22 37 A8 27   JSL CODE_27A837           
+CODE_279927:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_27992B:        B9 E1 AF      LDA.w DATA_21AFE1,y               
 CODE_27992E:        95 8C         STA $8C,x                 
 CODE_279930:        A9 80         LDA #$80                  
@@ -3147,7 +3147,7 @@ CODE_279B3A:        C8            INY
 CODE_279B3B:        84 00         STY $00                   
 CODE_279B3D:        55 8C         EOR $8C,x                 
 CODE_279B3F:        30 0A         BMI CODE_279B4B           
-CODE_279B41:        22 37 A8 27   JSL CODE_27A837           
+CODE_279B41:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_279B45:        C4 00         CPY $00                   
 CODE_279B47:        D0 21         BNE CODE_279B6A           
 CODE_279B49:        F0 1B         BEQ CODE_279B66           
@@ -3155,7 +3155,7 @@ CODE_279B4B:        BC 71 06      LDY $0671,x
 CODE_279B4E:        B9 78 AE      LDA.w DATA_21AE78,y               
 CODE_279B51:        29 10         AND #$10                  
 CODE_279B53:        F0 11         BEQ CODE_279B66           
-CODE_279B55:        22 37 A8 27   JSL CODE_27A837           
+CODE_279B55:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_279B59:        BD 79 06      LDA $0679,x               
 CODE_279B5C:        29 BF         AND #$BF                  
 CODE_279B5E:        88            DEY                       
@@ -3213,7 +3213,7 @@ CODE_279BBD:        29 07         AND #$07                  ; |
 CODE_279BBF:        9D E9 1F      STA $1FE9,x               ; |
 CODE_279BC2:        6B            RTL                       ;/
 
-CODE_279BC3:        20 DF 9B      JSR CODE_279BDF           
+CODE_279BC3:        20 DF 9B      JSR CODE_279BDF           ; Subroutine: Remove if offScreen
 CODE_279BC6:        6B            RTL                       
 
 CODE_279BC7:        20 DB 9B      JSR CODE_279BDB           
@@ -3241,7 +3241,7 @@ CODE_279BEC:        A9 00         LDA #$00
 CODE_279BEE:        85 00         STA $00                   
 CODE_279BF0:        22 5F A8 27   JSL CODE_27A85F           
 CODE_279BF4:        F0 6E         BEQ CODE_279C64           
-CODE_279BF6:        AD 25 04      LDA $0425                 
+CODE_279BF6:        AD 25 04      LDA $0425                 ; If vertical level
 CODE_279BF9:        D0 6A         BNE CODE_279C65           
 CODE_279BFB:        B5 56         LDA $56,x                 
 CODE_279BFD:        C9 02         CMP #$02                  
@@ -4252,7 +4252,7 @@ CODE_27A3F3:        A9 03         LDA #$03
 CODE_27A3F5:        8D 00 12      STA $1200                 
 CODE_27A3F8:        A9 05         LDA #$05                  
 CODE_27A3FA:        22 94 8A 27   JSL CODE_278A94           
-CODE_27A3FE:        22 37 A8 27   JSL CODE_27A837           
+CODE_27A3FE:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_27A402:        B9 1E B0      LDA.w DATA_21B01E,y               
 CODE_27A405:        95 8C         STA $8C,x                 
 CODE_27A407:        18            CLC                       
@@ -4406,7 +4406,7 @@ CODE_27A529:        A5 BB         LDA $BB
 CODE_27A52B:        C9 02         CMP #$02                  
 CODE_27A52D:        B0 08         BCS CODE_27A537                   
 CODE_27A52F:        A9 2F         LDA #$2F                  
-CODE_27A531:        8D 51 05      STA $0551                 
+CODE_27A531:        8D 51 05      STA $0551                 ; Player growing/shrinking animation timer
 CODE_27A534:        CE 78 05      DEC $0578                 
 CODE_27A537:        A9 71         LDA #$71                  
 CODE_27A539:        8D 52 05      STA $0552                 
@@ -4600,7 +4600,7 @@ CODE_27A6D1:        C0 0F         CPY #$0F
 CODE_27A6D3:        F0 02         BEQ CODE_27A6D7           
 CODE_27A6D5:        A9 B0         LDA #$B0                  
 CODE_27A6D7:        95 9E         STA $9E,x                 
-CODE_27A6D9:        22 37 A8 27   JSL CODE_27A837           
+CODE_27A6D9:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_27A6DD:        B9 2B B0      LDA.w DATA_21B02B,y               
 CODE_27A6E0:        95 8C         STA $8C,x                 
 CODE_27A6E2:        BD 79 06      LDA $0679,x               
@@ -4796,15 +4796,19 @@ CODE_27A831:        69 00         ADC #$00
 CODE_27A833:        8D 4D 07      STA $074D                 
 CODE_27A836:        60            RTS                       
 
-CODE_27A837:        A5 5E         LDA $5E                   
+; Subroutine: Player X Position relative to sprite
+; Y = 0 = Player is to the right of the sprite
+; Y = 1 = Player is to the left of the sprite
+; $0F = The distance between the player and the sprite
+CODE_27A837:        A5 5E         LDA $5E                   ; Player X pos low
 CODE_27A839:        38            SEC                       
-CODE_27A83A:        F5 5F         SBC $5F,x                 
-CODE_27A83C:        85 0F         STA $0F                   
+CODE_27A83A:        F5 5F         SBC $5F,x                 ; Subtract with Sprite X pos low
+CODE_27A83C:        85 0F         STA $0F                   ; Store into $0F
 CODE_27A83E:        A0 00         LDY #$00                  
-CODE_27A840:        A5 43         LDA $43                   
-CODE_27A842:        F5 44         SBC $44,x                 
+CODE_27A840:        A5 43         LDA $43                   ; Player X pos high
+CODE_27A842:        F5 44         SBC $44,x                 ; Subtract with carry Sprite X pos high
 CODE_27A844:        10 01         BPL CODE_27A847           
-CODE_27A846:        C8            INY                       
+CODE_27A846:        C8            INY                       ;
 CODE_27A847:        6B            RTL                       
 
 CODE_27A848:        A5 70         LDA $70                   
@@ -7136,9 +7140,9 @@ CODE_27BEA5:        85 00         STA $00
 CODE_27BEA7:        20 AE BE      JSR CODE_27BEAE           
 CODE_27BEAA:        CA            DEX                       
 CODE_27BEAB:        10 DF         BPL CODE_27BE8C           
-CODE_27BEAD:        6B            RTL                       
+CODE_27BEAD:        6B            RTL
 
-CODE_27BEAE:        AD 51 05      LDA $0551                 
+CODE_27BEAE:        AD 51 05      LDA $0551                 ; Player growing/shrinking animation timer
 CODE_27BEB1:        0D 55 05      ORA $0555                 
 CODE_27BEB4:        0D 54 05      ORA $0554                 
 CODE_27BEB7:        D0 04         BNE CODE_27BEBD           
@@ -10502,7 +10506,7 @@ CODE_27DA02:        B9 35 1A      LDA $1A35,y
 CODE_27DA05:        95 5F         STA $5F,x                 
 CODE_27DA07:        B9 2D 1A      LDA $1A2D,y               
 CODE_27DA0A:        95 44         STA $44,x                 
-CODE_27DA0C:        22 37 A8 27   JSL CODE_27A837           
+CODE_27DA0C:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_27DA10:        84 01         STY $01                   
 CODE_27DA12:        A4 9B         LDY $9B                   
 CODE_27DA14:        B9 15 1A      LDA $1A15,y               
@@ -10705,7 +10709,7 @@ CODE_27DBCD:        A9 28         LDA #$28
 CODE_27DBCF:        9D 18 05      STA $0518,x               
 CODE_27DBD2:        A9 05         LDA #$05                  
 CODE_27DBD4:        9D E9 1F      STA $1FE9,x               
-CODE_27DBD7:        22 37 A8 27   JSL CODE_27A837           
+CODE_27DBD7:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_27DBDB:        B9 82 DB      LDA.w DATA_21DB82,y               
 CODE_27DBDE:        9D 79 06      STA $0679,x               
 CODE_27DBE1:        A6 9B         LDX $9B                   
@@ -10766,7 +10770,7 @@ CODE_27DC5B:        A9 0C         LDA #$0C
 CODE_27DC5D:        9D 18 05      STA $0518,x               
 CODE_27DC60:        A9 20         LDA #$20                  
 CODE_27DC62:        9D D2 1F      STA $1FD2,x               
-CODE_27DC65:        22 37 A8 27   JSL CODE_27A837           
+CODE_27DC65:        22 37 A8 27   JSL CODE_27A837           ;Subroutine: Player X Position relative to sprite
 CODE_27DC69:        B9 A1 C8      LDA.w DATA_21C8A1,y               
 CODE_27DC6C:        95 8C         STA $8C,x                 
 CODE_27DC6E:        B9 A3 C8      LDA.w DATA_21C8A3,y               
