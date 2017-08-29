@@ -966,7 +966,7 @@ DATA_21978A:    db $97,$98,$98,$98,$98,$98,$98,$98              ;
                 db $DC,$DF,$B0,$B8,$DD,$D5,$B2,$FF              ;
                 db $00                                          ;
 
-DATA_219813:    db $C5,$A8,$AD,$A4,$FE,$B4,$AF,$FE              ; Spade "Line up the pictures" text
+                db $C5,$A8,$AD,$A4,$FE,$B4,$AF,$FE              ; Spade "Line up the pictures" text
                 db $B3,$A7,$A4,$FE,$AF,$A8,$A2,$B3              ;
                 db $B4,$B1,$A4,$B2,$FE,$A0,$AD,$A3              ;
                 db $00,$A6,$A4,$B3,$FE,$A0,$FE,$AF              ;
@@ -975,7 +975,7 @@ DATA_219813:    db $C5,$A8,$AD,$A4,$FE,$B4,$AF,$FE              ; Spade "Line up
                 db $A4,$B3,$FE,$AE,$AD,$A4,$FE,$B3              ;
                 db $B1,$B8,$D7,$FF                              ;
 
-DATA_21984F:    db $BF,$AB,$A8,$AF,$FE,$AE,$B5,$A4              ;
+                db $BF,$AB,$A8,$AF,$FE,$AE,$B5,$A4              ;
                 db $B1,$FE,$A0,$AD,$B8,$FE,$B3,$B6              ;
                 db $AE,$FE,$A2,$A0,$B1,$A3,$B2,$00              ;
                 db $A0,$AD,$A3,$FE,$B2,$A4,$A4,$FE              ;
@@ -2371,10 +2371,10 @@ DATA_21B9A7:    db $12,$15,$18,$1B,$1E,$21,$24,$38              ;
                 db $3E,$04,$06,$3E,$08,$0A,$3E,$00              ;
                 db $00,$3E,$02,$02                              ;
 
-DATA_21B9E3:    db $3E,$3E,$04,$06,$3E,$08,$0A,$3E              ;
+                db $3E,$3E,$04,$06,$3E,$08,$0A,$3E              ;
                 db $0C,$0E,$3E,$10,$12,$3E                      ;
 
-DATA_21B9F1:    db $14,$16,$3E,$18,$1A,$1C,$1C,$3E              ;
+                db $14,$16,$3E,$18,$1A,$1C,$1C,$3E              ;
                 db $1E,$1E,$3E,$14,$16,$3E,$18,$1A              ;
                 db $3E,$40,$42,$44,$46,$48,$4A,$40              ;
                 db $42,$44,$46,$4C,$4E,$40,$50,$44              ;
@@ -2484,7 +2484,7 @@ DATA_21BBCB:    db $00,$00,$50,$40,$30,$20,$00,$E0              ;
 
 DATA_21BBD6:    db $00,$10                                      ;
 
-DATA_21BBD8:    db $00,$10                                      ;
+                db $00,$10                                      ;
 
 DATA_21BBDA:    db $00,$00,$10,$10                              ;
 
@@ -2597,7 +2597,7 @@ DATA_21BD8E:    db $00,$00,$FF,$FF,$00,$00,$01,$00              ;
 
 DATA_21BD96:    db $00                                          ;
 
-DATA_21BD97:    db $FE,$FC,$FA,$F8,$F8,$F8,$F8,$F8              ;
+                db $FE,$FC,$FA,$F8,$F8,$F8,$F8,$F8              ;
                 db $FA,$FC,$FE,$F4,$F8,$FC,$08,$04              ;
                 db $02,$01                                      ;
 
@@ -2628,7 +2628,7 @@ DATA_21BE1C:    db $C9,$A8,$A2,$AA,$FE,$A0,$FE,$A1              ; Toad House "Pi
                 db $FE,$FE,$FE,$FE,$FE,$FE,$FE,$FE              ;
                 db $FE,$FE,$FE,$FE,$FE,$FE                      ;
 
-DATA_21BE62:    db $C8,$AD,$A4,$FE,$B3,$AE,$AE,$B3              ; Toad house "One toot on this whistle" message
+                db $C8,$AD,$A4,$FE,$B3,$AE,$AE,$B3              ; Toad house "One toot on this whistle" message
                 db $FE,$AE,$AD,$FE,$FE,$FE,$B3,$A7              ;
                 db $A8,$B2,$FE,$B6,$A7,$A8,$B2,$B3              ; Used in 1-3
                 db $AB,$A4,$FE,$FE,$B6,$A8,$AB,$AB              ;
@@ -2638,7 +2638,7 @@ DATA_21BE62:    db $C8,$AD,$A4,$FE,$B3,$AE,$AE,$B3              ; Toad house "On
                 db $AB,$A0,$AD,$A3,$D4,$FE,$FE,$FE              ;
                 db $FE,$FE,$FE,$FE,$FE,$FE                      ;
 
-DATA_21BEA8:    db $C1,$A4,$AB,$AB,$AE,$D4,$FE,$D2              ; Blue Toad House "Shop of strange and wonderful things" message
+                db $C1,$A4,$AB,$AB,$AE,$D4,$FE,$D2              ; Blue Toad House "Shop of strange and wonderful things" message
                 db $AE,$B4,$FE,$FE,$FE,$FE,$A5,$AE              ;
                 db $B4,$AD,$A3,$FE,$AC,$B8,$FE,$B2              ;
                 db $A7,$AE,$AF,$FE,$AE,$A5,$FE,$B2              ;
@@ -2876,7 +2876,7 @@ DATA_21C1FD:    db $18,$18,$17,$17,$16,$15,$14,$13              ;
                 db $0E,$0E,$0D,$0D,$0C,$0C,$0B,$0B              ;
                 db $09,$08,$07,$06,$05,$04                      ;
 
-DATA_21C22B:    db $02,$01,$0A,$0A,$09,$09,$09,$08              ;
+                db $02,$01,$0A,$0A,$09,$09,$09,$08              ;
                 db $08,$07,$07,$06,$05,$04,$03,$02              ;
                 db $02,$00,$07,$07,$06,$06,$06,$06              ;
                 db $05,$05,$04,$04,$03,$03,$02,$02              ;
@@ -3305,7 +3305,7 @@ DATA_21C75B:    db $6F,$01,$02,$04,$08,$0A,$14,$28              ;
 
 DATA_21C768:    db $00,$00,$00                                  ;
 
-DATA_21C76B:    db $00,$00,$00,$00,$00,$00,$00,$00              ;
+                db $00,$00,$00,$00,$00,$00,$00,$00              ;
                 db $01,$03,$00                                  ;
 
 DATA_21C776:    db $03,$01,$00,$00                              ;
@@ -4100,7 +4100,7 @@ DATA_21D8B3:    db $32,$D9,$60,$DA,$F5,$DB,$3F,$DD              ;
                 db $63,$62,$6F,$83,$87,$83,$83,$82              ;
                 db $AE,$A3,$A4,$04,$06,$08,$0A,$0C              ;
 
-DATA_21D8E3:    db $02,$04,$08,$0A,$0C,$04,$06,$08              ;
+                db $02,$04,$08,$0A,$0C,$04,$06,$08              ;
                 db $04,$06,$08,$0A,$0C,$04,$06,$08              ;
                 db $D7,$EA,$27,$DB,$EC,$27,$5A,$EC              ;
                 db $27,$9E,$E8,$27,$DB,$EC,$27,$95              ;
@@ -5272,7 +5272,7 @@ DATA_21F185:    db $FE,$C8,$A7,$D8,$B3,$A7,$A0,$AD              ; Thank you, the
                 db $C9,$B1,$A8,$AD,$A2,$A4,$B2,$B2              ;
                 db $D7,$FE,$FE,$FE                              ;
 
-DATA_21F209:    db $FE,$C8,$A7,$FE,$AC,$A4,$D8,$AE              ; Thank you, the king has been restored text
+                db $FE,$C8,$A7,$FE,$AC,$A4,$D8,$AE              ; Thank you, the king has been restored text
                 db $A7,$FE,$AC,$B8,$D4,$FE,$FE,$FE              ; Frog suit version
                 db $FE,$FE,$FE,$FE,$FE,$FE,$FE,$D2              ;
                 db $AE,$B4,$D6,$B5,$A4,$FE,$A1,$A4              ;
@@ -5290,7 +5290,7 @@ DATA_21F209:    db $FE,$C8,$A7,$FE,$AC,$A4,$D8,$AE              ; Thank you, the
                 db $FE,$FE,$FE,$FE,$FE,$FE,$FE,$FE              ;
                 db $FE,$FE,$FE,$FE                              ;
 
-DATA_21F28D:    db $FE,$CD,$A7,$A0,$AD,$AA,$FE,$B8              ; Thank you, the king has been restored text
+                db $FE,$CD,$A7,$A0,$AD,$AA,$FE,$B8              ; Thank you, the king has been restored text
                 db $AE,$B4,$D8,$AA,$A8,$AD,$A3,$FE              ; Tanooki suit version
                 db $FE,$FE,$FE,$FE,$FE,$FE,$FE,$B1              ;
                 db $A0,$A2,$A2,$AE,$AE,$AD,$D7,$FE              ;
@@ -5308,7 +5308,7 @@ DATA_21F28D:    db $FE,$CD,$A7,$A0,$AD,$AA,$FE,$B8              ; Thank you, the
                 db $FE,$FE,$FE,$FE,$FE,$FE,$FE,$FE              ;
                 db $FE,$FE,$FE,$FE                              ;
 
-DATA_21F311:    db $FE,$C1,$A4,$B8,$D8,$B8,$AE,$B4              ; Thank you, the king has been restored text
+                db $FE,$C1,$A4,$B8,$D8,$B8,$AE,$B4              ; Thank you, the king has been restored text
                 db $D4,$FE,$FE,$FE,$FE,$FE,$FE,$FE              ; Hammer suit version
                 db $FE,$FE,$FE,$FE,$FE,$FE,$FE,$C1              ;
                 db $AE,$B6,$FE,$A0,$A1,$AE,$B4,$B3              ;
@@ -5329,7 +5329,7 @@ DATA_21F311:    db $FE,$C1,$A4,$B8,$D8,$B8,$AE,$B4              ; Thank you, the
 DATA_21F395:    dw $0000,$0000,$0000,$0000                      ; Indices to above table, depending on RAM $7E00BB (powerup status)
                 dw $0084,$0108,$018C                            ;
 
-DATA_21F3A3:    db $1E,$1F,$1F,$1F,$1F,$1E,$1E,$24              ;
+                db $1E,$1F,$1F,$1F,$1F,$1E,$1E,$24              ;
                 db $24,$24,$24,$24,$24,$24,$26,$24              ;
                 db $26,$24,$24,$26,$24                          ;
 
@@ -5497,7 +5497,7 @@ DATA_21F6E7:    db $FF,$00,$FF,$00,$41,$05,$42,$05              ;VRAM tilemap of
 DATA_21F785:    db $C0,$A1,$84,$84,$A3,$90,$95,$86              ; "Greetings" text used as an opener in the princess letters
                 db $A2,$F0,$00,$00                              ;
 
-DATA_21F791:    db $C2,$FD,$87,$80,$A5,$84,$FD,$84              ; "I have enclosed a jewel" used as a finisher in the princess letters
+                db $C2,$FD,$87,$80,$A5,$84,$FD,$84              ; "I have enclosed a jewel" used as a finisher in the princess letters
                 db $95,$82,$93,$96,$A2,$84,$83,$FD              ;
                 db $80,$00,$91,$84,$A6,$84,$93,$FD              ;
                 db $A3,$87,$80,$A3,$FD,$87,$84,$93              ;
@@ -5509,10 +5509,10 @@ DATA_21F791:    db $C2,$FD,$87,$80,$A5,$84,$FD,$84              ; "I have enclos
                 db $FD,$A3,$96,$80,$83,$A2,$A3,$96              ;
                 db $96,$93,$E7,$FF                              ;
 					
-DATA_21F7E5:    db $E2,$96,$E4,$00,$C2,$FD,$92,$90              ; "Yo! I have kidnapped the" text used as an opener in bowser's letter
+                db $E2,$96,$E4,$00,$C2,$FD,$92,$90              ; "Yo! I have kidnapped the" text used as an opener in bowser's letter
                 db $83,$95,$80,$97                              ;
 
-DATA_21F7F1:    db $97,$84,$83,$FD,$A3,$87,$84,$00              ; "Ha ha ha... King of the Koopa" text used as a finisher in the princess letters
+                db $97,$84,$83,$FD,$A3,$87,$84,$00              ; "Ha ha ha... King of the Koopa" text used as a finisher in the princess letters
                 db $FD,$FD,$FD,$FD,$FD,$FD,$FD,$FD              ;
                 db $C1,$80,$FD,$87,$80,$FD,$87,$80              ;
                 db $E7,$E7,$E7,$00,$00,$00,$FD,$FD              ;
@@ -5528,7 +5528,7 @@ DATA_21F83C:    db $02,$02,$02,$02,$02,$01,$00                  ; VRAM address u
 
 DATA_21F843:    db $E6,$C6,$66,$46,$26,$06,$E6                  ; same, but low byte
 
-DATA_21F84A:    db $00,$80,$80,$80,$00,$81,$80,$81              ;
+                db $00,$80,$80,$80,$00,$81,$80,$81              ;
                 db $00,$82,$80,$82,$00,$83,$80,$83              ;
                 db $00,$84,$80,$84,$00,$85,$80,$85              ;
                 db $00,$86,$80,$86,$00,$87,$80,$87              ;
@@ -5631,7 +5631,7 @@ DATA_21FAD9:    db $FE,$C8,$A7,$D8,$A8,$B3,$D6,$B2              ; "The king has 
                 db $AC,$FE,$A1,$A0,$A2,$AA,$D7,$FE              ;
                 db $FE,$FE,$FE,$FE                              ;
 
-DATA_21FB5D:    db $FE,$C1,$B4,$B1,$B1,$B8,$D4,$FE              ; "Hurry! Hurry! Take magic wand from Little Koopa" text
+                db $FE,$C1,$B4,$B1,$B1,$B8,$D4,$FE              ; "Hurry! Hurry! Take magic wand from Little Koopa" text
                 db $C1,$B4,$B1,$B1,$B8,$D4,$FE,$FE              ;
                 db $FE,$FE,$FE,$FE,$FE,$FE,$FE,$C0              ;
                 db $A4,$B3,$FE,$B3,$A7,$A4,$FE,$C6              ;

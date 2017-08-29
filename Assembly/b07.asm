@@ -3991,12 +3991,12 @@ DATA_07FC00:    db $9C,$00,$00,$3D,$00,$FE,$6A,$B8              ; Sample data of
                 db $E0,$B8,$02,$50,$18,$FF,$E0,$B8              ;
                 db $03,$C0,$19,$FF,$E0,$B8,$03,$00              ;
 
-DATA_07FCA0:    db $18,$00,$E8,$3E,$32,$65,$7F,$98              ; Some other SPC-700 data
+                db $18,$00,$E8,$3E,$32,$65,$7F,$98              ; Some other SPC-700 data
                 db $B2,$CB,$E5,$FC,$19,$32,$4C,$65              ;
                 db $72,$7F,$8C,$98,$A5,$B2,$BF,$CB              ;
                 db $D8,$E5,$F2,$FC                              ;
 
-DATA_07FCBC:    db $0F,$21,$00,$05,$20,$CD,$CF,$BD              ; Part 1 of SPC-700 engine
+                db $0F,$21,$00,$05,$20,$CD,$CF,$BD              ; Part 1 of SPC-700 engine
                 db $E8,$00,$5D,$AF,$C8,$E0,$D0,$FB              ;
                 db $CD,$00,$D5,$00,$02,$3D,$D0,$FA              ;
                 db $D5,$00,$03,$3D,$D0,$FA,$BC,$3F              ;

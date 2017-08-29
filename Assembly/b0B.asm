@@ -17,7 +17,7 @@ DATA_0B8000:    db $70,$00,$00,$3C,$00,$40,$1B,$40              ;Pointers to sam
                 db $19,$BA,$FF,$BB,$FF,$FF,$FF,$FF              ;
                 db $FF,$FF,$FF,$FF                              ;
 
-DATA_0B8074:    db $20,$7C,$00,$40,$02,$00,$00,$00              ;Sample data of piano and menu music
+                db $20,$7C,$00,$40,$02,$00,$00,$00              ;Sample data of piano and menu music
                 db $00,$00,$00,$00,$00,$8A,$01,$31              ;
                 db $11,$20,$10,$00,$0E,$CE,$7A,$24              ;
                 db $1E,$EE,$EE,$FD,$CE,$DE,$E0,$7A              ;

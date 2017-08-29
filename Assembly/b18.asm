@@ -1,4 +1,4 @@
-DATA_188000:    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
                 db $FF,$00,$FF,$00,$FF,$00,$FF,$00              ;
                 db $FF,$00,$FF,$00,$FF,$00,$FF,$00              ;
