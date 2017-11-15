@@ -1017,7 +1017,7 @@ CODE_2089BA:    JSL CODE_29EB42             ; $20:89BA: 22 42 EB 29 ;
                 BNE CODE_2089D9             ; $20:89C9: D0 0E       ;
                 LDA $0414                   ; $20:89CB: AD 14 04    ;
                 BNE CODE_2089D9             ; $20:89CE: D0 09       ;
-                LDA.w DATA_21C976                   ; $20:89D0: AD 76 C9    ;
+                LDA.w DATA_21C976           ; $20:89D0: AD 76 C9    ;
                 STA $0739                   ; $20:89D3: 8D 39 07    ;
 CODE_2089D6:    JMP CODE_208A48             ; $20:89D6: 4C 48 8A    ;
 
@@ -2476,15 +2476,15 @@ CODE_209772:    TXA                         ; $20:9772: 8A          ;
                 LDA $0425                   ; $20:9789: AD 25 04    ;
                 BEQ CODE_20979E             ; $20:978C: F0 10       ;
                 LDY $0376                   ; $20:978E: AC 76 03    ;
-                LDA.w DATA_21823C,y                 ; $20:9791: B9 3C 82    ;
+                LDA.w DATA_21823C,y         ; $20:9791: B9 3C 82    ;
                 STA $2E                     ; $20:9794: 85 2E       ;
-                LDA.w DATA_21824C,y                 ; $20:9796: B9 4C 82    ;
+                LDA.w DATA_21824C,y         ; $20:9796: B9 4C 82    ;
                 STA $2F                     ; $20:9799: 85 2F       ;
                 JMP CODE_2097A8             ; $20:979B: 4C A8 97    ;
 
-CODE_20979E:    LDA.w DATA_218200                   ; $20:979E: AD 00 82    ;
+CODE_20979E:    LDA.w DATA_218200           ; $20:979E: AD 00 82    ;
                 STA $2E                     ; $20:97A1: 85 2E       ;
-                LDA.w DATA_218200+1                     ; $20:97A3: AD 01 82    ;
+                LDA.w DATA_218200+1         ; $20:97A3: AD 01 82    ;
                 STA $2F                     ; $20:97A6: 85 2F       ;
 CODE_2097A8:    LDA $1051                   ; $20:97A8: AD 51 10    ;
                 AND #$08                    ; $20:97AB: 29 08       ;
@@ -2493,12 +2493,12 @@ CODE_2097A8:    LDA $1051                   ; $20:97A8: AD 51 10    ;
 CODE_2097B1:    LDA $070A                   ; $20:97B1: AD 0A 07    ;
                 ASL A                       ; $20:97B4: 0A          ;
                 TAY                         ; $20:97B5: A8          ;
-                LDA.w DATA_21CE5A,y                 ; $20:97B6: B9 5A CE    ;
+                LDA.w DATA_21CE5A,y         ; $20:97B6: B9 5A CE    ;
                 STA $0C                     ; $20:97B9: 85 0C       ;
-                LDA.w DATA_21CE5A+1,y                   ; $20:97BB: B9 5B CE    ;
+                LDA.w DATA_21CE5A+1,y       ; $20:97BB: B9 5B CE    ;
                 STA $0D                     ; $20:97BE: 85 0D       ;
                 LDY $070A                   ; $20:97C0: AC 0A 07    ;
-                LDA.w DATA_21CE80,y                 ; $20:97C3: B9 80 CE    ;
+                LDA.w DATA_21CE80,y         ; $20:97C3: B9 80 CE    ;
                 STA $0E                     ; $20:97C6: 85 0E       ;
                 LDY $1054                   ; $20:97C8: AC 54 10    ;
                 LDA [$2E],y                 ; $20:97CB: B7 2E       ;
@@ -2653,77 +2653,77 @@ CODE_2098A8:    PHY                         ; $20:98A8: 5A          ;
                 PLY                         ; $20:9909: 7A          ;
                 RTL                         ; $20:990A: 6B          ;
 
-CODE_20990B:    STZ $0700               ; $20:990B: 9C 00 07    ;
+CODE_20990B:    STZ $0700                   ; $20:990B: 9C 00 07    ;
                 STZ $0704                   ; $20:990E: 9C 04 07    ;
                 STZ $0703                   ; $20:9911: 9C 03 07    ;
                 STZ $0701                   ; $20:9914: 9C 01 07    ;
                 STZ $0702                   ; $20:9917: 9C 02 07    ;
                 LDA #$7E                    ; $20:991A: A9 7E       ;
                 STA $30                     ; $20:991C: 85 30       ;
-                LDY #$00                    ; $20:991E: A0 00       ;
-                LDA [$2B],y                 ; $20:9920: B7 2B       ;
-                STA $1DFE                   ; $20:9922: 8D FE 1D    ;
-                INY                         ; $20:9925: C8          ;
-                LDA [$2B],y                 ; $20:9926: B7 2B       ;
-                STA $1DFF                   ; $20:9928: 8D FF 1D    ;
-                INY                         ; $20:992B: C8          ;
-                LDA [$2B],y                 ; $20:992C: B7 2B       ;
-                STA $1E00                   ; $20:992E: 8D 00 1E    ;
-                INY                         ; $20:9931: C8          ;
-                LDA [$2B],y                 ; $20:9932: B7 2B       ;
-                STA $1E01                   ; $20:9934: 8D 01 1E    ;
-                INY                         ; $20:9937: C8          ;
-                LDA [$2B],y                 ; $20:9938: B7 2B       ;
-                STA $1E02                   ; $20:993A: 8D 02 1E    ;
-                INY                         ; $20:993D: C8          ;
-                LDA [$2B],y                 ; $20:993E: B7 2B       ;
-                STA $1E03                   ; $20:9940: 8D 03 1E    ;
+                LDY #$00                    ; $20:991E: A0 00       ; Read the level header
+                LDA [$2B],y                 ; $20:9920: B7 2B       ;\
+                STA $1DFE                   ; $20:9922: 8D FE 1D    ; | Header byte 0, 1, 2
+                INY                         ; $20:9925: C8          ; | Store screen exit level object data pointer in $7E1DFE (3 bytes)
+                LDA [$2B],y                 ; $20:9926: B7 2B       ; |
+                STA $1DFF                   ; $20:9928: 8D FF 1D    ; |
+                INY                         ; $20:992B: C8          ; |
+                LDA [$2B],y                 ; $20:992C: B7 2B       ; |
+                STA $1E00                   ; $20:992E: 8D 00 1E    ;/
+                INY                         ; $20:9931: C8          ;\
+                LDA [$2B],y                 ; $20:9932: B7 2B       ; | Header byte 3, 4, 5
+                STA $1E01                   ; $20:9934: 8D 01 1E    ; | Store screen exit level sprite data pointer in $7E1E01 (3 bytes)
+                INY                         ; $20:9937: C8          ; |
+                LDA [$2B],y                 ; $20:9938: B7 2B       ; |
+                STA $1E02                   ; $20:993A: 8D 02 1E    ; |
+                INY                         ; $20:993D: C8          ; |
+                LDA [$2B],y                 ; $20:993E: B7 2B       ; |
+                STA $1E03                   ; $20:9940: 8D 03 1E    ;/
                 INY                         ; $20:9943: C8          ;
-                LDA $0414                   ; $20:9944: AD 14 04    ;
-                BNE CODE_209974             ; $20:9947: D0 2B       ;
-                LDA [$2B],y                 ; $20:9949: B7 2B       ;
-                AND #$E0                    ; $20:994B: 29 E0       ;
-                LSR A                       ; $20:994D: 4A          ;
-                LSR A                       ; $20:994E: 4A          ;
-                LSR A                       ; $20:994F: 4A          ;
-                LSR A                       ; $20:9950: 4A          ;
-                LSR A                       ; $20:9951: 4A          ;
-                TAX                         ; $20:9952: AA          ;
-                LDA.w DATA_21CE2A,x                 ; $20:9953: BD 2A CE    ;
-                STA $55                     ; $20:9956: 85 55       ;
-                LDA.w DATA_21CE32,x                 ; $20:9958: BD 32 CE    ;
-                STA $70                     ; $20:995B: 85 70       ;
-                STZ $43                     ; $20:995D: 64 43       ;
-                LDA.w DATA_21CE3A,x                 ; $20:995F: BD 3A CE    ;
-                STA $0216                   ; $20:9962: 8D 16 02    ;
-                LSR A                       ; $20:9965: 4A          ;
-                LSR A                       ; $20:9966: 4A          ;
-                STA $0218                   ; $20:9967: 8D 18 02    ;
-                LDA $0216                   ; $20:996A: AD 16 02    ;
-                SEC                         ; $20:996D: 38          ;
-                SBC $0218                   ; $20:996E: ED 18 02    ;
-                STA $0218                   ; $20:9971: 8D 18 02    ;
-CODE_209974:    LDA [$2B],y                 ; $20:9974: B7 2B       ;
-                AND #$0F                    ; $20:9976: 29 0F       ;
-                STA $22                     ; $20:9978: 85 22       ;
-                STA $0376                   ; $20:997A: 8D 76 03    ;
-                INY                         ; $20:997D: C8          ;
-                LDA [$2B],y                 ; $20:997E: B7 2B       ;
-                AND #$03                    ; $20:9980: 29 03       ;
-                STA $073B                   ; $20:9982: 8D 3B 07    ;
-                LDA [$2B],y                 ; $20:9985: B7 2B       ;
-                AND #$1C                    ; $20:9987: 29 1C       ;
-                LSR A                       ; $20:9989: 4A          ;
-                LSR A                       ; $20:998A: 4A          ;
-                STA $073C                   ; $20:998B: 8D 3C 07    ;
-                LDA [$2B],y                 ; $20:998E: B7 2B       ;
-                AND #$60                    ; $20:9990: 29 60       ;
-                LSR A                       ; $20:9992: 4A          ;
-                LSR A                       ; $20:9993: 4A          ;
-                LSR A                       ; $20:9994: 4A          ;
-                LSR A                       ; $20:9995: 4A          ;
-                LSR A                       ; $20:9996: 4A          ;
-                STA $0426                   ; $20:9997: 8D 26 04    ;
+                LDA $0414                   ; $20:9944: AD 14 04    ;\ If the level loaded is due to a screen exit, skip player and camera position initialization
+                BNE CODE_209974             ; $20:9947: D0 2B       ;/ TODO: clarify
+                LDA [$2B],y                 ; $20:9949: B7 2B       ;\
+                AND #$E0                    ; $20:994B: 29 E0       ; | Header byte 6, bits 765
+                LSR A                       ; $20:994D: 4A          ; |
+                LSR A                       ; $20:994E: 4A          ; |
+                LSR A                       ; $20:994F: 4A          ; |
+                LSR A                       ; $20:9950: 4A          ; |
+                LSR A                       ; $20:9951: 4A          ; |
+                TAX                         ; $20:9952: AA          ;/
+                LDA.w DATA_21CE2A,x         ; $20:9953: BD 2A CE    ;\ Set Player's starting Y position, high byte
+                STA $55                     ; $20:9956: 85 55       ;/ 
+                LDA.w DATA_21CE32,x         ; $20:9958: BD 32 CE    ;\ Set Player's starting Y position, low byte
+                STA $70                     ; $20:995B: 85 70       ;/
+                STZ $43                     ; $20:995D: 64 43       ;Set Player's starting X position, high byte (i.e. screen number)
+                LDA.w DATA_21CE3A,x         ; $20:995F: BD 3A CE    ;\
+                STA $0216                   ; $20:9962: 8D 16 02    ;/|Set BG1 camera Y position, low byte
+                LSR A                       ; $20:9965: 4A          ; | 
+                LSR A                       ; $20:9966: 4A          ; |
+                STA $0218                   ; $20:9967: 8D 18 02    ; | Set BG2 camera Y position, low byte
+                LDA $0216                   ; $20:996A: AD 16 02    ; |
+                SEC                         ; $20:996D: 38          ; |
+                SBC $0218                   ; $20:996E: ED 18 02    ; |
+                STA $0218                   ; $20:9971: 8D 18 02    ;/
+CODE_209974:    LDA [$2B],y                 ; $20:9974: B7 2B       ;\ 
+                AND #$0F                    ; $20:9976: 29 0F       ; | Header byte 6, low nibble
+                STA $22                     ; $20:9978: 85 22       ;/ Set the amount of screens the level has
+                STA $0376                   ; $20:997A: 8D 76 03    ; TODO: what is this address?
+                INY                         ; $20:997D: C8          ;\
+                LDA [$2B],y                 ; $20:997E: B7 2B       ; | Header byte 7, bits 10
+                AND #$03                    ; $20:9980: 29 03       ; | Set level palette variation
+                STA $073B                   ; $20:9982: 8D 3B 07    ;/
+                LDA [$2B],y                 ; $20:9985: B7 2B       ;\
+                AND #$1C                    ; $20:9987: 29 1C       ; | bits 432
+                LSR A                       ; $20:9989: 4A          ; | 
+                LSR A                       ; $20:998A: 4A          ; | Set level backdrop color
+                STA $073C                   ; $20:998B: 8D 3C 07    ;/
+                LDA [$2B],y                 ; $20:998E: B7 2B       ;\
+                AND #$60                    ; $20:9990: 29 60       ; |
+                LSR A                       ; $20:9992: 4A          ; | bits 65
+                LSR A                       ; $20:9993: 4A          ; |
+                LSR A                       ; $20:9994: 4A          ; |
+                LSR A                       ; $20:9995: 4A          ; |
+                LSR A                       ; $20:9996: 4A          ; | Set player's X position (low byte) within a level
+                STA $0426                   ; $20:9997: 8D 26 04    ;/
                 LDA [$2B],y                 ; $20:999A: B7 2B       ;
                 AND #$80                    ; $20:999C: 29 80       ;
                 STA $0562                   ; $20:999E: 8D 62 05    ;
@@ -2806,7 +2806,7 @@ CODE_209A09:    LDA [$2B],y                 ; $20:9A09: B7 2B       ;
                 ROL A                       ; $20:9A3B: 2A          ;
                 ROL A                       ; $20:9A3C: 2A          ;
                 TAX                         ; $20:9A3D: AA          ;
-                LDA.w DATA_21CE42,x                 ; $20:9A3E: BD 42 CE    ;
+                LDA.w DATA_21CE42,x         ; $20:9A3E: BD 42 CE    ;
                 STA $05EE                   ; $20:9A41: 8D EE 05    ;
                 BNE CODE_209A49             ; $20:9A44: D0 03       ;
                 INC $05F3                   ; $20:9A46: EE F3 05    ;
@@ -2814,7 +2814,7 @@ CODE_209A49:    LDA [$2B],y                 ; $20:9A49: B7 2B       ;
                 AND #$0F                    ; $20:9A4B: 29 0F       ;
                 CMP #$07                    ; $20:9A4D: C9 07       ;
                 BNE CODE_209A6A             ; $20:9A4F: D0 19       ;
-                LDA $0727               ; $20:9A51: AD 27 07    ;
+                LDA $0727                   ; $20:9A51: AD 27 07    ;
                 BNE CODE_209A6A             ; $20:9A54: D0 14       ;
                 LDA $001E                   ; $20:9A56: AD 1E 00    ;
                 BNE CODE_209A6A             ; $20:9A59: D0 0F       ;
@@ -2828,7 +2828,7 @@ CODE_209A49:    LDA [$2B],y                 ; $20:9A49: B7 2B       ;
 CODE_209A6A:    LDA [$2B],y                 ; $20:9A6A: B7 2B       ;
                 AND #$0F                    ; $20:9A6C: 29 0F       ;
                 TAX                         ; $20:9A6E: AA          ;
-                LDA.w DATA_21CE46,x     ; $20:9A6F: BD 46 CE    ; Level music table        
+                LDA.w DATA_21CE46,x         ; $20:9A6F: BD 46 CE    ; Level music table        
 CODE_209A72:    STA $1061                   ; $20:9A72: 8D 61 10    ;
                 STA $1062                   ; $20:9A75: 8D 62 10    ;
                 LDA $2142                   ; $20:9A78: AD 42 21    ;
@@ -3038,7 +3038,7 @@ CODE_209BE7:    LDA $0F                     ; $20:9BE7: A5 0F       ;
                 RTL                         ; $20:9BFF: 6B          ;
 
 CODE_209C00:    LDA $070A                   ; $20:9C00: AD 0A 07    ;
-                JSL CODE_20FB3A         ; $20:9C03: 22 3A FB 20 ; ExecutePtrLong
+                JSL CODE_20FB3A             ; $20:9C03: 22 3A FB 20 ; ExecutePtrLong
 
                 dl CODE_29BE08                                  ;
                 dl CODE_248920                                  ;
@@ -3061,7 +3061,7 @@ CODE_209C00:    LDA $070A                   ; $20:9C00: AD 0A 07    ;
                 dl CODE_23A548                                  ;
 
 CODE_209C40:    LDA $070A                   ; $20:9C40: AD 0A 07    ;
-                JSL CODE_20FB3A         ; $20:9C43: 22 3A FB 20 ; ExecutePtrLong
+                JSL CODE_20FB3A             ; $20:9C43: 22 3A FB 20 ; ExecutePtrLong
 
                 dl DATA_29C1EC                                  ;
                 dl CODE_24893D                                  ;

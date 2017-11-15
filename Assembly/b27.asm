@@ -10709,8 +10709,8 @@ CODE_27DB84:    LDA $06E3,x             ; $27:DB84: BD E3 06    ;
                 STA $0518,x                 ; $27:DBCF: 9D 18 05    ;
                 LDA #$05                    ; $27:DBD2: A9 05       ;
                 STA $1FE9,x                 ; $27:DBD4: 9D E9 1F    ;
-                JSL CODE_27A837         ; $27:DBD7: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21DB82,y                 ; $27:DBDB: B9 82 DB    ;
+                JSL CODE_27A837             ; $27:DBD7: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
+                LDA.w DATA_21DB82,y         ; $27:DBDB: B9 82 DB    ;
                 STA $0679,x                 ; $27:DBDE: 9D 79 06    ;
                 LDX $9B                     ; $27:DBE1: A6 9B       ;
 CODE_27DBE3:    RTS                         ; $27:DBE3: 60          ;

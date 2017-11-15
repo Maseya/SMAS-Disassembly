@@ -7733,29 +7733,29 @@ CODE_29BF78:    INC $00                     ; $29:BF78: E6 00       ;
 
 CODE_29BF83:    RTL                         ; $29:BF83: 6B          ;
 
-CODE_29BF84:    LDX $0726                   ; $29:BF84: AE 26 07    ;
-                LDA $073D,x                 ; $29:BF87: BD 3D 07    ;
-                BEQ CODE_29BF90             ; $29:BF8A: F0 04       ;
-                JSR CODE_29C0C7             ; $29:BF8C: 20 C7 C0    ;
-                RTL                         ; $29:BF8F: 6B          ;
+CODE_29BF84:    LDX $0726                   ; $29:BF84: AE 26 07    ;\
+                LDA $073D,x                 ; $29:BF87: BD 3D 07    ; | Check if Mario or Luigi have beaten the current world and the King's chamber needs to be loaded
+                BEQ CODE_29BF90             ; $29:BF8A: F0 04       ; | - Load the level that needs to be loaded
+                JSR CODE_29C0C7             ; $29:BF8C: 20 C7 C0    ; | - Load the King's chamber
+                RTL                         ; $29:BF8F: 6B          ;/
 
 CODE_29BF90:    LDA $0727                   ; $29:BF90: AD 27 07    ;
                 ASL A                       ; $29:BF93: 0A          ;
                 TAY                         ; $29:BF94: A8          ;
                 REP #$20                    ; $29:BF95: C2 20       ;
-                LDA.w DATA_21D87D,y                 ; $29:BF97: B9 7D D8    ;
-                STA $00                     ; $29:BF9A: 85 00       ;
-                LDA.w DATA_21D88F,y                 ; $29:BF9C: B9 8F D8    ;
-                STA $02                     ; $29:BF9F: 85 02       ;
-                LDA.w DATA_21D8A1,y                 ; $29:BFA1: B9 A1 D8    ;
-                STA $04                     ; $29:BFA4: 85 04       ;
-                LDA.w DATA_21D8B3,y                 ; $29:BFA6: B9 B3 D8    ;
-                STA $06                     ; $29:BFA9: 85 06       ;
-                LDA.w DATA_21D86B,y                 ; $29:BFAB: B9 6B D8    ;
-                STA $08                     ; $29:BFAE: 85 08       ;
+                LDA.w DATA_21D87D,y         ; $29:BF97: B9 7D D8    ;\ Store
+                STA $00                     ; $29:BF9A: 85 00       ;/
+                LDA.w DATA_21D88F,y         ; $29:BF9C: B9 8F D8    ;\ Store 
+                STA $02                     ; $29:BF9F: 85 02       ;/
+                LDA.w DATA_21D8A1,y         ; $29:BFA1: B9 A1 D8    ;\ Store the address of the level data sprite pointers
+                STA $04                     ; $29:BFA4: 85 04       ;/
+                LDA.w DATA_21D8B3,y         ; $29:BFA6: B9 B3 D8    ;\ Store the address of the level data object data pointers
+                STA $06                     ; $29:BFA9: 85 06       ;/
+                LDA.w DATA_21D86B,y         ; $29:BFAB: B9 6B D8    ;\ Store
+                STA $08                     ; $29:BFAE: 85 08       ;/
                 SEP #$20                    ; $29:BFB0: E2 20       ;
-                LDY $45,x                   ; $29:BFB2: B4 45       ;
-                LDA ($08),y                 ; $29:BFB4: B1 08       ;
+                LDY $45,x                   ; $29:BFB2: B4 45       ;\ Get current player's map X position high byte
+                LDA ($08),y                 ; $29:BFB4: B1 08       ;/ 
                 TAY                         ; $29:BFB6: A8          ;
                 STZ $0E                     ; $29:BFB7: 64 0E       ;
 CODE_29BFB9:    LDA ($00),y                 ; $29:BFB9: B1 00       ;
@@ -11301,17 +11301,17 @@ CODE_29E009:    LDA $0414                   ; $29:E009: AD 14 04    ;
 CODE_29E017:    JML CODE_208753             ; $29:E017: 5C 53 87 20 ;
 
 CODE_29E01B:    LDA $0414                   ; $29:E01B: AD 14 04    ;
-                JSL CODE_20FB1F         ; $29:E01E: 22 1F FB 20 ; ExecutePtrShort
+                JSL CODE_20FB1F             ; $29:E01E: 22 1F FB 20 ; ExecutePtrShort
 
-                dw $0000                                        ;
-                dw CODE_29E02E                                  ;
-                dw CODE_29E065                                  ;
-                dw CODE_29E117                                  ;
-                dw CODE_29E1D9                                  ;
-                dw CODE_29E228                                  ;
+                dw $0000                                        ; $00 - 
+                dw CODE_29E02E                                  ; $01 - 
+                dw CODE_29E065                                  ; $02 - 
+                dw CODE_29E117                                  ; $03 - 
+                dw CODE_29E1D9                                  ; $04 - 
+                dw CODE_29E228                                  ; $05 -
 
-CODE_29E02E:    LDA $1DFE               ; $29:E02E: AD FE 1D    ;
-                STA $2B                 ; $29:E032: 85 2B       ;
+CODE_29E02E:    LDA $1DFE                   ; $29:E02E: AD FE 1D    ;
+                STA $2B                     ; $29:E032: 85 2B       ;
                 STA $1EBB                   ; $29:E033: 8D BB 1E    ;
                 LDA $1DFF                   ; $29:E036: AD FF 1D    ;
                 STA $2C                     ; $29:E039: 85 2C       ;

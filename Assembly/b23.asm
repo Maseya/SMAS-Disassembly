@@ -8037,8 +8037,8 @@ CODE_23C0D2:    STA $0561                   ; $23:C0D2: 8D 61 05    ;
                 JSR CODE_23C467             ; $23:C0E3: 20 67 C4    ;
                 LDA #$40                    ; $23:C0E6: A9 40       ;
                 STA $BD                     ; $23:C0E8: 85 BD       ;
-                LDY $0426                   ; $23:C0EA: AC 26 04    ;
-                LDA.w DATA_21EA01,y                 ; $23:C0ED: B9 01 EA    ;
+                LDY $0426                   ; $23:C0EA: AC 26 04    ;\ Set player's starting X position within a level
+                LDA.w DATA_21EA01,y         ; $23:C0ED: B9 01 EA    ;/
                 STA $5E                     ; $23:C0F0: 85 5E       ;
                 STA $B9                     ; $23:C0F2: 85 B9       ;
                 JSR CODE_23C14C             ; $23:C0F4: 20 4C C1    ;
