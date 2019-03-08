@@ -6,7 +6,7 @@ ORG $008000
 incsrc "b00.asm"
 
 ORG $018000
-incsrc "b01.asm"
+incsrc "b01/_b01.asm"
 
 ORG $028000
 incsrc "b02.asm"

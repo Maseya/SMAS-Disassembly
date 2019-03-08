@@ -67,8 +67,19 @@
     <None Include="b38.asm" />
     <None Include="b39.asm" />
     <None Include="fillbyte.asm" />
+    <None Include="b01\_b01.asm">
+      <Filter>b01</Filter>
+    </None>
+    <None Include="b01\DATA_018000-8000.bin">
+      <Filter>b01</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="SPC-700.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="b01">
+      <UniqueIdentifier>{51867cf8-585d-462f-a1f4-7b2d7a1a7bc7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

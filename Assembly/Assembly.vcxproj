@@ -49,6 +49,8 @@
   <ItemGroup>
     <None Include="b00.asm" />
     <None Include="b01.asm" />
+    <None Include="b01\DATA_018000-8000.bin" />
+    <None Include="b01\_b01.asm" />
     <None Include="b02.asm" />
     <None Include="b03.asm" />
     <None Include="b04.asm" />
