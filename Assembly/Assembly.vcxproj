@@ -30,7 +30,7 @@
     <NMakeOutput>$(SolutionDir)SMAS.sfc</NMakeOutput>
     <NMakePreprocessorDefinitions>
     </NMakePreprocessorDefinitions>
-    <NMakeBuildCommandLine>$(SolutionDir)Assembly\asar.exe $(SolutionDir)Assembly\_ROM.asm $(NMakeOutput)</NMakeBuildCommandLine>
+    <NMakeBuildCommandLine>"$(SolutionDir)Assembly\asar.exe" "$(SolutionDir)Assembly\_ROM.asm" "$(NMakeOutput)"</NMakeBuildCommandLine>
     <OutDir>$(SolutionDir)Output\</OutDir>
     <IntDir>$(OutDir)</IntDir>
     <ExecutablePath />
@@ -40,9 +40,9 @@
     <LibraryWPath />
     <SourcePath />
     <ExcludePath />
-    <NMakeCleanCommandLine>if EXIST $(NMakeOutput) del $(NMakeOutput)</NMakeCleanCommandLine>
-    <NMakeReBuildCommandLine>if EXIST $(NMakeOutput) del $(NMakeOutput)
-$(SolutionDir)Assembly\asar.exe $(SolutionDir)Assembly\_ROM.asm $(NMakeOutput)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>if EXIST "$(NMakeOutput)" del "$(NMakeOutput)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>if EXIST "$(NMakeOutput)" del "$(NMakeOutput)"
+"$(SolutionDir)Assembly\asar.exe" "$(SolutionDir)Assembly\_ROM.asm" "$(NMakeOutput)"</NMakeReBuildCommandLine>
   </PropertyGroup>
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
