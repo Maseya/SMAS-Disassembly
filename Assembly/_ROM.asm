@@ -132,64 +132,64 @@ ORG $2A8000
 incsrc "b2A.asm"
 
 ORG $2B8000
-incsrc "b2B.asm"
+incsrc "b2B/_b2B.asm"
 
 ORG $2C8000
-incsrc "b2C.asm"
+incsrc "b2C/_b2C.asm"
 
 ORG $2D8000
-incsrc "b2D.asm"
+incsrc "b2D/_b2D.asm"
 
 ORG $2E8000
-incsrc "b2E.asm"
+incsrc "b2E/_b2E.asm"
 
 ORG $2F8000
-incsrc "b2F.asm"
+incsrc "b2F/_b2F.asm"
 
 ORG $308000
-incsrc "b30.asm"
+incsrc "b30/_b30.asm"
 
 ORG $318000
-incsrc "b31.asm"
+incsrc "b31/_b31.asm"
 
 ORG $328000
-incsrc "b32.asm"
+incsrc "b32/_b32.asm"
 
 ORG $338000
-incsrc "b33.asm"
+incsrc "b33/_b33.asm"
 
 ORG $348000
-incsrc "b34.asm"
+incsrc "b34/_b34.asm"
 
 ORG $358000
-incsrc "b35.asm"
+incsrc "b35/_b35.asm"
 
 ORG $368000
-incsrc "b36.asm"
+incsrc "b36/_b36.asm"
 
 ORG $378000
-incsrc "b37.asm"
+incsrc "b37/_b37.asm"
 
 ORG $388000
-incsrc "b38.asm"
+incsrc "b38/_b38.asm"
 
 ORG $398000
-incsrc "b39.asm"
+incsrc "b39/_b39.asm"
 
 ORG $3A8000
-incsrc "b3A.asm"
+incsrc "b3A/_b3A.asm"
 
 ORG $3B8000
-incsrc "b3B.asm"
+incsrc "b3B/_b3B.asm"
 
 ORG $3C8000
 incsrc "b3C.asm"
 
 ORG $3D8000
-incsrc "b3D.asm"
+incsrc "b3D/_b3D.asm"
 
 ORG $3E8000
-incsrc "b3E.asm"
+incsrc "b3E/_b3E.asm"
 
 ORG $3F8000
-incsrc "b3F.asm"
+incsrc "b3F/_b3F.asm"
