@@ -6,4 +6,3 @@ DATA_398000:
 
 DATA_39C000:
     incbin "DATA_39C000-4000.bin"
-

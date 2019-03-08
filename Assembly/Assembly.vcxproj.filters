@@ -2,612 +2,1103 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <None Include="_ROM.asm" />
-    <None Include="b00.asm" />
-    <None Include="b0D.asm" />
-    <None Include="b0E.asm" />
-    <None Include="b0F.asm" />
-    <None Include="b01.asm" />
-    <None Include="b2A.asm" />
-    <None Include="b03.asm" />
-    <None Include="b3C.asm" />
-    <None Include="b04.asm" />
-    <None Include="b05.asm" />
-    <None Include="b11.asm" />
-    <None Include="b12.asm" />
-    <None Include="b13.asm" />
-    <None Include="b14.asm" />
-    <None Include="b15.asm" />
-    <None Include="b20.asm" />
-    <None Include="b21.asm" />
-    <None Include="b22.asm" />
-    <None Include="b23.asm" />
-    <None Include="b24.asm" />
-    <None Include="b25.asm" />
-    <None Include="b26.asm" />
-    <None Include="b27.asm" />
-    <None Include="b28.asm" />
-    <None Include="b29.asm" />
     <None Include="fillbyte.asm" />
-    <None Include="b01\_b01.asm">
-      <Filter>b01</Filter>
+    <None Include="SMAS\data\b02\_b02.asm">
+      <Filter>SMAS\data\b02</Filter>
     </None>
-    <None Include="b01\DATA_018000-8000.bin">
-      <Filter>b01</Filter>
+    <None Include="SMAS\data\b02\DATA_02A000-2000.bin">
+      <Filter>SMAS\data\b02</Filter>
     </None>
-    <None Include="b02\_b02.asm">
-      <Filter>b02</Filter>
+    <None Include="SMAS\data\b02\DATA_02C000-0800.bin">
+      <Filter>SMAS\data\b02</Filter>
     </None>
-    <None Include="b02\DATA_02A000-2000.bin">
-      <Filter>b02</Filter>
+    <None Include="SMAS\data\b02\DATA_02C800-0200.bin">
+      <Filter>SMAS\data\b02</Filter>
     </None>
-    <None Include="b02\DATA_02C000-0800.bin">
-      <Filter>b02</Filter>
+    <None Include="SMAS\data\b02\DATA_02CA00-0200.bin">
+      <Filter>SMAS\data\b02</Filter>
     </None>
-    <None Include="b02\DATA_02C800-0200.bin">
-      <Filter>b02</Filter>
+    <None Include="SMAS\data\b02\DATA_02F000-1000.bin">
+      <Filter>SMAS\data\b02</Filter>
     </None>
-    <None Include="b02\DATA_02CA00-0200.bin">
-      <Filter>b02</Filter>
+    <None Include="SMAS\data\b02\DATA_028000-1000.bin">
+      <Filter>SMAS\data\b02</Filter>
     </None>
-    <None Include="b02\DATA_02F000-1000.bin">
-      <Filter>b02</Filter>
+    <None Include="SMAS\data\b02\DATA_029000-1000.bin">
+      <Filter>SMAS\data\b02</Filter>
     </None>
-    <None Include="b02\DATA_028000-1000.bin">
-      <Filter>b02</Filter>
+    <None Include="SMAS\data\b01\_b01.asm">
+      <Filter>SMAS\data\b01</Filter>
     </None>
-    <None Include="b02\DATA_029000-1000.bin">
-      <Filter>b02</Filter>
+    <None Include="SMAS\data\b01\DATA_018000-8000.bin">
+      <Filter>SMAS\data\b01</Filter>
     </None>
-    <None Include="b06\_b06.asm">
-      <Filter>b06</Filter>
+    <None Include="SMAS\code\b00\_b00.asm">
+      <Filter>SMAS\code\b00</Filter>
     </None>
-    <None Include="b06\DATA_06A000-2000.bin">
-      <Filter>b06</Filter>
+    <None Include="SMB1\code\b03\_b03.asm">
+      <Filter>SMB1\code\b03</Filter>
     </None>
-    <None Include="b06\DATA_06C000-4000.bin">
-      <Filter>b06</Filter>
+    <None Include="SMB1\code\b04\_b04.asm">
+      <Filter>SMB1\code\b04</Filter>
     </None>
-    <None Include="b06\DATA_068000-2000.bin">
-      <Filter>b06</Filter>
+    <None Include="SMB1\code\b05\_b05.asm">
+      <Filter>SMB1\code\b05</Filter>
     </None>
-    <None Include="b07\_b07.asm">
-      <Filter>b07</Filter>
+    <None Include="SMB1\data\b06\_b06.asm">
+      <Filter>SMB1\data\b06</Filter>
     </None>
-    <None Include="b07\DATA_07C000-3C00.bin">
-      <Filter>b07</Filter>
+    <None Include="SMB1\data\b06\DATA_06A000-2000.bin">
+      <Filter>SMB1\data\b06</Filter>
     </None>
-    <None Include="b07\DATA_07FC00-00A0.bin">
-      <Filter>b07</Filter>
+    <None Include="SMB1\data\b06\DATA_06C000-4000.bin">
+      <Filter>SMB1\data\b06</Filter>
     </None>
-    <None Include="b07\DATA_07FCA0-001C.bin">
-      <Filter>b07</Filter>
+    <None Include="SMB1\data\b06\DATA_068000-2000.bin">
+      <Filter>SMB1\data\b06</Filter>
     </None>
-    <None Include="b07\DATA_07FCBC-0344.bin">
-      <Filter>b07</Filter>
+    <None Include="SMB1\data\b07\_b07.asm">
+      <Filter>SMB1\data\b07</Filter>
     </None>
-    <None Include="b07\DATA_078000-4000.bin">
-      <Filter>b07</Filter>
+    <None Include="SMB1\data\b07\DATA_07C000-3C00.bin">
+      <Filter>SMB1\data\b07</Filter>
     </None>
-    <None Include="b0C\_b0C.asm">
-      <Filter>b0C</Filter>
+    <None Include="SMB1\data\b07\DATA_07FC00-00A0.bin">
+      <Filter>SMB1\data\b07</Filter>
     </None>
-    <None Include="b0C\DATA_0C8000-5000.bin">
-      <Filter>b0C</Filter>
+    <None Include="SMB1\data\b07\DATA_07FCA0-001C.bin">
+      <Filter>SMB1\data\b07</Filter>
     </None>
-    <None Include="b0C\DATA_0CD000-2800.bin">
-      <Filter>b0C</Filter>
+    <None Include="SMB1\data\b07\DATA_07FCBC-0344.bin">
+      <Filter>SMB1\data\b07</Filter>
     </None>
-    <None Include="b0C\DATA_0CF800-0800.bin">
-      <Filter>b0C</Filter>
+    <None Include="SMB1\data\b07\DATA_078000-4000.bin">
+      <Filter>SMB1\data\b07</Filter>
     </None>
-    <None Include="b0B\_b0B.asm">
-      <Filter>b0B</Filter>
+    <None Include="SMB1\data\b08\_b08.asm">
+      <Filter>SMB1\data\b08</Filter>
     </None>
-    <None Include="b0B\DATA_0B8000-0074.bin">
-      <Filter>b0B</Filter>
+    <None Include="SMB1\data\b08\DATA_08A000-1000.bin">
+      <Filter>SMB1\data\b08</Filter>
     </None>
-    <None Include="b0B\DATA_0B8074-7F8C.bin">
-      <Filter>b0B</Filter>
+    <None Include="SMB1\data\b08\DATA_08B000-0800.bin">
+      <Filter>SMB1\data\b08</Filter>
     </None>
-    <None Include="b0A\_b0A.asm">
-      <Filter>b0A</Filter>
+    <None Include="SMB1\data\b08\DATA_08B800-0800.bin">
+      <Filter>SMB1\data\b08</Filter>
     </None>
-    <None Include="b0A\DATA_0A8000-8000.bin">
-      <Filter>b0A</Filter>
+    <None Include="SMB1\data\b08\DATA_08C000-1000.bin">
+      <Filter>SMB1\data\b08</Filter>
     </None>
-    <None Include="b09\_b09.asm">
-      <Filter>b09</Filter>
+    <None Include="SMB1\data\b08\DATA_08D000-1000.bin">
+      <Filter>SMB1\data\b08</Filter>
     </None>
-    <None Include="b09\DATA_09A000-2000.bin">
-      <Filter>b09</Filter>
+    <None Include="SMB1\data\b08\DATA_08E000-1000.bin">
+      <Filter>SMB1\data\b08</Filter>
     </None>
-    <None Include="b09\DATA_09C000-1000.bin">
-      <Filter>b09</Filter>
+    <None Include="SMB1\data\b08\DATA_08F000-1000.bin">
+      <Filter>SMB1\data\b08</Filter>
     </None>
-    <None Include="b09\DATA_09D000-1000.bin">
-      <Filter>b09</Filter>
+    <None Include="SMB1\data\b08\DATA_088000-1000.bin">
+      <Filter>SMB1\data\b08</Filter>
     </None>
-    <None Include="b09\DATA_09E000-0800.bin">
-      <Filter>b09</Filter>
+    <None Include="SMB1\data\b08\DATA_089000-0800.bin">
+      <Filter>SMB1\data\b08</Filter>
     </None>
-    <None Include="b09\DATA_09E800-0800.bin">
-      <Filter>b09</Filter>
+    <None Include="SMB1\data\b08\DATA_089800-0800.bin">
+      <Filter>SMB1\data\b08</Filter>
     </None>
-    <None Include="b09\DATA_09F000-0800.bin">
-      <Filter>b09</Filter>
+    <None Include="SMB1\data\b09\_b09.asm">
+      <Filter>SMB1\data\b09</Filter>
     </None>
-    <None Include="b09\DATA_09F800-0800.bin">
-      <Filter>b09</Filter>
+    <None Include="SMB1\data\b09\DATA_09A000-2000.bin">
+      <Filter>SMB1\data\b09</Filter>
     </None>
-    <None Include="b09\DATA_098000-1000.bin">
-      <Filter>b09</Filter>
+    <None Include="SMB1\data\b09\DATA_09C000-1000.bin">
+      <Filter>SMB1\data\b09</Filter>
     </None>
-    <None Include="b09\DATA_099000-1000.bin">
-      <Filter>b09</Filter>
+    <None Include="SMB1\data\b09\DATA_09D000-1000.bin">
+      <Filter>SMB1\data\b09</Filter>
     </None>
-    <None Include="b08\_b08.asm">
-      <Filter>b08</Filter>
+    <None Include="SMB1\data\b09\DATA_09E000-0800.bin">
+      <Filter>SMB1\data\b09</Filter>
     </None>
-    <None Include="b08\DATA_08A000-1000.bin">
-      <Filter>b08</Filter>
+    <None Include="SMB1\data\b09\DATA_09E800-0800.bin">
+      <Filter>SMB1\data\b09</Filter>
     </None>
-    <None Include="b08\DATA_08B000-0800.bin">
-      <Filter>b08</Filter>
+    <None Include="SMB1\data\b09\DATA_09F000-0800.bin">
+      <Filter>SMB1\data\b09</Filter>
     </None>
-    <None Include="b08\DATA_08B800-0800.bin">
-      <Filter>b08</Filter>
+    <None Include="SMB1\data\b09\DATA_09F800-0800.bin">
+      <Filter>SMB1\data\b09</Filter>
     </None>
-    <None Include="b08\DATA_08C000-1000.bin">
-      <Filter>b08</Filter>
+    <None Include="SMB1\data\b09\DATA_098000-1000.bin">
+      <Filter>SMB1\data\b09</Filter>
     </None>
-    <None Include="b08\DATA_08D000-1000.bin">
-      <Filter>b08</Filter>
+    <None Include="SMB1\data\b09\DATA_099000-1000.bin">
+      <Filter>SMB1\data\b09</Filter>
     </None>
-    <None Include="b08\DATA_08E000-1000.bin">
-      <Filter>b08</Filter>
+    <None Include="SMB1\data\b0A\_b0A.asm">
+      <Filter>SMB1\data\b0A</Filter>
     </None>
-    <None Include="b08\DATA_08F000-1000.bin">
-      <Filter>b08</Filter>
+    <None Include="SMB1\data\b0A\DATA_0A8000-8000.bin">
+      <Filter>SMB1\data\b0A</Filter>
     </None>
-    <None Include="b08\DATA_088000-1000.bin">
-      <Filter>b08</Filter>
+    <None Include="SMB1\data\b0B\_b0B.asm">
+      <Filter>SMB1\data\b0B</Filter>
     </None>
-    <None Include="b08\DATA_089000-0800.bin">
-      <Filter>b08</Filter>
+    <None Include="SMB1\data\b0B\DATA_0B8000-0074.bin">
+      <Filter>SMB1\data\b0B</Filter>
     </None>
-    <None Include="b08\DATA_089800-0800.bin">
-      <Filter>b08</Filter>
+    <None Include="SMB1\data\b0B\DATA_0B8074-7F8C.bin">
+      <Filter>SMB1\data\b0B</Filter>
     </None>
-    <None Include="b10\_b10.asm">
-      <Filter>b10</Filter>
+    <None Include="SMB1\data\b0C\_b0C.asm">
+      <Filter>SMB1\data\b0C</Filter>
     </None>
-    <None Include="b10\DATA_108000-8000.bin">
-      <Filter>b10</Filter>
+    <None Include="SMB1\data\b0C\DATA_0C8000-5000.bin">
+      <Filter>SMB1\data\b0C</Filter>
     </None>
-    <None Include="b16\_b16.asm">
-      <Filter>b16</Filter>
+    <None Include="SMB1\data\b0C\DATA_0CD000-2800.bin">
+      <Filter>SMB1\data\b0C</Filter>
     </None>
-    <None Include="b16\DATA_168000-8000.bin">
-      <Filter>b16</Filter>
+    <None Include="SMB1\data\b0C\DATA_0CF800-0800.bin">
+      <Filter>SMB1\data\b0C</Filter>
     </None>
-    <None Include="b1B\_b1B.asm">
-      <Filter>b1B</Filter>
+    <None Include="SMB2J\code\b0D\_b0D.asm">
+      <Filter>SMB2J\code\b0D</Filter>
     </None>
-    <None Include="b1B\DATA_1B8000-4000.bin">
-      <Filter>b1B</Filter>
+    <None Include="SMB2J\code\b0E\_b0E.asm">
+      <Filter>SMB2J\code\b0E</Filter>
     </None>
-    <None Include="b1B\DATA_1BC000-4000.bin">
-      <Filter>b1B</Filter>
+    <None Include="SMB2J\code\b0F\_b0F.asm">
+      <Filter>SMB2J\code\b0F</Filter>
     </None>
-    <None Include="b17\_b17.asm">
-      <Filter>b17</Filter>
+    <None Include="SMB2J\data\b10\_b10.asm">
+      <Filter>SMB2J\data\b10</Filter>
     </None>
-    <None Include="b17\DATA_178000-1000.bin">
-      <Filter>b17</Filter>
+    <None Include="SMB2J\data\b10\DATA_108000-8000.bin">
+      <Filter>SMB2J\data\b10</Filter>
     </None>
-    <None Include="b17\DATA_179000-7000.bin">
-      <Filter>b17</Filter>
+    <None Include="SMB2U\code\b11\_b11.asm">
+      <Filter>SMB2U\code\b11</Filter>
     </None>
-    <None Include="b18\_b18.asm">
-      <Filter>b18</Filter>
+    <None Include="SMB2U\code\b12\_b12.asm">
+      <Filter>SMB2U\code\b12</Filter>
     </None>
-    <None Include="b18\DATA_18C000-0800.bin">
-      <Filter>b18</Filter>
+    <None Include="SMB2U\code\b13\_b13.asm">
+      <Filter>SMB2U\code\b13</Filter>
     </None>
-    <None Include="b18\DATA_18C800-3800.bin">
-      <Filter>b18</Filter>
+    <None Include="SMB2U\code\b14\_b14.asm">
+      <Filter>SMB2U\code\b14</Filter>
     </None>
-    <None Include="b18\DATA_188000-4000.bin">
-      <Filter>b18</Filter>
+    <None Include="SMB2U\code\b15\_b15.asm">
+      <Filter>SMB2U\code\b15</Filter>
     </None>
-    <None Include="b19\_b19.asm">
-      <Filter>b19</Filter>
+    <None Include="SMB2U\data\b16\DATA_168000-4000.bin">
+      <Filter>SMB2U\data\b16</Filter>
     </None>
-    <None Include="b19\DATA_19C800-1800.bin">
-      <Filter>b19</Filter>
+    <None Include="SMB2U\data\b16\DATA_16C000-4000.bin">
+      <Filter>SMB2U\data\b16</Filter>
     </None>
-    <None Include="b19\DATA_19E000-2000.bin">
-      <Filter>b19</Filter>
+    <None Include="SMB2U\data\b16\_b16.asm">
+      <Filter>SMB2U\data\b16</Filter>
     </None>
-    <None Include="b19\DATA_198000-1800.bin">
-      <Filter>b19</Filter>
+    <None Include="SMB2U\data\b17\DATA_178000-1000.bin">
+      <Filter>SMB2U\data\b17</Filter>
     </None>
-    <None Include="b19\DATA_199800-3000.bin">
-      <Filter>b19</Filter>
+    <None Include="SMB2U\data\b17\DATA_179000-7000.bin">
+      <Filter>SMB2U\data\b17</Filter>
     </None>
-    <None Include="b1A\_b1A.asm">
-      <Filter>b1A</Filter>
+    <None Include="SMB2U\data\b17\_b17.asm">
+      <Filter>SMB2U\data\b17</Filter>
     </None>
-    <None Include="b1A\DATA_1A8000-8000.bin">
-      <Filter>b1A</Filter>
+    <None Include="SMB2U\data\b18\DATA_188000-4000.bin">
+      <Filter>SMB2U\data\b18</Filter>
     </None>
-    <None Include="b1C\_b1C.asm">
-      <Filter>b1C</Filter>
+    <None Include="SMB2U\data\b18\DATA_18C000-0800.bin">
+      <Filter>SMB2U\data\b18</Filter>
     </None>
-    <None Include="b1C\DATA_1C8000-3E00.bin">
-      <Filter>b1C</Filter>
+    <None Include="SMB2U\data\b18\DATA_18C800-3800.bin">
+      <Filter>SMB2U\data\b18</Filter>
     </None>
-    <None Include="b1C\DATA_1CBE00-4200.bin">
-      <Filter>b1C</Filter>
+    <None Include="SMB2U\data\b18\_b18.asm">
+      <Filter>SMB2U\data\b18</Filter>
     </None>
-    <None Include="b1D\_b1D.asm">
-      <Filter>b1D</Filter>
+    <None Include="SMB2U\data\b1F\DATA_1F8000-4000.bin">
+      <Filter>SMB2U\data\b1F</Filter>
     </None>
-    <None Include="b1D\DATA_1D8000-1000.bin">
-      <Filter>b1D</Filter>
+    <None Include="SMB2U\data\b1F\DATA_1FC000-4000.bin">
+      <Filter>SMB2U\data\b1F</Filter>
     </None>
-    <None Include="b1D\DATA_1D9000-1000.bin">
-      <Filter>b1D</Filter>
+    <None Include="SMB2U\data\b1F\_b1F.asm">
+      <Filter>SMB2U\data\b1F</Filter>
     </None>
-    <None Include="b1D\DATA_1DA000-1000.bin">
-      <Filter>b1D</Filter>
+    <None Include="SMB2U\data\b1E\DATA_1E8000-8000.bin">
+      <Filter>SMB2U\data\b1E</Filter>
     </None>
-    <None Include="b1D\DATA_1DB000-5000.bin">
-      <Filter>b1D</Filter>
+    <None Include="SMB2U\data\b1E\_b1E.asm">
+      <Filter>SMB2U\data\b1E</Filter>
     </None>
-    <None Include="b1E\_b1E.asm">
-      <Filter>b1E</Filter>
+    <None Include="SMB2U\data\b1D\DATA_1D8000-1000.bin">
+      <Filter>SMB2U\data\b1D</Filter>
     </None>
-    <None Include="b1E\DATA_1E8000-8000.bin">
-      <Filter>b1E</Filter>
+    <None Include="SMB2U\data\b1D\DATA_1D9000-1000.bin">
+      <Filter>SMB2U\data\b1D</Filter>
     </None>
-    <None Include="b1F\_b1F.asm">
-      <Filter>b1F</Filter>
+    <None Include="SMB2U\data\b1D\DATA_1DA000-1000.bin">
+      <Filter>SMB2U\data\b1D</Filter>
     </None>
-    <None Include="b1F\DATA_1F8000-4000.bin">
-      <Filter>b1F</Filter>
+    <None Include="SMB2U\data\b1D\DATA_1DB000-5000.bin">
+      <Filter>SMB2U\data\b1D</Filter>
     </None>
-    <None Include="b1F\DATA_1FC000-4000.bin">
-      <Filter>b1F</Filter>
+    <None Include="SMB2U\data\b1D\_b1D.asm">
+      <Filter>SMB2U\data\b1D</Filter>
     </None>
-    <None Include="b2B\_b2B.asm">
-      <Filter>b2B</Filter>
+    <None Include="SMB2U\data\b1C\DATA_1C8000-3E00.bin">
+      <Filter>SMB2U\data\b1C</Filter>
     </None>
-    <None Include="b2B\DATA_2B8000-8000.bin">
-      <Filter>b2B</Filter>
+    <None Include="SMB2U\data\b1C\DATA_1CBE00-4200.bin">
+      <Filter>SMB2U\data\b1C</Filter>
     </None>
-    <None Include="b2C\_b2C.asm">
-      <Filter>b2C</Filter>
+    <None Include="SMB2U\data\b1C\_b1C.asm">
+      <Filter>SMB2U\data\b1C</Filter>
     </None>
-    <None Include="b2C\DATA_2C8000-5800.bin">
-      <Filter>b2C</Filter>
+    <None Include="SMB2U\data\b1B\DATA_1B8000-4000.bin">
+      <Filter>SMB2U\data\b1B</Filter>
     </None>
-    <None Include="b2C\DATA_2CD800-1000.bin">
-      <Filter>b2C</Filter>
+    <None Include="SMB2U\data\b1B\DATA_1BC000-4000.bin">
+      <Filter>SMB2U\data\b1B</Filter>
     </None>
-    <None Include="b2C\DATA_2CE800-1800.bin">
-      <Filter>b2C</Filter>
+    <None Include="SMB2U\data\b1B\_b1B.asm">
+      <Filter>SMB2U\data\b1B</Filter>
     </None>
-    <None Include="b2D\_b2D.asm">
-      <Filter>b2D</Filter>
+    <None Include="SMB2U\data\b1A\DATA_1A8000-8000.bin">
+      <Filter>SMB2U\data\b1A</Filter>
     </None>
-    <None Include="b2D\DATA_2D8000-8000.bin">
-      <Filter>b2D</Filter>
+    <None Include="SMB2U\data\b1A\_b1A.asm">
+      <Filter>SMB2U\data\b1A</Filter>
     </None>
-    <None Include="b2E\_b2E.asm">
-      <Filter>b2E</Filter>
+    <None Include="SMB2U\data\b19\DATA_198000-1800.bin">
+      <Filter>SMB2U\data\b19</Filter>
     </None>
-    <None Include="b2E\DATA_2E8000-8000.bin">
-      <Filter>b2E</Filter>
+    <None Include="SMB2U\data\b19\DATA_199800-3000.bin">
+      <Filter>SMB2U\data\b19</Filter>
     </None>
-    <None Include="b2F\_b2F.asm">
-      <Filter>b2F</Filter>
+    <None Include="SMB2U\data\b19\DATA_19C800-1800.bin">
+      <Filter>SMB2U\data\b19</Filter>
     </None>
-    <None Include="b2F\DATA_2F8000-8000.bin">
-      <Filter>b2F</Filter>
+    <None Include="SMB2U\data\b19\DATA_19E000-2000.bin">
+      <Filter>SMB2U\data\b19</Filter>
     </None>
-    <None Include="b30\_b30.asm">
-      <Filter>b30</Filter>
+    <None Include="SMB2U\data\b19\_b19.asm">
+      <Filter>SMB2U\data\b19</Filter>
     </None>
-    <None Include="b30\DATA_30B800-4800.bin">
-      <Filter>b30</Filter>
+    <None Include="SMB3\code\b2A\_b2A.asm">
+      <Filter>SMB3\code\b2A</Filter>
     </None>
-    <None Include="b30\DATA_308000-3800.bin">
-      <Filter>b30</Filter>
+    <None Include="SMB3\code\b29\_b29.asm">
+      <Filter>SMB3\code\b29</Filter>
     </None>
-    <None Include="b31\_b31.asm">
-      <Filter>b31</Filter>
+    <None Include="SMB3\code\b28\_b28.asm">
+      <Filter>SMB3\code\b28</Filter>
     </None>
-    <None Include="b31\DATA_31A000-1000.bin">
-      <Filter>b31</Filter>
+    <None Include="SMB3\code\b27\_b27.asm">
+      <Filter>SMB3\code\b27</Filter>
     </None>
-    <None Include="b31\DATA_31B000-5000.bin">
-      <Filter>b31</Filter>
+    <None Include="SMB3\code\b26\_b26.asm">
+      <Filter>SMB3\code\b26</Filter>
     </None>
-    <None Include="b31\DATA_318000-2000.bin">
-      <Filter>b31</Filter>
+    <None Include="SMB3\code\b25\_b25.asm">
+      <Filter>SMB3\code\b25</Filter>
     </None>
-    <None Include="b32\_b32.asm">
-      <Filter>b32</Filter>
+    <None Include="SMB3\code\b24\_b24.asm">
+      <Filter>SMB3\code\b24</Filter>
     </None>
-    <None Include="b32\DATA_328000-0800.bin">
-      <Filter>b32</Filter>
+    <None Include="SMB3\code\b23\_b23.asm">
+      <Filter>SMB3\code\b23</Filter>
     </None>
-    <None Include="b32\DATA_328800-0800.bin">
-      <Filter>b32</Filter>
+    <None Include="SMB3\code\b22\_b22.asm">
+      <Filter>SMB3\code\b22</Filter>
     </None>
-    <None Include="b32\DATA_329000-7000.bin">
-      <Filter>b32</Filter>
+    <None Include="SMB3\code\b21\_b21.asm">
+      <Filter>SMB3\code\b21</Filter>
     </None>
-    <None Include="b33\_b33.asm">
-      <Filter>b33</Filter>
+    <None Include="SMB3\code\b20\_b20.asm">
+      <Filter>SMB3\code\b20</Filter>
     </None>
-    <None Include="b33\DATA_33B000-5000.bin">
-      <Filter>b33</Filter>
+    <None Include="SMB3\data\b3F\DATA_3F8000-8000.bin">
+      <Filter>SMB3\data\b3F</Filter>
     </None>
-    <None Include="b33\DATA_338000-3000.bin">
-      <Filter>b33</Filter>
+    <None Include="SMB3\data\b3F\_b3F.asm">
+      <Filter>SMB3\data\b3F</Filter>
     </None>
-    <None Include="b34\_b34.asm">
-      <Filter>b34</Filter>
+    <None Include="SMB3\data\b3E\DATA_3E8000-8000.bin">
+      <Filter>SMB3\data\b3E</Filter>
     </None>
-    <None Include="b34\DATA_34A800-2800.bin">
-      <Filter>b34</Filter>
+    <None Include="SMB3\data\b3E\_b3E.asm">
+      <Filter>SMB3\data\b3E</Filter>
     </None>
-    <None Include="b34\DATA_34D000-3000.bin">
-      <Filter>b34</Filter>
+    <None Include="SMB3\data\b3D\DATA_3D8000-2000.bin">
+      <Filter>SMB3\data\b3D</Filter>
     </None>
-    <None Include="b34\DATA_348000-2800.bin">
-      <Filter>b34</Filter>
+    <None Include="SMB3\data\b3D\DATA_3DA000-0800.bin">
+      <Filter>SMB3\data\b3D</Filter>
     </None>
-    <None Include="b35\_b35.asm">
-      <Filter>b35</Filter>
+    <None Include="SMB3\data\b3D\DATA_3DA800-2400.bin">
+      <Filter>SMB3\data\b3D</Filter>
     </None>
-    <None Include="b35\DATA_35E000-2000.bin">
-      <Filter>b35</Filter>
+    <None Include="SMB3\data\b3D\DATA_3DCC00-1400.bin">
+      <Filter>SMB3\data\b3D</Filter>
     </None>
-    <None Include="b35\DATA_358000-6000.bin">
-      <Filter>b35</Filter>
+    <None Include="SMB3\data\b3D\DATA_3DE000-1000.bin">
+      <Filter>SMB3\data\b3D</Filter>
     </None>
-    <None Include="b35\DATA_358000-8000.bin">
-      <Filter>b35</Filter>
+    <None Include="SMB3\data\b3D\DATA_3DF000-1000.bin">
+      <Filter>SMB3\data\b3D</Filter>
     </None>
-    <None Include="b36\_b36.asm">
-      <Filter>b36</Filter>
+    <None Include="SMB3\data\b3D\_b3D.asm">
+      <Filter>SMB3\data\b3D</Filter>
     </None>
-    <None Include="b36\DATA_368000-8000.bin">
-      <Filter>b36</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8000-0800.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b37\_b37.asm">
-      <Filter>b37</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8800-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b37\DATA_37B000-3000.bin">
-      <Filter>b37</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8840-0060.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b37\DATA_37E000-1000.bin">
-      <Filter>b37</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C88A0-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b37\DATA_37F000-1000.bin">
-      <Filter>b37</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C88C0-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b37\DATA_378000-3000.bin">
-      <Filter>b37</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C88E0-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b37\DATA_378000-8000.bin">
-      <Filter>b37</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8900-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b38\_b38.asm">
-      <Filter>b38</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8920-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b38\DATA_38AC00-0C00.bin">
-      <Filter>b38</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8940-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b38\DATA_38B800-0800.bin">
-      <Filter>b38</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8960-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b38\DATA_38C000-4000.bin">
-      <Filter>b38</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8980-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b38\DATA_388000-2C00.bin">
-      <Filter>b38</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C89A0-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b39\_b39.asm">
-      <Filter>b39</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C89C0-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b39\DATA_39C000-4000.bin">
-      <Filter>b39</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C89E0-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b39\DATA_398000-4000.bin">
-      <Filter>b39</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8A00-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3A\_b3A.asm">
-      <Filter>b3A</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8A20-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3A\DATA_3A8000-3000.bin">
-      <Filter>b3A</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8A40-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3A\DATA_3AB000-5000.bin">
-      <Filter>b3A</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8A60-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3B\_b3B.asm">
-      <Filter>b3B</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8A80-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3B\DATA_3B8000-2251.bin">
-      <Filter>b3B</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8AA0-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3B\DATA_3BA251-5DAF.bin">
-      <Filter>b3B</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8AC0-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3D\_b3D.asm">
-      <Filter>b3D</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8AE0-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3D\DATA_3D8000-2000.bin">
-      <Filter>b3D</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8B00-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3D\DATA_3DA000-0800.bin">
-      <Filter>b3D</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8B20-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3D\DATA_3DA800-2400.bin">
-      <Filter>b3D</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8B40-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3D\DATA_3DCC00-1400.bin">
-      <Filter>b3D</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8B60-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3D\DATA_3DE000-1000.bin">
-      <Filter>b3D</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8B80-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3D\DATA_3DF000-1000.bin">
-      <Filter>b3D</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8BA0-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3E\_b3E.asm">
-      <Filter>b3E</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8BC0-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3E\DATA_3E8000-8000.bin">
-      <Filter>b3E</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8BE0-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3F\_b3F.asm">
-      <Filter>b3F</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8C00-0200.bin">
+      <Filter>SMB3\data\b3C</Filter>
     </None>
-    <None Include="b3F\DATA_3F8000-8000.bin">
-      <Filter>b3F</Filter>
+    <None Include="SMB3\data\b3C\DATA_3C8E00-0200.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9000-0160.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9160-0160.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C92C0-0160.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9420-00A0.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C94C0-00C0.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9580-0160.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C96E0-00A0.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9780-00C0.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9840-0160.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C99A0-0160.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9B00-0160.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9C60-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9C80-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9C90-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9CA0-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9CB0-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9CC0-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9CD0-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9CE0-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9CF0-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9D00-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9D10-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9D20-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9D30-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9D40-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9D50-0010.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9D60-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9D80-0080.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9E00-0080.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9E80-0080.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9F00-0080.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3C9F80-0080.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA000-0080.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA080-0080.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA100-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA120-0280.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA3A0-0060.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA400-003E.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA43E-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA45E-0022.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA480-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA4C0-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA500-0100.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA600-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA640-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA680-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA6C0-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA700-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA740-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA780-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA7C0-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA800-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA840-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA880-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA8C0-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA900-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA920-0020.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA940-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA980-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CA9C0-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CAA00-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CAA40-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CAA80-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CAAC0-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CAB00-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CAB40-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CAB80-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CABC0-0040.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CAC00-0100.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CAD00-0100.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CAE00-0100.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CAF00-0100.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CB000-0100.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CB100-0100.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CB200-0100.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CB300-0100.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\DATA_3CB400-4C00.bin">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3C\_b3C.asm">
+      <Filter>SMB3\data\b3C</Filter>
+    </None>
+    <None Include="SMB3\data\b3B\DATA_3B8000-2251.bin">
+      <Filter>SMB3\data\b3B</Filter>
+    </None>
+    <None Include="SMB3\data\b3B\DATA_3BA251-5DAF.bin">
+      <Filter>SMB3\data\b3B</Filter>
+    </None>
+    <None Include="SMB3\data\b3B\_b3B.asm">
+      <Filter>SMB3\data\b3B</Filter>
+    </None>
+    <None Include="SMB3\data\b3A\DATA_3A8000-3000.bin">
+      <Filter>SMB3\data\b3A</Filter>
+    </None>
+    <None Include="SMB3\data\b3A\DATA_3AB000-5000.bin">
+      <Filter>SMB3\data\b3A</Filter>
+    </None>
+    <None Include="SMB3\data\b3A\_b3A.asm">
+      <Filter>SMB3\data\b3A</Filter>
+    </None>
+    <None Include="SMB3\data\b39\DATA_398000-4000.bin">
+      <Filter>SMB3\data\b39</Filter>
+    </None>
+    <None Include="SMB3\data\b39\DATA_39C000-4000.bin">
+      <Filter>SMB3\data\b39</Filter>
+    </None>
+    <None Include="SMB3\data\b39\_b39.asm">
+      <Filter>SMB3\data\b39</Filter>
+    </None>
+    <None Include="SMB3\data\b38\DATA_388000-2C00.bin">
+      <Filter>SMB3\data\b38</Filter>
+    </None>
+    <None Include="SMB3\data\b38\DATA_38AC00-0C00.bin">
+      <Filter>SMB3\data\b38</Filter>
+    </None>
+    <None Include="SMB3\data\b38\DATA_38B800-0800.bin">
+      <Filter>SMB3\data\b38</Filter>
+    </None>
+    <None Include="SMB3\data\b38\DATA_38C000-4000.bin">
+      <Filter>SMB3\data\b38</Filter>
+    </None>
+    <None Include="SMB3\data\b38\_b38.asm">
+      <Filter>SMB3\data\b38</Filter>
+    </None>
+    <None Include="SMB3\data\b37\DATA_378000-3000.bin">
+      <Filter>SMB3\data\b37</Filter>
+    </None>
+    <None Include="SMB3\data\b37\DATA_378000-8000.bin">
+      <Filter>SMB3\data\b37</Filter>
+    </None>
+    <None Include="SMB3\data\b37\DATA_37B000-3000.bin">
+      <Filter>SMB3\data\b37</Filter>
+    </None>
+    <None Include="SMB3\data\b37\DATA_37E000-1000.bin">
+      <Filter>SMB3\data\b37</Filter>
+    </None>
+    <None Include="SMB3\data\b37\DATA_37F000-1000.bin">
+      <Filter>SMB3\data\b37</Filter>
+    </None>
+    <None Include="SMB3\data\b37\_b37.asm">
+      <Filter>SMB3\data\b37</Filter>
+    </None>
+    <None Include="SMB3\data\b36\DATA_368000-8000.bin">
+      <Filter>SMB3\data\b36</Filter>
+    </None>
+    <None Include="SMB3\data\b36\_b36.asm">
+      <Filter>SMB3\data\b36</Filter>
+    </None>
+    <None Include="SMB3\data\b35\DATA_358000-6000.bin">
+      <Filter>SMB3\data\b35</Filter>
+    </None>
+    <None Include="SMB3\data\b35\DATA_358000-8000.bin">
+      <Filter>SMB3\data\b35</Filter>
+    </None>
+    <None Include="SMB3\data\b35\DATA_35E000-2000.bin">
+      <Filter>SMB3\data\b35</Filter>
+    </None>
+    <None Include="SMB3\data\b35\_b35.asm">
+      <Filter>SMB3\data\b35</Filter>
+    </None>
+    <None Include="SMB3\data\b34\DATA_348000-2800.bin">
+      <Filter>SMB3\data\b34</Filter>
+    </None>
+    <None Include="SMB3\data\b34\DATA_34A800-2800.bin">
+      <Filter>SMB3\data\b34</Filter>
+    </None>
+    <None Include="SMB3\data\b34\DATA_34D000-3000.bin">
+      <Filter>SMB3\data\b34</Filter>
+    </None>
+    <None Include="SMB3\data\b34\_b34.asm">
+      <Filter>SMB3\data\b34</Filter>
+    </None>
+    <None Include="SMB3\data\b33\DATA_338000-3000.bin">
+      <Filter>SMB3\data\b33</Filter>
+    </None>
+    <None Include="SMB3\data\b33\DATA_33B000-5000.bin">
+      <Filter>SMB3\data\b33</Filter>
+    </None>
+    <None Include="SMB3\data\b33\_b33.asm">
+      <Filter>SMB3\data\b33</Filter>
+    </None>
+    <None Include="SMB3\data\b32\DATA_328000-0800.bin">
+      <Filter>SMB3\data\b32</Filter>
+    </None>
+    <None Include="SMB3\data\b32\DATA_328800-0800.bin">
+      <Filter>SMB3\data\b32</Filter>
+    </None>
+    <None Include="SMB3\data\b32\DATA_329000-7000.bin">
+      <Filter>SMB3\data\b32</Filter>
+    </None>
+    <None Include="SMB3\data\b32\_b32.asm">
+      <Filter>SMB3\data\b32</Filter>
+    </None>
+    <None Include="SMB3\data\b31\DATA_318000-2000.bin">
+      <Filter>SMB3\data\b31</Filter>
+    </None>
+    <None Include="SMB3\data\b31\DATA_31A000-1000.bin">
+      <Filter>SMB3\data\b31</Filter>
+    </None>
+    <None Include="SMB3\data\b31\DATA_31B000-5000.bin">
+      <Filter>SMB3\data\b31</Filter>
+    </None>
+    <None Include="SMB3\data\b31\_b31.asm">
+      <Filter>SMB3\data\b31</Filter>
+    </None>
+    <None Include="SMB3\data\b30\DATA_308000-3800.bin">
+      <Filter>SMB3\data\b30</Filter>
+    </None>
+    <None Include="SMB3\data\b30\DATA_30B800-4800.bin">
+      <Filter>SMB3\data\b30</Filter>
+    </None>
+    <None Include="SMB3\data\b30\_b30.asm">
+      <Filter>SMB3\data\b30</Filter>
+    </None>
+    <None Include="SMB3\data\b2F\DATA_2F8000-8000.bin">
+      <Filter>SMB3\data\b2F</Filter>
+    </None>
+    <None Include="SMB3\data\b2F\_b2F.asm">
+      <Filter>SMB3\data\b2F</Filter>
+    </None>
+    <None Include="SMB3\data\b2E\DATA_2E8000-8000.bin">
+      <Filter>SMB3\data\b2E</Filter>
+    </None>
+    <None Include="SMB3\data\b2E\_b2E.asm">
+      <Filter>SMB3\data\b2E</Filter>
+    </None>
+    <None Include="SMB3\data\b2D\DATA_2D8000-8000.bin">
+      <Filter>SMB3\data\b2D</Filter>
+    </None>
+    <None Include="SMB3\data\b2D\_b2D.asm">
+      <Filter>SMB3\data\b2D</Filter>
+    </None>
+    <None Include="SMB3\data\b2C\DATA_2C8000-5800.bin">
+      <Filter>SMB3\data\b2C</Filter>
+    </None>
+    <None Include="SMB3\data\b2C\DATA_2CD800-1000.bin">
+      <Filter>SMB3\data\b2C</Filter>
+    </None>
+    <None Include="SMB3\data\b2C\DATA_2CE800-1800.bin">
+      <Filter>SMB3\data\b2C</Filter>
+    </None>
+    <None Include="SMB3\data\b2C\_b2C.asm">
+      <Filter>SMB3\data\b2C</Filter>
+    </None>
+    <None Include="SMB3\data\b2B\DATA_2B8000-8000.bin">
+      <Filter>SMB3\data\b2B</Filter>
+    </None>
+    <None Include="SMB3\data\b2B\_b2B.asm">
+      <Filter>SMB3\data\b2B</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="SPC-700.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="b01">
-      <UniqueIdentifier>{51867cf8-585d-462f-a1f4-7b2d7a1a7bc7}</UniqueIdentifier>
+    <Filter Include="SMB2U">
+      <UniqueIdentifier>{be8d5fee-c022-4e6a-8ea7-0a5d99c94c6e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b02">
-      <UniqueIdentifier>{25b1b605-127e-4232-a76f-a06635eb4651}</UniqueIdentifier>
+    <Filter Include="SMB2J">
+      <UniqueIdentifier>{0b576d70-1a63-4bdf-8c17-c5452f529b48}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b06">
-      <UniqueIdentifier>{914e633b-83ca-4791-aef5-8a928dd4748c}</UniqueIdentifier>
+    <Filter Include="SMB3">
+      <UniqueIdentifier>{c36ddda4-c0ed-4d10-849d-3371f554536b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b07">
-      <UniqueIdentifier>{6e3231f9-8126-47d6-935c-bba0fc3311ad}</UniqueIdentifier>
+    <Filter Include="SMB1">
+      <UniqueIdentifier>{6bad4696-f775-4f9c-a628-4918c818c3d2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b08">
-      <UniqueIdentifier>{556e96aa-c213-43e9-8dc7-c83eefa443a4}</UniqueIdentifier>
+    <Filter Include="SMB1\code">
+      <UniqueIdentifier>{f9d48ea1-a8b6-4c34-9b73-b96b72f174dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b09">
-      <UniqueIdentifier>{a34bd976-cda4-4933-9a6f-9d815620003e}</UniqueIdentifier>
+    <Filter Include="SMB1\data">
+      <UniqueIdentifier>{d461d069-8de5-43f6-9b64-927a7aa09613}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b0A">
-      <UniqueIdentifier>{50d057ac-d864-4581-9290-e25666f5f089}</UniqueIdentifier>
+    <Filter Include="SMB2J\code">
+      <UniqueIdentifier>{77ae72be-2107-4aad-9061-4b2aceac21c6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b0B">
-      <UniqueIdentifier>{85f4660d-0c4a-4190-835a-08f826f4e4c8}</UniqueIdentifier>
+    <Filter Include="SMB2J\data">
+      <UniqueIdentifier>{f0d8abed-7db3-4f0d-932e-c652365adf8b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b0C">
-      <UniqueIdentifier>{3d37b008-f184-44ed-bdd7-08b88bae92c8}</UniqueIdentifier>
+    <Filter Include="SMB2U\code">
+      <UniqueIdentifier>{4ddbe439-5504-4619-a4b4-c3c270cc10f9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b10">
-      <UniqueIdentifier>{746741a9-47cd-4436-ad39-d5615fb6afa2}</UniqueIdentifier>
+    <Filter Include="SMB3\code">
+      <UniqueIdentifier>{5261f080-eeca-4fc6-8557-c057f0d0520f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b16">
-      <UniqueIdentifier>{e2b9f6be-ed6b-4c39-bdcc-281f42f71822}</UniqueIdentifier>
+    <Filter Include="SMB3\data">
+      <UniqueIdentifier>{ac46c132-6b80-4b71-a860-9c9720a19d09}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b17">
-      <UniqueIdentifier>{0b6393ed-d327-46ca-a23e-9cc1de56f7a3}</UniqueIdentifier>
+    <Filter Include="SMB1\code\b03">
+      <UniqueIdentifier>{ab1532d1-2887-4481-a2a7-4c1c595126bc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b18">
-      <UniqueIdentifier>{eb9c7af3-d190-4cfd-a35a-59f7b884233f}</UniqueIdentifier>
+    <Filter Include="SMB1\code\b04">
+      <UniqueIdentifier>{cfd6b198-3dff-4608-a1ac-e7ae91c528c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b19">
-      <UniqueIdentifier>{c66322e7-1d57-4edd-8c2b-4912449872d8}</UniqueIdentifier>
+    <Filter Include="SMB1\data\b06">
+      <UniqueIdentifier>{9ec90618-1479-4035-976b-4607fb9dd844}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b1A">
-      <UniqueIdentifier>{78ea7b8e-e581-4049-8b61-042abaa67552}</UniqueIdentifier>
+    <Filter Include="SMB2J\code\b0D">
+      <UniqueIdentifier>{1f143881-2801-43aa-817e-732b7d8cc1ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b1B">
-      <UniqueIdentifier>{3cdbfbe2-bec6-4437-ad00-4f10518026b8}</UniqueIdentifier>
+    <Filter Include="SMB2J\data\b10">
+      <UniqueIdentifier>{afb7288b-61e0-4fee-ba79-c1c76d2a37c1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b1C">
-      <UniqueIdentifier>{39598852-a4b6-41b6-a905-c918039a3612}</UniqueIdentifier>
+    <Filter Include="SMB2U\code\b11">
+      <UniqueIdentifier>{213fe330-7704-41c0-b5c4-19086ee77c64}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b1D">
-      <UniqueIdentifier>{a39b6723-3360-4d5d-ba2b-8b33766fe9b5}</UniqueIdentifier>
+    <Filter Include="SMB3\code\b20">
+      <UniqueIdentifier>{a856ce6e-b43a-4d72-afd7-494b4aac23c4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b1E">
-      <UniqueIdentifier>{30d33942-7d83-4542-b530-e227dd33443a}</UniqueIdentifier>
+    <Filter Include="SMB3\data\b2B">
+      <UniqueIdentifier>{3be7691d-98a6-4c43-bdea-24dcc6718e28}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b1F">
-      <UniqueIdentifier>{3f3f1949-dde1-47d8-9f46-76d8d04be26a}</UniqueIdentifier>
+    <Filter Include="SMAS">
+      <UniqueIdentifier>{571acc55-6a23-426a-a37f-9662733c8dcc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b2B">
-      <UniqueIdentifier>{f13cdfc3-92e6-4941-878b-116f23d6da62}</UniqueIdentifier>
+    <Filter Include="SMAS\code">
+      <UniqueIdentifier>{18036966-dee7-4304-8c2b-8bcf034cdbf9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b2C">
-      <UniqueIdentifier>{9ff6de32-4060-40d6-8e64-1759307cda18}</UniqueIdentifier>
+    <Filter Include="SMAS\code\b00">
+      <UniqueIdentifier>{69f39169-afa8-49bb-8301-3f7604aa3283}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b2D">
-      <UniqueIdentifier>{4295faf9-40e5-42c3-9100-ffbdde2f9c41}</UniqueIdentifier>
+    <Filter Include="SMAS\data">
+      <UniqueIdentifier>{b680b659-2bcf-4b15-8d62-a88e41db2623}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b2E">
-      <UniqueIdentifier>{5c0b0b1e-3fe4-4c7c-8460-d9091173457e}</UniqueIdentifier>
+    <Filter Include="SMAS\data\b01">
+      <UniqueIdentifier>{0aef2cf3-5298-4f44-b128-f19f7b6208e9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b2F">
-      <UniqueIdentifier>{96d0f274-8a0d-468d-9074-4faa90c181da}</UniqueIdentifier>
+    <Filter Include="SMAS\data\b02">
+      <UniqueIdentifier>{f8af1858-5d76-47fa-8e69-7fe7f864dd01}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b30">
-      <UniqueIdentifier>{76fd11fc-800a-4a06-a4c3-0a3da1f135e0}</UniqueIdentifier>
+    <Filter Include="SMB1\data\b08">
+      <UniqueIdentifier>{4d88c80c-3942-4649-8377-b7e0e2d36256}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b31">
-      <UniqueIdentifier>{5e1fd098-f48a-4fa3-a24c-b60ad3624eaa}</UniqueIdentifier>
+    <Filter Include="SMB1\code\b05">
+      <UniqueIdentifier>{fbafa9e0-a72a-4867-a365-c52c9d8c8be0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b32">
-      <UniqueIdentifier>{1d272f94-70d8-4cc8-b007-0053c4f47022}</UniqueIdentifier>
+    <Filter Include="SMB1\data\b07">
+      <UniqueIdentifier>{2e4110ee-a396-4f3e-9baf-40def1a835f7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b33">
-      <UniqueIdentifier>{641b91e9-8689-4137-9274-bf0f7af7044e}</UniqueIdentifier>
+    <Filter Include="SMB1\data\b09">
+      <UniqueIdentifier>{3f7405cc-ce88-4486-a517-baf4ce30f323}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b34">
-      <UniqueIdentifier>{feadc023-7189-4d82-ae77-e56c03afb669}</UniqueIdentifier>
+    <Filter Include="SMB1\data\b0A">
+      <UniqueIdentifier>{cc3ae980-6589-4ac9-bd82-401c739fcf57}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b35">
-      <UniqueIdentifier>{d5cb9348-c123-42c5-bdec-3c1a25bb80f7}</UniqueIdentifier>
+    <Filter Include="SMB1\data\b0B">
+      <UniqueIdentifier>{b07d063a-c49a-46df-96e0-76e9e709f113}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b36">
-      <UniqueIdentifier>{d12349a9-9819-4005-abdf-2c21a9693446}</UniqueIdentifier>
+    <Filter Include="SMB1\data\b0C">
+      <UniqueIdentifier>{4f2fda52-1489-4c44-a443-18f72e19514c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b37">
-      <UniqueIdentifier>{2ca12761-d160-4cae-a888-9d71fec26c85}</UniqueIdentifier>
+    <Filter Include="SMB2J\code\b0E">
+      <UniqueIdentifier>{b5fa2515-1e45-44de-b08d-b406b5609045}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b38">
-      <UniqueIdentifier>{d1d08d46-eb82-4e2c-be28-1bced7e0da63}</UniqueIdentifier>
+    <Filter Include="SMB2J\code\b0F">
+      <UniqueIdentifier>{adb62963-1f4c-4fd0-a0ea-0cea758c0075}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b39">
-      <UniqueIdentifier>{45a70a74-312d-4be3-afd3-c984402c43d5}</UniqueIdentifier>
+    <Filter Include="SMB2U\code\b12">
+      <UniqueIdentifier>{f751e999-5bf9-4ca2-8d1f-7b868102d339}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b3A">
-      <UniqueIdentifier>{a734d2a8-b135-41c7-8998-6598c53ec7ab}</UniqueIdentifier>
+    <Filter Include="SMB2U\code\b13">
+      <UniqueIdentifier>{d24525f7-2c2f-4752-b280-fbb2aaa1c6cd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b3B">
-      <UniqueIdentifier>{971f601a-5367-4db0-afab-08adec4bacdf}</UniqueIdentifier>
+    <Filter Include="SMB2U\code\b14">
+      <UniqueIdentifier>{c892c73f-6fc3-4949-a455-66624186240e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b3C">
-      <UniqueIdentifier>{d44cb17e-713a-42ed-ba2b-573e26474faa}</UniqueIdentifier>
+    <Filter Include="SMB2U\code\b15">
+      <UniqueIdentifier>{15d7c14a-fd03-4c84-8767-1ee434222366}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b3D">
-      <UniqueIdentifier>{72273688-a2b0-443c-afd0-864765e9150e}</UniqueIdentifier>
+    <Filter Include="SMB2U\data">
+      <UniqueIdentifier>{7760e5b2-c310-4c41-aea4-1645c67a8da4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b3E">
-      <UniqueIdentifier>{8a8fd6d2-471e-4d75-854e-653fde74ce29}</UniqueIdentifier>
+    <Filter Include="SMB2U\data\b16">
+      <UniqueIdentifier>{66db2375-1845-4219-b5fd-0d1208662338}</UniqueIdentifier>
     </Filter>
-    <Filter Include="b3F">
-      <UniqueIdentifier>{1efb1057-5728-4edb-b4ef-144fe07dd49f}</UniqueIdentifier>
+    <Filter Include="SMB2U\data\b17">
+      <UniqueIdentifier>{b4a9be7c-c764-4859-8644-de18e6d3d5f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB2U\data\b18">
+      <UniqueIdentifier>{a681fcf0-c355-41a9-bc0c-a5251125a5d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB2U\data\b19">
+      <UniqueIdentifier>{77cf685a-74bb-44aa-8156-8a8ef08725e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB2U\data\b1A">
+      <UniqueIdentifier>{6e5139d4-c690-4227-90ba-68b2e18469e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB2U\data\b1B">
+      <UniqueIdentifier>{16ae9bd7-eb8f-4080-bcda-ee46b5180ad2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB2U\data\b1C">
+      <UniqueIdentifier>{c40fe9cb-6e98-42e3-9656-caea2de722cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB2U\data\b1D">
+      <UniqueIdentifier>{3e491c4d-c25d-46a8-823a-312423089127}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB2U\data\b1E">
+      <UniqueIdentifier>{277d7d57-579f-4415-b061-bd68486d04e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB2U\data\b1F">
+      <UniqueIdentifier>{1bb38380-ea7c-46e8-ba62-07bd0b37a0af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\code\b21">
+      <UniqueIdentifier>{279c186d-7f99-4f2b-9c19-554d75c680b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\code\b22">
+      <UniqueIdentifier>{4bd032da-933d-4be2-872d-c856fe042c25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\code\b23">
+      <UniqueIdentifier>{642b4347-7ec9-4702-ae3e-2134b85b82f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\code\b24">
+      <UniqueIdentifier>{39467198-970a-4425-bf36-b6f2cfded2d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\code\b25">
+      <UniqueIdentifier>{d4beb068-f0e0-4c69-8962-5012ad8dc911}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\code\b26">
+      <UniqueIdentifier>{daf453e7-7923-43e2-bc4c-8d20aaee9f05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\code\b27">
+      <UniqueIdentifier>{51cb3747-93b5-45f4-9ab9-1debf0ef66e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\code\b28">
+      <UniqueIdentifier>{bf925e16-ea7e-406d-8631-51a09ac37a6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\code\b29">
+      <UniqueIdentifier>{14f0b410-ab12-47fd-a97d-ade0e7ae09c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\code\b2A">
+      <UniqueIdentifier>{d7872656-e634-4f33-bb58-66cadcb11a1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b2C">
+      <UniqueIdentifier>{b4c95a6b-1a26-49d6-ba7c-96f88151e8c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b2D">
+      <UniqueIdentifier>{37b7f661-3f5b-41ac-ab07-82c252d25a6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b2E">
+      <UniqueIdentifier>{b4ada4c6-031b-4118-9bd9-4c3386f1ca83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b2F">
+      <UniqueIdentifier>{2cb90582-790e-492e-a72e-b2372a778f2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b30">
+      <UniqueIdentifier>{5805cf72-c013-4fed-9a91-a1028c18aa76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b31">
+      <UniqueIdentifier>{8954324a-74e5-4fdd-8823-863002a79c9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b32">
+      <UniqueIdentifier>{549601b4-5942-4610-9901-f028712057f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b33">
+      <UniqueIdentifier>{cf08b66a-dd0f-4a53-92bc-828a19444ec5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b34">
+      <UniqueIdentifier>{ab49353a-1c9d-43c7-b936-a7850fe2cdc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b35">
+      <UniqueIdentifier>{d807722f-73e4-408c-b5b9-b129831dbed8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b36">
+      <UniqueIdentifier>{115e334e-2f51-4b14-aa70-03da0f27e95b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b37">
+      <UniqueIdentifier>{bc83ad23-998b-42ab-b5c6-7b2d3918a538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b38">
+      <UniqueIdentifier>{2929bf78-a112-4c95-87a9-92ed84bd8a71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b39">
+      <UniqueIdentifier>{c3d5dc77-308b-42a1-86f9-bc55693e31bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b3A">
+      <UniqueIdentifier>{c355bf38-f124-4ce0-b4af-412917703cd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b3B">
+      <UniqueIdentifier>{ba8feb08-1c5c-42a5-8903-91febd82210e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b3C">
+      <UniqueIdentifier>{9ab4cc96-e127-4fb5-8530-fff0797c6356}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b3D">
+      <UniqueIdentifier>{d4af9564-46e0-4dfa-aee2-27b6c040f7ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b3E">
+      <UniqueIdentifier>{663527ba-0323-4118-9a5f-c2897cbdd941}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMB3\data\b3F">
+      <UniqueIdentifier>{3ef7e049-87bd-4ba9-b18a-724954e705b7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
