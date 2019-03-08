@@ -9,4 +9,3 @@ DATA_0CD000:
 
 DATA_0CF800:
     incbin "DATA_0CF800-0800.bin"
-

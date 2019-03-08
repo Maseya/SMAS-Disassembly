@@ -15,4 +15,3 @@ DATA_07FCA0:
 
 DATA_07FCBC:
     incbin "DATA_07FCBC-0344.bin"
-

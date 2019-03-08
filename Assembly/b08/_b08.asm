@@ -30,4 +30,3 @@ DATA_08E000:
 
 DATA_08F000:
     incbin "DATA_08F000-1000.bin"
-

@@ -27,4 +27,3 @@ DATA_09F000:
 
 DATA_09F800:
     incbin "DATA_09F800-0800.bin"
-

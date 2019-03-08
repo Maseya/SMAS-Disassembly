@@ -6,4 +6,3 @@ DATA_0B8000:
 
 DATA_0B8074:
     incbin "DATA_0B8074-7F8C.bin"
-
