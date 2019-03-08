@@ -1,0 +1,196 @@
+; Fill all banks with $FF. This removes the need to have to `db` write all
+; the unused bytes in ROM.
+
+fillbyte $FF
+
+ORG $008000
+fill $8000
+
+ORG $018000
+fill $8000
+
+ORG $028000
+fill $8000
+
+ORG $038000
+fill $8000
+
+ORG $048000
+fill $8000
+
+ORG $058000
+fill $8000
+
+ORG $068000
+fill $8000
+
+ORG $078000
+fill $8000
+
+ORG $088000
+fill $8000
+
+ORG $098000
+fill $8000
+
+ORG $0A8000
+fill $8000
+
+ORG $0B8000
+fill $8000
+
+ORG $0C8000
+fill $8000
+
+ORG $0D8000
+fill $8000
+
+ORG $0E8000
+fill $8000
+
+ORG $0F8000
+fill $8000
+
+ORG $108000
+fill $8000
+
+ORG $118000
+fill $8000
+
+ORG $128000
+fill $8000
+
+ORG $138000
+fill $8000
+
+ORG $148000
+fill $8000
+
+ORG $158000
+fill $8000
+
+ORG $168000
+fill $8000
+
+ORG $178000
+fill $8000
+
+ORG $188000
+fill $8000
+
+ORG $198000
+fill $8000
+
+ORG $1A8000
+fill $8000
+
+ORG $1B8000
+fill $8000
+
+ORG $1C8000
+fill $8000
+
+ORG $1D8000
+fill $8000
+
+ORG $1E8000
+fill $8000
+
+ORG $1F8000
+fill $8000
+
+ORG $208000
+fill $8000
+
+ORG $218000
+fill $8000
+
+ORG $228000
+fill $8000
+
+ORG $238000
+fill $8000
+
+ORG $248000
+fill $8000
+
+ORG $258000
+fill $8000
+
+ORG $268000
+fill $8000
+
+ORG $278000
+fill $8000
+
+ORG $288000
+fill $8000
+
+ORG $298000
+fill $8000
+
+ORG $2A8000
+fill $8000
+
+ORG $2B8000
+fill $8000
+
+ORG $2C8000
+fill $8000
+
+ORG $2D8000
+fill $8000
+
+ORG $2E8000
+fill $8000
+
+ORG $2F8000
+fill $8000
+
+ORG $308000
+fill $8000
+
+ORG $318000
+fill $8000
+
+ORG $328000
+fill $8000
+
+ORG $338000
+fill $8000
+
+ORG $348000
+fill $8000
+
+ORG $358000
+fill $8000
+
+ORG $368000
+fill $8000
+
+ORG $378000
+fill $8000
+
+ORG $388000
+fill $8000
+
+ORG $398000
+fill $8000
+
+ORG $3A8000
+fill $8000
+
+ORG $3B8000
+fill $8000
+
+ORG $3C8000
+fill $8000
+
+ORG $3D8000
+fill $8000
+
+ORG $3E8000
+fill $8000
+
+ORG $3F8000
+fill $8000

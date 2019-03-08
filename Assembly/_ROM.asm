@@ -1,5 +1,7 @@
 ;Builder ASM file.
 
+incsrc "fillbyte.asm"
+
 ORG $008000
 incsrc "b00.asm"
 

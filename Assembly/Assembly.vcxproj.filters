@@ -66,6 +66,7 @@
     <None Include="b37.asm" />
     <None Include="b38.asm" />
     <None Include="b39.asm" />
+    <None Include="fillbyte.asm" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="SPC-700.txt" />

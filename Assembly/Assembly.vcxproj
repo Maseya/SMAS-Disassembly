@@ -111,6 +111,7 @@ $(SolutionDir)Assembly\asar.exe $(SolutionDir)Assembly\_ROM.asm $(NMakeOutput)</
     <None Include="b3D.asm" />
     <None Include="b3E.asm" />
     <None Include="b3F.asm" />
+    <None Include="fillbyte.asm" />
     <None Include="_ROM.asm" />
   </ItemGroup>
   <ItemGroup>
