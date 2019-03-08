@@ -1273,7 +1273,7 @@ CODE_238ACB:    LDA $03                     ; $23:8ACB: A5 03       ;
                 TAX                         ; $23:8AF7: AA          ;
                 LDY #$14E0                  ; $23:8AF8: A0 E0 14    ;
                 LDA #$001F                  ; $23:8AFB: A9 1F 00    ;
-                MVN $00, DATA_3C88A0>>16    ; $23:8AFE: 54 00 3C    ;first data pointer in above table
+                MVN $00,DATA_3C88A0>>16    ; $23:8AFE: 54 00 3C    ;first data pointer in above table
                 PLB                         ; $23:8B01: AB          ;
                 LDX #$001E                  ; $23:8B02: A2 1E 00    ;
 CODE_238B05:    LDA $14E0,x                 ; $23:8B05: BD E0 14    ;
@@ -8481,7 +8481,7 @@ CODE_23C48A:    PHX                         ; $23:C48A: DA          ;
                 TAX                         ; $23:C498: AA          ;
                 LDY #$14E0                  ; $23:C499: A0 E0 14    ;
                 LDA #$001F                  ; $23:C49C: A9 1F 00    ;
-                MVN $00, DATA_3C88A0>>16    ; $23:C49F: 54 00 3C    ;first data pointer in above table
+                MVN $00,DATA_3C88A0>>16    ; $23:C49F: 54 00 3C    ;first data pointer in above table
                 PLB                         ; $23:C4A2: AB          ;
                 LDX #$001E                  ; $23:C4A3: A2 1E 00    ;
 CODE_23C4A6:    LDA $14E0,x                 ; $23:C4A6: BD E0 14    ;

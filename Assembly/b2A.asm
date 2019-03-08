@@ -2666,13 +2666,13 @@ CODE_2A9650:    JSR CODE_2A8D25             ; $2A:9650: 20 25 8D    ;
                 LDY #$0510                  ; $2A:966D: A0 10 05    ;
                 LDX #$05C0                  ; $2A:9670: A2 C0 05    ;
                 LDA #$CF                    ; $2A:9673: A9 CF       ;
-                MVN $7F, $7F                    ; $2A:9675: 54 7F 7F    ;
+                MVN $7F,$7F                    ; $2A:9675: 54 7F 7F    ;
                 LDA #$00                    ; $2A:9678: A9 00       ;
                 XBA                         ; $2A:967A: EB          ;
                 LDY #$06C0                  ; $2A:967B: A0 C0 06    ;
                 LDX #$0770                  ; $2A:967E: A2 70 07    ;
                 LDA #$CF                    ; $2A:9681: A9 CF       ;
-                MVN $7F, $7F                    ; $2A:9683: 54 7F 7F    ;
+                MVN $7F,$7F                    ; $2A:9683: 54 7F 7F    ;
                 SEP #$10                    ; $2A:9686: E2 10       ;
                 LDX #$E0                    ; $2A:9688: A2 E0       ;
                 LDA #$13                    ; $2A:968A: A9 13       ;
@@ -3158,7 +3158,6 @@ PNTR_2A9B06:    dw CODE_2A9B0C                                  ;
                 dw CODE_2A9B6A                                  ;
                 dw CODE_2A9B86                                  ;
 
-
 CODE_2A9B0C:    LDX $00                     ; $2A:9B0C: A6 00       ;
                 STX $01                     ; $2A:9B0E: 86 01       ;
                 LDA #$03                    ; $2A:9B10: A9 03       ;
@@ -3334,7 +3333,6 @@ CODE_2A9C36:    LDA ($02)                   ; $2A:9C36: B2 02       ;
                 db $1F,$20,$21,$22,$23,$27,$28,$26              ;
                 db $29,$2D,$2E,$2C                              ;
 
-
 CODE_2A9C9D:    SEP #$10                    ; $2A:9C9D: E2 10       ;
 CODE_2A9C9F:    LDY #$00                    ; $2A:9C9F: A0 00       ;
                 LDA [$2B],y                 ; $2A:9CA1: B7 2B       ;
@@ -3350,7 +3348,7 @@ CODE_2A9CAF:    LDA #$00                    ; $2A:9CAF: A9 00       ;
                 LDY #$0100                  ; $2A:9CB4: A0 00 01    ;
                 LDX #$01B0                  ; $2A:9CB7: A2 B0 01    ;
                 LDA #$AF                    ; $2A:9CBA: A9 AF       ;
-                MVN $7F, $7F                    ; $2A:9CBC: 54 7F 7F    ;
+                MVN $7F,$7F                    ; $2A:9CBC: 54 7F 7F    ;
                 SEP #$10                    ; $2A:9CBF: E2 10       ;
                 PLB                         ; $2A:9CC1: AB          ;
                 RTL                         ; $2A:9CC2: 6B          ;
@@ -3426,7 +3424,6 @@ DATA_2A9D74:    db $80,$9D                                      ;
                 db $1A,$08,$08,$1A,$2C,$08,$1A,$1A              ;
                 db $08,$06,$1A,$00,$07,$08,$06,$00              ;
 
-
 CODE_2A9DA6:    LDA $7F0000,x               ; $2A:9DA6: BF 00 00 7F ;
                 BNE CODE_2A9DB7             ; $2A:9DAA: D0 0B       ;
                 LDA ($02)                   ; $2A:9DAC: B2 02       ;
@@ -3478,7 +3475,6 @@ DATA_2A9DE3:    db $EB,$9D,$0B,$9E,$2B,$9E,$4B,$9E              ;
                 db $01,$05,$0C,$13,$1C,$01,$23,$28              ;
                 db $05,$1C,$21,$21,$21,$01,$23,$28              ;
 
-
 CODE_2A9E6B:    REP #$30                    ; $2A:9E6B: C2 30       ;
                 LDA $DA                     ; $2A:9E6D: A5 DA       ;
                 ASL A                       ; $2A:9E6F: 0A          ;
@@ -3506,7 +3502,6 @@ DATA_2A9E8C:    db $94,$9E,$A2,$9E,$B2,$9E,$C2,$9E              ;
                 db $26,$15,$16,$11,$2A,$16,$0D,$0E              ;
                 db $0D,$0E,$0F,$10,$0A,$0F,$26,$29              ;
                 db $26,$15,$16,$17,$11,$16                      ;
-
 
 CODE_2A9ED2:    REP #$10                    ; $2A:9ED2: C2 10       ;
                 LDX $00                     ; $2A:9ED4: A6 00       ;
@@ -3876,31 +3871,31 @@ CODE_2AA1CD:    LDA #$00                    ; $2A:A1CD: A9 00       ;
                 LDY #$00C0                  ; $2A:A1D2: A0 C0 00    ;
                 LDX #$00D0                  ; $2A:A1D5: A2 D0 00    ;
                 LDA #$AF                    ; $2A:A1D8: A9 AF       ;
-                MVN $7F, $7F                    ; $2A:A1DA: 54 7F 7F    ;
+                MVN $7F,$7F                    ; $2A:A1DA: 54 7F 7F    ;
                 LDA #$00                    ; $2A:A1DD: A9 00       ;
                 XBA                         ; $2A:A1DF: EB          ;
                 LDY #$0270                  ; $2A:A1E0: A0 70 02    ;
                 LDX #$0280                  ; $2A:A1E3: A2 80 02    ;
                 LDA #$AF                    ; $2A:A1E6: A9 AF       ;
-                MVN $7F, $7F                    ; $2A:A1E8: 54 7F 7F    ;
+                MVN $7F,$7F                    ; $2A:A1E8: 54 7F 7F    ;
                 LDA #$00                    ; $2A:A1EB: A9 00       ;
                 XBA                         ; $2A:A1ED: EB          ;
                 LDY #$0420                  ; $2A:A1EE: A0 20 04    ;
                 LDX #$0430                  ; $2A:A1F1: A2 30 04    ;
                 LDA #$AF                    ; $2A:A1F4: A9 AF       ;
-                MVN $7F, $7F                    ; $2A:A1F6: 54 7F 7F    ;
+                MVN $7F,$7F                    ; $2A:A1F6: 54 7F 7F    ;
                 LDA #$00                    ; $2A:A1F9: A9 00       ;
                 XBA                         ; $2A:A1FB: EB          ;
                 LDY #$05D0                  ; $2A:A1FC: A0 D0 05    ;
                 LDX #$05E0                  ; $2A:A1FF: A2 E0 05    ;
                 LDA #$AF                    ; $2A:A202: A9 AF       ;
-                MVN $7F, $7F                    ; $2A:A204: 54 7F 7F    ;
+                MVN $7F,$7F                    ; $2A:A204: 54 7F 7F    ;
                 LDA #$00                    ; $2A:A207: A9 00       ;
                 XBA                         ; $2A:A209: EB          ;
                 LDY #$0780                  ; $2A:A20A: A0 80 07    ;
                 LDX #$0790                  ; $2A:A20D: A2 90 07    ;
                 LDA #$AF                    ; $2A:A210: A9 AF       ;
-                MVN $7F, $7F                    ; $2A:A212: 54 7F 7F    ;
+                MVN $7F,$7F                    ; $2A:A212: 54 7F 7F    ;
                 SEP #$10                    ; $2A:A215: E2 10       ;
 CODE_2AA217:    PLB                         ; $2A:A217: AB          ;
                 RTL                         ; $2A:A218: 6B          ;
@@ -3974,7 +3969,6 @@ DATA_2AA278:    db $23,$A3,$2A,$A3,$30,$A3,$34,$A3              ;
                 db $0D,$0D,$02,$03,$03,$03,$03,$03              ;
                 db $03,$05,$07,$07,$03,$05,$06,$06              ;
                 db $07                                          ;
-
 
 CODE_2AA339:    SEP #$10                    ; $2A:A339: E2 10       ;
                 JSR CODE_2AA38B             ; $2A:A33B: 20 8B A3    ;
@@ -4148,13 +4142,13 @@ CODE_2AA478:    LDA $0350                   ; $2A:A478: AD 50 03    ;
                 LDY #$0000                  ; $2A:A487: A0 00 00    ;
                 LDX #$00B0                  ; $2A:A48A: A2 B0 00    ;
                 LDA #$CF                    ; $2A:A48D: A9 CF       ;
-                MVN $7F, $7F                    ; $2A:A48F: 54 7F 7F    ;
+                MVN $7F,$7F                    ; $2A:A48F: 54 7F 7F    ;
                 LDA #$00                    ; $2A:A492: A9 00       ;
                 XBA                         ; $2A:A494: EB          ;
                 LDY #$01B0                  ; $2A:A495: A0 B0 01    ;
                 LDX #$0260                  ; $2A:A498: A2 60 02    ;
                 LDA #$CF                    ; $2A:A49B: A9 CF       ;
-                MVN $7F, $7F                    ; $2A:A49D: 54 7F 7F    ;
+                MVN $7F,$7F                    ; $2A:A49D: 54 7F 7F    ;
                 SEP #$10                    ; $2A:A4A0: E2 10       ;
                 LDA #$42                    ; $2A:A4A2: A9 42       ;
                 STA $00                     ; $2A:A4A4: 85 00       ;
@@ -4333,7 +4327,6 @@ CODE_2AA5DF:    REP #$20                    ; $2A:A5DF: C2 20       ;
 
 CODE_2AA5EB:    SEP #$10                    ; $2A:A5EB: E2 10       ;
                 RTS                         ; $2A:A5ED: 60          ;
-
 
 DATA_2AA5EE:    db $F2,$A5,$FB,$A5,$26,$27,$2B,$2C              ;
                 db $09,$0A,$0B,$0C,$FF,$26,$27,$28              ;
@@ -4784,7 +4777,6 @@ PNTR_2AA95C:    dw CODE_2AA966                                  ;
                 dw CODE_2AA9F6                                  ;
                 dw CODE_2AAA12                                  ;
                 dw CODE_2AAA57                                  ;
-
 
 CODE_2AA966:    REP #$30                    ; $2A:A966: C2 30       ;
                 LDA #$A9AF                  ; $2A:A968: A9 AF A9    ;
@@ -5262,13 +5254,13 @@ CODE_2AAD6D:    LDA $0350                   ; $2A:AD6D: AD 50 03    ;
                 LDY #$0110                  ; $2A:AD79: A0 10 01    ;
                 LDX #$0120                  ; $2A:AD7C: A2 20 01    ;
                 LDA #$EF                    ; $2A:AD7F: A9 EF       ;
-                MVN $7F, $7F                    ; $2A:AD81: 54 7F 7F    ;
+                MVN $7F,$7F                    ; $2A:AD81: 54 7F 7F    ;
                 LDA #$00                    ; $2A:AD84: A9 00       ;
                 XBA                         ; $2A:AD86: EB          ;
                 LDY #$02C0                  ; $2A:AD87: A0 C0 02    ;
                 LDX #$02D0                  ; $2A:AD8A: A2 D0 02    ;
                 LDA #$EF                    ; $2A:AD8D: A9 EF       ;
-                MVN $7F, $7F                    ; $2A:AD8F: 54 7F 7F    ;
+                MVN $7F,$7F                    ; $2A:AD8F: 54 7F 7F    ;
                 SEP #$10                    ; $2A:AD92: E2 10       ;
 CODE_2AAD94:    PLB                         ; $2A:AD94: AB          ;
                 RTL                         ; $2A:AD95: 6B          ;
@@ -5942,7 +5934,6 @@ CODE_2AB2F3:    LDY #$00                    ; $2A:B2F3: A0 00       ;
 CODE_2AB303:    PLB                         ; $2A:B303: AB          ;
                 RTL                         ; $2A:B304: 6B          ;
 
-
 PNTR_2AB305:    dw CODE_2AA966                                  ;
                 dw CODE_2AA9F6
                 dw CODE_2AAA12
@@ -5961,7 +5952,6 @@ CODE_2AB315:    REP #$30                ; $2A:B315: C2 30       ;
                 JSR CODE_2AA97A         ; $2A:B323: 20 7A A9    ;
                 SEP #$10                ; $2A:B326: E2 10       ;
                 RTS                     ; $2A:B328: 60          ;
-
 
                 db $1A,$1B,$1C,$1D                              ;
 
@@ -6050,7 +6040,7 @@ CODE_2AB3B1:    REP #$10                    ; $2A:B3B1: C2 10       ;
                 LDA #$01                    ; $2A:B3D3: A9 01       ;
                 XBA                         ; $2A:B3D5: EB          ;
                 LDA #$AF                    ; $2A:B3D6: A9 AF       ;
-                MVN $7F, $7F                    ; $2A:B3D8: 54 7F 7F    ;
+                MVN $7F,$7F                    ; $2A:B3D8: 54 7F 7F    ;
                 SEP #$10                    ; $2A:B3DB: E2 10       ;
                 PLB                         ; $2A:B3DD: AB          ;
                 RTL                         ; $2A:B3DE: 6B          ;
@@ -6105,7 +6095,6 @@ CODE_2AB439:    PLB                         ; $2A:B439: AB          ;
 PNTR_2AB43B:    dw CODE_2AB08B                                  ;
                 dw CODE_2AB0DD                                  ;
                 dw CODE_2AB441                                  ;
-
 
 CODE_2AB441:    LDX $00                 ; $2A:B441: A6 00       ;
                 LDY $DA                 ; $2A:B443: A4 DA       ;
@@ -6233,7 +6222,6 @@ DATA_2AB546:    db $10,$BD,$2A,$58,$BE,$2A,$30,$BF              ;
                 db $D6,$2A,$F0,$D1,$2A,$68,$DC,$2A              ;
                 db $10,$BD,$2A,$50,$D8,$2A,$58,$BE              ;
                 db $2A,$30,$BF,$2A,$10,$BD,$2A                  ;
-
 
 CODE_2AB5B5:    PHB                         ; $2A:B5B5: 8B          ;
                 PHK                         ; $2A:B5B6: 4B          ;

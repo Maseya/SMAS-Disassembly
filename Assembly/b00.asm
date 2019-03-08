@@ -602,7 +602,7 @@ CODE_00849C:    JSL ForceBlank          ; $00:849C: 22 2E 88 00 ;Forced blank + 
                 LDX.w #DATA_02F000      ; $00:84C7: A2 00 F0    ; |
                 LDY #$1000              ; $00:84CA: A0 00 10    ; |
                 LDA #$0FFF              ; $00:84CD: A9 FF 0F    ; |Source: $02:F000. Dest: $7F:1000
-                MVN $7F, DATA_02F000>>16    ; $00:84D0: 54 7F 02    ; |Used when collapsing a file select menu
+                MVN $7F,DATA_02F000>>16 ; $00:84D0: 54 7F 02    ; |Used when collapsing a file select menu
                 SEP #$30                ; $00:84D3: E2 30       ; |after selecting a game. 8-bit AXY
                 PLX                     ; $00:84D5: FA          ; |
                 PLB                     ; $00:84D6: AB          ;/
@@ -5583,7 +5583,7 @@ CODE_00B683:    PHB                     ; $00:B683: 8B          ;
                 LDX.w #DATA_3C8000      ; $00:B688: A2 00 80    ; Source low and high byte
                 LDY #$0000              ; $00:B68B: A0 00 00    ; Destination low and high byte
                 LDA #$07FF              ; $00:B68E: A9 FF 07    ; Amount of byte to transfer
-                MVN $7F, DATA_3C8000>>16    ; $00:B691: 54 7F 3C    ; Transfer $3C:8000 -> $7F:0000
+                MVN $7F,DATA_3C8000>>16 ; $00:B691: 54 7F 3C    ; Transfer $3C:8000 -> $7F:0000
                 SEP #$30                ; $00:B694: E2 30       ;
                 PLB                     ; $00:B696: AB          ;
                 LDA #$0B                ; $00:B697: A9 0B       ;\
@@ -5660,7 +5660,7 @@ CODE_00B723:    LDA #$00                ; $00:B723: A9 00       ;
                 INC $0202               ; $00:B740: EE 02 02    ;
                 RTS                     ; $00:B743: 60          ;
 
-DATA_00B744:    dw $BA6D : dw $BA8B                             ;
+DATA_00B744:    dw $BA6D,$BA8B                             ;
 
 CODE_00B748:    LDA #$00                ; $00:B748: A9 00       ;
                 STA $02                 ; $00:B74A: 85 02       ;
@@ -5678,7 +5678,7 @@ CODE_00B748:    LDA #$00                ; $00:B748: A9 00       ;
                 INC $0203               ; $00:B765: EE 03 02    ;
                 RTS                     ; $00:B768: 60          ;
 
-DATA_00B769:    dw $BAA9 : dw $BAE3                             ;
+DATA_00B769:    dw $BAA9,$BAE3                             ;
 
                 LDA #$00                ; $00:B76D: A9 00       ;
                 STA $02                 ; $00:B76F: 85 02       ;
