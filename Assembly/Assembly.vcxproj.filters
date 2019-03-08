@@ -31,7 +31,6 @@
     <None Include="b3F.asm" />
     <None Include="b04.asm" />
     <None Include="b05.asm" />
-    <None Include="b06.asm" />
     <None Include="b07.asm" />
     <None Include="b08.asm" />
     <None Include="b09.asm" />
@@ -96,6 +95,18 @@
     <None Include="b02\DATA_029000-1000.bin">
       <Filter>b02</Filter>
     </None>
+    <None Include="b06\_b06.asm">
+      <Filter>b06</Filter>
+    </None>
+    <None Include="b06\DATA_06A000-2000.bin">
+      <Filter>b06</Filter>
+    </None>
+    <None Include="b06\DATA_06C000-4000.bin">
+      <Filter>b06</Filter>
+    </None>
+    <None Include="b06\DATA_068000-2000.bin">
+      <Filter>b06</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="SPC-700.txt" />
@@ -106,6 +117,9 @@
     </Filter>
     <Filter Include="b02">
       <UniqueIdentifier>{25b1b605-127e-4232-a76f-a06635eb4651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="b06">
+      <UniqueIdentifier>{914e633b-83ca-4791-aef5-8a928dd4748c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

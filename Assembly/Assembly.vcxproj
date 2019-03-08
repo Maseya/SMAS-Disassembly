@@ -62,7 +62,10 @@
     <None Include="b03.asm" />
     <None Include="b04.asm" />
     <None Include="b05.asm" />
-    <None Include="b06.asm" />
+    <None Include="b06\DATA_068000-2000.bin" />
+    <None Include="b06\DATA_06A000-2000.bin" />
+    <None Include="b06\DATA_06C000-4000.bin" />
+    <None Include="b06\_b06.asm" />
     <None Include="b07.asm" />
     <None Include="b08.asm" />
     <None Include="b09.asm" />
