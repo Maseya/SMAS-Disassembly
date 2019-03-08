@@ -3,9 +3,6 @@
   <ItemGroup>
     <None Include="_ROM.asm" />
     <None Include="b00.asm" />
-    <None Include="b0A.asm" />
-    <None Include="b0B.asm" />
-    <None Include="b0C.asm" />
     <None Include="b0D.asm" />
     <None Include="b0E.asm" />
     <None Include="b0F.asm" />
@@ -31,9 +28,6 @@
     <None Include="b3F.asm" />
     <None Include="b04.asm" />
     <None Include="b05.asm" />
-    <None Include="b07.asm" />
-    <None Include="b08.asm" />
-    <None Include="b09.asm" />
     <None Include="b10.asm" />
     <None Include="b11.asm" />
     <None Include="b12.asm" />
@@ -107,6 +101,114 @@
     <None Include="b06\DATA_068000-2000.bin">
       <Filter>b06</Filter>
     </None>
+    <None Include="b07\_b07.asm">
+      <Filter>b07</Filter>
+    </None>
+    <None Include="b07\DATA_07C000-3C00.bin">
+      <Filter>b07</Filter>
+    </None>
+    <None Include="b07\DATA_07FC00-00A0.bin">
+      <Filter>b07</Filter>
+    </None>
+    <None Include="b07\DATA_07FCA0-001C.bin">
+      <Filter>b07</Filter>
+    </None>
+    <None Include="b07\DATA_07FCBC-0344.bin">
+      <Filter>b07</Filter>
+    </None>
+    <None Include="b07\DATA_078000-4000.bin">
+      <Filter>b07</Filter>
+    </None>
+    <None Include="b0C\_b0C.asm">
+      <Filter>b0C</Filter>
+    </None>
+    <None Include="b0C\DATA_0C8000-5000.bin">
+      <Filter>b0C</Filter>
+    </None>
+    <None Include="b0C\DATA_0CD000-2800.bin">
+      <Filter>b0C</Filter>
+    </None>
+    <None Include="b0C\DATA_0CF800-0800.bin">
+      <Filter>b0C</Filter>
+    </None>
+    <None Include="b0B\_b0B.asm">
+      <Filter>b0B</Filter>
+    </None>
+    <None Include="b0B\DATA_0B8000-0074.bin">
+      <Filter>b0B</Filter>
+    </None>
+    <None Include="b0B\DATA_0B8074-7F8C.bin">
+      <Filter>b0B</Filter>
+    </None>
+    <None Include="b0A\_b0A.asm">
+      <Filter>b0A</Filter>
+    </None>
+    <None Include="b0A\DATA_0A8000-8000.bin">
+      <Filter>b0A</Filter>
+    </None>
+    <None Include="b09\_b09.asm">
+      <Filter>b09</Filter>
+    </None>
+    <None Include="b09\DATA_09A000-2000.bin">
+      <Filter>b09</Filter>
+    </None>
+    <None Include="b09\DATA_09C000-1000.bin">
+      <Filter>b09</Filter>
+    </None>
+    <None Include="b09\DATA_09D000-1000.bin">
+      <Filter>b09</Filter>
+    </None>
+    <None Include="b09\DATA_09E000-0800.bin">
+      <Filter>b09</Filter>
+    </None>
+    <None Include="b09\DATA_09E800-0800.bin">
+      <Filter>b09</Filter>
+    </None>
+    <None Include="b09\DATA_09F000-0800.bin">
+      <Filter>b09</Filter>
+    </None>
+    <None Include="b09\DATA_09F800-0800.bin">
+      <Filter>b09</Filter>
+    </None>
+    <None Include="b09\DATA_098000-1000.bin">
+      <Filter>b09</Filter>
+    </None>
+    <None Include="b09\DATA_099000-1000.bin">
+      <Filter>b09</Filter>
+    </None>
+    <None Include="b08\_b08.asm">
+      <Filter>b08</Filter>
+    </None>
+    <None Include="b08\DATA_08A000-1000.bin">
+      <Filter>b08</Filter>
+    </None>
+    <None Include="b08\DATA_08B000-0800.bin">
+      <Filter>b08</Filter>
+    </None>
+    <None Include="b08\DATA_08B800-0800.bin">
+      <Filter>b08</Filter>
+    </None>
+    <None Include="b08\DATA_08C000-1000.bin">
+      <Filter>b08</Filter>
+    </None>
+    <None Include="b08\DATA_08D000-1000.bin">
+      <Filter>b08</Filter>
+    </None>
+    <None Include="b08\DATA_08E000-1000.bin">
+      <Filter>b08</Filter>
+    </None>
+    <None Include="b08\DATA_08F000-1000.bin">
+      <Filter>b08</Filter>
+    </None>
+    <None Include="b08\DATA_088000-1000.bin">
+      <Filter>b08</Filter>
+    </None>
+    <None Include="b08\DATA_089000-0800.bin">
+      <Filter>b08</Filter>
+    </None>
+    <None Include="b08\DATA_089800-0800.bin">
+      <Filter>b08</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="SPC-700.txt" />
@@ -120,6 +222,24 @@
     </Filter>
     <Filter Include="b06">
       <UniqueIdentifier>{914e633b-83ca-4791-aef5-8a928dd4748c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="b07">
+      <UniqueIdentifier>{6e3231f9-8126-47d6-935c-bba0fc3311ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="b08">
+      <UniqueIdentifier>{556e96aa-c213-43e9-8dc7-c83eefa443a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="b09">
+      <UniqueIdentifier>{a34bd976-cda4-4933-9a6f-9d815620003e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="b0A">
+      <UniqueIdentifier>{50d057ac-d864-4581-9290-e25666f5f089}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="b0B">
+      <UniqueIdentifier>{85f4660d-0c4a-4190-835a-08f826f4e4c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="b0C">
+      <UniqueIdentifier>{3d37b008-f184-44ed-bdd7-08b88bae92c8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

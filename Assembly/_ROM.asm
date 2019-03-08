@@ -21,25 +21,25 @@ ORG $058000
 incsrc "b05.asm"
 
 ORG $068000
-incsrc "b06.asm"
+incsrc "b06/_b06.asm"
 
 ORG $078000
-incsrc "b07.asm"
+incsrc "b07/_b07.asm"
 
 ORG $088000
-incsrc "b08.asm"
+incsrc "b08/_b08.asm"
 
 ORG $098000
-incsrc "b09.asm"
+incsrc "b09/_b09.asm"
 
 ORG $0A8000
-incsrc "b0A.asm"
+incsrc "b0A/_b0A.asm"
 
 ORG $0B8000
-incsrc "b0B.asm"
+incsrc "b0B/_b0B.asm"
 
 ORG $0C8000
-incsrc "b0C.asm"
+incsrc "b0C/_b0C.asm"
 
 ORG $0D8000
 incsrc "b0D.asm"
