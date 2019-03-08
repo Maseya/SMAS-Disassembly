@@ -6588,7 +6588,7 @@ CODE_22E0B6:    TYA                         ; $22:E0B6: 98          ;
 ;Random number generation-related. Uses LFSR principle. A = ($0783&#$02) ^ ($0784&#$02), so either 02 or 00.
 CODE_22E103:    LDA $0782               ; $22:E103: AD 82 07    ;\
                 AND #$02                ; $22:E106: 29 02       ; |
-                STA $00                 ; $22:E108: 85 00       ; | 
+                STA $00                 ; $22:E108: 85 00       ; |
                 LDA $0783               ; $22:E10A: AD 83 07    ; | If bit 1 of both 0782 and 0783 are equal
                 AND #$02                ; $22:E10D: 29 02       ; | then clear the carry flag
                 EOR $00                 ; $22:E10F: 45 00       ; | Otherwise, set it

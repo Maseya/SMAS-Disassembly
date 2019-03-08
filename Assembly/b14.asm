@@ -3516,7 +3516,7 @@ CODE_14D4CE:    LDA #$00FF                  ; $14:D4CE: A9 FF 00    ;
                 db $4A,$00,$44,$00,$3E,$00,$38,$00              ;
                 db $31,$00,$2B,$00,$25,$00,$1F,$00              ;
                 db $19,$00,$12,$00,$0C,$00,$06,$00              ;
-                    
+
 DATA_14D58D:    db $00,$00,$FA,$FF,$F4,$FF,$EE,$FF              ;
                 db $E7,$FF,$E1,$FF,$DB,$FF,$D5,$FF              ;
                 db $CF,$FF,$C8,$FF,$C2,$FF,$BC,$FF              ;
@@ -3677,7 +3677,7 @@ DATA_14D863:    db $F0,$00,$00,$F0,$00,$00,$00                  ;
 DATA_14D86A:    db $00,$00,$00,$01                              ;
 
 DATA_14D86E:    db $00,$00,$00,$03,$06,$06                      ;
- 
+
 CODE_14D874:    LDA $04EF               ; $14:D874: AD EF 04    ;
                 BEQ CODE_14D862         ; $14:D877: F0 E9       ;
                 LDX #$06                    ; $14:D879: A2 06       ;
@@ -3970,7 +3970,7 @@ CODE_14DAF4:    LDA $078E                   ; $14:DAF4: AD 8E 07    ;
 PNTR_14DAFC:    dw CODE_14DB02                                  ;
                 dw CODE_14DB0D                                  ;
                 dw $DB29                                        ;
-             
+
 CODE_14DB02:    LDA $078F                   ; $14:DB02: AD 8F 07    ;
                 BNE CODE_14DB0C             ; $14:DB05: D0 05       ;
                 LDA #$43                    ; $14:DB07: A9 43       ;
@@ -5102,7 +5102,7 @@ CODE_14E4DC:    STY $02F8                   ; $14:E4DC: 8C F8 02    ;
                 SEP #$30                    ; $14:E4DF: E2 30       ;
                 LDX $12                     ; $14:E4E1: A6 12       ;
                 RTL                         ; $14:E4E3: 6B          ;
-         
+
 DATA_14E4E4:    db $00,$80,$40,$80,$80,$80,$C0,$80              ;
                 db $00,$81,$40,$81,$80,$81,$C0,$81              ;
                 db $00,$84,$40,$84,$80,$84,$C0,$84              ;
@@ -5113,7 +5113,7 @@ DATA_14E4E4:    db $00,$80,$40,$80,$80,$80,$C0,$80              ;
                 db $00,$8D,$40,$8D,$80,$8D,$C0,$8D              ;
 
                 db $00,$90,$40,$90,$80,$90,$C0,$90              ;
-           
+
 DATA_14E52C:    db $00,$82,$40,$82,$80,$82,$C0,$82              ;
                 db $00,$83,$40,$83,$80,$83,$C0,$83              ;
                 db $00,$86,$40,$86,$80,$86,$C0,$86              ;
@@ -6051,7 +6051,7 @@ CODE_14ED33:    LDA #$FF                    ; $14:ED33: A9 FF       ;
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF                      ; /
-        
+
 CODE_14ED60:    LDA $0503               ; $14:ED60: AD 03 05    ;
                 BNE CODE_14EDC4         ; $14:ED63: D0 5F       ;
                 JSL CODE_128DB6         ; $14:ED65: 22 B6 8D 12 ;
@@ -6677,7 +6677,7 @@ CODE_14F2B2:    LDA $0712               ; $14:F2B2: AD 12 07    ; \ High byte of
                 ROL A                   ; $14:F2BF: 2A          ;  |
                 ROL A                   ; $14:F2C0: 2A          ;  |
                 TAY                     ; $14:F2C1: A8          ;  |
-                LDA.w DATA_11AD64,y     ; $14:F2C2: B9 64 AD    ;  | ...and make them determine the index for the M16 tiles.   
+                LDA.w DATA_11AD64,y     ; $14:F2C2: B9 64 AD    ;  | ...and make them determine the index for the M16 tiles.
                 STA $00                 ; $14:F2C5: 85 00       ;  | Per $40 tiles, there is one slot.
                 LDA.w DATA_11AD68,y     ; $14:F2C7: B9 68 AD    ;  |
                 STA $01                 ; $14:F2CA: 85 01       ;  |
@@ -6935,7 +6935,7 @@ CODE_14F52B:    RTL                         ; $14:F52B: 6B          ;
 CODE_14F52C:    LDA $074E               ; $14:F52C: AD 4E 07    ; \ Redundant code because there is really only one option.
                 ASL A                   ; $14:F52F: 0A          ;  | Makes use of the Layer 3 enable flag but it must be 00 anyway.
                 TAX                     ; $14:F530: AA          ;  | Maybe there used to be more options.
-                JMP (PNTR_14F534,x)     ; $14:F531: 7C 34 F5    ; / Jump to CODE_14F538.     
+                JMP (PNTR_14F534,x)     ; $14:F531: 7C 34 F5    ; / Jump to CODE_14F538.
 
 PNTR_14F534:    dw CODE_14F538                                  ;
 
@@ -7075,9 +7075,9 @@ CODE_14F633:    RTS                         ; $14:F633: 60          ;
 CODE_14F634:    LDA $0771                   ; $14:F634: AD 71 07    ;
                 BEQ CODE_14F63B             ; $14:F637: F0 02       ;
                 LDX #$04                    ; $14:F639: A2 04       ;
-CODE_14F63B:    LDA.w DATA_11AB1B,x     ; $14:F63B: BD 1B AB    ; \ [$01] = Layer 3 Map16 table.       
+CODE_14F63B:    LDA.w DATA_11AB1B,x     ; $14:F63B: BD 1B AB    ; \ [$01] = Layer 3 Map16 table.
                 STA $01                 ; $14:F63E: 85 01       ;  |
-                LDA.w DATA_11AB25,x     ; $14:F640: BD 25 AB    ;  |   
+                LDA.w DATA_11AB25,x     ; $14:F640: BD 25 AB    ;  |
                 STA $02                 ; $14:F643: 85 02       ;  |
                 LDA #$7F                ; $14:F645: A9 7F       ;  |
                 STA $03                 ; $14:F647: 85 03       ; /
@@ -7361,11 +7361,11 @@ CODE_14F908:    LDA $11                 ; $14:F908: A5 11       ; \ Load a diffe
                 CLC                     ; $14:F90B: 18          ;  |
                 ADC $11                 ; $14:F90C: 65 11       ;  |
                 TAX                     ; $14:F90E: AA          ;  |
-                LDA.l PNTR_15E000,x     ; $14:F90F: BF 00 E0 15 ;  | Address goes into pointer [$F0].   
+                LDA.l PNTR_15E000,x     ; $14:F90F: BF 00 E0 15 ;  | Address goes into pointer [$F0].
                 STA $F0                 ; $14:F913: 85 F0       ;  |
-                LDA.l PNTR_15E000+1,x   ; $14:F915: BF 01 E0 15 ;  |       
+                LDA.l PNTR_15E000+1,x   ; $14:F915: BF 01 E0 15 ;  |
                 STA $F1                 ; $14:F919: 85 F1       ;  |
-                LDA.l PNTR_15E000+2,x   ; $14:F91B: BF 02 E0 15 ;  |       
+                LDA.l PNTR_15E000+2,x   ; $14:F91B: BF 02 E0 15 ;  |
                 STA $F2                 ; $14:F91F: 85 F2       ;  |
                 STZ $0154               ; $14:F921: 9C 54 01    ;  |
 CODE_14F924:    LDA $0154               ; $14:F924: AD 54 01    ;  | Loop forever until NMI is done with uploading the stripe.

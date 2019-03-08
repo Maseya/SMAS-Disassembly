@@ -339,7 +339,7 @@ CODE_20831A:    TXA                         ; $20:831A: 8A          ;
 
 CODE_20833C:    LDA $1F55               ; $20:833C: AD 55 1F    ; | If Music box is playing,
                 BEQ CODE_208343         ; $20:833F: F0 02       ; | play music box music (#$0E).
-                LDY #$0E                ; $20:8341: A0 0E       ; | 
+                LDY #$0E                ; $20:8341: A0 0E       ; |
 CODE_208343:    STY $1202               ; $20:8343: 8C 02 12    ;/  Otherwise play regular overworld music.
 CODE_208346:    STZ $05F2                   ; $20:8346: 9C F2 05    ;
                 LDA #$EF                    ; $20:8349: A9 EF       ;
@@ -1274,7 +1274,7 @@ CODE_208C2B:    JSR CODE_20801F             ; $20:8C2B: 20 1F 80    ;
                 LDA #$01                    ; $20:8C41: A9 01       ;
                 STA $072D                   ; $20:8C43: 8D 2D 07    ;
                 JMP CODE_208C50         ; $20:8C46: 4C 50 8C    ;
-           
+
 CODE_208C49:    CMP #$07                    ; $20:8C49: C9 07       ;
                 BNE CODE_208C50             ; $20:8C4B: D0 03       ;
                 JSR $95C1               ; $20:8C4D: 20 C1 95    ;INVALID: Polymorphic jump?
@@ -2690,20 +2690,20 @@ CODE_20990B:    STZ $0700                   ; $20:990B: 9C 00 07    ;
                 LSR A                       ; $20:9951: 4A          ; |
                 TAX                         ; $20:9952: AA          ;/
                 LDA.w DATA_21CE2A,x         ; $20:9953: BD 2A CE    ;\ Set Player's starting Y position, high byte
-                STA $55                     ; $20:9956: 85 55       ;/ 
+                STA $55                     ; $20:9956: 85 55       ;/
                 LDA.w DATA_21CE32,x         ; $20:9958: BD 32 CE    ;\ Set Player's starting Y position, low byte
                 STA $70                     ; $20:995B: 85 70       ;/
                 STZ $43                     ; $20:995D: 64 43       ;Set Player's starting X position, high byte (i.e. screen number)
                 LDA.w DATA_21CE3A,x         ; $20:995F: BD 3A CE    ;\
                 STA $0216                   ; $20:9962: 8D 16 02    ;/|Set BG1 camera Y position, low byte
-                LSR A                       ; $20:9965: 4A          ; | 
+                LSR A                       ; $20:9965: 4A          ; |
                 LSR A                       ; $20:9966: 4A          ; |
                 STA $0218                   ; $20:9967: 8D 18 02    ; | Set BG2 camera Y position, low byte
                 LDA $0216                   ; $20:996A: AD 16 02    ; |
                 SEC                         ; $20:996D: 38          ; |
                 SBC $0218                   ; $20:996E: ED 18 02    ; |
                 STA $0218                   ; $20:9971: 8D 18 02    ;/
-CODE_209974:    LDA [$2B],y                 ; $20:9974: B7 2B       ;\ 
+CODE_209974:    LDA [$2B],y                 ; $20:9974: B7 2B       ;\
                 AND #$0F                    ; $20:9976: 29 0F       ; | Header byte 6, low nibble
                 STA $22                     ; $20:9978: 85 22       ;/ Set the amount of screens the level has
                 STA $0376                   ; $20:997A: 8D 76 03    ; TODO: what is this address?
@@ -2713,7 +2713,7 @@ CODE_209974:    LDA [$2B],y                 ; $20:9974: B7 2B       ;\
                 STA $073B                   ; $20:9982: 8D 3B 07    ;/
                 LDA [$2B],y                 ; $20:9985: B7 2B       ;\
                 AND #$1C                    ; $20:9987: 29 1C       ; | bits 432
-                LSR A                       ; $20:9989: 4A          ; | 
+                LSR A                       ; $20:9989: 4A          ; |
                 LSR A                       ; $20:998A: 4A          ; | Set level backdrop color
                 STA $073C                   ; $20:998B: 8D 3C 07    ;/
                 LDA [$2B],y                 ; $20:998E: B7 2B       ;\
@@ -2828,7 +2828,7 @@ CODE_209A49:    LDA [$2B],y                 ; $20:9A49: B7 2B       ;
 CODE_209A6A:    LDA [$2B],y                 ; $20:9A6A: B7 2B       ;
                 AND #$0F                    ; $20:9A6C: 29 0F       ;
                 TAX                         ; $20:9A6E: AA          ;
-                LDA.w DATA_21CE46,x         ; $20:9A6F: BD 46 CE    ; Level music table        
+                LDA.w DATA_21CE46,x         ; $20:9A6F: BD 46 CE    ; Level music table
 CODE_209A72:    STA $1061                   ; $20:9A72: 8D 61 10    ;
                 STA $1062                   ; $20:9A75: 8D 62 10    ;
                 LDA $2142                   ; $20:9A78: AD 42 21    ;
@@ -3082,7 +3082,7 @@ CODE_209C40:    LDA $070A                   ; $20:9C40: AD 0A 07    ;
                 dl CODE_239135                                  ;
                 dl CODE_239135                                  ;
                 dl CODE_23A569                                  ;
-               
+
 CODE_209C80:    LDA $070A               ; $20:9C80: AD 0A 07    ;
                 JSL CODE_20FB3A         ; $20:9C83: 22 3A FB 20 ; ExecutePtrLong
 
@@ -3105,7 +3105,7 @@ CODE_209C80:    LDA $070A               ; $20:9C80: AD 0A 07    ;
                 dl CODE_23914A                                  ;
                 dl CODE_23914A                                  ;
                 dl CODE_23A5E8                                  ;
-  
+
 CODE_209CC0:    LDA $0425                   ; $20:9CC0: AD 25 04    ;
                 BNE CODE_209CFC             ; $20:9CC3: D0 37       ;
                 LDX $25                     ; $20:9CC5: A6 25       ;
@@ -3952,7 +3952,7 @@ CODE_20A2D0:    STZ $01                 ; $20:A2D0: 64 01       ; entry point fo
                 STZ $00                 ; $20:A31F: 64 00       ; \
                 LDX #$05                ; $20:A321: A2 05       ; |
                 STX $01                 ; $20:A323: 86 01       ; |
-                LDY #$9D                ; $20:A325: A0 9D       ; | 
+                LDY #$9D                ; $20:A325: A0 9D       ; |
 CODE_20A327:    STA ($00),y             ; $20:A327: 91 00       ; | a really complicated way of saying
                 DEY                     ; $20:A329: 88          ; | STZ $059D
                 BPL CODE_20A327         ; $20:A32A: 10 FB       ; /
@@ -4919,7 +4919,7 @@ CODE_20B0A2:    STA $1300,x                 ; $20:B0A2: 9D 00 13    ;
 DATA_20B0F2:    db $02,$00,$01,$03,$04,$05                      ;
 
 DATA_20B0F8:    db $03,$03,$06,$12,$11,$00                      ;
-  
+
 CODE_20B0FE:    LDA #$11                    ; $20:B0FE: A9 11       ;
                 STA $0208                   ; $20:B100: 8D 08 02    ;
                 LDA #$02                    ; $20:B103: A9 02       ;
@@ -5171,7 +5171,7 @@ CODE_20B31F:    LDA $DA                     ; $20:B31F: A5 DA       ;
                 DEX                         ; $20:B324: CA          ;
                 BNE CODE_20B31F             ; $20:B325: D0 F8       ;
                 RTS                         ; $20:B327: 60          ;
-  
+
 CODE_20B328:    REP #$20                    ; $20:B328: C2 20       ;
                 LDX #$80                    ; $20:B32A: A2 80       ;
                 STX $2115                   ; $20:B32C: 8E 15 21    ;
@@ -6293,7 +6293,7 @@ CODE_20BD1A:    TXA                         ; $20:BD1A: 8A          ;
 
 DATA_20BD26:    db $07,$06,$05,$04,$03,$02,$01,$01              ;
                 db $01                                          ;
-        
+
 CODE_20BD2F:    PHB                     ; $20:BD2F: 8B          ;
                 PHK                         ; $20:BD30: 4B          ;
                 PLB                         ; $20:BD31: AB          ;
@@ -7647,7 +7647,7 @@ CODE_20C809:    LDA $A3                     ; $20:C809: A5 A3       ;
                dw CODE_20C8B5
                dw CODE_20C986
                dw CODE_20C9C6
-               dw CODE_20C9CE    
+               dw CODE_20C9CE
 
 CODE_20C81F:    LDA #$EC                ; $20:C81F: A9 EC       ;
                 STA $53                 ; $20:C821: 85 53       ;
@@ -8908,33 +8908,33 @@ PNTR_20D301:          dw $1602
                dw DATA_20DEFB
                dw DATA_20DEFB
                dw DATA_20DEFB
-               dw DATA_20DEFC       
-               dw DATA_20DEFC    
-               dw DATA_20DEFC    
-               dw DATA_20DEFC       
-               dw DATA_20DEFC    
-               dw DATA_20DEFC    
-               dw DATA_20DEFC       
-               dw DATA_20DEFC    
-               dw DATA_20DEFC    
-               dw DATA_20DEFC       
-               dw DATA_20DEFC    
-               dw DATA_20DEFC    
-               dw DATA_20DEFC       
-               dw DATA_20DEFC    
-               dw DATA_20DEFC    
-               dw DATA_20DEFC           
-               dw DATA_20DEFC    
-               dw DATA_20DEFC    
-               dw DATA_20DEFC       
-               dw DATA_20DEFC    
-               dw DATA_20DEFC    
-               dw DATA_20DEFC       
-               dw DATA_20DEFC    
-               dw DATA_20DEFC    
-               dw DATA_20DEFC       
-               dw DATA_20DEFC    
-               dw DATA_20DEFC    
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
+               dw DATA_20DEFC
                dw DATA_20DEFD
                dw DATA_20E002
                dw DATA_20E042
@@ -8948,7 +8948,7 @@ PNTR_20D301:          dw $1602
                dw DATA_20E063
                dw DATA_20DBBE
                dw DATA_20DBF7
-      
+
 DATA_20D3BD:    db $13,$00,$01,$3F,$15,$2C,$15,$2C              ;
                 db $16,$2C,$16,$2C,$15,$2C,$15,$2C              ;
                 db $16,$2C,$16,$2C,$15,$2C,$15,$2C              ;
@@ -12497,25 +12497,25 @@ CODE_20FB1F:    STY $03                 ; $20:FB1F: 84 03       ;ExecutePtrShort
                 LDY $03                 ; $20:FB35: A4 03       ;Restore Y
                 JML [$0000]             ; $20:FB37: DC 00 00    ;Jump to pointer
 
-CODE_20FB3A:    STY $05                 ; $20:FB3A: 84 05       ; ExecutePtrLong | Preserve Y       
+CODE_20FB3A:    STY $05                 ; $20:FB3A: 84 05       ; ExecutePtrLong | Preserve Y
                 PLY                     ; $20:FB3C: 7A          ; Get bank of source
                 STY $02                 ; $20:FB3D: 84 02       ; Store in Y
                 REP #$30                ; $20:FB3F: C2 30       ;
-                AND #$00FF              ; $20:FB41: 29 FF 00    ; Get A  
+                AND #$00FF              ; $20:FB41: 29 FF 00    ; Get A
                 STA $03                 ; $20:FB44: 85 03       ; Store in $03
                 ASL A                   ; $20:FB46: 0A          ;\ *3 since the table entries are three bytes
-                ADC $03                 ; $20:FB47: 65 03       ;/  
+                ADC $03                 ; $20:FB47: 65 03       ;/
                 TAY                     ; $20:FB49: A8          ; A -> Y
                 PLA                     ; $20:FB4A: 68          ; Get Low and High byte of source
-                STA $03                 ; $20:FB4B: 85 03       ;   
-                INY                     ; $20:FB4D: C8          ; +1 so we don't read the last byte of the JSL   
+                STA $03                 ; $20:FB4B: 85 03       ;
+                INY                     ; $20:FB4D: C8          ; +1 so we don't read the last byte of the JSL
                 LDA [$02],y             ; $20:FB4E: B7 02       ;\ Read low and high byte of spot to jump to
-                STA $00                 ; $20:FB50: 85 00       ;/  
+                STA $00                 ; $20:FB50: 85 00       ;/
                 INY                     ; $20:FB52: C8          ; +1 so we don't read the same data again
                 LDA [$02],y             ; $20:FB53: B7 02       ;\ Get high and bank byte
-                STA $01                 ; $20:FB55: 85 01       ;/  
+                STA $01                 ; $20:FB55: 85 01       ;/
                 SEP #$30                ; $20:FB57: E2 30       ;
-                LDY $05                 ; $20:FB59: A4 05       ; Restore Y   
+                LDY $05                 ; $20:FB59: A4 05       ; Restore Y
                 JML [$0000]             ; $20:FB5B: DC 00 00    ; Jump to pointer
 
 CODE_20FB5E:    STZ $4016                   ; $20:FB5E: 9C 16 40    ;

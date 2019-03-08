@@ -1280,54 +1280,54 @@ CODE_048E15:    PHB                     ; $04:8E15: 8B          ;\
 ;; staircase is made of multiple cement blocks, but it's defined as one object.
 ;;
 
-PNTR_048E43:    dw CODE_048EB5                                  ;$00 - 
-                dw CODE_048EA3                                  ;$01 - 
-                dw CODE_048EA3                                  ;$02 - 
-                dw CODE_048EA3                                  ;$03 - 
-                dw CODE_048EA3                                  ;$04 - 
-                dw CODE_048EA3                                  ;$05 - 
-                dw CODE_048EA3                                  ;$06 - 
-                dw CODE_048EA3                                  ;$07 - 
-                dw CODE_048EBB                                  ;$08 - 
-                dw CODE_048EA5                                  ;$09 - 
-                dw CODE_048EA3                                  ;$0A - 
-                dw CODE_048EA3                                  ;$0B - 
-                dw CODE_048EA3                                  ;$0C - 
-                dw CODE_048EA3                                  ;$0D - 
-                dw CODE_048EA3                                  ;$0E - 
-                dw CODE_048EA3                                  ;$0F - 
+PNTR_048E43:    dw CODE_048EB5                                  ;$00 -
+                dw CODE_048EA3                                  ;$01 -
+                dw CODE_048EA3                                  ;$02 -
+                dw CODE_048EA3                                  ;$03 -
+                dw CODE_048EA3                                  ;$04 -
+                dw CODE_048EA3                                  ;$05 -
+                dw CODE_048EA3                                  ;$06 -
+                dw CODE_048EA3                                  ;$07 -
+                dw CODE_048EBB                                  ;$08 -
+                dw CODE_048EA5                                  ;$09 -
+                dw CODE_048EA3                                  ;$0A -
+                dw CODE_048EA3                                  ;$0B -
+                dw CODE_048EA3                                  ;$0C -
+                dw CODE_048EA3                                  ;$0D -
+                dw CODE_048EA3                                  ;$0E -
+                dw CODE_048EA3                                  ;$0F -
                 dw CODE_048F44                                  ;$10 - Level begin/end small/big castle object
-                dw CODE_048EA3                                  ;$11 - 
-                dw CODE_048EA3                                  ;$12 - 
-                dw CODE_048EA3                                  ;$13 - 
-                dw CODE_048FD2                                  ;$14 - 
-                dw CODE_048EA3                                  ;$15 - 
-                dw CODE_048EA3                                  ;$16 - 
-                dw CODE_048EA3                                  ;$17 - 
+                dw CODE_048EA3                                  ;$11 -
+                dw CODE_048EA3                                  ;$12 -
+                dw CODE_048EA3                                  ;$13 -
+                dw CODE_048FD2                                  ;$14 -
+                dw CODE_048EA3                                  ;$15 -
+                dw CODE_048EA3                                  ;$16 -
+                dw CODE_048EA3                                  ;$17 -
                 dw CODE_04901B                                  ;$18 - Stone Stairs object
-                dw CODE_04903E                                  ;$19 - 
-                dw CODE_04907A                                  ;$1A - 
-                dw CODE_0490A0                                  ;$1B - 
-                dw CODE_0490C2                                  ;$1C - 
-                dw CODE_0490EB                                  ;$1D - 
-                dw CODE_049121                                  ;$1E - 
-                dw CODE_04915C                                  ;$1F - 
-                dw CODE_04917E                                  ;$20 - 
-                dw CODE_048EA3                                  ;$21 - 
-                dw CODE_048EA3                                  ;$22 - 
-                dw CODE_048EA3                                  ;$23 - 
-                dw CODE_048EA3                                  ;$24 - 
-                dw CODE_048EA3                                  ;$25 - 
-                dw CODE_048EA3                                  ;$26 - 
-                dw CODE_048EA3                                  ;$27 - 
-                dw CODE_0491B3                                  ;$28 - 
-                dw CODE_048EA3                                  ;$29 - 
-                dw CODE_048EA3                                  ;$2A - 
-                dw CODE_048EA3                                  ;$2B - 
-                dw CODE_048EA3                                  ;$2C - 
-                dw CODE_048EA3                                  ;$2D - 
-                dw CODE_048EA3                                  ;$2E - 
-                dw CODE_048EA3                                  ;$2F - 
+                dw CODE_04903E                                  ;$19 -
+                dw CODE_04907A                                  ;$1A -
+                dw CODE_0490A0                                  ;$1B -
+                dw CODE_0490C2                                  ;$1C -
+                dw CODE_0490EB                                  ;$1D -
+                dw CODE_049121                                  ;$1E -
+                dw CODE_04915C                                  ;$1F -
+                dw CODE_04917E                                  ;$20 -
+                dw CODE_048EA3                                  ;$21 -
+                dw CODE_048EA3                                  ;$22 -
+                dw CODE_048EA3                                  ;$23 -
+                dw CODE_048EA3                                  ;$24 -
+                dw CODE_048EA3                                  ;$25 -
+                dw CODE_048EA3                                  ;$26 -
+                dw CODE_048EA3                                  ;$27 -
+                dw CODE_0491B3                                  ;$28 -
+                dw CODE_048EA3                                  ;$29 -
+                dw CODE_048EA3                                  ;$2A -
+                dw CODE_048EA3                                  ;$2B -
+                dw CODE_048EA3                                  ;$2C -
+                dw CODE_048EA3                                  ;$2D -
+                dw CODE_048EA3                                  ;$2E -
+                dw CODE_048EA3                                  ;$2F -
 
 CODE_048EA3:    PLB                     ; $04:8EA3: AB          ;
                 RTL                     ; $04:8EA4: 6B          ;
@@ -3896,7 +3896,7 @@ CODE_04C041:    PHB                     ; $04:C041: 8B          ;\
                 LDA $0750               ; $04:C052: AD 50 07    ;\Load level number again
                 AND #$1F                ; $04:C055: 29 1F       ; |AND with $1F to get the level number WITHOUT map type
                 STA $074F               ; $04:C057: 8D 4F 07    ;/Store into a RAM address to hold it.
-                LDA DATA_04C148,y       ; $04:C05A: B9 48 C1    ;\ 
+                LDA DATA_04C148,y       ; $04:C05A: B9 48 C1    ;\
                 CLC                     ; $04:C05D: 18          ; |Load the map type offsets
                 ADC $074F               ; $04:C05E: 6D 4F 07    ; |Add the offsets with level number
                 TAY                     ; $04:C061: A8          ;/| Use it as an index again...
@@ -4003,7 +4003,7 @@ CODE_04C11B:    RTS                     ; $04:C11B: 60          ;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;; SMB1 LEVEL DATA POINTERS (and their data)
 ;;
 ;; First the level numbers get defined, then the
@@ -4011,7 +4011,7 @@ CODE_04C11B:    RTS                     ; $04:C11B: 60          ;
 ;; data pointers follow. These pointers are 16-bit
 ;; and the bank byte is defined in the code
 ;; CODE_04C06C and CODE_04C09C
-;; 
+;;
 ;; After these pointers, the sprite and object data
 ;; themselves follow
 ;;
@@ -4403,11 +4403,11 @@ DATA_04C603:    db $47,$9B,$CB,$07,$FA,$1D,$86,$9B              ; 8-4 Underwater
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; SMB1 LEVEL OBJECT DATA. 
+;; SMB1 LEVEL OBJECT DATA.
 ;;
 ;; The first two bytes are the level header. Object data ends with $FD
 ;; TODO: Format?
- 
+
 DATA_04C617:    db $9B,$07,$0F,$52,$32,$0F,$63,$32              ; 1-4 & 6-4, Level #60
                 db $0F,$74,$32,$CF,$80,$36,$CE,$03              ;
                 db $DC,$51,$EE,$07,$FF,$80,$38,$7F              ;
@@ -5094,7 +5094,7 @@ CODE_04D86F:    LDA.l DATA_04D883,x     ; $04:D86F: BF 83 D8 04 ;Load Mario and 
 CODE_04D873:    STA $1160,x             ; $04:D873: 9D 60 11    ;Upload them. (Sequence is after bowser btw)
                 DEX                     ; $04:D876: CA          ;\
                 DEX                     ; $04:D877: CA          ; |If not done, loop
-                BPL CODE_04D864         ; $04:D878: 10 EA       ;/ 
+                BPL CODE_04D864         ; $04:D878: 10 EA       ;/
                 SEP #$20                ; $04:D87A: E2 20       ; 8-bit A
                 INC $1200               ; $04:D87C: EE 00 12    ;
                 JSR CODE_04D8C3         ; $04:D87F: 20 C3 D8    ;

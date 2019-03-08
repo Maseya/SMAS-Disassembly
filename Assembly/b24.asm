@@ -297,7 +297,7 @@ DATA_248918:    db $25,$50,$A0,$E2,$2D,$53,$AD,$F0              ;
 CODE_248920:    LDX #$00                ; $24:8920: A2 00       ;
 CODE_248922:    LDA #$80                ; $24:8922: A9 80       ;
                 JSL CODE_2098A8         ; $24:8924: 22 A8 98 20 ;
-                JSL CODE_209844         ; $24:8928: 22 44 98 20 ; 
+                JSL CODE_209844         ; $24:8928: 22 44 98 20 ;
                 CPX #$F0                ; $24:892C: E0 F0       ;
                 BNE CODE_248922         ; $24:892E: D0 F2       ;
                 JSL CODE_20990B         ; $24:8930: 22 0B 99 20 ; TODO: level loading routine?
@@ -3650,7 +3650,7 @@ CODE_24E75A:    LDA $0E                     ; $24:E75A: A5 0E       ;
                 dl CODE_23AA47                                  ;
                 dl CODE_23A943                                  ;
 
-DATA_24E7E6:           db $8D,$D0                 
+DATA_24E7E6:           db $8D,$D0
 
 CODE_24E7E8:    LDA $0706               ; $24:E7E8: AD 06 07    ;
                 SEC                         ; $24:E7EB: 38          ;

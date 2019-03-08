@@ -1273,7 +1273,7 @@ CODE_238ACB:    LDA $03                     ; $23:8ACB: A5 03       ;
                 TAX                         ; $23:8AF7: AA          ;
                 LDY #$14E0                  ; $23:8AF8: A0 E0 14    ;
                 LDA #$001F                  ; $23:8AFB: A9 1F 00    ;
-                MVN $00, DATA_3C88A0>>16    ; $23:8AFE: 54 00 3C    ;first data pointer in above table              
+                MVN $00, DATA_3C88A0>>16    ; $23:8AFE: 54 00 3C    ;first data pointer in above table
                 PLB                         ; $23:8B01: AB          ;
                 LDX #$001E                  ; $23:8B02: A2 1E 00    ;
 CODE_238B05:    LDA $14E0,x                 ; $23:8B05: BD E0 14    ;
@@ -2515,7 +2515,7 @@ CODE_2394A2:    LDA $1040                   ; $23:94A2: AD 40 10    ;
                 dw CODE_239513                                  ;
                 dw CODE_2394FC                                  ;
                 dw CODE_2395B1                                  ;
-  
+
 CODE_2394BD:    LDA #$51                ; $23:94BD: A9 51       ;
                 STA $2109                   ; $23:94BF: 8D 09 21    ;
                 LDA $1028                   ; $23:94C2: AD 28 10    ;
@@ -3102,7 +3102,7 @@ PNTR_239987:    dw CODE_239993                                  ;
                 dw CODE_239BB5                                  ;
                 dw CODE_239BCD                                  ;
                 dw CODE_239BE1                                  ;
-   
+
 CODE_239993:    STZ $100C                   ; $23:9993: 9C 0C 10    ;
                 STZ $100D                   ; $23:9996: 9C 0D 10    ;
                 STZ $100E                   ; $23:9999: 9C 0E 10    ;
@@ -3689,7 +3689,7 @@ CODE_239E76:    LDA $1034                   ; $23:9E76: AD 34 10    ;
                 dw CODE_239F7E                                  ;
                 dw CODE_239F86                                  ;
                 dw CODE_239FA6                                  ;
-   
+
 CODE_239E8F:    JSR CODE_23A269         ; $23:9E8F: 20 69 A2    ;
                 JSR CODE_23A309             ; $23:9E92: 20 09 A3    ;
                 STZ $02D2                   ; $23:9E95: 9C D2 02    ;
@@ -7726,7 +7726,7 @@ CODE_23BE2B:    LDA $00                     ; $23:BE2B: A5 00       ;
                 AND #$07                    ; $23:BE49: 29 07       ;
                 BEQ CODE_23BE50             ; $23:BE4B: F0 03       ;
                 JMP CODE_23BD4C             ; $23:BE4D: 4C 4C BD    ;
- 
+
 CODE_23BE50:    RTL                         ; $23:BE50: 6B          ;
 
 CODE_23BE51:    LDY $0700                   ; $23:BE51: AC 00 07    ;
@@ -7949,7 +7949,7 @@ CODE_23BFF7:    LDA $055C                   ; $23:BFF7: AD 5C 05    ;
                 BRA CODE_23C024             ; $23:C020: 80 02       ;
 
 CODE_23C022:    LDA $BF                 ; $23:C022: A5 BF       ; Player death animation phase
-CODE_23C024:    ORA $0571               ; $23:C024: 0D 71 05    ; 
+CODE_23C024:    ORA $0571               ; $23:C024: 0D 71 05    ;
                 ORA $0554                   ; $23:C027: 0D 54 05    ;
                 ORA $0555                   ; $23:C02A: 0D 55 05    ;
                 ORA $0551               ; $23:C02D: 0D 51 05    ; Player growing/shrinking animation timer
@@ -8481,7 +8481,7 @@ CODE_23C48A:    PHX                         ; $23:C48A: DA          ;
                 TAX                         ; $23:C498: AA          ;
                 LDY #$14E0                  ; $23:C499: A0 E0 14    ;
                 LDA #$001F                  ; $23:C49C: A9 1F 00    ;
-                MVN $00, DATA_3C88A0>>16    ; $23:C49F: 54 00 3C    ;first data pointer in above table                 
+                MVN $00, DATA_3C88A0>>16    ; $23:C49F: 54 00 3C    ;first data pointer in above table
                 PLB                         ; $23:C4A2: AB          ;
                 LDX #$001E                  ; $23:C4A3: A2 1E 00    ;
 CODE_23C4A6:    LDA $14E0,x                 ; $23:C4A6: BD E0 14    ;
@@ -13434,7 +13434,7 @@ CODE_23EBF4:    JSR CODE_23ECAC             ; $23:EBF4: 20 AC EC    ;
 
 CODE_23EC13:    DEC $18B9                   ; $23:EC13: CE B9 18    ;
 CODE_23EC16:    RTS                     ; $23:EC16: 60          ;
-                       
+
 CODE_23EC17:    LDA $1811                   ; $23:EC17: AD 11 18    ;
                 SEC                         ; $23:EC1A: 38          ;
                 SBC $1812                   ; $23:EC1B: ED 12 18    ;
@@ -13693,7 +13693,7 @@ CODE_23EE38:    LDA $18CA                   ; $23:EE38: AD CA 18    ;
 CODE_23EE4A:    LDA.w DATA_21ED34,y                 ; $23:EE4A: B9 34 ED    ;
                 STA $1846,x                 ; $23:EE4D: 9D 46 18    ;
                 RTS                     ; $23:EE50: 60          ;
-                       
+
 CODE_23EE51:    DEC $18C9                   ; $23:EE51: CE C9 18    ;
                 BPL CODE_23EE5B             ; $23:EE54: 10 05       ;
                 LDA #$0D                    ; $23:EE56: A9 0D       ;

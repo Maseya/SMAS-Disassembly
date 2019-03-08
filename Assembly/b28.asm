@@ -759,7 +759,7 @@ CODE_28880B:    JSL CODE_27A316             ; $28:880B: 22 16 A3 27 ;
                 JSL CODE_279F51             ; $28:8819: 22 51 9F 27 ;
                 JSL CODE_279BC3         ; $28:881D: 22 C3 9B 27 ; Subroutine: Remove if offscreen
                 RTL                         ; $28:8821: 6B          ;
- 
+
 CODE_288822:    LDA $9D                     ; $28:8822: A5 9D       ;
                 STA $9E,x                   ; $28:8824: 95 9E       ;
                 LDA $8B                     ; $28:8826: A5 8B       ;
@@ -779,7 +779,7 @@ CODE_288835:    LDA #$40                    ; $28:8835: A9 40       ;
                 LDY #$F8                    ; $28:8843: A0 F8       ;
 CODE_288845:    STY $8C,x                   ; $28:8845: 94 8C       ;
                 RTL                         ; $28:8847: 6B          ;
-  
+
 CODE_288848:    LDA $0518,x                 ; $28:8848: BD 18 05    ;
                 BNE CODE_288869             ; $28:884B: D0 1C       ;
                 LDA $A7,x                   ; $28:884D: B5 A7       ;
@@ -832,7 +832,7 @@ CODE_2888AE:    JSL CODE_279F6F             ; $28:88AE: 22 6F 9F 27 ;
                 JSL CODE_279EBB             ; $28:88B6: 22 BB 9E 27 ;
                 JSL CODE_279BC3         ; $28:88BA: 22 C3 9B 27 ; Subroutine: Remove if offscreen
                 RTL                         ; $28:88BE: 6B          ;
- 
+
 CODE_2888BF:    LDA $0520,x                 ; $28:88BF: BD 20 05    ;
                 BNE CODE_2888EA             ; $28:88C2: D0 26       ;
                 LDA $55                     ; $28:88C4: A5 55       ;
@@ -4208,7 +4208,7 @@ CODE_28B0CA:    LDA $5F,x                   ; $28:B0CA: B5 5F       ;
                 dw CODE_28B144                                  ;
 
 CODE_28B0F6:    JMP CODE_28B19A         ; $28:B0F6: 4C 9A B1    ;
-                 
+
 CODE_28B0F9:    INC $0422               ; $28:B0F9: EE 22 04    ;
                 LDA $71,x               ; $28:B0FC: B5 71       ;
                 STA $00                     ; $28:B0FE: 85 00       ;
@@ -7282,7 +7282,7 @@ CODE_28C9FA:    JMP CODE_28C96F             ; $28:C9FA: 4C 6F C9    ;
 
 DATA_28C9FD:    db $17,$1A,$1D,$20,$18,$1B,$1E,$21              ;
                 db $19,$1C,$1F,$22                              ;
-     
+
 CODE_28CA09:    JSR CODE_28CED1             ; $28:CA09: 20 D1 CE    ;
                 LDA $15                     ; $28:CA0C: A5 15       ;
                 AND #$03                    ; $28:CA0E: 29 03       ;
@@ -7893,7 +7893,7 @@ CODE_28CF06:    PLX                         ; $28:CF06: FA          ;
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-           
+
 CODE_28D000:    LDA #$00                    ; $28:D000: A9 00       ;
                 STA $0661,x                 ; $28:D002: 9D 61 06    ;
                 JSL CODE_27A85F             ; $28:D005: 22 5F A8 27 ;

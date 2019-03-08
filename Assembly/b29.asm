@@ -3836,7 +3836,7 @@ CODE_299E7F:    LDA $0566                   ; $29:9E7F: AD 66 05    ;
                 dw CODE_299EA5                                  ;
                 dw CODE_299F7E                                  ;
                 dw CODE_299E9F                                  ;
-  
+
 CODE_299E9A:    LDA #$00                ; $29:9E9A: A9 00       ;
                 STA $1CF0                   ; $29:9E9C: 8D F0 1C    ;
 CODE_299E9F:    LDA #$00                    ; $29:9E9F: A9 00       ;
@@ -4879,7 +4879,7 @@ CODE_29A7F2:    LDX $0738                   ; $29:A7F2: AE 38 07    ;
                 dw CODE_29B99E                                  ;
                 dw CODE_29B99E                                  ;
                 dw CODE_29B99E                                  ;
-  
+
 CODE_29A81C:    JSL CODE_238C1B             ; $29:A81C: 22 1B 8C 23 ;
                 RTS                         ; $29:A820: 60          ;
 
@@ -7745,7 +7745,7 @@ CODE_29BF90:    LDA $0727                   ; $29:BF90: AD 27 07    ;
                 REP #$20                    ; $29:BF95: C2 20       ;
                 LDA.w DATA_21D87D,y         ; $29:BF97: B9 7D D8    ;\ Store
                 STA $00                     ; $29:BF9A: 85 00       ;/
-                LDA.w DATA_21D88F,y         ; $29:BF9C: B9 8F D8    ;\ Store 
+                LDA.w DATA_21D88F,y         ; $29:BF9C: B9 8F D8    ;\ Store
                 STA $02                     ; $29:BF9F: 85 02       ;/
                 LDA.w DATA_21D8A1,y         ; $29:BFA1: B9 A1 D8    ;\ Store the address of the level data sprite pointers
                 STA $04                     ; $29:BFA4: 85 04       ;/
@@ -7755,7 +7755,7 @@ CODE_29BF90:    LDA $0727                   ; $29:BF90: AD 27 07    ;
                 STA $08                     ; $29:BFAE: 85 08       ;/
                 SEP #$20                    ; $29:BFB0: E2 20       ;
                 LDY $45,x                   ; $29:BFB2: B4 45       ;\ Get current player's map X position high byte
-                LDA ($08),y                 ; $29:BFB4: B1 08       ;/ 
+                LDA ($08),y                 ; $29:BFB4: B1 08       ;/
                 TAY                         ; $29:BFB6: A8          ;
                 STZ $0E                     ; $29:BFB7: 64 0E       ;
 CODE_29BFB9:    LDA ($00),y                 ; $29:BFB9: B1 00       ;
@@ -7881,7 +7881,7 @@ CODE_29C06F:    JSL CODE_20FB1F         ; $29:C06F: 22 1F FB 20 ; ExecutePtrShor
                 dw CODE_29C10B                                  ;
                 dw CODE_29C10B                                  ;
                 dw CODE_29C10B                                  ;
-    
+
                 LDY $0726               ; $29:C095: AC 26 07    ;
                 LDA #$7E                    ; $29:C098: A9 7E       ;
                 STA $30                     ; $29:C09A: 85 30       ;
@@ -8863,7 +8863,7 @@ CODE_29C8E5:    PLX                         ; $29:C8E5: FA          ;
                 TAX                         ; $29:C8F5: AA          ;
                 LDY #$14A0                  ; $29:C8F6: A0 A0 14    ;
                 LDA #$001F                  ; $29:C8F9: A9 1F 00    ;
-                MVN $00, DATA_3C8BC0>>16    ; $29:C8FC: 54 00 3C    ;first data pointer in above table                 
+                MVN $00, DATA_3C8BC0>>16    ; $29:C8FC: 54 00 3C    ;first data pointer in above table
                 PLB                     ; $29:C8FF: AB          ;
                 PLX                         ; $29:C900: FA          ;
                 LDA.l DATA_29C81F,x                 ; $29:C901: BF 1F C8 29 ;
@@ -9077,7 +9077,7 @@ CODE_29CAA0:    LDA.l PNTR_29C799,x         ; $29:CAA0: BF 99 C7 29 ;
                 TAX                         ; $29:CAA5: AA          ;
                 LDY #$1360                  ; $29:CAA6: A0 60       ;
                 LDA #$005F                  ; $29:CAA9: A9 5F 00    ;
-                MVN $00, DATA_3C9000>>16    ; $29:CAAB: 54 00 3C    ;first (valid) data pointer in above table                 
+                MVN $00, DATA_3C9000>>16    ; $29:CAAB: 54 00 3C    ;first (valid) data pointer in above table
                 PLB                     ; $29:CAAE: AB          ;
                 LDA $02BE               ; $29:CAB0: AD BE 02    ;
                 AND #$00FF              ; $29:CAB3: 29 FF 00    ;
@@ -9105,7 +9105,7 @@ CODE_29CACB:    LDA $070A               ; $29:CACB: AD 0A 07    ;
                 ASL A                       ; $29:CAE4: 0A          ;
                 TAY                         ; $29:CAE5: A8          ;
                 LDA [$00],y                 ; $29:CAE6: B7 00       ;
-                PHB                     ; $29:CAE8: 8B          ;                       
+                PHB                     ; $29:CAE8: 8B          ;
                 TAX                         ; $29:CAE9: AA          ;
                 LDA $0350                   ; $29:CAEA: AD 50 03    ;
                 AND #$00FF                                      ; $29:CAED: 29 FF 00    ;
@@ -9125,7 +9125,7 @@ CODE_29CAF8:    LDY #$13C0                      ; $29:CAF8: A0 C0 13    ;
                 TAX                         ; $29:CB0F: AA          ;
                 LDY #$1320                  ; $29:CB10: A0 20 13    ;
                 LDA #$003F                  ; $29:CB13: A9 3F 00    ;
-                MVN $00, DATA_3CA600>>16    ; $29:CB16: 54 00 3C    ;first data pointer in above table                 
+                MVN $00, DATA_3CA600>>16    ; $29:CB16: 54 00 3C    ;first data pointer in above table
                 PLB                     ; $29:CB19: AB          ;
                 LDA $1EBF                   ; $29:CB1A: AD BF 1E    ;
                 AND #$00FF                  ; $29:CB1D: 29 FF 00    ;
@@ -9159,7 +9159,7 @@ CODE_29CB56:    LDX $D8                     ; $29:CB56: A6 D8       ;
                 TAX                         ; $29:CB5E: AA          ;
                 LDY #$14A0                  ; $29:CB5F: A0 A0 14    ;
                 LDA #$001F                  ; $29:CB62: A9 1F 00    ;
-                MVN $00, DATA_3C8A40>>16    ; $29:CB65: 54 00 3C    ;first data pointer in above table                 
+                MVN $00, DATA_3C8A40>>16    ; $29:CB65: 54 00 3C    ;first data pointer in above table
                 PLB                     ; $29:CB68: AB          ;
                 LDX $DA                     ; $29:CB69: A6 DA       ;
                 LDA.l PNTR_29CA84,x                 ; $29:CB6B: BF 84 CA 29 ;
@@ -9168,7 +9168,7 @@ CODE_29CB56:    LDX $D8                     ; $29:CB56: A6 D8       ;
                 TAX                         ; $29:CB71: AA          ;
                 LDY #$14C0                  ; $29:CB72: A0 C0 14    ;
                 LDA #$001F                  ; $29:CB75: A9 1F 00    ;
-                MVN $00, DATA_3C8A40>>16    ; $29:CB78: 54 00 3C    ;first data pointer in above table           
+                MVN $00, DATA_3C8A40>>16    ; $29:CB78: 54 00 3C    ;first data pointer in above table
                 BRL CODE_29CC7C             ; $29:CB7B: 82 FE 00    ;
 
 CODE_29CB7E:    PHB                         ; $29:CB7E: 8B          ;
@@ -9231,7 +9231,7 @@ CODE_29CC07:    PHB                     ; $29:CC07: 8B          ;
                 TAX                         ; $29:CC08: AA          ;
                 LDY #$1480                  ; $29:CC09: A0 80 14    ;
                 LDA #$001F                  ; $29:CC0C: A9 1F 00    ;
-                MVN $00, DATA_3C8960>>16    ; $29:CC0F: 54 00 3C    ;first data pointer in above table                 
+                MVN $00, DATA_3C8960>>16    ; $29:CC0F: 54 00 3C    ;first data pointer in above table
                 PLB                     ; $29:CC12: AB          ;
 CODE_29CC13:    RTS                         ; $29:CC13: 60          ;
 
@@ -9273,7 +9273,7 @@ CODE_29CC5F:    ASL A                       ; $29:CC5F: 0A          ;
                 TAX                         ; $29:CC66: AA          ;
                 LDY #$1380                  ; $29:CC67: A0 80 13    ;
                 LDA #$007F                  ; $29:CC6A: A9 7F 00    ;
-                MVN $00, DATA_3C9E00>>16    ; $29:CC6D: 54 00 3C    ;first data pointer in above table                 
+                MVN $00, DATA_3C9E00>>16    ; $29:CC6D: 54 00 3C    ;first data pointer in above table
                 LDX.w #DATA_3C8C00                  ; $29:CC70: A2 00 8C    ;
                 LDY #$14A0                  ; $29:CC73: A0 A0 14    ;
                 LDA #$003F                  ; $29:CC76: A9 3F 00    ;
@@ -9295,7 +9295,7 @@ CODE_29CC7C:    LDA $0726                   ; $29:CC7C: AD 26 07    ;
                 TAX                         ; $29:CC9C: AA          ;
                 LDY #$14E0                  ; $29:CC9D: A0 E0 14    ;
                 LDA #$001F                  ; $29:CCA0: A9 1F 00    ;
-                MVN $00, DATA_3C88A0>>16    ; $29:CCA3: 54 00 3C    ;first data pointer in above table                 
+                MVN $00, DATA_3C88A0>>16    ; $29:CCA3: 54 00 3C    ;first data pointer in above table
                 PLB                     ; $29:CCA6: AB          ;
                 LDX #$0020                  ; $29:CCA7: A2 20 00    ;
 CODE_29CCAA:    LDA $14E0,x                 ; $29:CCAA: BD E0 14    ;
@@ -9508,7 +9508,7 @@ CODE_29CE95:    REP #$30                    ; $29:CE95: C2 30       ;
                 TAX                         ; $29:CEA3: AA          ;
                 LDY #$9400                  ; $29:CEA4: A0 00 94    ;
                 LDA #$00FF                  ; $29:CEA7: A9 FF 00    ;
-                MVN $7F, DATA_3CAC00>>16    ; $29:CEAA: 54 7F 3C    ;first data pointer in above table                 
+                MVN $7F, DATA_3CAC00>>16    ; $29:CEAA: 54 7F 3C    ;first data pointer in above table
                 LDX.w #DATA_3C8800                  ; $29:CEAD: A2 00 88    ;
                 LDY #$9500                  ; $29:CEB0: A0 00 95    ;
                 LDA #$007F                  ; $29:CEB3: A9 7F 00    ;
@@ -9528,7 +9528,7 @@ CODE_29CE95:    REP #$30                    ; $29:CE95: C2 30       ;
                 TAX                         ; $29:CED4: AA          ;
                 LDY #$95A0                  ; $29:CED5: A0 A0 95    ;
                 LDA #$001F                  ; $29:CED8: A9 1F 00    ;
-                MVN $7F, DATA_3C8AE0>>16    ; $29:CEDB: 54 7F 3C    ;first (valid) data pointer in above table                 
+                MVN $7F, DATA_3C8AE0>>16    ; $29:CEDB: 54 7F 3C    ;first (valid) data pointer in above table
                 PLB                     ; $29:CEDE: AB          ;
 CODE_29CEDF:    LDA $4D                     ; $29:CEDF: A5 4D       ;
                 AND #$00FF                  ; $29:CEE1: 29 FF 00    ;
@@ -9545,7 +9545,7 @@ CODE_29CEF8:    PHB                         ; $29:CEF8: 8B          ;
                 TAX                         ; $29:CEF9: AA          ;
                 LDY #$95E0                  ; $29:CEFA: A0 E0 95    ;
                 LDA #$001F                  ; $29:CEFD: A9 1F 00    ;
-                MVN $7F, DATA_3C88A0>>16    ; $29:CF00: 54 7F 3C    ;first data pointer in above table                 
+                MVN $7F, DATA_3C88A0>>16    ; $29:CF00: 54 7F 3C    ;first data pointer in above table
                 PLB                     ; $29:CF03: AB          ;
                 LDX #$0000                  ; $29:CF04: A2 00 00    ;
                 TXA                         ; $29:CF07: 8A          ;
@@ -10442,7 +10442,7 @@ CODE_29D8F6:    LDA $041C                   ; $29:D8F6: AD 1C 04    ;
                 dw CODE_29D988                                  ;
                 dw CODE_29D98C                                  ;
                 dw CODE_29DAF5                                  ;
-  
+
 CODE_29D907:    LDA #$0F                    ; $29:D907: A9 0F       ;
                 STA $0419                   ; $29:D909: 8D 19 04    ;
                 LDA #$00                    ; $29:D90C: A9 00       ;
@@ -10876,7 +10876,7 @@ CODE_29DC65:    LDA $1D80,y                 ; $29:DC65: B9 80 1D    ;
                 dw CODE_29DD90                                  ;
                 dw CODE_29DE4B                                  ;
                 dw CODE_29DD80                                  ;
-                    
+
 CODE_29DC88:    LDA $041F                   ; $29:DC88: AD 1F 04    ;
                 CLC                         ; $29:DC8B: 18          ;
                 ADC $041D                   ; $29:DC8C: 6D 1D 04    ;
@@ -10906,7 +10906,7 @@ CODE_29DCAA:    PHX                         ; $29:DCAA: DA          ;
                 LDX.w PNTR_21EF09,y                 ; $29:DCB3: BE 09 EF    ;
                 LDY #$14E0                  ; $29:DCB6: A0 E0 14    ;
                 LDA #$001F                  ; $29:DCB9: A9 1F 00    ;
-                MVN $00, DATA_3C88A0>>16    ; $29:DCBC: 54 00 3C    ;first (valid) data pointer in above table                 
+                MVN $00, DATA_3C88A0>>16    ; $29:DCBC: 54 00 3C    ;first (valid) data pointer in above table
                 PLB                     ; $29:DCBF: AB          ;
                 SEP #$30                    ; $29:DCC0: E2 30       ;
                 PLX                         ; $29:DCC2: FA          ;
@@ -11303,11 +11303,11 @@ CODE_29E017:    JML CODE_208753             ; $29:E017: 5C 53 87 20 ;
 CODE_29E01B:    LDA $0414                   ; $29:E01B: AD 14 04    ;
                 JSL CODE_20FB1F             ; $29:E01E: 22 1F FB 20 ; ExecutePtrShort
 
-                dw $0000                                        ; $00 - 
-                dw CODE_29E02E                                  ; $01 - 
-                dw CODE_29E065                                  ; $02 - 
-                dw CODE_29E117                                  ; $03 - 
-                dw CODE_29E1D9                                  ; $04 - 
+                dw $0000                                        ; $00 -
+                dw CODE_29E02E                                  ; $01 -
+                dw CODE_29E065                                  ; $02 -
+                dw CODE_29E117                                  ; $03 -
+                dw CODE_29E1D9                                  ; $04 -
                 dw CODE_29E228                                  ; $05 -
 
 CODE_29E02E:    LDA $1DFE                   ; $29:E02E: AD FE 1D    ;
@@ -12322,7 +12322,7 @@ CODE_29E8A6:    TXA                         ; $29:E8A6: 8A          ;
 ;;;
 ;;; Header format: %AAAA AAAA, %AAAA AAAA, %CFSS SSSS, %SSSS SSSS
 ;;;
-;;; A = VRAM Address/2 (BIG Endian) (so VRAM $0800 is $04,$00 in header). 
+;;; A = VRAM Address/2 (BIG Endian) (so VRAM $0800 is $04,$00 in header).
 ;;;     VRAM $8000 or higher = end of table. Generally $FF as the first byte is enough.
 ;;;
 ;;; C = Bit 0 for $2115. Upload VRAM tiles per 1 tile or per 32 tile in VRAM
@@ -12729,7 +12729,7 @@ PNTR_29EC0E:    dw $0000                                        ;
                 dw CODE_29EFB3                                  ;
                 dw CODE_29EC39                                  ;
                 dw CODE_29F01F                                  ;
-   
+
 CODE_29EC16:    REP #$20                ; $29:EC16: C2 20       ;
                 LDA #$0010              ; $29:EC18: A9 10 00    ;
                 STA $028B               ; $29:EC1B: 8D 8B 02    ;

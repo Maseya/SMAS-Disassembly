@@ -7,7 +7,7 @@ DATA_138000:    dw $F000                                        ;
                 dw $F000                                        ;
                 dw $F800                                        ;
                 dw $8800                                        ;
- 
+
 DATA_13800E:    db $16,$16,$16,$17,$16,$16,$17                  ;
 
 DATA_138015:    dw $D800                                        ;
@@ -47,66 +47,66 @@ DATA_13804D:    dw $C800                                        ;
                 dw $C800                                        ;
 
 DATA_13805B:    db $18,$18,$18,$18,$18,$18,$18                  ;
-                   
-CODE_138062:    REP #$20                ; $13:8062: C2 20       ; Accumulator = 16-bit.           
+
+CODE_138062:    REP #$20                ; $13:8062: C2 20       ; Accumulator = 16-bit.
                 LDA.w #DATA_19E000      ; $13:8064: A9 00 E0    ; \ Load sprite GFX tiles 00-7F. (00-1F will get overwritten)
                 STA $0D                 ; $13:8067: 85 0D       ;  | ($19E000)
                 LDX.b #DATA_19E000>>16  ; $13:8069: A2 19       ;  |
                 STX $0F                 ; $13:806B: 86 0F       ; /
-                LDA #$1000              ; $13:806D: A9 00 10    ; \ Amount of bytes to transfer = #$1000. 
+                LDA #$1000              ; $13:806D: A9 00 10    ; \ Amount of bytes to transfer = #$1000.
                 STA $0B                 ; $13:8070: 85 0B       ; /
-                LDA #$6000              ; $13:8072: A9 00 60    ; \ First GFX slot. 
+                LDA #$6000              ; $13:8072: A9 00 60    ; \ First GFX slot.
                 JSR CODE_138AE7         ; $13:8075: 20 E7 8A    ; / Transfer to VRAM.
                 LDA.w #DATA_16C000      ; $13:8078: A9 00 C0    ; \ Load sprite GFX tiles 80-13F.
                 STA $0D                 ; $13:807B: 85 0D       ;  | ($16C000)
                 LDX.b #DATA_16C000>>16  ; $13:807D: A2 16       ;  |
                 STX $0F                 ; $13:807F: 86 0F       ; /
-                LDA #$1800              ; $13:8081: A9 00 18    ; \ Amount of bytes to transfer = #$1800. 
+                LDA #$1800              ; $13:8081: A9 00 18    ; \ Amount of bytes to transfer = #$1800.
                 STA $0B                 ; $13:8084: 85 0B       ; /
-                LDA #$6800              ; $13:8086: A9 00 68    ; \ Second and first half of third GFX slots. 
+                LDA #$6800              ; $13:8086: A9 00 68    ; \ Second and first half of third GFX slots.
                 JSR CODE_138AE7         ; $13:8089: 20 E7 8A    ; / Transfer to VRAM.
                 LDA $0635               ; $13:808C: AD 35 06    ; \ Get world number into Y, *2 into X index.
                 AND #$00FF              ; $13:808F: 29 FF 00    ;  |
                 TAY                     ; $13:8092: A8          ;  |
                 ASL A                   ; $13:8093: 0A          ;  |
                 TAX                     ; $13:8094: AA          ; /
-                PHX                     ; $13:8095: DA          ; Hold X to get later. 
+                PHX                     ; $13:8095: DA          ; Hold X to get later.
                 LDA.l DATA_138000,x     ; $13:8096: BF 00 80 13 ; \ Load sprite GFX tiles 140-17F from pointer.
                 STA $0D                 ; $13:809A: 85 0D       ;  |
                 TYX                     ; $13:809C: BB          ;  |
-                LDA.l DATA_13800E,x     ; $13:809D: BF 0E 80 13 ;  |     
+                LDA.l DATA_13800E,x     ; $13:809D: BF 0E 80 13 ;  |
                 TAX                     ; $13:80A1: AA          ;  |
                 STX $0F                 ; $13:80A2: 86 0F       ; /
                 LDA #$0800              ; $13:80A4: A9 00 08    ; \ Amount of bytes to transfer = #$0800.
                 STA $0B                 ; $13:80A7: 85 0B       ; /
-                LDA #$7400              ; $13:80A9: A9 00 74    ; \ Second half of third GFX slot. 
+                LDA #$7400              ; $13:80A9: A9 00 74    ; \ Second half of third GFX slot.
                 JSR CODE_138AE7         ; $13:80AC: 20 E7 8A    ; / Transfer to VRAM.
                 PLX                     ; $13:80AF: FA          ; \ Get world number * 2 back.
                 PHX                     ; $13:80B0: DA          ; /
                 LDA.l DATA_138015,x     ; $13:80B1: BF 15 80 13 ; \ Load sprite GFX tiles 180-1BF from pointer.
                 STA $0D                 ; $13:80B5: 85 0D       ;  |
                 TYX                     ; $13:80B7: BB          ;  |
-                LDA.l DATA_138023,x     ; $13:80B8: BF 23 80 13 ;  |     
+                LDA.l DATA_138023,x     ; $13:80B8: BF 23 80 13 ;  |
                 TAX                     ; $13:80BC: AA          ;  |
                 STX $0F                 ; $13:80BD: 86 0F       ; /
-                LDA #$0800              ; $13:80BF: A9 00 08    ; \ Amount of bytes to transfer = #$0800. 
+                LDA #$0800              ; $13:80BF: A9 00 08    ; \ Amount of bytes to transfer = #$0800.
                 STA $0B                 ; $13:80C2: 85 0B       ; /
-                LDA #$7800              ; $13:80C4: A9 00 78    ; \ First half of fourth GFX slot. 
+                LDA #$7800              ; $13:80C4: A9 00 78    ; \ First half of fourth GFX slot.
                 JSR CODE_138AE7         ; $13:80C7: 20 E7 8A    ; / Transfer to VRAM.
                 LDA.w #DATA_179000      ; $13:80CA: A9 00 90    ; \ Load sprite GFX tiles 1C0-1FF.
                 STA $0D                 ; $13:80CD: 85 0D       ;  | ($179000)
                 LDX.b #DATA_179000>>16  ; $13:80CF: A2 17       ;  |
                 STX $0F                 ; $13:80D1: 86 0F       ; /
-                LDA #$0800              ; $13:80D3: A9 00 08    ; \ Amount of bytes to transfer = #$0800. 
+                LDA #$0800              ; $13:80D3: A9 00 08    ; \ Amount of bytes to transfer = #$0800.
                 STA $0B                 ; $13:80D6: 85 0B       ; /
-                LDA #$7C00              ; $13:80D8: A9 00 7C    ; \ Second half of fourth GFX slot. 
+                LDA #$7C00              ; $13:80D8: A9 00 7C    ; \ Second half of fourth GFX slot.
                 JSR CODE_138AE7         ; $13:80DB: 20 E7 8A    ; / Transfer to VRAM.
                 PLX                     ; $13:80DE: FA          ; \ Get world number * 2 back.
                 PHX                     ; $13:80DF: DA          ; /
-                LDA.l DATA_138038,x     ; $13:80E0: BF 38 80 13 ; \ Load layer GFX tiles 00-7F from pointer.      
+                LDA.l DATA_138038,x     ; $13:80E0: BF 38 80 13 ; \ Load layer GFX tiles 00-7F from pointer.
                 STA $0D                 ; $13:80E4: 85 0D       ;  |
                 TYX                     ; $13:80E6: BB          ;  |
-                LDA.l DATA_138046,x     ; $13:80E7: BF 46 80 13 ;  |     
+                LDA.l DATA_138046,x     ; $13:80E7: BF 46 80 13 ;  |
                 TAX                     ; $13:80EB: AA          ;  |
                 STX $0F                 ; $13:80EC: 86 0F       ; /
                 LDA #$1000              ; $13:80EE: A9 00 10    ; \ Amount of bytes to transfer = #$1000.
@@ -117,18 +117,18 @@ CODE_138062:    REP #$20                ; $13:8062: C2 20       ; Accumulator = 
                 STA $0D                 ; $13:80FC: 85 0D       ;  | ($18C000)
                 LDX.b #DATA_18C000>>16  ; $13:80FE: A2 18       ;  |
                 STX $0F                 ; $13:8100: 86 0F       ; /
-                LDA #$0800              ; $13:8102: A9 00 08    ; \ Amount of bytes to transfer = #$0800. 
+                LDA #$0800              ; $13:8102: A9 00 08    ; \ Amount of bytes to transfer = #$0800.
                 STA $0B                 ; $13:8105: 85 0B       ; /
                 LDA #$2800              ; $13:8107: A9 00 28    ; \ First half of second GFX slot.
                 JSR CODE_138AC4         ; $13:810A: 20 C4 8A    ; / Transfer to VRAM.
-                PLX                     ; $13:810D: FA          ; Get world num * 2. 
+                PLX                     ; $13:810D: FA          ; Get world num * 2.
                 LDA.l DATA_13804D,x     ; $13:810E: BF 4D 80 13 ; \ Load layer GFX tiles C0-FF from pointer.
                 STA $0D                 ; $13:8112: 85 0D       ;  |
                 TYX                     ; $13:8114: BB          ;  |
-                LDA.l DATA_13805B,x     ; $13:8115: BF 5B 80 13 ;  |     
+                LDA.l DATA_13805B,x     ; $13:8115: BF 5B 80 13 ;  |
                 TAX                     ; $13:8119: AA          ;  |
                 STX $0F                 ; $13:811A: 86 0F       ; /
-                LDA #$0800              ; $13:811C: A9 00 08    ; \ Amount of bytes to transfer = #$0800. 
+                LDA #$0800              ; $13:811C: A9 00 08    ; \ Amount of bytes to transfer = #$0800.
                 STA $0B                 ; $13:811F: 85 0B       ; /
                 LDA #$2C00              ; $13:8121: A9 00 2C    ; \ Second half of second GFX slot.
                 JSR CODE_138AC4         ; $13:8124: 20 C4 8A    ; / Transfer to VRAM.
@@ -160,7 +160,7 @@ DATA_13812A:    db $C8,$C8,$C8,$C8,$C8,$C8,$00,$00              ;
                 db $80,$00,$00,$00,$00,$C0,$C0,$00              ;
                 db $D0,$D0,$00,$00,$00,$00,$00,$D0              ;
                 db $D0,$D0,$D0,$D0,$D0,$D0,$D0,$00              ;
-         
+
 DATA_1381F2:    db $D0,$D0,$D0,$D0,$D0,$D0,$00,$00              ;
                 db $00,$00,$D0,$D0,$D0,$D0,$D0,$00              ;
                 db $00,$00,$00,$00,$D0,$C0,$E0,$E0              ;
@@ -303,7 +303,7 @@ CODE_1385E6:    STA $00                 ; $13:85E6: 85 00       ;  |
                 LDA $0533               ; $13:85EC: AD 33 05    ;  |
                 AND #$00FF              ; $13:85EF: 29 FF 00    ;  |
                 TAX                     ; $13:85F2: AA          ;  |
-                LDA.l DATA_11D098,x     ; $13:85F3: BF 98 D0 11 ;  | 
+                LDA.l DATA_11D098,x     ; $13:85F3: BF 98 D0 11 ;  |
                 AND #$00FF              ; $13:85F7: 29 FF 00    ;  |
                 CLC                     ; $13:85FA: 18          ;  |
                 ADC $00                 ; $13:85FB: 65 00       ;  |
@@ -316,15 +316,15 @@ CODE_1385E6:    STA $00                 ; $13:85E6: 85 00       ;  |
                 AND #$00FF              ; $13:860D: 29 FF 00    ;  |
                 XBA                     ; $13:8610: EB          ;  |
                 STA $02CD               ; $13:8611: 8D CD 02    ; /
-                LDA.l DATA_1382BA,x     ; $13:8614: BF BA 82 13 ; \ Tiles of the FG/BG slots 1C0-1FF, high byte.  
+                LDA.l DATA_1382BA,x     ; $13:8614: BF BA 82 13 ; \ Tiles of the FG/BG slots 1C0-1FF, high byte.
                 AND #$00FF              ; $13:8618: 29 FF 00    ;  |
                 XBA                     ; $13:861B: EB          ;  |
                 STA $02CF               ; $13:861C: 8D CF 02    ; /
-                LDA.l DATA_138382,x     ; $13:861F: BF 82 83 13 ; \ Tiles of the FG/BG slots 140-17F, bank byte.     
+                LDA.l DATA_138382,x     ; $13:861F: BF 82 83 13 ; \ Tiles of the FG/BG slots 140-17F, bank byte.
                 STA $02D1               ; $13:8623: 8D D1 02    ; /
-                LDA.l DATA_13844A,x     ; $13:8626: BF 4A 84 13 ; \ Tiles of the FG/BG slots 180-1BF, bank byte.  
+                LDA.l DATA_13844A,x     ; $13:8626: BF 4A 84 13 ; \ Tiles of the FG/BG slots 180-1BF, bank byte.
                 STA $02D3               ; $13:862A: 8D D3 02    ; /
-                LDA.l DATA_138512,x     ; $13:862D: BF 12 85 13 ; \ Tiles of the FG/BG slots 1C0-1FF, bank byte.  
+                LDA.l DATA_138512,x     ; $13:862D: BF 12 85 13 ; \ Tiles of the FG/BG slots 1C0-1FF, bank byte.
                 STA $02D5               ; $13:8631: 8D D5 02    ; /
                 SEP #$10                ; $13:8634: E2 10       ; Index = 8-bit.
                 LDX $0635               ; $13:8636: AE 35 06    ; \ If not in World 7, branch.
@@ -441,7 +441,7 @@ CODE_138736:    SEP #$20                ; $13:8736: E2 20       ; A = 8-bit.
 
 DATA_138739:    dw $8000                                        ; Icy ground graphics.
                 dw $9800                                        ; Wood graphics.
-              
+
 CODE_13873D:    REP #$20                ; $13:873D: C2 20       ; Accumulator = 16-bit.
                 LDX $0533               ; $13:873F: AE 33 05    ; \ Check if in level 5-3.
                 CPX #$0E                ; $13:8742: E0 0E       ;  |
@@ -470,7 +470,7 @@ CODE_13874D:    LDA.l DATA_138739,x     ; $13:874D: BF 39 87 13 ; \ Load GFX poi
                 RTL                     ; $13:8778: 6B          ; Return.
 
 DATA_138779:    db $18,$38,$58,$75,$91,$B0,$C3                  ;
-            
+
 CODE_138780:    LDA #$06                    ; $13:8780: A9 06       ;
                 STA $00                     ; $13:8782: 85 00       ;
                 LDX $0533                   ; $13:8784: AE 33 05    ;
@@ -748,7 +748,7 @@ DATA_1389C0:    dw $D000                                        ;
 
 DATA_1389E0:    db $18,$18,$18,$18,$1C,$1C,$1C,$1C              ;
                 db $19,$19,$19,$19,$1B,$1B,$1B,$1B              ;
-                   
+
 DATA_1389F0:    dw $2000                                        ;
                 dw $2100                                        ;
                 dw $2200                                        ;
@@ -765,7 +765,7 @@ DATA_1389F0:    dw $2000                                        ;
                 dw $2D00                                        ;
                 dw $2E00                                        ;
                 dw $2F00                                        ;
-                
+
 CODE_138A10:    REP #$20                    ; $13:8A10: C2 20       ;
                 LDA $0759                   ; $13:8A12: AD 59 07    ;
                 AND #$00FF                  ; $13:8A15: 29 FF 00    ;
@@ -897,7 +897,7 @@ DATA_138B1A:    dw $E600                                        ;
                 dw $E9C0                                        ;
                 dw $EA80                                        ;
                 dw $EB40                                        ;
-                      
+
 CODE_138B2A:    PHD                         ; $13:8B2A: 0B          ;
                 REP #$20                    ; $13:8B2B: C2 20       ;
                 LDA #$4300                  ; $13:8B2D: A9 00 43    ;
@@ -1003,7 +1003,7 @@ DATA_138C03:    dw $2000                                        ;
                 dw $2200                                        ;
 
 DATA_138C09:    db $18,$1D                                      ;
-                   
+
 CODE_138C0B:    LDA $025E               ; $13:8C0B: AD 5E 02    ;
                 BEQ CODE_138C13         ; $13:8C0E: F0 03       ;
                 JMP CODE_138CCE         ; $13:8C10: 4C CE 8C    ;
@@ -1092,7 +1092,7 @@ DATA_138CC0:    dw $D000                                        ;
                 dw $C000                                        ;
                 dw $C800                                        ;
                 dw $D000                                        ;
-                
+
 CODE_138CCE:    LDA $15                     ; $13:8CCE: A5 15       ;
                 ASL A                       ; $13:8CD0: 0A          ;
                 TAX                         ; $13:8CD1: AA          ;
@@ -1328,7 +1328,7 @@ CODE_138E3B:    PHB                         ; $13:8E3B: 8B          ;
 DATA_138EDD:    db $F0,$00,$F0,$F0,$E0,$F0,$00                  ;
 
 DATA_138EE4:    db $F0,$00,$F2,$F0,$E0,$F2,$00                  ;
-            
+
 CODE_138EEB:    REP #$30                    ; $13:8EEB: C2 30       ;
                 LDA $022B                   ; $13:8EED: AD 2B 02    ;
                 AND #$00FF                  ; $13:8EF0: 29 FF 00    ;
@@ -1419,7 +1419,7 @@ DATA_138FB7:    dw $00C6                                        ;
                 dw $00AE                                        ;
                 dw $0096                                        ;
                 dw $007E                                        ;
-       
+
 DATA_138FBF:    dw $0068                                        ;
 
 DATA_138FC1:    dw $00F6                                        ;
@@ -1431,7 +1431,7 @@ DATA_138FC9:    dw $0154                                        ;
 
 DATA_138FCB:    db $70,$90,$60,$A0,$50,$B0,$40,$C0              ;
                 db $36,$CA                                      ;
-                
+
 CODE_138FD5:    PHB                         ; $13:8FD5: 8B          ;
                 LDA #$7F                    ; $13:8FD6: A9 7F       ;
                 PHA                         ; $13:8FD8: 48          ;
@@ -1582,7 +1582,7 @@ CODE_1390F8:    ADC $44,x                   ; $13:90F8: 75 44       ;
 
 DATA_139102:    db $E0,$E2,$E4,$E6,$E8,$EA,$EC,$EE              ;
                 db $C0,$C2,$C4,$C6,$C8,$CA                      ;
-                 
+
 CODE_139110:    LDA $0429                   ; $13:9110: AD 29 04    ;
                 STA $0712                   ; $13:9113: 8D 12 07    ;
                 LDA $021F                   ; $13:9116: AD 1F 02    ;
@@ -1678,7 +1678,7 @@ CODE_1391C4:    AND #$01                    ; $13:91C4: 29 01       ;
 DATA_1391D0:    db $1D,$21,$2C,$1C,$1F,$2A                      ;
 
 DATA_1391D6:    db $0A,$02,$0A,$04,$0A,$06                      ;
-          
+
 CODE_1391DC:    PHX                     ; $13:91DC: DA          ;
                 LDA $90,x                   ; $13:91DD: B5 90       ;
                 LDX #$05                    ; $13:91DF: A2 05       ;
@@ -1705,7 +1705,7 @@ CODE_139207:    PLX                         ; $13:9207: FA          ;
 DATA_139209:    db $C4,$D4,$C5                                  ;
 
 DATA_13920C:    db $FD,$FF,$0B,$00                              ;
-            
+
 CODE_139210:    LDA $90,x               ; $13:9210: B5 90       ;
                 CMP #$37                ; $13:9212: C9 37       ;
                 BNE CODE_139252         ; $13:9214: D0 3C       ;
@@ -1795,14 +1795,14 @@ CODE_1392A9:    AND #$01                    ; $13:92A9: 29 01       ;
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF                          ; /
-                                            
+
 CODE_139300:    ASL A                   ; $13:9300: 0A          ;
                 TAX                     ; $13:9301: AA          ;
                 JMP (PNTR_139305,x)             ; $13:9302: 7C 05 93    ;
 
 PNTR_139305:    dw CODE_1393DC                                  ;
                 dw CODE_1393DC                                  ;
-             
+
 CODE_139309:    ASL                     ; $13:9309: 0A          ;
                 TAX                         ; $13:930A: AA          ;
                 JMP (PNTR_13930E,x)                 ; $13:930B: 7C 0E 93    ;
@@ -1812,7 +1812,7 @@ PNTR_13930E:    dw CODE_139439                                  ;
                 dw CODE_139472                                  ;
                 dw CODE_139472                                  ;
                 dw CODE_139472                                  ;
-               
+
 CODE_139318:    LDA $050F                   ; $13:9318: AD 0F 05    ;
                 ASL A                   ; $13:931B: 0A          ;
                 TAX                     ; $13:931C: AA          ;
@@ -1913,7 +1913,7 @@ PNTR_139320:    dw CODE_1394CF                                  ;
                 dw CODE_1399A9                                  ;
 
 DATA_1393DA:    db $3C,$02                                      ;
-                                   
+
 CODE_1393DC:    LDA [$05],y             ; $13:93DC: B7 05       ;
                 SEC                     ; $13:93DE: 38          ;
                 SBC #$70                    ; $13:93DF: E9 70       ;
@@ -2449,7 +2449,7 @@ CODE_1397CC:    INC $E9                 ; $13:97CC: E6 E9       ;
                 LDA #$00                ; $13:97CE: A9 00       ;
                 STA $E6                 ; $13:97D0: 85 E6       ;
                 RTS                     ; $13:97D2: 60          ;
-                 
+
 CODE_1397D3:    LDX $E9                     ; $13:97D3: A6 E9       ;
                 LDA $E6                     ; $13:97D5: A5 E6       ;
                 CLC                         ; $13:97D7: 18          ;
@@ -3242,7 +3242,7 @@ CODE_139DB4:    JSL CODE_118B2D             ; $13:9DB4: 22 2D 8B 11 ;
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF                                          ; /
-          
+
 DATA_139E00:    db $00,$0A,$14,$1E,$28,$32,$3C,$46              ;
                 db $50,$5A,$64,$6E,$78,$82,$8C,$96              ;
                 db $A0,$AA,$B4,$BE,$C8                          ;
@@ -3276,7 +3276,7 @@ DATA_139E16:    db $BA,$BA,$C7,$F8,$F8,$E5,$E5,$E5              ;
                 db $B9,$B9,$B9,$D8,$FB,$FB,$FB,$BA              ;
                 db $10,$10,$10,$10,$10,$10,$10,$10              ;
                 db $10,$10                                      ;
-         
+
 DATA_139EE8:    db $9F,$9F,$9F,$9F,$9F,$A0,$A0,$A0              ;
                 db $A0,$A0,$9F,$9F,$9F,$A0,$A0,$A0              ;
                 db $A0,$A0,$A0,$A0,$9F,$A0,$A0,$A1              ;
@@ -3315,7 +3315,7 @@ DATA_139EE8:    db $9F,$9F,$9F,$9F,$9F,$A0,$A0,$A0              ;
                 db $F0,$00,$82,$13,$78,$14,$8C,$13              ;
                 db $F0,$00,$70,$14,$88,$13,$8C,$13              ;
                 db $FF                                          ;
-       
+
                 db $D0,$01,$46,$1A,$6C,$1A,$82,$1A              ;
                 db $C6,$1A,$CE,$1A,$23,$1B,$2B,$1B              ;
                 db $4F,$1B,$85,$1B,$C1,$1B,$41,$1C              ;
@@ -3414,7 +3414,7 @@ DATA_139EE8:    db $9F,$9F,$9F,$9F,$9F,$A0,$A0,$A0              ;
                 db $8A,$35,$76,$12,$7D,$36,$F0,$03              ;
                 db $8D,$35,$F0,$03,$81,$35,$74,$37              ;
                 db $F0,$03,$55,$12,$FF                          ;
-          
+
                 db $D0,$15,$F0,$1D,$F0,$15,$F0,$1D              ;
                 db $FF,$15,$F0,$1D,$F0,$15,$FF,$D0              ;
                 db $04,$04,$1E,$09,$1F,$0E,$20,$F0              ;
@@ -3430,7 +3430,7 @@ DATA_139EE8:    db $9F,$9F,$9F,$9F,$9F,$A0,$A0,$A0              ;
                 db $D0,$1E,$F0,$1E,$F0,$1E,$F0,$1E              ;
                 db $F0,$1E,$F0,$1E,$F0,$1E,$F0,$1E              ;
                 db $FF                                          ;
-                             
+
                 db $00,$0A,$40,$39,$4F,$3A,$F0,$0A              ;
                 db $40,$3B,$42,$3B,$44,$3B,$46,$3B              ;
                 db $48,$3B,$4A,$3B,$4C,$3C,$6E,$3E              ;
@@ -3446,25 +3446,25 @@ DATA_139EE8:    db $9F,$9F,$9F,$9F,$9F,$A0,$A0,$A0              ;
                 db $C1,$1A,$40,$3B,$42,$3B,$44,$3B              ;
                 db $45,$3C,$67,$3E,$4E,$3B,$4E,$3A              ;
                 db $FF                                          ;
-           
+
                 db $C1,$04,$09,$1F,$F0,$80,$00,$20              ;
                 db $FF                                          ;
 
                 db $C1,$16,$00,$67,$04,$1E,$08,$1F              ;
                 db $0D,$68,$FF                                  ;
-           
+
                 db $D1,$04,$04,$1E,$09,$1F,$0E,$20              ;
                 db $F0,$04,$05,$1F,$0C,$1E,$FF                  ;
 
                 db $C1,$15,$FF                                  ;
 
                 db $00,$05,$F0,$05,$FF                          ;
-        
+
                 db $00,$80,$FF                                  ;
 
                 db $00,$05,$F0,$05,$F0,$05,$F0,$05              ;
                 db $F0,$05,$F0,$05,$FF                          ;
-              
+
                 db $C0,$25,$F0,$25,$F0,$25,$F0,$25              ;
                 db $F0,$25,$FF                                  ;
 
@@ -3475,7 +3475,7 @@ DATA_139EE8:    db $9F,$9F,$9F,$9F,$9F,$A0,$A0,$A0              ;
                 db $BF,$43,$F0,$80,$AB,$44,$8D,$47              ;
                 db $F0,$80,$B8,$43,$F0,$80,$B1,$41              ;
                 db $92,$45,$FF                                  ;
-                 
+
                 db $00,$80,$80,$5F,$56,$4B,$74,$49              ;
                 db $AA,$4B,$5F,$4B,$F0,$80,$A3,$4B              ;
                 db $71,$49,$B7,$4A,$8E,$4B,$AC,$49              ;
@@ -3485,7 +3485,7 @@ DATA_139EE8:    db $9F,$9F,$9F,$9F,$9F,$A0,$A0,$A0              ;
                 db $B4,$4C,$A9,$4A,$CF,$49,$F0,$80              ;
                 db $01,$4B,$A5,$4B,$73,$49,$C1,$4D              ;
                 db $FF                                          ;
-           
+
                 db $D0,$06,$F0,$06,$FF                          ;
 
                 db $00,$80,$FF                                  ;
@@ -3495,7 +3495,7 @@ DATA_139EE8:    db $9F,$9F,$9F,$9F,$9F,$A0,$A0,$A0              ;
                 db $00,$80,$FF                                  ;
 
                 db $00,$10,$F0,$10,$FF                          ;
-    
+
                 db $C4,$0F,$85,$4F,$A4,$4F,$79,$4F              ;
                 db $98,$4F,$8A,$4F,$A0,$52,$A3,$53              ;
                 db $A7,$56,$F0,$0F,$66,$4F,$85,$4F              ;
@@ -3523,7 +3523,7 @@ DATA_139EE8:    db $9F,$9F,$9F,$9F,$9F,$A0,$A0,$A0              ;
                 db $57,$4F,$4B,$4F,$8A,$4F,$79,$4F              ;
                 db $98,$4F,$86,$4F,$74,$4F,$80,$4F              ;
                 db $93,$4F,$A5,$4F,$FF                          ;
-              
+
                 db $D1,$18,$1A,$38,$F0,$19,$FF                  ;
 
                 db $C4,$0F,$85,$4F,$A4,$4F,$79,$4F              ;
@@ -4649,7 +4649,7 @@ DATA_13C3E9:    db $8E,$1D,$8F,$1D,$95,$9D,$96,$9D              ;
                 db $77,$1D,$BB,$1D,$87,$1D,$85,$1D              ;
                 db $BF,$00,$BF,$00,$BF,$00,$BF,$00              ;
                 db $6F,$1D,$6F,$1D,$6F,$1D,$6F,$1D              ;
-          
+
 PNTR_13C661:    dw DATA_13C6AF                                  ;
                 dw DATA_13C6BE                                  ;
                 dw DATA_13C6DF                                  ;
@@ -4692,7 +4692,7 @@ PNTR_13C661:    dw DATA_13C6AF                                  ;
 
 DATA_13C6AF:    db $91,$28,$2E,$31,$34,$35,$34,$35              ;
                 db $29,$2F,$32,$35,$34,$35,$34                  ;
- 
+
 DATA_13C6BE:    db $01,$00,$02,$00,$02,$00,$02,$00              ;
                 db $02,$00,$02,$00,$02,$00,$02,$00              ;
                 db $02,$01,$03,$01,$03,$01,$03,$01              ;
@@ -4764,7 +4764,7 @@ DATA_13C865:    db $01,$44,$46,$44,$46,$44,$46,$44              ;
                 db $46,$45,$47,$45,$47,$45,$47,$45              ;
                 db $47,$45,$47,$45,$47,$45,$47,$45              ;
                 db $47                                          ;
-              
+
 DATA_13C886:    db $01,$08,$08,$08,$08,$05,$0E,$04              ;
                 db $0D,$08,$08,$05,$0E,$04,$0D,$08              ;
                 db $08,$08,$08,$08,$08,$02,$0B,$03              ;
@@ -4932,7 +4932,7 @@ DATA_13CCEC:    db $01,$01,$0C,$01,$0C,$01,$0C,$01              ;
                 db $1F,$00,$0B,$00,$0B,$00,$0B,$00              ;
                 db $0B,$00,$0B,$00,$0B,$00,$20,$24              ;
                 db $20                                          ;
-      
+
 DATA_13CD0D:    db $01,$1F,$23,$1F,$23,$1F,$23,$1F              ;
                 db $23,$1F,$23,$1F,$23,$1F,$23,$1F              ;
                 db $23,$20,$24,$20,$24,$20,$24,$20              ;
@@ -4975,7 +4975,7 @@ DATA_13CDF8:    db $31,$00,$04,$09,$0F,$0F,$0F,$1C              ;
                 db $21,$30,$30,$30,$30,$30,$00,$03              ;
                 db $09,$0F,$0F,$0F,$1C,$21,$30,$30              ;
                 db $30,$30,$30                                  ;
-  
+
 DATA_13CE13:    db $0F,$16,$0D,$02,$0D,$02,$0D,$02              ;
                 db $0D,$02,$0D,$02,$0D,$02,$16,$29              ;
                 db $29,$17,$0E,$03,$0E,$03,$0E,$03              ;
@@ -5223,7 +5223,7 @@ DATA_13D49C:    db $04,$06,$08,$07,$09,$03,$0A,$02              ;
                 db $0B,$06,$05,$07,$37,$47,$38,$48              ;
                 db $25,$25,$89,$8B,$8A,$8C,$25,$25              ;
                 db $01,$04,$02,$05,$03,$06                      ;
-    
+
 DATA_13D4BA:    db $02,$02,$02,$02,$08,$08,$08,$08              ;
                 db $08,$08                                      ;
 
@@ -5519,7 +5519,7 @@ DATA_13D9DC:    db $03,$06,$0A                                  ;
 DATA_13D9DF:    db $17,$16,$16,$15                              ;
 
 DATA_13D9E3:    db $19                                          ;
-                        
+
 DATA_13D9E4:    db $00,$01,$6C,$6D,$22,$23                      ;
 
 DATA_13D9EA:    db $18,$1A,$6C,$6D,$22,$23                      ;
@@ -5763,16 +5763,16 @@ CODE_13DCF6:    REP #$30                ; $13:DCF6: C2 30       ; Accumulator an
                 AND #$000F              ; $13:DCFB: 29 0F 00    ;  |
                 ASL A                   ; $13:DCFE: 0A          ;  |
                 TAX                     ; $13:DCFF: AA          ; /
-                LDA.l DATA_13DCE8,x     ; $13:DD00: BF E8 DC 13 ; \ Get BG colour for the 'World x-x' screen.  
+                LDA.l DATA_13DCE8,x     ; $13:DD00: BF E8 DC 13 ; \ Get BG colour for the 'World x-x' screen.
                 STA $0B00               ; $13:DD04: 8D 00 0B    ; /
-                LDA.l DATA_13DCDA,x     ; $13:DD07: BF DA DC 13 ; \ Get index for different palette set.     
+                LDA.l DATA_13DCDA,x     ; $13:DD07: BF DA DC 13 ; \ Get index for different palette set.
                 TAX                     ; $13:DD0B: AA          ; /
                 LDY #$0000              ; $13:DD0C: A0 00 00    ; \ Y = #$0000.
 CODE_13DD0F:    LDA.l DATA_15F555,x     ; $13:DD0F: BF 55 F5 15 ;  | Load colours into palette 1.
                 STA $0B20,y             ; $13:DD13: 99 20 0B    ;  |
-                LDA.l DATA_15F575,x     ; $13:DD16: BF 75 F5 15 ;  | Load colours into palette 2. 
+                LDA.l DATA_15F575,x     ; $13:DD16: BF 75 F5 15 ;  | Load colours into palette 2.
                 STA $0B40,y             ; $13:DD1A: 99 40 0B    ;  |
-                LDA.l DATA_15F595,x     ; $13:DD1D: BF 95 F5 15 ;  | Load colours into palette 7. 
+                LDA.l DATA_15F595,x     ; $13:DD1D: BF 95 F5 15 ;  | Load colours into palette 7.
                 STA $0BE0,y             ; $13:DD21: 99 E0 0B    ; /
                 INX                     ; $13:DD24: E8          ; \ Get to next colours.
                 INX                     ; $13:DD25: E8          ;  |
@@ -6113,7 +6113,7 @@ DATA_13E13D:    db $1F,$33,$9B,$22,$17,$12,$93,$01              ;
 DATA_13E145:    db $1C,$00,$18,$00,$14,$00,$10,$00              ;
 
 DATA_13E14D:    db $00,$01,$03,$02,$01,$02,$03,$01              ;
-    
+
 CODE_13E155:    LDA $077C               ; $13:E155: AD 7C 07    ;
                 BEQ CODE_13E192         ; $13:E158: F0 38       ;
                 INC $077D                   ; $13:E15A: EE 7D 07    ;
@@ -6286,7 +6286,7 @@ DATA_13E282:    db $FA,$7F,$F8,$7F,$D7,$7F,$D7,$7F              ;
                 db $D7,$7F,$B5,$7F,$53,$7F,$32,$7F              ;
                 db $53,$7F,$95,$7F,$B6,$7F,$AE,$6E              ;
                 db $CF,$72,$F0,$76,$11,$7B,$32,$7F              ;
-   
+
 DATA_13E3EA:    db $00,$00,$1E,$00,$3C,$00,$5A,$00              ;
                 db $78,$00,$96,$00,$B4,$00,$D2,$00              ;
                 db $F0,$00,$0E,$01,$2C,$01,$4A,$01              ;
@@ -6363,7 +6363,7 @@ PNTR_13E48F:    dw CODE_13E49D                                  ;
                 dw CODE_13E49D                                  ;
                 dw CODE_13E49D                                  ;
                 dw CODE_13E4CC                                  ;
-                    
+
 CODE_13E49D:    REP #$20                ; $13:E49D: C2 20       ;
                 LDX #$00                ; $13:E49F: A2 00       ;
 CODE_13E4A1:    LDA.l DATA_14BF00,x                 ; $13:E4A1: BF 00 BF 14 ;
@@ -6744,7 +6744,7 @@ CODE_13E915:    LDA $29                     ; $13:E915: A5 29       ;
                 dw CODE_13EEBC                                  ;
                 dw CODE_13EED7                                  ;
                 dw CODE_13EEED                                  ;
-      
+
                 RTS                         ; $13:E931: 60          ;
 
 CODE_13E932:    PHX                         ; $13:E932: DA          ;
@@ -7915,13 +7915,13 @@ CODE_13F3B9:    LDX $0533               ; $13:F3B9: AE 33 05    ; \ Get level + 
                 CLC                     ; $13:F3C0: 18          ;  |
                 ADC $0534               ; $13:F3C1: 6D 34 05    ;  |
                 TAX                     ; $13:F3C4: AA          ; /
-                LDA.l DATA_13A61D,x     ; $13:F3C5: BF 1D A6 13 ; \ Load a certain Layer 2 Map16 tileset.     
+                LDA.l DATA_13A61D,x     ; $13:F3C5: BF 1D A6 13 ; \ Load a certain Layer 2 Map16 tileset.
                 ASL A                   ; $13:F3C9: 0A          ;  |
                 TAX                     ; $13:F3CA: AA          ; /
                 LDA.l PNTR_13A6E5,x     ; $13:F3CB: BF E5 A6 13 ; \ Tileset pointer, low byte, into $02DF.
                 STA $02DF               ; $13:F3CF: 8D DF 02    ; /
                 INX                     ; $13:F3D2: E8          ; \
-                LDA.l PNTR_13A6E5,x     ; $13:F3D3: BF E5 A6 13 ;  | Tileset pointer, high byte, into $02E0.    
+                LDA.l PNTR_13A6E5,x     ; $13:F3D3: BF E5 A6 13 ;  | Tileset pointer, high byte, into $02E0.
                 STA $02E0               ; $13:F3D7: 8D E0 02    ; /
                 LDA #$13                ; $13:F3DA: A9 13       ; \ Bank number = #$13.
                 STA $02E1               ; $13:F3DC: 8D E1 02    ; / Into $02E1.
@@ -8026,7 +8026,7 @@ CODE_13F44E:    LDA [$00],y                 ; $13:F44E: B7 00       ;
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; /
-   
+
 CODE_13F500:    LDA $02AB                   ; $13:F500: AD AB 02    ;
                 BNE CODE_13F554             ; $13:F503: D0 4F       ;
                 LDA #$02                    ; $13:F505: A9 02       ;
@@ -8352,7 +8352,7 @@ CODE_13F7B8:    LDA $02DF                   ; $13:F7B8: AD DF 02    ;
                 AND #$00FF              ; $13:F7CE: 29 FF 00    ;  |
                 CMP #$00FF              ; $13:F7D1: C9 FF 00    ;  |
                 BNE CODE_13F7E6         ; $13:F7D4: D0 10       ; /
-                LDA.l PNTR_13A613       ; $13:F7D6: AF 13 A6 13 ; \ Empty tile.    
+                LDA.l PNTR_13A613       ; $13:F7D6: AF 13 A6 13 ; \ Empty tile.
                 STA $00                 ; $13:F7DA: 85 00       ;  | ($13A615)
                 LDA #$0013              ; $13:F7DC: A9 13 00    ;  |
                 STA $02                 ; $13:F7DF: 85 02       ; /
@@ -8402,7 +8402,7 @@ CODE_13F82F:    LDA $D8                     ; $13:F82F: A5 D8       ;
                 LSR A                       ; $13:F831: 4A          ;
                 BCS CODE_13F837                     ; $13:F832: B0 03       ;
                 JMP CODE_13F837         ; $13:F834: 4C 37 F8    ;
-           
+
 CODE_13F837:    LDX #$00                    ; $13:F837: A2 00       ;
                 LDA $D8                     ; $13:F839: A5 D8       ;
                 LSR A                       ; $13:F83B: 4A          ;
@@ -8925,11 +8925,11 @@ CODE_13FC81:    STY $02F8                   ; $13:FC81: 8C F8 02    ;
                 RTL                         ; $13:FC88: 6B          ;
 
 CODE_13FC89:    LDY $0533               ; $13:FC89: AC 33 05    ; \ Get level + room number into X index.
-                LDA.w DATA_11D098,y     ; $13:FC8C: B9 98 D0    ;  | 
+                LDA.w DATA_11D098,y     ; $13:FC8C: B9 98 D0    ;  |
                 CLC                     ; $13:FC8F: 18          ;  |
                 ADC $0534               ; $13:FC90: 6D 34 05    ;  |
                 TAX                     ; $13:FC93: AA          ;  |
-                LDA.l DATA_11CF52,x     ; $13:FC94: BF 52 CF 11 ;  | Check HDMA BG table. 
+                LDA.l DATA_11CF52,x     ; $13:FC94: BF 52 CF 11 ;  | Check HDMA BG table.
                 CMP #$FF                ; $13:FC98: C9 FF       ;  | If value = $FF, don't load a HDMA BG.
                 BEQ CODE_13FCA0         ; $13:FC9A: F0 04       ; /
                 JSL CODE_14FAE8         ; $13:FC9C: 22 E8 FA 14 ; Load HDMA BG.

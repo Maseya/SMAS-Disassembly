@@ -25,7 +25,7 @@ CODE_12802B:    LDA #$1E                ; $12:802B: A9 1E       ; \ Amount of ti
                 STA $50                 ; $12:8031: 85 50       ; /
 CODE_128033:    JSR CODE_128037         ; $12:8033: 20 37 80    ; Execute player state.
                 RTL                     ; $12:8036: 6B          ;
-                  
+
 CODE_128037:    STZ $64                     ; $12:8037: 64 64       ;
                 LDA $50                 ; $12:8039: A5 50       ; \ Execute pointer depending on player status.
                 JSL CODE_118776         ; $12:803B: 22 76 87 11 ; /
@@ -80,7 +80,7 @@ CODE_1280A5:    LDA $0214                   ; $12:80A5: AD 14 02    ;
                 LDA.l DATA_128061,x                 ; $12:80BA: BF 61 80 12 ;
                 STA $3C                     ; $12:80BE: 85 3C       ;
                 BRL CODE_1280D2         ; $12:80C0: 82 0F 00    ;
-           
+
 CODE_1280C3:    JSR CODE_12834B             ; $12:80C3: 20 4B 83    ;
                 JSR CODE_128272             ; $12:80C6: 20 72 82    ;
                 JSR CODE_128565             ; $12:80C9: 20 65 85    ;
@@ -92,7 +92,7 @@ CODE_1280D2:    LDX #$00                    ; $12:80D2: A2 00       ;
                 BNE CODE_1280DD             ; $12:80D9: D0 02       ;
                 STA $14                     ; $12:80DB: 85 14       ;
 CODE_1280DD:    RTS                     ; $12:80DD: 60          ;
-                       
+
 CODE_1280DE:    LDA $82                     ; $12:80DE: A5 82       ;
                 BNE CODE_128108             ; $12:80E0: D0 26       ;
                 LDA $042A                   ; $12:80E2: AD 2A 04    ;
@@ -106,7 +106,7 @@ CODE_1280DE:    LDA $82                     ; $12:80DE: A5 82       ;
 CODE_1280F4:    INC $46                     ; $12:80F4: E6 46       ;
                 INC $46                     ; $12:80F6: E6 46       ;
                 RTS                     ; $12:80F8: 60          ;
-                       
+
 CODE_1280F9:    LDA #$02                    ; $12:80F9: A9 02       ;
                 STA $C7                     ; $12:80FB: 85 C7       ;
                 LDY #$01                ; $12:80FD: A0 01       ; \ Return to player select screen.
@@ -115,7 +115,7 @@ CODE_1280F9:    LDA #$02                    ; $12:80F9: A9 02       ;
                 INY                     ; $12:8104: C8          ;  | ... then return to game over screen.
 CODE_128105:    STY $04ED               ; $12:8105: 8C ED 04    ; / <--
 CODE_128108:    RTS                     ; $12:8108: 60          ; Return.
-                       
+
 CODE_128109:    LDA $82                     ; $12:8109: A5 82       ;
                 BNE CODE_12813A             ; $12:810B: D0 2D       ;
                 LDX $042D                   ; $12:810D: AE 2D 04    ;
@@ -136,12 +136,12 @@ CODE_128129:    LDA.w DATA_119B3F,y                 ; $12:8129: B9 3F 9B    ;
 CODE_12812E:    LDA $0546,y                 ; $12:812E: B9 46 05    ;
 CODE_128131:    STA $82                     ; $12:8131: 85 82       ;
                 RTS                     ; $12:8133: 60          ;
-                       
+
 CODE_128134:    STA $50                     ; $12:8134: 85 50       ;
                 INC $99                     ; $12:8136: E6 99       ;
                 INC $9A                     ; $12:8138: E6 9A       ;
 CODE_12813A:    RTS                     ; $12:813A: 60          ;
-                       
+
 CODE_12813B:    LDA $F6                 ; $12:813B: A5 F6       ; \ Check only if Up and Down are pressed.
                 AND #$0C                ; $12:813D: 29 0C       ;  | LSR twice for a result from 00-03
                 LSR A                   ; $12:813F: 4A          ;  |
@@ -150,7 +150,7 @@ CODE_12813B:    LDA $F6                 ; $12:813B: A5 F6       ; \ Check only i
                 CPY #$02                ; $12:8142: C0 02       ;  | If going upwards, go to an extra subroutine.
                 BNE CODE_128149         ; $12:8144: D0 03       ;  | (Don't branch.)
                 JSR CODE_128183         ; $12:8146: 20 83 81    ;  | Flip direction every 8 frames.
-CODE_128149:    LDA.w DATA_11CBF1,y     ; $12:8149: B9 F1 CB    ;  | Get appropiate Y speed in for climbing.     
+CODE_128149:    LDA.w DATA_11CBF1,y     ; $12:8149: B9 F1 CB    ;  | Get appropiate Y speed in for climbing.
                 STA $46                 ; $12:814C: 85 46       ; /
                 LDA $F6                 ; $12:814E: A5 F6       ; \ Now do the same horizontally...
                 AND #$03                ; $12:8150: 29 03       ;  | (left-right)
@@ -179,7 +179,7 @@ CODE_128178:    JSR CODE_1280D2             ; $12:8178: 20 D2 80    ;
 CODE_12817E:    LDA #$00                    ; $12:817E: A9 00       ;
                 STA $50                     ; $12:8180: 85 50       ;
                 RTS                     ; $12:8182: 60          ;
-                       
+
 CODE_128183:    LDA $10                 ; $12:8183: A5 10       ; \ Run code every 8 frames.
                 AND #$07                ; $12:8185: 29 07       ;  |
                 BNE CODE_128194         ; $12:8187: D0 0B       ; /
@@ -189,7 +189,7 @@ CODE_128183:    LDA $10                 ; $12:8183: A5 10       ; \ Run code eve
                 LDA #$30                ; $12:818F: A9 30       ; \ Climbing sound effect.
                 STA $1DE0               ; $12:8191: 8D E0 1D    ; /
 CODE_128194:    RTS                     ; $12:8194: 60          ; Return.
-                       
+
 CODE_128195:    JSL CODE_13F900         ; $12:8195: 22 00 F9 13 ; Prepare Map16 tile being touched by player.
                 LDA $00                 ; $12:8199: A5 00       ; \ Check if the tile that is being touched is a 'climbing tile'...
                 LDY #$0B                ; $12:819B: A0 0B       ;  | vines, ladders...
@@ -199,7 +199,7 @@ CODE_12819D:    CMP.w DATA_119B50,y     ; $12:819D: D9 50 9B    ;  |
                 BPL CODE_12819D         ; $12:81A3: 10 F8       ;  | When through index, and no match has been found...
                 CLC                     ; $12:81A5: 18          ;  | Clear carry.
 CODE_1281A6:    RTS                     ; $12:81A6: 60          ; / Return.
-                       
+
 CODE_1281A7:    LDA #$20                    ; $12:81A7: A9 20       ;
                 STA $64                     ; $12:81A9: 85 64       ;
                 INC $32                 ; $12:81AB: E6 32       ; Move down.
@@ -216,15 +216,15 @@ CODE_1281A7:    LDA #$20                    ; $12:81A7: A9 20       ;
                 LDA #$04                ; $12:81C3: A9 04       ; \ Act like a warp jar.
                 STA $04ED               ; $12:81C5: 8D ED 04    ; /
                 RTL                     ; $12:81C8: 6B          ; Return.
-                      
+
 CODE_1281C9:    CMP #$01                    ; $12:81C9: C9 01       ;
                 BEQ CODE_1281D1             ; $12:81CB: F0 04       ;
                 STA $0627                   ; $12:81CD: 8D 27 06    ;
                 RTL                     ; $12:81D0: 6B          ;
-                       
+
 CODE_1281D1:    STA $0628                   ; $12:81D1: 8D 28 06    ;
                 RTL                     ; $12:81D4: 6B          ;
-                       
+
 CODE_1281D5:    LDA #$20                    ; $12:81D5: A9 20       ;
                 STA $64                     ; $12:81D7: 85 64       ;
                 DEC $32                 ; $12:81D9: C6 32       ; Move up.
@@ -239,7 +239,7 @@ CODE_1281E8:    LDA $32                 ; $12:81E8: A5 32       ; \ If still in 
                 BNE CODE_1281F0         ; $12:81EC: D0 02       ;  | Return.
                 STA $50                 ; $12:81EE: 85 50       ; / Otherwise, go into normal walking mode.
 CODE_1281F0:    RTS                     ; $12:81F0: 60          ; Return.
-                       
+
 CODE_1281F1:    LDA $46                 ; $12:81F1: A5 46       ; \ Y speed.
                 ASL A                   ; $12:81F3: 0A          ;  | Result: 80-FF = 01.
                 ROL A                   ; $12:81F4: 2A          ;  | Result: 00-7F = 00.
@@ -255,7 +255,7 @@ CODE_1281F1:    LDA $46                 ; $12:81F1: A5 46       ; \ Y speed.
                 LDA #$03                    ; $12:820B: A9 03       ;
                 STA $0536                   ; $12:820D: 8D 36 05    ;
                 RTS                     ; $12:8210: 60          ;
-                       
+
 CODE_128211:    LDA $042A                   ; $12:8211: AD 2A 04    ;
                 BNE CODE_12821E             ; $12:8214: D0 08       ;
                 LDA $042B                   ; $12:8216: AD 2B 04    ;
@@ -269,7 +269,7 @@ CODE_128224:    JMP CODE_128523             ; $12:8224: 4C 23 85    ;
 CODE_128227:    LDA #$01                    ; $12:8227: A9 01       ;
                 STA $50                     ; $12:8229: 85 50       ;
                 RTS                     ; $12:822B: 60          ;
-                       
+
 CODE_12822C:    LDA $82                 ; $12:822C: A5 82       ; \ Return into normal walking mode if $82 == #$00.
                 BEQ CODE_12824A         ; $12:822E: F0 1A       ; /
                 JSR CODE_128523             ; $12:8230: 20 23 85    ;
@@ -286,7 +286,7 @@ CODE_12822C:    LDA $82                 ; $12:822C: A5 82       ; \ Return into 
 
 CODE_12824A:    STA $50                 ; $12:824A: 85 50       ; <-- $50 - #$00 = normal player state.
 CODE_12824C:    RTS                     ; $12:824C: 60          ; Return.
-                       
+
 CODE_12824D:    LDA $82                     ; $12:824D: A5 82       ;
                 BEQ CODE_128267             ; $12:824F: F0 16       ;
                 INC $85                     ; $12:8251: E6 85       ;
@@ -297,18 +297,18 @@ CODE_128255:    CMP.w DATA_119B62,y                 ; $12:8255: D9 62 9B    ;
                 EOR #$01                    ; $12:825D: 49 01       ;
                 STA $06C2                   ; $12:825F: 8D C2 06    ;
                 RTS                     ; $12:8262: 60          ;
-                       
+
 CODE_128263:    DEY                         ; $12:8263: 88          ;
                 BPL CODE_128255             ; $12:8264: 10 EF       ;
                 RTS                     ; $12:8266: 60          ;
-                       
+
 CODE_128267:    LDY $C7                     ; $12:8267: A4 C7       ;
                 CPY #$0A                    ; $12:8269: C0 0A       ;
                 BNE CODE_12826F             ; $12:826B: D0 02       ;
                 LDA #$01                    ; $12:826D: A9 01       ;
 CODE_12826F:    STA $50                     ; $12:826F: 85 50       ;
                 RTS                     ; $12:8271: 60          ;
-                       
+
 CODE_128272:    JSR CODE_1283D1             ; $12:8272: 20 D1 83    ;
                 LDA $99                     ; $12:8275: A5 99       ;
                 BNE CODE_1282D5             ; $12:8277: D0 5C       ;
@@ -379,7 +379,7 @@ CODE_1282FD:    LDA #$00                    ; $12:82FD: A9 00       ;
 CODE_128304:    JSR CODE_128398             ; $12:8304: 20 98 83    ;
 CODE_128307:    JSR CODE_128423             ; $12:8307: 20 23 84    ;
                 RTS                     ; $12:830A: 60          ;
-                       
+
 CODE_12830B:    LDA $04E0                   ; $12:830B: AD E0 04    ;
                 CMP #$02                    ; $12:830E: C9 02       ;
                 BCC CODE_128319             ; $12:8310: 90 07       ;
@@ -411,7 +411,7 @@ CODE_128335:    ROL A                       ; $12:8335: 2A          ;
 CODE_128345:    LDA #$00                    ; $12:8345: A9 00       ;
                 STA $04CB                   ; $12:8347: 8D CB 04    ;
                 RTS                     ; $12:834A: 60          ;
-                       
+
 CODE_12834B:    LDA $04E0                   ; $12:834B: AD E0 04    ;
                 CMP #$02                    ; $12:834E: C9 02       ;
                 BCC CODE_128357             ; $12:8350: 90 05       ;
@@ -436,7 +436,7 @@ CODE_128357:    LDA $0556                   ; $12:8357: AD 56 05    ;
                 LDA.w DATA_119B69,y                 ; $12:8377: B9 69 9B    ;
                 STA $46                     ; $12:837A: 85 46       ;
                 RTS                     ; $12:837C: 60          ;
-                       
+
 CODE_12837D:    LDY $46                     ; $12:837D: A4 46       ;
                 BMI CODE_128385             ; $12:837F: 30 04       ;
                 CPY #$39                    ; $12:8381: C0 39       ;
@@ -450,7 +450,7 @@ CODE_12838A:    LDA $04CA                   ; $12:838A: AD CA 04    ;
                 LDA #$00                    ; $12:8392: A9 00       ;
                 STA $04CA                   ; $12:8394: 8D CA 04    ;
 CODE_128397:    RTS                     ; $12:8397: 60          ;
-                       
+
 CODE_128398:    LDA $99                     ; $12:8398: A5 99       ;
                 BNE CODE_1283D0             ; $12:839A: D0 34       ;
                 LDA $10                     ; $12:839C: A5 10       ;
@@ -480,7 +480,7 @@ CODE_1283B9:    LDA $9A                     ; $12:83B9: A5 9A       ;
                 STA $9B                     ; $12:83CB: 85 9B       ;
                 STA $078B                   ; $12:83CD: 8D 8B 07    ;
 CODE_1283D0:    RTS                     ; $12:83D0: 60          ;
-                       
+
 CODE_1283D1:    LDA $9A                     ; $12:83D1: A5 9A       ;
                 BNE CODE_128422             ; $12:83D3: D0 4D       ;
                 LDA $99                     ; $12:83D5: A5 99       ;
@@ -523,7 +523,7 @@ CODE_12841B:    LDY $9B                     ; $12:841B: A4 9B       ;
                 LDA.w DATA_119B79,y                 ; $12:841D: B9 79 9B    ;
                 STA $C7                     ; $12:8420: 85 C7       ;
 CODE_128422:    RTS                     ; $12:8422: 60          ;
-                       
+
 CODE_128423:    LDY #$02                    ; $12:8423: A0 02       ;
                 LDA $04E0                   ; $12:8425: AD E0 04    ;
                 CMP #$02                    ; $12:8428: C9 02       ;
@@ -601,7 +601,7 @@ CODE_1284AD:    LDX #$00                    ; $12:84AD: A2 00       ;
                 JSL CODE_13F99C             ; $12:84B7: 22 9C F9 13 ;
                 BCC CODE_1284BE             ; $12:84BB: 90 01       ;
 CODE_1284BD:    RTS                     ; $12:84BD: 60          ;
-                       
+
 CODE_1284BE:    LDA #$09                    ; $12:84BE: A9 09       ;
                 STA $C7                     ; $12:84C0: 85 C7       ;
                 LDA #$02                    ; $12:84C2: A9 02       ;
@@ -653,7 +653,7 @@ CODE_128506:    LDY $01                     ; $12:8506: A4 01       ;
                 STA $A8,x                   ; $12:851E: 95 A8       ;
                 STZ $5B,x                   ; $12:8520: 74 5B       ;
                 RTS                     ; $12:8522: 60          ;
-                       
+
 CODE_128523:    LDX #$0A                    ; $12:8523: A2 0A       ;
 CODE_128525:    LDA $3C,x                   ; $12:8525: B5 3C       ;
                 CLC                         ; $12:8527: 18          ;
@@ -696,7 +696,7 @@ CODE_128557:    CLC                         ; $12:8557: 18          ;
                 STA $14,x                   ; $12:855F: 95 14       ;
                 STZ $04CC,x                 ; $12:8561: 9E CC 04    ;
                 RTS                     ; $12:8564: 60          ;
-                       
+
 CODE_128565:    LDA #$00                    ; $12:8565: A9 00       ;
                 STA $5A                     ; $12:8567: 85 5A       ;
                 STA $0624                   ; $12:8569: 8D 24 06    ;
@@ -780,7 +780,7 @@ CODE_12860E:    STY $6E                     ; $12:860E: 84 6E       ;
                 BEQ CODE_12861C             ; $12:8617: F0 03       ;
                 JSR CODE_128BD8             ; $12:8619: 20 D8 8B    ;
 CODE_12861C:    RTS                     ; $12:861C: 60          ;
-                       
+
 CODE_12861D:    JSR CODE_128620             ; $12:861D: 20 20 86    ;
 CODE_128620:    LDX #$00                    ; $12:8620: A2 00       ;
                 LDY $08                     ; $12:8622: A4 08       ;
@@ -818,7 +818,7 @@ CODE_128662:    JSR CODE_128665             ; $12:8662: 20 65 86    ;
 CODE_128665:    INC $07                     ; $12:8665: E6 07       ;
                 INC $08                     ; $12:8667: E6 08       ;
                 RTS                     ; $12:8669: 60          ;
-                       
+
 CODE_12866A:    LDY.w DATA_11CB07                   ; $12:866A: AC 07 CB    ;
                 LDA $10                     ; $12:866D: A5 10       ;
                 LSR A                       ; $12:866F: 4A          ;
@@ -830,7 +830,7 @@ CODE_128673:    LDX #$00                ; $12:8673: A2 00       ; \ Prepare tile
                 LDA $00                 ; $12:867A: A5 00       ; \ If not cherry tile...
                 CMP #$4E                ; $12:867C: C9 4E       ;  |
                 BNE CODE_1286CE         ; $12:867E: D0 4E       ; / branch.
-                INC $062A               ; $12:8680: EE 2A 06    ; Increment cherry counter.           
+                INC $062A               ; $12:8680: EE 2A 06    ; Increment cherry counter.
                 LDA $062A               ; $12:8683: AD 2A 06    ; \ If collected 5 times exactly...
                 SBC #$05                ; $12:8686: E9 05       ;  |
                 BNE CODE_128690         ; $12:8688: D0 06       ;  | don't branch...
@@ -846,7 +846,7 @@ CODE_128690:    LDA #$3B                ; $12:8690: A9 3B       ; \ Collect cher
                 LDA #$40                ; $12:869F: A9 40       ; \ Clear tile.
                 JSL CODE_128BF4         ; $12:86A1: 22 F4 8B 12 ; /
                 RTS                     ; $12:86A5: 60          ;
-                       
+
 CODE_1286A6:    LDA $F6                 ; $12:86A6: A5 F6       ; \ If not pressing Up/Down...
                 AND #$0C                ; $12:86A8: 29 0C       ;  |
                 BEQ CODE_1286CE         ; $12:86AA: F0 22       ; / Branch.
@@ -857,7 +857,7 @@ CODE_1286A6:    LDA $F6                 ; $12:86A6: A5 F6       ; \ If not press
                 ADC #$04                ; $12:86B3: 69 04       ;  |
                 AND #$0F                ; $12:86B5: 29 0F       ;  |
                 CMP #$08                ; $12:86B7: C9 08       ;  |
-                BCS CODE_1286CE         ; $12:86B9: B0 13       ; / return.    
+                BCS CODE_1286CE         ; $12:86B9: B0 13       ; / return.
                 LDA #$01                ; $12:86BB: A9 01       ; \ Player = climbing.
                 STA $50                 ; $12:86BD: 85 50       ; /
                 STZ $078C                   ; $12:86BF: 9C 8C 07    ;
@@ -870,7 +870,7 @@ CODE_1286A6:    LDA $F6                 ; $12:86A6: A5 F6       ; \ If not press
                 PLA                         ; $12:86CC: 68          ;
                 PLA                         ; $12:86CD: 68          ;
 CODE_1286CE:    RTS                     ; $12:86CE: 60          ;
-                       
+
 CODE_1286CF:    LDX #$06                ; $12:86CF: A2 06       ; \ Check if there's a free sprite slot.
 CODE_1286D1:    LDA $51,x               ; $12:86D1: B5 51       ;  | If so ($51,x = #$00), branch.
                 BEQ CODE_1286DB         ; $12:86D3: F0 06       ;  | (Break out of loop.)
@@ -878,7 +878,7 @@ CODE_1286D1:    LDA $51,x               ; $12:86D1: B5 51       ;  | If so ($51,
                 CPX #$09                ; $12:86D6: E0 09       ;  | maximum is reached.
                 BCC CODE_1286D1         ; $12:86D8: 90 F7       ;  | If maximum, not reached, loop, otherwise...
                 RTS                     ; $12:86DA: 60          ; / ...end it.
-                       
+
 CODE_1286DB:    LDA $00                     ; $12:86DB: A5 00       ;
                 STA $79,x                   ; $12:86DD: 95 79       ;
                 LDA $03                     ; $12:86DF: A5 03       ;
@@ -954,40 +954,40 @@ CODE_128750:    JSR CODE_129978             ; $12:8750: 20 78 99    ;
                 LDA #$2B                    ; $12:8775: A9 2B       ;
                 STA $1DE0                   ; $12:8777: 8D E0 1D    ;
                 RTS                     ; $12:877A: 60          ;
-                       
+
 CODE_12877B:    LDY $9C                 ; $12:877B: A4 9C       ; \ If holding item...
                 BNE CODE_1287F5         ; $12:877D: D0 76       ; / branch.
                 LDA $9A                     ; $12:877F: A5 9A       ;
                 BEQ CODE_1287CE             ; $12:8781: F0 4B       ;
                 LDA $00                 ; $12:8783: A5 00       ; Get Map16 tile index.
-                LDX $0628               ; $12:8785: AE 28 06    ; \ If not in potion room...       
+                LDX $0628               ; $12:8785: AE 28 06    ; \ If not in potion room...
                 CPX #$02                ; $12:8788: E0 02       ;  |
                 BNE CODE_128792         ; $12:878A: D0 06       ; / branch.
                 CMP #$6F                ; $12:878C: C9 6F       ; \ If on warp jar, run 'entering jar' code.
                 BEQ CODE_12879C         ; $12:878E: F0 0C       ; /
-                BNE CODE_1287F5         ; $12:8790: D0 63       ; Otherwise, branch.   
+                BNE CODE_1287F5         ; $12:8790: D0 63       ; Otherwise, branch.
 CODE_128792:    INY                     ; $12:8792: C8          ; \ Y = #$01. (So you're not warping to another world, see $04EF.)
                 CMP #$6E                ; $12:8793: C9 6E       ;  | If tile 6E, Y stays #$01...
                 BEQ CODE_12879C         ; $12:8795: F0 05       ;  |
-                CMP #$6A                ; $12:8797: C9 6A       ;  | If tile 6A, Y becomes #$02   
+                CMP #$6A                ; $12:8797: C9 6A       ;  | If tile 6A, Y becomes #$02
                 BNE CODE_1287F5         ; $12:8799: D0 5A       ;  | If neither, just return.
                 INY                     ; $12:879B: C8          ; / Y = #$02.
 CODE_12879C:    LDA $28                 ; $12:879C: A5 28       ; \ If not...
                 CLC                     ; $12:879E: 18          ;  | lining up exactly...
                 ADC #$04                ; $12:879F: 69 04       ;  | with the middle of the jar...
                 AND #$0F                ; $12:87A1: 29 0F       ;  |
-                CMP #$08                ; $12:87A3: C9 08       ;  |   
-                BCS CODE_1287F5         ; $12:87A5: B0 4E       ; / Return.           
+                CMP #$08                ; $12:87A3: C9 08       ;  |
+                BCS CODE_1287F5         ; $12:87A5: B0 4E       ; / Return.
                 LDA #$4D                ; $12:87A7: A9 4D       ; \ Sound effect = going down jar.
                 STA $1DE3               ; $12:87A9: 8D E3 1D    ; /
-                LDA #$00                ; $12:87AC: A9 00       ; \ X speed = #$00    
+                LDA #$00                ; $12:87AC: A9 00       ; \ X speed = #$00
                 STA $3C                 ; $12:87AE: 85 3C       ; /
-                LDA #$04                ; $12:87B0: A9 04       ; \ Animation = #$04 (going down jar)    
+                LDA #$04                ; $12:87B0: A9 04       ; \ Animation = #$04 (going down jar)
                 STA $50                 ; $12:87B2: 85 50       ; /
-                STY $04EF               ; $12:87B4: 8C EF 04    ; Store result from Y into $04EF.    
+                STY $04EF               ; $12:87B4: 8C EF 04    ; Store result from Y into $04EF.
                 JSL CODE_1287BC             ; $12:87B7: 22 BC 87 12 ;
                 RTS                     ; $12:87BB: 60          ;
-                       
+
 CODE_1287BC:    LDA $28                     ; $12:87BC: A5 28       ;
                 CLC                         ; $12:87BE: 18          ;
                 ADC #$08                    ; $12:87BF: 69 08       ;
@@ -998,7 +998,7 @@ CODE_1287BC:    LDA $28                     ; $12:87BC: A5 28       ;
                 BEQ CODE_1287CD             ; $12:87C9: F0 02       ;
                 INC $14                     ; $12:87CB: E6 14       ;
 CODE_1287CD:    RTL                     ; $12:87CD: 6B          ;
-                       
+
 CODE_1287CE:    BIT $FA                     ; $12:87CE: 24 FA       ;
                 BVC CODE_1287F5                     ; $12:87D0: 50 23       ;
                 LDA $28                     ; $12:87D2: A5 28       ;
@@ -1019,7 +1019,7 @@ CODE_1287E7:    CMP #$68                    ; $12:87E7: C9 68       ;
                 BCC CODE_1287F5             ; $12:87EE: 90 05       ;
 CODE_1287F0:    STA $09                     ; $12:87F0: 85 09       ;
                 JMP CODE_1286CF         ; $12:87F2: 4C CF 86    ;
-        
+
 CODE_1287F5:    LDA $9A                     ; $12:87F5: A5 9A       ;
                 BNE CODE_128874             ; $12:87F7: D0 7B       ;
                 LDA $06                     ; $12:87F9: A5 06       ;
@@ -1085,7 +1085,7 @@ CODE_128865:    BIT $FA                     ; $12:8865: 24 FA       ;
                 SBC #$43                    ; $12:8870: E9 43       ;
                 BCS CODE_128875                     ; $12:8872: B0 01       ;
 CODE_128874:    RTS                     ; $12:8874: 60          ;
-                       
+
 CODE_128875:    LDX $0628                   ; $12:8875: AE 28 06    ;
                 CPX #$02                    ; $12:8878: E0 02       ;
                 BNE CODE_128889             ; $12:887A: D0 0D       ;
@@ -1155,7 +1155,7 @@ CODE_128900:    CPY #$04                    ; $12:8900: C0 04       ;
                 DEY                         ; $12:8904: 88          ;
                 STY $04ED                   ; $12:8905: 8C ED 04    ;
                 RTS                     ; $12:8908: 60          ;
-                       
+
 CODE_128909:    LDA $0778                   ; $12:8909: AD 78 07    ;
                 BMI CODE_128918             ; $12:890C: 30 0A       ;
                 CMP #$05                    ; $12:890E: C9 05       ;
@@ -1163,7 +1163,7 @@ CODE_128909:    LDA $0778                   ; $12:8909: AD 78 07    ;
                 LDA #$0F                    ; $12:8912: A9 0F       ;
                 STA $1DE3                   ; $12:8914: 8D E3 1D    ;
                 RTS                     ; $12:8917: 60          ;
-                       
+
 CODE_128918:    LDA #$01                    ; $12:8918: A9 01       ;
                 STA $0536                   ; $12:891A: 8D 36 05    ;
                 TYA                         ; $12:891D: 98          ;
@@ -1177,16 +1177,16 @@ CODE_128918:    LDA #$01                    ; $12:8918: A9 01       ;
                 dw CODE_128B4F                                  ;
                 dw CODE_128B4F                                  ;
                 dw CODE_128B4F                                  ;
-      
+
 CODE_128932:    LDA $0778                   ; $12:8932: AD 78 07    ;
                 CMP #$05                    ; $12:8935: C9 05       ;
                 BEQ CODE_12893E             ; $12:8937: F0 05       ;
                 JSL CODE_15D03A             ; $12:8939: 22 3A D0 15 ;
                 RTL                     ; $12:893D: 6B          ;
-                       
+
 CODE_12893E:    JSR CODE_128942             ; $12:893E: 20 42 89    ;
                 RTL                     ; $12:8941: 6B          ;
-                       
+
 CODE_128942:    LDA #$01                    ; $12:8942: A9 01       ;
                 STA $85                     ; $12:8944: 85 85       ;
                 STY $071E                   ; $12:8946: 8C 1E 07    ;
@@ -1197,7 +1197,7 @@ CODE_128942:    LDA #$01                    ; $12:8942: A9 01       ;
                 dw CODE_12896E                                  ;
                 dw CODE_128AA2                                  ;
                 dw CODE_128995                                  ;
-             
+
 CODE_128958:    STZ $077A                   ; $12:8958: 9C 7A 07    ;
                 INC $0779                   ; $12:895B: EE 79 07    ;
                 LDA $04E1                   ; $12:895E: AD E1 04    ;
@@ -1206,7 +1206,7 @@ CODE_128958:    STZ $077A                   ; $12:8958: 9C 7A 07    ;
                 STZ $04CB                   ; $12:8967: 9C CB 04    ;
                 INC $041B                   ; $12:896A: EE 1B 04    ;
                 RTS                     ; $12:896D: 60          ;
-                       
+
 CODE_12896E:    LDA #$C0                    ; $12:896E: A9 C0       ;
                 STA $071C                   ; $12:8970: 8D 1C 07    ;
                 LDA #$01                    ; $12:8973: A9 01       ;
@@ -1220,11 +1220,11 @@ CODE_12896E:    LDA #$C0                    ; $12:896E: A9 C0       ;
                 CMP #$10                    ; $12:8989: C9 10       ;
                 BCS CODE_12898E                     ; $12:898B: B0 01       ;
                 RTS                     ; $12:898D: 60          ;
-                       
+
 CODE_12898E:    INC $0779                   ; $12:898E: EE 79 07    ;
                 STZ $077A                   ; $12:8991: 9C 7A 07    ;
                 RTS                     ; $12:8994: 60          ;
-                       
+
 CODE_128995:    LDA #$20                    ; $12:8995: A9 20       ;
                 STA $071C                   ; $12:8997: 8D 1C 07    ;
                 LDA #$00                    ; $12:899A: A9 00       ;
@@ -1237,7 +1237,7 @@ CODE_128995:    LDA #$20                    ; $12:8995: A9 20       ;
                 LDA $077A                   ; $12:89AD: AD 7A 07    ;
                 BMI CODE_1289B3             ; $12:89B0: 30 01       ;
                 RTS                     ; $12:89B2: 60          ;
-                       
+
 CODE_1289B3:    LDA #$FF                    ; $12:89B3: A9 FF       ;
                 STA $0778                   ; $12:89B5: 8D 78 07    ;
                 LDA $077B                   ; $12:89B8: AD 7B 07    ;
@@ -1249,10 +1249,10 @@ CODE_1289B3:    LDA #$FF                    ; $12:89B3: A9 FF       ;
                 BEQ CODE_1289CC             ; $12:89C9: F0 01       ;
                 NOP                         ; $12:89CB: EA          ;
 CODE_1289CC:    RTS                     ; $12:89CC: 60          ;
-                       
+
 DATA_1289CD:    db $48,$58,$49,$59,$4A,$5A,$4B,$5B              ;
                 db $4C,$5C,$4D,$5D,$4E,$5E,$4F,$5F              ;
-          
+
 CODE_1289DD:    PHY                     ; $12:89DD: 5A          ;
                 PHX                     ; $12:89DE: DA          ;
                 LDA $077A                   ; $12:89DF: AD 7A 07    ;
@@ -1296,7 +1296,7 @@ CODE_1289DD:    PHY                     ; $12:89DD: 5A          ;
                 PLX                         ; $12:8A42: FA          ;
                 PLY                         ; $12:8A43: 7A          ;
                 RTS                     ; $12:8A44: 60          ;
-                       
+
 CODE_128A45:    STA $0803,y                 ; $12:8A45: 99 03 08    ;
                 STA $0807,y                 ; $12:8A48: 99 07 08    ;
                 STA $080B,y                 ; $12:8A4B: 99 0B 08    ;
@@ -1333,7 +1333,7 @@ CODE_128A45:    STA $0803,y                 ; $12:8A45: 99 03 08    ;
                 STA $080D,y                 ; $12:8A9B: 99 0D 08    ;
                 STA $081D,y                 ; $12:8A9E: 99 1D 08    ;
                 RTS                     ; $12:8AA1: 60          ;
-                       
+
 CODE_128AA2:    REP #$30                    ; $12:8AA2: C2 30       ;
                 STZ $0720                   ; $12:8AA4: 9C 20 07    ;
                 LDX #$0100                  ; $12:8AA7: A2 00 01    ;
@@ -1379,12 +1379,12 @@ CODE_128ADC:    LDA $071C                   ; $12:8ADC: AD 1C 07    ;
                 ORA $0721                   ; $12:8B0E: 0D 21 07    ;
                 BEQ CODE_128B14             ; $12:8B11: F0 01       ;
                 RTS                     ; $12:8B13: 60          ;
-                       
+
 CODE_128B14:    INC $0779                   ; $12:8B14: EE 79 07    ;
                 LDA #$0F                    ; $12:8B17: A9 0F       ;
                 STA $077A                   ; $12:8B19: 8D 7A 07    ;
                 RTS                     ; $12:8B1C: 60          ;
-                       
+
 CODE_128B1D:    JSR CODE_1298DD             ; $12:8B1D: 20 DD 98    ;
 CODE_128B20:    INC $04BE                   ; $12:8B20: EE BE 04    ;
                 INC $041B                   ; $12:8B23: EE 1B 04    ;
@@ -1392,7 +1392,7 @@ CODE_128B20:    INC $04BE                   ; $12:8B20: EE BE 04    ;
                 LDA #$0F                    ; $12:8B2A: A9 0F       ;
                 STA $1DE3                   ; $12:8B2C: 8D E3 1D    ;
 CODE_128B2F:    RTS                     ; $12:8B2F: 60          ;
-                       
+
 CODE_128B30:    STZ $0778                   ; $12:8B30: 9C 78 07    ;
                 LDA $9C                     ; $12:8B33: A5 9C       ;
                 BEQ CODE_128B2F             ; $12:8B35: F0 F8       ;
@@ -1410,7 +1410,7 @@ CODE_128B30:    STZ $0778                   ; $12:8B30: 9C 78 07    ;
 CODE_128B4F:    STZ $0778                   ; $12:8B4F: 9C 78 07    ;
                 INC $0627                   ; $12:8B52: EE 27 06    ;
                 RTS                     ; $12:8B55: 60          ;
-                       
+
 CODE_128B56:    STA $0F                     ; $12:8B56: 85 0F       ;
                 TYA                         ; $12:8B58: 98          ;
                 BMI CODE_128B6C             ; $12:8B59: 30 11       ;
@@ -1427,7 +1427,7 @@ CODE_128B68:    CLC                         ; $12:8B68: 18          ;
                 ADC #$10                    ; $12:8B69: 69 10       ;
                 INY                         ; $12:8B6B: C8          ;
 CODE_128B6C:    RTS                     ; $12:8B6C: 60          ;
-                       
+
 CODE_128B6D:    LDY $01                     ; $12:8B6D: A4 01       ;
                 LDA $E6                     ; $12:8B6F: A5 E6       ;
                 JSR CODE_128B56             ; $12:8B71: 20 56 8B    ;
@@ -1442,7 +1442,7 @@ CODE_128B6D:    LDY $01                     ; $12:8B6D: A4 01       ;
                 LDA $01                     ; $12:8B86: A5 01       ;
                 CMP.w DATA_119BB6,y                 ; $12:8B88: D9 B6 9B    ;
 CODE_128B8B:    RTS                     ; $12:8B8B: 60          ;
-                       
+
                 LDX $D8                     ; $12:8B8C: A6 D8       ;
                 BNE CODE_128BBA             ; $12:8B8E: D0 2A       ;
                 LDA $50                     ; $12:8B90: A5 50       ;
@@ -1466,7 +1466,7 @@ CODE_128BB0:    LDA $0425                   ; $12:8BB0: AD 25 04    ;
                 BNE CODE_128BBA             ; $12:8BB6: D0 02       ;
                 STX $D8                     ; $12:8BB8: 86 D8       ;
 CODE_128BBA:    RTS                     ; $12:8BBA: 60          ;
-                       
+
 CODE_128BBB:    LDA $EB                     ; $12:8BBB: A5 EB       ;
                 BEQ CODE_128BCC             ; $12:8BBD: F0 0D       ;
                 LDA $0428                   ; $12:8BBF: AD 28 04    ;
@@ -1476,7 +1476,7 @@ CODE_128BBB:    LDA $EB                     ; $12:8BBB: A5 EB       ;
                 CMP #$08                    ; $12:8BC8: C9 08       ;
                 BCC CODE_128BD1             ; $12:8BCA: 90 05       ;
 CODE_128BCC:    RTS                     ; $12:8BCC: 60          ;
-                       
+
 CODE_128BCD:    CMP #$E8                    ; $12:8BCD: C9 E8       ;
                 BCC CODE_128BCC             ; $12:8BCF: 90 FB       ;
 CODE_128BD1:    LDA $5A                     ; $12:8BD1: A5 5A       ;
@@ -1494,7 +1494,7 @@ CODE_128BE5:    LDA $04CC                   ; $12:8BE5: AD CC 04    ;
                 STX $04CC                   ; $12:8BED: 8E CC 04    ;
 CODE_128BF0:    STX $0407                   ; $12:8BF0: 8E 07 04    ;
                 RTS                     ; $12:8BF3: 60          ;
-                       
+
 CODE_128BF4:    STX $0210                   ; $12:8BF4: 8E 10 02    ;
                 PHA                         ; $12:8BF7: 48          ;
                 JSR CODE_1299DB             ; $12:8BF8: 20 DB 99    ;
@@ -1590,7 +1590,7 @@ CODE_128C56:    STA $030A,x                 ; $12:8C56: 9D 0A 03    ;
                 STA $0300                   ; $12:8CA7: 8D 00 03    ;
                 LDX $0210                   ; $12:8CAA: AE 10 02    ;
                 RTL                     ; $12:8CAD: 6B          ;
-                       
+
 CODE_128CAE:    STZ $0228                   ; $12:8CAE: 9C 28 02    ;
                 LDA $EB                     ; $12:8CB1: A5 EB       ;
                 BNE CODE_128CFD             ; $12:8CB3: D0 48       ;
@@ -1633,7 +1633,7 @@ CODE_128CF7:    SEC                         ; $12:8CF7: 38          ;
                 SBC #$0C                    ; $12:8CF8: E9 0C       ;
 CODE_128CFA:    STA $0302,x                 ; $12:8CFA: 9D 02 03    ;
 CODE_128CFD:    RTS                     ; $12:8CFD: 60          ;
-                       
+
 CODE_128CFE:    LDA $EB                     ; $12:8CFE: A5 EB       ;
                 ASL A                       ; $12:8D00: 0A          ;
                 TAY                         ; $12:8D01: A8          ;
@@ -1668,7 +1668,7 @@ CODE_128D2F:    TAX                         ; $12:8D2F: AA          ;
                 ADC #$0200                  ; $12:8D39: 69 00 02    ;
                 STA $0226                   ; $12:8D3C: 8D 26 02    ;
                 BRA CODE_128D4F         ; $12:8D3F: 80 0E       ;
-           
+
 CODE_128D41:    CMP.w DATA_119C01,x                 ; $12:8D41: DD 01 9C    ;
                 BMI CODE_128D4F             ; $12:8D44: 30 09       ;
                 SEC                         ; $12:8D46: 38          ;
@@ -1698,7 +1698,7 @@ CODE_128D64:    TYA                         ; $12:8D64: 98          ;
                 TAY                         ; $12:8D6D: A8          ;
                 SEP #$20                    ; $12:8D6E: E2 20       ;
 CODE_128D70:    RTS                     ; $12:8D70: 60          ;
-                       
+
 CODE_128D71:    LDA $0511                   ; $12:8D71: AD 11 05    ;
                 STA $14                     ; $12:8D74: 85 14       ;
                 LDA $0513                   ; $12:8D76: AD 13 05    ;
@@ -1729,7 +1729,7 @@ CODE_128D71:    LDA $0511                   ; $12:8D71: AD 11 05    ;
                 LDA #$0A                    ; $12:8DB0: A9 0A       ;
                 STA $04B3                   ; $12:8DB2: 8D B3 04    ;
 CODE_128DB5:    RTL                     ; $12:8DB5: 6B          ;
-                       
+
 CODE_128DB6:    LDA $0536                   ; $12:8DB6: AD 36 05    ;
                 CMP #$02                    ; $12:8DB9: C9 02       ;
                 BNE CODE_128DC9             ; $12:8DBB: D0 0C       ;
@@ -1773,7 +1773,7 @@ CODE_128E0D:    LDA $28                     ; $12:8E0D: A5 28       ;
                 SBC #$78                    ; $12:8E10: E9 78       ;
                 STA $BA                     ; $12:8E12: 85 BA       ;
                 RTL                     ; $12:8E14: 6B          ;
-                       
+
 CODE_128E15:    LDA $0536                   ; $12:8E15: AD 36 05    ;
                 JSL CODE_118776         ; $12:8E18: 22 76 87 11 ;
 
@@ -1783,7 +1783,7 @@ CODE_128E15:    LDA $0536                   ; $12:8E15: AD 36 05    ;
                 dw CODE_128EDA                                  ;
                 dw CODE_128EFC                                  ;
                 dw CODE_128F17                                  ;
-             
+
 CODE_128E28:    LDA #$01                    ; $12:8E28: A9 01       ;
                 STA $9D                     ; $12:8E2A: 85 9D       ;
                 JSR CODE_128ED1             ; $12:8E2C: 20 D1 8E    ;
@@ -1813,7 +1813,7 @@ CODE_128E58:    LDA $32                     ; $12:8E58: A5 32       ;
                 SBC #$10                    ; $12:8E5B: E9 10       ;
                 STA $32                     ; $12:8E5D: 85 32       ;
                 RTS                     ; $12:8E5F: 60          ;
-                       
+
 CODE_128E60:    LDA $28                     ; $12:8E60: A5 28       ;
                 CLC                         ; $12:8E62: 18          ;
                 ADC #$08                    ; $12:8E63: 69 08       ;
@@ -1867,7 +1867,7 @@ CODE_128EC4:    JSR CODE_128E58             ; $12:8EC4: 20 58 8E    ;
                 LDA #$00                    ; $12:8EC7: A9 00       ;
                 STA $041B                   ; $12:8EC9: 8D 1B 04    ;
                 RTS                     ; $12:8ECC: 60          ;
-                       
+
 CODE_128ECD:    LDA #$00                    ; $12:8ECD: A9 00       ;
                 STA $32                     ; $12:8ECF: 85 32       ;
 CODE_128ED1:    LDA #$01                    ; $12:8ED1: A9 01       ;
@@ -1875,7 +1875,7 @@ CODE_128ED1:    LDA #$01                    ; $12:8ED1: A9 01       ;
                 LDA #$78                    ; $12:8ED5: A9 78       ;
                 STA $28                     ; $12:8ED7: 85 28       ;
                 RTS                     ; $12:8ED9: 60          ;
-                       
+
 CODE_128EDA:    LDA $28                     ; $12:8EDA: A5 28       ;
                 CLC                         ; $12:8EDC: 18          ;
                 ADC #$08                    ; $12:8EDD: 69 08       ;
@@ -1894,7 +1894,7 @@ CODE_128EDA:    LDA $28                     ; $12:8EDA: A5 28       ;
 CODE_128EF7:    LDA #$0A                    ; $12:8EF7: A9 0A       ;
                 STA $C7                     ; $12:8EF9: 85 C7       ;
                 RTS                     ; $12:8EFB: 60          ;
-                       
+
 CODE_128EFC:    LDA $0428                   ; $12:8EFC: AD 28 04    ;
                 SEC                         ; $12:8EFF: 38          ;
                 SBC $BA                     ; $12:8F00: E5 BA       ;
@@ -1908,12 +1908,12 @@ CODE_128EFC:    LDA $0428                   ; $12:8EFC: AD 28 04    ;
                 LDA #$60                ; $12:8F11: A9 60       ; \ How long the potion room lasts.
                 STA $04B7               ; $12:8F13: 8D B7 04    ; /
                 RTS                     ; $12:8F16: 60          ;
-                       
+
 CODE_128F17:    JSR CODE_128ED1             ; $12:8F17: 20 D1 8E    ;
                 LDA #$60                    ; $12:8F1A: A9 60       ;
                 STA $32                     ; $12:8F1C: 85 32       ;
                 RTS                     ; $12:8F1E: 60          ;
-                       
+
 CODE_128F1F:    CPY #$00                    ; $12:8F1F: C0 00       ;
                 BMI CODE_128F32             ; $12:8F21: 30 0F       ;
                 PHA                         ; $12:8F23: 48          ;
@@ -1929,7 +1929,7 @@ CODE_128F1F:    CPY #$00                    ; $12:8F1F: C0 00       ;
                 BCS CODE_128F32                     ; $12:8F2F: B0 01       ;
                 DEY                         ; $12:8F31: 88          ;
 CODE_128F32:    RTL                     ; $12:8F32: 6B          ;
-                       
+
 CODE_128F33:    LDX $E9                     ; $12:8F33: A6 E9       ;
                 LDA $0534                   ; $12:8F35: AD 34 05    ;
                 ASL A                       ; $12:8F38: 0A          ;
@@ -1942,7 +1942,7 @@ CODE_128F33:    LDX $E9                     ; $12:8F33: A6 E9       ;
                 LDA.w DATA_11AAF0,x                 ; $12:8F42: BD F0 AA    ;
                 STA $01                     ; $12:8F45: 85 01       ;
                 RTS                     ; $12:8F47: 60          ;
-                       
+
 CODE_128F48:    JSL CODE_1387D8             ; $12:8F48: 22 D8 87 13 ;
                 JSL CODE_138846             ; $12:8F4C: 22 46 88 13 ;
 CODE_128F50:    LDA #$FF                    ; $12:8F50: A9 FF       ;
@@ -1996,7 +1996,7 @@ CODE_128FC6:    INC $10                     ; $12:8FC6: E6 10       ;
                 AND #$0F                    ; $12:8FCA: 29 0F       ;
                 BEQ CODE_128FD1             ; $12:8FCC: F0 03       ;
 CODE_128FCE:    BRL CODE_129069         ; $12:8FCE: 82 98 00    ;
-           
+
 CODE_128FD1:    DEC $0210                   ; $12:8FD1: CE 10 02    ;
                 LDA $0210                   ; $12:8FD4: AD 10 02    ;
                 CMP #$06                    ; $12:8FD7: C9 06       ;
@@ -2206,7 +2206,7 @@ CODE_129185:    STA $0000,y                 ; $12:9185: 99 00 00    ;
                 BCC CODE_129185             ; $12:918B: 90 F8       ;
                 JSL CODE_14F9F0         ; $12:918D: 22 F0 F9 14 ; Clear all OAM.
                 RTL                     ; $12:9191: 6B          ;
-                       
+
 CODE_129192:    LDA $FC                     ; $12:9192: A5 FC       ;
                 AND #$40                    ; $12:9194: 29 40       ;
                 STA $0712                   ; $12:9196: 8D 12 07    ;
@@ -2240,7 +2240,7 @@ CODE_1291C5:    JSL CODE_1195C0             ; $12:91C5: 22 C0 95 11 ;
 CODE_1291DA:    BRL CODE_128F50             ; $12:91DA: 82 73 FD    ;
 
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF                  ; Empty data.
-             
+
 CODE_1291E4:    LDA #$80                ; $12:91E4: A9 80       ; Force blank.
                 BRA CODE_1291EA             ; $12:91E6: 80 02       ;
 
@@ -2261,7 +2261,7 @@ CODE_129201:    LDA $0154                   ; $12:9201: AD 54 01    ;
                 JSL CODE_14FA99             ; $12:9206: 22 99 FA 14 ;
                 CLI                         ; $12:920A: 58          ;
                 RTS                     ; $12:920B: 60          ;
-                       
+
 CODE_12920C:    STZ $E6                     ; $12:920C: 64 E6       ;
 CODE_12920E:    JSR CODE_1291EC             ; $12:920E: 20 EC 91    ;
                 JSR CODE_129510             ; $12:9211: 20 10 95    ;
@@ -2337,7 +2337,7 @@ CODE_1292BD:    JSR CODE_129510             ; $12:92BD: 20 10 95    ;
                 LDA $E6                     ; $12:92C0: A5 E6       ;
                 BEQ CODE_129295             ; $12:92C2: F0 D1       ;
                 RTL                     ; $12:92C4: 6B          ;
-                       
+
 CODE_1292C5:    LDA $84                     ; $12:92C5: A5 84       ;
                 BEQ CODE_1292CB             ; $12:92C7: F0 02       ;
                 DEC $84                     ; $12:92C9: C6 84       ;
@@ -2392,7 +2392,7 @@ CODE_129328:    CMP #$75                    ; $12:9328: C9 75       ;
                 INC $50                     ; $12:9332: E6 50       ;
                 DEC $99                     ; $12:9334: C6 99       ;
 CODE_129336:    RTS                     ; $12:9336: 60          ;
-                       
+
 CODE_129337:    JSR CODE_1283D1             ; $12:9337: 20 D1 83    ;
                 JSR CODE_1280D2             ; $12:933A: 20 D2 80    ;
                 LDA $28                     ; $12:933D: A5 28       ;
@@ -2407,7 +2407,7 @@ CODE_129337:    JSR CODE_1283D1             ; $12:9337: 20 D1 83    ;
                 LDA #$28                    ; $12:934F: A9 28       ;
                 STA $82                     ; $12:9351: 85 82       ;
                 RTS                     ; $12:9353: 60          ;
-                       
+
 CODE_129354:    LDA $82                     ; $12:9354: A5 82       ;
                 BNE CODE_129375             ; $12:9356: D0 1D       ;
                 DEC $8E                     ; $12:9358: C6 8E       ;
@@ -2421,12 +2421,12 @@ CODE_129354:    LDA $82                     ; $12:9354: A5 82       ;
                 LDA #$A0                    ; $12:9369: A9 A0       ;
                 STA $4F                     ; $12:936B: 85 4F       ;
                 RTS                     ; $12:936D: 60          ;
-                       
+
 CODE_12936E:    LDY $8E                     ; $12:936E: A4 8E       ;
                 LDA.w DATA_11A427,y                 ; $12:9370: B9 27 A4    ;
                 STA $82                     ; $12:9373: 85 82       ;
 CODE_129375:    RTS                     ; $12:9375: 60          ;
-                       
+
 CODE_129376:    JSR CODE_12939B             ; $12:9376: 20 9B 93    ;
                 JSR CODE_129390             ; $12:9379: 20 90 93    ;
                 JSR CODE_1283D1             ; $12:937C: 20 D1 83    ;
@@ -2439,14 +2439,14 @@ CODE_129376:    JSR CODE_12939B             ; $12:9376: 20 9B 93    ;
                 JMP CODE_12830B             ; $12:938C: 4C 0B 83    ;
 
 CODE_12938F:    RTS                     ; $12:938F: 60          ;
-                       
+
 CODE_129390:    LDY $8F                     ; $12:9390: A4 8F       ;
                 LDA.w DATA_11A431,y                 ; $12:9392: B9 31 A4    ;
                 CLC                         ; $12:9395: 18          ;
                 ADC $46                     ; $12:9396: 65 46       ;
                 STA $46                     ; $12:9398: 85 46       ;
                 RTS                     ; $12:939A: 60          ;
-                       
+
 CODE_12939B:    LDX #$07                    ; $12:939B: A2 07       ;
 CODE_12939D:    STX $12                     ; $12:939D: 86 12       ;
                 LDA $86,x                   ; $12:939F: B5 86       ;
@@ -2477,7 +2477,7 @@ CODE_1293D2:    DEC $86,x                   ; $12:93D2: D6 86       ;
                 DEX                         ; $12:93D4: CA          ;
                 BPL CODE_12939D             ; $12:93D5: 10 C6       ;
                 RTS                     ; $12:93D7: 60          ;
-                       
+
 CODE_1293D8:    LDA #$04                    ; $12:93D8: A9 04       ;
                 STA $0F                     ; $12:93DA: 85 0F       ;
                 LDX #$08                    ; $12:93DC: A2 08       ;
@@ -2497,7 +2497,7 @@ CODE_1293F4:    LDA.w DATA_11A42B,y                 ; $12:93F4: B9 2B A4    ;
                 ADC $32                     ; $12:93F8: 65 32       ;
                 STA $3B                     ; $12:93FA: 85 3B       ;
 CODE_1293FC:    RTS                     ; $12:93FC: 60          ;
-                
+
 CODE_1293FD:    LDY.w DATA_11A43B,x                 ; $12:93FD: BC 3B A4    ;
                 LDA $33,x                   ; $12:9400: B5 33       ;
                 STA $0801,y                 ; $12:9402: 99 01 08    ;
@@ -2525,7 +2525,7 @@ CODE_129421:    STA $0802,y                 ; $12:9421: 99 02 08    ;
                 PLY                         ; $12:942E: 7A          ;
                 LDX $12                     ; $12:942F: A6 12       ;
                 RTS                     ; $12:9431: 60          ;
-            
+
 CODE_129432:    JSR CODE_1291E4             ; $12:9432: 20 E4 91    ;
                 JSL CODE_14D194             ; $12:9435: 22 94 D1 14 ;
                 JSL CODE_14F953             ; $12:9439: 22 53 F9 14 ;
@@ -2623,7 +2623,7 @@ CODE_1294F5:    LDA $0242                   ; $12:94F5: AD 42 02    ;
                 LDA #$01                    ; $12:950A: A9 01       ;
                 STA $024F                   ; $12:950C: 8D 4F 02    ;
                 RTL                     ; $12:950F: 6B          ;
-                       
+
 CODE_129510:    DEC $E5                     ; $12:9510: C6 E5       ;
                 BPL CODE_129525             ; $12:9512: 10 11       ;
                 LDA #$01                    ; $12:9514: A9 01       ;
@@ -2637,7 +2637,7 @@ CODE_129510:    DEC $E5                     ; $12:9510: C6 E5       ;
 
 CODE_129523:    INC $E6                     ; $12:9523: E6 E6       ;
 CODE_129525:    RTS                     ; $12:9525: 60          ;
-                       
+
 CODE_129526:    DEC $E5                     ; $12:9526: C6 E5       ;
                 BPL CODE_129525             ; $12:9528: 10 FB       ;
                 LDA #$01                    ; $12:952A: A9 01       ;
@@ -2648,17 +2648,17 @@ CODE_129526:    DEC $E5                     ; $12:9526: C6 E5       ;
                 BEQ CODE_129523             ; $12:9533: F0 EE       ;
                 STA $00FE                   ; $12:9535: 8D FE 00    ;
                 RTS                     ; $12:9538: 60          ;
-                       
+
 CODE_129539:    JSR CODE_129526             ; $12:9539: 20 26 95    ;
                 RTL                     ; $12:953C: 6B          ;
-                       
+
 CODE_12953D:    LDA #$B0                    ; $12:953D: A9 B0       ;
                 BRA CODE_129543             ; $12:953F: 80 02       ;
 
                 LDA #$30                    ; $12:9541: A9 30       ;
 CODE_129543:    STA $FF                     ; $12:9543: 85 FF       ;
                 RTS                     ; $12:9545: 60          ;
-                       
+
 CODE_129546:    JSL CODE_14F9F0         ; $12:9546: 22 F0 F9 14 ; Clear all OAM.
                 JSR CODE_12965D             ; $12:954A: 20 5D 96    ;
                 LDA $E6                     ; $12:954D: A5 E6       ;
@@ -2667,7 +2667,7 @@ CODE_129546:    JSL CODE_14F9F0         ; $12:9546: 22 F0 F9 14 ; Clear all OAM.
                 dw CODE_129526                                  ;
                 dw CODE_129559                                  ;
                 dw CODE_1295D8                                  ;
-           
+
 CODE_129559:    JSR CODE_1280D2                         ; $12:9559: 20 D2 80    ;
                 LDA $14                     ; $12:955C: A5 14       ;
                 CMP #$01                    ; $12:955E: C9 01       ;
@@ -2734,7 +2734,7 @@ CODE_1295C3:    PHY                         ; $12:95C3: 5A          ;
                 DEX                         ; $12:95D4: CA          ;
                 BPL CODE_12959A             ; $12:95D5: 10 C3       ;
                 RTS                     ; $12:95D7: 60          ;
-                       
+
 CODE_1295D8:    LDA $10                     ; $12:95D8: A5 10       ;
                 BNE CODE_1295F5             ; $12:95DA: D0 19       ;
                 STA $040E                   ; $12:95DC: 8D 0E 04    ;
@@ -2800,7 +2800,7 @@ CODE_129638:    LDA.w DATA_11AA7C,x                 ; $12:9638: BD 7C AA    ;
                 DEX                         ; $12:9659: CA          ;
                 BPL CODE_1295F7             ; $12:965A: 10 9B       ;
                 RTS                     ; $12:965C: 60          ;
-                       
+
 CODE_12965D:    JSR CODE_129694             ; $12:965D: 20 94 96    ;
                 INC $9B                     ; $12:9660: E6 9B       ;
                 LDA #$03                    ; $12:9662: A9 03       ;
@@ -2831,7 +2831,7 @@ CODE_12967F:    LDA.w DATA_11AA88,x                 ; $12:967F: BD 88 AA    ;
                 DEC $00                     ; $12:968F: C6 00       ;
                 BPL CODE_12966C             ; $12:9691: 10 D9       ;
                 RTS                     ; $12:9693: 60          ;
-                       
+
 CODE_129694:    LDY #$1F                    ; $12:9694: A0 1F       ;
 CODE_129696:    LDA.w DATA_11AA3E,y                 ; $12:9696: B9 3E AA    ;
                 STA $0810,y                 ; $12:9699: 99 10 08    ;
@@ -2847,7 +2847,7 @@ CODE_129696:    LDA.w DATA_11AA3E,y                 ; $12:9696: B9 3E AA    ;
                 STA $0A2A                   ; $12:96B3: 8D 2A 0A    ;
                 STA $0A2B                   ; $12:96B6: 8D 2B 0A    ;
                 RTS                     ; $12:96B9: 60          ;
-                       
+
 CODE_1296BA:    LDA #$00                    ; $12:96BA: A9 00       ;
                 STA $0631                   ; $12:96BC: 8D 31 06    ;
                 LDY #$03                    ; $12:96BF: A0 03       ;
@@ -2997,7 +2997,7 @@ CODE_1297E2:    INX                         ; $12:97E2: E8          ;
                 LDA #$3C                    ; $12:97F8: A9 3C       ;
                 STA $059D                   ; $12:97FA: 8D 9D 05    ;
                 RTS                     ; $12:97FD: 60          ;
-                       
+
 CODE_1297FE:    DEC $059D                   ; $12:97FE: CE 9D 05    ;
                 BPL CODE_12981F             ; $12:9801: 10 1C       ;
                 LDA #$3C                    ; $12:9803: A9 3C       ;
@@ -3012,7 +3012,7 @@ CODE_1297FE:    DEC $059D                   ; $12:97FE: CE 9D 05    ;
                 LDA $059B                   ; $12:9819: AD 9B 05    ;
                 STA $059C                   ; $12:981C: 8D 9C 05    ;
 CODE_12981F:    RTS                     ; $12:981F: 60          ;
-                       
+
 CODE_129820:    LDY #$C0                    ; $12:9820: A0 C0       ;
 CODE_129822:    CMP #$0A                    ; $12:9822: C9 0A       ;
                 BCC CODE_12982B             ; $12:9824: 90 05       ;
@@ -3030,14 +3030,14 @@ CODE_129833:    CPY #$CA                    ; $12:9833: C0 CA       ;
                 LDA #$C9                    ; $12:9839: A9 C9       ;
 CODE_12983B:    STA $01                     ; $12:983B: 85 01       ;
                 RTS                     ; $12:983D: 60          ;
-                       
+
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty data.
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |      
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF                                      ; /
 
@@ -3081,7 +3081,7 @@ CODE_1298A5:    STY $02                     ; $12:98A5: 84 02       ;
                 STA $15,x                   ; $12:98BC: 95 15       ;
                 LDX $12                     ; $12:98BE: A6 12       ;
                 RTS                     ; $12:98C0: 60          ;
-                       
+
 CODE_1298C1:    LDA $044A,x                 ; $12:98C1: BD 4A 04    ;
                 BNE CODE_1298C9             ; $12:98C4: D0 03       ;
                 JSR CODE_129885             ; $12:98C6: 20 85 98    ;
@@ -3093,7 +3093,7 @@ CODE_1298C9:    JSR CODE_129880             ; $12:98C9: 20 80 98    ;
 CODE_1298D4:    INC $47,x                   ; $12:98D4: F6 47       ;
                 INC $47,x                   ; $12:98D6: F6 47       ;
 CODE_1298D8:    RTS                     ; $12:98D8: 60          ;
-                       
+
 CODE_1298D9:    LDA #$01                    ; $12:98D9: A9 01       ;
                 BNE CODE_1298DF             ; $12:98DB: D0 02       ;
 CODE_1298DD:    LDA #$00                    ; $12:98DD: A9 00       ;
@@ -3145,10 +3145,10 @@ CODE_129930:    TYA                         ; $12:9930: 98          ;
                 STA $65,x                   ; $12:993E: 95 65       ;
                 LDX $12                     ; $12:9940: A6 12       ;
                 RTS                     ; $12:9942: 60          ;
-                       
+
                 PLA                         ; $12:9943: 68          ;
                 RTS                     ; $12:9944: 60          ;
-                       
+
 CODE_129945:    JSR CODE_129AA9             ; $12:9945: 20 A9 9A    ;
                 BMI CODE_12996F             ; $12:9948: 30 25       ;
                 LDX $00                     ; $12:994A: A6 00       ;
@@ -3169,7 +3169,7 @@ CODE_129945:    JSR CODE_129AA9             ; $12:9945: 20 A9 9A    ;
                 JSR CODE_1299A4             ; $12:996A: 20 A4 99    ;
                 LDX $12                     ; $12:996D: A6 12       ;
 CODE_12996F:    RTS                     ; $12:996F: 60          ;
-                       
+
 CODE_129970:    LDA #$00                    ; $12:9970: A9 00       ;
                 STA $86,x                   ; $12:9972: 95 86       ;
                 LDA #$00                    ; $12:9974: A9 00       ;
@@ -3202,7 +3202,7 @@ CODE_1299A4:    LDY $90,x                   ; $12:99A4: B4 90       ;
                 LDA.w DATA_11CCD3,y                 ; $12:99B9: B9 D3 CC    ;
                 STA $0492,x                 ; $12:99BC: 9D 92 04    ;
                 RTS                     ; $12:99BF: 60          ;
-                       
+
 CODE_1299C0:    LDA $65,x                   ; $12:99C0: B5 65       ;
                 AND #$FC                    ; $12:99C2: 29 FC       ;
                 ORA #$01                    ; $12:99C4: 09 01       ;
@@ -3214,11 +3214,11 @@ CODE_1299C0:    LDA $65,x                   ; $12:99C0: B5 65       ;
                 STA $86,x                   ; $12:99D0: 95 86       ;
                 LDX $12                     ; $12:99D2: A6 12       ;
                 RTS                     ; $12:99D4: 60          ;
-                       
+
 CODE_1299D5:    LDA #$FF                    ; $12:99D5: A9 FF       ;
                 STA $0441,x                 ; $12:99D7: 9D 41 04    ;
                 RTS                     ; $12:99DA: 60          ;
-                       
+
 CODE_1299DB:    LDX $E9                     ; $12:99DB: A6 E9       ;
                 JSR CODE_1299E8             ; $12:99DD: 20 E8 99    ;
                 LDA $E6                     ; $12:99E0: A5 E6       ;
@@ -3226,7 +3226,7 @@ CODE_1299DB:    LDX $E9                     ; $12:99DB: A6 E9       ;
                 ADC $E5                     ; $12:99E3: 65 E5       ;
                 STA $E7                     ; $12:99E5: 85 E7       ;
                 RTS                     ; $12:99E7: 60          ;
-                       
+
 CODE_1299E8:    STY $02F5                   ; $12:99E8: 8C F5 02    ;
                 LDA $0628                   ; $12:99EB: AD 28 06    ;
                 BEQ CODE_1299F4             ; $12:99EE: F0 04       ;
@@ -3244,7 +3244,7 @@ CODE_1299FA:    CLC                         ; $12:99FA: 18          ;
                 STA $03                     ; $12:9A08: 85 03       ;
                 LDY $02F5                   ; $12:9A0A: AC F5 02    ;
                 RTS                     ; $12:9A0D: 60          ;
-                       
+
 CODE_129A0E:    LDA #$01                    ; $12:9A0E: A9 01       ;
                 LDY $00                     ; $12:9A10: A4 00       ;
                 CPY #$92                    ; $12:9A12: C0 92       ;
@@ -3253,7 +3253,7 @@ CODE_129A0E:    LDA #$01                    ; $12:9A0E: A9 01       ;
                 BEQ CODE_129A1D             ; $12:9A18: F0 03       ;
                 LDA #$00                    ; $12:9A1A: A9 00       ;
                 RTS                     ; $12:9A1C: 60          ;
-                       
+
 CODE_129A1D:    LDA #$08                    ; $12:9A1D: A9 08       ;
 CODE_129A1F:    STA $46                     ; $12:9A1F: 85 46       ;
                 LDA $04E0                   ; $12:9A21: AD E0 04    ;
@@ -3280,7 +3280,7 @@ CODE_129A49:    CPY #$04                    ; $12:9A49: C0 04       ;
 CODE_129A4F:    TYA                         ; $12:9A4F: 98          ;
                 DEX                         ; $12:9A50: CA          ;
                 RTS                     ; $12:9A51: 60          ;
-                       
+
 CODE_129A52:    LDA $85                     ; $12:9A52: A5 85       ;
                 BNE CODE_129A7F             ; $12:9A54: D0 29       ;
                 LDA $04C3                   ; $12:9A56: AD C3 04    ;
@@ -3304,7 +3304,7 @@ CODE_129A78:    STA $46                     ; $12:9A78: 85 46       ;
                 LDA #$04                    ; $12:9A7A: A9 04       ;
                 STA $1DE0                   ; $12:9A7C: 8D E0 1D    ;
 CODE_129A7F:    RTS                     ; $12:9A7F: 60          ;
-                       
+
 CODE_129A80:    LDA #$C0                ; $12:9A80: A9 C0       ; \ Rise for a bit while dying.
                 STA $46                 ; $12:9A82: 85 46       ; /
                 LDA #$20                ; $12:9A84: A9 20       ; \ Remain in air for a couple of frames.
@@ -3315,7 +3315,7 @@ CODE_129A80:    LDA #$C0                ; $12:9A80: A9 C0       ; \ Rise for a b
                 STA $0438,y                 ; $12:9A8D: 99 38 04    ;
 CODE_129A90:    JSL CODE_14E39F         ; $12:9A90: 22 9F E3 14 ; Die.
                 RTS                     ; $12:9A94: 60          ;
-                       
+
                 LDY $0441,x                 ; $12:9A95: BC 41 04    ;
                 BMI CODE_129AA0             ; $12:9A98: 30 06       ;
                 LDA ($CC),y                 ; $12:9A9A: B1 CC       ;
@@ -3324,7 +3324,7 @@ CODE_129A90:    JSL CODE_14E39F         ; $12:9A90: 22 9F E3 14 ; Die.
 CODE_129AA0:    LDA #$00                    ; $12:9AA0: A9 00       ;
                 STA $51,x                   ; $12:9AA2: 95 51       ;
                 RTS                     ; $12:9AA4: 60          ;
-                       
+
 CODE_129AA5:    LDY #$08                    ; $12:9AA5: A0 08       ;
                 BNE CODE_129AAB             ; $12:9AA7: D0 02       ;
 CODE_129AA9:    LDY #$05                    ; $12:9AA9: A0 05       ;
@@ -3333,7 +3333,7 @@ CODE_129AAB:    LDA $0051,y                 ; $12:9AAB: B9 51 00    ;
                 DEY                         ; $12:9AB0: 88          ;
                 BPL CODE_129AAB             ; $12:9AB1: 10 F8       ;
                 RTS                     ; $12:9AB3: 60          ;
-                       
+
 CODE_129AB4:    LDA #$01                    ; $12:9AB4: A9 01       ;
                 STA $0051,y                 ; $12:9AB6: 99 51 00    ;
                 LSR A                       ; $12:9AB9: 4A          ;
@@ -3357,7 +3357,7 @@ CODE_129AB4:    LDA #$01                    ; $12:9AB4: A9 01       ;
                 JSR CODE_1299D5             ; $12:9AE1: 20 D5 99    ;
                 LDX $12                     ; $12:9AE4: A6 12       ;
                 RTS                     ; $12:9AE6: 60          ;
-                       
+
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
@@ -3367,7 +3367,7 @@ CODE_129B00:    LDA $04AE               ; $12:9B00: AD AE 04    ;
                 BEQ CODE_129B09             ; $12:9B03: F0 04       ;
                 JSR CODE_129C64             ; $12:9B05: 20 64 9C    ;
                 RTL                     ; $12:9B08: 6B          ;
-                       
+
 CODE_129B09:    INC $04AE                   ; $12:9B09: EE AE 04    ;
                 STA $0593                   ; $12:9B0C: 8D 93 05    ;
                 STA $04C5                   ; $12:9B0F: 8D C5 04    ;
@@ -3497,7 +3497,7 @@ CODE_129C27:    JSR CODE_129C2F             ; $12:9C27: 20 2F 9C    ;
                 DEC $09                     ; $12:9C2A: C6 09       ;
                 BPL CODE_129C1B             ; $12:9C2C: 10 ED       ;
                 RTL                     ; $12:9C2E: 6B          ;
-                       
+
 CODE_129C2F:    LDA $05                     ; $12:9C2F: A5 05       ;
                 CLC                         ; $12:9C31: 18          ;
                 ADC #$10                    ; $12:9C32: 69 10       ;
@@ -3505,7 +3505,7 @@ CODE_129C2F:    LDA $05                     ; $12:9C2F: A5 05       ;
                 BCC CODE_129C3A             ; $12:9C36: 90 02       ;
                 INC $06                     ; $12:9C38: E6 06       ;
 CODE_129C3A:    RTS                     ; $12:9C3A: 60          ;
-                       
+
 CODE_129C3B:    LDA $04C1                   ; $12:9C3B: AD C1 04    ;
                 SEC                         ; $12:9C3E: 38          ;
                 SBC #$30                    ; $12:9C3F: E9 30       ;
@@ -3525,7 +3525,7 @@ CODE_129C5C:    JSR CODE_129C2F             ; $12:9C5C: 20 2F 9C    ;
                 DEC $09                     ; $12:9C5F: C6 09       ;
                 BPL CODE_129C50             ; $12:9C61: 10 ED       ;
                 RTL                     ; $12:9C63: 6B          ;
-                       
+
 CODE_129C64:    JSR CODE_129D6A             ; $12:9C64: 20 6A 9D    ;
                 LDA $0500                   ; $12:9C67: AD 00 05    ;
                 BEQ CODE_129C82             ; $12:9C6A: F0 16       ;
@@ -3612,7 +3612,7 @@ CODE_129CF4:    JSR CODE_129D21             ; $12:9CF4: 20 21 9D    ;
 CODE_129D1B:    LDA #$00                    ; $12:9D1B: A9 00       ;
                 STA $04B9                   ; $12:9D1D: 8D B9 04    ;
 CODE_129D20:    RTS                     ; $12:9D20: 60          ;
-                       
+
 CODE_129D21:    LDY #$00                    ; $12:9D21: A0 00       ;
                 JSR CODE_129D27             ; $12:9D23: 20 27 9D    ;
                 INY                         ; $12:9D26: C8          ;
@@ -3634,7 +3634,7 @@ CODE_129D46:    LDA $0586                   ; $12:9D46: AD 86 05    ;
                 EOR $0585                   ; $12:9D49: 4D 85 05    ;
                 STA $0587,y                 ; $12:9D4C: 99 87 05    ;
                 RTS                     ; $12:9D4F: 60          ;
-                       
+
 CODE_129D50:    LDA $51,x               ; $12:9D50: B5 51       ; \ Load sprite status.
                 JSL CODE_118776         ; $12:9D52: 22 76 87 11 ; / Execute pointer.
 
@@ -3696,7 +3696,7 @@ CODE_129DB6:    INY                         ; $12:9DB6: C8          ;
                 BCC CODE_129DC1             ; $12:9DBC: 90 03       ;
                 LDX $12                     ; $12:9DBE: A6 12       ;
 CODE_129DC0:    RTS                     ; $12:9DC0: 60          ;
-                       
+
 CODE_129DC1:    LDA ($CC),y                 ; $12:9DC1: B1 CC       ;
                 BMI CODE_129DB6             ; $12:9DC3: 30 F1       ;
                 INY                         ; $12:9DC5: C8          ;
@@ -3712,14 +3712,14 @@ CODE_129DC1:    LDA ($CC),y                 ; $12:9DC1: B1 CC       ;
                 BCC CODE_129DDD             ; $12:9DD7: 90 04       ;
                 STA $04B9                   ; $12:9DD9: 8D B9 04    ;
                 RTS                     ; $12:9DDC: 60          ;
-                       
+
 CODE_129DDD:    LDX #$04                    ; $12:9DDD: A2 04       ;
 CODE_129DDF:    LDA $51,x                   ; $12:9DDF: B5 51       ;
                 BEQ CODE_129DE7             ; $12:9DE1: F0 04       ;
                 DEX                         ; $12:9DE3: CA          ;
                 BPL CODE_129DDF             ; $12:9DE4: 10 F9       ;
                 RTS                     ; $12:9DE6: 60          ;
-                       
+
 CODE_129DE7:    STX $12                     ; $12:9DE7: 86 12       ;
                 LDA $05                     ; $12:9DE9: A5 05       ;
                 STA $29,x                   ; $12:9DEB: 95 29       ;
@@ -3781,7 +3781,7 @@ CODE_129E43:    INY                         ; $12:9E43: C8          ;
                 BCC CODE_129E4E             ; $12:9E49: 90 03       ;
                 LDX $12                     ; $12:9E4B: A6 12       ;
 CODE_129E4D:    RTS                     ; $12:9E4D: 60          ;
-                       
+
 CODE_129E4E:    LDA ($CC),y                 ; $12:9E4E: B1 CC       ;
                 BMI CODE_129E43             ; $12:9E50: 30 F1       ;
                 INY                         ; $12:9E52: C8          ;
@@ -3800,14 +3800,14 @@ CODE_129E4E:    LDA ($CC),y                 ; $12:9E4E: B1 CC       ;
                 BCC CODE_129E6C             ; $12:9E66: 90 04       ;
                 STA $04B9                   ; $12:9E68: 8D B9 04    ;
                 RTS                     ; $12:9E6B: 60          ;
-                       
+
 CODE_129E6C:    LDX #$04                    ; $12:9E6C: A2 04       ;
 CODE_129E6E:    LDA $51,x                   ; $12:9E6E: B5 51       ;
                 BEQ CODE_129E76             ; $12:9E70: F0 04       ;
                 DEX                         ; $12:9E72: CA          ;
                 BPL CODE_129E6E             ; $12:9E73: 10 F9       ;
                 RTS                     ; $12:9E75: 60          ;
-                       
+
 CODE_129E76:    STX $12                     ; $12:9E76: 86 12       ;
                 LDA $05                     ; $12:9E78: A5 05       ;
                 STA $33,x                   ; $12:9E7A: 95 33       ;
@@ -3848,7 +3848,7 @@ CODE_129EBB:    CMP #$1C                    ; $12:9EBB: C9 1C       ;
                 BEQ CODE_129EC7             ; $12:9EC2: F0 03       ;
                 LDX $12                     ; $12:9EC4: A6 12       ;
                 RTS                     ; $12:9EC6: 60          ;
-                       
+
 CODE_129EC7:    CMP #$17                    ; $12:9EC7: C9 17       ;
                 BEQ CODE_129ECF             ; $12:9EC9: F0 04       ;
                 CMP #$1D                    ; $12:9ECB: C9 1D       ;
@@ -3869,7 +3869,7 @@ CODE_129EDC:    LDX $12                     ; $12:9EDC: A6 12       ;
                 LDA $90,x               ; $12:9EE6: B5 90       ; Jump to routine based on sprite number.
                 JSL CODE_118776             ; $12:9EE8: 22 76 87 11 ;
 
-                dw CODE_129F96                                  ; 00 - Heart                          
+                dw CODE_129F96                                  ; 00 - Heart
                 dw CODE_129F96                                  ; 01 - Shy Guy, red
                 dw CODE_129F96                                  ; 02 - Tweeter
                 dw CODE_129F96                                  ; 03 - Shy Guy, blue
@@ -3940,7 +3940,7 @@ CODE_129EDC:    LDX $12                     ; $12:9EDC: A6 12       ;
                 dw CODE_12ABCA                                  ; 44 - Crystal ball
                 dw CODE_12ABCA                                  ; 45 - Star
                 dw CODE_12ABCA                                  ; 46 - Stopwatch
-                       
+
 CODE_129F7A:    LDY $90,x                   ; $12:9F7A: B4 90       ;
                 LDA.w DATA_11CC45,y             ; $12:9F7C: B9 45 CC    ;
                 AND #$7F                    ; $12:9F7F: 29 7F       ;
@@ -3952,7 +3952,7 @@ CODE_129F7A:    LDY $90,x                   ; $12:9F7A: B4 90       ;
                 LDA.w DATA_11CCD3,y             ; $12:9F8F: B9 D3 CC    ;
                 STA $0492,x                 ; $12:9F92: 9D 92 04    ;
                 RTS                     ; $12:9F95: 60          ;
-                       
+
 CODE_129F96:    STZ $86,x                   ; $12:9F96: 74 86       ;
 CODE_129F98:    STZ $79,x                   ; $12:9F98: 74 79       ;
                 LDA #$00                    ; $12:9F9A: A9 00       ;
@@ -3985,7 +3985,7 @@ CODE_129FD0:    INY                         ; $12:9FD0: C8          ;
                 BEQ CODE_129FE2             ; $12:9FDE: F0 02       ;
                 ASL $3D,x                   ; $12:9FE0: 16 3D       ;
 CODE_129FE2:    RTS                     ; $12:9FE2: 60          ;
-                       
+
 CODE_129FE3:    JSR CODE_129F96             ; $12:9FE3: 20 96 9F    ;
                 LDY $6E                     ; $12:9FE6: A4 6E       ;
                 LDA $04C1                   ; $12:9FE8: AD C1 04    ;
@@ -4009,19 +4009,19 @@ CODE_129FFF:    LDA $32                     ; $12:9FFF: A5 32       ;
 CODE_12A009:    LDA.w DATA_119796,y                 ; $12:A009: B9 96 97    ;
                 STA $47,x                   ; $12:A00C: 95 47       ;
                 RTS                     ; $12:A00E: 60          ;
-                       
+
 CODE_12A00F:    JSR CODE_129F96             ; $12:A00F: 20 96 9F    ;
                 LDA #$0C                ; $12:A012: A9 0C       ; \ X speed = #$0C.
                 STA $3D,x               ; $12:A014: 95 3D       ; /
                 LDA #$A0                ; $12:A016: A9 A0       ; \Phanto takeoff timer
                 STA $0595               ; $12:A018: 8D 95 05    ; /
                 RTS                     ; $12:A01B: 60          ;
-                       
+
 CODE_12A01C:    JSR CODE_129F96             ; $12:A01C: 20 96 9F    ;
                 LDA #$FF                    ; $12:A01F: A9 FF       ;
                 STA $86,x                   ; $12:A021: 95 86       ;
                 RTS                     ; $12:A023: 60          ;
-                       
+
 CODE_12A024:    JSR CODE_12DE6A             ; $12:A024: 20 6A DE    ;
                 JSR CODE_12A745             ; $12:A027: 20 45 A7    ;
                 LDA $D8                     ; $12:A02A: A5 D8       ;
@@ -4080,7 +4080,7 @@ CODE_12A06C:    LDA $90,x                   ; $12:A06C: B5 90       ;
 CODE_12A09C:    LDA #$FF                    ; $12:A09C: A9 FF       ;
                 STA $0441,x                 ; $12:A09E: 9D 41 04    ;
                 RTS                     ; $12:A0A1: 60          ;
-                       
+
 CODE_12A0A2:    ASL $65,x                   ; $12:A0A2: 16 65       ;
                 SEC                         ; $12:A0A4: 38          ;
                 ROR $65,x                   ; $12:A0A5: 76 65       ;
@@ -4096,7 +4096,7 @@ CODE_12A0B2:    JSR CODE_12C1EA             ; $12:A0B2: 20 EA C1    ;
 CODE_12A0BD:    INC $47,x               ; $12:A0BD: F6 47       ; \ Gravity.
                 INC $47,x               ; $12:A0BF: F6 47       ; /
 CODE_12A0C1:    RTS                     ; $12:A0C1: 60          ; Return.
-                       
+
 CODE_12A0C2:    JSR CODE_12A745             ; $12:A0C2: 20 45 A7    ;
                 LDA $86,x                   ; $12:A0C5: B5 86       ;
                 BNE CODE_12A0CC             ; $12:A0C7: D0 03       ;
@@ -4108,7 +4108,7 @@ CODE_12A0CC:    JSR CODE_12A0DA             ; $12:A0CC: 20 DA A0    ;
 DATA_12A0D2:    db $00,$00,$EC,$EA                              ;
 
 DATA_12A0D6:    db $00,$00,$F6,$00                              ;
-                 
+
 CODE_12A0DA:    LDA $86,x                   ; $12:A0DA: B5 86       ;
                 AND #$18                ; $12:A0DC: 29 18       ;
                 LSR A                       ; $12:A0DE: 4A          ;
@@ -4172,7 +4172,7 @@ CODE_12A0DA:    LDA $86,x                   ; $12:A0DA: B5 86       ;
 CODE_12A15F:    SEP #$10                    ; $12:A15F: E2 10       ;
                 LDX $12                     ; $12:A161: A6 12       ;
                 RTS                     ; $12:A163: 60          ;
-                       
+
 CODE_12A164:    JSR CODE_12A745             ; $12:A164: 20 45 A7    ;
                 LDA $86,x                   ; $12:A167: B5 86       ;
                 BEQ CODE_12A1A0             ; $12:A169: F0 35       ;
@@ -4203,13 +4203,13 @@ CODE_12A193:    LDA $0803,y                 ; $12:A193: B9 03 08    ;
 CODE_12A19A:    STA $0803,y                 ; $12:A19A: 99 03 08    ;
                 SEP #$10                    ; $12:A19D: E2 10       ;
                 RTS                     ; $12:A19F: 60          ;
-                       
+
 CODE_12A1A0:    LDA #$00                    ; $12:A1A0: A9 00       ;
                 JSL CODE_13FBC2             ; $12:A1A2: 22 C2 FB 13 ;
                 JMP CODE_12A83B             ; $12:A1A6: 4C 3B A8    ;
 
 DATA_12A1A9:    db $40,$2E,$2C                                  ;
-             
+
 CODE_12A1AC:    JSR CODE_12A745                     ; $12:A1AC: 20 45 A7    ;
                 LDA $86,x                   ; $12:A1AF: B5 86       ;
                 BEQ CODE_12A1A0             ; $12:A1B1: F0 ED       ;
@@ -4293,7 +4293,7 @@ CODE_12A1E3:    LDA $33,x                   ; $12:A1E3: B5 33       ;
                 STA $0A21,y                 ; $12:A267: 99 21 0A    ;
 CODE_12A26A:    SEP #$10                    ; $12:A26A: E2 10       ;
                 RTS                     ; $12:A26C: 60          ;
-                       
+
 CODE_12A26D:    LDA #$00                    ; $12:A26D: A9 00       ;
                 JSL CODE_13FBC2             ; $12:A26F: 22 C2 FB 13 ;
                 JMP CODE_12A83B             ; $12:A273: 4C 3B A8    ;
@@ -4308,7 +4308,7 @@ CODE_12A284:    LDA $A8,x                   ; $12:A284: B5 A8       ;
                 LDA #$01                    ; $12:A288: A9 01       ;
                 STA $51,x                   ; $12:A28A: 95 51       ;
                 RTS                     ; $12:A28C: 60          ;
-                       
+
 CODE_12A28D:    LDA $86,x                   ; $12:A28D: B5 86       ;
                 BEQ CODE_12A26D             ; $12:A28F: F0 DC       ;
                 LDA $90,x                   ; $12:A291: B5 90       ;
@@ -4328,13 +4328,13 @@ CODE_12A28D:    LDA $86,x                   ; $12:A28D: B5 86       ;
                 STA $6F,x                   ; $12:A2AB: 95 6F       ;
 CODE_12A2AD:    JSR CODE_12B4EA             ; $12:A2AD: 20 EA B4    ;
                 JMP CODE_12DE6A         ; $12:A2B0: 4C 6A DE    ;
-         
+
 DATA_12A2B3:    db $C6,$C8,$E6,$E8                              ; Tilemap of "BOMB"
 
 DATA_12A2B7:    db $F8,$08,$F8,$08                              ; XDisp of "BOMB"
 
 DATA_12A2BB:    db $F0,$F0,$00,$00                              ; YDisp of "BOMB"
-                 
+
 CODE_12A2BF:    JSR CODE_12A745             ; $12:A2BF: 20 45 A7    ;
                 LDA $ED                     ; $12:A2C2: A5 ED       ;
                 ORA $EE                     ; $12:A2C4: 05 EE       ;
@@ -4360,7 +4360,7 @@ CODE_12A2E6:    LDA $0429               ; $12:A2E6: AD 29 04    ; \ Get sprite's
                 CLC                     ; $12:A2F4: 18          ;  | but then with YDisp instead.
                 ADC.l DATA_12A2BB,x     ; $12:A2F5: 7F BB A2 12 ;  |
                 STA $0801,y             ; $12:A2F9: 99 01 08    ; /
-                LDA.l DATA_12A2B3,x     ; $12:A2FC: BF B3 A2 12 ; \ Transfer tilemap. 
+                LDA.l DATA_12A2B3,x     ; $12:A2FC: BF B3 A2 12 ; \ Transfer tilemap.
                 STA $0802,y             ; $12:A300: 99 02 08    ; /
                 LDA $10                 ; $12:A303: A5 10       ; \ Palette animation and more fancy YXPPCCCT properties data...
                 AND #$06                ; $12:A305: 29 06       ;  | right here.
@@ -4388,7 +4388,7 @@ CODE_12A2E6:    LDA $0429               ; $12:A2E6: AD 29 04    ; \ Get sprite's
                 JMP CODE_12DE6A             ; $12:A329: 4C 6A DE    ;
 
 CODE_12A32C:    RTS                     ; $12:A32C: 60          ;
-                       
+
 CODE_12A32D:    LDA $29,x                   ; $12:A32D: B5 29       ;
                 CLC                         ; $12:A32F: 18          ;
                 ADC.w DATA_1197B6,y                 ; $12:A330: 79 B6 97    ;
@@ -4486,7 +4486,7 @@ CODE_12A3AE:    LDA $07                     ; $12:A3AE: A5 07       ;
                 CMP #$6D                    ; $12:A3DE: C9 6D       ;
                 BEQ CODE_12A3E3             ; $12:A3E0: F0 01       ;
 CODE_12A3E2:    RTS                     ; $12:A3E2: 60          ;
-                       
+
 CODE_12A3E3:    LDA #$40                    ; $12:A3E3: A9 40       ;
                 STA [$07],y                 ; $12:A3E5: 97 07       ;
                 LDA $0D                     ; $12:A3E7: A5 0D       ;
@@ -4566,7 +4566,7 @@ CODE_12A470:    STA $15,x                   ; $12:A470: 95 15       ;
                 JSR CODE_12BA3D             ; $12:A47D: 20 3D BA    ;
 CODE_12A480:    LDX $12                     ; $12:A480: A6 12       ;
 CODE_12A482:    RTS                     ; $12:A482: 60          ;
-                       
+
 CODE_12A483:    JSR CODE_12A745             ; $12:A483: 20 45 A7    ;
                 LDA $65,x                   ; $12:A486: B5 65       ;
                 ORA #$10                    ; $12:A488: 09 10       ;
@@ -4714,7 +4714,7 @@ CODE_12A57F:    LDY #$B8                    ; $12:A57F: A0 B8       ;
                 LDA #$01                    ; $12:A5AD: A9 01       ;
                 STA [$03],y                 ; $12:A5AF: 97 03       ;
                 RTS                     ; $12:A5B1: 60          ;
-                       
+
 CODE_12A5B2:    LDA $90,x                   ; $12:A5B2: B5 90       ;
                 CMP #$2B                    ; $12:A5B4: C9 2B       ;
                 BNE CODE_12A5C5             ; $12:A5B6: D0 0D       ;
@@ -4726,9 +4726,9 @@ CODE_12A5B2:    LDA $90,x                   ; $12:A5B2: B5 90       ;
 
 CODE_12A5C5:    JMP CODE_12A83B             ; $12:A5C5: 4C 3B A8    ;
 
-DATA_12A5C8:                      db $86,$A1,$A0,$87   
+DATA_12A5C8:                      db $86,$A1,$A0,$87
 
-               
+
 CODE_12A5CC:    PHX                         ; $12:A5CC: DA          ;
                 PHA                         ; $12:A5CD: 48          ;
                 LDA $29,x                   ; $12:A5CE: B5 29       ;
@@ -4804,7 +4804,7 @@ CODE_12A618:    LDA $042C                   ; $12:A618: AD 2C 04    ;
 CODE_12A667:    SEP #$10                    ; $12:A667: E2 10       ;
                 PLX                         ; $12:A669: FA          ;
                 RTS                     ; $12:A66A: 60          ;
-                       
+
 CODE_12A66B:    LDA $0429                   ; $12:A66B: AD 29 04    ;
                 STA $0800,y                 ; $12:A66E: 99 00 08    ;
                 CLC                         ; $12:A671: 18          ;
@@ -4834,7 +4834,7 @@ CODE_12A66B:    LDA $0429                   ; $12:A66B: AD 29 04    ;
                 AND #$01                    ; $12:A6A5: 29 01       ;
                 STA $0A21,y                 ; $12:A6A7: 99 21 0A    ;
                 RTS                     ; $12:A6AA: 60          ;
-                       
+
 CODE_12A6AB:    JSR CODE_12A745             ; $12:A6AB: 20 45 A7    ;
                 LDA #$12                    ; $12:A6AE: A9 12       ;
                 STA $65,x                   ; $12:A6B0: 95 65       ;
@@ -4865,7 +4865,7 @@ CODE_12A6D8:    JSR CODE_12BDD5             ; $12:A6D8: 20 D5 BD    ;
                 STA $0803,y                 ; $12:A6E7: 99 03 08    ;
                 SEP #$10                    ; $12:A6EA: E2 10       ;
                 RTS                     ; $12:A6EC: 60          ;
-                       
+
 CODE_12A6ED:    CPX $042D                   ; $12:A6ED: EC 2D 04    ;
                 BNE CODE_12A6F6             ; $12:A6F0: D0 04       ;
                 LDA #$00                    ; $12:A6F2: A9 00       ;
@@ -4909,7 +4909,7 @@ CODE_12A720:    LDA $29,x                   ; $12:A720: B5 29       ;
 CODE_12A741:    DEY                         ; $12:A741: 88          ;
                 BPL CODE_12A720             ; $12:A742: 10 DC       ;
 CODE_12A744:    RTS                     ; $12:A744: 60          ;
-                       
+
 CODE_12A745:    JSR CODE_12A6F9             ; $12:A745: 20 F9 A6    ;
                 LDA #$30                    ; $12:A748: A9 30       ;
                 LDY $90,x                   ; $12:A74A: B4 90       ;
@@ -5043,7 +5043,7 @@ CODE_12A83B:    LDY $0441,x                 ; $12:A83B: BC 41 04    ;
 CODE_12A846:    STZ $51,x                   ; $12:A846: 74 51       ;
                 STZ $042F,x                 ; $12:A848: 9E 2F 04    ;
 CODE_12A84B:    RTS                     ; $12:A84B: 60          ;
-                       
+
 CODE_12A84C:    LDA #$01                    ; $12:A84C: A9 01       ;
                 STA $04A4,x                 ; $12:A84E: 9D A4 04    ;
                 LDY $042F,x                 ; $12:A851: BC 2F 04    ;
@@ -5098,7 +5098,7 @@ CODE_12A8B0:    LDA $90,x                   ; $12:A8B0: B5 90       ;
                 AND #$08                    ; $12:A8B8: 29 08       ;
                 BEQ CODE_12A8BD             ; $12:A8BA: F0 01       ;
                 RTS                     ; $12:A8BC: 60          ;
-                       
+
 CODE_12A8BD:    JMP CODE_12BD29             ; $12:A8BD: 4C 29 BD    ;
 
 CODE_12A8C0:    LDY #$01                    ; $12:A8C0: A0 01       ;
@@ -5155,9 +5155,9 @@ CODE_12A928:    LDA $1F,x                   ; $12:A928: B5 1F       ;
                 CMP #$E8                    ; $12:A92F: C9 E8       ;
                 BCC CODE_12A934             ; $12:A931: 90 01       ;
 CODE_12A933:    RTS                     ; $12:A933: 60          ;
-                       
+
 CODE_12A934:    JMP CODE_12DE6A         ; $12:A934: 4C 6A DE    ;
-      
+
 CODE_12A937:    LDA $90,x                   ; $12:A937: B5 90       ;
                 JSL CODE_118776         ; $12:A939: 22 76 87 11 ;
 
@@ -5184,7 +5184,7 @@ CODE_12A937:    LDA $90,x                   ; $12:A937: B5 90       ;
                 dw CODE_12AE5D                                  ; 14 - Hoopster
                 dw CODE_12AC25                                  ; 15 - Shyguy generator
                 dw CODE_12AC25                                  ; 16 - Bob-omb generator
-                dw CODE_12B373                                  ; 17 - Phanto 
+                dw CODE_12B373                                  ; 17 - Phanto
                 dw CODE_12CD44                                  ; 18 - Cobrat, jar
                 dw CODE_12CCC5                                  ; 19 - Cobrat, sand
                 dw CODE_12CDF0                                  ; 1A - Pokey
@@ -5237,7 +5237,7 @@ CODE_12A9CB:    JSR CODE_129F96             ; $12:A9CB: 20 96 9F    ;
                 LDA #$50                    ; $12:A9CE: A9 50       ;
                 STA $9F,x                   ; $12:A9D0: 95 9F       ;
                 RTS                     ; $12:A9D2: 60          ;
-                       
+
 CODE_12A9D3:    JSR CODE_129F96             ; $12:A9D3: 20 96 9F    ;
                 LDY $90,x                   ; $12:A9D6: B4 90       ;
                 LDA.w DATA_1197BA,y                 ; $12:A9D8: B9 BA 97    ;
@@ -5245,7 +5245,7 @@ CODE_12A9D3:    JSR CODE_129F96             ; $12:A9D3: 20 96 9F    ;
                 LDA.w DATA_1197BC,y                 ; $12:A9DD: B9 BC 97    ;
                 STA $47,x                   ; $12:A9E0: 95 47       ;
                 RTS                     ; $12:A9E2: 60          ;
-                       
+
 CODE_12A9E3:    JSR CODE_12BB16             ; $12:A9E3: 20 16 BB    ;
                 JSR CODE_12AA43             ; $12:A9E6: 20 43 AA    ;
                 LDY #$0A                    ; $12:A9E9: A0 0A       ;
@@ -5289,13 +5289,13 @@ CODE_12AA2F:    TYA                         ; $12:AA2F: 98          ;
 CODE_12AA38:    LDA $0477,x                 ; $12:AA38: BD 77 04    ;
                 BNE CODE_12AA40             ; $12:AA3B: D0 03       ;
                 JMP CODE_12C1EF         ; $12:AA3D: 4C EF C1    ;
-        
+
 CODE_12AA40:    JMP CODE_12C1EA         ; $12:AA40: 4C EA C1    ;
-        
+
 CODE_12AA43:    INC $9F,x                   ; $12:AA43: F6 9F       ;
                 INC $9F,x                   ; $12:AA45: F6 9F       ;
                 RTS                         ; $12:AA47: 60          ;
-                       
+
 CODE_12AA48:    JSR CODE_12AAA7             ; $12:AA48: 20 A7 AA    ;
                 ADC.w DATA_1197F2,y                 ; $12:AA4B: 79 F2 97    ;
                 STA $29,x                   ; $12:AA4E: 95 29       ;
@@ -5339,7 +5339,7 @@ CODE_12AA8B:    STA $15,x                   ; $12:AA8B: 95 15       ;
                 JSR CODE_129FD0             ; $12:AAA0: 20 D0 9F    ;
                 JSR CODE_129FF7             ; $12:AAA3: 20 F7 9F    ;
                 RTS                         ; $12:AAA6: 60          ;
-                       
+
 CODE_12AAA7:    LDA $0500                   ; $12:AAA7: AD 00 05    ;
                 BNE CODE_12AACB             ; $12:AAAA: D0 1F       ;
                 LDA $0623                   ; $12:AAAC: AD 23 06    ;
@@ -5357,11 +5357,11 @@ CODE_12AAA7:    LDA $0500                   ; $12:AAA7: AD 00 05    ;
 CODE_12AAC5:    LDX $00                     ; $12:AAC5: A6 00       ;
                 LDA $04C1                   ; $12:AAC7: AD C1 04    ;
                 RTS                     ; $12:AACA: 60          ;
-                       
+
 CODE_12AACB:    PLA                         ; $12:AACB: 68          ;
                 PLA                         ; $12:AACC: 68          ;
                 RTS                     ; $12:AACD: 60          ;
-                       
+
 CODE_12AACE:    JSR CODE_12DDAB             ; $12:AACE: 20 AB DD    ;
                 JSR CODE_12BB16             ; $12:AAD1: 20 16 BB    ;
                 LDA $0453,x                 ; $12:AAD4: BD 53 04    ;
@@ -5374,7 +5374,7 @@ CODE_12AAE1:    LDA $0480,x                 ; $12:AAE1: BD 80 04    ;
                 BCC CODE_12AAED                 ; $12:AAE6: 90 05       ;
                 LDA #$00                    ; $12:AAE8: A9 00       ;
                 STA $0480,x                     ; $12:AAEA: 9D 80 04    ;
-           
+
 CODE_12AAED:    LDA $65,x                   ; $12:AAED: B5 65       ;
                 AND #$EF                ; $12:AAEF: 29 EF       ;
                 STA $65,x               ; $12:AAF1: 95 65       ;
@@ -5395,7 +5395,7 @@ CODE_12AB0D:    LDA $5B,x                   ; $12:AB0D: B5 5B       ;
                 BEQ CODE_12AB16         ; $12:AB11: F0 03       ;
                 JSR CODE_12B1F9         ; $12:AB13: 20 F9 B1    ;
 CODE_12AB16:    JMP CODE_12B497                 ; $12:AB16: 4C 97 B4    ;
-           
+
 CODE_12AB19:    LDA $9F,x                   ; $12:AB19: B5 9F       ;
                 ASL A                       ; $12:AB1B: 0A          ;
                 BNE CODE_12AB21             ; $12:AB1C: D0 03       ;
@@ -5767,7 +5767,7 @@ CODE_12AE10:    JSR CODE_12AC85             ; $12:AE10: 20 85 AC    ;
                 LDA #$80                    ; $12:AE21: A9 80       ;
                 STA $86,x                   ; $12:AE23: 95 86       ;
 CODE_12AE25:    RTS                     ; $12:AE25: 60          ;
-                       
+
 CODE_12AE26:    JSR CODE_12BB16             ; $12:AE26: 20 16 BB    ;
                 INC $9F,x                   ; $12:AE29: F6 9F       ;
                 JSR CODE_12BA4F             ; $12:AE2B: 20 4F BA    ;
@@ -5799,7 +5799,7 @@ CODE_12AE5D:    LDA $0628                   ; $12:AE5D: AD 28 06    ;
                 LDA $0702,x                 ; $12:AE64: BD 02 07    ;
                 BEQ CODE_12AE6A             ; $12:AE67: F0 01       ;
                 RTS                     ; $12:AE69: 60          ;
-                       
+
 CODE_12AE6A:    INC $0702,x                 ; $12:AE6A: FE 02 07    ;
                 JMP CODE_12BD29             ; $12:AE6D: 4C 29 BD    ;
 
@@ -5894,7 +5894,7 @@ CODE_12AEDD:    LDA $ED                     ; $12:AEDD: A5 ED       ;
                 PLY                         ; $12:AF29: 7A          ;
                 SEP #$10                    ; $12:AF2A: E2 10       ;
 CODE_12AF2C:    RTS                     ; $12:AF2C: 60          ;
-                       
+
 CODE_12AF2D:    JSR CODE_129F96             ; $12:AF2D: 20 96 9F    ;
                 LDA #$FF                    ; $12:AF30: A9 FF       ;
                 STA $0702,x                 ; $12:AF32: 9D 02 07    ;
@@ -5915,7 +5915,7 @@ CODE_12AF43:    TYA                         ; $12:AF43: 98          ;
 CODE_12AF50:    LDA $15,x                   ; $12:AF50: B5 15       ;
                 STA $04F0,x                 ; $12:AF52: 9D F0 04    ;
                 RTS                     ; $12:AF55: 60          ;
-                       
+
 CODE_12AF56:    LDA $0702,x                 ; $12:AF56: BD 02 07    ;
                 BMI CODE_12AF86             ; $12:AF59: 30 2B       ;
                 BEQ CODE_12AF6F             ; $12:AF5B: F0 12       ;
@@ -5927,7 +5927,7 @@ CODE_12AF56:    LDA $0702,x                 ; $12:AF56: BD 02 07    ;
                 STA $5B,x                   ; $12:AF69: 95 5B       ;
                 JSR CODE_12BB16             ; $12:AF6B: 20 16 BB    ;
                 RTS                     ; $12:AF6E: 60          ;
-                       
+
 CODE_12AF6F:    LDA $5B,x                   ; $12:AF6F: B5 5B       ;
                 AND #$10                    ; $12:AF71: 29 10       ;
                 BEQ CODE_12AF86             ; $12:AF73: F0 11       ;
@@ -6030,7 +6030,7 @@ CODE_12B038:    LDA $47,x                   ; $12:B038: B5 47       ;
                 CMP #$40                ; $12:B043: C9 40       ;  | ...
                 BEQ CODE_12B048         ; $12:B045: F0 01       ; / ...branch.
                 RTS                     ; $12:B047: 60          ; Return.
-                       
+
 CODE_12B048:    INC $0620               ; $12:B048: EE 20 06    ; 1-Up collected flag, next time 1-Up object is picked up, a vegetable is spawned.
                 LDA $04EE               ; $12:B04B: AD EE 04    ; \ Increment lives by 1 unless lives >= 99.
                 INC A                   ; $12:B04E: 1A          ;  |
@@ -6041,7 +6041,7 @@ CODE_12B055:    STA $04EE               ; $12:B055: 8D EE 04    ; /
                 LDA #$05                ; $12:B058: A9 05       ; \ 1-Up get sound effect.
                 STA $1DE3               ; $12:B05A: 8D E3 1D    ; /
                 RTS                     ; $12:B05D: 60          ; Return.
-                       
+
 CODE_12B05E:    INC $042C                   ; $12:B05E: EE 2C 04    ;
                 JSR CODE_12B20E             ; $12:B061: 20 0E B2    ;
 CODE_12B064:    LDA $A8,x               ; $12:B064: B5 A8       ;\If crystal ball is completely picked up
@@ -6069,7 +6069,7 @@ CODE_12B071:    JSR CODE_12B692             ; $12:B071: 20 92 B6    ;
                 STA $078A               ; $12:B094: 8D 8A 07    ; /
                 INC $04B5               ; $12:B097: EE B5 04    ; Set 'Crystal ball has been collected' flag.
 CODE_12B09A:    RTS                     ; $12:B09A: 60          ; Return.
-                       
+
 CODE_12B09B:    CMP #$40                ; $12:B09B: C9 40       ; \ If 1-Up, branch.
                 BEQ CODE_12B0C0         ; $12:B09D: F0 21       ; /
                 CMP #$46                ; $12:B09F: C9 46       ; \ If Stopwatch, branch.
@@ -6086,7 +6086,7 @@ CODE_12B09B:    CMP #$40                ; $12:B09B: C9 40       ; \ If 1-Up, bra
                 LDA #$58                    ; $12:B0BA: A9 58       ;
                 STA $079B                   ; $12:B0BC: 8D 9B 07    ;
                 RTS                     ; $12:B0BF: 60          ;
-                       
+
 CODE_12B0C0:    LDA #$09                    ; $12:B0C0: A9 09       ;
                 STA $65,x                   ; $12:B0C2: 95 65       ;
 CODE_12B0C4:    LDA #$E0                ; $12:B0C4: A9 E0       ; \ Y speed of 1-Up mushroom when collected.
@@ -6094,11 +6094,11 @@ CODE_12B0C4:    LDA #$E0                ; $12:B0C4: A9 E0       ; \ Y speed of 1
                 LDA #$01                    ; $12:B0C8: A9 01       ;
                 STA $51,x                   ; $12:B0CA: 95 51       ;
                 RTS                     ; $12:B0CC: 60          ;
-                       
+
 CODE_12B0CD:    LDA #$FF                ; $12:B0CD: A9 FF       ; \ Set sprite freeze timer to #$FF. (For stopwatch.)
                 STA $0500               ; $12:B0CF: 8D 00 05    ; /
                 RTS                     ; $12:B0D2: 60          ; Return.
-                       
+
 CODE_12B0D3:    JSR CODE_12B20E             ; $12:B0D3: 20 0E B2    ;
 CODE_12B0D6:    JSR CODE_12DDAB             ; $12:B0D6: 20 AB DD    ;
                 LDA $5B,x                   ; $12:B0D9: B5 5B       ;
@@ -6147,7 +6147,7 @@ CODE_12B120:    LDA #$04                    ; $12:B120: A9 04       ;
                 LSR A                       ; $12:B12F: 4A          ;
                 STA $042F,x                 ; $12:B130: 9D 2F 04    ;
                 RTS                     ; $12:B133: 60          ;
-                       
+
 CODE_12B134:    CMP #$40                    ; $12:B134: C9 40       ;
                 BCS CODE_12B13D                     ; $12:B136: B0 05       ;
                 LDA $10                     ; $12:B138: A5 10       ;
@@ -6206,7 +6206,7 @@ CODE_12B181:    DEX                         ; $12:B181: CA          ;
                 BEQ CODE_12B1AB             ; $12:B1A5: F0 04       ;
                 JSR CODE_12A83B             ; $12:B1A7: 20 3B A8    ;
                 RTS                     ; $12:B1AA: 60          ;
-                       
+
 CODE_12B1AB:    LDA #$10                    ; $12:B1AB: A9 10       ;
                 STA $0453,x                 ; $12:B1AD: 9D 53 04    ;
                 LDA #$10                    ; $12:B1B0: A9 10       ;
@@ -6255,7 +6255,7 @@ CODE_12B1F9:    LDA $65,x                   ; $12:B1F9: B5 65       ;
                 STA $86,x                   ; $12:B209: 95 86       ;
                 LDX $12                     ; $12:B20B: A6 12       ;
 CODE_12B20D:    RTS                     ; $12:B20D: 60          ;
-                       
+
 CODE_12B20E:    LDA $79,x                   ; $12:B20E: B5 79       ;
                 BNE CODE_12B21E             ; $12:B210: D0 0C       ;
                 LDY #$05                    ; $12:B212: A0 05       ;
@@ -6306,7 +6306,7 @@ CODE_12B256:    LDA $0029,y                 ; $12:B256: B9 29 00    ;
                 LDA #$07                    ; $12:B270: A9 07       ;
                 STA $046E,x                 ; $12:B272: 9D 6E 04    ;
                 RTS                     ; $12:B275: 60          ;
-                       
+
 CODE_12B276:    JSR CODE_129F96             ; $12:B276: 20 96 9F    ;
                 LDA #$F0                ; $12:B279: A9 F0       ; \ Init X speed = #$F0 (left).
                 BNE CODE_12B282         ; $12:B27B: D0 05       ; / More convenient than BRA. (Because the zero bit is clear, anyway.)
@@ -6326,7 +6326,7 @@ CODE_12B282:    STA $3D,x               ; $12:B282: 95 3D       ; /
                 ADC.w DATA_119820,y                 ; $12:B297: 79 20 98    ;
                 STA $15,x                   ; $12:B29A: 95 15       ;
                 RTS                     ; $12:B29C: 60          ;
-                       
+
 CODE_12B29D:    LDA $10                     ; $12:B29D: A5 10       ;
                 AND #$07                    ; $12:B29F: 29 07       ;
                 BNE CODE_12B2A5             ; $12:B2A1: D0 02       ;
@@ -6370,7 +6370,7 @@ CODE_12B2E6:    JSR CODE_12B2F6             ; $12:B2E6: 20 F6 B2    ;
                 LSR A                       ; $12:B2EF: 4A          ;
                 ROR $65,x                   ; $12:B2F0: 76 65       ;
                 RTS                     ; $12:B2F2: 60          ;
-                       
+
 CODE_12B2F3:    JSR CODE_12DDAB             ; $12:B2F3: 20 AB DD    ;
 CODE_12B2F6:    JSR CODE_12BB16             ; $12:B2F6: 20 16 BB    ;
                 JSR CODE_12BA46             ; $12:B2F9: 20 46 BA    ;
@@ -6400,7 +6400,7 @@ CODE_12B32B:    JSR CODE_12C1EF             ; $12:B32B: 20 EF C1    ;
                 JMP CODE_12BD29             ; $12:B32E: 4C 29 BD    ;
 
 CODE_12B331:    LDY #$08                ; $12:B331: A0 08       ; \ Start loop, maximum index.
-                BNE CODE_12B337         ; $12:B333: D0 02       ; / 
+                BNE CODE_12B337         ; $12:B333: D0 02       ; /
 
 CODE_12B335:    LDY #$05                ; $12:B335: A0 05       ; Start loop with a lower index.
 
@@ -6409,7 +6409,7 @@ CODE_12B337:    LDA $0051,y             ; $12:B337: B9 51 00    ; \ Check if the
                 DEY                     ; $12:B33C: 88          ;  | If not, get to next index.
                 BPL CODE_12B337         ; $12:B33D: 10 F8       ;  | Loop
                 RTS                     ; $12:B33F: 60          ; / If all slots full, return.
-                        
+
 CODE_12B340:    LDA #$01                    ; $12:B340: A9 01       ;
                 STA $0051,y                 ; $12:B342: 99 51 00    ;
                 LSR A                       ; $12:B345: 4A          ;
@@ -6433,7 +6433,7 @@ CODE_12B340:    LDA #$01                    ; $12:B340: A9 01       ;
                 JSR CODE_12A09C             ; $12:B36D: 20 9C A0    ;
                 LDX $12                     ; $12:B370: A6 12       ;
                 RTS                     ; $12:B372: 60          ;
-                       
+
 CODE_12B373:    LDA $044A,x             ; $12:B373: BD 4A 04    ; \
                 BEQ CODE_12B37B         ; $12:B376: F0 03       ;  | Phanto shake animation timer (upon takeoff)
                 DEC $044A,x             ; $12:B378: DE 4A 04    ; /
@@ -6562,7 +6562,7 @@ CODE_12B46E:    LDA $0628                   ; $12:B46E: AD 28 06    ;
                 CMP #$02                    ; $12:B471: C9 02       ;
                 BNE CODE_12B476             ; $12:B473: D0 01       ;
                 RTS                     ; $12:B475: 60          ;
-                       
+
 CODE_12B476:    JSR CODE_12BB16             ; $12:B476: 20 16 BB    ;
                 JSR CODE_12BD29             ; $12:B479: 20 29 BD    ;
                 INC $9F,x                   ; $12:B47C: F6 9F       ;
@@ -6651,7 +6651,7 @@ CODE_12B521:    JSR CODE_12A0AA             ; $12:B521: 20 AA A0    ;
                 LDA #$00                    ; $12:B52E: A9 00       ;
                 STA $47,x                   ; $12:B530: 95 47       ;
                 RTS                     ; $12:B532: 60          ;
-                       
+
 CODE_12B533:    LDA $042F,x                 ; $12:B533: BD 2F 04    ;
                 BNE CODE_12B571             ; $12:B536: D0 39       ;
                 LDA $90,x                   ; $12:B538: B5 90       ;
@@ -6698,7 +6698,7 @@ CODE_12B57D:    LDA $042F,x                 ; $12:B57D: BD 2F 04    ;
                 JMP CODE_12C248             ; $12:B58A: 4C 48 C2    ;
 
 CODE_12B58D:    RTS                     ; $12:B58D: 60          ;
-                       
+
 CODE_12B58E:    AND #$04                    ; $12:B58E: 29 04       ;
                 BEQ CODE_12B533             ; $12:B590: F0 A1       ;
                 LDA #$00                    ; $12:B592: A9 00       ;
@@ -6790,7 +6790,7 @@ CODE_12B63B:    LDA $3D,x                   ; $12:B63B: B5 3D       ;
                 ASL A                       ; $12:B63F: 0A          ;
                 ROR $3D,x                   ; $12:B640: 76 3D       ;
                 RTS                     ; $12:B642: 60          ;
-                       
+
 CODE_12B643:    JSR CODE_129F98             ; $12:B643: 20 98 9F    ;
 CODE_12B646:    LDA $90,x                   ; $12:B646: B5 90       ;
                 CMP #$01                    ; $12:B648: C9 01       ;
@@ -6813,7 +6813,7 @@ CODE_12B65B:    STA $47,x                   ; $12:B65B: 95 47       ;
 CODE_12B66B:    AND #$F0                    ; $12:B66B: 29 F0       ;
                 STA $33,x                   ; $12:B66D: 95 33       ;
                 RTS                     ; $12:B66F: 60          ;
-                       
+
 CODE_12B670:    JSR CODE_12B331             ; $12:B670: 20 31 B3    ;
                 JMP CODE_12B679             ; $12:B673: 4C 79 B6    ;
 
@@ -6821,7 +6821,7 @@ CODE_12B676:    JSR CODE_12B335             ; $12:B676: 20 35 B3    ;
 CODE_12B679:    BMI CODE_12B691             ; $12:B679: 30 16       ;
                 LDY $6F,x                   ; $12:B67B: B4 6F       ;
                 LDX $00                     ; $12:B67D: A6 00       ;
-                LDA.w DATA_11982F,y     ; $12:B67F: B9 2F 98    ; \ Set X speed.       
+                LDA.w DATA_11982F,y     ; $12:B67F: B9 2F 98    ; \ Set X speed.
                 STA $3D,x               ; $12:B682: 95 3D       ; /
                 LDA #$00                ; $12:B684: A9 00       ; \ No Y speed.
                 STA $47,x               ; $12:B686: 95 47       ; /
@@ -6830,7 +6830,7 @@ CODE_12B679:    BMI CODE_12B691             ; $12:B679: 30 16       ;
                 JSR CODE_129F7A             ; $12:B68C: 20 7A 9F    ;
                 LDX $12                     ; $12:B68F: A6 12       ;
 CODE_12B691:    RTS                     ; $12:B691: 60          ;
-                       
+
 CODE_12B692:    LDA $9D                     ; $12:B692: A5 9D       ;
                 EOR #$01                    ; $12:B694: 49 01       ;
                 TAY                         ; $12:B696: A8          ;
@@ -6904,7 +6904,7 @@ CODE_12B70D:    JSR CODE_12BB60             ; $12:B70D: 20 60 BB    ;
 
 CODE_12B717:    JSR CODE_12B71B         ; $12:B717: 20 1B B7    ; \ Wrapper.
 CODE_12B71A:    RTS                     ; $12:B71A: 60          ; /
-                       
+
 CODE_12B71B:    LDA $A8,x                   ; $12:B71B: B5 A8       ;
                 BEQ CODE_12B724             ; $12:B71D: F0 05       ;
                 PLA                         ; $12:B71F: 68          ;
@@ -6917,7 +6917,7 @@ CODE_12B724:    JSR CODE_12BD29             ; $12:B724: 20 29 BD    ;
                 BCS CODE_12B732         ; $12:B72B: B0 05       ; / If that is the case, branch. Otherwise it's a mushroom block.
                 JSR CODE_12DDA7             ; $12:B72D: 20 A7 DD    ;
                 BRA CODE_12B735         ; $12:B730: 80 03       ;
-           
+
 CODE_12B732:    JSR CODE_12DDAB             ; $12:B732: 20 AB DD    ;
 CODE_12B735:    LDA $042F,x                 ; $12:B735: BD 2F 04    ;
                 BEQ CODE_12B71A             ; $12:B738: F0 E0       ;
@@ -6977,7 +6977,7 @@ CODE_12B796:    CMP #$30                ; $12:B796: C9 30       ;  |
                 LDA #$D1                ; $12:B7A0: A9 D1       ;  |
 CODE_12B7A2:    STA $3D,x               ; $12:B7A2: 95 3D       ; /
                 RTS                     ; $12:B7A4: 60          ; Return.
-                       
+
 CODE_12B7A5:    JSR CODE_12B659             ; $12:B7A5: 20 59 B6    ;
                 LDA #$F5                ; $12:B7A8: A9 F5       ; New Y speed (bouncing off ground).
                 JMP CODE_12B635             ; $12:B7AA: 4C 35 B6    ;
@@ -6988,7 +6988,7 @@ CODE_12B7AD:    JSR CODE_12B659             ; $12:B7AD: 20 59 B6    ;
                 JMP CODE_12A83B         ; $12:B7B6: 4C 3B A8    ; Terminate mushroom block sprite.
 
 CODE_12B7B9:    RTS                     ; $12:B7B9: 60          ; Return.
-                       
+
 CODE_12B7BA:    LDA #$04                    ; $12:B7BA: A9 04       ;
                 STA $0489,x                 ; $12:B7BC: 9D 89 04    ;
                 LDA #$02                    ; $12:B7BF: A9 02       ;
@@ -7115,15 +7115,15 @@ CODE_12B8D9:    LDX $12                     ; $12:B8D9: A6 12       ;
                 RTS                     ; $12:B8DB: 60          ;
 
 DATA_12B8DC:    db $A2,$B2,$A4,$B4,$A3,$B3,$A5,$B5              ;
-      
+
 DATA_12B8E4:    db $A2,$B2,$8B,$9B,$A3,$B3,$A5,$B5              ;
 
 DATA_12B8EC:    db $00,$00,$00,$00,$08,$08,$08,$08              ;
 
 DATA_12B8F4:    db $00,$08,$10,$18,$00,$08,$10,$18              ;
-                       
+
 DATA_12B8FC:    db $22,$22,$26,$26,$22,$22,$22,$22              ;
-        
+
 CODE_12B904:    AND #$08                    ; $12:B904: 29 08       ;
                 STA $00                     ; $12:B906: 85 00       ;
                 REP #$10                    ; $12:B908: C2 10       ;
@@ -7186,7 +7186,7 @@ CODE_12B964:    STA $0803,y                 ; $12:B964: 99 03 08    ;
                 BPL CODE_12B914             ; $12:B981: 10 91       ;
                 SEP #$10                    ; $12:B983: E2 10       ;
                 RTS                     ; $12:B985: 60          ;
-                       
+
                 LDA #$02                    ; $12:B986: A9 02       ;
                 BNE CODE_12B990             ; $12:B988: D0 06       ;
                 LDA #$01                    ; $12:B98A: A9 01       ;
@@ -7231,10 +7231,10 @@ CODE_12B9A9:    DEY                         ; $12:B9A9: 88          ;
                 STA $65,x                   ; $12:B9DE: 95 65       ;
                 LDX $12                     ; $12:B9E0: A6 12       ;
                 RTS                     ; $12:B9E2: 60          ;
-                       
+
 CODE_12B9E3:    PLA                         ; $12:B9E3: 68          ;
                 RTS                     ; $12:B9E4: 60          ;
-                       
+
 DATA_12B9E5:    db $2E,$C6,$C8,$C6                              ;
 
 CODE_12B9E9:    JSR CODE_12DDAB                     ; $12:B9E9: 20 AB DD    ;
@@ -7285,7 +7285,7 @@ CODE_12BA3F:    STA $51,x                   ; $12:BA3F: 95 51       ;
                 LDA #$18                    ; $12:BA41: A9 18       ;
                 STA $86,x                   ; $12:BA43: 95 86       ;
 CODE_12BA45:    RTS                     ; $12:BA45: 60          ;
-                       
+
 CODE_12BA46:    LDA $A8,x                   ; $12:BA46: B5 A8       ;
                 BEQ CODE_12BA45             ; $12:BA48: F0 FB       ;
                 PLA                         ; $12:BA4A: 68          ;
@@ -7303,7 +7303,7 @@ CODE_12BA59:    JSR CODE_12AC85             ; $12:BA59: 20 85 AC    ;
                 LDA $33,x                   ; $12:BA5F: B5 33       ;
                 STA $79,x                   ; $12:BA61: 95 79       ;
 CODE_12BA63:    RTS                     ; $12:BA63: 60          ;
-                       
+
 CODE_12BA64:    ASL $65,x                   ; $12:BA64: 16 65       ;
                 LDA $10                     ; $12:BA66: A5 10       ;
                 ASL A                       ; $12:BA68: 0A          ;
@@ -7347,7 +7347,7 @@ CODE_12BAAB:    JMP CODE_12BD29             ; $12:BAAB: 4C 29 BD    ;
 CODE_12BAAE:    LDA #$00                    ; $12:BAAE: A9 00       ;
                 JSR CODE_12BAB4             ; $12:BAB0: 20 B4 BA    ;
                 RTL                     ; $12:BAB3: 6B          ;
-                       
+
 CODE_12BAB4:    STA $00                     ; $12:BAB4: 85 00       ;
                 LDX #$08                    ; $12:BAB6: A2 08       ;
 CODE_12BAB8:    LDA $51,x                   ; $12:BAB8: B5 51       ;
@@ -7396,7 +7396,7 @@ CODE_12BB10:    DEX                         ; $12:BB10: CA          ;
                 BPL CODE_12BAB8             ; $12:BB11: 10 A5       ;
                 LDX $12                     ; $12:BB13: A6 12       ;
                 RTS                     ; $12:BB15: 60          ;
-                       
+
 CODE_12BB16:    LDA $5B,x                   ; $12:BB16: B5 5B       ;
                 AND #$10                    ; $12:BB18: 29 10       ;
                 BEQ CODE_12BB5F             ; $12:BB1A: F0 43       ;
@@ -7434,7 +7434,7 @@ CODE_12BB49:    LDA #$02                ; $12:BB49: A9 02       ; \ Fall down.
                 PLA                         ; $12:BB5D: 68          ;
                 PLA                         ; $12:BB5E: 68          ;
 CODE_12BB5F:    RTS                     ; $12:BB5F: 60          ;
-                       
+
 CODE_12BB60:    LDA $33,x                   ; $12:BB60: B5 33       ;
                 CLC                         ; $12:BB62: 18          ;
                 SBC $CB                     ; $12:BB63: E5 CB       ;
@@ -7465,9 +7465,9 @@ CODE_12BB75:    STA $042C                   ; $12:BB75: 8D 2C 04    ;
                 STZ $0248                   ; $12:BB95: 9C 48 02    ;
                 STZ $0249                   ; $12:BB98: 9C 49 02    ;
                 RTS                     ; $12:BB9B: 60          ;
-           
+
 DATA_12BB9C:    db $68,$BA,$BE,$C2                              ;
-                              
+
 CODE_12BBA0:    LDA $51,x               ; $12:BBA0: B5 51       ;
                 CMP #$01                ; $12:BBA2: C9 01       ;
                 BNE CODE_12BBAF         ; $12:BBA4: D0 09       ;
@@ -7540,7 +7540,7 @@ DATA_12BC16:    db $26,$26,$28                                  ;
 DATA_12BC19:    db $F8,$F8,$FB,$18,$18,$15                      ;
 
 DATA_12BC1F:    db $02,$03,$06,$FE,$FD,$FA                      ;
-             
+
 CODE_12BC25:    LDY #$00                    ; $12:BC25: A0 00       ;
                 CMP #$00                    ; $12:BC27: C9 00       ;
                 BEQ CODE_12BC31             ; $12:BC29: F0 06       ;
@@ -7563,7 +7563,7 @@ CODE_12BC31:    PHY                         ; $12:BC31: 5A          ;
                 LDA $EE                     ; $12:BC48: A5 EE       ;
                 BEQ CODE_12BC4D             ; $12:BC4A: F0 01       ;
                 RTS                     ; $12:BC4C: 60          ;
-                       
+
 CODE_12BC4D:    TYX                         ; $12:BC4D: BB          ;
                 PHX                         ; $12:BC4E: DA          ;
                 LDA $0713                   ; $12:BC4F: AD 13 07    ;
@@ -7604,7 +7604,7 @@ CODE_12BC80:    STA $0716                   ; $12:BC80: 8D 16 07    ;
                 BCS CODE_12BC9F                     ; $12:BC9A: B0 03       ;
                 PLX                         ; $12:BC9C: FA          ;
                 BRA CODE_12BCE4         ; $12:BC9D: 80 45       ;
-           
+
 CODE_12BC9F:    SEP #$20                    ; $12:BC9F: E2 20       ;
                 STA $01                     ; $12:BCA1: 85 01       ;
                 XBA                         ; $12:BCA3: EB          ;
@@ -7640,7 +7640,7 @@ CODE_12BCDE:    TXA                         ; $12:BCDE: 8A          ;
 CODE_12BCE4:    SEP #$30                    ; $12:BCE4: E2 30       ;
                 LDX $12                     ; $12:BCE6: A6 12       ;
                 RTS                     ; $12:BCE8: 60          ;
-                       
+
 CODE_12BCE9:    LDA $ED                     ; $12:BCE9: A5 ED       ;
                 PHA                         ; $12:BCEB: 48          ;
                 JSL CODE_139110             ; $12:BCEC: 22 10 91 13 ;
@@ -7693,7 +7693,7 @@ CODE_12BD47:    CPY #$2D                    ; $12:BD47: C0 2D       ;
                 JMP CODE_12D8FE             ; $12:BD4B: 4C FE D8    ;
 
 CODE_12BD4E:    RTS                     ; $12:BD4E: 60          ;
-                       
+
 CODE_12BD4F:    CPY #$12                    ; $12:BD4F: C0 12       ;
                 BNE CODE_12BD56             ; $12:BD51: D0 03       ;
                 JMP CODE_12C68E             ; $12:BD53: 4C 8E C6    ;
@@ -7761,7 +7761,7 @@ CODE_12BDB5:    CPY #$41                    ; $12:BDB5: C0 41       ;
                 JMP CODE_12C6E5             ; $12:BDC5: 4C E5 C6    ;
 
 CODE_12BDC8:    RTS                     ; $12:BDC8: 60          ;
-                       
+
 CODE_12BDC9:    LDY $90,x                   ; $12:BDC9: B4 90       ;
                 CPY #$38                    ; $12:BDCB: C0 38       ;
                 BNE CODE_12BDD2             ; $12:BDCD: D0 03       ;
@@ -8054,7 +8054,7 @@ CODE_12BFBC:    REP #$10                    ; $12:BFBC: C2 10       ;
 CODE_12C036:    SEP #$10                    ; $12:C036: E2 10       ;
                 LDX $12                     ; $12:C038: A6 12       ;
                 RTS                     ; $12:C03A: 60          ;
-                       
+
 CODE_12C03B:    LDA $0429                   ; $12:C03B: AD 29 04    ;
                 STA $0712                   ; $12:C03E: 8D 12 07    ;
                 LDA $021F                   ; $12:C041: AD 1F 02    ;
@@ -8070,7 +8070,7 @@ CODE_12C055:    CMP #$0180                  ; $12:C055: C9 80 01    ;
                 BCC CODE_12C05F             ; $12:C058: 90 05       ;
 CODE_12C05A:    SEP #$20                    ; $12:C05A: E2 20       ;
                 JMP CODE_12C0FE         ; $12:C05C: 4C FE C0    ;
-           
+
 CODE_12C05F:    SEP #$20                    ; $12:C05F: E2 20       ;
                 LDA $0C                     ; $12:C061: A5 0C       ;
                 AND #$20                    ; $12:C063: 29 20       ;
@@ -8151,7 +8151,7 @@ CODE_12C0B1:    ORA $0213                   ; $12:C0B1: 0D 13 02    ;
                 INX                         ; $12:C0FC: E8          ;
                 INX                         ; $12:C0FD: E8          ;
 CODE_12C0FE:    RTS                     ; $12:C0FE: 60          ;
-                       
+
 CODE_12C0FF:    LDA $02                     ; $12:C0FF: A5 02       ;
                 LSR A                       ; $12:C101: 4A          ;
                 PHP                         ; $12:C102: 08          ;
@@ -8232,7 +8232,7 @@ CODE_12C19D:    INX                         ; $12:C19D: E8          ;
                 INX                         ; $12:C19E: E8          ;
                 INX                         ; $12:C19F: E8          ;
                 RTS                     ; $12:C1A0: 60          ;
-                       
+
 CODE_12C1A1:    JSR CODE_12BDC9             ; $12:C1A1: 20 C9 BD    ;
                 LDA $ED                     ; $12:C1A4: A5 ED       ;
                 AND #$0C                    ; $12:C1A6: 29 0C       ;
@@ -8260,7 +8260,7 @@ CODE_12C1A1:    JSR CODE_12BDC9             ; $12:C1A1: 20 C9 BD    ;
                 SEP #$10                    ; $12:C1D5: E2 10       ;
                 LDX $12                     ; $12:C1D7: A6 12       ;
 CODE_12C1D9:    RTS                     ; $12:C1D9: 60          ;
-                       
+
 CODE_12C1DA:    LDA $28                     ; $12:C1DA: A5 28       ;
                 SBC $29,x                   ; $12:C1DC: F5 29       ;
                 STA $0F                     ; $12:C1DE: 85 0F       ;
@@ -8270,7 +8270,7 @@ CODE_12C1DA:    LDA $28                     ; $12:C1DA: A5 28       ;
                 BCS CODE_12C1E9                     ; $12:C1E6: B0 01       ;
                 INY                         ; $12:C1E8: C8          ;
 CODE_12C1E9:    RTS                     ; $12:C1E9: 60          ;
-                       
+
 CODE_12C1EA:    TXA                         ; $12:C1EA: 8A          ;
                 CLC                         ; $12:C1EB: 18          ;
                 ADC #$0A                    ; $12:C1EC: 69 0A       ;
@@ -8325,7 +8325,7 @@ CODE_12C23D:    LSR $01                     ; $12:C23D: 46 01       ;
                 STA $15,x                   ; $12:C243: 95 15       ;
 CODE_12C245:    LDX $12                     ; $12:C245: A6 12       ;
                 RTS                     ; $12:C247: 60          ;
-                       
+
 CODE_12C248:    LDA $3D,x                   ; $12:C248: B5 3D       ;
                 EOR #$FF                    ; $12:C24A: 49 FF       ;
                 CLC                         ; $12:C24C: 18          ;
@@ -8339,10 +8339,10 @@ CODE_12C259:    JMP CODE_12C1EF             ; $12:C259: 4C EF C1    ;
 
                 JSR CODE_12B1F9             ; $12:C25C: 20 F9 B1    ;
                 RTL                     ; $12:C25F: 6B          ;
-                       
+
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; /
-          
+
 CODE_12C270:    JSR CODE_12AF2D             ; $12:C270: 20 2D AF    ;
                 LDA #$04                    ; $12:C273: A9 04       ;
                 STA $0465,x                 ; $12:C275: 9D 65 04    ;
@@ -8587,10 +8587,10 @@ CODE_12C42A:    JSR CODE_12A6F9             ; $12:C42A: 20 F9 A6    ;
                 PLA                         ; $12:C462: 68          ;
                 STA $29,x                   ; $12:C463: 95 29       ;
 CODE_12C465:    RTS                     ; $12:C465: 60          ;
-                       
+
 CODE_12C466:    LDX $12                     ; $12:C466: A6 12       ;
                 RTS                     ; $12:C468: 60          ;
-                       
+
 CODE_12C469:    LDA #$00                    ; $12:C469: A9 00       ;
                 STA $045C,x                 ; $12:C46B: 9D 5C 04    ;
                 JSR CODE_12BB16             ; $12:C46E: 20 16 BB    ;
@@ -8661,7 +8661,7 @@ CODE_12C4E1:    JSR CODE_12BDC9             ; $12:C4E1: 20 C9 BD    ;
                 STA $0803,y                 ; $12:C4F0: 99 03 08    ;
                 SEP #$10                    ; $12:C4F3: E2 10       ;
                 RTS                     ; $12:C4F5: 60          ;
-                       
+
 CODE_12C4F6:    JSR CODE_12DDAB             ; $12:C4F6: 20 AB DD    ;
                 LDA $10                     ; $12:C4F9: A5 10       ;
                 AND #$03                    ; $12:C4FB: 29 03       ;
@@ -8770,7 +8770,7 @@ CODE_12C5B6:    JSR CODE_12C1EF             ; $12:C5B6: 20 EF C1    ;
                 AND #$02                    ; $12:C5C4: 29 02       ;
                 BNE CODE_12C5C9             ; $12:C5C6: D0 01       ;
                 RTS                     ; $12:C5C8: 60          ;
-                       
+
 CODE_12C5C9:    LDA $02F6                   ; $12:C5C9: AD F6 02    ;
                 STA $02F8                   ; $12:C5CC: 8D F8 02    ;
                 LDA $02F7                   ; $12:C5CF: AD F7 02    ;
@@ -8805,7 +8805,7 @@ CODE_12C5D8:    JSR CODE_12B331         ; $12:C5D8: 20 31 B3    ; \ Check if fre
                 STA $B1,x               ; $12:C60E: 95 B1       ; /
 CODE_12C610:    LDX $12                 ; $12:C610: A6 12       ; X = old sprite index.
                 RTS                     ; $12:C612: 60          ; Return.
-                       
+
 CODE_12C613:    JSR CODE_12BB16             ; $12:C613: 20 16 BB    ;
                 INC $9F,x                   ; $12:C616: F6 9F       ;
                 LDA $042F,x                 ; $12:C618: BD 2F 04    ;
@@ -8905,7 +8905,7 @@ CODE_12C68E:    JSR CODE_12BDC9             ; $12:C68E: 20 C9 BD    ;
                 STA $65,x                   ; $12:C6E0: 95 65       ;
 CODE_12C6E2:    SEP #$20                    ; $12:C6E2: E2 20       ;
                 RTS                     ; $12:C6E4: 60          ;
-                       
+
 CODE_12C6E5:    JSL CODE_15D21F             ; $12:C6E5: 22 1F D2 15 ;
                 BCS CODE_12C6E2                     ; $12:C6E9: B0 F7       ;
                 REP #$30                    ; $12:C6EB: C2 30       ;
@@ -9005,7 +9005,7 @@ CODE_12C789:    LDX $070B                   ; $12:C789: AE 0B 07    ;
 CODE_12C7B3:    SEP #$30                    ; $12:C7B3: E2 30       ;
                 LDX $12                     ; $12:C7B5: A6 12       ;
                 RTS                     ; $12:C7B7: 60          ;
-                       
+
 CODE_12C7B8:    LDA $0800,x                 ; $12:C7B8: BD 00 08    ;
                 CMP #$F8                    ; $12:C7BB: C9 F8       ;
                 BCC CODE_12C7F7             ; $12:C7BD: 90 38       ;
@@ -9037,7 +9037,7 @@ CODE_12C7B8:    LDA $0800,x                 ; $12:C7B8: BD 00 08    ;
                 DEC A                       ; $12:C7F3: 3A          ;
                 STA $0A20,y                 ; $12:C7F4: 99 20 0A    ;
 CODE_12C7F7:    RTS                     ; $12:C7F7: 60          ;
-                       
+
 CODE_12C7F8:    JSR CODE_12AF2D             ; $12:C7F8: 20 2D AF    ;
                 LDA #$02                    ; $12:C7FB: A9 02       ;
                 LDY $0635                   ; $12:C7FD: AC 35 06    ;
@@ -9045,7 +9045,7 @@ CODE_12C7F8:    JSR CODE_12AF2D             ; $12:C7F8: 20 2D AF    ;
                 LDA #$04                    ; $12:C802: A9 04       ;
 CODE_12C804:    STA $0465,x                 ; $12:C804: 9D 65 04    ;
                 RTS                     ; $12:C807: 60          ;
-                       
+
 CODE_12C808:    JSR CODE_12BB16             ; $12:C808: 20 16 BB    ;
                 LDA $045C,x                 ; $12:C80B: BD 5C 04    ;
                 BEQ CODE_12C813             ; $12:C80E: F0 03       ;
@@ -9167,7 +9167,7 @@ CODE_12C8F3:    LDA #$43                    ; $12:C8F3: A9 43       ;
                 LDA #$33                    ; $12:C8F7: A9 33       ;
                 STA $046E,x                 ; $12:C8F9: 9D 6E 04    ;
                 RTS                     ; $12:C8FC: 60          ;
-                       
+
 CODE_12C8FD:    JSR CODE_12BDD2             ; $12:C8FD: 20 D2 BD    ;
                 LDA $EE                     ; $12:C900: A5 EE       ;
                 ORA $B1,x                   ; $12:C902: 15 B1       ;
@@ -9195,7 +9195,7 @@ CODE_12C92A:    LDX #$78                ; $12:C92A: A2 78 20    ;
                 STA $0213                   ; $12:C930: 8D 13 02    ;
                 LDX $12                     ; $12:C933: A6 12       ;
 CODE_12C935:    RTS                     ; $12:C935: 60          ;
-                       
+
 CODE_12C936:    LDY $6F,x                   ; $12:C936: B4 6F       ;
                 STZ $ED                     ; $12:C938: 64 ED       ;
                 LDA $29,x                   ; $12:C93A: B5 29       ;
@@ -9225,7 +9225,7 @@ CODE_12C960:    CLC                         ; $12:C960: 18          ;
                 LDA #$08                    ; $12:C975: A9 08       ;
                 STA $ED                     ; $12:C977: 85 ED       ;
 CODE_12C979:    RTS                     ; $12:C979: 60          ;
-                       
+
 CODE_12C97A:    LDA $B1,x                   ; $12:C97A: B5 B1       ;
                 BEQ CODE_12C981             ; $12:C97C: F0 03       ;
                 BRL CODE_12CA20             ; $12:C97E: 82 9F 00    ;
@@ -9283,7 +9283,7 @@ CODE_12C981:    LDA $A8,x                   ; $12:C981: B5 A8       ;
                 STA $02F9                   ; $12:C9FD: 8D F9 02    ;
                 LDX $12                     ; $12:CA00: A6 12       ;
 CODE_12CA02:    RTS                     ; $12:CA02: 60          ;
-                       
+
 CODE_12CA03:    LDA $5B,x                   ; $12:CA03: B5 5B       ;
                 AND #$10                    ; $12:CA05: 29 10       ;
                 BEQ CODE_12CA20             ; $12:CA07: F0 17       ;
@@ -9346,9 +9346,9 @@ CODE_12CA80:    JSR CODE_129F96             ; $12:CA80: 20 96 9F    ;
                 LDA #$02                    ; $12:CA88: A9 02       ;
                 STA $0465,x                 ; $12:CA8A: 9D 65 04    ;
                 JMP CODE_12AF50         ; $12:CA8D: 4C 50 AF    ;
-       
+
 CODE_12CA90:    RTS                     ; $12:CA90: 60          ;
-                       
+
 CODE_12CA91:    JSR CODE_12BB16             ; $12:CA91: 20 16 BB    ;
                 LDY #$00                    ; $12:CA94: A0 00       ;
                 LDA $0477,x                 ; $12:CA96: BD 77 04    ;
@@ -9559,7 +9559,7 @@ CODE_12CC44:    TYA                         ; $12:CC44: 98          ;
                 JSR CODE_129F7A             ; $12:CC46: 20 7A 9F    ;
                 LDX $12                     ; $12:CC49: A6 12       ;
 CODE_12CC4B:    RTS                         ; $12:CC4B: 60          ;
-                       
+
 CODE_12CC4C:    LDA $0429                   ; $12:CC4C: AD 29 04    ;
                 STA $08                     ; $12:CC4F: 85 08       ;
                 LDA $021F                   ; $12:CC51: AD 1F 02    ;
@@ -9585,7 +9585,7 @@ CODE_12CC74:    LDA $08                     ; $12:CC74: A5 08       ;
                 TSB $ED                     ; $12:CC82: 04 ED       ;
 CODE_12CC84:    SEP #$20                    ; $12:CC84: E2 20       ;
                 RTS                     ; $12:CC86: 60          ;
-                       
+
 CODE_12CC87:    LDA $0429                   ; $12:CC87: AD 29 04    ;
                 STA $08                     ; $12:CC8A: 85 08       ;
                 LDA $021F                   ; $12:CC8C: AD 1F 02    ;
@@ -9609,14 +9609,14 @@ CODE_12CCB3:    SEP #$20                    ; $12:CCB3: E2 20       ;
                 LDA $08                     ; $12:CCB5: A5 08       ;
                 STA $01                     ; $12:CCB7: 85 01       ;
                 RTS                     ; $12:CCB9: 60          ;
-                       
+
 CODE_12CCBA:    JSR CODE_129F96             ; $12:CCBA: 20 96 9F    ;
                 LDA $33,x                   ; $12:CCBD: B5 33       ;
                 SEC                         ; $12:CCBF: 38          ;
                 SBC #$08                    ; $12:CCC0: E9 08       ;
                 STA $79,x                   ; $12:CCC2: 95 79       ;
                 RTS                     ; $12:CCC4: 60          ;
-                       
+
 CODE_12CCC5:    JSR CODE_12BB16             ; $12:CCC5: 20 16 BB    ;
                 JSR CODE_12BA4F             ; $12:CCC8: 20 4F BA    ;
                 JSR CODE_12BA46             ; $12:CCCB: 20 46 BA    ;
@@ -9625,16 +9625,16 @@ CODE_12CCC5:    JSR CODE_12BB16             ; $12:CCC5: 20 16 BB    ;
                 BNE CODE_12CD06         ; $12:CCD4: D0 30       ; / If not, branch.
                 STA $3D,x               ; $12:CCD6: 95 3D       ; X speed = #$00.
                 JSR CODE_12C1DA             ; $12:CCD8: 20 DA C1    ;
-                LDA $0F                 ; $12:CCDB: A5 0F       ; \ Check if player is near enough to Cobrat.  
+                LDA $0F                 ; $12:CCDB: A5 0F       ; \ Check if player is near enough to Cobrat.
                 ADC #$40                ; $12:CCDD: 69 40       ;  |
                 CMP #$80                ; $12:CCDF: C9 80       ;  |
-                BCS CODE_12CCEC         ; $12:CCE1: B0 09       ; / If not, do regular routine. (Remain in sand)      
+                BCS CODE_12CCEC         ; $12:CCE1: B0 09       ; / If not, do regular routine. (Remain in sand)
                 INC $0480,x             ; $12:CCE3: FE 80 04    ; Don't retreat into sand anymore.
                 LDA #$C0                ; $12:CCE6: A9 C0       ; \ Jump up.
                 STA $47,x               ; $12:CCE8: 95 47       ; /
-                BNE CODE_12CD06         ; $12:CCEA: D0 1A       ; Branch. 
+                BNE CODE_12CD06         ; $12:CCEA: D0 1A       ; Branch.
 
-CODE_12CCEC:    INC $0477,x             ; $12:CCEC: FE 77 04    ; Increase every frame.  
+CODE_12CCEC:    INC $0477,x             ; $12:CCEC: FE 77 04    ; Increase every frame.
                 LDY #$FC                ; $12:CCEF: A0 FC       ; \ Y speed = #$FC for $20 frames.
                 LDA $0477,x             ; $12:CCF1: BD 77 04    ;  |
                 AND #$20                ; $12:CCF4: 29 20       ;  |
@@ -9693,7 +9693,7 @@ CODE_12CD50:    JSR CODE_12BB16             ; $12:CD50: 20 16 BB    ;
                 LDA $79,x                   ; $12:CD62: B5 79       ;
                 STA $33,x                   ; $12:CD64: 95 33       ;
                 RTS                     ; $12:CD66: 60          ;
-                       
+
 CODE_12CD67:    JSR CODE_12C1DA             ; $12:CD67: 20 DA C1    ;
                 INY                         ; $12:CD6A: C8          ;
                 STY $6F,x                   ; $12:CD6B: 94 6F       ;
@@ -9915,7 +9915,7 @@ CODE_12CF37:    DEC $09                     ; $12:CF37: C6 09       ;
                 JSR CODE_12C03B             ; $12:CF4F: 20 3B C0    ;
 CODE_12CF52:    LDX $12                     ; $12:CF52: A6 12       ;
                 RTS                         ; $12:CF54: 60          ;
-                       
+
 CODE_12CF55:    STZ $ED                     ; $12:CF55: 64 ED       ;
                 REP #$20                    ; $12:CF57: C2 20       ;
                 AND #$00FF                  ; $12:CF59: 29 FF 00    ;
@@ -9949,7 +9949,7 @@ CODE_12CF79:    LDX $12                     ; $12:CF79: A6 12       ;
                 AND #$00FF                  ; $12:CF95: 29 FF 00    ;
                 SEP #$20                    ; $12:CF98: E2 20       ;
                 RTS                     ; $12:CF9A: 60          ;
-                       
+
 DATA_12CF9B:    db $FF                                          ;
 
 DATA_12CF9C:    db $FF                                          ;
@@ -9963,11 +9963,11 @@ DATA_12CF9E:    db $FF,$88,$88,$88,$FF,$98,$98,$98              ;
 
 DATA_12CFB7:    db $00,$01,$00,$01,$01,$02,$01,$02              ;
                 db $03,$04,$05,$06                              ;
-                 
+
 CODE_12CFC3:    LDA $B1,x                       ; $12:CFC3: B5 B1       ;
                 BNE CODE_12CFCA                 ; $12:CFC5: D0 03       ;
                 JMP CODE_12D191                     ; $12:CFC7: 4C 91 D1    ;
-            
+
 CODE_12CFCA:    LDY #$03                ; $12:CFCA: A0 03       ;
                 LDA $47,x               ; $12:CFCC: B5 47       ;
                 BEQ CODE_12CFD4             ; $12:CFCE: F0 04       ;
@@ -10007,7 +10007,7 @@ CODE_12CFF7:    JSR CODE_12C1EA             ; $12:CFF7: 20 EA C1    ;
                 LDA #$00                    ; $12:D01D: A9 00       ;
                 STA $0050                   ; $12:D01F: 8D 50 00    ;
                 RTS                     ; $12:D022: 60          ;
-                       
+
 CODE_12D023:    LDA $33,x                   ; $12:D023: B5 33       ;
                 CMP #$30                    ; $12:D025: C9 30       ;
                 BCS CODE_12D047                     ; $12:D027: B0 1E       ;
@@ -10164,7 +10164,7 @@ CODE_12D179:    STA $09AE                   ; $12:D179: 8D AE 09    ;
                 STA $09B9                   ; $12:D18B: 8D B9 09    ;
 CODE_12D18E:    LDX $12                     ; $12:D18E: A6 12       ;
                 RTS                         ; $12:D190: 60          ;
-                       
+
 CODE_12D191:    LDA $A8,x                   ; $12:D191: B5 A8       ;
                 CMP #$01                    ; $12:D193: C9 01       ;
                 BNE CODE_12D1A5             ; $12:D195: D0 0E       ;
@@ -10214,13 +10214,13 @@ CODE_12D1A8:    LDA $EE                     ; $12:D1A8: A5 EE       ;
                 STZ $02F9                   ; $12:D1F5: 9C F9 02    ;
                 LDX #$94                    ; $12:D1F8: A2 94       ;
                 JMP CODE_12BED0             ; $12:D1FA: 4C D0 BE    ;
- 
+
 DATA_12D1FD:    db $7C,$DC,$80,$E0                              ;
 
 DATA_12D201:    db $80,$E0,$7C,$DC                              ;
 
 DATA_12D205:    db $EC,$EE,$EC,$EE                              ;
-              
+
 CODE_12D209:    LDA $046E,x             ; $12:D209: BD 6E 04    ;
                 STA $071E                   ; $12:D20C: 8D 1E 07    ;
                 STZ $ED                 ; $12:D20F: 64 ED       ;
@@ -10317,7 +10317,7 @@ CODE_12D29E:    PHX                         ; $12:D29E: DA          ;
                 BEQ CODE_12D2DF             ; $12:D2D9: F0 04       ;
                 LDA #$F0                    ; $12:D2DB: A9 F0       ;
                 BRA CODE_12D2EB             ; $12:D2DD: 80 0C       ;
-      
+
 CODE_12D2DF:    STZ $0249                   ; $12:D2DF: 9C 49 02    ;
                 PHX                         ; $12:D2E2: DA          ;
                 LDX $0718                   ; $12:D2E3: AE 18 07    ;
@@ -10331,14 +10331,14 @@ CODE_12D2EB:    JSR CODE_12BDD5             ; $12:D2EB: 20 D5 BD    ;
                 LDA $071E                   ; $12:D2F6: AD 1E 07    ;
                 STA $046E,x                 ; $12:D2F9: 9D 6E 04    ;
                 RTS                     ; $12:D2FC: 60          ;
-                       
+
 CODE_12D2FD:    JSR CODE_129F96             ; $12:D2FD: 20 96 9F    ;
                 LDA #$04                    ; $12:D300: A9 04       ;
                 STA $0465,x                 ; $12:D302: 9D 65 04    ;
                 LDA #$00                    ; $12:D305: A9 00       ;
                 STA $79,x                   ; $12:D307: 95 79       ;
                 RTS                     ; $12:D309: 60          ;
-                       
+
 CODE_12D30A:    LDA #$02                    ; $12:D30A: A9 02       ;
                 STA $6F,x                   ; $12:D30C: 95 6F       ;
                 INC $9F,x                   ; $12:D30E: F6 9F       ;
@@ -10434,7 +10434,7 @@ CODE_12D3C4:    LDA $5B,x                   ; $12:D3C4: B5 5B       ;
                 LDA #$1F                    ; $12:D3D6: A9 1F       ;
                 STA $86,x                   ; $12:D3D8: 95 86       ;
                 RTS                     ; $12:D3DA: 60          ;
-                       
+
 CODE_12D3DB:    LDA #$02                    ; $12:D3DB: A9 02       ;
                 STA $6F,x                   ; $12:D3DD: 95 6F       ;
                 LDA $10                     ; $12:D3DF: A5 10       ;
@@ -10483,7 +10483,7 @@ CODE_12D433:    LDA $50                     ; $12:D433: A5 50       ;
                 JMP CODE_12A0B2             ; $12:D43C: 4C B2 A0    ;
 
 CODE_12D43F:    RTS                     ; $12:D43F: 60          ;
-                       
+
 CODE_12D440:    LDA $B1,x                   ; $12:D440: B5 B1       ;
                 BNE CODE_12D4B6             ; $12:D442: D0 72       ;
                 LDA $5B,x                   ; $12:D444: B5 5B       ;
@@ -10641,12 +10641,12 @@ CODE_12D55C:    LDA $33,x                   ; $12:D55C: B5 33       ;
                 LDA #$52                    ; $12:D58F: A9 52       ;
 CODE_12D591:    STA $046E,x                 ; $12:D591: 9D 6E 04    ;
                 RTS                     ; $12:D594: 60          ;
-                       
+
 CODE_12D595:    JSR CODE_129F96             ; $12:D595: 20 96 9F    ;
                 LDA $33,x                   ; $12:D598: B5 33       ;
                 STA $B1,x                   ; $12:D59A: 95 B1       ;
                 RTS                     ; $12:D59C: 60          ;
-                       
+
 CODE_12D59D:    INC $9F,x                   ; $12:D59D: F6 9F       ;
                 INC $9F,x                   ; $12:D59F: F6 9F       ;
                 INC $79,x                   ; $12:D5A1: F6 79       ;
@@ -10786,7 +10786,7 @@ CODE_12D632:    JSL CODE_14E483             ; $12:D632: 22 83 E4 14 ;
                 JSR CODE_12D6D6             ; $12:D6D0: 20 D6 D6    ;
                 LDX $12                     ; $12:D6D3: A6 12       ;
 CODE_12D6D5:    RTS                     ; $12:D6D5: 60          ;
-                       
+
 CODE_12D6D6:    REP #$20                    ; $12:D6D6: C2 20       ;
                 LDA $0712                   ; $12:D6D8: AD 12 07    ;
                 CMP #$00F0                  ; $12:D6DB: C9 F0 00    ;
@@ -10835,7 +10835,7 @@ CODE_12D6F5:    PHA                         ; $12:D6F5: 48          ;
                 STA $0A21,y                 ; $12:D734: 99 21 0A    ;
                 SEP #$10                    ; $12:D737: E2 10       ;
                 RTS                     ; $12:D739: 60          ;
-                       
+
 CODE_12D73A:    JSR CODE_12D741             ; $12:D73A: 20 41 D7    ;
                 JSL CODE_14E483             ; $12:D73D: 22 83 E4 14 ;
 CODE_12D741:    REP #$10                    ; $12:D741: C2 10       ;
@@ -10879,7 +10879,7 @@ CODE_12D76F:    TXA                         ; $12:D76F: 8A          ;
                 STA $0A21,y                 ; $12:D790: 99 21 0A    ;
                 SEP #$10                    ; $12:D793: E2 10       ;
                 RTS                     ; $12:D795: 60          ;
-                       
+
 CODE_12D796:    INC $9F,x                   ; $12:D796: F6 9F       ;
                 JSR CODE_12BB16             ; $12:D798: 20 16 BB    ;
                 JSR CODE_12BA46             ; $12:D79B: 20 46 BA    ;
@@ -10933,7 +10933,7 @@ CODE_12D800:    JSR CODE_12AC78             ; $12:D800: 20 78 AC    ;
                 LDA #$03                    ; $12:D803: A9 03       ;
                 STA $0465,x                 ; $12:D805: 9D 65 04    ;
                 RTS                     ; $12:D808: 60          ;
-                       
+
 CODE_12D809:    JSR CODE_12D8FE             ; $12:D809: 20 FE D8    ;
                 LDA #$06                    ; $12:D80C: A9 06       ;
                 STA $046E,x                 ; $12:D80E: 9D 6E 04    ;
@@ -10982,7 +10982,7 @@ CODE_12D850:    DEC $0480,x                 ; $12:D850: DE 80 04    ;
                 PLA                         ; $12:D873: 68          ;
                 PLA                         ; $12:D874: 68          ;
 CODE_12D875:    RTS                     ; $12:D875: 60          ;
-                       
+
 CODE_12D876:    LDA $0480,x                 ; $12:D876: BD 80 04    ;
                 CMP #$30                    ; $12:D879: C9 30       ;
                 BNE CODE_12D8B0             ; $12:D87B: D0 33       ;
@@ -11011,7 +11011,7 @@ CODE_12D876:    LDA $0480,x                 ; $12:D876: BD 80 04    ;
 CODE_12D8AB:    LDA #$2D                    ; $12:D8AB: A9 2D       ;
                 STA $1DE0                   ; $12:D8AD: 8D E0 1D    ;
 CODE_12D8B0:    RTS                     ; $12:D8B0: 60          ;
-                       
+
 CODE_12D8B1:    LDA #$03                    ; $12:D8B1: A9 03       ;
                 STA $046E,x                 ; $12:D8B3: 9D 6E 04    ;
                 LDA #$00                    ; $12:D8B6: A9 00       ;
@@ -11265,7 +11265,7 @@ CODE_12DAEE:    STA $0A20,y                 ; $12:DAEE: 99 20 0A    ;
 CODE_12DAF1:    SEP #$10                    ; $12:DAF1: E2 10       ;
                 LDX $12                     ; $12:DAF3: A6 12       ;
                 RTS                     ; $12:DAF5: 60          ;
-                       
+
 CODE_12DAF6:    LDA $9C                     ; $12:DAF6: A5 9C       ;
                 BNE CODE_12DB42             ; $12:DAF8: D0 48       ;
                 LDA $10                     ; $12:DAFA: A5 10       ;
@@ -11303,14 +11303,14 @@ CODE_12DB37:    LDY #$33                    ; $12:DB37: A0 33       ;
                 LDA #$D0                    ; $12:DB3E: A9 D0       ;
                 STA $47,x                   ; $12:DB40: 95 47       ;
 CODE_12DB42:    RTS                     ; $12:DB42: 60          ;
-                       
+
 CODE_12DB43:    JSR CODE_129F96             ; $12:DB43: 20 96 9F    ;
                 LDA #$06                    ; $12:DB46: A9 06       ;
                 STA $0465,x                 ; $12:DB48: 9D 65 04    ;
                 LDA $15,x                   ; $12:DB4B: B5 15       ;
                 STA $04F0,x                 ; $12:DB4D: 9D F0 04    ;
                 RTS                     ; $12:DB50: 60          ;
-                       
+
 CODE_12DB51:    LDA $B1,x                   ; $12:DB51: B5 B1       ;
                 BNE CODE_12DBC8             ; $12:DB53: D0 73       ;
                 LDA $0465,x                 ; $12:DB55: BD 65 04    ;
@@ -11412,7 +11412,7 @@ CODE_12DC1C:    INC $9F,x                   ; $12:DC1C: F6 9F       ;
                 JMP CODE_12BD29             ; $12:DC26: 4C 29 BD    ;
 
 CODE_12DC29:    RTS                     ; $12:DC29: 60          ;
-                       
+
 CODE_12DC2A:    REP #$20                    ; $12:DC2A: C2 20       ;
                 LDA $02F6                   ; $12:DC2C: AD F6 02    ;
                 STA $126C                   ; $12:DC2F: 8D 6C 12    ;
@@ -11566,12 +11566,12 @@ CODE_12DCE0:    REP #$30                    ; $12:DCE0: C2 30       ;
 CODE_12DD70:    SEP #$10                    ; $12:DD70: E2 10       ;
                 LDX $12                     ; $12:DD72: A6 12       ;
                 RTS                     ; $12:DD74: 60          ;
-                       
+
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF                                  ; /
-          
+
 CODE_12DD90:    JSR CODE_12DE5A                 ; $12:DD90: 20 5A DE    ;
                 TAY                         ; $12:DD93: A8          ;
                 LDA $46,x               ; $12:DD94: B5 46       ;
@@ -11585,7 +11585,7 @@ CODE_12DD99:    JSR CODE_12E445             ; $12:DD99: 20 45 E4    ;
                 CLC                         ; $12:DDA4: 18          ;
 CODE_12DDA5:    DEX                         ; $12:DDA5: CA          ;
                 RTS                     ; $12:DDA6: 60          ;
-                       
+
 CODE_12DDA7:    LDA #$04                    ; $12:DDA7: A9 04       ;
                 BNE CODE_12DDAD             ; $12:DDA9: D0 02       ;
 
@@ -11660,7 +11660,7 @@ CODE_12DE27:    LDA $3C,x                   ; $12:DE27: B5 3C       ;
 CODE_12DE33:    JSR CODE_12DE38             ; $12:DE33: 20 38 DE    ;
                 DEX                         ; $12:DE36: CA          ;
                 RTS                     ; $12:DE37: 60          ;
-                       
+
 CODE_12DE38:    LDY $08                     ; $12:DE38: A4 08       ;
                 JSL CODE_13F900             ; $12:DE3A: 22 00 F9 13 ;
                 LDY $07                     ; $12:DE3E: A4 07       ;
@@ -11676,7 +11676,7 @@ CODE_12DE38:    LDY $08                     ; $12:DE38: A4 08       ;
 CODE_12DE55:    INC $07                     ; $12:DE55: E6 07       ;
                 INC $08                     ; $12:DE57: E6 08       ;
                 RTS                     ; $12:DE59: 60          ;
-                       
+
 CODE_12DE5A:    INX                         ; $12:DE5A: E8          ;
                 LDA $5A,x                   ; $12:DE5B: B5 5A       ;
                 STA $0D                     ; $12:DE5D: 85 0D       ;
@@ -11685,7 +11685,7 @@ CODE_12DE5A:    INX                         ; $12:DE5A: E8          ;
                 LDY $0491,x                 ; $12:DE63: BC 91 04    ;
                 LDA.w DATA_11CAFD,y                 ; $12:DE66: B9 FD CA    ;
 CODE_12DE69:    RTS                     ; $12:DE69: 60          ;
-                       
+
 CODE_12DE6A:    LDA #$00                    ; $12:DE6A: A9 00       ;
                 STA $04CD,x                 ; $12:DE6C: 9D CD 04    ;
                 LDA $5B,x                   ; $12:DE6F: B5 5B       ;
@@ -11831,7 +11831,7 @@ CODE_12DF8D:    DEX                         ; $12:DF8D: CA          ;
 
 CODE_12DF93:    LDX $12                     ; $12:DF93: A6 12       ;
 CODE_12DF95:    RTS                     ; $12:DF95: 60          ;
-                       
+
 CODE_12DF96:    TXA                         ; $12:DF96: 8A          ;
                 BNE CODE_12DFA4             ; $12:DF97: D0 0B       ;
                 LDA $9C                     ; $12:DF99: A5 9C       ;
@@ -11891,7 +11891,7 @@ CODE_12DFE7:    LDA $0627                   ; $12:DFE7: AD 27 06    ;
 CODE_12E014:    JMP CODE_128B20             ; $12:E014: 4C 20 8B    ;
 
 CODE_12E017:    RTS                     ; $12:E017: 60          ;
-                       
+
 CODE_12E018:    LDY $12                     ; $12:E018: A4 12       ;
                 TXA                         ; $12:E01A: 8A          ;
                 BNE CODE_12E020             ; $12:E01B: D0 03       ;
@@ -11956,7 +11956,7 @@ CODE_12E091:    LDA $8F,x                   ; $12:E091: B5 8F       ;
                 JSR CODE_12E332             ; $12:E09D: 20 32 E3    ;
 CODE_12E0A0:    LDX $EC                     ; $12:E0A0: A6 EC       ;
                 RTS                     ; $12:E0A2: 60          ;
-                       
+
 CODE_12E0A3:    LDA $ED                     ; $12:E0A3: A5 ED       ;
                 AND #$08                    ; $12:E0A5: 29 08       ;
                 BNE CODE_12E0F5             ; $12:E0A7: D0 4C       ;
@@ -11980,7 +11980,7 @@ CODE_12E0C3:    LDY $04C4                   ; $12:E0C3: AC C4 04    ;
                 BCC CODE_12E0F5             ; $12:E0D2: 90 21       ;
                 JSL CODE_14E098             ; $12:E0D4: 22 98 E0 14 ;
                 RTS                     ; $12:E0D8: 60          ;
-                       
+
 CODE_12E0D9:    CMP #$17                    ; $12:E0D9: C9 17       ;
                 BNE CODE_12E0E2             ; $12:E0DB: D0 05       ;
                 LDY $0595                   ; $12:E0DD: AC 95 05    ;
@@ -11994,7 +11994,7 @@ CODE_12E0E2:    CMP #$45                ; $12:E0E2: C9 45       ; \ If in contac
                 LDA #$00                ; $12:E0F0: A9 00       ; \ Remove sprite.
                 STA $0051,y             ; $12:E0F2: 99 51 00    ; /
 CODE_12E0F5:    RTS                     ; $12:E0F5: 60          ; Return.
-                       
+
 CODE_12E0F6:    CMP #$28                    ; $12:E0F6: C9 28       ;
                 BNE CODE_12E111             ; $12:E0F8: D0 17       ;
                 LDA $0079,y                 ; $12:E0FA: B9 79 00    ;
@@ -12007,7 +12007,7 @@ CODE_12E0F6:    CMP #$28                    ; $12:E0F6: C9 28       ;
                 LDA #$00                    ; $12:E10B: A9 00       ;
                 STA $0047,y                 ; $12:E10D: 99 47 00    ;
 CODE_12E110:    RTS                     ; $12:E110: 60          ;
-                       
+
 CODE_12E111:    CMP #$2C                    ; $12:E111: C9 2C       ;
                 BNE CODE_12E119             ; $12:E113: D0 04       ;
                 LDA $B1,x                   ; $12:E115: B5 B1       ;
@@ -12046,7 +12046,7 @@ CODE_12E14A:    LDY $12                     ; $12:E14A: A4 12       ;
                 LDA $0F                     ; $12:E15D: A5 0F       ;
                 BNE CODE_12E162             ; $12:E15F: D0 01       ;
                 RTS                     ; $12:E161: 60          ;
-                       
+
 CODE_12E162:    AND #$0B                    ; $12:E162: 29 0B       ;
                 BEQ CODE_12E169             ; $12:E164: F0 03       ;
 CODE_12E166:    JMP CODE_12E2CD             ; $12:E166: 4C CD E2    ;
@@ -12061,7 +12061,7 @@ CODE_12E169:    LDA #$00                    ; $12:E169: A9 00       ;
                 AND #$02                    ; $12:E178: 29 02       ;
                 BNE CODE_12E19F             ; $12:E17A: D0 23       ;
                 BIT $FA                 ; $12:E17C: 24 FA       ; \ Don't pick enemy up if not pressing X nor Y.
-                BVC CODE_12E19F         ; $12:E17E: 50 1F       ; /     
+                BVC CODE_12E19F         ; $12:E17E: 50 1F       ; /
                 LDA $9C                     ; $12:E180: A5 9C       ;
                 ORA $9A                     ; $12:E182: 05 9A       ;
                 BNE CODE_12E19F             ; $12:E184: D0 19       ;
@@ -12077,7 +12077,7 @@ CODE_12E169:    LDA #$00                    ; $12:E169: A9 00       ;
                 JSR CODE_12C5D8         ; $12:E19C: 20 D8 C5    ; Generate carpet.
 CODE_12E19F:    LDX $EC                     ; $12:E19F: A6 EC       ;
                 RTS                     ; $12:E1A1: 60          ;
-                       
+
 CODE_12E1A2:    LDY $12                     ; $12:E1A2: A4 12       ;
                 TXA                         ; $12:E1A4: 8A          ;
                 BEQ CODE_12E1D4             ; $12:E1A5: F0 2D       ;
@@ -12102,7 +12102,7 @@ CODE_12E1C9:    JSR CODE_12E42C             ; $12:E1C9: 20 2C E4    ;
 CODE_12E1D0:    JMP CODE_12E2BD             ; $12:E1D0: 4C BD E2    ;
 
 CODE_12E1D3:    RTS                     ; $12:E1D3: 60          ;
-                       
+
 CODE_12E1D4:    LDA $005B,y                 ; $12:E1D4: B9 5B 00    ;
                 ORA #$40                    ; $12:E1D7: 09 40       ;
                 STA $005B,y                 ; $12:E1D9: 99 5B 00    ;
@@ -12142,7 +12142,7 @@ CODE_12E1F2:    JSR CODE_12E42C             ; $12:E1F2: 20 2C E4    ;
                 LDA #$10                    ; $12:E224: A9 10       ;
                 STA $82                     ; $12:E226: 85 82       ;
 CODE_12E228:    RTS                     ; $12:E228: 60          ;
-                       
+
 CODE_12E229:    TXA                         ; $12:E229: 8A          ;
                 BEQ CODE_12E228             ; $12:E22A: F0 FC       ;
                 JMP CODE_12E2BD             ; $12:E22C: 4C BD E2    ;
@@ -12156,7 +12156,7 @@ CODE_12E22F:    LDY $12                     ; $12:E22F: A4 12       ;
                 LDA $04E1                   ; $12:E23B: AD E1 04    ;
                 BEQ CODE_12E263             ; $12:E23E: F0 23       ;
 CODE_12E240:    RTS                     ; $12:E240: 60          ;
-                       
+
 CODE_12E241:    JSR CODE_12E37E             ; $12:E241: 20 7E E3    ;
                 LDA $0F                     ; $12:E244: A5 0F       ;
                 AND #$08                    ; $12:E246: 29 08       ;
@@ -12191,7 +12191,7 @@ CODE_12E266:    LDA $8F,x                   ; $12:E266: B5 8F       ;
                 BNE CODE_12E289             ; $12:E284: D0 03       ;
                 INC $04FB                   ; $12:E286: EE FB 04    ;
 CODE_12E289:    RTS                     ; $12:E289: 60          ;
-                       
+
 CODE_12E28A:    CMP #$32                    ; $12:E28A: C9 32       ;
                 BCS CODE_12E289                     ; $12:E28C: B0 FB       ;
                 CMP #$11                    ; $12:E28E: C9 11       ;
@@ -12201,7 +12201,7 @@ CODE_12E28A:    CMP #$32                    ; $12:E28A: C9 32       ;
                 LDA #$1E                    ; $12:E297: A9 1E       ;
                 STA $0086,y                 ; $12:E299: 99 86 00    ;
                 RTS                     ; $12:E29C: 60          ;
-                       
+
 CODE_12E29D:    LDA $0051,y                 ; $12:E29D: B9 51 00    ;
                 CMP #$04                    ; $12:E2A0: C9 04       ;
                 BEQ CODE_12E2BF             ; $12:E2A2: F0 1B       ;
@@ -12225,7 +12225,7 @@ CODE_12E2BF:    JSR CODE_12E332             ; $12:E2BF: 20 32 E3    ;
                 ASL A                       ; $12:E2C9: 0A          ;
                 ROR $3C,x                   ; $12:E2CA: 76 3C       ;
 CODE_12E2CC:    RTS                     ; $12:E2CC: 60          ;
-                       
+
 CODE_12E2CD:    LDA $85                     ; $12:E2CD: A5 85       ;
                 BNE CODE_12E304             ; $12:E2CF: D0 33       ;
                 LDA $04C3                   ; $12:E2D1: AD C3 04    ;
@@ -12254,7 +12254,7 @@ CODE_12E2FD:    STA $46                     ; $12:E2FD: 85 46       ;
 CODE_12E2FF:    LDA #$33                    ; $12:E2FF: A9 33       ;
                 STA $1DE0                   ; $12:E301: 8D E0 1D    ;
 CODE_12E304:    RTS                     ; $12:E304: 60          ;
-                       
+
 CODE_12E305:    TXA                         ; $12:E305: 8A          ;
                 PHA                         ; $12:E306: 48          ;
                 LDX $12                     ; $12:E307: A6 12       ;
@@ -12279,7 +12279,7 @@ CODE_12E31B:    PLA                         ; $12:E31B: 68          ;
                 STA $0438,y                 ; $12:E32A: 99 38 04    ;
 CODE_12E32D:    JSL CODE_14E39F         ; $12:E32D: 22 9F E3 14 ; Kill player.
                 RTS                     ; $12:E331: 60          ;
-                       
+
 CODE_12E332:    LDA $0452,x                 ; $12:E332: BD 52 04    ;
                 ORA $045B,x                 ; $12:E335: 1D 5B 04    ;
                 BNE CODE_12E37D             ; $12:E338: D0 43       ;
@@ -12306,7 +12306,7 @@ CODE_12E352:    LDA $8F,x                   ; $12:E352: B5 8F       ;
 CODE_12E366:    LDA #$28                    ; $12:E366: A9 28       ;
 CODE_12E368:    STA $1DE3                   ; $12:E368: 8D E3 1D    ;
                 RTS                     ; $12:E36B: 60          ;
-                       
+
 CODE_12E36C:    LDA $5A,x                   ; $12:E36C: B5 5A       ;
                 ORA #$10                    ; $12:E36E: 09 10       ;
                 STA $5A,x                   ; $12:E370: 95 5A       ;
@@ -12316,7 +12316,7 @@ CODE_12E36C:    LDA $5A,x                   ; $12:E36C: B5 5A       ;
                 STA $3C,x                   ; $12:E379: 95 3C       ;
                 LDA #$00                    ; $12:E37B: A9 00       ;
 CODE_12E37D:    RTS                     ; $12:E37D: 60          ;
-                       
+
 CODE_12E37E:    LDA #$00                    ; $12:E37E: A9 00       ;
                 STA $0F                     ; $12:E380: 85 0F       ;
                 LDY $12                     ; $12:E382: A4 12       ;
@@ -12338,7 +12338,7 @@ CODE_12E396:    STY $0F                     ; $12:E396: 84 0F       ;
                 LDA $003D,y                 ; $12:E3A4: B9 3D 00    ;
                 STA $04CC,x                 ; $12:E3A7: 9D CC 04    ;
 CODE_12E3AA:    RTS                     ; $12:E3AA: 60          ;
-                       
+
 CODE_12E3AB:    LDA $0033,y                 ; $12:E3AB: B9 33 00    ;
                 CPX #$01                    ; $12:E3AE: E0 01       ;
                 BCS CODE_12E3BA                     ; $12:E3B0: B0 08       ;
@@ -12401,7 +12401,7 @@ CODE_12E422:    LDA #$10                    ; $12:E422: A9 10       ;
                 STZ $0411,x                 ; $12:E426: 9E 11 04    ;
                 INC $9E,x                   ; $12:E429: F6 9E       ;
 CODE_12E42B:    RTS                     ; $12:E42B: 60          ;
-                       
+
 CODE_12E42C:    LDY #$00                    ; $12:E42C: A0 00       ;
                 LDA $5A,x                   ; $12:E42E: B5 5A       ;
                 ORA $0F                     ; $12:E430: 05 0F       ;
@@ -12416,7 +12416,7 @@ CODE_12E42C:    LDY #$00                    ; $12:E42C: A0 00       ;
                 INY                         ; $12:E442: C8          ;
 CODE_12E443:    INY                         ; $12:E443: C8          ;
 CODE_12E444:    RTS                     ; $12:E444: 60          ;
-                       
+
 CODE_12E445:    JSL CODE_13F900             ; $12:E445: 22 00 F9 13 ;
                 LDA $00                     ; $12:E449: A5 00       ;
                 LDY #$09                    ; $12:E44B: A0 09       ;
@@ -12426,10 +12426,10 @@ CODE_12E44D:    CMP.w DATA_119B50,y                 ; $12:E44D: D9 50 9B    ;
                 BPL CODE_12E44D             ; $12:E453: 10 F8       ;
                 CLC                         ; $12:E455: 18          ;
 CODE_12E456:    RTS                     ; $12:E456: 60          ;
-                       
+
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
                 db $FF                                          ; /
-           
+
 CODE_12E460:    ASL A                   ; $12:E460: 0A          ;
                 TAX                     ; $12:E461: AA          ;
                 JMP (PNTR_12E465,x)                     ; $12:E462: 7C 65 E4    ;
@@ -12447,7 +12447,7 @@ PNTR_12E465:    dw CODE_12E7E9                                  ; 30-3F - Horizo
                 dw CODE_12E958                                  ; D0-DF - Horizontal logs.
                 dw CODE_12E958                                  ; E0-EF - Horizontal clouds.
                 dw CODE_12EC18                                  ; F0-FF - Horizontal waterfalls.
-                  
+
 CODE_12E47F:    ASL A                   ; $12:E47F: 0A          ;
                 TAX                     ; $12:E480: AA          ;
                 JMP (PNTR_12E484,x)     ; $12:E481: 7C 84 E4    ;
@@ -12468,7 +12468,7 @@ PNTR_12E484:    dw CODE_12E921                                  ;
                 dw CODE_12EB32                                  ;
                 dw CODE_12ED1C                                  ;
                 dw CODE_12F040                                  ;
-                     
+
 CODE_12E4A4:    LDA $050F               ; $12:E4A4: AD 0F 05    ;
                 ASL A                   ; $12:E4A7: 0A          ;
                 TAX                     ; $12:E4A8: AA          ;
@@ -12492,7 +12492,7 @@ PNTR_12E4AC:    dw CODE_12EACF                                  ;
                 dw CODE_12EE90                                  ;
 
 DATA_12E4CC:    db $3D,$3C                                      ;
-                           
+
 CODE_12E4CE:    LDA $050F               ; $12:E4CE: AD 0F 05    ; \ Get object type number (0 = bricks, 1 = X-blocks, etc. C = waterfalls) * 4 into $0F.
                 ASL                     ; $12:E4D1: 0A          ;  |
                 ASL A                   ; $12:E4D2: 0A          ;  |
@@ -12551,7 +12551,7 @@ CODE_12E51A:    STX $07                     ; $12:E51A: 86 07       ;
                 CPX #$03                    ; $12:E540: E0 03       ;
                 BNE CODE_12E546             ; $12:E542: D0 02       ;
                 BRA CODE_12E55C         ; $12:E544: 80 16       ;
-       
+
 CODE_12E546:    LDX $0533                   ; $12:E546: AE 33 05    ;
                 CPX #$0D                    ; $12:E549: E0 0D       ;
                 BNE CODE_12E558             ; $12:E54B: D0 0B       ;
@@ -12580,7 +12580,7 @@ CODE_12E564:    JSR CODE_12E7A6             ; $12:E564: 20 A6 E7    ;
                 LDX $050E                   ; $12:E580: AE 0E 05    ;
                 LDA.l DATA_12E4CC,x                 ; $12:E583: BF CC E4 12 ;
                 BRA CODE_12E5A4         ; $12:E587: 80 1B       ;
-           
+
 CODE_12E589:    CMP #$B0                    ; $12:E589: C9 B0       ;
                 BNE CODE_12E5A4             ; $12:E58B: D0 17       ;
                 LDX $0533                   ; $12:E58D: AE 33 05    ;
@@ -12599,18 +12599,18 @@ CODE_12E5A4:    STA [$01],y                 ; $12:E5A4: 97 01       ;
 CODE_12E5A8:    STA [$01],y                 ; $12:E5A8: 97 01       ;
 CODE_12E5AA:    JSR CODE_12F13A             ; $12:E5AA: 20 3A F1    ;
 CODE_12E5AD:    RTS                     ; $12:E5AD: 60          ;
-           
+
 DATA_12E5AE:    db $04,$10                                      ;
 
 DATA_12E5B0:    db $07,$13                                      ;
 
 DATA_12E5B2:    db $09,$18                                      ;
-              
+
 CODE_12E5B4:    STA $0721                   ; $12:E5B4: 8D 21 07    ;
                 CMP #$AE                    ; $12:E5B7: C9 AE       ;
                 BEQ CODE_12E5BC             ; $12:E5B9: F0 01       ;
                 RTS                     ; $12:E5BB: 60          ;
-                       
+
 CODE_12E5BC:    LDA $0768                   ; $12:E5BC: AD 68 07    ;
                 BNE CODE_12E5C4             ; $12:E5BF: D0 03       ;
                 BRL CODE_12E690             ; $12:E5C1: 82 CC 00    ;
@@ -12731,7 +12731,7 @@ CODE_12E67F:    LDX $0713                   ; $12:E67F: AE 13 07    ;
 CODE_12E690:    INC $0762                   ; $12:E690: EE 62 07    ;
                 LDA $0721                   ; $12:E693: AD 21 07    ;
                 RTS                     ; $12:E696: 60          ;
-           
+
 DATA_12E697:         db $01,$02,$05,$06,$11,$12,$00,$04
                      db $10,$03,$07,$13
 
@@ -12747,7 +12747,7 @@ DATA_12E6B5:         db $01,$06,$12
 DATA_12E6B8:         db $03,$07,$13
 
 DATA_12E6BB:         db $01,$05,$11
-                            
+
 CODE_12E6BE:    LDY $08                     ; $12:E6BE: A4 08       ;
                 DEY                         ; $12:E6C0: 88          ;
                 LDA $02                     ; $12:E6C1: A5 02       ;
@@ -12831,7 +12831,7 @@ CODE_12E758:    LDY $08                     ; $12:E758: A4 08       ;
 CODE_12E75D:    LDA $0714                   ; $12:E75D: AD 14 07    ;
                 STA $02                     ; $12:E760: 85 02       ;
                 RTS                     ; $12:E762: 60          ;
-                       
+
 CODE_12E763:    LDY $08                     ; $12:E763: A4 08       ;
                 INY                         ; $12:E765: C8          ;
                 LDA $02                     ; $12:E766: A5 02       ;
@@ -12866,7 +12866,7 @@ CODE_12E797:    LDA.l DATA_12E6A3,x                 ; $12:E797: BF A3 E6 12 ;
 CODE_12E7A0:    LDA $0714                   ; $12:E7A0: AD 14 07    ;
                 STA $02                     ; $12:E7A3: 85 02       ;
                 RTS                     ; $12:E7A5: 60          ;
-                       
+
 CODE_12E7A6:    CMP #$07                    ; $12:E7A6: C9 07       ;
                 BNE CODE_12E7BC             ; $12:E7A8: D0 12       ;
                 LDY $08                     ; $12:E7AA: A4 08       ;
@@ -12878,7 +12878,7 @@ CODE_12E7B5:    LDX $050E                   ; $12:E7B5: AE 0E 05    ;
                 BNE CODE_12E7BC             ; $12:E7B8: D0 02       ;
                 LDA #$18                    ; $12:E7BA: A9 18       ;
 CODE_12E7BC:    RTS                     ; $12:E7BC: 60          ;
-                       
+
 CODE_12E7BD:    STA $02C6                   ; $12:E7BD: 8D C6 02    ;
                 REP #$20                    ; $12:E7C0: C2 20       ;
                 LDA $01                     ; $12:E7C2: A5 01       ;
@@ -12899,14 +12899,14 @@ CODE_12E7DC:    REP #$20                    ; $12:E7DC: C2 20       ;
                 SEP #$20                    ; $12:E7E3: E2 20       ;
                 LDA $02C6                   ; $12:E7E5: AD C6 02    ;
                 RTS                     ; $12:E7E8: 60          ;
-                       
+
 CODE_12E7E9:    LDY $E7                     ; $12:E7E9: A4 E7       ;
 CODE_12E7EB:    JSR CODE_12E4CE             ; $12:E7EB: 20 CE E4    ;
                 JSR CODE_12F8D6             ; $12:E7EE: 20 D6 F8    ;
                 DEC $050E               ; $12:E7F1: CE 0E 05    ; \ If amount of Map16 blocks to transfer is negative, terminate.
                 BPL CODE_12E7EB         ; $12:E7F4: 10 F5       ; /
                 RTS                     ; $12:E7F6: 60          ; Return.
-                       
+
 CODE_12E7F7:    LDA $0635                   ; $12:E7F7: AD 35 06    ;
                 CMP #$05                    ; $12:E7FA: C9 05       ;
                 BEQ CODE_12E827             ; $12:E7FC: F0 29       ;
@@ -12929,7 +12929,7 @@ CODE_12E7F7:    LDA $0635                   ; $12:E7F7: AD 35 06    ;
                 JSR CODE_12F928             ; $12:E81F: 20 28 F9    ;
 CODE_12E822:    JSL CODE_14F7B2             ; $12:E822: 22 B2 F7 14 ;
                 RTS                     ; $12:E826: 60          ;
-                       
+
 CODE_12E827:    LDA $0533                   ; $12:E827: AD 33 05    ;
                 CMP #$11                    ; $12:E82A: C9 11       ;
                 BNE CODE_12E835             ; $12:E82C: D0 07       ;
@@ -12950,7 +12950,7 @@ CODE_12E835:    LDY $E7                     ; $12:E835: A4 E7       ;
                 JSR CODE_12F13A             ; $12:E849: 20 3A F1    ;
                 JSL CODE_14F7B2             ; $12:E84C: 22 B2 F7 14 ;
                 RTS                     ; $12:E850: 60          ;
-                       
+
 CODE_12E851:    LDY $E7                     ; $12:E851: A4 E7       ;
                 DEY                         ; $12:E853: 88          ;
                 LDA #$52                    ; $12:E854: A9 52       ;
@@ -12969,7 +12969,7 @@ CODE_12E85F:    TYA                         ; $12:E85F: 98          ;
                 BPL CODE_12E85F             ; $12:E869: 10 F4       ;
                 JSL CODE_14F7FC             ; $12:E86B: 22 FC F7 14 ;
                 RTS                     ; $12:E86F: 60          ;
-                       
+
 CODE_12E870:    LDY $E7                     ; $12:E870: A4 E7       ;
                 LDA #$52                    ; $12:E872: A9 52       ;
                 STA [$01],y                 ; $12:E874: 97 01       ;
@@ -12990,7 +12990,7 @@ CODE_12E870:    LDY $E7                     ; $12:E870: A4 E7       ;
                 JSR CODE_12F928             ; $12:E892: 20 28 F9    ;
 CODE_12E895:    JSL CODE_14F7D7             ; $12:E895: 22 D7 F7 14 ;
                 RTS                     ; $12:E899: 60          ;
-                       
+
 CODE_12E89A:    LDA $0533                   ; $12:E89A: AD 33 05    ;
                 CMP #$0B                    ; $12:E89D: C9 0B       ;
                 BNE CODE_12E8A8             ; $12:E89F: D0 07       ;
@@ -13020,7 +13020,7 @@ CODE_12E8CD:    LDA #$36                    ; $12:E8CD: A9 36       ;
                 DEC $050E                   ; $12:E8D7: CE 0E 05    ;
                 BPL CODE_12E8CD             ; $12:E8DA: 10 F1       ;
                 RTS                     ; $12:E8DC: 60          ;
-                       
+
 CODE_12E8DD:    LDA $050F                   ; $12:E8DD: AD 0F 05    ;
                 CMP #$06                    ; $12:E8E0: C9 06       ;
                 BNE CODE_12E8F4             ; $12:E8E2: D0 10       ;
@@ -13037,9 +13037,9 @@ CODE_12E8F7:    JSR CODE_12F914             ; $12:E8F7: 20 14 F9    ;
                 DEC $050E                   ; $12:E8FA: CE 0E 05    ;
                 BPL CODE_12E8F4             ; $12:E8FD: 10 F5       ;
 CODE_12E8FF:    RTS                     ; $12:E8FF: 60          ;
-                       
+
 DATA_12E900:    db $07,$13                                      ;
-                 
+
 CODE_12E902:    LDY $E7                     ; $12:E902: A4 E7       ;
 CODE_12E904:    TYA                         ; $12:E904: 98          ;
                 AND #$10                    ; $12:E905: 29 10       ;
@@ -13060,7 +13060,7 @@ CODE_12E904:    TYA                         ; $12:E904: 98          ;
                 BRA CODE_12E904             ; $12:E91E: 80 E4       ;
 
 CODE_12E920:    RTS                     ; $12:E920: 60          ;
-                       
+
 CODE_12E921:    LDX $050F                   ; $12:E921: AE 0F 05    ;
                 CPX #$05                    ; $12:E924: E0 05       ;
                 BNE CODE_12E92E             ; $12:E926: D0 06       ;
@@ -13086,7 +13086,7 @@ CODE_12E93B:    LDY $00E7                   ; $12:E93B: AC E7 00    ;
                 STA [$01],y                 ; $12:E952: 97 01       ;
                 JSR CODE_12F13A             ; $12:E954: 20 3A F1    ;
                 RTS                     ; $12:E957: 60          ;
-                       
+
 CODE_12E958:    LDA $0635                   ; $12:E958: AD 35 06    ;
                 CMP #$04                    ; $12:E95B: C9 04       ;
                 BNE CODE_12E962             ; $12:E95D: D0 03       ;
@@ -13113,7 +13113,7 @@ CODE_12E988:    JSR CODE_12F8D6             ; $12:E988: 20 D6 F8    ;
                 STA [$01],y                 ; $12:E98E: 97 01       ;
                 JSR CODE_12F13A             ; $12:E990: 20 3A F1    ;
                 RTS                     ; $12:E993: 60          ;
-                       
+
 CODE_12E994:    LDA $0635                   ; $12:E994: AD 35 06    ;
                 CMP #$06                    ; $12:E997: C9 06       ;
                 BNE CODE_12E99E             ; $12:E999: D0 03       ;
@@ -13156,9 +13156,9 @@ CODE_12E9DA:    JSR CODE_12F8D6             ; $12:E9DA: 20 D6 F8    ;
                 LDX #$03                    ; $12:E9EA: A2 03       ;
                 STA $E7                     ; $12:E9EC: 85 E7       ;
                 BRA CODE_12E9BA         ; $12:E9EE: 80 CA       ;
-           
+
 CODE_12E9F0:    RTS                     ; $12:E9F0: 60          ;
-                       
+
 CODE_12E9F1:    STX $08                     ; $12:E9F1: 86 08       ;
                 LDA $02                     ; $12:E9F3: A5 02       ;
                 STA $0714                   ; $12:E9F5: 8D 14 07    ;
@@ -13224,7 +13224,7 @@ CODE_12EA5B:    PHA                         ; $12:EA5B: 48          ;
 CODE_12EA6C:    LDX $08                     ; $12:EA6C: A6 08       ;
                 DEC $07                     ; $12:EA6E: C6 07       ;
                 RTS                     ; $12:EA70: 60          ;
-                       
+
 CODE_12EA71:    LDA $0635                   ; $12:EA71: AD 35 06    ;
                 CMP #$04                    ; $12:EA74: C9 04       ;
                 BEQ CODE_12EAA1             ; $12:EA76: F0 29       ;
@@ -13247,7 +13247,7 @@ CODE_12EA8B:    JSR CODE_12F914             ; $12:EA8B: 20 14 F9    ;
                 JSR CODE_12F13A             ; $12:EA9B: 20 3A F1    ;
                 BNE CODE_12EA8B             ; $12:EA9E: D0 EB       ;
 CODE_12EAA0:    RTS                     ; $12:EAA0: 60          ;
-                       
+
 CODE_12EAA1:    LDX #$00                    ; $12:EAA1: A2 00       ;
                 LDA $050F                   ; $12:EAA3: AD 0F 05    ;
                 CMP #$05                    ; $12:EAA6: C9 05       ;
@@ -13269,7 +13269,7 @@ CODE_12EAB7:    JSR CODE_12F914             ; $12:EAB7: 20 14 F9    ;
                 CPY #$E0                    ; $12:EACA: C0 E0       ;
                 BCC CODE_12EAB7             ; $12:EACC: 90 E9       ;
 CODE_12EACE:    RTS                     ; $12:EACE: 60          ;
-                       
+
 CODE_12EACF:    LDA $0533                   ; $12:EACF: AD 33 05    ;
                 CMP #$06                    ; $12:EAD2: C9 06       ;
                 BNE CODE_12EAEE             ; $12:EAD4: D0 18       ;
@@ -13285,7 +13285,7 @@ CODE_12EACF:    LDA $0533                   ; $12:EACF: AD 33 05    ;
                 STA [$01],y                 ; $12:EAE9: 97 01       ;
                 JSR CODE_12F13A             ; $12:EAEB: 20 3A F1    ;
 CODE_12EAEE:    RTS                     ; $12:EAEE: 60          ;
-                       
+
 CODE_12EAEF:    LDA $0533                   ; $12:EAEF: AD 33 05    ;
                 CMP #$06                    ; $12:EAF2: C9 06       ;
                 BNE CODE_12EB06             ; $12:EAF4: D0 10       ;
@@ -13297,7 +13297,7 @@ CODE_12EAEF:    LDA $0533                   ; $12:EAEF: AD 33 05    ;
                 STA [$01],y                 ; $12:EB01: 97 01       ;
                 JSR CODE_12F13A             ; $12:EB03: 20 3A F1    ;
 CODE_12EB06:    RTS                     ; $12:EB06: 60          ;
-                       
+
 CODE_12EB07:    LDY $E7                     ; $12:EB07: A4 E7       ;
                 LDA $050F                   ; $12:EB09: AD 0F 05    ;
                 SEC                         ; $12:EB0C: 38          ;
@@ -13321,7 +13321,7 @@ CODE_12EB25:    TYA                         ; $12:EB25: 98          ;
                 STA [$01],y                 ; $12:EB2C: 97 01       ;
                 JSR CODE_12F13A             ; $12:EB2E: 20 3A F1    ;
                 RTS                     ; $12:EB31: 60          ;
-                       
+
 CODE_12EB32:    LDY $E7                     ; $12:EB32: A4 E7       ;
                 LDA $050F                   ; $12:EB34: AD 0F 05    ;
                 CMP #$0D                    ; $12:EB37: C9 0D       ;
@@ -13357,7 +13357,7 @@ CODE_12EB57:    LDA [$01],y                 ; $12:EB57: B7 01       ;
                 CPY #$E0                    ; $12:EB7A: C0 E0       ;
                 BCC CODE_12EB54             ; $12:EB7C: 90 D6       ;
 CODE_12EB7E:    RTS                     ; $12:EB7E: 60          ;
-                       
+
 CODE_12EB7F:    LDY $E7                     ; $12:EB7F: A4 E7       ;
                 DEY                         ; $12:EB81: 88          ;
                 JSL CODE_159895             ; $12:EB82: 22 95 98 15 ;
@@ -13379,9 +13379,9 @@ CODE_12EB89:    STA [$01],y                 ; $12:EB89: 97 01       ;
                 BNE CODE_12EBA7             ; $12:EBA1: D0 04       ;
                 LDA #$C2                    ; $12:EBA3: A9 C2       ;
                 BRA CODE_12EB89         ; $12:EBA5: 80 E2       ;
-           
+
 CODE_12EBA7:    RTS                     ; $12:EBA7: 60          ;
-                       
+
 CODE_12EBA8:    LDX $050F                   ; $12:EBA8: AE 0F 05    ;
                 LDA.w DATA_11B69F,x                 ; $12:EBAB: BD 9F B6    ;
                 CMP #$5A                    ; $12:EBAE: C9 5A       ;
@@ -13394,7 +13394,7 @@ CODE_12EBBC:    LDY $E7                     ; $12:EBBC: A4 E7       ;
                 STA [$01],y                 ; $12:EBBE: 97 01       ;
                 JSR CODE_12F13A             ; $12:EBC0: 20 3A F1    ;
                 RTS                     ; $12:EBC3: 60          ;
-                       
+
 CODE_12EBC4:    STA $E7                     ; $12:EBC4: 85 E7       ;
 CODE_12EBC6:    LDA $0533                   ; $12:EBC6: AD 33 05    ;
                 CMP #$02                    ; $12:EBC9: C9 02       ;
@@ -13423,7 +13423,7 @@ CODE_12EBF1:    LDX $08                     ; $12:EBF1: A6 08       ;
                 BNE CODE_12EBFF             ; $12:EBF8: D0 05       ;
                 JSL CODE_15A090             ; $12:EBFA: 22 90 A0 15 ;
                 RTS                     ; $12:EBFE: 60          ;
-                       
+
 CODE_12EBFF:    LDA.w DATA_11B6AE,x                 ; $12:EBFF: BD AE B6    ;
                 STA [$01],y                 ; $12:EC02: 97 01       ;
                 JSR CODE_12F13A             ; $12:EC04: 20 3A F1    ;
@@ -13436,14 +13436,14 @@ CODE_12EBFF:    LDA.w DATA_11B6AE,x                 ; $12:EBFF: BD AE B6    ;
                 CMP #$F0                    ; $12:EC13: C9 F0       ;
                 BCC CODE_12EBC4             ; $12:EC15: 90 AD       ;
 CODE_12EC17:    RTS                     ; $12:EC17: 60          ;
-                       
+
 CODE_12EC18:    STZ $08                     ; $12:EC18: 64 08       ;
                 LDA $0635                   ; $12:EC1A: AD 35 06    ;
                 CMP #$03                    ; $12:EC1D: C9 03       ;
                 BNE CODE_12EC28             ; $12:EC1F: D0 07       ;
                 JSL CODE_159DCA             ; $12:EC21: 22 CA 9D 15 ;
                 RTS                     ; $12:EC25: 60          ;
-                       
+
 CODE_12EC26:    STA $E7                     ; $12:EC26: 85 E7       ;
 CODE_12EC28:    LDX $E9                     ; $12:EC28: A6 E9       ;
                 JSR CODE_12F8B0             ; $12:EC2A: 20 B0 F8    ;
@@ -13471,7 +13471,7 @@ CODE_12EC3F:    LDA.w DATA_11B6B2,x                 ; $12:EC3F: BD B2 B6    ;
                 CMP #$F0                    ; $12:EC5E: C9 F0       ;
                 BCC CODE_12EC26             ; $12:EC60: 90 C4       ;
                 RTS                     ; $12:EC62: 60          ;
-                       
+
 CODE_12EC63:    LDY $E7                     ; $12:EC63: A4 E7       ;
                 STZ $08                     ; $12:EC65: 64 08       ;
                 STZ $0242                   ; $12:EC67: 9C 42 02    ;
@@ -13551,7 +13551,7 @@ CODE_12ECEB:    STA [$01],y                 ; $12:ECEB: 97 01       ;
                 CMP #$8F                    ; $12:ECF0: C9 8F       ;
                 BNE CODE_12ECF5             ; $12:ECF2: D0 01       ;
                 RTS                     ; $12:ECF4: 60          ;
-                       
+
 CODE_12ECF5:    INC $08                     ; $12:ECF5: E6 08       ;
                 LDA $E7                     ; $12:ECF7: A5 E7       ;
                 CLC                         ; $12:ECF9: 18          ;
@@ -13571,12 +13571,12 @@ CODE_12ED09:    STA [$01],y                 ; $12:ED09: 97 01       ;
                 CMP #$40                    ; $12:ED13: C9 40       ;
                 BEQ CODE_12ED18             ; $12:ED15: F0 01       ;
                 RTS                     ; $12:ED17: 60          ;
-                       
+
 CODE_12ED18:    LDA #$32                    ; $12:ED18: A9 32       ;
                 BRA CODE_12ED09             ; $12:ED1A: 80 ED       ;
 
 CODE_12ED1C:    RTS                     ; $12:ED1C: 60          ;
-                       
+
 CODE_12ED1D:    LDY $E7                     ; $12:ED1D: A4 E7       ;
                 LDA $050F                   ; $12:ED1F: AD 0F 05    ;
                 SEC                         ; $12:ED22: 38          ;
@@ -13632,7 +13632,7 @@ CODE_12ED91:    DEX                         ; $12:ED91: CA          ;
                 JSR CODE_12F13A             ; $12:ED9A: 20 3A F1    ;
                 JSR CODE_12F0A5             ; $12:ED9D: 20 A5 F0    ;
 CODE_12EDA0:    RTS                     ; $12:EDA0: 60          ;
-                       
+
 CODE_12EDA1:    STZ $0242                   ; $12:EDA1: 9C 42 02    ;
                 STZ $0246                   ; $12:EDA4: 9C 46 02    ;
                 LDA $0635                   ; $12:EDA7: AD 35 06    ;
@@ -13703,7 +13703,7 @@ CODE_12EE2A:    LDA $050F                   ; $12:EE2A: AD 0F 05    ;
                 STA [$01],y                 ; $12:EE39: 97 01       ;
                 JSR CODE_12F13A             ; $12:EE3B: 20 3A F1    ;
                 RTS                     ; $12:EE3E: 60          ;
-                       
+
 CODE_12EE3F:    LDY $E7                     ; $12:EE3F: A4 E7       ;
                 LDA $050F                   ; $12:EE41: AD 0F 05    ;
                 SEC                         ; $12:EE44: 38          ;
@@ -13731,14 +13731,14 @@ CODE_12EE72:    JSR CODE_12F8D6             ; $12:EE72: 20 D6 F8    ;
                 JSR CODE_12F13A             ; $12:EE7D: 20 3A F1    ;
                 JSL CODE_159D4B             ; $12:EE80: 22 4B 9D 15 ;
                 RTS                     ; $12:EE84: 60          ;
-                       
+
 CODE_12EE85:    STX $07                     ; $12:EE85: 86 07       ;
                 LDA [$01],y                 ; $12:EE87: B7 01       ;
                 CMP #$40                    ; $12:EE89: C9 40       ;
                 BEQ CODE_12EE8F             ; $12:EE8B: F0 02       ;
                 LDX #$02                    ; $12:EE8D: A2 02       ;
 CODE_12EE8F:    RTS                     ; $12:EE8F: 60          ;
-                       
+
 CODE_12EE90:    STZ $07                     ; $12:EE90: 64 07       ;
 CODE_12EE92:    STZ $024A                   ; $12:EE92: 9C 4A 02    ;
 CODE_12EE95:    LDY $E7                     ; $12:EE95: A4 E7       ;
@@ -13812,7 +13812,7 @@ CODE_12EF08:    JSR CODE_12F8D6             ; $12:EF08: 20 D6 F8    ;
                 STA [$01],y                 ; $12:EF1D: 97 01       ;
                 JSR CODE_12F154             ; $12:EF1F: 20 54 F1    ;
 CODE_12EF22:    RTS                     ; $12:EF22: 60          ;
-                       
+
 CODE_12EF23:    LDA $E7                     ; $12:EF23: A5 E7       ;
                 STA $0721                   ; $12:EF25: 8D 21 07    ;
                 LDX #$00                    ; $12:EF28: A2 00       ;
@@ -13853,7 +13853,7 @@ CODE_12EF50:    INX                         ; $12:EF50: E8          ;
                 STA $E7                     ; $12:EF6B: 85 E7       ;
                 JSL CODE_15A2A7             ; $12:EF6D: 22 A7 A2 15 ;
                 RTS                     ; $12:EF71: 60          ;
-                       
+
 CODE_12EF72:    LDY $E7                     ; $12:EF72: A4 E7       ;
                 LDA $050F                   ; $12:EF74: AD 0F 05    ;
                 CMP #$09                    ; $12:EF77: C9 09       ;
@@ -13891,7 +13891,7 @@ CODE_12EFA3:    LDA.w DATA_11B708,x                 ; $12:EFA3: BD 08 B7    ;
                 BEQ CODE_12EFC4             ; $12:EFBF: F0 03       ;
                 JSR CODE_12F928             ; $12:EFC1: 20 28 F9    ;
 CODE_12EFC4:    RTS                     ; $12:EFC4: 60          ;
-                       
+
 CODE_12EFC5:    LDY $E7                     ; $12:EFC5: A4 E7       ;
                 LDA $050F                   ; $12:EFC7: AD 0F 05    ;
                 SEC                         ; $12:EFCA: 38          ;
@@ -13913,7 +13913,7 @@ CODE_12EFEB:    JSR CODE_12F8D6             ; $12:EFEB: 20 D6 F8    ;
                 STA [$01],y                 ; $12:EFF1: 97 01       ;
                 JSR CODE_12F13A             ; $12:EFF3: 20 3A F1    ;
                 RTS                     ; $12:EFF6: 60          ;
-                       
+
 CODE_12EFF7:    LDA $050E                   ; $12:EFF7: AD 0E 05    ;
                 STA $07                     ; $12:EFFA: 85 07       ;
                 LDA #$0C                    ; $12:EFFC: A9 0C       ;
@@ -13948,7 +13948,7 @@ CODE_12F019:    LDA $E7                     ; $12:F019: A5 E7       ;
                 CMP #$E0                    ; $12:F03B: C9 E0       ;
                 BCC CODE_12F019             ; $12:F03D: 90 DA       ;
 CODE_12F03F:    RTS                     ; $12:F03F: 60          ;
-                       
+
 CODE_12F040:    LDX $0635                   ; $12:F040: AE 35 06    ;
                 LDY $E7                     ; $12:F043: A4 E7       ;
                 LDA.w DATA_11B723,x                 ; $12:F045: BD 23 B7    ;
@@ -13967,7 +13967,7 @@ CODE_12F04D:    JSR CODE_12F914             ; $12:F04D: 20 14 F9    ;
                 CPY #$E0                    ; $12:F065: C0 E0       ;
                 BCC CODE_12F04D             ; $12:F067: 90 E4       ;
 CODE_12F069:    RTS                     ; $12:F069: 60          ;
-                       
+
 CODE_12F06A:    DEC $E7                     ; $12:F06A: C6 E7       ;
                 DEC $E7                     ; $12:F06C: C6 E7       ;
                 LDX #$00                    ; $12:F06E: A2 00       ;
@@ -13989,7 +13989,7 @@ CODE_12F077:    LDA.w DATA_11D04C,x                 ; $12:F077: BD 4C D0    ;
                 BRA CODE_12F070             ; $12:F08E: 80 E0       ;
 
 CODE_12F090:    RTS                     ; $12:F090: 60          ;
-                       
+
 CODE_12F091:    LDY $E7                     ; $12:F091: A4 E7       ;
 CODE_12F093:    LDA #$58                    ; $12:F093: A9 58       ;
                 STA [$01],y                 ; $12:F095: 97 01       ;
@@ -14001,7 +14001,7 @@ CODE_12F093:    LDA #$58                    ; $12:F093: A9 58       ;
                 DEC $050E                   ; $12:F09F: CE 0E 05    ;
                 BNE CODE_12F093             ; $12:F0A2: D0 EF       ;
                 RTS                     ; $12:F0A4: 60          ;
-                       
+
 CODE_12F0A5:    DEY                         ; $12:F0A5: 88          ;
                 TYA                         ; $12:F0A6: 98          ;
                 AND #$0F                    ; $12:F0A7: 29 0F       ;
@@ -14018,7 +14018,7 @@ CODE_12F0A5:    DEY                         ; $12:F0A5: 88          ;
                 JSR CODE_12F8B0             ; $12:F0B9: 20 B0 F8    ;
                 LDX $0B                     ; $12:F0BC: A6 0B       ;
 CODE_12F0BE:    RTS                     ; $12:F0BE: 60          ;
-                       
+
 CODE_12F0BF:    PHX                         ; $12:F0BF: DA          ;
                 STY $02C7                   ; $12:F0C0: 8C C7 02    ;
                 TYA                         ; $12:F0C3: 98          ;
@@ -14051,7 +14051,7 @@ CODE_12F0F4:    DEX                         ; $12:F0F4: CA          ;
 CODE_12F0F7:    LDY $02C7                   ; $12:F0F7: AC C7 02    ;
                 PLX                         ; $12:F0FA: FA          ;
                 RTS                     ; $12:F0FB: 60          ;
-                       
+
 CODE_12F0FC:    PHX                         ; $12:F0FC: DA          ;
                 STY $02C7                   ; $12:F0FD: 8C C7 02    ;
                 TYA                         ; $12:F100: 98          ;
@@ -14085,7 +14085,7 @@ CODE_12F132:    DEX                         ; $12:F132: CA          ;
 CODE_12F135:    LDY $02C7                   ; $12:F135: AC C7 02    ;
                 PLX                         ; $12:F138: FA          ;
                 RTS                     ; $12:F139: 60          ;
-                       
+
 CODE_12F13A:    STA $076E                   ; $12:F13A: 8D 6E 07    ;
                 LDA $02                     ; $12:F13D: A5 02       ;
                 STA $076F                   ; $12:F13F: 8D 6F 07    ;
@@ -14098,7 +14098,7 @@ CODE_12F13A:    STA $076E                   ; $12:F13A: 8D 6E 07    ;
                 STA $02                     ; $12:F14E: 85 02       ;
                 LDA $076E                   ; $12:F150: AD 6E 07    ;
                 RTS                     ; $12:F153: 60          ;
-                       
+
 CODE_12F154:    STA $076E                   ; $12:F154: 8D 6E 07    ;
                 LDA $02                     ; $12:F157: A5 02       ;
                 STA $076F                   ; $12:F159: 8D 6F 07    ;
@@ -14111,11 +14111,11 @@ CODE_12F154:    STA $076E                   ; $12:F154: 8D 6E 07    ;
                 STA $02                     ; $12:F168: 85 02       ;
                 LDA $076E                   ; $12:F16A: AD 6E 07    ;
                 RTS                     ; $12:F16D: 60          ;
-                    
-   
+
+
 DATA_12F16E:    db $20,$1C,$1C,$1C,$1C,$21                      ;
 
-           
+
 CODE_12F174:    STZ $08                     ; $12:F174: 64 08       ;
                 LDX $E9                     ; $12:F176: A6 E9       ;
                 JSR CODE_12F8B0             ; $12:F178: 20 B0 F8    ;
@@ -14156,7 +14156,7 @@ CODE_12F1AE:    JSR CODE_12F8D6             ; $12:F1AE: 20 D6 F8    ;
                 BRA CODE_12F174             ; $12:F1C2: 80 B0       ;
 
 CODE_12F1C4:    RTS                     ; $12:F1C4: 60          ;
-                       
+
 CODE_12F1C5:    STZ $0719                   ; $12:F1C5: 9C 19 07    ;
                 LDY $E7                     ; $12:F1C8: A4 E7       ;
                 JSR CODE_12F0A5             ; $12:F1CA: 20 A5 F0    ;
@@ -14172,12 +14172,12 @@ CODE_12F1DB:    LDA #$1C                    ; $12:F1DB: A9 1C       ;
 CODE_12F1DD:    STA [$01],y                 ; $12:F1DD: 97 01       ;
                 INC $0719                   ; $12:F1DF: EE 19 07    ;
 CODE_12F1E2:    RTS                     ; $12:F1E2: 60          ;
-           
+
 DATA_12F1E3:    db $00,$02,$02,$02,$04,$00,$02,$02              ;
                 db $02,$04                                      ;
 
 DATA_12F1ED:    db $1B,$1A,$1D,$1D,$1F,$1E                      ;
-                          
+
 CODE_12F1F3:    LDA $0768                   ; $12:F1F3: AD 68 07    ;
                 BEQ CODE_12F22F                 ; $12:F1F6: F0 37       ;
                 LDA $01                 ; $12:F1F8: A5 01       ;
@@ -14207,24 +14207,24 @@ CODE_12F22F:    RTS                     ; $12:F22F: 60          ;
 DATA_12F230:    dw $4040,$4040,$0000,$0000                      ; Tiles with which the level is blanked out. $40 = low byte, $00 = high byte. Blank tile.
 
 DATA_12F238:    dw $2000,$5800,$9000,$C800                      ; Which area of the Layer 1 tables is affected. $7E2000-$7E8FFF = low bytes, $7E9000-$7EFFFF = high bytes.
-                          
+
 CODE_12F240:    LDA $00FE               ; $12:F240: AD FE 00    ; \ Use brightness as an index.
                 EOR #$0F                ; $12:F243: 49 0F       ;  | But only values #$0F, #$0D, #$0B and #$09 are used as brightness. (And there are XORd with #$0F)
                 TAX                     ; $12:F245: AA          ; / Resulting value (#$00, #$02, #$04 or #$06) goes in X.
                 REP #$20                ; $12:F246: C2 20       ; A = 16-bit.
                 LDA #$3800              ; $12:F248: A9 00 38    ; \ Amount of bytes to clear = #$3800.
                 STA $00                 ; $12:F24B: 85 00       ;  |
-                LDA.l DATA_12F230,x     ; $12:F24D: BF 30 F2 12 ;  | Map16 Tile to use = $40 (low byte) and $00 (high byte).  
+                LDA.l DATA_12F230,x     ; $12:F24D: BF 30 F2 12 ;  | Map16 Tile to use = $40 (low byte) and $00 (high byte).
                 STA $02                 ; $12:F251: 85 02       ;  |
-                LDA.l DATA_12F238,x     ; $12:F253: BF 38 F2 12 ;  | Which area in the Layer 1 Map16 table to affect.  
+                LDA.l DATA_12F238,x     ; $12:F253: BF 38 F2 12 ;  | Which area in the Layer 1 Map16 table to affect.
                 LDY #$7E                ; $12:F257: A0 7E       ;  | Bank num = $7E.
                 JSL CODE_008690         ; $12:F259: 22 90 86 00 ; / DMA all data via the math registers at $211B/C.
                 SEP #$20                ; $12:F25D: E2 20       ; A = 8-bit.
                 RTS                     ; $12:F25F: 60          ; Return.
-                       
+
                 SEP #$20                ; $12:F260: E2 20       ; A = 8-bit. Unused?
                 RTS                     ; $12:F262: 60          ; Return. Unused?
-                       
+
 CODE_12F263:    LDA $0776                   ; $12:F263: AD 76 07    ;
                 BNE CODE_12F299             ; $12:F266: D0 31       ;
                 STZ $0200                   ; $12:F268: 9C 00 02    ;
@@ -14246,7 +14246,7 @@ CODE_12F263:    LDA $0776                   ; $12:F263: AD 76 07    ;
                 STZ $04C1                   ; $12:F294: 9C C1 04    ;
                 STZ $D8                     ; $12:F297: 64 D8       ;
 CODE_12F299:    RTS                     ; $12:F299: 60          ;
-                       
+
 CODE_12F29A:    REP #$20                ; $12:F29A: C2 20       ; \ A = 16-bit.
                 LDA #$A000              ; $12:F29C: A9 00 A0    ;  | Amount of bytes to clear = #$A000.
                 STA $00                 ; $12:F29F: 85 00       ;  |
@@ -14259,7 +14259,7 @@ CODE_12F29A:    REP #$20                ; $12:F29A: C2 20       ; \ A = 16-bit.
                 JSL CODE_008690         ; $12:F2AF: 22 90 86 00 ; / DMA all data via the math registers at $211B/C.
                 SEP #$20                ; $12:F2B3: E2 20       ; A = 8-bit.
                 RTS                     ; $12:F2B5: 60          ; Return.
-                       
+
 CODE_12F2B6:    STY $0E                     ; $12:F2B6: 84 0E       ;
                 STX $0D                     ; $12:F2B8: 86 0D       ;
                 LDX $0635               ; $12:F2BA: AE 35 06    ; \ Load index to palettes...
@@ -14285,13 +14285,13 @@ CODE_12F2E6:    LDY $0D                     ; $12:F2E6: A4 0D       ;
                 LDY $0E                     ; $12:F2EA: A4 0E       ;
                 LDX $0D                     ; $12:F2EC: A6 0D       ;
                 RTS                     ; $12:F2EE: 60          ;
-                       
+
 CODE_12F2EF:    JSL CODE_12F5CE         ; $12:F2EF: 22 CE F5 12 ; Prepare ($D9) pointer to load the Layer 1 room data.
                 LDY #$00                ; $12:F2F3: A0 00       ; Start off at the very start of the table.
                 LDA ($D9),y             ; $12:F2F5: B1 D9       ; \ Load first byte.
                 PHA                     ; $12:F2F7: 48          ;  | Preserve A first.
                 JSR CODE_12F2B6         ; $12:F2F8: 20 B6 F2    ;  | Prepare palette pointer.
-                PLA                     ; $12:F2FB: 68          ; / 
+                PLA                     ; $12:F2FB: 68          ; /
                 STA $0E                     ; $12:F2FC: 85 0E       ;
                 STZ $0F                     ; $12:F2FE: 64 0F       ;
                 REP #$30                    ; $12:F300: C2 30       ;
@@ -14370,7 +14370,7 @@ CODE_12F372:    LDA.w DATA_11BB1C,x                 ; $12:F372: BD 1C BB    ;
                 LDA #$01                    ; $12:F38E: A9 01       ;
                 STA $02A9                   ; $12:F390: 8D A9 02    ;
                 RTL                     ; $12:F393: 6B          ;
-                       
+
 CODE_12F394:    JSR CODE_12FFAC             ; $12:F394: 20 AC FF    ;
                 LDA $0534                   ; $12:F397: AD 34 05    ;
                 STA $051B                   ; $12:F39A: 8D 1B 05    ;
@@ -14446,7 +14446,7 @@ CODE_12F406:    LDA $0714                   ; $12:F406: AD 14 07    ;
                 DEX                         ; $12:F423: CA          ;
                 BPL CODE_12F3D6             ; $12:F424: 10 B0       ;
                 RTL                     ; $12:F426: 6B          ;
-                       
+
 CODE_12F427:    STY $08                     ; $12:F427: 84 08       ;
                 STX $07                     ; $12:F429: 86 07       ;
                 CMP #$41                    ; $12:F42B: C9 41       ;
@@ -14469,7 +14469,7 @@ CODE_12F443:    LDA #$41                    ; $12:F443: A9 41       ;
 CODE_12F44A:    LDX $07                     ; $12:F44A: A6 07       ;
                 LDY $08                     ; $12:F44C: A4 08       ;
                 RTS                     ; $12:F44E: 60          ;
-                       
+
 CODE_12F44F:    LDX #$00                    ; $12:F44F: A2 00       ;
                 STX $EB                     ; $12:F451: 86 EB       ;
                 JSR CODE_12FFAC             ; $12:F453: 20 AC FF    ;
@@ -14516,7 +14516,7 @@ CODE_12F45D:    STA [$C4],y                 ; $12:F45D: 97 C4       ;
                 LDA #$01                    ; $12:F4B0: A9 01       ;
                 STA $EB                     ; $12:F4B2: 85 EB       ;
                 RTL                     ; $12:F4B4: 6B          ;
-                       
+
                 LDY #$03                    ; $12:F4B5: A0 03       ;
                 LDA ($05),y                 ; $12:F4B7: B1 05       ;
                 AND #$03                    ; $12:F4B9: 29 03       ;
@@ -14529,7 +14529,7 @@ CODE_12F45D:    STA [$C4],y                 ; $12:F45D: 97 C4       ;
                 LDA #$80                    ; $12:F4CA: A9 80       ;
                 STA $0603                   ; $12:F4CC: 8D 03 06    ;
 CODE_12F4CF:    RTS                     ; $12:F4CF: 60          ;
-                       
+
 CODE_12F4D0:    STZ $02B7                   ; $12:F4D0: 9C B7 02    ;
 CODE_12F4D3:    JSL CODE_118014             ; $12:F4D3: 22 14 80 11 ;
                 LDA $FE                 ; $12:F4D7: A5 FE       ; \ Don't run following routine routine if screen is too dark.
@@ -14541,7 +14541,7 @@ CODE_12F4E0:    JSL CODE_14D1B2             ; $12:F4E0: 22 B2 D1 14 ;
                 BEQ CODE_12F4D3             ; $12:F4E7: F0 EA       ;
                 JSR CODE_12F4ED             ; $12:F4E9: 20 ED F4    ;
                 RTL                     ; $12:F4EC: 6B          ;
-                       
+
 CODE_12F4ED:    LDA $0534                   ; $12:F4ED: AD 34 05    ;
                 PHA                         ; $12:F4F0: 48          ;
                 LDX $0533                   ; $12:F4F1: AE 33 05    ;
@@ -14568,7 +14568,7 @@ CODE_12F4FE:    LDX $0533                   ; $12:F4FE: AE 33 05    ;
                 JSL CODE_15A1A3             ; $12:F52E: 22 A3 A1 15 ;
                 JSR CODE_12F536             ; $12:F532: 20 36 F5    ;
                 RTS                     ; $12:F535: 60          ;
-                       
+
 CODE_12F536:    LDA $0533                   ; $12:F536: AD 33 05    ;
                 BNE CODE_12F55A             ; $12:F539: D0 1F       ;
                 LDA #$7F                    ; $12:F53B: A9 7F       ;
@@ -14590,7 +14590,7 @@ CODE_12F54B:    STA [$01],y                 ; $12:F54B: 97 01       ;
                 BRA CODE_12F54B             ; $12:F558: 80 F1       ;
 
 CODE_12F55A:    RTS                     ; $12:F55A: 60          ;
-                       
+
 CODE_12F55B:    LDY #$03                    ; $12:F55B: A0 03       ;
                 LDA ($D9),y                 ; $12:F55D: B1 D9       ;
                 LSR A                       ; $12:F55F: 4A          ;
@@ -14651,23 +14651,23 @@ CODE_12F5BD:    STZ $E6                     ; $12:F5BD: 64 E6       ;
                 ORA $10                     ; $12:F5C8: 05 10       ;
                 STA $0585                   ; $12:F5CA: 8D 85 05    ;
                 RTS                     ; $12:F5CD: 60          ;
-                       
+
 CODE_12F5CE:    LDY $0533               ; $12:F5CE: AC 33 05    ; \ Get 16-bit address of Layer 1 room data in 16-bit pointer ($D9)
                 LDA.w DATA_11D098,y     ; $12:F5D1: B9 98 D0    ;  |
                 CLC                     ; $12:F5D4: 18          ;  |
                 ADC $0534               ; $12:F5D5: 6D 34 05    ;  |
                 TAY                     ; $12:F5D8: A8          ;  |
-                LDA.w DATA_11D0AD,y     ; $12:F5D9: B9 AD D0    ;  |   
+                LDA.w DATA_11D0AD,y     ; $12:F5D9: B9 AD D0    ;  |
                 STA $D9                 ; $12:F5DC: 85 D9       ;  |
-                LDA.w DATA_11D17F,y     ; $12:F5DE: B9 7F D1    ;  |   
+                LDA.w DATA_11D17F,y     ; $12:F5DE: B9 7F D1    ;  |
                 STA $DA                 ; $12:F5E1: 85 DA       ; /
                 RTL                     ; $12:F5E3: 6B          ; Return.
-                       
+
 CODE_12F5E4:    LDA #$1A                    ; $12:F5E4: A9 1A       ;
                 STA $DA                     ; $12:F5E6: 85 DA       ;
                 STZ $D9                     ; $12:F5E8: 64 D9       ;
                 RTS                     ; $12:F5EA: 60          ;
-                       
+
 CODE_12F5EB:    LDX $0533                   ; $12:F5EB: AE 33 05    ;
                 LDA.l DATA_139E00,x                 ; $12:F5EE: BF 00 9E 13 ;
                 CLC                         ; $12:F5F2: 18          ;
@@ -14680,7 +14680,7 @@ CODE_12F5EB:    LDX $0533                   ; $12:F5EB: AE 33 05    ;
                 LDA.l DATA_139E15                   ; $12:F603: AF 15 9E 13 ;
                 STA $07                     ; $12:F607: 85 07       ;
 CODE_12F609:    RTS                     ; $12:F609: 60          ;
-                       
+
 CODE_12F60A:    STZ $E9                     ; $12:F60A: 64 E9       ;
 CODE_12F60C:    LDY $04                     ; $12:F60C: A4 04       ;
 CODE_12F60E:    INY                         ; $12:F60E: C8          ;
@@ -14724,7 +14724,7 @@ CODE_12F62C:    JSR CODE_12F678             ; $12:F62C: 20 78 F6    ;
 
 CODE_12F656:    JSR CODE_12EBA8             ; $12:F656: 20 A8 EB    ;
                 BRA CODE_12F60C             ; $12:F659: 80 B1       ;
- 
+
 CODE_12F65B:    LDA ($D9),y                 ; $12:F65B: B1 D9       ;
                 AND #$0F                    ; $12:F65D: 29 0F       ;
                 STA $050E                   ; $12:F65F: 8D 0E 05    ;
@@ -14751,7 +14751,7 @@ CODE_12F681:    CMP #$F0                    ; $12:F681: C9 F0       ;
 CODE_12F687:    INC $E9                     ; $12:F687: E6 E9       ;
 CODE_12F689:    STA $E6                     ; $12:F689: 85 E6       ;
                 RTS                     ; $12:F68B: 60          ;
-                       
+
 CODE_12F68C:    ASL A                   ; $12:F68C: 0A          ; \ Jump to code, dependant on...
                 TAX                     ; $12:F68D: AA          ;  | ... X position of special object.
                 JMP (PNTR_12F691,x)     ; $12:F68E: 7C 91 F6    ; /
@@ -14775,22 +14775,22 @@ PNTR_12F6A4:    dw CODE_12F6EA                                  ;
                 dw CODE_12F709                                  ;
                 dw CODE_12F70E                                  ;
                 dw CODE_12F70F                                  ;
-               
+
 CODE_12F6B2:    INC $E9                 ; $12:F6B2: E6 E9       ;
 CODE_12F6B4:    INC $E9                 ; $12:F6B4: E6 E9       ;
                 STZ $E6                 ; $12:F6B6: 64 E6       ;
                 RTS                     ; $12:F6B8: 60          ;
-                 
+
 CODE_12F6B9:    INC $0542                   ; $12:F6B9: EE 42 05    ;
 CODE_12F6BC:    INC $0542                   ; $12:F6BC: EE 42 05    ;
                 STZ $0E                     ; $12:F6BF: 64 0E       ;
                 STZ $09                     ; $12:F6C1: 64 09       ;
                 RTL                     ; $12:F6C3: 6B          ;
-                       
+
                 INC $0F                     ; $12:F6C4: E6 0F       ;
 CODE_12F6C6:    INC $0F                     ; $12:F6C6: E6 0F       ;
                 RTS                     ; $12:F6C8: 60          ;
-                       
+
 CODE_12F6C9:    LDY $0F                     ; $12:F6C9: A4 0F       ;
                 INY                         ; $12:F6CB: C8          ;
                 LDA $E9                     ; $12:F6CC: A5 E9       ;
@@ -14804,7 +14804,7 @@ CODE_12F6C9:    LDY $0F                     ; $12:F6C9: A4 0F       ;
                 STA $051F,x                 ; $12:F6D9: 9D 1F 05    ;
                 STY $0F                     ; $12:F6DC: 84 0F       ;
                 RTS                     ; $12:F6DE: 60          ;
-                       
+
 CODE_12F6DF:    LDY $0F                     ; $12:F6DF: A4 0F       ;
                 INY                         ; $12:F6E1: C8          ;
                 LDA ($D9),y                 ; $12:F6E2: B1 D9       ;
@@ -14814,7 +14814,7 @@ CODE_12F6DF:    LDY $0F                     ; $12:F6DF: A4 0F       ;
                 LSR A                       ; $12:F6E7: 4A          ;
                 LSR A                       ; $12:F6E8: 4A          ;
                 RTS                     ; $12:F6E9: 60          ;
-                       
+
 CODE_12F6EA:    JSR CODE_12F6DF             ; $12:F6EA: 20 DF F6    ;
                 BRA CODE_12F6F5             ; $12:F6ED: 80 06       ;
 
@@ -14831,15 +14831,15 @@ CODE_12F6F5:    STA $0E                     ; $12:F6F5: 85 0E       ;
                 ASL A                       ; $12:F700: 0A          ;
                 STA $0E                     ; $12:F701: 85 0E       ;
 CODE_12F703:    RTL                     ; $12:F703: 6B          ;
-                       
+
 CODE_12F704:    STZ $E9                     ; $12:F704: 64 E9       ;
                 STZ $E6                     ; $12:F706: 64 E6       ;
                 RTS                     ; $12:F708: 60          ;
-                       
+
 CODE_12F709:    STZ $0542                   ; $12:F709: 9C 42 05    ;
                 STZ $0E                     ; $12:F70C: 64 0E       ;
 CODE_12F70E:    RTL                     ; $12:F70E: 6B          ;
-                       
+
 CODE_12F70F:    LDY $0F                     ; $12:F70F: A4 0F       ;
                 INY                         ; $12:F711: C8          ;
                 LDA ($D9),y                 ; $12:F712: B1 D9       ;
@@ -14848,7 +14848,7 @@ CODE_12F70F:    LDY $0F                     ; $12:F70F: A4 0F       ;
                 ASL A                       ; $12:F717: 0A          ;
                 STA $0560                   ; $12:F718: 8D 60 05    ;
                 RTL                     ; $12:F71B: 6B          ;
-                       
+
 CODE_12F71C:    STZ $0542                   ; $12:F71C: 9C 42 05    ;
                 STZ $09                     ; $12:F71F: 64 09       ;
 CODE_12F721:    LDA ($D9),y                 ; $12:F721: B1 D9       ;
@@ -14970,14 +14970,14 @@ CODE_12F7E6:    STA $0717                   ; $12:F7E6: 8D 17 07    ;
                 BCC CODE_12F7D8             ; $12:F803: 90 D3       ;
                 LDY $04                     ; $12:F805: A4 04       ;
                 RTL                     ; $12:F807: 6B          ;
-                       
+
 CODE_12F808:    INX                         ; $12:F808: E8          ;
                 TYA                         ; $12:F809: 98          ;
                 AND #$0F                    ; $12:F80A: 29 0F       ;
                 BNE CODE_12F7D8             ; $12:F80C: D0 CA       ;
                 LDY $04                     ; $12:F80E: A4 04       ;
                 RTL                     ; $12:F810: 6B          ;
-                       
+
 CODE_12F811:    LSR A                       ; $12:F811: 4A          ;
                 LSR A                       ; $12:F812: 4A          ;
 CODE_12F813:    LSR A                       ; $12:F813: 4A          ;
@@ -15046,7 +15046,7 @@ CODE_12F888:    LDX $0210                   ; $12:F888: AE 10 02    ;
                 BNE CODE_12F891             ; $12:F88D: D0 02       ;
                 INY                         ; $12:F88F: C8          ;
                 RTS                     ; $12:F890: 60          ;
-                       
+
 CODE_12F891:    TYA                         ; $12:F891: 98          ;
                 CLC                         ; $12:F892: 18          ;
                 ADC #$10                    ; $12:F893: 69 10       ;
@@ -15057,7 +15057,7 @@ CODE_12F891:    TYA                         ; $12:F891: 98          ;
                 BNE CODE_12F8A2             ; $12:F89D: D0 03       ;
                 INC $02C8                   ; $12:F89F: EE C8 02    ;
 CODE_12F8A2:    RTS                     ; $12:F8A2: 60          ;
-                       
+
 CODE_12F8A3:    LDX $E9                     ; $12:F8A3: A6 E9       ;
                 JSR CODE_12F8B0             ; $12:F8A5: 20 B0 F8    ;
                 LDA $E6                     ; $12:F8A8: A5 E6       ;
@@ -15065,7 +15065,7 @@ CODE_12F8A3:    LDX $E9                     ; $12:F8A3: A6 E9       ;
                 ADC $E5                     ; $12:F8AB: 65 E5       ;
                 STA $E7                     ; $12:F8AD: 85 E7       ;
                 RTS                     ; $12:F8AF: 60          ;
-                       
+
 CODE_12F8B0:    STY $02F5                   ; $12:F8B0: 8C F5 02    ;
                 LDA $0628                   ; $12:F8B3: AD 28 06    ;
                 DEC A                       ; $12:F8B6: 3A          ;
@@ -15083,7 +15083,7 @@ CODE_12F8C2:    CLC                         ; $12:F8C2: 18          ;
                 STA $03                     ; $12:F8D0: 85 03       ;
                 LDY $02F5                   ; $12:F8D2: AC F5 02    ;
                 RTS                     ; $12:F8D5: 60          ;
-                       
+
 CODE_12F8D6:    INY                         ; $12:F8D6: C8          ;
                 TYA                         ; $12:F8D7: 98          ;
                 AND #$0F                    ; $12:F8D8: 29 0F       ;
@@ -15119,7 +15119,7 @@ CODE_12F90C:    STX $0D                     ; $12:F90C: 86 0D       ;
                 JSR CODE_12F8B0             ; $12:F90E: 20 B0 F8    ;
                 LDX $0B                     ; $12:F911: A6 0B       ;
 CODE_12F913:    RTS                     ; $12:F913: 60          ;
-                       
+
 CODE_12F914:    TYA                         ; $12:F914: 98          ;
                 CLC                         ; $12:F915: 18          ;
                 ADC #$10                    ; $12:F916: 69 10       ;
@@ -15133,7 +15133,7 @@ CODE_12F914:    TYA                         ; $12:F914: 98          ;
                 AND #$0F                    ; $12:F924: 29 0F       ;
                 TAY                         ; $12:F926: A8          ;
 CODE_12F927:    RTS                     ; $12:F927: 60          ;
-                       
+
 CODE_12F928:    LDY $04                     ; $12:F928: A4 04       ;
                 INY                         ; $12:F92A: C8          ;
                 LDA ($D9),y                 ; $12:F92B: B1 D9       ;
@@ -15151,7 +15151,7 @@ CODE_12F928:    LDY $04                     ; $12:F928: A4 04       ;
                 LDA $08                     ; $12:F940: A5 08       ;
                 STA $051F,y                 ; $12:F942: 99 1F 05    ;
                 RTS                     ; $12:F945: 60          ;
-                       
+
                 LSR A                       ; $12:F946: 4A          ;
                 BCS CODE_12F954                     ; $12:F947: B0 0B       ;
                 LDA #$01                    ; $12:F949: A9 01       ;
@@ -15166,7 +15166,7 @@ CODE_12F954:    STZ $C9                     ; $12:F954: 64 C9       ;
                 LDA.w DATA_119B3C,y                 ; $12:F958: B9 3C 9B    ;
 CODE_12F95B:    STA $0507                   ; $12:F95B: 8D 07 05    ;
                 RTS                     ; $12:F95E: 60          ;
-                       
+
 CODE_12F95F:    TXA                         ; $12:F95F: 8A          ;
                 PHA                         ; $12:F960: 48          ;
                 AND #$F0                    ; $12:F961: 29 F0       ;
@@ -15214,7 +15214,7 @@ CODE_12F95F:    TXA                         ; $12:F95F: 8A          ;
                 PLA                         ; $12:F9BC: 68          ;
                 TAX                         ; $12:F9BD: AA          ;
                 RTS                     ; $12:F9BE: 60          ;
-                       
+
 CODE_12F9BF:    LDA $0635               ; $12:F9BF: AD 35 06    ; \ Get world number * 3 into X index.
                 AND #$0F                ; $12:F9C2: 29 0F       ;  |
                 STA $0635               ; $12:F9C4: 8D 35 06    ;  |
@@ -15224,9 +15224,9 @@ CODE_12F9BF:    LDA $0635               ; $12:F9BF: AD 35 06    ; \ Get world nu
                 TAX                     ; $12:F9CC: AA          ;  |
                 LDA.l PNTR_15EF00,x     ; $12:F9CD: BF 00 EF 15 ;  | [$02] = Pointer to the miniature level during the 'World x-x' screen.
                 STA $02                 ; $12:F9D1: 85 02       ;  |
-                LDA.l PNTR_15EF00+1,x   ; $12:F9D3: BF 01 EF 15 ;  |   
+                LDA.l PNTR_15EF00+1,x   ; $12:F9D3: BF 01 EF 15 ;  |
                 STA $03                 ; $12:F9D7: 85 03       ;  |
-                LDA.l PNTR_15EF00+2,x   ; $12:F9D9: BF 02 EF 15 ;  |   
+                LDA.l PNTR_15EF00+2,x   ; $12:F9D9: BF 02 EF 15 ;  |
                 STA $04                 ; $12:F9DD: 85 04       ; /
                 LDA #$80                ; $12:F9DF: A9 80       ; \ Increase VRAM destination by 1 if written to $2119.
                 STA $2115               ; $12:F9E1: 8D 15 21    ; /
@@ -15251,7 +15251,7 @@ CODE_12F9F6:    LDA [$02],y             ; $12:F9F6: B7 02       ; \ Transfer ima
                 BNE CODE_12F9EE         ; $12:FA0B: D0 E1       ; / Loop and transfer next line.
                 SEP #$30                ; $12:FA0D: E2 30       ; Accumulator and Index = 8-bit.
                 RTL                     ; $12:FA0F: 6B          ; Return.
-                       
+
 CODE_12FA10:    LDA $8F                     ; $12:FA10: A5 8F       ;
                 ASL A                       ; $12:FA12: 0A          ;
                 ASL A                       ; $12:FA13: 0A          ;
@@ -15343,20 +15343,20 @@ CODE_12FAB6:    LDA.l DATA_11CDD3,x                 ; $12:FAB6: BF D3 CD 11 ;
                 DEX                         ; $12:FABD: CA          ;
                 BPL CODE_12FAB6             ; $12:FABE: 10 F6       ;
                 RTL                     ; $12:FAC0: 6B          ;
-       
+
 DATA_12FAC1:    db $03,$04,$05,$0D,$0F,$0F,$0F,$01              ;
 
 DATA_12FAC9:    db $01,$03,$03,$04,$03,$05,$06,$03              ;
-                      
+
 CODE_12FAD1:    JSR CODE_12F263             ; $12:FAD1: 20 63 F2    ;
                 LDX $0533               ; $12:FAD4: AE 33 05    ; \ Get index to object data...
                 LDA.l DATA_11D098,x     ; $12:FAD7: BF 98 D0 11 ;  | Per room, per level.
                 CLC                     ; $12:FADB: 18          ;  |
                 ADC $0534               ; $12:FADC: 6D 34 05    ;  |
                 TAX                     ; $12:FADF: AA          ;  |
-                LDA.w DATA_11D0AD,x     ; $12:FAE0: BD AD D0    ;  | Forms pointer ($D9).  
+                LDA.w DATA_11D0AD,x     ; $12:FAE0: BD AD D0    ;  | Forms pointer ($D9).
                 STA $D9                 ; $12:FAE3: 85 D9       ;  |
-                LDA.w DATA_11D17F,x     ; $12:FAE5: BD 7F D1    ;  |  
+                LDA.w DATA_11D17F,x     ; $12:FAE5: BD 7F D1    ;  |
                 STA $DA                 ; $12:FAE8: 85 DA       ; /
                 LDY #$00                    ; $12:FAEA: A0 00       ;
                 LDA ($D9),y                 ; $12:FAEC: B1 D9       ;
@@ -15419,14 +15419,14 @@ CODE_12FB11:    LDA $0533                   ; $12:FB11: AD 33 05    ;
                 BNE CODE_12FB66             ; $12:FB5E: D0 06       ;
                 JSL CODE_159400             ; $12:FB60: 22 00 94 15 ;
                 BRA CODE_12FB77             ; $12:FB64: 80 11       ;
- 
+
 CODE_12FB66:    DEC A                       ; $12:FB66: 3A          ;
                 DEC A                       ; $12:FB67: 3A          ;
                 STA $076B                   ; $12:FB68: 8D 6B 07    ;
                 JSR CODE_12FF94             ; $12:FB6B: 20 94 FF    ;
                 JSL CODE_159B05             ; $12:FB6E: 22 05 9B 15 ;
                 BRA CODE_12FB77             ; $12:FB72: 80 03       ;
- 
+
 CODE_12FB74:    JSR CODE_12F71C             ; $12:FB74: 20 1C F7    ;
 CODE_12FB77:    JSR CODE_12FC41             ; $12:FB77: 20 41 FC    ;
                 JSR CODE_12FCA1             ; $12:FB7A: 20 A1 FC    ;
@@ -15436,7 +15436,7 @@ CODE_12FB77:    JSR CODE_12FC41             ; $12:FB77: 20 41 FC    ;
                 STZ $04                     ; $12:FB83: 64 04       ;
                 JSR CODE_12FBA4             ; $12:FB85: 20 A4 FB    ;
                 RTL                     ; $12:FB88: 6B          ;
-                       
+
 DATA_12FB89:    db $09,$0A,$0B,$13,$14,$1C,$1D,$05              ;
                 db $03,$2B,$2D,$21,$26,$27,$22,$25              ;
                 db $2A,$23,$24,$28,$50,$00,$01,$29              ;
@@ -15450,7 +15450,7 @@ CODE_12FBAA:    INY                     ; $12:FBAA: C8          ;
                 CMP #$FF                    ; $12:FBAD: C9 FF       ;
                 BNE CODE_12FBB2             ; $12:FBAF: D0 01       ;
                 RTS                     ; $12:FBB1: 60          ;
-                       
+
 CODE_12FBB2:    LDA ($D9),y                 ; $12:FBB2: B1 D9       ;
                 AND #$0F                    ; $12:FBB4: 29 0F       ;
                 STA $E5                     ; $12:FBB6: 85 E5       ;
@@ -15463,7 +15463,7 @@ CODE_12FBB2:    LDA ($D9),y                 ; $12:FBB2: B1 D9       ;
                 JSR CODE_12F68C             ; $12:FBC4: 20 8C F6    ;
                 LDY $0F                     ; $12:FBC7: A4 0F       ;
                 BRA CODE_12FBAA             ; $12:FBC9: 80 DF       ;
- 
+
 CODE_12FBCB:    JSR CODE_12F678             ; $12:FBCB: 20 78 F6    ;
                 INY                         ; $12:FBCE: C8          ;
                 STY $04                     ; $12:FBCF: 84 04       ;
@@ -15485,7 +15485,7 @@ CODE_12FBD5:    CMP.l DATA_12FB89,x                 ; $12:FBD5: DF 89 FB 12 ;
                 CMP #$A0                    ; $12:FBF0: C9 A0       ;
                 BEQ CODE_12FBF6             ; $12:FBF2: F0 02       ;
                 BRA CODE_12FBA8         ; $12:FBF4: 80 B2       ;
-         
+
 CODE_12FBF6:    STY $04                     ; $12:FBF6: 84 04       ;
                 JSR CODE_12F8A3             ; $12:FBF8: 20 A3 F8    ;
                 LDA ($D9),y                 ; $12:FBFB: B1 D9       ;
@@ -15536,7 +15536,7 @@ CODE_12FC53:    DEY                         ; $12:FC53: 88          ;
                 CLC                         ; $12:FC56: 18          ;
                 ADC #$00F0                  ; $12:FC57: 69 F0 00    ;
                 BRA CODE_12FC53         ; $12:FC5A: 80 F7       ;
-     
+
 CODE_12FC5C:    DEC A                       ; $12:FC5C: 3A          ;
                 STA $02C9                   ; $12:FC5D: 8D C9 02    ;
                 TAY                         ; $12:FC60: A8          ;
@@ -15570,7 +15570,7 @@ CODE_12FC9B:    DEY                         ; $12:FC9B: 88          ;
                 BPL CODE_12FC63             ; $12:FC9C: 10 C5       ;
                 SEP #$10                    ; $12:FC9E: E2 10       ;
 CODE_12FCA0:    RTS                     ; $12:FCA0: 60          ;
-                       
+
 CODE_12FCA1:    LDX #$06                    ; $12:FCA1: A2 06       ;
                 LDA $0533                   ; $12:FCA3: AD 33 05    ;
 CODE_12FCA6:    CMP.l DATA_11CF44,x                 ; $12:FCA6: DF 44 CF 11 ;
@@ -15578,7 +15578,7 @@ CODE_12FCA6:    CMP.l DATA_11CF44,x                 ; $12:FCA6: DF 44 CF 11 ;
                 DEX                         ; $12:FCAC: CA          ;
                 BPL CODE_12FCA6             ; $12:FCAD: 10 F7       ;
                 BRA CODE_12FCEA         ; $12:FCAF: 80 39       ;
-     
+
 CODE_12FCB1:    LDA $0534                   ; $12:FCB1: AD 34 05    ;
                 CMP.l DATA_11CF4B,x                 ; $12:FCB4: DF 4B CF 11 ;
                 BNE CODE_12FCEA             ; $12:FCB8: D0 30       ;
@@ -15606,11 +15606,11 @@ CODE_12FCCE:    DEY                         ; $12:FCCE: 88          ;
                 LDY #$10                    ; $12:FCE6: A0 10       ;
                 STA [$01],y                 ; $12:FCE8: 97 01       ;
 CODE_12FCEA:    RTS                     ; $12:FCEA: 60          ;
-                       
+
 DATA_12FCEB:    db $03,$0D,$0D,$0D,$11,$11                      ; 2-1, 5-2, 5-2, 5-2, 6-3, 6-3.
 
 DATA_12FCF1:    db $00,$02,$03,$04,$03,$04                      ; First room, third room, fourth room, fifth room, fourth room, fifth room.
-                
+
 CODE_12FCF7:    JSR CODE_12F5EB         ; $12:FCF7: 20 EB F5    ;
                 LDY #$00                        ; $12:FCFA: A0 00       ;
                 LDA [$05],y                     ; $12:FCFC: B7 05       ;
@@ -15655,7 +15655,7 @@ CODE_12FD15:    LDA [$05],y             ; $12:FD15: B7 05       ; \ Get bit 4...
                 CMP #$04                ; $12:FD4D: C9 04       ;  | If in fifth room of 4-2...
                 BEQ CODE_12FD60         ; $12:FD4F: F0 0F       ;  | Branch.
                 BRA CODE_12FD63         ; $12:FD51: 80 10       ; / Otherwise, branch further.
-        
+
 CODE_12FD53:    CMP #$0B                ; $12:FD53: C9 0B       ; \ Check if in 4-3...
                 BNE CODE_12FD63         ; $12:FD55: D0 0C       ;  | If not, branch.
                 LDA $0534               ; $12:FD57: AD 34 05    ;  | Check if in first room..
@@ -15681,11 +15681,11 @@ CODE_12FD7C:    LDA $0533                   ; $12:FD7C: AD 33 05    ;
                 BNE CODE_12FD92             ; $12:FD8C: D0 04       ;
                 INC $0791                   ; $12:FD8E: EE 91 07    ;
                 RTL                     ; $12:FD91: 6B          ;
-                       
+
 CODE_12FD92:    DEX                         ; $12:FD92: CA          ;
                 BPL CODE_12FD7C             ; $12:FD93: 10 E7       ;
                 RTL                     ; $12:FD95: 6B          ;
-                       
+
 CODE_12FD96:    JSR CODE_12F29A         ; $12:FD96: 20 9A F2    ; Clear Layer 2 Map16 tables.
                 LDA $0534                   ; $12:FD99: AD 34 05    ;
                 PHA                         ; $12:FD9C: 48          ;
@@ -15749,7 +15749,7 @@ CODE_12FE15:    CMP.l DATA_11B735,x                 ; $12:FE15: DF 35 B7 11 ;
                 DEX                         ; $12:FE1B: CA          ;
                 BPL CODE_12FE15             ; $12:FE1C: 10 F7       ;
                 BRA CODE_12FE26         ; $12:FE1E: 80 06       ;
-      
+
 CODE_12FE20:    LDA.l DATA_11B731,x                 ; $12:FE20: BF 31 B7 11 ;
                 STA [$01],y                 ; $12:FE24: 97 01       ;
 CODE_12FE26:    REP #$20                    ; $12:FE26: C2 20       ;
@@ -15757,7 +15757,7 @@ CODE_12FE26:    REP #$20                    ; $12:FE26: C2 20       ;
                 STA $01                     ; $12:FE2B: 85 01       ;
                 SEP #$20                    ; $12:FE2D: E2 20       ;
 CODE_12FE2F:    RTS                     ; $12:FE2F: 60          ;
-                       
+
 CODE_12FE30:    STA $02C5                   ; $12:FE30: 8D C5 02    ;
                 JSR CODE_12FDDB             ; $12:FE33: 20 DB FD    ;
                 LDA $0D                     ; $12:FE36: A5 0D       ;
@@ -15791,13 +15791,13 @@ CODE_12FE6B:    CMP.l DATA_11B739,x                 ; $12:FE6B: DF 39 B7 11 ;
                 DEX                         ; $12:FE71: CA          ;
                 BPL CODE_12FE6B             ; $12:FE72: 10 F7       ;
                 BRA CODE_12FE7C         ; $12:FE74: 80 06       ;
-           
+
 CODE_12FE76:    LDA.l DATA_11B73D,x                 ; $12:FE76: BF 3D B7 11 ;
                 BRA CODE_12FE7F         ; $12:FE7A: 80 03       ;
-           
+
 CODE_12FE7C:    LDA $02C5                   ; $12:FE7C: AD C5 02    ;
 CODE_12FE7F:    RTS                     ; $12:FE7F: 60          ;
-                       
+
 CODE_12FE80:    STA $02C5                   ; $12:FE80: 8D C5 02    ;
                 REP #$20                    ; $12:FE83: C2 20       ;
                 LDA $01                     ; $12:FE85: A5 01       ;
@@ -15821,7 +15821,7 @@ CODE_12FEA5:    CMP.l DATA_11B735,x                 ; $12:FEA5: DF 35 B7 11 ;
                 DEX                         ; $12:FEAB: CA          ;
                 BPL CODE_12FEA5             ; $12:FEAC: 10 F7       ;
                 BRA CODE_12FEB6         ; $12:FEAE: 80 06       ;
-           
+
 CODE_12FEB0:    LDA.l DATA_11B731,x                 ; $12:FEB0: BF 31 B7 11 ;
                 STA [$01],y                 ; $12:FEB4: 97 01       ;
 CODE_12FEB6:    REP #$20                    ; $12:FEB6: C2 20       ;
@@ -15833,7 +15833,7 @@ CODE_12FEB6:    REP #$20                    ; $12:FEB6: C2 20       ;
                 BNE CODE_12FECA             ; $12:FEC4: D0 04       ;
                 LDA #$3A                    ; $12:FEC6: A9 3A       ;
                 BRA CODE_12FEEF         ; $12:FEC8: 80 25       ;
-           
+
 CODE_12FECA:    LDA $0D                     ; $12:FECA: A5 0D       ;
                 SEC                         ; $12:FECC: 38          ;
                 SBC #$10                    ; $12:FECD: E9 10       ;
@@ -15848,13 +15848,13 @@ CODE_12FEDB:    CMP.l DATA_11B731,x                 ; $12:FEDB: DF 31 B7 11 ;
                 DEX                         ; $12:FEE1: CA          ;
                 BPL CODE_12FEDB             ; $12:FEE2: 10 F7       ;
                 BRA CODE_12FEEC         ; $12:FEE4: 80 06       ;
-           
+
 CODE_12FEE6:    LDA.l DATA_11B735,x                 ; $12:FEE6: BF 35 B7 11 ;
                 BRA CODE_12FEEF             ; $12:FEEA: 80 03       ;
 
 CODE_12FEEC:    LDA $02C5                   ; $12:FEEC: AD C5 02    ;
 CODE_12FEEF:    RTS                     ; $12:FEEF: 60          ;
-                       
+
 CODE_12FEF0:    STA $02C5                   ; $12:FEF0: 8D C5 02    ;
                 LDY #$00                    ; $12:FEF3: A0 00       ;
                 LDX #$07                    ; $12:FEF5: A2 07       ;
@@ -15872,13 +15872,13 @@ CODE_12FF12:    DEX                         ; $12:FF12: CA          ;
                 INY                         ; $12:FF15: C8          ;
 CODE_12FF16:    LDA $02C5                   ; $12:FF16: AD C5 02    ;
                 RTS                     ; $12:FF19: 60          ;
-                       
+
 CODE_12FF1A:    JSL CODE_15A244             ; $12:FF1A: 22 44 A2 15 ;
                 JSL CODE_159EB9             ; $12:FF1E: 22 B9 9E 15 ;
                 JSL CODE_15993E             ; $12:FF22: 22 3E 99 15 ;
                 JSL CODE_15A1F9             ; $12:FF26: 22 F9 A1 15 ;
                 RTL                     ; $12:FF2A: 6B          ;
-                       
+
 CODE_12FF2B:    LDX $0533                   ; $12:FF2B: AE 33 05    ;
                 CPX #$0B                    ; $12:FF2E: E0 0B       ;
                 BNE CODE_12FF4A             ; $12:FF30: D0 18       ;
@@ -15894,11 +15894,11 @@ CODE_12FF3B:    CMP.l DATA_11CF2A,x                 ; $12:FF3B: DF 2A CF 11 ;
 CODE_12FF47:    DEX                         ; $12:FF47: CA          ;
                 BPL CODE_12FF3B             ; $12:FF48: 10 F1       ;
 CODE_12FF4A:    RTS                     ; $12:FF4A: 60          ;
-                       
+
 DATA_12FF4B:    db $03,$0D                                      ;
 
 DATA_12FF4D:    db $04,$04                                      ;
-                
+
 CODE_12FF4F:    LDX #$01                    ; $12:FF4F: A2 01       ;
 CODE_12FF51:    LDA $0533                   ; $12:FF51: AD 33 05    ;
                 CMP.l DATA_12FF4B,x                 ; $12:FF54: DF 4B FF 12 ;
@@ -15909,7 +15909,7 @@ CODE_12FF51:    LDA $0533                   ; $12:FF51: AD 33 05    ;
 CODE_12FF63:    DEX                         ; $12:FF63: CA          ;
                 BPL CODE_12FF51             ; $12:FF64: 10 EB       ;
                 RTS                     ; $12:FF66: 60          ;
-                       
+
 CODE_12FF67:    REP #$20                    ; $12:FF67: C2 20       ;
                 LDA.l DATA_14BF80                   ; $12:FF69: AF 80 BF 14 ;
                 STA $04BC                   ; $12:FF6D: 8D BC 04    ;
@@ -15922,7 +15922,7 @@ CODE_12FF72:    LDA.l DATA_14BF80,x                 ; $12:FF72: BF 80 BF 14 ;
                 BNE CODE_12FF72             ; $12:FF7D: D0 F3       ;
                 SEP #$20                    ; $12:FF7F: E2 20       ;
                 RTS                     ; $12:FF81: 60          ;
-                       
+
 CODE_12FF82:    LDX #$0A                    ; $12:FF82: A2 0A       ;
                 LDA.w DATA_11AAF0,x                 ; $12:FF84: BD F0 AA    ;
                 STA $C4                     ; $12:FF87: 85 C4       ;
@@ -15931,7 +15931,7 @@ CODE_12FF82:    LDX #$0A                    ; $12:FF82: A2 0A       ;
                 LDA.w DATA_11AB06,x                 ; $12:FF8E: BD 06 AB    ;
                 STA $C6                     ; $12:FF91: 85 C6       ;
                 RTS                     ; $12:FF93: 60          ;
-                       
+
 CODE_12FF94:    LDX $0534                   ; $12:FF94: AE 34 05    ;
                 LDA.l DATA_11AB11,x                 ; $12:FF97: BF 11 AB 11 ;
                 CLC                         ; $12:FF9B: 18          ;
@@ -15942,7 +15942,7 @@ CODE_12FF94:    LDX $0534                   ; $12:FF94: AE 34 05    ;
                 LDA.w DATA_11AB06                   ; $12:FFA6: AD 06 AB    ;
                 STA $C6                     ; $12:FFA9: 85 C6       ;
                 RTS                     ; $12:FFAB: 60          ;
-                       
+
 CODE_12FFAC:    PHB                         ; $12:FFAC: 8B          ;
                 LDA #$7E                    ; $12:FFAD: A9 7E       ;
                 PHA                         ; $12:FFAF: 48          ;
@@ -15957,7 +15957,7 @@ CODE_12FFB5:    STZ $9960,x                 ; $12:FFB5: 9E 60 99    ;
                 SEP #$20                    ; $12:FFBE: E2 20       ;
                 PLB                         ; $12:FFC0: AB          ;
                 RTS                     ; $12:FFC1: 60          ;
-                       
+
 CODE_12FFC2:    CMP #$B0                    ; $12:FFC2: C9 B0       ;
                 BNE CODE_12FFF1             ; $12:FFC4: D0 2B       ;
                 LDX $0533                   ; $12:FFC6: AE 33 05    ;
@@ -15981,9 +15981,9 @@ CODE_12FFE7:    CMP #$0F                    ; $12:FFE7: C9 0F       ;
                 BNE CODE_12FFEF             ; $12:FFE9: D0 04       ;
                 LDA #$76                    ; $12:FFEB: A9 76       ;
                 BRA CODE_12FFF1         ; $12:FFED: 80 02       ;
-           
+
 CODE_12FFEF:    LDA #$3E                    ; $12:FFEF: A9 3E       ;
 CODE_12FFF1:    RTS                     ; $12:FFF1: 60          ;
-                       
+
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty data.
                 db $FF,$FF,$FF,$FF,$FF,$FF                      ; /

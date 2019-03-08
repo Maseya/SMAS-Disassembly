@@ -42,7 +42,7 @@
 ;This seems to be the main loop
 0547: 8d 0a     mov   y,#$0a            ;\
 0549: ad 05     cmp   y,#$05            ; |
-054b: f0 07     beq   $0554             ; | 
+054b: f0 07     beq   $0554             ; |
 054d: b0 08     bcs   $0557             ; |Update DSP ARAM mirrors
 054f: 69 4d 4c  cmp   $4c,$4d           ; |
 0552: d0 11     bne   $0565             ; |
@@ -90,7 +90,7 @@
 05ac: 5c        lsr   a                 ; | Increase echo delay every other frame
 05ad: b0 02     bcs   $05b1             ; |
 05af: ab 4c     inc   $4c               ;/
-05b1: e4 53     mov   a,$53             ; Read tempo 
+05b1: e4 53     mov   a,$53             ; Read tempo
 05b3: ee        pop   y                 ; pop y (which is the number of times the counter has incremented)
 05b4: cf        mul   ya                ; tempo*counter value
 05b5: 60        clrc                    ;\
@@ -145,7 +145,7 @@ HandleNote:
 0607: ad ca     cmp   y,#$ca            ;\ if $ca > y, it is not percussion
 0609: 90 05     bcc   $0610             ;/
 060b: 3f 22 0a  call  ChangeInstrument  ;
-060e: 8d a4     mov   y,#$a4            ; This is middle C, so a drum instrument always plays as middle C 
+060e: 8d a4     mov   y,#$a4            ; This is middle C, so a drum instrument always plays as middle C
 0610: ad c8     cmp   y,#$c8            ;\ $C8 and $C9 represent sustain and rests, respectively. they are handled elsewhere
 0612: b0 f2     bcs   $0606             ;/
 0614: e4 1a     mov   a,$1a             ;\
@@ -342,7 +342,7 @@ HandleNote:
 077b: 3f d2 0f  call  $0fd2             ;Upload SPC-700 data by communitcated with 5A22
 077e: e8 00     mov   a,#$00            ;\A = $00
 0780: c5 ca 03  mov   $03ca,a           ; |
-0783: c4 04     mov   $04,a             ; | 
+0783: c4 04     mov   $04,a             ; |
 0785: c4 05     mov   $05,a             ; |Clear these ARAM addresses
 0787: c4 07     mov   $07,a             ; |
 0789: c4 26     mov   $26,a             ; |
@@ -697,7 +697,7 @@ HandleNote:
 ;; later games use this feature for percussion (drum) sets to switch
 ;; between different drum notes and ADSR values quickly.
 
-ChangeInstrument:                          
+ChangeInstrument:
 0a22: d5 11 02  mov   $0211+x,a
 0a25: fd        mov   y,a
 0a26: 10 06     bpl   $0a2e
@@ -980,7 +980,7 @@ ChangeInstrument:
 0c33: e8 00     mov   a,#$00            ; | echo feedback volume, echo enable)
 0c35: c5 f3 00  mov   $00f3,a           ; |
 0c38: fe f3     dbnz  y,$0c2d           ;/
-0c3a: e4 48     mov   a,$48             ;\ 
+0c3a: e4 48     mov   a,$48             ;\
 0c3c: 08 20     or    a,#$20            ; |Store #$20 into DSP reg $6C, along with DSP reg settings of ARAM $0048
 0c3e: 8d 6c     mov   y,#$6c            ; |Disable echo buffer updating?
 0c40: 3f fc 06  call  $06fc             ;/
@@ -1465,7 +1465,7 @@ ChangeInstrument:
 100b: da 14     movw  $14,ya              ;/
 100d: ec f4 00  mov   y,$00f4
 1010: e5 f5 00  mov   a,$00f5
-1013: cc f4 00  mov   $00f4,y             ;\If data supplied is 
+1013: cc f4 00  mov   $00f4,y             ;\If data supplied is
 1016: d0 cd     bne   $0fe5               ;/
 1018: cd 31     mov   x,#$31              ;\Clear input ports of SPC-SNES communication regs
 101a: c9 f1 00  mov   $00f1,x             ;/Enable timer 0
@@ -1507,13 +1507,13 @@ ChangeInstrument:
 1064: 5f 03 11  jmp   $1103             ;
 
 1067: c4 04     mov   $04,a             ; SFX in $04
-1069: e5 f8 03  mov   a,$03f8  
-106c: f0 0b     beq   $1079    
+1069: e5 f8 03  mov   a,$03f8
+106c: f0 0b     beq   $1079
 106e: e4 04     mov   a,$04             ;\
 1070: 68 12     cmp   a,#$12            ; | If we are not playing SFX $12, branch
 1072: d0 05     bne   $1079             ;/
-1074: e8 00     mov   a,#$00  
-1076: c5 f8 03  mov   $03f8,a 
+1074: e8 00     mov   a,#$00
+1076: c5 f8 03  mov   $03f8,a
 1079: e8 02     mov   a,#$02            ;\ Set delay
 107b: c5 0c 00  mov   $000c,a           ;/
 107e: e8 10     mov   a,#$10            ;\
@@ -1522,9 +1522,9 @@ ChangeInstrument:
 1085: 82 1a     set4  $1a               ;/
 1087: e8 00     mov   a,#$00            ;
 1089: c5 88 02  mov   $0288,a
-108c: c4 a8     mov   $a8,a 
+108c: c4 a8     mov   $a8,a
 108e: c5 89 03  mov   $0389,a
-1091: c5 f8 02  mov   $02f8,a 
+1091: c5 f8 02  mov   $02f8,a
 1094: 78 3b 04  cmp   $04,#$3b          ;\ If we are playing SFX $3b, branch
 1097: f0 05     beq   $109e             ;/
 1099: 78 43 04  cmp   $04,#$43          ;\ If we are not playing SFX $43, branch
@@ -1671,7 +1671,7 @@ ChangeInstrument:
 11ba: 8f 08 12  mov   $12,#$08          ; Write to all channel DSP regs (note: table contains 9 byte chunks of data for each sound effect type.)
 11bd: f5 6d 16  mov   a,$166d+x         ; Read data
 11c0: 3f fc 06  call  $06fc             ; Write to DSP regs
-11c3: 3d        inc   x                 ;\ 
+11c3: 3d        inc   x                 ;\
 11c4: fc        inc   y                 ; | loop 8 times, writing to: L/R volume, VxPITCH, VxSRCN, VxADSR1, VxADSR2, and VxGAIN
 11c5: 6e 12 f5  dbnz  $12,$11bd         ;/ using entries from the $166d+X table
 11c8: f5 6d 16  mov   a,$166d+x         ;\ this is a pitch multiplier
@@ -2049,7 +2049,7 @@ ChangeInstrument:
 14ca: 68 f0     cmp   a,#$f0            ;\ If we don't want to upload SPC data (this one actually resets the SPC700), branch
 14cc: d0 03     bne   $14d1             ;/
 14ce: 5f 7a 14  jmp   $147a             ;
-  
+
 14d1: e4 01     mov   a,$01             ; SFX in A
 14d3: 28 f0     and   a,#$f0            ; AND #$F0 (read the high byte of the SFX)
 14d5: c4 25     mov   $25,a             ; Save in $25

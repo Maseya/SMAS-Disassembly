@@ -1,6 +1,6 @@
 ;Super Mario Bros. 1
 
-;Routine to load the entire level's aesthetics. HDMA, layer 3, etc. 
+;Routine to load the entire level's aesthetics. HDMA, layer 3, etc.
 CODE_058000:    STZ $0EDC               ; $05:8000: 9C DC 0E    ;
                 PHB                     ; $05:8003: 8B          ;\
                 LDA #$7E                ; $05:8004: A9 7E       ; |
@@ -48,18 +48,18 @@ CODE_05805B:    REP #$30                ; $05:805B: C2 30       ;\
                 STA $04                 ; $05:8062: 85 04       ; | ("Background scene" being the graphics tileset, layer 3 flag, HDMA gradient and the BG2 tilemap).
                 INC $02                 ; $05:8064: E6 02       ; |
                 INC $02                 ; $05:8066: E6 02       ;/ increase pointer to read next word of background commands next time.
-                AND #$03F0              ; $05:8068: 29 F0 03    ; | 
+                AND #$03F0              ; $05:8068: 29 F0 03    ; |
                 LSR A                   ; $05:806B: 4A          ; |
                 LSR A                   ; $05:806C: 4A          ; |
                 LSR A                   ; $05:806D: 4A          ; |
                 LSR A                   ; $05:806E: 4A          ; |
                 STA $EF                 ; $05:806F: 85 EF       ;/ Store CCCCCC into $EF. It seems to be the "command"
-                LDA $04                 ; $05:8071: A5 04       ;\ 
+                LDA $04                 ; $05:8071: A5 04       ;\
                 AND #$000F              ; $05:8073: 29 0F 00    ; |Store VVVV data. It seems to be the value associated with the command
                 STA $F1                 ; $05:8076: 85 F1       ;/
                 LDA $04                 ; $05:8078: A5 04       ;\ Load HHH data
                 AND #$E000              ; $05:807A: 29 00 E0    ; | HHH = high nibble of background data starting index of map16 tilemap
-                STA $ED                 ; $05:807D: 85 ED       ;/| 
+                STA $ED                 ; $05:807D: 85 ED       ;/|
                 LDA $04                 ; $05:807F: A5 04       ;\| Load LLL data
                 LSR A                   ; $05:8081: 4A          ; | LLL = Low nibble of background data starting index of map16 tilemap * 2
                 AND #$0E00              ; $05:8082: 29 00 0E    ; | This code basically turns HHH LLL into HHH0 LLL0
@@ -68,13 +68,13 @@ CODE_05805B:    REP #$30                ; $05:805B: C2 30       ;\
                 STA $ED                 ; $05:8088: 85 ED       ; |
                 AND #$00F0              ; $05:808A: 29 F0 00    ; |
                 CMP #$00E0              ; $05:808D: C9 E0 00    ; | If #$E0, then $EF is a command to be processed
-                BNE CODE_0580B3         ; $05:8090: D0 21       ;/ 
+                BNE CODE_0580B3         ; $05:8090: D0 21       ;/
                 LDA $EF                 ; $05:8092: A5 EF       ;\
                 CMP #$003F              ; $05:8094: C9 3F 00    ; | if not end of background data marker, process background generation
                 BNE CODE_0580AE         ; $05:8097: D0 15       ;/ (Otherwise just skip branch and finish up routine)
                 INC $0EC0               ; $05:8099: EE C0 0E    ;\
                 INC $0EC0               ; $05:809C: EE C0 0E    ; | Skip 2 pages and place a BG2 map16 marker word
-                LDA $0EC0               ; $05:809F: AD C0 0E    ; | 
+                LDA $0EC0               ; $05:809F: AD C0 0E    ; |
                 XBA                     ; $05:80A2: EB          ; |
                 TAX                     ; $05:80A3: AA          ; | And make sure the final bytes are FFFF to mark the end of the map16 tilemap.
                 LDA #$FFFF              ; $05:80A4: A9 FF FF    ; |
@@ -89,8 +89,8 @@ CODE_0580B3:    LDA $0EC0               ; $05:80B3: AD C0 0E    ;\
                 CLC                     ; $05:80B7: 18          ; | (as in, place the tiles in the background)
                 ADC $ED                 ; $05:80B8: 65 ED       ; | $EB stores the starting index of the background objects to be placed at
                 STA $EB                 ; $05:80BA: 85 EB       ; | At this point $EF isn't a command but rather serves another purpose. TODO
-                LDA $EF                 ; $05:80BC: A5 EF       ; | 
-                CMP #$0010              ; $05:80BE: C9 10 00    ; | 
+                LDA $EF                 ; $05:80BC: A5 EF       ; |
+                CMP #$0010              ; $05:80BE: C9 10 00    ; |
                 BCC CODE_0580C9         ; $05:80C1: 90 06       ; |
                 JSR CODE_058E85         ; $05:80C3: 20 85 8E    ; | If EF is #$10 or higher, then ???
                 JMP CODE_05805B         ; $05:80C6: 4C 5B 80    ;/
@@ -1671,8 +1671,8 @@ CODE_058F19:    LDA $EF                 ; $05:8F19: A5 EF       ;
 PNTR_058F25:    dw CODE_0590B6                                  ;$00 - Increase BG2 map16 tilemap's latest written page number by 1
                 dw CODE_0590BA                                  ;$01 - Handle HDMA gradient. Underwater levels use below value, instead.
                 dw CODE_0590D2                                  ;$02 - Enable underwater HDMA gradient
-                dw CODE_0590E9                                  ;$03 - 
-                dw CODE_05910D                                  ;$04 - 
+                dw CODE_0590E9                                  ;$03 -
+                dw CODE_05910D                                  ;$04 -
                 dw CODE_059099                                  ;$05 - Related to background map16 tilemap generation
                 dw CODE_05905F                                  ;$06 - Fill background with repetitive rock pattern of cave background
                 dw CODE_05903D                                  ;$07 - Fill top 3 rows with blank tiles for underwater levels
@@ -5382,7 +5382,7 @@ CODE_05D614:    PHB                     ; $05:D614: 8B          ;
                 STA $01                 ; $05:D639: 85 01       ; |
                 REP #$20                ; $05:D63B: C2 20       ;\|
                 LDA $00                 ; $05:D63D: A5 00       ; |
-                CLC                     ; $05:D63F: 18          ; |Add 8 pixels to it, but subtract the left edge x-coordinate of the screen. store into $00-01 
+                CLC                     ; $05:D63F: 18          ; |Add 8 pixels to it, but subtract the left edge x-coordinate of the screen. store into $00-01
                 ADC #$0008              ; $05:D640: 69 08 00    ; |
                 SEC                     ; $05:D643: 38          ; |
                 SBC $42                 ; $05:D644: E5 42       ; |
@@ -7013,7 +7013,7 @@ DATA_05E6AF:    db $01,$18                                      ;Bonus Room back
 ;; Graphics Tileset upload routines
 ;; $99 = Tileset number to upload
 ;; If tileset is 01 (Mario Bonus), then the game
-;; picks either 01 or 18 (Luigi Bonus) according 
+;; picks either 01 or 18 (Luigi Bonus) according
 ;; to the current player.
 
 CODE_05E6B1:    SEP #$30                ; $05:E6B1: E2 30       ;
@@ -7586,7 +7586,7 @@ CODE_05EB53:    ORA $DD                 ; $05:EB53: 05 DD       ;
 CODE_05EB5A:    PHB                     ; $05:EB5A: 8B          ;
                 PHK                     ; $05:EB5B: 4B          ;
                 PLB                     ; $05:EB5C: AB          ;
-                LDA $07FC               ; $05:EB5D: AD FC 07    ;\ 
+                LDA $07FC               ; $05:EB5D: AD FC 07    ;\
                 STA $701FF8             ; $05:EB60: 8F F8 1F 70 ;/ Set more difficult quest flag in SRAM
                 LDA $075F               ; $05:EB64: AD 5F 07    ;\
                 STA $701FF9             ; $05:EB67: 8F F9 1F 70 ;/ Set current world in SRAM

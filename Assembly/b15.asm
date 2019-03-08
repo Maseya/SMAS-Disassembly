@@ -10,7 +10,7 @@ CODE_15800C:    LDA $02B2,x                 ; $15:800C: BD B2 02    ;
                 DEX                         ; $15:8012: CA          ;
                 BPL CODE_15800C             ; $15:8013: 10 F7       ;
                 BRA CODE_15802F         ; $15:8015: 80 18       ;
-     
+
 CODE_158017:    LDX $0535                   ; $15:8017: AE 35 05    ;
                 LDA.l DATA_11D01A,x                 ; $15:801A: BF 1A D0 11 ;
                 STA $0725                   ; $15:801E: 8D 25 07    ;
@@ -33,7 +33,7 @@ CODE_158046:    LDA $0534                   ; $15:8046: AD 34 05    ;
                 LDA #$10                ; $15:804B: A9 10       ; \ Layer 3 Y pos = #$0010.
                 STA $020A               ; $15:804D: 8D 0A 02    ; /
                 BRA CODE_158055             ; $15:8050: 80 03       ;
-  
+
 CODE_158052:    STZ $020A                   ; $15:8052: 9C 0A 02    ;
 CODE_158055:    STZ $020B                   ; $15:8055: 9C 0B 02    ;
                 INC $0724                   ; $15:8058: EE 24 07    ;
@@ -53,7 +53,7 @@ CODE_158079:    JSL CODE_1581BD             ; $15:8079: 22 BD 81 15 ;
                 LDA $0729                   ; $15:807D: AD 29 07    ;
                 BNE CODE_158082             ; $15:8080: D0 00       ;
 CODE_158082:    RTL                     ; $15:8082: 6B          ;
-                   
+
 CODE_158083:    LDA $0535                   ; $15:8083: AD 35 05    ;
                 BNE CODE_158093             ; $15:8086: D0 0B       ;
                 LDA $072C                   ; $15:8088: AD 2C 07    ;
@@ -115,7 +115,7 @@ CODE_1580E5:    STA $0725,x                 ; $15:80E5: 9D 25 07    ;
 CODE_158100:    STZ $072C                   ; $15:8100: 9C 2C 07    ;
                 JSR CODE_15832E             ; $15:8103: 20 2E 83    ;
                 RTS                     ; $15:8106: 60          ;
-                       
+
 CODE_158107:    LSR A                       ; $15:8107: 4A          ;
                 BCS CODE_158124                     ; $15:8108: B0 1A       ;
                 CPY #$01                    ; $15:810A: C0 01       ;
@@ -143,7 +143,7 @@ CODE_15812D:    LDA #$01                    ; $15:812D: A9 01       ;
 CODE_15813A:    LDA.w DATA_119B3C,y                 ; $15:813A: B9 3C 9B    ;
 CODE_15813D:    STA $0730                   ; $15:813D: 8D 30 07    ;
                 RTS                     ; $15:8140: 60          ;
-                       
+
 CODE_158141:    LDA $0204                   ; $15:8141: AD 04 02    ;
                 STA $0732                   ; $15:8144: 8D 32 07    ;
                 LDA $0205                   ; $15:8147: AD 05 02    ;
@@ -168,7 +168,7 @@ CODE_158141:    LDA $0204                   ; $15:8141: AD 04 02    ;
                 ADC #$F0                    ; $15:817C: 69 F0       ;
                 STA $072A                   ; $15:817E: 8D 2A 07    ;
                 RTL                     ; $15:8181: 6B          ;
-                       
+
 CODE_158182:    LDA $0732                   ; $15:8182: AD 32 07    ;
                 STA $0204                   ; $15:8185: 8D 04 02    ;
                 STA $0737                   ; $15:8188: 8D 37 07    ;
@@ -191,7 +191,7 @@ CODE_158182:    LDA $0732                   ; $15:8182: AD 32 07    ;
                 LDA $0727                   ; $15:81B6: AD 27 07    ;
                 STA $072A                   ; $15:81B9: 8D 2A 07    ;
 CODE_1581BC:    RTL                     ; $15:81BC: 6B          ;
-                       
+
 CODE_1581BD:    LDX #$00                    ; $15:81BD: A2 00       ;
                 STX $0739                   ; $15:81BF: 8E 39 07    ;
                 STX $073A                   ; $15:81C2: 8E 3A 07    ;
@@ -213,7 +213,7 @@ CODE_1581E4:    STZ $0729                   ; $15:81E4: 9C 29 07    ;
                 STZ $0738                   ; $15:81EA: 9C 38 07    ;
                 INC $0739                   ; $15:81ED: EE 39 07    ;
                 RTL                     ; $15:81F0: 6B          ;
-                       
+
 CODE_1581F1:    LDA $0725                   ; $15:81F1: AD 25 07    ;
                 CMP $072A                   ; $15:81F4: CD 2A 07    ;
                 BEQ CODE_1581E4             ; $15:81F7: F0 EB       ;
@@ -459,13 +459,13 @@ CODE_1583F2:    LDX $0533               ; $15:83F2: AE 33 05    ; \ Get room + l
                 CLC                     ; $15:83F9: 18          ;  |
                 ADC $0534               ; $15:83FA: 6D 34 05    ;  |
                 TAX                     ; $15:83FD: AA          ;  |
-                LDA.l DATA_15916B,x     ; $15:83FE: BF 6B 91 15 ;  | Load which set of Layer 3 Map16 tiles to use (the cloud tiles or the light beams of the shining door) 
+                LDA.l DATA_15916B,x     ; $15:83FE: BF 6B 91 15 ;  | Load which set of Layer 3 Map16 tiles to use (the cloud tiles or the light beams of the shining door)
                 ASL A                   ; $15:8402: 0A          ;  | Multiply by 2.
                 TAX                     ; $15:8403: AA          ;  |
-                LDA.l PNTR_159233,x     ; $15:8404: BF 33 92 15 ;  | Get low byte of Map16 table.   
+                LDA.l PNTR_159233,x     ; $15:8404: BF 33 92 15 ;  | Get low byte of Map16 table.
                 STA $0744               ; $15:8408: 8D 44 07    ;  |
                 INX                     ; $15:840B: E8          ;  |
-                LDA.l PNTR_159233,x     ; $15:840C: BF 33 92 15 ;  | Get high byte of Map16 table.   
+                LDA.l PNTR_159233,x     ; $15:840C: BF 33 92 15 ;  | Get high byte of Map16 table.
                 STA $0745               ; $15:8410: 8D 45 07    ;  |
                 LDA #$15                ; $15:8413: A9 15       ;  | Bank number = $15.
                 STA $0746               ; $15:8415: 8D 46 07    ; /
@@ -944,7 +944,7 @@ PNTR_158928:    dw DATA_15893C                                  ; Cloud 0 (horiz
                 dw DATA_158E95                                  ; Cloud 7 (part #4 of regular vertical level cloud)
                 dw DATA_158F87                                  ; Cloud 8 (part #5 of regular vertical level cloud)
                 dw DATA_159079                                  ; Cloud 9 (part #6 of regular vertical level cloud. This one is so far down that only really long vertical levels feature it, such as in 6-3)
-          
+
 DATA_15893C:    db $53,$9C,$00,$00,$00,$00,$00,$00              ; \ First two bytes of each image are header.
                 db $00,$00,$00,$00,$00,$00,$00,$00              ;  | Their format is as such:
                 db $00,$00,$00,$00,$00,$00,$00,$00              ;  | YYYYXXXX yyyyxxxx.
@@ -2821,7 +2821,7 @@ CODE_159FAC:    LDA $01                     ; $15:9FAC: A5 01       ;
 CODE_159FC0:    RTS                         ; $15:9FC0: 60          ;
 
 DATA_159FC1:    db $07,$13                                      ;
-      
+
 CODE_159FC3:    LDA #$20                    ; $15:9FC3: A9 20       ;
                 STA $01                     ; $15:9FC5: 85 01       ;
                 LDA #$57                    ; $15:9FC7: A9 57       ;
@@ -2931,7 +2931,7 @@ DATA_15A087:    db $04,$10,$14                                  ;
 DATA_15A08A:    db $06,$05,$15                                  ;
 
 DATA_15A08D:    db $12,$11,$16                                  ;
-               
+
 CODE_15A090:    STZ $0719                   ; $15:A090: 9C 19 07    ;
 CODE_15A093:    LDA $E7                 ; $15:A093: A5 E7       ;
                 TAY                     ; $15:A095: A8          ;
@@ -2945,7 +2945,7 @@ CODE_15A093:    LDA $E7                 ; $15:A093: A5 E7       ;
                 LSR A                       ; $15:A0A1: 4A          ;
                 TAX                         ; $15:A0A2: AA          ;
                 BRA CODE_15A0AA         ; $15:A0A3: 80 05       ;
-          
+
 CODE_15A0A5:    INC $0719                   ; $15:A0A5: EE 19 07    ;
                 LDX #$02                    ; $15:A0A8: A2 02       ;
 CODE_15A0AA:    LDA.l DATA_15A087,x                 ; $15:A0AA: BF 87 A0 15 ;
@@ -2965,7 +2965,7 @@ CODE_15A0C1:    TYA                         ; $15:A0C1: 98          ;
                 BNE CODE_15A0CC             ; $15:A0C4: D0 06       ;
                 LDA.l DATA_15A08A,x                 ; $15:A0C6: BF 8A A0 15 ;
                 BRA CODE_15A0D0         ; $15:A0CA: 80 04       ;
-           
+
 CODE_15A0CC:    LDA.l DATA_15A08D,x                 ; $15:A0CC: BF 8D A0 15 ;
 CODE_15A0D0:    STA [$01],y                 ; $15:A0D0: 97 01       ;
                 JSR CODE_15A06D             ; $15:A0D2: 20 6D A0    ;
@@ -2980,7 +2980,7 @@ CODE_15A0D0:    STA [$01],y                 ; $15:A0D0: 97 01       ;
                 ADC #$10                    ; $15:A0E3: 69 10       ;
                 STA $E7                     ; $15:A0E5: 85 E7       ;
                 BRA CODE_15A093         ; $15:A0E7: 80 AA       ;
-           
+
 CODE_15A0E9:    RTL                         ; $15:A0E9: 6B          ;
 
 DATA_15A0EA:    db $02,$05,$08,$0B,$0E,$11                      ;
@@ -3177,7 +3177,7 @@ CODE_15A298:    DEX                         ; $15:A298: CA          ;
 CODE_15A2A0:    RTL                         ; $15:A2A0: 6B          ;
 
 DATA_15A2A1:    db $28,$29,$26,$2A,$2B,$27                      ;
-     
+
 CODE_15A2A7:    REP #$20                    ; $15:A2A7: C2 20       ;
                 LDA $01                 ; $15:A2A9: A5 01       ;
                 CLC                         ; $15:A2AB: 18          ;
@@ -3688,7 +3688,7 @@ DATA_15AD28:    db $04,$10                                      ;
                 db $40,$40,$40,$40,$02,$12,$06,$12              ;
                 db $06,$07,$13,$07,$13,$07,$17,$40              ;
                 db $40,$40,$40,$03,$13,$07,$13,$07              ;
-              
+
 DATA_15AD82:    db $04,$10,$04,$10,$04,$10,$04,$10              ;
                 db $04,$14,$40,$40,$40,$00,$10,$05              ;
                 db $11,$05,$11,$05,$11,$05,$11,$05              ;
@@ -4601,9 +4601,9 @@ DATA_15C454:    db $00,$01,$04,$FF                              ;
 DATA_15C458:    db $00,$01,$05,$FF                              ;
 
 DATA_15C45C:    db $00,$01,$06,$07,$FF                          ;
-              
+
 DATA_15C461:    db $00,$01,$06,$08,$FF                          ;
-   
+
 PNTR_15C466:    dw DATA_15C48E                                  ;
                 dw DATA_15C49E                                  ;
                 dw DATA_15C4AE                                  ;
@@ -4832,7 +4832,7 @@ DATA_15C8D2:    db $15,$16                                      ;
 DATA_15C8D4:    db $16,$15                                      ;
 
 DATA_15C8D6:    db $0B,$0C                                      ;
-     
+
 DATA_15C8D8:    db $07,$07,$07,$0D,$0D,$0D,$0D,$0E              ;
                 db $0E,$0E,$0D,$11,$11,$11,$0E,$0E              ;
                 db $0E,$0E,$0E,$0E,$13,$13,$01,$0E              ;
@@ -5857,7 +5857,7 @@ PNTR_15E000:    dl $000302                                      ; 00 - RAM uploa
                 dl DATA_15E250                                  ; 02 - 'Super Mario Bros. 2' and '�1988-1992 Nintendo.'
                 dl DATA_15E41F                                  ; 03 - Border of the Game Over screen.
                 dl DATA_15E660                                  ;
-     
+
 DATA_15E00F:    db $0C,$00,$47,$FE,$BD,$09,$0C,$01              ;
                 db $C0,$3E,$BE,$04,$0C,$02,$C0,$3E              ;
                 db $BE,$04,$0C,$03,$C0,$3E,$BE,$04              ;

@@ -323,7 +323,7 @@ CODE_038323:    INC $0154               ; $03:8323: EE 54 01    ;
                 LDA DATA_0382DE,x       ; $03:8329: BD DE 82    ; |
                 STA $00                 ; $03:832C: 85 00       ; |
                 LDA DATA_0382F1,x       ; $03:832E: BD F1 82    ; |
-                STA $01                 ; $03:8331: 85 01       ; | 
+                STA $01                 ; $03:8331: 85 01       ; |
                 LDA #$03                ; $03:8333: A9 03       ; |
                 STA $02                 ; $03:8335: 85 02       ; |
                 JSR CODE_039BBC         ; $03:8337: 20 BC 9B    ;/ Stripe image uploader
@@ -1364,14 +1364,14 @@ CODE_038C18:    LDA $073C               ; $03:8C18: AD 3C 07    ;\
                 TAX                     ; $03:8C1C: AA          ; |
                 JMP (PNTR_038C20,x)     ; $03:8C1D: 7C 20 8C    ;/
 
-PNTR_038C20:    dw CODE_038C3E                                  ;$00 - 
-                dw CODE_038C50                                  ;$01 - 
-                dw CODE_038C83                                  ;$02 - 
-                dw CODE_038C8B                                  ;$03 - 
-                dw CODE_038CFF                                  ;$04 - 
-                dw CODE_039213                                  ;$05 - 
+PNTR_038C20:    dw CODE_038C3E                                  ;$00 -
+                dw CODE_038C50                                  ;$01 -
+                dw CODE_038C83                                  ;$02 -
+                dw CODE_038C8B                                  ;$03 -
+                dw CODE_038CFF                                  ;$04 -
+                dw CODE_039213                                  ;$05 -
                 dw CODE_038D7B                                  ;$06 - Display intermediate
-                dw CODE_039213                                  ;$07 - 
+                dw CODE_039213                                  ;$07 -
                 dw CODE_038E37                                  ;$08 -
                 dw CODE_038C6F                                  ;$09 -
                 dw CODE_038C7A                                  ;$0A -
@@ -1944,7 +1944,7 @@ CODE_03922C:    RTS                     ; $03:922C: 60          ;
 CODE_03922D:    LDA $0EC9               ; $03:922D: AD C9 0E    ;\If done rendering the level, return?
                 BNE CODE_03922C         ; $03:9230: D0 FA       ;/or: If no objects flag is set, return?
                 REP #$30                ; $03:9232: C2 30       ;16-bit AXY
-                LDY $1A00               ; $03:9234: AC 00 1A    ;\ 
+                LDY $1A00               ; $03:9234: AC 00 1A    ;\
                 STY $00                 ; $03:9237: 84 00       ;/ ??
                 LDA $0720               ; $03:9239: AD 20 07    ;\Load layer 1 drawing handler
                 STA $1A02,y             ; $03:923C: 99 02 1A    ;/Store it here?
@@ -2183,7 +2183,7 @@ DATA_03943C:    dw $9594,$9797                                  ;
 ;SMB1 MAP16 IMAGE DATA
 ;FORMAT: $upperleft,$property,$bottomleft,$property,$upperright,$property,$bottomright,$property
 
-                db $24,$00,$24,$00,$24,$00,$24,$00              ;MAP16 tile 000  
+                db $24,$00,$24,$00,$24,$00,$24,$00              ;MAP16 tile 000
                 db $27,$00,$27,$00,$27,$00,$27,$00              ;MAP16 tile 001
                 db $24,$00,$E3,$09,$24,$00,$24,$00              ;MAP16 tile 002
                 db $24,$00,$24,$00,$24,$00,$E0,$09              ;MAP16 tile 003
@@ -2496,7 +2496,7 @@ CODE_039BBC:    REP #$10                ; $03:9BBC: C2 10       ;Stripe image up
                 RTS                     ; $03:9BCE: 60          ;/
 
 CODE_039BCF:    STA $04                 ; $03:9BCF: 85 04       ;\
-                INY                     ; $03:9BD1: C8          ; |Store stripe image VRAM destination in 
+                INY                     ; $03:9BD1: C8          ; |Store stripe image VRAM destination in
                 LDA [$00],y             ; $03:9BD2: B7 00       ; |RAM $03-$04.
                 STA $03                 ; $03:9BD4: 85 03       ; |
                 INY                     ; $03:9BD6: C8          ;/
@@ -3890,37 +3890,37 @@ PNTR_03A7C9:    dw CODE_03A9F7                                  ;$00 - Warp pipe
                 dw CODE_03AA7E                                  ;$0D - Water/lava pit
                 dw CODE_03AA9E                                  ;$0E - Row of Coin Question blocks (high)
                 dw CODE_03AAA2                                  ;$0F - Row of Coin Question blocks (low)
-                dw CODE_03A827                                  ;$10 - 
-                dw CODE_03A827                                  ;$11 - 
-                dw CODE_03A827                                  ;$12 - 
+                dw CODE_03A827                                  ;$10 -
+                dw CODE_03A827                                  ;$11 -
+                dw CODE_03A827                                  ;$12 -
                 dw CODE_03A827                                  ;$13 - these point to an rts
-                dw CODE_03A827                                  ;$14 - 
-                dw CODE_03A827                                  ;$15 - 
-                dw CODE_03AC0F                                  ;$16 - 
-                dw CODE_03AC0F                                  ;$17 - 
-                dw CODE_03AC0F                                  ;$18 - 
-                dw CODE_03AC05                                  ;$19 - 
-                dw CODE_03AC18                                  ;$1A - 
-                dw CODE_03AC18                                  ;$1B - 
-                dw CODE_03AC18                                  ;$1C - 
-                dw CODE_03AC15                                  ;$1D - 
-                dw CODE_03AC18                                  ;$1E - 
+                dw CODE_03A827                                  ;$14 -
+                dw CODE_03A827                                  ;$15 -
+                dw CODE_03AC0F                                  ;$16 -
+                dw CODE_03AC0F                                  ;$17 -
+                dw CODE_03AC0F                                  ;$18 -
+                dw CODE_03AC05                                  ;$19 -
+                dw CODE_03AC18                                  ;$1A -
+                dw CODE_03AC18                                  ;$1B -
+                dw CODE_03AC18                                  ;$1C -
+                dw CODE_03AC15                                  ;$1D -
+                dw CODE_03AC18                                  ;$1E -
                 dw CODE_03A98D                                  ;$1F - Underwater horizontal pipe
                 dw CODE_03AB4E                                  ;$20 - Empty block
                 dw CODE_03ABD5                                  ;$21 - Springboard object
-                dw CODE_03A9A0                                  ;$22 - 
-                dw CODE_03AAE4                                  ;$23 - 
-                dw CODE_03AB3F                                  ;$24 - 
-                dw CODE_03AB44                                  ;$25 - 
-                dw CODE_03AB38                                  ;$26 - 
-                dw CODE_03A862                                  ;$27 - 
-                dw CODE_03A87C                                  ;$28 - 
-                dw CODE_03A87C                                  ;$29 - 
-                dw CODE_03A89A                                  ;$2A - 
-                dw CODE_03A89A                                  ;$2B - 
-                dw CODE_03A89A                                  ;$2C - 
-                dw CODE_03A77A                                  ;$2D - 
-                dw CODE_03A828                                  ;$2E - 
+                dw CODE_03A9A0                                  ;$22 -
+                dw CODE_03AAE4                                  ;$23 -
+                dw CODE_03AB3F                                  ;$24 -
+                dw CODE_03AB44                                  ;$25 -
+                dw CODE_03AB38                                  ;$26 -
+                dw CODE_03A862                                  ;$27 -
+                dw CODE_03A87C                                  ;$28 -
+                dw CODE_03A87C                                  ;$29 -
+                dw CODE_03A89A                                  ;$2A -
+                dw CODE_03A89A                                  ;$2B -
+                dw CODE_03A89A                                  ;$2C -
+                dw CODE_03A77A                                  ;$2D -
+                dw CODE_03A828                                  ;$2E -
 
 CODE_03A827:    RTS                     ; $03:A827: 60          ;
 
@@ -5012,7 +5012,7 @@ CODE_03B03E:    PHX                     ; $03:B03E: DA          ;\
                 LDX $0EC3               ; $03:B03F: AE C3 0E    ; |
                 LDA $0FF8,x             ; $03:B042: BD F8 0F    ; |Get controller input
                 PLX                     ; $03:B045: FA          ;/
-                AND #$C0                ; $03:B046: 29 C0       ;\ 
+                AND #$C0                ; $03:B046: 29 C0       ;\
                 BEQ CODE_03B060         ; $03:B048: F0 16       ; |Skip if no input
                 AND #$80                ; $03:B04A: 29 80       ; |
                 BEQ CODE_03B058         ; $03:B04C: F0 0A       ;/ Branch if controller input is $40
@@ -5480,7 +5480,7 @@ CODE_03B403:    JSR CODE_03C0B4         ; $03:B403: 20 B4 C0    ;
                 STA $06FF               ; $03:B406: 8D FF 06    ;
                 LDA $0F                 ; $03:B409: A5 0F       ;\
                 CMP #$0B                ; $03:B40B: C9 0B       ; |If Mario is not dying
-                BNE CODE_03B414         ; $03:B40D: D0 05       ;/ 
+                BNE CODE_03B414         ; $03:B40D: D0 05       ;/
                 LDA #$28                ; $03:B40F: A9 28       ;
                 STA $0709               ; $03:B411: 8D 09 07    ;
 CODE_03B414:    JMP CODE_03C0FD         ; $03:B414: 4C FD C0    ;
@@ -6884,7 +6884,7 @@ CODE_03BFA0:    RTS                     ; $03:BFA0: 60          ;
 CODE_03BFA1:    JSR CODE_03BFC6         ; $03:BFA1: 20 C6 BF    ;
                 LDA #$01                ; $03:BFA4: A9 01       ;
                 STA $03EE,x             ; $03:BFA6: 9D EE 03    ;
-                LDA $1603               ; $03:BFA9: AD 03 16    ;\ 
+                LDA $1603               ; $03:BFA9: AD 03 16    ;\
                 BNE CODE_03BFB3         ; $03:BFAC: D0 05       ; |If there's no SFX playing already
                 LDA #$07                ; $03:BFAE: A9 07       ; |Shatter bricks sound
                 STA $1603               ; $03:BFB0: 8D 03 16    ;/
@@ -7461,7 +7461,7 @@ CODE_03C3F5:    LDA $78                 ; $03:C3F5: A5 78       ;\
                 PHX                     ; $03:C42E: DA          ;
                 TYX                     ; $03:C42F: BB          ;
                 LDA.l DATA_04C000,x     ; $03:C430: BF 00 C0 04 ;
-                STA $072C               ; $03:C434: 8D 2C 07    ;Set level object data pointer index according to 
+                STA $072C               ; $03:C434: 8D 2C 07    ;Set level object data pointer index according to
                 PLX                     ; $03:C437: FA          ;
                 STZ $0EDB               ; $03:C438: 9C DB 0E    ;
                 RTS                     ; $03:C43B: 60          ;
@@ -7524,7 +7524,7 @@ CODE_03C4B6:    JSR CODE_03C3F5         ; $03:C4B6: 20 F5 C3    ;
 CODE_03C4BC:    LDA #$00                ; $03:C4BC: A9 00       ;\
                 STA $06DA               ; $03:C4BE: 8D DA 06    ; | Zero out correct checkpoints counter
                 STA $06D9               ; $03:C4C1: 8D D9 06    ; | The total checkpoints counter
-CODE_03C4C4:    STZ $0745               ; $03:C4C4: 9C 45 07    ;/ 
+CODE_03C4C4:    STZ $0745               ; $03:C4C4: 9C 45 07    ;/
 CODE_03C4C7:    LDA $06CD               ; $03:C4C7: AD CD 06    ;
                 BEQ CODE_03C4DA         ; $03:C4CA: F0 0E       ;
                 STA $1C,x               ; $03:C4CC: 95 1C       ;
@@ -7721,7 +7721,7 @@ PNTR_03C62F:    dw CODE_03C6D3                                  ; $00 - Green Ko
                 dw CODE_03C72E                                  ; $08 - Bullet Bill
                 dw CODE_03C69D                                  ; $09 - Yellow Paratroopa (Doesn't move)
                 dw CODE_03C738                                  ; $0A - Green Cheep-Cheep
-                dw CODE_03C738                                  ; $0B - Red Cheep-Cheep 
+                dw CODE_03C738                                  ; $0B - Red Cheep-Cheep
                 dw CODE_03C6A4                                  ; $0C - Podoboo
                 dw CODE_03CB99                                  ; $0D - piranha Plant
                 dw CODE_03CBF2                                  ; $0E - Green Paratroopa
@@ -8523,7 +8523,7 @@ CODE_03CCA8:    LDX $9E                 ; $03:CCA8: A6 9E       ;Get sprite inde
                 LDA #$00                ; $03:CCAA: A9 00       ;load 00 into A
                 LDY $1C,x               ; $03:CCAC: B4 1C       ;Load current sprite number
                 CPY #$15                ; $03:CCAE: C0 15       ;\If it is smaller than $15 ($00-$14)
-                BCC CODE_03CCB5         ; $03:CCB0: 90 03       ;/Skip the next 2 lines. 
+                BCC CODE_03CCB5         ; $03:CCB0: 90 03       ;/Skip the next 2 lines.
                 TYA                     ; $03:CCB2: 98          ;
                 SBC #$14                ; $03:CCB3: E9 14       ;
 CODE_03CCB5:    ASL A                   ; $03:CCB5: 0A          ;Get index to next table
@@ -8568,7 +8568,7 @@ PNTR_03CCC4:    dw CODE_03CD12                                  ;Sprites $0-$14
                 dw CODE_03B991                                  ; $32 - Red springboard
                 dw CODE_03CD08                                  ; $33 - Nothing
                 dw CODE_03B839                                  ; $34 - Warp Zone
-                dw CODE_03CD09                                  ; $35 - Toad/Princess 
+                dw CODE_03CD09                                  ; $35 - Toad/Princess
 
 CODE_03CD08:    RTS                     ; $03:CD08: 60          ;
 
@@ -9608,12 +9608,12 @@ CODE_03D557:    JMP CODE_03D679         ; $03:D557: 4C 79 D6    ;
 DATA_03D55A:    db $21,$41,$11,$31                              ;
 
 CODE_03D55E:    LDA $29,x               ; $03:D55E: B5 29       ;\
-                AND #$20                ; $03:D560: 29 20       ; | 
-                BEQ CODE_03D579         ; $03:D562: F0 15       ;/ 
+                AND #$20                ; $03:D560: 29 20       ; |
+                BEQ CODE_03D579         ; $03:D562: F0 15       ;/
                 LDA $0238,x             ; $03:D564: BD 38 02    ;\
                 CMP #$E0                ; $03:D567: C9 E0       ; |
                 BCC CODE_03D4FD         ; $03:D569: 90 92       ; | If Bowser reaches a certain Y position
-CODE_03D56B:    LDX #$08                ; $03:D56B: A2 08       ; | 
+CODE_03D56B:    LDX #$08                ; $03:D56B: A2 08       ; |
 CODE_03D56D:    JSR CODE_03CDE2         ; $03:D56D: 20 E2 CD    ; | Erase all current sprites
                 DEX                     ; $03:D570: CA          ; |
                 BPL CODE_03D56D         ; $03:D571: 10 FA       ;/
@@ -9710,7 +9710,7 @@ CODE_03D639:    CMP #$01                ; $03:D639: C9 01       ;
                 DEC $0238,x             ; $03:D63D: DE 38 02    ;
                 JSR CODE_03C726         ; $03:D640: 20 26 C7    ;
                 LDA #$FE                ; $03:D643: A9 FE       ;\ Bowser jumps
-                STA $A1,x               ; $03:D645: 95 A1       ;/ 
+                STA $A1,x               ; $03:D645: 95 A1       ;/
 CODE_03D647:    LDA $075F               ; $03:D647: AD 5F 07    ;\ Check if world 8
                 CMP #$07                ; $03:D64A: C9 07       ; | Branch, in order for real Bowser to throw hammers and fireballs simultaneously
                 BEQ CODE_03D652         ; $03:D64C: F0 04       ;/
@@ -10528,7 +10528,7 @@ CODE_03DCC3:    PLA                     ; $03:DCC3: 68          ;
 CODE_03DCCA:    LDX $9E                 ; $03:DCCA: A6 9E       ;
                 RTS                     ; $03:DCCC: 60          ;
 
-DATA_03DCCD:    db $06,$00,$02,$12,$11,$07,$05,$2D              ;Sprite to generate when you kill Bowser with fireballs. 
+DATA_03DCCD:    db $06,$00,$02,$12,$11,$07,$05,$2D              ;Sprite to generate when you kill Bowser with fireballs.
                                                             ;In this order: Goomba, Green Koopa, Red Koopa, Spiny, Lakitu, Blooper, Hammer Bros., Bowser
 
 CODE_03DCD5:    JSR CODE_03FD39         ; $03:DCD5: 20 39 FD    ;
@@ -12189,10 +12189,10 @@ CODE_03E9D5:    LDY #$08                ; $03:E9D5: A0 08       ;
                 LDY #$04                ; $03:E9D9: A0 04       ;
 CODE_03E9DB:    LDA $021A,x             ; $03:E9DB: BD 1A 02    ; Sprite X position low
                 SEC                     ; $03:E9DE: 38          ;
-                SBC $071C               ; $03:E9DF: ED 1C 07    ; Horizontal X coordinate of left side of the screen, low byte.	
+                SBC $071C               ; $03:E9DF: ED 1C 07    ; Horizontal X coordinate of left side of the screen, low byte.
                 STA $01                 ; $03:E9E2: 85 01       ;
                 LDA $79,x               ; $03:E9E4: B5 79       ; Sprite X position high
-                SBC $071A               ; $03:E9E6: ED 1A 07    ; Horizontal X coordinate of left side of the screen, high byte.	
+                SBC $071A               ; $03:E9E6: ED 1A 07    ; Horizontal X coordinate of left side of the screen, high byte.
                 BMI CODE_03E9F1         ; $03:E9E9: 30 06       ;
                 ORA $01                 ; $03:E9EB: 05 01       ;
                 BEQ CODE_03E9F1         ; $03:E9ED: F0 02       ;
@@ -12402,7 +12402,7 @@ CODE_03EB83:    PHA                     ; $03:EB83: 48          ;
                 ADC $0219,x             ; $03:EB8A: 7D 19 02    ; |X-position of Mario sprite
                 STA $05                 ; $03:EB8D: 85 05       ; |
                 LDA $78,x               ; $03:EB8F: B5 78       ; |Screen of player
-                ADC #$00                ; $03:EB91: 69 00       ; | 
+                ADC #$00                ; $03:EB91: 69 00       ; |
                 AND #$01                ; $03:EB93: 29 01       ; |
                 LSR A                   ; $03:EB95: 4A          ; |
                 ORA $05                 ; $03:EB96: 05 05       ; |
@@ -12559,7 +12559,7 @@ CODE_03ECEA:    JSL CODE_05CDEB         ; $03:ECEA: 22 EB CD 05 ;
 
 DATA_03ECEF:    db $E9,$EA,$78,$79,$D6,$D6,$D9,$D9              ;
                 db $8D,$8D,$E4,$E4,$E9,$EA,$78,$79              ;
-					
+
 DATA_03ECFF:    db $2C,$28,$28,$2A                              ;
 
 CODE_03ED03:    LDA $0B4F               ; $03:ED03: AD 4F 0B    ;

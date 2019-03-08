@@ -2647,7 +2647,7 @@ DATA_21BE1C:    db $C9,$A8,$A2,$AA,$FE,$A0,$FE,$A1              ; Toad House "Pi
                 db $A5,$B4,$AB,$FE,$FE,$FE,$FE,$FE              ;
                 db $B3,$A7,$A8,$AD,$A6,$B2,$D4,$FE              ;
                 db $FE,$FE,$FE,$FE,$FE,$FE                      ;
-					
+
 DATA_21BEEE:    db $46,$00                                      ;
 
 DATA_21BEF0:    db $8C,$84,$86,$9C,$80,$82,$8A,$B4              ;
@@ -4125,7 +4125,7 @@ DATA_21D8A1:    dw DATA_21D8F3 ; World 1 Level Pointers - Sprites
                 dw DATA_21E125 ; World 7 Level Pointers - Sprites
                 dw DATA_21E28F ; World 8 Level Pointers - Sprites
                 dw DATA_21E39D ; World 9 Level Pointers - Sprites
-				
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;; SMB3 Level Data pointers for level objects
@@ -4588,7 +4588,7 @@ DATA_21E3ED:    db $1D,$E5,$26,$E5,$2F,$E5,$38,$E5              ;
                 db $20,$00,$00,$00,$00,$50,$60,$60              ;
                 db $80,$A0,$00,$00,$00,$00,$80,$90              ;
                 db $50,$90,$00,$00,$00,$00,$00                  ;
-				
+
 DATA_21E43C:    db $10,$00,$70,$70,$50,$70,$00,$00              ;
                 db $00,$00,$00,$00,$00,$00,$00,$00              ;
                 db $00,$00,$01,$01,$00,$01,$01,$00              ;
@@ -5621,7 +5621,7 @@ DATA_21F785:    db $C0,$A1,$84,$84,$A3,$90,$95,$86              ; "Greetings" te
                 db $A2,$00,$FD,$FD,$FD,$FD,$FD,$FD              ;
                 db $FD,$A3,$96,$80,$83,$A2,$A3,$96              ;
                 db $96,$93,$E7,$FF                              ;
-					
+
                 db $E2,$96,$E4,$00,$C2,$FD,$92,$90              ; "Yo! I have kidnapped the" text used as an opener in bowser's letter
                 db $83,$95,$80,$97                              ;
 

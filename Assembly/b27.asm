@@ -8035,7 +8035,7 @@ CODE_27C5D6:    LDA $1FC8,x             ; $27:C5D6: BD C8 1F    ; Extended sprit
                 dw CODE_27CAAE                                  ; $0F -
                 dw CODE_27C995                                  ; $10 - Magic Wand
                 dw CODE_27C7A7                                  ; $11 - Enemy morphed into coin (at level end when there are enemies present)
-                dw CODE_27D576                                  ; $12 - 
+                dw CODE_27D576                                  ; $12 -
                 dw CODE_27C7A7                                  ; $13 - Brick shatter
                 dw CODE_27C6D6                                  ; $14 -
                 dw CODE_27C60F                                  ; $15 - Bowser statue laser
@@ -10336,7 +10336,7 @@ CODE_27D897:    LDA $1A35,x             ; $27:D897: BD 35 1A    ;\
                 SBC $12                 ; $27:D8A0: E5 12       ;/
                 BNE CODE_27D8BC             ; $27:D8A2: D0 18       ;
                 LDA $1A35,x             ; $27:D8A4: BD 35 1A    ;\
-                SEC                     ; $27:D8A7: 38          ; |If mario is not between $38 and $4C pixels 
+                SEC                     ; $27:D8A7: 38          ; |If mario is not between $38 and $4C pixels
                 SBC $5E                 ; $27:D8A8: E5 5E       ; |close to the sprite (20 pixels area), branch
                 CMP #$38                ; $27:D8AA: C9 38       ; |
                 BCC CODE_27D8BC         ; $27:D8AC: 90 0E       ; |

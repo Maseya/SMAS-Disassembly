@@ -9,7 +9,7 @@ CODE_118006:    JMP CODE_11956C             ; $11:8006: 4C 6C 95    ;
 CODE_118009:    STZ $023A               ; $11:8009: 9C 3A 02    ; No HDMA enable.
                 LDA #$80                ; $11:800C: A9 80       ; Force blank
                 BRA CODE_118012         ; $11:800E: 80 02       ; Jump to $118012.
-           
+
 CODE_118010:    LDA #$0F                ; $11:8010: A9 0F       ; Full brightness.
 CODE_118012:    STA $FE                 ; $11:8012: 85 FE       ; $FE = $2100 mirror.
 CODE_118014:    LDA $11                 ; $11:8014: A5 11       ; \ $11 = Image upload
@@ -129,7 +129,7 @@ CODE_11803C:    NOP                     ; $11:803C: EA          ; \ Two useless 
                 JSL CODE_14D78D             ; $11:811E: 22 8D D7 14 ;
                 LDA $7FFB00             ; $11:8122: AF 00 FB 7F ; \ $7FFB00...
                 STA $0635               ; $11:8126: 8D 35 06    ; / into World number.
-                ASL A                   ; $11:8129: 0A          ; \ 
+                ASL A                   ; $11:8129: 0A          ; \
                 CLC                     ; $11:812A: 18          ;  | *3
                 ADC $7FFB00             ; $11:812B: 6F 00 FB 7F ;  |
                 CLC                     ; $11:812F: 18          ;  | Add $7FFB01 to it...
@@ -154,11 +154,11 @@ CODE_118144:    LDA $7FFB03,x               ; $11:8144: BF 03 FB 7F ;
                 LDA #$FF                    ; $11:8164: A9 FF       ;
                 STA $02E6                   ; $11:8166: 8D E6 02    ;
                 BRA CODE_11817F         ; $11:8169: 80 14       ;
-           
+
 CODE_11816B:    LDA #$05                ; $11:816B: A9 05       ; \ Amount of lives...
                 STA $04EE               ; $11:816D: 8D EE 04    ; / after Game Over.
                 BRA CODE_11817F         ; $11:8170: 80 0D       ;
-           
+
 CODE_118172:    LDX $0635               ; $11:8172: AE 35 06    ; \ Get world number into index...
                 LDA.l DATA_11C9B4,x     ; $11:8175: BF B4 C9 11 ;  | Get accumulative level number of x-1, where x = world number.
                 STA $0533               ; $11:8179: 8D 33 05    ;  | Store into accumulative level number.
@@ -170,12 +170,12 @@ CODE_11817F:    STZ $0217                   ; $11:817F: 9C 17 02    ;
                 LDA #$FF                    ; $11:818B: A9 FF       ;
                 STA $0547                   ; $11:818D: 8D 47 05    ;
                 BRA CODE_1181A8         ; $11:8190: 80 16       ;
-           
+
 CODE_118192:    STZ $0217                   ; $11:8192: 9C 17 02    ;
                 JSR CODE_118927             ; $11:8195: 20 27 89    ;
                 JSR CODE_1188C5             ; $11:8198: 20 C5 88    ;
                 BRA CODE_1181A8         ; $11:819B: 80 0B       ;
-           
+
                 STZ $0217                   ; $11:819D: 9C 17 02    ;
                 LDA #$80                    ; $11:81A0: A9 80       ;
                 STA $1DE2                   ; $11:81A2: 8D E2 1D    ;
@@ -222,13 +222,13 @@ CODE_1181E0:    STZ $02B8                   ; $11:81E0: 9C B8 02    ;
                 BEQ CODE_118220         ; $11:821A: F0 04       ;  |
                 LDA #$09                ; $11:821C: A9 09       ;  | Make Layer 3 have full priority.
                 BRA CODE_118222         ; $11:821E: 80 02       ; /
-           
+
 CODE_118220:    LDA #$01                ; $11:8220: A9 01       ; \ BG Mode 1.
 CODE_118222:    STA $0775               ; $11:8222: 8D 75 07    ; / No Layer 3 priority.
                 JSL CODE_12F2EF             ; $11:8225: 22 EF F2 12 ;
                 JSL CODE_14D0F2             ; $11:8229: 22 F2 D0 14 ;
                 JSL CODE_138780             ; $11:822D: 22 80 87 13 ;
-                JSL CODE_14F9F0         ; $11:8231: 22 F0 F9 14 ; Clear all OAM.       
+                JSL CODE_14F9F0         ; $11:8231: 22 F0 F9 14 ; Clear all OAM.
                 JSL CODE_14F9A0             ; $11:8235: 22 A0 F9 14 ;
                 PLA                         ; $11:8239: 68          ;
                 AND #$80                    ; $11:823A: 29 80       ;
@@ -242,7 +242,7 @@ CODE_118222:    STA $0775               ; $11:8222: 8D 75 07    ; / No Layer 3 p
                 LDA $EB                     ; $11:8250: A5 EB       ;
                 BNE CODE_118257             ; $11:8252: D0 03       ;
                 BRL CODE_118329         ; $11:8254: 82 D2 00    ;
-           
+
 CODE_118257:    STZ $420C                   ; $11:8257: 9C 0C 42    ;
                 STZ $4200                   ; $11:825A: 9C 00 42    ;
                 JSR CODE_1193F5             ; $11:825D: 20 F5 93    ;
@@ -268,7 +268,7 @@ CODE_118257:    STZ $420C                   ; $11:8257: 9C 0C 42    ;
                 LDA #$81                    ; $11:829F: A9 81       ;
                 STA $4200                   ; $11:82A1: 8D 00 42    ;
                 STZ $13                     ; $11:82A4: 64 13       ;
-                STZ $04ED               ; $11:82A6: 9C ED 04    ; Don't go to a special screen.                 
+                STZ $04ED               ; $11:82A6: 9C ED 04    ; Don't go to a special screen.
                 STZ $02AB                   ; $11:82A9: 9C AB 02    ;
                 STZ $0724                   ; $11:82AC: 9C 24 07    ;
                 LDA $024B               ; $11:82AF: AD 4B 02    ; \ If IRQ V-counter is 00...
@@ -300,17 +300,17 @@ CODE_1182EE:    LDA $FA                     ; $11:82EE: A5 FA       ;
                 AND #$10                    ; $11:82F0: 29 10       ;
                 BEQ CODE_1182F7             ; $11:82F2: F0 03       ;
                 JMP CODE_11846B         ; $11:82F4: 4C 6B 84    ;
-           
+
 CODE_1182F7:    LDA $0628                   ; $11:82F7: AD 28 06    ;
                 BEQ CODE_1182FF             ; $11:82FA: F0 03       ;
                 JMP CODE_1185A0         ; $11:82FC: 4C A0 85    ;
-           
+
 CODE_1182FF:    JSL CODE_14F9F0         ; $11:82FF: 22 F0 F9 14 ; Clear all OAM.
                 JSL CODE_14DF1F             ; $11:8303: 22 1F DF 14 ;
                 LDY $04ED                   ; $11:8307: AC ED 04    ;
                 BEQ CODE_11830F             ; $11:830A: F0 03       ;
                 JMP CODE_118B31         ; $11:830C: 4C 31 8B    ;
-           
+
 CODE_11830F:    LDA $0627                   ; $11:830F: AD 27 06    ;
                 BEQ CODE_1182CE             ; $11:8312: F0 BA       ;
                 JSR CODE_118AD2             ; $11:8314: 20 D2 8A    ;
@@ -319,7 +319,7 @@ CODE_11830F:    LDA $0627                   ; $11:830F: AD 27 06    ;
                 STZ $0627                   ; $11:831F: 9C 27 06    ;
                 JSL CODE_118009             ; $11:8322: 22 09 80 11 ;
                 JMP CODE_1181B5         ; $11:8326: 4C B5 81    ;
-           
+
 CODE_118329:    STZ $420C               ; $11:8329: 9C 0C 42    ; HDMA channels off.
                 STZ $4200               ; $11:832C: 9C 00 42    ; No NMI/IRQ.
                 JSR CODE_1193F5             ; $11:832F: 20 F5 93    ;
@@ -367,7 +367,7 @@ CODE_11839A:    LDA $02C3                   ; $11:839A: AD C3 02    ;
                 STA $0208                   ; $11:83A8: 8D 08 02    ;
                 STZ $0209                   ; $11:83AB: 9C 09 02    ;
                 BRA CODE_1183B8         ; $11:83AE: 80 08       ;
-           
+
 CODE_1183B0:    STZ $0208                   ; $11:83B0: 9C 08 02    ;
                 LDA #$01                    ; $11:83B3: A9 01       ;
                 STA $0209                   ; $11:83B5: 8D 09 02    ;
@@ -380,7 +380,7 @@ CODE_1183B8:    LDA $0772                   ; $11:83B8: AD 72 07    ;
                 STA $020A                   ; $11:83C6: 8D 0A 02    ;
                 STZ $020B                   ; $11:83C9: 9C 0B 02    ;
                 BRA CODE_1183D6         ; $11:83CC: 80 08       ;
-           
+
 CODE_1183CE:    STZ $020A                   ; $11:83CE: 9C 0A 02    ;
                 LDA #$01                    ; $11:83D1: A9 01       ;
                 STA $020B                   ; $11:83D3: 8D 0B 02    ;
@@ -411,7 +411,7 @@ CODE_11840D:    JSL CODE_14F9F0         ; $11:840D: 22 F0 F9 14 ; Clear all OAM.
                 LDY $04ED                   ; $11:8419: AC ED 04    ;
                 BEQ CODE_118421             ; $11:841C: F0 03       ;
                 JMP CODE_118B31         ; $11:841E: 4C 31 8B    ;
-           
+
 CODE_118421:    LDA $0627                   ; $11:8421: AD 27 06    ;
                 BEQ CODE_1183E7             ; $11:8424: F0 C1       ;
                 JSR CODE_118AD2             ; $11:8426: 20 D2 8A    ;
@@ -439,7 +439,7 @@ CODE_11845E:    STZ $0627                   ; $11:845E: 9C 27 06    ;
                 STZ $0D0B                   ; $11:8461: 9C 0B 0D    ;
                 JSL CODE_118009             ; $11:8464: 22 09 80 11 ;
                 JMP CODE_1181B5         ; $11:8468: 4C B5 81    ;
-           
+
 CODE_11846B:    LDA $2142                   ; $11:846B: AD 42 21    ;
                 CMP #$0B                    ; $11:846E: C9 0B       ;
                 BEQ CODE_118492             ; $11:8470: F0 20       ;
@@ -460,9 +460,9 @@ CODE_11846B:    LDA $2142                   ; $11:846B: AD 42 21    ;
 CODE_118492:    LDA $EB                     ; $11:8492: A5 EB       ;
                 BEQ CODE_118499             ; $11:8494: F0 03       ;
                 JMP CODE_1182F7         ; $11:8496: 4C F7 82    ;
-           
+
 CODE_118499:    JMP CODE_11840D         ; $11:8499: 4C 0D 84    ;
-           
+
 CODE_11849C:    STZ $0D0B                   ; $11:849C: 9C 0B 0D    ;
                 STZ $078E                   ; $11:849F: 9C 8E 07    ;
                 JSL CODE_138FD5             ; $11:84A2: 22 D5 8F 13 ;
@@ -499,7 +499,7 @@ CODE_1184EB:    JSL CODE_118014             ; $11:84EB: 22 14 80 11 ;
                 BEQ CODE_118505             ; $11:84FD: F0 06       ;
                 JSL CODE_14E39F             ; $11:84FF: 22 9F E3 14 ;
                 BRA CODE_11852C         ; $11:8503: 80 27       ;
-           
+
 CODE_118505:    JSL CODE_14DAB8             ; $11:8505: 22 B8 DA 14 ;
                 JSL CODE_14D2FA             ; $11:8509: 22 FA D2 14 ;
                 LDA $FA                     ; $11:850D: A5 FA       ;
@@ -511,7 +511,7 @@ CODE_118505:    JSL CODE_14DAB8             ; $11:8505: 22 B8 DA 14 ;
                 STA $0210                   ; $11:851A: 8D 10 02    ;
                 INC $0211                   ; $11:851D: EE 11 02    ;
                 JMP CODE_1184EB         ; $11:8520: 4C EB 84    ;
-           
+
 CODE_118523:    JSL CODE_14DAF4             ; $11:8523: 22 F4 DA 14 ;
                 LDA #$F2                    ; $11:8527: A9 F2       ;
                 STA $1DE2                   ; $11:8529: 8D E2 1D    ;
@@ -554,13 +554,13 @@ CODE_118574:    JSL CODE_14F9F0         ; $11:8574: 22 F0 F9 14 ; Clear all OAM.
                 LDA $0628                   ; $11:858E: AD 28 06    ;
                 BEQ CODE_118596             ; $11:8591: F0 03       ;
                 BRL CODE_11867C         ; $11:8593: 82 E6 00    ;
-           
+
 CODE_118596:    LDA $EB                     ; $11:8596: A5 EB       ;
                 BNE CODE_11859D             ; $11:8598: D0 03       ;
                 JMP CODE_1183E7         ; $11:859A: 4C E7 83    ;
-           
+
 CODE_11859D:    JMP CODE_1182CE         ; $11:859D: 4C CE 82    ;
-           
+
 CODE_1185A0:    JSR CODE_118AD2             ; $11:85A0: 20 D2 8A    ;
                 STZ $023A                   ; $11:85A3: 9C 3A 02    ;
                 STZ $4200                   ; $11:85A6: 9C 00 42    ;
@@ -640,7 +640,7 @@ CODE_11867C:    JSL CODE_118014             ; $11:867C: 22 14 80 11 ;
                 LDY $04ED                   ; $11:8688: AC ED 04    ;
                 BEQ CODE_118690             ; $11:868B: F0 03       ;
                 JMP CODE_118B31         ; $11:868D: 4C 31 8B    ;
-           
+
 CODE_118690:    LDA $0628                   ; $11:8690: AD 28 06    ;
                 BNE CODE_11867C             ; $11:8693: D0 E7       ;
                 LDA $0622                   ; $11:8695: AD 22 06    ;
@@ -718,13 +718,13 @@ CODE_118754:    JSL CODE_13FC89         ; $11:8754: 22 89 FC 13 ; HDMA Handler.
                 JSR CODE_118AFE             ; $11:8764: 20 FE 8A    ;
                 STZ $0D13                   ; $11:8767: 9C 13 0D    ;
                 JMP CODE_1182CE         ; $11:876A: 4C CE 82    ;
-           
+
 CODE_11876D:    LDX #$08                    ; $11:876D: A2 08       ;
 CODE_11876F:    STZ $042F,x                 ; $11:876F: 9E 2F 04    ;
                 DEX                         ; $11:8772: CA          ;
                 BPL CODE_11876F             ; $11:8773: 10 FA       ;
                 RTS                     ; $11:8775: 60          ;
-                       
+
 CODE_118776:    STY $0D                     ; $11:8776: 84 0D       ;
                 PLY                         ; $11:8778: 7A          ;
                 STY $0A                     ; $11:8779: 84 0A       ;
@@ -740,13 +740,13 @@ CODE_118776:    STY $0D                     ; $11:8776: 84 0D       ;
                 SEP #$30                    ; $11:878A: E2 30       ;
                 LDY $0D                     ; $11:878C: A4 0D       ;
                 JML [$000A]             ; $11:878E: DC 0A 00    ;
-               
+
 CODE_118791:    JSR CODE_1190DF             ; $11:8791: 20 DF 90    ;
                 JSL CODE_118009             ; $11:8794: 22 09 80 11 ;
                 JSL CODE_118014             ; $11:8798: 22 14 80 11 ;
                 JSL CODE_14F9A0             ; $11:879C: 22 A0 F9 14 ;
                 RTS                     ; $11:87A0: 60          ;
-                       
+
                 JSR CODE_1190DF             ; $11:87A1: 20 DF 90    ;
                 JSL CODE_118009             ; $11:87A4: 22 09 80 11 ;
                 LDA #$40                    ; $11:87A8: A9 40       ;
@@ -755,7 +755,7 @@ CODE_118791:    JSR CODE_1190DF             ; $11:8791: 20 DF 90    ;
                 STA $11                     ; $11:87AF: 85 11       ;
                 JSL CODE_118014             ; $11:87B1: 22 14 80 11 ;
                 RTS                     ; $11:87B5: 60          ;
-                       
+
 CODE_1187B6:    TXA                         ; $11:87B6: 8A          ;
                 INC A                       ; $11:87B7: 1A          ;
                 ORA #$80                    ; $11:87B8: 09 80       ;
@@ -815,11 +815,11 @@ CODE_11881E:    STA $116C,y                 ; $11:881E: 99 6C 11    ;
                 LDA #$08                    ; $11:882F: A9 08       ;
                 STA $11                     ; $11:8831: 85 11       ;
                 RTL                     ; $11:8833: 6B          ;
-                       
+
 CODE_118834:    LDA #$C0                    ; $11:8834: A9 C0       ;
                 STA $0100                   ; $11:8836: 8D 00 01    ;
                 RTS                     ; $11:8839: 60          ;
-                       
+
 CODE_11883A:    STZ $0534                   ; $11:883A: 9C 34 05    ;
                 STZ $04E9                   ; $11:883D: 9C E9 04    ;
                 STZ $0535                   ; $11:8840: 9C 35 05    ;
@@ -833,7 +833,7 @@ CODE_11883A:    STZ $0534                   ; $11:883A: 9C 34 05    ;
                 STZ $0500                   ; $11:8857: 9C 00 05    ;
                 STZ $06C2                   ; $11:885A: 9C C2 06    ;
                 RTS                     ; $11:885D: 60          ;
-                       
+
 CODE_11885E:    LDA $FE                     ; $11:885E: A5 FE       ;
                 AND #$80                    ; $11:8860: 29 80       ;
                 BNE CODE_11886B             ; $11:8862: D0 07       ;
@@ -902,7 +902,7 @@ CODE_11890F:    JSL CODE_118009             ; $11:890F: 22 09 80 11 ;
                 JSL CODE_12FA10             ; $11:891F: 22 10 FA 12 ;
                 JSR CODE_1190DF             ; $11:8923: 20 DF 90    ;
                 RTS                     ; $11:8926: 60          ;
-                       
+
 CODE_118927:    JSL CODE_12FA35             ; $11:8927: 22 35 FA 12 ;
                 LDX $0635                   ; $11:892B: AE 35 06    ;
                 LDY $0533                   ; $11:892E: AC 33 05    ;
@@ -961,7 +961,7 @@ CODE_1189C0:    JSL CODE_118014             ; $11:89C0: 22 14 80 11 ;
                 AND #$23                    ; $11:89C6: 29 23       ;
                 BNE CODE_1189CD             ; $11:89C8: D0 03       ;
                 JMP CODE_1189FB         ; $11:89CA: 4C FB 89    ;
-           
+
 CODE_1189CD:    LDA $FA                 ; $11:89CD: A5 FA       ; \ Check if pressing Right or Select.
                 AND #$21                ; $11:89CF: 29 21       ;  |
                 BEQ CODE_1189DD         ; $11:89D1: F0 0A       ; / If neither, branch.
@@ -989,7 +989,7 @@ CODE_1189FB:    LDA $FA                     ; $11:89FB: A5 FA       ;
                 ORA $0712                   ; $11:8A06: 0D 12 07    ;
                 BNE CODE_118A0E             ; $11:8A09: D0 03       ;
                 JMP CODE_1189C0         ; $11:8A0B: 4C C0 89    ;
-           
+
 CODE_118A0E:    LDA #$3C                    ; $11:8A0E: A9 3C       ;
                 STA $1DE0                   ; $11:8A10: 8D E0 1D    ;
                 LDA #$40                    ; $11:8A13: A9 40       ;
@@ -1033,7 +1033,7 @@ CODE_118A5D:    JSL CODE_118014             ; $11:8A5D: 22 14 80 11 ;
                 LDA #$01                    ; $11:8A7E: A9 01       ;
                 STA $0775                   ; $11:8A80: 8D 75 07    ;
                 RTS                     ; $11:8A83: 60          ;
-                       
+
 CODE_118A84:    LDA #$17                ; $11:8A84: A9 17       ; \ Load byte into VRAM table at $0302 #$17 times.
                 STA $0712               ; $11:8A86: 8D 12 07    ; /
                 LDY $0300               ; $11:8A89: AC 00 03    ; \ Get to free area in VRAM table.
@@ -1051,7 +1051,7 @@ CODE_118A93:    LDA.l DATA_15EAE1,x     ; $11:8A93: BF E1 EA 15 ;  | Load tilema
                 TYA                     ; $11:8AA6: 98          ; \ Amount of bytes the table covers up...
                 STA $0300               ; $11:8AA7: 8D 00 03    ; / Into $0300. (Header byte)
                 RTL                     ; $11:8AAA: 6B          ; Return.
-                       
+
 CODE_118AAB:    LDA #$17                ; $11:8AAB: A9 17       ; \ Load byte into VRAM table at $0302 #$17 times.
                 STA $0712               ; $11:8AAD: 8D 12 07    ; /
                 LDY $0300               ; $11:8AB0: AC 00 03    ; \ Get to free area in VRAM table.
@@ -1069,7 +1069,7 @@ CODE_118ABA:    LDA.l DATA_11C6AB,x     ; $11:8ABA: BF AB C6 11 ;  | Load tilema
                 TYA                     ; $11:8ACD: 98          ; \ Amount of bytes the table covers up...
                 STA $0300               ; $11:8ACE: 8D 00 03    ; / Into $0300. (Header byte)
                 RTS                     ; $11:8AD1: 60          ; Return.
-                       
+
 CODE_118AD2:    STZ $02B7                   ; $11:8AD2: 9C B7 02    ;
 CODE_118AD5:    JSL CODE_118014             ; $11:8AD5: 22 14 80 11 ;
                 JSL CODE_14D1B2             ; $11:8AD9: 22 B2 D1 14 ;
@@ -1087,7 +1087,7 @@ CODE_118AEF:    LDA $024B                   ; $11:8AEF: AD 4B 02    ;
                 LDA #$FF                    ; $11:8AF8: A9 FF       ;
                 STA $024B                   ; $11:8AFA: 8D 4B 02    ;
 CODE_118AFD:    RTS                     ; $11:8AFD: 60          ;
-                       
+
 CODE_118AFE:    STZ $02B7                   ; $11:8AFE: 9C B7 02    ;
                 STZ $FE                     ; $11:8B01: 64 FE       ;
                 STZ $04AE                   ; $11:8B03: 9C AE 04    ;
@@ -1100,16 +1100,16 @@ CODE_118B06:    JSL CODE_118014             ; $11:8B06: 22 14 80 11 ;
 CODE_118B19:    LDA $02B7                   ; $11:8B19: AD B7 02    ;
                 BEQ CODE_118B06             ; $11:8B1C: F0 E8       ;
                 RTS                     ; $11:8B1E: 60          ;
-                       
+
 CODE_118B1F:    LDA $0D13                   ; $11:8B1F: AD 13 0D    ;
                 BEQ CODE_118B2C             ; $11:8B22: F0 08       ;
                 JSL CODE_13FB12             ; $11:8B24: 22 12 FB 13 ;
                 JSL CODE_129B00             ; $11:8B28: 22 00 9B 12 ;
 CODE_118B2C:    RTS                     ; $11:8B2C: 60          ;
-                       
+
 CODE_118B2D:    JSR CODE_11945A             ; $11:8B2D: 20 5A 94    ;
                 RTL                     ; $11:8B30: 6B          ;
-                       
+
 CODE_118B31:    LDY $04ED                   ; $11:8B31: AC ED 04    ;
                 STZ $04ED                   ; $11:8B34: 9C ED 04    ;
                 STZ $04E1                   ; $11:8B37: 9C E1 04    ;
@@ -1143,7 +1143,7 @@ CODE_118B31:    LDY $04ED                   ; $11:8B31: AC ED 04    ;
                 JSR CODE_118990             ; $11:8B84: 20 90 89    ;
                 JSR CODE_1188C5             ; $11:8B87: 20 C5 88    ;
                 JMP CODE_1181A8         ; $11:8B8A: 4C A8 81    ;
-           
+
 DATA_118B8D:    db $EE,$1C,$BD,$09                              ;
 
 CODE_118B91:    LDA #$1F                    ; $11:8B91: A9 1F       ;
@@ -1159,7 +1159,7 @@ CODE_118B91:    LDA #$1F                    ; $11:8B91: A9 1F       ;
                 DEY                         ; $11:8BAD: 88          ;
                 BEQ CODE_118BB3             ; $11:8BAE: F0 03       ;
                 JMP CODE_118CB8         ; $11:8BB0: 4C B8 8C    ;
-           
+
 CODE_118BB3:    STY $06C2                   ; $11:8BB3: 8C C2 06    ;
                 LDA #$0A                ; $11:8BB6: A9 0A       ; \ Game over music.
                 STA $1DE2               ; $11:8BB8: 8D E2 1D    ; /
@@ -1259,11 +1259,11 @@ CODE_118C93:    LDA #$04                    ; $11:8C93: A9 04       ;
                 STA $0533                   ; $11:8CAF: 8D 33 05    ;
                 STA $04E8                   ; $11:8CB2: 8D E8 04    ;
                 JMP CODE_11816B         ; $11:8CB5: 4C 6B 81    ;
-           
+
 CODE_118CB8:    DEY                         ; $11:8CB8: 88          ;
                 BNE CODE_118CBE             ; $11:8CB9: D0 03       ;
                 BRL CODE_118D9D         ; $11:8CBB: 82 DF 00    ;
-           
+
 CODE_118CBE:    LDA #$13                ; $11:8CBE: A9 13       ; \ Warp Jar music.
                 STA $1DE2               ; $11:8CC0: 8D E2 1D    ; /
                 JSL CODE_14F9F0         ; $11:8CC3: 22 F0 F9 14 ; Clear all OAM.
@@ -1279,7 +1279,7 @@ CODE_118CCD:    JSL CODE_118014             ; $11:8CCD: 22 14 80 11 ;
                 JSL CODE_14D4C4             ; $11:8CE1: 22 C4 D4 14 ;
                 LDY $0635               ; $11:8CE5: AC 35 06    ; \ Store original world number into $0405.
                 STY $0405               ; $11:8CE8: 8C 05 04    ; /
-                LDA.w DATA_11CDB4,y     ; $11:8CEB: B9 B4 CD    ; \ Get new world number to warp to.       
+                LDA.w DATA_11CDB4,y     ; $11:8CEB: B9 B4 CD    ; \ Get new world number to warp to.
                 STA $0635               ; $11:8CEE: 8D 35 06    ; /
                 TAY                     ; $11:8CF1: A8          ; Into Y.
                 LDX $8F                 ; $11:8CF2: A6 8F       ; Player number into X.
@@ -1296,7 +1296,7 @@ CODE_118CCD:    JSL CODE_118014             ; $11:8CCD: 22 14 80 11 ;
                 STA $11BD               ; $11:8D08: 8D BD 11    ;  | TTTTTTTT YXPCCCTT format.
                 LDA.w DATA_11CDC3,y     ; $11:8D0B: B9 C3 CD    ;  |
                 STA $11BF               ; $11:8D0E: 8D BF 11    ;  |
-                LDA.w DATA_11CDCB,y     ; $11:8D11: B9 CB CD    ;  |   
+                LDA.w DATA_11CDCB,y     ; $11:8D11: B9 CB CD    ;  |
                 STA $11C1               ; $11:8D14: 8D C1 11    ; /
                 SEP #$20                ; $11:8D17: E2 20       ; A = 8-bit.
                 JSL CODE_118009             ; $11:8D19: 22 09 80 11 ;
@@ -1342,7 +1342,7 @@ CODE_118D6F:    JSL CODE_118014             ; $11:8D6F: 22 14 80 11 ;
                 LDA #$13                    ; $11:8D95: A9 13       ;
                 STA $0243                   ; $11:8D97: 8D 43 02    ;
                 JMP CODE_118192         ; $11:8D9A: 4C 92 81    ;
-           
+
 CODE_118D9D:    LDA #$80                    ; $11:8D9D: A9 80       ;
                 STA $1DE2                   ; $11:8D9F: 8D E2 1D    ;
                 LDX $8F                 ; $11:8DA2: A6 8F       ; \ Indexed by character.
@@ -1354,7 +1354,7 @@ CODE_118DAE:    LDA $0533               ; $11:8DAE: AD 33 05    ; \ Level to tri
                 CMP #$13                ; $11:8DB1: C9 13       ;  |
                 BNE CODE_118DB8         ; $11:8DB3: D0 03       ; / If not 7-2, branch.
                 JMP CODE_11905A         ; $11:8DB5: 4C 5A 90    ;
-           
+
 CODE_118DB8:    STY $06C2                   ; $11:8DB8: 8C C2 06    ;
                 STZ $0217                   ; $11:8DBB: 9C 17 02    ;
                 JSR CODE_118AD2             ; $11:8DBE: 20 D2 8A    ;
@@ -1391,7 +1391,7 @@ CODE_118E0C:    INY                         ; $11:8E0C: C8          ;
                 LDY $0635                   ; $11:8E16: AC 35 06    ;
                 LDA $0533                   ; $11:8E19: AD 33 05    ;
                 SEC                     ; $11:8E1C: 38          ;
-                
+
                 SBC.w DATA_11C9B4,y                 ; $11:8E1D: F9 B4 C9    ;
                 STA $0629                   ; $11:8E20: 8D 29 06    ;
 CODE_118E23:    JSL CODE_14D84E             ; $11:8E23: 22 4E D8 14 ;
@@ -1415,7 +1415,7 @@ CODE_118E23:    JSL CODE_14D84E             ; $11:8E23: 22 4E D8 14 ;
                 LDA $062B                   ; $11:8E55: AD 2B 06    ;
                 BNE CODE_118E5D             ; $11:8E58: D0 03       ;
                 JMP CODE_119015         ; $11:8E5A: 4C 15 90    ;
-           
+
 CODE_118E5D:    JSL CODE_14CD7D             ; $11:8E5D: 22 7D CD 14 ;
                 JSL CODE_118014             ; $11:8E61: 22 14 80 11 ;
                 STZ $0D13                   ; $11:8E65: 9C 13 0D    ;
@@ -1435,7 +1435,7 @@ CODE_118E77:    STA $0000,x                 ; $11:8E77: 9D 00 00    ;
                 LDA #$FF                    ; $11:8E87: A9 FF       ;
                 STA $0547                   ; $11:8E89: 8D 47 05    ;
                 JMP CODE_118172         ; $11:8E8C: 4C 72 81    ;
-           
+
 CODE_118E8F:    LDA $0533                   ; $11:8E8F: AD 33 05    ;
                 STA $04E8                   ; $11:8E92: 8D E8 04    ;
                 LDA $0534                   ; $11:8E95: AD 34 05    ;
@@ -1451,9 +1451,9 @@ CODE_118E8F:    LDA $0533                   ; $11:8E8F: AD 33 05    ;
                 JSR CODE_118834             ; $11:8EB0: 20 34 88    ;
                 JSL CODE_14F9F0         ; $11:8EB3: 22 F0 F9 14 ; Clear all OAM.
                 JMP CODE_118192         ; $11:8EB7: 4C 92 81    ;
-           
+
 DATA_118EBA:    db $07,$0A,$0E,$12                              ;
- 
+
 CODE_118EBE:    DEC $062B                           ; $11:8EBE: CE 2B 06    ;
                 STZ $0793               ; $11:8EC1: 06 9C       ;
                 STZ $078A               ; $11:8EC4: 9C 8A 07    ;
@@ -1596,7 +1596,7 @@ CODE_118FFF:    LDA #$11                    ; $11:8FFF: A9 11       ;
                 STA $11                     ; $11:9001: 85 11       ;
                 JSL CODE_118014             ; $11:9003: 22 14 80 11 ;
                 JMP CODE_118E6E         ; $11:9007: 4C 6E 8E    ;
-           
+
                 LDA $0210                   ; $11:900A: AD 10 02    ;
                 LSR A                       ; $11:900D: 4A          ;
                 LSR A                       ; $11:900E: 4A          ;
@@ -1605,7 +1605,7 @@ CODE_118FFF:    LDA #$11                    ; $11:8FFF: A9 11       ;
                 AND #$01                    ; $11:9011: 29 01       ;
                 TAY                         ; $11:9013: A8          ;
                 RTS                     ; $11:9014: 60          ;
-                       
+
 CODE_119015:    STZ $0D13                   ; $11:9015: 9C 13 0D    ;
                 JSR CODE_118AFE             ; $11:9018: 20 FE 8A    ;
                 JSR CODE_119049             ; $11:901B: 20 49 90    ;
@@ -1626,7 +1626,7 @@ CODE_119038:    JSL CODE_118014             ; $11:9038: 22 14 80 11 ;
                 DEC $0782                   ; $11:9041: CE 82 07    ;
                 BPL CODE_119028             ; $11:9044: 10 E2       ;
                 JMP CODE_118E73         ; $11:9046: 4C 73 8E    ;
-           
+
 CODE_119049:    LDA #$50                    ; $11:9049: A9 50       ;
                 BRA CODE_11904F             ; $11:904B: 80 02       ;
 
@@ -1636,7 +1636,7 @@ CODE_119051:    JSL CODE_118010             ; $11:9051: 22 10 80 11 ;
                 DEC $07                     ; $11:9055: C6 07       ;
                 BNE CODE_119051             ; $11:9057: D0 F8       ;
                 RTS                     ; $11:9059: 60          ;
-                       
+
 CODE_11905A:    STZ $0607                   ; $11:905A: 9C 07 06    ;
                 LDA #$01                    ; $11:905D: A9 01       ;
                 STA $0217                   ; $11:905F: 8D 17 02    ;
@@ -1659,12 +1659,12 @@ CODE_11905A:    STZ $0607                   ; $11:905A: 9C 07 06    ;
                 INC $06BF                   ; $11:909A: EE BF 06    ;
                 JSL CODE_13E731             ; $11:909D: 22 31 E7 13 ;
                 RTS                     ; $11:90A1: 60          ;
-                       
+
 CODE_1190A2:    LDA #$30                    ; $11:90A2: A9 30       ;
                 STA $FF                     ; $11:90A4: 85 FF       ;
                 STZ $4200                   ; $11:90A6: 9C 00 42    ;
                 RTS                     ; $11:90A9: 60          ;
-                       
+
                 JSR CODE_118AD2             ; $11:90AA: 20 D2 8A    ;
                 LDA #$80                    ; $11:90AD: A9 80       ;
                 STA $FE                     ; $11:90AF: 85 FE       ;
@@ -1685,7 +1685,7 @@ CODE_1190A2:    LDA #$30                    ; $11:90A2: A9 30       ;
 CODE_1190DF:    LDA #$81                    ; $11:90DF: A9 81       ;
                 STA $4200                   ; $11:90E1: 8D 00 42    ;
                 RTS                     ; $11:90E4: 60          ;
-                       
+
 CODE_1190E5:    JSL CODE_14F92E             ; $11:90E5: 22 2E F9 14 ;
                 JSL CODE_13DE8C             ; $11:90E9: 22 8C DE 13 ;
 CODE_1190ED:    JSL CODE_138D56             ; $11:90ED: 22 56 8D 13 ;
@@ -1732,46 +1732,46 @@ CODE_119141:    STA $1409                   ; $11:9141: 8D 09 14    ;
                 JSR CODE_1190DF             ; $11:914D: 20 DF 90    ;
                 JSL CODE_118014             ; $11:9150: 22 14 80 11 ;
                 RTS                     ; $11:9154: 60          ;
-                       
+
 CODE_119155:    LDY #$C0                    ; $11:9155: A0 C0       ;
 CODE_119157:    CMP #$0A                    ; $11:9157: C9 0A       ;
                 BCC CODE_119161             ; $11:9159: 90 06       ;
                 SBC #$0A                    ; $11:915B: E9 0A       ;
                 INY                         ; $11:915D: C8          ;
                 JMP CODE_119157         ; $11:915E: 4C 57 91    ;
-           
+
 CODE_119161:    ORA #$C0                    ; $11:9161: 09 C0       ;
                 CPY #$C0                    ; $11:9163: C0 C0       ;
                 BNE CODE_119169             ; $11:9165: D0 02       ;
                 LDY #$BF                    ; $11:9167: A0 BF       ;
 CODE_119169:    RTS                     ; $11:9169: 60          ;
-                      
+
                 LDY #$D0                    ; $11:916A: A0 D0       ;
 CODE_11916C:    CMP #$0A                    ; $11:916C: C9 0A       ;
                 BCC CODE_119176             ; $11:916E: 90 06       ;
                 SBC #$0A                    ; $11:9170: E9 0A       ;
                 INY                         ; $11:9172: C8          ;
                 JMP CODE_11916C         ; $11:9173: 4C 6C 91    ;
-           
+
 CODE_119176:    ORA #$D0                    ; $11:9176: 09 D0       ;
                 CPY #$D0                    ; $11:9178: C0 D0       ;
                 BNE CODE_11917E             ; $11:917A: D0 02       ;
                 LDY #$FB                    ; $11:917C: A0 FB       ;
 CODE_11917E:    RTS                     ; $11:917E: 60          ;
-                       
+
 CODE_11917F:    LDY #$80                    ; $11:917F: A0 80       ;
 CODE_119181:    CMP #$0A                    ; $11:9181: C9 0A       ;
                 BCC CODE_11918B             ; $11:9183: 90 06       ;
                 SBC #$0A                    ; $11:9185: E9 0A       ;
                 INY                         ; $11:9187: C8          ;
                 JMP CODE_119181         ; $11:9188: 4C 81 91    ;
-           
+
 CODE_11918B:    ORA #$80                    ; $11:918B: 09 80       ;
                 CPY #$80                    ; $11:918D: C0 80       ;
                 BNE CODE_119193             ; $11:918F: D0 02       ;
                 LDY #$BF                    ; $11:9191: A0 BF       ;
 CODE_119193:    RTS                     ; $11:9193: 60          ;
-                       
+
 CODE_119194:    LDA $FE                     ; $11:9194: A5 FE       ;
                 STA $2100                   ; $11:9196: 8D 00 21    ;
                 LDA $FF                     ; $11:9199: A5 FF       ;
@@ -1780,18 +1780,18 @@ CODE_119194:    LDA $FE                     ; $11:9194: A5 FE       ;
                 STA $4200                   ; $11:919F: 8D 00 42    ;
                 DEC $0154                   ; $11:91A2: CE 54 01    ;
                 JMP CODE_11925B         ; $11:91A5: 4C 5B 92    ;
-           
+
 CODE_1191A8:    JSR CODE_1194C7             ; $11:91A8: 20 C7 94    ;
                 STZ $0206                   ; $11:91AB: 9C 06 02    ;
                 STZ $0207                   ; $11:91AE: 9C 07 02    ;
                 STZ $04C6                   ; $11:91B1: 9C C6 04    ;
                 STZ $04C7                   ; $11:91B4: 9C C7 04    ;
                 JMP CODE_11922C         ; $11:91B7: 4C 2C 92    ;
-           
+
 CODE_1191BA:    LDA $FE                     ; $11:91BA: A5 FE       ;
                 STA $2100                   ; $11:91BC: 8D 00 21    ;
                 JMP CODE_11925B         ; $11:91BF: 4C 5B 92    ;
-           
+
 CODE_1191C2:    PHB                         ; $11:91C2: 8B          ;
                 PHK                         ; $11:91C3: 4B          ;
                 PLB                         ; $11:91C4: AB          ;
@@ -1936,9 +1936,9 @@ CODE_11930B:    PLD                     ; $11:930B: 2B          ; Pull normal di
                 JSR CODE_1195E4             ; $11:931B: 20 E4 95    ;
                 PLB                         ; $11:931E: AB          ;
                 RTL                     ; $11:931F: 6B          ;
-                       
+
                 RTS                     ; $11:9320: 60          ;
-                       
+
 CODE_119321:    JSR CODE_11939C             ; $11:9321: 20 9C 93    ;
                 PHD                         ; $11:9324: 0B          ;
                 LDX #$80                    ; $11:9325: A2 80       ;
@@ -1990,7 +1990,7 @@ CODE_119395:    SEP #$20                    ; $11:9395: E2 20       ;
                 STZ $02A9                   ; $11:9397: 9C A9 02    ;
                 PLD                         ; $11:939A: 2B          ;
                 RTS                     ; $11:939B: 60          ;
-                       
+
 CODE_11939C:    PHD                     ; $11:939C: 0B          ; Preserve DP.
                 LDA #$0A                ; $11:939D: A9 0A       ; \ Direct page = #$0A00.
                 XBA                     ; $11:939F: EB          ;  |
@@ -2052,7 +2052,7 @@ CODE_1193A5:    TYA                     ; $11:93A5: 98          ;  |
                 BPL CODE_1193A5         ; $11:93F1: 10 B2       ; /
                 PLD                     ; $11:93F3: 2B          ; Get DP register back.
                 RTS                     ; $11:93F4: 60          ; Return.
-                       
+
 CODE_1193F5:    LDX #$44                    ; $11:93F5: A2 44       ;
                 LDY #$00                    ; $11:93F7: A0 00       ;
                 LDA $0628                   ; $11:93F9: AD 28 06    ;
@@ -2101,7 +2101,7 @@ CODE_119426:    REP #$20                    ; $11:9426: C2 20       ;
                 BPL CODE_119426             ; $11:9455: 10 CF       ;
 CODE_119457:    SEP #$30                    ; $11:9457: E2 30       ;
                 RTS                     ; $11:9459: 60          ;
-                       
+
 CODE_11945A:    LDX #$44                    ; $11:945A: A2 44       ;
                 LDY #$80                    ; $11:945C: A0 80       ;
                 LDA $0628                   ; $11:945E: AD 28 06    ;
@@ -2152,7 +2152,7 @@ CODE_119494:    REP #$20                    ; $11:9494: C2 20       ;
                 BPL CODE_119494             ; $11:94C2: 10 D0       ;
 CODE_1194C4:    SEP #$30                    ; $11:94C4: E2 30       ;
                 RTS                     ; $11:94C6: 60          ;
-                       
+
 CODE_1194C7:    LDA $F2                     ; $11:94C7: A5 F2       ;
                 STA $4314                   ; $11:94C9: 8D 14 43    ;
                 REP #$10                    ; $11:94CC: C2 10       ;
@@ -2237,10 +2237,10 @@ CODE_11954D:    STX $03                     ; $11:954D: 86 03       ;
                 LDA [$F0],y                 ; $11:9562: B7 F0       ;
                 BMI CODE_119569             ; $11:9564: 30 03       ;
                 JMP CODE_1194D7         ; $11:9566: 4C D7 94    ;
-           
+
 CODE_119569:    SEP #$30                    ; $11:9569: E2 30       ;
                 RTS                     ; $11:956B: 60          ;
-                       
+
 CODE_11956C:    PHB                         ; $11:956C: 8B          ;
                 PHK                         ; $11:956D: 4B          ;
                 PLB                         ; $11:956E: AB          ;
@@ -2251,7 +2251,7 @@ CODE_11956C:    PHB                         ; $11:956C: 8B          ;
                 CMP #$BE                    ; $11:9579: C9 BE       ;
                 BEQ CODE_119580             ; $11:957B: F0 03       ;
                 BRL CODE_1195A7         ; $11:957D: 82 27 00    ;
-           
+
 CODE_119580:    BIT $4212                   ; $11:9580: 2C 12 42    ;
                 BVC CODE_119580                     ; $11:9583: 50 FB       ;
                 LDA $F3                     ; $11:9585: A5 F3       ;
@@ -2268,7 +2268,7 @@ CODE_119596:    LDA $024B                   ; $11:9596: AD 4B 02    ;
                 STA $4200                   ; $11:95A2: 8D 00 42    ;
 CODE_1195A5:    PLB                         ; $11:95A5: AB          ;
                 RTL                     ; $11:95A6: 6B          ;
-                       
+
 CODE_1195A7:    BIT $4212                   ; $11:95A7: 2C 12 42    ;
                 BVC CODE_1195A7                     ; $11:95AA: 50 FB       ;
                 LDA $0202                   ; $11:95AC: AD 02 02    ;
@@ -2285,7 +2285,7 @@ CODE_1195C3:    JSL CODE_14F908             ; $11:95C3: 22 08 F9 14 ;
                 LDA $02B7                   ; $11:95CB: AD B7 02    ;
                 BEQ CODE_1195C3             ; $11:95CE: F0 F3       ;
                 RTL                     ; $11:95D0: 6B          ;
-                       
+
 CODE_1195D1:    STZ $02B7                   ; $11:95D1: 9C B7 02    ;
                 STZ $FE                     ; $11:95D4: 64 FE       ;
 CODE_1195D6:    JSL CODE_14F908             ; $11:95D6: 22 08 F9 14 ;
@@ -2293,7 +2293,7 @@ CODE_1195D6:    JSL CODE_14F908             ; $11:95D6: 22 08 F9 14 ;
                 LDA $02B7                   ; $11:95DE: AD B7 02    ;
                 BEQ CODE_1195D6             ; $11:95E1: F0 F3       ;
                 RTL                     ; $11:95E3: 6B          ;
-                       
+
 CODE_1195E4:    LDA $1DE0                   ; $11:95E4: AD E0 1D    ;
                 BNE CODE_1195FD             ; $11:95E7: D0 14       ;
                 LDA $2140                   ; $11:95E9: AD 40 21    ;
@@ -2366,14 +2366,14 @@ CODE_11968A:    STZ $1DE0                   ; $11:968A: 9C E0 1D    ;
                 STZ $1DE2                   ; $11:9690: 9C E2 1D    ;
                 STZ $1DE3                   ; $11:9693: 9C E3 1D    ;
                 RTS                     ; $11:9696: 60          ;
-                       
+
 CODE_119697:    STA $2143                   ; $11:9697: 8D 43 21    ;
                 STZ $1DE0                   ; $11:969A: 9C E0 1D    ;
                 STZ $1DE1                   ; $11:969D: 9C E1 1D    ;
                 STZ $1DE2                   ; $11:96A0: 9C E2 1D    ;
                 STZ $1DE3                   ; $11:96A3: 9C E3 1D    ;
                 RTS                     ; $11:96A6: 60          ;
-                       
+
 CODE_1196A7:    LDY $2142                   ; $11:96A7: AC 42 21    ;
                 CPY $1DE6                   ; $11:96AA: CC E6 1D    ;
                 BNE CODE_119640             ; $11:96AD: D0 91       ;
@@ -2383,7 +2383,7 @@ CODE_1196A7:    LDY $2142                   ; $11:96A7: AC 42 21    ;
                 INC $1DEC                   ; $11:96B7: EE EC 1D    ;
                 STA $2142                   ; $11:96BA: 8D 42 21    ;
                 BRA CODE_119640         ; $11:96BD: 80 81       ;
-                   
+
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
@@ -2417,13 +2417,13 @@ DATA_119784:    db $FF,$FF,$FF,$FF                              ;
 DATA_119788:    db $02,$FE,$04,$FF                              ;
 
 DATA_11978C:    db $00,$FF,$00                                  ;
-                                            
+
 DATA_11978F:    db $FF,$18                                      ;
 
 DATA_119791:    db $E0,$01                                      ;
 
 DATA_119793:    db $FF,$FE,$00                                  ;
-            
+
 DATA_119796:    db $12,$16,$1A,$1E,$22,$26,$2A,$2D              ;
                 db $30,$32,$34,$37,$39,$3B,$3D,$3E              ;
                 db $F8,$00,$F8,$00,$08,$10,$08,$10              ;
@@ -2449,20 +2449,20 @@ DATA_1197D1:    db $FF,$FF,$FF,$00,$00,$00,$00,$00              ;
 DATA_1197DA:    db $1F,$06                                      ;
 
 DATA_1197DC:    db $44,$48,$4C,$50                              ;
-                    
+
 DATA_1197E0:    db $08,$04,$02,$01                              ;
 
 DATA_1197E4:    db $00,$08,$10,$18,$F0,$E0,$F0,$E0              ;
                 db $10,$20                                      ;
-          
+
 DATA_1197EE:    db $0C,$03                                      ;
 
 DATA_1197F0:    db $00,$0A                                      ;
 
 DATA_1197F2:    db $E0,$00                                      ;
- 
+
 DATA_1197F4:    db $FF,$01                                      ;
-         
+
 DATA_1197F6:    db $00,$FF                                      ;
 
 DATA_1197F8:    db $10,$F0                                      ;
@@ -2493,7 +2493,7 @@ DATA_11981F:    db $F0                                          ;
 DATA_119820:    db $FF,$00                                      ;
 
 DATA_119822:    db $01,$FF                                      ;
- 
+
 DATA_119824:    db $30,$D0                                      ;
 
 DATA_119826:    db $01,$FF,$01                                  ;
@@ -2513,7 +2513,7 @@ DATA_11983C:    db $00,$01,$01,$02,$02,$03,$04,$06              ;
                 db $FF,$08,$06,$04,$03,$02,$02,$02              ;
                 db $02,$01,$01,$01,$01,$01,$00,$00              ;
                 db $00,$00,$00,$00,$00,$00,$00,$00              ;
-           
+
 DATA_11986C:    db $00,$1C,$E4                                  ;
 
 DATA_11986F:    db $00,$D2,$02,$D6,$86,$00,$80,$00              ;
@@ -2556,7 +2556,7 @@ DATA_11993B:    db $00,$00,$08,$00,$0C,$10,$10,$10              ;
 DATA_119982:    db $FF,$FF,$00,$00,$01,$01,$00,$00              ;
 
 DATA_11998A:    db $01,$00,$00,$01,$01,$00,$00,$01              ;
-     
+
 DATA_119992:    db $88,$2F,$88,$2F,$A6,$A7,$A8,$A9              ;
                 db $A9,$A8,$A7,$A6,$B6,$B7,$B8,$B9              ;
                 db $B9,$B8,$B7,$B6,$C0,$C1,$09,$E0              ;
@@ -2697,9 +2697,9 @@ DATA_119B50:    db $C2,$D4,$C3,$C4,$07,$80,$81,$9E              ;
                 db $9F,$27,$18,$19                              ;
 
 DATA_119B5C:    db $00,$FF                                      ;
-    
+
 DATA_119B5E:    db $EE,$DE                                      ;
- 
+
 DATA_119B60:    db $09,$A1                                      ;
 
 DATA_119B62:    db $05,$0A,$0F,$14,$19                          ;
@@ -3054,12 +3054,12 @@ DATA_11A431:    db $04,$04                                      ;
                 db $04,$01                                      ;
 
 DATA_11A435:    db $A4                                          ;
- 
+
 DATA_11A436:    db $A6,$A6,$A4,$8E,$8E                          ;
 
 DATA_11A43B:    db $90,$98,$A0,$A8,$B0,$B8,$C0,$C8              ;
                 db $00                                          ;
-               
+
 DATA_11A444:    db $00,$00,$00,$3F,$1A,$1D,$1B,$1D              ;
                 db $1A,$1D,$1B,$1D,$1A,$1D,$1B,$1D              ;
                 db $1A,$1D,$1B,$1D,$1A,$1D,$1B,$1D              ;
@@ -3315,7 +3315,7 @@ DATA_11AB1B:    db $00,$F0,$E0,$D0,$C0,$B0,$A0,$90              ;
 
 DATA_11AB25:    db $C0,$C0,$C1,$C2,$C3,$C4,$C5,$C6              ;
                 db $C7,$C8                                      ;
-                 
+
 DATA_11AB2F:    db $F0,$10                                      ;
 
 DATA_11AB31:    db $02,$01,$02,$02,$00,$00,$00,$00              ;
@@ -3685,7 +3685,7 @@ DATA_11AD68:    db $AD,$AF,$B1,$B3                              ;
                 db $6C,$58,$6A,$58,$6D,$58,$6B,$58              ;
 
 PNTR_11B564:    db $72,$96,$BA,$DE,$02,$26,$4A                  ;
- 
+
 PNTR_11B56B:    db $B5,$B5,$B5,$B5,$B6,$B6,$B6                  ;
 
                 db $A1,$9C,$22,$22,$30,$A7,$30,$30              ;
@@ -3934,7 +3934,7 @@ DATA_11BA40:    db $00,$04,$02,$01,$04,$07,$B0,$B0              ;
                 db $00,$06,$04,$02,$06,$0C,$B3,$B3              ;
                 db $98,$98,$AC,$B3,$E0,$3C,$07,$04              ;
                 db $08,$18,$15,$04,$E8,$EB,$FC                  ;
-                         
+
 DATA_11BA9C:    db $BC,$45,$FF,$7F,$63,$0C,$F2,$00              ; \ Mario palette.
                 db $DA,$11,$3E,$1B,$9C,$2D,$BF,$3A              ;  | 32 bytes - 16 colours, 2 bytes per colour.
                 db $00,$00,$2F,$15,$A3,$40,$C6,$45              ;  |
@@ -4730,7 +4730,7 @@ DATA_11CE98:    db $D9,$50,$D0,$51,$D1,$52,$D2,$53              ;
 
 DATA_11CEA2:    db $11,$91,$12,$92,$13,$93,$14,$94              ;
                 db $15,$95                                      ;
-                  
+
 DATA_11CEAC:    db $79,$00,$70,$01,$71,$02,$72,$03              ;
                 db $73,$04                                      ;
 
@@ -5608,7 +5608,7 @@ DATA_11D17F:    db $D2,$D2,$D2,$D3,$D3,$D3,$D3,$D3              ; \ High byte of
                 db $0B,$0C,$20,$14,$26,$06,$53,$F0              ;
                 db $34,$F0,$CD,$F0,$F4,$F1,$4D,$F1              ;
                 db $74,$F1,$92,$FF                              ;
-          
+
                 db $91,$F0,$13,$12,$6B,$32,$51,$0B              ;
                 db $0C,$18,$D1,$00,$F0,$0F,$F0,$B0              ;
                 db $F1,$AA,$F5,$0D,$00,$FF                      ;
@@ -6468,7 +6468,7 @@ DATA_11F4FA:    db $19,$2D,$41,$55,$69,$7D,$91,$A5              ; \
                 db $05,$02,$57,$02,$ED,$01,$05,$05              ;  | Vertical room #2 (leading to the outside part), level 3-3.
                 db $C2,$07,$3B,$05,$07,$C4,$03,$3D              ;  | Total amount of sprites: 10.
                 db $03,$0E,$D6,$01                              ; /
- 
+
                 db $03,$15,$6F,$03,$15,$6B,$03,$15              ; \ Sprite data. Vertical room #3 with Shy Guy generators, level 3-3.
                 db $67,$03,$15,$63,$01                          ; / Total amount of sprites: 4.
 

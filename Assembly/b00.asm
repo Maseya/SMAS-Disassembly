@@ -9,7 +9,7 @@
 ;;; MiOr              wiiqwertyuiop
 ;;; Dotsarecool       and probably others who I forgot, sorry.
 ;;;
-;;; 
+;;;
 
 ; This bank consists of the Presents screen, the Hall screen and the game selection
 ; as well as other miscellaneous stuff such as setting up the SPC-700
@@ -37,7 +37,7 @@ Reset:
                 PHA                     ; $00:802B: 48          ; | Set program bank: Bank $00
                 PLB                     ; $00:802C: AB          ;/
                 LDA $213F               ; $00:802D: AD 3F 21    ;\ This ROM is NTSC
-                BIT #$10                ; $00:8030: 89 10       ; | If the SNES is a NTSC SNES 
+                BIT #$10                ; $00:8030: 89 10       ; | If the SNES is a NTSC SNES
                 BEQ CODE_00803B         ; $00:8032: F0 07       ;/ Continue
                 JMP CODE_0093C7         ; $00:8034: 4C C7 93    ; Otherwise, show error message (incompatible SNES)
 
@@ -353,7 +353,7 @@ CODE_0082B1:    LDA DATA_008DE3,y       ; $00:82B1: B9 E3 8D    ;
 PNTR_0082CE:    dw CODE_0082FF                                  ;\
                 dw CODE_00834E                                  ; |
                 dw CODE_008353                                  ; | NMI Pointers, based on current game.
-                dw CODE_008358                                  ; | 
+                dw CODE_008358                                  ; |
                 dw CODE_00835D                                  ;/
 
 NMI:
@@ -465,7 +465,7 @@ CODE_00838B:    LDA $4211               ; $00:838B: AD 11 42    ;\Menu IRQ routi
                 BPL CODE_0083A1         ; $00:838E: 10 11       ;/
 CODE_008390:    BIT $4212               ; $00:8390: 2C 12 42    ;\Wait for H-blank
                 BVC CODE_008390         ; $00:8393: 50 FB       ;/
-                LDA $0214               ; $00:8395: AD 14 02    ;\ 
+                LDA $0214               ; $00:8395: AD 14 02    ;\
                 STA $210D               ; $00:8398: 8D 0D 21    ; |Set BG1 H-scroll to normal
                 LDA $0215               ; $00:839B: AD 15 02    ; |
                 STA $210D               ; $00:839E: 8D 0D 21    ; |
@@ -581,7 +581,7 @@ CODE_00841A:    REP #$10                ; $00:841A: C2 10       ;16-bit XY. This
 CODE_00849C:    JSL ForceBlank          ; $00:849C: 22 2E 88 00 ;Forced blank + HDMA-Disable
                 PHD                     ; $00:84A0: 0B          ;\
                 LDA #$01                ; $00:84A1: A9 01       ; |
-                XBA                     ; $00:84A3: EB          ; |Direct page: $0100 
+                XBA                     ; $00:84A3: EB          ; |Direct page: $0100
                 LDA #$00                ; $00:84A4: A9 00       ; |
                 TCD                     ; $00:84A6: 5B          ;/
                 TXA                     ; $00:84A7: 8A          ;\ If it is not time to upload the game select screen tilemap, branch
@@ -783,7 +783,7 @@ CODE_0085FF:    LDA #$0000              ; $00:85FF: A9 00 00    ;\
                 STY $420B               ; $00:8669: 8C 0B 42    ;/
                 RTS                     ; $00:866C: 60          ;
 
-CODE_00866D:    STA $2181               ; $00:866D: 8D 81 21    ;\ 
+CODE_00866D:    STA $2181               ; $00:866D: 8D 81 21    ;\
                 STY $2183               ; $00:8670: 8C 83 21    ; |
                 LDA #$8000              ; $00:8673: A9 00 80    ; |
                 STA $4300               ; $00:8676: 8D 00 43    ; |
@@ -884,7 +884,7 @@ CODE_008726:    TYA                     ; $00:8726: 98          ; |
                 STA $24,x               ; $00:8739: 95 24       ; |
                 STA $28,x               ; $00:873B: 95 28       ; |
                 STA $2C,x               ; $00:873D: 95 2C       ; |
-                STA $30,x               ; $00:873F: 95 30       ; | 
+                STA $30,x               ; $00:873F: 95 30       ; |
                 STA $34,x               ; $00:8741: 95 34       ; |
                 STA $38,x               ; $00:8743: 95 38       ; |
                 STA $3C,x               ; $00:8745: 95 3C       ; |
@@ -898,7 +898,7 @@ CODE_008726:    TYA                     ; $00:8726: 98          ; |
                 STA $5C,x               ; $00:8755: 95 5C       ; |
                 STA $60,x               ; $00:8757: 95 60       ; |
                 STA $64,x               ; $00:8759: 95 64       ; |
-                STA $68,x               ; $00:875B: 95 68       ; | 
+                STA $68,x               ; $00:875B: 95 68       ; |
                 STA $6C,x               ; $00:875D: 95 6C       ; |
                 STA $70,x               ; $00:875F: 95 70       ; |
                 STA $74,x               ; $00:8761: 95 74       ; |
@@ -1077,13 +1077,13 @@ CODE_0088C3:    LDA #$43                ; $00:88C3: A9 43       ;\
                 LDX.w #DATA_2CD800      ; $00:88E0: A2 00 D8    ; |
                 STX $02                 ; $00:88E3: 86 02       ; |DMA Source: $2C:D800
                 LDA.b #DATA_2CD800>>16  ; $00:88E5: A9 2C       ; |
-                STA $04                 ; $00:88E7: 85 04       ; |Size: 4kB 
+                STA $04                 ; $00:88E7: 85 04       ; |Size: 4kB
                 LDX #$1000              ; $00:88E9: A2 00 10    ; |
                 STX $05                 ; $00:88EC: 86 05       ; |Do DMA transfer
                 LDA #$01                ; $00:88EE: A9 01       ; |
                 STA $420B               ; $00:88F0: 8D 0B 42    ; |
                 STZ $0219               ; $00:88F3: 9C 19 02    ;/Reset "file select images DMA" flag
-                STZ $00E5               ; $00:88F6: 9C E5 00    ;\Clear offset of fading out into game select triangle 
+                STZ $00E5               ; $00:88F6: 9C E5 00    ;\Clear offset of fading out into game select triangle
                 STZ $00E6               ; $00:88F9: 9C E6 00    ;/                              graphics.
                 RTS                     ; $00:88FC: 60          ;
 
@@ -1195,7 +1195,7 @@ CODE_0089EC:    LDA [$E8],y             ; $00:89EC: B7 E8       ;
                 BPL CODE_0089BA         ; $00:89EE: 10 CA       ;
                 RTS                     ; $00:89F0: 60          ;
 
-;Pointers to SPC data upload routine of games. 
+;Pointers to SPC data upload routine of games.
 PNTR_0089F1:    dw CODE_008B17                                  ;SMB1
                 dw CODE_008B17                                  ;SMB:TLL
                 dw CODE_008B27                                  ;SMB2
@@ -1385,7 +1385,7 @@ CODE_008B63:    SEI                     ; $00:8B63: 78          ;
                 SEP #$20                ; $00:8B88: E2 20       ;\
                 LDA #$00                ; $00:8B8A: A9 00       ; |
                 STZ $00                 ; $00:8B8C: 64 00       ; |SPC-700 data source: $7F:0000
-                LDA #$00                ; $00:8B8E: A9 00       ; | 
+                LDA #$00                ; $00:8B8E: A9 00       ; |
                 STA $01                 ; $00:8B90: 85 01       ; |
                 LDA #$7F                ; $00:8B92: A9 7F       ; |
                 STA $02                 ; $00:8B94: 85 02       ;/
@@ -1413,7 +1413,7 @@ CODE_008B63:    SEI                     ; $00:8B63: 78          ;
 ;; 8. Wait for $2140 to echo your byte index.
 ;; 9. Go back to step 6 with your next byte and increase the byte index until you are done.
 ;;
-;; 10. If you want to write another block set the next address to $2142-3, non-zero to $2141 and index+2 (or +3 if that would be zero, otherwise it'll srew up the transfer) to $2140 
+;; 10. If you want to write another block set the next address to $2142-3, non-zero to $2141 and index+2 (or +3 if that would be zero, otherwise it'll srew up the transfer) to $2140
 ;;     and wait for it to echo. Then go to step 6 with index equaling 0.
 ;;
 ;; 11. Otherwise put the target address you want to jump to in $2142-3, $00 in $2141 and index+2 in $2140 and wait for the echo. You code ;; will then be executing.
@@ -2322,7 +2322,7 @@ CODE_0094B5:    BIT $4212               ; $00:94B5: 2C 12 42    ;\Wait for VBlan
                 INC $FD                 ; $00:94BA: E6 FD       ;\From now on everything from here will execute
                 LDA $FD                 ; $00:94BC: A5 FD       ; |on a vblank. Increase frame counter
                 CMP #$18                ; $00:94BE: C9 18       ; |If it isn't $18 yet
-                BNE CODE_009501         ; $00:94C0: D0 3F       ;/ branch 
+                BNE CODE_009501         ; $00:94C0: D0 3F       ;/ branch
                 STZ $FD                 ; $00:94C2: 64 FD       ;Store zero to the something
                 STZ $2121               ; $00:94C4: 9C 21 21    ;CGRAM Palette destination: 00
                 REP #$20                ; $00:94C7: C2 20       ;16-bit A
@@ -2972,7 +2972,7 @@ CODE_009E5C:    JSR CODE_00B63F         ; $00:9E5C: 20 3F B6    ; Move everyone
                 LDA #$003E              ; $00:9E8D: A9 3E 00    ;\ Set timer
                 STA $E3                 ; $00:9E90: 85 E3       ;/
                 LDA #$0025              ; $00:9E92: A9 25 00    ;\
-                STA $011D               ; $00:9E95: 8D 1D 01    ; |   
+                STA $011D               ; $00:9E95: 8D 1D 01    ; |
                 LDA #$004D              ; $00:9E98: A9 4D 00    ; | Set backdrop color
                 STA $011E               ; $00:9E9B: 8D 1E 01    ; |
                 LDA #$0095              ; $00:9E9E: A9 95 00    ; |
@@ -3533,7 +3533,7 @@ CODE_00A46B:    LDA $0216               ; $00:A46B: AD 16 02    ;\
                 JMP CODE_00A771         ; $00:A473: 4C 71 A7    ; Return
 
 CODE_00A476:    STZ $00                 ; $00:A476: 64 00       ;
-                LDA $0224               ; $00:A478: AD 24 02    ;\ 
+                LDA $0224               ; $00:A478: AD 24 02    ;\
                 BEQ CODE_00A48C         ; $00:A47B: F0 0F       ;/
                 DEC $0223               ; $00:A47D: CE 23 02    ;
                 LDA $0223               ; $00:A480: AD 23 02    ;
@@ -4021,7 +4021,7 @@ CODE_00A849:    PHB                     ; $00:A849: 8B          ;\
                 LDA #$20                ; $00:A850: A9 20       ; |
                 STA $0E                 ; $00:A852: 85 0E       ; |
                 LDA #$01                ; $00:A854: A9 01       ; |
-                STA $0F                 ; $00:A856: 85 0F       ; | 
+                STA $0F                 ; $00:A856: 85 0F       ; |
                 LDX #$0000              ; $00:A858: A2 00 00    ; |
                 LDY $0004               ; $00:A85B: AC 04 00    ; | Load $120 bytes of saved data from SRAM Offset of last save data accessed
 CODE_00A85E:    LDA $0010,y             ; $00:A85E: B9 10 00    ; | into RAM $7FFB00 whenever you load a game. Doesn't matter which.
@@ -4041,9 +4041,9 @@ CODE_00A85E:    LDA $0010,y             ; $00:A85E: B9 10 00    ; | into RAM $7F
                 ASL A                   ; $00:A885: 0A          ; | If SMB1
                 ASL A                   ; $00:A886: 0A          ; | Save slot # << 4
                 ORA $00                 ; $00:A887: 05 00       ; | OR $00  (isn't this always 00 because we only get here when it's 00?)
-                XBA                     ; $00:A889: EB          ; | 
+                XBA                     ; $00:A889: EB          ; |
                 LDA #$00                ; $00:A88A: A9 00       ; | Clear high byte, to index.
-                XBA                     ; $00:A88C: EB          ; | 
+                XBA                     ; $00:A88C: EB          ; |
                 TAX                     ; $00:A88D: AA          ; | (so basically save slot * 4 to index)
                 LDA $700490,x           ; $00:A88E: BF 90 04 70 ;\|
                 STA $7FFB05             ; $00:A892: 8F 05 FB 7F ;/ More difficult quest flag for SMB1
@@ -5639,7 +5639,7 @@ CODE_00B6DA:    LDA #$00                ; $00:B6DA: A9 00       ;\ Source bank
 CODE_00B704:    RTS                     ; $00:B704: 60          ;
 
 DATA_00B705:    dw $B9D1,$B9F5,$BA19,$B9F5                      ;
-          
+
 DATA_00B70D:    dw $BA3D,$BA3D,$BA4D,$BA4D                      ;
                 dw $BA4D,$BA4D,$BA5D,$BA4D                      ;
                 dw $BA4D,$BA4D,$BA4D                            ;
@@ -6303,12 +6303,12 @@ CODE_00C0F2:    LDA #$00                ; $00:C0F2: A9 00       ;\
                 XBA                     ; $00:C0F4: EB          ;/Clear high byte
                 LDA $0753               ; $00:C0F5: AD 53 07    ;\
                 ASL A                   ; $00:C0F8: 0A          ; | Player << 2
-                ASL A                   ; $00:C0F9: 0A          ; | 
+                ASL A                   ; $00:C0F9: 0A          ; |
                 STA $00                 ; $00:C0FA: 85 00       ;/ into $00
                 LDA $075F               ; $00:C0FC: AD 5F 07    ;\ World number
                 AND #$08                ; $00:C0FF: 29 08       ; | Bit is set when in world D
                 LSR A                   ; $00:C101: 4A          ; | >> 2
-                LSR A                   ; $00:C102: 4A          ; | 
+                LSR A                   ; $00:C102: 4A          ; |
                 ORA $00                 ; $00:C103: 05 00       ; | OR with the player thing
                 TAY                     ; $00:C105: A8          ;/ to index
                 PLA                     ; $00:C106: 68          ;\
@@ -8554,7 +8554,7 @@ CODE_00DDBF:    LDA DATA_00DDDA,x       ; $00:DDBF: BD DA DD    ;
 
 DATA_00DDDA:    db $CE,$CE,$EE,$EE,$E0,$E2,$E0,$E2              ;
                 db $EE,$EE,$CE,$CE,$E2,$E0,$E2,$E0              ;
-					
+
 DATA_00DDEA:    db $2D,$4D,$2D,$4D,$2D,$2D,$AD,$AD              ;
                 db $AD,$CD,$AD,$CD,$4D,$4D,$CD,$CD              ;
 
@@ -10271,7 +10271,7 @@ CODE_00E574:    REP #$20                ; $00:E574: C2 20       ;
                 db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
                 db $FF,$FF,$FF,$FF                              ;
 
-INTERNALHEADER: 
+INTERNALHEADER:
                 db "SUPER MARIO ALL_STARS"                      ;ROM NAME
                 db $20                                          ;MAP MODE. Mode 20 = 2.68 MHz (= Normal Speed)
                 db $02                                          ;CARTRIDGE TYPE: ROM + RAM + SRAM
