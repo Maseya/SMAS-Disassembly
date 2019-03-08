@@ -858,6 +858,7 @@
     <None Include="SMB3\data\b2B\_b2B.asm">
       <Filter>SMB3\data\b2B</Filter>
     </None>
+    <None Include="..\SMAS.sfc" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="SPC-700.txt" />

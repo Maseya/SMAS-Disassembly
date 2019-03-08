@@ -47,6 +47,7 @@
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="..\SMAS.sfc" />
     <None Include="fillbyte.asm" />
     <None Include="SMAS\code\b00\_b00.asm" />
     <None Include="SMAS\data\b01\DATA_018000-8000.bin" />
