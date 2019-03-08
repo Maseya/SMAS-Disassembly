@@ -16,7 +16,6 @@
     <None Include="b1D.asm" />
     <None Include="b1E.asm" />
     <None Include="b1F.asm" />
-    <None Include="b02.asm" />
     <None Include="b2A.asm" />
     <None Include="b2B.asm" />
     <None Include="b2C.asm" />
@@ -73,6 +72,30 @@
     <None Include="b01\DATA_018000-8000.bin">
       <Filter>b01</Filter>
     </None>
+    <None Include="b02\_b02.asm">
+      <Filter>b02</Filter>
+    </None>
+    <None Include="b02\DATA_02A000-2000.bin">
+      <Filter>b02</Filter>
+    </None>
+    <None Include="b02\DATA_02C000-0800.bin">
+      <Filter>b02</Filter>
+    </None>
+    <None Include="b02\DATA_02C800-0200.bin">
+      <Filter>b02</Filter>
+    </None>
+    <None Include="b02\DATA_02CA00-0200.bin">
+      <Filter>b02</Filter>
+    </None>
+    <None Include="b02\DATA_02F000-1000.bin">
+      <Filter>b02</Filter>
+    </None>
+    <None Include="b02\DATA_028000-1000.bin">
+      <Filter>b02</Filter>
+    </None>
+    <None Include="b02\DATA_029000-1000.bin">
+      <Filter>b02</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="SPC-700.txt" />
@@ -80,6 +103,9 @@
   <ItemGroup>
     <Filter Include="b01">
       <UniqueIdentifier>{51867cf8-585d-462f-a1f4-7b2d7a1a7bc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="b02">
+      <UniqueIdentifier>{25b1b605-127e-4232-a76f-a06635eb4651}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

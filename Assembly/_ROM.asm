@@ -9,7 +9,7 @@ ORG $018000
 incsrc "b01/_b01.asm"
 
 ORG $028000
-incsrc "b02.asm"
+incsrc "b02/_b02.asm"
 
 ORG $038000
 incsrc "b03.asm"

@@ -51,7 +51,14 @@
     <None Include="b01.asm" />
     <None Include="b01\DATA_018000-8000.bin" />
     <None Include="b01\_b01.asm" />
-    <None Include="b02.asm" />
+    <None Include="b02\DATA_028000-1000.bin" />
+    <None Include="b02\DATA_029000-1000.bin" />
+    <None Include="b02\DATA_02A000-2000.bin" />
+    <None Include="b02\DATA_02C000-0800.bin" />
+    <None Include="b02\DATA_02C800-0200.bin" />
+    <None Include="b02\DATA_02CA00-0200.bin" />
+    <None Include="b02\DATA_02F000-1000.bin" />
+    <None Include="b02\_b02.asm" />
     <None Include="b03.asm" />
     <None Include="b04.asm" />
     <None Include="b05.asm" />
