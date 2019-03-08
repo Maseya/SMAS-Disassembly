@@ -1,5 +1,5 @@
-; Super Mario All-Stars   (U) disassembly                        ;
-; Disassembled by Roy and Ersanio and imamelia and wiiqwertyuiop ;
+; Super Mario All-Stars   (U) disassembly
+; Disassembled by Roy and Ersanio and imamelia and wiiqwertyuiop
 
 DATA_028000:
 	; GFX for intro logo (Mario coin)
@@ -19,11 +19,11 @@ DATA_02C000:
 
 DATA_02C800:
 	; Palette data during Hall Screen (blackout)
-	incbin "DATA_02C8000-0200.bin"
+	incbin "DATA_02C800-0200.bin"
 
 DATA_02CA00:
 	; Palette data during Hall Screen (lit up)
-	incbin "DATA_02A000-0200.bin"
+	incbin "DATA_02CA00-0200.bin"
 
 ORG $02F000
 DATA_02F000:
