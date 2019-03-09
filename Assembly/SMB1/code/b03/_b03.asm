@@ -2691,12 +2691,7 @@ CODE_039D43:    SEC                     ; $03:9D43: 38          ;
                 INC $0144,x             ; $03:9D46: FE 44 01    ;
                 BRA CODE_039D1A         ; $03:9D49: 80 CF       ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF                          ;
-
+ORG $039D70
 DATA_039D70:    db $D0,$00,$18,$30,$48,$60,$78,$90              ;
                 db $A8,$C0,$D8,$D8,$B0,$C0,$40,$44              ;
                 db $48,$50,$54,$60,$68,$70,$78,$80              ;
@@ -4655,15 +4650,8 @@ CODE_03AD23:    PHB                     ; $03:AD23: 8B          ;\
                 PLB                     ; $03:AD29: AB          ; |
                 RTL                     ; $03:AD2A: 6B          ;/
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;Mysterious, Empty space
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF                          ;
-
 ;Main operation mode
+ORG $03AD60
 CODE_03AD60:    LDA $0772               ; $03:AD60: AD 72 07    ;\
                 ASL A                   ; $03:AD63: 0A          ; |Get "In-game modes"
                 TAX                     ; $03:AD64: AA          ; |
@@ -7398,10 +7386,7 @@ CODE_03C392:    STZ $0E66               ; $03:C392: 9C 66 0E    ;
 CODE_03C395:    STZ $0E                 ; $03:C395: 64 0E       ;
                 RTS                     ; $03:C397: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;Looks like some empty space.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-
+ORG $03C3B0
 CODE_03C3B0:    LDA $10,x               ; $03:C3B0: B5 10       ;
                 PHA                     ; $03:C3B2: 48          ;
                 ASL A                   ; $03:C3B3: 0A          ;
@@ -10470,9 +10455,7 @@ CODE_03DC18:    SBC #$48                ; $03:DC18: E9 48       ;\Subtract 72 pi
 CODE_03DC5E:    JSR CODE_03CDE2         ; $03:DC5E: 20 E2 CD    ;Erase sprite if necessary
 CODE_03DC61:    RTS                     ; $03:DC61: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;looks like empty space
-                db $FF,$FF,$FF,$FF,$FF,$FF                      ;
-
+ORG $03DC70
 CODE_03DC70:    LDA $33,x               ; $03:DC70: B5 33       ;
                 BEQ CODE_03DCCA         ; $03:DC72: F0 56       ;
                 ASL A                   ; $03:DC74: 0A          ;
@@ -12442,14 +12425,7 @@ CODE_03EBD4:    STZ $03                 ; $03:EBD4: 64 03       ;
 CODE_03EBD6:    LDA $03                 ; $03:EBD6: A5 03       ;
                 RTS                     ; $03:EBD8: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;empty
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF                  ;
-
+ORG $03EC10
                 LDX #$06                ; $03:EC10: A2 06       ;
 CODE_03EC12:    STA $0800,y             ; $03:EC12: 99 00 08    ;
                 CLC                     ; $03:EC15: 18          ;
@@ -14709,9 +14685,3 @@ CODE_03FFB4:    ORA $04                 ; $03:FFB4: 05 04       ;
                 INX                     ; $03:FFDB: E8          ;
                 INX                     ; $03:FFDC: E8          ;
                 RTS                     ; $03:FFDD: 60          ;
-
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;Seems like empty space
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;VICTORY! BANK 3 FINISHED!
-                db $FF,$FF                                      ;
