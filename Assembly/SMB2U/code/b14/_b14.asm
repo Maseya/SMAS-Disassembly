@@ -2112,71 +2112,8 @@ DATA_14BFE0:    db $A5,$3C,$FF,$7F,$84,$10,$6B,$35              ;
                 db $54,$01,$1A,$02,$DF,$2E,$5F,$1B              ;
                 db $F9,$7F,$54,$7F,$EB,$7E,$46,$7E              ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; /
-
+ORG $14C200
+DATA_14C200:
                 db $90,$40,$04,$35,$00,$A0,$40,$04              ;
                 db $35,$00,$A8,$50,$04,$35,$00,$B0              ;
                 db $50,$04,$35,$00,$48,$68,$26,$35              ;
@@ -2593,9 +2530,7 @@ DATA_14CCBD:    db $2C,$2C,$2C,$2C,$2C,$2C,$2C,$2C              ; \ These values
                 db $C0,$C0,$C0,$C0,$C0,$C0,$C0,$C0              ;  |
                 db $C0,$C0,$C0,$C0,$C0,$C0,$C0,$C0              ; /
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
-                db $FF,$FF,$FF                                  ; /
-
+ORG $14CD50
 CODE_14CD50:    LDA #$02                ; $14:CD50: A9 02       ;
                 STA $29                 ; $14:CD52: 85 29       ;
                 STA $2A                 ; $14:CD54: 85 2A       ;
@@ -4338,11 +4273,7 @@ CODE_14DE1B:    LDA [$00],y                 ; $14:DE1B: B7 00       ;
                 SEP #$30                    ; $14:DE42: E2 30       ;
                 RTS                         ; $14:DE44: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF                                  ; /
-
+ORG $14DE60
 CODE_14DE60:    PHB                     ; $14:DE60: 8B          ;
                 PHK                         ; $14:DE61: 4B          ;
                 PLB                         ; $14:DE62: AB          ;
@@ -6047,11 +5978,7 @@ CODE_14ED33:    LDA #$FF                    ; $14:ED33: A9 FF       ;
                 STA $D5                     ; $14:ED3F: 85 D5       ;
                 RTS                         ; $14:ED41: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF                      ; /
-
+ORG $14ED60
 CODE_14ED60:    LDA $0503               ; $14:ED60: AD 03 05    ;
                 BNE CODE_14EDC4         ; $14:ED63: D0 5F       ;
                 JSL CODE_128DB6         ; $14:ED65: 22 B6 8D 12 ;
@@ -6892,24 +6819,7 @@ CODE_14F464:    STX $0713                   ; $14:F464: 8E 13 07    ;
                 LDX $0713                   ; $14:F47A: AE 13 07    ;
                 RTS                         ; $14:F47D: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty data.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF                                      ; /
-
+ORG $14F500
 CODE_14F500:    LDA $074E               ; $14:F500: AD 4E 07    ;
                 CMP #$03                ; $14:F503: C9 03       ;
                 BEQ CODE_14F50C         ; $14:F505: F0 05       ;
@@ -7322,35 +7232,7 @@ CODE_14F80C:    LDA.l DATA_159359,x                 ; $14:F80C: BF 59 93 15 ;
 
 CODE_14F826:    RTL                         ; $14:F826: 6B          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty data.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF                                          ; /
-
+ORG $14F900
 CODE_14F900:    LDA #$80                ; $14:F900: A9 80       ; \ Force blank.
                 BRA CODE_14F906         ; $14:F902: 80 02       ; /
 
@@ -7673,88 +7555,3 @@ DATA_14FD24:    db $94,$95,$96,$97,$98,$99,$9A,$9B              ; \ Blue colours
                 db $95,$94,$93,$92,$91,$90,$8F,$8E              ;  |
                 db $9F,$9F,$9F,$9F,$9F,$9F,$9F,$9F              ;  | Blue colours of very light blue to white HDMA BG.
                 db $9F,$9F,$9F,$9F,$9F,$9F,$9F,$9F              ; /
-
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty data.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF                              ; /
