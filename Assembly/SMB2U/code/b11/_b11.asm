@@ -2384,32 +2384,7 @@ CODE_1196A7:    LDY $2142                   ; $11:96A7: AC 42 21    ;
                 STA $2142                   ; $11:96BA: 8D 42 21    ;
                 BRA CODE_119640         ; $11:96BD: 80 81       ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF                                          ; /
-
+ORG $119780
 DATA_119780:    db $FA,$F6,$FC,$F7                              ;
 
 DATA_119784:    db $FF,$FF,$FF,$FF                              ;
@@ -6763,8 +6738,3 @@ DATA_11F4FA:    db $19,$2D,$41,$55,$69,$7D,$91,$A5              ; \
                 db $01                                          ; Unused.
 
                 db $01,$01,$01,$01,$01,$01                      ; Unused.
-
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  | Empty data.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; /

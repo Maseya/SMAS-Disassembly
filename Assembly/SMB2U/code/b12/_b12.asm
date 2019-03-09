@@ -3031,16 +3031,7 @@ CODE_129833:    CPY #$CA                    ; $12:9833: C0 CA       ;
 CODE_12983B:    STA $01                     ; $12:983B: 85 01       ;
                 RTS                     ; $12:983D: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty data.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF                                      ; /
-
+ORG $129880
 CODE_129880:    TXA                     ; $12:9880: 8A          ;
                 CLC                     ; $12:9881: 18          ;
                 ADC #$0A                    ; $12:9882: 69 0A       ;
@@ -3358,11 +3349,7 @@ CODE_129AB4:    LDA #$01                    ; $12:9AB4: A9 01       ;
                 LDX $12                     ; $12:9AE4: A6 12       ;
                 RTS                     ; $12:9AE6: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF                                          ; /
-
+ORG $129B00
 CODE_129B00:    LDA $04AE               ; $12:9B00: AD AE 04    ;
                 BEQ CODE_129B09             ; $12:9B03: F0 04       ;
                 JSR CODE_129C64             ; $12:9B05: 20 64 9C    ;
@@ -4727,7 +4714,6 @@ CODE_12A5B2:    LDA $90,x                   ; $12:A5B2: B5 90       ;
 CODE_12A5C5:    JMP CODE_12A83B             ; $12:A5C5: 4C 3B A8    ;
 
 DATA_12A5C8:                      db $86,$A1,$A0,$87
-
 
 CODE_12A5CC:    PHX                         ; $12:A5CC: DA          ;
                 PHA                         ; $12:A5CD: 48          ;
@@ -8340,9 +8326,7 @@ CODE_12C259:    JMP CODE_12C1EF             ; $12:C259: 4C EF C1    ;
                 JSR CODE_12B1F9             ; $12:C25C: 20 F9 B1    ;
                 RTL                     ; $12:C25F: 6B          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; /
-
+ORG $12C270
 CODE_12C270:    JSR CODE_12AF2D             ; $12:C270: 20 2D AF    ;
                 LDA #$04                    ; $12:C273: A9 04       ;
                 STA $0465,x                 ; $12:C275: 9D 65 04    ;
@@ -11567,11 +11551,7 @@ CODE_12DD70:    SEP #$10                    ; $12:DD70: E2 10       ;
                 LDX $12                     ; $12:DD72: A6 12       ;
                 RTS                     ; $12:DD74: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;  |
-                db $FF,$FF,$FF                                  ; /
-
+ORG $12DD90
 CODE_12DD90:    JSR CODE_12DE5A                 ; $12:DD90: 20 5A DE    ;
                 TAY                         ; $12:DD93: A8          ;
                 LDA $46,x               ; $12:DD94: B5 46       ;
@@ -12427,9 +12407,7 @@ CODE_12E44D:    CMP.w DATA_119B50,y                 ; $12:E44D: D9 50 9B    ;
                 CLC                         ; $12:E455: 18          ;
 CODE_12E456:    RTS                     ; $12:E456: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty.
-                db $FF                                          ; /
-
+ORG $12E460
 CODE_12E460:    ASL A                   ; $12:E460: 0A          ;
                 TAX                     ; $12:E461: AA          ;
                 JMP (PNTR_12E465,x)                     ; $12:E462: 7C 65 E4    ;
@@ -14112,9 +14090,7 @@ CODE_12F154:    STA $076E                   ; $12:F154: 8D 6E 07    ;
                 LDA $076E                   ; $12:F16A: AD 6E 07    ;
                 RTS                     ; $12:F16D: 60          ;
 
-
 DATA_12F16E:    db $20,$1C,$1C,$1C,$1C,$21                      ;
-
 
 CODE_12F174:    STZ $08                     ; $12:F174: 64 08       ;
                 LDX $E9                     ; $12:F176: A6 E9       ;
@@ -15984,6 +15960,3 @@ CODE_12FFE7:    CMP #$0F                    ; $12:FFE7: C9 0F       ;
 
 CODE_12FFEF:    LDA #$3E                    ; $12:FFEF: A9 3E       ;
 CODE_12FFF1:    RTS                     ; $12:FFF1: 60          ;
-
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty data.
-                db $FF,$FF,$FF,$FF,$FF,$FF                      ; /
