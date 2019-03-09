@@ -467,19 +467,7 @@ CODE_048596:    INC $075A               ; $04:8596: EE 5A 07    ;\ Increase live
                 STA $075A               ; $04:85A2: 8D 5A 07    ; |
 CODE_0485A5:    RTL                     ; $04:85A5: 6B          ;/
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF                                      ;
-
+ORG $048600
 CODE_048600:    LDA $1680               ; $04:8600: AD 80 16    ;\
                 BMI CODE_048629         ; $04:8603: 30 24       ; |"pause" flag after rescuing princess
                 BNE CODE_048619         ; $04:8605: D0 12       ;/ skip all of these if negative, if 00 check for start button etc
@@ -3796,54 +3784,7 @@ DATA_04BD09:    dw $085C,$085C,$085C,$085C                      ;
                 dw $8858,$8859,$0853,$885A                      ;
                 dw $0853,$C85A,$C858,$C859                      ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;Empty
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF                  ;
-
+ORG $04C000
 DATA_04C000:    db $26,$AC,$26,$26,$26,$72,$72,$72              ;
                 db $13,$59,$8B                                  ;
 
@@ -5013,25 +4954,6 @@ DATA_04D70D:    db $49,$0F,$1E,$01,$1F,$00,$34,$2F              ; 8-4 Underwater
                 db $6F,$42,$28,$7F,$42,$28,$ED,$47              ;
                 db $FD                                          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; empty
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF                                      ;
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; From here on starts duplicate code of $00C000
 ;; This is for SMB1 while the code at $00C000 is for
@@ -5039,6 +4961,7 @@ DATA_04D70D:    db $49,$0F,$1E,$01,$1F,$00,$34,$2F              ; 8-4 Underwater
 ;; Please refer to bank 00 for the comments
 ;;
 
+ORG $04D800
 CODE_04D800:    LDA $0BA5               ; $04:D800: AD A5 0B    ;\If skip player animations flag is set, return
                 BNE CODE_04D859         ; $04:D803: D0 54       ;/
                 LDA $06D5               ; $04:D805: AD D5 06    ;
@@ -8342,71 +8265,3 @@ CODE_04FDC4:    STZ $073F               ; $04:FDC4: 9C 3F 07    ;Store zero to B
                 STZ $2112               ; $04:FDE8: 9C 12 21    ;Store zero to BG3 Y-scrolling
                 STZ $2112               ; $04:FDEB: 9C 12 21    ;Store zero to BG3 Y-scrolling
                 RTL                     ; $04:FDEE: 6B          ;Return
-
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;Empty Data, I am sure.
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;BANK 4 FINISHED.
-                db $FF                                          ;
