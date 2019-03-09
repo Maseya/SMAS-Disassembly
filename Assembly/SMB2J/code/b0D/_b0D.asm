@@ -2311,17 +2311,7 @@ CODE_0D990B:    LDA $CE,x               ; $0D:990B: B5 CE       ;
 CODE_0D9916:    PLD                     ; $0D:9916: 2B          ;
                 RTS                     ; $0D:9917: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-
+ORG $0D9968
                 LDA #$10                ; $0D:9968: A9 10       ;
                 STA $07B1               ; $0D:996A: 8D B1 07    ;
                 BNE CODE_0D9975         ; $0D:996D: D0 06       ;
@@ -2694,11 +2684,7 @@ CODE_0D9CCE:    LDA #$01                ; $0D:9CCE: A9 01       ;
                 STA $0E1A               ; $0D:9CD0: 8D 1A 0E    ;
                 JMP CODE_0D9BD4         ; $0D:9CD3: 4C D4 9B    ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF                                      ;
-
+ORG $0D9CF0
 DATA_0D9CF0:    db $D0,$00,$18,$30,$48,$60,$78,$90              ;
                 db $A8,$C0,$D8,$D8,$B0,$C0,$40,$44              ;
                 db $48,$50,$54,$60,$68,$70,$78,$80              ;
@@ -4493,9 +4479,7 @@ CODE_0DAB43:    STA $0000               ; $0D:AB43: 8D 00 00    ;
                 STA $0792,x             ; $0D:AB60: 9D 92 07    ;
 CODE_0DAB63:    RTS                     ; $0D:AB63: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF                              ;
-
+ORG $0DAB70
 CODE_0DAB70:    LDA $0772               ; $0D:AB70: AD 72 07    ;
                 ASL A                   ; $0D:AB73: 0A          ;
                 TAX                     ; $0D:AB74: AA          ;
@@ -7216,10 +7200,7 @@ DATA_0DC19C:    db $00,$00,$FF,$7F,$63,$0C,$55,$01              ;
                 db $00,$00,$2F,$15,$60,$1E,$04,$33              ;
                 db $88,$43,$55,$76,$90,$71,$CA,$58              ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF                              ;
-
+ORG $0DC250
 CODE_0DC250:    BIT $10,x               ; $0D:C250: 34 10       ;
                 BMI CODE_0DC267         ; $0D:C252: 30 13       ;
                 LDA $10,x               ; $0D:C254: B5 10       ;
@@ -10313,9 +10294,7 @@ CODE_0DDB63:    LDA $0EC4               ; $0D:DB63: AD C4 0E    ;
 CODE_0DDB6E:    LDA #$2D                ; $0D:DB6E: A9 2D       ;
                 RTS                     ; $0D:DB70: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF                  ;
-
+ORG $0DDB80
 CODE_0DDB80:    LDA $33,x               ; $0D:DB80: B5 33       ;
                 BEQ CODE_0DDBDC         ; $0D:DB82: F0 58       ;
                 ASL A                   ; $0D:DB84: 0A          ;
@@ -14687,6 +14666,3 @@ CODE_0DFFCA:    ORA $04                 ; $0D:FFCA: 05 04       ;
                 INX                     ; $0D:FFF1: E8          ;
                 INX                     ; $0D:FFF2: E8          ;
                 RTS                     ; $0D:FFF3: 60          ;
-
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF                              ;
