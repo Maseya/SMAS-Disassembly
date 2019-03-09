@@ -4057,19 +4057,7 @@ CODE_20A43E:    JSR CODE_20801F         ; $20:A43E: 20 1F 80    ; \ * wait for v
                 STZ $192F               ; $20:A450: 9C 2F 19    ; /
                 JMP CODE_20A380         ; $20:A453: 4C 80 A3    ; next round
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF                                      ;
-
+ORG $20A4B0
 DATA_20A4B0:    db $01,$FF,$02,$FF,$00,$01                      ;
 
 CODE_20A4B6:    LDA $28                     ; $20:A4B6: A5 28       ;
@@ -9612,19 +9600,7 @@ CODE_20E150:    CLC                         ; $20:E150: 18          ;
                 SEP #$30                    ; $20:E1CF: E2 30       ;
                 RTS                         ; $20:E1D1: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF                      ;
-
+ORG $20E230
 DATA_20E230:    db $D0,$D2,$D2,$D4,$D6,$D6,$D2                  ;
 
 CODE_20E237:    PHX                     ; $20:E237: DA          ;
@@ -11248,10 +11224,7 @@ CODE_20EFBF:    PHY                         ; $20:EFBF: 5A          ;
 CODE_20EFE5:    SEP #$10                    ; $20:EFE5: E2 10       ;
                 RTS                         ; $20:EFE7: 60          ;
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-
+ORG $20F000
 CODE_20F000:    LDA $4210                   ; $20:F000: AD 10 42    ;
                 LDA $02                     ; $20:F003: A5 02       ;
                 PHA                         ; $20:F005: 48          ;
@@ -12997,21 +12970,3 @@ CODE_20FF69:    PLP                         ; $20:FF69: 28          ;
                 ADC $0354                   ; $20:FF71: 6D 54 03    ;
                 STA $0354                   ; $20:FF74: 8D 54 03    ;
                 RTS                         ; $20:FF77: 60          ;
-
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;

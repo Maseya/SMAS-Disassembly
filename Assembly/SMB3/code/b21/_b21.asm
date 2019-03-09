@@ -4458,7 +4458,6 @@ DATA_21E0C9:    db $31,$31,$31,$3E,$3E,$32,$51,$5E
                 db $51,$51,$57,$71,$7E,$7E,$79,$71
                 db $72,$9E,$97,$92,$91,$95
 
-
 DATA_21E0F7:    db $02,$04,$06,$09,$0D,$0F,$02,$04
                 db $06,$09,$0B,$0D,$0F,$03,$05,$08
                 db $0A,$0C,$0E,$03,$05,$08,$0E,$11
@@ -5825,86 +5824,4 @@ DATA_21FD45:    db $F5,$F4,$F5,$F4,$F2,$F2,$FA,$FC              ;
 
 DATA_21FD5B:    db $FF,$FF,$11,$11,$FC,$FC,$00,$0F              ;
                 db $FB,$FB,$FA,$FA,$FA,$FA,$FD,$FD              ;
-                db $FD,$FE,$03,$03,$03,$02,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;
-                db $FF,$FF,$FF,$FF,$FF                          ;
+                db $FD,$FE,$03,$03,$03,$02
