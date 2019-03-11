@@ -1974,9 +1974,9 @@ CODE_039271:    STX $02                 ; $03:9271: 86 02       ;
                 ROL A                   ; $03:9279: 2A          ;
                 ROL A                   ; $03:927A: 2A          ;
                 TAY                     ; $03:927B: A8          ;
-                LDA DATA_039438,y       ; $03:927C: B9 38 94    ;
+                LDA PNTR_039438,y       ; $03:927C: B9 38 94    ;
                 STA $06                 ; $03:927F: 85 06       ;
-                LDA DATA_03943C,y       ; $03:9281: B9 3C 94    ;
+                LDA PNTR_03943C,y       ; $03:9281: B9 3C 94    ;
                 STA $07                 ; $03:9284: 85 07       ;
                 REP #$30                ; $03:9286: C2 30       ;
                 TXA                     ; $03:9288: 8A          ;
@@ -2176,14 +2176,20 @@ CODE_0393F3:    REP #$30                ; $03:93F3: C2 30       ;
                 LDX $00                 ; $03:9435: A6 00       ;
                 RTS                     ; $03:9437: 60          ;
 
-DATA_039438:    dw $9840,$C858                                  ;
+PNTR_039438:    db DATA_039440
+                db DATA_039598
+                db DATA_039758
+                db DATA_0397C8
 
-DATA_03943C:    dw $9594,$9797                                  ;
+PNTR_03943C:    db DATA_039440>>8
+                db DATA_039598>>8
+                db DATA_039758>>8
+                db DATA_0397C8>>8
 
 ;SMB1 MAP16 IMAGE DATA
 ;FORMAT: $upperleft,$property,$bottomleft,$property,$upperright,$property,$bottomright,$property
 
-                db $24,$00,$24,$00,$24,$00,$24,$00              ;MAP16 tile 000
+DATA_039440:    db $24,$00,$24,$00,$24,$00,$24,$00              ;MAP16 tile 000
                 db $27,$00,$27,$00,$27,$00,$27,$00              ;MAP16 tile 001
                 db $24,$00,$E3,$09,$24,$00,$24,$00              ;MAP16 tile 002
                 db $24,$00,$24,$00,$24,$00,$E0,$09              ;MAP16 tile 003
@@ -2226,7 +2232,8 @@ DATA_03943C:    dw $9594,$9797                                  ;
                 db $24,$00,$2F,$08,$24,$00,$3D,$08              ;
                 db $A2,$18,$A2,$18,$A3,$18,$A3,$18              ;
                 db $24,$00,$24,$00,$24,$00,$24,$00              ;
-                db $A2,$18,$A2,$18,$A3,$18,$A3,$18              ;
+
+DATA_039598:    db $A2,$18,$A2,$18,$A3,$18,$A3,$18              ;
                 db $99,$18,$24,$00,$99,$18,$24,$00              ;
                 db $24,$00,$A2,$18,$3E,$18,$3F,$18              ;
                 db $5B,$18,$5C,$18,$24,$00,$A3,$18              ;
@@ -2282,7 +2289,8 @@ DATA_03943C:    dw $9594,$9797                                  ;
                 db $86,$08,$8A,$08,$87,$08,$8B,$08              ;
                 db $8E,$08,$91,$08,$8F,$08,$92,$08              ;
                 db $24,$00,$2F,$00,$24,$00,$3D,$00              ;
-                db $24,$00,$24,$00,$24,$00,$24,$00              ;
+
+DATA_039758:    db $24,$00,$24,$00,$24,$00,$24,$00              ;
                 db $24,$00,$24,$00,$24,$00,$24,$00              ;
                 db $24,$00,$24,$00,$24,$00,$24,$00              ;
                 db $24,$00,$24,$00,$24,$00,$24,$00              ;
@@ -2296,7 +2304,8 @@ DATA_03943C:    dw $9594,$9797                                  ;
                 db $96,$38,$96,$38,$96,$38,$96,$38              ;
                 db $B0,$10,$B1,$10,$B2,$10,$B3,$10              ;
                 db $9B,$0C,$9D,$0C,$9C,$0C,$9E,$0C              ;
-                db $40,$0E,$50,$0E,$41,$0E,$51,$0E              ;
+
+DATA_0397C8:    db $40,$0E,$50,$0E,$41,$0E,$51,$0E              ;
                 db $42,$0E,$52,$0E,$43,$0E,$53,$0E              ;
                 db $44,$0E,$54,$0E,$45,$0E,$55,$0E              ;
                 db $46,$0E,$56,$0E,$47,$0E,$57,$0E              ;
@@ -2358,7 +2367,12 @@ DATA_03943C:    dw $9594,$9797                                  ;
                 db $08,$2A,$18,$2A,$09,$2A,$19,$2A              ;
                 db $57,$0C,$59,$0C,$58,$0C,$5A,$0C              ;
                 db $7B,$04,$7D,$04,$7C,$04,$7E,$04              ;
-                db $FF,$05,$48,$00,$1F,$1D,$08,$11              ;
+
+;Empty stripe inserter
+DATA_0399B8:    db $FF
+
+;THANK YOU MARIO
+DATA_0399B9:    db $05,$48,$00,$1F,$1D,$08,$11                  ;
                 db $08,$0A,$08,$17,$08,$14,$08,$24              ;
                 db $00,$22,$08,$18,$08,$1E,$08,$24              ;
                 db $00,$16,$08,$0A,$08,$1B,$08,$12              ;
@@ -2950,8 +2964,8 @@ CODE_039FBD:    LDA $071A               ; $03:9FBD: AD 1A 07    ;
                 DEC $0480               ; $03:9FD2: CE 80 04    ;
                 LDY #$00                ; $03:9FD5: A0 00       ;
                 STY $075B               ; $03:9FD7: 8C 5B 07    ;
-                LDA $5C                 ; $03:9FDA: A5 5C       ;
-                BNE CODE_039FDF         ; $03:9FDC: D0 01       ;
+                LDA $5C                 ; $03:9FDA: A5 5C       ;\Swimming routine
+                BNE CODE_039FDF         ; $03:9FDC: D0 01       ;/
                 INY                     ; $03:9FDE: C8          ;
 CODE_039FDF:    STY $0704               ; $03:9FDF: 8C 04 07    ;
                 LDX $0710               ; $03:9FE2: AE 10 07    ;
@@ -3371,9 +3385,9 @@ DATA_03A3C4:    db $00,$00,$00,$00,$00,$00,$00,$00              ;
                 db $00,$04,$00,$00,$05,$00,$00,$06              ;
                 db $00,$00,$00,$00,$00,$00,$00,$00              ;
                 db $00,$00,$00,$4D,$00,$00,$11,$13              ;
-                db $4E,$12,$4E                                  ;
+                db $4E,$12,$4E,$4E                              ;
 
-DATA_03A3E7:    db $4E,$00,$0D,$1A                              ;
+DATA_03A3E8:    db $00,$0D,$1A                                  ;
 
 DATA_03A3EB:    db $00,$00,$00,$00,$00,$00,$00,$00              ;
                 db $00,$00,$00,$71,$71,$00,$00,$00              ;
@@ -3441,7 +3455,7 @@ CODE_03A47F:    LDA DATA_03A3C4,x       ; $03:A47F: BD C4 A3    ;
                 BNE CODE_03A47F         ; $03:A48D: D0 F0       ;
 CODE_03A48F:    LDX $0741               ; $03:A48F: AE 41 07    ;
                 BEQ CODE_03A4C7         ; $03:A492: F0 33       ;
-                LDY DATA_03A3E7,x       ; $03:A494: BC E7 A3    ;
+                LDY DATA_03A3E8-1,x     ; $03:A494: BC E7 A3    ;
                 LDX #$00                ; $03:A497: A2 00       ;
 CODE_03A499:    LDA DATA_03A3EB,y       ; $03:A499: B9 EB A3    ;
                 BEQ CODE_03A4C1         ; $03:A49C: F0 23       ;
@@ -3869,53 +3883,53 @@ CODE_03A7B3:    SEP #$10                ; $03:A7B3: E2 10       ;\
 ;; consists of a combination of a map16 tile and a sprite, but these are defined as a single object.
 ;;
 
-PNTR_03A7C9:    dw CODE_03A9F7                                  ;$00 - Warp pipe
-                dw CODE_03A8AF                                  ;$01 - $0733-dependant object. 00 = normal, green platform. 01 = mushroom, 02 = bullet bill cannons
+PNTR_03A7C9:    dw CODE_03A9F7                                  ;$00 - Open pipe
+                dw CODE_03A8AF                                  ;$01 - $0733-dependent object. 00 = normal, green platform. 01 = mushroom, 02 = bullet bill cannons
                 dw CODE_03AB63                                  ;$02 - Row of bricks
                 dw CODE_03AB72                                  ;$03 - Row of stones
                 dw CODE_03AB2A                                  ;$04 - Row of coins
                 dw CODE_03AB83                                  ;$05 - Column of bricks
                 dw CODE_03AB8A                                  ;$06 - Column of stones
-                dw CODE_03A9F7                                  ;$07 - Decoration pipe
+                dw CODE_03A9F7                                  ;$07 - Closed pipe
                 dw CODE_03AC3F                                  ;$08 - Hole object
                 dw CODE_03A978                                  ;$09 - Pulley rope
-                dw CODE_03AAB0                                  ;$0A - Bridge (high)
-                dw CODE_03AAB4                                  ;$0B - Bridge (mid)
-                dw CODE_03AAB8                                  ;$0C - Bridge (low)
-                dw CODE_03AA7E                                  ;$0D - Water/lava pit
-                dw CODE_03AA9E                                  ;$0E - Row of Coin Question blocks (high)
-                dw CODE_03AAA2                                  ;$0F - Row of Coin Question blocks (low)
-                dw CODE_03A827                                  ;$10 -
-                dw CODE_03A827                                  ;$11 -
-                dw CODE_03A827                                  ;$12 -
-                dw CODE_03A827                                  ;$13 - these point to an rts
-                dw CODE_03A827                                  ;$14 -
-                dw CODE_03A827                                  ;$15 -
-                dw CODE_03AC0F                                  ;$16 -
-                dw CODE_03AC0F                                  ;$17 -
-                dw CODE_03AC0F                                  ;$18 -
-                dw CODE_03AC05                                  ;$19 -
-                dw CODE_03AC18                                  ;$1A -
-                dw CODE_03AC18                                  ;$1B -
-                dw CODE_03AC18                                  ;$1C -
-                dw CODE_03AC15                                  ;$1D -
-                dw CODE_03AC18                                  ;$1E -
+                dw CODE_03AAB0                                  ;$0A - Bridge (Y=7/high)
+                dw CODE_03AAB4                                  ;$0B - Bridge (Y=8/mid)
+                dw CODE_03AAB8                                  ;$0C - Bridge (Y=10/low)
+                dw CODE_03AA7E                                  ;$0D - Hole with water/lava
+                dw CODE_03AA9E                                  ;$0E - Row of Coin Question blocks (Y=3/high)
+                dw CODE_03AAA2                                  ;$0F - Row of Coin Question blocks (Y=7/low)
+                dw CODE_03A827                                  ;$10 - Nothing (Vertical rope lift in SMB1)
+                dw CODE_03A827                                  ;$11 - Nothing (Vertical pulley rope lift in SMB1)
+                dw CODE_03A827                                  ;$12 - Nothing (End-of-level castle in SMB1)
+                dw CODE_03A827                                  ;$13 - Nothing (Open J pipe in SMB1)
+                dw CODE_03A827                                  ;$14 - Nothing (vertical balls in SMB1)
+                dw CODE_03A827                                  ;$15 - Nothing (Nothing in SMB1)
+                dw CODE_03AC0F                                  ;$16 - Question block with powerup
+                dw CODE_03AC0F                                  ;$17 - Question block with coin
+                dw CODE_03AC0F                                  ;$18 - Hidden coin block
+                dw CODE_03AC05                                  ;$19 - Hidden 1UP block
+                dw CODE_03AC18                                  ;$1A - Brick with powerup
+                dw CODE_03AC18                                  ;$1B - Brick with vine
+                dw CODE_03AC18                                  ;$1C - Brick with star
+                dw CODE_03AC15                                  ;$1D - Brick with 10 coins
+                dw CODE_03AC18                                  ;$1E - Brick with 1UP
                 dw CODE_03A98D                                  ;$1F - Underwater horizontal pipe
-                dw CODE_03AB4E                                  ;$20 - Empty block
-                dw CODE_03ABD5                                  ;$21 - Springboard object
-                dw CODE_03A9A0                                  ;$22 -
-                dw CODE_03AAE4                                  ;$23 -
-                dw CODE_03AB3F                                  ;$24 -
-                dw CODE_03AB44                                  ;$25 -
-                dw CODE_03AB38                                  ;$26 -
-                dw CODE_03A862                                  ;$27 -
-                dw CODE_03A87C                                  ;$28 -
-                dw CODE_03A87C                                  ;$29 -
-                dw CODE_03A89A                                  ;$2A -
-                dw CODE_03A89A                                  ;$2B -
-                dw CODE_03A89A                                  ;$2C -
-                dw CODE_03A77A                                  ;$2D -
-                dw CODE_03A828                                  ;$2E -
+                dw CODE_03AB4E                                  ;$20 - Used question block
+                dw CODE_03ABD5                                  ;$21 - Springboard (and spring sprite)
+                dw CODE_03A9A0                                  ;$22 - J Pipe
+                dw CODE_03AAE4                                  ;$23 - Flag Pole (and flag sprite)
+                dw CODE_03AB3F                                  ;$24 - Bowser axe
+                dw CODE_03AB44                                  ;$25 - Rope for axe.
+                dw CODE_03AB38                                  ;$26 - Bowser bridge
+                dw CODE_03A862                                  ;$27 - Scroll stop (warp zone)
+                dw CODE_03A87C                                  ;$28 - Scroll stop
+                dw CODE_03A87C                                  ;$29 - Scroll stop
+                dw CODE_03A89A                                  ;$2A - Flying cheep-cheep generator
+                dw CODE_03A89A                                  ;$2B - Bullet bill/Swimming cheep-cheep generator
+                dw CODE_03A89A                                  ;$2C - Stop generator
+                dw CODE_03A77A                                  ;$2D - Area loop command
+                dw CODE_03A828                                  ;$2E - Scenery modifier
 
 CODE_03A827:    RTS                     ; $03:A827: 60          ;
 
