@@ -938,8 +938,8 @@ CODE_048B59:    PHX                     ; $04:8B59: DA          ;
                 AND #$80                ; $04:8B5E: 29 80       ;
                 STA $0ED6               ; $04:8B60: 8D D6 0E    ;
                 LDA $5C                 ; $04:8B63: A5 5C       ;
-                BNE CODE_048B72         ; $04:8B65: D0 0B       ;
-                JSR CODE_048C28         ; $04:8B67: 20 28 8C    ;
+                BNE CODE_048B72         ; $04:8B65: D0 0B       ;\Draw animated water tiles
+                JSR CODE_048C28         ; $04:8B67: 20 28 8C    ;/at top of water levels
                 LDA #$06                ; $04:8B6A: A9 06       ;
                 STA $0773               ; $04:8B6C: 8D 73 07    ;
                 JMP CODE_048B7E         ; $04:8B6F: 4C 7E 8B    ;
@@ -1237,8 +1237,8 @@ CODE_048E14:    RTL                     ; $04:8E14: 6B          ;
 CODE_048E15:    PHB                     ; $04:8E15: 8B          ;\
                 PHK                     ; $04:8E16: 4B          ; |Setup program bank
                 PLB                     ; $04:8E17: AB          ;/
-                INY                     ; $04:8E18: C8          ;\Pass level header
-                INY                     ; $04:8E19: C8          ;/
+                INY                     ; $04:8E18: C8          ;
+                INY                     ; $04:8E19: C8          ;
                 LDA $FA                 ; $04:8E1A: A5 FA       ;\
                 STA $F3                 ; $04:8E1C: 85 F3       ; |
                 LDA $FB                 ; $04:8E1E: A5 FB       ; |Copy low, high and bank bytes
@@ -1268,54 +1268,54 @@ CODE_048E15:    PHB                     ; $04:8E15: 8B          ;\
 ;; staircase is made of multiple cement blocks, but it's defined as one object.
 ;;
 
-PNTR_048E43:    dw CODE_048EB5                                  ;$00 -
-                dw CODE_048EA3                                  ;$01 -
-                dw CODE_048EA3                                  ;$02 -
-                dw CODE_048EA3                                  ;$03 -
-                dw CODE_048EA3                                  ;$04 -
-                dw CODE_048EA3                                  ;$05 -
-                dw CODE_048EA3                                  ;$06 -
-                dw CODE_048EA3                                  ;$07 -
-                dw CODE_048EBB                                  ;$08 -
-                dw CODE_048EA5                                  ;$09 -
-                dw CODE_048EA3                                  ;$0A -
-                dw CODE_048EA3                                  ;$0B -
-                dw CODE_048EA3                                  ;$0C -
-                dw CODE_048EA3                                  ;$0D -
-                dw CODE_048EA3                                  ;$0E -
-                dw CODE_048EA3                                  ;$0F -
-                dw CODE_048F44                                  ;$10 - Level begin/end small/big castle object
-                dw CODE_048EA3                                  ;$11 -
-                dw CODE_048EA3                                  ;$12 -
-                dw CODE_048EA3                                  ;$13 -
-                dw CODE_048FD2                                  ;$14 -
-                dw CODE_048EA3                                  ;$15 -
-                dw CODE_048EA3                                  ;$16 -
-                dw CODE_048EA3                                  ;$17 -
-                dw CODE_04901B                                  ;$18 - Stone Stairs object
-                dw CODE_04903E                                  ;$19 -
-                dw CODE_04907A                                  ;$1A -
-                dw CODE_0490A0                                  ;$1B -
-                dw CODE_0490C2                                  ;$1C -
-                dw CODE_0490EB                                  ;$1D -
-                dw CODE_049121                                  ;$1E -
-                dw CODE_04915C                                  ;$1F -
-                dw CODE_04917E                                  ;$20 -
-                dw CODE_048EA3                                  ;$21 -
-                dw CODE_048EA3                                  ;$22 -
-                dw CODE_048EA3                                  ;$23 -
-                dw CODE_048EA3                                  ;$24 -
-                dw CODE_048EA3                                  ;$25 -
-                dw CODE_048EA3                                  ;$26 -
-                dw CODE_048EA3                                  ;$27 -
-                dw CODE_0491B3                                  ;$28 -
-                dw CODE_048EA3                                  ;$29 -
-                dw CODE_048EA3                                  ;$2A -
-                dw CODE_048EA3                                  ;$2B -
-                dw CODE_048EA3                                  ;$2C -
-                dw CODE_048EA3                                  ;$2D -
-                dw CODE_048EA3                                  ;$2E -
-                dw CODE_048EA3                                  ;$2F -
+PNTR_048E43:    dw CODE_048EB5                                  ;$00 - Vertical rope for lift
+                dw CODE_048EA3                                  ;$01 - Nothing
+                dw CODE_048EA3                                  ;$02 - Nothing
+                dw CODE_048EA3                                  ;$03 - Nothing
+                dw CODE_048EA3                                  ;$04 - Nothing
+                dw CODE_048EA3                                  ;$05 - Nothing
+                dw CODE_048EA3                                  ;$06 - Nothing
+                dw CODE_048EA3                                  ;$07 - Nothing
+                dw CODE_048EBB                                  ;$08 - Vertical rope for pulley lift
+                dw CODE_048EA5                                  ;$09 - Place an empty tile out of bounds at Y=15 (never used)
+                dw CODE_048EA3                                  ;$0A - Nothing
+                dw CODE_048EA3                                  ;$0B - Nothing
+                dw CODE_048EA3                                  ;$0C - Nothing
+                dw CODE_048EA3                                  ;$0D - Nothing
+                dw CODE_048EA3                                  ;$0E - Nothing
+                dw CODE_048EA3                                  ;$0F - Nothing
+                dw CODE_048F44                                  ;$10 - End-of-level castle
+                dw CODE_048EA3                                  ;$11 - Nothing
+                dw CODE_048EA3                                  ;$12 - Nothing
+                dw CODE_048EA3                                  ;$13 - Nothing
+                dw CODE_048FD2                                  ;$14 - Vertically extendable square castle ceiling tiles (caps ceiling edges)
+                dw CODE_048EA3                                  ;$15 - Nothing
+                dw CODE_048EA3                                  ;$16 - Nothing
+                dw CODE_048EA3                                  ;$17 - Nothing
+                dw CODE_04901B                                  ;$18 - Stone Stairs
+                dw CODE_04903E                                  ;$19 - Descending steps at beginning of castle areas
+                dw CODE_04907A                                  ;$1A - Rectangular ceiling tiles in castles
+                dw CODE_0490A0                                  ;$1B - Right edge for castle floor (recommend L = 0)
+                dw CODE_0490C2                                  ;$1C - Left edge for castle floor (recommend L = 0)
+                dw CODE_0490EB                                  ;$1D - Bottom left inverted corner for castle floor (recommend L = 1)
+                dw CODE_049121                                  ;$1E - Bottom right inverted corner for castle floor (L > 0 renders castle floor too)
+                dw CODE_04915C                                  ;$1F - Vertical sea blocks for underwater areas
+                dw CODE_04917E                                  ;$20 - J-pipe
+                dw CODE_048EA3                                  ;$21 - Nothing
+                dw CODE_048EA3                                  ;$22 - Nothing
+                dw CODE_048EA3                                  ;$23 - Nothing
+                dw CODE_048EA3                                  ;$24 - Nothing
+                dw CODE_048EA3                                  ;$25 - Nothing
+                dw CODE_048EA3                                  ;$26 - Nothing
+                dw CODE_048EA3                                  ;$27 - Nothing
+                dw CODE_0491B3                                  ;$28 - Vertical balls/rope/vine for climbing
+                dw CODE_048EA3                                  ;$29 - Nothing
+                dw CODE_048EA3                                  ;$2A - Nothing
+                dw CODE_048EA3                                  ;$2B - Nothing
+                dw CODE_048EA3                                  ;$2C - Nothing
+                dw CODE_048EA3                                  ;$2D - Nothing
+                dw CODE_048EA3                                  ;$2E - Nothing
+                dw CODE_048EA3                                  ;$2F - Nothing
 
 CODE_048EA3:    PLB                     ; $04:8EA3: AB          ;
                 RTL                     ; $04:8EA4: 6B          ;
@@ -2061,8 +2061,8 @@ CODE_04956B:    PHB                     ; $04:956B: 8B          ;
                 JSR CODE_0494EA         ; $04:956E: 20 EA 94    ;
                 STZ $0ED2               ; $04:9571: 9C D2 0E    ;
                 STZ $0ED3               ; $04:9574: 9C D3 0E    ;
-                LDA $5C                 ; $04:9577: A5 5C       ;
-                BEQ CODE_049594         ; $04:9579: F0 19       ;
+                LDA $5C                 ; $04:9577: A5 5C       ;\Setup underwater HDMA
+                BEQ CODE_049594         ; $04:9579: F0 19       ;/
                 CMP #$01                ; $04:957B: C9 01       ;
                 BNE CODE_04958B         ; $04:957D: D0 0C       ;
                 LDA $00DB               ; $04:957F: AD DB 00    ;
