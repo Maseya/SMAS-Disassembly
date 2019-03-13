@@ -3915,7 +3915,7 @@ PNTR_03A7C9:    dw CODE_03A9F7                                  ;$00 - Open pipe
                 dw CODE_03AC15                                  ;$1D - Brick with 10 coins
                 dw CODE_03AC18                                  ;$1E - Brick with 1UP
                 dw CODE_03A98D                                  ;$1F - Underwater horizontal pipe
-                dw CODE_03AB4E                                  ;$20 - Used question block
+                dw CODE_03AB4E                                  ;$20 - Fire bar block
                 dw CODE_03ABD5                                  ;$21 - Springboard (and spring sprite)
                 dw CODE_03A9A0                                  ;$22 - J Pipe
                 dw CODE_03AAE4                                  ;$23 - Flag Pole (and flag sprite)
@@ -4172,9 +4172,7 @@ DATA_03A9E7:    db $19,$22,$21,$20                              ;
 
 DATA_03A9EB:    db $19,$25,$24,$23                              ;
 
-DATA_03A9EF:    db $15,$14                                      ;
-
-DATA_03A9F1:    db $19,$18,$17,$16,$19,$18                      ;
+DATA_03A9EF:    db $15,$14,$19,$18,$17,$16,$19,$18              ;Pipe tiles
 
 ;Generate pipe
 CODE_03A9F7:    JSR CODE_03AA4D         ; $03:A9F7: 20 4D AA    ;Get pipe height
@@ -4214,7 +4212,7 @@ CODE_03AA39:    PLA                     ; $03:AA39: 68          ;Recover A
                 LDA DATA_03A9EF,y       ; $03:AA3D: B9 EF A9    ;
                 STA $06A1,x             ; $03:AA40: 9D A1 06    ;
                 INX                     ; $03:AA43: E8          ;
-                LDA DATA_03A9F1,y       ; $03:AA44: B9 F1 A9    ;
+                LDA DATA_03A9EF+2,y     ; $03:AA44: B9 F1 A9    ;
                 LDY $06                 ; $03:AA47: A4 06       ;
                 DEY                     ; $03:AA49: 88          ;
                 JMP CODE_03AC78         ; $03:AA4A: 4C 78 AC    ;Place tile in Accumulator into level.
@@ -4359,9 +4357,11 @@ CODE_03AB38:    LDY #$0C                ; $03:AB38: A0 0C       ;
                 JSR CODE_03ACB6         ; $03:AB3A: 20 B6 AC    ;
                 BRA CODE_03AB44         ; $03:AB3D: 80 05       ;
 
-;Bowser Bridge Tiles
+;Bowser Axe
 CODE_03AB3F:    LDA #$08                ; $03:AB3F: A9 08       ;
                 STA $0773               ; $03:AB41: 8D 73 07    ;
+
+;Rope for Bowser Axe
 CODE_03AB44:    LDY $00                 ; $03:AB44: A4 00       ;
                 LDX DATA_03AB32-2,y     ; $03:AB46: BE 30 AB    ;
                 LDA DATA_03AB35-2,y     ; $03:AB49: B9 33 AB    ;
@@ -4563,21 +4563,34 @@ CODE_03ACA7:    INX                     ; $03:ACA7: E8          ;Next row
                 BPL CODE_03AC78         ; $03:ACB0: 10 C6       ;/
 CODE_03ACB2:    RTS                     ; $03:ACB2: 60          ;
 
-;Check if object is fixed length
-;Output: set carry = object has fixed length, clear carry = object has specified length
-;TODO: verify
-CODE_03ACB3:    JSR CODE_03ACC2         ; $03:ACB3: 20 C2 AC    ;Get object attributes from level object pointer
+;TrySetBufferObjectLength()
+;
+; Calls GetObjectColumnProperties() and then calls TrySetBufferObjectLength(Y)
+; where `Y` is object's width according to area object data.
+CODE_03ACB3:    JSR CODE_03ACC2         ; $03:ACB3: 20 C2 AC    ;
 
-CODE_03ACB6:    LDA $1300,x             ; $03:ACB6: BD 00 13    ;Check object length buffer
-                CLC                     ; $03:ACB9: 18          ;Clear carry
-                BPL CODE_03ACC1         ; $03:ACBA: 10 05       ;\if $FF,
-                TYA                     ; $03:ACBC: 98          ; | Set specified fixed length in object length buffer?
-                STA $1300,x             ; $03:ACBD: 9D 00 13    ;/
-                SEC                     ; $03:ACC0: 38          ;Set carry
+;TrySetBufferObjectLength(Y: width)
+;
+; Carry bit:
+;   Set if current buffer ($1300,x) is already set. Clear otherwise.
+;
+; If current buffer is not set, it's set to the value in the Y register.
+;
+; `A` returns current buffer object's width ($1300,x).
+CODE_03ACB6:    LDA $1300,x             ; $03:ACB6: BD 00 13    ;
+                CLC                     ; $03:ACB9: 18          ;
+                BPL CODE_03ACC1         ; $03:ACBA: 10 05       ;
+                TYA                     ; $03:ACBC: 98          ;
+                STA $1300,x             ; $03:ACBD: 9D 00 13    ;
+                SEC                     ; $03:ACC0: 38          ;
 CODE_03ACC1:    RTS                     ; $03:ACC1: 60          ;
 
-;Get object attributes
-;Output: $07 = Row/Y location, Y = ??? TODO: Find out.
+;GetObjectColumnProperties()
+;
+; Sets $07 to Y-coordinate of current buffer object.
+;
+; `Y` register is set to object parameter which usually specifies object height
+; or width.
 CODE_03ACC2:    PHX                     ; $03:ACC2: DA          ;
                 REP #$30                ; $03:ACC3: C2 30       ;
                 TXA                     ; $03:ACC5: 8A          ;
