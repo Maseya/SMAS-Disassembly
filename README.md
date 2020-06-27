@@ -29,3 +29,8 @@ Game codes are located in the following banks:
 - Regex for finding 16-bit ROM access: (CMP|CP[XY]|LD[AXY]|ORA|AND|EOR|ADC|SBC|BIT|TSB|TRB|ASL|DEC|INC|JMP|JSR|LSR|ROL|ROR)( \$)([8-9A-F][0-9A-F]{3})
 - Regex for finding 24-bit ROM access: (AND|LD[AXY]|ORA|ADC|SBC|EOR|TSB|TRB|JSL|JML) \$([0-4][0-9A-F][8-9A-F][0-9A-F]{3})
 - Regex for finding 24-bit ROM addresses: \$([0-4][0-9A-F][8-9A-F][0-9A-F]{3})
+
+## Helpful links
+The following links are links to the NES disassemblies of Super Mario Bros. 1 and Super Mario Bros. 2J. The code used within these games are pretty similar to the code used in SMAS, so these could be used as a reference when documenting code.
+[SMBDis](https://www.romhacking.net/documents/344/) - 
+[smb2jdis](https://www.romhacking.net/documents/653/) - 
