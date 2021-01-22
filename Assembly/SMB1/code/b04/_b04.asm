@@ -3816,8 +3816,8 @@ CODE_04C01F:    PHB                     ; $04:C01F: 8B          ;\
 CODE_04C034:    LDA DATA_04C11C,y       ; $04:C034: B9 1C C1    ;\Load indices to the level number table
                 CLC                     ; $04:C037: 18          ; |clear carry flag
                 ADC $0760               ; $04:C038: 6D 60 07    ; |add current level to it
-                TAY                     ; $04:C03B: A8          ; |use it as index
-                LDA DATA_04C124,y       ; $04:C03C: B9 24 C1    ;\|Load the level number
+                TAY                     ; $04:C03B: A8          ;/use it as index
+                LDA DATA_04C124,y       ; $04:C03C: B9 24 C1    ;\ Load the level number
                 PLB                     ; $04:C03F: AB          ; |return it
                 RTL                     ; $04:C040: 6B          ;/
 
@@ -3840,8 +3840,8 @@ CODE_04C041:    PHB                     ; $04:C041: 8B          ;\
                 LDA DATA_04C148,y       ; $04:C05A: B9 48 C1    ;\
                 CLC                     ; $04:C05D: 18          ; |Load the map type offsets
                 ADC $074F               ; $04:C05E: 6D 4F 07    ; |Add the offsets with level number
-                TAY                     ; $04:C061: A8          ;/| Use it as an index again...
-                LDA DATA_04C14C,y       ; $04:C062: B9 4C C1    ;\|
+                TAY                     ; $04:C061: A8          ;/  Use it as an index again...
+                LDA DATA_04C14C,y       ; $04:C062: B9 4C C1    ;\
                 STA $FD                 ; $04:C065: 85 FD       ; |Load pointers to enemy data
                 LDA DATA_04C16E,y       ; $04:C067: B9 6E C1    ; |in $FD-$FF
                 STA $FE                 ; $04:C06A: 85 FE       ; |
@@ -5077,13 +5077,13 @@ CODE_04D911:    LDA DATA_04D92E,y       ; $04:D911: B9 2E D9    ; |
                 BEQ CODE_04D91E         ; $04:D918: F0 04       ; |
                 INX                     ; $04:D91A: E8          ; |
                 INY                     ; $04:D91B: C8          ; |
-                BRA CODE_04D911         ; $04:D91C: 80 F3       ; |
+                BRA CODE_04D911         ; $04:D91C: 80 F3       ;/
 
-CODE_04D91E:    STX $1700               ; $04:D91E: 8E 00 17    ; |
-                SEP #$10                ; $04:D921: E2 10       ; |
-                PLX                     ; $04:D923: FA          ; |
-                PLB                     ; $04:D924: AB          ; |
-                RTS                     ; $04:D925: 60          ;/
+CODE_04D91E:    STX $1700               ; $04:D91E: 8E 00 17    ;
+                SEP #$10                ; $04:D921: E2 10       ;
+                PLX                     ; $04:D923: FA          ;
+                PLB                     ; $04:D924: AB          ;
+                RTS                     ; $04:D925: 60          ;
 
 DATA_04D926:    dw DATA_04D92E-DATA_04D92E                      ;Relative indices to next table
                 dw DATA_04D9D2-DATA_04D92E                      ;

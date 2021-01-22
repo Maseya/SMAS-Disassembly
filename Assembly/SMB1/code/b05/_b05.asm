@@ -59,8 +59,8 @@ CODE_05805B:    REP #$30                ; $05:805B: C2 30       ;\
                 STA $F1                 ; $05:8076: 85 F1       ;/
                 LDA $04                 ; $05:8078: A5 04       ;\ Load HHH data
                 AND #$E000              ; $05:807A: 29 00 E0    ; | HHH = high nibble of background data starting index of map16 tilemap
-                STA $ED                 ; $05:807D: 85 ED       ;/|
-                LDA $04                 ; $05:807F: A5 04       ;\| Load LLL data
+                STA $ED                 ; $05:807D: 85 ED       ;/
+                LDA $04                 ; $05:807F: A5 04       ;\  Load LLL data
                 LSR A                   ; $05:8081: 4A          ; | LLL = Low nibble of background data starting index of map16 tilemap * 2
                 AND #$0E00              ; $05:8082: 29 00 0E    ; | This code basically turns HHH LLL into HHH0 LLL0
                 ORA $ED                 ; $05:8085: 05 ED       ; |
@@ -5321,8 +5321,8 @@ CODE_05D614:    PHB                     ; $05:D614: 8B          ;
                 LDA $021A,x             ; $05:D632: BD 1A 02    ;\ Store 16-bit sprite x position into $00
                 STA $00                 ; $05:D635: 85 00       ; |
                 LDA $79,x               ; $05:D637: B5 79       ; |
-                STA $01                 ; $05:D639: 85 01       ; |
-                REP #$20                ; $05:D63B: C2 20       ;\|
+                STA $01                 ; $05:D639: 85 01       ;/
+                REP #$20                ; $05:D63B: C2 20       ;\
                 LDA $00                 ; $05:D63D: A5 00       ; |
                 CLC                     ; $05:D63F: 18          ; |Add 8 pixels to it, but subtract the left edge x-coordinate of the screen. store into $00-01
                 ADC #$0008              ; $05:D640: 69 08 00    ; |
@@ -5343,8 +5343,8 @@ CODE_05D659:    INC $0B00,x             ; $05:D659: FE 00 0B    ; Executes after
                 STZ $0B09,x             ; $05:D65C: 9E 09 0B    ;
                 LDA $0B00,x             ; $05:D65F: BD 00 0B    ;\
                 CMP #$02                ; $05:D662: C9 02       ; |
-                BNE CODE_05D66C         ; $05:D664: D0 06       ; | If the generated particle in question is the mid-air fire particle
-                LDA $0238,x             ; $05:D666: BD 38 02    ;\| Set Y position of mid-air particle
+                BNE CODE_05D66C         ; $05:D664: D0 06       ;/ If the generated particle in question is the mid-air fire particle
+                LDA $0238,x             ; $05:D666: BD 38 02    ;\  Set Y position of mid-air particle
                 STA $0B12,x             ; $05:D669: 9D 12 0B    ;/
 CODE_05D66C:    PLY                     ; $05:D66C: 7A          ; Return
                 PLX                     ; $05:D66D: FA          ;
@@ -6434,7 +6434,7 @@ CODE_05E0E9:    STA $7FF000,x           ; $05:E0E9: 9F 00 F0 7F ; |
                 BPL CODE_05E0E9         ; $05:E0FB: 10 EC       ;/
                 LDA $0B6F               ; $05:E0FD: AD 6F 0B    ;\ Maximum right border
                 XBA                     ; $05:E100: EB          ; |swap low and high bytes
-                ORA $0B6D               ; $05:E101: 0D 6D 0B    ;/|OR with maximum left border -> to Windowing HDMA value
+                ORA $0B6D               ; $05:E101: 0D 6D 0B    ;/ OR with maximum left border -> to Windowing HDMA value
                 LDX $0B71               ; $05:E104: AE 71 0B    ; |Load maximum upper border as an index
 CODE_05E107:    STA $7FF000,x           ; $05:E107: 9F 00 F0 7F ;/ Store windowing HDMA value
                 INX                     ; $05:E10B: E8          ;\

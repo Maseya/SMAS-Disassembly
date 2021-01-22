@@ -39,7 +39,7 @@ CODE_038015:    NOP                     ; $03:8015: EA          ;\Waste time for
                 STA $7FFB01             ; $03:8057: 8F 01 FB 7F ;/
                 LDA $700008             ; $03:805B: AF 08 00 70 ;\Load the current world number loaded from save
                 STA $075F               ; $03:805F: 8D 5F 07    ; |
-                STA $7FFB00             ; $03:8062: 8F 00 FB 7F ;/|Store into world number to load from the title screen
+                STA $7FFB00             ; $03:8062: 8F 00 FB 7F ;/ Store into world number to load from the title screen
                 ASL A                   ; $03:8066: 0A          ; | Current world number * 4 + current level number
                 ASL A                   ; $03:8067: 0A          ; |
                 CLC                     ; $03:8068: 18          ; |
@@ -47,7 +47,7 @@ CODE_038015:    NOP                     ; $03:8015: EA          ;\Waste time for
                 TAX                     ; $03:806D: AA          ;Into X
                 LDA.l DATA_05D272,x     ; $03:806E: BF 72 D2 05 ;\Load from level table
                 STA $700009             ; $03:8072: 8F 09 00 70 ; |Store into current level number loaded from save
-                STA $7FFB02             ; $03:8076: 8F 02 FB 7F ;/|And some other address
+                STA $7FFB02             ; $03:8076: 8F 02 FB 7F ;/ And some other address
                 STA $0760               ; $03:807A: 8D 60 07    ;/ And into current level
                 LDA #$03                ; $03:807D: A9 03       ;\OBJ size: 8x8 and 16x16 sprites
                 STA $2101               ; $03:807F: 8D 01 21    ;/OBJ VRAM: $C000
@@ -924,11 +924,11 @@ CODE_038865:    LDA DATA_038853,y       ; $03:8865: B9 53 88    ;
 CODE_038880:    SEP #$20                ; $03:8880: E2 20       ;
                 RTS                     ; $03:8882: 60          ;
 
-CODE_038883:    LDX $0717               ; $03:8883: AE 17 07    ;\ Current demo action in X
-                LDA $0718               ; $03:8886: AD 18 07    ; |
-                BNE CODE_0388A4         ; $03:8889: D0 19       ; |If timer isn't 0 yet, branch
-                INX                     ; $03:888B: E8          ; |
-                INC $0717               ; $03:888C: EE 17 07    ; |
+CODE_038883:    LDX $0717               ; $03:8883: AE 17 07    ; Current demo action in X
+                LDA $0718               ; $03:8886: AD 18 07    ;
+                BNE CODE_0388A4         ; $03:8889: D0 19       ; If timer isn't 0 yet, branch
+                INX                     ; $03:888B: E8          ;
+                INC $0717               ; $03:888C: EE 17 07    ;
                 SEC                     ; $03:888F: 38          ;
                 LDA $07FB               ; $03:8890: AD FB 07    ;
                 BEQ CODE_03889B         ; $03:8893: F0 06       ;
@@ -5979,8 +5979,8 @@ CODE_03B7DE:    LDA $0770               ; $03:B7DE: AD 70 07    ;
                 BEQ CODE_03B82F         ; $03:B801: F0 2C       ;/
                 LDY $07E9               ; $03:B803: AC E9 07    ;\
                 DEY                     ; $03:B806: 88          ; |
-                BNE CODE_03B816         ; $03:B807: D0 0D       ; |Check hundreds, if not $00, branch
-                LDA $07EA               ; $03:B809: AD EA 07    ;\|
+                BNE CODE_03B816         ; $03:B807: D0 0D       ;/Check hundreds, if not $00, branch
+                LDA $07EA               ; $03:B809: AD EA 07    ;\
                 ORA $07EB               ; $03:B80C: 0D EB 07    ; |Check the tens and ones. If not $00, branch
                 BNE CODE_03B816         ; $03:B80F: D0 05       ;/
                 LDA #$FF                ; $03:B811: A9 FF       ;\
@@ -7797,8 +7797,8 @@ CODE_03C6A4:    LDA #$D0                ; $03:C6A4: A9 D0       ;\Podoboo init
 
 CODE_03C6C0:    LDA $075F               ; $03:C6C0: AD 5F 07    ;\INIT routine of Toad/Peach. Load current world
                 CMP #$07                ; $03:C6C3: C9 07       ; |If you are NOT in world 8
-                BNE CODE_03C6CD         ; $03:C6C5: D0 06       ; |Set Ypos of sprite to $B8 (floor)
-                LDA #$70                ; $03:C6C7: A9 70       ;\|Otherwise, set Ypos to $70 (inside cage)
+                BNE CODE_03C6CD         ; $03:C6C5: D0 06       ;/Set Ypos of sprite to $B8 (floor)
+                LDA #$70                ; $03:C6C7: A9 70       ;\ Otherwise, set Ypos to $70 (inside cage)
 CODE_03C6C9:    STA $0238,x             ; $03:C6C9: 9D 38 02    ;/
                 RTS                     ; $03:C6CC: 60          ;Return
 
@@ -7849,7 +7849,7 @@ CODE_03C71F:    STA $0490,x             ; $03:C71F: 9D 90 04    ;
                 LDA #$02                ; $03:C722: A9 02       ;\ Set sprite direction to left
                 STA $47,x               ; $03:C724: 95 47       ;/
 CODE_03C726:    LDA #$00                ; $03:C726: A9 00       ;\ Set sprite vertical speed to 0
-                STA $A1,x               ; $03:C728: 95 A1       ; |
+                STA $A1,x               ; $03:C728: 95 A1       ;/
                 STA $043D,x             ; $03:C72A: 9D 3D 04    ;Set ??? to 0? Related to sprite falling and other movement-related speed.
                 RTS                     ; $03:C72D: 60          ;
 
@@ -8670,7 +8670,7 @@ CODE_03CDB7:    JSR CODE_03FD39         ; $03:CDB7: 20 39 FD    ;
 CODE_03CDC0:    LDA $1C,x               ; $03:CDC0: B5 1C       ;\Load sprite number
                 SEC                     ; $03:CDC2: 38          ; |Sprite number - $24
                 SBC #$24                ; $03:CDC3: E9 24       ; |
-                ASL A                   ; $03:CDC5: 0A          ;/|*2
+                ASL A                   ; $03:CDC5: 0A          ;/ *2
                 TAY                     ; $03:CDC6: A8          ;/Use as index. Sprite $24 will haxe index $00
                 LDA PNTR_03CDD4,y       ; $03:CDC7: B9 D4 CD    ;\
                 STA $04                 ; $03:CDCA: 85 04       ; |
@@ -11638,8 +11638,8 @@ CODE_03E57E:    CMP #$2A                ; $03:E57E: C9 2A       ;
                 BNE CODE_03E58D         ; $03:E580: D0 0B       ;
                 LDA $0237               ; $03:E582: AD 37 02    ;\
                 CMP #$20                ; $03:E585: C9 20       ; |If player Y-position is not above the flagpole
-                BCS CODE_03E58D         ; $03:E587: B0 04       ; |
-                LDA #$01                ; $03:E589: A9 01       ;\|Player action: climb a vine/slide down the flagpole
+                BCS CODE_03E58D         ; $03:E587: B0 04       ;/
+                LDA #$01                ; $03:E589: A9 01       ;\ Player action: climb a vine/slide down the flagpole
                 STA $0F                 ; $03:E58B: 85 0F       ;/
 CODE_03E58D:    LDA #$03                ; $03:E58D: A9 03       ;\Player state: slide down the flagpole
                 STA $28                 ; $03:E58F: 85 28       ;/

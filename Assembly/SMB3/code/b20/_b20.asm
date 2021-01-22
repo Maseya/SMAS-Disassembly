@@ -629,9 +629,9 @@ CODE_20831A:    TXA                     ; $20:831A: 8A          ;
                 LDA $45,x               ; $20:8334: B5 45       ; | Check current player's submap
                 BEQ CODE_20833C         ; $20:8336: F0 04       ; | If in World 5's cloud map
                 LDY #$10                ; $20:8338: A0 10       ; | Load music cloud map music (#$10)
-                BRA CODE_208343         ; $20:833A: 80 07       ; |
+                BRA CODE_208343         ; $20:833A: 80 07       ;/
 
-CODE_20833C:    LDA $1F55               ; $20:833C: AD 55 1F    ; | If Music box is playing,
+CODE_20833C:    LDA $1F55               ; $20:833C: AD 55 1F    ;\ If Music box is playing,
                 BEQ CODE_208343         ; $20:833F: F0 02       ; | play music box music (#$0E).
                 LDY #$0E                ; $20:8341: A0 0E       ; |
 CODE_208343:    STY $1202               ; $20:8343: 8C 02 12    ;/  Otherwise play regular overworld music.
@@ -3705,13 +3705,13 @@ CODE_20929C:    LDA $7E3975,x           ; $20:929C: BF 75 39 7E ;
                 LDY #$00                ; $20:92CA: A0 00       ;
 
                 LDA $0727               ; $20:92CC: AD 27 07    ;\ Check if in world 8 submap 3 (spotlight submap)
-                CMP #$07                ; $20:92CF: C9 07       ;   If so, on game over screen make sure
-                BNE CODE_2092DD         ; $20:92D1: D0 0A       ;   to black out the overworld background with the Game Over window showing.
-                LDX $0726               ; $20:92D3: AE 26 07    ;
-                LDA $45,x               ; $20:92D6: B5 45       ;
-                CMP #$02                ; $20:92D8: C9 02       ;
-                BNE CODE_2092DD         ; $20:92DA: D0 01       ;
-                INY                     ; $20:92DC: C8          ;
+                CMP #$07                ; $20:92CF: C9 07       ; |  If so, on game over screen make sure
+                BNE CODE_2092DD         ; $20:92D1: D0 0A       ; |  to black out the overworld background with the Game Over window showing.
+                LDX $0726               ; $20:92D3: AE 26 07    ; |
+                LDA $45,x               ; $20:92D6: B5 45       ; |
+                CMP #$02                ; $20:92D8: C9 02       ; |
+                BNE CODE_2092DD         ; $20:92DA: D0 01       ; |
+                INY                     ; $20:92DC: C8          ; |
 CODE_2092DD:    STY $0598               ; $20:92DD: 8C 98 05    ;/
                 LDY $0726               ; $20:92E0: AC 26 07    ;
 
@@ -5121,7 +5121,7 @@ CODE_20990B:    STZ $0700               ; $20:990B: 9C 00 07    ;
 
                 LDA.w DATA_21CE3A,x     ; $20:995F: BD 3A CE    ;\
 
-                STA $0216               ; $20:9962: 8D 16 02    ;/|Set BG1 camera Y position, low byte
+                STA $0216               ; $20:9962: 8D 16 02    ;/ Set BG1 camera Y position, low byte
 
                 LSR A                   ; $20:9965: 4A          ; |
 

@@ -9991,7 +9991,7 @@ CODE_14F2B2:    LDA $0712               ; $14:F2B2: AD 12 07    ;\ High byte of 
                 REP #$30                ; $14:F2D2: C2 30       ; AXY = 16-bit.
                 LDA [$C4],y             ; $14:F2D4: B7 C4       ;\ Load tile number.
                 AND #$003F              ; $14:F2D6: 29 3F 00    ; | Mod 64.
-                BRA CODE_14F2E2         ; $14:F2D9: 80 07       ; | Branch.
+                BRA CODE_14F2E2         ; $14:F2D9: 80 07       ;/ Branch.
 
 CODE_14F2DB:    REP #$30                ; $14:F2DB: C2 30       ; AXY = 16-bit.
                 LDA [$C4],y             ; $14:F2DD: B7 C4       ;\ Get corresponding Map16 tile number again (low byte)

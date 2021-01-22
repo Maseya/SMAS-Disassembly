@@ -7107,7 +7107,7 @@ CODE_239FF8:    LDA $1E84,x             ; $23:9FF8: BD 84 1E    ; |
                 DEX                     ; $23:9FFE: CA          ; |
                 BPL CODE_239FF8         ; $23:9FFF: 10 F7       ; |
                 LDA $0B                 ; $23:A001: A5 0B       ; | Store card #15 as card #00
-                STA $1E84               ; $23:A003: 8D 84 1E    ;/|
+                STA $1E84               ; $23:A003: 8D 84 1E    ;/ 
                 DEY                     ; $23:A006: 88          ; |
                 BPL CODE_239FF1         ; $23:A007: 10 E8       ;/  Depending on the RNG output from earlier, repeat card-shifting.
                 LDX #$00                ; $23:A009: A2 00       ;\
@@ -7118,7 +7118,7 @@ CODE_23A00B:    LDA $1E84,x             ; $23:A00B: BD 84 1E    ; | Store card #
                 LDA $1E8E,x             ; $23:A016: BD 8E 1E    ; |
                 STA $1E89,x             ; $23:A019: 9D 89 1E    ; |
                 LDA $0B                 ; $23:A01C: A5 0B       ; | Store card #00 as card #11
-                STA $1E8E,x             ; $23:A01E: 9D 8E 1E    ;/|
+                STA $1E8E,x             ; $23:A01E: 9D 8E 1E    ;/ 
                 DEX                     ; $23:A021: CA          ; |
                 DEX                     ; $23:A022: CA          ; |
                 BPL CODE_23A00B         ; $23:A023: 10 E6       ;/ This branch never gets taken as X always will become FE after the card-swapping.

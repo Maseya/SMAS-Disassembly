@@ -8172,7 +8172,7 @@ DATA_11F4FA:    db $19,$2D,$41,$55,$69,$7D,$91,$A5              ;\
                 db $03,$49,$08,$03,$48,$0E,$03,$48              ;\ Sprite data.
                 db $02,$05,$12,$92,$49,$09,$03,$03              ; | Big waterfall room, level 3-1.
                 db $E5,$05,$03,$21,$03,$87,$01,$01              ; | Total amount of sprites: 8.
-                db $01,$01,$01                                  ;
+                db $01,$01,$01                                  ;/
 
                 db $01,$01,$01,$01                              ; Secret warp room, level 3-1. No sprites used.
 
