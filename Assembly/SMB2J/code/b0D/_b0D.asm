@@ -9323,7 +9323,7 @@ CODE_0DD37A:    RTS                     ; $0D:D37A: 60          ;
 DATA_0DD37B:    db $1A,$58,$98,$96,$94,$92,$90,$8E              ;
                 db $8C,$8A,$88,$86,$84,$82,$80                  ;
 
-CODE_0DD38A:    PHX                         ; $0D:D38A: DA          ;
+CODE_0DD38A:    PHX                     ; $0D:D38A: DA          ;
                 LDX $0369               ; $0D:D38B: AE 69 03    ;
                 DEX                     ; $0D:D38E: CA          ;
                 DEX                     ; $0D:D38F: CA          ;

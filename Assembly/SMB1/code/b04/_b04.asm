@@ -359,8 +359,8 @@ CODE_048357:    LDA #$E0                ; $04:8357: A9 E0       ;\Enable HDMA ch
 
 DATA_048360:    db $00,$03,$06,$09,$09,$06,$03,$00              ;
 
-DATA_048368:    db $0C,$0C,$0C,$1C,$0C,$0C,$0C,$1C              ;The very small pauses between going up and down 1 time
-                                                       ;in the underwater HDMA wavy gradient effect
+DATA_048368:    db $0C,$0C,$0C,$1C,$0C,$0C,$0C,$1C              ;\The very small pauses between going up and down 1 time
+                                                                ;/in the underwater HDMA wavy gradient effect
 
 DATA_048370:    db $01,$01,$01,$01,$FF,$FF,$FF,$FF              ;
 
@@ -5963,16 +5963,16 @@ DATA_04E2C6:    dw $0041,$00CB,$015D,$01F3                      ;
 DATA_04E2E6:    dw $0813,$091E,$0977,$086C                      ;
                 dw $08C5,$086C,$08C5,$086C                      ;
                 dw $08C5,$086C                                  ;
-                                                       ;Tilemap for Mario and Princess image frames
-DATA_04E2FA:    db $E8,$EC,$A0,$06,$E8,$FC,$A2,$06              ;These tables are for the Princess kiss Mario-
-                db $E8,$0C,$A4,$06,$F8,$EC,$C0,$06              ; Sequence. This is table 0, next one is 1 etc
-                db $F8,$FC,$C2,$06,$F8,$0C,$C4,$06              ;The even-numbered tables are for the Princess
-                db $08,$EC,$E0,$06,$08,$FC,$E2,$06              ;The odd-numbered tables are for Mario/Luigi.
-                db $08,$0C,$E4,$06,$10,$CC,$8D,$06              ;The format of these bytes are the following:
-                db $10,$D4,$8E,$06,$10,$E4,$AC,$06              ;$XX,$YY,$TT,$PP
-                db $10,$F4,$AE,$06,$18,$F4,$CC,$06              ;XX = Xpos, YY = Ypos, TT = Tile, PP = Priority
-                db $18,$04,$CE,$06,$18,$14,$EC,$06              ;basically the OAM format.
-                db $FF                                          ;
+                                                                ;
+DATA_04E2FA:    db $E8,$EC,$A0,$06,$E8,$FC,$A2,$06              ;\ Tilemap for Mario and Princess image frames
+                db $E8,$0C,$A4,$06,$F8,$EC,$C0,$06              ; |These tables are for the Princess kiss Mario-
+                db $F8,$FC,$C2,$06,$F8,$0C,$C4,$06              ; | Sequence. This is table 0, next one is 1 etc
+                db $08,$EC,$E0,$06,$08,$FC,$E2,$06              ; |The even-numbered tables are for the Princess
+                db $08,$0C,$E4,$06,$10,$CC,$8D,$06              ; |The odd-numbered tables are for Mario/Luigi.
+                db $10,$D4,$8E,$06,$10,$E4,$AC,$06              ; |The format of these bytes are the following:
+                db $10,$F4,$AE,$06,$18,$F4,$CC,$06              ; |$XX,$YY,$TT,$PP
+                db $18,$04,$CE,$06,$18,$14,$EC,$06              ; |XX = Xpos, YY = Ypos, TT = Tile, PP = Priority
+                db $FF                                          ;/ basically the OAM format.
 
                 db $D8,$D0,$0A,$06,$D8,$E0,$08,$06              ;These huge tables took ages to sort out...
                 db $E8,$C0,$28,$06,$E8,$D0,$2A,$06              ;

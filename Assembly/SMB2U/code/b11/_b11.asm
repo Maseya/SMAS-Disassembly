@@ -2,9 +2,9 @@
 
 CODE_118000:    JMP CODE_11803C         ; $11:8000: 4C 3C 80    ;
 
-CODE_118003:    JMP CODE_1191C2             ; $11:8003: 4C C2 91    ;
+CODE_118003:    JMP CODE_1191C2         ; $11:8003: 4C C2 91    ;
 
-CODE_118006:    JMP CODE_11956C             ; $11:8006: 4C 6C 95    ;
+CODE_118006:    JMP CODE_11956C         ; $11:8006: 4C 6C 95    ;
 
 CODE_118009:    STZ $023A               ; $11:8009: 9C 3A 02    ; No HDMA enable.
                 LDA #$80                ; $11:800C: A9 80       ; Force blank
@@ -12,2376 +12,4153 @@ CODE_118009:    STZ $023A               ; $11:8009: 9C 3A 02    ; No HDMA enable
 
 CODE_118010:    LDA #$0F                ; $11:8010: A9 0F       ; Full brightness.
 CODE_118012:    STA $FE                 ; $11:8012: 85 FE       ; $FE = $2100 mirror.
-CODE_118014:    LDA $11                 ; $11:8014: A5 11       ; \ $11 = Image upload
-                ASL A                   ; $11:8016: 0A          ;  | Multiply by 2...
-                CLC                     ; $11:8017: 18          ;  | ... add with $11...
-                ADC $11                 ; $11:8018: 65 11       ;  | (Result = Multiply by 3)
-                TAX                     ; $11:801A: AA          ; / Into X.
-                LDA.w PNTR_11C1D0,x     ; $11:801B: BD D0 C1    ; \ Get low byte of image.
-                STA $F0                 ; $11:801E: 85 F0       ; / <-- $F0 (Low byte of image pointer)
-                LDA.w PNTR_11C1D0+1,x   ; $11:8020: BD D1 C1    ; \ Get middle byte of image.
-                STA $F1                 ; $11:8023: 85 F1       ; / <-- $F1 (Middle byte of image pointer)
-                LDA.w PNTR_11C1D0+2,x   ; $11:8025: BD D2 C1    ; \ Get high byte of image.
-                STA $F2                 ; $11:8028: 85 F2       ; / <-- $F2 (High byte of image pointer)
-                STZ $0154                   ; $11:802A: 9C 54 01    ;
-CODE_11802D:    LDA $0154                   ; $11:802D: AD 54 01    ;
-                BPL CODE_11802D             ; $11:8030: 10 FB       ;
-                JSL CODE_14FA99             ; $11:8032: 22 99 FA 14 ;
+CODE_118014:    LDA $11                 ; $11:8014: A5 11       ;\ $11 = Image upload
+                ASL A                   ; $11:8016: 0A          ; | Multiply by 2...
+                CLC                     ; $11:8017: 18          ; | ... add with $11...
+                ADC $11                 ; $11:8018: 65 11       ; | (Result = Multiply by 3)
+                TAX                     ; $11:801A: AA          ;/ Into X.
+                LDA.w PNTR_11C1D0,x     ; $11:801B: BD D0 C1    ;\ Get low byte of image.
+                STA $F0                 ; $11:801E: 85 F0       ;/ <-- $F0 (Low byte of image pointer)
+                LDA.w PNTR_11C1D0+1,x   ; $11:8020: BD D1 C1    ;\ Get middle byte of image.
+                STA $F1                 ; $11:8023: 85 F1       ;/ <-- $F1 (Middle byte of image pointer)
+                LDA.w PNTR_11C1D0+2,x   ; $11:8025: BD D2 C1    ;\ Get high byte of image.
+                STA $F2                 ; $11:8028: 85 F2       ;/ <-- $F2 (High byte of image pointer)
+                STZ $0154               ; $11:802A: 9C 54 01    ;
+CODE_11802D:    LDA $0154               ; $11:802D: AD 54 01    ;
+                BPL CODE_11802D         ; $11:8030: 10 FB       ;
+                JSL CODE_14FA99         ; $11:8032: 22 99 FA 14 ;
                 CLI                     ; $11:8036: 58          ; Clear interrupt disable flag.
                 RTL                     ; $11:8037: 6B          ; Return.
 
 CODE_118038:    JML CODE_009641         ; $11:8038: 5C 41 96 00 ; ROM is pirated.
 
-CODE_11803C:    NOP                     ; $11:803C: EA          ; \ Two useless bytes...
-                NOP                     ; $11:803D: EA          ; /
-                LDA #$AA                ; $11:803E: A9 AA       ; \ Anti-piracy check.
-                STA $702000             ; $11:8040: 8F 00 20 70 ;  |
-                CMP $700000             ; $11:8044: CF 00 00 70 ;  |
-                BNE CODE_118038         ; $11:8048: D0 EE       ;  | Prevents SRAM from being expanded.
-                LDA #$55                ; $11:804A: A9 55       ;  |
-                STA $702000             ; $11:804C: 8F 00 20 70 ;  |
-                CMP $700000             ; $11:8050: CF 00 00 70 ;  |
-                BNE CODE_118038         ; $11:8054: D0 E2       ; /
+CODE_11803C:    NOP                     ; $11:803C: EA          ;\ Two useless bytes...
+                NOP                     ; $11:803D: EA          ;/
+                LDA #$AA                ; $11:803E: A9 AA       ;\ Anti-piracy check.
+                STA $702000             ; $11:8040: 8F 00 20 70 ; |
+                CMP $700000             ; $11:8044: CF 00 00 70 ; |
+                BNE CODE_118038         ; $11:8048: D0 EE       ; | Prevents SRAM from being expanded.
+                LDA #$55                ; $11:804A: A9 55       ; |
+                STA $702000             ; $11:804C: 8F 00 20 70 ; |
+                CMP $700000             ; $11:8050: CF 00 00 70 ; |
+                BNE CODE_118038         ; $11:8054: D0 E2       ;/
                 SEI                     ; $11:8056: 78          ; Set interrupt disable
                 STZ $4200               ; $11:8057: 9C 00 42    ; NMI disabled, IRQ disabled, Auto-Joypad Read disabled.
                 STZ $420C               ; $11:805A: 9C 0C 42    ; No HDMA
                 STZ $420B               ; $11:805D: 9C 0B 42    ; No DMA.
-                STZ $2140               ; $11:8060: 9C 40 21    ; \ Clear SPC ports.
-                STZ $2141               ; $11:8063: 9C 41 21    ;  |
-                STZ $2142               ; $11:8066: 9C 42 21    ;  |
-                STZ $2143               ; $11:8069: 9C 43 21    ; /
-                LDA #$80                ; $11:806C: A9 80       ; \ Force blank.
-                STA $2100               ; $11:806E: 8D 00 21    ; /
-                PHK                     ; $11:8071: 4B          ; \ PBR into DBR.
-                PLB                     ; $11:8072: AB          ; /
+                STZ $2140               ; $11:8060: 9C 40 21    ;\ Clear SPC ports.
+                STZ $2141               ; $11:8063: 9C 41 21    ; |
+                STZ $2142               ; $11:8066: 9C 42 21    ; |
+                STZ $2143               ; $11:8069: 9C 43 21    ;/
+                LDA #$80                ; $11:806C: A9 80       ;\ Force blank.
+                STA $2100               ; $11:806E: 8D 00 21    ;/
+                PHK                     ; $11:8071: 4B          ;\ PBR into DBR.
+                PLB                     ; $11:8072: AB          ;/
                 CLC                     ; $11:8073: 18          ; Clear carry.
                 PHD                     ; $11:8074: 0B          ; Preserve DP register.
-                LDA #$21                ; $11:8075: A9 21       ; \ New DP = $2100
-                XBA                     ; $11:8077: EB          ;  |
-                LDA #$00                ; $11:8078: A9 00       ;  |
-                TCD                     ; $11:807A: 5B          ; /
-                LDA #$03                ; $11:807B: A9 03       ; \ Character data = $C000-$FFFF for sprites.
-                STA $01                 ; $11:807D: 85 01       ; /
-                LDA #$01                ; $11:807F: A9 01       ; \ BG Mode = 01
-                STA $05                 ; $11:8081: 85 05       ; / <-- $2105
+                LDA #$21                ; $11:8075: A9 21       ;\ New DP = $2100
+                XBA                     ; $11:8077: EB          ; |
+                LDA #$00                ; $11:8078: A9 00       ; |
+                TCD                     ; $11:807A: 5B          ;/
+                LDA #$03                ; $11:807B: A9 03       ;\ Character data = $C000-$FFFF for sprites.
+                STA $01                 ; $11:807D: 85 01       ;/
+                LDA #$01                ; $11:807F: A9 01       ;\ BG Mode = 01
+                STA $05                 ; $11:8081: 85 05       ;/ <-- $2105
                 STA $0775               ; $11:8083: 8D 75 07    ; $0775 = $2105 mirror.
-                STZ $06                     ; $11:8086: 64 06       ;
-                LDA #$03                ; $11:8088: A9 03       ; \ Tilemap Layer 1 = $0000-$1FFF.
-                STA $07                 ; $11:808A: 85 07       ;  |
-                STA $024C               ; $11:808C: 8D 4C 02    ; /
-                LDA #$13                ; $11:808F: A9 13       ; \ Tilemap Layer 2 = $2000-$3FFF.
-                STA $08                 ; $11:8091: 85 08       ; /
-                LDA #$4B                ; $11:8093: A9 4B       ; \ Tilemap Layer 3 = $9000-$9FFF.
-                STA $09                 ; $11:8095: 85 09       ; /
+                STZ $06                 ; $11:8086: 64 06       ;
+                LDA #$03                ; $11:8088: A9 03       ;\ Tilemap Layer 1 = $0000-$1FFF.
+                STA $07                 ; $11:808A: 85 07       ; |
+                STA $024C               ; $11:808C: 8D 4C 02    ;/
+                LDA #$13                ; $11:808F: A9 13       ;\ Tilemap Layer 2 = $2000-$3FFF.
+                STA $08                 ; $11:8091: 85 08       ;/
+                LDA #$4B                ; $11:8093: A9 4B       ;\ Tilemap Layer 3 = $9000-$9FFF.
+                STA $09                 ; $11:8095: 85 09       ;/
                 STZ $0A                 ; $11:8097: 64 0A       ; No tilemap Layer 4.
-                LDA #$22                ; $11:8099: A9 22       ; \ Character data = $4000-$8FFF for Layers 1 and 2.
-                STA $0B                 ; $11:809B: 85 0B       ; /
-                LDA #$05                ; $11:809D: A9 05       ; \ Character data = $A000-$BFFF for Layer 3, no character data Layer 4.
-                STA $0C                 ; $11:809F: 85 0C       ; /
-                LDA #$13                ; $11:80A1: A9 13       ; \ Layers 1, 2 and object layer on main screen designation.
-                STA $2C                 ; $11:80A3: 85 2C       ;  |
-                STA $0243               ; $11:80A5: 8D 43 02    ; /
+                LDA #$22                ; $11:8099: A9 22       ;\ Character data = $4000-$8FFF for Layers 1 and 2.
+                STA $0B                 ; $11:809B: 85 0B       ;/
+                LDA #$05                ; $11:809D: A9 05       ;\ Character data = $A000-$BFFF for Layer 3, no character data Layer 4.
+                STA $0C                 ; $11:809F: 85 0C       ;/
+                LDA #$13                ; $11:80A1: A9 13       ;\ Layers 1, 2 and object layer on main screen designation.
+                STA $2C                 ; $11:80A3: 85 2C       ; |
+                STA $0243               ; $11:80A5: 8D 43 02    ;/
                 STZ $2D                 ; $11:80A8: 64 2D       ; None on subscreen designation.
-                STZ $2E                     ; $11:80AA: 64 2E       ;
-                STZ $2F                     ; $11:80AC: 64 2F       ;
-                STZ $23                     ; $11:80AE: 64 23       ;
-                STZ $24                     ; $11:80B0: 64 24       ;
-                STZ $25                     ; $11:80B2: 64 25       ;
+                STZ $2E                 ; $11:80AA: 64 2E       ;
+                STZ $2F                 ; $11:80AC: 64 2F       ;
+                STZ $23                 ; $11:80AE: 64 23       ;
+                STZ $24                 ; $11:80B0: 64 24       ;
+                STZ $25                 ; $11:80B2: 64 25       ;
                 STZ $30                 ; $11:80B4: 64 30       ; Color addition select = #$00.
                 STZ $31                 ; $11:80B6: 64 31       ; CGADSUB = #$00 ($2131).
-                LDA #$E0                ; $11:80B8: A9 E0       ; \ No intensity for fixed colour data ($2132)
-                STA $32                 ; $11:80BA: 85 32       ; /
-                STZ $33                     ; $11:80BC: 64 33       ;
-                STZ $0235                   ; $11:80BE: 9C 35 02    ;
-                STZ $0236                   ; $11:80C1: 9C 36 02    ;
-                STZ $0237                   ; $11:80C4: 9C 37 02    ;
+                LDA #$E0                ; $11:80B8: A9 E0       ;\ No intensity for fixed colour data ($2132)
+                STA $32                 ; $11:80BA: 85 32       ;/
+                STZ $33                 ; $11:80BC: 64 33       ;
+                STZ $0235               ; $11:80BE: 9C 35 02    ;
+                STZ $0236               ; $11:80C1: 9C 36 02    ;
+                STZ $0237               ; $11:80C4: 9C 37 02    ;
                 STZ $0238               ; $11:80C7: 9C 38 02    ; Color addition select mirror = #$00.
                 STZ $0239               ; $11:80CA: 9C 39 02    ; CGADSUB mirror = #$00.
                 STZ $023A               ; $11:80CD: 9C 3A 02    ; HDMA Enable mirror = #$00.
-                STZ $023B                   ; $11:80D0: 9C 3B 02    ;
-                STZ $023C                   ; $11:80D3: 9C 3C 02    ;
-                LDA #$20                ; $11:80D6: A9 20       ; \ No intensity for red colour.
-                STA $023D               ; $11:80D8: 8D 3D 02    ; / <-- $023D (One of three mirrors for $2132)
-                LDA #$40                ; $11:80DB: A9 40       ; \ No intensity for green colour.
-                STA $023E               ; $11:80DD: 8D 3E 02    ; / <-- $023E (One of three mirrors for $2132)
-                LDA #$80                ; $11:80E0: A9 80       ; \ No intensity for blue colour.
-                STA $023F               ; $11:80E2: 8D 3F 02    ; / <-- $023F (One of three mirrors for $2132)
+                STZ $023B               ; $11:80D0: 9C 3B 02    ;
+
+                STZ $023C               ; $11:80D3: 9C 3C 02    ;
+
+                LDA #$20                ; $11:80D6: A9 20       ;\ No intensity for red colour.
+                STA $023D               ; $11:80D8: 8D 3D 02    ;/ <-- $023D (One of three mirrors for $2132)
+                LDA #$40                ; $11:80DB: A9 40       ;\ No intensity for green colour.
+                STA $023E               ; $11:80DD: 8D 3E 02    ;/ <-- $023E (One of three mirrors for $2132)
+                LDA #$80                ; $11:80E0: A9 80       ;\ No intensity for blue colour.
+                STA $023F               ; $11:80E2: 8D 3F 02    ;/ <-- $023F (One of three mirrors for $2132)
                 PLD                     ; $11:80E5: 2B          ; Get old DP register back.
-                LDA #$FF                ; $11:80E6: A9 FF       ; \ No upload through VRAM tables.
-                STA $0302               ; $11:80E8: 8D 02 03    ;  |
-                STA $7F0002             ; $11:80EB: 8F 02 00 7F ;  |
-                STA $7F0802             ; $11:80EF: 8F 02 08 7F ; /
+                LDA #$FF                ; $11:80E6: A9 FF       ;\ No upload through VRAM tables.
+                STA $0302               ; $11:80E8: 8D 02 03    ; |
+                STA $7F0002             ; $11:80EB: 8F 02 00 7F ; |
+                STA $7F0802             ; $11:80EF: 8F 02 08 7F ;/
                 STZ $024B               ; $11:80F3: 9C 4B 02    ; V-Count mirror = #$00.
-                STZ $1DE8                   ; $11:80F6: 9C E8 1D    ;
-                STZ $1DE9                   ; $11:80F9: 9C E9 1D    ;
-                STZ $1DEE                   ; $11:80FC: 9C EE 1D    ;
-                STZ $1DEF                   ; $11:80FF: 9C EF 1D    ;
-                STZ $1DEA                   ; $11:8102: 9C EA 1D    ;
-                STZ $1DEB                   ; $11:8105: 9C EB 1D    ;
-                STA $1DED                   ; $11:8108: 8D ED 1D    ;
-                LDA #$01                    ; $11:810B: A9 01       ;
-                STA $1DEC                   ; $11:810D: 8D EC 1D    ;
-                LDA #$00                    ; $11:8110: A9 00       ;
-                STA $06BF                   ; $11:8112: 8D BF 06    ;
-                STA $0217                   ; $11:8115: 8D 17 02    ;
-                STA $0722                   ; $11:8118: 8D 22 07    ;
-                STA $0D0B                   ; $11:811B: 8D 0B 0D    ;
-                JSL CODE_14D78D             ; $11:811E: 22 8D D7 14 ;
-                LDA $7FFB00             ; $11:8122: AF 00 FB 7F ; \ $7FFB00...
-                STA $0635               ; $11:8126: 8D 35 06    ; / into World number.
-                ASL A                   ; $11:8129: 0A          ; \
-                CLC                     ; $11:812A: 18          ;  | *3
-                ADC $7FFB00             ; $11:812B: 6F 00 FB 7F ;  |
-                CLC                     ; $11:812F: 18          ;  | Add $7FFB01 to it...
-                ADC $7FFB01             ; $11:8130: 6F 01 FB 7F ;  | (preserved level num?)
-                STA $0533               ; $11:8134: 8D 33 05    ; / Into accumulative level number.
+                STZ $1DE8               ; $11:80F6: 9C E8 1D    ;
+
+                STZ $1DE9               ; $11:80F9: 9C E9 1D    ;
+                STZ $1DEE               ; $11:80FC: 9C EE 1D    ;
+                STZ $1DEF               ; $11:80FF: 9C EF 1D    ;
+
+                STZ $1DEA               ; $11:8102: 9C EA 1D    ;
+
+                STZ $1DEB               ; $11:8105: 9C EB 1D    ;
+
+                STA $1DED               ; $11:8108: 8D ED 1D    ;
+
+                LDA #$01                ; $11:810B: A9 01       ;
+
+                STA $1DEC               ; $11:810D: 8D EC 1D    ;
+
+                LDA #$00                ; $11:8110: A9 00       ;
+
+                STA $06BF               ; $11:8112: 8D BF 06    ;
+
+                STA $0217               ; $11:8115: 8D 17 02    ;
+
+                STA $0722               ; $11:8118: 8D 22 07    ;
+
+                STA $0D0B               ; $11:811B: 8D 0B 0D    ;
+
+                JSL CODE_14D78D         ; $11:811E: 22 8D D7 14 ;
+
+                LDA $7FFB00             ; $11:8122: AF 00 FB 7F ;\ $7FFB00...
+                STA $0635               ; $11:8126: 8D 35 06    ;/ into World number.
+                ASL A                   ; $11:8129: 0A          ;\
+                CLC                     ; $11:812A: 18          ; | *3
+                ADC $7FFB00             ; $11:812B: 6F 00 FB 7F ; |
+                CLC                     ; $11:812F: 18          ; | Add $7FFB01 to it...
+                ADC $7FFB01             ; $11:8130: 6F 01 FB 7F ; | (preserved level num?)
+                STA $0533               ; $11:8134: 8D 33 05    ;/ Into accumulative level number.
                 DEC A                   ; $11:8137: 3A          ; $0533 - 1...
                 STA $04E8               ; $11:8138: 8D E8 04    ; Into $04E8 (level number after death?)
-                LDA $7FFB02             ; $11:813B: AF 02 FB 7F ; \ Get preserved live count?
-                STA $04EE               ; $11:813F: 8D EE 04    ; / Into live counter.
-                LDX #$03                    ; $11:8142: A2 03       ;
-CODE_118144:    LDA $7FFB03,x               ; $11:8144: BF 03 FB 7F ;
-                STA $062D,x                 ; $11:8148: 9D 2D 06    ;
-                DEX                         ; $11:814B: CA          ;
-                BPL CODE_118144             ; $11:814C: 10 F6       ;
-                LDA $0533                   ; $11:814E: AD 33 05    ;
-                STA $04E8                   ; $11:8151: 8D E8 04    ;
-                JSL CODE_0086B5             ; $11:8154: 22 B5 86 00 ;
-                JSL CODE_128F48             ; $11:8158: 22 48 8F 12 ;
-                INC $06BF                   ; $11:815C: EE BF 06    ;
-                LDA #$02                    ; $11:815F: A9 02       ;
-                STA $059E                   ; $11:8161: 8D 9E 05    ;
-                LDA #$FF                    ; $11:8164: A9 FF       ;
-                STA $02E6                   ; $11:8166: 8D E6 02    ;
+                LDA $7FFB02             ; $11:813B: AF 02 FB 7F ;\ Get preserved live count?
+                STA $04EE               ; $11:813F: 8D EE 04    ;/ Into live counter.
+                LDX #$03                ; $11:8142: A2 03       ;
+
+CODE_118144:    LDA $7FFB03,x           ; $11:8144: BF 03 FB 7F ;
+
+                STA $062D,x             ; $11:8148: 9D 2D 06    ;
+
+                DEX                     ; $11:814B: CA          ;
+
+                BPL CODE_118144         ; $11:814C: 10 F6       ;
+
+                LDA $0533               ; $11:814E: AD 33 05    ;
+
+                STA $04E8               ; $11:8151: 8D E8 04    ;
+
+                JSL CODE_0086B5         ; $11:8154: 22 B5 86 00 ;
+
+                JSL CODE_128F48         ; $11:8158: 22 48 8F 12 ;
+
+                INC $06BF               ; $11:815C: EE BF 06    ;
+
+                LDA #$02                ; $11:815F: A9 02       ;
+
+                STA $059E               ; $11:8161: 8D 9E 05    ;
+
+                LDA #$FF                ; $11:8164: A9 FF       ;
+
+                STA $02E6               ; $11:8166: 8D E6 02    ;
+
                 BRA CODE_11817F         ; $11:8169: 80 14       ;
 
-CODE_11816B:    LDA #$05                ; $11:816B: A9 05       ; \ Amount of lives...
-                STA $04EE               ; $11:816D: 8D EE 04    ; / after Game Over.
+CODE_11816B:    LDA #$05                ; $11:816B: A9 05       ;\ Amount of lives...
+                STA $04EE               ; $11:816D: 8D EE 04    ;/ after Game Over.
                 BRA CODE_11817F         ; $11:8170: 80 0D       ;
 
-CODE_118172:    LDX $0635               ; $11:8172: AE 35 06    ; \ Get world number into index...
-                LDA.l DATA_11C9B4,x     ; $11:8175: BF B4 C9 11 ;  | Get accumulative level number of x-1, where x = world number.
-                STA $0533               ; $11:8179: 8D 33 05    ;  | Store into accumulative level number.
-                STA $04E8               ; $11:817C: 8D E8 04    ; / And here.
-CODE_11817F:    STZ $0217                   ; $11:817F: 9C 17 02    ;
-                JSR CODE_118927             ; $11:8182: 20 27 89    ;
-                JSR CODE_11883A             ; $11:8185: 20 3A 88    ;
-                JSR CODE_1188C5             ; $11:8188: 20 C5 88    ;
-                LDA #$FF                    ; $11:818B: A9 FF       ;
-                STA $0547                   ; $11:818D: 8D 47 05    ;
+CODE_118172:    LDX $0635               ; $11:8172: AE 35 06    ;\ Get world number into index...
+                LDA.l DATA_11C9B4,x     ; $11:8175: BF B4 C9 11 ; | Get accumulative level number of x-1, where x = world number.
+                STA $0533               ; $11:8179: 8D 33 05    ; | Store into accumulative level number.
+                STA $04E8               ; $11:817C: 8D E8 04    ;/ And here.
+CODE_11817F:    STZ $0217               ; $11:817F: 9C 17 02    ;
+
+                JSR CODE_118927         ; $11:8182: 20 27 89    ;
+
+                JSR CODE_11883A         ; $11:8185: 20 3A 88    ;
+
+                JSR CODE_1188C5         ; $11:8188: 20 C5 88    ;
+
+                LDA #$FF                ; $11:818B: A9 FF       ;
+
+                STA $0547               ; $11:818D: 8D 47 05    ;
+
                 BRA CODE_1181A8         ; $11:8190: 80 16       ;
 
-CODE_118192:    STZ $0217                   ; $11:8192: 9C 17 02    ;
-                JSR CODE_118927             ; $11:8195: 20 27 89    ;
-                JSR CODE_1188C5             ; $11:8198: 20 C5 88    ;
+CODE_118192:    STZ $0217               ; $11:8192: 9C 17 02    ;
+
+                JSR CODE_118927         ; $11:8195: 20 27 89    ;
+
+                JSR CODE_1188C5         ; $11:8198: 20 C5 88    ;
+
                 BRA CODE_1181A8         ; $11:819B: 80 0B       ;
 
-                STZ $0217                   ; $11:819D: 9C 17 02    ;
-                LDA #$80                    ; $11:81A0: A9 80       ;
-                STA $1DE2                   ; $11:81A2: 8D E2 1D    ;
-                JSR CODE_11885E             ; $11:81A5: 20 5E 88    ;
-CODE_1181A8:    LDA $FE                 ; $11:81A8: A5 FE       ; \ Check if force blank...
-                AND #$80                ; $11:81AA: 29 80       ;  | <--
-                BNE CODE_1181B5         ; $11:81AC: D0 07       ; / If on, branch.
-                JSR CODE_118AD2             ; $11:81AE: 20 D2 8A    ;
-                JSL CODE_118009             ; $11:81B1: 22 09 80 11 ;
-CODE_1181B5:    LDA #$B0                    ; $11:81B5: A9 B0       ;
-                ORA $0201                   ; $11:81B7: 0D 01 02    ;
-                LDY $EB                 ; $11:81BA: A4 EB       ; \ If horizontal level...
-                BNE CODE_1181C3         ; $11:81BC: D0 05       ; / ...branch, do not run the following two lines.
-                AND #$FE                    ; $11:81BE: 29 FE       ;
-                ORA $0207                   ; $11:81C0: 0D 07 02    ;
-CODE_1181C3:    STA $FF                     ; $11:81C3: 85 FF       ;
-                STZ $4200                   ; $11:81C5: 9C 00 42    ;
-                PHA                         ; $11:81C8: 48          ;
-                LDA $02B8                   ; $11:81C9: AD B8 02    ;
-                BNE CODE_1181D2             ; $11:81CC: D0 04       ;
-                JSL CODE_14E35A             ; $11:81CE: 22 5A E3 14 ;
-CODE_1181D2:    LDA $079C                   ; $11:81D2: AD 9C 07    ;
-                BEQ CODE_1181E0             ; $11:81D5: F0 09       ;
-                LDA $079D                   ; $11:81D7: AD 9D 07    ;
-                STA $0500                   ; $11:81DA: 8D 00 05    ;
-                STZ $079C                   ; $11:81DD: 9C 9C 07    ;
-CODE_1181E0:    STZ $02B8                   ; $11:81E0: 9C B8 02    ;
-                STZ $0776                   ; $11:81E3: 9C 76 07    ;
-                STZ $078A                   ; $11:81E6: 9C 8A 07    ;
-                STZ $0779                   ; $11:81E9: 9C 79 07    ;
-                STZ $0778                   ; $11:81EC: 9C 78 07    ;
-                LDA #$80                    ; $11:81EF: A9 80       ;
-                STA $0100                   ; $11:81F1: 8D 00 01    ;
-                STA $0217                   ; $11:81F4: 8D 17 02    ;
-                JSL CODE_13873D         ; $11:81F7: 22 3D 87 13 ; \ Load tiles 200-27F (FG/BG slots).
-                JSL CODE_1385DA         ; $11:81FB: 22 DA 85 13 ;  | Load tiles C0-1FF (FG/BG slots).
-                JSL CODE_14E3DE         ; $11:81FF: 22 DE E3 14 ;  | Get sprite data per room into buffer at $1B00.
-                JSL CODE_14F64A         ; $11:8203: 22 4A F6 14 ;  | Clear Layer 3 tilemap.
-                JSL CODE_12FAD1         ; $11:8207: 22 D1 FA 12 ;  |
-                JSL CODE_12FCF7         ; $11:820B: 22 F7 FC 12 ;  |
-                JSL CODE_12FF1A         ; $11:820F: 22 1A FF 12 ;  |
-                JSL CODE_14F500         ; $11:8213: 22 00 F5 14 ; /
-                LDA $0772               ; $11:8217: AD 72 07    ; \ If $0772 is any non-zero value...
-                BEQ CODE_118220         ; $11:821A: F0 04       ;  |
-                LDA #$09                ; $11:821C: A9 09       ;  | Make Layer 3 have full priority.
-                BRA CODE_118222         ; $11:821E: 80 02       ; /
+                STZ $0217               ; $11:819D: 9C 17 02    ;
 
-CODE_118220:    LDA #$01                ; $11:8220: A9 01       ; \ BG Mode 1.
-CODE_118222:    STA $0775               ; $11:8222: 8D 75 07    ; / No Layer 3 priority.
-                JSL CODE_12F2EF             ; $11:8225: 22 EF F2 12 ;
-                JSL CODE_14D0F2             ; $11:8229: 22 F2 D0 14 ;
-                JSL CODE_138780             ; $11:822D: 22 80 87 13 ;
+                LDA #$80                ; $11:81A0: A9 80       ;
+
+                STA $1DE2               ; $11:81A2: 8D E2 1D    ;
+
+                JSR CODE_11885E         ; $11:81A5: 20 5E 88    ;
+
+CODE_1181A8:    LDA $FE                 ; $11:81A8: A5 FE       ;\ Check if force blank...
+                AND #$80                ; $11:81AA: 29 80       ; | <--
+                BNE CODE_1181B5         ; $11:81AC: D0 07       ;/ If on, branch.
+                JSR CODE_118AD2         ; $11:81AE: 20 D2 8A    ;
+
+                JSL CODE_118009         ; $11:81B1: 22 09 80 11 ;
+
+CODE_1181B5:    LDA #$B0                ; $11:81B5: A9 B0       ;
+
+                ORA $0201               ; $11:81B7: 0D 01 02    ;
+
+                LDY $EB                 ; $11:81BA: A4 EB       ;\ If horizontal level...
+                BNE CODE_1181C3         ; $11:81BC: D0 05       ;/ ...branch, do not run the following two lines.
+                AND #$FE                ; $11:81BE: 29 FE       ;
+
+                ORA $0207               ; $11:81C0: 0D 07 02    ;
+
+CODE_1181C3:    STA $FF                 ; $11:81C3: 85 FF       ;
+
+                STZ $4200               ; $11:81C5: 9C 00 42    ;
+
+                PHA                     ; $11:81C8: 48          ;
+
+                LDA $02B8               ; $11:81C9: AD B8 02    ;
+
+                BNE CODE_1181D2         ; $11:81CC: D0 04       ;
+
+                JSL CODE_14E35A         ; $11:81CE: 22 5A E3 14 ;
+
+CODE_1181D2:    LDA $079C               ; $11:81D2: AD 9C 07    ;
+
+                BEQ CODE_1181E0         ; $11:81D5: F0 09       ;
+
+                LDA $079D               ; $11:81D7: AD 9D 07    ;
+
+                STA $0500               ; $11:81DA: 8D 00 05    ;
+
+                STZ $079C               ; $11:81DD: 9C 9C 07    ;
+
+CODE_1181E0:    STZ $02B8               ; $11:81E0: 9C B8 02    ;
+
+                STZ $0776               ; $11:81E3: 9C 76 07    ;
+
+                STZ $078A               ; $11:81E6: 9C 8A 07    ;
+
+                STZ $0779               ; $11:81E9: 9C 79 07    ;
+
+                STZ $0778               ; $11:81EC: 9C 78 07    ;
+
+                LDA #$80                ; $11:81EF: A9 80       ;
+
+                STA $0100               ; $11:81F1: 8D 00 01    ;
+
+                STA $0217               ; $11:81F4: 8D 17 02    ;
+
+                JSL CODE_13873D         ; $11:81F7: 22 3D 87 13 ;\ Load tiles 200-27F (FG/BG slots).
+                JSL CODE_1385DA         ; $11:81FB: 22 DA 85 13 ; | Load tiles C0-1FF (FG/BG slots).
+                JSL CODE_14E3DE         ; $11:81FF: 22 DE E3 14 ; | Get sprite data per room into buffer at $1B00.
+                JSL CODE_14F64A         ; $11:8203: 22 4A F6 14 ; | Clear Layer 3 tilemap.
+                JSL CODE_12FAD1         ; $11:8207: 22 D1 FA 12 ; |
+                JSL CODE_12FCF7         ; $11:820B: 22 F7 FC 12 ; |
+                JSL CODE_12FF1A         ; $11:820F: 22 1A FF 12 ; |
+                JSL CODE_14F500         ; $11:8213: 22 00 F5 14 ;/
+                LDA $0772               ; $11:8217: AD 72 07    ;\ If $0772 is any non-zero value...
+                BEQ CODE_118220         ; $11:821A: F0 04       ; |
+                LDA #$09                ; $11:821C: A9 09       ; | Make Layer 3 have full priority.
+                BRA CODE_118222         ; $11:821E: 80 02       ;/
+
+CODE_118220:    LDA #$01                ; $11:8220: A9 01       ;\ BG Mode 1.
+CODE_118222:    STA $0775               ; $11:8222: 8D 75 07    ;/ No Layer 3 priority.
+                JSL CODE_12F2EF         ; $11:8225: 22 EF F2 12 ;
+
+                JSL CODE_14D0F2         ; $11:8229: 22 F2 D0 14 ;
+
+                JSL CODE_138780         ; $11:822D: 22 80 87 13 ;
+
                 JSL CODE_14F9F0         ; $11:8231: 22 F0 F9 14 ; Clear all OAM.
-                JSL CODE_14F9A0             ; $11:8235: 22 A0 F9 14 ;
-                PLA                         ; $11:8239: 68          ;
-                AND #$80                    ; $11:823A: 29 80       ;
-                ORA #$01                    ; $11:823C: 09 01       ;
-                STA $4200                   ; $11:823E: 8D 00 42    ;
-                JSL CODE_118014             ; $11:8241: 22 14 80 11 ;
-                JSR CODE_118834             ; $11:8245: 20 34 88    ;
-                LDA #$B0                    ; $11:8248: A9 B0       ;
-                STA $FF                     ; $11:824A: 85 FF       ;
-                JSL CODE_1389A3             ; $11:824C: 22 A3 89 13 ;
-                LDA $EB                     ; $11:8250: A5 EB       ;
-                BNE CODE_118257             ; $11:8252: D0 03       ;
+                JSL CODE_14F9A0         ; $11:8235: 22 A0 F9 14 ;
+
+                PLA                     ; $11:8239: 68          ;
+
+                AND #$80                ; $11:823A: 29 80       ;
+
+                ORA #$01                ; $11:823C: 09 01       ;
+
+                STA $4200               ; $11:823E: 8D 00 42    ;
+
+                JSL CODE_118014         ; $11:8241: 22 14 80 11 ;
+
+                JSR CODE_118834         ; $11:8245: 20 34 88    ;
+
+                LDA #$B0                ; $11:8248: A9 B0       ;
+
+                STA $FF                 ; $11:824A: 85 FF       ;
+
+                JSL CODE_1389A3         ; $11:824C: 22 A3 89 13 ;
+
+                LDA $EB                 ; $11:8250: A5 EB       ;
+
+                BNE CODE_118257         ; $11:8252: D0 03       ;
+
                 BRL CODE_118329         ; $11:8254: 82 D2 00    ;
 
-CODE_118257:    STZ $420C                   ; $11:8257: 9C 0C 42    ;
-                STZ $4200                   ; $11:825A: 9C 00 42    ;
-                JSR CODE_1193F5             ; $11:825D: 20 F5 93    ;
-                JSR CODE_11945A             ; $11:8260: 20 5A 94    ;
-                JSL CODE_158419             ; $11:8263: 22 19 84 15 ;
-                LDA #$00                    ; $11:8267: A9 00       ;
-                STA $0300                   ; $11:8269: 8D 00 03    ;
-                STA $0301                   ; $11:826C: 8D 01 03    ;
-                STA $7F0000                 ; $11:826F: 8F 00 00 7F ;
-                STA $7F0001                 ; $11:8273: 8F 01 00 7F ;
-                STA $7F0800                 ; $11:8277: 8F 00 08 7F ;
-                STA $7F0801                 ; $11:827B: 8F 01 08 7F ;
-                DEC A                       ; $11:827F: 3A          ;
-                STA $0302                   ; $11:8280: 8D 02 03    ;
-                STA $7F0002                 ; $11:8283: 8F 02 00 7F ;
-                STA $7F0802                 ; $11:8287: 8F 02 08 7F ;
-                JSL CODE_14ED60             ; $11:828B: 22 60 ED 14 ;
-                JSL CODE_13F000             ; $11:828F: 22 00 F0 13 ;
-                JSL CODE_158000             ; $11:8293: 22 00 80 15 ;
-                JSL CODE_14E32E             ; $11:8297: 22 2E E3 14 ;
-                LDA $13                     ; $11:829B: A5 13       ;
-                BEQ CODE_118257             ; $11:829D: F0 B8       ;
-                LDA #$81                    ; $11:829F: A9 81       ;
-                STA $4200                   ; $11:82A1: 8D 00 42    ;
-                STZ $13                     ; $11:82A4: 64 13       ;
+CODE_118257:    STZ $420C               ; $11:8257: 9C 0C 42    ;
+
+                STZ $4200               ; $11:825A: 9C 00 42    ;
+
+                JSR CODE_1193F5         ; $11:825D: 20 F5 93    ;
+
+                JSR CODE_11945A         ; $11:8260: 20 5A 94    ;
+
+                JSL CODE_158419         ; $11:8263: 22 19 84 15 ;
+
+                LDA #$00                ; $11:8267: A9 00       ;
+
+                STA $0300               ; $11:8269: 8D 00 03    ;
+
+                STA $0301               ; $11:826C: 8D 01 03    ;
+
+                STA $7F0000             ; $11:826F: 8F 00 00 7F ;
+
+                STA $7F0001             ; $11:8273: 8F 01 00 7F ;
+
+                STA $7F0800             ; $11:8277: 8F 00 08 7F ;
+
+                STA $7F0801             ; $11:827B: 8F 01 08 7F ;
+
+                DEC A                   ; $11:827F: 3A          ;
+
+                STA $0302               ; $11:8280: 8D 02 03    ;
+
+                STA $7F0002             ; $11:8283: 8F 02 00 7F ;
+
+                STA $7F0802             ; $11:8287: 8F 02 08 7F ;
+
+                JSL CODE_14ED60         ; $11:828B: 22 60 ED 14 ;
+
+                JSL CODE_13F000         ; $11:828F: 22 00 F0 13 ;
+
+                JSL CODE_158000         ; $11:8293: 22 00 80 15 ;
+
+                JSL CODE_14E32E         ; $11:8297: 22 2E E3 14 ;
+
+                LDA $13                 ; $11:829B: A5 13       ;
+
+                BEQ CODE_118257         ; $11:829D: F0 B8       ;
+
+                LDA #$81                ; $11:829F: A9 81       ;
+
+                STA $4200               ; $11:82A1: 8D 00 42    ;
+
+                STZ $13                 ; $11:82A4: 64 13       ;
+
                 STZ $04ED               ; $11:82A6: 9C ED 04    ; Don't go to a special screen.
-                STZ $02AB                   ; $11:82A9: 9C AB 02    ;
-                STZ $0724                   ; $11:82AC: 9C 24 07    ;
-                LDA $024B               ; $11:82AF: AD 4B 02    ; \ If IRQ V-counter is 00...
-                BEQ CODE_1182C1         ; $11:82B2: F0 0D       ; / Branch.
-                LDA #$18                ; $11:82B4: A9 18       ; \ Load starry BG.
-                STA $11                 ; $11:82B6: 85 11       ; /
-                LDA $0533               ; $11:82B8: AD 33 05    ; \ If level 5-2...
-                CMP #$0D                ; $11:82BB: C9 0D       ;  | Use a different starry BG (different palette)
-                BNE CODE_1182C1         ; $11:82BD: D0 02       ;  |
-                INC $11                 ; $11:82BF: E6 11       ; / <--
+                STZ $02AB               ; $11:82A9: 9C AB 02    ;
+
+                STZ $0724               ; $11:82AC: 9C 24 07    ;
+
+                LDA $024B               ; $11:82AF: AD 4B 02    ;\ If IRQ V-counter is 00...
+                BEQ CODE_1182C1         ; $11:82B2: F0 0D       ;/ Branch.
+                LDA #$18                ; $11:82B4: A9 18       ;\ Load starry BG.
+                STA $11                 ; $11:82B6: 85 11       ;/
+                LDA $0533               ; $11:82B8: AD 33 05    ;\ If level 5-2...
+                CMP #$0D                ; $11:82BB: C9 0D       ; | Use a different starry BG (different palette)
+                BNE CODE_1182C1         ; $11:82BD: D0 02       ; |
+                INC $11                 ; $11:82BF: E6 11       ;/ <--
 CODE_1182C1:    JSL CODE_13FC89         ; $11:82C1: 22 89 FC 13 ; HDMA BG handler.
-                INC $0D13                   ; $11:82C5: EE 13 0D    ;
-                JSR CODE_118AFE             ; $11:82C8: 20 FE 8A    ;
-                STZ $0D13                   ; $11:82CB: 9C 13 0D    ;
-CODE_1182CE:    JSL CODE_118014             ; $11:82CE: 22 14 80 11 ;
-                LDA $700007                 ; $11:82D2: AF 07 00 70 ;
-                BEQ CODE_1182EE             ; $11:82D6: F0 16       ;
-                LDA $FC                     ; $11:82D8: A5 FC       ;
-                AND #$20                    ; $11:82DA: 29 20       ;
-                BEQ CODE_1182E1             ; $11:82DC: F0 03       ;
-                INC $021D                   ; $11:82DE: EE 1D 02    ;
-CODE_1182E1:    LDA $FC                     ; $11:82E1: A5 FC       ;
-                AND #$10                    ; $11:82E3: 29 10       ;
-                BNE CODE_1182EE             ; $11:82E5: D0 07       ;
-                LDA $021D                   ; $11:82E7: AD 1D 02    ;
-                AND #$01                    ; $11:82EA: 29 01       ;
-                BNE CODE_11830F             ; $11:82EC: D0 21       ;
-CODE_1182EE:    LDA $FA                     ; $11:82EE: A5 FA       ;
-                AND #$10                    ; $11:82F0: 29 10       ;
-                BEQ CODE_1182F7             ; $11:82F2: F0 03       ;
+                INC $0D13               ; $11:82C5: EE 13 0D    ;
+
+                JSR CODE_118AFE         ; $11:82C8: 20 FE 8A    ;
+
+                STZ $0D13               ; $11:82CB: 9C 13 0D    ;
+
+CODE_1182CE:    JSL CODE_118014         ; $11:82CE: 22 14 80 11 ;
+
+                LDA $700007             ; $11:82D2: AF 07 00 70 ;
+
+                BEQ CODE_1182EE         ; $11:82D6: F0 16       ;
+
+                LDA $FC                 ; $11:82D8: A5 FC       ;
+
+                AND #$20                ; $11:82DA: 29 20       ;
+
+                BEQ CODE_1182E1         ; $11:82DC: F0 03       ;
+
+                INC $021D               ; $11:82DE: EE 1D 02    ;
+
+CODE_1182E1:    LDA $FC                 ; $11:82E1: A5 FC       ;
+
+                AND #$10                ; $11:82E3: 29 10       ;
+
+                BNE CODE_1182EE         ; $11:82E5: D0 07       ;
+
+                LDA $021D               ; $11:82E7: AD 1D 02    ;
+
+                AND #$01                ; $11:82EA: 29 01       ;
+
+                BNE CODE_11830F         ; $11:82EC: D0 21       ;
+
+CODE_1182EE:    LDA $FA                 ; $11:82EE: A5 FA       ;
+
+                AND #$10                ; $11:82F0: 29 10       ;
+
+                BEQ CODE_1182F7         ; $11:82F2: F0 03       ;
+
                 JMP CODE_11846B         ; $11:82F4: 4C 6B 84    ;
 
-CODE_1182F7:    LDA $0628                   ; $11:82F7: AD 28 06    ;
-                BEQ CODE_1182FF             ; $11:82FA: F0 03       ;
+CODE_1182F7:    LDA $0628               ; $11:82F7: AD 28 06    ;
+
+                BEQ CODE_1182FF         ; $11:82FA: F0 03       ;
+
                 JMP CODE_1185A0         ; $11:82FC: 4C A0 85    ;
 
 CODE_1182FF:    JSL CODE_14F9F0         ; $11:82FF: 22 F0 F9 14 ; Clear all OAM.
-                JSL CODE_14DF1F             ; $11:8303: 22 1F DF 14 ;
-                LDY $04ED                   ; $11:8307: AC ED 04    ;
-                BEQ CODE_11830F             ; $11:830A: F0 03       ;
+                JSL CODE_14DF1F         ; $11:8303: 22 1F DF 14 ;
+
+                LDY $04ED               ; $11:8307: AC ED 04    ;
+
+                BEQ CODE_11830F         ; $11:830A: F0 03       ;
+
                 JMP CODE_118B31         ; $11:830C: 4C 31 8B    ;
 
-CODE_11830F:    LDA $0627                   ; $11:830F: AD 27 06    ;
-                BEQ CODE_1182CE             ; $11:8312: F0 BA       ;
-                JSR CODE_118AD2             ; $11:8314: 20 D2 8A    ;
-                JSL CODE_14E30F             ; $11:8317: 22 0F E3 14 ;
-                JSL CODE_14E02E             ; $11:831B: 22 2E E0 14 ;
-                STZ $0627                   ; $11:831F: 9C 27 06    ;
-                JSL CODE_118009             ; $11:8322: 22 09 80 11 ;
+CODE_11830F:    LDA $0627               ; $11:830F: AD 27 06    ;
+
+                BEQ CODE_1182CE         ; $11:8312: F0 BA       ;
+
+                JSR CODE_118AD2         ; $11:8314: 20 D2 8A    ;
+
+                JSL CODE_14E30F         ; $11:8317: 22 0F E3 14 ;
+
+                JSL CODE_14E02E         ; $11:831B: 22 2E E0 14 ;
+
+                STZ $0627               ; $11:831F: 9C 27 06    ;
+
+                JSL CODE_118009         ; $11:8322: 22 09 80 11 ;
+
                 JMP CODE_1181B5         ; $11:8326: 4C B5 81    ;
 
 CODE_118329:    STZ $420C               ; $11:8329: 9C 0C 42    ; HDMA channels off.
                 STZ $4200               ; $11:832C: 9C 00 42    ; No NMI/IRQ.
-                JSR CODE_1193F5             ; $11:832F: 20 F5 93    ;
-                JSR CODE_11945A             ; $11:8332: 20 5A 94    ;
-                JSL CODE_158419             ; $11:8335: 22 19 84 15 ;
-                LDA #$00                    ; $11:8339: A9 00       ;
-                STA $0300                   ; $11:833B: 8D 00 03    ;
-                STA $0301                   ; $11:833E: 8D 01 03    ;
-                STA $7F0000                 ; $11:8341: 8F 00 00 7F ;
-                STA $7F0001                 ; $11:8345: 8F 01 00 7F ;
-                STA $7F0800                 ; $11:8349: 8F 00 08 7F ;
-                STA $7F0801                 ; $11:834D: 8F 01 08 7F ;
-                DEC A                       ; $11:8351: 3A          ;
-                STA $0302                   ; $11:8352: 8D 02 03    ;
-                STA $7F0002                 ; $11:8355: 8F 02 00 7F ;
-                STA $7F0802                 ; $11:8359: 8F 02 08 7F ;
-                JSL CODE_14E6B0             ; $11:835D: 22 B0 E6 14 ;
-                JSL CODE_13F500             ; $11:8361: 22 00 F5 13 ;
-                JSL CODE_158500             ; $11:8365: 22 00 85 15 ;
-                JSL CODE_14E32E             ; $11:8369: 22 2E E3 14 ;
-                LDA $13                     ; $11:836D: A5 13       ;
-                BEQ CODE_118329             ; $11:836F: F0 B8       ;
-                LDA #$81                    ; $11:8371: A9 81       ;
-                STA $4200                   ; $11:8373: 8D 00 42    ;
-                STZ $13                     ; $11:8376: 64 13       ;
-                STZ $04ED                   ; $11:8378: 9C ED 04    ;
-                STZ $02AB                   ; $11:837B: 9C AB 02    ;
-                STZ $0724                   ; $11:837E: 9C 24 07    ;
-                STZ $0206                   ; $11:8381: 9C 06 02    ;
-                LDA #$01                    ; $11:8384: A9 01       ;
-                STA $0207                   ; $11:8386: 8D 07 02    ;
-                LDA $04EF                   ; $11:8389: AD EF 04    ;
-                CMP #$02                    ; $11:838C: C9 02       ;
-                BNE CODE_11839A             ; $11:838E: D0 0A       ;
-                STZ $0D09                   ; $11:8390: 9C 09 0D    ;
-                LDA #$00                    ; $11:8393: A9 00       ;
-                STA $50                     ; $11:8395: 85 50       ;
-                JSR CODE_11876D             ; $11:8397: 20 6D 87    ;
-CODE_11839A:    LDA $02C3                   ; $11:839A: AD C3 02    ;
-                BNE CODE_1183B0             ; $11:839D: D0 11       ;
-                LDA $0535                   ; $11:839F: AD 35 05    ;
-                AND #$01                    ; $11:83A2: 29 01       ;
-                BEQ CODE_1183B0             ; $11:83A4: F0 0A       ;
-                LDA #$F8                    ; $11:83A6: A9 F8       ;
-                STA $0208                   ; $11:83A8: 8D 08 02    ;
-                STZ $0209                   ; $11:83AB: 9C 09 02    ;
+                JSR CODE_1193F5         ; $11:832F: 20 F5 93    ;
+
+                JSR CODE_11945A         ; $11:8332: 20 5A 94    ;
+
+                JSL CODE_158419         ; $11:8335: 22 19 84 15 ;
+
+                LDA #$00                ; $11:8339: A9 00       ;
+
+                STA $0300               ; $11:833B: 8D 00 03    ;
+
+                STA $0301               ; $11:833E: 8D 01 03    ;
+
+                STA $7F0000             ; $11:8341: 8F 00 00 7F ;
+
+                STA $7F0001             ; $11:8345: 8F 01 00 7F ;
+
+                STA $7F0800             ; $11:8349: 8F 00 08 7F ;
+
+                STA $7F0801             ; $11:834D: 8F 01 08 7F ;
+
+                DEC A                   ; $11:8351: 3A          ;
+
+                STA $0302               ; $11:8352: 8D 02 03    ;
+
+                STA $7F0002             ; $11:8355: 8F 02 00 7F ;
+
+                STA $7F0802             ; $11:8359: 8F 02 08 7F ;
+
+                JSL CODE_14E6B0         ; $11:835D: 22 B0 E6 14 ;
+
+                JSL CODE_13F500         ; $11:8361: 22 00 F5 13 ;
+
+                JSL CODE_158500         ; $11:8365: 22 00 85 15 ;
+
+                JSL CODE_14E32E         ; $11:8369: 22 2E E3 14 ;
+
+                LDA $13                 ; $11:836D: A5 13       ;
+
+                BEQ CODE_118329         ; $11:836F: F0 B8       ;
+
+                LDA #$81                ; $11:8371: A9 81       ;
+
+                STA $4200               ; $11:8373: 8D 00 42    ;
+
+                STZ $13                 ; $11:8376: 64 13       ;
+
+                STZ $04ED               ; $11:8378: 9C ED 04    ;
+
+                STZ $02AB               ; $11:837B: 9C AB 02    ;
+
+                STZ $0724               ; $11:837E: 9C 24 07    ;
+
+                STZ $0206               ; $11:8381: 9C 06 02    ;
+
+                LDA #$01                ; $11:8384: A9 01       ;
+
+                STA $0207               ; $11:8386: 8D 07 02    ;
+
+                LDA $04EF               ; $11:8389: AD EF 04    ;
+
+                CMP #$02                ; $11:838C: C9 02       ;
+
+                BNE CODE_11839A         ; $11:838E: D0 0A       ;
+
+                STZ $0D09               ; $11:8390: 9C 09 0D    ;
+
+                LDA #$00                ; $11:8393: A9 00       ;
+
+                STA $50                 ; $11:8395: 85 50       ;
+
+                JSR CODE_11876D         ; $11:8397: 20 6D 87    ;
+
+CODE_11839A:    LDA $02C3               ; $11:839A: AD C3 02    ;
+
+                BNE CODE_1183B0         ; $11:839D: D0 11       ;
+
+                LDA $0535               ; $11:839F: AD 35 05    ;
+
+                AND #$01                ; $11:83A2: 29 01       ;
+
+                BEQ CODE_1183B0         ; $11:83A4: F0 0A       ;
+
+                LDA #$F8                ; $11:83A6: A9 F8       ;
+
+                STA $0208               ; $11:83A8: 8D 08 02    ;
+
+                STZ $0209               ; $11:83AB: 9C 09 02    ;
+
                 BRA CODE_1183B8         ; $11:83AE: 80 08       ;
 
-CODE_1183B0:    STZ $0208                   ; $11:83B0: 9C 08 02    ;
-                LDA #$01                    ; $11:83B3: A9 01       ;
-                STA $0209                   ; $11:83B5: 8D 09 02    ;
-CODE_1183B8:    LDA $0772                   ; $11:83B8: AD 72 07    ;
-                BNE CODE_1183CE             ; $11:83BB: D0 11       ;
-                LDA $0535                   ; $11:83BD: AD 35 05    ;
-                AND #$01                    ; $11:83C0: 29 01       ;
-                BEQ CODE_1183CE             ; $11:83C2: F0 0A       ;
-                LDA #$F8                    ; $11:83C4: A9 F8       ;
-                STA $020A                   ; $11:83C6: 8D 0A 02    ;
-                STZ $020B                   ; $11:83C9: 9C 0B 02    ;
+CODE_1183B0:    STZ $0208               ; $11:83B0: 9C 08 02    ;
+
+                LDA #$01                ; $11:83B3: A9 01       ;
+
+                STA $0209               ; $11:83B5: 8D 09 02    ;
+
+CODE_1183B8:    LDA $0772               ; $11:83B8: AD 72 07    ;
+
+                BNE CODE_1183CE         ; $11:83BB: D0 11       ;
+
+                LDA $0535               ; $11:83BD: AD 35 05    ;
+
+                AND #$01                ; $11:83C0: 29 01       ;
+
+                BEQ CODE_1183CE         ; $11:83C2: F0 0A       ;
+
+                LDA #$F8                ; $11:83C4: A9 F8       ;
+
+                STA $020A               ; $11:83C6: 8D 0A 02    ;
+
+                STZ $020B               ; $11:83C9: 9C 0B 02    ;
+
                 BRA CODE_1183D6         ; $11:83CC: 80 08       ;
 
-CODE_1183CE:    STZ $020A                   ; $11:83CE: 9C 0A 02    ;
-                LDA #$01                    ; $11:83D1: A9 01       ;
-                STA $020B                   ; $11:83D3: 8D 0B 02    ;
-CODE_1183D6:    JSL CODE_13FC89             ; $11:83D6: 22 89 FC 13 ;
-                JSL CODE_14D874             ; $11:83DA: 22 74 D8 14 ;
-                INC $0D13                   ; $11:83DE: EE 13 0D    ;
-                JSR CODE_118AFE             ; $11:83E1: 20 FE 8A    ;
-                STZ $0D13                   ; $11:83E4: 9C 13 0D    ;
-CODE_1183E7:    JSL CODE_118014             ; $11:83E7: 22 14 80 11 ;
-                LDA $700007                 ; $11:83EB: AF 07 00 70 ;
-                BEQ CODE_118407             ; $11:83EF: F0 16       ;
-                LDA $FC                     ; $11:83F1: A5 FC       ;
-                AND #$20                    ; $11:83F3: 29 20       ;
-                BEQ CODE_1183FA             ; $11:83F5: F0 03       ;
-                INC $021D                   ; $11:83F7: EE 1D 02    ;
-CODE_1183FA:    LDA $FC                     ; $11:83FA: A5 FC       ;
-                AND #$10                    ; $11:83FC: 29 10       ;
-                BNE CODE_118407             ; $11:83FE: D0 07       ;
-                LDA $021D                   ; $11:8400: AD 1D 02    ;
-                AND #$01                    ; $11:8403: 29 01       ;
-                BNE CODE_118421             ; $11:8405: D0 1A       ;
-CODE_118407:    LDA $FA                     ; $11:8407: A5 FA       ;
-                AND #$10                    ; $11:8409: 29 10       ;
-                BNE CODE_11846B             ; $11:840B: D0 5E       ;
+CODE_1183CE:    STZ $020A               ; $11:83CE: 9C 0A 02    ;
+
+                LDA #$01                ; $11:83D1: A9 01       ;
+
+                STA $020B               ; $11:83D3: 8D 0B 02    ;
+
+CODE_1183D6:    JSL CODE_13FC89         ; $11:83D6: 22 89 FC 13 ;
+
+                JSL CODE_14D874         ; $11:83DA: 22 74 D8 14 ;
+
+                INC $0D13               ; $11:83DE: EE 13 0D    ;
+
+                JSR CODE_118AFE         ; $11:83E1: 20 FE 8A    ;
+
+                STZ $0D13               ; $11:83E4: 9C 13 0D    ;
+
+CODE_1183E7:    JSL CODE_118014         ; $11:83E7: 22 14 80 11 ;
+
+                LDA $700007             ; $11:83EB: AF 07 00 70 ;
+
+                BEQ CODE_118407         ; $11:83EF: F0 16       ;
+
+                LDA $FC                 ; $11:83F1: A5 FC       ;
+
+                AND #$20                ; $11:83F3: 29 20       ;
+
+                BEQ CODE_1183FA         ; $11:83F5: F0 03       ;
+
+                INC $021D               ; $11:83F7: EE 1D 02    ;
+
+CODE_1183FA:    LDA $FC                 ; $11:83FA: A5 FC       ;
+
+                AND #$10                ; $11:83FC: 29 10       ;
+
+                BNE CODE_118407         ; $11:83FE: D0 07       ;
+
+                LDA $021D               ; $11:8400: AD 1D 02    ;
+
+                AND #$01                ; $11:8403: 29 01       ;
+
+                BNE CODE_118421         ; $11:8405: D0 1A       ;
+
+CODE_118407:    LDA $FA                 ; $11:8407: A5 FA       ;
+
+                AND #$10                ; $11:8409: 29 10       ;
+
+                BNE CODE_11846B         ; $11:840B: D0 5E       ;
+
 CODE_11840D:    JSL CODE_14F9F0         ; $11:840D: 22 F0 F9 14 ; Clear all OAM.
-                JSL CODE_14DFCB             ; $11:8411: 22 CB DF 14 ;
-                JSL CODE_14D8A2             ; $11:8415: 22 A2 D8 14 ;
-                LDY $04ED                   ; $11:8419: AC ED 04    ;
-                BEQ CODE_118421             ; $11:841C: F0 03       ;
+                JSL CODE_14DFCB         ; $11:8411: 22 CB DF 14 ;
+
+                JSL CODE_14D8A2         ; $11:8415: 22 A2 D8 14 ;
+
+                LDY $04ED               ; $11:8419: AC ED 04    ;
+
+                BEQ CODE_118421         ; $11:841C: F0 03       ;
+
                 JMP CODE_118B31         ; $11:841E: 4C 31 8B    ;
 
-CODE_118421:    LDA $0627                   ; $11:8421: AD 27 06    ;
-                BEQ CODE_1183E7             ; $11:8424: F0 C1       ;
-                JSR CODE_118AD2             ; $11:8426: 20 D2 8A    ;
-                LDA $04EF                   ; $11:8429: AD EF 04    ;
-                CMP #$02                    ; $11:842C: C9 02       ;
-                BNE CODE_118446             ; $11:842E: D0 16       ;
-                LDA #$20                    ; $11:8430: A9 20       ;
-                STA $0239                   ; $11:8432: 8D 39 02    ;
-                STZ $0235                   ; $11:8435: 9C 35 02    ;
-                STZ $0236                   ; $11:8438: 9C 36 02    ;
-                STZ $0237                   ; $11:843B: 9C 37 02    ;
-                LDA #$05                    ; $11:843E: A9 05       ;
-                STA $50                     ; $11:8440: 85 50       ;
-                LDA #$04                    ; $11:8442: A9 04       ;
-                STA $C7                     ; $11:8444: 85 C7       ;
-CODE_118446:    STZ $04EF                   ; $11:8446: 9C EF 04    ;
-                STZ $078C                   ; $11:8449: 9C 8C 07    ;
-                JSL CODE_14E30F             ; $11:844C: 22 0F E3 14 ;
-                JSL CODE_14E02E             ; $11:8450: 22 2E E0 14 ;
-                LDA $0627                   ; $11:8454: AD 27 06    ;
-                CMP #$02                    ; $11:8457: C9 02       ;
-                BNE CODE_11845E             ; $11:8459: D0 03       ;
-                INC $02B8                   ; $11:845B: EE B8 02    ;
-CODE_11845E:    STZ $0627                   ; $11:845E: 9C 27 06    ;
-                STZ $0D0B                   ; $11:8461: 9C 0B 0D    ;
-                JSL CODE_118009             ; $11:8464: 22 09 80 11 ;
+CODE_118421:    LDA $0627               ; $11:8421: AD 27 06    ;
+
+                BEQ CODE_1183E7         ; $11:8424: F0 C1       ;
+
+                JSR CODE_118AD2         ; $11:8426: 20 D2 8A    ;
+
+                LDA $04EF               ; $11:8429: AD EF 04    ;
+
+                CMP #$02                ; $11:842C: C9 02       ;
+
+                BNE CODE_118446         ; $11:842E: D0 16       ;
+
+                LDA #$20                ; $11:8430: A9 20       ;
+
+                STA $0239               ; $11:8432: 8D 39 02    ;
+
+                STZ $0235               ; $11:8435: 9C 35 02    ;
+
+                STZ $0236               ; $11:8438: 9C 36 02    ;
+
+                STZ $0237               ; $11:843B: 9C 37 02    ;
+
+                LDA #$05                ; $11:843E: A9 05       ;
+
+                STA $50                 ; $11:8440: 85 50       ;
+
+                LDA #$04                ; $11:8442: A9 04       ;
+
+                STA $C7                 ; $11:8444: 85 C7       ;
+
+CODE_118446:    STZ $04EF               ; $11:8446: 9C EF 04    ;
+
+                STZ $078C               ; $11:8449: 9C 8C 07    ;
+
+                JSL CODE_14E30F         ; $11:844C: 22 0F E3 14 ;
+
+                JSL CODE_14E02E         ; $11:8450: 22 2E E0 14 ;
+
+                LDA $0627               ; $11:8454: AD 27 06    ;
+
+                CMP #$02                ; $11:8457: C9 02       ;
+
+                BNE CODE_11845E         ; $11:8459: D0 03       ;
+
+                INC $02B8               ; $11:845B: EE B8 02    ;
+
+CODE_11845E:    STZ $0627               ; $11:845E: 9C 27 06    ;
+
+                STZ $0D0B               ; $11:8461: 9C 0B 0D    ;
+
+                JSL CODE_118009         ; $11:8464: 22 09 80 11 ;
+
                 JMP CODE_1181B5         ; $11:8468: 4C B5 81    ;
 
-CODE_11846B:    LDA $2142                   ; $11:846B: AD 42 21    ;
-                CMP #$0B                    ; $11:846E: C9 0B       ;
-                BEQ CODE_118492             ; $11:8470: F0 20       ;
-                LDA $D8                     ; $11:8472: A5 D8       ;
-                AND #$04                    ; $11:8474: 29 04       ;
-                BNE CODE_118492             ; $11:8476: D0 1A       ;
-                LDA $04EF                   ; $11:8478: AD EF 04    ;
-                BNE CODE_118492             ; $11:847B: D0 15       ;
-                LDA $50                     ; $11:847D: A5 50       ;
-                CMP #$07                    ; $11:847F: C9 07       ;
-                BEQ CODE_118492             ; $11:8481: F0 0F       ;
-                LDA $04C8                   ; $11:8483: AD C8 04    ;
-                BNE CODE_118492             ; $11:8486: D0 0A       ;
-                LDA $04B4                   ; $11:8488: AD B4 04    ;
-                BNE CODE_118492             ; $11:848B: D0 05       ;
-                LDA $041B                   ; $11:848D: AD 1B 04    ;
-                BEQ CODE_11849C             ; $11:8490: F0 0A       ;
-CODE_118492:    LDA $EB                     ; $11:8492: A5 EB       ;
-                BEQ CODE_118499             ; $11:8494: F0 03       ;
+CODE_11846B:    LDA $2142               ; $11:846B: AD 42 21    ;
+
+                CMP #$0B                ; $11:846E: C9 0B       ;
+
+                BEQ CODE_118492         ; $11:8470: F0 20       ;
+
+                LDA $D8                 ; $11:8472: A5 D8       ;
+
+                AND #$04                ; $11:8474: 29 04       ;
+
+                BNE CODE_118492         ; $11:8476: D0 1A       ;
+
+                LDA $04EF               ; $11:8478: AD EF 04    ;
+
+                BNE CODE_118492         ; $11:847B: D0 15       ;
+
+                LDA $50                 ; $11:847D: A5 50       ;
+
+                CMP #$07                ; $11:847F: C9 07       ;
+
+                BEQ CODE_118492         ; $11:8481: F0 0F       ;
+
+                LDA $04C8               ; $11:8483: AD C8 04    ;
+
+                BNE CODE_118492         ; $11:8486: D0 0A       ;
+
+                LDA $04B4               ; $11:8488: AD B4 04    ;
+
+                BNE CODE_118492         ; $11:848B: D0 05       ;
+
+                LDA $041B               ; $11:848D: AD 1B 04    ;
+
+                BEQ CODE_11849C         ; $11:8490: F0 0A       ;
+
+CODE_118492:    LDA $EB                 ; $11:8492: A5 EB       ;
+
+                BEQ CODE_118499         ; $11:8494: F0 03       ;
+
                 JMP CODE_1182F7         ; $11:8496: 4C F7 82    ;
 
 CODE_118499:    JMP CODE_11840D         ; $11:8499: 4C 0D 84    ;
 
-CODE_11849C:    STZ $0D0B                   ; $11:849C: 9C 0B 0D    ;
-                STZ $078E                   ; $11:849F: 9C 8E 07    ;
-                JSL CODE_138FD5             ; $11:84A2: 22 D5 8F 13 ;
+CODE_11849C:    STZ $0D0B               ; $11:849C: 9C 0B 0D    ;
+
+                STZ $078E               ; $11:849F: 9C 8E 07    ;
+
+                JSL CODE_138FD5         ; $11:84A2: 22 D5 8F 13 ;
+
                 JSL CODE_14F9F0         ; $11:84A6: 22 F0 F9 14 ; Clear all OAM.
-                JSL CODE_13FB47             ; $11:84AA: 22 47 FB 13 ;
-                JSL CODE_138E3B             ; $11:84AE: 22 3B 8E 13 ;
-                STZ $0231                   ; $11:84B2: 9C 31 02    ;
-                INC $0722                   ; $11:84B5: EE 22 07    ;
-                LDA #$F1                    ; $11:84B8: A9 F1       ;
-                STA $1DE2                   ; $11:84BA: 8D E2 1D    ;
-                LDA #$43                    ; $11:84BD: A9 43       ;
-                STA $1DE0                   ; $11:84BF: 8D E0 1D    ;
-                LDA $0775                   ; $11:84C2: AD 75 07    ;
-                STA $0774                   ; $11:84C5: 8D 74 07    ;
-                LDA #$01                    ; $11:84C8: A9 01       ;
-                STA $0775                   ; $11:84CA: 8D 75 07    ;
-CODE_1184CD:    JSL CODE_118014             ; $11:84CD: 22 14 80 11 ;
-                JSL CODE_14D269             ; $11:84D1: 22 69 D2 14 ;
-                JSL CODE_138EEB             ; $11:84D5: 22 EB 8E 13 ;
-                LDA $0232                   ; $11:84D9: AD 32 02    ;
-                BEQ CODE_1184CD             ; $11:84DC: F0 EF       ;
-                LDA #$10                    ; $11:84DE: A9 10       ;
-                STA $0210                   ; $11:84E0: 8D 10 02    ;
-                STZ $0211                   ; $11:84E3: 9C 11 02    ;
-                LDA #$04                    ; $11:84E6: A9 04       ;
-                STA $022B                   ; $11:84E8: 8D 2B 02    ;
-CODE_1184EB:    JSL CODE_118014             ; $11:84EB: 22 14 80 11 ;
-                JSL CODE_138EEB             ; $11:84EF: 22 EB 8E 13 ;
-                LDA $F8                     ; $11:84F3: A5 F8       ;
-                CMP #$30                    ; $11:84F5: C9 30       ;
-                BNE CODE_118505             ; $11:84F7: D0 0C       ;
-                LDA $FA                     ; $11:84F9: A5 FA       ;
-                AND #$20                    ; $11:84FB: 29 20       ;
-                BEQ CODE_118505             ; $11:84FD: F0 06       ;
-                JSL CODE_14E39F             ; $11:84FF: 22 9F E3 14 ;
+                JSL CODE_13FB47         ; $11:84AA: 22 47 FB 13 ;
+
+                JSL CODE_138E3B         ; $11:84AE: 22 3B 8E 13 ;
+
+                STZ $0231               ; $11:84B2: 9C 31 02    ;
+
+                INC $0722               ; $11:84B5: EE 22 07    ;
+
+                LDA #$F1                ; $11:84B8: A9 F1       ;
+
+                STA $1DE2               ; $11:84BA: 8D E2 1D    ;
+
+                LDA #$43                ; $11:84BD: A9 43       ;
+
+                STA $1DE0               ; $11:84BF: 8D E0 1D    ;
+
+                LDA $0775               ; $11:84C2: AD 75 07    ;
+
+                STA $0774               ; $11:84C5: 8D 74 07    ;
+
+                LDA #$01                ; $11:84C8: A9 01       ;
+
+                STA $0775               ; $11:84CA: 8D 75 07    ;
+
+CODE_1184CD:    JSL CODE_118014         ; $11:84CD: 22 14 80 11 ;
+
+                JSL CODE_14D269         ; $11:84D1: 22 69 D2 14 ;
+
+                JSL CODE_138EEB         ; $11:84D5: 22 EB 8E 13 ;
+
+                LDA $0232               ; $11:84D9: AD 32 02    ;
+
+                BEQ CODE_1184CD         ; $11:84DC: F0 EF       ;
+
+                LDA #$10                ; $11:84DE: A9 10       ;
+
+                STA $0210               ; $11:84E0: 8D 10 02    ;
+
+                STZ $0211               ; $11:84E3: 9C 11 02    ;
+
+                LDA #$04                ; $11:84E6: A9 04       ;
+
+                STA $022B               ; $11:84E8: 8D 2B 02    ;
+
+CODE_1184EB:    JSL CODE_118014         ; $11:84EB: 22 14 80 11 ;
+
+                JSL CODE_138EEB         ; $11:84EF: 22 EB 8E 13 ;
+
+                LDA $F8                 ; $11:84F3: A5 F8       ;
+
+                CMP #$30                ; $11:84F5: C9 30       ;
+
+                BNE CODE_118505         ; $11:84F7: D0 0C       ;
+
+                LDA $FA                 ; $11:84F9: A5 FA       ;
+
+                AND #$20                ; $11:84FB: 29 20       ;
+
+                BEQ CODE_118505         ; $11:84FD: F0 06       ;
+
+                JSL CODE_14E39F         ; $11:84FF: 22 9F E3 14 ;
+
                 BRA CODE_11852C         ; $11:8503: 80 27       ;
 
-CODE_118505:    JSL CODE_14DAB8             ; $11:8505: 22 B8 DA 14 ;
-                JSL CODE_14D2FA             ; $11:8509: 22 FA D2 14 ;
-                LDA $FA                     ; $11:850D: A5 FA       ;
-                AND #$10                    ; $11:850F: 29 10       ;
-                BNE CODE_118523             ; $11:8511: D0 10       ;
-                DEC $0210                   ; $11:8513: CE 10 02    ;
-                BPL CODE_1184EB             ; $11:8516: 10 D3       ;
-                LDA #$10                    ; $11:8518: A9 10       ;
-                STA $0210                   ; $11:851A: 8D 10 02    ;
-                INC $0211                   ; $11:851D: EE 11 02    ;
+CODE_118505:    JSL CODE_14DAB8         ; $11:8505: 22 B8 DA 14 ;
+
+                JSL CODE_14D2FA         ; $11:8509: 22 FA D2 14 ;
+
+                LDA $FA                 ; $11:850D: A5 FA       ;
+
+                AND #$10                ; $11:850F: 29 10       ;
+
+                BNE CODE_118523         ; $11:8511: D0 10       ;
+
+                DEC $0210               ; $11:8513: CE 10 02    ;
+
+                BPL CODE_1184EB         ; $11:8516: 10 D3       ;
+
+                LDA #$10                ; $11:8518: A9 10       ;
+
+                STA $0210               ; $11:851A: 8D 10 02    ;
+
+                INC $0211               ; $11:851D: EE 11 02    ;
+
                 JMP CODE_1184EB         ; $11:8520: 4C EB 84    ;
 
-CODE_118523:    JSL CODE_14DAF4             ; $11:8523: 22 F4 DA 14 ;
-                LDA #$F2                    ; $11:8527: A9 F2       ;
-                STA $1DE2                   ; $11:8529: 8D E2 1D    ;
-CODE_11852C:    LDA #$01                    ; $11:852C: A9 01       ;
-                STA $0231                   ; $11:852E: 8D 31 02    ;
-                STZ $0232                   ; $11:8531: 9C 32 02    ;
-CODE_118534:    JSL CODE_118014             ; $11:8534: 22 14 80 11 ;
-                JSL CODE_138EEB             ; $11:8538: 22 EB 8E 13 ;
-                LDA $0232                   ; $11:853C: AD 32 02    ;
-                BEQ CODE_118534             ; $11:853F: F0 F3       ;
-                JSL CODE_14D0F2             ; $11:8541: 22 F2 D0 14 ;
-                LDA $04EF                   ; $11:8545: AD EF 04    ;
-                BEQ CODE_118550             ; $11:8548: F0 06       ;
-                JSL CODE_14D8EC             ; $11:854A: 22 EC D8 14 ;
-                BRA CODE_118574             ; $11:854E: 80 24       ;
+CODE_118523:    JSL CODE_14DAF4         ; $11:8523: 22 F4 DA 14 ;
 
-CODE_118550:    LDY $0533                   ; $11:8550: AC 33 05    ;
-                LDA.w DATA_11D098,y                 ; $11:8553: B9 98 D0    ;
-                CLC                         ; $11:8556: 18          ;
-                ADC $0534                   ; $11:8557: 6D 34 05    ;
-                TAY                         ; $11:855A: A8          ;
-                LDA.w DATA_11CF52,y                 ; $11:855B: B9 52 CF    ;
-                CMP #$FF                    ; $11:855E: C9 FF       ;
-                BNE CODE_118566             ; $11:8560: D0 04       ;
-                LDA #$00                    ; $11:8562: A9 00       ;
-                BRA CODE_118568             ; $11:8564: 80 02       ;
+                LDA #$F2                ; $11:8527: A9 F2       ;
 
-CODE_118566:    LDA #$70                    ; $11:8566: A9 70       ;
-CODE_118568:    STA $023A                   ; $11:8568: 8D 3A 02    ;
-                STZ $0235                   ; $11:856B: 9C 35 02    ;
-                STZ $0236                   ; $11:856E: 9C 36 02    ;
-                STZ $0237                   ; $11:8571: 9C 37 02    ;
+                STA $1DE2               ; $11:8529: 8D E2 1D    ;
+
+CODE_11852C:    LDA #$01                ; $11:852C: A9 01       ;
+
+                STA $0231               ; $11:852E: 8D 31 02    ;
+
+                STZ $0232               ; $11:8531: 9C 32 02    ;
+
+CODE_118534:    JSL CODE_118014         ; $11:8534: 22 14 80 11 ;
+
+                JSL CODE_138EEB         ; $11:8538: 22 EB 8E 13 ;
+
+                LDA $0232               ; $11:853C: AD 32 02    ;
+
+                BEQ CODE_118534         ; $11:853F: F0 F3       ;
+
+                JSL CODE_14D0F2         ; $11:8541: 22 F2 D0 14 ;
+
+                LDA $04EF               ; $11:8545: AD EF 04    ;
+
+                BEQ CODE_118550         ; $11:8548: F0 06       ;
+
+                JSL CODE_14D8EC         ; $11:854A: 22 EC D8 14 ;
+
+                BRA CODE_118574         ; $11:854E: 80 24       ;
+
+CODE_118550:    LDY $0533               ; $11:8550: AC 33 05    ;
+
+                LDA.w DATA_11D098,y     ; $11:8553: B9 98 D0    ;
+                CLC                     ; $11:8556: 18          ;
+
+                ADC $0534               ; $11:8557: 6D 34 05    ;
+
+                TAY                     ; $11:855A: A8          ;
+
+                LDA.w DATA_11CF52,y     ; $11:855B: B9 52 CF    ;
+
+                CMP #$FF                ; $11:855E: C9 FF       ;
+
+                BNE CODE_118566         ; $11:8560: D0 04       ;
+
+                LDA #$00                ; $11:8562: A9 00       ;
+
+                BRA CODE_118568         ; $11:8564: 80 02       ;
+
+CODE_118566:    LDA #$70                ; $11:8566: A9 70       ;
+
+CODE_118568:    STA $023A               ; $11:8568: 8D 3A 02    ;
+
+                STZ $0235               ; $11:856B: 9C 35 02    ;
+
+                STZ $0236               ; $11:856E: 9C 36 02    ;
+
+                STZ $0237               ; $11:8571: 9C 37 02    ;
+
 CODE_118574:    JSL CODE_14F9F0         ; $11:8574: 22 F0 F9 14 ; Clear all OAM.
-                JSL CODE_13FB47             ; $11:8578: 22 47 FB 13 ;
-                JSL CODE_118014             ; $11:857C: 22 14 80 11 ;
-                JSL CODE_138FD5             ; $11:8580: 22 D5 8F 13 ;
-                JSL CODE_14D874             ; $11:8584: 22 74 D8 14 ;
-                LDA $0774                   ; $11:8588: AD 74 07    ;
-                STA $0775                   ; $11:858B: 8D 75 07    ;
-                LDA $0628                   ; $11:858E: AD 28 06    ;
-                BEQ CODE_118596             ; $11:8591: F0 03       ;
+                JSL CODE_13FB47         ; $11:8578: 22 47 FB 13 ;
+
+                JSL CODE_118014         ; $11:857C: 22 14 80 11 ;
+
+                JSL CODE_138FD5         ; $11:8580: 22 D5 8F 13 ;
+
+                JSL CODE_14D874         ; $11:8584: 22 74 D8 14 ;
+
+                LDA $0774               ; $11:8588: AD 74 07    ;
+
+                STA $0775               ; $11:858B: 8D 75 07    ;
+
+                LDA $0628               ; $11:858E: AD 28 06    ;
+
+                BEQ CODE_118596         ; $11:8591: F0 03       ;
+
                 BRL CODE_11867C         ; $11:8593: 82 E6 00    ;
 
-CODE_118596:    LDA $EB                     ; $11:8596: A5 EB       ;
-                BNE CODE_11859D             ; $11:8598: D0 03       ;
+CODE_118596:    LDA $EB                 ; $11:8596: A5 EB       ;
+
+                BNE CODE_11859D         ; $11:8598: D0 03       ;
+
                 JMP CODE_1183E7         ; $11:859A: 4C E7 83    ;
 
 CODE_11859D:    JMP CODE_1182CE         ; $11:859D: 4C CE 82    ;
 
-CODE_1185A0:    JSR CODE_118AD2             ; $11:85A0: 20 D2 8A    ;
-                STZ $023A                   ; $11:85A3: 9C 3A 02    ;
-                STZ $4200                   ; $11:85A6: 9C 00 42    ;
-                STZ $025F                   ; $11:85A9: 9C 5F 02    ;
-                STZ $0773                   ; $11:85AC: 9C 73 07    ;
-                JSL CODE_14F953             ; $11:85AF: 22 53 F9 14 ;
-                STZ $0622                   ; $11:85B3: 9C 22 06    ;
-                LDA $0628                   ; $11:85B6: AD 28 06    ;
-                CMP #$02                    ; $11:85B9: C9 02       ;
-                BEQ CODE_1185DC             ; $11:85BB: F0 1F       ;
-                JSR CODE_11876D             ; $11:85BD: 20 6D 87    ;
-                JSL CODE_14E425             ; $11:85C0: 22 25 E4 14 ;
-                JSL CODE_14E3DE             ; $11:85C4: 22 DE E3 14 ;
-                JSL CODE_12F44F             ; $11:85C8: 22 4F F4 12 ;
-                LDA #$06                    ; $11:85CC: A9 06       ;
-                STA $0546                   ; $11:85CE: 8D 46 05    ;
-                JSL CODE_14E32E             ; $11:85D1: 22 2E E3 14 ;
-                LDA #$01                    ; $11:85D5: A9 01       ;
-                STA $0776                   ; $11:85D7: 8D 76 07    ;
-                BRA CODE_118606             ; $11:85DA: 80 2A       ;
+CODE_1185A0:    JSR CODE_118AD2         ; $11:85A0: 20 D2 8A    ;
 
-CODE_1185DC:    JSL CODE_12F394             ; $11:85DC: 22 94 F3 12 ;
-                LDA $079C                   ; $11:85E0: AD 9C 07    ;
-                BEQ CODE_1185EE             ; $11:85E3: F0 09       ;
-                LDA $079D                   ; $11:85E5: AD 9D 07    ;
-                STA $0500                   ; $11:85E8: 8D 00 05    ;
-                STZ $079C                   ; $11:85EB: 9C 9C 07    ;
-CODE_1185EE:    LDA #$05                ; $11:85EE: A9 05       ; \ Potion room music.
-                STA $0546               ; $11:85F0: 8D 46 05    ; /
-                JSL CODE_14E341             ; $11:85F3: 22 41 E3 14 ;
-                JSL CODE_14E35A             ; $11:85F7: 22 5A E3 14 ;
-                STZ $0244                   ; $11:85FB: 9C 44 02    ;
-                LDA #$02                    ; $11:85FE: A9 02       ;
-                STA $0776                   ; $11:8600: 8D 76 07    ;
-                STZ $079B                   ; $11:8603: 9C 9B 07    ;
-CODE_118606:    JSL CODE_14F0F7             ; $11:8606: 22 F7 F0 14 ;
-                JSL CODE_13F143             ; $11:860A: 22 43 F1 13 ;
-                JSL CODE_158141             ; $11:860E: 22 41 81 15 ;
-                JSR CODE_1190DF             ; $11:8612: 20 DF 90    ;
-CODE_118615:    JSL CODE_118014             ; $11:8615: 22 14 80 11 ;
-                JSL CODE_14F19A             ; $11:8619: 22 9A F1 14 ;
-                LDA $0539                   ; $11:861D: AD 39 05    ;
-                BEQ CODE_118615             ; $11:8620: F0 F3       ;
-                STZ $4200                   ; $11:8622: 9C 00 42    ;
-                LDA $0628                   ; $11:8625: AD 28 06    ;
-                CMP #$01                    ; $11:8628: C9 01       ;
-                BNE CODE_118646             ; $11:862A: D0 1A       ;
-                JSL CODE_138AAB             ; $11:862C: 22 AB 8A 13 ;
-                JSL CODE_139D53             ; $11:8630: 22 53 9D 13 ;
-                JSL CODE_1385DA             ; $11:8634: 22 DA 85 13 ;
-                JSL CODE_14F666             ; $11:8638: 22 66 F6 14 ;
-                JSL CODE_13FC89             ; $11:863C: 22 89 FC 13 ;
-                STZ $0770                   ; $11:8640: 9C 70 07    ;
-                STZ $04AE                   ; $11:8643: 9C AE 04    ;
-CODE_118646:    STZ $02B0                   ; $11:8646: 9C B0 02    ;
-                STZ $0736                   ; $11:8649: 9C 36 07    ;
-                STZ $3C                     ; $11:864C: 64 3C       ;
-                STZ $0407                   ; $11:864E: 9C 07 04    ;
-                STZ $0D09                   ; $11:8651: 9C 09 0D    ;
-                LDA $0628                   ; $11:8654: AD 28 06    ;
-                CMP #$02                    ; $11:8657: C9 02       ;
-                BEQ CODE_11866E             ; $11:8659: F0 13       ;
-                JSL CODE_12F2EF             ; $11:865B: 22 EF F2 12 ;
-                JSL CODE_14D0F2             ; $11:865F: 22 F2 D0 14 ;
-                INC $0D09                   ; $11:8663: EE 09 0D    ;
-                JSL CODE_14D874             ; $11:8666: 22 74 D8 14 ;
-                LDA #$00                    ; $11:866A: A9 00       ;
-                STA $50                     ; $11:866C: 85 50       ;
-CODE_11866E:    INC $0D13                   ; $11:866E: EE 13 0D    ;
-                LDA #$81                    ; $11:8671: A9 81       ;
-                STA $4200                   ; $11:8673: 8D 00 42    ;
-                JSR CODE_118AFE             ; $11:8676: 20 FE 8A    ;
-                STZ $0D13                   ; $11:8679: 9C 13 0D    ;
-CODE_11867C:    JSL CODE_118014             ; $11:867C: 22 14 80 11 ;
+                STZ $023A               ; $11:85A3: 9C 3A 02    ;
+
+                STZ $4200               ; $11:85A6: 9C 00 42    ;
+
+                STZ $025F               ; $11:85A9: 9C 5F 02    ;
+
+                STZ $0773               ; $11:85AC: 9C 73 07    ;
+
+                JSL CODE_14F953         ; $11:85AF: 22 53 F9 14 ;
+
+                STZ $0622               ; $11:85B3: 9C 22 06    ;
+
+                LDA $0628               ; $11:85B6: AD 28 06    ;
+
+                CMP #$02                ; $11:85B9: C9 02       ;
+
+                BEQ CODE_1185DC         ; $11:85BB: F0 1F       ;
+
+                JSR CODE_11876D         ; $11:85BD: 20 6D 87    ;
+
+                JSL CODE_14E425         ; $11:85C0: 22 25 E4 14 ;
+
+                JSL CODE_14E3DE         ; $11:85C4: 22 DE E3 14 ;
+
+                JSL CODE_12F44F         ; $11:85C8: 22 4F F4 12 ;
+
+                LDA #$06                ; $11:85CC: A9 06       ;
+
+                STA $0546               ; $11:85CE: 8D 46 05    ;
+
+                JSL CODE_14E32E         ; $11:85D1: 22 2E E3 14 ;
+
+                LDA #$01                ; $11:85D5: A9 01       ;
+
+                STA $0776               ; $11:85D7: 8D 76 07    ;
+
+                BRA CODE_118606         ; $11:85DA: 80 2A       ;
+
+CODE_1185DC:    JSL CODE_12F394         ; $11:85DC: 22 94 F3 12 ;
+
+                LDA $079C               ; $11:85E0: AD 9C 07    ;
+
+                BEQ CODE_1185EE         ; $11:85E3: F0 09       ;
+
+                LDA $079D               ; $11:85E5: AD 9D 07    ;
+
+                STA $0500               ; $11:85E8: 8D 00 05    ;
+
+                STZ $079C               ; $11:85EB: 9C 9C 07    ;
+
+CODE_1185EE:    LDA #$05                ; $11:85EE: A9 05       ;\ Potion room music.
+                STA $0546               ; $11:85F0: 8D 46 05    ;/
+                JSL CODE_14E341         ; $11:85F3: 22 41 E3 14 ;
+
+                JSL CODE_14E35A         ; $11:85F7: 22 5A E3 14 ;
+
+                STZ $0244               ; $11:85FB: 9C 44 02    ;
+
+                LDA #$02                ; $11:85FE: A9 02       ;
+
+                STA $0776               ; $11:8600: 8D 76 07    ;
+
+                STZ $079B               ; $11:8603: 9C 9B 07    ;
+
+CODE_118606:    JSL CODE_14F0F7         ; $11:8606: 22 F7 F0 14 ;
+
+                JSL CODE_13F143         ; $11:860A: 22 43 F1 13 ;
+
+                JSL CODE_158141         ; $11:860E: 22 41 81 15 ;
+
+                JSR CODE_1190DF         ; $11:8612: 20 DF 90    ;
+
+CODE_118615:    JSL CODE_118014         ; $11:8615: 22 14 80 11 ;
+
+                JSL CODE_14F19A         ; $11:8619: 22 9A F1 14 ;
+
+                LDA $0539               ; $11:861D: AD 39 05    ;
+
+                BEQ CODE_118615         ; $11:8620: F0 F3       ;
+
+                STZ $4200               ; $11:8622: 9C 00 42    ;
+
+                LDA $0628               ; $11:8625: AD 28 06    ;
+
+                CMP #$01                ; $11:8628: C9 01       ;
+
+                BNE CODE_118646         ; $11:862A: D0 1A       ;
+
+                JSL CODE_138AAB         ; $11:862C: 22 AB 8A 13 ;
+
+                JSL CODE_139D53         ; $11:8630: 22 53 9D 13 ;
+
+                JSL CODE_1385DA         ; $11:8634: 22 DA 85 13 ;
+
+                JSL CODE_14F666         ; $11:8638: 22 66 F6 14 ;
+
+                JSL CODE_13FC89         ; $11:863C: 22 89 FC 13 ;
+
+                STZ $0770               ; $11:8640: 9C 70 07    ;
+
+                STZ $04AE               ; $11:8643: 9C AE 04    ;
+
+CODE_118646:    STZ $02B0               ; $11:8646: 9C B0 02    ;
+
+                STZ $0736               ; $11:8649: 9C 36 07    ;
+
+                STZ $3C                 ; $11:864C: 64 3C       ;
+
+                STZ $0407               ; $11:864E: 9C 07 04    ;
+
+                STZ $0D09               ; $11:8651: 9C 09 0D    ;
+
+                LDA $0628               ; $11:8654: AD 28 06    ;
+
+                CMP #$02                ; $11:8657: C9 02       ;
+
+                BEQ CODE_11866E         ; $11:8659: F0 13       ;
+
+                JSL CODE_12F2EF         ; $11:865B: 22 EF F2 12 ;
+
+                JSL CODE_14D0F2         ; $11:865F: 22 F2 D0 14 ;
+
+                INC $0D09               ; $11:8663: EE 09 0D    ;
+
+                JSL CODE_14D874         ; $11:8666: 22 74 D8 14 ;
+
+                LDA #$00                ; $11:866A: A9 00       ;
+
+                STA $50                 ; $11:866C: 85 50       ;
+
+CODE_11866E:    INC $0D13               ; $11:866E: EE 13 0D    ;
+
+                LDA #$81                ; $11:8671: A9 81       ;
+
+                STA $4200               ; $11:8673: 8D 00 42    ;
+
+                JSR CODE_118AFE         ; $11:8676: 20 FE 8A    ;
+
+                STZ $0D13               ; $11:8679: 9C 13 0D    ;
+
+CODE_11867C:    JSL CODE_118014         ; $11:867C: 22 14 80 11 ;
+
                 JSL CODE_14F9F0         ; $11:8680: 22 F0 F9 14 ; Clear all OAM.
-                JSL CODE_14DEBC             ; $11:8684: 22 BC DE 14 ;
-                LDY $04ED                   ; $11:8688: AC ED 04    ;
-                BEQ CODE_118690             ; $11:868B: F0 03       ;
+                JSL CODE_14DEBC         ; $11:8684: 22 BC DE 14 ;
+
+                LDY $04ED               ; $11:8688: AC ED 04    ;
+
+                BEQ CODE_118690         ; $11:868B: F0 03       ;
+
                 JMP CODE_118B31         ; $11:868D: 4C 31 8B    ;
 
-CODE_118690:    LDA $0628                   ; $11:8690: AD 28 06    ;
-                BNE CODE_11867C             ; $11:8693: D0 E7       ;
-                LDA $0622                   ; $11:8695: AD 22 06    ;
-                BEQ CODE_11869D             ; $11:8698: F0 03       ;
-                INC $0621                   ; $11:869A: EE 21 06    ;
-CODE_11869D:    LDA $051B                   ; $11:869D: AD 1B 05    ;
-                STA $0534                   ; $11:86A0: 8D 34 05    ;
-                JSR CODE_118AD2             ; $11:86A3: 20 D2 8A    ;
-                LDA $04EF                   ; $11:86A6: AD EF 04    ;
-                BEQ CODE_1186B1             ; $11:86A9: F0 06       ;
-                JSL CODE_14E35A             ; $11:86AB: 22 5A E3 14 ;
-                BRA CODE_1186B5             ; $11:86AF: 80 04       ;
+CODE_118690:    LDA $0628               ; $11:8690: AD 28 06    ;
 
-CODE_1186B1:    JSL CODE_14D965             ; $11:86B1: 22 65 D9 14 ;
-CODE_1186B5:    STZ $0D0B                   ; $11:86B5: 9C 0B 0D    ;
-                JSL CODE_118009             ; $11:86B8: 22 09 80 11 ;
-                JSL CODE_1385DA             ; $11:86BC: 22 DA 85 13 ;
-                JSL CODE_12F2EF             ; $11:86C0: 22 EF F2 12 ;
-                JSL CODE_14D0F2             ; $11:86C4: 22 F2 D0 14 ;
+                BNE CODE_11867C         ; $11:8693: D0 E7       ;
+
+                LDA $0622               ; $11:8695: AD 22 06    ;
+
+                BEQ CODE_11869D         ; $11:8698: F0 03       ;
+
+                INC $0621               ; $11:869A: EE 21 06    ;
+
+CODE_11869D:    LDA $051B               ; $11:869D: AD 1B 05    ;
+
+                STA $0534               ; $11:86A0: 8D 34 05    ;
+
+                JSR CODE_118AD2         ; $11:86A3: 20 D2 8A    ;
+
+                LDA $04EF               ; $11:86A6: AD EF 04    ;
+
+                BEQ CODE_1186B1         ; $11:86A9: F0 06       ;
+
+                JSL CODE_14E35A         ; $11:86AB: 22 5A E3 14 ;
+
+                BRA CODE_1186B5         ; $11:86AF: 80 04       ;
+
+CODE_1186B1:    JSL CODE_14D965         ; $11:86B1: 22 65 D9 14 ;
+
+CODE_1186B5:    STZ $0D0B               ; $11:86B5: 9C 0B 0D    ;
+
+                JSL CODE_118009         ; $11:86B8: 22 09 80 11 ;
+
+                JSL CODE_1385DA         ; $11:86BC: 22 DA 85 13 ;
+
+                JSL CODE_12F2EF         ; $11:86C0: 22 EF F2 12 ;
+
+                JSL CODE_14D0F2         ; $11:86C4: 22 F2 D0 14 ;
+
                 JSL CODE_14F9F0         ; $11:86C8: 22 F0 F9 14 ; Clear all OAM.
-                STZ $04AE                   ; $11:86CC: 9C AE 04    ;
-                LDA $0D09                   ; $11:86CF: AD 09 0D    ;
-                BEQ CODE_1186EB             ; $11:86D2: F0 17       ;
-                STZ $0D09                   ; $11:86D4: 9C 09 0D    ;
-                LDA #$05                    ; $11:86D7: A9 05       ;
-                STA $50                     ; $11:86D9: 85 50       ;
-                LDA #$04                    ; $11:86DB: A9 04       ;
-                STA $C7                     ; $11:86DD: 85 C7       ;
-                STZ $04EF                   ; $11:86DF: 9C EF 04    ;
-                STZ $078C                   ; $11:86E2: 9C 8C 07    ;
-                STZ $04BC                   ; $11:86E5: 9C BC 04    ;
-                STZ $04BD                   ; $11:86E8: 9C BD 04    ;
-CODE_1186EB:    LDY $0546                   ; $11:86EB: AC 46 05    ;
-                STY $0547                   ; $11:86EE: 8C 47 05    ;
-                JSL CODE_14E32E             ; $11:86F1: 22 2E E3 14 ;
-                STZ $3C                     ; $11:86F5: 64 3C       ;
-                STZ $0407                   ; $11:86F7: 9C 07 04    ;
-                STZ $020B                   ; $11:86FA: 9C 0B 02    ;
-                LDA $0776                   ; $11:86FD: AD 76 07    ;
-                CMP #$02                    ; $11:8700: C9 02       ;
-                BEQ CODE_118708             ; $11:8702: F0 04       ;
-                JSL CODE_12FAD1         ; $11:8704: 22 D1 FA 12 ; Handle 'simple' objects (such as vegetables). Obj -> M16.
-CODE_118708:    JSL CODE_12FCF7             ; $11:8708: 22 F7 FC 12 ;
-                JSL CODE_12FF1A             ; $11:870C: 22 1A FF 12 ;
-                JSL CODE_14F139             ; $11:8710: 22 39 F1 14 ;
-                JSL CODE_13F184             ; $11:8714: 22 84 F1 13 ;
-                JSL CODE_158182             ; $11:8718: 22 82 81 15 ;
-                STZ $0776                   ; $11:871C: 9C 76 07    ;
-CODE_11871F:    JSL CODE_118014             ; $11:871F: 22 14 80 11 ;
-                JSL CODE_14F19A             ; $11:8723: 22 9A F1 14 ;
-                JSL CODE_13F1BF             ; $11:8727: 22 BF F1 13 ;
-                JSL CODE_1581BD             ; $11:872B: 22 BD 81 15 ;
-                LDA $0539                   ; $11:872F: AD 39 05    ;
-                BEQ CODE_11871F             ; $11:8732: F0 EB       ;
-                LDA $0772                   ; $11:8734: AD 72 07    ;
-                BEQ CODE_11873D             ; $11:8737: F0 04       ;
-                LDA #$64                    ; $11:8739: A9 64       ;
-                BRA CODE_11873F             ; $11:873B: 80 02       ;
+                STZ $04AE               ; $11:86CC: 9C AE 04    ;
 
-CODE_11873D:    LDA #$20                ; $11:873D: A9 20       ; \ Colour layer affects backdrop.
-CODE_11873F:    STA $0239               ; $11:873F: 8D 39 02    ; / (CGADSUB)
-                LDA $024B               ; $11:8742: AD 4B 02    ; \ If IRQ V-counter is 00, branch.
-                BEQ CODE_118754         ; $11:8745: F0 0D       ; /
-                LDA #$18                ; $11:8747: A9 18       ; \ Load starry BG image.
-                STA $11                 ; $11:8749: 85 11       ; /
-                LDA $0533               ; $11:874B: AD 33 05    ; \ Check if in 5-2.
-                CMP #$0D                ; $11:874E: C9 0D       ;  |
-                BNE CODE_118754         ; $11:8750: D0 02       ;  |
-                INC $11                 ; $11:8752: E6 11       ; / If so, load starry BG with a different palette.
+                LDA $0D09               ; $11:86CF: AD 09 0D    ;
+
+                BEQ CODE_1186EB         ; $11:86D2: F0 17       ;
+
+                STZ $0D09               ; $11:86D4: 9C 09 0D    ;
+
+                LDA #$05                ; $11:86D7: A9 05       ;
+
+                STA $50                 ; $11:86D9: 85 50       ;
+
+                LDA #$04                ; $11:86DB: A9 04       ;
+
+                STA $C7                 ; $11:86DD: 85 C7       ;
+
+                STZ $04EF               ; $11:86DF: 9C EF 04    ;
+
+                STZ $078C               ; $11:86E2: 9C 8C 07    ;
+
+                STZ $04BC               ; $11:86E5: 9C BC 04    ;
+
+                STZ $04BD               ; $11:86E8: 9C BD 04    ;
+
+CODE_1186EB:    LDY $0546               ; $11:86EB: AC 46 05    ;
+
+                STY $0547               ; $11:86EE: 8C 47 05    ;
+
+                JSL CODE_14E32E         ; $11:86F1: 22 2E E3 14 ;
+
+                STZ $3C                 ; $11:86F5: 64 3C       ;
+
+                STZ $0407               ; $11:86F7: 9C 07 04    ;
+
+                STZ $020B               ; $11:86FA: 9C 0B 02    ;
+
+                LDA $0776               ; $11:86FD: AD 76 07    ;
+
+                CMP #$02                ; $11:8700: C9 02       ;
+
+                BEQ CODE_118708         ; $11:8702: F0 04       ;
+
+                JSL CODE_12FAD1         ; $11:8704: 22 D1 FA 12 ; Handle 'simple' objects (such as vegetables). Obj -> M16.
+CODE_118708:    JSL CODE_12FCF7         ; $11:8708: 22 F7 FC 12 ;
+
+                JSL CODE_12FF1A         ; $11:870C: 22 1A FF 12 ;
+
+                JSL CODE_14F139         ; $11:8710: 22 39 F1 14 ;
+
+                JSL CODE_13F184         ; $11:8714: 22 84 F1 13 ;
+
+                JSL CODE_158182         ; $11:8718: 22 82 81 15 ;
+
+                STZ $0776               ; $11:871C: 9C 76 07    ;
+
+CODE_11871F:    JSL CODE_118014         ; $11:871F: 22 14 80 11 ;
+
+                JSL CODE_14F19A         ; $11:8723: 22 9A F1 14 ;
+
+                JSL CODE_13F1BF         ; $11:8727: 22 BF F1 13 ;
+
+                JSL CODE_1581BD         ; $11:872B: 22 BD 81 15 ;
+
+                LDA $0539               ; $11:872F: AD 39 05    ;
+
+                BEQ CODE_11871F         ; $11:8732: F0 EB       ;
+
+                LDA $0772               ; $11:8734: AD 72 07    ;
+
+                BEQ CODE_11873D         ; $11:8737: F0 04       ;
+
+                LDA #$64                ; $11:8739: A9 64       ;
+
+                BRA CODE_11873F         ; $11:873B: 80 02       ;
+
+CODE_11873D:    LDA #$20                ; $11:873D: A9 20       ;\ Colour layer affects backdrop.
+CODE_11873F:    STA $0239               ; $11:873F: 8D 39 02    ;/ (CGADSUB)
+                LDA $024B               ; $11:8742: AD 4B 02    ;\ If IRQ V-counter is 00, branch.
+                BEQ CODE_118754         ; $11:8745: F0 0D       ;/
+                LDA #$18                ; $11:8747: A9 18       ;\ Load starry BG image.
+                STA $11                 ; $11:8749: 85 11       ;/
+                LDA $0533               ; $11:874B: AD 33 05    ;\ Check if in 5-2.
+                CMP #$0D                ; $11:874E: C9 0D       ; |
+                BNE CODE_118754         ; $11:8750: D0 02       ; |
+                INC $11                 ; $11:8752: E6 11       ;/ If so, load starry BG with a different palette.
 CODE_118754:    JSL CODE_13FC89         ; $11:8754: 22 89 FC 13 ; HDMA Handler.
-                INC $0D13                   ; $11:8758: EE 13 0D    ;
-                STZ $0235                   ; $11:875B: 9C 35 02    ;
-                STZ $0236                   ; $11:875E: 9C 36 02    ;
-                STZ $0237                   ; $11:8761: 9C 37 02    ;
-                JSR CODE_118AFE             ; $11:8764: 20 FE 8A    ;
-                STZ $0D13                   ; $11:8767: 9C 13 0D    ;
+                INC $0D13               ; $11:8758: EE 13 0D    ;
+
+                STZ $0235               ; $11:875B: 9C 35 02    ;
+
+                STZ $0236               ; $11:875E: 9C 36 02    ;
+
+                STZ $0237               ; $11:8761: 9C 37 02    ;
+
+                JSR CODE_118AFE         ; $11:8764: 20 FE 8A    ;
+
+                STZ $0D13               ; $11:8767: 9C 13 0D    ;
+
                 JMP CODE_1182CE         ; $11:876A: 4C CE 82    ;
 
-CODE_11876D:    LDX #$08                    ; $11:876D: A2 08       ;
-CODE_11876F:    STZ $042F,x                 ; $11:876F: 9E 2F 04    ;
-                DEX                         ; $11:8772: CA          ;
-                BPL CODE_11876F             ; $11:8773: 10 FA       ;
+CODE_11876D:    LDX #$08                ; $11:876D: A2 08       ;
+
+CODE_11876F:    STZ $042F,x             ; $11:876F: 9E 2F 04    ;
+
+                DEX                     ; $11:8772: CA          ;
+
+                BPL CODE_11876F         ; $11:8773: 10 FA       ;
+
                 RTS                     ; $11:8775: 60          ;
 
-CODE_118776:    STY $0D                     ; $11:8776: 84 0D       ;
-                PLY                         ; $11:8778: 7A          ;
-                STY $0A                     ; $11:8779: 84 0A       ;
-                REP #$30                    ; $11:877B: C2 30       ;
-                AND #$00FF                  ; $11:877D: 29 FF 00    ;
-                ASL A                       ; $11:8780: 0A          ;
-                TAY                         ; $11:8781: A8          ;
-                PLA                         ; $11:8782: 68          ;
-                STA $0B                     ; $11:8783: 85 0B       ;
-                INY                         ; $11:8785: C8          ;
-                LDA [$0A],y                 ; $11:8786: B7 0A       ;
-                STA $0A                     ; $11:8788: 85 0A       ;
-                SEP #$30                    ; $11:878A: E2 30       ;
-                LDY $0D                     ; $11:878C: A4 0D       ;
+CODE_118776:    STY $0D                 ; $11:8776: 84 0D       ;
+
+                PLY                     ; $11:8778: 7A          ;
+
+                STY $0A                 ; $11:8779: 84 0A       ;
+
+                REP #$30                ; $11:877B: C2 30       ;
+
+                AND #$00FF              ; $11:877D: 29 FF 00    ;
+
+                ASL A                   ; $11:8780: 0A          ;
+
+                TAY                     ; $11:8781: A8          ;
+
+                PLA                     ; $11:8782: 68          ;
+
+                STA $0B                 ; $11:8783: 85 0B       ;
+
+                INY                     ; $11:8785: C8          ;
+
+                LDA [$0A],y             ; $11:8786: B7 0A       ;
+
+                STA $0A                 ; $11:8788: 85 0A       ;
+
+                SEP #$30                ; $11:878A: E2 30       ;
+
+                LDY $0D                 ; $11:878C: A4 0D       ;
+
                 JML [$000A]             ; $11:878E: DC 0A 00    ;
 
-CODE_118791:    JSR CODE_1190DF             ; $11:8791: 20 DF 90    ;
-                JSL CODE_118009             ; $11:8794: 22 09 80 11 ;
-                JSL CODE_118014             ; $11:8798: 22 14 80 11 ;
-                JSL CODE_14F9A0             ; $11:879C: 22 A0 F9 14 ;
+CODE_118791:    JSR CODE_1190DF         ; $11:8791: 20 DF 90    ;
+
+                JSL CODE_118009         ; $11:8794: 22 09 80 11 ;
+
+                JSL CODE_118014         ; $11:8798: 22 14 80 11 ;
+
+                JSL CODE_14F9A0         ; $11:879C: 22 A0 F9 14 ;
+
                 RTS                     ; $11:87A0: 60          ;
 
-                JSR CODE_1190DF             ; $11:87A1: 20 DF 90    ;
-                JSL CODE_118009             ; $11:87A4: 22 09 80 11 ;
-                LDA #$40                    ; $11:87A8: A9 40       ;
-                STA $0100                   ; $11:87AA: 8D 00 01    ;
-                LDA #$03                    ; $11:87AD: A9 03       ;
-                STA $11                     ; $11:87AF: 85 11       ;
-                JSL CODE_118014             ; $11:87B1: 22 14 80 11 ;
+                JSR CODE_1190DF         ; $11:87A1: 20 DF 90    ;
+
+                JSL CODE_118009         ; $11:87A4: 22 09 80 11 ;
+
+                LDA #$40                ; $11:87A8: A9 40       ;
+
+                STA $0100               ; $11:87AA: 8D 00 01    ;
+
+                LDA #$03                ; $11:87AD: A9 03       ;
+
+                STA $11                 ; $11:87AF: 85 11       ;
+
+                JSL CODE_118014         ; $11:87B1: 22 14 80 11 ;
+
                 RTS                     ; $11:87B5: 60          ;
 
-CODE_1187B6:    TXA                         ; $11:87B6: 8A          ;
-                INC A                       ; $11:87B7: 1A          ;
-                ORA #$80                    ; $11:87B8: 09 80       ;
-                STA $118E                   ; $11:87BA: 8D 8E 11    ;
-                LDA #$0C                    ; $11:87BD: A9 0C       ;
-                STA $118F                   ; $11:87BF: 8D 8F 11    ;
-                LDY $04EE                   ; $11:87C2: AC EE 04    ;
-                TYA                         ; $11:87C5: 98          ;
-                JSR CODE_11917F             ; $11:87C6: 20 7F 91    ;
-                STY $11B4                   ; $11:87C9: 8C B4 11    ;
-                STA $11B6                   ; $11:87CC: 8D B6 11    ;
-                LDA #$0C                    ; $11:87CF: A9 0C       ;
-                STA $11B7                   ; $11:87D1: 8D B7 11    ;
-                TAX                         ; $11:87D4: AA          ;
-                CPY #$BF                    ; $11:87D5: C0 BF       ;
-                BNE CODE_1187DB             ; $11:87D7: D0 02       ;
-                LDX #$00                    ; $11:87D9: A2 00       ;
-CODE_1187DB:    STA $11B5                   ; $11:87DB: 8D B5 11    ;
-                LDY #$0C                    ; $11:87DE: A0 0C       ;
-CODE_1187E0:    LDA #$BF                    ; $11:87E0: A9 BF       ;
-                STA $116C,y                 ; $11:87E2: 99 6C 11    ;
-                LDA #$00                    ; $11:87E5: A9 00       ;
-                STA $116D,y                 ; $11:87E7: 99 6D 11    ;
-                DEY                         ; $11:87EA: 88          ;
-                DEY                         ; $11:87EB: 88          ;
-                BPL CODE_1187E0             ; $11:87EC: 10 F2       ;
-                LDX $0635                   ; $11:87EE: AE 35 06    ;
-                LDA $0533                   ; $11:87F1: AD 33 05    ;
-                SEC                         ; $11:87F4: 38          ;
-                SBC.l DATA_11C9B4,x                 ; $11:87F5: FF B4 C9 11 ;
-                STA $0629                   ; $11:87F9: 8D 29 06    ;
-                CLC                         ; $11:87FC: 18          ;
-                ADC #$81                    ; $11:87FD: 69 81       ;
-                STA $1192                   ; $11:87FF: 8D 92 11    ;
-                LDA #$0C                    ; $11:8802: A9 0C       ;
-                STA $1193                   ; $11:8804: 8D 93 11    ;
-                LDA.l DATA_11C9B4+1,x               ; $11:8807: BF B5 C9 11 ;
-                SEC                         ; $11:880B: 38          ;
-                SBC.l DATA_11C9B4,x                 ; $11:880C: FF B4 C9 11 ;
-                STA $03                     ; $11:8810: 85 03       ;
-                LDX #$00                    ; $11:8812: A2 00       ;
-                TXY                         ; $11:8814: 9B          ;
-CODE_118815:    LDA #$EB                    ; $11:8815: A9 EB       ;
-                CPX $0629                   ; $11:8817: EC 29 06    ;
-                BNE CODE_11881E             ; $11:881A: D0 02       ;
-                LDA #$EC                    ; $11:881C: A9 EC       ;
-CODE_11881E:    STA $116C,y                 ; $11:881E: 99 6C 11    ;
-                LDA #$1C                    ; $11:8821: A9 1C       ;
-                STA $116D,y                 ; $11:8823: 99 6D 11    ;
-                INY                         ; $11:8826: C8          ;
-                INY                         ; $11:8827: C8          ;
-                INY                         ; $11:8828: C8          ;
-                INY                         ; $11:8829: C8          ;
-                INX                         ; $11:882A: E8          ;
-                CPX $03                     ; $11:882B: E4 03       ;
-                BCC CODE_118815             ; $11:882D: 90 E6       ;
-                LDA #$08                    ; $11:882F: A9 08       ;
-                STA $11                     ; $11:8831: 85 11       ;
+CODE_1187B6:    TXA                     ; $11:87B6: 8A          ;
+
+                INC A                   ; $11:87B7: 1A          ;
+
+                ORA #$80                ; $11:87B8: 09 80       ;
+
+                STA $118E               ; $11:87BA: 8D 8E 11    ;
+
+                LDA #$0C                ; $11:87BD: A9 0C       ;
+
+                STA $118F               ; $11:87BF: 8D 8F 11    ;
+
+                LDY $04EE               ; $11:87C2: AC EE 04    ;
+
+                TYA                     ; $11:87C5: 98          ;
+
+                JSR CODE_11917F         ; $11:87C6: 20 7F 91    ;
+
+                STY $11B4               ; $11:87C9: 8C B4 11    ;
+
+                STA $11B6               ; $11:87CC: 8D B6 11    ;
+
+                LDA #$0C                ; $11:87CF: A9 0C       ;
+
+                STA $11B7               ; $11:87D1: 8D B7 11    ;
+
+                TAX                     ; $11:87D4: AA          ;
+
+                CPY #$BF                ; $11:87D5: C0 BF       ;
+
+                BNE CODE_1187DB         ; $11:87D7: D0 02       ;
+
+                LDX #$00                ; $11:87D9: A2 00       ;
+
+CODE_1187DB:    STA $11B5               ; $11:87DB: 8D B5 11    ;
+
+                LDY #$0C                ; $11:87DE: A0 0C       ;
+
+CODE_1187E0:    LDA #$BF                ; $11:87E0: A9 BF       ;
+
+                STA $116C,y             ; $11:87E2: 99 6C 11    ;
+
+                LDA #$00                ; $11:87E5: A9 00       ;
+
+                STA $116D,y             ; $11:87E7: 99 6D 11    ;
+
+                DEY                     ; $11:87EA: 88          ;
+
+                DEY                     ; $11:87EB: 88          ;
+
+                BPL CODE_1187E0         ; $11:87EC: 10 F2       ;
+
+                LDX $0635               ; $11:87EE: AE 35 06    ;
+
+                LDA $0533               ; $11:87F1: AD 33 05    ;
+
+                SEC                     ; $11:87F4: 38          ;
+
+                SBC.l DATA_11C9B4,x     ; $11:87F5: FF B4 C9 11 ;
+
+                STA $0629               ; $11:87F9: 8D 29 06    ;
+
+                CLC                     ; $11:87FC: 18          ;
+
+                ADC #$81                ; $11:87FD: 69 81       ;
+
+                STA $1192               ; $11:87FF: 8D 92 11    ;
+
+                LDA #$0C                ; $11:8802: A9 0C       ;
+
+                STA $1193               ; $11:8804: 8D 93 11    ;
+
+                LDA.l DATA_11C9B4+1,x   ; $11:8807: BF B5 C9 11 ;
+                SEC                     ; $11:880B: 38          ;
+
+                SBC.l DATA_11C9B4,x     ; $11:880C: FF B4 C9 11 ;
+                STA $03                 ; $11:8810: 85 03       ;
+
+                LDX #$00                ; $11:8812: A2 00       ;
+
+                TXY                     ; $11:8814: 9B          ;
+
+CODE_118815:    LDA #$EB                ; $11:8815: A9 EB       ;
+
+                CPX $0629               ; $11:8817: EC 29 06    ;
+
+                BNE CODE_11881E         ; $11:881A: D0 02       ;
+
+                LDA #$EC                ; $11:881C: A9 EC       ;
+
+CODE_11881E:    STA $116C,y             ; $11:881E: 99 6C 11    ;
+
+                LDA #$1C                ; $11:8821: A9 1C       ;
+
+                STA $116D,y             ; $11:8823: 99 6D 11    ;
+
+                INY                     ; $11:8826: C8          ;
+
+                INY                     ; $11:8827: C8          ;
+
+                INY                     ; $11:8828: C8          ;
+
+                INY                     ; $11:8829: C8          ;
+
+                INX                     ; $11:882A: E8          ;
+
+                CPX $03                 ; $11:882B: E4 03       ;
+
+                BCC CODE_118815         ; $11:882D: 90 E6       ;
+
+                LDA #$08                ; $11:882F: A9 08       ;
+
+                STA $11                 ; $11:8831: 85 11       ;
+
                 RTL                     ; $11:8833: 6B          ;
 
-CODE_118834:    LDA #$C0                    ; $11:8834: A9 C0       ;
-                STA $0100                   ; $11:8836: 8D 00 01    ;
+CODE_118834:    LDA #$C0                ; $11:8834: A9 C0       ;
+
+                STA $0100               ; $11:8836: 8D 00 01    ;
+
                 RTS                     ; $11:8839: 60          ;
 
-CODE_11883A:    STZ $0534                   ; $11:883A: 9C 34 05    ;
-                STZ $04E9                   ; $11:883D: 9C E9 04    ;
-                STZ $0535                   ; $11:8840: 9C 35 05    ;
-                STZ $04EA                   ; $11:8843: 9C EA 04    ;
-                STZ $0536                   ; $11:8846: 9C 36 05    ;
-                STZ $04EB                   ; $11:8849: 9C EB 04    ;
-                STZ $50                     ; $11:884C: 64 50       ;
-                STZ $04E7                   ; $11:884E: 9C E7 04    ;
-                STZ $0628                   ; $11:8851: 9C 28 06    ;
-                STZ $04EF                   ; $11:8854: 9C EF 04    ;
-                STZ $0500                   ; $11:8857: 9C 00 05    ;
-                STZ $06C2                   ; $11:885A: 9C C2 06    ;
+CODE_11883A:    STZ $0534               ; $11:883A: 9C 34 05    ;
+
+                STZ $04E9               ; $11:883D: 9C E9 04    ;
+
+                STZ $0535               ; $11:8840: 9C 35 05    ;
+
+                STZ $04EA               ; $11:8843: 9C EA 04    ;
+
+                STZ $0536               ; $11:8846: 9C 36 05    ;
+
+                STZ $04EB               ; $11:8849: 9C EB 04    ;
+
+                STZ $50                 ; $11:884C: 64 50       ;
+
+                STZ $04E7               ; $11:884E: 9C E7 04    ;
+
+                STZ $0628               ; $11:8851: 9C 28 06    ;
+
+                STZ $04EF               ; $11:8854: 9C EF 04    ;
+
+                STZ $0500               ; $11:8857: 9C 00 05    ;
+
+                STZ $06C2               ; $11:885A: 9C C2 06    ;
+
                 RTS                     ; $11:885D: 60          ;
 
-CODE_11885E:    LDA $FE                     ; $11:885E: A5 FE       ;
-                AND #$80                    ; $11:8860: 29 80       ;
-                BNE CODE_11886B             ; $11:8862: D0 07       ;
-                JSR CODE_118AD2             ; $11:8864: 20 D2 8A    ;
-                JSL CODE_118009             ; $11:8867: 22 09 80 11 ;
-CODE_11886B:    JSR CODE_1190A2             ; $11:886B: 20 A2 90    ;
-                JSL CODE_138936             ; $11:886E: 22 36 89 13 ;
-                JSL CODE_14D194             ; $11:8872: 22 94 D1 14 ;
-                JSL CODE_12FA10             ; $11:8876: 22 10 FA 12 ;
-                JSL CODE_14F953             ; $11:887A: 22 53 F9 14 ;
-                JSR CODE_1190DF             ; $11:887E: 20 DF 90    ;
-                JSL CODE_14F9F0         ; $11:8881: 22 F0 F9 14 ; Clear all OAM.
-                JSL CODE_13DCF6             ; $11:8885: 22 F6 DC 13 ;
-                JSL CODE_14D856             ; $11:8889: 22 56 D8 14 ;
-                JSL CODE_118014             ; $11:888D: 22 14 80 11 ;
-                LDX $0635                   ; $11:8891: AE 35 06    ;
-                LDY $0533                   ; $11:8894: AC 33 05    ;
-                JSL CODE_1187B6             ; $11:8897: 22 B6 87 11 ;
-                JSL CODE_118014             ; $11:889B: 22 14 80 11 ;
-                LDA #$01                    ; $11:889F: A9 01       ;
-                STA $0243                   ; $11:88A1: 8D 43 02    ;
-                JSL CODE_14F92E             ; $11:88A4: 22 2E F9 14 ;
-                LDA #$01                    ; $11:88A8: A9 01       ;
-                STA $0201                   ; $11:88AA: 8D 01 02    ;
-                STA $0203                   ; $11:88AD: 8D 03 02    ;
-                INC $0217                   ; $11:88B0: EE 17 02    ;
-                STZ $2111                   ; $11:88B3: 9C 11 21    ;
-                STZ $2111                   ; $11:88B6: 9C 11 21    ;
-                STZ $2112                   ; $11:88B9: 9C 12 21    ;
-                STZ $2112                   ; $11:88BC: 9C 12 21    ;
-                STZ $0D13                   ; $11:88BF: 9C 13 0D    ;
-                JSR CODE_118AFE             ; $11:88C2: 20 FE 8A    ;
-CODE_1188C5:    LDA #$80                    ; $11:88C5: A9 80       ;
-                STA $1DE2                   ; $11:88C7: 8D E2 1D    ;
-                JSL CODE_14E098             ; $11:88CA: 22 98 E0 14 ;
-                LDA $0533                   ; $11:88CE: AD 33 05    ;
-                CMP $02E6                   ; $11:88D1: CD E6 02    ;
-                BEQ CODE_1188E0             ; $11:88D4: F0 0A       ;
-                STA $02E6                   ; $11:88D6: 8D E6 02    ;
-                INC $0768                   ; $11:88D9: EE 68 07    ;
-                JSL CODE_12FD96             ; $11:88DC: 22 96 FD 12 ;
-CODE_1188E0:    LDA #$80                    ; $11:88E0: A9 80       ;
-                STA $0210                   ; $11:88E2: 8D 10 02    ;
-CODE_1188E5:    JSL CODE_118014             ; $11:88E5: 22 14 80 11 ;
-                LDA $FA                     ; $11:88E9: A5 FA       ;
-                AND #$90                    ; $11:88EB: 29 90       ;
-                STA $0712                   ; $11:88ED: 8D 12 07    ;
-                LDA $FC                     ; $11:88F0: A5 FC       ;
-                AND #$80                    ; $11:88F2: 29 80       ;
-                ORA $0712                   ; $11:88F4: 0D 12 07    ;
-                BNE CODE_1188FE             ; $11:88F7: D0 05       ;
-                DEC $0210                   ; $11:88F9: CE 10 02    ;
-                BPL CODE_1188E5             ; $11:88FC: 10 E7       ;
-CODE_1188FE:    LDA $0768                   ; $11:88FE: AD 68 07    ;
-                BEQ CODE_11890C             ; $11:8901: F0 09       ;
-                JSL CODE_12F4D0         ; $11:8903: 22 D0 F4 12 ; Handle object -> M16. (Does not apply to objects that only contain 1 M16 tile, like vegetables.)
-                STZ $0768                   ; $11:8907: 9C 68 07    ;
-                BRA CODE_11890F             ; $11:890A: 80 03       ;
+CODE_11885E:    LDA $FE                 ; $11:885E: A5 FE       ;
 
-CODE_11890C:    JSR CODE_118AD2             ; $11:890C: 20 D2 8A    ;
-CODE_11890F:    JSL CODE_118009             ; $11:890F: 22 09 80 11 ;
-                JSR CODE_1190A2             ; $11:8913: 20 A2 90    ;
-                JSL CODE_138062             ; $11:8916: 22 62 80 13 ;
-                LDA #$17                    ; $11:891A: A9 17       ;
-                STA $0243                   ; $11:891C: 8D 43 02    ;
-                JSL CODE_12FA10             ; $11:891F: 22 10 FA 12 ;
-                JSR CODE_1190DF             ; $11:8923: 20 DF 90    ;
+                AND #$80                ; $11:8860: 29 80       ;
+
+                BNE CODE_11886B         ; $11:8862: D0 07       ;
+
+                JSR CODE_118AD2         ; $11:8864: 20 D2 8A    ;
+
+                JSL CODE_118009         ; $11:8867: 22 09 80 11 ;
+
+CODE_11886B:    JSR CODE_1190A2         ; $11:886B: 20 A2 90    ;
+
+                JSL CODE_138936         ; $11:886E: 22 36 89 13 ;
+
+                JSL CODE_14D194         ; $11:8872: 22 94 D1 14 ;
+
+                JSL CODE_12FA10         ; $11:8876: 22 10 FA 12 ;
+
+                JSL CODE_14F953         ; $11:887A: 22 53 F9 14 ;
+
+                JSR CODE_1190DF         ; $11:887E: 20 DF 90    ;
+
+                JSL CODE_14F9F0         ; $11:8881: 22 F0 F9 14 ; Clear all OAM.
+                JSL CODE_13DCF6         ; $11:8885: 22 F6 DC 13 ;
+
+                JSL CODE_14D856         ; $11:8889: 22 56 D8 14 ;
+
+                JSL CODE_118014         ; $11:888D: 22 14 80 11 ;
+
+                LDX $0635               ; $11:8891: AE 35 06    ;
+
+                LDY $0533               ; $11:8894: AC 33 05    ;
+
+                JSL CODE_1187B6         ; $11:8897: 22 B6 87 11 ;
+
+                JSL CODE_118014         ; $11:889B: 22 14 80 11 ;
+
+                LDA #$01                ; $11:889F: A9 01       ;
+
+                STA $0243               ; $11:88A1: 8D 43 02    ;
+
+                JSL CODE_14F92E         ; $11:88A4: 22 2E F9 14 ;
+
+                LDA #$01                ; $11:88A8: A9 01       ;
+
+                STA $0201               ; $11:88AA: 8D 01 02    ;
+
+                STA $0203               ; $11:88AD: 8D 03 02    ;
+
+                INC $0217               ; $11:88B0: EE 17 02    ;
+
+                STZ $2111               ; $11:88B3: 9C 11 21    ;
+
+                STZ $2111               ; $11:88B6: 9C 11 21    ;
+
+                STZ $2112               ; $11:88B9: 9C 12 21    ;
+
+                STZ $2112               ; $11:88BC: 9C 12 21    ;
+
+                STZ $0D13               ; $11:88BF: 9C 13 0D    ;
+
+                JSR CODE_118AFE         ; $11:88C2: 20 FE 8A    ;
+
+CODE_1188C5:    LDA #$80                ; $11:88C5: A9 80       ;
+
+                STA $1DE2               ; $11:88C7: 8D E2 1D    ;
+
+                JSL CODE_14E098         ; $11:88CA: 22 98 E0 14 ;
+
+                LDA $0533               ; $11:88CE: AD 33 05    ;
+
+                CMP $02E6               ; $11:88D1: CD E6 02    ;
+
+                BEQ CODE_1188E0         ; $11:88D4: F0 0A       ;
+
+                STA $02E6               ; $11:88D6: 8D E6 02    ;
+
+                INC $0768               ; $11:88D9: EE 68 07    ;
+
+                JSL CODE_12FD96         ; $11:88DC: 22 96 FD 12 ;
+
+CODE_1188E0:    LDA #$80                ; $11:88E0: A9 80       ;
+
+                STA $0210               ; $11:88E2: 8D 10 02    ;
+
+CODE_1188E5:    JSL CODE_118014         ; $11:88E5: 22 14 80 11 ;
+
+                LDA $FA                 ; $11:88E9: A5 FA       ;
+
+                AND #$90                ; $11:88EB: 29 90       ;
+
+                STA $0712               ; $11:88ED: 8D 12 07    ;
+
+                LDA $FC                 ; $11:88F0: A5 FC       ;
+
+                AND #$80                ; $11:88F2: 29 80       ;
+
+                ORA $0712               ; $11:88F4: 0D 12 07    ;
+
+                BNE CODE_1188FE         ; $11:88F7: D0 05       ;
+
+                DEC $0210               ; $11:88F9: CE 10 02    ;
+
+                BPL CODE_1188E5         ; $11:88FC: 10 E7       ;
+
+CODE_1188FE:    LDA $0768               ; $11:88FE: AD 68 07    ;
+
+                BEQ CODE_11890C         ; $11:8901: F0 09       ;
+
+                JSL CODE_12F4D0         ; $11:8903: 22 D0 F4 12 ; Handle object -> M16. (Does not apply to objects that only contain 1 M16 tile, like vegetables.)
+                STZ $0768               ; $11:8907: 9C 68 07    ;
+
+                BRA CODE_11890F         ; $11:890A: 80 03       ;
+
+CODE_11890C:    JSR CODE_118AD2         ; $11:890C: 20 D2 8A    ;
+
+CODE_11890F:    JSL CODE_118009         ; $11:890F: 22 09 80 11 ;
+
+                JSR CODE_1190A2         ; $11:8913: 20 A2 90    ;
+
+                JSL CODE_138062         ; $11:8916: 22 62 80 13 ;
+
+                LDA #$17                ; $11:891A: A9 17       ;
+
+                STA $0243               ; $11:891C: 8D 43 02    ;
+
+                JSL CODE_12FA10         ; $11:891F: 22 10 FA 12 ;
+
+                JSR CODE_1190DF         ; $11:8923: 20 DF 90    ;
+
                 RTS                     ; $11:8926: 60          ;
 
-CODE_118927:    JSL CODE_12FA35             ; $11:8927: 22 35 FA 12 ;
-                LDX $0635                   ; $11:892B: AE 35 06    ;
-                LDY $0533                   ; $11:892E: AC 33 05    ;
-                JSL CODE_1187B6             ; $11:8931: 22 B6 87 11 ;
-                JSL CODE_138D67             ; $11:8935: 22 67 8D 13 ;
-                LDY $04EE                   ; $11:8939: AC EE 04    ;
-                TYA                         ; $11:893C: 98          ;
-                JSR CODE_119155             ; $11:893D: 20 55 91    ;
-                STA $11B6                   ; $11:8940: 8D B6 11    ;
-                LDA #$15                    ; $11:8943: A9 15       ;
-                STA $11B7                   ; $11:8945: 8D B7 11    ;
-                LDX #$BD                    ; $11:8948: A2 BD       ;
-                CPY #$BF                    ; $11:894A: C0 BF       ;
-                BEQ CODE_118953             ; $11:894C: F0 05       ;
-                TYX                         ; $11:894E: BB          ;
-                LDA #$15                    ; $11:894F: A9 15       ;
-                BRA CODE_118955             ; $11:8951: 80 02       ;
+CODE_118927:    JSL CODE_12FA35         ; $11:8927: 22 35 FA 12 ;
 
-CODE_118953:    LDA #$09                    ; $11:8953: A9 09       ;
-CODE_118955:    STX $11B4                   ; $11:8955: 8E B4 11    ;
-                STA $11B5                   ; $11:8958: 8D B5 11    ;
-                JSL CODE_118014             ; $11:895B: 22 14 80 11 ;
-                JSL CODE_118A84             ; $11:895F: 22 84 8A 11 ;
-                JSL CODE_118014             ; $11:8963: 22 14 80 11 ;
-                JSL CODE_14D1D3             ; $11:8967: 22 D3 D1 14 ;
+                LDX $0635               ; $11:892B: AE 35 06    ;
+
+                LDY $0533               ; $11:892E: AC 33 05    ;
+
+                JSL CODE_1187B6         ; $11:8931: 22 B6 87 11 ;
+
+                JSL CODE_138D67         ; $11:8935: 22 67 8D 13 ;
+
+                LDY $04EE               ; $11:8939: AC EE 04    ;
+
+                TYA                     ; $11:893C: 98          ;
+
+                JSR CODE_119155         ; $11:893D: 20 55 91    ;
+
+                STA $11B6               ; $11:8940: 8D B6 11    ;
+
+                LDA #$15                ; $11:8943: A9 15       ;
+
+                STA $11B7               ; $11:8945: 8D B7 11    ;
+
+                LDX #$BD                ; $11:8948: A2 BD       ;
+
+                CPY #$BF                ; $11:894A: C0 BF       ;
+
+                BEQ CODE_118953         ; $11:894C: F0 05       ;
+
+                TYX                     ; $11:894E: BB          ;
+
+                LDA #$15                ; $11:894F: A9 15       ;
+
+                BRA CODE_118955         ; $11:8951: 80 02       ;
+
+CODE_118953:    LDA #$09                ; $11:8953: A9 09       ;
+
+CODE_118955:    STX $11B4               ; $11:8955: 8E B4 11    ;
+
+                STA $11B5               ; $11:8958: 8D B5 11    ;
+
+                JSL CODE_118014         ; $11:895B: 22 14 80 11 ;
+
+                JSL CODE_118A84         ; $11:895F: 22 84 8A 11 ;
+
+                JSL CODE_118014         ; $11:8963: 22 14 80 11 ;
+
+                JSL CODE_14D1D3         ; $11:8967: 22 D3 D1 14 ;
+
                 JSL CODE_14F9F0         ; $11:896B: 22 F0 F9 14 ; Clear all OAM.
-CODE_11896F:    JSL CODE_118014             ; $11:896F: 22 14 80 11 ;
-                JSL CODE_14D7CF             ; $11:8973: 22 CF D7 14 ;
-                LDA $7FF804                 ; $11:8977: AF 04 F8 7F ;
-                DEC A                       ; $11:897B: 3A          ;
-                STA $7FF804                 ; $11:897C: 8F 04 F8 7F ;
-                BPL CODE_11896F             ; $11:8980: 10 ED       ;
-                JSL CODE_118014             ; $11:8982: 22 14 80 11 ;
-                LDA #$00                    ; $11:8986: A9 00       ;
-                STA $7FF800                 ; $11:8988: 8F 00 F8 7F ;
-                STA $7FF801                 ; $11:898C: 8F 01 F8 7F ;
-CODE_118990:    LDA #$10                    ; $11:8990: A9 10       ;
-                STA $0759                   ; $11:8992: 8D 59 07    ;
-                INC $0217                   ; $11:8995: EE 17 02    ;
-                JSL CODE_13DCF6             ; $11:8998: 22 F6 DC 13 ;
-                JSL CODE_14D194             ; $11:899C: 22 94 D1 14 ;
-                JSL CODE_14F92E             ; $11:89A0: 22 2E F9 14 ;
-                LDA $0636                   ; $11:89A4: AD 36 06    ;
-                CMP #$A5                    ; $11:89A7: C9 A5       ;
-                BEQ CODE_1189B0             ; $11:89A9: F0 05       ;
-                LDA #$A5                    ; $11:89AB: A9 A5       ;
-                STA $0636                   ; $11:89AD: 8D 36 06    ;
-CODE_1189B0:    LDA #$04                ; $11:89B0: A9 04       ; \ Character select music.
-                STA $1DE2               ; $11:89B2: 8D E2 1D    ; /
-                LDA $8F                     ; $11:89B5: A5 8F       ;
-                STA $0404                   ; $11:89B7: 8D 04 04    ;
-                LDA $0635                   ; $11:89BA: AD 35 06    ;
-                STA $0405                   ; $11:89BD: 8D 05 04    ;
-CODE_1189C0:    JSL CODE_118014             ; $11:89C0: 22 14 80 11 ;
-                LDA $FA                     ; $11:89C4: A5 FA       ;
-                AND #$23                    ; $11:89C6: 29 23       ;
-                BNE CODE_1189CD             ; $11:89C8: D0 03       ;
+CODE_11896F:    JSL CODE_118014         ; $11:896F: 22 14 80 11 ;
+
+                JSL CODE_14D7CF         ; $11:8973: 22 CF D7 14 ;
+
+                LDA $7FF804             ; $11:8977: AF 04 F8 7F ;
+
+                DEC A                   ; $11:897B: 3A          ;
+
+                STA $7FF804             ; $11:897C: 8F 04 F8 7F ;
+
+                BPL CODE_11896F         ; $11:8980: 10 ED       ;
+
+                JSL CODE_118014         ; $11:8982: 22 14 80 11 ;
+
+                LDA #$00                ; $11:8986: A9 00       ;
+
+                STA $7FF800             ; $11:8988: 8F 00 F8 7F ;
+
+                STA $7FF801             ; $11:898C: 8F 01 F8 7F ;
+
+CODE_118990:    LDA #$10                ; $11:8990: A9 10       ;
+
+                STA $0759               ; $11:8992: 8D 59 07    ;
+
+                INC $0217               ; $11:8995: EE 17 02    ;
+
+                JSL CODE_13DCF6         ; $11:8998: 22 F6 DC 13 ;
+
+                JSL CODE_14D194         ; $11:899C: 22 94 D1 14 ;
+
+                JSL CODE_14F92E         ; $11:89A0: 22 2E F9 14 ;
+
+                LDA $0636               ; $11:89A4: AD 36 06    ;
+
+                CMP #$A5                ; $11:89A7: C9 A5       ;
+
+                BEQ CODE_1189B0         ; $11:89A9: F0 05       ;
+
+                LDA #$A5                ; $11:89AB: A9 A5       ;
+
+                STA $0636               ; $11:89AD: 8D 36 06    ;
+
+CODE_1189B0:    LDA #$04                ; $11:89B0: A9 04       ;\ Character select music.
+                STA $1DE2               ; $11:89B2: 8D E2 1D    ;/
+                LDA $8F                 ; $11:89B5: A5 8F       ;
+
+                STA $0404               ; $11:89B7: 8D 04 04    ;
+
+                LDA $0635               ; $11:89BA: AD 35 06    ;
+
+                STA $0405               ; $11:89BD: 8D 05 04    ;
+
+CODE_1189C0:    JSL CODE_118014         ; $11:89C0: 22 14 80 11 ;
+
+                LDA $FA                 ; $11:89C4: A5 FA       ;
+
+                AND #$23                ; $11:89C6: 29 23       ;
+
+                BNE CODE_1189CD         ; $11:89C8: D0 03       ;
+
                 JMP CODE_1189FB         ; $11:89CA: 4C FB 89    ;
 
-CODE_1189CD:    LDA $FA                 ; $11:89CD: A5 FA       ; \ Check if pressing Right or Select.
-                AND #$21                ; $11:89CF: 29 21       ;  |
-                BEQ CODE_1189DD         ; $11:89D1: F0 0A       ; / If neither, branch.
+CODE_1189CD:    LDA $FA                 ; $11:89CD: A5 FA       ;\ Check if pressing Right or Select.
+                AND #$21                ; $11:89CF: 29 21       ; |
+                BEQ CODE_1189DD         ; $11:89D1: F0 0A       ;/ If neither, branch.
                 JSR CODE_118AAB         ; $11:89D3: 20 AB 8A    ; Remove the highlight from previous player.
                 DEC $8F                 ; $11:89D6: C6 8F       ; Move to next character. (Move to the right.)
-                LDA #$01                ; $11:89D8: A9 01       ; \ 'Coin get' sound (when you select between players).
-                STA $1DE3               ; $11:89DA: 8D E3 1D    ; /
-CODE_1189DD:    LDA $FA                 ; $11:89DD: A5 FA       ; \ Check if pressing Left.
-                AND #$02                ; $11:89DF: 29 02       ;  |
-                BEQ CODE_1189ED         ; $11:89E1: F0 0A       ; / If not, branch.
+                LDA #$01                ; $11:89D8: A9 01       ;\ 'Coin get' sound (when you select between players).
+                STA $1DE3               ; $11:89DA: 8D E3 1D    ;/
+CODE_1189DD:    LDA $FA                 ; $11:89DD: A5 FA       ;\ Check if pressing Left.
+                AND #$02                ; $11:89DF: 29 02       ; |
+                BEQ CODE_1189ED         ; $11:89E1: F0 0A       ;/ If not, branch.
                 JSR CODE_118AAB         ; $11:89E3: 20 AB 8A    ; Remove the highlight from previous player.
                 INC $8F                 ; $11:89E6: E6 8F       ; Move to previous character. (Move to the left.)
-                LDA #$01                ; $11:89E8: A9 01       ; \ 'Coin get' sound (when you select between players).
-                STA $1DE3               ; $11:89EA: 8D E3 1D    ; /
-CODE_1189ED:    LDA $8F                 ; $11:89ED: A5 8F       ; \ Only 4 options.
-                AND #$03                ; $11:89EF: 29 03       ;  |
-                STA $8F                 ; $11:89F1: 85 8F       ; /
-                JSL CODE_14D1D3             ; $11:89F3: 22 D3 D1 14 ;
-                JSL CODE_118A84             ; $11:89F7: 22 84 8A 11 ;
-CODE_1189FB:    LDA $FA                     ; $11:89FB: A5 FA       ;
-                AND #$90                    ; $11:89FD: 29 90       ;
-                STA $0712                   ; $11:89FF: 8D 12 07    ;
-                LDA $FC                     ; $11:8A02: A5 FC       ;
-                AND #$80                    ; $11:8A04: 29 80       ;
-                ORA $0712                   ; $11:8A06: 0D 12 07    ;
-                BNE CODE_118A0E             ; $11:8A09: D0 03       ;
+                LDA #$01                ; $11:89E8: A9 01       ;\ 'Coin get' sound (when you select between players).
+                STA $1DE3               ; $11:89EA: 8D E3 1D    ;/
+CODE_1189ED:    LDA $8F                 ; $11:89ED: A5 8F       ;\ Only 4 options.
+                AND #$03                ; $11:89EF: 29 03       ; |
+                STA $8F                 ; $11:89F1: 85 8F       ;/
+                JSL CODE_14D1D3         ; $11:89F3: 22 D3 D1 14 ;
+
+                JSL CODE_118A84         ; $11:89F7: 22 84 8A 11 ;
+
+CODE_1189FB:    LDA $FA                 ; $11:89FB: A5 FA       ;
+
+                AND #$90                ; $11:89FD: 29 90       ;
+
+                STA $0712               ; $11:89FF: 8D 12 07    ;
+
+                LDA $FC                 ; $11:8A02: A5 FC       ;
+
+                AND #$80                ; $11:8A04: 29 80       ;
+
+                ORA $0712               ; $11:8A06: 0D 12 07    ;
+
+                BNE CODE_118A0E         ; $11:8A09: D0 03       ;
+
                 JMP CODE_1189C0         ; $11:8A0B: 4C C0 89    ;
 
-CODE_118A0E:    LDA #$3C                    ; $11:8A0E: A9 3C       ;
-                STA $1DE0                   ; $11:8A10: 8D E0 1D    ;
-                LDA #$40                    ; $11:8A13: A9 40       ;
-                STA $0210                   ; $11:8A15: 8D 10 02    ;
-                JSL CODE_118014             ; $11:8A18: 22 14 80 11 ;
-                LDY #$00                    ; $11:8A1C: A0 00       ;
-                LDX $8F                     ; $11:8A1E: A6 8F       ;
-                LDA.l DATA_15EBA1,x                 ; $11:8A20: BF A1 EB 15 ;
-                TAX                         ; $11:8A24: AA          ;
-CODE_118A25:    LDA.l DATA_15EB41,x                 ; $11:8A25: BF 41 EB 15 ;
-                STA $0302,y                 ; $11:8A29: 99 02 03    ;
-                INX                         ; $11:8A2C: E8          ;
-                INY                         ; $11:8A2D: C8          ;
-                CPY #$18                    ; $11:8A2E: C0 18       ;
-                BNE CODE_118A25             ; $11:8A30: D0 F3       ;
-                LDA #$FF                    ; $11:8A32: A9 FF       ;
-                STA $031A                   ; $11:8A34: 8D 1A 03    ;
-CODE_118A37:    JSL CODE_118014             ; $11:8A37: 22 14 80 11 ;
-                DEC $0210                   ; $11:8A3B: CE 10 02    ;
-                BPL CODE_118A37             ; $11:8A3E: 10 F7       ;
-                JSL CODE_118A84             ; $11:8A40: 22 84 8A 11 ;
-                LDA #$40                    ; $11:8A44: A9 40       ;
-                STA $0210                   ; $11:8A46: 8D 10 02    ;
-CODE_118A49:    JSL CODE_118014             ; $11:8A49: 22 14 80 11 ;
-                DEC $0210                   ; $11:8A4D: CE 10 02    ;
-                BPL CODE_118A49             ; $11:8A50: 10 F7       ;
-                LDA #$02                    ; $11:8A52: A9 02       ;
-                JSL CODE_14D78D             ; $11:8A54: 22 8D D7 14 ;
-                LDA #$01                    ; $11:8A58: A9 01       ;
-                STA $0201                   ; $11:8A5A: 8D 01 02    ;
-CODE_118A5D:    JSL CODE_118014             ; $11:8A5D: 22 14 80 11 ;
-                JSL CODE_14D7CF             ; $11:8A61: 22 CF D7 14 ;
-                LDA $7FF804                 ; $11:8A65: AF 04 F8 7F ;
-                DEC A                       ; $11:8A69: 3A          ;
-                STA $7FF804                 ; $11:8A6A: 8F 04 F8 7F ;
-                BPL CODE_118A5D             ; $11:8A6E: 10 ED       ;
-                JSL CODE_118014             ; $11:8A70: 22 14 80 11 ;
-                LDA #$00                    ; $11:8A74: A9 00       ;
-                STA $7FF800                 ; $11:8A76: 8F 00 F8 7F ;
-                STA $7FF801                 ; $11:8A7A: 8F 01 F8 7F ;
-                LDA #$01                    ; $11:8A7E: A9 01       ;
-                STA $0775                   ; $11:8A80: 8D 75 07    ;
+CODE_118A0E:    LDA #$3C                ; $11:8A0E: A9 3C       ;
+
+                STA $1DE0               ; $11:8A10: 8D E0 1D    ;
+
+                LDA #$40                ; $11:8A13: A9 40       ;
+
+                STA $0210               ; $11:8A15: 8D 10 02    ;
+
+                JSL CODE_118014         ; $11:8A18: 22 14 80 11 ;
+
+                LDY #$00                ; $11:8A1C: A0 00       ;
+
+                LDX $8F                 ; $11:8A1E: A6 8F       ;
+
+                LDA.l DATA_15EBA1,x     ; $11:8A20: BF A1 EB 15 ;
+                TAX                     ; $11:8A24: AA          ;
+
+CODE_118A25:    LDA.l DATA_15EB41,x     ; $11:8A25: BF 41 EB 15 ;
+
+                STA $0302,y             ; $11:8A29: 99 02 03    ;
+
+                INX                     ; $11:8A2C: E8          ;
+
+                INY                     ; $11:8A2D: C8          ;
+
+                CPY #$18                ; $11:8A2E: C0 18       ;
+
+                BNE CODE_118A25         ; $11:8A30: D0 F3       ;
+
+                LDA #$FF                ; $11:8A32: A9 FF       ;
+
+                STA $031A               ; $11:8A34: 8D 1A 03    ;
+
+CODE_118A37:    JSL CODE_118014         ; $11:8A37: 22 14 80 11 ;
+
+                DEC $0210               ; $11:8A3B: CE 10 02    ;
+
+                BPL CODE_118A37         ; $11:8A3E: 10 F7       ;
+
+                JSL CODE_118A84         ; $11:8A40: 22 84 8A 11 ;
+
+                LDA #$40                ; $11:8A44: A9 40       ;
+
+                STA $0210               ; $11:8A46: 8D 10 02    ;
+
+CODE_118A49:    JSL CODE_118014         ; $11:8A49: 22 14 80 11 ;
+
+                DEC $0210               ; $11:8A4D: CE 10 02    ;
+
+                BPL CODE_118A49         ; $11:8A50: 10 F7       ;
+
+                LDA #$02                ; $11:8A52: A9 02       ;
+
+                JSL CODE_14D78D         ; $11:8A54: 22 8D D7 14 ;
+
+                LDA #$01                ; $11:8A58: A9 01       ;
+
+                STA $0201               ; $11:8A5A: 8D 01 02    ;
+
+CODE_118A5D:    JSL CODE_118014         ; $11:8A5D: 22 14 80 11 ;
+
+                JSL CODE_14D7CF         ; $11:8A61: 22 CF D7 14 ;
+
+                LDA $7FF804             ; $11:8A65: AF 04 F8 7F ;
+
+                DEC A                   ; $11:8A69: 3A          ;
+
+                STA $7FF804             ; $11:8A6A: 8F 04 F8 7F ;
+
+                BPL CODE_118A5D         ; $11:8A6E: 10 ED       ;
+
+                JSL CODE_118014         ; $11:8A70: 22 14 80 11 ;
+
+                LDA #$00                ; $11:8A74: A9 00       ;
+
+                STA $7FF800             ; $11:8A76: 8F 00 F8 7F ;
+
+                STA $7FF801             ; $11:8A7A: 8F 01 F8 7F ;
+
+                LDA #$01                ; $11:8A7E: A9 01       ;
+
+                STA $0775               ; $11:8A80: 8D 75 07    ;
+
                 RTS                     ; $11:8A83: 60          ;
 
-CODE_118A84:    LDA #$17                ; $11:8A84: A9 17       ; \ Load byte into VRAM table at $0302 #$17 times.
-                STA $0712               ; $11:8A86: 8D 12 07    ; /
-                LDY $0300               ; $11:8A89: AC 00 03    ; \ Get to free area in VRAM table.
-                LDX $8F                 ; $11:8A8C: A6 8F       ;  | Get player into index.
-                LDA.l DATA_15EBA1,x     ; $11:8A8E: BF A1 EB 15 ;  |
-                TAX                     ; $11:8A92: AA          ;  | X = position for the table at which the tilemap for each player starts at.
-CODE_118A93:    LDA.l DATA_15EAE1,x     ; $11:8A93: BF E1 EA 15 ;  | Load tilemap byte into table at $0302,y.
-                STA $0302,y             ; $11:8A97: 99 02 03    ;  |
-                INX                     ; $11:8A9A: E8          ;  | Get to next byte in both tables.
-                INY                     ; $11:8A9B: C8          ;  |
-                DEC $0712               ; $11:8A9C: CE 12 07    ;  | Loop until $0712 is sub-zero.
-                BPL CODE_118A93         ; $11:8A9F: 10 F2       ; /
-                LDA #$FF                ; $11:8AA1: A9 FF       ; \ End table.
-                STA $0302,y             ; $11:8AA3: 99 02 03    ; /
-                TYA                     ; $11:8AA6: 98          ; \ Amount of bytes the table covers up...
-                STA $0300               ; $11:8AA7: 8D 00 03    ; / Into $0300. (Header byte)
+CODE_118A84:    LDA #$17                ; $11:8A84: A9 17       ;\ Load byte into VRAM table at $0302 #$17 times.
+                STA $0712               ; $11:8A86: 8D 12 07    ;/
+                LDY $0300               ; $11:8A89: AC 00 03    ;\ Get to free area in VRAM table.
+                LDX $8F                 ; $11:8A8C: A6 8F       ; | Get player into index.
+                LDA.l DATA_15EBA1,x     ; $11:8A8E: BF A1 EB 15 ; |
+                TAX                     ; $11:8A92: AA          ; | X = position for the table at which the tilemap for each player starts at.
+CODE_118A93:    LDA.l DATA_15EAE1,x     ; $11:8A93: BF E1 EA 15 ; | Load tilemap byte into table at $0302,y.
+                STA $0302,y             ; $11:8A97: 99 02 03    ; |
+                INX                     ; $11:8A9A: E8          ; | Get to next byte in both tables.
+                INY                     ; $11:8A9B: C8          ; |
+                DEC $0712               ; $11:8A9C: CE 12 07    ; | Loop until $0712 is sub-zero.
+                BPL CODE_118A93         ; $11:8A9F: 10 F2       ;/
+                LDA #$FF                ; $11:8AA1: A9 FF       ;\ End table.
+                STA $0302,y             ; $11:8AA3: 99 02 03    ;/
+                TYA                     ; $11:8AA6: 98          ;\ Amount of bytes the table covers up...
+                STA $0300               ; $11:8AA7: 8D 00 03    ;/ Into $0300. (Header byte)
                 RTL                     ; $11:8AAA: 6B          ; Return.
 
-CODE_118AAB:    LDA #$17                ; $11:8AAB: A9 17       ; \ Load byte into VRAM table at $0302 #$17 times.
-                STA $0712               ; $11:8AAD: 8D 12 07    ; /
-                LDY $0300               ; $11:8AB0: AC 00 03    ; \ Get to free area in VRAM table.
-                LDX $8F                 ; $11:8AB3: A6 8F       ;  | Get player into index.
-                LDA.l DATA_15EBA1,x     ; $11:8AB5: BF A1 EB 15 ;  |
-                TAX                     ; $11:8AB9: AA          ;  | X = position for the table at which the tilemap for each player starts at.
-CODE_118ABA:    LDA.l DATA_11C6AB,x     ; $11:8ABA: BF AB C6 11 ;  | Load tilemap byte into table at $0302,y.
-                STA $0302,y             ; $11:8ABE: 99 02 03    ;  |
-                INX                     ; $11:8AC1: E8          ;  | Get to next byte in both tables.
-                INY                     ; $11:8AC2: C8          ;  |
-                DEC $0712               ; $11:8AC3: CE 12 07    ;  | Loop until $0712 is sub-zero.
-                BPL CODE_118ABA         ; $11:8AC6: 10 F2       ; /
-                LDA #$FF                ; $11:8AC8: A9 FF       ; \ End table.
-                STA $0302,y             ; $11:8ACA: 99 02 03    ; /
-                TYA                     ; $11:8ACD: 98          ; \ Amount of bytes the table covers up...
-                STA $0300               ; $11:8ACE: 8D 00 03    ; / Into $0300. (Header byte)
+CODE_118AAB:    LDA #$17                ; $11:8AAB: A9 17       ;\ Load byte into VRAM table at $0302 #$17 times.
+                STA $0712               ; $11:8AAD: 8D 12 07    ;/
+                LDY $0300               ; $11:8AB0: AC 00 03    ;\ Get to free area in VRAM table.
+                LDX $8F                 ; $11:8AB3: A6 8F       ; | Get player into index.
+                LDA.l DATA_15EBA1,x     ; $11:8AB5: BF A1 EB 15 ; |
+                TAX                     ; $11:8AB9: AA          ; | X = position for the table at which the tilemap for each player starts at.
+CODE_118ABA:    LDA.l DATA_11C6AB,x     ; $11:8ABA: BF AB C6 11 ; | Load tilemap byte into table at $0302,y.
+                STA $0302,y             ; $11:8ABE: 99 02 03    ; |
+                INX                     ; $11:8AC1: E8          ; | Get to next byte in both tables.
+                INY                     ; $11:8AC2: C8          ; |
+                DEC $0712               ; $11:8AC3: CE 12 07    ; | Loop until $0712 is sub-zero.
+                BPL CODE_118ABA         ; $11:8AC6: 10 F2       ;/
+                LDA #$FF                ; $11:8AC8: A9 FF       ;\ End table.
+                STA $0302,y             ; $11:8ACA: 99 02 03    ;/
+                TYA                     ; $11:8ACD: 98          ;\ Amount of bytes the table covers up...
+                STA $0300               ; $11:8ACE: 8D 00 03    ;/ Into $0300. (Header byte)
                 RTS                     ; $11:8AD1: 60          ; Return.
 
-CODE_118AD2:    STZ $02B7                   ; $11:8AD2: 9C B7 02    ;
-CODE_118AD5:    JSL CODE_118014             ; $11:8AD5: 22 14 80 11 ;
-                JSL CODE_14D1B2             ; $11:8AD9: 22 B2 D1 14 ;
-                LDA $02B7                   ; $11:8ADD: AD B7 02    ;
-                BEQ CODE_118AD5             ; $11:8AE0: F0 F3       ;
-                LDA $04EF                   ; $11:8AE2: AD EF 04    ;
-                BEQ CODE_118AEF             ; $11:8AE5: F0 08       ;
-                CMP #$01                    ; $11:8AE7: C9 01       ;
-                BEQ CODE_118AEF             ; $11:8AE9: F0 04       ;
-                JSL CODE_14E35A             ; $11:8AEB: 22 5A E3 14 ;
-CODE_118AEF:    LDA $024B                   ; $11:8AEF: AD 4B 02    ;
-                BEQ CODE_118AFD             ; $11:8AF2: F0 09       ;
-                CMP #$BE                    ; $11:8AF4: C9 BE       ;
-                BEQ CODE_118AFD             ; $11:8AF6: F0 05       ;
-                LDA #$FF                    ; $11:8AF8: A9 FF       ;
-                STA $024B                   ; $11:8AFA: 8D 4B 02    ;
+CODE_118AD2:    STZ $02B7               ; $11:8AD2: 9C B7 02    ;
+
+CODE_118AD5:    JSL CODE_118014         ; $11:8AD5: 22 14 80 11 ;
+
+                JSL CODE_14D1B2         ; $11:8AD9: 22 B2 D1 14 ;
+
+                LDA $02B7               ; $11:8ADD: AD B7 02    ;
+
+                BEQ CODE_118AD5         ; $11:8AE0: F0 F3       ;
+
+                LDA $04EF               ; $11:8AE2: AD EF 04    ;
+
+                BEQ CODE_118AEF         ; $11:8AE5: F0 08       ;
+
+                CMP #$01                ; $11:8AE7: C9 01       ;
+
+                BEQ CODE_118AEF         ; $11:8AE9: F0 04       ;
+
+                JSL CODE_14E35A         ; $11:8AEB: 22 5A E3 14 ;
+
+CODE_118AEF:    LDA $024B               ; $11:8AEF: AD 4B 02    ;
+
+                BEQ CODE_118AFD         ; $11:8AF2: F0 09       ;
+
+                CMP #$BE                ; $11:8AF4: C9 BE       ;
+
+                BEQ CODE_118AFD         ; $11:8AF6: F0 05       ;
+
+                LDA #$FF                ; $11:8AF8: A9 FF       ;
+
+                STA $024B               ; $11:8AFA: 8D 4B 02    ;
+
 CODE_118AFD:    RTS                     ; $11:8AFD: 60          ;
 
-CODE_118AFE:    STZ $02B7                   ; $11:8AFE: 9C B7 02    ;
-                STZ $FE                     ; $11:8B01: 64 FE       ;
-                STZ $04AE                   ; $11:8B03: 9C AE 04    ;
-CODE_118B06:    JSL CODE_118014             ; $11:8B06: 22 14 80 11 ;
-                JSL CODE_14D1C2             ; $11:8B0A: 22 C2 D1 14 ;
-                JSR CODE_118B1F             ; $11:8B0E: 20 1F 8B    ;
-                LDA $1E                     ; $11:8B11: A5 1E       ;
-                BNE CODE_118B19             ; $11:8B13: D0 04       ;
-                JSL CODE_15D11D             ; $11:8B15: 22 1D D1 15 ;
-CODE_118B19:    LDA $02B7                   ; $11:8B19: AD B7 02    ;
-                BEQ CODE_118B06             ; $11:8B1C: F0 E8       ;
+CODE_118AFE:    STZ $02B7               ; $11:8AFE: 9C B7 02    ;
+
+                STZ $FE                 ; $11:8B01: 64 FE       ;
+
+                STZ $04AE               ; $11:8B03: 9C AE 04    ;
+
+CODE_118B06:    JSL CODE_118014         ; $11:8B06: 22 14 80 11 ;
+
+                JSL CODE_14D1C2         ; $11:8B0A: 22 C2 D1 14 ;
+
+                JSR CODE_118B1F         ; $11:8B0E: 20 1F 8B    ;
+
+                LDA $1E                 ; $11:8B11: A5 1E       ;
+
+                BNE CODE_118B19         ; $11:8B13: D0 04       ;
+
+                JSL CODE_15D11D         ; $11:8B15: 22 1D D1 15 ;
+
+CODE_118B19:    LDA $02B7               ; $11:8B19: AD B7 02    ;
+
+                BEQ CODE_118B06         ; $11:8B1C: F0 E8       ;
+
                 RTS                     ; $11:8B1E: 60          ;
 
-CODE_118B1F:    LDA $0D13                   ; $11:8B1F: AD 13 0D    ;
-                BEQ CODE_118B2C             ; $11:8B22: F0 08       ;
-                JSL CODE_13FB12             ; $11:8B24: 22 12 FB 13 ;
-                JSL CODE_129B00             ; $11:8B28: 22 00 9B 12 ;
+CODE_118B1F:    LDA $0D13               ; $11:8B1F: AD 13 0D    ;
+
+                BEQ CODE_118B2C         ; $11:8B22: F0 08       ;
+
+                JSL CODE_13FB12         ; $11:8B24: 22 12 FB 13 ;
+
+                JSL CODE_129B00         ; $11:8B28: 22 00 9B 12 ;
+
 CODE_118B2C:    RTS                     ; $11:8B2C: 60          ;
 
-CODE_118B2D:    JSR CODE_11945A             ; $11:8B2D: 20 5A 94    ;
+CODE_118B2D:    JSR CODE_11945A         ; $11:8B2D: 20 5A 94    ;
+
                 RTL                     ; $11:8B30: 6B          ;
 
-CODE_118B31:    LDY $04ED                   ; $11:8B31: AC ED 04    ;
-                STZ $04ED                   ; $11:8B34: 9C ED 04    ;
-                STZ $04E1                   ; $11:8B37: 9C E1 04    ;
-                STZ $062C                   ; $11:8B3A: 9C 2C 06    ;
-                STZ $062A                   ; $11:8B3D: 9C 2A 06    ;
-                STZ $0500                   ; $11:8B40: 9C 00 05    ;
-                DEY                         ; $11:8B43: 88          ;
-                BNE CODE_118B91             ; $11:8B44: D0 4B       ;
-                STY $06C2                   ; $11:8B46: 8C C2 06    ;
-                JSL CODE_14E061             ; $11:8B49: 22 61 E0 14 ;
-                LDA #$FF                    ; $11:8B4D: A9 FF       ;
-                STA $0547                   ; $11:8B4F: 8D 47 05    ;
-                LDA #$69                    ; $11:8B52: A9 69       ;
-                STA $1194                   ; $11:8B54: 8D 94 11    ;
-                LDA #$48                    ; $11:8B57: A9 48       ;
-                STA $1195                   ; $11:8B59: 8D 95 11    ;
-                LDA #$15                    ; $11:8B5C: A9 15       ;
-                STA $0596                   ; $11:8B5E: 8D 96 05    ;
-                JSR CODE_118AD2             ; $11:8B61: 20 D2 8A    ;
-                LDA #$80                    ; $11:8B64: A9 80       ;
-                STA $FE                     ; $11:8B66: 85 FE       ;
-                STZ $0239                   ; $11:8B68: 9C 39 02    ;
-                JSR CODE_118791             ; $11:8B6B: 20 91 87    ;
-                JSL CODE_118014             ; $11:8B6E: 22 14 80 11 ;
-                JSL CODE_14F953             ; $11:8B72: 22 53 F9 14 ;
-                JSL CODE_14DA0A             ; $11:8B76: 22 0A DA 14 ;
-                JSR CODE_118AFE             ; $11:8B7A: 20 FE 8A    ;
-                LDA #$0F                    ; $11:8B7D: A9 0F       ;
-                STA $FE                     ; $11:8B7F: 85 FE       ;
-                STZ $0217                   ; $11:8B81: 9C 17 02    ;
-                JSR CODE_118990             ; $11:8B84: 20 90 89    ;
-                JSR CODE_1188C5             ; $11:8B87: 20 C5 88    ;
+CODE_118B31:    LDY $04ED               ; $11:8B31: AC ED 04    ;
+
+                STZ $04ED               ; $11:8B34: 9C ED 04    ;
+
+                STZ $04E1               ; $11:8B37: 9C E1 04    ;
+
+                STZ $062C               ; $11:8B3A: 9C 2C 06    ;
+
+                STZ $062A               ; $11:8B3D: 9C 2A 06    ;
+
+                STZ $0500               ; $11:8B40: 9C 00 05    ;
+
+                DEY                     ; $11:8B43: 88          ;
+
+                BNE CODE_118B91         ; $11:8B44: D0 4B       ;
+
+                STY $06C2               ; $11:8B46: 8C C2 06    ;
+
+                JSL CODE_14E061         ; $11:8B49: 22 61 E0 14 ;
+
+                LDA #$FF                ; $11:8B4D: A9 FF       ;
+
+                STA $0547               ; $11:8B4F: 8D 47 05    ;
+
+                LDA #$69                ; $11:8B52: A9 69       ;
+
+                STA $1194               ; $11:8B54: 8D 94 11    ;
+
+                LDA #$48                ; $11:8B57: A9 48       ;
+
+                STA $1195               ; $11:8B59: 8D 95 11    ;
+
+                LDA #$15                ; $11:8B5C: A9 15       ;
+
+                STA $0596               ; $11:8B5E: 8D 96 05    ;
+
+                JSR CODE_118AD2         ; $11:8B61: 20 D2 8A    ;
+
+                LDA #$80                ; $11:8B64: A9 80       ;
+
+                STA $FE                 ; $11:8B66: 85 FE       ;
+
+                STZ $0239               ; $11:8B68: 9C 39 02    ;
+
+                JSR CODE_118791         ; $11:8B6B: 20 91 87    ;
+
+                JSL CODE_118014         ; $11:8B6E: 22 14 80 11 ;
+
+                JSL CODE_14F953         ; $11:8B72: 22 53 F9 14 ;
+
+                JSL CODE_14DA0A         ; $11:8B76: 22 0A DA 14 ;
+
+                JSR CODE_118AFE         ; $11:8B7A: 20 FE 8A    ;
+
+                LDA #$0F                ; $11:8B7D: A9 0F       ;
+
+                STA $FE                 ; $11:8B7F: 85 FE       ;
+
+                STZ $0217               ; $11:8B81: 9C 17 02    ;
+
+                JSR CODE_118990         ; $11:8B84: 20 90 89    ;
+
+                JSR CODE_1188C5         ; $11:8B87: 20 C5 88    ;
+
                 JMP CODE_1181A8         ; $11:8B8A: 4C A8 81    ;
 
 DATA_118B8D:    db $EE,$1C,$BD,$09                              ;
 
-CODE_118B91:    LDA #$1F                    ; $11:8B91: A9 1F       ;
-                STA $04C3                               ; $11:8B93: 8D C3 04    ;
-                LDA #$00                    ; $11:8B96: A9 00       ;
-                STA $04C4                   ; $11:8B98: 8D C4 04    ;
-                STA $04B0                   ; $11:8B9B: 8D B0 04    ;
-                STA $0620                   ; $11:8B9E: 8D 20 06    ;
-                STA $04FC                   ; $11:8BA1: 8D FC 04    ;
-                STA $04FD                   ; $11:8BA4: 8D FD 04    ;
-                STA $0621                   ; $11:8BA7: 8D 21 06    ;
-                STA $04AD                   ; $11:8BAA: 8D AD 04    ;
-                DEY                         ; $11:8BAD: 88          ;
-                BEQ CODE_118BB3             ; $11:8BAE: F0 03       ;
+CODE_118B91:    LDA #$1F                ; $11:8B91: A9 1F       ;
+
+                STA $04C3               ; $11:8B93: 8D C3 04    ;
+
+                LDA #$00                ; $11:8B96: A9 00       ;
+
+                STA $04C4               ; $11:8B98: 8D C4 04    ;
+
+                STA $04B0               ; $11:8B9B: 8D B0 04    ;
+
+                STA $0620               ; $11:8B9E: 8D 20 06    ;
+
+                STA $04FC               ; $11:8BA1: 8D FC 04    ;
+
+                STA $04FD               ; $11:8BA4: 8D FD 04    ;
+
+                STA $0621               ; $11:8BA7: 8D 21 06    ;
+
+                STA $04AD               ; $11:8BAA: 8D AD 04    ;
+
+                DEY                     ; $11:8BAD: 88          ;
+
+                BEQ CODE_118BB3         ; $11:8BAE: F0 03       ;
+
                 JMP CODE_118CB8         ; $11:8BB0: 4C B8 8C    ;
 
-CODE_118BB3:    STY $06C2                   ; $11:8BB3: 8C C2 06    ;
-                LDA #$0A                ; $11:8BB6: A9 0A       ; \ Game over music.
-                STA $1DE2               ; $11:8BB8: 8D E2 1D    ; /
-                JSR CODE_118AD2             ; $11:8BBB: 20 D2 8A    ;
-                JSL CODE_118009             ; $11:8BBE: 22 09 80 11 ;
-                STZ $0217                   ; $11:8BC2: 9C 17 02    ;
-                JSL CODE_14D194             ; $11:8BC5: 22 94 D1 14 ;
-                JSL CODE_14F953             ; $11:8BC9: 22 53 F9 14 ;
-                JSL CODE_14F92E             ; $11:8BCD: 22 2E F9 14 ;
-                JSL CODE_1387D8             ; $11:8BD1: 22 D8 87 13 ;
-                JSL CODE_138846             ; $11:8BD5: 22 46 88 13 ;
-                JSL CODE_13DC5E             ; $11:8BD9: 22 5E DC 13 ;
-                JSL CODE_13882D             ; $11:8BDD: 22 2D 88 13 ;
-                LDA #$01                    ; $11:8BE1: A9 01       ;
-                STA $11                     ; $11:8BE3: 85 11       ;
-                JSL CODE_14F908             ; $11:8BE5: 22 08 F9 14 ;
-                LDA #$02                    ; $11:8BE9: A9 02       ;
-                STA $11                     ; $11:8BEB: 85 11       ;
-                JSL CODE_14F908             ; $11:8BED: 22 08 F9 14 ;
-                LDA #$03                    ; $11:8BF1: A9 03       ;
-                STA $11                     ; $11:8BF3: 85 11       ;
-                JSL CODE_14F908             ; $11:8BF5: 22 08 F9 14 ;
-                JSL CODE_14D84E             ; $11:8BF9: 22 4E D8 14 ;
-                LDA #$05                    ; $11:8BFD: A9 05       ;
-                STA $11                     ; $11:8BFF: 85 11       ;
-                JSL CODE_118014             ; $11:8C01: 22 14 80 11 ;
-                REP #$20                    ; $11:8C05: C2 20       ;
-                LDA #$09BD                  ; $11:8C07: A9 BD 09    ;
-                STA $11C8                   ; $11:8C0A: 8D C8 11    ;
-                STA $11CE                   ; $11:8C0D: 8D CE 11    ;
-                LDA #$1CEE                  ; $11:8C10: A9 EE 1C    ;
-                STA $11C8                   ; $11:8C13: 8D C8 11    ;
-                SEP #$20                    ; $11:8C16: E2 20       ;
-                LDA #$13                    ; $11:8C18: A9 13       ;
-                STA $11                     ; $11:8C1A: 85 11       ;
-                LDA #$01                    ; $11:8C1C: A9 01       ;
-                STA $0207                   ; $11:8C1E: 8D 07 02    ;
-                LDA #$01                    ; $11:8C21: A9 01       ;
-                STA $0243                   ; $11:8C23: 8D 43 02    ;
-                STZ $0211                   ; $11:8C26: 9C 11 02    ;
-                STZ $078E                   ; $11:8C29: 9C 8E 07    ;
-                JSR CODE_1190DF             ; $11:8C2C: 20 DF 90    ;
-                STZ $0D13                   ; $11:8C2F: 9C 13 0D    ;
-                INC $078F                   ; $11:8C32: EE 8F 07    ;
-                JSR CODE_118AFE             ; $11:8C35: 20 FE 8A    ;
-CODE_118C38:    JSL CODE_118014             ; $11:8C38: 22 14 80 11 ;
-                LDA $FA                     ; $11:8C3C: A5 FA       ;
-                AND #$2C                    ; $11:8C3E: 29 2C       ;
-                BEQ CODE_118C46             ; $11:8C40: F0 04       ;
-                JSL CODE_14DAB8             ; $11:8C42: 22 B8 DA 14 ;
-CODE_118C46:    LDA $078E                   ; $11:8C46: AD 8E 07    ;
-                ASL A                       ; $11:8C49: 0A          ;
-                ASL A                       ; $11:8C4A: 0A          ;
-                CLC                         ; $11:8C4B: 18          ;
-                ADC $078E                   ; $11:8C4C: 6D 8E 07    ;
-                CLC                         ; $11:8C4F: 18          ;
-                ADC $078E                   ; $11:8C50: 6D 8E 07    ;
-                TAY                         ; $11:8C53: A8          ;
-                REP #$20                    ; $11:8C54: C2 20       ;
-                LDA #$09BD                  ; $11:8C56: A9 BD 09    ;
-                STA $11C8                   ; $11:8C59: 8D C8 11    ;
-                STA $11CE                   ; $11:8C5C: 8D CE 11    ;
-                STA $11D4                   ; $11:8C5F: 8D D4 11    ;
-                SEP #$20                    ; $11:8C62: E2 20       ;
-                INC $0790                   ; $11:8C64: EE 90 07    ;
-                LDA $0790                   ; $11:8C67: AD 90 07    ;
-                AND #$10                    ; $11:8C6A: 29 10       ;
-                LSR A                       ; $11:8C6C: 4A          ;
-                LSR A                       ; $11:8C6D: 4A          ;
-                LSR A                       ; $11:8C6E: 4A          ;
-                TAX                         ; $11:8C6F: AA          ;
-                REP #$20                    ; $11:8C70: C2 20       ;
-                LDA.l DATA_118B8D,x                 ; $11:8C72: BF 8D 8B 11 ;
-                STA $11C8,y                 ; $11:8C76: 99 C8 11    ;
-                SEP #$20                    ; $11:8C79: E2 20       ;
-                LDA #$13                    ; $11:8C7B: A9 13       ;
-                STA $11                     ; $11:8C7D: 85 11       ;
-                LDA $FA                     ; $11:8C7F: A5 FA       ;
-                AND #$10                    ; $11:8C81: 29 10       ;
-                BEQ CODE_118C38             ; $11:8C83: F0 B3       ;
-                JSL CODE_14DAF4             ; $11:8C85: 22 F4 DA 14 ;
-                LDA $078E                   ; $11:8C89: AD 8E 07    ;
-                BNE CODE_118C93             ; $11:8C8C: D0 05       ;
-                LDA #$29                    ; $11:8C8E: A9 29       ;
-                STA $1DE3                   ; $11:8C90: 8D E3 1D    ;
-CODE_118C93:    LDA #$04                    ; $11:8C93: A9 04       ;
-                JSL CODE_14D78D             ; $11:8C95: 22 8D D7 14 ;
-                STZ $0207                   ; $11:8C99: 9C 07 02    ;
-                STZ $062B                   ; $11:8C9C: 9C 2B 06    ;
-                LDA #$13                    ; $11:8C9F: A9 13       ;
-                STA $0243                   ; $11:8CA1: 8D 43 02    ;
-                STZ $078F                   ; $11:8CA4: 9C 8F 07    ;
-                LDA $0635                   ; $11:8CA7: AD 35 06    ;
-                ASL A                       ; $11:8CAA: 0A          ;
-                CLC                         ; $11:8CAB: 18          ;
-                ADC $0635                   ; $11:8CAC: 6D 35 06    ;
-                STA $0533                   ; $11:8CAF: 8D 33 05    ;
-                STA $04E8                   ; $11:8CB2: 8D E8 04    ;
+CODE_118BB3:    STY $06C2               ; $11:8BB3: 8C C2 06    ;
+
+                LDA #$0A                ; $11:8BB6: A9 0A       ;\ Game over music.
+                STA $1DE2               ; $11:8BB8: 8D E2 1D    ;/
+                JSR CODE_118AD2         ; $11:8BBB: 20 D2 8A    ;
+
+                JSL CODE_118009         ; $11:8BBE: 22 09 80 11 ;
+
+                STZ $0217               ; $11:8BC2: 9C 17 02    ;
+
+                JSL CODE_14D194         ; $11:8BC5: 22 94 D1 14 ;
+
+                JSL CODE_14F953         ; $11:8BC9: 22 53 F9 14 ;
+
+                JSL CODE_14F92E         ; $11:8BCD: 22 2E F9 14 ;
+
+                JSL CODE_1387D8         ; $11:8BD1: 22 D8 87 13 ;
+
+                JSL CODE_138846         ; $11:8BD5: 22 46 88 13 ;
+
+                JSL CODE_13DC5E         ; $11:8BD9: 22 5E DC 13 ;
+
+                JSL CODE_13882D         ; $11:8BDD: 22 2D 88 13 ;
+
+                LDA #$01                ; $11:8BE1: A9 01       ;
+
+                STA $11                 ; $11:8BE3: 85 11       ;
+
+                JSL CODE_14F908         ; $11:8BE5: 22 08 F9 14 ;
+
+                LDA #$02                ; $11:8BE9: A9 02       ;
+
+                STA $11                 ; $11:8BEB: 85 11       ;
+
+                JSL CODE_14F908         ; $11:8BED: 22 08 F9 14 ;
+
+                LDA #$03                ; $11:8BF1: A9 03       ;
+
+                STA $11                 ; $11:8BF3: 85 11       ;
+
+                JSL CODE_14F908         ; $11:8BF5: 22 08 F9 14 ;
+
+                JSL CODE_14D84E         ; $11:8BF9: 22 4E D8 14 ;
+
+                LDA #$05                ; $11:8BFD: A9 05       ;
+
+                STA $11                 ; $11:8BFF: 85 11       ;
+
+                JSL CODE_118014         ; $11:8C01: 22 14 80 11 ;
+
+                REP #$20                ; $11:8C05: C2 20       ;
+
+                LDA #$09BD              ; $11:8C07: A9 BD 09    ;
+
+                STA $11C8               ; $11:8C0A: 8D C8 11    ;
+
+                STA $11CE               ; $11:8C0D: 8D CE 11    ;
+
+                LDA #$1CEE              ; $11:8C10: A9 EE 1C    ;
+
+                STA $11C8               ; $11:8C13: 8D C8 11    ;
+
+                SEP #$20                ; $11:8C16: E2 20       ;
+
+                LDA #$13                ; $11:8C18: A9 13       ;
+
+                STA $11                 ; $11:8C1A: 85 11       ;
+
+                LDA #$01                ; $11:8C1C: A9 01       ;
+
+                STA $0207               ; $11:8C1E: 8D 07 02    ;
+
+                LDA #$01                ; $11:8C21: A9 01       ;
+
+                STA $0243               ; $11:8C23: 8D 43 02    ;
+
+                STZ $0211               ; $11:8C26: 9C 11 02    ;
+
+                STZ $078E               ; $11:8C29: 9C 8E 07    ;
+
+                JSR CODE_1190DF         ; $11:8C2C: 20 DF 90    ;
+
+                STZ $0D13               ; $11:8C2F: 9C 13 0D    ;
+
+                INC $078F               ; $11:8C32: EE 8F 07    ;
+
+                JSR CODE_118AFE         ; $11:8C35: 20 FE 8A    ;
+
+CODE_118C38:    JSL CODE_118014         ; $11:8C38: 22 14 80 11 ;
+
+                LDA $FA                 ; $11:8C3C: A5 FA       ;
+
+                AND #$2C                ; $11:8C3E: 29 2C       ;
+
+                BEQ CODE_118C46         ; $11:8C40: F0 04       ;
+
+                JSL CODE_14DAB8         ; $11:8C42: 22 B8 DA 14 ;
+
+CODE_118C46:    LDA $078E               ; $11:8C46: AD 8E 07    ;
+
+                ASL A                   ; $11:8C49: 0A          ;
+
+                ASL A                   ; $11:8C4A: 0A          ;
+
+                CLC                     ; $11:8C4B: 18          ;
+
+                ADC $078E               ; $11:8C4C: 6D 8E 07    ;
+
+                CLC                     ; $11:8C4F: 18          ;
+
+                ADC $078E               ; $11:8C50: 6D 8E 07    ;
+
+                TAY                     ; $11:8C53: A8          ;
+
+                REP #$20                ; $11:8C54: C2 20       ;
+
+                LDA #$09BD              ; $11:8C56: A9 BD 09    ;
+
+                STA $11C8               ; $11:8C59: 8D C8 11    ;
+
+                STA $11CE               ; $11:8C5C: 8D CE 11    ;
+
+                STA $11D4               ; $11:8C5F: 8D D4 11    ;
+
+                SEP #$20                ; $11:8C62: E2 20       ;
+
+                INC $0790               ; $11:8C64: EE 90 07    ;
+
+                LDA $0790               ; $11:8C67: AD 90 07    ;
+
+                AND #$10                ; $11:8C6A: 29 10       ;
+
+                LSR A                   ; $11:8C6C: 4A          ;
+
+                LSR A                   ; $11:8C6D: 4A          ;
+
+                LSR A                   ; $11:8C6E: 4A          ;
+
+                TAX                     ; $11:8C6F: AA          ;
+
+                REP #$20                ; $11:8C70: C2 20       ;
+
+                LDA.l DATA_118B8D,x     ; $11:8C72: BF 8D 8B 11 ;
+
+                STA $11C8,y             ; $11:8C76: 99 C8 11    ;
+
+                SEP #$20                ; $11:8C79: E2 20       ;
+
+                LDA #$13                ; $11:8C7B: A9 13       ;
+
+                STA $11                 ; $11:8C7D: 85 11       ;
+
+                LDA $FA                 ; $11:8C7F: A5 FA       ;
+
+                AND #$10                ; $11:8C81: 29 10       ;
+
+                BEQ CODE_118C38         ; $11:8C83: F0 B3       ;
+
+                JSL CODE_14DAF4         ; $11:8C85: 22 F4 DA 14 ;
+
+                LDA $078E               ; $11:8C89: AD 8E 07    ;
+
+                BNE CODE_118C93         ; $11:8C8C: D0 05       ;
+
+                LDA #$29                ; $11:8C8E: A9 29       ;
+
+                STA $1DE3               ; $11:8C90: 8D E3 1D    ;
+
+CODE_118C93:    LDA #$04                ; $11:8C93: A9 04       ;
+
+                JSL CODE_14D78D         ; $11:8C95: 22 8D D7 14 ;
+
+                STZ $0207               ; $11:8C99: 9C 07 02    ;
+
+                STZ $062B               ; $11:8C9C: 9C 2B 06    ;
+
+                LDA #$13                ; $11:8C9F: A9 13       ;
+
+                STA $0243               ; $11:8CA1: 8D 43 02    ;
+
+                STZ $078F               ; $11:8CA4: 9C 8F 07    ;
+
+                LDA $0635               ; $11:8CA7: AD 35 06    ;
+
+                ASL A                   ; $11:8CAA: 0A          ;
+
+                CLC                     ; $11:8CAB: 18          ;
+
+                ADC $0635               ; $11:8CAC: 6D 35 06    ;
+
+                STA $0533               ; $11:8CAF: 8D 33 05    ;
+
+                STA $04E8               ; $11:8CB2: 8D E8 04    ;
+
                 JMP CODE_11816B         ; $11:8CB5: 4C 6B 81    ;
 
-CODE_118CB8:    DEY                         ; $11:8CB8: 88          ;
-                BNE CODE_118CBE             ; $11:8CB9: D0 03       ;
+CODE_118CB8:    DEY                     ; $11:8CB8: 88          ;
+
+                BNE CODE_118CBE         ; $11:8CB9: D0 03       ;
+
                 BRL CODE_118D9D         ; $11:8CBB: 82 DF 00    ;
 
-CODE_118CBE:    LDA #$13                ; $11:8CBE: A9 13       ; \ Warp Jar music.
-                STA $1DE2               ; $11:8CC0: 8D E2 1D    ; /
+CODE_118CBE:    LDA #$13                ; $11:8CBE: A9 13       ;\ Warp Jar music.
+                STA $1DE2               ; $11:8CC0: 8D E2 1D    ;/
                 JSL CODE_14F9F0         ; $11:8CC3: 22 F0 F9 14 ; Clear all OAM.
-                LDX #$00                    ; $11:8CC7: A2 00       ;
-                JSL CODE_14D345             ; $11:8CC9: 22 45 D3 14 ;
-CODE_118CCD:    JSL CODE_118014             ; $11:8CCD: 22 14 80 11 ;
-                JSL CODE_14D3A4             ; $11:8CD1: 22 A4 D3 14 ;
-                LDA $022B                   ; $11:8CD5: AD 2B 02    ;
-                CMP #$80                    ; $11:8CD8: C9 80       ;
-                BCC CODE_118CCD             ; $11:8CDA: 90 F1       ;
-                STZ $023A                   ; $11:8CDC: 9C 3A 02    ;
-                STZ $FE                     ; $11:8CDF: 64 FE       ;
-                JSL CODE_14D4C4             ; $11:8CE1: 22 C4 D4 14 ;
-                LDY $0635               ; $11:8CE5: AC 35 06    ; \ Store original world number into $0405.
-                STY $0405               ; $11:8CE8: 8C 05 04    ; /
-                LDA.w DATA_11CDB4,y     ; $11:8CEB: B9 B4 CD    ; \ Get new world number to warp to.
-                STA $0635               ; $11:8CEE: 8D 35 06    ; /
+                LDX #$00                ; $11:8CC7: A2 00       ;
+
+                JSL CODE_14D345         ; $11:8CC9: 22 45 D3 14 ;
+
+CODE_118CCD:    JSL CODE_118014         ; $11:8CCD: 22 14 80 11 ;
+
+                JSL CODE_14D3A4         ; $11:8CD1: 22 A4 D3 14 ;
+
+                LDA $022B               ; $11:8CD5: AD 2B 02    ;
+
+                CMP #$80                ; $11:8CD8: C9 80       ;
+
+                BCC CODE_118CCD         ; $11:8CDA: 90 F1       ;
+
+                STZ $023A               ; $11:8CDC: 9C 3A 02    ;
+
+                STZ $FE                 ; $11:8CDF: 64 FE       ;
+
+                JSL CODE_14D4C4         ; $11:8CE1: 22 C4 D4 14 ;
+
+                LDY $0635               ; $11:8CE5: AC 35 06    ;\ Store original world number into $0405.
+                STY $0405               ; $11:8CE8: 8C 05 04    ;/
+                LDA.w DATA_11CDB4,y     ; $11:8CEB: B9 B4 CD    ;\ Get new world number to warp to.
+                STA $0635               ; $11:8CEE: 8D 35 06    ;/
                 TAY                     ; $11:8CF1: A8          ; Into Y.
                 LDX $8F                 ; $11:8CF2: A6 8F       ; Player number into X.
-                LDA.w DATA_11C9B4,y     ; $11:8CF4: B9 B4 C9    ; \ Get appropiate level number. (x-1)
-                STA $0533               ; $11:8CF7: 8D 33 05    ;  |
-                STA $04E8               ; $11:8CFA: 8D E8 04    ; /
+                LDA.w DATA_11C9B4,y     ; $11:8CF4: B9 B4 C9    ;\ Get appropiate level number. (x-1)
+                STA $0533               ; $11:8CF7: 8D 33 05    ; |
+                STA $04E8               ; $11:8CFA: 8D E8 04    ;/
                 TYA                     ; $11:8CFD: 98          ; World number to warp to into Y.
-                SEC                     ; $11:8CFE: 38          ; \ Subtract 3 from the value. (There are no 'World X' graphics for Worlds 1-3)
-                SBC #$03                ; $11:8CFF: E9 03       ;  |
-                ASL A                   ; $11:8D01: 0A          ;  | Multiply by 2 since we're going to read from a 16-bit table.
-                TAY                     ; $11:8D02: A8          ; / And back into Y again.
+                SEC                     ; $11:8CFE: 38          ;\ Subtract 3 from the value. (There are no 'World X' graphics for Worlds 1-3)
+                SBC #$03                ; $11:8CFF: E9 03       ; |
+                ASL A                   ; $11:8D01: 0A          ; | Multiply by 2 since we're going to read from a 16-bit table.
+                TAY                     ; $11:8D02: A8          ;/ And back into Y again.
                 REP #$20                ; $11:8D03: C2 20       ; A = 16-bit.
-                LDA.w DATA_11CDBB,y     ; $11:8D05: B9 BB CD    ; \ $11BD-$11C2 = Tilemap of number in 'World X'.
-                STA $11BD               ; $11:8D08: 8D BD 11    ;  | TTTTTTTT YXPCCCTT format.
-                LDA.w DATA_11CDC3,y     ; $11:8D0B: B9 C3 CD    ;  |
-                STA $11BF               ; $11:8D0E: 8D BF 11    ;  |
-                LDA.w DATA_11CDCB,y     ; $11:8D11: B9 CB CD    ;  |
-                STA $11C1               ; $11:8D14: 8D C1 11    ; /
+                LDA.w DATA_11CDBB,y     ; $11:8D05: B9 BB CD    ;\ $11BD-$11C2 = Tilemap of number in 'World X'.
+                STA $11BD               ; $11:8D08: 8D BD 11    ; | TTTTTTTT YXPCCCTT format.
+                LDA.w DATA_11CDC3,y     ; $11:8D0B: B9 C3 CD    ; |
+                STA $11BF               ; $11:8D0E: 8D BF 11    ; |
+                LDA.w DATA_11CDCB,y     ; $11:8D11: B9 CB CD    ; |
+                STA $11C1               ; $11:8D14: 8D C1 11    ;/
                 SEP #$20                ; $11:8D17: E2 20       ; A = 8-bit.
-                JSL CODE_118009             ; $11:8D19: 22 09 80 11 ;
-                JSL CODE_14D194             ; $11:8D1D: 22 94 D1 14 ;
-                JSL CODE_138A68             ; $11:8D21: 22 68 8A 13 ;
-                JSL CODE_138846             ; $11:8D25: 22 46 88 13 ;
-                JSL CODE_138A92             ; $11:8D29: 22 92 8A 13 ;
-                STZ $0217                   ; $11:8D2D: 9C 17 02    ;
-                JSL CODE_14F92E             ; $11:8D30: 22 2E F9 14 ;
-                LDA #$01                    ; $11:8D34: A9 01       ;
-                STA $0201                   ; $11:8D36: 8D 01 02    ;
-                STA $0207                   ; $11:8D39: 8D 07 02    ;
-                JSL CODE_14F953             ; $11:8D3C: 22 53 F9 14 ;
-                JSL CODE_13DE8C             ; $11:8D40: 22 8C DE 13 ;
-                LDA #$01                    ; $11:8D44: A9 01       ;
-                STA $0243                   ; $11:8D46: 8D 43 02    ;
-                JSR CODE_1190DF             ; $11:8D49: 20 DF 90    ;
-                JSL CODE_14D84E             ; $11:8D4C: 22 4E D8 14 ;
-                LDA #$01                    ; $11:8D50: A9 01       ;
-                STA $11                     ; $11:8D52: 85 11       ;
-                JSL CODE_14F908             ; $11:8D54: 22 08 F9 14 ;
-                LDA #$04                    ; $11:8D58: A9 04       ;
-                STA $11                     ; $11:8D5A: 85 11       ;
-                JSL CODE_14F908             ; $11:8D5C: 22 08 F9 14 ;
-                LDA #$12                    ; $11:8D60: A9 12       ;
-                STA $11                     ; $11:8D62: 85 11       ;
-                LDA #$0F                ; $11:8D64: A9 0F       ; \ Bonus game music.
-                STA $1DE2               ; $11:8D66: 8D E2 1D    ; /
-                LDX #$01                    ; $11:8D69: A2 01       ;
-                JSL CODE_14D345             ; $11:8D6B: 22 45 D3 14 ;
-CODE_118D6F:    JSL CODE_118014             ; $11:8D6F: 22 14 80 11 ;
-                JSL CODE_14D3A4             ; $11:8D73: 22 A4 D3 14 ;
-                LDA $022B                   ; $11:8D77: AD 2B 02    ;
-                CMP #$F0                    ; $11:8D7A: C9 F0       ;
-                BCC CODE_118D6F             ; $11:8D7C: 90 F1       ;
-                STZ $023A                   ; $11:8D7E: 9C 3A 02    ;
-                JSL CODE_14D4C4             ; $11:8D81: 22 C4 D4 14 ;
-                LDA #$00                    ; $11:8D85: A9 00       ;
-                JSL CODE_14D78D             ; $11:8D87: 22 8D D7 14 ;
-                JSL CODE_14F92E             ; $11:8D8B: 22 2E F9 14 ;
-                JSR CODE_11904D             ; $11:8D8F: 20 4D 90    ;
-                JSR CODE_11883A             ; $11:8D92: 20 3A 88    ;
-                LDA #$13                    ; $11:8D95: A9 13       ;
-                STA $0243                   ; $11:8D97: 8D 43 02    ;
+                JSL CODE_118009         ; $11:8D19: 22 09 80 11 ;
+
+                JSL CODE_14D194         ; $11:8D1D: 22 94 D1 14 ;
+
+                JSL CODE_138A68         ; $11:8D21: 22 68 8A 13 ;
+
+                JSL CODE_138846         ; $11:8D25: 22 46 88 13 ;
+
+                JSL CODE_138A92         ; $11:8D29: 22 92 8A 13 ;
+
+                STZ $0217               ; $11:8D2D: 9C 17 02    ;
+
+                JSL CODE_14F92E         ; $11:8D30: 22 2E F9 14 ;
+
+                LDA #$01                ; $11:8D34: A9 01       ;
+
+                STA $0201               ; $11:8D36: 8D 01 02    ;
+
+                STA $0207               ; $11:8D39: 8D 07 02    ;
+
+                JSL CODE_14F953         ; $11:8D3C: 22 53 F9 14 ;
+
+                JSL CODE_13DE8C         ; $11:8D40: 22 8C DE 13 ;
+
+                LDA #$01                ; $11:8D44: A9 01       ;
+
+                STA $0243               ; $11:8D46: 8D 43 02    ;
+
+                JSR CODE_1190DF         ; $11:8D49: 20 DF 90    ;
+
+                JSL CODE_14D84E         ; $11:8D4C: 22 4E D8 14 ;
+
+                LDA #$01                ; $11:8D50: A9 01       ;
+
+                STA $11                 ; $11:8D52: 85 11       ;
+
+                JSL CODE_14F908         ; $11:8D54: 22 08 F9 14 ;
+
+                LDA #$04                ; $11:8D58: A9 04       ;
+
+                STA $11                 ; $11:8D5A: 85 11       ;
+
+                JSL CODE_14F908         ; $11:8D5C: 22 08 F9 14 ;
+
+                LDA #$12                ; $11:8D60: A9 12       ;
+
+                STA $11                 ; $11:8D62: 85 11       ;
+
+                LDA #$0F                ; $11:8D64: A9 0F       ;\ Bonus game music.
+                STA $1DE2               ; $11:8D66: 8D E2 1D    ;/
+                LDX #$01                ; $11:8D69: A2 01       ;
+
+                JSL CODE_14D345         ; $11:8D6B: 22 45 D3 14 ;
+
+CODE_118D6F:    JSL CODE_118014         ; $11:8D6F: 22 14 80 11 ;
+
+                JSL CODE_14D3A4         ; $11:8D73: 22 A4 D3 14 ;
+
+                LDA $022B               ; $11:8D77: AD 2B 02    ;
+
+                CMP #$F0                ; $11:8D7A: C9 F0       ;
+
+                BCC CODE_118D6F         ; $11:8D7C: 90 F1       ;
+
+                STZ $023A               ; $11:8D7E: 9C 3A 02    ;
+
+                JSL CODE_14D4C4         ; $11:8D81: 22 C4 D4 14 ;
+
+                LDA #$00                ; $11:8D85: A9 00       ;
+
+                JSL CODE_14D78D         ; $11:8D87: 22 8D D7 14 ;
+
+                JSL CODE_14F92E         ; $11:8D8B: 22 2E F9 14 ;
+
+                JSR CODE_11904D         ; $11:8D8F: 20 4D 90    ;
+
+                JSR CODE_11883A         ; $11:8D92: 20 3A 88    ;
+
+                LDA #$13                ; $11:8D95: A9 13       ;
+
+                STA $0243               ; $11:8D97: 8D 43 02    ;
+
                 JMP CODE_118192         ; $11:8D9A: 4C 92 81    ;
 
-CODE_118D9D:    LDA #$80                    ; $11:8D9D: A9 80       ;
-                STA $1DE2                   ; $11:8D9F: 8D E2 1D    ;
-                LDX $8F                 ; $11:8DA2: A6 8F       ; \ Indexed by character.
-                LDA $062D,x             ; $11:8DA4: BD 2D 06    ;  | Check if 'Amount of levels completed', indexed by character...
-                CMP #$63                ; $11:8DA7: C9 63       ;  | Is 99.
-                BEQ CODE_118DAE         ; $11:8DA9: F0 03       ; / If so, branch, don't increment further.
-                INC $062D,x             ; $11:8DAB: FE 2D 06    ;| Otherwise, increment amount of levels cleared.
-CODE_118DAE:    LDA $0533               ; $11:8DAE: AD 33 05    ; \ Level to trigger ending sequence = 7-2.
-                CMP #$13                ; $11:8DB1: C9 13       ;  |
-                BNE CODE_118DB8         ; $11:8DB3: D0 03       ; / If not 7-2, branch.
+CODE_118D9D:    LDA #$80                ; $11:8D9D: A9 80       ;
+
+                STA $1DE2               ; $11:8D9F: 8D E2 1D    ;
+
+                LDX $8F                 ; $11:8DA2: A6 8F       ;\ Indexed by character.
+                LDA $062D,x             ; $11:8DA4: BD 2D 06    ; | Check if 'Amount of levels completed', indexed by character...
+                CMP #$63                ; $11:8DA7: C9 63       ; | Is 99.
+                BEQ CODE_118DAE         ; $11:8DA9: F0 03       ;/ If so, branch, don't increment further.
+                INC $062D,x             ; $11:8DAB: FE 2D 06    ; Otherwise, increment amount of levels cleared.
+CODE_118DAE:    LDA $0533               ; $11:8DAE: AD 33 05    ;\ Level to trigger ending sequence = 7-2.
+                CMP #$13                ; $11:8DB1: C9 13       ; |
+                BNE CODE_118DB8         ; $11:8DB3: D0 03       ;/ If not 7-2, branch.
                 JMP CODE_11905A         ; $11:8DB5: 4C 5A 90    ;
 
-CODE_118DB8:    STY $06C2                   ; $11:8DB8: 8C C2 06    ;
-                STZ $0217                   ; $11:8DBB: 9C 17 02    ;
-                JSR CODE_118AD2             ; $11:8DBE: 20 D2 8A    ;
-                JSL CODE_118009             ; $11:8DC1: 22 09 80 11 ;
-                JSL CODE_14F9F0         ; $11:8DC5: 22 F0 F9 14 ; Clear all OAM.
-                JSL CODE_14F953             ; $11:8DC9: 22 53 F9 14 ;
-                JSR CODE_1190DF             ; $11:8DCD: 20 DF 90    ;
-                JSL CODE_14D194             ; $11:8DD0: 22 94 D1 14 ;
-                JSL CODE_118014             ; $11:8DD4: 22 14 80 11 ;
-                LDA #$00                    ; $11:8DD8: A9 00       ;
-                JSL CODE_14D78D             ; $11:8DDA: 22 8D D7 14 ;
-                JSL CODE_14F92E             ; $11:8DDE: 22 2E F9 14 ;
-                JSL CODE_138A68             ; $11:8DE2: 22 68 8A 13 ;
-                JSL CODE_138846             ; $11:8DE6: 22 46 88 13 ;
-                STZ $0D08                   ; $11:8DEA: 9C 08 0D    ;
-                LDY $0635                   ; $11:8DED: AC 35 06    ;
-                LDA.w DATA_11C9B4+1,y                   ; $11:8DF0: B9 B5 C9    ;
-                SEC                         ; $11:8DF3: 38          ;
-                SBC #$01                    ; $11:8DF4: E9 01       ;
-                CMP $0533                   ; $11:8DF6: CD 33 05    ;
-                BNE CODE_118E03             ; $11:8DF9: D0 08       ;
-                INC $0635                   ; $11:8DFB: EE 35 06    ;
-                INC $0D08                   ; $11:8DFE: EE 08 0D    ;
-                BRA CODE_118E23             ; $11:8E01: 80 20       ;
+CODE_118DB8:    STY $06C2               ; $11:8DB8: 8C C2 06    ;
 
-CODE_118E03:    JSL CODE_14E30F             ; $11:8E03: 22 0F E3 14 ;
-                LDA $0533                   ; $11:8E07: AD 33 05    ;
-                LDY #$00                    ; $11:8E0A: A0 00       ;
-CODE_118E0C:    INY                         ; $11:8E0C: C8          ;
-                CMP.w DATA_11C9B4,y                 ; $11:8E0D: D9 B4 C9    ;
-                BCS CODE_118E0C                     ; $11:8E10: B0 FA       ;
-                DEY                         ; $11:8E12: 88          ;
-                STY $0635                   ; $11:8E13: 8C 35 06    ;
-                LDY $0635                   ; $11:8E16: AC 35 06    ;
-                LDA $0533                   ; $11:8E19: AD 33 05    ;
+                STZ $0217               ; $11:8DBB: 9C 17 02    ;
+
+                JSR CODE_118AD2         ; $11:8DBE: 20 D2 8A    ;
+
+                JSL CODE_118009         ; $11:8DC1: 22 09 80 11 ;
+
+                JSL CODE_14F9F0         ; $11:8DC5: 22 F0 F9 14 ; Clear all OAM.
+                JSL CODE_14F953         ; $11:8DC9: 22 53 F9 14 ;
+
+                JSR CODE_1190DF         ; $11:8DCD: 20 DF 90    ;
+
+                JSL CODE_14D194         ; $11:8DD0: 22 94 D1 14 ;
+
+                JSL CODE_118014         ; $11:8DD4: 22 14 80 11 ;
+
+                LDA #$00                ; $11:8DD8: A9 00       ;
+
+                JSL CODE_14D78D         ; $11:8DDA: 22 8D D7 14 ;
+
+                JSL CODE_14F92E         ; $11:8DDE: 22 2E F9 14 ;
+
+                JSL CODE_138A68         ; $11:8DE2: 22 68 8A 13 ;
+
+                JSL CODE_138846         ; $11:8DE6: 22 46 88 13 ;
+
+                STZ $0D08               ; $11:8DEA: 9C 08 0D    ;
+
+                LDY $0635               ; $11:8DED: AC 35 06    ;
+
+                LDA.w DATA_11C9B4+1,y   ; $11:8DF0: B9 B5 C9    ;
+
+                SEC                     ; $11:8DF3: 38          ;
+
+                SBC #$01                ; $11:8DF4: E9 01       ;
+
+                CMP $0533               ; $11:8DF6: CD 33 05    ;
+
+                BNE CODE_118E03         ; $11:8DF9: D0 08       ;
+
+                INC $0635               ; $11:8DFB: EE 35 06    ;
+
+                INC $0D08               ; $11:8DFE: EE 08 0D    ;
+
+                BRA CODE_118E23         ; $11:8E01: 80 20       ;
+
+CODE_118E03:    JSL CODE_14E30F         ; $11:8E03: 22 0F E3 14 ;
+
+                LDA $0533               ; $11:8E07: AD 33 05    ;
+
+                LDY #$00                ; $11:8E0A: A0 00       ;
+
+CODE_118E0C:    INY                     ; $11:8E0C: C8          ;
+
+                CMP.w DATA_11C9B4,y     ; $11:8E0D: D9 B4 C9    ;
+
+                BCS CODE_118E0C         ; $11:8E10: B0 FA       ;
+
+                DEY                     ; $11:8E12: 88          ;
+
+                STY $0635               ; $11:8E13: 8C 35 06    ;
+
+                LDY $0635               ; $11:8E16: AC 35 06    ;
+
+                LDA $0533               ; $11:8E19: AD 33 05    ;
+
                 SEC                     ; $11:8E1C: 38          ;
 
-                SBC.w DATA_11C9B4,y                 ; $11:8E1D: F9 B4 C9    ;
-                STA $0629                   ; $11:8E20: 8D 29 06    ;
-CODE_118E23:    JSL CODE_14D84E             ; $11:8E23: 22 4E D8 14 ;
-                STZ $0796                   ; $11:8E27: 9C 96 07    ;
-                LDA #$01                    ; $11:8E2A: A9 01       ;
-                STA $11                     ; $11:8E2C: 85 11       ;
-                JSL CODE_14F908             ; $11:8E2E: 22 08 F9 14 ;
-                LDA #$17                    ; $11:8E32: A9 17       ;
-                STA $11                     ; $11:8E34: 85 11       ;
-                LDA #$40                    ; $11:8E36: A9 40       ;
-                STA $0100                   ; $11:8E38: 8D 00 01    ;
-                JSR CODE_1190DF             ; $11:8E3B: 20 DF 90    ;
-                JSL CODE_118014             ; $11:8E3E: 22 14 80 11 ;
-                LDA #$C0                    ; $11:8E42: A9 C0       ;
-                STA $0100                   ; $11:8E44: 8D 00 01    ;
-                JSR CODE_1190A2             ; $11:8E47: 20 A2 90    ;
-                STZ $0789                   ; $11:8E4A: 9C 89 07    ;
-                JSR CODE_1190E5             ; $11:8E4D: 20 E5 90    ;
-                LDA #$0C                ; $11:8E50: A9 0C       ; \ Bonus game music.
-                STA $1DE2               ; $11:8E52: 8D E2 1D    ; /
-                LDA $062B                   ; $11:8E55: AD 2B 06    ;
-                BNE CODE_118E5D             ; $11:8E58: D0 03       ;
+                SBC.w DATA_11C9B4,y     ; $11:8E1D: F9 B4 C9    ;
+
+                STA $0629               ; $11:8E20: 8D 29 06    ;
+
+CODE_118E23:    JSL CODE_14D84E         ; $11:8E23: 22 4E D8 14 ;
+
+                STZ $0796               ; $11:8E27: 9C 96 07    ;
+
+                LDA #$01                ; $11:8E2A: A9 01       ;
+
+                STA $11                 ; $11:8E2C: 85 11       ;
+
+                JSL CODE_14F908         ; $11:8E2E: 22 08 F9 14 ;
+
+                LDA #$17                ; $11:8E32: A9 17       ;
+
+                STA $11                 ; $11:8E34: 85 11       ;
+
+                LDA #$40                ; $11:8E36: A9 40       ;
+
+                STA $0100               ; $11:8E38: 8D 00 01    ;
+
+                JSR CODE_1190DF         ; $11:8E3B: 20 DF 90    ;
+
+                JSL CODE_118014         ; $11:8E3E: 22 14 80 11 ;
+
+                LDA #$C0                ; $11:8E42: A9 C0       ;
+
+                STA $0100               ; $11:8E44: 8D 00 01    ;
+
+                JSR CODE_1190A2         ; $11:8E47: 20 A2 90    ;
+
+                STZ $0789               ; $11:8E4A: 9C 89 07    ;
+
+                JSR CODE_1190E5         ; $11:8E4D: 20 E5 90    ;
+
+                LDA #$0C                ; $11:8E50: A9 0C       ;\ Bonus game music.
+                STA $1DE2               ; $11:8E52: 8D E2 1D    ;/
+                LDA $062B               ; $11:8E55: AD 2B 06    ;
+
+                BNE CODE_118E5D         ; $11:8E58: D0 03       ;
+
                 JMP CODE_119015         ; $11:8E5A: 4C 15 90    ;
 
-CODE_118E5D:    JSL CODE_14CD7D             ; $11:8E5D: 22 7D CD 14 ;
-                JSL CODE_118014             ; $11:8E61: 22 14 80 11 ;
-                STZ $0D13                   ; $11:8E65: 9C 13 0D    ;
-                INC $0789                   ; $11:8E68: EE 89 07    ;
-                JSR CODE_118AFE             ; $11:8E6B: 20 FE 8A    ;
-CODE_118E6E:    LDA $062B                   ; $11:8E6E: AD 2B 06    ;
-                BNE CODE_118EBE             ; $11:8E71: D0 4B       ;
-CODE_118E73:    LDX #$5C                    ; $11:8E73: A2 5C       ;
-                LDA #$00                    ; $11:8E75: A9 00       ;
-CODE_118E77:    STA $0000,x                 ; $11:8E77: 9D 00 00    ;
-                DEX                         ; $11:8E7A: CA          ;
-                CPX #$28                    ; $11:8E7B: E0 28       ;
-                BNE CODE_118E77             ; $11:8E7D: D0 F8       ;
-                LDA $0D08                   ; $11:8E7F: AD 08 0D    ;
-                BEQ CODE_118E8F             ; $11:8E82: F0 0B       ;
-                JSR CODE_118834             ; $11:8E84: 20 34 88    ;
-                LDA #$FF                    ; $11:8E87: A9 FF       ;
-                STA $0547                   ; $11:8E89: 8D 47 05    ;
+CODE_118E5D:    JSL CODE_14CD7D         ; $11:8E5D: 22 7D CD 14 ;
+
+                JSL CODE_118014         ; $11:8E61: 22 14 80 11 ;
+
+                STZ $0D13               ; $11:8E65: 9C 13 0D    ;
+
+                INC $0789               ; $11:8E68: EE 89 07    ;
+
+                JSR CODE_118AFE         ; $11:8E6B: 20 FE 8A    ;
+
+CODE_118E6E:    LDA $062B               ; $11:8E6E: AD 2B 06    ;
+
+                BNE CODE_118EBE         ; $11:8E71: D0 4B       ;
+
+CODE_118E73:    LDX #$5C                ; $11:8E73: A2 5C       ;
+
+                LDA #$00                ; $11:8E75: A9 00       ;
+
+CODE_118E77:    STA $0000,x             ; $11:8E77: 9D 00 00    ;
+
+                DEX                     ; $11:8E7A: CA          ;
+
+                CPX #$28                ; $11:8E7B: E0 28       ;
+
+                BNE CODE_118E77         ; $11:8E7D: D0 F8       ;
+
+                LDA $0D08               ; $11:8E7F: AD 08 0D    ;
+
+                BEQ CODE_118E8F         ; $11:8E82: F0 0B       ;
+
+                JSR CODE_118834         ; $11:8E84: 20 34 88    ;
+
+                LDA #$FF                ; $11:8E87: A9 FF       ;
+
+                STA $0547               ; $11:8E89: 8D 47 05    ;
+
                 JMP CODE_118172         ; $11:8E8C: 4C 72 81    ;
 
-CODE_118E8F:    LDA $0533                   ; $11:8E8F: AD 33 05    ;
-                STA $04E8                   ; $11:8E92: 8D E8 04    ;
-                LDA $0534                   ; $11:8E95: AD 34 05    ;
-                STA $04E9                   ; $11:8E98: 8D E9 04    ;
-                LDA $0535                   ; $11:8E9B: AD 35 05    ;
-                STA $04EA                   ; $11:8E9E: 8D EA 04    ;
-                LDY #$00                    ; $11:8EA1: A0 00       ;
-                STY $04E7                   ; $11:8EA3: 8C E7 04    ;
-                STY $0536                   ; $11:8EA6: 8C 36 05    ;
-                STY $04EB                   ; $11:8EA9: 8C EB 04    ;
-                DEY                         ; $11:8EAC: 88          ;
-                STY $0547                   ; $11:8EAD: 8C 47 05    ;
-                JSR CODE_118834             ; $11:8EB0: 20 34 88    ;
+CODE_118E8F:    LDA $0533               ; $11:8E8F: AD 33 05    ;
+
+                STA $04E8               ; $11:8E92: 8D E8 04    ;
+
+                LDA $0534               ; $11:8E95: AD 34 05    ;
+
+                STA $04E9               ; $11:8E98: 8D E9 04    ;
+
+                LDA $0535               ; $11:8E9B: AD 35 05    ;
+
+                STA $04EA               ; $11:8E9E: 8D EA 04    ;
+
+                LDY #$00                ; $11:8EA1: A0 00       ;
+
+                STY $04E7               ; $11:8EA3: 8C E7 04    ;
+
+                STY $0536               ; $11:8EA6: 8C 36 05    ;
+
+                STY $04EB               ; $11:8EA9: 8C EB 04    ;
+
+                DEY                     ; $11:8EAC: 88          ;
+
+                STY $0547               ; $11:8EAD: 8C 47 05    ;
+
+                JSR CODE_118834         ; $11:8EB0: 20 34 88    ;
+
                 JSL CODE_14F9F0         ; $11:8EB3: 22 F0 F9 14 ; Clear all OAM.
                 JMP CODE_118192         ; $11:8EB7: 4C 92 81    ;
 
 DATA_118EBA:    db $07,$0A,$0E,$12                              ;
 
-CODE_118EBE:    DEC $062B                           ; $11:8EBE: CE 2B 06    ;
+CODE_118EBE:    DEC $062B               ; $11:8EBE: CE 2B 06    ;
+
                 STZ $0793               ; $11:8EC1: 06 9C       ;
                 STZ $078A               ; $11:8EC4: 9C 8A 07    ;
-                STZ $079A                   ; $11:8EC7: 9C 9A 07    ;
-                JSL CODE_118014             ; $11:8ECA: 22 14 80 11 ;
-                JSR CODE_1190ED             ; $11:8ECE: 20 ED 90    ;
-                JSL CODE_14CD50             ; $11:8ED1: 22 50 CD 14 ;
-CODE_118ED5:    JSL CODE_118014             ; $11:8ED5: 22 14 80 11 ;
+                STZ $079A               ; $11:8EC7: 9C 9A 07    ;
+
+                JSL CODE_118014         ; $11:8ECA: 22 14 80 11 ;
+
+                JSR CODE_1190ED         ; $11:8ECE: 20 ED 90    ;
+
+                JSL CODE_14CD50         ; $11:8ED1: 22 50 CD 14 ;
+
+CODE_118ED5:    JSL CODE_118014         ; $11:8ED5: 22 14 80 11 ;
+
                 JSL CODE_14F9F0         ; $11:8ED9: 22 F0 F9 14 ; Clear all OAM.
-                INC $10                     ; $11:8EDD: E6 10       ;
-                INC $079A                   ; $11:8EDF: EE 9A 07    ;
-                LDA $3D                     ; $11:8EE2: A5 3D       ;
-                AND #$70                    ; $11:8EE4: 29 70       ;
-                CMP #$40                    ; $11:8EE6: C9 40       ;
-                BCS CODE_118EF1                     ; $11:8EE8: B0 07       ;
-                EOR #$30                    ; $11:8EEA: 49 30       ;
-                LSR A                       ; $11:8EEC: 4A          ;
-                LSR A                       ; $11:8EED: 4A          ;
-                LSR A                       ; $11:8EEE: 4A          ;
-                LSR A                       ; $11:8EEF: 4A          ;
-                INC A                       ; $11:8EF0: 1A          ;
-CODE_118EF1:    AND #$03                    ; $11:8EF1: 29 03       ;
-                TAX                         ; $11:8EF3: AA          ;
-                LDA $079A                   ; $11:8EF4: AD 9A 07    ;
-                CMP.l DATA_118EBA,x                 ; $11:8EF7: DF BA 8E 11 ;
-                BNE CODE_118F05             ; $11:8EFB: D0 08       ;
-                LDA #$42                    ; $11:8EFD: A9 42       ;
-                STA $1DE0                   ; $11:8EFF: 8D E0 1D    ;
-                STZ $079A                   ; $11:8F02: 9C 9A 07    ;
-CODE_118F05:    JSL CODE_14CDA7             ; $11:8F05: 22 A7 CD 14 ;
-                JSL CODE_14CE08             ; $11:8F09: 22 08 CE 14 ;
-                JSL CODE_14CDD4             ; $11:8F0D: 22 D4 CD 14 ;
-                JSL CODE_14CF46             ; $11:8F11: 22 46 CF 14 ;
-                STZ $33                     ; $11:8F15: 64 33       ;
-                JSL CODE_14D012             ; $11:8F17: 22 12 D0 14 ;
-                LDA.w DATA_11CAF5                   ; $11:8F1B: AD F5 CA    ;
-                STA $11                     ; $11:8F1E: 85 11       ;
-                INC $06                     ; $11:8F20: E6 06       ;
-                LDA $29                     ; $11:8F22: A5 29       ;
-                ORA $2A                     ; $11:8F24: 05 2A       ;
-                ORA $2B                     ; $11:8F26: 05 2B       ;
-                BNE CODE_118ED5             ; $11:8F28: D0 AB       ;
-                LDA #$01                    ; $11:8F2A: A9 01       ;
-                STA $33                     ; $11:8F2C: 85 33       ;
-                JSL CODE_14D021             ; $11:8F2E: 22 21 D0 14 ;
-                LDA #$10                    ; $11:8F32: A9 10       ;
-                STA $11                     ; $11:8F34: 85 11       ;
-                JSL CODE_118014             ; $11:8F36: 22 14 80 11 ;
-                LDY #$00                    ; $11:8F3A: A0 00       ;
-                LDX $2F                     ; $11:8F3C: A6 2F       ;
-                BNE CODE_118F61             ; $11:8F3E: D0 21       ;
-                INY                         ; $11:8F40: C8          ;
-                LDA $30                     ; $11:8F41: A5 30       ;
-                BNE CODE_118F4D             ; $11:8F43: D0 08       ;
-                INY                         ; $11:8F45: C8          ;
-                LDA $31                     ; $11:8F46: A5 31       ;
-                BNE CODE_118F4D             ; $11:8F48: D0 03       ;
-                INY                         ; $11:8F4A: C8          ;
-                BRA CODE_118F71             ; $11:8F4B: 80 24       ;
+                INC $10                 ; $11:8EDD: E6 10       ;
 
-CODE_118F4D:    LDA $30                     ; $11:8F4D: A5 30       ;
-                CMP $31                     ; $11:8F4F: C5 31       ;
-                BNE CODE_118F61             ; $11:8F51: D0 0E       ;
-                CMP #$04                    ; $11:8F53: C9 04       ;
-                BNE CODE_118F61             ; $11:8F55: D0 0A       ;
-                LDA $0796                   ; $11:8F57: AD 96 07    ;
-                BNE CODE_118F61             ; $11:8F5A: D0 05       ;
-                LDA #$01                    ; $11:8F5C: A9 01       ;
-                STA $0796                   ; $11:8F5E: 8D 96 07    ;
-CODE_118F61:    CPX $30                     ; $11:8F61: E4 30       ;
-                BNE CODE_118F71             ; $11:8F63: D0 0C       ;
-                CPX $31                     ; $11:8F65: E4 31       ;
-                BNE CODE_118F71             ; $11:8F67: D0 08       ;
-                INY                         ; $11:8F69: C8          ;
-                INY                         ; $11:8F6A: C8          ;
-                CPX #$04                    ; $11:8F6B: E0 04       ;
-                BNE CODE_118F71             ; $11:8F6D: D0 02       ;
-                LDY #$0A                    ; $11:8F6F: A0 0A       ;
-CODE_118F71:    TYA                         ; $11:8F71: 98          ;
-                CLC                         ; $11:8F72: 18          ;
-                ADC $04EE                   ; $11:8F73: 6D EE 04    ;
-                BCC CODE_118F7A             ; $11:8F76: 90 02       ;
-                LDA #$FF                    ; $11:8F78: A9 FF       ;
-CODE_118F7A:    CMP #$64                    ; $11:8F7A: C9 64       ;
-                BCC CODE_118F80             ; $11:8F7C: 90 02       ;
-                LDA #$63                    ; $11:8F7E: A9 63       ;
-CODE_118F80:    STA $04EE                   ; $11:8F80: 8D EE 04    ;
-                TYA                         ; $11:8F83: 98          ;
-                BEQ CODE_118FE5             ; $11:8F84: F0 5F       ;
-                JSR CODE_119155             ; $11:8F86: 20 55 91    ;
-                STA $0698                   ; $11:8F89: 8D 98 06    ;
-                STY $0696                   ; $11:8F8C: 8C 96 06    ;
-                LDA #$15                    ; $11:8F8F: A9 15       ;
-                STA $0699                   ; $11:8F91: 8D 99 06    ;
-                CPY #$BF                    ; $11:8F94: C0 BF       ;
-                BNE CODE_118F9F             ; $11:8F96: D0 07       ;
-                LDA #$BD                    ; $11:8F98: A9 BD       ;
-                STA $0696                   ; $11:8F9A: 8D 96 06    ;
-                LDA #$09                    ; $11:8F9D: A9 09       ;
-CODE_118F9F:    STA $0697                   ; $11:8F9F: 8D 97 06    ;
-                LDA #$10                ; $11:8FA2: A9 10       ; \ Bonus get music.
-                STA $1DE2               ; $11:8FA4: 8D E2 1D    ; /
-                LDA #$A0                    ; $11:8FA7: A9 A0       ;
-                STA $56                     ; $11:8FA9: 85 56       ;
-                JSL CODE_118014             ; $11:8FAB: 22 14 80 11 ;
-                JSR CODE_1190ED             ; $11:8FAF: 20 ED 90    ;
-CODE_118FB2:    JSL CODE_118014             ; $11:8FB2: 22 14 80 11 ;
-                STZ $33                     ; $11:8FB6: 64 33       ;
-                LDA #$01                    ; $11:8FB8: A9 01       ;
-                STA $0793                   ; $11:8FBA: 8D 93 07    ;
-                JSL CODE_14D021             ; $11:8FBD: 22 21 D0 14 ;
-                JSL CODE_14D0C7             ; $11:8FC1: 22 C7 D0 14 ;
-                LDA $56                     ; $11:8FC5: A5 56       ;
-                LSR A                       ; $11:8FC7: 4A          ;
-                LSR A                       ; $11:8FC8: 4A          ;
-                LSR A                       ; $11:8FC9: 4A          ;
-                LSR A                       ; $11:8FCA: 4A          ;
-                AND #$01                    ; $11:8FCB: 29 01       ;
-                TAY                         ; $11:8FCD: A8          ;
-                LDA.w DATA_11CAF9,y                 ; $11:8FCE: B9 F9 CA    ;
-                STA $11                     ; $11:8FD1: 85 11       ;
-                DEC $56                     ; $11:8FD3: C6 56       ;
-                BNE CODE_118FB2             ; $11:8FD5: D0 DB       ;
-                LDA #$01                    ; $11:8FD7: A9 01       ;
-                STA $33                     ; $11:8FD9: 85 33       ;
-                JSL CODE_14D021             ; $11:8FDB: 22 21 D0 14 ;
-                JSL CODE_14D0C7             ; $11:8FDF: 22 C7 D0 14 ;
-                BRA CODE_118FF4             ; $11:8FE3: 80 0F       ;
+                INC $079A               ; $11:8EDF: EE 9A 07    ;
 
-CODE_118FE5:    LDA #$09                ; $11:8FE5: A9 09       ; \ Death music.
-                STA $1DE2               ; $11:8FE7: 8D E2 1D    ; /
-                JSL CODE_118014             ; $11:8FEA: 22 14 80 11 ;
-                JSR CODE_1190ED             ; $11:8FEE: 20 ED 90    ;
-                JSR CODE_11904D             ; $11:8FF1: 20 4D 90    ;
-CODE_118FF4:    LDA $0796                   ; $11:8FF4: AD 96 07    ;
-                CMP #$01                    ; $11:8FF7: C9 01       ;
-                BNE CODE_118FFF             ; $11:8FF9: D0 04       ;
-                JSL CODE_15A2E6             ; $11:8FFB: 22 E6 A2 15 ;
-CODE_118FFF:    LDA #$11                    ; $11:8FFF: A9 11       ;
-                STA $11                     ; $11:9001: 85 11       ;
-                JSL CODE_118014             ; $11:9003: 22 14 80 11 ;
+                LDA $3D                 ; $11:8EE2: A5 3D       ;
+
+                AND #$70                ; $11:8EE4: 29 70       ;
+
+                CMP #$40                ; $11:8EE6: C9 40       ;
+
+                BCS CODE_118EF1         ; $11:8EE8: B0 07       ;
+
+                EOR #$30                ; $11:8EEA: 49 30       ;
+
+                LSR A                   ; $11:8EEC: 4A          ;
+
+                LSR A                   ; $11:8EED: 4A          ;
+
+                LSR A                   ; $11:8EEE: 4A          ;
+
+                LSR A                   ; $11:8EEF: 4A          ;
+
+                INC A                   ; $11:8EF0: 1A          ;
+
+CODE_118EF1:    AND #$03                ; $11:8EF1: 29 03       ;
+
+                TAX                     ; $11:8EF3: AA          ;
+
+                LDA $079A               ; $11:8EF4: AD 9A 07    ;
+
+                CMP.l DATA_118EBA,x     ; $11:8EF7: DF BA 8E 11 ;
+
+                BNE CODE_118F05         ; $11:8EFB: D0 08       ;
+
+                LDA #$42                ; $11:8EFD: A9 42       ;
+
+                STA $1DE0               ; $11:8EFF: 8D E0 1D    ;
+
+                STZ $079A               ; $11:8F02: 9C 9A 07    ;
+
+CODE_118F05:    JSL CODE_14CDA7         ; $11:8F05: 22 A7 CD 14 ;
+
+                JSL CODE_14CE08         ; $11:8F09: 22 08 CE 14 ;
+
+                JSL CODE_14CDD4         ; $11:8F0D: 22 D4 CD 14 ;
+
+                JSL CODE_14CF46         ; $11:8F11: 22 46 CF 14 ;
+
+                STZ $33                 ; $11:8F15: 64 33       ;
+
+                JSL CODE_14D012         ; $11:8F17: 22 12 D0 14 ;
+
+                LDA.w DATA_11CAF5       ; $11:8F1B: AD F5 CA    ;
+
+                STA $11                 ; $11:8F1E: 85 11       ;
+
+                INC $06                 ; $11:8F20: E6 06       ;
+
+                LDA $29                 ; $11:8F22: A5 29       ;
+
+                ORA $2A                 ; $11:8F24: 05 2A       ;
+
+                ORA $2B                 ; $11:8F26: 05 2B       ;
+
+                BNE CODE_118ED5         ; $11:8F28: D0 AB       ;
+
+                LDA #$01                ; $11:8F2A: A9 01       ;
+
+                STA $33                 ; $11:8F2C: 85 33       ;
+
+                JSL CODE_14D021         ; $11:8F2E: 22 21 D0 14 ;
+
+                LDA #$10                ; $11:8F32: A9 10       ;
+
+                STA $11                 ; $11:8F34: 85 11       ;
+
+                JSL CODE_118014         ; $11:8F36: 22 14 80 11 ;
+
+                LDY #$00                ; $11:8F3A: A0 00       ;
+
+                LDX $2F                 ; $11:8F3C: A6 2F       ;
+
+                BNE CODE_118F61         ; $11:8F3E: D0 21       ;
+
+                INY                     ; $11:8F40: C8          ;
+
+                LDA $30                 ; $11:8F41: A5 30       ;
+
+                BNE CODE_118F4D         ; $11:8F43: D0 08       ;
+
+                INY                     ; $11:8F45: C8          ;
+
+                LDA $31                 ; $11:8F46: A5 31       ;
+
+                BNE CODE_118F4D         ; $11:8F48: D0 03       ;
+
+                INY                     ; $11:8F4A: C8          ;
+
+                BRA CODE_118F71         ; $11:8F4B: 80 24       ;
+
+CODE_118F4D:    LDA $30                 ; $11:8F4D: A5 30       ;
+
+                CMP $31                 ; $11:8F4F: C5 31       ;
+
+                BNE CODE_118F61         ; $11:8F51: D0 0E       ;
+
+                CMP #$04                ; $11:8F53: C9 04       ;
+
+                BNE CODE_118F61         ; $11:8F55: D0 0A       ;
+
+                LDA $0796               ; $11:8F57: AD 96 07    ;
+
+                BNE CODE_118F61         ; $11:8F5A: D0 05       ;
+
+                LDA #$01                ; $11:8F5C: A9 01       ;
+
+                STA $0796               ; $11:8F5E: 8D 96 07    ;
+
+CODE_118F61:    CPX $30                 ; $11:8F61: E4 30       ;
+
+                BNE CODE_118F71         ; $11:8F63: D0 0C       ;
+
+                CPX $31                 ; $11:8F65: E4 31       ;
+
+                BNE CODE_118F71         ; $11:8F67: D0 08       ;
+
+                INY                     ; $11:8F69: C8          ;
+
+                INY                     ; $11:8F6A: C8          ;
+
+                CPX #$04                ; $11:8F6B: E0 04       ;
+
+                BNE CODE_118F71         ; $11:8F6D: D0 02       ;
+
+                LDY #$0A                ; $11:8F6F: A0 0A       ;
+
+CODE_118F71:    TYA                     ; $11:8F71: 98          ;
+
+                CLC                     ; $11:8F72: 18          ;
+
+                ADC $04EE               ; $11:8F73: 6D EE 04    ;
+
+                BCC CODE_118F7A         ; $11:8F76: 90 02       ;
+
+                LDA #$FF                ; $11:8F78: A9 FF       ;
+
+CODE_118F7A:    CMP #$64                ; $11:8F7A: C9 64       ;
+
+                BCC CODE_118F80         ; $11:8F7C: 90 02       ;
+
+                LDA #$63                ; $11:8F7E: A9 63       ;
+
+CODE_118F80:    STA $04EE               ; $11:8F80: 8D EE 04    ;
+
+                TYA                     ; $11:8F83: 98          ;
+
+                BEQ CODE_118FE5         ; $11:8F84: F0 5F       ;
+
+                JSR CODE_119155         ; $11:8F86: 20 55 91    ;
+
+                STA $0698               ; $11:8F89: 8D 98 06    ;
+
+                STY $0696               ; $11:8F8C: 8C 96 06    ;
+
+                LDA #$15                ; $11:8F8F: A9 15       ;
+
+                STA $0699               ; $11:8F91: 8D 99 06    ;
+
+                CPY #$BF                ; $11:8F94: C0 BF       ;
+
+                BNE CODE_118F9F         ; $11:8F96: D0 07       ;
+
+                LDA #$BD                ; $11:8F98: A9 BD       ;
+
+                STA $0696               ; $11:8F9A: 8D 96 06    ;
+
+                LDA #$09                ; $11:8F9D: A9 09       ;
+
+CODE_118F9F:    STA $0697               ; $11:8F9F: 8D 97 06    ;
+
+                LDA #$10                ; $11:8FA2: A9 10       ;\ Bonus get music.
+                STA $1DE2               ; $11:8FA4: 8D E2 1D    ;/
+                LDA #$A0                ; $11:8FA7: A9 A0       ;
+
+                STA $56                 ; $11:8FA9: 85 56       ;
+
+                JSL CODE_118014         ; $11:8FAB: 22 14 80 11 ;
+
+                JSR CODE_1190ED         ; $11:8FAF: 20 ED 90    ;
+
+CODE_118FB2:    JSL CODE_118014         ; $11:8FB2: 22 14 80 11 ;
+
+                STZ $33                 ; $11:8FB6: 64 33       ;
+
+                LDA #$01                ; $11:8FB8: A9 01       ;
+
+                STA $0793               ; $11:8FBA: 8D 93 07    ;
+
+                JSL CODE_14D021         ; $11:8FBD: 22 21 D0 14 ;
+
+                JSL CODE_14D0C7         ; $11:8FC1: 22 C7 D0 14 ;
+
+                LDA $56                 ; $11:8FC5: A5 56       ;
+
+                LSR A                   ; $11:8FC7: 4A          ;
+
+                LSR A                   ; $11:8FC8: 4A          ;
+
+                LSR A                   ; $11:8FC9: 4A          ;
+
+                LSR A                   ; $11:8FCA: 4A          ;
+
+                AND #$01                ; $11:8FCB: 29 01       ;
+
+                TAY                     ; $11:8FCD: A8          ;
+
+                LDA.w DATA_11CAF9,y     ; $11:8FCE: B9 F9 CA    ;
+
+                STA $11                 ; $11:8FD1: 85 11       ;
+
+                DEC $56                 ; $11:8FD3: C6 56       ;
+
+                BNE CODE_118FB2         ; $11:8FD5: D0 DB       ;
+
+                LDA #$01                ; $11:8FD7: A9 01       ;
+
+                STA $33                 ; $11:8FD9: 85 33       ;
+
+                JSL CODE_14D021         ; $11:8FDB: 22 21 D0 14 ;
+
+                JSL CODE_14D0C7         ; $11:8FDF: 22 C7 D0 14 ;
+
+                BRA CODE_118FF4         ; $11:8FE3: 80 0F       ;
+
+CODE_118FE5:    LDA #$09                ; $11:8FE5: A9 09       ;\ Death music.
+                STA $1DE2               ; $11:8FE7: 8D E2 1D    ;/
+                JSL CODE_118014         ; $11:8FEA: 22 14 80 11 ;
+
+                JSR CODE_1190ED         ; $11:8FEE: 20 ED 90    ;
+
+                JSR CODE_11904D         ; $11:8FF1: 20 4D 90    ;
+
+CODE_118FF4:    LDA $0796               ; $11:8FF4: AD 96 07    ;
+
+                CMP #$01                ; $11:8FF7: C9 01       ;
+
+                BNE CODE_118FFF         ; $11:8FF9: D0 04       ;
+
+                JSL CODE_15A2E6         ; $11:8FFB: 22 E6 A2 15 ;
+
+CODE_118FFF:    LDA #$11                ; $11:8FFF: A9 11       ;
+
+                STA $11                 ; $11:9001: 85 11       ;
+
+                JSL CODE_118014         ; $11:9003: 22 14 80 11 ;
+
                 JMP CODE_118E6E         ; $11:9007: 4C 6E 8E    ;
 
-                LDA $0210                   ; $11:900A: AD 10 02    ;
-                LSR A                       ; $11:900D: 4A          ;
-                LSR A                       ; $11:900E: 4A          ;
-                LSR A                       ; $11:900F: 4A          ;
-                LSR A                       ; $11:9010: 4A          ;
-                AND #$01                    ; $11:9011: 29 01       ;
-                TAY                         ; $11:9013: A8          ;
+                LDA $0210               ; $11:900A: AD 10 02    ;
+
+                LSR A                   ; $11:900D: 4A          ;
+
+                LSR A                   ; $11:900E: 4A          ;
+
+                LSR A                   ; $11:900F: 4A          ;
+
+                LSR A                   ; $11:9010: 4A          ;
+
+                AND #$01                ; $11:9011: 29 01       ;
+
+                TAY                     ; $11:9013: A8          ;
+
                 RTS                     ; $11:9014: 60          ;
 
-CODE_119015:    STZ $0D13                   ; $11:9015: 9C 13 0D    ;
-                JSR CODE_118AFE             ; $11:9018: 20 FE 8A    ;
-                JSR CODE_119049             ; $11:901B: 20 49 90    ;
-                LDA #$09                ; $11:901E: A9 09       ; \ Death music.
-                STA $1DE2               ; $11:9020: 8D E2 1D    ; /
-                LDA #$0A                    ; $11:9023: A9 0A       ;
-                STA $0782                   ; $11:9025: 8D 82 07    ;
-CODE_119028:    LDA $0782                   ; $11:9028: AD 82 07    ;
-                AND #$01                    ; $11:902B: 29 01       ;
-                TAY                         ; $11:902D: A8          ;
-                LDA.w DATA_11CAF7,y                 ; $11:902E: B9 F7 CA    ;
-                STA $11                     ; $11:9031: 85 11       ;
-                LDA #$0A                    ; $11:9033: A9 0A       ;
-                STA $0783                   ; $11:9035: 8D 83 07    ;
-CODE_119038:    JSL CODE_118014             ; $11:9038: 22 14 80 11 ;
-                DEC $0783                   ; $11:903C: CE 83 07    ;
-                BNE CODE_119038             ; $11:903F: D0 F7       ;
-                DEC $0782                   ; $11:9041: CE 82 07    ;
-                BPL CODE_119028             ; $11:9044: 10 E2       ;
+CODE_119015:    STZ $0D13               ; $11:9015: 9C 13 0D    ;
+
+                JSR CODE_118AFE         ; $11:9018: 20 FE 8A    ;
+
+                JSR CODE_119049         ; $11:901B: 20 49 90    ;
+
+                LDA #$09                ; $11:901E: A9 09       ;\ Death music.
+                STA $1DE2               ; $11:9020: 8D E2 1D    ;/
+                LDA #$0A                ; $11:9023: A9 0A       ;
+
+                STA $0782               ; $11:9025: 8D 82 07    ;
+
+CODE_119028:    LDA $0782               ; $11:9028: AD 82 07    ;
+
+                AND #$01                ; $11:902B: 29 01       ;
+
+                TAY                     ; $11:902D: A8          ;
+
+                LDA.w DATA_11CAF7,y     ; $11:902E: B9 F7 CA    ;
+
+                STA $11                 ; $11:9031: 85 11       ;
+
+                LDA #$0A                ; $11:9033: A9 0A       ;
+
+                STA $0783               ; $11:9035: 8D 83 07    ;
+
+CODE_119038:    JSL CODE_118014         ; $11:9038: 22 14 80 11 ;
+
+                DEC $0783               ; $11:903C: CE 83 07    ;
+
+                BNE CODE_119038         ; $11:903F: D0 F7       ;
+
+                DEC $0782               ; $11:9041: CE 82 07    ;
+
+                BPL CODE_119028         ; $11:9044: 10 E2       ;
+
                 JMP CODE_118E73         ; $11:9046: 4C 73 8E    ;
 
-CODE_119049:    LDA #$50                    ; $11:9049: A9 50       ;
-                BRA CODE_11904F             ; $11:904B: 80 02       ;
+CODE_119049:    LDA #$50                ; $11:9049: A9 50       ;
 
-CODE_11904D:    LDA #$A0                    ; $11:904D: A9 A0       ;
-CODE_11904F:    STA $07                     ; $11:904F: 85 07       ;
-CODE_119051:    JSL CODE_118010             ; $11:9051: 22 10 80 11 ;
-                DEC $07                     ; $11:9055: C6 07       ;
-                BNE CODE_119051             ; $11:9057: D0 F8       ;
+                BRA CODE_11904F         ; $11:904B: 80 02       ;
+
+CODE_11904D:    LDA #$A0                ; $11:904D: A9 A0       ;
+
+CODE_11904F:    STA $07                 ; $11:904F: 85 07       ;
+
+CODE_119051:    JSL CODE_118010         ; $11:9051: 22 10 80 11 ;
+
+                DEC $07                 ; $11:9055: C6 07       ;
+
+                BNE CODE_119051         ; $11:9057: D0 F8       ;
+
                 RTS                     ; $11:9059: 60          ;
 
-CODE_11905A:    STZ $0607                   ; $11:905A: 9C 07 06    ;
-                LDA #$01                    ; $11:905D: A9 01       ;
-                STA $0217                   ; $11:905F: 8D 17 02    ;
-                JSL CODE_12920C             ; $11:9062: 22 0C 92 12 ;
-                JSL CODE_118009             ; $11:9066: 22 09 80 11 ;
-                STZ $0217                   ; $11:906A: 9C 17 02    ;
-                JSR CODE_1190A2             ; $11:906D: 20 A2 90    ;
-                JSL CODE_1388A0             ; $11:9070: 22 A0 88 13 ;
-                JSR CODE_1190DF             ; $11:9074: 20 DF 90    ;
-                JSL CODE_118014             ; $11:9077: 22 14 80 11 ;
-                INC $06BF                   ; $11:907B: EE BF 06    ;
-                STZ $023B                   ; $11:907E: 9C 3B 02    ;
-                STZ $023C                   ; $11:9081: 9C 3C 02    ;
-                JSL CODE_129432             ; $11:9084: 22 32 94 12 ;
-                JSL CODE_118009             ; $11:9088: 22 09 80 11 ;
-                JSR CODE_1190A2             ; $11:908C: 20 A2 90    ;
+CODE_11905A:    STZ $0607               ; $11:905A: 9C 07 06    ;
+
+                LDA #$01                ; $11:905D: A9 01       ;
+
+                STA $0217               ; $11:905F: 8D 17 02    ;
+
+                JSL CODE_12920C         ; $11:9062: 22 0C 92 12 ;
+
+                JSL CODE_118009         ; $11:9066: 22 09 80 11 ;
+
+                STZ $0217               ; $11:906A: 9C 17 02    ;
+
+                JSR CODE_1190A2         ; $11:906D: 20 A2 90    ;
+
+                JSL CODE_1388A0         ; $11:9070: 22 A0 88 13 ;
+
+                JSR CODE_1190DF         ; $11:9074: 20 DF 90    ;
+
+                JSL CODE_118014         ; $11:9077: 22 14 80 11 ;
+
+                INC $06BF               ; $11:907B: EE BF 06    ;
+
+                STZ $023B               ; $11:907E: 9C 3B 02    ;
+
+                STZ $023C               ; $11:9081: 9C 3C 02    ;
+
+                JSL CODE_129432         ; $11:9084: 22 32 94 12 ;
+
+                JSL CODE_118009         ; $11:9088: 22 09 80 11 ;
+
+                JSR CODE_1190A2         ; $11:908C: 20 A2 90    ;
+
                 JSL CODE_1388F5         ; $11:908F: 22 F5 88 13 ; Load layer and sprite graphics for credits.
-                JSR CODE_1190DF             ; $11:9093: 20 DF 90    ;
-                JSL CODE_118014             ; $11:9096: 22 14 80 11 ;
-                INC $06BF                   ; $11:909A: EE BF 06    ;
-                JSL CODE_13E731             ; $11:909D: 22 31 E7 13 ;
+                JSR CODE_1190DF         ; $11:9093: 20 DF 90    ;
+
+                JSL CODE_118014         ; $11:9096: 22 14 80 11 ;
+
+                INC $06BF               ; $11:909A: EE BF 06    ;
+
+                JSL CODE_13E731         ; $11:909D: 22 31 E7 13 ;
+
                 RTS                     ; $11:90A1: 60          ;
 
-CODE_1190A2:    LDA #$30                    ; $11:90A2: A9 30       ;
-                STA $FF                     ; $11:90A4: 85 FF       ;
-                STZ $4200                   ; $11:90A6: 9C 00 42    ;
+CODE_1190A2:    LDA #$30                ; $11:90A2: A9 30       ;
+
+                STA $FF                 ; $11:90A4: 85 FF       ;
+
+                STZ $4200               ; $11:90A6: 9C 00 42    ;
+
                 RTS                     ; $11:90A9: 60          ;
 
-                JSR CODE_118AD2             ; $11:90AA: 20 D2 8A    ;
-                LDA #$80                    ; $11:90AD: A9 80       ;
-                STA $FE                     ; $11:90AF: 85 FE       ;
-                JSR CODE_118791             ; $11:90B1: 20 91 87    ;
-                JSL CODE_118014             ; $11:90B4: 22 14 80 11 ;
-                LDA #$04                    ; $11:90B8: A9 04       ;
-                STA $11                     ; $11:90BA: 85 11       ;
-                JSL CODE_118014             ; $11:90BC: 22 14 80 11 ;
-                LDX $0635                   ; $11:90C0: AE 35 06    ;
-                LDY $0533                   ; $11:90C3: AC 33 05    ;
-                JSL CODE_1187B6             ; $11:90C6: 22 B6 87 11 ;
-                JSL CODE_138CF2             ; $11:90CA: 22 F2 8C 13 ;
-                JSL CODE_118014             ; $11:90CE: 22 14 80 11 ;
-                JSL CODE_138D25             ; $11:90D2: 22 25 8D 13 ;
-                LDA $0596                   ; $11:90D6: AD 96 05    ;
-                STA $11                     ; $11:90D9: 85 11       ;
-                JSL CODE_118014             ; $11:90DB: 22 14 80 11 ;
-CODE_1190DF:    LDA #$81                    ; $11:90DF: A9 81       ;
-                STA $4200                   ; $11:90E1: 8D 00 42    ;
+                JSR CODE_118AD2         ; $11:90AA: 20 D2 8A    ;
+
+                LDA #$80                ; $11:90AD: A9 80       ;
+
+                STA $FE                 ; $11:90AF: 85 FE       ;
+
+                JSR CODE_118791         ; $11:90B1: 20 91 87    ;
+
+                JSL CODE_118014         ; $11:90B4: 22 14 80 11 ;
+
+                LDA #$04                ; $11:90B8: A9 04       ;
+
+                STA $11                 ; $11:90BA: 85 11       ;
+
+                JSL CODE_118014         ; $11:90BC: 22 14 80 11 ;
+
+                LDX $0635               ; $11:90C0: AE 35 06    ;
+
+                LDY $0533               ; $11:90C3: AC 33 05    ;
+
+                JSL CODE_1187B6         ; $11:90C6: 22 B6 87 11 ;
+
+                JSL CODE_138CF2         ; $11:90CA: 22 F2 8C 13 ;
+
+                JSL CODE_118014         ; $11:90CE: 22 14 80 11 ;
+
+                JSL CODE_138D25         ; $11:90D2: 22 25 8D 13 ;
+
+                LDA $0596               ; $11:90D6: AD 96 05    ;
+
+                STA $11                 ; $11:90D9: 85 11       ;
+
+                JSL CODE_118014         ; $11:90DB: 22 14 80 11 ;
+
+CODE_1190DF:    LDA #$81                ; $11:90DF: A9 81       ;
+
+                STA $4200               ; $11:90E1: 8D 00 42    ;
+
                 RTS                     ; $11:90E4: 60          ;
 
-CODE_1190E5:    JSL CODE_14F92E             ; $11:90E5: 22 2E F9 14 ;
-                JSL CODE_13DE8C             ; $11:90E9: 22 8C DE 13 ;
-CODE_1190ED:    JSL CODE_138D56             ; $11:90ED: 22 56 8D 13 ;
-                LDY $04EE                   ; $11:90F1: AC EE 04    ;
-                TYA                         ; $11:90F4: 98          ;
-                JSR CODE_119155             ; $11:90F5: 20 55 91    ;
-                STY $142A                   ; $11:90F8: 8C 2A 14    ;
-                STA $142C                   ; $11:90FB: 8D 2C 14    ;
-                LDA #$15                    ; $11:90FE: A9 15       ;
-                STA $142D                   ; $11:9100: 8D 2D 14    ;
-                CPY #$BF                    ; $11:9103: C0 BF       ;
-                BNE CODE_11910E             ; $11:9105: D0 07       ;
-                LDA #$BD                    ; $11:9107: A9 BD       ;
-                STA $142A                   ; $11:9109: 8D 2A 14    ;
-                LDA #$09                    ; $11:910C: A9 09       ;
-CODE_11910E:    STA $142B                   ; $11:910E: 8D 2B 14    ;
-                LDA $062B                   ; $11:9111: AD 2B 06    ;
-                JSR CODE_119155             ; $11:9114: 20 55 91    ;
-                CPY #$BF                    ; $11:9117: C0 BF       ;
-                BNE CODE_11911E             ; $11:9119: D0 03       ;
-                TAX                         ; $11:911B: AA          ;
-                TYA                         ; $11:911C: 98          ;
-                TXY                         ; $11:911D: 9B          ;
-CODE_11911E:    STY $1408                   ; $11:911E: 8C 08 14    ;
-                STA $140A                   ; $11:9121: 8D 0A 14    ;
-                LDX #$15                    ; $11:9124: A2 15       ;
-                CMP #$BF                    ; $11:9126: C9 BF       ;
-                BNE CODE_119131             ; $11:9128: D0 07       ;
-                LDA #$BD                    ; $11:912A: A9 BD       ;
-                STA $140A                   ; $11:912C: 8D 0A 14    ;
-                LDX #$09                    ; $11:912F: A2 09       ;
-CODE_119131:    STX $140B                   ; $11:9131: 8E 0B 14    ;
-                LDA #$15                    ; $11:9134: A9 15       ;
-                CPY #$BF                    ; $11:9136: C0 BF       ;
-                BNE CODE_119141             ; $11:9138: D0 07       ;
-                LDA #$BD                    ; $11:913A: A9 BD       ;
-                STA $1408                   ; $11:913C: 8D 08 14    ;
-                LDA #$09                    ; $11:913F: A9 09       ;
-CODE_119141:    STA $1409                   ; $11:9141: 8D 09 14    ;
-                LDA #$01                    ; $11:9144: A9 01       ;
-                STA $11                     ; $11:9146: 85 11       ;
-                LDA #$40                    ; $11:9148: A9 40       ;
-                STA $0100                   ; $11:914A: 8D 00 01    ;
-                JSR CODE_1190DF             ; $11:914D: 20 DF 90    ;
-                JSL CODE_118014             ; $11:9150: 22 14 80 11 ;
+CODE_1190E5:    JSL CODE_14F92E         ; $11:90E5: 22 2E F9 14 ;
+
+                JSL CODE_13DE8C         ; $11:90E9: 22 8C DE 13 ;
+
+CODE_1190ED:    JSL CODE_138D56         ; $11:90ED: 22 56 8D 13 ;
+
+                LDY $04EE               ; $11:90F1: AC EE 04    ;
+
+                TYA                     ; $11:90F4: 98          ;
+
+                JSR CODE_119155         ; $11:90F5: 20 55 91    ;
+
+                STY $142A               ; $11:90F8: 8C 2A 14    ;
+
+                STA $142C               ; $11:90FB: 8D 2C 14    ;
+
+                LDA #$15                ; $11:90FE: A9 15       ;
+
+                STA $142D               ; $11:9100: 8D 2D 14    ;
+
+                CPY #$BF                ; $11:9103: C0 BF       ;
+
+                BNE CODE_11910E         ; $11:9105: D0 07       ;
+
+                LDA #$BD                ; $11:9107: A9 BD       ;
+
+                STA $142A               ; $11:9109: 8D 2A 14    ;
+
+                LDA #$09                ; $11:910C: A9 09       ;
+
+CODE_11910E:    STA $142B               ; $11:910E: 8D 2B 14    ;
+
+                LDA $062B               ; $11:9111: AD 2B 06    ;
+
+                JSR CODE_119155         ; $11:9114: 20 55 91    ;
+
+                CPY #$BF                ; $11:9117: C0 BF       ;
+
+                BNE CODE_11911E         ; $11:9119: D0 03       ;
+
+                TAX                     ; $11:911B: AA          ;
+
+                TYA                     ; $11:911C: 98          ;
+
+                TXY                     ; $11:911D: 9B          ;
+
+CODE_11911E:    STY $1408               ; $11:911E: 8C 08 14    ;
+
+                STA $140A               ; $11:9121: 8D 0A 14    ;
+
+                LDX #$15                ; $11:9124: A2 15       ;
+
+                CMP #$BF                ; $11:9126: C9 BF       ;
+
+                BNE CODE_119131         ; $11:9128: D0 07       ;
+
+                LDA #$BD                ; $11:912A: A9 BD       ;
+
+                STA $140A               ; $11:912C: 8D 0A 14    ;
+
+                LDX #$09                ; $11:912F: A2 09       ;
+
+CODE_119131:    STX $140B               ; $11:9131: 8E 0B 14    ;
+
+                LDA #$15                ; $11:9134: A9 15       ;
+
+                CPY #$BF                ; $11:9136: C0 BF       ;
+
+                BNE CODE_119141         ; $11:9138: D0 07       ;
+
+                LDA #$BD                ; $11:913A: A9 BD       ;
+
+                STA $1408               ; $11:913C: 8D 08 14    ;
+
+                LDA #$09                ; $11:913F: A9 09       ;
+
+CODE_119141:    STA $1409               ; $11:9141: 8D 09 14    ;
+
+                LDA #$01                ; $11:9144: A9 01       ;
+
+                STA $11                 ; $11:9146: 85 11       ;
+
+                LDA #$40                ; $11:9148: A9 40       ;
+
+                STA $0100               ; $11:914A: 8D 00 01    ;
+
+                JSR CODE_1190DF         ; $11:914D: 20 DF 90    ;
+
+                JSL CODE_118014         ; $11:9150: 22 14 80 11 ;
+
                 RTS                     ; $11:9154: 60          ;
 
-CODE_119155:    LDY #$C0                    ; $11:9155: A0 C0       ;
-CODE_119157:    CMP #$0A                    ; $11:9157: C9 0A       ;
-                BCC CODE_119161             ; $11:9159: 90 06       ;
-                SBC #$0A                    ; $11:915B: E9 0A       ;
-                INY                         ; $11:915D: C8          ;
+CODE_119155:    LDY #$C0                ; $11:9155: A0 C0       ;
+
+CODE_119157:    CMP #$0A                ; $11:9157: C9 0A       ;
+
+                BCC CODE_119161         ; $11:9159: 90 06       ;
+
+                SBC #$0A                ; $11:915B: E9 0A       ;
+
+                INY                     ; $11:915D: C8          ;
+
                 JMP CODE_119157         ; $11:915E: 4C 57 91    ;
 
-CODE_119161:    ORA #$C0                    ; $11:9161: 09 C0       ;
-                CPY #$C0                    ; $11:9163: C0 C0       ;
-                BNE CODE_119169             ; $11:9165: D0 02       ;
-                LDY #$BF                    ; $11:9167: A0 BF       ;
+CODE_119161:    ORA #$C0                ; $11:9161: 09 C0       ;
+
+                CPY #$C0                ; $11:9163: C0 C0       ;
+
+                BNE CODE_119169         ; $11:9165: D0 02       ;
+
+                LDY #$BF                ; $11:9167: A0 BF       ;
+
 CODE_119169:    RTS                     ; $11:9169: 60          ;
 
-                LDY #$D0                    ; $11:916A: A0 D0       ;
-CODE_11916C:    CMP #$0A                    ; $11:916C: C9 0A       ;
-                BCC CODE_119176             ; $11:916E: 90 06       ;
-                SBC #$0A                    ; $11:9170: E9 0A       ;
-                INY                         ; $11:9172: C8          ;
+                LDY #$D0                ; $11:916A: A0 D0       ;
+
+CODE_11916C:    CMP #$0A                ; $11:916C: C9 0A       ;
+
+                BCC CODE_119176         ; $11:916E: 90 06       ;
+
+                SBC #$0A                ; $11:9170: E9 0A       ;
+
+                INY                     ; $11:9172: C8          ;
+
                 JMP CODE_11916C         ; $11:9173: 4C 6C 91    ;
 
-CODE_119176:    ORA #$D0                    ; $11:9176: 09 D0       ;
-                CPY #$D0                    ; $11:9178: C0 D0       ;
-                BNE CODE_11917E             ; $11:917A: D0 02       ;
-                LDY #$FB                    ; $11:917C: A0 FB       ;
+CODE_119176:    ORA #$D0                ; $11:9176: 09 D0       ;
+
+                CPY #$D0                ; $11:9178: C0 D0       ;
+
+                BNE CODE_11917E         ; $11:917A: D0 02       ;
+
+                LDY #$FB                ; $11:917C: A0 FB       ;
+
 CODE_11917E:    RTS                     ; $11:917E: 60          ;
 
-CODE_11917F:    LDY #$80                    ; $11:917F: A0 80       ;
-CODE_119181:    CMP #$0A                    ; $11:9181: C9 0A       ;
-                BCC CODE_11918B             ; $11:9183: 90 06       ;
-                SBC #$0A                    ; $11:9185: E9 0A       ;
-                INY                         ; $11:9187: C8          ;
+CODE_11917F:    LDY #$80                ; $11:917F: A0 80       ;
+
+CODE_119181:    CMP #$0A                ; $11:9181: C9 0A       ;
+
+                BCC CODE_11918B         ; $11:9183: 90 06       ;
+
+                SBC #$0A                ; $11:9185: E9 0A       ;
+
+                INY                     ; $11:9187: C8          ;
+
                 JMP CODE_119181         ; $11:9188: 4C 81 91    ;
 
-CODE_11918B:    ORA #$80                    ; $11:918B: 09 80       ;
-                CPY #$80                    ; $11:918D: C0 80       ;
-                BNE CODE_119193             ; $11:918F: D0 02       ;
-                LDY #$BF                    ; $11:9191: A0 BF       ;
+CODE_11918B:    ORA #$80                ; $11:918B: 09 80       ;
+
+                CPY #$80                ; $11:918D: C0 80       ;
+
+                BNE CODE_119193         ; $11:918F: D0 02       ;
+
+                LDY #$BF                ; $11:9191: A0 BF       ;
+
 CODE_119193:    RTS                     ; $11:9193: 60          ;
 
-CODE_119194:    LDA $FE                     ; $11:9194: A5 FE       ;
-                STA $2100                   ; $11:9196: 8D 00 21    ;
-                LDA $FF                     ; $11:9199: A5 FF       ;
-                AND #$80                    ; $11:919B: 29 80       ;
-                ORA #$01                    ; $11:919D: 09 01       ;
-                STA $4200                   ; $11:919F: 8D 00 42    ;
-                DEC $0154                   ; $11:91A2: CE 54 01    ;
+CODE_119194:    LDA $FE                 ; $11:9194: A5 FE       ;
+
+                STA $2100               ; $11:9196: 8D 00 21    ;
+
+                LDA $FF                 ; $11:9199: A5 FF       ;
+
+                AND #$80                ; $11:919B: 29 80       ;
+
+                ORA #$01                ; $11:919D: 09 01       ;
+
+                STA $4200               ; $11:919F: 8D 00 42    ;
+
+                DEC $0154               ; $11:91A2: CE 54 01    ;
+
                 JMP CODE_11925B         ; $11:91A5: 4C 5B 92    ;
 
-CODE_1191A8:    JSR CODE_1194C7             ; $11:91A8: 20 C7 94    ;
-                STZ $0206                   ; $11:91AB: 9C 06 02    ;
-                STZ $0207                   ; $11:91AE: 9C 07 02    ;
-                STZ $04C6                   ; $11:91B1: 9C C6 04    ;
-                STZ $04C7                   ; $11:91B4: 9C C7 04    ;
+CODE_1191A8:    JSR CODE_1194C7         ; $11:91A8: 20 C7 94    ;
+
+                STZ $0206               ; $11:91AB: 9C 06 02    ;
+
+                STZ $0207               ; $11:91AE: 9C 07 02    ;
+
+                STZ $04C6               ; $11:91B1: 9C C6 04    ;
+
+                STZ $04C7               ; $11:91B4: 9C C7 04    ;
+
                 JMP CODE_11922C         ; $11:91B7: 4C 2C 92    ;
 
-CODE_1191BA:    LDA $FE                     ; $11:91BA: A5 FE       ;
-                STA $2100                   ; $11:91BC: 8D 00 21    ;
+CODE_1191BA:    LDA $FE                 ; $11:91BA: A5 FE       ;
+
+                STA $2100               ; $11:91BC: 8D 00 21    ;
+
                 JMP CODE_11925B         ; $11:91BF: 4C 5B 92    ;
 
-CODE_1191C2:    PHB                         ; $11:91C2: 8B          ;
-                PHK                         ; $11:91C3: 4B          ;
-                PLB                         ; $11:91C4: AB          ;
-                LDA $4210                   ; $11:91C5: AD 10 42    ;
-                LDA #$80                    ; $11:91C8: A9 80       ;
-                STA $2100                   ; $11:91CA: 8D 00 21    ;
-                STZ $420C                   ; $11:91CD: 9C 0C 42    ;
-                JSL CODE_138B2A             ; $11:91D0: 22 2A 8B 13 ;
-                LDA $0154                   ; $11:91D4: AD 54 01    ;
-                BNE CODE_1191BA             ; $11:91D7: D0 E1       ;
-                JSR CODE_119321             ; $11:91D9: 20 21 93    ;
-                JSL CODE_138A10             ; $11:91DC: 22 10 8A 13 ;
-                BIT $0100                   ; $11:91E0: 2C 00 01    ;
-                BPL CODE_1191A8             ; $11:91E3: 10 C3       ;
-                BVS CODE_1191E9             ; $11:91E5: 70 02       ;
-                BRA CODE_119194             ; $11:91E7: 80 AB       ;
+CODE_1191C2:    PHB                     ; $11:91C2: 8B          ;
 
-CODE_1191E9:    LDA $EB                     ; $11:91E9: A5 EB       ;
-                BEQ CODE_119201             ; $11:91EB: F0 14       ;
-                LDA $051E                   ; $11:91ED: AD 1E 05    ;
-                BEQ CODE_119201             ; $11:91F0: F0 0F       ;
-                STZ $051E                   ; $11:91F2: 9C 1E 05    ;
-                LDA $00D2                   ; $11:91F5: AD D2 00    ;
-                STA $00                     ; $11:91F8: 85 00       ;
-                LDA $00D1                   ; $11:91FA: AD D1 00    ;
-                STA $01                     ; $11:91FD: 85 01       ;
-                STZ $02                     ; $11:91FF: 64 02       ;
-CODE_119201:    JSR CODE_1194C7             ; $11:9201: 20 C7 94    ;
-                JSR CODE_11945A             ; $11:9204: 20 5A 94    ;
-                JSL CODE_158419             ; $11:9207: 22 19 84 15 ;
-                LDA #$B0                    ; $11:920B: A9 B0       ;
-                ORA $0201                   ; $11:920D: 0D 01 02    ;
-                LDY $EB                     ; $11:9210: A4 EB       ;
-                BNE CODE_119219             ; $11:9212: D0 05       ;
-                AND #$FE                    ; $11:9214: 29 FE       ;
-                ORA $0207                   ; $11:9216: 0D 07 02    ;
-CODE_119219:    AND #$80                    ; $11:9219: 29 80       ;
-                STA $FF                     ; $11:921B: 85 FF       ;
-                INC $10                     ; $11:921D: E6 10       ;
-                INC $0254                   ; $11:921F: EE 54 02    ;
-                LDA $0254                   ; $11:9222: AD 54 02    ;
-                CMP #$06                    ; $11:9225: C9 06       ;
-                BCC CODE_11922C             ; $11:9227: 90 03       ;
-                STZ $0254                   ; $11:9229: 9C 54 02    ;
-CODE_11922C:    LDA #$00                    ; $11:922C: A9 00       ;
-                STA $7F0000                 ; $11:922E: 8F 00 00 7F ;
-                STA $7F0001                 ; $11:9232: 8F 01 00 7F ;
-                STA $7F0800                 ; $11:9236: 8F 00 08 7F ;
-                STA $7F0801                 ; $11:923A: 8F 01 08 7F ;
-                DEC A                       ; $11:923E: 3A          ;
-                STA $7F0002                 ; $11:923F: 8F 02 00 7F ;
-                STA $7F0802                 ; $11:9243: 8F 02 08 7F ;
-                LDA $11                     ; $11:9247: A5 11       ;
-                BNE CODE_119256             ; $11:9249: D0 0B       ;
-                STZ $0300                   ; $11:924B: 9C 00 03    ;
-                STZ $0301                   ; $11:924E: 9C 01 03    ;
-                LDA #$FF                    ; $11:9251: A9 FF       ;
-                STA $0302                   ; $11:9253: 8D 02 03    ;
-CODE_119256:    STZ $11                     ; $11:9256: 64 11       ;
-                DEC $0154                   ; $11:9258: CE 54 01    ;
-CODE_11925B:    PHD                     ; $11:925B: 0B          ; \ Preserve direct page.
-                LDA #$21                ; $11:925C: A9 21       ;  | Direct page = #$2100.
-                XBA                     ; $11:925E: EB          ;  |
-                LDA #$00                ; $11:925F: A9 00       ;  |
-                TCD                     ; $11:9261: 5B          ; /
-                LDA $0200               ; $11:9262: AD 00 02    ; \ $0200-$0201 = Layer 1 X mirror.
-                STA $0D                 ; $11:9265: 85 0D       ;  |
-                LDA $0201               ; $11:9267: AD 01 02    ;  |
-                STA $0D                 ; $11:926A: 85 0D       ; /
-                LDA $0206               ; $11:926C: AD 06 02    ; \ $0206-$0207 + $04C6 = Layer 1 Y mirror.
-                CLC                     ; $11:926F: 18          ;  |
-                ADC $04C6               ; $11:9270: 6D C6 04    ;  |
-                STA $0E                 ; $11:9273: 85 0E       ;  |
-                LDA $0207               ; $11:9275: AD 07 02    ;  |
-                STA $0E                 ; $11:9278: 85 0E       ; /
-                LDA $0202               ; $11:927A: AD 02 02    ; \ $0202-$0203 = Layer 2 X mirror.
-                STA $0F                 ; $11:927D: 85 0F       ;  |
-                LDA $0203               ; $11:927F: AD 03 02    ;  |
-                STA $0F                 ; $11:9282: 85 0F       ; /
-                LDA $0208               ; $11:9284: AD 08 02    ; \ $0208-$0209 = Layer 2 Y mirror.
-                STA $10                 ; $11:9287: 85 10       ;  |
-                LDA $0209               ; $11:9289: AD 09 02    ;  |
-                STA $10                 ; $11:928C: 85 10       ; /
-                LDA $0204               ; $11:928E: AD 04 02    ; \ $0204-$0205 = Layer 3 X mirror.
-                STA $11                 ; $11:9291: 85 11       ;  |
-                LDA $0205               ; $11:9293: AD 05 02    ;  |
-                STA $11                 ; $11:9296: 85 11       ; /
-                LDA $020A               ; $11:9298: AD 0A 02    ; \ $020A-$020B = Layer 3 Y mirror.
-                STA $12                 ; $11:929B: 85 12       ;  |
-                LDA $020B               ; $11:929D: AD 0B 02    ;  |
-                STA $12                 ; $11:92A0: 85 12       ; /
+                PHK                     ; $11:91C3: 4B          ;
+
+                PLB                     ; $11:91C4: AB          ;
+
+                LDA $4210               ; $11:91C5: AD 10 42    ;
+
+                LDA #$80                ; $11:91C8: A9 80       ;
+
+                STA $2100               ; $11:91CA: 8D 00 21    ;
+
+                STZ $420C               ; $11:91CD: 9C 0C 42    ;
+
+                JSL CODE_138B2A         ; $11:91D0: 22 2A 8B 13 ;
+
+                LDA $0154               ; $11:91D4: AD 54 01    ;
+
+                BNE CODE_1191BA         ; $11:91D7: D0 E1       ;
+
+                JSR CODE_119321         ; $11:91D9: 20 21 93    ;
+
+                JSL CODE_138A10         ; $11:91DC: 22 10 8A 13 ;
+
+                BIT $0100               ; $11:91E0: 2C 00 01    ;
+
+                BPL CODE_1191A8         ; $11:91E3: 10 C3       ;
+
+                BVS CODE_1191E9         ; $11:91E5: 70 02       ;
+
+                BRA CODE_119194         ; $11:91E7: 80 AB       ;
+
+CODE_1191E9:    LDA $EB                 ; $11:91E9: A5 EB       ;
+
+                BEQ CODE_119201         ; $11:91EB: F0 14       ;
+
+                LDA $051E               ; $11:91ED: AD 1E 05    ;
+
+                BEQ CODE_119201         ; $11:91F0: F0 0F       ;
+
+                STZ $051E               ; $11:91F2: 9C 1E 05    ;
+
+                LDA $00D2               ; $11:91F5: AD D2 00    ;
+
+                STA $00                 ; $11:91F8: 85 00       ;
+
+                LDA $00D1               ; $11:91FA: AD D1 00    ;
+
+                STA $01                 ; $11:91FD: 85 01       ;
+
+                STZ $02                 ; $11:91FF: 64 02       ;
+
+CODE_119201:    JSR CODE_1194C7         ; $11:9201: 20 C7 94    ;
+
+                JSR CODE_11945A         ; $11:9204: 20 5A 94    ;
+
+                JSL CODE_158419         ; $11:9207: 22 19 84 15 ;
+
+                LDA #$B0                ; $11:920B: A9 B0       ;
+
+                ORA $0201               ; $11:920D: 0D 01 02    ;
+
+                LDY $EB                 ; $11:9210: A4 EB       ;
+
+                BNE CODE_119219         ; $11:9212: D0 05       ;
+
+                AND #$FE                ; $11:9214: 29 FE       ;
+
+                ORA $0207               ; $11:9216: 0D 07 02    ;
+
+CODE_119219:    AND #$80                ; $11:9219: 29 80       ;
+
+                STA $FF                 ; $11:921B: 85 FF       ;
+
+                INC $10                 ; $11:921D: E6 10       ;
+
+                INC $0254               ; $11:921F: EE 54 02    ;
+
+                LDA $0254               ; $11:9222: AD 54 02    ;
+
+                CMP #$06                ; $11:9225: C9 06       ;
+
+                BCC CODE_11922C         ; $11:9227: 90 03       ;
+
+                STZ $0254               ; $11:9229: 9C 54 02    ;
+
+CODE_11922C:    LDA #$00                ; $11:922C: A9 00       ;
+
+                STA $7F0000             ; $11:922E: 8F 00 00 7F ;
+
+                STA $7F0001             ; $11:9232: 8F 01 00 7F ;
+
+                STA $7F0800             ; $11:9236: 8F 00 08 7F ;
+
+                STA $7F0801             ; $11:923A: 8F 01 08 7F ;
+
+                DEC A                   ; $11:923E: 3A          ;
+
+                STA $7F0002             ; $11:923F: 8F 02 00 7F ;
+
+                STA $7F0802             ; $11:9243: 8F 02 08 7F ;
+
+                LDA $11                 ; $11:9247: A5 11       ;
+
+                BNE CODE_119256         ; $11:9249: D0 0B       ;
+
+                STZ $0300               ; $11:924B: 9C 00 03    ;
+
+                STZ $0301               ; $11:924E: 9C 01 03    ;
+
+                LDA #$FF                ; $11:9251: A9 FF       ;
+
+                STA $0302               ; $11:9253: 8D 02 03    ;
+
+CODE_119256:    STZ $11                 ; $11:9256: 64 11       ;
+
+                DEC $0154               ; $11:9258: CE 54 01    ;
+
+CODE_11925B:    PHD                     ; $11:925B: 0B          ;\ Preserve direct page.
+                LDA #$21                ; $11:925C: A9 21       ; | Direct page = #$2100.
+                XBA                     ; $11:925E: EB          ; |
+                LDA #$00                ; $11:925F: A9 00       ; |
+                TCD                     ; $11:9261: 5B          ;/
+                LDA $0200               ; $11:9262: AD 00 02    ;\ $0200-$0201 = Layer 1 X mirror.
+                STA $0D                 ; $11:9265: 85 0D       ; |
+                LDA $0201               ; $11:9267: AD 01 02    ; |
+                STA $0D                 ; $11:926A: 85 0D       ;/
+                LDA $0206               ; $11:926C: AD 06 02    ;\ $0206-$0207 + $04C6 = Layer 1 Y mirror.
+                CLC                     ; $11:926F: 18          ; |
+                ADC $04C6               ; $11:9270: 6D C6 04    ; |
+                STA $0E                 ; $11:9273: 85 0E       ; |
+                LDA $0207               ; $11:9275: AD 07 02    ; |
+                STA $0E                 ; $11:9278: 85 0E       ;/
+                LDA $0202               ; $11:927A: AD 02 02    ;\ $0202-$0203 = Layer 2 X mirror.
+                STA $0F                 ; $11:927D: 85 0F       ; |
+                LDA $0203               ; $11:927F: AD 03 02    ; |
+                STA $0F                 ; $11:9282: 85 0F       ;/
+                LDA $0208               ; $11:9284: AD 08 02    ;\ $0208-$0209 = Layer 2 Y mirror.
+                STA $10                 ; $11:9287: 85 10       ; |
+                LDA $0209               ; $11:9289: AD 09 02    ; |
+                STA $10                 ; $11:928C: 85 10       ;/
+                LDA $0204               ; $11:928E: AD 04 02    ;\ $0204-$0205 = Layer 3 X mirror.
+                STA $11                 ; $11:9291: 85 11       ; |
+                LDA $0205               ; $11:9293: AD 05 02    ; |
+                STA $11                 ; $11:9296: 85 11       ;/
+                LDA $020A               ; $11:9298: AD 0A 02    ;\ $020A-$020B = Layer 3 Y mirror.
+                STA $12                 ; $11:929B: 85 12       ; |
+                LDA $020B               ; $11:929D: AD 0B 02    ; |
+                STA $12                 ; $11:92A0: 85 12       ;/
                 REP #$10                ; $11:92A2: C2 10       ; Index = 16-bit.
-                LDX $0235                   ; $11:92A4: AE 35 02    ;
-                STX $23                     ; $11:92A7: 86 23       ;
-                LDA $0237                   ; $11:92A9: AD 37 02    ;
-                STA $25                     ; $11:92AC: 85 25       ;
-                LDX $0238                   ; $11:92AE: AE 38 02    ;
-                STX $30                     ; $11:92B1: 86 30       ;
-                LDX $023B                   ; $11:92B3: AE 3B 02    ;
-                STX $2E                     ; $11:92B6: 86 2E       ;
-                LDA $023D               ; $11:92B8: AD 3D 02    ; \ $023D-$023F = Colour layer mirror.
-                STA $32                 ; $11:92BB: 85 32       ;  |
-                LDA $023E               ; $11:92BD: AD 3E 02    ;  |
-                STA $32                 ; $11:92C0: 85 32       ;  |
-                LDA $023F               ; $11:92C2: AD 3F 02    ;  |
-                STA $32                 ; $11:92C5: 85 32       ; /
-                LDX $0243               ; $11:92C7: AE 43 02    ; \ $0243-$0244 = Main and Sub Screen Designation.
-                STX $2C                 ; $11:92CA: 86 2C       ; /
-                LDA $024C                   ; $11:92CC: AD 4C 02    ;
-                STA $07                     ; $11:92CF: 85 07       ;
-                LDA $0775               ; $11:92D1: AD 75 07    ; \ $0775 = BG mode mirror.
-                STA $2105               ; $11:92D4: 8D 05 21    ; /
+                LDX $0235               ; $11:92A4: AE 35 02    ;
+
+                STX $23                 ; $11:92A7: 86 23       ;
+
+                LDA $0237               ; $11:92A9: AD 37 02    ;
+
+                STA $25                 ; $11:92AC: 85 25       ;
+
+                LDX $0238               ; $11:92AE: AE 38 02    ;
+
+                STX $30                 ; $11:92B1: 86 30       ;
+
+                LDX $023B               ; $11:92B3: AE 3B 02    ;
+
+                STX $2E                 ; $11:92B6: 86 2E       ;
+
+                LDA $023D               ; $11:92B8: AD 3D 02    ;\ $023D-$023F = Colour layer mirror.
+                STA $32                 ; $11:92BB: 85 32       ; |
+                LDA $023E               ; $11:92BD: AD 3E 02    ; |
+                STA $32                 ; $11:92C0: 85 32       ; |
+                LDA $023F               ; $11:92C2: AD 3F 02    ; |
+                STA $32                 ; $11:92C5: 85 32       ;/
+                LDX $0243               ; $11:92C7: AE 43 02    ;\ $0243-$0244 = Main and Sub Screen Designation.
+                STX $2C                 ; $11:92CA: 86 2C       ;/
+                LDA $024C               ; $11:92CC: AD 4C 02    ;
+
+                STA $07                 ; $11:92CF: 85 07       ;
+
+                LDA $0775               ; $11:92D1: AD 75 07    ;\ $0775 = BG mode mirror.
+                STA $2105               ; $11:92D4: 8D 05 21    ;/
                 SEP #$10                ; $11:92D7: E2 10       ; Index = 8-bit.
-                LDA $024B                   ; $11:92D9: AD 4B 02    ;
-                BEQ CODE_11930B             ; $11:92DC: F0 2D       ;
-                CMP #$BE                    ; $11:92DE: C9 BE       ;
-                BEQ CODE_1192F4             ; $11:92E0: F0 12       ;
-                LDA $04BF               ; $11:92E2: AD BF 04    ; \ Make starry BG scroll slower than the rest of the background.
-                XBA                     ; $11:92E5: EB          ;  | (Four times as slow as Layer 1)
-                LDA $0200               ; $11:92E6: AD 00 02    ;  |
-                REP #$20                ; $11:92E9: C2 20       ;  | Accumulator = 16-bit.
-                LSR A                   ; $11:92EB: 4A          ;  |
-                LSR A                   ; $11:92EC: 4A          ;  |
-                SEP #$20                ; $11:92ED: E2 20       ;  | Accumulator = 8-bit.
-                STA $0F                 ; $11:92EF: 85 0F       ;  |
-                XBA                     ; $11:92F1: EB          ;  |
-                STA $0F                 ; $11:92F2: 85 0F       ; /
-CODE_1192F4:    LDX $4211                   ; $11:92F4: AE 11 42    ;
-                LDA $024B                   ; $11:92F7: AD 4B 02    ;
-                STA $4209                   ; $11:92FA: 8D 09 42    ;
-                STZ $420A                   ; $11:92FD: 9C 0A 42    ;
-                STZ $4207                   ; $11:9300: 9C 07 42    ;
-                STZ $4208                   ; $11:9303: 9C 08 42    ;
-                LDA #$A1                    ; $11:9306: A9 A1       ;
-                STA $4200                   ; $11:9308: 8D 00 42    ;
+                LDA $024B               ; $11:92D9: AD 4B 02    ;
+
+                BEQ CODE_11930B         ; $11:92DC: F0 2D       ;
+
+                CMP #$BE                ; $11:92DE: C9 BE       ;
+
+                BEQ CODE_1192F4         ; $11:92E0: F0 12       ;
+
+                LDA $04BF               ; $11:92E2: AD BF 04    ;\ Make starry BG scroll slower than the rest of the background.
+                XBA                     ; $11:92E5: EB          ; | (Four times as slow as Layer 1)
+                LDA $0200               ; $11:92E6: AD 00 02    ; |
+                REP #$20                ; $11:92E9: C2 20       ; | Accumulator = 16-bit.
+                LSR A                   ; $11:92EB: 4A          ; |
+                LSR A                   ; $11:92EC: 4A          ; |
+                SEP #$20                ; $11:92ED: E2 20       ; | Accumulator = 8-bit.
+                STA $0F                 ; $11:92EF: 85 0F       ; |
+                XBA                     ; $11:92F1: EB          ; |
+                STA $0F                 ; $11:92F2: 85 0F       ;/
+CODE_1192F4:    LDX $4211               ; $11:92F4: AE 11 42    ;
+
+                LDA $024B               ; $11:92F7: AD 4B 02    ;
+
+                STA $4209               ; $11:92FA: 8D 09 42    ;
+
+                STZ $420A               ; $11:92FD: 9C 0A 42    ;
+
+                STZ $4207               ; $11:9300: 9C 07 42    ;
+
+                STZ $4208               ; $11:9303: 9C 08 42    ;
+
+                LDA #$A1                ; $11:9306: A9 A1       ;
+
+                STA $4200               ; $11:9308: 8D 00 42    ;
+
 CODE_11930B:    PLD                     ; $11:930B: 2B          ; Pull normal direct page back.
-                LDA $FE                 ; $11:930C: A5 FE       ; \ $FE = Brightness + Force blank mirror.
-                STA $2100               ; $11:930E: 8D 00 21    ; /
-                LDA $023A               ; $11:9311: AD 3A 02    ; \ $023A = HDMA enable mirror.
-                STA $420C               ; $11:9314: 8D 0C 42    ; /
-                JSL CODE_138C0B             ; $11:9317: 22 0B 8C 13 ;
-                JSR CODE_1195E4             ; $11:931B: 20 E4 95    ;
-                PLB                         ; $11:931E: AB          ;
+                LDA $FE                 ; $11:930C: A5 FE       ;\ $FE = Brightness + Force blank mirror.
+                STA $2100               ; $11:930E: 8D 00 21    ;/
+                LDA $023A               ; $11:9311: AD 3A 02    ;\ $023A = HDMA enable mirror.
+                STA $420C               ; $11:9314: 8D 0C 42    ;/
+                JSL CODE_138C0B         ; $11:9317: 22 0B 8C 13 ;
+
+                JSR CODE_1195E4         ; $11:931B: 20 E4 95    ;
+
+                PLB                     ; $11:931E: AB          ;
+
                 RTL                     ; $11:931F: 6B          ;
 
                 RTS                     ; $11:9320: 60          ;
 
-CODE_119321:    JSR CODE_11939C             ; $11:9321: 20 9C 93    ;
-                PHD                         ; $11:9324: 0B          ;
-                LDX #$80                    ; $11:9325: A2 80       ;
-                STX $2115                   ; $11:9327: 8E 15 21    ;
-                REP #$20                    ; $11:932A: C2 20       ;
-                LDA #$4300                  ; $11:932C: A9 00 43    ;
+CODE_119321:    JSR CODE_11939C         ; $11:9321: 20 9C 93    ;
+
+                PHD                     ; $11:9324: 0B          ;
+
+                LDX #$80                ; $11:9325: A2 80       ;
+
+                STX $2115               ; $11:9327: 8E 15 21    ;
+
+                REP #$20                ; $11:932A: C2 20       ;
+
+                LDA #$4300              ; $11:932C: A9 00 43    ;
+
                 TCD                     ; $11:932F: 5B          ; DP: $4300
-                STZ $2102                   ; $11:9330: 9C 02 21    ;
-                LDA #$0400                  ; $11:9333: A9 00 04    ;
-                STA $00                     ; $11:9336: 85 00       ;
-                LDA #$0800                  ; $11:9338: A9 00 08    ;
-                STA $02                     ; $11:933B: 85 02       ;
-                STZ $04                     ; $11:933D: 64 04       ;
-                LDA #$0220                  ; $11:933F: A9 20 02    ;
-                STA $05                     ; $11:9342: 85 05       ;
-                LDY #$01                    ; $11:9344: A0 01       ;
-                STY $420B                   ; $11:9346: 8C 0B 42    ;
-                LDX $0D0B                   ; $11:9349: AE 0B 0D    ;
-                BEQ CODE_119353             ; $11:934C: F0 05       ;
-                LDA #$0D0C                  ; $11:934E: A9 0C 0D    ;
-                STA $72                     ; $11:9351: 85 72       ;
-CODE_119353:    LDA $7FF800                 ; $11:9353: AF 00 F8 7F ;
-                BEQ CODE_119373             ; $11:9357: F0 1A       ;
-                STA $2116                   ; $11:9359: 8D 16 21    ;
-                LDA #$1801                  ; $11:935C: A9 01 18    ;
-                STA $00                     ; $11:935F: 85 00       ;
-                LDA #$F600                  ; $11:9361: A9 00 F6    ;
-                STA $02                     ; $11:9364: 85 02       ;
-                LDX #$7F                    ; $11:9366: A2 7F       ;
-                STX $04                     ; $11:9368: 86 04       ;
-                LDA $7FF802                 ; $11:936A: AF 02 F8 7F ;
-                STA $05                     ; $11:936E: 85 05       ;
-                STY $420B                   ; $11:9370: 8C 0B 42    ;
-CODE_119373:    SEP #$20                    ; $11:9373: E2 20       ;
-                LDA $02A9                   ; $11:9375: AD A9 02    ;
-                BEQ CODE_119395             ; $11:9378: F0 1B       ;
-                STZ $2121                   ; $11:937A: 9C 21 21    ;
-                REP #$20                    ; $11:937D: C2 20       ;
-                LDA #$2200                  ; $11:937F: A9 00 22    ;
-                STA $00                     ; $11:9382: 85 00       ;
-                LDA #$0B00                  ; $11:9384: A9 00 0B    ;
-                STA $02                     ; $11:9387: 85 02       ;
-                LDX #$00                    ; $11:9389: A2 00       ;
-                STX $04                     ; $11:938B: 86 04       ;
-                LDA #$0200                  ; $11:938D: A9 00 02    ;
-                STA $05                     ; $11:9390: 85 05       ;
-                STY $420B                   ; $11:9392: 8C 0B 42    ;
-CODE_119395:    SEP #$20                    ; $11:9395: E2 20       ;
-                STZ $02A9                   ; $11:9397: 9C A9 02    ;
-                PLD                         ; $11:939A: 2B          ;
+                STZ $2102               ; $11:9330: 9C 02 21    ;
+
+                LDA #$0400              ; $11:9333: A9 00 04    ;
+
+                STA $00                 ; $11:9336: 85 00       ;
+
+                LDA #$0800              ; $11:9338: A9 00 08    ;
+
+                STA $02                 ; $11:933B: 85 02       ;
+
+                STZ $04                 ; $11:933D: 64 04       ;
+
+                LDA #$0220              ; $11:933F: A9 20 02    ;
+
+                STA $05                 ; $11:9342: 85 05       ;
+
+                LDY #$01                ; $11:9344: A0 01       ;
+
+                STY $420B               ; $11:9346: 8C 0B 42    ;
+
+                LDX $0D0B               ; $11:9349: AE 0B 0D    ;
+
+                BEQ CODE_119353         ; $11:934C: F0 05       ;
+
+                LDA #$0D0C              ; $11:934E: A9 0C 0D    ;
+
+                STA $72                 ; $11:9351: 85 72       ;
+
+CODE_119353:    LDA $7FF800             ; $11:9353: AF 00 F8 7F ;
+
+                BEQ CODE_119373         ; $11:9357: F0 1A       ;
+
+                STA $2116               ; $11:9359: 8D 16 21    ;
+
+                LDA #$1801              ; $11:935C: A9 01 18    ;
+
+                STA $00                 ; $11:935F: 85 00       ;
+
+                LDA #$F600              ; $11:9361: A9 00 F6    ;
+
+                STA $02                 ; $11:9364: 85 02       ;
+
+                LDX #$7F                ; $11:9366: A2 7F       ;
+
+                STX $04                 ; $11:9368: 86 04       ;
+
+                LDA $7FF802             ; $11:936A: AF 02 F8 7F ;
+
+                STA $05                 ; $11:936E: 85 05       ;
+
+                STY $420B               ; $11:9370: 8C 0B 42    ;
+
+CODE_119373:    SEP #$20                ; $11:9373: E2 20       ;
+
+                LDA $02A9               ; $11:9375: AD A9 02    ;
+
+                BEQ CODE_119395         ; $11:9378: F0 1B       ;
+
+                STZ $2121               ; $11:937A: 9C 21 21    ;
+
+                REP #$20                ; $11:937D: C2 20       ;
+
+                LDA #$2200              ; $11:937F: A9 00 22    ;
+
+                STA $00                 ; $11:9382: 85 00       ;
+
+                LDA #$0B00              ; $11:9384: A9 00 0B    ;
+
+                STA $02                 ; $11:9387: 85 02       ;
+
+                LDX #$00                ; $11:9389: A2 00       ;
+
+                STX $04                 ; $11:938B: 86 04       ;
+
+                LDA #$0200              ; $11:938D: A9 00 02    ;
+
+                STA $05                 ; $11:9390: 85 05       ;
+
+                STY $420B               ; $11:9392: 8C 0B 42    ;
+
+CODE_119395:    SEP #$20                ; $11:9395: E2 20       ;
+
+                STZ $02A9               ; $11:9397: 9C A9 02    ;
+
+                PLD                     ; $11:939A: 2B          ;
+
                 RTS                     ; $11:939B: 60          ;
 
 CODE_11939C:    PHD                     ; $11:939C: 0B          ; Preserve DP.
-                LDA #$0A                ; $11:939D: A9 0A       ; \ Direct page = #$0A00.
-                XBA                     ; $11:939F: EB          ;  |
-                LDA #$00                ; $11:93A0: A9 00       ;  |
-                TCD                     ; $11:93A2: 5B          ; /
-                LDY #$1C                ; $11:93A3: A0 1C       ; \ Y starts out as #$1C, X as #$70.
-CODE_1193A5:    TYA                     ; $11:93A5: 98          ;  |
-                ASL A                   ; $11:93A6: 0A          ;  |
-                ASL A                   ; $11:93A7: 0A          ;  |
-                TAX                     ; $11:93A8: AA          ; /
-                LDA $23,x               ; $11:93A9: B5 23       ; \ Get general sprite tile sizes from $0A20-$0A9F into $0A00-$0A1F.
-                ASL A                   ; $11:93AB: 0A          ;  |
-                ASL A                   ; $11:93AC: 0A          ;  |
-                ORA $22,x               ; $11:93AD: 15 22       ;  |
-                ASL A                   ; $11:93AF: 0A          ;  |
-                ASL A                   ; $11:93B0: 0A          ;  |
-                ORA $21,x               ; $11:93B1: 15 21       ;  |
-                ASL A                   ; $11:93B3: 0A          ;  |
-                ASL A                   ; $11:93B4: 0A          ;  |
-                ORA $20,x               ; $11:93B5: 15 20       ;  |
-                STA $0A00,y             ; $11:93B7: 99 00 0A    ;  |
-                LDA $27,x               ; $11:93BA: B5 27       ;  |
-                ASL A                   ; $11:93BC: 0A          ;  |
-                ASL A                   ; $11:93BD: 0A          ;  |
-                ORA $26,x               ; $11:93BE: 15 26       ;  |
-                ASL A                   ; $11:93C0: 0A          ;  |
-                ASL A                   ; $11:93C1: 0A          ;  |
-                ORA $25,x               ; $11:93C2: 15 25       ;  |
-                ASL A                   ; $11:93C4: 0A          ;  |
-                ASL A                   ; $11:93C5: 0A          ;  |
-                ORA $24,x               ; $11:93C6: 15 24       ;  |
-                STA $0A01,y             ; $11:93C8: 99 01 0A    ;  |
-                LDA $2B,x               ; $11:93CB: B5 2B       ;  |
-                ASL A                   ; $11:93CD: 0A          ;  |
-                ASL A                   ; $11:93CE: 0A          ;  |
-                ORA $2A,x               ; $11:93CF: 15 2A       ;  |
-                ASL A                   ; $11:93D1: 0A          ;  |
-                ASL A                   ; $11:93D2: 0A          ;  |
-                ORA $29,x               ; $11:93D3: 15 29       ;  |
-                ASL A                   ; $11:93D5: 0A          ;  |
-                ASL A                   ; $11:93D6: 0A          ;  |
-                ORA $28,x               ; $11:93D7: 15 28       ;  |
-                STA $0A02,y             ; $11:93D9: 99 02 0A    ;  |
-                LDA $2F,x               ; $11:93DC: B5 2F       ;  |
-                ASL A                   ; $11:93DE: 0A          ;  |
-                ASL A                   ; $11:93DF: 0A          ;  |
-                ORA $2E,x               ; $11:93E0: 15 2E       ;  |
-                ASL A                   ; $11:93E2: 0A          ;  |
-                ASL A                   ; $11:93E3: 0A          ;  |
-                ORA $2D,x               ; $11:93E4: 15 2D       ;  |
-                ASL A                   ; $11:93E6: 0A          ;  |
-                ASL A                   ; $11:93E7: 0A          ;  |
-                ORA $2C,x               ; $11:93E8: 15 2C       ;  |
-                STA $0A03,y             ; $11:93EA: 99 03 0A    ; /
-                DEY                     ; $11:93ED: 88          ; \ Decrement Y by 4 and loop until transfer done.
-                DEY                     ; $11:93EE: 88          ;  |
-                DEY                     ; $11:93EF: 88          ;  |
-                DEY                     ; $11:93F0: 88          ;  |
-                BPL CODE_1193A5         ; $11:93F1: 10 B2       ; /
+                LDA #$0A                ; $11:939D: A9 0A       ;\ Direct page = #$0A00.
+                XBA                     ; $11:939F: EB          ; |
+                LDA #$00                ; $11:93A0: A9 00       ; |
+                TCD                     ; $11:93A2: 5B          ;/
+                LDY #$1C                ; $11:93A3: A0 1C       ;\ Y starts out as #$1C, X as #$70.
+CODE_1193A5:    TYA                     ; $11:93A5: 98          ; |
+                ASL A                   ; $11:93A6: 0A          ; |
+                ASL A                   ; $11:93A7: 0A          ; |
+                TAX                     ; $11:93A8: AA          ;/
+                LDA $23,x               ; $11:93A9: B5 23       ;\ Get general sprite tile sizes from $0A20-$0A9F into $0A00-$0A1F.
+                ASL A                   ; $11:93AB: 0A          ; |
+                ASL A                   ; $11:93AC: 0A          ; |
+                ORA $22,x               ; $11:93AD: 15 22       ; |
+                ASL A                   ; $11:93AF: 0A          ; |
+                ASL A                   ; $11:93B0: 0A          ; |
+                ORA $21,x               ; $11:93B1: 15 21       ; |
+                ASL A                   ; $11:93B3: 0A          ; |
+                ASL A                   ; $11:93B4: 0A          ; |
+                ORA $20,x               ; $11:93B5: 15 20       ; |
+                STA $0A00,y             ; $11:93B7: 99 00 0A    ; |
+                LDA $27,x               ; $11:93BA: B5 27       ; |
+                ASL A                   ; $11:93BC: 0A          ; |
+                ASL A                   ; $11:93BD: 0A          ; |
+                ORA $26,x               ; $11:93BE: 15 26       ; |
+                ASL A                   ; $11:93C0: 0A          ; |
+                ASL A                   ; $11:93C1: 0A          ; |
+                ORA $25,x               ; $11:93C2: 15 25       ; |
+                ASL A                   ; $11:93C4: 0A          ; |
+                ASL A                   ; $11:93C5: 0A          ; |
+                ORA $24,x               ; $11:93C6: 15 24       ; |
+                STA $0A01,y             ; $11:93C8: 99 01 0A    ; |
+                LDA $2B,x               ; $11:93CB: B5 2B       ; |
+                ASL A                   ; $11:93CD: 0A          ; |
+                ASL A                   ; $11:93CE: 0A          ; |
+                ORA $2A,x               ; $11:93CF: 15 2A       ; |
+                ASL A                   ; $11:93D1: 0A          ; |
+                ASL A                   ; $11:93D2: 0A          ; |
+                ORA $29,x               ; $11:93D3: 15 29       ; |
+                ASL A                   ; $11:93D5: 0A          ; |
+                ASL A                   ; $11:93D6: 0A          ; |
+                ORA $28,x               ; $11:93D7: 15 28       ; |
+                STA $0A02,y             ; $11:93D9: 99 02 0A    ; |
+                LDA $2F,x               ; $11:93DC: B5 2F       ; |
+                ASL A                   ; $11:93DE: 0A          ; |
+                ASL A                   ; $11:93DF: 0A          ; |
+                ORA $2E,x               ; $11:93E0: 15 2E       ; |
+                ASL A                   ; $11:93E2: 0A          ; |
+                ASL A                   ; $11:93E3: 0A          ; |
+                ORA $2D,x               ; $11:93E4: 15 2D       ; |
+                ASL A                   ; $11:93E6: 0A          ; |
+                ASL A                   ; $11:93E7: 0A          ; |
+                ORA $2C,x               ; $11:93E8: 15 2C       ; |
+                STA $0A03,y             ; $11:93EA: 99 03 0A    ;/
+                DEY                     ; $11:93ED: 88          ;\ Decrement Y by 4 and loop until transfer done.
+                DEY                     ; $11:93EE: 88          ; |
+                DEY                     ; $11:93EF: 88          ; |
+                DEY                     ; $11:93F0: 88          ; |
+                BPL CODE_1193A5         ; $11:93F1: 10 B2       ;/
                 PLD                     ; $11:93F3: 2B          ; Get DP register back.
                 RTS                     ; $11:93F4: 60          ; Return.
 
-CODE_1193F5:    LDX #$44                    ; $11:93F5: A2 44       ;
-                LDY #$00                    ; $11:93F7: A0 00       ;
-                LDA $0628                   ; $11:93F9: AD 28 06    ;
-                CMP #$01                    ; $11:93FC: C9 01       ;
-                BEQ CODE_119407             ; $11:93FE: F0 07       ;
-                LDA $EB                     ; $11:9400: A5 EB       ;
-                BEQ CODE_119407             ; $11:9402: F0 03       ;
-                LDX #$40                    ; $11:9404: A2 40       ;
-                INY                         ; $11:9406: C8          ;
-CODE_119407:    STX $03                     ; $11:9407: 86 03       ;
-                STZ $04                     ; $11:9409: 64 04       ;
-                TYA                         ; $11:940B: 98          ;
-                ORA #$80                    ; $11:940C: 09 80       ;
-                STA $2115                   ; $11:940E: 8D 15 21    ;
-                LDA #$00                    ; $11:9411: A9 00       ;
-                STA $4314                   ; $11:9413: 8D 14 43    ;
-                REP #$10                    ; $11:9416: C2 10       ;
-                LDX #$1801                  ; $11:9418: A2 01 18    ;
-                STX $4310                   ; $11:941B: 8E 10 43    ;
-                LDX #$0002                  ; $11:941E: A2 02 00    ;
-                LDA $0300,x                 ; $11:9421: BD 00 03    ;
-                BMI CODE_119457             ; $11:9424: 30 31       ;
-CODE_119426:    REP #$20                    ; $11:9426: C2 20       ;
-                LDA $0300,x                 ; $11:9428: BD 00 03    ;
-                XBA                         ; $11:942B: EB          ;
-                STA $2116                   ; $11:942C: 8D 16 21    ;
-                LDA $0302,x                 ; $11:942F: BD 02 03    ;
-                XBA                         ; $11:9432: EB          ;
-                AND #$3FFF                  ; $11:9433: 29 FF 3F    ;
-                INC A                       ; $11:9436: 1A          ;
-                STA $4315                   ; $11:9437: 8D 15 43    ;
-                TXA                         ; $11:943A: 8A          ;
-                CLC                         ; $11:943B: 18          ;
-                ADC #$0004                  ; $11:943C: 69 04 00    ;
-                CLC                         ; $11:943F: 18          ;
-                ADC #$0300                  ; $11:9440: 69 00 03    ;
-                STA $4312                   ; $11:9443: 8D 12 43    ;
-                TXA                         ; $11:9446: 8A          ;
-                CLC                         ; $11:9447: 18          ;
-                ADC $03                     ; $11:9448: 65 03       ;
-                TAX                         ; $11:944A: AA          ;
-                SEP #$20                    ; $11:944B: E2 20       ;
-                LDA #$02                    ; $11:944D: A9 02       ;
-                STA $420B                   ; $11:944F: 8D 0B 42    ;
-                LDA $0300,x                 ; $11:9452: BD 00 03    ;
-                BPL CODE_119426             ; $11:9455: 10 CF       ;
-CODE_119457:    SEP #$30                    ; $11:9457: E2 30       ;
+CODE_1193F5:    LDX #$44                ; $11:93F5: A2 44       ;
+
+                LDY #$00                ; $11:93F7: A0 00       ;
+
+                LDA $0628               ; $11:93F9: AD 28 06    ;
+
+                CMP #$01                ; $11:93FC: C9 01       ;
+
+                BEQ CODE_119407         ; $11:93FE: F0 07       ;
+
+                LDA $EB                 ; $11:9400: A5 EB       ;
+
+                BEQ CODE_119407         ; $11:9402: F0 03       ;
+
+                LDX #$40                ; $11:9404: A2 40       ;
+
+                INY                     ; $11:9406: C8          ;
+
+CODE_119407:    STX $03                 ; $11:9407: 86 03       ;
+
+                STZ $04                 ; $11:9409: 64 04       ;
+
+                TYA                     ; $11:940B: 98          ;
+
+                ORA #$80                ; $11:940C: 09 80       ;
+
+                STA $2115               ; $11:940E: 8D 15 21    ;
+
+                LDA #$00                ; $11:9411: A9 00       ;
+
+                STA $4314               ; $11:9413: 8D 14 43    ;
+
+                REP #$10                ; $11:9416: C2 10       ;
+
+                LDX #$1801              ; $11:9418: A2 01 18    ;
+
+                STX $4310               ; $11:941B: 8E 10 43    ;
+
+                LDX #$0002              ; $11:941E: A2 02 00    ;
+
+                LDA $0300,x             ; $11:9421: BD 00 03    ;
+
+                BMI CODE_119457         ; $11:9424: 30 31       ;
+
+CODE_119426:    REP #$20                ; $11:9426: C2 20       ;
+
+                LDA $0300,x             ; $11:9428: BD 00 03    ;
+
+                XBA                     ; $11:942B: EB          ;
+
+                STA $2116               ; $11:942C: 8D 16 21    ;
+
+                LDA $0302,x             ; $11:942F: BD 02 03    ;
+
+                XBA                     ; $11:9432: EB          ;
+
+                AND #$3FFF              ; $11:9433: 29 FF 3F    ;
+
+                INC A                   ; $11:9436: 1A          ;
+
+                STA $4315               ; $11:9437: 8D 15 43    ;
+
+                TXA                     ; $11:943A: 8A          ;
+
+                CLC                     ; $11:943B: 18          ;
+
+                ADC #$0004              ; $11:943C: 69 04 00    ;
+
+                CLC                     ; $11:943F: 18          ;
+
+                ADC #$0300              ; $11:9440: 69 00 03    ;
+
+                STA $4312               ; $11:9443: 8D 12 43    ;
+
+                TXA                     ; $11:9446: 8A          ;
+
+                CLC                     ; $11:9447: 18          ;
+
+                ADC $03                 ; $11:9448: 65 03       ;
+
+                TAX                     ; $11:944A: AA          ;
+
+                SEP #$20                ; $11:944B: E2 20       ;
+
+                LDA #$02                ; $11:944D: A9 02       ;
+
+                STA $420B               ; $11:944F: 8D 0B 42    ;
+
+                LDA $0300,x             ; $11:9452: BD 00 03    ;
+
+                BPL CODE_119426         ; $11:9455: 10 CF       ;
+
+CODE_119457:    SEP #$30                ; $11:9457: E2 30       ;
+
                 RTS                     ; $11:9459: 60          ;
 
-CODE_11945A:    LDX #$44                    ; $11:945A: A2 44       ;
-                LDY #$80                    ; $11:945C: A0 80       ;
-                LDA $0628                   ; $11:945E: AD 28 06    ;
-                CMP #$01                    ; $11:9461: C9 01       ;
-                BNE CODE_119469             ; $11:9463: D0 04       ;
-                LDX #$84                    ; $11:9465: A2 84       ;
-                BRA CODE_119477             ; $11:9467: 80 0E       ;
+CODE_11945A:    LDX #$44                ; $11:945A: A2 44       ;
 
-CODE_119469:    LDA $EB                     ; $11:9469: A5 EB       ;
-                BEQ CODE_119477             ; $11:946B: F0 0A       ;
-                LDX #$2C                    ; $11:946D: A2 2C       ;
-                LDA $024B                   ; $11:946F: AD 4B 02    ;
-                BNE CODE_119476             ; $11:9472: D0 02       ;
-                LDX #$40                    ; $11:9474: A2 40       ;
-CODE_119476:    INY                         ; $11:9476: C8          ;
-CODE_119477:    STX $03                     ; $11:9477: 86 03       ;
-                STZ $04                     ; $11:9479: 64 04       ;
-                STY $2115                   ; $11:947B: 8C 15 21    ;
-                LDA #$7F                    ; $11:947E: A9 7F       ;
-                STA $4314                   ; $11:9480: 8D 14 43    ;
-                REP #$10                    ; $11:9483: C2 10       ;
-                LDX #$1801                  ; $11:9485: A2 01 18    ;
-                STX $4310                   ; $11:9488: 8E 10 43    ;
-                LDX #$0002                  ; $11:948B: A2 02 00    ;
-                LDA $7F0000,x               ; $11:948E: BF 00 00 7F ;
-                BMI CODE_1194C4             ; $11:9492: 30 30       ;
-CODE_119494:    REP #$20                    ; $11:9494: C2 20       ;
-                LDA $7F0000,x               ; $11:9496: BF 00 00 7F ;
-                XBA                         ; $11:949A: EB          ;
-                STA $2116                   ; $11:949B: 8D 16 21    ;
-                LDA $7F0002,x               ; $11:949E: BF 02 00 7F ;
-                XBA                         ; $11:94A2: EB          ;
-                STA $4315                   ; $11:94A3: 8D 15 43    ;
-                TXA                         ; $11:94A6: 8A          ;
-                CLC                         ; $11:94A7: 18          ;
-                ADC #$0004                  ; $11:94A8: 69 04 00    ;
-                CLC                         ; $11:94AB: 18          ;
-                ADC #$0000                  ; $11:94AC: 69 00 00    ;
-                STA $4312                   ; $11:94AF: 8D 12 43    ;
-                TXA                         ; $11:94B2: 8A          ;
-                CLC                         ; $11:94B3: 18          ;
-                ADC $03                     ; $11:94B4: 65 03       ;
-                TAX                         ; $11:94B6: AA          ;
-                SEP #$20                    ; $11:94B7: E2 20       ;
-                LDA #$02                    ; $11:94B9: A9 02       ;
-                STA $420B                   ; $11:94BB: 8D 0B 42    ;
-                LDA $7F0000,x               ; $11:94BE: BF 00 00 7F ;
-                BPL CODE_119494             ; $11:94C2: 10 D0       ;
-CODE_1194C4:    SEP #$30                    ; $11:94C4: E2 30       ;
+                LDY #$80                ; $11:945C: A0 80       ;
+
+                LDA $0628               ; $11:945E: AD 28 06    ;
+
+                CMP #$01                ; $11:9461: C9 01       ;
+
+                BNE CODE_119469         ; $11:9463: D0 04       ;
+
+                LDX #$84                ; $11:9465: A2 84       ;
+
+                BRA CODE_119477         ; $11:9467: 80 0E       ;
+
+CODE_119469:    LDA $EB                 ; $11:9469: A5 EB       ;
+
+                BEQ CODE_119477         ; $11:946B: F0 0A       ;
+
+                LDX #$2C                ; $11:946D: A2 2C       ;
+
+                LDA $024B               ; $11:946F: AD 4B 02    ;
+
+                BNE CODE_119476         ; $11:9472: D0 02       ;
+
+                LDX #$40                ; $11:9474: A2 40       ;
+
+CODE_119476:    INY                     ; $11:9476: C8          ;
+
+CODE_119477:    STX $03                 ; $11:9477: 86 03       ;
+
+                STZ $04                 ; $11:9479: 64 04       ;
+
+                STY $2115               ; $11:947B: 8C 15 21    ;
+
+                LDA #$7F                ; $11:947E: A9 7F       ;
+
+                STA $4314               ; $11:9480: 8D 14 43    ;
+
+                REP #$10                ; $11:9483: C2 10       ;
+
+                LDX #$1801              ; $11:9485: A2 01 18    ;
+
+                STX $4310               ; $11:9488: 8E 10 43    ;
+
+                LDX #$0002              ; $11:948B: A2 02 00    ;
+
+                LDA $7F0000,x           ; $11:948E: BF 00 00 7F ;
+
+                BMI CODE_1194C4         ; $11:9492: 30 30       ;
+
+CODE_119494:    REP #$20                ; $11:9494: C2 20       ;
+
+                LDA $7F0000,x           ; $11:9496: BF 00 00 7F ;
+
+                XBA                     ; $11:949A: EB          ;
+
+                STA $2116               ; $11:949B: 8D 16 21    ;
+
+                LDA $7F0002,x           ; $11:949E: BF 02 00 7F ;
+
+                XBA                     ; $11:94A2: EB          ;
+
+                STA $4315               ; $11:94A3: 8D 15 43    ;
+
+                TXA                     ; $11:94A6: 8A          ;
+
+                CLC                     ; $11:94A7: 18          ;
+
+                ADC #$0004              ; $11:94A8: 69 04 00    ;
+
+                CLC                     ; $11:94AB: 18          ;
+
+                ADC #$0000              ; $11:94AC: 69 00 00    ;
+
+                STA $4312               ; $11:94AF: 8D 12 43    ;
+
+                TXA                     ; $11:94B2: 8A          ;
+
+                CLC                     ; $11:94B3: 18          ;
+
+                ADC $03                 ; $11:94B4: 65 03       ;
+
+                TAX                     ; $11:94B6: AA          ;
+
+                SEP #$20                ; $11:94B7: E2 20       ;
+
+                LDA #$02                ; $11:94B9: A9 02       ;
+
+                STA $420B               ; $11:94BB: 8D 0B 42    ;
+
+                LDA $7F0000,x           ; $11:94BE: BF 00 00 7F ;
+
+                BPL CODE_119494         ; $11:94C2: 10 D0       ;
+
+CODE_1194C4:    SEP #$30                ; $11:94C4: E2 30       ;
+
                 RTS                     ; $11:94C6: 60          ;
 
-CODE_1194C7:    LDA $F2                     ; $11:94C7: A5 F2       ;
-                STA $4314                   ; $11:94C9: 8D 14 43    ;
-                REP #$10                    ; $11:94CC: C2 10       ;
-                LDY #$0000                  ; $11:94CE: A0 00 00    ;
-                LDA [$F0],y                 ; $11:94D1: B7 F0       ;
-                BMI CODE_1194C4             ; $11:94D3: 30 EF       ;
-                STZ $06                     ; $11:94D5: 64 06       ;
-CODE_1194D7:    STA $04                     ; $11:94D7: 85 04       ;
-                INY                         ; $11:94D9: C8          ;
-                LDA [$F0],y                 ; $11:94DA: B7 F0       ;
-                STA $03                     ; $11:94DC: 85 03       ;
-                INY                         ; $11:94DE: C8          ;
-                LDA [$F0],y                 ; $11:94DF: B7 F0       ;
-                AND #$80                    ; $11:94E1: 29 80       ;
-                ASL A                       ; $11:94E3: 0A          ;
-                ROL A                       ; $11:94E4: 2A          ;
-                STA $07                     ; $11:94E5: 85 07       ;
-                LDA [$F0],y                 ; $11:94E7: B7 F0       ;
-                AND #$40                    ; $11:94E9: 29 40       ;
-                STA $05                     ; $11:94EB: 85 05       ;
-                LSR A                       ; $11:94ED: 4A          ;
-                LSR A                       ; $11:94EE: 4A          ;
-                LSR A                       ; $11:94EF: 4A          ;
-                ORA #$01                    ; $11:94F0: 09 01       ;
-                STA $4310                   ; $11:94F2: 8D 10 43    ;
-                LDA #$18                    ; $11:94F5: A9 18       ;
-                STA $4311                   ; $11:94F7: 8D 11 43    ;
-                REP #$20                    ; $11:94FA: C2 20       ;
-                LDA $03                     ; $11:94FC: A5 03       ;
-                STA $2116                   ; $11:94FE: 8D 16 21    ;
-                LDA [$F0],y                 ; $11:9501: B7 F0       ;
-                XBA                         ; $11:9503: EB          ;
-                AND #$3FFF                  ; $11:9504: 29 FF 3F    ;
-                TAX                         ; $11:9507: AA          ;
-                INX                         ; $11:9508: E8          ;
-                STX $4315                   ; $11:9509: 8E 15 43    ;
-                INY                         ; $11:950C: C8          ;
-                INY                         ; $11:950D: C8          ;
-                TYA                         ; $11:950E: 98          ;
-                CLC                         ; $11:950F: 18          ;
-                ADC $F0                     ; $11:9510: 65 F0       ;
-                STA $4312                   ; $11:9512: 8D 12 43    ;
-                LDA $05                     ; $11:9515: A5 05       ;
-                BEQ CODE_11954D             ; $11:9517: F0 34       ;
-                INX                         ; $11:9519: E8          ;
-                TXA                         ; $11:951A: 8A          ;
-                LSR A                       ; $11:951B: 4A          ;
-                TAX                         ; $11:951C: AA          ;
-                STX $4315                   ; $11:951D: 8E 15 43    ;
-                SEP #$20                    ; $11:9520: E2 20       ;
-                LDA $05                     ; $11:9522: A5 05       ;
-                LSR A                       ; $11:9524: 4A          ;
-                LSR A                       ; $11:9525: 4A          ;
-                LSR A                       ; $11:9526: 4A          ;
-                STA $4310                   ; $11:9527: 8D 10 43    ;
-                LDA $07                     ; $11:952A: A5 07       ;
-                STA $2115                   ; $11:952C: 8D 15 21    ;
-                LDA #$02                    ; $11:952F: A9 02       ;
-                STA $420B                   ; $11:9531: 8D 0B 42    ;
-                LDA #$19                    ; $11:9534: A9 19       ;
-                STA $4311                   ; $11:9536: 8D 11 43    ;
-                REP #$21                    ; $11:9539: C2 21       ;
-                TYA                         ; $11:953B: 98          ;
-                ADC $F0                     ; $11:953C: 65 F0       ;
-                INC A                       ; $11:953E: 1A          ;
-                STA $4312                   ; $11:953F: 8D 12 43    ;
-                LDA $03                     ; $11:9542: A5 03       ;
-                STA $2116                   ; $11:9544: 8D 16 21    ;
-                STX $4315                   ; $11:9547: 8E 15 43    ;
-                LDX #$0002                  ; $11:954A: A2 02 00    ;
-CODE_11954D:    STX $03                     ; $11:954D: 86 03       ;
-                TYA                         ; $11:954F: 98          ;
-                CLC                         ; $11:9550: 18          ;
-                ADC $03                     ; $11:9551: 65 03       ;
-                TAY                         ; $11:9553: A8          ;
-                SEP #$20                    ; $11:9554: E2 20       ;
-                LDA $07                     ; $11:9556: A5 07       ;
-                ORA #$80                    ; $11:9558: 09 80       ;
-                STA $2115                   ; $11:955A: 8D 15 21    ;
-                LDA #$02                    ; $11:955D: A9 02       ;
-                STA $420B                   ; $11:955F: 8D 0B 42    ;
-                LDA [$F0],y                 ; $11:9562: B7 F0       ;
-                BMI CODE_119569             ; $11:9564: 30 03       ;
+CODE_1194C7:    LDA $F2                 ; $11:94C7: A5 F2       ;
+
+                STA $4314               ; $11:94C9: 8D 14 43    ;
+
+                REP #$10                ; $11:94CC: C2 10       ;
+
+                LDY #$0000              ; $11:94CE: A0 00 00    ;
+
+                LDA [$F0],y             ; $11:94D1: B7 F0       ;
+
+                BMI CODE_1194C4         ; $11:94D3: 30 EF       ;
+
+                STZ $06                 ; $11:94D5: 64 06       ;
+
+CODE_1194D7:    STA $04                 ; $11:94D7: 85 04       ;
+
+                INY                     ; $11:94D9: C8          ;
+
+                LDA [$F0],y             ; $11:94DA: B7 F0       ;
+
+                STA $03                 ; $11:94DC: 85 03       ;
+
+                INY                     ; $11:94DE: C8          ;
+
+                LDA [$F0],y             ; $11:94DF: B7 F0       ;
+
+                AND #$80                ; $11:94E1: 29 80       ;
+
+                ASL A                   ; $11:94E3: 0A          ;
+
+                ROL A                   ; $11:94E4: 2A          ;
+
+                STA $07                 ; $11:94E5: 85 07       ;
+
+                LDA [$F0],y             ; $11:94E7: B7 F0       ;
+
+                AND #$40                ; $11:94E9: 29 40       ;
+
+                STA $05                 ; $11:94EB: 85 05       ;
+
+                LSR A                   ; $11:94ED: 4A          ;
+
+                LSR A                   ; $11:94EE: 4A          ;
+
+                LSR A                   ; $11:94EF: 4A          ;
+
+                ORA #$01                ; $11:94F0: 09 01       ;
+
+                STA $4310               ; $11:94F2: 8D 10 43    ;
+
+                LDA #$18                ; $11:94F5: A9 18       ;
+
+                STA $4311               ; $11:94F7: 8D 11 43    ;
+
+                REP #$20                ; $11:94FA: C2 20       ;
+
+                LDA $03                 ; $11:94FC: A5 03       ;
+
+                STA $2116               ; $11:94FE: 8D 16 21    ;
+
+                LDA [$F0],y             ; $11:9501: B7 F0       ;
+
+                XBA                     ; $11:9503: EB          ;
+
+                AND #$3FFF              ; $11:9504: 29 FF 3F    ;
+
+                TAX                     ; $11:9507: AA          ;
+
+                INX                     ; $11:9508: E8          ;
+
+                STX $4315               ; $11:9509: 8E 15 43    ;
+
+                INY                     ; $11:950C: C8          ;
+
+                INY                     ; $11:950D: C8          ;
+
+                TYA                     ; $11:950E: 98          ;
+
+                CLC                     ; $11:950F: 18          ;
+
+                ADC $F0                 ; $11:9510: 65 F0       ;
+
+                STA $4312               ; $11:9512: 8D 12 43    ;
+
+                LDA $05                 ; $11:9515: A5 05       ;
+
+                BEQ CODE_11954D         ; $11:9517: F0 34       ;
+
+                INX                     ; $11:9519: E8          ;
+
+                TXA                     ; $11:951A: 8A          ;
+
+                LSR A                   ; $11:951B: 4A          ;
+
+                TAX                     ; $11:951C: AA          ;
+
+                STX $4315               ; $11:951D: 8E 15 43    ;
+
+                SEP #$20                ; $11:9520: E2 20       ;
+
+                LDA $05                 ; $11:9522: A5 05       ;
+
+                LSR A                   ; $11:9524: 4A          ;
+
+                LSR A                   ; $11:9525: 4A          ;
+
+                LSR A                   ; $11:9526: 4A          ;
+
+                STA $4310               ; $11:9527: 8D 10 43    ;
+
+                LDA $07                 ; $11:952A: A5 07       ;
+
+                STA $2115               ; $11:952C: 8D 15 21    ;
+
+                LDA #$02                ; $11:952F: A9 02       ;
+
+                STA $420B               ; $11:9531: 8D 0B 42    ;
+
+                LDA #$19                ; $11:9534: A9 19       ;
+
+                STA $4311               ; $11:9536: 8D 11 43    ;
+
+                REP #$21                ; $11:9539: C2 21       ;
+
+                TYA                     ; $11:953B: 98          ;
+
+                ADC $F0                 ; $11:953C: 65 F0       ;
+
+                INC A                   ; $11:953E: 1A          ;
+
+                STA $4312               ; $11:953F: 8D 12 43    ;
+
+                LDA $03                 ; $11:9542: A5 03       ;
+
+                STA $2116               ; $11:9544: 8D 16 21    ;
+
+                STX $4315               ; $11:9547: 8E 15 43    ;
+
+                LDX #$0002              ; $11:954A: A2 02 00    ;
+
+CODE_11954D:    STX $03                 ; $11:954D: 86 03       ;
+
+                TYA                     ; $11:954F: 98          ;
+
+                CLC                     ; $11:9550: 18          ;
+
+                ADC $03                 ; $11:9551: 65 03       ;
+
+                TAY                     ; $11:9553: A8          ;
+
+                SEP #$20                ; $11:9554: E2 20       ;
+
+                LDA $07                 ; $11:9556: A5 07       ;
+
+                ORA #$80                ; $11:9558: 09 80       ;
+
+                STA $2115               ; $11:955A: 8D 15 21    ;
+
+                LDA #$02                ; $11:955D: A9 02       ;
+
+                STA $420B               ; $11:955F: 8D 0B 42    ;
+
+                LDA [$F0],y             ; $11:9562: B7 F0       ;
+
+                BMI CODE_119569         ; $11:9564: 30 03       ;
+
                 JMP CODE_1194D7         ; $11:9566: 4C D7 94    ;
 
-CODE_119569:    SEP #$30                    ; $11:9569: E2 30       ;
+CODE_119569:    SEP #$30                ; $11:9569: E2 30       ;
+
                 RTS                     ; $11:956B: 60          ;
 
-CODE_11956C:    PHB                         ; $11:956C: 8B          ;
-                PHK                         ; $11:956D: 4B          ;
-                PLB                         ; $11:956E: AB          ;
-                LDA $4211                   ; $11:956F: AD 11 42    ;
-                BPL CODE_1195A5             ; $11:9572: 10 31       ;
-                LDA $024B                   ; $11:9574: AD 4B 02    ;
-                BEQ CODE_1195A5             ; $11:9577: F0 2C       ;
-                CMP #$BE                    ; $11:9579: C9 BE       ;
-                BEQ CODE_119580             ; $11:957B: F0 03       ;
+CODE_11956C:    PHB                     ; $11:956C: 8B          ;
+
+                PHK                     ; $11:956D: 4B          ;
+
+                PLB                     ; $11:956E: AB          ;
+
+                LDA $4211               ; $11:956F: AD 11 42    ;
+
+                BPL CODE_1195A5         ; $11:9572: 10 31       ;
+
+                LDA $024B               ; $11:9574: AD 4B 02    ;
+
+                BEQ CODE_1195A5         ; $11:9577: F0 2C       ;
+
+                CMP #$BE                ; $11:9579: C9 BE       ;
+
+                BEQ CODE_119580         ; $11:957B: F0 03       ;
+
                 BRL CODE_1195A7         ; $11:957D: 82 27 00    ;
 
-CODE_119580:    BIT $4212                   ; $11:9580: 2C 12 42    ;
-                BVC CODE_119580                     ; $11:9583: 50 FB       ;
-                LDA $F3                     ; $11:9585: A5 F3       ;
-                STA $210D                   ; $11:9587: 8D 0D 21    ;
-                LDA $024F                   ; $11:958A: AD 4F 02    ;
-                STA $210D                   ; $11:958D: 8D 0D 21    ;
-                STZ $210E                   ; $11:9590: 9C 0E 21    ;
-                STZ $210E                   ; $11:9593: 9C 0E 21    ;
-CODE_119596:    LDA $024B                   ; $11:9596: AD 4B 02    ;
-                CMP #$FF                    ; $11:9599: C9 FF       ;
-                BNE CODE_1195A5             ; $11:959B: D0 08       ;
-                STZ $024B                   ; $11:959D: 9C 4B 02    ;
-                LDA #$81                    ; $11:95A0: A9 81       ;
-                STA $4200                   ; $11:95A2: 8D 00 42    ;
-CODE_1195A5:    PLB                         ; $11:95A5: AB          ;
+CODE_119580:    BIT $4212               ; $11:9580: 2C 12 42    ;
+
+                BVC CODE_119580         ; $11:9583: 50 FB       ;
+
+                LDA $F3                 ; $11:9585: A5 F3       ;
+
+                STA $210D               ; $11:9587: 8D 0D 21    ;
+
+                LDA $024F               ; $11:958A: AD 4F 02    ;
+
+                STA $210D               ; $11:958D: 8D 0D 21    ;
+
+                STZ $210E               ; $11:9590: 9C 0E 21    ;
+
+                STZ $210E               ; $11:9593: 9C 0E 21    ;
+
+CODE_119596:    LDA $024B               ; $11:9596: AD 4B 02    ;
+
+                CMP #$FF                ; $11:9599: C9 FF       ;
+
+                BNE CODE_1195A5         ; $11:959B: D0 08       ;
+
+                STZ $024B               ; $11:959D: 9C 4B 02    ;
+
+                LDA #$81                ; $11:95A0: A9 81       ;
+
+                STA $4200               ; $11:95A2: 8D 00 42    ;
+
+CODE_1195A5:    PLB                     ; $11:95A5: AB          ;
+
                 RTL                     ; $11:95A6: 6B          ;
 
-CODE_1195A7:    BIT $4212                   ; $11:95A7: 2C 12 42    ;
-                BVC CODE_1195A7                     ; $11:95AA: 50 FB       ;
-                LDA $0202                   ; $11:95AC: AD 02 02    ;
-                STA $210F                   ; $11:95AF: 8D 0F 21    ;
-                LDA $0203                   ; $11:95B2: AD 03 02    ;
-                STA $210F                   ; $11:95B5: 8D 0F 21    ;
-                STZ $2110                   ; $11:95B8: 9C 10 21    ;
-                STZ $2110                   ; $11:95BB: 9C 10 21    ;
-                BRA CODE_119596             ; $11:95BE: 80 D6       ;
+CODE_1195A7:    BIT $4212               ; $11:95A7: 2C 12 42    ;
 
-CODE_1195C0:    STZ $02B7                   ; $11:95C0: 9C B7 02    ;
-CODE_1195C3:    JSL CODE_14F908             ; $11:95C3: 22 08 F9 14 ;
-                JSL CODE_14D1B2             ; $11:95C7: 22 B2 D1 14 ;
-                LDA $02B7                   ; $11:95CB: AD B7 02    ;
-                BEQ CODE_1195C3             ; $11:95CE: F0 F3       ;
+                BVC CODE_1195A7         ; $11:95AA: 50 FB       ;
+
+                LDA $0202               ; $11:95AC: AD 02 02    ;
+
+                STA $210F               ; $11:95AF: 8D 0F 21    ;
+
+                LDA $0203               ; $11:95B2: AD 03 02    ;
+
+                STA $210F               ; $11:95B5: 8D 0F 21    ;
+
+                STZ $2110               ; $11:95B8: 9C 10 21    ;
+
+                STZ $2110               ; $11:95BB: 9C 10 21    ;
+
+                BRA CODE_119596         ; $11:95BE: 80 D6       ;
+
+CODE_1195C0:    STZ $02B7               ; $11:95C0: 9C B7 02    ;
+
+CODE_1195C3:    JSL CODE_14F908         ; $11:95C3: 22 08 F9 14 ;
+
+                JSL CODE_14D1B2         ; $11:95C7: 22 B2 D1 14 ;
+
+                LDA $02B7               ; $11:95CB: AD B7 02    ;
+
+                BEQ CODE_1195C3         ; $11:95CE: F0 F3       ;
+
                 RTL                     ; $11:95D0: 6B          ;
 
-CODE_1195D1:    STZ $02B7                   ; $11:95D1: 9C B7 02    ;
-                STZ $FE                     ; $11:95D4: 64 FE       ;
-CODE_1195D6:    JSL CODE_14F908             ; $11:95D6: 22 08 F9 14 ;
-                JSL CODE_14D1C2             ; $11:95DA: 22 C2 D1 14 ;
-                LDA $02B7                   ; $11:95DE: AD B7 02    ;
-                BEQ CODE_1195D6             ; $11:95E1: F0 F3       ;
+CODE_1195D1:    STZ $02B7               ; $11:95D1: 9C B7 02    ;
+
+                STZ $FE                 ; $11:95D4: 64 FE       ;
+
+CODE_1195D6:    JSL CODE_14F908         ; $11:95D6: 22 08 F9 14 ;
+
+                JSL CODE_14D1C2         ; $11:95DA: 22 C2 D1 14 ;
+
+                LDA $02B7               ; $11:95DE: AD B7 02    ;
+
+                BEQ CODE_1195D6         ; $11:95E1: F0 F3       ;
+
                 RTL                     ; $11:95E3: 6B          ;
 
-CODE_1195E4:    LDA $1DE0                   ; $11:95E4: AD E0 1D    ;
-                BNE CODE_1195FD             ; $11:95E7: D0 14       ;
-                LDA $2140                   ; $11:95E9: AD 40 21    ;
-                CMP $1DE4                   ; $11:95EC: CD E4 1D    ;
-                BEQ CODE_1195FB             ; $11:95EF: F0 0A       ;
-                INC $1DEA                   ; $11:95F1: EE EA 1D    ;
-                LDA $1DEA                   ; $11:95F4: AD EA 1D    ;
-                CMP #$03                    ; $11:95F7: C9 03       ;
-                BCC CODE_119606             ; $11:95F9: 90 0B       ;
-CODE_1195FB:    LDA #$00                    ; $11:95FB: A9 00       ;
-CODE_1195FD:    STA $2140                   ; $11:95FD: 8D 40 21    ;
-                STA $1DE4                   ; $11:9600: 8D E4 1D    ;
-                STZ $1DEA                   ; $11:9603: 9C EA 1D    ;
-CODE_119606:    LDA $1DE1                   ; $11:9606: AD E1 1D    ;
-                BNE CODE_119621             ; $11:9609: D0 16       ;
-                LDA $2141                   ; $11:960B: AD 41 21    ;
-                AND #$0F                    ; $11:960E: 29 0F       ;
-                CMP $1DE5                   ; $11:9610: CD E5 1D    ;
-                BEQ CODE_11961F             ; $11:9613: F0 0A       ;
-                INC $1DEB                   ; $11:9615: EE EB 1D    ;
-                LDA $1DEB                   ; $11:9618: AD EB 1D    ;
-                CMP #$03                    ; $11:961B: C9 03       ;
-                BCC CODE_11962C             ; $11:961D: 90 0D       ;
-CODE_11961F:    LDA #$00                    ; $11:961F: A9 00       ;
-CODE_119621:    STA $2141                   ; $11:9621: 8D 41 21    ;
-                AND #$0F                    ; $11:9624: 29 0F       ;
-                STA $1DE5                   ; $11:9626: 8D E5 1D    ;
-                STZ $1DEB                   ; $11:9629: 9C EB 1D    ;
-CODE_11962C:    LDA $1DE2                   ; $11:962C: AD E2 1D    ;
-                BEQ CODE_1196A7             ; $11:962F: F0 76       ;
-                LDY #$04                    ; $11:9631: A0 04       ;
-                STY $1DEC                   ; $11:9633: 8C EC 1D    ;
-                STA $2142                   ; $11:9636: 8D 42 21    ;
-                CMP #$F0                    ; $11:9639: C9 F0       ;
-                BCS CODE_119640                     ; $11:963B: B0 03       ;
-                STA $1DE6                   ; $11:963D: 8D E6 1D    ;
-CODE_119640:    LDA $1DE3                   ; $11:9640: AD E3 1D    ;
-                BNE CODE_119666             ; $11:9643: D0 21       ;
-                LDA $2143                   ; $11:9645: AD 43 21    ;
-                AND #$7F                    ; $11:9648: 29 7F       ;
-                CMP $1DE7                   ; $11:964A: CD E7 1D    ;
-                BEQ CODE_119659             ; $11:964D: F0 0A       ;
-                INC $1DED                   ; $11:964F: EE ED 1D    ;
-                LDA $1DED                   ; $11:9652: AD ED 1D    ;
-                CMP #$03                    ; $11:9655: C9 03       ;
-                BCC CODE_11968A             ; $11:9657: 90 31       ;
-CODE_119659:    LDA #$00                    ; $11:9659: A9 00       ;
-                STA $2143                   ; $11:965B: 8D 43 21    ;
-                STA $1DE7                   ; $11:965E: 8D E7 1D    ;
-                STZ $1DED                   ; $11:9661: 9C ED 1D    ;
-                BRA CODE_11968A             ; $11:9664: 80 24       ;
+CODE_1195E4:    LDA $1DE0               ; $11:95E4: AD E0 1D    ;
 
-CODE_119666:    STA $1DE7                   ; $11:9666: 8D E7 1D    ;
-                CMP #$01                    ; $11:9669: C9 01       ;
-                BEQ CODE_119679             ; $11:966B: F0 0C       ;
-                CMP #$05                    ; $11:966D: C9 05       ;
-                BEQ CODE_119679             ; $11:966F: F0 08       ;
-                CMP #$06                    ; $11:9671: C9 06       ;
-                BEQ CODE_119679             ; $11:9673: F0 04       ;
-                CMP #$4A                    ; $11:9675: C9 4A       ;
-                BNE CODE_119697             ; $11:9677: D0 1E       ;
-CODE_119679:    ORA $1DEF                   ; $11:9679: 0D EF 1D    ;
-                STA $2143                   ; $11:967C: 8D 43 21    ;
-                LDA $1DEF                   ; $11:967F: AD EF 1D    ;
-                EOR #$80                    ; $11:9682: 49 80       ;
-                STA $1DEF                   ; $11:9684: 8D EF 1D    ;
-                STZ $1DED                   ; $11:9687: 9C ED 1D    ;
-CODE_11968A:    STZ $1DE0                   ; $11:968A: 9C E0 1D    ;
-                STZ $1DE1                   ; $11:968D: 9C E1 1D    ;
-                STZ $1DE2                   ; $11:9690: 9C E2 1D    ;
-                STZ $1DE3                   ; $11:9693: 9C E3 1D    ;
+                BNE CODE_1195FD         ; $11:95E7: D0 14       ;
+
+                LDA $2140               ; $11:95E9: AD 40 21    ;
+
+                CMP $1DE4               ; $11:95EC: CD E4 1D    ;
+
+                BEQ CODE_1195FB         ; $11:95EF: F0 0A       ;
+
+                INC $1DEA               ; $11:95F1: EE EA 1D    ;
+
+                LDA $1DEA               ; $11:95F4: AD EA 1D    ;
+
+                CMP #$03                ; $11:95F7: C9 03       ;
+
+                BCC CODE_119606         ; $11:95F9: 90 0B       ;
+
+CODE_1195FB:    LDA #$00                ; $11:95FB: A9 00       ;
+
+CODE_1195FD:    STA $2140               ; $11:95FD: 8D 40 21    ;
+
+                STA $1DE4               ; $11:9600: 8D E4 1D    ;
+
+                STZ $1DEA               ; $11:9603: 9C EA 1D    ;
+
+CODE_119606:    LDA $1DE1               ; $11:9606: AD E1 1D    ;
+
+                BNE CODE_119621         ; $11:9609: D0 16       ;
+
+                LDA $2141               ; $11:960B: AD 41 21    ;
+
+                AND #$0F                ; $11:960E: 29 0F       ;
+
+                CMP $1DE5               ; $11:9610: CD E5 1D    ;
+
+                BEQ CODE_11961F         ; $11:9613: F0 0A       ;
+
+                INC $1DEB               ; $11:9615: EE EB 1D    ;
+
+                LDA $1DEB               ; $11:9618: AD EB 1D    ;
+
+                CMP #$03                ; $11:961B: C9 03       ;
+
+                BCC CODE_11962C         ; $11:961D: 90 0D       ;
+
+CODE_11961F:    LDA #$00                ; $11:961F: A9 00       ;
+
+CODE_119621:    STA $2141               ; $11:9621: 8D 41 21    ;
+
+                AND #$0F                ; $11:9624: 29 0F       ;
+
+                STA $1DE5               ; $11:9626: 8D E5 1D    ;
+
+                STZ $1DEB               ; $11:9629: 9C EB 1D    ;
+
+CODE_11962C:    LDA $1DE2               ; $11:962C: AD E2 1D    ;
+
+                BEQ CODE_1196A7         ; $11:962F: F0 76       ;
+
+                LDY #$04                ; $11:9631: A0 04       ;
+
+                STY $1DEC               ; $11:9633: 8C EC 1D    ;
+
+                STA $2142               ; $11:9636: 8D 42 21    ;
+
+                CMP #$F0                ; $11:9639: C9 F0       ;
+
+                BCS CODE_119640         ; $11:963B: B0 03       ;
+
+                STA $1DE6               ; $11:963D: 8D E6 1D    ;
+
+CODE_119640:    LDA $1DE3               ; $11:9640: AD E3 1D    ;
+
+                BNE CODE_119666         ; $11:9643: D0 21       ;
+
+                LDA $2143               ; $11:9645: AD 43 21    ;
+
+                AND #$7F                ; $11:9648: 29 7F       ;
+
+                CMP $1DE7               ; $11:964A: CD E7 1D    ;
+
+                BEQ CODE_119659         ; $11:964D: F0 0A       ;
+
+                INC $1DED               ; $11:964F: EE ED 1D    ;
+
+                LDA $1DED               ; $11:9652: AD ED 1D    ;
+
+                CMP #$03                ; $11:9655: C9 03       ;
+
+                BCC CODE_11968A         ; $11:9657: 90 31       ;
+
+CODE_119659:    LDA #$00                ; $11:9659: A9 00       ;
+
+                STA $2143               ; $11:965B: 8D 43 21    ;
+
+                STA $1DE7               ; $11:965E: 8D E7 1D    ;
+
+                STZ $1DED               ; $11:9661: 9C ED 1D    ;
+
+                BRA CODE_11968A         ; $11:9664: 80 24       ;
+
+CODE_119666:    STA $1DE7               ; $11:9666: 8D E7 1D    ;
+
+                CMP #$01                ; $11:9669: C9 01       ;
+
+                BEQ CODE_119679         ; $11:966B: F0 0C       ;
+
+                CMP #$05                ; $11:966D: C9 05       ;
+
+                BEQ CODE_119679         ; $11:966F: F0 08       ;
+
+                CMP #$06                ; $11:9671: C9 06       ;
+
+                BEQ CODE_119679         ; $11:9673: F0 04       ;
+
+                CMP #$4A                ; $11:9675: C9 4A       ;
+
+                BNE CODE_119697         ; $11:9677: D0 1E       ;
+
+CODE_119679:    ORA $1DEF               ; $11:9679: 0D EF 1D    ;
+
+                STA $2143               ; $11:967C: 8D 43 21    ;
+
+                LDA $1DEF               ; $11:967F: AD EF 1D    ;
+
+                EOR #$80                ; $11:9682: 49 80       ;
+
+                STA $1DEF               ; $11:9684: 8D EF 1D    ;
+
+                STZ $1DED               ; $11:9687: 9C ED 1D    ;
+
+CODE_11968A:    STZ $1DE0               ; $11:968A: 9C E0 1D    ;
+
+                STZ $1DE1               ; $11:968D: 9C E1 1D    ;
+
+                STZ $1DE2               ; $11:9690: 9C E2 1D    ;
+
+                STZ $1DE3               ; $11:9693: 9C E3 1D    ;
+
                 RTS                     ; $11:9696: 60          ;
 
-CODE_119697:    STA $2143                   ; $11:9697: 8D 43 21    ;
-                STZ $1DE0                   ; $11:969A: 9C E0 1D    ;
-                STZ $1DE1                   ; $11:969D: 9C E1 1D    ;
-                STZ $1DE2                   ; $11:96A0: 9C E2 1D    ;
-                STZ $1DE3                   ; $11:96A3: 9C E3 1D    ;
+CODE_119697:    STA $2143               ; $11:9697: 8D 43 21    ;
+
+                STZ $1DE0               ; $11:969A: 9C E0 1D    ;
+
+                STZ $1DE1               ; $11:969D: 9C E1 1D    ;
+
+                STZ $1DE2               ; $11:96A0: 9C E2 1D    ;
+
+                STZ $1DE3               ; $11:96A3: 9C E3 1D    ;
+
                 RTS                     ; $11:96A6: 60          ;
 
-CODE_1196A7:    LDY $2142                   ; $11:96A7: AC 42 21    ;
-                CPY $1DE6                   ; $11:96AA: CC E6 1D    ;
-                BNE CODE_119640             ; $11:96AD: D0 91       ;
-                DEC $1DEC                   ; $11:96AF: CE EC 1D    ;
-                LDA $1DEC                   ; $11:96B2: AD EC 1D    ;
-                BNE CODE_119640             ; $11:96B5: D0 89       ;
-                INC $1DEC                   ; $11:96B7: EE EC 1D    ;
-                STA $2142                   ; $11:96BA: 8D 42 21    ;
+CODE_1196A7:    LDY $2142               ; $11:96A7: AC 42 21    ;
+
+                CPY $1DE6               ; $11:96AA: CC E6 1D    ;
+
+                BNE CODE_119640         ; $11:96AD: D0 91       ;
+
+                DEC $1DEC               ; $11:96AF: CE EC 1D    ;
+
+                LDA $1DEC               ; $11:96B2: AD EC 1D    ;
+
+                BNE CODE_119640         ; $11:96B5: D0 89       ;
+
+                INC $1DEC               ; $11:96B7: EE EC 1D    ;
+
+                STA $2142               ; $11:96BA: 8D 42 21    ;
+
                 BRA CODE_119640         ; $11:96BD: 80 81       ;
 
 ORG $119780
@@ -3910,22 +5687,22 @@ DATA_11BA40:    db $00,$04,$02,$01,$04,$07,$B0,$B0              ;
                 db $98,$98,$AC,$B3,$E0,$3C,$07,$04              ;
                 db $08,$18,$15,$04,$E8,$EB,$FC                  ;
 
-DATA_11BA9C:    db $BC,$45,$FF,$7F,$63,$0C,$F2,$00              ; \ Mario palette.
-                db $DA,$11,$3E,$1B,$9C,$2D,$BF,$3A              ;  | 32 bytes - 16 colours, 2 bytes per colour.
-                db $00,$00,$2F,$15,$A3,$40,$C6,$45              ;  |
-                db $EC,$56,$DC,$14,$96,$10,$0F,$00              ; /
-                db $BC,$45,$FF,$7F,$63,$0C,$F2,$00              ; \ Peach palette.
-                db $DA,$11,$3E,$1B,$9C,$2D,$BF,$3A              ;  | 32 bytes - 16 colours, 2 bytes per colour.
-                db $00,$00,$57,$0C,$72,$01,$59,$02              ;  |
-                db $1F,$1F,$9F,$6E,$5F,$49,$96,$28              ; /
-                db $BC,$45,$FF,$7F,$63,$0C,$00,$59              ; \ Toad palette.
-                db $E8,$69,$CF,$7E,$9C,$2D,$BF,$3A              ;  | 32 bytes - 16 colours, 2 bytes per colour.
-                db $00,$00,$2F,$0D,$73,$09,$7B,$2A              ;  |
-                db $5F,$4B,$1F,$19,$D9,$18,$12,$00              ; /
-                db $BC,$45,$FF,$7F,$63,$0C,$F2,$00              ; \ Luigi palette.
-                db $DA,$11,$3E,$1B,$9C,$2D,$BF,$3A              ;  | 32 bytes - 16 colours, 2 bytes per colour.
-                db $00,$00,$2F,$15,$88,$50,$6F,$6D              ;  |
-                db $56,$7E,$92,$5B,$AB,$42,$E5,$21              ; /
+DATA_11BA9C:    db $BC,$45,$FF,$7F,$63,$0C,$F2,$00              ;\ Mario palette.
+                db $DA,$11,$3E,$1B,$9C,$2D,$BF,$3A              ; | 32 bytes - 16 colours, 2 bytes per colour.
+                db $00,$00,$2F,$15,$A3,$40,$C6,$45              ; |
+                db $EC,$56,$DC,$14,$96,$10,$0F,$00              ;/
+                db $BC,$45,$FF,$7F,$63,$0C,$F2,$00              ;\ Peach palette.
+                db $DA,$11,$3E,$1B,$9C,$2D,$BF,$3A              ; | 32 bytes - 16 colours, 2 bytes per colour.
+                db $00,$00,$57,$0C,$72,$01,$59,$02              ; |
+                db $1F,$1F,$9F,$6E,$5F,$49,$96,$28              ;/
+                db $BC,$45,$FF,$7F,$63,$0C,$00,$59              ;\ Toad palette.
+                db $E8,$69,$CF,$7E,$9C,$2D,$BF,$3A              ; | 32 bytes - 16 colours, 2 bytes per colour.
+                db $00,$00,$2F,$0D,$73,$09,$7B,$2A              ; |
+                db $5F,$4B,$1F,$19,$D9,$18,$12,$00              ;/
+                db $BC,$45,$FF,$7F,$63,$0C,$F2,$00              ;\ Luigi palette.
+                db $DA,$11,$3E,$1B,$9C,$2D,$BF,$3A              ; | 32 bytes - 16 colours, 2 bytes per colour.
+                db $00,$00,$2F,$15,$88,$50,$6F,$6D              ; |
+                db $56,$7E,$92,$5B,$AB,$42,$E5,$21              ;/
 
 DATA_11BB1C:    db $BC,$45,$FF,$7F,$A5,$14,$37,$08              ;
                 db $BF,$10,$1F,$06,$9E,$36,$5F,$4F              ;
@@ -4796,61 +6573,61 @@ DATA_11D098:    db $00,$0A,$14,$1E,$28,$32,$3C,$46              ;
                 db $50,$5A,$64,$6E,$78,$82,$8C,$96              ;
                 db $A0,$AA,$B4,$BE,$C8                          ;
 
-DATA_11D0AD:    db $51,$72,$C2,$6B,$9D,$BD,$BD,$BD              ; \ Low byte of locations...
-                db $BD,$BD,$FA,$79,$CC,$13,$37,$58              ;  | ... of the object + level header data.
-                db $58,$58,$58,$58,$58,$09,$20,$A5              ;  | This table has 210 slots.
-                db $1A,$1A,$1A,$1A,$1A,$1A,$41,$CF              ;  | 10 for each level (10 rooms) - 21 levels (1-1 through 7-2 and unused 7-3)
-                db $F9,$F9,$1D,$F9,$F9,$F9,$F9,$F9              ;  | Many slots in this pointer table point to the same data.
-                db $46,$5D,$FD,$45,$90,$B9,$B9,$B9              ;  | That usually implies that those slots (except for the first of the bunch) are unused rooms.
-                db $B9,$B9,$E4,$F6,$AD,$C5,$1A,$41              ;  |
-                db $A5,$CE,$CE,$CE,$E9,$0A,$60,$7B              ;  |
-                db $F0,$22,$22,$22,$22,$22,$22,$C7              ;  |
-                db $71,$97,$97,$97,$97,$97,$97,$97              ;  |
-                db $97,$AD,$DC,$22,$EF,$4C,$AB,$BE              ;  |
-                db $01,$01,$19,$86,$05,$05,$05,$05              ;  |
-                db $05,$05,$05,$05,$05,$17,$77,$07              ;  |
-                db $3A,$3A,$3A,$3A,$3A,$3A,$62,$75              ;  |
-                db $E7,$64,$B7,$EE,$01,$25,$5C,$5C              ;  |
-                db $5C,$A4,$40,$56,$56,$56,$56,$56              ;  |
-                db $56,$56,$56,$67,$0E,$56,$C3,$F9              ;  |
-                db $23,$23,$23,$23,$23,$34,$DE,$2B              ;  |
-                db $CE,$32,$32,$32,$32,$32,$56,$F7              ;  |
-                db $5E,$82,$AB,$CA,$02,$02,$02,$02              ;  |
-                db $26,$39,$7A,$7A,$7A,$7A,$7A,$7A              ;  |
-                db $7A,$7A,$A6,$B4,$2A,$E7,$C1,$0A              ;  |
-                db $27,$27,$27,$27,$53,$69,$E1,$2A              ;  |
-                db $92,$B4,$B4,$B4,$B4,$B4,$D6,$0E              ;  |
-                db $70,$25,$5D,$D4,$07,$90,$D9,$5E              ;  |
-                db $AD,$AD,$AD,$AD,$AD,$AD,$AD,$AD              ;  |
-                db $AD,$AD                                      ; /
+DATA_11D0AD:    db $51,$72,$C2,$6B,$9D,$BD,$BD,$BD              ;\ Low byte of locations...
+                db $BD,$BD,$FA,$79,$CC,$13,$37,$58              ; | ... of the object + level header data.
+                db $58,$58,$58,$58,$58,$09,$20,$A5              ; | This table has 210 slots.
+                db $1A,$1A,$1A,$1A,$1A,$1A,$41,$CF              ; | 10 for each level (10 rooms) - 21 levels (1-1 through 7-2 and unused 7-3)
+                db $F9,$F9,$1D,$F9,$F9,$F9,$F9,$F9              ; | Many slots in this pointer table point to the same data.
+                db $46,$5D,$FD,$45,$90,$B9,$B9,$B9              ; | That usually implies that those slots (except for the first of the bunch) are unused rooms.
+                db $B9,$B9,$E4,$F6,$AD,$C5,$1A,$41              ; |
+                db $A5,$CE,$CE,$CE,$E9,$0A,$60,$7B              ; |
+                db $F0,$22,$22,$22,$22,$22,$22,$C7              ; |
+                db $71,$97,$97,$97,$97,$97,$97,$97              ; |
+                db $97,$AD,$DC,$22,$EF,$4C,$AB,$BE              ; |
+                db $01,$01,$19,$86,$05,$05,$05,$05              ; |
+                db $05,$05,$05,$05,$05,$17,$77,$07              ; |
+                db $3A,$3A,$3A,$3A,$3A,$3A,$62,$75              ; |
+                db $E7,$64,$B7,$EE,$01,$25,$5C,$5C              ; |
+                db $5C,$A4,$40,$56,$56,$56,$56,$56              ; |
+                db $56,$56,$56,$67,$0E,$56,$C3,$F9              ; |
+                db $23,$23,$23,$23,$23,$34,$DE,$2B              ; |
+                db $CE,$32,$32,$32,$32,$32,$56,$F7              ; |
+                db $5E,$82,$AB,$CA,$02,$02,$02,$02              ; |
+                db $26,$39,$7A,$7A,$7A,$7A,$7A,$7A              ; |
+                db $7A,$7A,$A6,$B4,$2A,$E7,$C1,$0A              ; |
+                db $27,$27,$27,$27,$53,$69,$E1,$2A              ; |
+                db $92,$B4,$B4,$B4,$B4,$B4,$D6,$0E              ; |
+                db $70,$25,$5D,$D4,$07,$90,$D9,$5E              ; |
+                db $AD,$AD,$AD,$AD,$AD,$AD,$AD,$AD              ; |
+                db $AD,$AD                                      ;/
 
-DATA_11D17F:    db $D2,$D2,$D2,$D3,$D3,$D3,$D3,$D3              ; \ High byte of locations...
-                db $D3,$D3,$D3,$D4,$D4,$D5,$D5,$D5              ;  |... of the object + level header data.
-                db $D5,$D5,$D5,$D5,$D5,$D6,$D6,$D6              ;  | This pointer table also has 210 slots.
-                db $D7,$D7,$D7,$D7,$D7,$D7,$D7,$D7              ;  | 10 rooms per level, 21 levels.
-                db $D7,$D7,$D8,$D7,$D7,$D7,$D7,$D7              ;  | As with the above table, many slots point to the same data.
-                db $D8,$D8,$D8,$D9,$D9,$D9,$D9,$D9              ;  | Those slots (except the first of them) are very likely unused.
-                db $D9,$D9,$D9,$D9,$DA,$DA,$DB,$DB              ;  |
-                db $DB,$DB,$DB,$DB,$DB,$DC,$DC,$DC              ;  | Note: All object data resides in bank 11!
-                db $DC,$DD,$DD,$DD,$DD,$DD,$DD,$DD              ;  |
-                db $DE,$DE,$DE,$DE,$DE,$DE,$DE,$DE              ;  |
-                db $DE,$DE,$DE,$DF,$DF,$E0,$E0,$E0              ;  |
-                db $E1,$E1,$E1,$E1,$E2,$E2,$E2,$E2              ;  |
-                db $E2,$E2,$E2,$E2,$E2,$E2,$E2,$E3              ;  |
-                db $E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3              ;  |
-                db $E3,$E4,$E4,$E4,$E5,$E5,$E5,$E5              ;  |
-                db $E5,$E5,$E6,$E6,$E6,$E6,$E6,$E6              ;  |
-                db $E6,$E6,$E6,$E6,$E7,$E7,$E7,$E7              ;  |
-                db $E8,$E8,$E8,$E8,$E8,$E8,$E8,$E9              ;  |
-                db $E9,$EA,$EA,$EA,$EA,$EA,$EA,$EA              ;  |
-                db $EB,$EB,$EB,$EB,$EC,$EC,$EC,$EC              ;  |
-                db $EC,$EC,$EC,$EC,$EC,$EC,$EC,$EC              ;  |
-                db $EC,$EC,$EC,$EC,$ED,$ED,$EE,$EF              ;  |
-                db $EF,$EF,$EF,$EF,$EF,$EF,$EF,$F0              ;  |
-                db $F0,$F0,$F0,$F0,$F0,$F0,$F0,$F1              ;  |
-                db $F1,$F2,$F2,$F2,$F3,$F3,$F3,$F4              ;  |
-                db $F4,$F4,$F4,$F4,$F4,$F4,$F4,$F4              ;  |
-                db $F4,$F4                                      ; /
+DATA_11D17F:    db $D2,$D2,$D2,$D3,$D3,$D3,$D3,$D3              ;\ High byte of locations...
+                db $D3,$D3,$D3,$D4,$D4,$D5,$D5,$D5              ; |... of the object + level header data.
+                db $D5,$D5,$D5,$D5,$D5,$D6,$D6,$D6              ; | This pointer table also has 210 slots.
+                db $D7,$D7,$D7,$D7,$D7,$D7,$D7,$D7              ; | 10 rooms per level, 21 levels.
+                db $D7,$D7,$D8,$D7,$D7,$D7,$D7,$D7              ; | As with the above table, many slots point to the same data.
+                db $D8,$D8,$D8,$D9,$D9,$D9,$D9,$D9              ; | Those slots (except the first of them) are very likely unused.
+                db $D9,$D9,$D9,$D9,$DA,$DA,$DB,$DB              ; |
+                db $DB,$DB,$DB,$DB,$DB,$DC,$DC,$DC              ; | Note: All object data resides in bank 11!
+                db $DC,$DD,$DD,$DD,$DD,$DD,$DD,$DD              ; |
+                db $DE,$DE,$DE,$DE,$DE,$DE,$DE,$DE              ; |
+                db $DE,$DE,$DE,$DF,$DF,$E0,$E0,$E0              ; |
+                db $E1,$E1,$E1,$E1,$E2,$E2,$E2,$E2              ; |
+                db $E2,$E2,$E2,$E2,$E2,$E2,$E2,$E3              ; |
+                db $E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3              ; |
+                db $E3,$E4,$E4,$E4,$E5,$E5,$E5,$E5              ; |
+                db $E5,$E5,$E6,$E6,$E6,$E6,$E6,$E6              ; |
+                db $E6,$E6,$E6,$E6,$E7,$E7,$E7,$E7              ; |
+                db $E8,$E8,$E8,$E8,$E8,$E8,$E8,$E9              ; |
+                db $E9,$EA,$EA,$EA,$EA,$EA,$EA,$EA              ; |
+                db $EB,$EB,$EB,$EB,$EC,$EC,$EC,$EC              ; |
+                db $EC,$EC,$EC,$EC,$EC,$EC,$EC,$EC              ; |
+                db $EC,$EC,$EC,$EC,$ED,$ED,$EE,$EF              ; |
+                db $EF,$EF,$EF,$EF,$EF,$EF,$EF,$F0              ; |
+                db $F0,$F0,$F0,$F0,$F0,$F0,$F0,$F1              ; |
+                db $F1,$F2,$F2,$F2,$F3,$F3,$F3,$F4              ; |
+                db $F4,$F4,$F4,$F4,$F4,$F4,$F4,$F4              ; |
+                db $F4,$F4                                      ;/
 
                 db $01,$F3,$30,$00,$B7,$0A,$00,$00              ;
                 db $56,$10,$1A,$10,$D6,$C2,$29,$10              ;
@@ -6115,619 +7892,619 @@ DATA_11D17F:    db $D2,$D2,$D2,$D3,$D3,$D3,$D3,$D3              ; \ High byte of
 
                 db $FF                                          ; Empty level, clear level. NOT empty data.
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ Empty data.
-                db $FF,$FF,$FF,$FF,$FF                          ; /
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;\ Empty data.
+                db $FF,$FF,$FF,$FF,$FF                          ;/
 
-DATA_11F4BB:    db $F5,$F5,$F5,$F5,$F5,$F5,$F5,$F5              ; \ High byte of pointer to high byte of room pointers of sprite data, indexed by level number.
-                db $F5,$F5,$F5,$F5,$F5,$F6,$F6,$F6              ;  | ...or basically, a pointer to 20 different kinds of pointers. (Each which has 10 bytes, one per room.)
-                db $F6,$F6,$F6,$F6,$F6                          ; / Somewhat confusing at first, but after looking a bit at it you will get it.
+DATA_11F4BB:    db $F5,$F5,$F5,$F5,$F5,$F5,$F5,$F5              ;\ High byte of pointer to high byte of room pointers of sprite data, indexed by level number.
+                db $F5,$F5,$F5,$F5,$F5,$F6,$F6,$F6              ; | ...or basically, a pointer to 20 different kinds of pointers. (Each which has 10 bytes, one per room.)
+                db $F6,$F6,$F6,$F6,$F6                          ;/ Somewhat confusing at first, but after looking a bit at it you will get it.
 
-DATA_11F4D0:    db $0F,$23,$37,$4B,$5F,$73,$87,$9B              ; \
-                db $AF,$C3,$D7,$EB,$FF,$13,$27,$3B              ;  | Low byte of pointer to high byte of room pointers of sprite data, indexed by level number.
-                db $4F,$63,$77,$8B,$9F                          ; /
+DATA_11F4D0:    db $0F,$23,$37,$4B,$5F,$73,$87,$9B              ;\
+                db $AF,$C3,$D7,$EB,$FF,$13,$27,$3B              ; | Low byte of pointer to high byte of room pointers of sprite data, indexed by level number.
+                db $4F,$63,$77,$8B,$9F                          ;/
 
-DATA_11F4E5:    db $F5,$F5,$F5,$F5,$F5,$F5,$F5,$F5              ; \
-                db $F5,$F5,$F5,$F5,$F6,$F6,$F6,$F6              ;  | High byte of pointer to low byte of room pointers of sprite data, indexed by level number.
-                db $F6,$F6,$F6,$F6,$F6                          ; /
+DATA_11F4E5:    db $F5,$F5,$F5,$F5,$F5,$F5,$F5,$F5              ;\
+                db $F5,$F5,$F5,$F5,$F6,$F6,$F6,$F6              ; | High byte of pointer to low byte of room pointers of sprite data, indexed by level number.
+                db $F6,$F6,$F6,$F6,$F6                          ;/
 
-DATA_11F4FA:    db $19,$2D,$41,$55,$69,$7D,$91,$A5              ; \
-                db $B9,$CD,$E1,$F5,$09,$1D,$31,$45              ;  | Low byte of pointer to low byte of room pointers of sprite data, indexed by level number.
-                db $59,$6D,$81,$95,$A9                          ; /
+DATA_11F4FA:    db $19,$2D,$41,$55,$69,$7D,$91,$A5              ;\
+                db $B9,$CD,$E1,$F5,$09,$1D,$31,$45              ; | Low byte of pointer to low byte of room pointers of sprite data, indexed by level number.
+                db $59,$6D,$81,$95,$A9                          ;/
 
-                db $F6,$F6,$F6,$F7,$F7,$F7,$F7,$F7              ; \ High byte of pointers, indexed per room, level 1-1.
-                db $F7,$F7                                      ; /
+                db $F6,$F6,$F6,$F7,$F7,$F7,$F7,$F7              ;\ High byte of pointers, indexed per room, level 1-1.
+                db $F7,$F7                                      ;/
 
-                db $B3,$BC,$D1,$0E,$14,$19,$19,$19              ; \ Low byte of pointers, indexed per room, level 1-1.
-                db $19,$19                                      ; /
+                db $B3,$BC,$D1,$0E,$14,$19,$19,$19              ;\ Low byte of pointers, indexed per room, level 1-1.
+                db $19,$19                                      ;/
 
-                db $F7,$F7,$F7,$F7,$F7,$F7,$F7,$F7              ; \ High byte of pointers, indexed per room, level 1-2.
-                db $F7,$F7                                      ; /
+                db $F7,$F7,$F7,$F7,$F7,$F7,$F7,$F7              ;\ High byte of pointers, indexed per room, level 1-2.
+                db $F7,$F7                                      ;/
 
-                db $25,$45,$54,$5E,$64,$71,$71,$71              ; \ Low byte of pointers, indexed per room, level 1-2.
-                db $71,$71                                      ; /
+                db $25,$45,$54,$5E,$64,$71,$71,$71              ;\ Low byte of pointers, indexed per room, level 1-2.
+                db $71,$71                                      ;/
 
-                db $F7,$F7,$F7,$F7,$F7,$F7,$F7,$F7              ; \ High byte of pointers, indexed per room, level 1-3.
-                db $F7,$F7                                      ; /
+                db $F7,$F7,$F7,$F7,$F7,$F7,$F7,$F7              ;\ High byte of pointers, indexed per room, level 1-3.
+                db $F7,$F7                                      ;/
 
-                db $74,$A9,$B1,$CB,$EE,$EE,$EE,$EE              ; \ Low byte of pointers, indexed per room, level 1-3.
-                db $EE,$EE                                      ; /
+                db $74,$A9,$B1,$CB,$EE,$EE,$EE,$EE              ;\ Low byte of pointers, indexed per room, level 1-3.
+                db $EE,$EE                                      ;/
 
-                db $F7,$F8,$F8,$F8,$F8,$F8,$F8,$F8              ; \ High byte of pointers, indexed per room, level 2-1.
-                db $F8,$F8                                      ; /
+                db $F7,$F8,$F8,$F8,$F8,$F8,$F8,$F8              ;\ High byte of pointers, indexed per room, level 2-1.
+                db $F8,$F8                                      ;/
 
-                db $F5,$14,$25,$25,$2F,$25,$25,$25              ; \ Low byte of pointers, indexed per room, level 2-1.
-                db $25,$25                                      ; /
+                db $F5,$14,$25,$25,$2F,$25,$25,$25              ;\ Low byte of pointers, indexed per room, level 2-1.
+                db $25,$25                                      ;/
 
-                db $F8,$F8,$F8,$F8,$F8,$F8,$F8,$F8              ; \ High byte of pointers, indexed per room, level 2-2.
-                db $F8,$F8                                      ; /
+                db $F8,$F8,$F8,$F8,$F8,$F8,$F8,$F8              ;\ High byte of pointers, indexed per room, level 2-2.
+                db $F8,$F8                                      ;/
 
-                db $3C,$47,$76,$85,$98,$A5,$A5,$A5              ; \ Low byte of pointers, indexed per room, level 2-2.
-                db $A5,$A5                                      ; /
+                db $3C,$47,$76,$85,$98,$A5,$A5,$A5              ;\ Low byte of pointers, indexed per room, level 2-2.
+                db $A5,$A5                                      ;/
 
-                db $F8,$F8,$F8,$F8,$F8,$F9,$F9,$F9              ; \ High byte of pointers, indexed per room, level 2-3.
-                db $F9,$F9                                      ; /
+                db $F8,$F8,$F8,$F8,$F8,$F9,$F9,$F9              ;\ High byte of pointers, indexed per room, level 2-3.
+                db $F9,$F9                                      ;/
 
-                db $AF,$B3,$CE,$D1,$F3,$00,$20,$27              ; \ Low byte of pointers, indexed per room, level 2-3.
-                db $27,$27                                      ; /
+                db $AF,$B3,$CE,$D1,$F3,$00,$20,$27              ;\ Low byte of pointers, indexed per room, level 2-3.
+                db $27,$27                                      ;/
 
-                db $F9,$F9,$F9,$F9,$F9,$F9,$F9,$F9              ; \ High byte of pointers, indexed per room, level 3-1.
-                db $F9,$F9                                      ; /
+                db $F9,$F9,$F9,$F9,$F9,$F9,$F9,$F9              ;\ High byte of pointers, indexed per room, level 3-1.
+                db $F9,$F9                                      ;/
 
-                db $30,$33,$4E,$52,$63,$6E,$6E,$6E              ; \ Low byte of pointers, indexed per room, level 3-1.
-                db $6E,$6E                                      ; /
+                db $30,$33,$4E,$52,$63,$6E,$6E,$6E              ;\ Low byte of pointers, indexed per room, level 3-1.
+                db $6E,$6E                                      ;/
 
-                db $F9,$F9,$F9,$F9,$F9,$F9,$F9,$F9              ; \ High byte of pointers, indexed per room, level 3-2.
-                db $F9,$F9                                      ; /
+                db $F9,$F9,$F9,$F9,$F9,$F9,$F9,$F9              ;\ High byte of pointers, indexed per room, level 3-2.
+                db $F9,$F9                                      ;/
 
-                db $6E,$91,$AA,$B5,$BA,$BA,$BA,$BA              ; \ Low byte of pointers, indexed per room, level 3-2.
-                db $BA,$BA                                      ; /
+                db $6E,$91,$AA,$B5,$BA,$BA,$BA,$BA              ;\ Low byte of pointers, indexed per room, level 3-2.
+                db $BA,$BA                                      ;/
 
-                db $F9,$F9,$F9,$F9,$FA,$FA,$FA,$FA              ; \ High byte of pointers, indexed per room, level 3-3.
-                db $FA,$FA                                      ; /
+                db $F9,$F9,$F9,$F9,$FA,$FA,$FA,$FA              ;\ High byte of pointers, indexed per room, level 3-3.
+                db $FA,$FA                                      ;/
 
-                db $BA,$BF,$CE,$E1,$14,$30,$3D,$49              ; \ Low byte of pointers, indexed per room, level 3-3.
-                db $5D,$5D                                      ; /
+                db $BA,$BF,$CE,$E1,$14,$30,$3D,$49              ;\ Low byte of pointers, indexed per room, level 3-3.
+                db $5D,$5D                                      ;/
 
-                db $FA,$FA,$FA,$FA,$FA,$FA,$FA,$FA              ; \ High byte of pointers, indexed per room, level 4-1.
-                db $FA,$FA                                      ; /
+                db $FA,$FA,$FA,$FA,$FA,$FA,$FA,$FA              ;\ High byte of pointers, indexed per room, level 4-1.
+                db $FA,$FA                                      ;/
 
-                db $67,$96,$B7,$B7,$B7,$B7,$B7,$B7              ; \ Low byte of pointers, indexed per room, level 4-1.
-                db $B7,$B7                                      ; /
+                db $67,$96,$B7,$B7,$B7,$B7,$B7,$B7              ;\ Low byte of pointers, indexed per room, level 4-1.
+                db $B7,$B7                                      ;/
 
-                db $FA,$FA,$FB,$FB,$FB,$FB,$FB,$FB              ; \ High byte of pointers, indexed per room, level 4-2.
-                db $FB,$FB                                      ; /
+                db $FA,$FA,$FB,$FB,$FB,$FB,$FB,$FB              ;\ High byte of pointers, indexed per room, level 4-2.
+                db $FB,$FB                                      ;/
 
-                db $E5,$EA,$31,$58,$63,$63,$63,$63              ; \ Low byte of pointers, indexed per room, level 4-2.
-                db $63,$63                                      ; /
+                db $E5,$EA,$31,$58,$63,$63,$63,$63              ;\ Low byte of pointers, indexed per room, level 4-2.
+                db $63,$63                                      ;/
 
-                db $FB,$FB,$FB,$FB,$FB,$FB,$FB,$FB              ; \ High byte of pointers, indexed per room, level 4-3.
-                db $FC,$FC                                      ; /
+                db $FB,$FB,$FB,$FB,$FB,$FB,$FB,$FB              ;\ High byte of pointers, indexed per room, level 4-3.
+                db $FC,$FC                                      ;/
 
-                db $72,$76,$85,$AC,$C5,$D0,$E3,$F6              ; \ Low byte of pointers, indexed per room, level 4-3.
-                db $03,$0E                                      ; /
+                db $72,$76,$85,$AC,$C5,$D0,$E3,$F6              ;\ Low byte of pointers, indexed per room, level 4-3.
+                db $03,$0E                                      ;/
 
-                db $FC,$FC,$FC,$FC,$FC,$FC,$FC,$FC              ; \ High byte of pointers, indexed per room, level 5-1.
-                db $FC,$FC                                      ; /
+                db $FC,$FC,$FC,$FC,$FC,$FC,$FC,$FC              ;\ High byte of pointers, indexed per room, level 5-1.
+                db $FC,$FC                                      ;/
 
-                db $19,$23,$4C,$55,$55,$55,$55,$55              ; \ Low byte of pointers, indexed per room, level 5-1.
-                db $55,$55                                      ; /
+                db $19,$23,$4C,$55,$55,$55,$55,$55              ;\ Low byte of pointers, indexed per room, level 5-1.
+                db $55,$55                                      ;/
 
-                db $FC,$FC,$FC,$FC,$FC,$FC,$FC,$FC              ; \ High byte of pointers, indexed per room, level 5-2.
-                db $FC,$FC                                      ; /
+                db $FC,$FC,$FC,$FC,$FC,$FC,$FC,$FC              ;\ High byte of pointers, indexed per room, level 5-2.
+                db $FC,$FC                                      ;/
 
-                db $55,$5A,$91,$AA,$B6,$BF,$CB,$CB              ; \ Low byte of pointers, indexed per room, level 5-2.
-                db $CB,$CB                                      ; /
+                db $55,$5A,$91,$AA,$B6,$BF,$CB,$CB              ;\ Low byte of pointers, indexed per room, level 5-2.
+                db $CB,$CB                                      ;/
 
-                db $FC,$FC,$FC,$FD,$FD,$FD,$FD,$FD              ; \ High byte of pointers, indexed per room, level 5-3.
-                db $FD,$FD                                      ; /
+                db $FC,$FC,$FC,$FD,$FD,$FD,$FD,$FD              ;\ High byte of pointers, indexed per room, level 5-3.
+                db $FD,$FD                                      ;/
 
-                db $CB,$D0,$EF,$01,$1F,$40,$40,$40              ; \ Low byte of pointers, indexed per room, level 5-3.
-                db $40,$40                                      ; /
+                db $CB,$D0,$EF,$01,$1F,$40,$40,$40              ;\ Low byte of pointers, indexed per room, level 5-3.
+                db $40,$40                                      ;/
 
-                db $FD,$FD,$FD,$FD,$FD,$FD,$FD,$FD              ; \ High byte of pointers, indexed per room, level 6-1.
-                db $FD,$FD                                      ; /
+                db $FD,$FD,$FD,$FD,$FD,$FD,$FD,$FD              ;\ High byte of pointers, indexed per room, level 6-1.
+                db $FD,$FD                                      ;/
 
-                db $45,$70,$7F,$89,$96,$A5,$AE,$AE              ; \ Low byte of pointers, indexed per room, level 6-1.
-                db $AE,$AE                                      ; /
+                db $45,$70,$7F,$89,$96,$A5,$AE,$AE              ;\ Low byte of pointers, indexed per room, level 6-1.
+                db $AE,$AE                                      ;/
 
-                db $FD,$FD,$FD,$FD,$FD,$FD,$FD,$FD              ; \ High byte of pointers, indexed per room, level 6-2.
-                db $FD,$FD                                      ; /
+                db $FD,$FD,$FD,$FD,$FD,$FD,$FD,$FD              ;\ High byte of pointers, indexed per room, level 6-2.
+                db $FD,$FD                                      ;/
 
-                db $B2,$B7,$EC,$EC,$EC,$EC,$EC,$EC              ; \ Low byte of pointers, indexed per room, level 6-2.
-                db $EC,$EC                                      ; /
+                db $B2,$B7,$EC,$EC,$EC,$EC,$EC,$EC              ;\ Low byte of pointers, indexed per room, level 6-2.
+                db $EC,$EC                                      ;/
 
-                db $FD,$FD,$FE,$FE,$FE,$FE,$FE,$FE              ; \ High byte of pointers, indexed per room, level 6-3.
-                db $FE,$FE                                      ; /
+                db $FD,$FD,$FE,$FE,$FE,$FE,$FE,$FE              ;\ High byte of pointers, indexed per room, level 6-3.
+                db $FE,$FE                                      ;/
 
-                db $F6,$FA,$08,$23,$50,$55,$5E,$5E              ; \ Low byte of pointers, indexed per room, level 6-3.
-                db $5E,$5E                                      ; /
+                db $F6,$FA,$08,$23,$50,$55,$5E,$5E              ;\ Low byte of pointers, indexed per room, level 6-3.
+                db $5E,$5E                                      ;/
 
-                db $FE,$FE,$FE,$FE,$FE,$FE,$FE,$FE              ; \ High byte of pointers, indexed per room, level 7-1.
-                db $FE,$FE                                      ; /
+                db $FE,$FE,$FE,$FE,$FE,$FE,$FE,$FE              ;\ High byte of pointers, indexed per room, level 7-1.
+                db $FE,$FE                                      ;/
 
-                db $63,$67,$93,$A8,$BD,$C6,$C6,$C6              ; \ Low byte of pointers, indexed per room, level 7-1.
-                db $C6,$C6                                      ; /
+                db $63,$67,$93,$A8,$BD,$C6,$C6,$C6              ;\ Low byte of pointers, indexed per room, level 7-1.
+                db $C6,$C6                                      ;/
 
-                db $FE,$FE,$FE,$FF,$FF,$FF,$FF,$FF              ; \ High byte of pointers, indexed per room, level 7-2.
-                db $FF,$FF                                      ; /
+                db $FE,$FE,$FE,$FF,$FF,$FF,$FF,$FF              ;\ High byte of pointers, indexed per room, level 7-2.
+                db $FF,$FF                                      ;/
 
-                db $CC,$D8,$F4,$15,$2E,$53,$5B,$86              ; \ Low byte of pointers, indexed per room, level 7-2.
-                db $A5,$CB                                      ; /
+                db $CC,$D8,$F4,$15,$2E,$53,$5B,$86              ;\ Low byte of pointers, indexed per room, level 7-2.
+                db $A5,$CB                                      ;/
 
-                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ; \ High byte of pointers, indexed per room, level 7-3. (Unused.)
-                db $FF,$FF                                      ; /
+                db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF              ;\ High byte of pointers, indexed per room, level 7-3. (Unused.)
+                db $FF,$FF                                      ;/
 
-                db $D6,$D7,$D8,$D9,$DA,$DA,$DA,$DA              ; \ Low byte of pointers, indexed per room, level 7-3. (Unused.)
-                db $DA,$DA                                      ; /
+                db $D6,$D7,$D8,$D9,$DA,$DA,$DA,$DA              ;\ Low byte of pointers, indexed per room, level 7-3. (Unused.)
+                db $DA,$DA                                      ;/
 
-                db $01,$01,$05,$03,$76,$03,$6C,$01              ; \ Sprite data. First room, level 1-1. (Vertical room where you fall from one door.)
-                db $01                                          ; / Total amount of sprites: 2.
+                db $01,$01,$05,$03,$76,$03,$6C,$01              ;\ Sprite data. First room, level 1-1. (Vertical room where you fall from one door.)
+                db $01                                          ;/ Total amount of sprites: 2.
 
-                db $05,$14,$56,$14,$AD,$03,$03,$9D              ; \ Sprite data.
-                db $07,$0E,$83,$0E,$79,$03,$BC,$05              ;  | Vertical room leading up to Birdo, level 1-1.
-                db $0E,$90,$0E,$75,$01                          ; / Total amount of sprites: 8.
+                db $05,$14,$56,$14,$AD,$03,$03,$9D              ;\ Sprite data.
+                db $07,$0E,$83,$0E,$79,$03,$BC,$05              ; | Vertical room leading up to Birdo, level 1-1.
+                db $0E,$90,$0E,$75,$01                          ;/ Total amount of sprites: 8.
 
-                db $03,$01,$EC,$07,$01,$1C,$02,$5C              ; \ Sprite data.
-                db $03,$E5,$07,$01,$6C,$02,$8C,$01              ;  | Main room, level 1-1.
-                db $CC,$05,$03,$79,$01,$D4,$09,$01              ;  | Total amount of sprites: 25.
-                db $04,$02,$34,$3B,$87,$3B,$C7,$07              ;  |
-                db $03,$A9,$03,$BC,$03,$C6,$05,$01              ;  |
-                db $9C,$03,$E5,$05,$01,$2C,$02,$4C              ;  |
-                db $07,$01,$1C,$03,$45,$02,$4C,$05              ;  |
-                db $01,$95,$14,$D1,$01                          ; /
+                db $03,$01,$EC,$07,$01,$1C,$02,$5C              ;\ Sprite data.
+                db $03,$E5,$07,$01,$6C,$02,$8C,$01              ; | Main room, level 1-1.
+                db $CC,$05,$03,$79,$01,$D4,$09,$01              ; | Total amount of sprites: 25.
+                db $04,$02,$34,$3B,$87,$3B,$C7,$07              ; |
+                db $03,$A9,$03,$BC,$03,$C6,$05,$01              ; |
+                db $9C,$03,$E5,$05,$01,$2C,$02,$4C              ; |
+                db $07,$01,$1C,$03,$45,$02,$4C,$05              ; |
+                db $01,$95,$14,$D1,$01                          ;/
 
                 db $03,$03,$85,$01,$01,$01                      ; Sprite data. Top room inside cave, level 1-1. Total amount of sprites: 1.
 
                 db $03,$0E,$BC,$01,$01                          ; Sprite data. Bottom room inside cave, level 1-1. Total amount of sprites: 1.
 
-                db $01,$01,$07,$1C,$A7,$44,$A8,$43              ; \ Sprite data. Birdo room, level 1-1.
-                db $E7,$01,$01,$01                              ; / Total amount of sprites: 3.
+                db $01,$01,$07,$1C,$A7,$44,$A8,$43              ;\ Sprite data. Birdo room, level 1-1.
+                db $E7,$01,$01,$01                              ;/ Total amount of sprites: 3.
 
-                db $03,$42,$6A,$03,$12,$22,$09,$0F              ; \ Sprite data.
-                db $00,$0F,$40,$0F,$90,$0F,$E0,$01              ;  | Main room (outside), level 1-2.
-                db $05,$0E,$3C,$0E,$6C,$05,$06,$53              ;  | Total amount of sprites: 12.
-                db $0D,$83,$05,$01,$B6,$01,$F6,$01              ; /
+                db $03,$42,$6A,$03,$12,$22,$09,$0F              ;\ Sprite data.
+                db $00,$0F,$40,$0F,$90,$0F,$E0,$01              ; | Main room (outside), level 1-2.
+                db $05,$0E,$3C,$0E,$6C,$05,$06,$53              ; | Total amount of sprites: 12.
+                db $0D,$83,$05,$01,$B6,$01,$F6,$01              ;/
 
-                db $03,$01,$DC,$03,$07,$3C,$03,$06              ; \ Sprite data. Cave room, level 1-2.
-                db $2C,$05,$0D,$79,$0D,$89,$01                  ; / Total amount of sprites: 5.
+                db $03,$01,$DC,$03,$07,$3C,$03,$06              ;\ Sprite data. Cave room, level 1-2.
+                db $2C,$05,$0D,$79,$0D,$89,$01                  ;/ Total amount of sprites: 5.
 
-                db $01,$05,$1C,$A7,$44,$A8,$03,$43              ; \ Sprite data. Birdo room, level 1-2.
-                db $38,$01                                      ; / Total amount of sprites: 3.
+                db $01,$05,$1C,$A7,$44,$A8,$03,$43              ;\ Sprite data. Birdo room, level 1-2.
+                db $38,$01                                      ;/ Total amount of sprites: 3.
 
                 db $05,$3D,$79,$17,$77,$01                      ; Sprite data. Jar room with key, level 1-2. Total amount of sprites: 2.
 
-                db $01,$01,$01,$01,$01,$01,$01,$01              ; \ Sprite data. Jar room with 1-Up, level 1-2.
-                db $01,$01,$03,$02,$28                          ; / Total amount of sprites: 1.
+                db $01,$01,$01,$01,$01,$01,$01,$01              ;\ Sprite data. Jar room with 1-Up, level 1-2.
+                db $01,$01,$03,$02,$28                          ;/ Total amount of sprites: 1.
 
                 db $01,$01,$01                                  ; Unused.
 
-                db $03,$42,$38,$05,$07,$94,$07,$B4              ; \ Sprite data.
-                db $03,$01,$74,$05,$13,$34,$13,$A4              ;  | Main room, level 1-3.
-                db $07,$13,$02,$13,$62,$3B,$E6,$05              ;  | Total amount of sprites: 21.
-                db $3B,$26,$3B,$66,$09,$13,$4A,$3B              ;  |
-                db $5C,$13,$8A,$3B,$9C,$05,$03,$2A              ;  |
-                db $03,$7A,$09,$0D,$29,$0D,$49,$02              ;  |
-                db $7A,$02,$9A,$01,$01                          ; /
+                db $03,$42,$38,$05,$07,$94,$07,$B4              ;\ Sprite data.
+                db $03,$01,$74,$05,$13,$34,$13,$A4              ; | Main room, level 1-3.
+                db $07,$13,$02,$13,$62,$3B,$E6,$05              ; | Total amount of sprites: 21.
+                db $3B,$26,$3B,$66,$09,$13,$4A,$3B              ; |
+                db $5C,$13,$8A,$3B,$9C,$05,$03,$2A              ; |
+                db $03,$7A,$09,$0D,$29,$0D,$49,$02              ; |
+                db $7A,$02,$9A,$01,$01                          ;/
 
                 db $07,$17,$83,$3D,$88,$2E,$8A,$01              ; Sprite data. Room with key, level 1-3. Total amount of sprites: 3.
 
-                db $07,$2E,$4B,$30,$7C,$30,$C9,$01              ; \ Sprite data.
-                db $07,$30,$61,$31,$5A,$03,$BA,$03              ;  | First (vertical) castle chamber, level 1-3.
-                db $01,$DB,$03,$06,$4A,$03,$03,$35              ;  | Total amount of sprites: 9.
-                db $01,$01                                      ; /
+                db $07,$2E,$4B,$30,$7C,$30,$C9,$01              ;\ Sprite data.
+                db $07,$30,$61,$31,$5A,$03,$BA,$03              ; | First (vertical) castle chamber, level 1-3.
+                db $01,$DB,$03,$06,$4A,$03,$03,$35              ; | Total amount of sprites: 9.
+                db $01,$01                                      ;/
 
-                db $03,$31,$C9,$03,$2F,$C6,$09,$02              ; \ Sprite data.
-                db $56,$07,$D4,$07,$D7,$07,$DA,$05              ;  | Second (horizontal) castle chamber, level 1-3.
-                db $30,$A7,$30,$F7,$05,$2E,$3A,$2E              ;  | Total amount of sprites: 14.
-                db $6A,$09,$0D,$09,$0D,$29,$44,$A8              ;  |
-                db $43,$D7,$01                                  ; /
+                db $03,$31,$C9,$03,$2F,$C6,$09,$02              ;\ Sprite data.
+                db $56,$07,$D4,$07,$D7,$07,$DA,$05              ; | Second (horizontal) castle chamber, level 1-3.
+                db $30,$A7,$30,$F7,$05,$2E,$3A,$2E              ; | Total amount of sprites: 14.
+                db $6A,$09,$0D,$09,$0D,$29,$44,$A8              ; |
+                db $43,$D7,$01                                  ;/
 
                 db $03,$30,$F6,$03,$5D,$D7,$01                  ; Sprite data. Mouser/boss room, level 1-3. Total amount of sprites: 2.
 
-                db $01,$03,$19,$FA,$03,$18,$A7,$05              ; \ Sprite data.
-                db $01,$69,$03,$99,$03,$18,$47,$03              ;  | Main room (outside in the desert), level 2-1.
-                db $03,$F8,$01,$07,$23,$24,$01,$27              ;  | Total amount of sprites: 10.
-                db $01,$49,$03,$19,$4A,$01,$01                  ; /
+                db $01,$03,$19,$FA,$03,$18,$A7,$05              ;\ Sprite data.
+                db $01,$69,$03,$99,$03,$18,$47,$03              ; | Main room (outside in the desert), level 2-1.
+                db $03,$F8,$01,$07,$23,$24,$01,$27              ; | Total amount of sprites: 10.
+                db $01,$49,$03,$19,$4A,$01,$01                  ;/
 
-                db $05,$01,$49,$01,$6D,$03,$01,$D3              ; \ Sprite data.
-                db $07,$01,$40,$06,$16,$01,$C8,$01              ;  | Inside the pyramid, level 2-1.
-                db $01                                          ; / Total amount of sprites: 6.
+                db $05,$01,$49,$01,$6D,$03,$01,$D3              ;\ Sprite data.
+                db $07,$01,$40,$06,$16,$01,$C8,$01              ; | Inside the pyramid, level 2-1.
+                db $01                                          ;/ Total amount of sprites: 6.
 
-                db $01,$05,$1C,$A8,$44,$A9,$03,$43              ; \ Sprite data. Birdo room, level 2-1.
-                db $D3,$01                                      ; / Total amount of sprites: 3.
+                db $01,$05,$1C,$A8,$44,$A9,$03,$43              ;\ Sprite data. Birdo room, level 2-1.
+                db $D3,$01                                      ;/ Total amount of sprites: 3.
 
-                db $01,$01,$01,$01,$01,$01,$01,$01              ; \ Sprite data. Jar room (Snifit), level 2-1.
-                db $01,$01,$03,$06,$6C                          ; / Total amount of sprites: 1.
+                db $01,$01,$01,$01,$01,$01,$01,$01              ;\ Sprite data. Jar room (Snifit), level 2-1.
+                db $01,$01,$03,$06,$6C                          ;/ Total amount of sprites: 1.
 
-                db $03,$42,$5A,$01,$01,$01,$01,$01              ; \ Sprite data. First room, level 2-2.
-                db $01,$01,$01                                  ; / Total amount of sprites: 1.
+                db $03,$42,$5A,$01,$01,$01,$01,$01              ;\ Sprite data. First room, level 2-2.
+                db $01,$01,$01                                  ;/ Total amount of sprites: 1.
 
-                db $01,$03,$19,$8D,$05,$0F,$50,$18              ; \ Sprite data.
-                db $FA,$03,$01,$99,$05,$18,$0A,$18              ;  | Main room (outside in the desert), level 2-2.
-                db $37,$07,$0F,$10,$18,$15,$3B,$97              ;  | Total amount of sprites: 18.
-                db $07,$18,$58,$18,$A8,$18,$E7,$09              ;  |
-                db $18,$28,$18,$57,$1A,$86,$18,$97              ;  |
-                db $03,$23,$B5,$03,$23,$05,$01                  ; /
+                db $01,$03,$19,$8D,$05,$0F,$50,$18              ;\ Sprite data.
+                db $FA,$03,$01,$99,$05,$18,$0A,$18              ; | Main room (outside in the desert), level 2-2.
+                db $37,$07,$0F,$10,$18,$15,$3B,$97              ; | Total amount of sprites: 18.
+                db $07,$18,$58,$18,$A8,$18,$E7,$09              ; |
+                db $18,$28,$18,$57,$1A,$86,$18,$97              ; |
+                db $03,$23,$B5,$03,$23,$05,$01                  ;/
 
-                db $07,$03,$B8,$03,$F8,$03,$FB,$01              ; \ Sprite data. Cave room with extras, level 2-2.
-                db $01,$01,$01,$01,$01,$01,$01                  ; / Total amount of sprites: 3.
+                db $07,$03,$B8,$03,$F8,$03,$FB,$01              ;\ Sprite data. Cave room with extras, level 2-2.
+                db $01,$01,$01,$01,$01,$01,$01                  ;/ Total amount of sprites: 3.
 
-                db $03,$01,$8A,$05,$01,$C2,$01,$67              ; \ Sprite data.
-                db $07,$0E,$A0,$01,$78,$01,$BD,$03              ;  | Inside the pyramid, level 2-2.
-                db $06,$E2,$01                                  ; / Total amount of sprites: 7.
+                db $03,$01,$8A,$05,$01,$C2,$01,$67              ;\ Sprite data.
+                db $07,$0E,$A0,$01,$78,$01,$BD,$03              ; | Inside the pyramid, level 2-2.
+                db $06,$E2,$01                                  ;/ Total amount of sprites: 7.
 
-                db $01,$01,$01,$01,$01,$01,$01,$01              ; \ Sprite data. Jar room, level 2-2.
-                db $01,$01,$03,$01,$B9                          ; / Total amount of sprites: 1.
+                db $01,$01,$01,$01,$01,$01,$01,$01              ;\ Sprite data. Jar room, level 2-2.
+                db $01,$01,$03,$01,$B9                          ;/ Total amount of sprites: 1.
 
-                db $01,$05,$1C,$B4,$44,$B4,$03,$43              ; \ Sprite data. Birdo room, level 2-2.
-                db $B3,$01                                      ; / Total amount of sprites: 3.
+                db $01,$05,$1C,$B4,$44,$B4,$03,$43              ;\ Sprite data. Birdo room, level 2-2.
+                db $B3,$01                                      ;/ Total amount of sprites: 3.
 
                 db $03,$42,$17,$01                              ; Sprite data. Trapped in the sand (first room), level 2-3. Total amount of sprites: 1.
 
-                db $03,$03,$C7,$03,$49,$20,$05,$0F              ; \ Sprite data.
-                db $20,$48,$A0,$01,$01,$03,$48,$80              ;  | Main room, level 2-3.
-                db $01,$03,$49,$00,$05,$19,$7A,$1A              ;  | Total amount of sprites: 8.
-                db $D6,$01,$01                                  ; /
+                db $03,$03,$C7,$03,$49,$20,$05,$0F              ;\ Sprite data.
+                db $20,$48,$A0,$01,$01,$03,$48,$80              ; | Main room, level 2-3.
+                db $01,$03,$49,$00,$05,$19,$7A,$1A              ; | Total amount of sprites: 8.
+                db $D6,$01,$01                                  ;/
 
                 db $01,$01,$01                                  ; Cave room with extras, level 2-3. No sprites used.
 
-                db $03,$03,$4B,$05,$01,$D5,$01,$AA              ; \ Sprite data.
-                db $05,$03,$D2,$01,$D5,$03,$02,$88              ;  | Inside the pyramid, level 2-3.
-                db $07,$01,$83,$01,$A9,$01,$1D,$07              ;  | Total amount of sprites: 13.
-                db $01,$B1,$01,$89,$01,$3D,$03,$01              ;  |
-                db $E3,$01                                      ; /
+                db $03,$03,$4B,$05,$01,$D5,$01,$AA              ;\ Sprite data.
+                db $05,$03,$D2,$01,$D5,$03,$02,$88              ; | Inside the pyramid, level 2-3.
+                db $07,$01,$83,$01,$A9,$01,$1D,$07              ; | Total amount of sprites: 13.
+                db $01,$B1,$01,$89,$01,$3D,$03,$01              ; |
+                db $E3,$01                                      ;/
 
-                db $01,$01,$01,$01,$01,$01,$01,$01              ; \ Sprite data. Jar room, level 2-3.
-                db $01,$01,$03,$01,$B9                          ; / Total amount of sprites: 1.
+                db $01,$01,$01,$01,$01,$01,$01,$01              ;\ Sprite data. Jar room, level 2-3.
+                db $01,$01,$03,$01,$B9                          ;/ Total amount of sprites: 1.
 
-                db $01,$09,$01,$15,$01,$08,$01,$F8              ; \ Sprite data.
-                db $01,$CB,$01,$07,$23,$14,$03,$39              ;  | Room leading to the boss, level 2-3.
-                db $03,$7B,$03,$18,$67,$07,$18,$0A              ;  | Total amount of sprites: 12
-                db $44,$3B,$18,$6A,$03,$43,$97,$01              ; /
+                db $01,$09,$01,$15,$01,$08,$01,$F8              ;\ Sprite data.
+                db $01,$CB,$01,$07,$23,$14,$03,$39              ; | Room leading to the boss, level 2-3.
+                db $03,$7B,$03,$18,$67,$07,$18,$0A              ; | Total amount of sprites: 12
+                db $44,$3B,$18,$6A,$03,$43,$97,$01              ;/
 
                 db $01,$05,$5F,$C5,$02,$D0,$01                  ; Sprite data. Triclyde boss room, level 2-3. Total amount of sprites: 2.
 
-                db $07,$17,$83,$3D,$87,$2F,$A9,$01              ; \ Sprite data. Key room, level 2-3.
-                db $01                                          ; /
+                db $07,$17,$83,$3D,$87,$2F,$A9,$01              ;\ Sprite data. Key room, level 2-3.
+                db $01                                          ;/
 
                 db $01,$01,$01                                  ; First room, level 3-1. No sprites used.
 
-                db $03,$49,$08,$03,$48,$0E,$03,$48              ; \ Sprite data.
-                db $02,$05,$12,$92,$49,$09,$03,$03              ;  | Big waterfall room, level 3-1.
-                db $E5,$05,$03,$21,$03,$87,$01,$01              ;  | Total amount of sprites: 8.
+                db $03,$49,$08,$03,$48,$0E,$03,$48              ;\ Sprite data.
+                db $02,$05,$12,$92,$49,$09,$03,$03              ; | Big waterfall room, level 3-1.
+                db $E5,$05,$03,$21,$03,$87,$01,$01              ; | Total amount of sprites: 8.
                 db $01,$01,$01                                  ;
 
                 db $01,$01,$01,$01                              ; Secret warp room, level 3-1. No sprites used.
 
-                db $01,$03,$03,$2B,$03,$25,$12,$03              ; \ Sprite data.
-                db $23,$95,$03,$03,$65,$03,$24,$05              ;  | Up in the clouds, level 3-1.
-                db $01                                          ; / Total amount of sprites: 5.
+                db $01,$03,$03,$2B,$03,$25,$12,$03              ;\ Sprite data.
+                db $23,$95,$03,$03,$65,$03,$24,$05              ; | Up in the clouds, level 3-1.
+                db $01                                          ;/ Total amount of sprites: 5.
 
-                db $01,$07,$43,$93,$1C,$B9,$44,$BA              ; \ Sprite data. Birdo room, level 3-1.
-                db $01,$01,$01                                  ; / Total amount of sprites: 3.
+                db $01,$07,$43,$93,$1C,$B9,$44,$BA              ;\ Sprite data. Birdo room, level 3-1.
+                db $01,$01,$01                                  ;/ Total amount of sprites: 3.
 
-                db $05,$42,$42,$49,$40,$05,$08,$25              ; \ Sprite data.
-                db $48,$C0,$01,$03,$48,$00,$05,$25              ;  | Main room (outside), level 3-2.
-                db $E6,$49,$80,$01,$05,$08,$35,$08              ;  | Total amount of sprites: 12.
-                db $55,$05,$06,$A4,$06,$CB,$01,$03              ;  |
-                db $06,$96,$01                                  ; /
+                db $05,$42,$42,$49,$40,$05,$08,$25              ;\ Sprite data.
+                db $48,$C0,$01,$03,$48,$00,$05,$25              ; | Main room (outside), level 3-2.
+                db $E6,$49,$80,$01,$05,$08,$35,$08              ; | Total amount of sprites: 12.
+                db $55,$05,$06,$A4,$06,$CB,$01,$03              ; |
+                db $06,$96,$01                                  ;/
 
-                db $07,$04,$3C,$04,$6C,$04,$EC,$03              ; \ Sprite data.
-                db $04,$1C,$01,$01,$03,$03,$29,$07              ;  | Main room (underground), level 3-2.
-                db $02,$29,$02,$49,$02,$6C,$01,$01              ;  | Total amount of sprites: 8.
-                db $01                                          ; /
+                db $07,$04,$3C,$04,$6C,$04,$EC,$03              ;\ Sprite data.
+                db $04,$1C,$01,$01,$03,$03,$29,$07              ; | Main room (underground), level 3-2.
+                db $02,$29,$02,$49,$02,$6C,$01,$01              ; | Total amount of sprites: 8.
+                db $01                                          ;/
 
-                db $05,$1C,$B6,$44,$B6,$03,$43,$FA              ; \ Sprite data. Birdo room, level 3-2.
-                db $01,$01,$01                                  ; / Total amount of sprites: 3.
+                db $05,$1C,$B6,$44,$B6,$03,$43,$FA              ;\ Sprite data. Birdo room, level 3-2.
+                db $01,$01,$01                                  ;/ Total amount of sprites: 3.
 
                 db $01,$03,$5C,$C7,$01                          ; Sprite data. Unused room (belonging to level 3-2). Total amount of sprites: 1.
 
                 db $03,$42,$4A,$01,$01                          ; Sprite data. First room, level 3-3. Total amount of sprites: 1.
 
-                db $01,$01,$07,$0A,$14,$08,$58,$0A              ; \ Sprite data. Outside the fort, level 3-3.
-                db $84,$01,$01,$01,$01,$01,$01                  ; / Total amount of sprites: 3.
+                db $01,$01,$07,$0A,$14,$08,$58,$0A              ;\ Sprite data. Outside the fort, level 3-3.
+                db $84,$01,$01,$01,$01,$01,$01                  ;/ Total amount of sprites: 3.
 
-                db $03,$31,$65,$05,$0E,$75,$0E,$95              ; \ Sprite data.
-                db $09,$30,$05,$31,$55,$0D,$AC,$0D              ;  | Fort hall, first chamber, level 3-3.
-                db $CC,$01,$01                                  ; / Total amount of sprites: 7.
+                db $03,$31,$65,$05,$0E,$75,$0E,$95              ;\ Sprite data.
+                db $09,$30,$05,$31,$55,$0D,$AC,$0D              ; | Fort hall, first chamber, level 3-3.
+                db $CC,$01,$01                                  ;/ Total amount of sprites: 7.
 
-                db $01,$09,$31,$72,$2E,$84,$2E,$B7              ; \ Sprite data.
-                db $30,$4C,$07,$2E,$81,$2F,$1A,$31              ;  | Vertical room #1 (the one which is not directly suitable for advancing to a higher part), level 3-3.
-                db $DF,$07,$2E,$35,$2E,$96,$2E,$18              ;  | Total amount of sprites: 20.
-                db $03,$31,$71,$03,$31,$CF,$07,$2F              ;  |
-                db $20,$31,$70,$2E,$7E,$07,$2F,$71              ;  |
-                db $30,$8D,$31,$7F,$05,$30,$34,$30              ;  |
-                db $C7,$01,$01                                  ; /
+                db $01,$09,$31,$72,$2E,$84,$2E,$B7              ;\ Sprite data.
+                db $30,$4C,$07,$2E,$81,$2F,$1A,$31              ; | Vertical room #1 (the one which is not directly suitable for advancing to a higher part), level 3-3.
+                db $DF,$07,$2E,$35,$2E,$96,$2E,$18              ; | Total amount of sprites: 20.
+                db $03,$31,$71,$03,$31,$CF,$07,$2F              ; |
+                db $20,$31,$70,$2E,$7E,$07,$2F,$71              ; |
+                db $30,$8D,$31,$7F,$05,$30,$34,$30              ; |
+                db $C7,$01,$01                                  ;/
 
-                db $03,$06,$6C,$05,$23,$8D,$23,$CD              ; \ Sprite data.
-                db $05,$02,$57,$02,$ED,$01,$05,$05              ;  | Vertical room #2 (leading to the outside part), level 3-3.
-                db $C2,$07,$3B,$05,$07,$C4,$03,$3D              ;  | Total amount of sprites: 10.
-                db $03,$0E,$D6,$01                              ; /
+                db $03,$06,$6C,$05,$23,$8D,$23,$CD              ;\ Sprite data.
+                db $05,$02,$57,$02,$ED,$01,$05,$05              ; | Vertical room #2 (leading to the outside part), level 3-3.
+                db $C2,$07,$3B,$05,$07,$C4,$03,$3D              ; | Total amount of sprites: 10.
+                db $03,$0E,$D6,$01                              ;/
 
-                db $03,$15,$6F,$03,$15,$6B,$03,$15              ; \ Sprite data. Vertical room #3 with Shy Guy generators, level 3-3.
-                db $67,$03,$15,$63,$01                          ; / Total amount of sprites: 4.
+                db $03,$15,$6F,$03,$15,$6B,$03,$15              ;\ Sprite data. Vertical room #3 with Shy Guy generators, level 3-3.
+                db $67,$03,$15,$63,$01                          ;/ Total amount of sprites: 4.
 
-                db $0B,$31,$73,$2F,$84,$31,$79,$17              ; \ Sprite data. Key room, level 3-3.
-                db $87,$3D,$89,$01                              ; / Total amount of sprites: 5.
+                db $0B,$31,$73,$2F,$84,$31,$79,$17              ;\ Sprite data. Key room, level 3-3.
+                db $87,$3D,$89,$01                              ;/ Total amount of sprites: 5.
 
-                db $01,$05,$0E,$C9,$0E,$E9,$03,$0D              ; \ Sprite data.
-                db $E9,$05,$0D,$09,$0D,$29,$05,$44              ;  | Outside on roof part, level 3-3.
-                db $6B,$43,$AA,$01                              ; / Total amount of sprites: 7.
+                db $01,$05,$0E,$C9,$0E,$E9,$03,$0D              ;\ Sprite data.
+                db $E9,$05,$0D,$09,$0D,$29,$05,$44              ; | Outside on roof part, level 3-3.
+                db $6B,$43,$AA,$01                              ;/ Total amount of sprites: 7.
 
-                db $03,$2F,$22,$05,$2F,$62,$5D,$D6              ; \ Sprite data. Mouser boss room, level 3-3.
-                db $01,$01                                      ; / Total amount of sprites: 3.
+                db $03,$2F,$22,$05,$2F,$62,$5D,$D6              ;\ Sprite data. Mouser boss room, level 3-3.
+                db $01,$01                                      ;/ Total amount of sprites: 3.
 
-                db $01,$05,$29,$96,$13,$B2,$03,$13              ; \ Sprite data.
-                db $22,$0B,$29,$09,$29,$29,$13,$35              ;  | First icy room, level 4-1.
-                db $29,$D9,$29,$F6,$01,$09,$29,$46              ;  | Total amount of sprites: 18.
-                db $29,$98,$29,$A6,$29,$F8,$05,$13              ;  |
-                db $13,$29,$B8,$05,$29,$08,$29,$B5              ;  |
-                db $05,$29,$35,$13,$41,$01,$01                  ; /
+                db $01,$05,$29,$96,$13,$B2,$03,$13              ;\ Sprite data.
+                db $22,$0B,$29,$09,$29,$29,$13,$35              ; | First icy room, level 4-1.
+                db $29,$D9,$29,$F6,$01,$09,$29,$46              ; | Total amount of sprites: 18.
+                db $29,$98,$29,$A6,$29,$F8,$05,$13              ; |
+                db $13,$29,$B8,$05,$29,$08,$29,$B5              ; |
+                db $05,$29,$35,$13,$41,$01,$01                  ;/
 
-                db $01,$01,$03,$26,$58,$01,$07,$29              ; \ Sprite data.
-                db $0A,$26,$58,$29,$9A,$05,$29,$3A              ;  | Second icy room, level 4-1.
-                db $29,$DC,$03,$26,$F6,$01,$05,$29              ;  | Total amount of sprites: 11.
-                db $3C,$26,$D7,$05,$44,$85,$43,$D4              ;  |
-                db $01                                          ; /
+                db $01,$01,$03,$26,$58,$01,$07,$29              ;\ Sprite data.
+                db $0A,$26,$58,$29,$9A,$05,$29,$3A              ; | Second icy room, level 4-1.
+                db $29,$DC,$03,$26,$F6,$01,$05,$29              ; | Total amount of sprites: 11.
+                db $3C,$26,$D7,$05,$44,$85,$43,$D4              ; |
+                db $01                                          ;/
 
-                db $01,$03,$5C,$B8,$01,$01,$01,$01              ; \ Sprite data.
-                db $01,$01,$01,$01,$01,$01,$01,$01              ;  | Unused (4-1). Perhaps intended for a Birdo fight?
-                db $01,$01,$01,$01,$01,$01,$01,$01              ;  | Would be feasible because 4-1 normally lacks a Birdo fight.
-                db $01,$01,$01,$01,$01,$01,$01,$01              ;  | Total amount of sprites: 1.
-                db $01,$01,$01,$01,$01,$01,$01,$01              ;  |
-                db $01,$01,$01,$01,$01,$01                      ; /
+                db $01,$03,$5C,$B8,$01,$01,$01,$01              ;\ Sprite data.
+                db $01,$01,$01,$01,$01,$01,$01,$01              ; | Unused (4-1). Perhaps intended for a Birdo fight?
+                db $01,$01,$01,$01,$01,$01,$01,$01              ; | Would be feasible because 4-1 normally lacks a Birdo fight.
+                db $01,$01,$01,$01,$01,$01,$01,$01              ; | Total amount of sprites: 1.
+                db $01,$01,$01,$01,$01,$01,$01,$01              ; |
+                db $01,$01,$01,$01,$01,$01                      ;/
 
                 db $03,$42,$47,$01,$01                          ; Sprite data. First room, 4-2. Total amount of sprites: 1.
 
-                db $05,$10,$D3,$10,$F5,$03,$10,$D8              ; \ Sprite data.
-                db $09,$10,$16,$10,$37,$10,$44,$10              ;  | Detestable Beezo-fest room, level 4-2.
-                db $78,$0B,$10,$67,$10,$98,$10,$C7              ;  | Total amount of sprites: 30.
-                db $10,$E4,$10,$F8,$07,$29,$C8,$29              ;  |
-                db $E8,$10,$F3,$05,$10,$A6,$10,$D8              ;  |
-                db $0B,$10,$37,$10,$53,$10,$95,$10              ;  |
-                db $D8,$10,$F4,$0B,$10,$3A,$10,$56              ;  |
-                db $10,$7B,$10,$84,$10,$F7,$07,$10              ;  |
-                db $23,$10,$66,$29,$B8,$01,$01                  ; /
+                db $05,$10,$D3,$10,$F5,$03,$10,$D8              ;\ Sprite data.
+                db $09,$10,$16,$10,$37,$10,$44,$10              ; | Detestable Beezo-fest room, level 4-2.
+                db $78,$0B,$10,$67,$10,$98,$10,$C7              ; | Total amount of sprites: 30.
+                db $10,$E4,$10,$F8,$07,$29,$C8,$29              ; |
+                db $E8,$10,$F3,$05,$10,$A6,$10,$D8              ; |
+                db $0B,$10,$37,$10,$53,$10,$95,$10              ; |
+                db $D8,$10,$F4,$0B,$10,$3A,$10,$56              ; |
+                db $10,$7B,$10,$84,$10,$F7,$07,$10              ; |
+                db $23,$10,$66,$29,$B8,$01,$01                  ;/
 
-                db $01,$03,$28,$6A,$05,$28,$7A,$28              ; \ Sprite data.
-                db $FA,$01,$03,$28,$DA,$05,$28,$69              ;  | Whale room, level 4-2.
-                db $07,$98,$09,$28,$2A,$03,$39,$28              ;  | Total amount of sprites: 14.
-                db $BA,$03,$C9,$05,$28,$69,$03,$88              ;  |
-                db $05,$28,$A9,$29,$D3,$01,$01                  ; /
+                db $01,$03,$28,$6A,$05,$28,$7A,$28              ;\ Sprite data.
+                db $FA,$01,$03,$28,$DA,$05,$28,$69              ; | Whale room, level 4-2.
+                db $07,$98,$09,$28,$2A,$03,$39,$28              ; | Total amount of sprites: 14.
+                db $BA,$03,$C9,$05,$28,$69,$03,$88              ; |
+                db $05,$28,$A9,$29,$D3,$01,$01                  ;/
 
-                db $01,$03,$26,$C7,$01,$05,$04,$99              ; \ Sprite data. Spikes, level 4-2.
-                db $04,$C9,$01                                  ; / Total amount of sprites: 3.
+                db $01,$03,$26,$C7,$01,$05,$04,$99              ;\ Sprite data. Spikes, level 4-2.
+                db $04,$C9,$01                                  ;/ Total amount of sprites: 3.
 
-                db $01,$05,$1C,$B8,$44,$B9,$03,$43              ; \ Sprite data. Birdo room, level 4-2.
-                db $BA,$01,$01,$01,$01,$01,$01                  ; / Total amount of sprites: 3.
+                db $01,$05,$1C,$B8,$44,$B9,$03,$43              ;\ Sprite data. Birdo room, level 4-2.
+                db $BA,$01,$01,$01,$01,$01,$01                  ;/ Total amount of sprites: 3.
 
                 db $03,$42,$2A,$01                              ; Sprite data. First room, level 4-3. Total amount of sprites: 1.
 
-                db $01,$03,$1C,$A9,$01,$01,$01,$01              ; \ Sprite data. Outside room, level 4-3.
-                db $01,$01,$01,$03,$10,$18,$01                  ; / Total amount of sprites: 2.
+                db $01,$03,$1C,$A9,$01,$01,$01,$01              ;\ Sprite data. Outside room, level 4-3.
+                db $01,$01,$01,$03,$10,$18,$01                  ;/ Total amount of sprites: 2.
 
-                db $09,$29,$EA,$29,$EC,$29,$DE,$29              ; \ Sprite data.
-                db $EE,$03,$29,$EE,$05,$29,$E0,$29              ;  | Vertical room up, level 4-3.
-                db $E2,$03,$29,$8C,$09,$29,$92,$29              ;  | Total amount of sprites: 14.
-                db $B2,$29,$E9,$29,$EB,$05,$29,$71              ;  |
-                db $29,$E4,$01,$01,$01,$01,$01                  ; /
+                db $09,$29,$EA,$29,$EC,$29,$DE,$29              ;\ Sprite data.
+                db $EE,$03,$29,$EE,$05,$29,$E0,$29              ; | Vertical room up, level 4-3.
+                db $E2,$03,$29,$8C,$09,$29,$92,$29              ; | Total amount of sprites: 14.
+                db $B2,$29,$E9,$29,$EB,$05,$29,$71              ; |
+                db $29,$E4,$01,$01,$01,$01,$01                  ;/
 
-                db $07,$01,$C8,$03,$D8,$02,$E8,$01              ; \ Sprite data.
-                db $01,$01,$07,$29,$72,$29,$82,$29              ;  | Vertical room down, level 4-3.
-                db $7E,$01,$03,$29,$C1,$01,$01,$01              ;  | Total amount of sprites: 7.
-                db $01                                          ; /
+                db $07,$01,$C8,$03,$D8,$02,$E8,$01              ;\ Sprite data.
+                db $01,$01,$07,$29,$72,$29,$82,$29              ; | Vertical room down, level 4-3.
+                db $7E,$01,$03,$29,$C1,$01,$01,$01              ; | Total amount of sprites: 7.
+                db $01                                          ;/
 
-                db $01,$01,$01,$01,$01,$01,$01,$01              ; \ High up the castle outside, level 4-3.
-                db $01,$01,$01                                  ; / No sprites used.
+                db $01,$01,$01,$01,$01,$01,$01,$01              ;\ High up the castle outside, level 4-3.
+                db $01,$01,$01                                  ;/ No sprites used.
 
-                db $09,$17,$72,$3D,$74,$29,$57,$29              ; \ Sprite data.
-                db $97,$01,$01,$01,$01,$01,$01,$01              ;  | Key room, level 4-3.
-                db $01,$01,$01                                  ; / Total amount of sprites: 4.
+                db $09,$17,$72,$3D,$74,$29,$57,$29              ;\ Sprite data.
+                db $97,$01,$01,$01,$01,$01,$01,$01              ; | Key room, level 4-3.
+                db $01,$01,$01                                  ;/ Total amount of sprites: 4.
 
-                db $05,$29,$65,$29,$95,$05,$44,$2A              ; \ Sprite data.
-                db $43,$87,$01,$01,$01,$01,$01,$01              ;  | Penultimate room, level 4-3.
-                db $01,$01,$01                                  ; / Total amount of sprites: 4.
+                db $05,$29,$65,$29,$95,$05,$44,$2A              ;\ Sprite data.
+                db $43,$87,$01,$01,$01,$01,$01,$01              ; | Penultimate room, level 4-3.
+                db $01,$01,$01                                  ;/ Total amount of sprites: 4.
 
-                db $03,$6A,$24,$01,$01,$01,$01,$01              ; \ Sprite data. Fryguy boss room, level 4-3.
-                db $01,$01,$01,$01,$01                          ; / Total amount of sprites: 1.
+                db $03,$6A,$24,$01,$01,$01,$01,$01              ;\ Sprite data. Fryguy boss room, level 4-3.
+                db $01,$01,$01,$01,$01                          ;/ Total amount of sprites: 1.
 
-                db $01,$01,$01,$01,$01,$01,$01,$01              ; \ Sprite data. Unused (4-3).
-                db $01,$01,$01                                  ; /
+                db $01,$01,$01,$01,$01,$01,$01,$01              ;\ Sprite data. Unused (4-3).
+                db $01,$01,$01                                  ;/
 
-                db $01,$01,$01,$01,$01,$01,$01,$01              ; \ Sprite data. Unused (4-3).
-                db $01,$01,$01                                  ; /
+                db $01,$01,$01,$01,$01,$01,$01,$01              ;\ Sprite data. Unused (4-3).
+                db $01,$01,$01                                  ;/
 
-                db $03,$42,$31,$03,$08,$45,$03,$23              ; \ Sprite data. Outside room, level 5-1.
-                db $56,$01                                      ; / Total amount of sprites: 3.
+                db $03,$42,$31,$03,$08,$45,$03,$23              ;\ Sprite data. Outside room, level 5-1.
+                db $56,$01                                      ;/ Total amount of sprites: 3.
 
-                db $01,$03,$3B,$E4,$09,$3B,$34,$3B              ; \ Sprite data.
-                db $84,$13,$B2,$3B,$D4,$05,$13,$82              ;  | Cave room, level 5-1.
-                db $13,$C2,$05,$13,$02,$3B,$A4,$07              ;  | Total amount of sprites: 15.
-                db $13,$42,$13,$82,$13,$C2,$03,$13              ;  |
-                db $B2,$05,$3B,$94,$3B,$E4,$01,$01              ;  |
-                db $01                                          ; /
+                db $01,$03,$3B,$E4,$09,$3B,$34,$3B              ;\ Sprite data.
+                db $84,$13,$B2,$3B,$D4,$05,$13,$82              ; | Cave room, level 5-1.
+                db $13,$C2,$05,$13,$02,$3B,$A4,$07              ; | Total amount of sprites: 15.
+                db $13,$42,$13,$82,$13,$C2,$03,$13              ; |
+                db $B2,$05,$3B,$94,$3B,$E4,$01,$01              ; |
+                db $01                                          ;/
 
-                db $05,$1C,$C4,$44,$C5,$03,$43,$CA              ; \ Sprite data. Birdo room, level 5-1.
-                db $01                                          ; / Total amount of sprites: 3.
+                db $05,$1C,$C4,$44,$C5,$03,$43,$CA              ;\ Sprite data. Birdo room, level 5-1.
+                db $01                                          ;/ Total amount of sprites: 3.
 
                 db $03,$42,$2A,$01,$01                          ; Sprite data. First room, level 5-2. Total amount of sprites: 1.
 
-                db $01,$07,$14,$78,$14,$96,$14,$B8              ; \ Sprite data.
-                db $09,$08,$29,$14,$D6,$14,$E6,$14              ;  | Main room, level 5-2.
-                db $F6,$01,$09,$04,$8C,$04,$9C,$08              ;  | Total amount of sprites: 22.
-                db $AB,$04,$BC,$05,$14,$89,$14,$B9              ;  |
-                db $05,$14,$55,$14,$95,$07,$14,$17              ;  |
-                db $25,$38,$14,$57,$05,$0D,$26,$0D              ;  |
-                db $46,$05,$04,$6A,$08,$99,$01                  ; /
+                db $01,$07,$14,$78,$14,$96,$14,$B8              ;\ Sprite data.
+                db $09,$08,$29,$14,$D6,$14,$E6,$14              ; | Main room, level 5-2.
+                db $F6,$01,$09,$04,$8C,$04,$9C,$08              ; | Total amount of sprites: 22.
+                db $AB,$04,$BC,$05,$14,$89,$14,$B9              ; |
+                db $05,$14,$55,$14,$95,$07,$14,$17              ; |
+                db $25,$38,$14,$57,$05,$0D,$26,$0D              ; |
+                db $46,$05,$04,$6A,$08,$99,$01                  ;/
 
-                db $03,$14,$8B,$09,$10,$F2,$14,$68              ; \ Sprite data.
-                db $14,$8E,$06,$DE,$0B,$10,$02,$06              ;  | Going up into the sky, level 5-2.
-                db $C5,$06,$36,$10,$8E,$10,$DE,$01              ;  | Total amount of sprites: 11.
-                db $01                                          ; /
+                db $03,$14,$8B,$09,$10,$F2,$14,$68              ;\ Sprite data.
+                db $14,$8E,$06,$DE,$0B,$10,$02,$06              ; | Going up into the sky, level 5-2.
+                db $C5,$06,$36,$10,$8E,$10,$DE,$01              ; | Total amount of sprites: 11.
+                db $01                                          ;/
 
-                db $01,$01,$01,$01,$01,$01,$05,$13              ; \ Sprite data. Falling from the sky, level 5-2.
-                db $55,$13,$85,$01                              ; / Total amount of sprites: 2.
+                db $01,$01,$01,$01,$01,$01,$05,$13              ;\ Sprite data. Falling from the sky, level 5-2.
+                db $55,$13,$85,$01                              ;/ Total amount of sprites: 2.
 
-                db $03,$01,$2B,$05,$04,$24,$04,$B4              ; \ Sprite data. Jar room, level 5-2.
-                db $01                                          ; / Total amount of sprites: 3.
+                db $03,$01,$2B,$05,$04,$24,$04,$B4              ;\ Sprite data. Jar room, level 5-2.
+                db $01                                          ;/ Total amount of sprites: 3.
 
-                db $01,$07,$13,$73,$1C,$B8,$44,$B9              ; \ Sprite data. Birdo room, level 5-2.
-                db $03,$43,$B4,$01                              ; / Total amount of sprites: 4.
+                db $01,$07,$13,$73,$1C,$B8,$44,$B9              ;\ Sprite data. Birdo room, level 5-2.
+                db $03,$43,$B4,$01                              ;/ Total amount of sprites: 4.
 
                 db $03,$42,$3A,$01,$01                          ; Sprite data. First room, level 5-2. Total amount of sprites: 1.
 
-                db $03,$49,$80,$01,$03,$47,$00,$01              ; \ Sprite data.
-                db $03,$47,$40,$03,$49,$C0,$03,$49              ;  | Main room outside, level 5-3.
-                db $C0,$07,$09,$2C,$09,$7C,$09,$AC              ;  | Total amount of sprites: 10.
-                db $01,$05,$09,$58,$09,$78,$01                  ; /
+                db $03,$49,$80,$01,$03,$47,$00,$01              ;\ Sprite data.
+                db $03,$47,$40,$03,$49,$C0,$03,$49              ; | Main room outside, level 5-3.
+                db $C0,$07,$09,$2C,$09,$7C,$09,$AC              ; | Total amount of sprites: 10.
+                db $01,$05,$09,$58,$09,$78,$01                  ;/
 
-                db $01,$05,$23,$36,$09,$C6,$03,$09              ; \ Sprite data.
-                db $36,$05,$09,$25,$09,$45,$03,$16              ;  | First chamber of fort (with the huge tree), level 5-3.
-                db $A5,$01                                      ; / Total amount of sprites: 6.
+                db $01,$05,$23,$36,$09,$C6,$03,$09              ;\ Sprite data.
+                db $36,$05,$09,$25,$09,$45,$03,$16              ; | First chamber of fort (with the huge tree), level 5-3.
+                db $A5,$01                                      ;/ Total amount of sprites: 6.
 
-                db $01,$05,$24,$52,$24,$3D,$01,$09              ; \ Sprite data.
-                db $09,$90,$09,$B0,$2F,$D5,$30,$4F              ;  | Second chamber of fort (vertical part), level 5-3.
-                db $05,$15,$82,$2F,$A8,$07,$30,$41              ;  | Total amount of sprites: 11.
-                db $15,$84,$31,$8A,$01,$01                      ; /
+                db $01,$05,$24,$52,$24,$3D,$01,$09              ;\ Sprite data.
+                db $09,$90,$09,$B0,$2F,$D5,$30,$4F              ; | Second chamber of fort (vertical part), level 5-3.
+                db $05,$15,$82,$2F,$A8,$07,$30,$41              ; | Total amount of sprites: 11.
+                db $15,$84,$31,$8A,$01,$01                      ;/
 
-                db $01,$01,$05,$07,$67,$12,$D2,$01              ; \ Sprite data.
-                db $03,$12,$F2,$01,$07,$0F,$60,$03              ;  | Hopping from tree to tree, penultimate room, level 5-3.
-                db $92,$03,$A6,$05,$03,$07,$03,$55              ;  | Total amount of sprites: 11.
-                db $05,$1C,$B7,$44,$B8,$03,$43,$B5              ;  |
-                db $01                                          ; /
+                db $01,$01,$05,$07,$67,$12,$D2,$01              ;\ Sprite data.
+                db $03,$12,$F2,$01,$07,$0F,$60,$03              ; | Hopping from tree to tree, penultimate room, level 5-3.
+                db $92,$03,$A6,$05,$03,$07,$03,$55              ; | Total amount of sprites: 11.
+                db $05,$1C,$B7,$44,$B8,$03,$43,$B5              ; |
+                db $01                                          ;/
 
                 db $01,$03,$61,$A7,$01                          ; Sprite data. Clawgrip boss room, level 5-3. Total amount of sprites: 1.
 
-                db $03,$42,$4A,$07,$19,$1D,$03,$AB              ; \ Sprite data.
-                db $19,$DD,$03,$18,$5A,$03,$1A,$49              ;  | Main room in the desert, level 6-1.
-                db $07,$19,$1D,$19,$5D,$03,$7B,$03              ;  | Total amount of sprites: 16.
-                db $18,$EA,$07,$18,$1A,$19,$AD,$19              ;  |
-                db $BD,$03,$1A,$E6,$05,$1A,$36,$24              ;  |
-                db $99,$01,$01                                  ; /
+                db $03,$42,$4A,$07,$19,$1D,$03,$AB              ;\ Sprite data.
+                db $19,$DD,$03,$18,$5A,$03,$1A,$49              ; | Main room in the desert, level 6-1.
+                db $07,$19,$1D,$19,$5D,$03,$7B,$03              ; | Total amount of sprites: 16.
+                db $18,$EA,$07,$18,$1A,$19,$AD,$19              ; |
+                db $BD,$03,$1A,$E6,$05,$1A,$36,$24              ; |
+                db $99,$01,$01                                  ;/
 
-                db $01,$07,$18,$4B,$18,$9A,$15,$FB              ; \ Sprite data. Inside the jar building, level 6-1. (The one with those sneaky Cobrats.)
-                db $05,$18,$2B,$18,$7B,$01,$01                  ; / Total amount of sprites: 5.
+                db $01,$07,$18,$4B,$18,$9A,$15,$FB              ;\ Sprite data. Inside the jar building, level 6-1. (The one with those sneaky Cobrats.)
+                db $05,$18,$2B,$18,$7B,$01,$01                  ;/ Total amount of sprites: 5.
 
-                db $01,$05,$1C,$C8,$44,$C8,$03,$43              ; \ Sprite data. Birdo room, level 6-1.
-                db $27,$01                                      ; / Total amount of sprites: 3.
+                db $01,$05,$1C,$C8,$44,$C8,$03,$43              ;\ Sprite data. Birdo room, level 6-1.
+                db $27,$01                                      ;/ Total amount of sprites: 3.
 
-                db $03,$01,$5A,$09,$01,$41,$01,$B4              ; \ Sprite data. Jar room with key, level 6-1.
-                db $17,$85,$3D,$69,$01                          ; / Total amount of sprites: 5.
+                db $03,$01,$5A,$09,$01,$41,$01,$B4              ;\ Sprite data. Jar room with key, level 6-1.
+                db $17,$85,$3D,$69,$01                          ;/ Total amount of sprites: 5.
 
-                db $01,$01,$01,$01,$01,$01,$01,$01              ; \ Sprite data. Jar room with turtle shell, level 6-1.
-                db $01,$01,$05,$01,$2A,$01,$DA                  ; / Total amount of sprites: 2.
+                db $01,$01,$01,$01,$01,$01,$01,$01              ;\ Sprite data. Jar room with turtle shell, level 6-1.
+                db $01,$01,$05,$01,$2A,$01,$DA                  ;/ Total amount of sprites: 2.
 
-                db $03,$01,$5A,$05,$01,$41,$01,$B4              ; \ Sprite data. Jar room with 1-Up, level 6-1.
-                db $01                                          ; / Total amount of sprites: 3.
+                db $03,$01,$5A,$05,$01,$41,$01,$B4              ;\ Sprite data. Jar room with 1-Up, level 6-1.
+                db $01                                          ;/ Total amount of sprites: 3.
 
                 db $03,$01,$B8,$01                              ; Sprite data. Jar room with potion, level 6-1. Total amount of sprites: 1.
 
                 db $03,$42,$2A,$01,$01                          ; Sprite data. First room, level 6-2. Total amount of sprites: 1.
 
-                db $05,$0B,$0C,$0B,$26,$07,$0C,$AB              ; \ Sprite data.
-                db $0C,$C9,$0C,$E7,$03,$25,$AB,$07              ;  | Air room, level 6-2.
-                db $10,$55,$10,$85,$10,$A5,$05,$0C              ;  | Total amount of sprites: 21.
-                db $98,$0C,$C8,$03,$10,$A3,$07,$0C              ;  |
-                db $63,$0C,$65,$0C,$67,$07,$0C,$65              ;  |
-                db $0C,$93,$0C,$C4,$03,$0C,$EB,$05              ;  |
-                db $0C,$29,$0C,$A9,$01                          ; /
+                db $05,$0B,$0C,$0B,$26,$07,$0C,$AB              ;\ Sprite data.
+                db $0C,$C9,$0C,$E7,$03,$25,$AB,$07              ; | Air room, level 6-2.
+                db $10,$55,$10,$85,$10,$A5,$05,$0C              ; | Total amount of sprites: 21.
+                db $98,$0C,$C8,$03,$10,$A3,$07,$0C              ; |
+                db $63,$0C,$65,$0C,$67,$07,$0C,$65              ; |
+                db $0C,$93,$0C,$C4,$03,$0C,$EB,$05              ; |
+                db $0C,$29,$0C,$A9,$01                          ;/
 
-                db $01,$05,$1C,$CA,$44,$CB,$03,$43              ; \ Sprite data. Birdo room, level 6-2.
-                db $D4,$01                                      ; / Total amount of sprites: 3.
+                db $01,$05,$1C,$CA,$44,$CB,$03,$43              ;\ Sprite data. Birdo room, level 6-2.
+                db $D4,$01                                      ;/ Total amount of sprites: 3.
 
                 db $03,$42,$2A,$01                              ; Sprite data. Trapped in the sand, level 6-3. Total amount of sprites: 1.
 
-                db $01,$01,$03,$03,$98,$07,$03,$48              ; \ Sprite data. Outside, level 6-3.
-                db $1A,$66,$19,$AA,$01,$01                      ; / Total amount of sprites: 4.
+                db $01,$01,$03,$03,$98,$07,$03,$48              ;\ Sprite data. Outside, level 6-3.
+                db $1A,$66,$19,$AA,$01,$01                      ;/ Total amount of sprites: 4.
 
-                db $01,$05,$16,$49,$16,$F9,$05,$09              ; \ Sprite data.
-                db $A9,$16,$C9,$03,$0D,$F5,$07,$0D              ;  | Inside the Bob-Omb room, level 6-3.
-                db $27,$0D,$38,$0D,$56,$01,$01,$01              ;  | Total amount of sprites: 8.
-                db $01,$01,$01                                  ; /
+                db $01,$05,$16,$49,$16,$F9,$05,$09              ;\ Sprite data.
+                db $A9,$16,$C9,$03,$0D,$F5,$07,$0D              ; | Inside the Bob-Omb room, level 6-3.
+                db $27,$0D,$38,$0D,$56,$01,$01,$01              ; | Total amount of sprites: 8.
+                db $01,$01,$01                                  ;/
 
-                db $01,$09,$14,$95,$14,$A4,$14,$B3              ; \ Sprite data.
-                db $14,$C2,$07,$14,$A7,$14,$BA,$14              ;  | Gigantic vines (vertical), level 6-3.
-                db $C8,$03,$14,$34,$07,$14,$4A,$06              ;  | Total amount of sprites: 17.
-                db $75,$06,$7E,$03,$01,$28,$07,$14              ;  |
-                db $9C,$14,$AD,$14,$BE,$03,$14,$5C              ;  |
-                db $03,$14,$93,$01,$01                          ; /
+                db $01,$09,$14,$95,$14,$A4,$14,$B3              ;\ Sprite data.
+                db $14,$C2,$07,$14,$A7,$14,$BA,$14              ; | Gigantic vines (vertical), level 6-3.
+                db $C8,$03,$14,$34,$07,$14,$4A,$06              ; | Total amount of sprites: 17.
+                db $75,$06,$7E,$03,$01,$28,$07,$14              ; |
+                db $9C,$14,$AD,$14,$BE,$03,$14,$5C              ; |
+                db $03,$14,$93,$01,$01                          ;/
 
                 db $01,$01,$01,$01,$01                          ; In the clouds, level 6-3. No sprites used.
 
-                db $01,$07,$43,$97,$1C,$B3,$44,$B4              ; \ Sprite data. Birdo room, level 6-3.
-                db $01                                          ; / Total amount of sprites: 3.
+                db $01,$07,$43,$97,$1C,$B3,$44,$B4              ;\ Sprite data. Birdo room, level 6-3.
+                db $01                                          ;/ Total amount of sprites: 3.
 
                 db $01,$03,$5F,$B5,$01                          ; Sprite data. Triclyde boss room, level 6-3. Total amount of sprites: 1.
 
                 db $03,$42,$2A,$01                              ; Sprite data. First room, level 7-1. Total amount of sprites: 1.
 
-                db $01,$01,$01,$0D,$09,$8B,$0C,$94              ; \ Sprite data.
-                db $09,$94,$0D,$B8,$0C,$E4,$09,$E4              ;  | Main room in the sky (with Albatosses), level 7-1.
-                db $07,$09,$2B,$0C,$E4,$09,$E4,$0D              ;  | Total amount of sprites: 18.
-                db $0E,$3B,$0C,$54,$09,$54,$09,$6B              ;  |
-                db $0C,$94,$09,$94,$07,$15,$37,$0C              ;  |
-                db $F3,$09,$F3,$01                              ; /
+                db $01,$01,$01,$0D,$09,$8B,$0C,$94              ;\ Sprite data.
+                db $09,$94,$0D,$B8,$0C,$E4,$09,$E4              ; | Main room in the sky (with Albatosses), level 7-1.
+                db $07,$09,$2B,$0C,$E4,$09,$E4,$0D              ; | Total amount of sprites: 18.
+                db $0E,$3B,$0C,$54,$09,$54,$09,$6B              ; |
+                db $0C,$94,$09,$94,$07,$15,$37,$0C              ; |
+                db $F3,$09,$F3,$01                              ;/
 
-                db $01,$07,$02,$A8,$06,$B6,$06,$CB              ; \ Sprite data.
-                db $07,$15,$38,$03,$DC,$06,$F3,$05              ;  | Cloud maze, level 7-1.
-                db $0D,$59,$06,$AB,$01                          ; / Total amount of sprites: 8.
+                db $01,$07,$02,$A8,$06,$B6,$06,$CB              ;\ Sprite data.
+                db $07,$15,$38,$03,$DC,$06,$F3,$05              ; | Cloud maze, level 7-1.
+                db $0D,$59,$06,$AB,$01                          ;/ Total amount of sprites: 8.
 
-                db $01,$07,$06,$21,$14,$66,$14,$8B              ; \ Sprite data.
-                db $07,$31,$87,$31,$D7,$2F,$D9,$05              ;  | Vertical room to Birdo, level 7-1.
-                db $31,$E0,$31,$63,$01                          ; / Total amount of sprites: 8.
+                db $01,$07,$06,$21,$14,$66,$14,$8B              ;\ Sprite data.
+                db $07,$31,$87,$31,$D7,$2F,$D9,$05              ; | Vertical room to Birdo, level 7-1.
+                db $31,$E0,$31,$63,$01                          ;/ Total amount of sprites: 8.
 
-                db $01,$07,$43,$9A,$1C,$C5,$44,$C6              ; \ Sprite data. Birdo room, level 7-1.
-                db $01                                          ; / Total amount of sprites: 3.
+                db $01,$07,$43,$9A,$1C,$C5,$44,$C6              ;\ Sprite data. Birdo room, level 7-1.
+                db $01                                          ;/ Total amount of sprites: 3.
 
                 db $05,$31,$B9,$31,$C3,$01                      ; Sprite data. Room with extras, level 7-1. Total amount of sprites: 2.
 
-                db $03,$06,$F5,$05,$06,$58,$06,$E8              ; \ Sprite data. Outside, level 7-2.
-                db $03,$0E,$74,$01                              ; / Total amount of sprites: 4.
+                db $03,$06,$F5,$05,$06,$58,$06,$E8              ;\ Sprite data. Outside, level 7-2.
+                db $03,$0E,$74,$01                              ;/ Total amount of sprites: 4.
 
-                db $01,$07,$01,$99,$01,$D9,$15,$F9              ; \ Sprite data.
-                db $07,$0E,$77,$0E,$A7,$0E,$C7,$03              ;  | First chamber with conveyor belts, level 7-2.
-                db $16,$D9,$01,$05,$25,$1C,$25,$BC              ;  | Total amount of sprites: 10.
-                db $03,$25,$5B,$01                              ; /
+                db $01,$07,$01,$99,$01,$D9,$15,$F9              ;\ Sprite data.
+                db $07,$0E,$77,$0E,$A7,$0E,$C7,$03              ; | First chamber with conveyor belts, level 7-2.
+                db $16,$D9,$01,$05,$25,$1C,$25,$BC              ; | Total amount of sprites: 10.
+                db $03,$25,$5B,$01                              ;/
 
-                db $01,$05,$31,$99,$31,$EC,$05,$31              ; \ Sprite data.
-                db $24,$31,$69,$05,$2F,$96,$2F,$E3              ;  | Upper path, horizontal room with Sparkies and chains (also contains a mushroom), level 7-2.
-                db $03,$2F,$3A,$03,$1C,$B7,$01,$07              ;  | Total amount of sprites: 11.
-                db $1C,$B7,$17,$A4,$3D,$B8,$01,$01              ;  | This room is in fact "two" rooms, the part with the mushroom is semi-hidden.
-                db $01                                          ; /
+                db $01,$05,$31,$99,$31,$EC,$05,$31              ;\ Sprite data.
+                db $24,$31,$69,$05,$2F,$96,$2F,$E3              ; | Upper path, horizontal room with Sparkies and chains (also contains a mushroom), level 7-2.
+                db $03,$2F,$3A,$03,$1C,$B7,$01,$07              ; | Total amount of sprites: 11.
+                db $1C,$B7,$17,$A4,$3D,$B8,$01,$01              ; | This room is in fact "two" rooms, the part with the mushroom is semi-hidden.
+                db $01                                          ;/
 
-                db $07,$2F,$B8,$30,$F3,$2E,$FC,$09              ; \ Sprite data.
-                db $2F,$34,$2F,$74,$2F,$A4,$30,$AB              ;  | Bottom path, horizontal room with Sparkies and chains, level 7-2.
-                db $07,$30,$1A,$2F,$79,$30,$F5,$01              ;  | Total amount of sprites: 10.
-                db $01                                          ; /
+                db $07,$2F,$B8,$30,$F3,$2E,$FC,$09              ;\ Sprite data.
+                db $2F,$34,$2F,$74,$2F,$A4,$30,$AB              ; | Bottom path, horizontal room with Sparkies and chains, level 7-2.
+                db $07,$30,$1A,$2F,$79,$30,$F5,$01              ; | Total amount of sprites: 10.
+                db $01                                          ;/
 
-                db $09,$2F,$23,$2F,$83,$2F,$E3,$31              ; \ Sprite data.
-                db $CC,$05,$2F,$BB,$2F,$FB,$03,$2F              ;  | Room with locked door leading to the penultimate room, level 7-2.
-                db $53,$09,$31,$29,$2E,$43,$2F,$A3              ;  | Total amount of sprites: 13.
-                db $31,$59,$01,$01,$01,$01,$01,$05              ;  |
-                db $44,$49,$2D,$B7,$01                          ; /
+                db $09,$2F,$23,$2F,$83,$2F,$E3,$31              ;\ Sprite data.
+                db $CC,$05,$2F,$BB,$2F,$FB,$03,$2F              ; | Room with locked door leading to the penultimate room, level 7-2.
+                db $53,$09,$31,$29,$2E,$43,$2F,$A3              ; | Total amount of sprites: 13.
+                db $31,$59,$01,$01,$01,$01,$01,$05              ; |
+                db $44,$49,$2D,$B7,$01                          ;/
 
                 db $01,$01,$05,$4A,$1A,$6C,$A7,$01              ; Sprite data. Wart room, level 7-2. Total amount of sprites: 2.
 
-                db $03,$2F,$8A,$07,$2E,$73,$31,$85              ; \ Sprite data.
-                db $2F,$8C,$05,$31,$87,$2F,$8E,$05              ;  | Bottom path, vertical room with mushroom blocks and Sparkies, level 7-2.
-                db $31,$50,$30,$A0,$01,$01,$01,$0D              ;  | Total amount of sprites: 16.
-                db $31,$61,$31,$A1,$2F,$A3,$31,$68              ;  |
-                db $2F,$5A,$2F,$AA,$05,$2F,$61,$2F              ;  |
-                db $A1,$01,$01                                  ; /
+                db $03,$2F,$8A,$07,$2E,$73,$31,$85              ;\ Sprite data.
+                db $2F,$8C,$05,$31,$87,$2F,$8E,$05              ; | Bottom path, vertical room with mushroom blocks and Sparkies, level 7-2.
+                db $31,$50,$30,$A0,$01,$01,$01,$0D              ; | Total amount of sprites: 16.
+                db $31,$61,$31,$A1,$2F,$A3,$31,$68              ; |
+                db $2F,$5A,$2F,$AA,$05,$2F,$61,$2F              ; |
+                db $A1,$01,$01                                  ;/
 
-                db $09,$03,$76,$07,$69,$07,$99,$30              ; \ Sprite data.
-                db $8F,$09,$2F,$A2,$31,$73,$31,$68              ;  | Bottom path, vertical conveyor room, level 7-2.
-                db $2E,$AD,$07,$31,$80,$31,$97,$2E              ;  | Total amount of sprites: 13.
-                db $7F,$05,$07,$80,$01,$84,$01                  ; /
+                db $09,$03,$76,$07,$69,$07,$99,$30              ;\ Sprite data.
+                db $8F,$09,$2F,$A2,$31,$73,$31,$68              ; | Bottom path, vertical conveyor room, level 7-2.
+                db $2E,$AD,$07,$31,$80,$31,$97,$2E              ; | Total amount of sprites: 13.
+                db $7F,$05,$07,$80,$01,$84,$01                  ;/
 
-                db $05,$31,$9C,$30,$7E,$07,$2F,$35              ; \ Sprite data.
-                db $30,$77,$31,$A8,$05,$31,$67,$31              ;  | Upper path, vertical chain room with Sparkies, level 7-2.
-                db $BA,$01,$09,$30,$42,$31,$82,$30              ;  | Total amount of sprites: 15.
-                db $B2,$2F,$74,$09,$2F,$53,$2F,$93              ;  |
-                db $30,$54,$2F,$76,$01,$01                      ; /
+                db $05,$31,$9C,$30,$7E,$07,$2F,$35              ;\ Sprite data.
+                db $30,$77,$31,$A8,$05,$31,$67,$31              ; | Upper path, vertical chain room with Sparkies, level 7-2.
+                db $BA,$01,$09,$30,$42,$31,$82,$30              ; | Total amount of sprites: 15.
+                db $B2,$2F,$74,$09,$2F,$53,$2F,$93              ; |
+                db $30,$54,$2F,$76,$01,$01                      ;/
 
-                db $01,$01,$03,$23,$79,$05,$02,$20              ; \ Sprite data. Semi-secret outside room.
-                db $02,$D0,$01                                  ; / Total amount of sprites: 3.
+                db $01,$01,$03,$23,$79,$05,$02,$20              ;\ Sprite data. Semi-secret outside room.
+                db $02,$D0,$01                                  ;/ Total amount of sprites: 3.
 
                 db $01                                          ; Unused.
 

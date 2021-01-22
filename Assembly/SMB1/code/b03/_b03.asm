@@ -4341,8 +4341,8 @@ CODE_03AAE4:    LDA #$28                ; $03:AAE4: A9 28       ;
                 STA $0FB7               ; $03:AB22: 8D B7 0F    ;
                 RTS                     ; $03:AB25: 60          ;
 
-DATA_03AB26:    db $EA,$E9,$E9,$E9                              ;Coin map16, depending on $7E005C
-                                                            ;Underwater coin, regular coin, underground coin, castle coin
+DATA_03AB26:    db $EA,$E9,$E9,$E9                              ;\Coin map16, depending on $7E005C
+                                                                ;/Underwater coin, regular coin, underground coin, castle coin
 ;Row of coins object
 CODE_03AB2A:    LDY $5C                 ; $03:AB2A: A4 5C       ;\
                 LDA DATA_03AB26,y       ; $03:AB2C: B9 26 AB    ;/Load coin map16 tile number
@@ -4374,11 +4374,11 @@ CODE_03AB4E:    JSR CODE_03ACC2         ; $03:AB4E: 20 C2 AC    ;Get object attr
 CODE_03AB55:    LDY #$00                ; $03:AB55: A0 00       ;
                 JMP CODE_03AC78         ; $03:AB57: 4C 78 AC    ;Place tile in Accumulator into level.
 
-DATA_03AB5A:    db $71,$64,$64,$6A                              ;Stone map16, depending on $5C
-                                                            ;Coral stone, normal stone, underground stone, castle dark brick
+DATA_03AB5A:    db $71,$64,$64,$6A                              ;\Stone map16, depending on $5C
+                                                                ;/Coral stone, normal stone, underground stone, castle dark brick
 
-DATA_03AB5E:    db $26,$51,$52,$52,$8C                          ;Brick map16, depending on $5C.
-                                                            ;Coral, normal bricks, underground bricks, castle bricks, cloud tiles
+DATA_03AB5E:    db $26,$51,$52,$52,$8C                          ;\Brick map16, depending on $5C.
+                                                                ;/Coral, normal bricks, underground bricks, castle bricks, cloud tiles
 
 ;Row of bricks
 CODE_03AB63:    LDY $5C                 ; $03:AB63: A4 5C       ;\
@@ -7966,13 +7966,13 @@ CODE_03C805:    STY $47,x               ; $03:C805: 94 47       ;
                 STA $29,x               ; $03:C811: 95 29       ;
 CODE_03C813:    RTS                     ; $03:C813: 60          ;
 
-DATA_03C814:    db $28,$38,$28,$38,$28                          ;Castle firebar rotation speed data. Format:
-                                              ;Firebar (clock), Fast Firebar (clock)
-                                              ;Firebar (C-Clock), Fast Firebar (C-Clock)
-                                              ;Long Firebar (Clock)
+DATA_03C814:    db $28,$38,$28,$38,$28                          ;\ Castle firebar rotation speed data. Format:
+                                                                ; |Firebar (clock), Fast Firebar (clock)
+                                                                ; |Firebar (C-Clock), Fast Firebar (C-Clock)
+                                                                ;/ Long Firebar (Clock)
 
-DATA_03C819:    db $00,$00,$10,$10,$00                          ;When bit 4 is set, the firebar will rotate C-Clockwise
-                                              ;Same format as above
+DATA_03C819:    db $00,$00,$10,$10,$00                          ;\When bit 4 is set, the firebar will rotate C-Clockwise
+                                                                ;/Same format as above
 
 ;Firebar
 CODE_03C81E:    JSR CODE_03C946         ; $03:C81E: 20 46 C9    ;Find a free sprite slot and place the sprite in the level.
@@ -10538,8 +10538,8 @@ CODE_03DCC3:    PLA                     ; $03:DCC3: 68          ;
 CODE_03DCCA:    LDX $9E                 ; $03:DCCA: A6 9E       ;
                 RTS                     ; $03:DCCC: 60          ;
 
-DATA_03DCCD:    db $06,$00,$02,$12,$11,$07,$05,$2D              ;Sprite to generate when you kill Bowser with fireballs.
-                                                            ;In this order: Goomba, Green Koopa, Red Koopa, Spiny, Lakitu, Blooper, Hammer Bros., Bowser
+DATA_03DCCD:    db $06,$00,$02,$12,$11,$07,$05,$2D              ;\Sprite to generate when you kill Bowser with fireballs.
+                                                                ;/In this order: Goomba, Green Koopa, Red Koopa, Spiny, Lakitu, Blooper, Hammer Bros., Bowser
 
 CODE_03DCD5:    JSR CODE_03FD39         ; $03:DCD5: 20 39 FD    ;
                 LDA #$03                ; $03:DCD8: A9 03       ;\

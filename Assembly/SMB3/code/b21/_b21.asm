@@ -4116,15 +4116,15 @@ DATA_21D88F:    dw DATA_21D8DE
 ;;; These point to sprite data per world
 ;;;
 
-DATA_21D8A1:    dw DATA_21D8F3 ; World 1 Level Pointers - Sprites
-                dw DATA_21D9D3 ; World 2 Level Pointers - Sprites
-                dw DATA_21DB59 ; World 3 Level Pointers - Sprites
-                dw DATA_21DCD9 ; World 4 Level Pointers - Sprites
-                dw DATA_21DDFD ; World 5 Level Pointers - Sprites
-                dw DATA_21DF6F ; World 6 Level Pointers - Sprites
-                dw DATA_21E125 ; World 7 Level Pointers - Sprites
-                dw DATA_21E28F ; World 8 Level Pointers - Sprites
-                dw DATA_21E39D ; World 9 Level Pointers - Sprites
+DATA_21D8A1:    dw DATA_21D8F3                                  ; World 1 Level Pointers - Sprites
+                dw DATA_21D9D3                                  ; World 2 Level Pointers - Sprites
+                dw DATA_21DB59                                  ; World 3 Level Pointers - Sprites
+                dw DATA_21DCD9                                  ; World 4 Level Pointers - Sprites
+                dw DATA_21DDFD                                  ; World 5 Level Pointers - Sprites
+                dw DATA_21DF6F                                  ; World 6 Level Pointers - Sprites
+                dw DATA_21E125                                  ; World 7 Level Pointers - Sprites
+                dw DATA_21E28F                                  ; World 8 Level Pointers - Sprites
+                dw DATA_21E39D                                  ; World 9 Level Pointers - Sprites
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -4132,15 +4132,15 @@ DATA_21D8A1:    dw DATA_21D8F3 ; World 1 Level Pointers - Sprites
 ;;; These point to sprite data per world
 ;;;
 
-DATA_21D8B3:    dw DATA_21D932 ; World 1 Level Pointers - Level Data
-                dw DATA_21DA60 ; World 2 Level Pointers - Level Data
-                dw DATA_21DBF5 ; World 3 Level Pointers - Level Data
-                dw DATA_21DD3F ; World 4 Level Pointers - Level Data
-                dw DATA_21DE7B ; World 5 Level Pointers - Level Data
-                dw DATA_21E01A ; World 6 Level Pointers - Level Data
-                dw DATA_21E1AF ; World 7 Level Pointers - Level Data
-                dw DATA_21E30A ; World 8 Level Pointers - Level Data
-                dw DATA_21E39D ; World 9 Level Pointers - Level Data
+DATA_21D8B3:    dw DATA_21D932                                  ; World 1 Level Pointers - Level Data
+                dw DATA_21DA60                                  ; World 2 Level Pointers - Level Data
+                dw DATA_21DBF5                                  ; World 3 Level Pointers - Level Data
+                dw DATA_21DD3F                                  ; World 4 Level Pointers - Level Data
+                dw DATA_21DE7B                                  ; World 5 Level Pointers - Level Data
+                dw DATA_21E01A                                  ; World 6 Level Pointers - Level Data
+                dw DATA_21E1AF                                  ; World 7 Level Pointers - Level Data
+                dw DATA_21E30A                                  ; World 8 Level Pointers - Level Data
+                dw DATA_21E39D                                  ; World 9 Level Pointers - Level Data
 
 DATA_21D8C5:    db $00,$15,$15,$15
 
@@ -5582,8 +5582,8 @@ DATA_21F678:    db $97,$A1,$90,$95,$82,$84,$A2,$A2              ; "Princess whil
 
 DATA_21F6DB:    db $C6,$A6,$86,$66,$46,$26                      ;VRAM address low byte for the letter main content.
 
-DATA_21F6E1:    db $01,$01,$01,$01,$01,$01                      ;VRAM address high byte for the letter main content.
-                                                       ;It's safe to conclude that the letter's main content supports 6 lines before the ending.
+DATA_21F6E1:    db $01,$01,$01,$01,$01,$01                      ;\VRAM address high byte for the letter main content.
+                                                                ;/It's safe to conclude that the letter's main content supports 6 lines before the ending.
 
 DATA_21F6E7:    db $FF,$00,$FF,$00,$41,$05,$42,$05              ;VRAM tilemap of Layer 2 Bowser in World 7 beaten's letter
                 db $43,$05,$44,$05,$FF,$FF,$FF,$00              ; Read in groups of 2: TTTTTTTT YXPCCCTT

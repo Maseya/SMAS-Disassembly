@@ -830,259 +830,481 @@ ORG $22B000
 CODE_22B000:    JSL CODE_27A837         ; $22:B000: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
                 LDA.w DATA_21C3EF,y     ; $22:B004: B9 EF C3    ;
                 STA $8C,x               ; $22:B007: 95 8C       ;
-                LDA #$02                    ; $22:B009: A9 02       ;
-                STA $68,x                   ; $22:B00B: 95 68       ;
-                STA $4D,x                   ; $22:B00D: 95 4D       ;
-                LDA #$17                    ; $22:B00F: A9 17       ;
-                STA $1203                   ; $22:B011: 8D 03 12    ;
-                RTL                         ; $22:B014: 6B          ;
+                LDA #$02                ; $22:B009: A9 02       ;
 
-CODE_22B015:    LDA $68,x                   ; $22:B015: B5 68       ;
-                CMP #$02                    ; $22:B017: C9 02       ;
-                BEQ CODE_22B01F             ; $22:B019: F0 04       ;
-                JSR CODE_22B0D2             ; $22:B01B: 20 D2 B0    ;
-                RTL                         ; $22:B01E: 6B          ;
+                STA $68,x               ; $22:B00B: 95 68       ;
 
-CODE_22B01F:    LDA $0518,x                 ; $22:B01F: BD 18 05    ;
-                CMP #$01                    ; $22:B022: C9 01       ;
-                BNE CODE_22B029             ; $22:B024: D0 03       ;
-                JSR CODE_22B0AF             ; $22:B026: 20 AF B0    ;
-CODE_22B029:    TXA                         ; $22:B029: 8A          ;
-                AND #$03                    ; $22:B02A: 29 03       ;
-                ASL A                       ; $22:B02C: 0A          ;
-                TAY                         ; $22:B02D: A8          ;
-                REP #$20                    ; $22:B02E: C2 20       ;
-                LDA.w DATA_21C3F9,y                 ; $22:B030: B9 F9 C3    ;
-                STA $C6,x                   ; $22:B033: 95 C6       ;
-                SEP #$20                    ; $22:B035: E2 20       ;
+                STA $4D,x               ; $22:B00D: 95 4D       ;
+
+                LDA #$17                ; $22:B00F: A9 17       ;
+
+                STA $1203               ; $22:B011: 8D 03 12    ;
+
+                RTL                     ; $22:B014: 6B          ;
+
+CODE_22B015:    LDA $68,x               ; $22:B015: B5 68       ;
+
+                CMP #$02                ; $22:B017: C9 02       ;
+
+                BEQ CODE_22B01F         ; $22:B019: F0 04       ;
+
+                JSR CODE_22B0D2         ; $22:B01B: 20 D2 B0    ;
+
+                RTL                     ; $22:B01E: 6B          ;
+
+CODE_22B01F:    LDA $0518,x             ; $22:B01F: BD 18 05    ;
+
+                CMP #$01                ; $22:B022: C9 01       ;
+
+                BNE CODE_22B029         ; $22:B024: D0 03       ;
+
+                JSR CODE_22B0AF         ; $22:B026: 20 AF B0    ;
+
+CODE_22B029:    TXA                     ; $22:B029: 8A          ;
+
+                AND #$03                ; $22:B02A: 29 03       ;
+
+                ASL A                   ; $22:B02C: 0A          ;
+
+                TAY                     ; $22:B02D: A8          ;
+
+                REP #$20                ; $22:B02E: C2 20       ;
+
+                LDA.w DATA_21C3F9,y     ; $22:B030: B9 F9 C3    ;
+
+                STA $C6,x               ; $22:B033: 95 C6       ;
+
+                SEP #$20                ; $22:B035: E2 20       ;
+
                 JSL CODE_279BC3         ; $22:B037: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                JSL CODE_279EBB             ; $22:B03B: 22 BB 9E 27 ;
-                JSL CODE_29FE8F             ; $22:B03F: 22 8F FE 29 ;
-                LDA $9C                     ; $22:B043: A5 9C       ;
-                BNE CODE_22B0AE             ; $22:B045: D0 67       ;
-                JSR CODE_22D34B             ; $22:B047: 20 4B D3    ;
-                JSL CODE_279B6B             ; $22:B04A: 22 6B 9B 27 ;
-                LDA $0797,x                 ; $22:B04E: BD 97 07    ;
-                BEQ CODE_22B057             ; $22:B051: F0 04       ;
-                JSL CODE_27A4C6             ; $22:B053: 22 C6 A4 27 ;
-CODE_22B057:    LDA $15                     ; $22:B057: A5 15       ;
-                LSR A                       ; $22:B059: 4A          ;
-                AND #$01                    ; $22:B05A: 29 01       ;
-                CLC                         ; $22:B05C: 18          ;
-                ADC #$05                    ; $22:B05D: 69 05       ;
-                STA $0669,x                 ; $22:B05F: 9D 69 06    ;
-                JSL CODE_27A7EF             ; $22:B062: 22 EF A7 27 ;
-                JSL CODE_27A7E4             ; $22:B066: 22 E4 A7 27 ;
-                LDA $4D,x                   ; $22:B06A: B5 4D       ;
-                BNE CODE_22B09F             ; $22:B06C: D0 31       ;
-                LDA $71,x                   ; $22:B06E: B5 71       ;
-                PHA                         ; $22:B070: 48          ;
-                CLC                         ; $22:B071: 18          ;
-                ADC $077B,x                 ; $22:B072: 7D 7B 07    ;
-                STA $71,x                   ; $22:B075: 95 71       ;
-                JSL CODE_278B93             ; $22:B077: 22 93 8B 27 ;
-                PLA                         ; $22:B07B: 68          ;
-                STA $71,x                   ; $22:B07C: 95 71       ;
-                LDA $A7,x                   ; $22:B07E: B5 A7       ;
-                AND #$04                    ; $22:B080: 29 04       ;
-                BEQ CODE_22B0AE             ; $22:B082: F0 2A       ;
-                LDA $077B,x                 ; $22:B084: BD 7B 07    ;
-                AND #$0F                    ; $22:B087: 29 0F       ;
-                STA $06B3                   ; $22:B089: 8D B3 06    ;
-                JSL CODE_278B67             ; $22:B08C: 22 67 8B 27 ;
-                INC $4D,x                   ; $22:B090: F6 4D       ;
-                LDY #$F0                    ; $22:B092: A0 F0       ;
-                LDA $0679,x                 ; $22:B094: BD 79 06    ;
-                AND #$40                    ; $22:B097: 29 40       ;
-                BEQ CODE_22B09D             ; $22:B099: F0 02       ;
-                LDY #$10                    ; $22:B09B: A0 10       ;
-CODE_22B09D:    BRA CODE_22B0AE             ; $22:B09D: 80 0F       ;
-CODE_22B09F:    LDA #$07                    ; $22:B09F: A9 07       ;
-                STA $0669,x                 ; $22:B0A1: 9D 69 06    ;
-                ASL $0679,x                 ; $22:B0A4: 1E 79 06    ;
-                LDA $15                     ; $22:B0A7: A5 15       ;
-                LSR A                       ; $22:B0A9: 4A          ;
-                LSR A                       ; $22:B0AA: 4A          ;
-                ROR $0679,x                 ; $22:B0AB: 7E 79 06    ;
-CODE_22B0AE:    RTL                         ; $22:B0AE: 6B          ;
+                JSL CODE_279EBB         ; $22:B03B: 22 BB 9E 27 ;
 
-CODE_22B0AF:    JSL CODE_278A72             ; $22:B0AF: 22 72 8A 27 ;
-                LDA $71,x                   ; $22:B0B3: B5 71       ;
-                STA $05BF,y                 ; $22:B0B5: 99 BF 05    ;
-                LDA $56,x                   ; $22:B0B8: B5 56       ;
-                STA $1FD7,y                 ; $22:B0BA: 99 D7 1F    ;
-                LDA $5F,x                   ; $22:B0BD: B5 5F       ;
-                STA $05C9,y                 ; $22:B0BF: 99 C9 05    ;
-                LDA $44,x                   ; $22:B0C2: B5 44       ;
-                STA $00E2,y                 ; $22:B0C4: 99 E2 00    ;
-                LDA #$16                    ; $22:B0C7: A9 16       ;
-                STA $1FC8,y                 ; $22:B0C9: 99 C8 1F    ;
-                LDA #$17                    ; $22:B0CC: A9 17       ;
-                STA $06C7,y                 ; $22:B0CE: 99 C7 06    ;
-CODE_22B0D1:    RTS                         ; $22:B0D1: 60          ;
+                JSL CODE_29FE8F         ; $22:B03F: 22 8F FE 29 ;
+
+                LDA $9C                 ; $22:B043: A5 9C       ;
+
+                BNE CODE_22B0AE         ; $22:B045: D0 67       ;
+
+                JSR CODE_22D34B         ; $22:B047: 20 4B D3    ;
+
+                JSL CODE_279B6B         ; $22:B04A: 22 6B 9B 27 ;
+
+                LDA $0797,x             ; $22:B04E: BD 97 07    ;
+
+                BEQ CODE_22B057         ; $22:B051: F0 04       ;
+
+                JSL CODE_27A4C6         ; $22:B053: 22 C6 A4 27 ;
+
+CODE_22B057:    LDA $15                 ; $22:B057: A5 15       ;
+
+                LSR A                   ; $22:B059: 4A          ;
+
+                AND #$01                ; $22:B05A: 29 01       ;
+
+                CLC                     ; $22:B05C: 18          ;
+
+                ADC #$05                ; $22:B05D: 69 05       ;
+
+                STA $0669,x             ; $22:B05F: 9D 69 06    ;
+
+                JSL CODE_27A7EF         ; $22:B062: 22 EF A7 27 ;
+
+                JSL CODE_27A7E4         ; $22:B066: 22 E4 A7 27 ;
+
+                LDA $4D,x               ; $22:B06A: B5 4D       ;
+
+                BNE CODE_22B09F         ; $22:B06C: D0 31       ;
+
+                LDA $71,x               ; $22:B06E: B5 71       ;
+
+                PHA                     ; $22:B070: 48          ;
+
+                CLC                     ; $22:B071: 18          ;
+
+                ADC $077B,x             ; $22:B072: 7D 7B 07    ;
+
+                STA $71,x               ; $22:B075: 95 71       ;
+
+                JSL CODE_278B93         ; $22:B077: 22 93 8B 27 ;
+
+                PLA                     ; $22:B07B: 68          ;
+
+                STA $71,x               ; $22:B07C: 95 71       ;
+
+                LDA $A7,x               ; $22:B07E: B5 A7       ;
+
+                AND #$04                ; $22:B080: 29 04       ;
+
+                BEQ CODE_22B0AE         ; $22:B082: F0 2A       ;
+
+                LDA $077B,x             ; $22:B084: BD 7B 07    ;
+
+                AND #$0F                ; $22:B087: 29 0F       ;
+
+                STA $06B3               ; $22:B089: 8D B3 06    ;
+
+                JSL CODE_278B67         ; $22:B08C: 22 67 8B 27 ;
+
+                INC $4D,x               ; $22:B090: F6 4D       ;
+
+                LDY #$F0                ; $22:B092: A0 F0       ;
+
+                LDA $0679,x             ; $22:B094: BD 79 06    ;
+
+                AND #$40                ; $22:B097: 29 40       ;
+
+                BEQ CODE_22B09D         ; $22:B099: F0 02       ;
+
+                LDY #$10                ; $22:B09B: A0 10       ;
+
+CODE_22B09D:    BRA CODE_22B0AE         ; $22:B09D: 80 0F       ;
+
+CODE_22B09F:    LDA #$07                ; $22:B09F: A9 07       ;
+
+                STA $0669,x             ; $22:B0A1: 9D 69 06    ;
+
+                ASL $0679,x             ; $22:B0A4: 1E 79 06    ;
+
+                LDA $15                 ; $22:B0A7: A5 15       ;
+
+                LSR A                   ; $22:B0A9: 4A          ;
+
+                LSR A                   ; $22:B0AA: 4A          ;
+
+                ROR $0679,x             ; $22:B0AB: 7E 79 06    ;
+
+CODE_22B0AE:    RTL                     ; $22:B0AE: 6B          ;
+
+CODE_22B0AF:    JSL CODE_278A72         ; $22:B0AF: 22 72 8A 27 ;
+
+                LDA $71,x               ; $22:B0B3: B5 71       ;
+
+                STA $05BF,y             ; $22:B0B5: 99 BF 05    ;
+
+                LDA $56,x               ; $22:B0B8: B5 56       ;
+
+                STA $1FD7,y             ; $22:B0BA: 99 D7 1F    ;
+
+                LDA $5F,x               ; $22:B0BD: B5 5F       ;
+
+                STA $05C9,y             ; $22:B0BF: 99 C9 05    ;
+
+                LDA $44,x               ; $22:B0C2: B5 44       ;
+
+                STA $00E2,y             ; $22:B0C4: 99 E2 00    ;
+
+                LDA #$16                ; $22:B0C7: A9 16       ;
+
+                STA $1FC8,y             ; $22:B0C9: 99 C8 1F    ;
+
+                LDA #$17                ; $22:B0CC: A9 17       ;
+
+                STA $06C7,y             ; $22:B0CE: 99 C7 06    ;
+
+CODE_22B0D1:    RTS                     ; $22:B0D1: 60          ;
 
 CODE_22B0D2:    JSL CODE_279BC3         ; $22:B0D2: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                JSR CODE_22B1BF             ; $22:B0D6: 20 BF B1    ;
-                LDA $9C                     ; $22:B0D9: A5 9C       ;
-                ORA $0769,x                 ; $22:B0DB: 1D 69 07    ;
-                BNE CODE_22B0D1             ; $22:B0DE: D0 F1       ;
-                LDA $15                     ; $22:B0E0: A5 15       ;
-                AND #$03                    ; $22:B0E2: 29 03       ;
-                BEQ CODE_22B0E9             ; $22:B0E4: F0 03       ;
-                INC $1FD2,x                 ; $22:B0E6: FE D2 1F    ;
-CODE_22B0E9:    JSL CODE_279B6B             ; $22:B0E9: 22 6B 9B 27 ;
-                LDA $0797,x                 ; $22:B0ED: BD 97 07    ;
-                BEQ CODE_22B122             ; $22:B0F0: F0 30       ;
-                LDA $68,x                   ; $22:B0F2: B5 68       ;
-                BNE CODE_22B11E             ; $22:B0F4: D0 28       ;
-                LDA $0769,x                 ; $22:B0F6: BD 69 07    ;
-                BNE CODE_22B11E             ; $22:B0F9: D0 23       ;
-                LDA $8C,x                   ; $22:B0FB: B5 8C       ;
-                BNE CODE_22B108             ; $22:B0FD: D0 09       ;
-                LDA #$08                    ; $22:B0FF: A9 08       ;
-                LDY $0783,x                 ; $22:B101: BC 83 07    ;
-                BPL CODE_22B108             ; $22:B104: 10 02       ;
-                LDA #$F8                    ; $22:B106: A9 F8       ;
-CODE_22B108:    STA $4D,x                   ; $22:B108: 95 4D       ;
-                STZ $8C,x                   ; $22:B10A: 74 8C       ;
-                STZ $9E,x                   ; $22:B10C: 74 9E       ;
-                LDA #$D0                    ; $22:B10E: A9 D0       ;
-                STA $9D                     ; $22:B110: 85 9D       ;
-                LDA #$02                    ; $22:B112: A9 02       ;
-                STA $1200                   ; $22:B114: 8D 00 12    ;
-                LDA #$0C                    ; $22:B117: A9 0C       ;
-                STA $0769,x                 ; $22:B119: 9D 69 07    ;
-                BRA CODE_22B122             ; $22:B11C: 80 04       ;
+                JSR CODE_22B1BF         ; $22:B0D6: 20 BF B1    ;
 
-CODE_22B11E:    JSL CODE_27A4C6             ; $22:B11E: 22 C6 A4 27 ;
-CODE_22B122:    LDA $68,x                   ; $22:B122: B5 68       ;
-                BNE CODE_22B176             ; $22:B124: D0 50       ;
-                LDA $8C,x                   ; $22:B126: B5 8C       ;
-                PHP                         ; $22:B128: 08          ;
-                LDA $1FD2,x                 ; $22:B129: BD D2 1F    ;
-                LSR A                       ; $22:B12C: 4A          ;
-                LSR A                       ; $22:B12D: 4A          ;
-                AND #$03                    ; $22:B12E: 29 03       ;
-                PLP                         ; $22:B130: 28          ;
-                BPL CODE_22B135             ; $22:B131: 10 02       ;
-                EOR #$03                    ; $22:B133: 49 03       ;
-CODE_22B135:    TAY                         ; $22:B135: A8          ;
-                LDA.w DATA_21C3F5,y                 ; $22:B136: B9 F5 C3    ;
-                STA $0679,x                 ; $22:B139: 9D 79 06    ;
-                JSL CODE_27A7EF             ; $22:B13C: 22 EF A7 27 ;
-                JSL CODE_27A7E4             ; $22:B140: 22 E4 A7 27 ;
-                LDA $9E,x                   ; $22:B144: B5 9E       ;
-                CMP #$20                    ; $22:B146: C9 20       ;
-                BPL CODE_22B14C             ; $22:B148: 10 02       ;
-                INC $9E,x                   ; $22:B14A: F6 9E       ;
-CODE_22B14C:    JSL CODE_278B93             ; $22:B14C: 22 93 8B 27 ;
-                LDA $A7,x                   ; $22:B150: B5 A7       ;
-                AND #$08                    ; $22:B152: 29 08       ;
-                BEQ CODE_22B159             ; $22:B154: F0 03       ;
-                JSR CODE_22B1B6             ; $22:B156: 20 B6 B1    ;
-CODE_22B159:    LDA $A7,x                   ; $22:B159: B5 A7       ;
-                AND #$04                    ; $22:B15B: 29 04       ;
-                BEQ CODE_22B172             ; $22:B15D: F0 13       ;
-                LDA $0783,x                 ; $22:B15F: BD 83 07    ;
-                AND #$03                    ; $22:B162: 29 03       ;
-                TAY                         ; $22:B164: A8          ;
-                LDA.w DATA_21C3F1,y                 ; $22:B165: B9 F1 C3    ;
-                STA $9E,x                   ; $22:B168: 95 9E       ;
-                LDA $4D,x                   ; $22:B16A: B5 4D       ;
-                BEQ CODE_22B172             ; $22:B16C: F0 04       ;
-                STA $8C,x                   ; $22:B16E: 95 8C       ;
-                STZ $4D,x                   ; $22:B170: 74 4D       ;
-CODE_22B172:    JSR CODE_22B19B             ; $22:B172: 20 9B B1    ;
-                RTS                         ; $22:B175: 60          ;
+                LDA $9C                 ; $22:B0D9: A5 9C       ;
 
-CODE_22B176:    JSL CODE_27A7EF             ; $22:B176: 22 EF A7 27 ;
-                JSL CODE_27A7E4             ; $22:B17A: 22 E4 A7 27 ;
-                JSL CODE_278B93             ; $22:B17E: 22 93 8B 27 ;
-                LDY $83,x                   ; $22:B182: B4 83       ;
-                LDA $9E,x                   ; $22:B184: B5 9E       ;
-                BPL CODE_22B18E             ; $22:B186: 10 06       ;
-                CPY #$08                    ; $22:B188: C0 08       ;
-                BCC CODE_22B198             ; $22:B18A: 90 0C       ;
-                BCS CODE_22B192                     ; $22:B18C: B0 04       ;
-CODE_22B18E:    CPY #$F0                    ; $22:B18E: C0 F0       ;
-                BCS CODE_22B198                     ; $22:B190: B0 06       ;
-CODE_22B192:    LDA $A7,x                   ; $22:B192: B5 A7       ;
-                AND #$0C                    ; $22:B194: 29 0C       ;
-                BEQ CODE_22B19B             ; $22:B196: F0 03       ;
-CODE_22B198:    JSR CODE_22B1B6             ; $22:B198: 20 B6 B1    ;
-CODE_22B19B:    LDA $A7,x                   ; $22:B19B: B5 A7       ;
-                AND #$03                    ; $22:B19D: 29 03       ;
-                BNE CODE_22B1B1             ; $22:B19F: D0 10       ;
-                LDY $7A,x                   ; $22:B1A1: B4 7A       ;
-                LDA $8C,x                   ; $22:B1A3: B5 8C       ;
-                BPL CODE_22B1AD             ; $22:B1A5: 10 06       ;
-                CPY #$08                    ; $22:B1A7: C0 08       ;
-                BCC CODE_22B1B1             ; $22:B1A9: 90 06       ;
-                BCS CODE_22B1B5                     ; $22:B1AB: B0 08       ;
-CODE_22B1AD:    CPY #$F0                    ; $22:B1AD: C0 F0       ;
-                BCC CODE_22B1B5             ; $22:B1AF: 90 04       ;
-CODE_22B1B1:    JSL CODE_279905             ; $22:B1B1: 22 05 99 27 ;
-CODE_22B1B5:    RTS                         ; $22:B1B5: 60          ;
+                ORA $0769,x             ; $22:B0DB: 1D 69 07    ;
 
-CODE_22B1B6:    LDA $9E,x                   ; $22:B1B6: B5 9E       ;
+                BNE CODE_22B0D1         ; $22:B0DE: D0 F1       ;
+
+                LDA $15                 ; $22:B0E0: A5 15       ;
+
+                AND #$03                ; $22:B0E2: 29 03       ;
+
+                BEQ CODE_22B0E9         ; $22:B0E4: F0 03       ;
+
+                INC $1FD2,x             ; $22:B0E6: FE D2 1F    ;
+
+CODE_22B0E9:    JSL CODE_279B6B         ; $22:B0E9: 22 6B 9B 27 ;
+
+                LDA $0797,x             ; $22:B0ED: BD 97 07    ;
+
+                BEQ CODE_22B122         ; $22:B0F0: F0 30       ;
+
+                LDA $68,x               ; $22:B0F2: B5 68       ;
+
+                BNE CODE_22B11E         ; $22:B0F4: D0 28       ;
+
+                LDA $0769,x             ; $22:B0F6: BD 69 07    ;
+
+                BNE CODE_22B11E         ; $22:B0F9: D0 23       ;
+
+                LDA $8C,x               ; $22:B0FB: B5 8C       ;
+
+                BNE CODE_22B108         ; $22:B0FD: D0 09       ;
+
+                LDA #$08                ; $22:B0FF: A9 08       ;
+
+                LDY $0783,x             ; $22:B101: BC 83 07    ;
+
+                BPL CODE_22B108         ; $22:B104: 10 02       ;
+
+                LDA #$F8                ; $22:B106: A9 F8       ;
+
+CODE_22B108:    STA $4D,x               ; $22:B108: 95 4D       ;
+
+                STZ $8C,x               ; $22:B10A: 74 8C       ;
+
+                STZ $9E,x               ; $22:B10C: 74 9E       ;
+
+                LDA #$D0                ; $22:B10E: A9 D0       ;
+
+                STA $9D                 ; $22:B110: 85 9D       ;
+
+                LDA #$02                ; $22:B112: A9 02       ;
+
+                STA $1200               ; $22:B114: 8D 00 12    ;
+
+                LDA #$0C                ; $22:B117: A9 0C       ;
+
+                STA $0769,x             ; $22:B119: 9D 69 07    ;
+
+                BRA CODE_22B122         ; $22:B11C: 80 04       ;
+
+CODE_22B11E:    JSL CODE_27A4C6         ; $22:B11E: 22 C6 A4 27 ;
+
+CODE_22B122:    LDA $68,x               ; $22:B122: B5 68       ;
+
+                BNE CODE_22B176         ; $22:B124: D0 50       ;
+
+                LDA $8C,x               ; $22:B126: B5 8C       ;
+
+                PHP                     ; $22:B128: 08          ;
+
+                LDA $1FD2,x             ; $22:B129: BD D2 1F    ;
+
+                LSR A                   ; $22:B12C: 4A          ;
+
+                LSR A                   ; $22:B12D: 4A          ;
+
+                AND #$03                ; $22:B12E: 29 03       ;
+
+                PLP                     ; $22:B130: 28          ;
+
+                BPL CODE_22B135         ; $22:B131: 10 02       ;
+
+                EOR #$03                ; $22:B133: 49 03       ;
+
+CODE_22B135:    TAY                     ; $22:B135: A8          ;
+
+                LDA.w DATA_21C3F5,y     ; $22:B136: B9 F5 C3    ;
+
+                STA $0679,x             ; $22:B139: 9D 79 06    ;
+
+                JSL CODE_27A7EF         ; $22:B13C: 22 EF A7 27 ;
+
+                JSL CODE_27A7E4         ; $22:B140: 22 E4 A7 27 ;
+
+                LDA $9E,x               ; $22:B144: B5 9E       ;
+
+                CMP #$20                ; $22:B146: C9 20       ;
+
+                BPL CODE_22B14C         ; $22:B148: 10 02       ;
+
+                INC $9E,x               ; $22:B14A: F6 9E       ;
+
+CODE_22B14C:    JSL CODE_278B93         ; $22:B14C: 22 93 8B 27 ;
+
+                LDA $A7,x               ; $22:B150: B5 A7       ;
+
+                AND #$08                ; $22:B152: 29 08       ;
+
+                BEQ CODE_22B159         ; $22:B154: F0 03       ;
+
+                JSR CODE_22B1B6         ; $22:B156: 20 B6 B1    ;
+
+CODE_22B159:    LDA $A7,x               ; $22:B159: B5 A7       ;
+
+                AND #$04                ; $22:B15B: 29 04       ;
+
+                BEQ CODE_22B172         ; $22:B15D: F0 13       ;
+
+                LDA $0783,x             ; $22:B15F: BD 83 07    ;
+
+                AND #$03                ; $22:B162: 29 03       ;
+
+                TAY                     ; $22:B164: A8          ;
+
+                LDA.w DATA_21C3F1,y     ; $22:B165: B9 F1 C3    ;
+
+                STA $9E,x               ; $22:B168: 95 9E       ;
+
+                LDA $4D,x               ; $22:B16A: B5 4D       ;
+
+                BEQ CODE_22B172         ; $22:B16C: F0 04       ;
+
+                STA $8C,x               ; $22:B16E: 95 8C       ;
+
+                STZ $4D,x               ; $22:B170: 74 4D       ;
+
+CODE_22B172:    JSR CODE_22B19B         ; $22:B172: 20 9B B1    ;
+
+                RTS                     ; $22:B175: 60          ;
+
+CODE_22B176:    JSL CODE_27A7EF         ; $22:B176: 22 EF A7 27 ;
+
+                JSL CODE_27A7E4         ; $22:B17A: 22 E4 A7 27 ;
+
+                JSL CODE_278B93         ; $22:B17E: 22 93 8B 27 ;
+
+                LDY $83,x               ; $22:B182: B4 83       ;
+
+                LDA $9E,x               ; $22:B184: B5 9E       ;
+
+                BPL CODE_22B18E         ; $22:B186: 10 06       ;
+
+                CPY #$08                ; $22:B188: C0 08       ;
+
+                BCC CODE_22B198         ; $22:B18A: 90 0C       ;
+
+                BCS CODE_22B192         ; $22:B18C: B0 04       ;
+
+CODE_22B18E:    CPY #$F0                ; $22:B18E: C0 F0       ;
+
+                BCS CODE_22B198         ; $22:B190: B0 06       ;
+
+CODE_22B192:    LDA $A7,x               ; $22:B192: B5 A7       ;
+
+                AND #$0C                ; $22:B194: 29 0C       ;
+
+                BEQ CODE_22B19B         ; $22:B196: F0 03       ;
+
+CODE_22B198:    JSR CODE_22B1B6         ; $22:B198: 20 B6 B1    ;
+
+CODE_22B19B:    LDA $A7,x               ; $22:B19B: B5 A7       ;
+
+                AND #$03                ; $22:B19D: 29 03       ;
+
+                BNE CODE_22B1B1         ; $22:B19F: D0 10       ;
+
+                LDY $7A,x               ; $22:B1A1: B4 7A       ;
+
+                LDA $8C,x               ; $22:B1A3: B5 8C       ;
+
+                BPL CODE_22B1AD         ; $22:B1A5: 10 06       ;
+
+                CPY #$08                ; $22:B1A7: C0 08       ;
+
+                BCC CODE_22B1B1         ; $22:B1A9: 90 06       ;
+
+                BCS CODE_22B1B5         ; $22:B1AB: B0 08       ;
+
+CODE_22B1AD:    CPY #$F0                ; $22:B1AD: C0 F0       ;
+
+                BCC CODE_22B1B5         ; $22:B1AF: 90 04       ;
+
+CODE_22B1B1:    JSL CODE_279905         ; $22:B1B1: 22 05 99 27 ;
+
+CODE_22B1B5:    RTS                     ; $22:B1B5: 60          ;
+
+CODE_22B1B6:    LDA $9E,x               ; $22:B1B6: B5 9E       ;
+
                 JSL CODE_27A859         ; $22:B1B8: 22 59 A8 27 ;Invert Accumulator (8-bit)
-                STA $9E,x                   ; $22:B1BC: 95 9E       ;
-                RTS                         ; $22:B1BE: 60          ;
+                STA $9E,x               ; $22:B1BC: 95 9E       ;
 
-CODE_22B1BF:    LDA $68,x                   ; $22:B1BF: B5 68       ;
-                BNE CODE_22B1C8             ; $22:B1C1: D0 05       ;
-                JSL CODE_279EBB             ; $22:B1C3: 22 BB 9E 27 ;
-                RTS                         ; $22:B1C7: 60          ;
+                RTS                     ; $22:B1BE: 60          ;
 
-CODE_22B1C8:    LDA $1FD2,x                 ; $22:B1C8: BD D2 1F    ;
-                LSR A                       ; $22:B1CB: 4A          ;
-                LSR A                       ; $22:B1CC: 4A          ;
-                AND #$03                    ; $22:B1CD: 29 03       ;
-                TAY                         ; $22:B1CF: A8          ;
-                LDA.w DATA_21C401,y                 ; $22:B1D0: B9 01 C4    ;
-                STA $0669,x                 ; $22:B1D3: 9D 69 06    ;
-                JSL CODE_279EDD             ; $22:B1D6: 22 DD 9E 27 ;
-                RTS                         ; $22:B1DA: 60          ;
+CODE_22B1BF:    LDA $68,x               ; $22:B1BF: B5 68       ;
 
-CODE_22B1DB:    LDA $0566                   ; $22:B1DB: AD 66 05    ;
-                CMP #$07                    ; $22:B1DE: C9 07       ;
-                BNE CODE_22B1F8             ; $22:B1E0: D0 16       ;
-                LDY $001E                   ; $22:B1E2: AC 1E 00    ;
-                LDA.w DATA_21C405,y                 ; $22:B1E5: B9 05 C4    ;
-                CMP #$81                    ; $22:B1E8: C9 81       ;
-                BEQ CODE_22B1F9             ; $22:B1EA: F0 0D       ;
-                STA $0671,x                 ; $22:B1EC: 9D 71 06    ;
-                DEC $0661,x                 ; $22:B1EF: DE 61 06    ;
-                RTL                         ; $22:B1F2: 6B          ;
+                BNE CODE_22B1C8         ; $22:B1C1: D0 05       ;
 
-CODE_22B1F3:    LDA $0783,x                 ; $22:B1F3: BD 83 07    ;
-                STA $68,x                   ; $22:B1F6: 95 68       ;
-CODE_22B1F8:    RTL                         ; $22:B1F8: 6B          ;
+                JSL CODE_279EBB         ; $22:B1C3: 22 BB 9E 27 ;
 
-CODE_22B1F9:    LDA $0783,x                 ; $22:B1F9: BD 83 07    ;
-                STA $0771,x                 ; $22:B1FC: 9D 71 07    ;
-                RTL                         ; $22:B1FF: 6B          ;
+                RTS                     ; $22:B1C7: 60          ;
+
+CODE_22B1C8:    LDA $1FD2,x             ; $22:B1C8: BD D2 1F    ;
+
+                LSR A                   ; $22:B1CB: 4A          ;
+
+                LSR A                   ; $22:B1CC: 4A          ;
+
+                AND #$03                ; $22:B1CD: 29 03       ;
+
+                TAY                     ; $22:B1CF: A8          ;
+
+                LDA.w DATA_21C401,y     ; $22:B1D0: B9 01 C4    ;
+
+                STA $0669,x             ; $22:B1D3: 9D 69 06    ;
+
+                JSL CODE_279EDD         ; $22:B1D6: 22 DD 9E 27 ;
+
+                RTS                     ; $22:B1DA: 60          ;
+
+CODE_22B1DB:    LDA $0566               ; $22:B1DB: AD 66 05    ;
+
+                CMP #$07                ; $22:B1DE: C9 07       ;
+
+                BNE CODE_22B1F8         ; $22:B1E0: D0 16       ;
+
+                LDY $001E               ; $22:B1E2: AC 1E 00    ;
+
+                LDA.w DATA_21C405,y     ; $22:B1E5: B9 05 C4    ;
+
+                CMP #$81                ; $22:B1E8: C9 81       ;
+
+                BEQ CODE_22B1F9         ; $22:B1EA: F0 0D       ;
+
+                STA $0671,x             ; $22:B1EC: 9D 71 06    ;
+
+                DEC $0661,x             ; $22:B1EF: DE 61 06    ;
+
+                RTL                     ; $22:B1F2: 6B          ;
+
+CODE_22B1F3:    LDA $0783,x             ; $22:B1F3: BD 83 07    ;
+
+                STA $68,x               ; $22:B1F6: 95 68       ;
+
+CODE_22B1F8:    RTL                     ; $22:B1F8: 6B          ;
+
+CODE_22B1F9:    LDA $0783,x             ; $22:B1F9: BD 83 07    ;
+
+                STA $0771,x             ; $22:B1FC: 9D 71 07    ;
+
+                RTL                     ; $22:B1FF: 6B          ;
 
 CODE_22B200:    JSL CODE_279BC3         ; $22:B200: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                JSL CODE_22B32C             ; $22:B204: 22 2C B3 22 ;
-                LDA $9C                     ; $22:B208: A5 9C       ;
-                BNE CODE_22B1F8             ; $22:B20A: D0 EC       ;
-                JSL CODE_27983B             ; $22:B20C: 22 3B 98 27 ;
-                JSL CODE_279B6B             ; $22:B210: 22 6B 9B 27 ;
-                LDA $A7,x                   ; $22:B214: B5 A7       ;
-                AND #$04                    ; $22:B216: 29 04       ;
-                BEQ CODE_22B21E             ; $22:B218: F0 04       ;
-                JSL CODE_278B67             ; $22:B21A: 22 67 8B 27 ;
-CODE_22B21E:    LDA $15                     ; $22:B21E: A5 15       ;
-                AND #$0F                    ; $22:B220: 29 0F       ;
-                BNE CODE_22B22E             ; $22:B222: D0 0A       ;
+                JSL CODE_22B32C         ; $22:B204: 22 2C B3 22 ;
+
+                LDA $9C                 ; $22:B208: A5 9C       ;
+
+                BNE CODE_22B1F8         ; $22:B20A: D0 EC       ;
+
+                JSL CODE_27983B         ; $22:B20C: 22 3B 98 27 ;
+
+                JSL CODE_279B6B         ; $22:B210: 22 6B 9B 27 ;
+
+                LDA $A7,x               ; $22:B214: B5 A7       ;
+
+                AND #$04                ; $22:B216: 29 04       ;
+
+                BEQ CODE_22B21E         ; $22:B218: F0 04       ;
+
+                JSL CODE_278B67         ; $22:B21A: 22 67 8B 27 ;
+
+CODE_22B21E:    LDA $15                 ; $22:B21E: A5 15       ;
+
+                AND #$0F                ; $22:B220: 29 0F       ;
+
+                BNE CODE_22B22E         ; $22:B222: D0 0A       ;
+
                 JSL CODE_27A837         ; $22:B224: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C40F,y                 ; $22:B228: B9 0F C4    ;
-                STA $0679,x                 ; $22:B22B: 9D 79 06    ;
-CODE_22B22E:    JSR CODE_22B232             ; $22:B22E: 20 32 B2    ;
-                RTL                         ; $22:B231: 6B          ;
-CODE_22B232:    LDA $68,x                   ; $22:B232: B5 68       ;
-                AND #$03                    ; $22:B234: 29 03       ;
+                LDA.w DATA_21C40F,y     ; $22:B228: B9 0F C4    ;
+
+                STA $0679,x             ; $22:B22B: 9D 79 06    ;
+
+CODE_22B22E:    JSR CODE_22B232         ; $22:B22E: 20 32 B2    ;
+
+                RTL                     ; $22:B231: 6B          ;
+
+CODE_22B232:    LDA $68,x               ; $22:B232: B5 68       ;
+
+                AND #$03                ; $22:B234: 29 03       ;
+
                 JSL CODE_20FB1F         ; $22:B236: 22 1F FB 20 ; ExecutePtrShort
 
                 dw CODE_22B242                                  ;
@@ -1090,361 +1312,672 @@ CODE_22B232:    LDA $68,x                   ; $22:B232: B5 68       ;
                 dw CODE_22B242                                  ;
                 dw CODE_22B251                                  ;
 
-CODE_22B242:    LDA $06A6,x                 ; $22:B242: BD A6 06    ;
-                BNE CODE_22B24E             ; $22:B245: D0 07       ;
-                INC $68,x                   ; $22:B247: F6 68       ;
-                LDA #$40                    ; $22:B249: A9 40       ;
-                STA $06A6,x                 ; $22:B24B: 9D A6 06    ;
-CODE_22B24E:    STZ $8C,x                   ; $22:B24E: 74 8C       ;
-                RTS                         ; $22:B250: 60          ;
+CODE_22B242:    LDA $06A6,x             ; $22:B242: BD A6 06    ;
 
-CODE_22B251:    LDA #$F8                    ; $22:B251: A9 F8       ;
-                BNE CODE_22B257             ; $22:B253: D0 02       ;
-CODE_22B255:    LDA #$08                    ; $22:B255: A9 08       ;
-CODE_22B257:    STA $8C,x                   ; $22:B257: 95 8C       ;
-                INC $4D,x                   ; $22:B259: F6 4D       ;
-                INC $4D,x                   ; $22:B25B: F6 4D       ;
-                LDA $15                     ; $22:B25D: A5 15       ;
-                BNE CODE_22B26A             ; $22:B25F: D0 09       ;
-                LDA $0783,x                 ; $22:B261: BD 83 07    ;
-                BPL CODE_22B26A             ; $22:B264: 10 04       ;
-                LDA #$D0                    ; $22:B266: A9 D0       ;
-                STA $9E,x                   ; $22:B268: 95 9E       ;
-CODE_22B26A:    LDA $06A6,x                 ; $22:B26A: BD A6 06    ;
-                BNE CODE_22B276             ; $22:B26D: D0 07       ;
-                INC $68,x                   ; $22:B26F: F6 68       ;
-                LDA #$10                    ; $22:B271: A9 10       ;
-                STA $06A6,x                 ; $22:B273: 9D A6 06    ;
-CODE_22B276:    LDA $0771,x                 ; $22:B276: BD 71 07    ;
-                INC $0771,x                 ; $22:B279: FE 71 07    ;
-                AND #$BF                    ; $22:B27C: 29 BF       ;
-                CMP #$1F                    ; $22:B27E: C9 1F       ;
-                BNE CODE_22B28A             ; $22:B280: D0 08       ;
-                LDA #$0F                    ; $22:B282: A9 0F       ;
-                STA $0518,x                 ; $22:B284: 9D 18 05    ;
-                JSR CODE_22B3A3             ; $22:B287: 20 A3 B3    ;
-CODE_22B28A:    RTS                         ; $22:B28A: 60          ;
+                BNE CODE_22B24E         ; $22:B245: D0 07       ;
+
+                INC $68,x               ; $22:B247: F6 68       ;
+
+                LDA #$40                ; $22:B249: A9 40       ;
+
+                STA $06A6,x             ; $22:B24B: 9D A6 06    ;
+
+CODE_22B24E:    STZ $8C,x               ; $22:B24E: 74 8C       ;
+
+                RTS                     ; $22:B250: 60          ;
+
+CODE_22B251:    LDA #$F8                ; $22:B251: A9 F8       ;
+
+                BNE CODE_22B257         ; $22:B253: D0 02       ;
+
+CODE_22B255:    LDA #$08                ; $22:B255: A9 08       ;
+
+CODE_22B257:    STA $8C,x               ; $22:B257: 95 8C       ;
+
+                INC $4D,x               ; $22:B259: F6 4D       ;
+
+                INC $4D,x               ; $22:B25B: F6 4D       ;
+
+                LDA $15                 ; $22:B25D: A5 15       ;
+
+                BNE CODE_22B26A         ; $22:B25F: D0 09       ;
+
+                LDA $0783,x             ; $22:B261: BD 83 07    ;
+
+                BPL CODE_22B26A         ; $22:B264: 10 04       ;
+
+                LDA #$D0                ; $22:B266: A9 D0       ;
+
+                STA $9E,x               ; $22:B268: 95 9E       ;
+
+CODE_22B26A:    LDA $06A6,x             ; $22:B26A: BD A6 06    ;
+
+                BNE CODE_22B276         ; $22:B26D: D0 07       ;
+
+                INC $68,x               ; $22:B26F: F6 68       ;
+
+                LDA #$10                ; $22:B271: A9 10       ;
+
+                STA $06A6,x             ; $22:B273: 9D A6 06    ;
+
+CODE_22B276:    LDA $0771,x             ; $22:B276: BD 71 07    ;
+
+                INC $0771,x             ; $22:B279: FE 71 07    ;
+
+                AND #$BF                ; $22:B27C: 29 BF       ;
+
+                CMP #$1F                ; $22:B27E: C9 1F       ;
+
+                BNE CODE_22B28A         ; $22:B280: D0 08       ;
+
+                LDA #$0F                ; $22:B282: A9 0F       ;
+
+                STA $0518,x             ; $22:B284: 9D 18 05    ;
+
+                JSR CODE_22B3A3         ; $22:B287: 20 A3 B3    ;
+
+CODE_22B28A:    RTS                     ; $22:B28A: 60          ;
 
 CODE_22B28B:    JSL CODE_279BC3         ; $22:B28B: 22 C3 9B 27 ; Subroutine: Remove if offscreen
                 JSL CODE_27A837         ; $22:B28F: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C41A,y                 ; $22:B293: B9 1A C4    ;
-                STA $0679,x                 ; $22:B296: 9D 79 06    ;
-                LDA $9C                     ; $22:B299: A5 9C       ;
-                BEQ CODE_22B2A0             ; $22:B29B: F0 03       ;
-                JMP CODE_22B32C             ; $22:B29D: 4C 2C B3    ;
+                LDA.w DATA_21C41A,y     ; $22:B293: B9 1A C4    ;
 
-CODE_22B2A0:    INC $68,x                   ; $22:B2A0: F6 68       ;
-                LDY #$06                    ; $22:B2A2: A0 06       ;
-                LDA $68,x                   ; $22:B2A4: B5 68       ;
-                AND #$40                    ; $22:B2A6: 29 40       ;
-                BNE CODE_22B2AC             ; $22:B2A8: D0 02       ;
-                LDY #$FA                    ; $22:B2AA: A0 FA       ;
-CODE_22B2AC:    STY $8C,x                   ; $22:B2AC: 94 8C       ;
-                LDA $A7,x                   ; $22:B2AE: B5 A7       ;
-                AND #$04                    ; $22:B2B0: 29 04       ;
-                BNE CODE_22B2B8             ; $22:B2B2: D0 04       ;
-                STA $4D,x                   ; $22:B2B4: 95 4D       ;
-                BEQ CODE_22B2EF             ; $22:B2B6: F0 37       ;
-CODE_22B2B8:    LDA $0520,x                 ; $22:B2B8: BD 20 05    ;
-                BNE CODE_22B2EF             ; $22:B2BB: D0 32       ;
-                INC $4D,x                   ; $22:B2BD: F6 4D       ;
-                JSL CODE_278B67             ; $22:B2BF: 22 67 8B 27 ;
-                LDA $06A6,x                 ; $22:B2C3: BD A6 06    ;
-                BNE CODE_22B2EF             ; $22:B2C6: D0 27       ;
-                LDA $0783,x                 ; $22:B2C8: BD 83 07    ;
-                AND #$3E                    ; $22:B2CB: 29 3E       ;
-                ADC #$C0                    ; $22:B2CD: 69 C0       ;
-                STA $06A6,x                 ; $22:B2CF: 9D A6 06    ;
-                LDY #$02                    ; $22:B2D2: A0 02       ;
-                LDA $71,x                   ; $22:B2D4: B5 71       ;
-                BMI CODE_22B2E4             ; $22:B2D6: 30 0C       ;
-                LDY #$00                    ; $22:B2D8: A0 00       ;
-                CMP #$30                    ; $22:B2DA: C9 30       ;
-                BCC CODE_22B2E4             ; $22:B2DC: 90 06       ;
-                LDA $0783,x                 ; $22:B2DE: BD 83 07    ;
-                AND #$02                    ; $22:B2E1: 29 02       ;
-                TAY                         ; $22:B2E3: A8          ;
-CODE_22B2E4:    LDA.w DATA_21C411,y                 ; $22:B2E4: B9 11 C4    ;
-                STA $9E,x                   ; $22:B2E7: 95 9E       ;
-                LDA.w DATA_21C414,y                 ; $22:B2E9: B9 14 C4    ;
-                STA $0520,x                 ; $22:B2EC: 9D 20 05    ;
-CODE_22B2EF:    JSL CODE_27983B             ; $22:B2EF: 22 3B 98 27 ;
-                JSL CODE_279B6B             ; $22:B2F3: 22 6B 9B 27 ;
-                LDA $0661,x                 ; $22:B2F7: BD 61 06    ;
-                CMP #$06                    ; $22:B2FA: C9 06       ;
-                BNE CODE_22B303             ; $22:B2FC: D0 05       ;
-                LDA #$03                    ; $22:B2FE: A9 03       ;
-                STA $1200                   ; $22:B300: 8D 00 12    ;
-CODE_22B303:    LDA $15                     ; $22:B303: A5 15       ;
-                AND #$07                    ; $22:B305: 29 07       ;
-                BEQ CODE_22B30C             ; $22:B307: F0 03       ;
-                INC $0771,x                 ; $22:B309: FE 71 07    ;
-CODE_22B30C:    LDY #$3F                    ; $22:B30C: A0 3F       ;
-                LDA $A7,x                   ; $22:B30E: B5 A7       ;
-                AND #$04                    ; $22:B310: 29 04       ;
-                BEQ CODE_22B316             ; $22:B312: F0 02       ;
-                LDY #$1F                    ; $22:B314: A0 1F       ;
-CODE_22B316:    TYA                         ; $22:B316: 98          ;
-                AND $0771,x                 ; $22:B317: 3D 71 07    ;
-                CMP #$1F                    ; $22:B31A: C9 1F       ;
-                BNE CODE_22B32C             ; $22:B31C: D0 0E       ;
-                LDA $0518,x                 ; $22:B31E: BD 18 05    ;
-                BNE CODE_22B32C             ; $22:B321: D0 09       ;
-                LDA #$0F                    ; $22:B323: A9 0F       ;
-                STA $0518,x                 ; $22:B325: 9D 18 05    ;
-                JSL CODE_22B366             ; $22:B328: 22 66 B3 22 ;
-CODE_22B32C:    LDY #$00                    ; $22:B32C: A0 00       ;
-                LDA $4D,x                   ; $22:B32E: B5 4D       ;
-                AND #$10                    ; $22:B330: 29 10       ;
-                BEQ CODE_22B335             ; $22:B332: F0 01       ;
-                INY                         ; $22:B334: C8          ;
-CODE_22B335:    LDA $0518,x                 ; $22:B335: BD 18 05    ;
-                BEQ CODE_22B33C             ; $22:B338: F0 02       ;
-                INY                         ; $22:B33A: C8          ;
-                INY                         ; $22:B33B: C8          ;
-CODE_22B33C:    TYA                         ; $22:B33C: 98          ;
-                STA $0669,x                 ; $22:B33D: 9D 69 06    ;
-                LDA $71,x                   ; $22:B340: B5 71       ;
-                PHA                         ; $22:B342: 48          ;
-                CLC                         ; $22:B343: 18          ;
-                ADC #$08                    ; $22:B344: 69 08       ;
-                STA $71,x                   ; $22:B346: 95 71       ;
-                LDA $56,x                   ; $22:B348: B5 56       ;
-                PHA                         ; $22:B34A: 48          ;
-                ADC #$00                    ; $22:B34B: 69 00       ;
-                STA $56,x                   ; $22:B34D: 95 56       ;
-                JSL CODE_27A27C             ; $22:B34F: 22 7C A2 27 ;
-                JSL CODE_27A2C8             ; $22:B353: 22 C8 A2 27 ;
-                JSL CODE_279F51             ; $22:B357: 22 51 9F 27 ;
-                PLA                         ; $22:B35B: 68          ;
-                STA $56,x                   ; $22:B35C: 95 56       ;
-                PLA                         ; $22:B35E: 68          ;
-                STA $71,x                   ; $22:B35F: 95 71       ;
-                JSL CODE_279DC2             ; $22:B361: 22 C2 9D 27 ;
-                RTL                         ; $22:B365: 6B          ;
+                STA $0679,x             ; $22:B296: 9D 79 06    ;
 
-CODE_22B366:    LDA $0651,x                 ; $22:B366: BD 51 06    ;
-                BNE CODE_22B3A2             ; $22:B369: D0 37       ;
-                LDY #$05                    ; $22:B36B: A0 05       ;
-CODE_22B36D:    LDA $1FC8,y                 ; $22:B36D: B9 C8 1F    ;
-                BEQ CODE_22B376             ; $22:B370: F0 04       ;
-                DEY                         ; $22:B372: 88          ;
-                BPL CODE_22B36D             ; $22:B373: 10 F8       ;
-                RTL                         ; $22:B375: 6B          ;
+                LDA $9C                 ; $22:B299: A5 9C       ;
 
-CODE_22B376:    LDA $5F,x                   ; $22:B376: B5 5F       ;
-                STA $05C9,y                 ; $22:B378: 99 C9 05    ;
-                LDA $44,x                   ; $22:B37B: B5 44       ;
-                STA $00E2,y                 ; $22:B37D: 99 E2 00    ;
-                LDA $71,x                   ; $22:B380: B5 71       ;
-                STA $05BF,y                 ; $22:B382: 99 BF 05    ;
-                LDA $56,x                   ; $22:B385: B5 56       ;
-                STA $1FD7,y                 ; $22:B387: 99 D7 1F    ;
-                LDA #$D0                    ; $22:B38A: A9 D0       ;
-                STA $05D3,y                 ; $22:B38C: 99 D3 05    ;
-                STY $00                     ; $22:B38F: 84 00       ;
+                BEQ CODE_22B2A0         ; $22:B29B: F0 03       ;
+
+                JMP CODE_22B32C         ; $22:B29D: 4C 2C B3    ;
+
+CODE_22B2A0:    INC $68,x               ; $22:B2A0: F6 68       ;
+
+                LDY #$06                ; $22:B2A2: A0 06       ;
+
+                LDA $68,x               ; $22:B2A4: B5 68       ;
+
+                AND #$40                ; $22:B2A6: 29 40       ;
+
+                BNE CODE_22B2AC         ; $22:B2A8: D0 02       ;
+
+                LDY #$FA                ; $22:B2AA: A0 FA       ;
+
+CODE_22B2AC:    STY $8C,x               ; $22:B2AC: 94 8C       ;
+
+                LDA $A7,x               ; $22:B2AE: B5 A7       ;
+
+                AND #$04                ; $22:B2B0: 29 04       ;
+
+                BNE CODE_22B2B8         ; $22:B2B2: D0 04       ;
+
+                STA $4D,x               ; $22:B2B4: 95 4D       ;
+
+                BEQ CODE_22B2EF         ; $22:B2B6: F0 37       ;
+
+CODE_22B2B8:    LDA $0520,x             ; $22:B2B8: BD 20 05    ;
+
+                BNE CODE_22B2EF         ; $22:B2BB: D0 32       ;
+
+                INC $4D,x               ; $22:B2BD: F6 4D       ;
+
+                JSL CODE_278B67         ; $22:B2BF: 22 67 8B 27 ;
+
+                LDA $06A6,x             ; $22:B2C3: BD A6 06    ;
+
+                BNE CODE_22B2EF         ; $22:B2C6: D0 27       ;
+
+                LDA $0783,x             ; $22:B2C8: BD 83 07    ;
+
+                AND #$3E                ; $22:B2CB: 29 3E       ;
+
+                ADC #$C0                ; $22:B2CD: 69 C0       ;
+
+                STA $06A6,x             ; $22:B2CF: 9D A6 06    ;
+
+                LDY #$02                ; $22:B2D2: A0 02       ;
+
+                LDA $71,x               ; $22:B2D4: B5 71       ;
+
+                BMI CODE_22B2E4         ; $22:B2D6: 30 0C       ;
+
+                LDY #$00                ; $22:B2D8: A0 00       ;
+
+                CMP #$30                ; $22:B2DA: C9 30       ;
+
+                BCC CODE_22B2E4         ; $22:B2DC: 90 06       ;
+
+                LDA $0783,x             ; $22:B2DE: BD 83 07    ;
+
+                AND #$02                ; $22:B2E1: 29 02       ;
+
+                TAY                     ; $22:B2E3: A8          ;
+
+CODE_22B2E4:    LDA.w DATA_21C411,y     ; $22:B2E4: B9 11 C4    ;
+
+                STA $9E,x               ; $22:B2E7: 95 9E       ;
+
+                LDA.w DATA_21C414,y     ; $22:B2E9: B9 14 C4    ;
+
+                STA $0520,x             ; $22:B2EC: 9D 20 05    ;
+
+CODE_22B2EF:    JSL CODE_27983B         ; $22:B2EF: 22 3B 98 27 ;
+
+                JSL CODE_279B6B         ; $22:B2F3: 22 6B 9B 27 ;
+
+                LDA $0661,x             ; $22:B2F7: BD 61 06    ;
+
+                CMP #$06                ; $22:B2FA: C9 06       ;
+
+                BNE CODE_22B303         ; $22:B2FC: D0 05       ;
+
+                LDA #$03                ; $22:B2FE: A9 03       ;
+
+                STA $1200               ; $22:B300: 8D 00 12    ;
+
+CODE_22B303:    LDA $15                 ; $22:B303: A5 15       ;
+
+                AND #$07                ; $22:B305: 29 07       ;
+
+                BEQ CODE_22B30C         ; $22:B307: F0 03       ;
+
+                INC $0771,x             ; $22:B309: FE 71 07    ;
+
+CODE_22B30C:    LDY #$3F                ; $22:B30C: A0 3F       ;
+
+                LDA $A7,x               ; $22:B30E: B5 A7       ;
+
+                AND #$04                ; $22:B310: 29 04       ;
+
+                BEQ CODE_22B316         ; $22:B312: F0 02       ;
+
+                LDY #$1F                ; $22:B314: A0 1F       ;
+
+CODE_22B316:    TYA                     ; $22:B316: 98          ;
+
+                AND $0771,x             ; $22:B317: 3D 71 07    ;
+
+                CMP #$1F                ; $22:B31A: C9 1F       ;
+
+                BNE CODE_22B32C         ; $22:B31C: D0 0E       ;
+
+                LDA $0518,x             ; $22:B31E: BD 18 05    ;
+
+                BNE CODE_22B32C         ; $22:B321: D0 09       ;
+
+                LDA #$0F                ; $22:B323: A9 0F       ;
+
+                STA $0518,x             ; $22:B325: 9D 18 05    ;
+
+                JSL CODE_22B366         ; $22:B328: 22 66 B3 22 ;
+
+CODE_22B32C:    LDY #$00                ; $22:B32C: A0 00       ;
+
+                LDA $4D,x               ; $22:B32E: B5 4D       ;
+
+                AND #$10                ; $22:B330: 29 10       ;
+
+                BEQ CODE_22B335         ; $22:B332: F0 01       ;
+
+                INY                     ; $22:B334: C8          ;
+
+CODE_22B335:    LDA $0518,x             ; $22:B335: BD 18 05    ;
+
+                BEQ CODE_22B33C         ; $22:B338: F0 02       ;
+
+                INY                     ; $22:B33A: C8          ;
+
+                INY                     ; $22:B33B: C8          ;
+
+CODE_22B33C:    TYA                     ; $22:B33C: 98          ;
+
+                STA $0669,x             ; $22:B33D: 9D 69 06    ;
+
+                LDA $71,x               ; $22:B340: B5 71       ;
+
+                PHA                     ; $22:B342: 48          ;
+
+                CLC                     ; $22:B343: 18          ;
+
+                ADC #$08                ; $22:B344: 69 08       ;
+
+                STA $71,x               ; $22:B346: 95 71       ;
+
+                LDA $56,x               ; $22:B348: B5 56       ;
+
+                PHA                     ; $22:B34A: 48          ;
+
+                ADC #$00                ; $22:B34B: 69 00       ;
+
+                STA $56,x               ; $22:B34D: 95 56       ;
+
+                JSL CODE_27A27C         ; $22:B34F: 22 7C A2 27 ;
+
+                JSL CODE_27A2C8         ; $22:B353: 22 C8 A2 27 ;
+
+                JSL CODE_279F51         ; $22:B357: 22 51 9F 27 ;
+
+                PLA                     ; $22:B35B: 68          ;
+
+                STA $56,x               ; $22:B35C: 95 56       ;
+
+                PLA                     ; $22:B35E: 68          ;
+
+                STA $71,x               ; $22:B35F: 95 71       ;
+
+                JSL CODE_279DC2         ; $22:B361: 22 C2 9D 27 ;
+
+                RTL                     ; $22:B365: 6B          ;
+
+CODE_22B366:    LDA $0651,x             ; $22:B366: BD 51 06    ;
+
+                BNE CODE_22B3A2         ; $22:B369: D0 37       ;
+
+                LDY #$05                ; $22:B36B: A0 05       ;
+
+CODE_22B36D:    LDA $1FC8,y             ; $22:B36D: B9 C8 1F    ;
+
+                BEQ CODE_22B376         ; $22:B370: F0 04       ;
+
+                DEY                     ; $22:B372: 88          ;
+
+                BPL CODE_22B36D         ; $22:B373: 10 F8       ;
+
+                RTL                     ; $22:B375: 6B          ;
+
+CODE_22B376:    LDA $5F,x               ; $22:B376: B5 5F       ;
+
+                STA $05C9,y             ; $22:B378: 99 C9 05    ;
+
+                LDA $44,x               ; $22:B37B: B5 44       ;
+
+                STA $00E2,y             ; $22:B37D: 99 E2 00    ;
+
+                LDA $71,x               ; $22:B380: B5 71       ;
+
+                STA $05BF,y             ; $22:B382: 99 BF 05    ;
+
+                LDA $56,x               ; $22:B385: B5 56       ;
+
+                STA $1FD7,y             ; $22:B387: 99 D7 1F    ;
+
+                LDA #$D0                ; $22:B38A: A9 D0       ;
+
+                STA $05D3,y             ; $22:B38C: 99 D3 05    ;
+
+                STY $00                 ; $22:B38F: 84 00       ;
+
                 JSL CODE_27A837         ; $22:B391: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C41C,y                 ; $22:B395: B9 1C C4    ;
-                LDY $00                     ; $22:B398: A4 00       ;
-                STA $05DD,y                 ; $22:B39A: 99 DD 05    ;
-                LDA #$01                    ; $22:B39D: A9 01       ;
-                JSR CODE_22B3E2             ; $22:B39F: 20 E2 B3    ;
-CODE_22B3A2:    RTL                         ; $22:B3A2: 6B          ;
+                LDA.w DATA_21C41C,y     ; $22:B395: B9 1C C4    ;
 
-CODE_22B3A3:    JSL CODE_278A72             ; $22:B3A3: 22 72 8A 27 ;
-                LDA $5F,x                   ; $22:B3A7: B5 5F       ;
-                STA $05C9,y                 ; $22:B3A9: 99 C9 05    ;
-                LDA $44,x                   ; $22:B3AC: B5 44       ;
-                STA $00E2,y                 ; $22:B3AE: 99 E2 00    ;
-                LDA $71,x                   ; $22:B3B1: B5 71       ;
-                STA $05BF,y                 ; $22:B3B3: 99 BF 05    ;
-                LDA $56,x                   ; $22:B3B6: B5 56       ;
-                STA $1FD7,y                 ; $22:B3B8: 99 D7 1F    ;
-                STY $00                     ; $22:B3BB: 84 00       ;
+                LDY $00                 ; $22:B398: A4 00       ;
+
+                STA $05DD,y             ; $22:B39A: 99 DD 05    ;
+
+                LDA #$01                ; $22:B39D: A9 01       ;
+
+                JSR CODE_22B3E2         ; $22:B39F: 20 E2 B3    ;
+
+CODE_22B3A2:    RTL                     ; $22:B3A2: 6B          ;
+
+CODE_22B3A3:    JSL CODE_278A72         ; $22:B3A3: 22 72 8A 27 ;
+
+                LDA $5F,x               ; $22:B3A7: B5 5F       ;
+
+                STA $05C9,y             ; $22:B3A9: 99 C9 05    ;
+
+                LDA $44,x               ; $22:B3AC: B5 44       ;
+
+                STA $00E2,y             ; $22:B3AE: 99 E2 00    ;
+
+                LDA $71,x               ; $22:B3B1: B5 71       ;
+
+                STA $05BF,y             ; $22:B3B3: 99 BF 05    ;
+
+                LDA $56,x               ; $22:B3B6: B5 56       ;
+
+                STA $1FD7,y             ; $22:B3B8: 99 D7 1F    ;
+
+                STY $00                 ; $22:B3BB: 84 00       ;
+
                 JSL CODE_27A837         ; $22:B3BD: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C41E,y                 ; $22:B3C1: B9 1E C4    ;
-                PHA                         ; $22:B3C4: 48          ;
-                LDA.w DATA_21C420,y                 ; $22:B3C5: B9 20 C4    ;
-                LDY $00                     ; $22:B3C8: A4 00       ;
-                STA $0597,y                 ; $22:B3CA: 99 97 05    ;
-                PLA                         ; $22:B3CD: 68          ;
-                STA $05DD,y                 ; $22:B3CE: 99 DD 05    ;
-                LDA #$EA                    ; $22:B3D1: A9 EA       ;
-                STA $05D3,y                 ; $22:B3D3: 99 D3 05    ;
-                LDA #$00                    ; $22:B3D6: A9 00       ;
-                STA $05B5,y                 ; $22:B3D8: 99 B5 05    ;
-                LDA #$40                    ; $22:B3DB: A9 40       ;
-                STA $06D1,y                 ; $22:B3DD: 99 D1 06    ;
-                LDA #$02                    ; $22:B3E0: A9 02       ;
-CODE_22B3E2:    STA $1FC8,y                 ; $22:B3E2: 99 C8 1F    ;
-                TXA                         ; $22:B3E5: 8A          ;
-                ASL A                       ; $22:B3E6: 0A          ;
-                ASL A                       ; $22:B3E7: 0A          ;
-                ASL A                       ; $22:B3E8: 0A          ;
-                ASL A                       ; $22:B3E9: 0A          ;
-                ORA #$0F                    ; $22:B3EA: 09 0F       ;
-                STA $06C7,y                 ; $22:B3EC: 99 C7 06    ;
-                LDA #$00                    ; $22:B3EF: A9 00       ;
-                STA $06BD,y                 ; $22:B3F1: 99 BD 06    ;
-                RTS                         ; $22:B3F4: 60          ;
+                LDA.w DATA_21C41E,y     ; $22:B3C1: B9 1E C4    ;
 
-CODE_22B3F5:    LDA $71,x                   ; $22:B3F5: B5 71       ;
-                STA $4D,x                   ; $22:B3F7: 95 4D       ;
-CODE_22B3F9:    LDA $5F,x                   ; $22:B3F9: B5 5F       ;
-                CLC                         ; $22:B3FB: 18          ;
-                ADC #$04                    ; $22:B3FC: 69 04       ;
-                STA $5F,x                   ; $22:B3FE: 95 5F       ;
-CODE_22B400:    RTL                         ; $22:B400: 6B          ;
+                PHA                     ; $22:B3C4: 48          ;
 
-CODE_22B401:    JSR CODE_22B489             ; $22:B401: 20 89 B4    ;
-                LDA $0661,x                 ; $22:B404: BD 61 06    ;
-                CMP #$02                    ; $22:B407: C9 02       ;
-                BNE CODE_22B400             ; $22:B409: D0 F5       ;
-                LDA $9C                     ; $22:B40B: A5 9C       ;
-                BNE CODE_22B400             ; $22:B40D: D0 F1       ;
+                LDA.w DATA_21C420,y     ; $22:B3C5: B9 20 C4    ;
+
+                LDY $00                 ; $22:B3C8: A4 00       ;
+
+                STA $0597,y             ; $22:B3CA: 99 97 05    ;
+
+                PLA                     ; $22:B3CD: 68          ;
+
+                STA $05DD,y             ; $22:B3CE: 99 DD 05    ;
+
+                LDA #$EA                ; $22:B3D1: A9 EA       ;
+
+                STA $05D3,y             ; $22:B3D3: 99 D3 05    ;
+
+                LDA #$00                ; $22:B3D6: A9 00       ;
+
+                STA $05B5,y             ; $22:B3D8: 99 B5 05    ;
+
+                LDA #$40                ; $22:B3DB: A9 40       ;
+
+                STA $06D1,y             ; $22:B3DD: 99 D1 06    ;
+
+                LDA #$02                ; $22:B3E0: A9 02       ;
+
+CODE_22B3E2:    STA $1FC8,y             ; $22:B3E2: 99 C8 1F    ;
+
+                TXA                     ; $22:B3E5: 8A          ;
+
+                ASL A                   ; $22:B3E6: 0A          ;
+
+                ASL A                   ; $22:B3E7: 0A          ;
+
+                ASL A                   ; $22:B3E8: 0A          ;
+
+                ASL A                   ; $22:B3E9: 0A          ;
+
+                ORA #$0F                ; $22:B3EA: 09 0F       ;
+
+                STA $06C7,y             ; $22:B3EC: 99 C7 06    ;
+
+                LDA #$00                ; $22:B3EF: A9 00       ;
+
+                STA $06BD,y             ; $22:B3F1: 99 BD 06    ;
+
+                RTS                     ; $22:B3F4: 60          ;
+
+CODE_22B3F5:    LDA $71,x               ; $22:B3F5: B5 71       ;
+
+                STA $4D,x               ; $22:B3F7: 95 4D       ;
+
+CODE_22B3F9:    LDA $5F,x               ; $22:B3F9: B5 5F       ;
+
+                CLC                     ; $22:B3FB: 18          ;
+
+                ADC #$04                ; $22:B3FC: 69 04       ;
+
+                STA $5F,x               ; $22:B3FE: 95 5F       ;
+
+CODE_22B400:    RTL                     ; $22:B400: 6B          ;
+
+CODE_22B401:    JSR CODE_22B489         ; $22:B401: 20 89 B4    ;
+
+                LDA $0661,x             ; $22:B404: BD 61 06    ;
+
+                CMP #$02                ; $22:B407: C9 02       ;
+
+                BNE CODE_22B400         ; $22:B409: D0 F5       ;
+
+                LDA $9C                 ; $22:B40B: A5 9C       ;
+
+                BNE CODE_22B400         ; $22:B40D: D0 F1       ;
+
                 JSL CODE_279BC3         ; $22:B40F: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                JSL CODE_279B6F             ; $22:B413: 22 6F 9B 27 ;
-                JSR CODE_22B41B             ; $22:B417: 20 1B B4    ;
-                RTL                         ; $22:B41A: 6B          ;
+                JSL CODE_279B6F         ; $22:B413: 22 6F 9B 27 ;
 
-CODE_22B41B:    LDA $68,x                   ; $22:B41B: B5 68       ;
+                JSR CODE_22B41B         ; $22:B417: 20 1B B4    ;
+
+                RTL                     ; $22:B41A: 6B          ;
+
+CODE_22B41B:    LDA $68,x               ; $22:B41B: B5 68       ;
+
                 JSL CODE_20FB1F         ; $22:B41D: 22 1F FB 20 ; ExecutePtrShort
 
                 dw CODE_22B427                                  ;
                 dw CODE_22B43F                                  ;
                 dw CODE_22B472                                  ;
 
-CODE_22B427:    JSL CODE_27A85F             ; $22:B427: 22 5F A8 27 ;
-                BNE CODE_22B43E             ; $22:B42B: D0 11       ;
+CODE_22B427:    JSL CODE_27A85F         ; $22:B427: 22 5F A8 27 ;
+
+                BNE CODE_22B43E         ; $22:B42B: D0 11       ;
+
                 JSL CODE_27A837         ; $22:B42D: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA $0F                     ; $22:B431: A5 0F       ;
-                CLC                         ; $22:B433: 18          ;
-                ADC #$24                    ; $22:B434: 69 24       ;
-                CMP #$50                    ; $22:B436: C9 50       ;
-                BCS CODE_22B43E                     ; $22:B438: B0 04       ;
-                INC $68,x                   ; $22:B43A: F6 68       ;
-                STZ $9E,x                   ; $22:B43C: 74 9E       ;
-CODE_22B43E:    RTS                         ; $22:B43E: 60          ;
+                LDA $0F                 ; $22:B431: A5 0F       ;
 
-CODE_22B43F:    JSL CODE_27A7E4             ; $22:B43F: 22 E4 A7 27 ;
-                LDA $9E,x                   ; $22:B443: B5 9E       ;
-                CMP #$70                    ; $22:B445: C9 70       ;
-                BCS CODE_22B44D                     ; $22:B447: B0 04       ;
-                ADC #$04                    ; $22:B449: 69 04       ;
-                STA $9E,x                   ; $22:B44B: 95 9E       ;
-CODE_22B44D:    JSL CODE_278B93             ; $22:B44D: 22 93 8B 27 ;
-                LDA $A7,x                   ; $22:B451: B5 A7       ;
-                AND #$04                    ; $22:B453: 29 04       ;
-                BEQ CODE_22B471             ; $22:B455: F0 1A       ;
-                JSL CODE_278B67             ; $22:B457: 22 67 8B 27 ;
-                LDA #$18                    ; $22:B45B: A9 18       ;
-                STA $1CF3                   ; $22:B45D: 8D F3 1C    ;
-                LDA #$09                    ; $22:B460: A9 09       ;
-                STA $1203                   ; $22:B462: 8D 03 12    ;
-                LDA #$0C                    ; $22:B465: A9 0C       ;
-                STA $0520,x                 ; $22:B467: 9D 20 05    ;
-                LDA #$40                    ; $22:B46A: A9 40       ;
-                STA $0518,x                 ; $22:B46C: 9D 18 05    ;
-                INC $68,x                   ; $22:B46F: F6 68       ;
-CODE_22B471:    RTS                         ; $22:B471: 60          ;
+                CLC                     ; $22:B433: 18          ;
 
-CODE_22B472:    LDA $0518,x                 ; $22:B472: BD 18 05    ;
-                BNE CODE_22B488             ; $22:B475: D0 11       ;
-                LDA $71,x                   ; $22:B477: B5 71       ;
-                CMP $4D,x                   ; $22:B479: D5 4D       ;
-                BNE CODE_22B480             ; $22:B47B: D0 03       ;
-                STZ $68,x                   ; $22:B47D: 74 68       ;
-                RTS                         ; $22:B47F: 60          ;
+                ADC #$24                ; $22:B434: 69 24       ;
 
-CODE_22B480:    LDA #$F0                    ; $22:B480: A9 F0       ;
-                STA $9E,x                   ; $22:B482: 95 9E       ;
-                JSL CODE_27A7E4             ; $22:B484: 22 E4 A7 27 ;
-CODE_22B488:    RTS                         ; $22:B488: 60          ;
+                CMP #$50                ; $22:B436: C9 50       ;
 
-CODE_22B489:    LDA $0520,x                 ; $22:B489: BD 20 05    ;
-                BEQ CODE_22B492             ; $22:B48C: F0 04       ;
-                JSL CODE_27DF26             ; $22:B48E: 22 26 DF 27 ;
-CODE_22B492:    STZ $0679,x                 ; $22:B492: 9E 79 06    ;
-                JSL CODE_279F51             ; $22:B495: 22 51 9F 27 ;
-                LDA $0651,x                 ; $22:B499: BD 51 06    ;
-                STA $DC                     ; $22:B49C: 85 DC       ;
-                REP #$10                    ; $22:B49E: C2 10       ;
-                LDY $C6,x                   ; $22:B4A0: B4 C6       ;
-                LDA $7A,x                   ; $22:B4A2: B5 7A       ;
-                CLC                         ; $22:B4A4: 18          ;
-                ADC #$10                    ; $22:B4A5: 69 10       ;
-                STA $0810,y                 ; $22:B4A7: 99 10 08    ;
-                STA $0814,y                 ; $22:B4AA: 99 14 08    ;
-                STA $0818,y                 ; $22:B4AD: 99 18 08    ;
-                STA $081C,y                 ; $22:B4B0: 99 1C 08    ;
-                LDA $0681,x                 ; $22:B4B3: BD 81 06    ;
-                STA $00                     ; $22:B4B6: 85 00       ;
-                LDA $83,x                   ; $22:B4B8: B5 83       ;
-                LSR $00                     ; $22:B4BA: 46 00       ;
-                BCS CODE_22B4C9                     ; $22:B4BC: B0 0B       ;
-                PHA                         ; $22:B4BE: 48          ;
-                STA $0811,y                 ; $22:B4BF: 99 11 08    ;
-                CLC                         ; $22:B4C2: 18          ;
-                ADC #$08                    ; $22:B4C3: 69 08       ;
-                STA $0819,y                 ; $22:B4C5: 99 19 08    ;
-                PLA                         ; $22:B4C8: 68          ;
-CODE_22B4C9:    LSR $00                     ; $22:B4C9: 46 00       ;
-                BCS CODE_22B4D9                     ; $22:B4CB: B0 0C       ;
-                CLC                         ; $22:B4CD: 18          ;
-                ADC #$10                    ; $22:B4CE: 69 10       ;
-                STA $0815,y                 ; $22:B4D0: 99 15 08    ;
-                CLC                         ; $22:B4D3: 18          ;
-                ADC #$08                    ; $22:B4D4: 69 08       ;
-                STA $081D,y                 ; $22:B4D6: 99 1D 08    ;
-CODE_22B4D9:    LDA $0803,y                 ; $22:B4D9: B9 03 08    ;
-                ORA #$40                    ; $22:B4DC: 09 40       ;
-                STA $0813,y                 ; $22:B4DE: 99 13 08    ;
-                STA $0817,y                 ; $22:B4E1: 99 17 08    ;
-                STA $081B,y                 ; $22:B4E4: 99 1B 08    ;
-                STA $081F,y                 ; $22:B4E7: 99 1F 08    ;
-                LDA #$B0                    ; $22:B4EA: A9 B0       ;
-                STA $0812,y                 ; $22:B4EC: 99 12 08    ;
-                INC A                       ; $22:B4EF: 1A          ;
-                STA $081A,y                 ; $22:B4F0: 99 1A 08    ;
-                LDA #$BA                    ; $22:B4F3: A9 BA       ;
-                STA $0816,y                 ; $22:B4F5: 99 16 08    ;
-                INC A                       ; $22:B4F8: 1A          ;
-                STA $081E,y                 ; $22:B4F9: 99 1E 08    ;
-                REP #$20                    ; $22:B4FC: C2 20       ;
-                TYA                         ; $22:B4FE: 98          ;
-                LSR A                       ; $22:B4FF: 4A          ;
-                LSR A                       ; $22:B500: 4A          ;
-                TAY                         ; $22:B501: A8          ;
-                SEP #$20                    ; $22:B502: E2 20       ;
-                LDA $DC                     ; $22:B504: A5 DC       ;
-                ROL A                       ; $22:B506: 2A          ;
-                ROL A                       ; $22:B507: 2A          ;
-                ROL A                       ; $22:B508: 2A          ;
-                ROL A                       ; $22:B509: 2A          ;
-                AND #$01                    ; $22:B50A: 29 01       ;
-                STA $0A24,y                 ; $22:B50C: 99 24 0A    ;
-                STA $0A25,y                 ; $22:B50F: 99 25 0A    ;
-                STA $0A26,y                 ; $22:B512: 99 26 0A    ;
-                STA $0A27,y                 ; $22:B515: 99 27 0A    ;
-                SEP #$10                    ; $22:B518: E2 10       ;
-                RTS                         ; $22:B51A: 60          ;
+                BCS CODE_22B43E         ; $22:B438: B0 04       ;
 
-CODE_22B51B:    JSL CODE_22B3F9             ; $22:B51B: 22 F9 B3 22 ;
-                STA $4D,x                   ; $22:B51F: 95 4D       ;
-                RTL                         ; $22:B521: 6B          ;
+                INC $68,x               ; $22:B43A: F6 68       ;
 
-CODE_22B522:    JSR CODE_22B489             ; $22:B522: 20 89 B4    ;
-                LDA $0661,x                 ; $22:B525: BD 61 06    ;
-                CMP #$06                    ; $22:B528: C9 06       ;
-                BEQ CODE_22B53B             ; $22:B52A: F0 0F       ;
-                LDA $9C                     ; $22:B52C: A5 9C       ;
-                BNE CODE_22B53B             ; $22:B52E: D0 0B       ;
-                JSL CODE_279BC7             ; $22:B530: 22 C7 9B 27 ;
-                JSL CODE_279B6F             ; $22:B534: 22 6F 9B 27 ;
-                JSR CODE_22B53C             ; $22:B538: 20 3C B5    ;
-CODE_22B53B:    RTL                         ; $22:B53B: 6B          ;
+                STZ $9E,x               ; $22:B43C: 74 9E       ;
 
-CODE_22B53C:    LDA $68,x                   ; $22:B53C: B5 68       ;
+CODE_22B43E:    RTS                     ; $22:B43E: 60          ;
+
+CODE_22B43F:    JSL CODE_27A7E4         ; $22:B43F: 22 E4 A7 27 ;
+
+                LDA $9E,x               ; $22:B443: B5 9E       ;
+
+                CMP #$70                ; $22:B445: C9 70       ;
+
+                BCS CODE_22B44D         ; $22:B447: B0 04       ;
+
+                ADC #$04                ; $22:B449: 69 04       ;
+
+                STA $9E,x               ; $22:B44B: 95 9E       ;
+
+CODE_22B44D:    JSL CODE_278B93         ; $22:B44D: 22 93 8B 27 ;
+
+                LDA $A7,x               ; $22:B451: B5 A7       ;
+
+                AND #$04                ; $22:B453: 29 04       ;
+
+                BEQ CODE_22B471         ; $22:B455: F0 1A       ;
+
+                JSL CODE_278B67         ; $22:B457: 22 67 8B 27 ;
+
+                LDA #$18                ; $22:B45B: A9 18       ;
+
+                STA $1CF3               ; $22:B45D: 8D F3 1C    ;
+
+                LDA #$09                ; $22:B460: A9 09       ;
+
+                STA $1203               ; $22:B462: 8D 03 12    ;
+
+                LDA #$0C                ; $22:B465: A9 0C       ;
+
+                STA $0520,x             ; $22:B467: 9D 20 05    ;
+
+                LDA #$40                ; $22:B46A: A9 40       ;
+
+                STA $0518,x             ; $22:B46C: 9D 18 05    ;
+
+                INC $68,x               ; $22:B46F: F6 68       ;
+
+CODE_22B471:    RTS                     ; $22:B471: 60          ;
+
+CODE_22B472:    LDA $0518,x             ; $22:B472: BD 18 05    ;
+
+                BNE CODE_22B488         ; $22:B475: D0 11       ;
+
+                LDA $71,x               ; $22:B477: B5 71       ;
+
+                CMP $4D,x               ; $22:B479: D5 4D       ;
+
+                BNE CODE_22B480         ; $22:B47B: D0 03       ;
+
+                STZ $68,x               ; $22:B47D: 74 68       ;
+
+                RTS                     ; $22:B47F: 60          ;
+
+CODE_22B480:    LDA #$F0                ; $22:B480: A9 F0       ;
+
+                STA $9E,x               ; $22:B482: 95 9E       ;
+
+                JSL CODE_27A7E4         ; $22:B484: 22 E4 A7 27 ;
+
+CODE_22B488:    RTS                     ; $22:B488: 60          ;
+
+CODE_22B489:    LDA $0520,x             ; $22:B489: BD 20 05    ;
+
+                BEQ CODE_22B492         ; $22:B48C: F0 04       ;
+
+                JSL CODE_27DF26         ; $22:B48E: 22 26 DF 27 ;
+
+CODE_22B492:    STZ $0679,x             ; $22:B492: 9E 79 06    ;
+
+                JSL CODE_279F51         ; $22:B495: 22 51 9F 27 ;
+
+                LDA $0651,x             ; $22:B499: BD 51 06    ;
+
+                STA $DC                 ; $22:B49C: 85 DC       ;
+
+                REP #$10                ; $22:B49E: C2 10       ;
+
+                LDY $C6,x               ; $22:B4A0: B4 C6       ;
+
+                LDA $7A,x               ; $22:B4A2: B5 7A       ;
+
+                CLC                     ; $22:B4A4: 18          ;
+
+                ADC #$10                ; $22:B4A5: 69 10       ;
+
+                STA $0810,y             ; $22:B4A7: 99 10 08    ;
+
+                STA $0814,y             ; $22:B4AA: 99 14 08    ;
+
+                STA $0818,y             ; $22:B4AD: 99 18 08    ;
+
+                STA $081C,y             ; $22:B4B0: 99 1C 08    ;
+
+                LDA $0681,x             ; $22:B4B3: BD 81 06    ;
+
+                STA $00                 ; $22:B4B6: 85 00       ;
+
+                LDA $83,x               ; $22:B4B8: B5 83       ;
+
+                LSR $00                 ; $22:B4BA: 46 00       ;
+
+                BCS CODE_22B4C9         ; $22:B4BC: B0 0B       ;
+
+                PHA                     ; $22:B4BE: 48          ;
+
+                STA $0811,y             ; $22:B4BF: 99 11 08    ;
+
+                CLC                     ; $22:B4C2: 18          ;
+
+                ADC #$08                ; $22:B4C3: 69 08       ;
+
+                STA $0819,y             ; $22:B4C5: 99 19 08    ;
+
+                PLA                     ; $22:B4C8: 68          ;
+
+CODE_22B4C9:    LSR $00                 ; $22:B4C9: 46 00       ;
+
+                BCS CODE_22B4D9         ; $22:B4CB: B0 0C       ;
+
+                CLC                     ; $22:B4CD: 18          ;
+
+                ADC #$10                ; $22:B4CE: 69 10       ;
+
+                STA $0815,y             ; $22:B4D0: 99 15 08    ;
+
+                CLC                     ; $22:B4D3: 18          ;
+
+                ADC #$08                ; $22:B4D4: 69 08       ;
+
+                STA $081D,y             ; $22:B4D6: 99 1D 08    ;
+
+CODE_22B4D9:    LDA $0803,y             ; $22:B4D9: B9 03 08    ;
+
+                ORA #$40                ; $22:B4DC: 09 40       ;
+
+                STA $0813,y             ; $22:B4DE: 99 13 08    ;
+
+                STA $0817,y             ; $22:B4E1: 99 17 08    ;
+
+                STA $081B,y             ; $22:B4E4: 99 1B 08    ;
+
+                STA $081F,y             ; $22:B4E7: 99 1F 08    ;
+
+                LDA #$B0                ; $22:B4EA: A9 B0       ;
+
+                STA $0812,y             ; $22:B4EC: 99 12 08    ;
+
+                INC A                   ; $22:B4EF: 1A          ;
+
+                STA $081A,y             ; $22:B4F0: 99 1A 08    ;
+
+                LDA #$BA                ; $22:B4F3: A9 BA       ;
+
+                STA $0816,y             ; $22:B4F5: 99 16 08    ;
+
+                INC A                   ; $22:B4F8: 1A          ;
+
+                STA $081E,y             ; $22:B4F9: 99 1E 08    ;
+
+                REP #$20                ; $22:B4FC: C2 20       ;
+
+                TYA                     ; $22:B4FE: 98          ;
+
+                LSR A                   ; $22:B4FF: 4A          ;
+
+                LSR A                   ; $22:B500: 4A          ;
+
+                TAY                     ; $22:B501: A8          ;
+
+                SEP #$20                ; $22:B502: E2 20       ;
+
+                LDA $DC                 ; $22:B504: A5 DC       ;
+
+                ROL A                   ; $22:B506: 2A          ;
+
+                ROL A                   ; $22:B507: 2A          ;
+
+                ROL A                   ; $22:B508: 2A          ;
+
+                ROL A                   ; $22:B509: 2A          ;
+
+                AND #$01                ; $22:B50A: 29 01       ;
+
+                STA $0A24,y             ; $22:B50C: 99 24 0A    ;
+
+                STA $0A25,y             ; $22:B50F: 99 25 0A    ;
+
+                STA $0A26,y             ; $22:B512: 99 26 0A    ;
+
+                STA $0A27,y             ; $22:B515: 99 27 0A    ;
+
+                SEP #$10                ; $22:B518: E2 10       ;
+
+                RTS                     ; $22:B51A: 60          ;
+
+CODE_22B51B:    JSL CODE_22B3F9         ; $22:B51B: 22 F9 B3 22 ;
+
+                STA $4D,x               ; $22:B51F: 95 4D       ;
+
+                RTL                     ; $22:B521: 6B          ;
+
+CODE_22B522:    JSR CODE_22B489         ; $22:B522: 20 89 B4    ;
+
+                LDA $0661,x             ; $22:B525: BD 61 06    ;
+
+                CMP #$06                ; $22:B528: C9 06       ;
+
+                BEQ CODE_22B53B         ; $22:B52A: F0 0F       ;
+
+                LDA $9C                 ; $22:B52C: A5 9C       ;
+
+                BNE CODE_22B53B         ; $22:B52E: D0 0B       ;
+
+                JSL CODE_279BC7         ; $22:B530: 22 C7 9B 27 ;
+
+                JSL CODE_279B6F         ; $22:B534: 22 6F 9B 27 ;
+
+                JSR CODE_22B53C         ; $22:B538: 20 3C B5    ;
+
+CODE_22B53B:    RTL                     ; $22:B53B: 6B          ;
+
+CODE_22B53C:    LDA $68,x               ; $22:B53C: B5 68       ;
+
                 JSL CODE_20FB1F         ; $22:B53E: 22 1F FB 20 ; ExecutePtrShort
 
                 dw CODE_22B548                                  ;
@@ -1457,71 +1990,124 @@ CODE_22B548:    JSL CODE_27A85F         ; $22:B548: 22 5F A8 27 ;
                 LDA $0F                 ; $22:B552: A5 0F       ;
                 CLC                     ; $22:B554: 18          ;
                 ADC #$70                ; $22:B555: 69 70       ;
-                CMP #$E8                    ; $22:B557: C9 E8       ;
-                BCS CODE_22B574                     ; $22:B559: B0 19       ;
-                LDA $0671,x                 ; $22:B55B: BD 71 06    ;
-                SEC                         ; $22:B55E: 38          ;
-                SBC #$8B                    ; $22:B55F: E9 8B       ;
-                STA $00                     ; $22:B561: 85 00       ;
-                CPY $00                     ; $22:B563: C4 00       ;
-                BEQ CODE_22B574             ; $22:B565: F0 0D       ;
-                TYA                         ; $22:B567: 98          ;
-                STA $1021,x                 ; $22:B568: 9D 21 10    ;
-                INC $68,x                   ; $22:B56B: F6 68       ;
-                STZ $8C,x                   ; $22:B56D: 74 8C       ;
-                LDA #$3B                    ; $22:B56F: A9 3B       ;
-                STA $0518,x                 ; $22:B571: 9D 18 05    ;
-CODE_22B574:    RTS                         ; $22:B574: 60          ;
+                CMP #$E8                ; $22:B557: C9 E8       ;
 
-CODE_22B575:    LDA $0518,x                 ; $22:B575: BD 18 05    ;
-                BNE CODE_22B581             ; $22:B578: D0 07       ;
-                INC $68,x                   ; $22:B57A: F6 68       ;
-                LDA #$40                    ; $22:B57C: A9 40       ;
-                STA $0518,x                 ; $22:B57E: 9D 18 05    ;
-CODE_22B581:    JSL CODE_27A7EF             ; $22:B581: 22 EF A7 27 ;
-                LDY $1021,x                 ; $22:B585: BC 21 10    ;
-                LDA $8C,x                   ; $22:B588: B5 8C       ;
-                CMP.w DATA_21C424,y                 ; $22:B58A: D9 24 C4    ;
-                BEQ CODE_22B595             ; $22:B58D: F0 06       ;
-                CLC                         ; $22:B58F: 18          ;
-                ADC.w DATA_21C422,y                 ; $22:B590: 79 22 C4    ;
-                STA $8C,x                   ; $22:B593: 95 8C       ;
-CODE_22B595:    RTS                         ; $22:B595: 60          ;
+                BCS CODE_22B574         ; $22:B559: B0 19       ;
 
-CODE_22B596:    LDA $0518,x                 ; $22:B596: BD 18 05    ;
-                BNE CODE_22B5B0             ; $22:B599: D0 15       ;
-                LDA $5F,x                   ; $22:B59B: B5 5F       ;
-                CMP $4D,x                   ; $22:B59D: D5 4D       ;
-                BNE CODE_22B5A4             ; $22:B59F: D0 03       ;
-                STZ $68,x                   ; $22:B5A1: 74 68       ;
-                RTS                         ; $22:B5A3: 60          ;
+                LDA $0671,x             ; $22:B55B: BD 71 06    ;
 
-CODE_22B5A4:    LDY $1021,x                 ; $22:B5A4: BC 21 10    ;
-                LDA.w DATA_21C426,y                 ; $22:B5A7: B9 26 C4    ;
-                STA $8C,x                   ; $22:B5AA: 95 8C       ;
-                JSL CODE_27A7EF             ; $22:B5AC: 22 EF A7 27 ;
-CODE_22B5B0:    RTS                         ; $22:B5B0: 60          ;
+                SEC                     ; $22:B55E: 38          ;
 
-CODE_22B5B1:    LDA $0671,x                 ; $22:B5B1: BD 71 06    ;
-                SEC                         ; $22:B5B4: 38          ;
-                SBC #$8D                    ; $22:B5B5: E9 8D       ;
-                TAY                         ; $22:B5B7: A8          ;
-                LDA.w DATA_21C428,y                 ; $22:B5B8: B9 28 C4    ;
-                STA $8C,x                   ; $22:B5BB: 95 8C       ;
-                LDA.w DATA_21C42B,y                 ; $22:B5BD: B9 2B C4    ;
-                STA $9E,x                   ; $22:B5C0: 95 9E       ;
-                JMP CODE_22B3F9             ; $22:B5C2: 4C F9 B3    ;
+                SBC #$8B                ; $22:B55F: E9 8B       ;
 
-CODE_22B5C5:    JSR CODE_22B489             ; $22:B5C5: 20 89 B4    ;
-                LDA $9C                     ; $22:B5C8: A5 9C       ;
-                BNE CODE_22B5D7             ; $22:B5CA: D0 0B       ;
-                JSL CODE_279BC7             ; $22:B5CC: 22 C7 9B 27 ;
-                JSL CODE_279B6F             ; $22:B5D0: 22 6F 9B 27 ;
-                JSR CODE_22B5D8             ; $22:B5D4: 20 D8 B5    ;
-CODE_22B5D7:    RTL                         ; $22:B5D7: 6B          ;
+                STA $00                 ; $22:B561: 85 00       ;
 
-CODE_22B5D8:    LDA $68,x                   ; $22:B5D8: B5 68       ;
-                AND #$03                    ; $22:B5DA: 29 03       ;
+                CPY $00                 ; $22:B563: C4 00       ;
+
+                BEQ CODE_22B574         ; $22:B565: F0 0D       ;
+
+                TYA                     ; $22:B567: 98          ;
+
+                STA $1021,x             ; $22:B568: 9D 21 10    ;
+
+                INC $68,x               ; $22:B56B: F6 68       ;
+
+                STZ $8C,x               ; $22:B56D: 74 8C       ;
+
+                LDA #$3B                ; $22:B56F: A9 3B       ;
+
+                STA $0518,x             ; $22:B571: 9D 18 05    ;
+
+CODE_22B574:    RTS                     ; $22:B574: 60          ;
+
+CODE_22B575:    LDA $0518,x             ; $22:B575: BD 18 05    ;
+
+                BNE CODE_22B581         ; $22:B578: D0 07       ;
+
+                INC $68,x               ; $22:B57A: F6 68       ;
+
+                LDA #$40                ; $22:B57C: A9 40       ;
+
+                STA $0518,x             ; $22:B57E: 9D 18 05    ;
+
+CODE_22B581:    JSL CODE_27A7EF         ; $22:B581: 22 EF A7 27 ;
+
+                LDY $1021,x             ; $22:B585: BC 21 10    ;
+
+                LDA $8C,x               ; $22:B588: B5 8C       ;
+
+                CMP.w DATA_21C424,y     ; $22:B58A: D9 24 C4    ;
+
+                BEQ CODE_22B595         ; $22:B58D: F0 06       ;
+
+                CLC                     ; $22:B58F: 18          ;
+
+                ADC.w DATA_21C422,y     ; $22:B590: 79 22 C4    ;
+
+                STA $8C,x               ; $22:B593: 95 8C       ;
+
+CODE_22B595:    RTS                     ; $22:B595: 60          ;
+
+CODE_22B596:    LDA $0518,x             ; $22:B596: BD 18 05    ;
+
+                BNE CODE_22B5B0         ; $22:B599: D0 15       ;
+
+                LDA $5F,x               ; $22:B59B: B5 5F       ;
+
+                CMP $4D,x               ; $22:B59D: D5 4D       ;
+
+                BNE CODE_22B5A4         ; $22:B59F: D0 03       ;
+
+                STZ $68,x               ; $22:B5A1: 74 68       ;
+
+                RTS                     ; $22:B5A3: 60          ;
+
+CODE_22B5A4:    LDY $1021,x             ; $22:B5A4: BC 21 10    ;
+
+                LDA.w DATA_21C426,y     ; $22:B5A7: B9 26 C4    ;
+
+                STA $8C,x               ; $22:B5AA: 95 8C       ;
+
+                JSL CODE_27A7EF         ; $22:B5AC: 22 EF A7 27 ;
+
+CODE_22B5B0:    RTS                     ; $22:B5B0: 60          ;
+
+CODE_22B5B1:    LDA $0671,x             ; $22:B5B1: BD 71 06    ;
+
+                SEC                     ; $22:B5B4: 38          ;
+
+                SBC #$8D                ; $22:B5B5: E9 8D       ;
+
+                TAY                     ; $22:B5B7: A8          ;
+
+                LDA.w DATA_21C428,y     ; $22:B5B8: B9 28 C4    ;
+
+                STA $8C,x               ; $22:B5BB: 95 8C       ;
+
+                LDA.w DATA_21C42B,y     ; $22:B5BD: B9 2B C4    ;
+
+                STA $9E,x               ; $22:B5C0: 95 9E       ;
+
+                JMP CODE_22B3F9         ; $22:B5C2: 4C F9 B3    ;
+
+CODE_22B5C5:    JSR CODE_22B489         ; $22:B5C5: 20 89 B4    ;
+
+                LDA $9C                 ; $22:B5C8: A5 9C       ;
+
+                BNE CODE_22B5D7         ; $22:B5CA: D0 0B       ;
+
+                JSL CODE_279BC7         ; $22:B5CC: 22 C7 9B 27 ;
+
+                JSL CODE_279B6F         ; $22:B5D0: 22 6F 9B 27 ;
+
+                JSR CODE_22B5D8         ; $22:B5D4: 20 D8 B5    ;
+
+CODE_22B5D7:    RTL                     ; $22:B5D7: 6B          ;
+
+CODE_22B5D8:    LDA $68,x               ; $22:B5D8: B5 68       ;
+
+                AND #$03                ; $22:B5DA: 29 03       ;
+
                 JSL CODE_20FB1F         ; $22:B5DC: 22 1F FB 20 ; ExecutePtrShort
 
                 dw CODE_22B5E8                                  ;
@@ -1536,158 +2122,293 @@ CODE_22B5E8:    LDA $0518,x             ; $22:B5E8: BD 18 05    ;
                 STA $8C,x               ; $22:B5F3: 95 8C       ;
                 LDA $9E,x               ; $22:B5F5: B5 9E       ;
                 JSL CODE_27A859         ; $22:B5F7: 22 59 A8 27 ;Invert Accumulator (8-bit)
-                STA $9E,x                   ; $22:B5FB: 95 9E       ;
-                INC $68,x                   ; $22:B5FD: F6 68       ;
-                LDA #$80                    ; $22:B5FF: A9 80       ;
-                STA $0518,x                 ; $22:B601: 9D 18 05    ;
-CODE_22B604:    RTS                         ; $22:B604: 60          ;
+                STA $9E,x               ; $22:B5FB: 95 9E       ;
 
-CODE_22B605:    LDA $0518,x                 ; $22:B605: BD 18 05    ;
-                BNE CODE_22B611             ; $22:B608: D0 07       ;
-                INC $68,x                   ; $22:B60A: F6 68       ;
-                LDA #$3C                    ; $22:B60C: A9 3C       ;
-                STA $0518,x                 ; $22:B60E: 9D 18 05    ;
-CODE_22B611:    JSL CODE_27A7EF             ; $22:B611: 22 EF A7 27 ;
-                JSL CODE_27A7E4             ; $22:B615: 22 E4 A7 27 ;
-                RTS                         ; $22:B619: 60          ;
+                INC $68,x               ; $22:B5FD: F6 68       ;
 
-CODE_22B61A:    LDA $9C                     ; $22:B61A: A5 9C       ;
-                BNE CODE_22B659             ; $22:B61C: D0 3B       ;
-                LDA #$10                    ; $22:B61E: A9 10       ;
-                LDY $0679,x                 ; $22:B620: BC 79 06    ;
-                BNE CODE_22B627             ; $22:B623: D0 02       ;
-                LDA #$F0                    ; $22:B625: A9 F0       ;
-CODE_22B627:    STA $8C,x                   ; $22:B627: 95 8C       ;
-                JSL CODE_279BB7             ; $22:B629: 22 B7 9B 27 ;
+                LDA #$80                ; $22:B5FF: A9 80       ;
+
+                STA $0518,x             ; $22:B601: 9D 18 05    ;
+
+CODE_22B604:    RTS                     ; $22:B604: 60          ;
+
+CODE_22B605:    LDA $0518,x             ; $22:B605: BD 18 05    ;
+
+                BNE CODE_22B611         ; $22:B608: D0 07       ;
+
+                INC $68,x               ; $22:B60A: F6 68       ;
+
+                LDA #$3C                ; $22:B60C: A9 3C       ;
+
+                STA $0518,x             ; $22:B60E: 9D 18 05    ;
+
+CODE_22B611:    JSL CODE_27A7EF         ; $22:B611: 22 EF A7 27 ;
+
+                JSL CODE_27A7E4         ; $22:B615: 22 E4 A7 27 ;
+
+                RTS                     ; $22:B619: 60          ;
+
+CODE_22B61A:    LDA $9C                 ; $22:B61A: A5 9C       ;
+
+                BNE CODE_22B659         ; $22:B61C: D0 3B       ;
+
+                LDA #$10                ; $22:B61E: A9 10       ;
+
+                LDY $0679,x             ; $22:B620: BC 79 06    ;
+
+                BNE CODE_22B627         ; $22:B623: D0 02       ;
+
+                LDA #$F0                ; $22:B625: A9 F0       ;
+
+CODE_22B627:    STA $8C,x               ; $22:B627: 95 8C       ;
+
+                JSL CODE_279BB7         ; $22:B629: 22 B7 9B 27 ;
+
                 JSL CODE_279BC3         ; $22:B62D: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                INC $68,x                   ; $22:B631: F6 68       ;
-                JSL CODE_27A7EF             ; $22:B633: 22 EF A7 27 ;
-                JSL CODE_27A7E4             ; $22:B637: 22 E4 A7 27 ;
-                LDA $68,x                   ; $22:B63B: B5 68       ;
-                AND #$01                    ; $22:B63D: 29 01       ;
-                BNE CODE_22B655             ; $22:B63F: D0 14       ;
-                LDA $4D,x                   ; $22:B641: B5 4D       ;
-                AND #$01                    ; $22:B643: 29 01       ;
-                TAY                         ; $22:B645: A8          ;
-                LDA $9E,x                   ; $22:B646: B5 9E       ;
-                CLC                         ; $22:B648: 18          ;
-                ADC.w DATA_21C42E,y                 ; $22:B649: 79 2E C4    ;
-                STA $9E,x                   ; $22:B64C: 95 9E       ;
-                CMP.w DATA_21C430,y                 ; $22:B64E: D9 30 C4    ;
-                BNE CODE_22B655             ; $22:B651: D0 02       ;
-                INC $4D,x                   ; $22:B653: F6 4D       ;
-CODE_22B655:    JSL CODE_279B6F             ; $22:B655: 22 6F 9B 27 ;
-CODE_22B659:    LDA $68,x                   ; $22:B659: B5 68       ;
-                LSR A                       ; $22:B65B: 4A          ;
-                LSR A                       ; $22:B65C: 4A          ;
-                LSR A                       ; $22:B65D: 4A          ;
-                AND #$01                    ; $22:B65E: 29 01       ;
-                STA $0669,x                 ; $22:B660: 9D 69 06    ;
-                JSR CODE_22D34B             ; $22:B663: 20 4B D3    ;
-                JSR CODE_22CBA6             ; $22:B666: 20 A6 CB    ;
-                RTL                         ; $22:B669: 6B          ;
+                INC $68,x               ; $22:B631: F6 68       ;
 
-CODE_22B66A:    LDA $0783,x                 ; $22:B66A: BD 83 07    ;
-                STA $0771,x                 ; $22:B66D: 9D 71 07    ;
-                LDA #$90                    ; $22:B670: A9 90       ;
-                STA $1021,x                 ; $22:B672: 9D 21 10    ;
-CODE_22B675:    RTL                         ; $22:B675: 6B          ;
+                JSL CODE_27A7EF         ; $22:B633: 22 EF A7 27 ;
+
+                JSL CODE_27A7E4         ; $22:B637: 22 E4 A7 27 ;
+
+                LDA $68,x               ; $22:B63B: B5 68       ;
+
+                AND #$01                ; $22:B63D: 29 01       ;
+
+                BNE CODE_22B655         ; $22:B63F: D0 14       ;
+
+                LDA $4D,x               ; $22:B641: B5 4D       ;
+
+                AND #$01                ; $22:B643: 29 01       ;
+
+                TAY                     ; $22:B645: A8          ;
+
+                LDA $9E,x               ; $22:B646: B5 9E       ;
+
+                CLC                     ; $22:B648: 18          ;
+
+                ADC.w DATA_21C42E,y     ; $22:B649: 79 2E C4    ;
+
+                STA $9E,x               ; $22:B64C: 95 9E       ;
+
+                CMP.w DATA_21C430,y     ; $22:B64E: D9 30 C4    ;
+
+                BNE CODE_22B655         ; $22:B651: D0 02       ;
+
+                INC $4D,x               ; $22:B653: F6 4D       ;
+
+CODE_22B655:    JSL CODE_279B6F         ; $22:B655: 22 6F 9B 27 ;
+
+CODE_22B659:    LDA $68,x               ; $22:B659: B5 68       ;
+
+                LSR A                   ; $22:B65B: 4A          ;
+
+                LSR A                   ; $22:B65C: 4A          ;
+
+                LSR A                   ; $22:B65D: 4A          ;
+
+                AND #$01                ; $22:B65E: 29 01       ;
+
+                STA $0669,x             ; $22:B660: 9D 69 06    ;
+
+                JSR CODE_22D34B         ; $22:B663: 20 4B D3    ;
+
+                JSR CODE_22CBA6         ; $22:B666: 20 A6 CB    ;
+
+                RTL                     ; $22:B669: 6B          ;
+
+CODE_22B66A:    LDA $0783,x             ; $22:B66A: BD 83 07    ;
+
+                STA $0771,x             ; $22:B66D: 9D 71 07    ;
+
+                LDA #$90                ; $22:B670: A9 90       ;
+
+                STA $1021,x             ; $22:B672: 9D 21 10    ;
+
+CODE_22B675:    RTL                     ; $22:B675: 6B          ;
 
 CODE_22B676:    JSL CODE_279BC3         ; $22:B676: 22 C3 9B 27 ; Subroutine: Remove if offscreen
                 JSL CODE_27A837         ; $22:B67A: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C432,y                 ; $22:B67E: B9 32 C4    ;
-                STA $0679,x                 ; $22:B681: 9D 79 06    ;
-                INC $1021,x                 ; $22:B684: FE 21 10    ;
-                LDA $1021,x                 ; $22:B687: BD 21 10    ;
-                CMP #$A0                    ; $22:B68A: C9 A0       ;
-                BNE CODE_22B69F             ; $22:B68C: D0 11       ;
-                STZ $1021,x                 ; $22:B68E: 9E 21 10    ;
-                LDA #$50                    ; $22:B691: A9 50       ;
-                LDY $0783,x                 ; $22:B693: BC 83 07    ;
-                BPL CODE_22B69A             ; $22:B696: 10 02       ;
-                LDA #$30                    ; $22:B698: A9 30       ;
-CODE_22B69A:    STA $0518,x                 ; $22:B69A: 9D 18 05    ;
-                STZ $8C,x                   ; $22:B69D: 74 8C       ;
-CODE_22B69F:    LDY #$00                    ; $22:B69F: A0 00       ;
-                LDA $1FD2,x                 ; $22:B6A1: BD D2 1F    ;
-                AND #$08                    ; $22:B6A4: 29 08       ;
-                BEQ CODE_22B6A9             ; $22:B6A6: F0 01       ;
-                INY                         ; $22:B6A8: C8          ;
-CODE_22B6A9:    LDA $0518,x                 ; $22:B6A9: BD 18 05    ;
-                BEQ CODE_22B6C3             ; $22:B6AC: F0 15       ;
-                CMP #$20                    ; $22:B6AE: C9 20       ;
-                BNE CODE_22B6C1             ; $22:B6B0: D0 0F       ;
-                LDA $0783,x                 ; $22:B6B2: BD 83 07    ;
-                BMI CODE_22B6C1             ; $22:B6B5: 30 0A       ;
-                LDA $A7,x                   ; $22:B6B7: B5 A7       ;
-                AND #$04                    ; $22:B6B9: 29 04       ;
-                BEQ CODE_22B6C1             ; $22:B6BB: F0 04       ;
-                LDA #$C8                    ; $22:B6BD: A9 C8       ;
-                STA $9E,x                   ; $22:B6BF: 95 9E       ;
-CODE_22B6C1:    LDY #$02                    ; $22:B6C1: A0 02       ;
-CODE_22B6C3:    TYA                         ; $22:B6C3: 98          ;
-                STA $0669,x                 ; $22:B6C4: 9D 69 06    ;
-                LDA $71,x                   ; $22:B6C7: B5 71       ;
-                PHA                         ; $22:B6C9: 48          ;
-                CLC                         ; $22:B6CA: 18          ;
-                ADC #$08                    ; $22:B6CB: 69 08       ;
-                STA $71,x                   ; $22:B6CD: 95 71       ;
-                LDA $56,x                   ; $22:B6CF: B5 56       ;
-                PHA                         ; $22:B6D1: 48          ;
-                ADC #$00                    ; $22:B6D2: 69 00       ;
-                STA $56,x                   ; $22:B6D4: 95 56       ;
-                JSL CODE_279F51             ; $22:B6D6: 22 51 9F 27 ;
-                PLA                         ; $22:B6DA: 68          ;
-                STA $56,x                   ; $22:B6DB: 95 56       ;
-                PLA                         ; $22:B6DD: 68          ;
-                STA $71,x                   ; $22:B6DE: 95 71       ;
-                JSL CODE_279DC2             ; $22:B6E0: 22 C2 9D 27 ;
-                LDA $9C                     ; $22:B6E4: A5 9C       ;
-                BNE CODE_22B715             ; $22:B6E6: D0 2D       ;
-                JSL CODE_279B6B             ; $22:B6E8: 22 6B 9B 27 ;
-                LDA $0518,x                 ; $22:B6EC: BD 18 05    ;
-                CMP #$40                    ; $22:B6EF: C9 40       ;
-                BCS CODE_22B6FC                     ; $22:B6F1: B0 09       ;
-                AND #$1F                    ; $22:B6F3: 29 1F       ;
-                CMP #$0F                    ; $22:B6F5: C9 0F       ;
-                BNE CODE_22B6FC             ; $22:B6F7: D0 03       ;
-                JSR CODE_22B7AB             ; $22:B6F9: 20 AB B7    ;
-CODE_22B6FC:    LDA $0518,x                 ; $22:B6FC: BD 18 05    ;
-                BNE CODE_22B705             ; $22:B6FF: D0 04       ;
-                LDA $68,x                   ; $22:B701: B5 68       ;
-                BEQ CODE_22B716             ; $22:B703: F0 11       ;
-CODE_22B705:    JSL CODE_27983B             ; $22:B705: 22 3B 98 27 ;
-                LDA $A7,x                   ; $22:B709: B5 A7       ;
-                AND #$04                    ; $22:B70B: 29 04       ;
-                BEQ CODE_22B715             ; $22:B70D: F0 06       ;
-                STZ $68,x                   ; $22:B70F: 74 68       ;
-                JSL CODE_278B67             ; $22:B711: 22 67 8B 27 ;
-CODE_22B715:    RTL                         ; $22:B715: 6B          ;
+                LDA.w DATA_21C432,y     ; $22:B67E: B9 32 C4    ;
 
-CODE_22B716:    LDA $0689,x                 ; $22:B716: BD 89 06    ;
-                BEQ CODE_22B71E             ; $22:B719: F0 03       ;
-                DEC $0689,x                 ; $22:B71B: DE 89 06    ;
-CODE_22B71E:    INC $0771,x                 ; $22:B71E: FE 71 07    ;
-                LDA $0771,x                 ; $22:B721: BD 71 07    ;
-                AND #$1F                    ; $22:B724: 29 1F       ;
-                BNE CODE_22B73E             ; $22:B726: D0 16       ;
-                LDA $0783,x                 ; $22:B728: BD 83 07    ;
-                AND #$01                    ; $22:B72B: 29 01       ;
-                BNE CODE_22B73E             ; $22:B72D: D0 0F       ;
-                LDA $A7,x                   ; $22:B72F: B5 A7       ;
-                AND #$04                    ; $22:B731: 29 04       ;
-                BEQ CODE_22B73E             ; $22:B733: F0 09       ;
-                INC $68,x                   ; $22:B735: F6 68       ;
-                LDA #$D8                    ; $22:B737: A9 D8       ;
-                STA $9E,x                   ; $22:B739: 95 9E       ;
-                STZ $8C,x                   ; $22:B73B: 74 8C       ;
-                RTL                         ; $22:B73D: 6B          ;
+                STA $0679,x             ; $22:B681: 9D 79 06    ;
 
-CODE_22B73E:    JSR CODE_22B742             ; $22:B73E: 20 42 B7    ;
-                RTL                         ; $22:B741: 6B          ;
+                INC $1021,x             ; $22:B684: FE 21 10    ;
 
-CODE_22B742:    LDA $4D,x                   ; $22:B742: B5 4D       ;
-                AND #$03                    ; $22:B744: 29 03       ;
+                LDA $1021,x             ; $22:B687: BD 21 10    ;
+
+                CMP #$A0                ; $22:B68A: C9 A0       ;
+
+                BNE CODE_22B69F         ; $22:B68C: D0 11       ;
+
+                STZ $1021,x             ; $22:B68E: 9E 21 10    ;
+
+                LDA #$50                ; $22:B691: A9 50       ;
+
+                LDY $0783,x             ; $22:B693: BC 83 07    ;
+
+                BPL CODE_22B69A         ; $22:B696: 10 02       ;
+
+                LDA #$30                ; $22:B698: A9 30       ;
+
+CODE_22B69A:    STA $0518,x             ; $22:B69A: 9D 18 05    ;
+
+                STZ $8C,x               ; $22:B69D: 74 8C       ;
+
+CODE_22B69F:    LDY #$00                ; $22:B69F: A0 00       ;
+
+                LDA $1FD2,x             ; $22:B6A1: BD D2 1F    ;
+
+                AND #$08                ; $22:B6A4: 29 08       ;
+
+                BEQ CODE_22B6A9         ; $22:B6A6: F0 01       ;
+
+                INY                     ; $22:B6A8: C8          ;
+
+CODE_22B6A9:    LDA $0518,x             ; $22:B6A9: BD 18 05    ;
+
+                BEQ CODE_22B6C3         ; $22:B6AC: F0 15       ;
+
+                CMP #$20                ; $22:B6AE: C9 20       ;
+
+                BNE CODE_22B6C1         ; $22:B6B0: D0 0F       ;
+
+                LDA $0783,x             ; $22:B6B2: BD 83 07    ;
+
+                BMI CODE_22B6C1         ; $22:B6B5: 30 0A       ;
+
+                LDA $A7,x               ; $22:B6B7: B5 A7       ;
+
+                AND #$04                ; $22:B6B9: 29 04       ;
+
+                BEQ CODE_22B6C1         ; $22:B6BB: F0 04       ;
+
+                LDA #$C8                ; $22:B6BD: A9 C8       ;
+
+                STA $9E,x               ; $22:B6BF: 95 9E       ;
+
+CODE_22B6C1:    LDY #$02                ; $22:B6C1: A0 02       ;
+
+CODE_22B6C3:    TYA                     ; $22:B6C3: 98          ;
+
+                STA $0669,x             ; $22:B6C4: 9D 69 06    ;
+
+                LDA $71,x               ; $22:B6C7: B5 71       ;
+
+                PHA                     ; $22:B6C9: 48          ;
+
+                CLC                     ; $22:B6CA: 18          ;
+
+                ADC #$08                ; $22:B6CB: 69 08       ;
+
+                STA $71,x               ; $22:B6CD: 95 71       ;
+
+                LDA $56,x               ; $22:B6CF: B5 56       ;
+
+                PHA                     ; $22:B6D1: 48          ;
+
+                ADC #$00                ; $22:B6D2: 69 00       ;
+
+                STA $56,x               ; $22:B6D4: 95 56       ;
+
+                JSL CODE_279F51         ; $22:B6D6: 22 51 9F 27 ;
+
+                PLA                     ; $22:B6DA: 68          ;
+
+                STA $56,x               ; $22:B6DB: 95 56       ;
+
+                PLA                     ; $22:B6DD: 68          ;
+
+                STA $71,x               ; $22:B6DE: 95 71       ;
+
+                JSL CODE_279DC2         ; $22:B6E0: 22 C2 9D 27 ;
+
+                LDA $9C                 ; $22:B6E4: A5 9C       ;
+
+                BNE CODE_22B715         ; $22:B6E6: D0 2D       ;
+
+                JSL CODE_279B6B         ; $22:B6E8: 22 6B 9B 27 ;
+
+                LDA $0518,x             ; $22:B6EC: BD 18 05    ;
+
+                CMP #$40                ; $22:B6EF: C9 40       ;
+
+                BCS CODE_22B6FC         ; $22:B6F1: B0 09       ;
+
+                AND #$1F                ; $22:B6F3: 29 1F       ;
+
+                CMP #$0F                ; $22:B6F5: C9 0F       ;
+
+                BNE CODE_22B6FC         ; $22:B6F7: D0 03       ;
+
+                JSR CODE_22B7AB         ; $22:B6F9: 20 AB B7    ;
+
+CODE_22B6FC:    LDA $0518,x             ; $22:B6FC: BD 18 05    ;
+
+                BNE CODE_22B705         ; $22:B6FF: D0 04       ;
+
+                LDA $68,x               ; $22:B701: B5 68       ;
+
+                BEQ CODE_22B716         ; $22:B703: F0 11       ;
+
+CODE_22B705:    JSL CODE_27983B         ; $22:B705: 22 3B 98 27 ;
+
+                LDA $A7,x               ; $22:B709: B5 A7       ;
+
+                AND #$04                ; $22:B70B: 29 04       ;
+
+                BEQ CODE_22B715         ; $22:B70D: F0 06       ;
+
+                STZ $68,x               ; $22:B70F: 74 68       ;
+
+                JSL CODE_278B67         ; $22:B711: 22 67 8B 27 ;
+
+CODE_22B715:    RTL                     ; $22:B715: 6B          ;
+
+CODE_22B716:    LDA $0689,x             ; $22:B716: BD 89 06    ;
+
+                BEQ CODE_22B71E         ; $22:B719: F0 03       ;
+
+                DEC $0689,x             ; $22:B71B: DE 89 06    ;
+
+CODE_22B71E:    INC $0771,x             ; $22:B71E: FE 71 07    ;
+
+                LDA $0771,x             ; $22:B721: BD 71 07    ;
+
+                AND #$1F                ; $22:B724: 29 1F       ;
+
+                BNE CODE_22B73E         ; $22:B726: D0 16       ;
+
+                LDA $0783,x             ; $22:B728: BD 83 07    ;
+
+                AND #$01                ; $22:B72B: 29 01       ;
+
+                BNE CODE_22B73E         ; $22:B72D: D0 0F       ;
+
+                LDA $A7,x               ; $22:B72F: B5 A7       ;
+
+                AND #$04                ; $22:B731: 29 04       ;
+
+                BEQ CODE_22B73E         ; $22:B733: F0 09       ;
+
+                INC $68,x               ; $22:B735: F6 68       ;
+
+                LDA #$D8                ; $22:B737: A9 D8       ;
+
+                STA $9E,x               ; $22:B739: 95 9E       ;
+
+                STZ $8C,x               ; $22:B73B: 74 8C       ;
+
+                RTL                     ; $22:B73D: 6B          ;
+
+CODE_22B73E:    JSR CODE_22B742         ; $22:B73E: 20 42 B7    ;
+
+                RTL                     ; $22:B741: 6B          ;
+
+CODE_22B742:    LDA $4D,x               ; $22:B742: B5 4D       ;
+
+                AND #$03                ; $22:B744: 29 03       ;
+
                 JSL CODE_20FB1F         ; $22:B746: 22 1F FB 20 ; ExecutePtrShort
 
                 dw CODE_22B752                                  ;
@@ -1695,199 +2416,371 @@ CODE_22B742:    LDA $4D,x                   ; $22:B742: B5 4D       ;
                 dw CODE_22B773                                  ;
                 dw CODE_22B765                                  ;
 
-CODE_22B752:    LDA $0689,x                 ; $22:B752: BD 89 06    ;
-                BNE CODE_22B75E             ; $22:B755: D0 07       ;
-                INC $4D,x                   ; $22:B757: F6 4D       ;
-                LDA #$10                    ; $22:B759: A9 10       ;
-                STA $0689,x                 ; $22:B75B: 9D 89 06    ;
-CODE_22B75E:    LDA #$F8                    ; $22:B75E: A9 F8       ;
-                STA $8C,x                   ; $22:B760: 95 8C       ;
-                JMP CODE_22B783             ; $22:B762: 4C 83 B7    ;
+CODE_22B752:    LDA $0689,x             ; $22:B752: BD 89 06    ;
 
-CODE_22B765:    LDA $0689,x                 ; $22:B765: BD 89 06    ;
-                BNE CODE_22B771             ; $22:B768: D0 07       ;
-                INC $4D,x                   ; $22:B76A: F6 4D       ;
-                LDA #$20                    ; $22:B76C: A9 20       ;
-                STA $0689,x                 ; $22:B76E: 9D 89 06    ;
-CODE_22B771:    BRA CODE_22B799             ; $22:B771: 80 26       ;
+                BNE CODE_22B75E         ; $22:B755: D0 07       ;
 
-CODE_22B773:    LDA $0689,x                 ; $22:B773: BD 89 06    ;
-                BNE CODE_22B77F             ; $22:B776: D0 07       ;
-                INC $4D,x                   ; $22:B778: F6 4D       ;
-                LDA #$10                    ; $22:B77A: A9 10       ;
-                STA $0689,x                 ; $22:B77C: 9D 89 06    ;
-CODE_22B77F:    LDA #$08                    ; $22:B77F: A9 08       ;
-                STA $8C,x                   ; $22:B781: 95 8C       ;
-CODE_22B783:    LDA $0689,x                 ; $22:B783: BD 89 06    ;
-                AND #$3F                    ; $22:B786: 29 3F       ;
-                BNE CODE_22B799             ; $22:B788: D0 0F       ;
-                LDA $0689,x                 ; $22:B78A: BD 89 06    ;
-                AND #$40                    ; $22:B78D: 29 40       ;
-                ASL A                       ; $22:B78F: 0A          ;
-                ASL A                       ; $22:B790: 0A          ;
-                LDA #$E0                    ; $22:B791: A9 E0       ;
-                BCC CODE_22B797             ; $22:B793: 90 02       ;
-                LDA #$D8                    ; $22:B795: A9 D8       ;
-CODE_22B797:    STA $9E,x                   ; $22:B797: 95 9E       ;
-CODE_22B799:    JSL CODE_27983B             ; $22:B799: 22 3B 98 27 ;
-                LDA $A7,x                   ; $22:B79D: B5 A7       ;
-                AND #$04                    ; $22:B79F: 29 04       ;
-                BEQ CODE_22B7AA             ; $22:B7A1: F0 07       ;
-                INC $1FD2,x                 ; $22:B7A3: FE D2 1F    ;
-                JSL CODE_278B67             ; $22:B7A6: 22 67 8B 27 ;
-CODE_22B7AA:    RTS                         ; $22:B7AA: 60          ;
+                INC $4D,x               ; $22:B757: F6 4D       ;
 
-CODE_22B7AB:    JSL CODE_278A72             ; $22:B7AB: 22 72 8A 27 ;
-                LDA #$06                    ; $22:B7AF: A9 06       ;
-                STA $1203                   ; $22:B7B1: 8D 03 12    ;
-                LDA $5F,x                   ; $22:B7B4: B5 5F       ;
-                CLC                         ; $22:B7B6: 18          ;
-                ADC #$04                    ; $22:B7B7: 69 04       ;
-                STA $05C9,y                 ; $22:B7B9: 99 C9 05    ;
-                LDA $44,x                   ; $22:B7BC: B5 44       ;
-                ADC #$00                    ; $22:B7BE: 69 00       ;
-                STA $00E2,y                 ; $22:B7C0: 99 E2 00    ;
-                LDA $71,x                   ; $22:B7C3: B5 71       ;
-                CLC                         ; $22:B7C5: 18          ;
-                ADC #$03                    ; $22:B7C6: 69 03       ;
-                STA $05BF,y                 ; $22:B7C8: 99 BF 05    ;
-                LDA $56,x                   ; $22:B7CB: B5 56       ;
-                ADC #$00                    ; $22:B7CD: 69 00       ;
-                STA $1FD7,y                 ; $22:B7CF: 99 D7 1F    ;
-                LDA #$20                    ; $22:B7D2: A9 20       ;
-                STA $05D3,y                 ; $22:B7D4: 99 D3 05    ;
-                STY $00                     ; $22:B7D7: 84 00       ;
+                LDA #$10                ; $22:B759: A9 10       ;
+
+                STA $0689,x             ; $22:B75B: 9D 89 06    ;
+
+CODE_22B75E:    LDA #$F8                ; $22:B75E: A9 F8       ;
+
+                STA $8C,x               ; $22:B760: 95 8C       ;
+
+                JMP CODE_22B783         ; $22:B762: 4C 83 B7    ;
+
+CODE_22B765:    LDA $0689,x             ; $22:B765: BD 89 06    ;
+
+                BNE CODE_22B771         ; $22:B768: D0 07       ;
+
+                INC $4D,x               ; $22:B76A: F6 4D       ;
+
+                LDA #$20                ; $22:B76C: A9 20       ;
+
+                STA $0689,x             ; $22:B76E: 9D 89 06    ;
+
+CODE_22B771:    BRA CODE_22B799         ; $22:B771: 80 26       ;
+
+CODE_22B773:    LDA $0689,x             ; $22:B773: BD 89 06    ;
+
+                BNE CODE_22B77F         ; $22:B776: D0 07       ;
+
+                INC $4D,x               ; $22:B778: F6 4D       ;
+
+                LDA #$10                ; $22:B77A: A9 10       ;
+
+                STA $0689,x             ; $22:B77C: 9D 89 06    ;
+
+CODE_22B77F:    LDA #$08                ; $22:B77F: A9 08       ;
+
+                STA $8C,x               ; $22:B781: 95 8C       ;
+
+CODE_22B783:    LDA $0689,x             ; $22:B783: BD 89 06    ;
+
+                AND #$3F                ; $22:B786: 29 3F       ;
+
+                BNE CODE_22B799         ; $22:B788: D0 0F       ;
+
+                LDA $0689,x             ; $22:B78A: BD 89 06    ;
+
+                AND #$40                ; $22:B78D: 29 40       ;
+
+                ASL A                   ; $22:B78F: 0A          ;
+
+                ASL A                   ; $22:B790: 0A          ;
+
+                LDA #$E0                ; $22:B791: A9 E0       ;
+
+                BCC CODE_22B797         ; $22:B793: 90 02       ;
+
+                LDA #$D8                ; $22:B795: A9 D8       ;
+
+CODE_22B797:    STA $9E,x               ; $22:B797: 95 9E       ;
+
+CODE_22B799:    JSL CODE_27983B         ; $22:B799: 22 3B 98 27 ;
+
+                LDA $A7,x               ; $22:B79D: B5 A7       ;
+
+                AND #$04                ; $22:B79F: 29 04       ;
+
+                BEQ CODE_22B7AA         ; $22:B7A1: F0 07       ;
+
+                INC $1FD2,x             ; $22:B7A3: FE D2 1F    ;
+
+                JSL CODE_278B67         ; $22:B7A6: 22 67 8B 27 ;
+
+CODE_22B7AA:    RTS                     ; $22:B7AA: 60          ;
+
+CODE_22B7AB:    JSL CODE_278A72         ; $22:B7AB: 22 72 8A 27 ;
+
+                LDA #$06                ; $22:B7AF: A9 06       ;
+
+                STA $1203               ; $22:B7B1: 8D 03 12    ;
+
+                LDA $5F,x               ; $22:B7B4: B5 5F       ;
+
+                CLC                     ; $22:B7B6: 18          ;
+
+                ADC #$04                ; $22:B7B7: 69 04       ;
+
+                STA $05C9,y             ; $22:B7B9: 99 C9 05    ;
+
+                LDA $44,x               ; $22:B7BC: B5 44       ;
+
+                ADC #$00                ; $22:B7BE: 69 00       ;
+
+                STA $00E2,y             ; $22:B7C0: 99 E2 00    ;
+
+                LDA $71,x               ; $22:B7C3: B5 71       ;
+
+                CLC                     ; $22:B7C5: 18          ;
+
+                ADC #$03                ; $22:B7C6: 69 03       ;
+
+                STA $05BF,y             ; $22:B7C8: 99 BF 05    ;
+
+                LDA $56,x               ; $22:B7CB: B5 56       ;
+
+                ADC #$00                ; $22:B7CD: 69 00       ;
+
+                STA $1FD7,y             ; $22:B7CF: 99 D7 1F    ;
+
+                LDA #$20                ; $22:B7D2: A9 20       ;
+
+                STA $05D3,y             ; $22:B7D4: 99 D3 05    ;
+
+                STY $00                 ; $22:B7D7: 84 00       ;
+
                 JSL CODE_27A837         ; $22:B7D9: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C434,y                 ; $22:B7DD: B9 34 C4    ;
-                LDY $00                     ; $22:B7E0: A4 00       ;
-                STA $05DD,y                 ; $22:B7E2: 99 DD 05    ;
-                LDA #$0C                    ; $22:B7E5: A9 0C       ;
-                STA $1FC8,y                 ; $22:B7E7: 99 C8 1F    ;
-                LDA #$00                    ; $22:B7EA: A9 00       ;
-                STA $06C7,y                 ; $22:B7EC: 99 C7 06    ;
-                RTS                         ; $22:B7EF: 60          ;
+                LDA.w DATA_21C434,y     ; $22:B7DD: B9 34 C4    ;
 
-CODE_22B7F0:    INC $1FF9,x                 ; $22:B7F0: FE F9 1F    ;
-                RTL                         ; $22:B7F3: 6B          ;
+                LDY $00                 ; $22:B7E0: A4 00       ;
 
-CODE_22B7F4:    LDA $0661,x                 ; $22:B7F4: BD 61 06    ;
-                CMP #$02                    ; $22:B7F7: C9 02       ;
-                BEQ CODE_22B7FF             ; $22:B7F9: F0 04       ;
-                JSR CODE_22B943             ; $22:B7FB: 20 43 B9    ;
-                RTL                         ; $22:B7FE: 6B          ;
+                STA $05DD,y             ; $22:B7E2: 99 DD 05    ;
 
-CODE_22B7FF:    LDA $0520,x                 ; $22:B7FF: BD 20 05    ;
-                BEQ CODE_22B81C             ; $22:B802: F0 18       ;
-                LDA $A6                     ; $22:B804: A5 A6       ;
-                BNE CODE_22B81C             ; $22:B806: D0 14       ;
-                INC $A6                     ; $22:B808: E6 A6       ;
-                LDA #$20                    ; $22:B80A: A9 20       ;
-                STA $1CF4                   ; $22:B80C: 8D F4 1C    ;
-                LDA #$F0                    ; $22:B80F: A9 F0       ;
-                STA $9D                     ; $22:B811: 85 9D       ;
-                DEC $70                     ; $22:B813: C6 70       ;
-                LDY $70                     ; $22:B815: A4 70       ;
-                INY                         ; $22:B817: C8          ;
-                BNE CODE_22B81C             ; $22:B818: D0 02       ;
-                DEC $55                     ; $22:B81A: C6 55       ;
+                LDA #$0C                ; $22:B7E5: A9 0C       ;
+
+                STA $1FC8,y             ; $22:B7E7: 99 C8 1F    ;
+
+                LDA #$00                ; $22:B7EA: A9 00       ;
+
+                STA $06C7,y             ; $22:B7EC: 99 C7 06    ;
+
+                RTS                     ; $22:B7EF: 60          ;
+
+CODE_22B7F0:    INC $1FF9,x             ; $22:B7F0: FE F9 1F    ;
+
+                RTL                     ; $22:B7F3: 6B          ;
+
+CODE_22B7F4:    LDA $0661,x             ; $22:B7F4: BD 61 06    ;
+
+                CMP #$02                ; $22:B7F7: C9 02       ;
+
+                BEQ CODE_22B7FF         ; $22:B7F9: F0 04       ;
+
+                JSR CODE_22B943         ; $22:B7FB: 20 43 B9    ;
+
+                RTL                     ; $22:B7FE: 6B          ;
+
+CODE_22B7FF:    LDA $0520,x             ; $22:B7FF: BD 20 05    ;
+
+                BEQ CODE_22B81C         ; $22:B802: F0 18       ;
+
+                LDA $A6                 ; $22:B804: A5 A6       ;
+
+                BNE CODE_22B81C         ; $22:B806: D0 14       ;
+
+                INC $A6                 ; $22:B808: E6 A6       ;
+
+                LDA #$20                ; $22:B80A: A9 20       ;
+
+                STA $1CF4               ; $22:B80C: 8D F4 1C    ;
+
+                LDA #$F0                ; $22:B80F: A9 F0       ;
+
+                STA $9D                 ; $22:B811: 85 9D       ;
+
+                DEC $70                 ; $22:B813: C6 70       ;
+
+                LDY $70                 ; $22:B815: A4 70       ;
+
+                INY                     ; $22:B817: C8          ;
+
+                BNE CODE_22B81C         ; $22:B818: D0 02       ;
+
+                DEC $55                 ; $22:B81A: C6 55       ;
+
 CODE_22B81C:    JSL CODE_279BC3         ; $22:B81C: 22 C3 9B 27 ; Subroutine: Remove if offscreen
                 JSL CODE_27A837         ; $22:B820: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C436,y                 ; $22:B824: B9 36 C4    ;
-                STA $0679,x                 ; $22:B827: 9D 79 06    ;
-                LDA $0691,x                 ; $22:B82A: BD 91 06    ;
-                BEQ CODE_22B836             ; $22:B82D: F0 07       ;
-                DEC $0691,x                 ; $22:B82F: DE 91 06    ;
-                JSL CODE_27DF26             ; $22:B832: 22 26 DF 27 ;
-CODE_22B836:    TXA                         ; $22:B836: 8A          ;
-                ASL A                       ; $22:B837: 0A          ;
-                ASL A                       ; $22:B838: 0A          ;
-                ASL A                       ; $22:B839: 0A          ;
-                ADC $0565                   ; $22:B83A: 6D 65 05    ;
-                AND #$3F                    ; $22:B83D: 29 3F       ;
-                ORA $0518,x                 ; $22:B83F: 1D 18 05    ;
-                BNE CODE_22B84D             ; $22:B842: D0 09       ;
-                LDA #$10                    ; $22:B844: A9 10       ;
-                STA $0518,x                 ; $22:B846: 9D 18 05    ;
-                JSL CODE_22B366             ; $22:B849: 22 66 B3 22 ;
-CODE_22B84D:    LDY #$00                    ; $22:B84D: A0 00       ;
-                LDA $1FD2,x                 ; $22:B84F: BD D2 1F    ;
-                AND #$10                    ; $22:B852: 29 10       ;
-                BEQ CODE_22B857             ; $22:B854: F0 01       ;
-                INY                         ; $22:B856: C8          ;
-CODE_22B857:    LDA $0518,x                 ; $22:B857: BD 18 05    ;
-                BEQ CODE_22B85E             ; $22:B85A: F0 02       ;
-                INY                         ; $22:B85C: C8          ;
-                INY                         ; $22:B85D: C8          ;
-CODE_22B85E:    TYA                         ; $22:B85E: 98          ;
-                STA $0669,x                 ; $22:B85F: 9D 69 06    ;
-                JSR CODE_22B943             ; $22:B862: 20 43 B9    ;
-                LDA $9C                     ; $22:B865: A5 9C       ;
-                BNE CODE_22B8BD             ; $22:B867: D0 54       ;
-                LDA $68,x                   ; $22:B869: B5 68       ;
-                BEQ CODE_22B8BE             ; $22:B86B: F0 51       ;
-                JSL CODE_27A7EF             ; $22:B86D: 22 EF A7 27 ;
-                JSL CODE_27A7E4             ; $22:B871: 22 E4 A7 27 ;
-                JSL CODE_278B93             ; $22:B875: 22 93 8B 27 ;
-                JSL CODE_279B6B             ; $22:B879: 22 6B 9B 27 ;
-                LDA $9E,x                   ; $22:B87D: B5 9E       ;
-                BMI CODE_22B887             ; $22:B87F: 30 06       ;
-                CMP #$70                    ; $22:B881: C9 70       ;
-                BCS CODE_22B89B                     ; $22:B883: B0 16       ;
-                BCC CODE_22B88C             ; $22:B885: 90 05       ;
-CODE_22B887:    EOR #$FF                    ; $22:B887: 49 FF       ;
-                CLC                         ; $22:B889: 18          ;
-                ADC #$01                    ; $22:B88A: 69 01       ;
-CODE_22B88C:    LSR A                       ; $22:B88C: 4A          ;
-                LSR A                       ; $22:B88D: 4A          ;
-                LDY $9E,x                   ; $22:B88E: B4 9E       ;
-                BPL CODE_22B894             ; $22:B890: 10 02       ;
-                LSR A                       ; $22:B892: 4A          ;
-                LSR A                       ; $22:B893: 4A          ;
-CODE_22B894:    CLC                         ; $22:B894: 18          ;
-                ADC #$01                    ; $22:B895: 69 01       ;
-                ADC $9E,x                   ; $22:B897: 75 9E       ;
-                STA $9E,x                   ; $22:B899: 95 9E       ;
-CODE_22B89B:    LDA $A7,x                   ; $22:B89B: B5 A7       ;
-                AND #$04                    ; $22:B89D: 29 04       ;
-                BEQ CODE_22B8BD             ; $22:B89F: F0 1C       ;
-                STZ $68,x                   ; $22:B8A1: 74 68       ;
-                LDA #$0C                    ; $22:B8A3: A9 0C       ;
-                STA $1CF3                   ; $22:B8A5: 8D F3 1C    ;
-                STA $0691,x                 ; $22:B8A8: 9D 91 06    ;
-                LDA #$09                    ; $22:B8AB: A9 09       ;
-                STA $1203                   ; $22:B8AD: 8D 03 12    ;
-                JSL CODE_278B67             ; $22:B8B0: 22 67 8B 27 ;
-                LDA $A6                     ; $22:B8B4: A5 A6       ;
-                BNE CODE_22B8BD             ; $22:B8B6: D0 05       ;
-                LDA #$40                    ; $22:B8B8: A9 40       ;
-                STA $0520,x                 ; $22:B8BA: 9D 20 05    ;
-CODE_22B8BD:    RTL                         ; $22:B8BD: 6B          ;
+                LDA.w DATA_21C436,y     ; $22:B824: B9 36 C4    ;
 
-CODE_22B8BE:    LDA $0689,x                 ; $22:B8BE: BD 89 06    ;
-                BEQ CODE_22B8C6             ; $22:B8C1: F0 03       ;
-                DEC $0689,x                 ; $22:B8C3: DE 89 06    ;
-CODE_22B8C6:    TXA                         ; $22:B8C6: 8A          ;
-                ASL A                       ; $22:B8C7: 0A          ;
-                ASL A                       ; $22:B8C8: 0A          ;
-                ASL A                       ; $22:B8C9: 0A          ;
-                ASL A                       ; $22:B8CA: 0A          ;
-                ADC $0565                   ; $22:B8CB: 6D 65 05    ;
-                AND #$7F                    ; $22:B8CE: 29 7F       ;
-                BNE CODE_22B8E2             ; $22:B8D0: D0 10       ;
-                LDA $0783,x                 ; $22:B8D2: BD 83 07    ;
-                AND #$03                    ; $22:B8D5: 29 03       ;
-                BEQ CODE_22B8E2             ; $22:B8D7: F0 09       ;
-                INC $68,x                   ; $22:B8D9: F6 68       ;
-                LDA #$A8                    ; $22:B8DB: A9 A8       ;
-                STA $9E,x                   ; $22:B8DD: 95 9E       ;
-                STZ $8C,x                   ; $22:B8DF: 74 8C       ;
-                RTL                         ; $22:B8E1: 6B          ;
+                STA $0679,x             ; $22:B827: 9D 79 06    ;
 
-CODE_22B8E2:    JSR CODE_22B8E6             ; $22:B8E2: 20 E6 B8    ;
-                RTL                         ; $22:B8E5: 6B          ;
+                LDA $0691,x             ; $22:B82A: BD 91 06    ;
 
-CODE_22B8E6:    LDA $4D,x                   ; $22:B8E6: B5 4D       ;
-                AND #$03                    ; $22:B8E8: 29 03       ;
+                BEQ CODE_22B836         ; $22:B82D: F0 07       ;
+
+                DEC $0691,x             ; $22:B82F: DE 91 06    ;
+
+                JSL CODE_27DF26         ; $22:B832: 22 26 DF 27 ;
+
+CODE_22B836:    TXA                     ; $22:B836: 8A          ;
+
+                ASL A                   ; $22:B837: 0A          ;
+
+                ASL A                   ; $22:B838: 0A          ;
+
+                ASL A                   ; $22:B839: 0A          ;
+
+                ADC $0565               ; $22:B83A: 6D 65 05    ;
+
+                AND #$3F                ; $22:B83D: 29 3F       ;
+
+                ORA $0518,x             ; $22:B83F: 1D 18 05    ;
+
+                BNE CODE_22B84D         ; $22:B842: D0 09       ;
+
+                LDA #$10                ; $22:B844: A9 10       ;
+
+                STA $0518,x             ; $22:B846: 9D 18 05    ;
+
+                JSL CODE_22B366         ; $22:B849: 22 66 B3 22 ;
+
+CODE_22B84D:    LDY #$00                ; $22:B84D: A0 00       ;
+
+                LDA $1FD2,x             ; $22:B84F: BD D2 1F    ;
+
+                AND #$10                ; $22:B852: 29 10       ;
+
+                BEQ CODE_22B857         ; $22:B854: F0 01       ;
+
+                INY                     ; $22:B856: C8          ;
+
+CODE_22B857:    LDA $0518,x             ; $22:B857: BD 18 05    ;
+
+                BEQ CODE_22B85E         ; $22:B85A: F0 02       ;
+
+                INY                     ; $22:B85C: C8          ;
+
+                INY                     ; $22:B85D: C8          ;
+
+CODE_22B85E:    TYA                     ; $22:B85E: 98          ;
+
+                STA $0669,x             ; $22:B85F: 9D 69 06    ;
+
+                JSR CODE_22B943         ; $22:B862: 20 43 B9    ;
+
+                LDA $9C                 ; $22:B865: A5 9C       ;
+
+                BNE CODE_22B8BD         ; $22:B867: D0 54       ;
+
+                LDA $68,x               ; $22:B869: B5 68       ;
+
+                BEQ CODE_22B8BE         ; $22:B86B: F0 51       ;
+
+                JSL CODE_27A7EF         ; $22:B86D: 22 EF A7 27 ;
+
+                JSL CODE_27A7E4         ; $22:B871: 22 E4 A7 27 ;
+
+                JSL CODE_278B93         ; $22:B875: 22 93 8B 27 ;
+
+                JSL CODE_279B6B         ; $22:B879: 22 6B 9B 27 ;
+
+                LDA $9E,x               ; $22:B87D: B5 9E       ;
+
+                BMI CODE_22B887         ; $22:B87F: 30 06       ;
+
+                CMP #$70                ; $22:B881: C9 70       ;
+
+                BCS CODE_22B89B         ; $22:B883: B0 16       ;
+
+                BCC CODE_22B88C         ; $22:B885: 90 05       ;
+
+CODE_22B887:    EOR #$FF                ; $22:B887: 49 FF       ;
+
+                CLC                     ; $22:B889: 18          ;
+
+                ADC #$01                ; $22:B88A: 69 01       ;
+
+CODE_22B88C:    LSR A                   ; $22:B88C: 4A          ;
+
+                LSR A                   ; $22:B88D: 4A          ;
+
+                LDY $9E,x               ; $22:B88E: B4 9E       ;
+
+                BPL CODE_22B894         ; $22:B890: 10 02       ;
+
+                LSR A                   ; $22:B892: 4A          ;
+
+                LSR A                   ; $22:B893: 4A          ;
+
+CODE_22B894:    CLC                     ; $22:B894: 18          ;
+
+                ADC #$01                ; $22:B895: 69 01       ;
+
+                ADC $9E,x               ; $22:B897: 75 9E       ;
+
+                STA $9E,x               ; $22:B899: 95 9E       ;
+
+CODE_22B89B:    LDA $A7,x               ; $22:B89B: B5 A7       ;
+
+                AND #$04                ; $22:B89D: 29 04       ;
+
+                BEQ CODE_22B8BD         ; $22:B89F: F0 1C       ;
+
+                STZ $68,x               ; $22:B8A1: 74 68       ;
+
+                LDA #$0C                ; $22:B8A3: A9 0C       ;
+
+                STA $1CF3               ; $22:B8A5: 8D F3 1C    ;
+
+                STA $0691,x             ; $22:B8A8: 9D 91 06    ;
+
+                LDA #$09                ; $22:B8AB: A9 09       ;
+
+                STA $1203               ; $22:B8AD: 8D 03 12    ;
+
+                JSL CODE_278B67         ; $22:B8B0: 22 67 8B 27 ;
+
+                LDA $A6                 ; $22:B8B4: A5 A6       ;
+
+                BNE CODE_22B8BD         ; $22:B8B6: D0 05       ;
+
+                LDA #$40                ; $22:B8B8: A9 40       ;
+
+                STA $0520,x             ; $22:B8BA: 9D 20 05    ;
+
+CODE_22B8BD:    RTL                     ; $22:B8BD: 6B          ;
+
+CODE_22B8BE:    LDA $0689,x             ; $22:B8BE: BD 89 06    ;
+
+                BEQ CODE_22B8C6         ; $22:B8C1: F0 03       ;
+
+                DEC $0689,x             ; $22:B8C3: DE 89 06    ;
+
+CODE_22B8C6:    TXA                     ; $22:B8C6: 8A          ;
+
+                ASL A                   ; $22:B8C7: 0A          ;
+
+                ASL A                   ; $22:B8C8: 0A          ;
+
+                ASL A                   ; $22:B8C9: 0A          ;
+
+                ASL A                   ; $22:B8CA: 0A          ;
+
+                ADC $0565               ; $22:B8CB: 6D 65 05    ;
+
+                AND #$7F                ; $22:B8CE: 29 7F       ;
+
+                BNE CODE_22B8E2         ; $22:B8D0: D0 10       ;
+
+                LDA $0783,x             ; $22:B8D2: BD 83 07    ;
+
+                AND #$03                ; $22:B8D5: 29 03       ;
+
+                BEQ CODE_22B8E2         ; $22:B8D7: F0 09       ;
+
+                INC $68,x               ; $22:B8D9: F6 68       ;
+
+                LDA #$A8                ; $22:B8DB: A9 A8       ;
+
+                STA $9E,x               ; $22:B8DD: 95 9E       ;
+
+                STZ $8C,x               ; $22:B8DF: 74 8C       ;
+
+                RTL                     ; $22:B8E1: 6B          ;
+
+CODE_22B8E2:    JSR CODE_22B8E6         ; $22:B8E2: 20 E6 B8    ;
+
+                RTL                     ; $22:B8E5: 6B          ;
+
+CODE_22B8E6:    LDA $4D,x               ; $22:B8E6: B5 4D       ;
+
+                AND #$03                ; $22:B8E8: 29 03       ;
+
                 JSL CODE_20FB1F         ; $22:B8EA: 22 1F FB 20 ; ExecutePtrShort
 
                 dw CODE_22B8F6                                  ;
@@ -1899,752 +2792,1449 @@ CODE_22B8F6:    LDA $0689,x             ; $22:B8F6: BD 89 06    ;
                 BNE CODE_22B902         ; $22:B8F9: D0 07       ;
                 INC $4D,x               ; $22:B8FB: F6 4D       ;
                 LDA #$20                ; $22:B8FD: A9 20       ;
-                STA $0689,x                 ; $22:B8FF: 9D 89 06    ;
-CODE_22B902:    LDA #$FC                    ; $22:B902: A9 FC       ;
-                STA $8C,x                   ; $22:B904: 95 8C       ;
-                BRA CODE_22B92D             ; $22:B906: 80 25       ;
+                STA $0689,x             ; $22:B8FF: 9D 89 06    ;
 
-CODE_22B908:    LDA $0689,x                 ; $22:B908: BD 89 06    ;
-                BNE CODE_22B914             ; $22:B90B: D0 07       ;
-                INC $4D,x                   ; $22:B90D: F6 4D       ;
-                LDA #$40                    ; $22:B90F: A9 40       ;
-                STA $0689,x                 ; $22:B911: 9D 89 06    ;
-CODE_22B914:    JSL CODE_278B93             ; $22:B914: 22 93 8B 27 ;
-                JSL CODE_279B6B             ; $22:B918: 22 6B 9B 27 ;
-                RTS                         ; $22:B91C: 60          ;
+CODE_22B902:    LDA #$FC                ; $22:B902: A9 FC       ;
 
-CODE_22B91D:    LDA $0689,x                 ; $22:B91D: BD 89 06    ;
-                BNE CODE_22B929             ; $22:B920: D0 07       ;
-                INC $4D,x                   ; $22:B922: F6 4D       ;
-                LDA #$20                    ; $22:B924: A9 20       ;
-                STA $0689,x                 ; $22:B926: 9D 89 06    ;
-CODE_22B929:    LDA #$04                    ; $22:B929: A9 04       ;
-                STA $8C,x                   ; $22:B92B: 95 8C       ;
-CODE_22B92D:    JSL CODE_27983B             ; $22:B92D: 22 3B 98 27 ;
-                JSL CODE_279B6B             ; $22:B931: 22 6B 9B 27 ;
-                LDA $A7,x                   ; $22:B935: B5 A7       ;
-                AND #$04                    ; $22:B937: 29 04       ;
-                BEQ CODE_22B942             ; $22:B939: F0 07       ;
-                INC $1FD2,x                 ; $22:B93B: FE D2 1F    ;
-                JSL CODE_278B67             ; $22:B93E: 22 67 8B 27 ;
-CODE_22B942:    RTS                         ; $22:B942: 60          ;
+                STA $8C,x               ; $22:B904: 95 8C       ;
 
-CODE_22B943:    LDA $5F,x                   ; $22:B943: B5 5F       ;
-                PHA                         ; $22:B945: 48          ;
-                LDA $44,x                   ; $22:B946: B5 44       ;
-                PHA                         ; $22:B948: 48          ;
-                LDA $0651,x                 ; $22:B949: BD 51 06    ;
-                STA $1CEF                   ; $22:B94C: 8D EF 1C    ;
-                LDA $0679,x                 ; $22:B94F: BD 79 06    ;
-                AND #$40                    ; $22:B952: 29 40       ;
-                BEQ CODE_22B966             ; $22:B954: F0 10       ;
-                ASL $0651,x                 ; $22:B956: 1E 51 06    ;
-                LDA $5F,x                   ; $22:B959: B5 5F       ;
-                CLC                         ; $22:B95B: 18          ;
-                ADC #$08                    ; $22:B95C: 69 08       ;
-                STA $5F,x                   ; $22:B95E: 95 5F       ;
-                LDA $44,x                   ; $22:B960: B5 44       ;
-                ADC #$00                    ; $22:B962: 69 00       ;
-                STA $44,x                   ; $22:B964: 95 44       ;
-CODE_22B966:    JSL CODE_279F51             ; $22:B966: 22 51 9F 27 ;
-                PLA                         ; $22:B96A: 68          ;
-                STA $44,x                   ; $22:B96B: 95 44       ;
-                PLA                         ; $22:B96D: 68          ;
-                STA $5F,x                   ; $22:B96E: 95 5F       ;
-                JSL CODE_279DC2             ; $22:B970: 22 C2 9D 27 ;
-                LDY #$00                    ; $22:B974: A0 00       ;
-                LDA $0679,x                 ; $22:B976: BD 79 06    ;
-                AND #$40                    ; $22:B979: 29 40       ;
-                BEQ CODE_22B97E             ; $22:B97B: F0 01       ;
-                INY                         ; $22:B97D: C8          ;
-CODE_22B97E:    LDA $7A,x                   ; $22:B97E: B5 7A       ;
-                CLC                         ; $22:B980: 18          ;
-                ADC.w DATA_21C43A,y                 ; $22:B981: 79 3A C4    ;
-                STA $01                     ; $22:B984: 85 01       ;
-                REP #$10                    ; $22:B986: C2 10       ;
-                LDY $C6,x                   ; $22:B988: B4 C6       ;
-                LDA $01                     ; $22:B98A: A5 01       ;
-                STA $0810,y                 ; $22:B98C: 99 10 08    ;
-                STA $0814,y                 ; $22:B98F: 99 14 08    ;
-                STA $0818,y                 ; $22:B992: 99 18 08    ;
-                STA $081C,y                 ; $22:B995: 99 1C 08    ;
-                LDA $0681,x                 ; $22:B998: BD 81 06    ;
-                STA $00                     ; $22:B99B: 85 00       ;
-                LDA $83,x                   ; $22:B99D: B5 83       ;
-                LSR $00                     ; $22:B99F: 46 00       ;
-                BCS CODE_22B9AC                     ; $22:B9A1: B0 09       ;
-                STA $0811,y                 ; $22:B9A3: 99 11 08    ;
-                CLC                         ; $22:B9A6: 18          ;
-                ADC #$08                    ; $22:B9A7: 69 08       ;
-                STA $0819,y                 ; $22:B9A9: 99 19 08    ;
-CODE_22B9AC:    LSR $00                     ; $22:B9AC: 46 00       ;
-                BCS CODE_22B9BC                     ; $22:B9AE: B0 0C       ;
-                CLC                         ; $22:B9B0: 18          ;
-                ADC #$08                    ; $22:B9B1: 69 08       ;
-                STA $0815,y                 ; $22:B9B3: 99 15 08    ;
-                CLC                         ; $22:B9B6: 18          ;
-                ADC #$08                    ; $22:B9B7: 69 08       ;
-                STA $081D,y                 ; $22:B9B9: 99 1D 08    ;
-CODE_22B9BC:    LDA $0803,y                 ; $22:B9BC: B9 03 08    ;
-                STA $0813,y                 ; $22:B9BF: 99 13 08    ;
-                STA $0817,y                 ; $22:B9C2: 99 17 08    ;
-                STA $081B,y                 ; $22:B9C5: 99 1B 08    ;
-                STA $081F,y                 ; $22:B9C8: 99 1F 08    ;
-                LDA #$00                    ; $22:B9CB: A9 00       ;
-                CMP $0518,x                 ; $22:B9CD: DD 18 05    ;
-                LDA #$5E                    ; $22:B9D0: A9 5E       ;
-                BCS CODE_22B9D6                     ; $22:B9D2: B0 02       ;
-                LDA #$54                    ; $22:B9D4: A9 54       ;
-CODE_22B9D6:    STA $0812,y                 ; $22:B9D6: 99 12 08    ;
-                INC A                       ; $22:B9D9: 1A          ;
-                STA $081A,y                 ; $22:B9DA: 99 1A 08    ;
-                LDA $0669,x                 ; $22:B9DD: BD 69 06    ;
-                LSR A                       ; $22:B9E0: 4A          ;
-                LDA #$5A                    ; $22:B9E1: A9 5A       ;
-                BCS CODE_22B9E7                     ; $22:B9E3: B0 02       ;
-                LDA #$6C                    ; $22:B9E5: A9 6C       ;
-CODE_22B9E7:    STA $0816,y                 ; $22:B9E7: 99 16 08    ;
-                INC A                       ; $22:B9EA: 1A          ;
-                STA $081E,y                 ; $22:B9EB: 99 1E 08    ;
-                LDA $0679,x                 ; $22:B9EE: BD 79 06    ;
-                BPL CODE_22BA0F             ; $22:B9F1: 10 1C       ;
-                LDA $0812,y                 ; $22:B9F3: B9 12 08    ;
-                PHA                         ; $22:B9F6: 48          ;
-                LDA $081E,y                 ; $22:B9F7: B9 1E 08    ;
-                STA $0812,y                 ; $22:B9FA: 99 12 08    ;
-                PLA                         ; $22:B9FD: 68          ;
-                STA $081E,y                 ; $22:B9FE: 99 1E 08    ;
-                LDA $081A,y                 ; $22:BA01: B9 1A 08    ;
-                PHA                         ; $22:BA04: 48          ;
-                LDA $0816,y                 ; $22:BA05: B9 16 08    ;
-                STA $081A,y                 ; $22:BA08: 99 1A 08    ;
-                PLA                         ; $22:BA0B: 68          ;
-                STA $0816,y                 ; $22:BA0C: 99 16 08    ;
-CODE_22BA0F:    REP #$20                    ; $22:BA0F: C2 20       ;
-                TYA                         ; $22:BA11: 98          ;
-                LSR A                       ; $22:BA12: 4A          ;
-                LSR A                       ; $22:BA13: 4A          ;
-                TAY                         ; $22:BA14: A8          ;
-                SEP #$20                    ; $22:BA15: E2 20       ;
-                LDA $0679,x                 ; $22:BA17: BD 79 06    ;
-                AND #$40                    ; $22:BA1A: 29 40       ;
-                BEQ CODE_22BA25             ; $22:BA1C: F0 07       ;
-                LDA $1CEF                   ; $22:BA1E: AD EF 1C    ;
-                ROL A                       ; $22:BA21: 2A          ;
-                ROL A                       ; $22:BA22: 2A          ;
-                BRA CODE_22BA2C             ; $22:BA23: 80 07       ;
-CODE_22BA25:    LDA $1CEF                   ; $22:BA25: AD EF 1C    ;
-                ROL A                       ; $22:BA28: 2A          ;
-                ROL A                       ; $22:BA29: 2A          ;
-                ROL A                       ; $22:BA2A: 2A          ;
-                ROL A                       ; $22:BA2B: 2A          ;
-CODE_22BA2C:    AND #$01                    ; $22:BA2C: 29 01       ;
-                STA $0A24,y                 ; $22:BA2E: 99 24 0A    ;
-                STA $0A25,y                 ; $22:BA31: 99 25 0A    ;
-                STA $0A26,y                 ; $22:BA34: 99 26 0A    ;
-                STA $0A27,y                 ; $22:BA37: 99 27 0A    ;
-                SEP #$10                    ; $22:BA3A: E2 10       ;
-                RTS                         ; $22:BA3C: 60          ;
+                BRA CODE_22B92D         ; $22:B906: 80 25       ;
 
-CODE_22BA3D:    LDA $9C                     ; $22:BA3D: A5 9C       ;
-                BNE CODE_22BAAD             ; $22:BA3F: D0 6C       ;
-                LDA $0661,x                 ; $22:BA41: BD 61 06    ;
-                CMP #$02                    ; $22:BA44: C9 02       ;
-                BNE CODE_22BAAD             ; $22:BA46: D0 65       ;
+CODE_22B908:    LDA $0689,x             ; $22:B908: BD 89 06    ;
+
+                BNE CODE_22B914         ; $22:B90B: D0 07       ;
+
+                INC $4D,x               ; $22:B90D: F6 4D       ;
+
+                LDA #$40                ; $22:B90F: A9 40       ;
+
+                STA $0689,x             ; $22:B911: 9D 89 06    ;
+
+CODE_22B914:    JSL CODE_278B93         ; $22:B914: 22 93 8B 27 ;
+
+                JSL CODE_279B6B         ; $22:B918: 22 6B 9B 27 ;
+
+                RTS                     ; $22:B91C: 60          ;
+
+CODE_22B91D:    LDA $0689,x             ; $22:B91D: BD 89 06    ;
+
+                BNE CODE_22B929         ; $22:B920: D0 07       ;
+
+                INC $4D,x               ; $22:B922: F6 4D       ;
+
+                LDA #$20                ; $22:B924: A9 20       ;
+
+                STA $0689,x             ; $22:B926: 9D 89 06    ;
+
+CODE_22B929:    LDA #$04                ; $22:B929: A9 04       ;
+
+                STA $8C,x               ; $22:B92B: 95 8C       ;
+
+CODE_22B92D:    JSL CODE_27983B         ; $22:B92D: 22 3B 98 27 ;
+
+                JSL CODE_279B6B         ; $22:B931: 22 6B 9B 27 ;
+
+                LDA $A7,x               ; $22:B935: B5 A7       ;
+
+                AND #$04                ; $22:B937: 29 04       ;
+
+                BEQ CODE_22B942         ; $22:B939: F0 07       ;
+
+                INC $1FD2,x             ; $22:B93B: FE D2 1F    ;
+
+                JSL CODE_278B67         ; $22:B93E: 22 67 8B 27 ;
+
+CODE_22B942:    RTS                     ; $22:B942: 60          ;
+
+CODE_22B943:    LDA $5F,x               ; $22:B943: B5 5F       ;
+
+                PHA                     ; $22:B945: 48          ;
+
+                LDA $44,x               ; $22:B946: B5 44       ;
+
+                PHA                     ; $22:B948: 48          ;
+
+                LDA $0651,x             ; $22:B949: BD 51 06    ;
+
+                STA $1CEF               ; $22:B94C: 8D EF 1C    ;
+
+                LDA $0679,x             ; $22:B94F: BD 79 06    ;
+
+                AND #$40                ; $22:B952: 29 40       ;
+
+                BEQ CODE_22B966         ; $22:B954: F0 10       ;
+
+                ASL $0651,x             ; $22:B956: 1E 51 06    ;
+
+                LDA $5F,x               ; $22:B959: B5 5F       ;
+
+                CLC                     ; $22:B95B: 18          ;
+
+                ADC #$08                ; $22:B95C: 69 08       ;
+
+                STA $5F,x               ; $22:B95E: 95 5F       ;
+
+                LDA $44,x               ; $22:B960: B5 44       ;
+
+                ADC #$00                ; $22:B962: 69 00       ;
+
+                STA $44,x               ; $22:B964: 95 44       ;
+
+CODE_22B966:    JSL CODE_279F51         ; $22:B966: 22 51 9F 27 ;
+
+                PLA                     ; $22:B96A: 68          ;
+
+                STA $44,x               ; $22:B96B: 95 44       ;
+
+                PLA                     ; $22:B96D: 68          ;
+
+                STA $5F,x               ; $22:B96E: 95 5F       ;
+
+                JSL CODE_279DC2         ; $22:B970: 22 C2 9D 27 ;
+
+                LDY #$00                ; $22:B974: A0 00       ;
+
+                LDA $0679,x             ; $22:B976: BD 79 06    ;
+
+                AND #$40                ; $22:B979: 29 40       ;
+
+                BEQ CODE_22B97E         ; $22:B97B: F0 01       ;
+
+                INY                     ; $22:B97D: C8          ;
+
+CODE_22B97E:    LDA $7A,x               ; $22:B97E: B5 7A       ;
+
+                CLC                     ; $22:B980: 18          ;
+
+                ADC.w DATA_21C43A,y     ; $22:B981: 79 3A C4    ;
+
+                STA $01                 ; $22:B984: 85 01       ;
+
+                REP #$10                ; $22:B986: C2 10       ;
+
+                LDY $C6,x               ; $22:B988: B4 C6       ;
+
+                LDA $01                 ; $22:B98A: A5 01       ;
+
+                STA $0810,y             ; $22:B98C: 99 10 08    ;
+
+                STA $0814,y             ; $22:B98F: 99 14 08    ;
+
+                STA $0818,y             ; $22:B992: 99 18 08    ;
+
+                STA $081C,y             ; $22:B995: 99 1C 08    ;
+
+                LDA $0681,x             ; $22:B998: BD 81 06    ;
+
+                STA $00                 ; $22:B99B: 85 00       ;
+
+                LDA $83,x               ; $22:B99D: B5 83       ;
+
+                LSR $00                 ; $22:B99F: 46 00       ;
+
+                BCS CODE_22B9AC         ; $22:B9A1: B0 09       ;
+
+                STA $0811,y             ; $22:B9A3: 99 11 08    ;
+
+                CLC                     ; $22:B9A6: 18          ;
+
+                ADC #$08                ; $22:B9A7: 69 08       ;
+
+                STA $0819,y             ; $22:B9A9: 99 19 08    ;
+
+CODE_22B9AC:    LSR $00                 ; $22:B9AC: 46 00       ;
+
+                BCS CODE_22B9BC         ; $22:B9AE: B0 0C       ;
+
+                CLC                     ; $22:B9B0: 18          ;
+
+                ADC #$08                ; $22:B9B1: 69 08       ;
+
+                STA $0815,y             ; $22:B9B3: 99 15 08    ;
+
+                CLC                     ; $22:B9B6: 18          ;
+
+                ADC #$08                ; $22:B9B7: 69 08       ;
+
+                STA $081D,y             ; $22:B9B9: 99 1D 08    ;
+
+CODE_22B9BC:    LDA $0803,y             ; $22:B9BC: B9 03 08    ;
+
+                STA $0813,y             ; $22:B9BF: 99 13 08    ;
+
+                STA $0817,y             ; $22:B9C2: 99 17 08    ;
+
+                STA $081B,y             ; $22:B9C5: 99 1B 08    ;
+
+                STA $081F,y             ; $22:B9C8: 99 1F 08    ;
+
+                LDA #$00                ; $22:B9CB: A9 00       ;
+
+                CMP $0518,x             ; $22:B9CD: DD 18 05    ;
+
+                LDA #$5E                ; $22:B9D0: A9 5E       ;
+
+                BCS CODE_22B9D6         ; $22:B9D2: B0 02       ;
+
+                LDA #$54                ; $22:B9D4: A9 54       ;
+
+CODE_22B9D6:    STA $0812,y             ; $22:B9D6: 99 12 08    ;
+
+                INC A                   ; $22:B9D9: 1A          ;
+
+                STA $081A,y             ; $22:B9DA: 99 1A 08    ;
+
+                LDA $0669,x             ; $22:B9DD: BD 69 06    ;
+
+                LSR A                   ; $22:B9E0: 4A          ;
+
+                LDA #$5A                ; $22:B9E1: A9 5A       ;
+
+                BCS CODE_22B9E7         ; $22:B9E3: B0 02       ;
+
+                LDA #$6C                ; $22:B9E5: A9 6C       ;
+
+CODE_22B9E7:    STA $0816,y             ; $22:B9E7: 99 16 08    ;
+
+                INC A                   ; $22:B9EA: 1A          ;
+
+                STA $081E,y             ; $22:B9EB: 99 1E 08    ;
+
+                LDA $0679,x             ; $22:B9EE: BD 79 06    ;
+
+                BPL CODE_22BA0F         ; $22:B9F1: 10 1C       ;
+
+                LDA $0812,y             ; $22:B9F3: B9 12 08    ;
+
+                PHA                     ; $22:B9F6: 48          ;
+
+                LDA $081E,y             ; $22:B9F7: B9 1E 08    ;
+
+                STA $0812,y             ; $22:B9FA: 99 12 08    ;
+
+                PLA                     ; $22:B9FD: 68          ;
+
+                STA $081E,y             ; $22:B9FE: 99 1E 08    ;
+
+                LDA $081A,y             ; $22:BA01: B9 1A 08    ;
+
+                PHA                     ; $22:BA04: 48          ;
+
+                LDA $0816,y             ; $22:BA05: B9 16 08    ;
+
+                STA $081A,y             ; $22:BA08: 99 1A 08    ;
+
+                PLA                     ; $22:BA0B: 68          ;
+
+                STA $0816,y             ; $22:BA0C: 99 16 08    ;
+
+CODE_22BA0F:    REP #$20                ; $22:BA0F: C2 20       ;
+
+                TYA                     ; $22:BA11: 98          ;
+
+                LSR A                   ; $22:BA12: 4A          ;
+
+                LSR A                   ; $22:BA13: 4A          ;
+
+                TAY                     ; $22:BA14: A8          ;
+
+                SEP #$20                ; $22:BA15: E2 20       ;
+
+                LDA $0679,x             ; $22:BA17: BD 79 06    ;
+
+                AND #$40                ; $22:BA1A: 29 40       ;
+
+                BEQ CODE_22BA25         ; $22:BA1C: F0 07       ;
+
+                LDA $1CEF               ; $22:BA1E: AD EF 1C    ;
+
+                ROL A                   ; $22:BA21: 2A          ;
+
+                ROL A                   ; $22:BA22: 2A          ;
+
+                BRA CODE_22BA2C         ; $22:BA23: 80 07       ;
+
+CODE_22BA25:    LDA $1CEF               ; $22:BA25: AD EF 1C    ;
+
+                ROL A                   ; $22:BA28: 2A          ;
+
+                ROL A                   ; $22:BA29: 2A          ;
+
+                ROL A                   ; $22:BA2A: 2A          ;
+
+                ROL A                   ; $22:BA2B: 2A          ;
+
+CODE_22BA2C:    AND #$01                ; $22:BA2C: 29 01       ;
+
+                STA $0A24,y             ; $22:BA2E: 99 24 0A    ;
+
+                STA $0A25,y             ; $22:BA31: 99 25 0A    ;
+
+                STA $0A26,y             ; $22:BA34: 99 26 0A    ;
+
+                STA $0A27,y             ; $22:BA37: 99 27 0A    ;
+
+                SEP #$10                ; $22:BA3A: E2 10       ;
+
+                RTS                     ; $22:BA3C: 60          ;
+
+CODE_22BA3D:    LDA $9C                 ; $22:BA3D: A5 9C       ;
+
+                BNE CODE_22BAAD         ; $22:BA3F: D0 6C       ;
+
+                LDA $0661,x             ; $22:BA41: BD 61 06    ;
+
+                CMP #$02                ; $22:BA44: C9 02       ;
+
+                BNE CODE_22BAAD         ; $22:BA46: D0 65       ;
+
                 JSL CODE_279BC3         ; $22:BA48: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                LDA $06B7,x                 ; $22:BA4C: BD B7 06    ;
-                PHA                         ; $22:BA4F: 48          ;
-                JSL CODE_27983B             ; $22:BA50: 22 3B 98 27 ;
-                PLA                         ; $22:BA54: 68          ;
-                BNE CODE_22BA61             ; $22:BA55: D0 0A       ;
-                LDA $06B7,x                 ; $22:BA57: BD B7 06    ;
-                BEQ CODE_22BA61             ; $22:BA5A: F0 05       ;
-                LDA $8C,x                   ; $22:BA5C: B5 8C       ;
-                ASL A                       ; $22:BA5E: 0A          ;
-                ROR $8C,x                   ; $22:BA5F: 76 8C       ;
-CODE_22BA61:    LDA $A7,x                   ; $22:BA61: B5 A7       ;
-                AND #$03                    ; $22:BA63: 29 03       ;
-                BEQ CODE_22BA6B             ; $22:BA65: F0 04       ;
-                JSL CODE_279905             ; $22:BA67: 22 05 99 27 ;
-CODE_22BA6B:    LDA $A7,x                   ; $22:BA6B: B5 A7       ;
-                AND #$04                    ; $22:BA6D: 29 04       ;
-                BEQ CODE_22BA9C             ; $22:BA6F: F0 2B       ;
-                LDA $9E,x                   ; $22:BA71: B5 9E       ;
-                PHA                         ; $22:BA73: 48          ;
-                JSL CODE_278B67             ; $22:BA74: 22 67 8B 27 ;
-                PLA                         ; $22:BA78: 68          ;
-                CMP #$10                    ; $22:BA79: C9 10       ;
-                BMI CODE_22BA91             ; $22:BA7B: 30 14       ;
-                LSR A                       ; $22:BA7D: 4A          ;
-                EOR #$FF                    ; $22:BA7E: 49 FF       ;
-                CLC                         ; $22:BA80: 18          ;
-                ADC #$01                    ; $22:BA81: 69 01       ;
-                STA $9E,x                   ; $22:BA83: 95 9E       ;
+                LDA $06B7,x             ; $22:BA4C: BD B7 06    ;
+
+                PHA                     ; $22:BA4F: 48          ;
+
+                JSL CODE_27983B         ; $22:BA50: 22 3B 98 27 ;
+
+                PLA                     ; $22:BA54: 68          ;
+
+                BNE CODE_22BA61         ; $22:BA55: D0 0A       ;
+
+                LDA $06B7,x             ; $22:BA57: BD B7 06    ;
+
+                BEQ CODE_22BA61         ; $22:BA5A: F0 05       ;
+
+                LDA $8C,x               ; $22:BA5C: B5 8C       ;
+
+                ASL A                   ; $22:BA5E: 0A          ;
+
+                ROR $8C,x               ; $22:BA5F: 76 8C       ;
+
+CODE_22BA61:    LDA $A7,x               ; $22:BA61: B5 A7       ;
+
+                AND #$03                ; $22:BA63: 29 03       ;
+
+                BEQ CODE_22BA6B         ; $22:BA65: F0 04       ;
+
+                JSL CODE_279905         ; $22:BA67: 22 05 99 27 ;
+
+CODE_22BA6B:    LDA $A7,x               ; $22:BA6B: B5 A7       ;
+
+                AND #$04                ; $22:BA6D: 29 04       ;
+
+                BEQ CODE_22BA9C         ; $22:BA6F: F0 2B       ;
+
+                LDA $9E,x               ; $22:BA71: B5 9E       ;
+
+                PHA                     ; $22:BA73: 48          ;
+
+                JSL CODE_278B67         ; $22:BA74: 22 67 8B 27 ;
+
+                PLA                     ; $22:BA78: 68          ;
+
+                CMP #$10                ; $22:BA79: C9 10       ;
+
+                BMI CODE_22BA91         ; $22:BA7B: 30 14       ;
+
+                LSR A                   ; $22:BA7D: 4A          ;
+
+                EOR #$FF                ; $22:BA7E: 49 FF       ;
+
+                CLC                     ; $22:BA80: 18          ;
+
+                ADC #$01                ; $22:BA81: 69 01       ;
+
+                STA $9E,x               ; $22:BA83: 95 9E       ;
+
                 JSL CODE_27A837         ; $22:BA85: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C43C,y                 ; $22:BA89: B9 3C C4    ;
-                STA $0679,x                 ; $22:BA8C: 9D 79 06    ;
-                BRA CODE_22BA9C             ; $22:BA8F: 80 0B       ;
+                LDA.w DATA_21C43C,y     ; $22:BA89: B9 3C C4    ;
 
-CODE_22BA91:    LDA #$0C                    ; $22:BA91: A9 0C       ;
-                LDY $0679,x                 ; $22:BA93: BC 79 06    ;
-                BNE CODE_22BA9A             ; $22:BA96: D0 02       ;
-                LDA #$F4                    ; $22:BA98: A9 F4       ;
-CODE_22BA9A:    STA $8C,x                   ; $22:BA9A: 95 8C       ;
-CODE_22BA9C:    LDA $A7,x                   ; $22:BA9C: B5 A7       ;
-                AND #$08                    ; $22:BA9E: 29 08       ;
-                BEQ CODE_22BAA6             ; $22:BAA0: F0 04       ;
-                LDA #$10                    ; $22:BAA2: A9 10       ;
-                STA $9E,x                   ; $22:BAA4: 95 9E       ;
-CODE_22BAA6:    JSL CODE_279B6B             ; $22:BAA6: 22 6B 9B 27 ;
-                JSR CODE_22C3F9             ; $22:BAAA: 20 F9 C3    ;
-CODE_22BAAD:    LDY #$00                    ; $22:BAAD: A0 00       ;
-                LDA $0565                   ; $22:BAAF: AD 65 05    ;
-                AND #$08                    ; $22:BAB2: 29 08       ;
-                BEQ CODE_22BAB7             ; $22:BAB4: F0 01       ;
-                INY                         ; $22:BAB6: C8          ;
-CODE_22BAB7:    TYA                         ; $22:BAB7: 98          ;
-                STA $0669,x                 ; $22:BAB8: 9D 69 06    ;
-                JSL CODE_27A27C             ; $22:BABB: 22 7C A2 27 ;
-                LDA $44,x                   ; $22:BABF: B5 44       ;
-                XBA                         ; $22:BAC1: EB          ;
-                LDA $5F,x                   ; $22:BAC2: B5 5F       ;
-                REP #$20                    ; $22:BAC4: C2 20       ;
-                SEC                         ; $22:BAC6: 38          ;
-                SBC $0210                   ; $22:BAC7: ED 10 02    ;
-                SEP #$20                    ; $22:BACA: E2 20       ;
-                XBA                         ; $22:BACC: EB          ;
-                BPL CODE_22BAD2             ; $22:BACD: 10 03       ;
-                EOR #$FF                    ; $22:BACF: 49 FF       ;
-                INC A                       ; $22:BAD1: 1A          ;
-CODE_22BAD2:    CMP #$02                    ; $22:BAD2: C9 02       ;
-                BCS CODE_22BADA                     ; $22:BAD4: B0 04       ;
-                JSL CODE_22BADB             ; $22:BAD6: 22 DB BA 22 ;
-CODE_22BADA:    RTL                         ; $22:BADA: 6B          ;
+                STA $0679,x             ; $22:BA8C: 9D 79 06    ;
 
-CODE_22BADB:    JSR CODE_22CBA0             ; $22:BADB: 20 A0 CB    ;
-                REP #$10                    ; $22:BADE: C2 10       ;
-                LDY $C6,x                   ; $22:BAE0: B4 C6       ;
-                LDA $0803,y                 ; $22:BAE2: B9 03 08    ;
-                PHA                         ; $22:BAE5: 48          ;
-                AND #$7F                    ; $22:BAE6: 29 7F       ;
-                STA $0803,y                 ; $22:BAE8: 99 03 08    ;
-                STA $080B,y                 ; $22:BAEB: 99 0B 08    ;
-                ORA #$40                    ; $22:BAEE: 09 40       ;
-                STA $0807,y                 ; $22:BAF0: 99 07 08    ;
-                STA $080F,y                 ; $22:BAF3: 99 0F 08    ;
-                PLA                         ; $22:BAF6: 68          ;
-                AND #$80                    ; $22:BAF7: 29 80       ;
-                BEQ CODE_22BB17             ; $22:BAF9: F0 1C       ;
-                LDA $0802,y                 ; $22:BAFB: B9 02 08    ;
-                PHA                         ; $22:BAFE: 48          ;
-                LDA $080A,y                 ; $22:BAFF: B9 0A 08    ;
-                STA $0802,y                 ; $22:BB02: 99 02 08    ;
-                PLA                         ; $22:BB05: 68          ;
-                STA $080A,y                 ; $22:BB06: 99 0A 08    ;
-                LDA $0806,y                 ; $22:BB09: B9 06 08    ;
-                PHA                         ; $22:BB0C: 48          ;
-                LDA $080E,y                 ; $22:BB0D: B9 0E 08    ;
-                STA $0806,y                 ; $22:BB10: 99 06 08    ;
-                PLA                         ; $22:BB13: 68          ;
-                STA $080E,y                 ; $22:BB14: 99 0E 08    ;
-CODE_22BB17:    SEP #$10                    ; $22:BB17: E2 10       ;
-                RTL                         ; $22:BB19: 6B          ;
+                BRA CODE_22BA9C         ; $22:BA8F: 80 0B       ;
 
-CODE_22BB1A:    LDA $9C                     ; $22:BB1A: A5 9C       ;
-                BNE CODE_22BB7C             ; $22:BB1C: D0 5E       ;
+CODE_22BA91:    LDA #$0C                ; $22:BA91: A9 0C       ;
+
+                LDY $0679,x             ; $22:BA93: BC 79 06    ;
+
+                BNE CODE_22BA9A         ; $22:BA96: D0 02       ;
+
+                LDA #$F4                ; $22:BA98: A9 F4       ;
+
+CODE_22BA9A:    STA $8C,x               ; $22:BA9A: 95 8C       ;
+
+CODE_22BA9C:    LDA $A7,x               ; $22:BA9C: B5 A7       ;
+
+                AND #$08                ; $22:BA9E: 29 08       ;
+
+                BEQ CODE_22BAA6         ; $22:BAA0: F0 04       ;
+
+                LDA #$10                ; $22:BAA2: A9 10       ;
+
+                STA $9E,x               ; $22:BAA4: 95 9E       ;
+
+CODE_22BAA6:    JSL CODE_279B6B         ; $22:BAA6: 22 6B 9B 27 ;
+
+                JSR CODE_22C3F9         ; $22:BAAA: 20 F9 C3    ;
+
+CODE_22BAAD:    LDY #$00                ; $22:BAAD: A0 00       ;
+
+                LDA $0565               ; $22:BAAF: AD 65 05    ;
+
+                AND #$08                ; $22:BAB2: 29 08       ;
+
+                BEQ CODE_22BAB7         ; $22:BAB4: F0 01       ;
+
+                INY                     ; $22:BAB6: C8          ;
+
+CODE_22BAB7:    TYA                     ; $22:BAB7: 98          ;
+
+                STA $0669,x             ; $22:BAB8: 9D 69 06    ;
+
+                JSL CODE_27A27C         ; $22:BABB: 22 7C A2 27 ;
+
+                LDA $44,x               ; $22:BABF: B5 44       ;
+
+                XBA                     ; $22:BAC1: EB          ;
+
+                LDA $5F,x               ; $22:BAC2: B5 5F       ;
+
+                REP #$20                ; $22:BAC4: C2 20       ;
+
+                SEC                     ; $22:BAC6: 38          ;
+
+                SBC $0210               ; $22:BAC7: ED 10 02    ;
+
+                SEP #$20                ; $22:BACA: E2 20       ;
+
+                XBA                     ; $22:BACC: EB          ;
+
+                BPL CODE_22BAD2         ; $22:BACD: 10 03       ;
+
+                EOR #$FF                ; $22:BACF: 49 FF       ;
+
+                INC A                   ; $22:BAD1: 1A          ;
+
+CODE_22BAD2:    CMP #$02                ; $22:BAD2: C9 02       ;
+
+                BCS CODE_22BADA         ; $22:BAD4: B0 04       ;
+
+                JSL CODE_22BADB         ; $22:BAD6: 22 DB BA 22 ;
+
+CODE_22BADA:    RTL                     ; $22:BADA: 6B          ;
+
+CODE_22BADB:    JSR CODE_22CBA0         ; $22:BADB: 20 A0 CB    ;
+
+                REP #$10                ; $22:BADE: C2 10       ;
+
+                LDY $C6,x               ; $22:BAE0: B4 C6       ;
+
+                LDA $0803,y             ; $22:BAE2: B9 03 08    ;
+
+                PHA                     ; $22:BAE5: 48          ;
+
+                AND #$7F                ; $22:BAE6: 29 7F       ;
+
+                STA $0803,y             ; $22:BAE8: 99 03 08    ;
+
+                STA $080B,y             ; $22:BAEB: 99 0B 08    ;
+
+                ORA #$40                ; $22:BAEE: 09 40       ;
+
+                STA $0807,y             ; $22:BAF0: 99 07 08    ;
+
+                STA $080F,y             ; $22:BAF3: 99 0F 08    ;
+
+                PLA                     ; $22:BAF6: 68          ;
+
+                AND #$80                ; $22:BAF7: 29 80       ;
+
+                BEQ CODE_22BB17         ; $22:BAF9: F0 1C       ;
+
+                LDA $0802,y             ; $22:BAFB: B9 02 08    ;
+
+                PHA                     ; $22:BAFE: 48          ;
+
+                LDA $080A,y             ; $22:BAFF: B9 0A 08    ;
+
+                STA $0802,y             ; $22:BB02: 99 02 08    ;
+
+                PLA                     ; $22:BB05: 68          ;
+
+                STA $080A,y             ; $22:BB06: 99 0A 08    ;
+
+                LDA $0806,y             ; $22:BB09: B9 06 08    ;
+
+                PHA                     ; $22:BB0C: 48          ;
+
+                LDA $080E,y             ; $22:BB0D: B9 0E 08    ;
+
+                STA $0806,y             ; $22:BB10: 99 06 08    ;
+
+                PLA                     ; $22:BB13: 68          ;
+
+                STA $080E,y             ; $22:BB14: 99 0E 08    ;
+
+CODE_22BB17:    SEP #$10                ; $22:BB17: E2 10       ;
+
+                RTL                     ; $22:BB19: 6B          ;
+
+CODE_22BB1A:    LDA $9C                 ; $22:BB1A: A5 9C       ;
+
+                BNE CODE_22BB7C         ; $22:BB1C: D0 5E       ;
+
                 JSL CODE_279BC3         ; $22:BB1E: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                LDA $15                     ; $22:BB22: A5 15       ;
-                LSR A                       ; $22:BB24: 4A          ;
-                LSR A                       ; $22:BB25: 4A          ;
-                LSR A                       ; $22:BB26: 4A          ;
-                AND #$01                    ; $22:BB27: 29 01       ;
-                STA $0669,x                 ; $22:BB29: 9D 69 06    ;
-                LDA $06B7,x                 ; $22:BB2C: BD B7 06    ;
-                BEQ CODE_22BB40             ; $22:BB2F: F0 0F       ;
-                LDA $8C,x                   ; $22:BB31: B5 8C       ;
-                PHA                         ; $22:BB33: 48          ;
-                ASL A                       ; $22:BB34: 0A          ;
-                ROR $8C,x                   ; $22:BB35: 76 8C       ;
-                JSL CODE_27983B             ; $22:BB37: 22 3B 98 27 ;
-                PLA                         ; $22:BB3B: 68          ;
-                STA $8C,x                   ; $22:BB3C: 95 8C       ;
-                BRA CODE_22BB56             ; $22:BB3E: 80 16       ;
+                LDA $15                 ; $22:BB22: A5 15       ;
 
-CODE_22BB40:    LDA $9E,x                   ; $22:BB40: B5 9E       ;
-                CMP #$30                    ; $22:BB42: C9 30       ;
-                BPL CODE_22BB4A             ; $22:BB44: 10 04       ;
-                INC $9E,x                   ; $22:BB46: F6 9E       ;
-                INC $9E,x                   ; $22:BB48: F6 9E       ;
-CODE_22BB4A:    JSL CODE_27A7E4             ; $22:BB4A: 22 E4 A7 27 ;
-                JSL CODE_27A7EF             ; $22:BB4E: 22 EF A7 27 ;
-                JSL CODE_278B9B             ; $22:BB52: 22 9B 8B 27 ;
-CODE_22BB56:    JSL CODE_279B6B             ; $22:BB56: 22 6B 9B 27 ;
-                LDA $A7,x                   ; $22:BB5A: B5 A7       ;
-                AND #$04                    ; $22:BB5C: 29 04       ;
-                BEQ CODE_22BB7C             ; $22:BB5E: F0 1C       ;
-                LDA #$71                    ; $22:BB60: A9 71       ;
-                STA $0671,x                 ; $22:BB62: 9D 71 06    ;
+                LSR A                   ; $22:BB24: 4A          ;
+
+                LSR A                   ; $22:BB25: 4A          ;
+
+                LSR A                   ; $22:BB26: 4A          ;
+
+                AND #$01                ; $22:BB27: 29 01       ;
+
+                STA $0669,x             ; $22:BB29: 9D 69 06    ;
+
+                LDA $06B7,x             ; $22:BB2C: BD B7 06    ;
+
+                BEQ CODE_22BB40         ; $22:BB2F: F0 0F       ;
+
+                LDA $8C,x               ; $22:BB31: B5 8C       ;
+
+                PHA                     ; $22:BB33: 48          ;
+
+                ASL A                   ; $22:BB34: 0A          ;
+
+                ROR $8C,x               ; $22:BB35: 76 8C       ;
+
+                JSL CODE_27983B         ; $22:BB37: 22 3B 98 27 ;
+
+                PLA                     ; $22:BB3B: 68          ;
+
+                STA $8C,x               ; $22:BB3C: 95 8C       ;
+
+                BRA CODE_22BB56         ; $22:BB3E: 80 16       ;
+
+CODE_22BB40:    LDA $9E,x               ; $22:BB40: B5 9E       ;
+
+                CMP #$30                ; $22:BB42: C9 30       ;
+
+                BPL CODE_22BB4A         ; $22:BB44: 10 04       ;
+
+                INC $9E,x               ; $22:BB46: F6 9E       ;
+
+                INC $9E,x               ; $22:BB48: F6 9E       ;
+
+CODE_22BB4A:    JSL CODE_27A7E4         ; $22:BB4A: 22 E4 A7 27 ;
+
+                JSL CODE_27A7EF         ; $22:BB4E: 22 EF A7 27 ;
+
+                JSL CODE_278B9B         ; $22:BB52: 22 9B 8B 27 ;
+
+CODE_22BB56:    JSL CODE_279B6B         ; $22:BB56: 22 6B 9B 27 ;
+
+                LDA $A7,x               ; $22:BB5A: B5 A7       ;
+
+                AND #$04                ; $22:BB5C: 29 04       ;
+
+                BEQ CODE_22BB7C         ; $22:BB5E: F0 1C       ;
+
+                LDA #$71                ; $22:BB60: A9 71       ;
+
+                STA $0671,x             ; $22:BB62: 9D 71 06    ;
+
                 JSL CODE_27A837         ; $22:BB65: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C43E,y                 ; $22:BB69: B9 3E C4    ;
-                STA $0679,x                 ; $22:BB6C: 9D 79 06    ;
-                JSL CODE_278B67             ; $22:BB6F: 22 67 8B 27 ;
-                LDA $06B7,x                 ; $22:BB73: BD B7 06    ;
-                BNE CODE_22BB7C             ; $22:BB76: D0 04       ;
-                LDA #$F2                    ; $22:BB78: A9 F2       ;
-                STA $9E,x                   ; $22:BB7A: 95 9E       ;
-CODE_22BB7C:    LDA $A7,x                   ; $22:BB7C: B5 A7       ;
-                AND #$03                    ; $22:BB7E: 29 03       ;
-                BEQ CODE_22BB86             ; $22:BB80: F0 04       ;
-                JSL CODE_279905             ; $22:BB82: 22 05 99 27 ;
-CODE_22BB86:    JSL CODE_27A27C             ; $22:BB86: 22 7C A2 27 ;
-                LDA $44,x                   ; $22:BB8A: B5 44       ;
-                XBA                         ; $22:BB8C: EB          ;
-                LDA $5F,x                   ; $22:BB8D: B5 5F       ;
-                REP #$20                    ; $22:BB8F: C2 20       ;
-                SEC                         ; $22:BB91: 38          ;
-                SBC $0210                   ; $22:BB92: ED 10 02    ;
-                SEP #$20                    ; $22:BB95: E2 20       ;
-                XBA                         ; $22:BB97: EB          ;
-                BPL CODE_22BB9D             ; $22:BB98: 10 03       ;
-                EOR #$FF                    ; $22:BB9A: 49 FF       ;
-                INC A                       ; $22:BB9C: 1A          ;
-CODE_22BB9D:    CMP #$02                    ; $22:BB9D: C9 02       ;
-                BCS CODE_22BBC8                     ; $22:BB9F: B0 27       ;
-                JSR CODE_22CBA0             ; $22:BBA1: 20 A0 CB    ;
-                REP #$10                    ; $22:BBA4: C2 10       ;
-                LDY $C6,x                   ; $22:BBA6: B4 C6       ;
-                LDA $0807,y                 ; $22:BBA8: B9 07 08    ;
-                ORA #$80                    ; $22:BBAB: 09 80       ;
-                STA $0807,y                 ; $22:BBAD: 99 07 08    ;
-                LDA $080F,y                 ; $22:BBB0: B9 0F 08    ;
-                ORA #$80                    ; $22:BBB3: 09 80       ;
-                STA $080F,y                 ; $22:BBB5: 99 0F 08    ;
-                LDA $0806,y                 ; $22:BBB8: B9 06 08    ;
-                PHA                         ; $22:BBBB: 48          ;
-                LDA $080E,y                 ; $22:BBBC: B9 0E 08    ;
-                STA $0806,y                 ; $22:BBBF: 99 06 08    ;
-                PLA                         ; $22:BBC2: 68          ;
-                STA $080E,y                 ; $22:BBC3: 99 0E 08    ;
-                SEP #$10                    ; $22:BBC6: E2 10       ;
-CODE_22BBC8:    RTL                         ; $22:BBC8: 6B          ;
+                LDA.w DATA_21C43E,y     ; $22:BB69: B9 3E C4    ;
 
-CODE_22BBC9:    LDA #$01                    ; $22:BBC9: A9 01       ;
-                STA $1CF0                   ; $22:BBCB: 8D F0 1C    ;
-                LDA $71,x                   ; $22:BBCE: B5 71       ;
-                STA $077B,x                 ; $22:BBD0: 9D 7B 07    ;
-                LDA $56,x                   ; $22:BBD3: B5 56       ;
-                STA $0776,x                 ; $22:BBD5: 9D 76 07    ;
-                RTL                         ; $22:BBD8: 6B          ;
+                STA $0679,x             ; $22:BB6C: 9D 79 06    ;
 
-CODE_22BBD9:    LDA $0661,x                 ; $22:BBD9: BD 61 06    ;
-                CMP #$02                    ; $22:BBDC: C9 02       ;
-                BEQ CODE_22BC43             ; $22:BBDE: F0 63       ;
-                LDA $0679,x                 ; $22:BBE0: BD 79 06    ;
-                ORA #$80                    ; $22:BBE3: 09 80       ;
-                STA $0679,x                 ; $22:BBE5: 9D 79 06    ;
-                JSL CODE_279EE1             ; $22:BBE8: 22 E1 9E 27 ;
-                REP #$10                    ; $22:BBEC: C2 10       ;
-                LDY $C6,x                   ; $22:BBEE: B4 C6       ;
-                LDA #$A7                    ; $22:BBF0: A9 A7       ;
-                STA $0803,y                 ; $22:BBF2: 99 03 08    ;
-                STA $080B,y                 ; $22:BBF5: 99 0B 08    ;
-                LDA #$E7                    ; $22:BBF8: A9 E7       ;
-                STA $0807,y                 ; $22:BBFA: 99 07 08    ;
-                STA $080F,y                 ; $22:BBFD: 99 0F 08    ;
-                SEP #$10                    ; $22:BC00: E2 10       ;
-                LDA $9C                     ; $22:BC02: A5 9C       ;
-                BNE CODE_22BC42             ; $22:BC04: D0 3C       ;
-                JSL CODE_27983B             ; $22:BC06: 22 3B 98 27 ;
-                LDA $06B7,x                 ; $22:BC0A: BD B7 06    ;
-                BNE CODE_22BC11             ; $22:BC0D: D0 02       ;
-                DEC $9E,x                   ; $22:BC0F: D6 9E       ;
-CODE_22BC11:    LDA $56,x                   ; $22:BC11: B5 56       ;
-                CMP #$02                    ; $22:BC13: C9 02       ;
-                BMI CODE_22BC42             ; $22:BC15: 30 2B       ;
-                LDA $0210                   ; $22:BC17: AD 10 02    ;
-                SEC                         ; $22:BC1A: 38          ;
-                SBC #$00                    ; $22:BC1B: E9 00       ;
-                STA $5F,x                   ; $22:BC1D: 95 5F       ;
-                LDA $12                     ; $22:BC1F: A5 12       ;
-                SBC #$02                    ; $22:BC21: E9 02       ;
-                STA $44,x                   ; $22:BC23: 95 44       ;
-                LDA #$02                    ; $22:BC25: A9 02       ;
-                STA $0661,x                 ; $22:BC27: 9D 61 06    ;
-                LDA $077B,x                 ; $22:BC2A: BD 7B 07    ;
-                PHA                         ; $22:BC2D: 48          ;
-                STA $71,x                   ; $22:BC2E: 95 71       ;
-                LDA $0776,x                 ; $22:BC30: BD 76 07    ;
-                PHA                         ; $22:BC33: 48          ;
-                STA $56,x                   ; $22:BC34: 95 56       ;
-                JSL CODE_279C96             ; $22:BC36: 22 96 9C 27 ;
-                PLA                         ; $22:BC3A: 68          ;
-                STA $0776,x                 ; $22:BC3B: 9D 76 07    ;
-                PLA                         ; $22:BC3E: 68          ;
-                STA $077B,x                 ; $22:BC3F: 9D 7B 07    ;
-CODE_22BC42:    RTL                         ; $22:BC42: 6B          ;
+                JSL CODE_278B67         ; $22:BB6F: 22 67 8B 27 ;
 
-CODE_22BC43:    LDA $9C                     ; $22:BC43: A5 9C       ;
-                BNE CODE_22BCB0             ; $22:BC45: D0 69       ;
-                LDA $1CF0                   ; $22:BC47: AD F0 1C    ;
-                BNE CODE_22BC50             ; $22:BC4A: D0 04       ;
+                LDA $06B7,x             ; $22:BB73: BD B7 06    ;
+
+                BNE CODE_22BB7C         ; $22:BB76: D0 04       ;
+
+                LDA #$F2                ; $22:BB78: A9 F2       ;
+
+                STA $9E,x               ; $22:BB7A: 95 9E       ;
+
+CODE_22BB7C:    LDA $A7,x               ; $22:BB7C: B5 A7       ;
+
+                AND #$03                ; $22:BB7E: 29 03       ;
+
+                BEQ CODE_22BB86         ; $22:BB80: F0 04       ;
+
+                JSL CODE_279905         ; $22:BB82: 22 05 99 27 ;
+
+CODE_22BB86:    JSL CODE_27A27C         ; $22:BB86: 22 7C A2 27 ;
+
+                LDA $44,x               ; $22:BB8A: B5 44       ;
+
+                XBA                     ; $22:BB8C: EB          ;
+
+                LDA $5F,x               ; $22:BB8D: B5 5F       ;
+
+                REP #$20                ; $22:BB8F: C2 20       ;
+
+                SEC                     ; $22:BB91: 38          ;
+
+                SBC $0210               ; $22:BB92: ED 10 02    ;
+
+                SEP #$20                ; $22:BB95: E2 20       ;
+
+                XBA                     ; $22:BB97: EB          ;
+
+                BPL CODE_22BB9D         ; $22:BB98: 10 03       ;
+
+                EOR #$FF                ; $22:BB9A: 49 FF       ;
+
+                INC A                   ; $22:BB9C: 1A          ;
+
+CODE_22BB9D:    CMP #$02                ; $22:BB9D: C9 02       ;
+
+                BCS CODE_22BBC8         ; $22:BB9F: B0 27       ;
+
+                JSR CODE_22CBA0         ; $22:BBA1: 20 A0 CB    ;
+
+                REP #$10                ; $22:BBA4: C2 10       ;
+
+                LDY $C6,x               ; $22:BBA6: B4 C6       ;
+
+                LDA $0807,y             ; $22:BBA8: B9 07 08    ;
+
+                ORA #$80                ; $22:BBAB: 09 80       ;
+
+                STA $0807,y             ; $22:BBAD: 99 07 08    ;
+
+                LDA $080F,y             ; $22:BBB0: B9 0F 08    ;
+
+                ORA #$80                ; $22:BBB3: 09 80       ;
+
+                STA $080F,y             ; $22:BBB5: 99 0F 08    ;
+
+                LDA $0806,y             ; $22:BBB8: B9 06 08    ;
+
+                PHA                     ; $22:BBBB: 48          ;
+
+                LDA $080E,y             ; $22:BBBC: B9 0E 08    ;
+
+                STA $0806,y             ; $22:BBBF: 99 06 08    ;
+
+                PLA                     ; $22:BBC2: 68          ;
+
+                STA $080E,y             ; $22:BBC3: 99 0E 08    ;
+
+                SEP #$10                ; $22:BBC6: E2 10       ;
+
+CODE_22BBC8:    RTL                     ; $22:BBC8: 6B          ;
+
+CODE_22BBC9:    LDA #$01                ; $22:BBC9: A9 01       ;
+
+                STA $1CF0               ; $22:BBCB: 8D F0 1C    ;
+
+                LDA $71,x               ; $22:BBCE: B5 71       ;
+
+                STA $077B,x             ; $22:BBD0: 9D 7B 07    ;
+
+                LDA $56,x               ; $22:BBD3: B5 56       ;
+
+                STA $0776,x             ; $22:BBD5: 9D 76 07    ;
+
+                RTL                     ; $22:BBD8: 6B          ;
+
+CODE_22BBD9:    LDA $0661,x             ; $22:BBD9: BD 61 06    ;
+
+                CMP #$02                ; $22:BBDC: C9 02       ;
+
+                BEQ CODE_22BC43         ; $22:BBDE: F0 63       ;
+
+                LDA $0679,x             ; $22:BBE0: BD 79 06    ;
+
+                ORA #$80                ; $22:BBE3: 09 80       ;
+
+                STA $0679,x             ; $22:BBE5: 9D 79 06    ;
+
+                JSL CODE_279EE1         ; $22:BBE8: 22 E1 9E 27 ;
+
+                REP #$10                ; $22:BBEC: C2 10       ;
+
+                LDY $C6,x               ; $22:BBEE: B4 C6       ;
+
+                LDA #$A7                ; $22:BBF0: A9 A7       ;
+
+                STA $0803,y             ; $22:BBF2: 99 03 08    ;
+
+                STA $080B,y             ; $22:BBF5: 99 0B 08    ;
+
+                LDA #$E7                ; $22:BBF8: A9 E7       ;
+
+                STA $0807,y             ; $22:BBFA: 99 07 08    ;
+
+                STA $080F,y             ; $22:BBFD: 99 0F 08    ;
+
+                SEP #$10                ; $22:BC00: E2 10       ;
+
+                LDA $9C                 ; $22:BC02: A5 9C       ;
+
+                BNE CODE_22BC42         ; $22:BC04: D0 3C       ;
+
+                JSL CODE_27983B         ; $22:BC06: 22 3B 98 27 ;
+
+                LDA $06B7,x             ; $22:BC0A: BD B7 06    ;
+
+                BNE CODE_22BC11         ; $22:BC0D: D0 02       ;
+
+                DEC $9E,x               ; $22:BC0F: D6 9E       ;
+
+CODE_22BC11:    LDA $56,x               ; $22:BC11: B5 56       ;
+
+                CMP #$02                ; $22:BC13: C9 02       ;
+
+                BMI CODE_22BC42         ; $22:BC15: 30 2B       ;
+
+                LDA $0210               ; $22:BC17: AD 10 02    ;
+
+                SEC                     ; $22:BC1A: 38          ;
+
+                SBC #$00                ; $22:BC1B: E9 00       ;
+
+                STA $5F,x               ; $22:BC1D: 95 5F       ;
+
+                LDA $12                 ; $22:BC1F: A5 12       ;
+
+                SBC #$02                ; $22:BC21: E9 02       ;
+
+                STA $44,x               ; $22:BC23: 95 44       ;
+
+                LDA #$02                ; $22:BC25: A9 02       ;
+
+                STA $0661,x             ; $22:BC27: 9D 61 06    ;
+
+                LDA $077B,x             ; $22:BC2A: BD 7B 07    ;
+
+                PHA                     ; $22:BC2D: 48          ;
+
+                STA $71,x               ; $22:BC2E: 95 71       ;
+
+                LDA $0776,x             ; $22:BC30: BD 76 07    ;
+
+                PHA                     ; $22:BC33: 48          ;
+
+                STA $56,x               ; $22:BC34: 95 56       ;
+
+                JSL CODE_279C96         ; $22:BC36: 22 96 9C 27 ;
+
+                PLA                     ; $22:BC3A: 68          ;
+
+                STA $0776,x             ; $22:BC3B: 9D 76 07    ;
+
+                PLA                     ; $22:BC3E: 68          ;
+
+                STA $077B,x             ; $22:BC3F: 9D 7B 07    ;
+
+CODE_22BC42:    RTL                     ; $22:BC42: 6B          ;
+
+CODE_22BC43:    LDA $9C                 ; $22:BC43: A5 9C       ;
+
+                BNE CODE_22BCB0         ; $22:BC45: D0 69       ;
+
+                LDA $1CF0               ; $22:BC47: AD F0 1C    ;
+
+                BNE CODE_22BC50         ; $22:BC4A: D0 04       ;
+
                 JSL CODE_279BC3         ; $22:BC4C: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-CODE_22BC50:    JSL CODE_279B6F             ; $22:BC50: 22 6F 9B 27 ;
+CODE_22BC50:    JSL CODE_279B6F         ; $22:BC50: 22 6F 9B 27 ;
+
                 JSL CODE_27A837         ; $22:BC54: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA $1CF0                   ; $22:BC58: AD F0 1C    ;
-                BNE CODE_22BC61             ; $22:BC5B: D0 04       ;
-                TYA                         ; $22:BC5D: 98          ;
-                EOR #$01                    ; $22:BC5E: 49 01       ;
-                TAY                         ; $22:BC60: A8          ;
-CODE_22BC61:    STY $68,x                   ; $22:BC61: 94 68       ;
-                INC $1FD2,x                 ; $22:BC63: FE D2 1F    ;
-                LDA $1FD2,x                 ; $22:BC66: BD D2 1F    ;
-                AND #$01                    ; $22:BC69: 29 01       ;
-                BNE CODE_22BC7A             ; $22:BC6B: D0 0D       ;
-                LDA $8C,x                   ; $22:BC6D: B5 8C       ;
-                CMP.w DATA_21C442,y                 ; $22:BC6F: D9 42 C4    ;
-                BEQ CODE_22BC7A             ; $22:BC72: F0 06       ;
-                CLC                         ; $22:BC74: 18          ;
-                ADC.w DATA_21C440,y                 ; $22:BC75: 79 40 C4    ;
-                STA $8C,x                   ; $22:BC78: 95 8C       ;
-CODE_22BC7A:    LDA #$7F                    ; $22:BC7A: A9 7F       ;
-                LDY $0563                   ; $22:BC7C: AC 63 05    ;
-                BNE CODE_22BC83             ; $22:BC7F: D0 02       ;
-                LDA #$3F                    ; $22:BC81: A9 3F       ;
-CODE_22BC83:    AND $1FD2,x                 ; $22:BC83: 3D D2 1F    ;
-                BNE CODE_22BC92             ; $22:BC86: D0 0A       ;
-                LDA $1CF0                   ; $22:BC88: AD F0 1C    ;
-                BEQ CODE_22BC92             ; $22:BC8B: F0 05       ;
-                LDA #$1F                    ; $22:BC8D: A9 1F       ;
-                STA $0518,x                 ; $22:BC8F: 9D 18 05    ;
-CODE_22BC92:    LDY $0518,x                 ; $22:BC92: BC 18 05    ;
-                DEY                         ; $22:BC95: 88          ;
-                BNE CODE_22BC9B             ; $22:BC96: D0 03       ;
-                JSR CODE_22BD74             ; $22:BC98: 20 74 BD    ;
-CODE_22BC9B:    LDA $8C,x                   ; $22:BC9B: B5 8C       ;
-                PHA                         ; $22:BC9D: 48          ;
-                LDA $0781                   ; $22:BC9E: AD 81 07    ;
-                ASL A                       ; $22:BCA1: 0A          ;
-                ASL A                       ; $22:BCA2: 0A          ;
-                ASL A                       ; $22:BCA3: 0A          ;
-                ASL A                       ; $22:BCA4: 0A          ;
-                ADC $8C,x                   ; $22:BCA5: 75 8C       ;
-                STA $8C,x                   ; $22:BCA7: 95 8C       ;
-                JSL CODE_27A7EF             ; $22:BCA9: 22 EF A7 27 ;
-                PLA                         ; $22:BCAD: 68          ;
-                STA $8C,x                   ; $22:BCAE: 95 8C       ;
-CODE_22BCB0:    JSL CODE_27A27C             ; $22:BCB0: 22 7C A2 27 ;
-                LDA $44,x                   ; $22:BCB4: B5 44       ;
-                XBA                         ; $22:BCB6: EB          ;
-                LDA $5F,x                   ; $22:BCB7: B5 5F       ;
-                REP #$20                    ; $22:BCB9: C2 20       ;
-                SEC                         ; $22:BCBB: 38          ;
-                SBC $0210                   ; $22:BCBC: ED 10 02    ;
-                SEP #$20                    ; $22:BCBF: E2 20       ;
-                XBA                         ; $22:BCC1: EB          ;
-                BPL CODE_22BCC7             ; $22:BCC2: 10 03       ;
-                EOR #$FF                    ; $22:BCC4: 49 FF       ;
-                INC A                       ; $22:BCC6: 1A          ;
-CODE_22BCC7:    CMP #$02                    ; $22:BCC7: C9 02       ;
-                BCC CODE_22BCCE             ; $22:BCC9: 90 03       ;
-                BRL CODE_22BD73             ; $22:BCCB: 82 A5 00    ;
+                LDA $1CF0               ; $22:BC58: AD F0 1C    ;
 
-CODE_22BCCE:    JSR CODE_22CBA0             ; $22:BCCE: 20 A0 CB    ;
-                LDA #$F6                    ; $22:BCD1: A9 F6       ;
-                STA $00                     ; $22:BCD3: 85 00       ;
-                LDA $0518,x                 ; $22:BCD5: BD 18 05    ;
-                BEQ CODE_22BCEC             ; $22:BCD8: F0 12       ;
-                CMP #$10                    ; $22:BCDA: C9 10       ;
-                BCC CODE_22BCFC             ; $22:BCDC: 90 1E       ;
-                SBC #$10                    ; $22:BCDE: E9 10       ;
-                LSR A                       ; $22:BCE0: 4A          ;
-                EOR #$07                    ; $22:BCE1: 49 07       ;
-                CLC                         ; $22:BCE3: 18          ;
-                ADC #$01                    ; $22:BCE4: 69 01       ;
-                SBC #$10                    ; $22:BCE6: E9 10       ;
-                STA $00                     ; $22:BCE8: 85 00       ;
-                BRA CODE_22BCFC             ; $22:BCEA: 80 10       ;
-CODE_22BCEC:    LDA $1FD2,x                 ; $22:BCEC: BD D2 1F    ;
-                LSR A                       ; $22:BCEF: 4A          ;
-                LSR A                       ; $22:BCF0: 4A          ;
-                LSR A                       ; $22:BCF1: 4A          ;
-                AND #$03                    ; $22:BCF2: 29 03       ;
-                TAX                         ; $22:BCF4: AA          ;
-                LDA.w DATA_21C444,x                 ; $22:BCF5: BD 44 C4    ;
-                LDX $9B                     ; $22:BCF8: A6 9B       ;
-                STA $00                     ; $22:BCFA: 85 00       ;
-CODE_22BCFC:    REP #$10                    ; $22:BCFC: C2 10       ;
-                LDY $C6,x                   ; $22:BCFE: B4 C6       ;
-                LDA $0801,y                 ; $22:BD00: B9 01 08    ;
-                CMP #$F0                    ; $22:BD03: C9 F0       ;
-                BEQ CODE_22BD13             ; $22:BD05: F0 0C       ;
-                CLC                         ; $22:BD07: 18          ;
-                ADC $00                     ; $22:BD08: 65 00       ;
-                STA $0811,y                 ; $22:BD0A: 99 11 08    ;
-                CLC                         ; $22:BD0D: 18          ;
-                ADC #$08                    ; $22:BD0E: 69 08       ;
-                STA $0819,y                 ; $22:BD10: 99 19 08    ;
-CODE_22BD13:    LDA $0805,y                 ; $22:BD13: B9 05 08    ;
-                CMP #$F0                    ; $22:BD16: C9 F0       ;
-                BEQ CODE_22BD26             ; $22:BD18: F0 0C       ;
-                CLC                         ; $22:BD1A: 18          ;
-                ADC $00                     ; $22:BD1B: 65 00       ;
-                STA $0815,y                 ; $22:BD1D: 99 15 08    ;
-                CLC                         ; $22:BD20: 18          ;
-                ADC #$08                    ; $22:BD21: 69 08       ;
-                STA $081D,y                 ; $22:BD23: 99 1D 08    ;
-CODE_22BD26:    LDA $0800,y                 ; $22:BD26: B9 00 08    ;
-                STA $0810,y                 ; $22:BD29: 99 10 08    ;
-                STA $0818,y                 ; $22:BD2C: 99 18 08    ;
-                LDA $0804,y                 ; $22:BD2F: B9 04 08    ;
-                STA $0814,y                 ; $22:BD32: 99 14 08    ;
-                STA $081C,y                 ; $22:BD35: 99 1C 08    ;
-                LDA #$1C                    ; $22:BD38: A9 1C       ;
-                STA $0812,y                 ; $22:BD3A: 99 12 08    ;
-                STA $0816,y                 ; $22:BD3D: 99 16 08    ;
-                INC A                       ; $22:BD40: 1A          ;
-                STA $081A,y                 ; $22:BD41: 99 1A 08    ;
-                STA $081E,y                 ; $22:BD44: 99 1E 08    ;
-                LDA #$27                    ; $22:BD47: A9 27       ;
-                STA $0813,y                 ; $22:BD49: 99 13 08    ;
-                STA $081B,y                 ; $22:BD4C: 99 1B 08    ;
-                LDA #$67                    ; $22:BD4F: A9 67       ;
-                STA $0817,y                 ; $22:BD51: 99 17 08    ;
-                STA $081F,y                 ; $22:BD54: 99 1F 08    ;
-                REP #$20                    ; $22:BD57: C2 20       ;
-                TYA                         ; $22:BD59: 98          ;
-                LSR A                       ; $22:BD5A: 4A          ;
-                LSR A                       ; $22:BD5B: 4A          ;
-                TAY                         ; $22:BD5C: A8          ;
-                SEP #$20                    ; $22:BD5D: E2 20       ;
-                LDA $0A20,y                 ; $22:BD5F: B9 20 0A    ;
-                STA $0A24,y                 ; $22:BD62: 99 24 0A    ;
-                STA $0A26,y                 ; $22:BD65: 99 26 0A    ;
-                LDA $0A21,y                 ; $22:BD68: B9 21 0A    ;
-                STA $0A25,y                 ; $22:BD6B: 99 25 0A    ;
-                STA $0A27,y                 ; $22:BD6E: 99 27 0A    ;
-                SEP #$10                    ; $22:BD71: E2 10       ;
-CODE_22BD73:    RTL                         ; $22:BD73: 6B          ;
+                BNE CODE_22BC61         ; $22:BC5B: D0 04       ;
 
-CODE_22BD74:    LDY #$04                    ; $22:BD74: A0 04       ;
-CODE_22BD76:    LDA $0661,y                 ; $22:BD76: B9 61 06    ;
-                BEQ CODE_22BD7F             ; $22:BD79: F0 04       ;
-                DEY                         ; $22:BD7B: 88          ;
-                BPL CODE_22BD76             ; $22:BD7C: 10 F8       ;
-                RTS                         ; $22:BD7E: 60          ;
+                TYA                     ; $22:BC5D: 98          ;
 
-CODE_22BD7F:    STY $00                     ; $22:BD7F: 84 00       ;
-                LDX $00                     ; $22:BD81: A6 00       ;
-                JSL CODE_279C96             ; $22:BD83: 22 96 9C 27 ;
-                LDX $9B                     ; $22:BD87: A6 9B       ;
-                LDA #$02                    ; $22:BD89: A9 02       ;
-                STA $0661,y                 ; $22:BD8B: 99 61 06    ;
-                LDA #$03                    ; $22:BD8E: A9 03       ;
-                STA $1FE9,y                 ; $22:BD90: 99 E9 1F    ;
-                LDA #$00                    ; $22:BD93: A9 00       ;
-                CMP $0563                   ; $22:BD95: CD 63 05    ;
-                LDA #$84                    ; $22:BD98: A9 84       ;
-                BCS CODE_22BDA3                     ; $22:BD9A: B0 07       ;
-                LDA #$02                    ; $22:BD9C: A9 02       ;
-                STA $1FE9,y                 ; $22:BD9E: 99 E9 1F    ;
-                LDA #$85                    ; $22:BDA1: A9 85       ;
-CODE_22BDA3:    STA $0671,y                 ; $22:BDA3: 99 71 06    ;
-                LDA $71,x                   ; $22:BDA6: B5 71       ;
-                SBC #$0C                    ; $22:BDA8: E9 0C       ;
-                STA $0071,y                 ; $22:BDAA: 99 71 00    ;
-                LDA $56,x                   ; $22:BDAD: B5 56       ;
-                SBC #$00                    ; $22:BDAF: E9 00       ;
-                STA $0056,y                 ; $22:BDB1: 99 56 00    ;
-                LDA $5F,x                   ; $22:BDB4: B5 5F       ;
-                STA $005F,y                 ; $22:BDB6: 99 5F 00    ;
-                LDA $44,x                   ; $22:BDB9: B5 44       ;
-                STA $0044,y                 ; $22:BDBB: 99 44 00    ;
-                LDA #$D0                    ; $22:BDBE: A9 D0       ;
-                STA $009E,y                 ; $22:BDC0: 99 9E 00    ;
-                LDA $0781                   ; $22:BDC3: AD 81 07    ;
-                ASL A                       ; $22:BDC6: 0A          ;
-                ASL A                       ; $22:BDC7: 0A          ;
-                ASL A                       ; $22:BDC8: 0A          ;
-                STA $00                     ; $22:BDC9: 85 00       ;
-                LDA $68,x                   ; $22:BDCB: B5 68       ;
-                LSR A                       ; $22:BDCD: 4A          ;
-                LDA #$10                    ; $22:BDCE: A9 10       ;
-                BCC CODE_22BDD4             ; $22:BDD0: 90 02       ;
-                LDA #$F0                    ; $22:BDD2: A9 F0       ;
-CODE_22BDD4:    CLC                         ; $22:BDD4: 18          ;
-                ADC $00                     ; $22:BDD5: 65 00       ;
-                STA $008C,y                 ; $22:BDD7: 99 8C 00    ;
-                RTS                         ; $22:BDDA: 60          ;
+                EOR #$01                ; $22:BC5E: 49 01       ;
+
+                TAY                     ; $22:BC60: A8          ;
+
+CODE_22BC61:    STY $68,x               ; $22:BC61: 94 68       ;
+
+                INC $1FD2,x             ; $22:BC63: FE D2 1F    ;
+
+                LDA $1FD2,x             ; $22:BC66: BD D2 1F    ;
+
+                AND #$01                ; $22:BC69: 29 01       ;
+
+                BNE CODE_22BC7A         ; $22:BC6B: D0 0D       ;
+
+                LDA $8C,x               ; $22:BC6D: B5 8C       ;
+
+                CMP.w DATA_21C442,y     ; $22:BC6F: D9 42 C4    ;
+
+                BEQ CODE_22BC7A         ; $22:BC72: F0 06       ;
+
+                CLC                     ; $22:BC74: 18          ;
+
+                ADC.w DATA_21C440,y     ; $22:BC75: 79 40 C4    ;
+
+                STA $8C,x               ; $22:BC78: 95 8C       ;
+
+CODE_22BC7A:    LDA #$7F                ; $22:BC7A: A9 7F       ;
+
+                LDY $0563               ; $22:BC7C: AC 63 05    ;
+
+                BNE CODE_22BC83         ; $22:BC7F: D0 02       ;
+
+                LDA #$3F                ; $22:BC81: A9 3F       ;
+
+CODE_22BC83:    AND $1FD2,x             ; $22:BC83: 3D D2 1F    ;
+
+                BNE CODE_22BC92         ; $22:BC86: D0 0A       ;
+
+                LDA $1CF0               ; $22:BC88: AD F0 1C    ;
+
+                BEQ CODE_22BC92         ; $22:BC8B: F0 05       ;
+
+                LDA #$1F                ; $22:BC8D: A9 1F       ;
+
+                STA $0518,x             ; $22:BC8F: 9D 18 05    ;
+
+CODE_22BC92:    LDY $0518,x             ; $22:BC92: BC 18 05    ;
+
+                DEY                     ; $22:BC95: 88          ;
+
+                BNE CODE_22BC9B         ; $22:BC96: D0 03       ;
+
+                JSR CODE_22BD74         ; $22:BC98: 20 74 BD    ;
+
+CODE_22BC9B:    LDA $8C,x               ; $22:BC9B: B5 8C       ;
+
+                PHA                     ; $22:BC9D: 48          ;
+
+                LDA $0781               ; $22:BC9E: AD 81 07    ;
+
+                ASL A                   ; $22:BCA1: 0A          ;
+
+                ASL A                   ; $22:BCA2: 0A          ;
+
+                ASL A                   ; $22:BCA3: 0A          ;
+
+                ASL A                   ; $22:BCA4: 0A          ;
+
+                ADC $8C,x               ; $22:BCA5: 75 8C       ;
+
+                STA $8C,x               ; $22:BCA7: 95 8C       ;
+
+                JSL CODE_27A7EF         ; $22:BCA9: 22 EF A7 27 ;
+
+                PLA                     ; $22:BCAD: 68          ;
+
+                STA $8C,x               ; $22:BCAE: 95 8C       ;
+
+CODE_22BCB0:    JSL CODE_27A27C         ; $22:BCB0: 22 7C A2 27 ;
+
+                LDA $44,x               ; $22:BCB4: B5 44       ;
+
+                XBA                     ; $22:BCB6: EB          ;
+
+                LDA $5F,x               ; $22:BCB7: B5 5F       ;
+
+                REP #$20                ; $22:BCB9: C2 20       ;
+
+                SEC                     ; $22:BCBB: 38          ;
+
+                SBC $0210               ; $22:BCBC: ED 10 02    ;
+
+                SEP #$20                ; $22:BCBF: E2 20       ;
+
+                XBA                     ; $22:BCC1: EB          ;
+
+                BPL CODE_22BCC7         ; $22:BCC2: 10 03       ;
+
+                EOR #$FF                ; $22:BCC4: 49 FF       ;
+
+                INC A                   ; $22:BCC6: 1A          ;
+
+CODE_22BCC7:    CMP #$02                ; $22:BCC7: C9 02       ;
+
+                BCC CODE_22BCCE         ; $22:BCC9: 90 03       ;
+
+                BRL CODE_22BD73         ; $22:BCCB: 82 A5 00    ;
+
+CODE_22BCCE:    JSR CODE_22CBA0         ; $22:BCCE: 20 A0 CB    ;
+
+                LDA #$F6                ; $22:BCD1: A9 F6       ;
+
+                STA $00                 ; $22:BCD3: 85 00       ;
+
+                LDA $0518,x             ; $22:BCD5: BD 18 05    ;
+
+                BEQ CODE_22BCEC         ; $22:BCD8: F0 12       ;
+
+                CMP #$10                ; $22:BCDA: C9 10       ;
+
+                BCC CODE_22BCFC         ; $22:BCDC: 90 1E       ;
+
+                SBC #$10                ; $22:BCDE: E9 10       ;
+
+                LSR A                   ; $22:BCE0: 4A          ;
+
+                EOR #$07                ; $22:BCE1: 49 07       ;
+
+                CLC                     ; $22:BCE3: 18          ;
+
+                ADC #$01                ; $22:BCE4: 69 01       ;
+
+                SBC #$10                ; $22:BCE6: E9 10       ;
+
+                STA $00                 ; $22:BCE8: 85 00       ;
+
+                BRA CODE_22BCFC         ; $22:BCEA: 80 10       ;
+
+CODE_22BCEC:    LDA $1FD2,x             ; $22:BCEC: BD D2 1F    ;
+
+                LSR A                   ; $22:BCEF: 4A          ;
+
+                LSR A                   ; $22:BCF0: 4A          ;
+
+                LSR A                   ; $22:BCF1: 4A          ;
+
+                AND #$03                ; $22:BCF2: 29 03       ;
+
+                TAX                     ; $22:BCF4: AA          ;
+
+                LDA.w DATA_21C444,x     ; $22:BCF5: BD 44 C4    ;
+
+                LDX $9B                 ; $22:BCF8: A6 9B       ;
+
+                STA $00                 ; $22:BCFA: 85 00       ;
+
+CODE_22BCFC:    REP #$10                ; $22:BCFC: C2 10       ;
+
+                LDY $C6,x               ; $22:BCFE: B4 C6       ;
+
+                LDA $0801,y             ; $22:BD00: B9 01 08    ;
+
+                CMP #$F0                ; $22:BD03: C9 F0       ;
+
+                BEQ CODE_22BD13         ; $22:BD05: F0 0C       ;
+
+                CLC                     ; $22:BD07: 18          ;
+
+                ADC $00                 ; $22:BD08: 65 00       ;
+
+                STA $0811,y             ; $22:BD0A: 99 11 08    ;
+
+                CLC                     ; $22:BD0D: 18          ;
+
+                ADC #$08                ; $22:BD0E: 69 08       ;
+
+                STA $0819,y             ; $22:BD10: 99 19 08    ;
+
+CODE_22BD13:    LDA $0805,y             ; $22:BD13: B9 05 08    ;
+
+                CMP #$F0                ; $22:BD16: C9 F0       ;
+
+                BEQ CODE_22BD26         ; $22:BD18: F0 0C       ;
+
+                CLC                     ; $22:BD1A: 18          ;
+
+                ADC $00                 ; $22:BD1B: 65 00       ;
+
+                STA $0815,y             ; $22:BD1D: 99 15 08    ;
+
+                CLC                     ; $22:BD20: 18          ;
+
+                ADC #$08                ; $22:BD21: 69 08       ;
+
+                STA $081D,y             ; $22:BD23: 99 1D 08    ;
+
+CODE_22BD26:    LDA $0800,y             ; $22:BD26: B9 00 08    ;
+
+                STA $0810,y             ; $22:BD29: 99 10 08    ;
+
+                STA $0818,y             ; $22:BD2C: 99 18 08    ;
+
+                LDA $0804,y             ; $22:BD2F: B9 04 08    ;
+
+                STA $0814,y             ; $22:BD32: 99 14 08    ;
+
+                STA $081C,y             ; $22:BD35: 99 1C 08    ;
+
+                LDA #$1C                ; $22:BD38: A9 1C       ;
+
+                STA $0812,y             ; $22:BD3A: 99 12 08    ;
+
+                STA $0816,y             ; $22:BD3D: 99 16 08    ;
+
+                INC A                   ; $22:BD40: 1A          ;
+
+                STA $081A,y             ; $22:BD41: 99 1A 08    ;
+
+                STA $081E,y             ; $22:BD44: 99 1E 08    ;
+
+                LDA #$27                ; $22:BD47: A9 27       ;
+
+                STA $0813,y             ; $22:BD49: 99 13 08    ;
+
+                STA $081B,y             ; $22:BD4C: 99 1B 08    ;
+
+                LDA #$67                ; $22:BD4F: A9 67       ;
+
+                STA $0817,y             ; $22:BD51: 99 17 08    ;
+
+                STA $081F,y             ; $22:BD54: 99 1F 08    ;
+
+                REP #$20                ; $22:BD57: C2 20       ;
+
+                TYA                     ; $22:BD59: 98          ;
+
+                LSR A                   ; $22:BD5A: 4A          ;
+
+                LSR A                   ; $22:BD5B: 4A          ;
+
+                TAY                     ; $22:BD5C: A8          ;
+
+                SEP #$20                ; $22:BD5D: E2 20       ;
+
+                LDA $0A20,y             ; $22:BD5F: B9 20 0A    ;
+
+                STA $0A24,y             ; $22:BD62: 99 24 0A    ;
+
+                STA $0A26,y             ; $22:BD65: 99 26 0A    ;
+
+                LDA $0A21,y             ; $22:BD68: B9 21 0A    ;
+
+                STA $0A25,y             ; $22:BD6B: 99 25 0A    ;
+
+                STA $0A27,y             ; $22:BD6E: 99 27 0A    ;
+
+                SEP #$10                ; $22:BD71: E2 10       ;
+
+CODE_22BD73:    RTL                     ; $22:BD73: 6B          ;
+
+CODE_22BD74:    LDY #$04                ; $22:BD74: A0 04       ;
+
+CODE_22BD76:    LDA $0661,y             ; $22:BD76: B9 61 06    ;
+
+                BEQ CODE_22BD7F         ; $22:BD79: F0 04       ;
+
+                DEY                     ; $22:BD7B: 88          ;
+
+                BPL CODE_22BD76         ; $22:BD7C: 10 F8       ;
+
+                RTS                     ; $22:BD7E: 60          ;
+
+CODE_22BD7F:    STY $00                 ; $22:BD7F: 84 00       ;
+
+                LDX $00                 ; $22:BD81: A6 00       ;
+
+                JSL CODE_279C96         ; $22:BD83: 22 96 9C 27 ;
+
+                LDX $9B                 ; $22:BD87: A6 9B       ;
+
+                LDA #$02                ; $22:BD89: A9 02       ;
+
+                STA $0661,y             ; $22:BD8B: 99 61 06    ;
+
+                LDA #$03                ; $22:BD8E: A9 03       ;
+
+                STA $1FE9,y             ; $22:BD90: 99 E9 1F    ;
+
+                LDA #$00                ; $22:BD93: A9 00       ;
+
+                CMP $0563               ; $22:BD95: CD 63 05    ;
+
+                LDA #$84                ; $22:BD98: A9 84       ;
+
+                BCS CODE_22BDA3         ; $22:BD9A: B0 07       ;
+
+                LDA #$02                ; $22:BD9C: A9 02       ;
+
+                STA $1FE9,y             ; $22:BD9E: 99 E9 1F    ;
+
+                LDA #$85                ; $22:BDA1: A9 85       ;
+
+CODE_22BDA3:    STA $0671,y             ; $22:BDA3: 99 71 06    ;
+
+                LDA $71,x               ; $22:BDA6: B5 71       ;
+
+                SBC #$0C                ; $22:BDA8: E9 0C       ;
+
+                STA $0071,y             ; $22:BDAA: 99 71 00    ;
+
+                LDA $56,x               ; $22:BDAD: B5 56       ;
+
+                SBC #$00                ; $22:BDAF: E9 00       ;
+
+                STA $0056,y             ; $22:BDB1: 99 56 00    ;
+
+                LDA $5F,x               ; $22:BDB4: B5 5F       ;
+
+                STA $005F,y             ; $22:BDB6: 99 5F 00    ;
+
+                LDA $44,x               ; $22:BDB9: B5 44       ;
+
+                STA $0044,y             ; $22:BDBB: 99 44 00    ;
+
+                LDA #$D0                ; $22:BDBE: A9 D0       ;
+
+                STA $009E,y             ; $22:BDC0: 99 9E 00    ;
+
+                LDA $0781               ; $22:BDC3: AD 81 07    ;
+
+                ASL A                   ; $22:BDC6: 0A          ;
+
+                ASL A                   ; $22:BDC7: 0A          ;
+
+                ASL A                   ; $22:BDC8: 0A          ;
+
+                STA $00                 ; $22:BDC9: 85 00       ;
+
+                LDA $68,x               ; $22:BDCB: B5 68       ;
+
+                LSR A                   ; $22:BDCD: 4A          ;
+
+                LDA #$10                ; $22:BDCE: A9 10       ;
+
+                BCC CODE_22BDD4         ; $22:BDD0: 90 02       ;
+
+                LDA #$F0                ; $22:BDD2: A9 F0       ;
+
+CODE_22BDD4:    CLC                     ; $22:BDD4: 18          ;
+
+                ADC $00                 ; $22:BDD5: 65 00       ;
+
+                STA $008C,y             ; $22:BDD7: 99 8C 00    ;
+
+                RTS                     ; $22:BDDA: 60          ;
 
 CODE_22BDDB:    JSL CODE_279BC3         ; $22:BDDB: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                LDA $9C                     ; $22:BDDF: A5 9C       ;
-                BEQ CODE_22BDE7             ; $22:BDE1: F0 04       ;
-                JSR CODE_22BE70             ; $22:BDE3: 20 70 BE    ;
-                RTL                         ; $22:BDE6: 6B          ;
+                LDA $9C                 ; $22:BDDF: A5 9C       ;
 
-CODE_22BDE7:    LDY #$08                    ; $22:BDE7: A0 08       ;
-                LDA $0679,x                 ; $22:BDE9: BD 79 06    ;
-                BNE CODE_22BDF0             ; $22:BDEC: D0 02       ;
-                LDY #$F8                    ; $22:BDEE: A0 F8       ;
-CODE_22BDF0:    STY $8C,x                   ; $22:BDF0: 94 8C       ;
-                JSL CODE_27983B             ; $22:BDF2: 22 3B 98 27 ;
-                DEC $9E,x                   ; $22:BDF6: D6 9E       ;
-                LDA $15                     ; $22:BDF8: A5 15       ;
-                LSR A                       ; $22:BDFA: 4A          ;
-                LSR A                       ; $22:BDFB: 4A          ;
-                LSR A                       ; $22:BDFC: 4A          ;
-                AND #$01                    ; $22:BDFD: 29 01       ;
-                STA $0669,x                 ; $22:BDFF: 9D 69 06    ;
-                JSL CODE_27A27C             ; $22:BE02: 22 7C A2 27 ;
-                JSR CODE_22BE70             ; $22:BE06: 20 70 BE    ;
-                INC $68,x                   ; $22:BE09: F6 68       ;
-                LDA $4D,x                   ; $22:BE0B: B5 4D       ;
-                BNE CODE_22BE19             ; $22:BE0D: D0 0A       ;
-                LDA $9E,x                   ; $22:BE0F: B5 9E       ;
-                BPL CODE_22BE19             ; $22:BE11: 10 06       ;
-                INC $1FD2,x                 ; $22:BE13: FE D2 1F    ;
-                INC $1FD2,x                 ; $22:BE16: FE D2 1F    ;
-CODE_22BE19:    INC $1FD2,x                 ; $22:BE19: FE D2 1F    ;
-                LDA $A7,x                   ; $22:BE1C: B5 A7       ;
-                AND #$08                    ; $22:BE1E: 29 08       ;
-                BEQ CODE_22BE26             ; $22:BE20: F0 04       ;
-                LDA #$01                    ; $22:BE22: A9 01       ;
-                STA $9E,x                   ; $22:BE24: 95 9E       ;
-CODE_22BE26:    LDA $A7,x                   ; $22:BE26: B5 A7       ;
-                AND #$04                    ; $22:BE28: 29 04       ;
-                BEQ CODE_22BE61             ; $22:BE2A: F0 35       ;
-                LDA $68,x                   ; $22:BE2C: B5 68       ;
-                AND #$3F                    ; $22:BE2E: 29 3F       ;
-                BNE CODE_22BE3C             ; $22:BE30: D0 0A       ;
+                BEQ CODE_22BDE7         ; $22:BDE1: F0 04       ;
+
+                JSR CODE_22BE70         ; $22:BDE3: 20 70 BE    ;
+
+                RTL                     ; $22:BDE6: 6B          ;
+
+CODE_22BDE7:    LDY #$08                ; $22:BDE7: A0 08       ;
+
+                LDA $0679,x             ; $22:BDE9: BD 79 06    ;
+
+                BNE CODE_22BDF0         ; $22:BDEC: D0 02       ;
+
+                LDY #$F8                ; $22:BDEE: A0 F8       ;
+
+CODE_22BDF0:    STY $8C,x               ; $22:BDF0: 94 8C       ;
+
+                JSL CODE_27983B         ; $22:BDF2: 22 3B 98 27 ;
+
+                DEC $9E,x               ; $22:BDF6: D6 9E       ;
+
+                LDA $15                 ; $22:BDF8: A5 15       ;
+
+                LSR A                   ; $22:BDFA: 4A          ;
+
+                LSR A                   ; $22:BDFB: 4A          ;
+
+                LSR A                   ; $22:BDFC: 4A          ;
+
+                AND #$01                ; $22:BDFD: 29 01       ;
+
+                STA $0669,x             ; $22:BDFF: 9D 69 06    ;
+
+                JSL CODE_27A27C         ; $22:BE02: 22 7C A2 27 ;
+
+                JSR CODE_22BE70         ; $22:BE06: 20 70 BE    ;
+
+                INC $68,x               ; $22:BE09: F6 68       ;
+
+                LDA $4D,x               ; $22:BE0B: B5 4D       ;
+
+                BNE CODE_22BE19         ; $22:BE0D: D0 0A       ;
+
+                LDA $9E,x               ; $22:BE0F: B5 9E       ;
+
+                BPL CODE_22BE19         ; $22:BE11: 10 06       ;
+
+                INC $1FD2,x             ; $22:BE13: FE D2 1F    ;
+
+                INC $1FD2,x             ; $22:BE16: FE D2 1F    ;
+
+CODE_22BE19:    INC $1FD2,x             ; $22:BE19: FE D2 1F    ;
+
+                LDA $A7,x               ; $22:BE1C: B5 A7       ;
+
+                AND #$08                ; $22:BE1E: 29 08       ;
+
+                BEQ CODE_22BE26         ; $22:BE20: F0 04       ;
+
+                LDA #$01                ; $22:BE22: A9 01       ;
+
+                STA $9E,x               ; $22:BE24: 95 9E       ;
+
+CODE_22BE26:    LDA $A7,x               ; $22:BE26: B5 A7       ;
+
+                AND #$04                ; $22:BE28: 29 04       ;
+
+                BEQ CODE_22BE61         ; $22:BE2A: F0 35       ;
+
+                LDA $68,x               ; $22:BE2C: B5 68       ;
+
+                AND #$3F                ; $22:BE2E: 29 3F       ;
+
+                BNE CODE_22BE3C         ; $22:BE30: D0 0A       ;
+
                 JSL CODE_27A837         ; $22:BE32: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C456,y                 ; $22:BE36: B9 56 C4    ;
-                STA $0679,x                 ; $22:BE39: 9D 79 06    ;
-CODE_22BE3C:    JSL CODE_278B67             ; $22:BE3C: 22 67 8B 27 ;
-                LDA $4D,x                   ; $22:BE40: B5 4D       ;
-                BNE CODE_22BE47             ; $22:BE42: D0 03       ;
-                STZ $1FD2,x                 ; $22:BE44: 9E D2 1F    ;
-CODE_22BE47:    LDA $0518,x                 ; $22:BE47: BD 18 05    ;
-                BNE CODE_22BE61             ; $22:BE4A: D0 15       ;
-                INC $4D,x                   ; $22:BE4C: F6 4D       ;
-                LDY #$F0                    ; $22:BE4E: A0 F0       ;
-                LDA $4D,x                   ; $22:BE50: B5 4D       ;
-                CMP #$04                    ; $22:BE52: C9 04       ;
-                BNE CODE_22BE5F             ; $22:BE54: D0 09       ;
-                STZ $4D,x                   ; $22:BE56: 74 4D       ;
-                LDA #$50                    ; $22:BE58: A9 50       ;
-                STA $0518,x                 ; $22:BE5A: 9D 18 05    ;
-                LDY #$D0                    ; $22:BE5D: A0 D0       ;
-CODE_22BE5F:    STY $9E,x                   ; $22:BE5F: 94 9E       ;
-CODE_22BE61:    LDA $A7,x                   ; $22:BE61: B5 A7       ;
-                AND #$03                    ; $22:BE63: 29 03       ;
-                BEQ CODE_22BE6B             ; $22:BE65: F0 04       ;
-                JSL CODE_27990D             ; $22:BE67: 22 0D 99 27 ;
-CODE_22BE6B:    JSL CODE_279B6B             ; $22:BE6B: 22 6B 9B 27 ;
-                RTL                         ; $22:BE6F: 6B          ;
+                LDA.w DATA_21C456,y     ; $22:BE36: B9 56 C4    ;
 
-CODE_22BE70:    JSR CODE_22CBA0             ; $22:BE70: 20 A0 CB    ;
-                LDA $44,x                   ; $22:BE73: B5 44       ;
-                XBA                         ; $22:BE75: EB          ;
-                LDA $5F,x                   ; $22:BE76: B5 5F       ;
-                REP #$30                    ; $22:BE78: C2 30       ;
-                SEC                         ; $22:BE7A: 38          ;
-                SBC $0210                   ; $22:BE7B: ED 10 02    ;
-                PHA                         ; $22:BE7E: 48          ;
-                SEC                         ; $22:BE7F: 38          ;
-                SBC #$0002                  ; $22:BE80: E9 02 00    ;
-                STA $D8                     ; $22:BE83: 85 D8       ;
-                PLA                         ; $22:BE85: 68          ;
-                CLC                         ; $22:BE86: 18          ;
-                ADC #$000A                  ; $22:BE87: 69 0A 00    ;
-                STA $DA                     ; $22:BE8A: 85 DA       ;
-                SEP #$20                    ; $22:BE8C: E2 20       ;
-                LDY $C6,x                   ; $22:BE8E: B4 C6       ;
-                LDA $0801,y                 ; $22:BE90: B9 01 08    ;
-                CMP #$F0                    ; $22:BE93: C9 F0       ;
-                BEQ CODE_22BEA3             ; $22:BE95: F0 0C       ;
-                SEC                         ; $22:BE97: 38          ;
-                SBC #$0A                    ; $22:BE98: E9 0A       ;
-                STA $0811,y                 ; $22:BE9A: 99 11 08    ;
-                CLC                         ; $22:BE9D: 18          ;
-                ADC #$08                    ; $22:BE9E: 69 08       ;
-                STA $0819,y                 ; $22:BEA0: 99 19 08    ;
-CODE_22BEA3:    LDA $0805,y                 ; $22:BEA3: B9 05 08    ;
-                CMP #$F0                    ; $22:BEA6: C9 F0       ;
-                BEQ CODE_22BEB6             ; $22:BEA8: F0 0C       ;
-                SEC                         ; $22:BEAA: 38          ;
-                SBC #$0A                    ; $22:BEAB: E9 0A       ;
-                STA $0815,y                 ; $22:BEAD: 99 15 08    ;
-                CLC                         ; $22:BEB0: 18          ;
-                ADC #$08                    ; $22:BEB1: 69 08       ;
-                STA $081D,y                 ; $22:BEB3: 99 1D 08    ;
-CODE_22BEB6:    LDA $0800,y                 ; $22:BEB6: B9 00 08    ;
-                SEC                         ; $22:BEB9: 38          ;
-                SBC #$02                    ; $22:BEBA: E9 02       ;
-                STA $0810,y                 ; $22:BEBC: 99 10 08    ;
-                STA $0818,y                 ; $22:BEBF: 99 18 08    ;
-                LDA $0804,y                 ; $22:BEC2: B9 04 08    ;
-                CLC                         ; $22:BEC5: 18          ;
-                ADC #$02                    ; $22:BEC6: 69 02       ;
-                STA $0814,y                 ; $22:BEC8: 99 14 08    ;
-                STA $081C,y                 ; $22:BECB: 99 1C 08    ;
-                LDA #$60                    ; $22:BECE: A9 60       ;
-                STA $0813,y                 ; $22:BED0: 99 13 08    ;
-                STA $081B,y                 ; $22:BED3: 99 1B 08    ;
-                LDA #$20                    ; $22:BED6: A9 20       ;
-                STA $0817,y                 ; $22:BED8: 99 17 08    ;
-                STA $081F,y                 ; $22:BEDB: 99 1F 08    ;
-                LDA $1FD2,x                 ; $22:BEDE: BD D2 1F    ;
-                LDX #$00CC                  ; $22:BEE1: A2 CC 00    ;
-                AND #$08                    ; $22:BEE4: 29 08       ;
-                BNE CODE_22BEEB             ; $22:BEE6: D0 03       ;
-                LDX #$00CE                  ; $22:BEE8: A2 CE 00    ;
-CODE_22BEEB:    TXA                         ; $22:BEEB: 8A          ;
-                STA $0812,y                 ; $22:BEEC: 99 12 08    ;
-                STA $0816,y                 ; $22:BEEF: 99 16 08    ;
-                INC A                       ; $22:BEF2: 1A          ;
-                STA $081A,y                 ; $22:BEF3: 99 1A 08    ;
-                STA $081E,y                 ; $22:BEF6: 99 1E 08    ;
-                REP #$20                    ; $22:BEF9: C2 20       ;
-                TYA                         ; $22:BEFB: 98          ;
-                CLC                         ; $22:BEFC: 18          ;
-                ADC #$0010                  ; $22:BEFD: 69 10 00    ;
-                LSR A                       ; $22:BF00: 4A          ;
-                LSR A                       ; $22:BF01: 4A          ;
-                TAY                         ; $22:BF02: A8          ;
-                SEP #$20                    ; $22:BF03: E2 20       ;
-                LDA $D9                     ; $22:BF05: A5 D9       ;
-                AND #$01                    ; $22:BF07: 29 01       ;
-                STA $0A20,y                 ; $22:BF09: 99 20 0A    ;
-                STA $0A22,y                 ; $22:BF0C: 99 22 0A    ;
-                LDA $DB                     ; $22:BF0F: A5 DB       ;
-                AND #$01                    ; $22:BF11: 29 01       ;
-                STA $0A21,y                 ; $22:BF13: 99 21 0A    ;
-                STA $0A23,y                 ; $22:BF16: 99 23 0A    ;
-                SEP #$10                    ; $22:BF19: E2 10       ;
-                LDX $9B                     ; $22:BF1B: A6 9B       ;
-                RTS                         ; $22:BF1D: 60          ;
+                STA $0679,x             ; $22:BE39: 9D 79 06    ;
+
+CODE_22BE3C:    JSL CODE_278B67         ; $22:BE3C: 22 67 8B 27 ;
+
+                LDA $4D,x               ; $22:BE40: B5 4D       ;
+
+                BNE CODE_22BE47         ; $22:BE42: D0 03       ;
+
+                STZ $1FD2,x             ; $22:BE44: 9E D2 1F    ;
+
+CODE_22BE47:    LDA $0518,x             ; $22:BE47: BD 18 05    ;
+
+                BNE CODE_22BE61         ; $22:BE4A: D0 15       ;
+
+                INC $4D,x               ; $22:BE4C: F6 4D       ;
+
+                LDY #$F0                ; $22:BE4E: A0 F0       ;
+
+                LDA $4D,x               ; $22:BE50: B5 4D       ;
+
+                CMP #$04                ; $22:BE52: C9 04       ;
+
+                BNE CODE_22BE5F         ; $22:BE54: D0 09       ;
+
+                STZ $4D,x               ; $22:BE56: 74 4D       ;
+
+                LDA #$50                ; $22:BE58: A9 50       ;
+
+                STA $0518,x             ; $22:BE5A: 9D 18 05    ;
+
+                LDY #$D0                ; $22:BE5D: A0 D0       ;
+
+CODE_22BE5F:    STY $9E,x               ; $22:BE5F: 94 9E       ;
+
+CODE_22BE61:    LDA $A7,x               ; $22:BE61: B5 A7       ;
+
+                AND #$03                ; $22:BE63: 29 03       ;
+
+                BEQ CODE_22BE6B         ; $22:BE65: F0 04       ;
+
+                JSL CODE_27990D         ; $22:BE67: 22 0D 99 27 ;
+
+CODE_22BE6B:    JSL CODE_279B6B         ; $22:BE6B: 22 6B 9B 27 ;
+
+                RTL                     ; $22:BE6F: 6B          ;
+
+CODE_22BE70:    JSR CODE_22CBA0         ; $22:BE70: 20 A0 CB    ;
+
+                LDA $44,x               ; $22:BE73: B5 44       ;
+
+                XBA                     ; $22:BE75: EB          ;
+
+                LDA $5F,x               ; $22:BE76: B5 5F       ;
+
+                REP #$30                ; $22:BE78: C2 30       ;
+
+                SEC                     ; $22:BE7A: 38          ;
+
+                SBC $0210               ; $22:BE7B: ED 10 02    ;
+
+                PHA                     ; $22:BE7E: 48          ;
+
+                SEC                     ; $22:BE7F: 38          ;
+
+                SBC #$0002              ; $22:BE80: E9 02 00    ;
+
+                STA $D8                 ; $22:BE83: 85 D8       ;
+
+                PLA                     ; $22:BE85: 68          ;
+
+                CLC                     ; $22:BE86: 18          ;
+
+                ADC #$000A              ; $22:BE87: 69 0A 00    ;
+
+                STA $DA                 ; $22:BE8A: 85 DA       ;
+
+                SEP #$20                ; $22:BE8C: E2 20       ;
+
+                LDY $C6,x               ; $22:BE8E: B4 C6       ;
+
+                LDA $0801,y             ; $22:BE90: B9 01 08    ;
+
+                CMP #$F0                ; $22:BE93: C9 F0       ;
+
+                BEQ CODE_22BEA3         ; $22:BE95: F0 0C       ;
+
+                SEC                     ; $22:BE97: 38          ;
+
+                SBC #$0A                ; $22:BE98: E9 0A       ;
+
+                STA $0811,y             ; $22:BE9A: 99 11 08    ;
+
+                CLC                     ; $22:BE9D: 18          ;
+
+                ADC #$08                ; $22:BE9E: 69 08       ;
+
+                STA $0819,y             ; $22:BEA0: 99 19 08    ;
+
+CODE_22BEA3:    LDA $0805,y             ; $22:BEA3: B9 05 08    ;
+
+                CMP #$F0                ; $22:BEA6: C9 F0       ;
+
+                BEQ CODE_22BEB6         ; $22:BEA8: F0 0C       ;
+
+                SEC                     ; $22:BEAA: 38          ;
+
+                SBC #$0A                ; $22:BEAB: E9 0A       ;
+
+                STA $0815,y             ; $22:BEAD: 99 15 08    ;
+
+                CLC                     ; $22:BEB0: 18          ;
+
+                ADC #$08                ; $22:BEB1: 69 08       ;
+
+                STA $081D,y             ; $22:BEB3: 99 1D 08    ;
+
+CODE_22BEB6:    LDA $0800,y             ; $22:BEB6: B9 00 08    ;
+
+                SEC                     ; $22:BEB9: 38          ;
+
+                SBC #$02                ; $22:BEBA: E9 02       ;
+
+                STA $0810,y             ; $22:BEBC: 99 10 08    ;
+
+                STA $0818,y             ; $22:BEBF: 99 18 08    ;
+
+                LDA $0804,y             ; $22:BEC2: B9 04 08    ;
+
+                CLC                     ; $22:BEC5: 18          ;
+
+                ADC #$02                ; $22:BEC6: 69 02       ;
+
+                STA $0814,y             ; $22:BEC8: 99 14 08    ;
+
+                STA $081C,y             ; $22:BECB: 99 1C 08    ;
+
+                LDA #$60                ; $22:BECE: A9 60       ;
+
+                STA $0813,y             ; $22:BED0: 99 13 08    ;
+
+                STA $081B,y             ; $22:BED3: 99 1B 08    ;
+
+                LDA #$20                ; $22:BED6: A9 20       ;
+
+                STA $0817,y             ; $22:BED8: 99 17 08    ;
+
+                STA $081F,y             ; $22:BEDB: 99 1F 08    ;
+
+                LDA $1FD2,x             ; $22:BEDE: BD D2 1F    ;
+
+                LDX #$00CC              ; $22:BEE1: A2 CC 00    ;
+
+                AND #$08                ; $22:BEE4: 29 08       ;
+
+                BNE CODE_22BEEB         ; $22:BEE6: D0 03       ;
+
+                LDX #$00CE              ; $22:BEE8: A2 CE 00    ;
+
+CODE_22BEEB:    TXA                     ; $22:BEEB: 8A          ;
+
+                STA $0812,y             ; $22:BEEC: 99 12 08    ;
+
+                STA $0816,y             ; $22:BEEF: 99 16 08    ;
+
+                INC A                   ; $22:BEF2: 1A          ;
+
+                STA $081A,y             ; $22:BEF3: 99 1A 08    ;
+
+                STA $081E,y             ; $22:BEF6: 99 1E 08    ;
+
+                REP #$20                ; $22:BEF9: C2 20       ;
+
+                TYA                     ; $22:BEFB: 98          ;
+
+                CLC                     ; $22:BEFC: 18          ;
+
+                ADC #$0010              ; $22:BEFD: 69 10 00    ;
+
+                LSR A                   ; $22:BF00: 4A          ;
+
+                LSR A                   ; $22:BF01: 4A          ;
+
+                TAY                     ; $22:BF02: A8          ;
+
+                SEP #$20                ; $22:BF03: E2 20       ;
+
+                LDA $D9                 ; $22:BF05: A5 D9       ;
+
+                AND #$01                ; $22:BF07: 29 01       ;
+
+                STA $0A20,y             ; $22:BF09: 99 20 0A    ;
+
+                STA $0A22,y             ; $22:BF0C: 99 22 0A    ;
+
+                LDA $DB                 ; $22:BF0F: A5 DB       ;
+
+                AND #$01                ; $22:BF11: 29 01       ;
+
+                STA $0A21,y             ; $22:BF13: 99 21 0A    ;
+
+                STA $0A23,y             ; $22:BF16: 99 23 0A    ;
+
+                SEP #$10                ; $22:BF19: E2 10       ;
+
+                LDX $9B                 ; $22:BF1B: A6 9B       ;
+
+                RTS                     ; $22:BF1D: 60          ;
 
 CODE_22BF1E:    JSL CODE_279BC3         ; $22:BF1E: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                LDA $9C                     ; $22:BF22: A5 9C       ;
-                BEQ CODE_22BF2A             ; $22:BF24: F0 04       ;
-                JSR CODE_22BE70             ; $22:BF26: 20 70 BE    ;
-                RTL                         ; $22:BF29: 6B          ;
+                LDA $9C                 ; $22:BF22: A5 9C       ;
 
-CODE_22BF2A:    LDY $07B5                   ; $22:BF2A: AC B5 07    ;
-                INY                         ; $22:BF2D: C8          ;
-                INY                         ; $22:BF2E: C8          ;
-                LDA.w DATA_21C45E,y                 ; $22:BF2F: B9 5E C4    ;
-                LDY #$00                    ; $22:BF32: A0 00       ;
-                AND $68,x                   ; $22:BF34: 35 68       ;
-                BEQ CODE_22BF39             ; $22:BF36: F0 01       ;
-                INY                         ; $22:BF38: C8          ;
-CODE_22BF39:    TYA                         ; $22:BF39: 98          ;
-                STA $0669,x                 ; $22:BF3A: 9D 69 06    ;
-                JSR CODE_22BE70             ; $22:BF3D: 20 70 BE    ;
-                JSL CODE_22BE6B             ; $22:BF40: 22 6B BE 22 ;
-                JSR CODE_22BF48             ; $22:BF44: 20 48 BF    ;
-                RTL                         ; $22:BF47: 6B          ;
+                BEQ CODE_22BF2A         ; $22:BF24: F0 04       ;
 
-CODE_22BF48:    LDA $4D,x                   ; $22:BF48: B5 4D       ;
+                JSR CODE_22BE70         ; $22:BF26: 20 70 BE    ;
+
+                RTL                     ; $22:BF29: 6B          ;
+
+CODE_22BF2A:    LDY $07B5               ; $22:BF2A: AC B5 07    ;
+
+                INY                     ; $22:BF2D: C8          ;
+
+                INY                     ; $22:BF2E: C8          ;
+
+                LDA.w DATA_21C45E,y     ; $22:BF2F: B9 5E C4    ;
+
+                LDY #$00                ; $22:BF32: A0 00       ;
+
+                AND $68,x               ; $22:BF34: 35 68       ;
+
+                BEQ CODE_22BF39         ; $22:BF36: F0 01       ;
+
+                INY                     ; $22:BF38: C8          ;
+
+CODE_22BF39:    TYA                     ; $22:BF39: 98          ;
+
+                STA $0669,x             ; $22:BF3A: 9D 69 06    ;
+
+                JSR CODE_22BE70         ; $22:BF3D: 20 70 BE    ;
+
+                JSL CODE_22BE6B         ; $22:BF40: 22 6B BE 22 ;
+
+                JSR CODE_22BF48         ; $22:BF44: 20 48 BF    ;
+
+                RTL                     ; $22:BF47: 6B          ;
+
+CODE_22BF48:    LDA $4D,x               ; $22:BF48: B5 4D       ;
+
                 JSL CODE_20FB1F         ; $22:BF4A: 22 1F FB 20 ; ExecutePtrShort
 
                 dw CODE_22BF54                                  ;
@@ -2652,1259 +4242,2409 @@ CODE_22BF48:    LDA $4D,x                   ; $22:BF48: B5 4D       ;
                 dw CODE_22BFD2                                  ;
 
 CODE_22BF54:    INC $68,x               ; $22:BF54: F6 68       ;
-                LDY #$08                    ; $22:BF56: A0 08       ;
-                LDA $0679,x                 ; $22:BF58: BD 79 06    ;
-                BNE CODE_22BF5F             ; $22:BF5B: D0 02       ;
-                LDY #$F8                    ; $22:BF5D: A0 F8       ;
-CODE_22BF5F:    STY $8C,x                   ; $22:BF5F: 94 8C       ;
-                JSL CODE_27983B             ; $22:BF61: 22 3B 98 27 ;
-                DEC $9E,x                   ; $22:BF65: D6 9E       ;
-                DEC $9E,x                   ; $22:BF67: D6 9E       ;
-                LDY #$08                    ; $22:BF69: A0 08       ;
-                LDA $A7,x                   ; $22:BF6B: B5 A7       ;
-                AND #$04                    ; $22:BF6D: 29 04       ;
-                BEQ CODE_22BF92             ; $22:BF6F: F0 21       ;
-                LDA $68,x                   ; $22:BF71: B5 68       ;
-                AND #$3F                    ; $22:BF73: 29 3F       ;
-                BNE CODE_22BF81             ; $22:BF75: D0 0A       ;
+                LDY #$08                ; $22:BF56: A0 08       ;
+
+                LDA $0679,x             ; $22:BF58: BD 79 06    ;
+
+                BNE CODE_22BF5F         ; $22:BF5B: D0 02       ;
+
+                LDY #$F8                ; $22:BF5D: A0 F8       ;
+
+CODE_22BF5F:    STY $8C,x               ; $22:BF5F: 94 8C       ;
+
+                JSL CODE_27983B         ; $22:BF61: 22 3B 98 27 ;
+
+                DEC $9E,x               ; $22:BF65: D6 9E       ;
+
+                DEC $9E,x               ; $22:BF67: D6 9E       ;
+
+                LDY #$08                ; $22:BF69: A0 08       ;
+
+                LDA $A7,x               ; $22:BF6B: B5 A7       ;
+
+                AND #$04                ; $22:BF6D: 29 04       ;
+
+                BEQ CODE_22BF92         ; $22:BF6F: F0 21       ;
+
+                LDA $68,x               ; $22:BF71: B5 68       ;
+
+                AND #$3F                ; $22:BF73: 29 3F       ;
+
+                BNE CODE_22BF81         ; $22:BF75: D0 0A       ;
+
                 JSL CODE_27A837         ; $22:BF77: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C456,y                 ; $22:BF7B: B9 56 C4    ;
-                STA $0679,x                 ; $22:BF7E: 9D 79 06    ;
-CODE_22BF81:    JSL CODE_278B67             ; $22:BF81: 22 67 8B 27 ;
-                LDY #$00                    ; $22:BF85: A0 00       ;
-                LDA $0518,x                 ; $22:BF87: BD 18 05    ;
-                BEQ CODE_22BF98             ; $22:BF8A: F0 0C       ;
-                CMP #$20                    ; $22:BF8C: C9 20       ;
-                BCS CODE_22BF92                     ; $22:BF8E: B0 02       ;
-                LDY #$08                    ; $22:BF90: A0 08       ;
-CODE_22BF92:    TYA                         ; $22:BF92: 98          ;
-                STA $1FD2,x                 ; $22:BF93: 9D D2 1F    ;
-                BRA CODE_22BF9A             ; $22:BF96: 80 02       ;
+                LDA.w DATA_21C456,y     ; $22:BF7B: B9 56 C4    ;
 
-CODE_22BF98:    INC $4D,x                   ; $22:BF98: F6 4D       ;
-CODE_22BF9A:    LDA $A7,x                   ; $22:BF9A: B5 A7       ;
-                AND #$03                    ; $22:BF9C: 29 03       ;
-                BEQ CODE_22BFA4             ; $22:BF9E: F0 04       ;
-                JSL CODE_27990D             ; $22:BFA0: 22 0D 99 27 ;
-CODE_22BFA4:    RTS                         ; $22:BFA4: 60          ;
+                STA $0679,x             ; $22:BF7E: 9D 79 06    ;
 
-CODE_22BFA5:    INC $1FD2,x                 ; $22:BFA5: FE D2 1F    ;
-                INC $1FD2,x                 ; $22:BFA8: FE D2 1F    ;
-                INC $1FD2,x                 ; $22:BFAB: FE D2 1F    ;
-                JSL CODE_27A848             ; $22:BFAE: 22 48 A8 27 ;
-                CPY #$00                    ; $22:BFB2: C0 00       ;
-                BNE CODE_22BFC8             ; $22:BFB4: D0 12       ;
-                LDA $0F                     ; $22:BFB6: A5 0F       ;
-                CMP #$38                    ; $22:BFB8: C9 38       ;
-                BCC CODE_22BFC8             ; $22:BFBA: 90 0C       ;
-                INC $9E,x                   ; $22:BFBC: F6 9E       ;
-                BNE CODE_22BFCC             ; $22:BFBE: D0 0C       ;
-                INC $4D,x                   ; $22:BFC0: F6 4D       ;
-                LDA #$80                    ; $22:BFC2: A9 80       ;
-                STA $0518,x                 ; $22:BFC4: 9D 18 05    ;
-                RTS                         ; $22:BFC7: 60          ;
+CODE_22BF81:    JSL CODE_278B67         ; $22:BF81: 22 67 8B 27 ;
 
-CODE_22BFC8:    LDA #$F0                    ; $22:BFC8: A9 F0       ;
-                STA $9E,x                   ; $22:BFCA: 95 9E       ;
-CODE_22BFCC:    JSL CODE_27A7E4             ; $22:BFCC: 22 E4 A7 27 ;
-                BRA CODE_22BFFB             ; $22:BFD0: 80 29       ;
+                LDY #$00                ; $22:BF85: A0 00       ;
 
-CODE_22BFD2:    LDY $0518,x                 ; $22:BFD2: BC 18 05    ;
-                BNE CODE_22BFDE             ; $22:BFD5: D0 07       ;
-                STZ $4D,x                   ; $22:BFD7: 74 4D       ;
-                LDA #$80                    ; $22:BFD9: A9 80       ;
-                STA $0518,x                 ; $22:BFDB: 9D 18 05    ;
-CODE_22BFDE:    INC $1FD2,x                 ; $22:BFDE: FE D2 1F    ;
-                INC $1FD2,x                 ; $22:BFE1: FE D2 1F    ;
-                INC $68,x                   ; $22:BFE4: F6 68       ;
-                LDA $68,x                   ; $22:BFE6: B5 68       ;
-                AND #$1F                    ; $22:BFE8: 29 1F       ;
-                BNE CODE_22BFEF             ; $22:BFEA: D0 03       ;
-                JSR CODE_22C02D             ; $22:BFEC: 20 2D C0    ;
-CODE_22BFEF:    LDY #$08                    ; $22:BFEF: A0 08       ;
-                LDA $68,x                   ; $22:BFF1: B5 68       ;
-                AND #$10                    ; $22:BFF3: 29 10       ;
-                BEQ CODE_22BFF9             ; $22:BFF5: F0 02       ;
-                LDY #$F8                    ; $22:BFF7: A0 F8       ;
-CODE_22BFF9:    STY $9E,x                   ; $22:BFF9: 94 9E       ;
-CODE_22BFFB:    LDY #$00                    ; $22:BFFB: A0 00       ;
-                LDA $0679,x                 ; $22:BFFD: BD 79 06    ;
-                BNE CODE_22C003             ; $22:C000: D0 01       ;
-                INY                         ; $22:C002: C8          ;
-CODE_22C003:    LDA $8C,x                   ; $22:C003: B5 8C       ;
-                CMP.w DATA_21C44A,y                 ; $22:C005: D9 4A C4    ;
-                BEQ CODE_22C010             ; $22:C008: F0 06       ;
-                CLC                         ; $22:C00A: 18          ;
-                ADC.w DATA_21C448,y                 ; $22:C00B: 79 48 C4    ;
-                STA $8C,x                   ; $22:C00E: 95 8C       ;
-CODE_22C010:    INC $0691,x                 ; $22:C010: FE 91 06    ;
-                LDA $0691,x                 ; $22:C013: BD 91 06    ;
-                AND #$3F                    ; $22:C016: 29 3F       ;
-                BNE CODE_22C024             ; $22:C018: D0 0A       ;
+                LDA $0518,x             ; $22:BF87: BD 18 05    ;
+
+                BEQ CODE_22BF98         ; $22:BF8A: F0 0C       ;
+
+                CMP #$20                ; $22:BF8C: C9 20       ;
+
+                BCS CODE_22BF92         ; $22:BF8E: B0 02       ;
+
+                LDY #$08                ; $22:BF90: A0 08       ;
+
+CODE_22BF92:    TYA                     ; $22:BF92: 98          ;
+
+                STA $1FD2,x             ; $22:BF93: 9D D2 1F    ;
+
+                BRA CODE_22BF9A         ; $22:BF96: 80 02       ;
+
+CODE_22BF98:    INC $4D,x               ; $22:BF98: F6 4D       ;
+
+CODE_22BF9A:    LDA $A7,x               ; $22:BF9A: B5 A7       ;
+
+                AND #$03                ; $22:BF9C: 29 03       ;
+
+                BEQ CODE_22BFA4         ; $22:BF9E: F0 04       ;
+
+                JSL CODE_27990D         ; $22:BFA0: 22 0D 99 27 ;
+
+CODE_22BFA4:    RTS                     ; $22:BFA4: 60          ;
+
+CODE_22BFA5:    INC $1FD2,x             ; $22:BFA5: FE D2 1F    ;
+
+                INC $1FD2,x             ; $22:BFA8: FE D2 1F    ;
+
+                INC $1FD2,x             ; $22:BFAB: FE D2 1F    ;
+
+                JSL CODE_27A848         ; $22:BFAE: 22 48 A8 27 ;
+
+                CPY #$00                ; $22:BFB2: C0 00       ;
+
+                BNE CODE_22BFC8         ; $22:BFB4: D0 12       ;
+
+                LDA $0F                 ; $22:BFB6: A5 0F       ;
+
+                CMP #$38                ; $22:BFB8: C9 38       ;
+
+                BCC CODE_22BFC8         ; $22:BFBA: 90 0C       ;
+
+                INC $9E,x               ; $22:BFBC: F6 9E       ;
+
+                BNE CODE_22BFCC         ; $22:BFBE: D0 0C       ;
+
+                INC $4D,x               ; $22:BFC0: F6 4D       ;
+
+                LDA #$80                ; $22:BFC2: A9 80       ;
+
+                STA $0518,x             ; $22:BFC4: 9D 18 05    ;
+
+                RTS                     ; $22:BFC7: 60          ;
+
+CODE_22BFC8:    LDA #$F0                ; $22:BFC8: A9 F0       ;
+
+                STA $9E,x               ; $22:BFCA: 95 9E       ;
+
+CODE_22BFCC:    JSL CODE_27A7E4         ; $22:BFCC: 22 E4 A7 27 ;
+
+                BRA CODE_22BFFB         ; $22:BFD0: 80 29       ;
+
+CODE_22BFD2:    LDY $0518,x             ; $22:BFD2: BC 18 05    ;
+
+                BNE CODE_22BFDE         ; $22:BFD5: D0 07       ;
+
+                STZ $4D,x               ; $22:BFD7: 74 4D       ;
+
+                LDA #$80                ; $22:BFD9: A9 80       ;
+
+                STA $0518,x             ; $22:BFDB: 9D 18 05    ;
+
+CODE_22BFDE:    INC $1FD2,x             ; $22:BFDE: FE D2 1F    ;
+
+                INC $1FD2,x             ; $22:BFE1: FE D2 1F    ;
+
+                INC $68,x               ; $22:BFE4: F6 68       ;
+
+                LDA $68,x               ; $22:BFE6: B5 68       ;
+
+                AND #$1F                ; $22:BFE8: 29 1F       ;
+
+                BNE CODE_22BFEF         ; $22:BFEA: D0 03       ;
+
+                JSR CODE_22C02D         ; $22:BFEC: 20 2D C0    ;
+
+CODE_22BFEF:    LDY #$08                ; $22:BFEF: A0 08       ;
+
+                LDA $68,x               ; $22:BFF1: B5 68       ;
+
+                AND #$10                ; $22:BFF3: 29 10       ;
+
+                BEQ CODE_22BFF9         ; $22:BFF5: F0 02       ;
+
+                LDY #$F8                ; $22:BFF7: A0 F8       ;
+
+CODE_22BFF9:    STY $9E,x               ; $22:BFF9: 94 9E       ;
+
+CODE_22BFFB:    LDY #$00                ; $22:BFFB: A0 00       ;
+
+                LDA $0679,x             ; $22:BFFD: BD 79 06    ;
+
+                BNE CODE_22C003         ; $22:C000: D0 01       ;
+
+                INY                     ; $22:C002: C8          ;
+
+CODE_22C003:    LDA $8C,x               ; $22:C003: B5 8C       ;
+
+                CMP.w DATA_21C44A,y     ; $22:C005: D9 4A C4    ;
+
+                BEQ CODE_22C010         ; $22:C008: F0 06       ;
+
+                CLC                     ; $22:C00A: 18          ;
+
+                ADC.w DATA_21C448,y     ; $22:C00B: 79 48 C4    ;
+
+                STA $8C,x               ; $22:C00E: 95 8C       ;
+
+CODE_22C010:    INC $0691,x             ; $22:C010: FE 91 06    ;
+
+                LDA $0691,x             ; $22:C013: BD 91 06    ;
+
+                AND #$3F                ; $22:C016: 29 3F       ;
+
+                BNE CODE_22C024         ; $22:C018: D0 0A       ;
+
                 JSL CODE_27A837         ; $22:C01A: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C456,y                 ; $22:C01E: B9 56 C4    ;
-                STA $0679,x                 ; $22:C021: 9D 79 06    ;
-CODE_22C024:    JSL CODE_27A7EF             ; $22:C024: 22 EF A7 27 ;
-                JSL CODE_27A7E4             ; $22:C028: 22 E4 A7 27 ;
-                RTS                         ; $22:C02C: 60          ;
+                LDA.w DATA_21C456,y     ; $22:C01E: B9 56 C4    ;
 
-CODE_22C02D:    LDY #$05                    ; $22:C02D: A0 05       ;
-                JSL CODE_278A74             ; $22:C02F: 22 74 8A 27 ;
-                LDA #$06                    ; $22:C033: A9 06       ;
-                STA $1FC8,y                 ; $22:C035: 99 C8 1F    ;
-                LDA #$00                    ; $22:C038: A9 00       ;
-                STA $06C7,y                 ; $22:C03A: 99 C7 06    ;
-                LDA $71,x                   ; $22:C03D: B5 71       ;
-                CLC                         ; $22:C03F: 18          ;
-                ADC #$04                    ; $22:C040: 69 04       ;
-                STA $05BF,y                 ; $22:C042: 99 BF 05    ;
-                LDA $56,x                   ; $22:C045: B5 56       ;
-                ADC #$00                    ; $22:C047: 69 00       ;
-                STA $1FD7,y                 ; $22:C049: 99 D7 1F    ;
-                LDA $5F,x                   ; $22:C04C: B5 5F       ;
-                CLC                         ; $22:C04E: 18          ;
-                ADC #$04                    ; $22:C04F: 69 04       ;
-                STA $05C9,y                 ; $22:C051: 99 C9 05    ;
-                LDA $44,x                   ; $22:C054: B5 44       ;
-                ADC #$00                    ; $22:C056: 69 00       ;
-                STA $00E2,y                 ; $22:C058: 99 E2 00    ;
-                LDA #$00                    ; $22:C05B: A9 00       ;
-                STA $05D3,y                 ; $22:C05D: 99 D3 05    ;
-                STA $05DD,y                 ; $22:C060: 99 DD 05    ;
-                RTS                         ; $22:C063: 60          ;
+                STA $0679,x             ; $22:C021: 9D 79 06    ;
 
-CODE_22C064:    JSL CODE_279BB7             ; $22:C064: 22 B7 9B 27 ;
-                LDA $9C                     ; $22:C068: A5 9C       ;
-                BNE CODE_22C080             ; $22:C06A: D0 14       ;
-                INC $68,x                   ; $22:C06C: F6 68       ;
-                JSL CODE_27A7EF             ; $22:C06E: 22 EF A7 27 ;
-                JSL CODE_27A7E4             ; $22:C072: 22 E4 A7 27 ;
-                JSL CODE_278B93             ; $22:C076: 22 93 8B 27 ;
-                INC $9E,x                   ; $22:C07A: F6 9E       ;
-                JSL CODE_279B6F             ; $22:C07C: 22 6F 9B 27 ;
+CODE_22C024:    JSL CODE_27A7EF         ; $22:C024: 22 EF A7 27 ;
+
+                JSL CODE_27A7E4         ; $22:C028: 22 E4 A7 27 ;
+
+                RTS                     ; $22:C02C: 60          ;
+
+CODE_22C02D:    LDY #$05                ; $22:C02D: A0 05       ;
+
+                JSL CODE_278A74         ; $22:C02F: 22 74 8A 27 ;
+
+                LDA #$06                ; $22:C033: A9 06       ;
+
+                STA $1FC8,y             ; $22:C035: 99 C8 1F    ;
+
+                LDA #$00                ; $22:C038: A9 00       ;
+
+                STA $06C7,y             ; $22:C03A: 99 C7 06    ;
+
+                LDA $71,x               ; $22:C03D: B5 71       ;
+
+                CLC                     ; $22:C03F: 18          ;
+
+                ADC #$04                ; $22:C040: 69 04       ;
+
+                STA $05BF,y             ; $22:C042: 99 BF 05    ;
+
+                LDA $56,x               ; $22:C045: B5 56       ;
+
+                ADC #$00                ; $22:C047: 69 00       ;
+
+                STA $1FD7,y             ; $22:C049: 99 D7 1F    ;
+
+                LDA $5F,x               ; $22:C04C: B5 5F       ;
+
+                CLC                     ; $22:C04E: 18          ;
+
+                ADC #$04                ; $22:C04F: 69 04       ;
+
+                STA $05C9,y             ; $22:C051: 99 C9 05    ;
+
+                LDA $44,x               ; $22:C054: B5 44       ;
+
+                ADC #$00                ; $22:C056: 69 00       ;
+
+                STA $00E2,y             ; $22:C058: 99 E2 00    ;
+
+                LDA #$00                ; $22:C05B: A9 00       ;
+
+                STA $05D3,y             ; $22:C05D: 99 D3 05    ;
+
+                STA $05DD,y             ; $22:C060: 99 DD 05    ;
+
+                RTS                     ; $22:C063: 60          ;
+
+CODE_22C064:    JSL CODE_279BB7         ; $22:C064: 22 B7 9B 27 ;
+
+                LDA $9C                 ; $22:C068: A5 9C       ;
+
+                BNE CODE_22C080         ; $22:C06A: D0 14       ;
+
+                INC $68,x               ; $22:C06C: F6 68       ;
+
+                JSL CODE_27A7EF         ; $22:C06E: 22 EF A7 27 ;
+
+                JSL CODE_27A7E4         ; $22:C072: 22 E4 A7 27 ;
+
+                JSL CODE_278B93         ; $22:C076: 22 93 8B 27 ;
+
+                INC $9E,x               ; $22:C07A: F6 9E       ;
+
+                JSL CODE_279B6F         ; $22:C07C: 22 6F 9B 27 ;
+
 CODE_22C080:    JSL CODE_279BC3         ; $22:C080: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-CODE_22C084:    LDA $68,x                   ; $22:C084: B5 68       ;
-                LSR A                       ; $22:C086: 4A          ;
-                LSR A                       ; $22:C087: 4A          ;
-                LSR A                       ; $22:C088: 4A          ;
-                AND #$01                    ; $22:C089: 29 01       ;
-                LDY $0689,x                 ; $22:C08B: BC 89 06    ;
-                BEQ CODE_22C093             ; $22:C08E: F0 03       ;
-                CLC                         ; $22:C090: 18          ;
-                ADC #$03                    ; $22:C091: 69 03       ;
-CODE_22C093:    STA $0669,x                 ; $22:C093: 9D 69 06    ;
-                JSR CODE_22D34B             ; $22:C096: 20 4B D3    ;
-                JSL CODE_27A27C             ; $22:C099: 22 7C A2 27 ;
-                JSR CODE_22CBA6             ; $22:C09D: 20 A6 CB    ;
-                RTL                         ; $22:C0A0: 6B          ;
+CODE_22C084:    LDA $68,x               ; $22:C084: B5 68       ;
 
-CODE_22C0A1:    LDA $0689,x                 ; $22:C0A1: BD 89 06    ;
-                BEQ CODE_22C0A8             ; $22:C0A4: F0 02       ;
-                BRA CODE_22C0A8             ; $22:C0A6: 80 00       ;
+                LSR A                   ; $22:C086: 4A          ;
 
-CODE_22C0A8:    LDA $0661,x                 ; $22:C0A8: BD 61 06    ;
-                CMP #$02                    ; $22:C0AB: C9 02       ;
-                BEQ CODE_22C0BD             ; $22:C0AD: F0 0E       ;
-                LDA $0689,x                 ; $22:C0AF: BD 89 06    ;
-                BEQ CODE_22C0B9             ; $22:C0B2: F0 05       ;
-                LDA #$05                    ; $22:C0B4: A9 05       ;
-                STA $0669,x                 ; $22:C0B6: 9D 69 06    ;
-CODE_22C0B9:    JSR CODE_22CBA6             ; $22:C0B9: 20 A6 CB    ;
-                RTL                         ; $22:C0BC: 6B          ;
+                LSR A                   ; $22:C087: 4A          ;
 
-CODE_22C0BD:    JSL CODE_279BB7             ; $22:C0BD: 22 B7 9B 27 ;
-                LDA $9C                     ; $22:C0C1: A5 9C       ;
-                BNE CODE_22C114             ; $22:C0C3: D0 4F       ;
-                INC $68,x                   ; $22:C0C5: F6 68       ;
-                LDA $15                     ; $22:C0C7: A5 15       ;
-                AND #$07                    ; $22:C0C9: 29 07       ;
-                BNE CODE_22C0E1             ; $22:C0CB: D0 14       ;
-                LDA $4D,x                   ; $22:C0CD: B5 4D       ;
-                AND #$01                    ; $22:C0CF: 29 01       ;
-                TAY                         ; $22:C0D1: A8          ;
-                LDA $9E,x                   ; $22:C0D2: B5 9E       ;
-                CLC                         ; $22:C0D4: 18          ;
-                ADC.w DATA_21C44C,y                 ; $22:C0D5: 79 4C C4    ;
-                STA $9E,x                   ; $22:C0D8: 95 9E       ;
-                CMP.w DATA_21C44E,y                 ; $22:C0DA: D9 4E C4    ;
-                BNE CODE_22C0E1             ; $22:C0DD: D0 02       ;
-                INC $4D,x                   ; $22:C0DF: F6 4D       ;
-CODE_22C0E1:    JSL CODE_27A7EF             ; $22:C0E1: 22 EF A7 27 ;
-                JSL CODE_27A7E4             ; $22:C0E5: 22 E4 A7 27 ;
-                LDA $0689,x                 ; $22:C0E9: BD 89 06    ;
-                BNE CODE_22C110             ; $22:C0EC: D0 22       ;
-                LDA $5F,x                   ; $22:C0EE: B5 5F       ;
-                CMP $1CC8,x                 ; $22:C0F0: DD C8 1C    ;
-                BEQ CODE_22C104             ; $22:C0F3: F0 0F       ;
-                CMP $1CCD,x                 ; $22:C0F5: DD CD 1C    ;
-                BEQ CODE_22C104             ; $22:C0F8: F0 0A       ;
-                JSL CODE_278B9B             ; $22:C0FA: 22 9B 8B 27 ;
-                LDA $A7,x                   ; $22:C0FE: B5 A7       ;
-                AND #$03                    ; $22:C100: 29 03       ;
-                BEQ CODE_22C110             ; $22:C102: F0 0C       ;
-CODE_22C104:    JSL CODE_279905             ; $22:C104: 22 05 99 27 ;
-                JSL CODE_27A7EF             ; $22:C108: 22 EF A7 27 ;
-                JSL CODE_27A7EF             ; $22:C10C: 22 EF A7 27 ;
-CODE_22C110:    JSL CODE_279B6F             ; $22:C110: 22 6F 9B 27 ;
-CODE_22C114:    JSL CODE_279BCB             ; $22:C114: 22 CB 9B 27 ;
-                JSL CODE_27A27C             ; $22:C118: 22 7C A2 27 ;
-                JSL CODE_22C084             ; $22:C11C: 22 84 C0 22 ;
-                RTL                         ; $22:C120: 6B          ;
+                LSR A                   ; $22:C088: 4A          ;
 
-CODE_22C121:    LDA $9C                     ; $22:C121: A5 9C       ;
-                BNE CODE_22C189             ; $22:C123: D0 64       ;
+                AND #$01                ; $22:C089: 29 01       ;
+
+                LDY $0689,x             ; $22:C08B: BC 89 06    ;
+
+                BEQ CODE_22C093         ; $22:C08E: F0 03       ;
+
+                CLC                     ; $22:C090: 18          ;
+
+                ADC #$03                ; $22:C091: 69 03       ;
+
+CODE_22C093:    STA $0669,x             ; $22:C093: 9D 69 06    ;
+
+                JSR CODE_22D34B         ; $22:C096: 20 4B D3    ;
+
+                JSL CODE_27A27C         ; $22:C099: 22 7C A2 27 ;
+
+                JSR CODE_22CBA6         ; $22:C09D: 20 A6 CB    ;
+
+                RTL                     ; $22:C0A0: 6B          ;
+
+CODE_22C0A1:    LDA $0689,x             ; $22:C0A1: BD 89 06    ;
+
+                BEQ CODE_22C0A8         ; $22:C0A4: F0 02       ;
+
+                BRA CODE_22C0A8         ; $22:C0A6: 80 00       ;
+
+CODE_22C0A8:    LDA $0661,x             ; $22:C0A8: BD 61 06    ;
+
+                CMP #$02                ; $22:C0AB: C9 02       ;
+
+                BEQ CODE_22C0BD         ; $22:C0AD: F0 0E       ;
+
+                LDA $0689,x             ; $22:C0AF: BD 89 06    ;
+
+                BEQ CODE_22C0B9         ; $22:C0B2: F0 05       ;
+
+                LDA #$05                ; $22:C0B4: A9 05       ;
+
+                STA $0669,x             ; $22:C0B6: 9D 69 06    ;
+
+CODE_22C0B9:    JSR CODE_22CBA6         ; $22:C0B9: 20 A6 CB    ;
+
+                RTL                     ; $22:C0BC: 6B          ;
+
+CODE_22C0BD:    JSL CODE_279BB7         ; $22:C0BD: 22 B7 9B 27 ;
+
+                LDA $9C                 ; $22:C0C1: A5 9C       ;
+
+                BNE CODE_22C114         ; $22:C0C3: D0 4F       ;
+
+                INC $68,x               ; $22:C0C5: F6 68       ;
+
+                LDA $15                 ; $22:C0C7: A5 15       ;
+
+                AND #$07                ; $22:C0C9: 29 07       ;
+
+                BNE CODE_22C0E1         ; $22:C0CB: D0 14       ;
+
+                LDA $4D,x               ; $22:C0CD: B5 4D       ;
+
+                AND #$01                ; $22:C0CF: 29 01       ;
+
+                TAY                     ; $22:C0D1: A8          ;
+
+                LDA $9E,x               ; $22:C0D2: B5 9E       ;
+
+                CLC                     ; $22:C0D4: 18          ;
+
+                ADC.w DATA_21C44C,y     ; $22:C0D5: 79 4C C4    ;
+
+                STA $9E,x               ; $22:C0D8: 95 9E       ;
+
+                CMP.w DATA_21C44E,y     ; $22:C0DA: D9 4E C4    ;
+
+                BNE CODE_22C0E1         ; $22:C0DD: D0 02       ;
+
+                INC $4D,x               ; $22:C0DF: F6 4D       ;
+
+CODE_22C0E1:    JSL CODE_27A7EF         ; $22:C0E1: 22 EF A7 27 ;
+
+                JSL CODE_27A7E4         ; $22:C0E5: 22 E4 A7 27 ;
+
+                LDA $0689,x             ; $22:C0E9: BD 89 06    ;
+
+                BNE CODE_22C110         ; $22:C0EC: D0 22       ;
+
+                LDA $5F,x               ; $22:C0EE: B5 5F       ;
+
+                CMP $1CC8,x             ; $22:C0F0: DD C8 1C    ;
+
+                BEQ CODE_22C104         ; $22:C0F3: F0 0F       ;
+
+                CMP $1CCD,x             ; $22:C0F5: DD CD 1C    ;
+
+                BEQ CODE_22C104         ; $22:C0F8: F0 0A       ;
+
+                JSL CODE_278B9B         ; $22:C0FA: 22 9B 8B 27 ;
+
+                LDA $A7,x               ; $22:C0FE: B5 A7       ;
+
+                AND #$03                ; $22:C100: 29 03       ;
+
+                BEQ CODE_22C110         ; $22:C102: F0 0C       ;
+
+CODE_22C104:    JSL CODE_279905         ; $22:C104: 22 05 99 27 ;
+
+                JSL CODE_27A7EF         ; $22:C108: 22 EF A7 27 ;
+
+                JSL CODE_27A7EF         ; $22:C10C: 22 EF A7 27 ;
+
+CODE_22C110:    JSL CODE_279B6F         ; $22:C110: 22 6F 9B 27 ;
+
+CODE_22C114:    JSL CODE_279BCB         ; $22:C114: 22 CB 9B 27 ;
+
+                JSL CODE_27A27C         ; $22:C118: 22 7C A2 27 ;
+
+                JSL CODE_22C084         ; $22:C11C: 22 84 C0 22 ;
+
+                RTL                     ; $22:C120: 6B          ;
+
+CODE_22C121:    LDA $9C                 ; $22:C121: A5 9C       ;
+
+                BNE CODE_22C189         ; $22:C123: D0 64       ;
+
                 JSL CODE_279BC3         ; $22:C125: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                JSL CODE_279B6F             ; $22:C129: 22 6F 9B 27 ;
-                JSL CODE_27A7EF             ; $22:C12D: 22 EF A7 27 ;
-                LDA $0671,x                 ; $22:C131: BD 71 06    ;
-                CMP #$79                    ; $22:C134: C9 79       ;
-                BNE CODE_22C189             ; $22:C136: D0 51       ;
-                LDA $15                     ; $22:C138: A5 15       ;
-                ORA #$F8                    ; $22:C13A: 09 F8       ;
-                STA $0769,x                 ; $22:C13C: 9D 69 07    ;
-                AND #$03                    ; $22:C13F: 29 03       ;
-                STA $1FE9,x                 ; $22:C141: 9D E9 1F    ;
-                LDA $1FD2,x                 ; $22:C144: BD D2 1F    ;
-                BEQ CODE_22C15F             ; $22:C147: F0 16       ;
+                JSL CODE_279B6F         ; $22:C129: 22 6F 9B 27 ;
+
+                JSL CODE_27A7EF         ; $22:C12D: 22 EF A7 27 ;
+
+                LDA $0671,x             ; $22:C131: BD 71 06    ;
+
+                CMP #$79                ; $22:C134: C9 79       ;
+
+                BNE CODE_22C189         ; $22:C136: D0 51       ;
+
+                LDA $15                 ; $22:C138: A5 15       ;
+
+                ORA #$F8                ; $22:C13A: 09 F8       ;
+
+                STA $0769,x             ; $22:C13C: 9D 69 07    ;
+
+                AND #$03                ; $22:C13F: 29 03       ;
+
+                STA $1FE9,x             ; $22:C141: 9D E9 1F    ;
+
+                LDA $1FD2,x             ; $22:C144: BD D2 1F    ;
+
+                BEQ CODE_22C15F         ; $22:C147: F0 16       ;
+
                 JSL CODE_27A837         ; $22:C149: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                STY $00                     ; $22:C14D: 84 00       ;
-                LDY #$00                    ; $22:C14F: A0 00       ;
-                LDA $8C,x                   ; $22:C151: B5 8C       ;
-                BPL CODE_22C156             ; $22:C153: 10 01       ;
-                INY                         ; $22:C155: C8          ;
-CODE_22C156:    CPY $00                     ; $22:C156: C4 00       ;
-                BEQ CODE_22C189             ; $22:C158: F0 2F       ;
-                DEC $1FD2,x                 ; $22:C15A: DE D2 1F    ;
-                BNE CODE_22C189             ; $22:C15D: D0 2A       ;
-CODE_22C15F:    LDA $15                     ; $22:C15F: A5 15       ;
-                AND #$01                    ; $22:C161: 29 01       ;
-                BNE CODE_22C189             ; $22:C163: D0 24       ;
-                LDA $4D,x                   ; $22:C165: B5 4D       ;
-                BMI CODE_22C189             ; $22:C167: 30 20       ;
-                AND #$01                    ; $22:C169: 29 01       ;
-                TAY                         ; $22:C16B: A8          ;
-                LDA.w DATA_21C454,y                 ; $22:C16C: B9 54 C4    ;
-                STA $0679,x                 ; $22:C16F: 9D 79 06    ;
-                LDA $8C,x                   ; $22:C172: B5 8C       ;
-                CLC                         ; $22:C174: 18          ;
-                ADC.w DATA_21C450,y                 ; $22:C175: 79 50 C4    ;
-                STA $8C,x                   ; $22:C178: 95 8C       ;
-                CMP #$00                    ; $22:C17A: C9 00       ;
-                BNE CODE_22C180             ; $22:C17C: D0 02       ;
-                STZ $68,x                   ; $22:C17E: 74 68       ;
-CODE_22C180:    CMP.w DATA_21C452,y                 ; $22:C180: D9 52 C4    ;
-                BNE CODE_22C189             ; $22:C183: D0 04       ;
-                LDA #$FF                    ; $22:C185: A9 FF       ;
-                STA $4D,x                   ; $22:C187: 95 4D       ;
-CODE_22C189:    LDA $68,x                   ; $22:C189: B5 68       ;
-                BEQ CODE_22C19A             ; $22:C18B: F0 0D       ;
-                DEC $68,x                   ; $22:C18D: D6 68       ;
-                LDA #$03                    ; $22:C18F: A9 03       ;
-                STA $0669,x                 ; $22:C191: 9D 69 06    ;
-                JSR CODE_22CBA0             ; $22:C194: 20 A0 CB    ;
-                BRL CODE_22C1EA             ; $22:C197: 82 50 00    ;
+                STY $00                 ; $22:C14D: 84 00       ;
 
-CODE_22C19A:    STZ $0669,x                 ; $22:C19A: 9E 69 06    ;
-                JSL CODE_27A27C             ; $22:C19D: 22 7C A2 27 ;
-                REP #$20                    ; $22:C1A1: C2 20       ;
-                LDA $C6,x                   ; $22:C1A3: B5 C6       ;
-                PHA                         ; $22:C1A5: 48          ;
-                CLC                         ; $22:C1A6: 18          ;
-                ADC #$0010                  ; $22:C1A7: 69 10 00    ;
-                STA $C6,x                   ; $22:C1AA: 95 C6       ;
-                SEP #$20                    ; $22:C1AC: E2 20       ;
-                JSR CODE_22CBA6             ; $22:C1AE: 20 A6 CB    ;
-                REP #$20                    ; $22:C1B1: C2 20       ;
-                PLA                         ; $22:C1B3: 68          ;
-                STA $C6,x                   ; $22:C1B4: 95 C6       ;
-                SEP #$20                    ; $22:C1B6: E2 20       ;
-                LDA $0518,x                 ; $22:C1B8: BD 18 05    ;
-                BEQ CODE_22C1EA             ; $22:C1BB: F0 2D       ;
-                LDA $71,x                   ; $22:C1BD: B5 71       ;
-                PHA                         ; $22:C1BF: 48          ;
-                LDA $5F,x                   ; $22:C1C0: B5 5F       ;
-                PHA                         ; $22:C1C2: 48          ;
-                LDA $0679,x                 ; $22:C1C3: BD 79 06    ;
-                PHA                         ; $22:C1C6: 48          ;
-                LDA $1CD7,x                 ; $22:C1C7: BD D7 1C    ;
-                STA $5F,x                   ; $22:C1CA: 95 5F       ;
-                INC $71,x                   ; $22:C1CC: F6 71       ;
-                LDA #$10                    ; $22:C1CE: A9 10       ;
-                STA $0679,x                 ; $22:C1D0: 9D 79 06    ;
-                LDA #$04                    ; $22:C1D3: A9 04       ;
-                STA $0669,x                 ; $22:C1D5: 9D 69 06    ;
-                JSL CODE_27A27C             ; $22:C1D8: 22 7C A2 27 ;
-                JSR CODE_22CBA6             ; $22:C1DC: 20 A6 CB    ;
-                PLA                         ; $22:C1DF: 68          ;
-                STA $0679,x                 ; $22:C1E0: 9D 79 06    ;
-                PLA                         ; $22:C1E3: 68          ;
-                STA $5F,x                   ; $22:C1E4: 95 5F       ;
-                PLA                         ; $22:C1E6: 68          ;
-                STA $71,x                   ; $22:C1E7: 95 71       ;
-                RTL                         ; $22:C1E9: 6B          ;
+                LDY #$00                ; $22:C14F: A0 00       ;
 
-CODE_22C1EA:    JSL CODE_279DD3             ; $22:C1EA: 22 D3 9D 27 ;
-                RTL                         ; $22:C1EE: 6B          ;
+                LDA $8C,x               ; $22:C151: B5 8C       ;
 
-                LDA #$10                    ; $22:C1EF: A9 10       ;
-                STA $9E,x                   ; $22:C1F1: 95 9E       ;
-                BNE CODE_22C1F8             ; $22:C1F3: D0 03       ;
-CODE_22C1F5:    INC $1FF9,x                 ; $22:C1F5: FE F9 1F    ;
+                BPL CODE_22C156         ; $22:C153: 10 01       ;
+
+                INY                     ; $22:C155: C8          ;
+
+CODE_22C156:    CPY $00                 ; $22:C156: C4 00       ;
+
+                BEQ CODE_22C189         ; $22:C158: F0 2F       ;
+
+                DEC $1FD2,x             ; $22:C15A: DE D2 1F    ;
+
+                BNE CODE_22C189         ; $22:C15D: D0 2A       ;
+
+CODE_22C15F:    LDA $15                 ; $22:C15F: A5 15       ;
+
+                AND #$01                ; $22:C161: 29 01       ;
+
+                BNE CODE_22C189         ; $22:C163: D0 24       ;
+
+                LDA $4D,x               ; $22:C165: B5 4D       ;
+
+                BMI CODE_22C189         ; $22:C167: 30 20       ;
+
+                AND #$01                ; $22:C169: 29 01       ;
+
+                TAY                     ; $22:C16B: A8          ;
+
+                LDA.w DATA_21C454,y     ; $22:C16C: B9 54 C4    ;
+
+                STA $0679,x             ; $22:C16F: 9D 79 06    ;
+
+                LDA $8C,x               ; $22:C172: B5 8C       ;
+
+                CLC                     ; $22:C174: 18          ;
+
+                ADC.w DATA_21C450,y     ; $22:C175: 79 50 C4    ;
+
+                STA $8C,x               ; $22:C178: 95 8C       ;
+
+                CMP #$00                ; $22:C17A: C9 00       ;
+
+                BNE CODE_22C180         ; $22:C17C: D0 02       ;
+
+                STZ $68,x               ; $22:C17E: 74 68       ;
+
+CODE_22C180:    CMP.w DATA_21C452,y     ; $22:C180: D9 52 C4    ;
+
+                BNE CODE_22C189         ; $22:C183: D0 04       ;
+
+                LDA #$FF                ; $22:C185: A9 FF       ;
+
+                STA $4D,x               ; $22:C187: 95 4D       ;
+
+CODE_22C189:    LDA $68,x               ; $22:C189: B5 68       ;
+
+                BEQ CODE_22C19A         ; $22:C18B: F0 0D       ;
+
+                DEC $68,x               ; $22:C18D: D6 68       ;
+
+                LDA #$03                ; $22:C18F: A9 03       ;
+
+                STA $0669,x             ; $22:C191: 9D 69 06    ;
+
+                JSR CODE_22CBA0         ; $22:C194: 20 A0 CB    ;
+
+                BRL CODE_22C1EA         ; $22:C197: 82 50 00    ;
+
+CODE_22C19A:    STZ $0669,x             ; $22:C19A: 9E 69 06    ;
+
+                JSL CODE_27A27C         ; $22:C19D: 22 7C A2 27 ;
+
+                REP #$20                ; $22:C1A1: C2 20       ;
+
+                LDA $C6,x               ; $22:C1A3: B5 C6       ;
+
+                PHA                     ; $22:C1A5: 48          ;
+
+                CLC                     ; $22:C1A6: 18          ;
+
+                ADC #$0010              ; $22:C1A7: 69 10 00    ;
+
+                STA $C6,x               ; $22:C1AA: 95 C6       ;
+
+                SEP #$20                ; $22:C1AC: E2 20       ;
+
+                JSR CODE_22CBA6         ; $22:C1AE: 20 A6 CB    ;
+
+                REP #$20                ; $22:C1B1: C2 20       ;
+
+                PLA                     ; $22:C1B3: 68          ;
+
+                STA $C6,x               ; $22:C1B4: 95 C6       ;
+
+                SEP #$20                ; $22:C1B6: E2 20       ;
+
+                LDA $0518,x             ; $22:C1B8: BD 18 05    ;
+
+                BEQ CODE_22C1EA         ; $22:C1BB: F0 2D       ;
+
+                LDA $71,x               ; $22:C1BD: B5 71       ;
+
+                PHA                     ; $22:C1BF: 48          ;
+
+                LDA $5F,x               ; $22:C1C0: B5 5F       ;
+
+                PHA                     ; $22:C1C2: 48          ;
+
+                LDA $0679,x             ; $22:C1C3: BD 79 06    ;
+
+                PHA                     ; $22:C1C6: 48          ;
+
+                LDA $1CD7,x             ; $22:C1C7: BD D7 1C    ;
+
+                STA $5F,x               ; $22:C1CA: 95 5F       ;
+
+                INC $71,x               ; $22:C1CC: F6 71       ;
+
+                LDA #$10                ; $22:C1CE: A9 10       ;
+
+                STA $0679,x             ; $22:C1D0: 9D 79 06    ;
+
+                LDA #$04                ; $22:C1D3: A9 04       ;
+
+                STA $0669,x             ; $22:C1D5: 9D 69 06    ;
+
+                JSL CODE_27A27C         ; $22:C1D8: 22 7C A2 27 ;
+
+                JSR CODE_22CBA6         ; $22:C1DC: 20 A6 CB    ;
+
+                PLA                     ; $22:C1DF: 68          ;
+
+                STA $0679,x             ; $22:C1E0: 9D 79 06    ;
+
+                PLA                     ; $22:C1E3: 68          ;
+
+                STA $5F,x               ; $22:C1E4: 95 5F       ;
+
+                PLA                     ; $22:C1E6: 68          ;
+
+                STA $71,x               ; $22:C1E7: 95 71       ;
+
+                RTL                     ; $22:C1E9: 6B          ;
+
+CODE_22C1EA:    JSL CODE_279DD3         ; $22:C1EA: 22 D3 9D 27 ;
+
+                RTL                     ; $22:C1EE: 6B          ;
+
+                LDA #$10                ; $22:C1EF: A9 10       ;
+
+                STA $9E,x               ; $22:C1F1: 95 9E       ;
+
+                BNE CODE_22C1F8         ; $22:C1F3: D0 03       ;
+
+CODE_22C1F5:    INC $1FF9,x             ; $22:C1F5: FE F9 1F    ;
+
 CODE_22C1F8:    JSL CODE_27A837         ; $22:C1F8: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C456,y                 ; $22:C1FC: B9 56 C4    ;
-                STA $0679,x                 ; $22:C1FF: 9D 79 06    ;
-CODE_22C202:    RTL                         ; $22:C202: 6B          ;
+                LDA.w DATA_21C456,y     ; $22:C1FC: B9 56 C4    ;
 
-CODE_22C203:    INC $06B7,x                 ; $22:C203: FE B7 06    ;
+                STA $0679,x             ; $22:C1FF: 9D 79 06    ;
+
+CODE_22C202:    RTL                     ; $22:C202: 6B          ;
+
+CODE_22C203:    INC $06B7,x             ; $22:C203: FE B7 06    ;
+
                 JSL CODE_27A837         ; $22:C206: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA.w DATA_21C458,y                 ; $22:C20A: B9 58 C4    ;
-                STA $8C,x                   ; $22:C20D: 95 8C       ;
-                STZ $0689,x                 ; $22:C20F: 9E 89 06    ;
-                LDA $5F,x                   ; $22:C212: B5 5F       ;
-                SEC                         ; $22:C214: 38          ;
-                SBC #$30                    ; $22:C215: E9 30       ;
-                STA $1CC8,x                 ; $22:C217: 9D C8 1C    ;
-                CLC                         ; $22:C21A: 18          ;
-                ADC #$60                    ; $22:C21B: 69 60       ;
-                STA $1CCD,x                 ; $22:C21D: 9D CD 1C    ;
-                RTL                         ; $22:C220: 6B          ;
+                LDA.w DATA_21C458,y     ; $22:C20A: B9 58 C4    ;
+
+                STA $8C,x               ; $22:C20D: 95 8C       ;
+
+                STZ $0689,x             ; $22:C20F: 9E 89 06    ;
+
+                LDA $5F,x               ; $22:C212: B5 5F       ;
+
+                SEC                     ; $22:C214: 38          ;
+
+                SBC #$30                ; $22:C215: E9 30       ;
+
+                STA $1CC8,x             ; $22:C217: 9D C8 1C    ;
+
+                CLC                     ; $22:C21A: 18          ;
+
+                ADC #$60                ; $22:C21B: 69 60       ;
+
+                STA $1CCD,x             ; $22:C21D: 9D CD 1C    ;
+
+                RTL                     ; $22:C220: 6B          ;
 
 CODE_22C221:    JSL CODE_279BC3         ; $22:C221: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                LDA $68,x                   ; $22:C225: B5 68       ;
-                LSR A                       ; $22:C227: 4A          ;
-                LSR A                       ; $22:C228: 4A          ;
-                LSR A                       ; $22:C229: 4A          ;
-                AND #$01                    ; $22:C22A: 29 01       ;
-                STA $0669,x                 ; $22:C22C: 9D 69 06    ;
-                JSR CODE_22C48B             ; $22:C22F: 20 8B C4    ;
-                LDA $9C                     ; $22:C232: A5 9C       ;
-                BNE CODE_22C276             ; $22:C234: D0 40       ;
-                INC $68,x                   ; $22:C236: F6 68       ;
-                JSR CODE_22C3F9             ; $22:C238: 20 F9 C3    ;
-                LDA #$08                    ; $22:C23B: A9 08       ;
-                LDY $0679,x                 ; $22:C23D: BC 79 06    ;
-                BNE CODE_22C244             ; $22:C240: D0 02       ;
-                LDA #$F8                    ; $22:C242: A9 F8       ;
-CODE_22C244:    STA $8C,x                   ; $22:C244: 95 8C       ;
-                JSL CODE_27983B             ; $22:C246: 22 3B 98 27 ;
-                LDA $A7,x                   ; $22:C24A: B5 A7       ;
-                AND #$03                    ; $22:C24C: 29 03       ;
-                BEQ CODE_22C254             ; $22:C24E: F0 04       ;
-                JSL CODE_27990D             ; $22:C250: 22 0D 99 27 ;
-CODE_22C254:    LDA $A7,x                   ; $22:C254: B5 A7       ;
-                AND #$04                    ; $22:C256: 29 04       ;
-                BNE CODE_22C26E             ; $22:C258: D0 14       ;
-                LDA $4D,x                   ; $22:C25A: B5 4D       ;
-                BNE CODE_22C276             ; $22:C25C: D0 18       ;
-                INC $4D,x                   ; $22:C25E: F6 4D       ;
-                JSL CODE_279905             ; $22:C260: 22 05 99 27 ;
-                JSL CODE_27A7EF             ; $22:C264: 22 EF A7 27 ;
-                JSL CODE_27A7EF             ; $22:C268: 22 EF A7 27 ;
-                BRA CODE_22C272             ; $22:C26C: 80 04       ;
+                LDA $68,x               ; $22:C225: B5 68       ;
 
-CODE_22C26E:    LDA #$00                    ; $22:C26E: A9 00       ;
-                STA $4D,x                   ; $22:C270: 95 4D       ;
-CODE_22C272:    JSL CODE_278B67             ; $22:C272: 22 67 8B 27 ;
-CODE_22C276:    JSL CODE_279B6B             ; $22:C276: 22 6B 9B 27 ;
-                RTL                         ; $22:C27A: 6B          ;
+                LSR A                   ; $22:C227: 4A          ;
 
-CODE_22C27B:    JSL CODE_279BC7             ; $22:C27B: 22 C7 9B 27 ;
-                JSR CODE_22C4BF             ; $22:C27F: 20 BF C4    ;
-                LDA $9C                     ; $22:C282: A5 9C       ;
-                BNE CODE_22C2D0             ; $22:C284: D0 4A       ;
-                LDY #$40                    ; $22:C286: A0 40       ;
-                LDA $8C,x                   ; $22:C288: B5 8C       ;
-                BEQ CODE_22C294             ; $22:C28A: F0 08       ;
-                BPL CODE_22C290             ; $22:C28C: 10 02       ;
-                LDY #$00                    ; $22:C28E: A0 00       ;
-CODE_22C290:    TYA                         ; $22:C290: 98          ;
-                STA $0679,x                 ; $22:C291: 9D 79 06    ;
-CODE_22C294:    INC $68,x                   ; $22:C294: F6 68       ;
-                LDA $68,x                   ; $22:C296: B5 68       ;
-                LSR A                       ; $22:C298: 4A          ;
-                LSR A                       ; $22:C299: 4A          ;
-                LSR A                       ; $22:C29A: 4A          ;
-                AND #$01                    ; $22:C29B: 29 01       ;
-                STA $0669,x                 ; $22:C29D: 9D 69 06    ;
-                JSL CODE_27A7EF             ; $22:C2A0: 22 EF A7 27 ;
-                JSL CODE_27A7E4             ; $22:C2A4: 22 E4 A7 27 ;
-                LDA $0518,x                 ; $22:C2A8: BD 18 05    ;
-                BNE CODE_22C2D0             ; $22:C2AB: D0 23       ;
-                INC $4D,x                   ; $22:C2AD: F6 4D       ;
-                LDA $4D,x                   ; $22:C2AF: B5 4D       ;
-                AND #$03                    ; $22:C2B1: 29 03       ;
-                BNE CODE_22C2D0             ; $22:C2B3: D0 1B       ;
-                LDA $1FD2,x                 ; $22:C2B5: BD D2 1F    ;
-                AND #$01                    ; $22:C2B8: 29 01       ;
-                TAY                         ; $22:C2BA: A8          ;
-                LDA $8C,x                   ; $22:C2BB: B5 8C       ;
-                CLC                         ; $22:C2BD: 18          ;
-                ADC.w DATA_21C45A,y                 ; $22:C2BE: 79 5A C4    ;
-                STA $8C,x                   ; $22:C2C1: 95 8C       ;
-                CMP.w DATA_21C45C,y                 ; $22:C2C3: D9 5C C4    ;
-                BNE CODE_22C2D0             ; $22:C2C6: D0 08       ;
-                INC $1FD2,x                 ; $22:C2C8: FE D2 1F    ;
-                LDA #$30                    ; $22:C2CB: A9 30       ;
-                STA $0518,x                 ; $22:C2CD: 9D 18 05    ;
-CODE_22C2D0:    LDY #$02                    ; $22:C2D0: A0 02       ;
-                LDA $68,x                   ; $22:C2D2: B5 68       ;
-                AND #$20                    ; $22:C2D4: 29 20       ;
-                BEQ CODE_22C2DA             ; $22:C2D6: F0 02       ;
-                LDY #$FE                    ; $22:C2D8: A0 FE       ;
-CODE_22C2DA:    STY $9E,x                   ; $22:C2DA: 94 9E       ;
-                JSL CODE_279B6F             ; $22:C2DC: 22 6F 9B 27 ;
-                RTL                         ; $22:C2E0: 6B          ;
+                LSR A                   ; $22:C228: 4A          ;
+
+                LSR A                   ; $22:C229: 4A          ;
+
+                AND #$01                ; $22:C22A: 29 01       ;
+
+                STA $0669,x             ; $22:C22C: 9D 69 06    ;
+
+                JSR CODE_22C48B         ; $22:C22F: 20 8B C4    ;
+
+                LDA $9C                 ; $22:C232: A5 9C       ;
+
+                BNE CODE_22C276         ; $22:C234: D0 40       ;
+
+                INC $68,x               ; $22:C236: F6 68       ;
+
+                JSR CODE_22C3F9         ; $22:C238: 20 F9 C3    ;
+
+                LDA #$08                ; $22:C23B: A9 08       ;
+
+                LDY $0679,x             ; $22:C23D: BC 79 06    ;
+
+                BNE CODE_22C244         ; $22:C240: D0 02       ;
+
+                LDA #$F8                ; $22:C242: A9 F8       ;
+
+CODE_22C244:    STA $8C,x               ; $22:C244: 95 8C       ;
+
+                JSL CODE_27983B         ; $22:C246: 22 3B 98 27 ;
+
+                LDA $A7,x               ; $22:C24A: B5 A7       ;
+
+                AND #$03                ; $22:C24C: 29 03       ;
+
+                BEQ CODE_22C254         ; $22:C24E: F0 04       ;
+
+                JSL CODE_27990D         ; $22:C250: 22 0D 99 27 ;
+
+CODE_22C254:    LDA $A7,x               ; $22:C254: B5 A7       ;
+
+                AND #$04                ; $22:C256: 29 04       ;
+
+                BNE CODE_22C26E         ; $22:C258: D0 14       ;
+
+                LDA $4D,x               ; $22:C25A: B5 4D       ;
+
+                BNE CODE_22C276         ; $22:C25C: D0 18       ;
+
+                INC $4D,x               ; $22:C25E: F6 4D       ;
+
+                JSL CODE_279905         ; $22:C260: 22 05 99 27 ;
+
+                JSL CODE_27A7EF         ; $22:C264: 22 EF A7 27 ;
+
+                JSL CODE_27A7EF         ; $22:C268: 22 EF A7 27 ;
+
+                BRA CODE_22C272         ; $22:C26C: 80 04       ;
+
+CODE_22C26E:    LDA #$00                ; $22:C26E: A9 00       ;
+
+                STA $4D,x               ; $22:C270: 95 4D       ;
+
+CODE_22C272:    JSL CODE_278B67         ; $22:C272: 22 67 8B 27 ;
+
+CODE_22C276:    JSL CODE_279B6B         ; $22:C276: 22 6B 9B 27 ;
+
+                RTL                     ; $22:C27A: 6B          ;
+
+CODE_22C27B:    JSL CODE_279BC7         ; $22:C27B: 22 C7 9B 27 ;
+
+                JSR CODE_22C4BF         ; $22:C27F: 20 BF C4    ;
+
+                LDA $9C                 ; $22:C282: A5 9C       ;
+
+                BNE CODE_22C2D0         ; $22:C284: D0 4A       ;
+
+                LDY #$40                ; $22:C286: A0 40       ;
+
+                LDA $8C,x               ; $22:C288: B5 8C       ;
+
+                BEQ CODE_22C294         ; $22:C28A: F0 08       ;
+
+                BPL CODE_22C290         ; $22:C28C: 10 02       ;
+
+                LDY #$00                ; $22:C28E: A0 00       ;
+
+CODE_22C290:    TYA                     ; $22:C290: 98          ;
+
+                STA $0679,x             ; $22:C291: 9D 79 06    ;
+
+CODE_22C294:    INC $68,x               ; $22:C294: F6 68       ;
+
+                LDA $68,x               ; $22:C296: B5 68       ;
+
+                LSR A                   ; $22:C298: 4A          ;
+
+                LSR A                   ; $22:C299: 4A          ;
+
+                LSR A                   ; $22:C29A: 4A          ;
+
+                AND #$01                ; $22:C29B: 29 01       ;
+
+                STA $0669,x             ; $22:C29D: 9D 69 06    ;
+
+                JSL CODE_27A7EF         ; $22:C2A0: 22 EF A7 27 ;
+
+                JSL CODE_27A7E4         ; $22:C2A4: 22 E4 A7 27 ;
+
+                LDA $0518,x             ; $22:C2A8: BD 18 05    ;
+
+                BNE CODE_22C2D0         ; $22:C2AB: D0 23       ;
+
+                INC $4D,x               ; $22:C2AD: F6 4D       ;
+
+                LDA $4D,x               ; $22:C2AF: B5 4D       ;
+
+                AND #$03                ; $22:C2B1: 29 03       ;
+
+                BNE CODE_22C2D0         ; $22:C2B3: D0 1B       ;
+
+                LDA $1FD2,x             ; $22:C2B5: BD D2 1F    ;
+
+                AND #$01                ; $22:C2B8: 29 01       ;
+
+                TAY                     ; $22:C2BA: A8          ;
+
+                LDA $8C,x               ; $22:C2BB: B5 8C       ;
+
+                CLC                     ; $22:C2BD: 18          ;
+
+                ADC.w DATA_21C45A,y     ; $22:C2BE: 79 5A C4    ;
+
+                STA $8C,x               ; $22:C2C1: 95 8C       ;
+
+                CMP.w DATA_21C45C,y     ; $22:C2C3: D9 5C C4    ;
+
+                BNE CODE_22C2D0         ; $22:C2C6: D0 08       ;
+
+                INC $1FD2,x             ; $22:C2C8: FE D2 1F    ;
+
+                LDA #$30                ; $22:C2CB: A9 30       ;
+
+                STA $0518,x             ; $22:C2CD: 9D 18 05    ;
+
+CODE_22C2D0:    LDY #$02                ; $22:C2D0: A0 02       ;
+
+                LDA $68,x               ; $22:C2D2: B5 68       ;
+
+                AND #$20                ; $22:C2D4: 29 20       ;
+
+                BEQ CODE_22C2DA         ; $22:C2D6: F0 02       ;
+
+                LDY #$FE                ; $22:C2D8: A0 FE       ;
+
+CODE_22C2DA:    STY $9E,x               ; $22:C2DA: 94 9E       ;
+
+                JSL CODE_279B6F         ; $22:C2DC: 22 6F 9B 27 ;
+
+                RTL                     ; $22:C2E0: 6B          ;
 
 CODE_22C2E1:    JSL CODE_279BC3         ; $22:C2E1: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                JSR CODE_22C4BF             ; $22:C2E5: 20 BF C4    ;
-                LDA $9C                     ; $22:C2E8: A5 9C       ;
-                BNE CODE_22C324             ; $22:C2EA: D0 38       ;
-                INC $68,x                   ; $22:C2EC: F6 68       ;
-                LDA $68,x                   ; $22:C2EE: B5 68       ;
-                LSR A                       ; $22:C2F0: 4A          ;
-                LSR A                       ; $22:C2F1: 4A          ;
-                LSR A                       ; $22:C2F2: 4A          ;
-                AND #$01                    ; $22:C2F3: 29 01       ;
-                STA $0669,x                 ; $22:C2F5: 9D 69 06    ;
-                JSL CODE_27A7E4             ; $22:C2F8: 22 E4 A7 27 ;
-                LDA $0518,x                 ; $22:C2FC: BD 18 05    ;
-                BNE CODE_22C324             ; $22:C2FF: D0 23       ;
-                INC $4D,x                   ; $22:C301: F6 4D       ;
-                LDA $4D,x                   ; $22:C303: B5 4D       ;
-                AND #$03                    ; $22:C305: 29 03       ;
-                BNE CODE_22C324             ; $22:C307: D0 1B       ;
-                LDA $1FD2,x                 ; $22:C309: BD D2 1F    ;
-                AND #$01                    ; $22:C30C: 29 01       ;
-                TAY                         ; $22:C30E: A8          ;
-                LDA $9E,x                   ; $22:C30F: B5 9E       ;
-                CLC                         ; $22:C311: 18          ;
-                ADC.w DATA_21C45A,y                 ; $22:C312: 79 5A C4    ;
-                STA $9E,x                   ; $22:C315: 95 9E       ;
-                CMP.w DATA_21C45C,y                 ; $22:C317: D9 5C C4    ;
-                BNE CODE_22C324             ; $22:C31A: D0 08       ;
-                INC $1FD2,x                 ; $22:C31C: FE D2 1F    ;
-                LDA #$30                    ; $22:C31F: A9 30       ;
-                STA $0518,x                 ; $22:C321: 9D 18 05    ;
-CODE_22C324:    JSL CODE_279B6F             ; $22:C324: 22 6F 9B 27 ;
-                RTL                         ; $22:C328: 6B          ;
+                JSR CODE_22C4BF         ; $22:C2E5: 20 BF C4    ;
+
+                LDA $9C                 ; $22:C2E8: A5 9C       ;
+
+                BNE CODE_22C324         ; $22:C2EA: D0 38       ;
+
+                INC $68,x               ; $22:C2EC: F6 68       ;
+
+                LDA $68,x               ; $22:C2EE: B5 68       ;
+
+                LSR A                   ; $22:C2F0: 4A          ;
+
+                LSR A                   ; $22:C2F1: 4A          ;
+
+                LSR A                   ; $22:C2F2: 4A          ;
+
+                AND #$01                ; $22:C2F3: 29 01       ;
+
+                STA $0669,x             ; $22:C2F5: 9D 69 06    ;
+
+                JSL CODE_27A7E4         ; $22:C2F8: 22 E4 A7 27 ;
+
+                LDA $0518,x             ; $22:C2FC: BD 18 05    ;
+
+                BNE CODE_22C324         ; $22:C2FF: D0 23       ;
+
+                INC $4D,x               ; $22:C301: F6 4D       ;
+
+                LDA $4D,x               ; $22:C303: B5 4D       ;
+
+                AND #$03                ; $22:C305: 29 03       ;
+
+                BNE CODE_22C324         ; $22:C307: D0 1B       ;
+
+                LDA $1FD2,x             ; $22:C309: BD D2 1F    ;
+
+                AND #$01                ; $22:C30C: 29 01       ;
+
+                TAY                     ; $22:C30E: A8          ;
+
+                LDA $9E,x               ; $22:C30F: B5 9E       ;
+
+                CLC                     ; $22:C311: 18          ;
+
+                ADC.w DATA_21C45A,y     ; $22:C312: 79 5A C4    ;
+
+                STA $9E,x               ; $22:C315: 95 9E       ;
+
+                CMP.w DATA_21C45C,y     ; $22:C317: D9 5C C4    ;
+
+                BNE CODE_22C324         ; $22:C31A: D0 08       ;
+
+                INC $1FD2,x             ; $22:C31C: FE D2 1F    ;
+
+                LDA #$30                ; $22:C31F: A9 30       ;
+
+                STA $0518,x             ; $22:C321: 9D 18 05    ;
+
+CODE_22C324:    JSL CODE_279B6F         ; $22:C324: 22 6F 9B 27 ;
+
+                RTL                     ; $22:C328: 6B          ;
 
 CODE_22C329:    JSL CODE_279BC3         ; $22:C329: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                LDA $9C                     ; $22:C32D: A5 9C       ;
-                BEQ CODE_22C335             ; $22:C32F: F0 04       ;
-                JSR CODE_22C48B             ; $22:C331: 20 8B C4    ;
-                RTL                         ; $22:C334: 6B          ;
+                LDA $9C                 ; $22:C32D: A5 9C       ;
 
-CODE_22C335:    LDA $0679,x                 ; $22:C335: BD 79 06    ;
-                ASL A                       ; $22:C338: 0A          ;
-                ASL A                       ; $22:C339: 0A          ;
-                ROL A                       ; $22:C33A: 2A          ;
-                AND #$01                    ; $22:C33B: 29 01       ;
-                TAY                         ; $22:C33D: A8          ;
-                LDA $0776,x                 ; $22:C33E: BD 76 07    ;
-                BPL CODE_22C34B             ; $22:C341: 10 08       ;
-                INY                         ; $22:C343: C8          ;
-                INY                         ; $22:C344: C8          ;
-                CMP #$FE                    ; $22:C345: C9 FE       ;
-                BNE CODE_22C34B             ; $22:C347: D0 02       ;
-                INY                         ; $22:C349: C8          ;
-                INY                         ; $22:C34A: C8          ;
-CODE_22C34B:    LDA.w DATA_21C468,y                 ; $22:C34B: B9 68 C4    ;
-                STA $8C,x                   ; $22:C34E: 95 8C       ;
-                LDA $68,x                   ; $22:C350: B5 68       ;
-                LSR A                       ; $22:C352: 4A          ;
-                LSR A                       ; $22:C353: 4A          ;
-                AND #$01                    ; $22:C354: 29 01       ;
-                STA $0669,x                 ; $22:C356: 9D 69 06    ;
-                LDA $0689,x                 ; $22:C359: BD 89 06    ;
-                BEQ CODE_22C38A             ; $22:C35C: F0 2C       ;
-                DEC $0689,x                 ; $22:C35E: DE 89 06    ;
-                JSL CODE_27A7EF             ; $22:C361: 22 EF A7 27 ;
-                JSL CODE_27A27C             ; $22:C365: 22 7C A2 27 ;
-                INC $68,x                   ; $22:C369: F6 68       ;
-                LDA $44,x                   ; $22:C36B: B5 44       ;
-                XBA                         ; $22:C36D: EB          ;
-                LDA $5F,x                   ; $22:C36E: B5 5F       ;
-                REP #$20                    ; $22:C370: C2 20       ;
-                SEC                         ; $22:C372: 38          ;
-                SBC $0210                   ; $22:C373: ED 10 02    ;
-                SEP #$20                    ; $22:C376: E2 20       ;
-                XBA                         ; $22:C378: EB          ;
-                BPL CODE_22C37E             ; $22:C379: 10 03       ;
-                EOR #$FF                    ; $22:C37B: 49 FF       ;
-                INC A                       ; $22:C37D: 1A          ;
-CODE_22C37E:    CMP #$02                    ; $22:C37E: C9 02       ;
-                BCS CODE_22C389                     ; $22:C380: B0 07       ;
-                JSR CODE_22C48B             ; $22:C382: 20 8B C4    ;
-                JSL CODE_279B6F             ; $22:C385: 22 6F 9B 27 ;
-CODE_22C389:    RTL                         ; $22:C389: 6B          ;
+                BEQ CODE_22C335         ; $22:C32F: F0 04       ;
 
-CODE_22C38A:    JSR CODE_22C48B             ; $22:C38A: 20 8B C4    ;
-                JSL CODE_27983B             ; $22:C38D: 22 3B 98 27 ;
-                LDA $07B5                   ; $22:C391: AD B5 07    ;
-                STA $0776,x                 ; $22:C394: 9D 76 07    ;
-                JSR CODE_22C3F9             ; $22:C397: 20 F9 C3    ;
-                LDY $07B5                   ; $22:C39A: AC B5 07    ;
-                INY                         ; $22:C39D: C8          ;
-                INY                         ; $22:C39E: C8          ;
-                LDA $1021,x                 ; $22:C39F: BD 21 10    ;
-                CLC                         ; $22:C3A2: 18          ;
-                ADC.w DATA_21C463,y                 ; $22:C3A3: 79 63 C4    ;
-                STA $1021,x                 ; $22:C3A6: 9D 21 10    ;
-                BCC CODE_22C3AD             ; $22:C3A9: 90 02       ;
-                INC $68,x                   ; $22:C3AB: F6 68       ;
-CODE_22C3AD:    LDA $A7,x                   ; $22:C3AD: B5 A7       ;
-                AND #$04                    ; $22:C3AF: 29 04       ;
-                BNE CODE_22C3D0             ; $22:C3B1: D0 1D       ;
-                LDA $A7,x                   ; $22:C3B3: B5 A7       ;
-                AND #$08                    ; $22:C3B5: 29 08       ;
-                BEQ CODE_22C3BD             ; $22:C3B7: F0 04       ;
-                LDA #$01                    ; $22:C3B9: A9 01       ;
-                STA $9E,x                   ; $22:C3BB: 95 9E       ;
-CODE_22C3BD:    LDY $0671,x                 ; $22:C3BD: BC 71 06    ;
-                CPY #$6E                    ; $22:C3C0: C0 6E       ;
-                BEQ CODE_22C3CC             ; $22:C3C2: F0 08       ;
-                CPY #$7E                    ; $22:C3C4: C0 7E       ;
-                BEQ CODE_22C3CC             ; $22:C3C6: F0 04       ;
-                STA $68,x                   ; $22:C3C8: 95 68       ;
-                BRA CODE_22C3EA             ; $22:C3CA: 80 1E       ;
+                JSR CODE_22C48B         ; $22:C331: 20 8B C4    ;
 
-CODE_22C3CC:    DEC $9E,x                   ; $22:C3CC: D6 9E       ;
-                BRA CODE_22C3EA             ; $22:C3CE: 80 1A       ;
+                RTL                     ; $22:C334: 6B          ;
 
-CODE_22C3D0:    JSL CODE_278B67             ; $22:C3D0: 22 67 8B 27 ;
-                LDA $0671,x                 ; $22:C3D4: BD 71 06    ;
-                CMP #$7E                    ; $22:C3D7: C9 7E       ;
-                BEQ CODE_22C3DF             ; $22:C3D9: F0 04       ;
-                CMP #$6E                    ; $22:C3DB: C9 6E       ;
-                BNE CODE_22C3EA             ; $22:C3DD: D0 0B       ;
-CODE_22C3DF:    LDA #$D0                    ; $22:C3DF: A9 D0       ;
-                LDY $06B7,x                 ; $22:C3E1: BC B7 06    ;
-                BEQ CODE_22C3E8             ; $22:C3E4: F0 02       ;
-                LDA #$E8                    ; $22:C3E6: A9 E8       ;
-CODE_22C3E8:    STA $9E,x                   ; $22:C3E8: 95 9E       ;
-CODE_22C3EA:    LDA $A7,x                   ; $22:C3EA: B5 A7       ;
-                AND #$03                    ; $22:C3EC: 29 03       ;
-                BEQ CODE_22C3F4             ; $22:C3EE: F0 04       ;
-                JSL CODE_27990D             ; $22:C3F0: 22 0D 99 27 ;
-CODE_22C3F4:    JSL CODE_279B6B             ; $22:C3F4: 22 6B 9B 27 ;
-                RTL                         ; $22:C3F8: 6B          ;
+CODE_22C335:    LDA $0679,x             ; $22:C335: BD 79 06    ;
 
-CODE_22C3F9:    TXA                         ; $22:C3F9: 8A          ;
-                CLC                         ; $22:C3FA: 18          ;
-                ADC $15                     ; $22:C3FB: 65 15       ;
-                LSR A                       ; $22:C3FD: 4A          ;
-                BCS CODE_22C401                     ; $22:C3FE: B0 01       ;
-CODE_22C400:    RTS                         ; $22:C400: 60          ;
+                ASL A                   ; $22:C338: 0A          ;
 
-CODE_22C401:    LDA $0681,x                 ; $22:C401: BD 81 06    ;
-                BNE CODE_22C400             ; $22:C404: D0 FA       ;
-                LDA $0651,x                 ; $22:C406: BD 51 06    ;
-                AND #$C0                    ; $22:C409: 29 C0       ;
-                CMP #$C0                    ; $22:C40B: C9 C0       ;
-                BEQ CODE_22C48A             ; $22:C40D: F0 7B       ;
-                JSL CODE_27A439             ; $22:C40F: 22 39 A4 27 ;
-                TXA                         ; $22:C413: 8A          ;
-                BEQ CODE_22C48A             ; $22:C414: F0 74       ;
-                DEX                         ; $22:C416: CA          ;
-CODE_22C417:    LDA $0661,x                 ; $22:C417: BD 61 06    ;
-                CMP #$02                    ; $22:C41A: C9 02       ;
-                BEQ CODE_22C422             ; $22:C41C: F0 04       ;
-                CMP #$03                    ; $22:C41E: C9 03       ;
-                BNE CODE_22C485             ; $22:C420: D0 63       ;
-CODE_22C422:    LDY $0671,x                 ; $22:C422: BC 71 06    ;
-                LDA.w DATA_21AE78,y                 ; $22:C425: B9 78 AE    ;
-                AND #$10                    ; $22:C428: 29 10       ;
-                BEQ CODE_22C485             ; $22:C42A: F0 59       ;
-                LDA $0689,x                 ; $22:C42C: BD 89 06    ;
-                BNE CODE_22C485             ; $22:C42F: D0 54       ;
-                LDA $0681,x                 ; $22:C431: BD 81 06    ;
-                BNE CODE_22C485             ; $22:C434: D0 4F       ;
-                LDA $0651,x                 ; $22:C436: BD 51 06    ;
-                AND #$C0                    ; $22:C439: 29 C0       ;
-                CMP #$C0                    ; $22:C43B: C9 C0       ;
-                BEQ CODE_22C485             ; $22:C43D: F0 46       ;
-                JSL CODE_279DC2             ; $22:C43F: 22 C2 9D 27 ;
-                JSL CODE_27A413             ; $22:C443: 22 13 A4 27 ;
-                JSL CODE_27A45F             ; $22:C447: 22 5F A4 27 ;
-                BCC CODE_22C485             ; $22:C44B: 90 38       ;
-                LDY $9B                     ; $22:C44D: A4 9B       ;
-                LDA $5F,x                   ; $22:C44F: B5 5F       ;
-                SBC $005F,y                 ; $22:C451: F9 5F 00    ;
-                PHA                         ; $22:C454: 48          ;
-                LDA $44,x                   ; $22:C455: B5 44       ;
-                SBC $0044,y                 ; $22:C457: F9 44 00    ;
-                STA $00                     ; $22:C45A: 85 00       ;
-                ROL $01                     ; $22:C45C: 26 01       ;
-                PLA                         ; $22:C45E: 68          ;
-                ADC #$80                    ; $22:C45F: 69 80       ;
-                LDA $00                     ; $22:C461: A5 00       ;
-                ADC #$00                    ; $22:C463: 69 00       ;
-                BNE CODE_22C485             ; $22:C465: D0 1E       ;
-                LSR $01                     ; $22:C467: 46 01       ;
-                LDY #$00                    ; $22:C469: A0 00       ;
-                BCS CODE_22C46F                     ; $22:C46B: B0 02       ;
-                LDY #$40                    ; $22:C46D: A0 40       ;
-CODE_22C46F:    TYA                         ; $22:C46F: 98          ;
-                STA $00                     ; $22:C470: 85 00       ;
-                LDY $9B                     ; $22:C472: A4 9B       ;
-                STA $0679,y                 ; $22:C474: 99 79 06    ;
-                LDA $0661,x                 ; $22:C477: BD 61 06    ;
-                CMP #$02                    ; $22:C47A: C9 02       ;
-                BNE CODE_22C485             ; $22:C47C: D0 07       ;
-                LDA $00                     ; $22:C47E: A5 00       ;
-                EOR #$40                    ; $22:C480: 49 40       ;
-                STA $0679,x                 ; $22:C482: 9D 79 06    ;
-CODE_22C485:    DEX                         ; $22:C485: CA          ;
-                BPL CODE_22C417             ; $22:C486: 10 8F       ;
-                LDX $9B                     ; $22:C488: A6 9B       ;
-CODE_22C48A:    RTS                         ; $22:C48A: 60          ;
+                ASL A                   ; $22:C339: 0A          ;
 
-CODE_22C48B:    LDA $0671,x                 ; $22:C48B: BD 71 06    ;
-                CMP #$70                    ; $22:C48E: C9 70       ;
-                BCC CODE_22C4BF             ; $22:C490: 90 2D       ;
-                CMP #$7A                    ; $22:C492: C9 7A       ;
-                BCC CODE_22C499             ; $22:C494: 90 03       ;
-                JMP CODE_22C71D             ; $22:C496: 4C 1D C7    ;
+                ROL A                   ; $22:C33A: 2A          ;
 
-CODE_22C499:    LDY $0689,x                 ; $22:C499: BC 89 06    ;
-                BEQ CODE_22C4AF             ; $22:C49C: F0 11       ;
-                LDA $0679,x                 ; $22:C49E: BD 79 06    ;
-                PHA                         ; $22:C4A1: 48          ;
-                ORA #$10                    ; $22:C4A2: 09 10       ;
-                STA $0679,x                 ; $22:C4A4: 9D 79 06    ;
-                JSR CODE_22CBA0             ; $22:C4A7: 20 A0 CB    ;
-                PLA                         ; $22:C4AA: 68          ;
-                STA $0679,x                 ; $22:C4AB: 9D 79 06    ;
-                RTS                         ; $22:C4AE: 60          ;
+                AND #$01                ; $22:C33B: 29 01       ;
 
-CODE_22C4AF:    LDY $0418                   ; $22:C4AF: AC 18 04    ;
-                LDA.w DATA_21C383,y                 ; $22:C4B2: B9 83 C3    ;
-                AND #$10                    ; $22:C4B5: 29 10       ;
-                BNE CODE_22C4BC             ; $22:C4B7: D0 03       ;
-                JMP CODE_22CBA6             ; $22:C4B9: 4C A6 CB    ;
+                TAY                     ; $22:C33D: A8          ;
 
-CODE_22C4BC:    JMP CODE_22CBA0             ; $22:C4BC: 4C A0 CB    ;
+                LDA $0776,x             ; $22:C33E: BD 76 07    ;
 
-CODE_22C4BF:    REP #$20                    ; $22:C4BF: C2 20       ;
-                LDA $C6,x                   ; $22:C4C1: B5 C6       ;
-                CLC                         ; $22:C4C3: 18          ;
-                ADC #$0020                  ; $22:C4C4: 69 20 00    ;
-                STA $C6,x                   ; $22:C4C7: 95 C6       ;
-                SEP #$20                    ; $22:C4C9: E2 20       ;
-                LDY $0669,x                 ; $22:C4CB: BC 69 06    ;
-                LDA.w DATA_21C474,y                 ; $22:C4CE: B9 74 C4    ;
-                TAY                         ; $22:C4D1: A8          ;
-                JSR CODE_22CBA8             ; $22:C4D2: 20 A8 CB    ;
-                REP #$10                    ; $22:C4D5: C2 10       ;
-                LDY $C6,x                   ; $22:C4D7: B4 C6       ;
-                LDA $0679,x                 ; $22:C4D9: BD 79 06    ;
-                STA $01                     ; $22:C4DC: 85 01       ;
-                LDA $0651,x                 ; $22:C4DE: BD 51 06    ;
-                STA $02                     ; $22:C4E1: 85 02       ;
-                LDA $0801,y                 ; $22:C4E3: B9 01 08    ;
-                CMP #$F0                    ; $22:C4E6: C9 F0       ;
-                BEQ CODE_22C546             ; $22:C4E8: F0 5C       ;
-                SEC                         ; $22:C4EA: 38          ;
-                SBC #$08                    ; $22:C4EB: E9 08       ;
-                STA $07E9,y                 ; $22:C4ED: 99 E9 07    ;
-                LDA #$C1                    ; $22:C4F0: A9 C1       ;
-                STA $07EA,y                 ; $22:C4F2: 99 EA 07    ;
-                PHX                         ; $22:C4F5: DA          ;
-                TYX                         ; $22:C4F6: BB          ;
-                LDA $01                     ; $22:C4F7: A5 01       ;
-                AND #$40                    ; $22:C4F9: 29 40       ;
-                BEQ CODE_22C501             ; $22:C4FB: F0 04       ;
-                INX                         ; $22:C4FD: E8          ;
-                INX                         ; $22:C4FE: E8          ;
-                INX                         ; $22:C4FF: E8          ;
-                INX                         ; $22:C500: E8          ;
-CODE_22C501:    LDA $0800,x                 ; $22:C501: BD 00 08    ;
-                STA $07E8,y                 ; $22:C504: 99 E8 07    ;
-                REP #$20                    ; $22:C507: C2 20       ;
-                TXA                         ; $22:C509: 8A          ;
-                LSR A                       ; $22:C50A: 4A          ;
-                LSR A                       ; $22:C50B: 4A          ;
-                TAX                         ; $22:C50C: AA          ;
-                SEP #$20                    ; $22:C50D: E2 20       ;
-                LDA $0A20,x                 ; $22:C50F: BD 20 0A    ;
-                STA $D8                     ; $22:C512: 85 D8       ;
-                PLX                         ; $22:C514: FA          ;
-                LDA $0803,y                 ; $22:C515: B9 03 08    ;
-                AND #$F9                    ; $22:C518: 29 F9       ;
-                ORA #$06                    ; $22:C51A: 09 06       ;
-                STA $07EB,y                 ; $22:C51C: 99 EB 07    ;
-                AND #$40                    ; $22:C51F: 29 40       ;
-                BNE CODE_22C52E             ; $22:C521: D0 0B       ;
-                LDA $07EB,y                 ; $22:C523: B9 EB 07    ;
-                STA $0803,y                 ; $22:C526: 99 03 08    ;
-                STA $080B,y                 ; $22:C529: 99 0B 08    ;
-                BRA CODE_22C537             ; $22:C52C: 80 09       ;
+                BPL CODE_22C34B         ; $22:C341: 10 08       ;
 
-CODE_22C52E:    LDA $07EB,y                 ; $22:C52E: B9 EB 07    ;
-                STA $0807,y                 ; $22:C531: 99 07 08    ;
-                STA $080F,y                 ; $22:C534: 99 0F 08    ;
-CODE_22C537:    PHY                         ; $22:C537: 5A          ;
-                REP #$20                    ; $22:C538: C2 20       ;
-                TYA                         ; $22:C53A: 98          ;
-                LSR A                       ; $22:C53B: 4A          ;
-                LSR A                       ; $22:C53C: 4A          ;
-                TAY                         ; $22:C53D: A8          ;
-                SEP #$20                    ; $22:C53E: E2 20       ;
-                LDA $D8                     ; $22:C540: A5 D8       ;
-                STA $0A1A,y                 ; $22:C542: 99 1A 0A    ;
-                PLY                         ; $22:C545: 7A          ;
-CODE_22C546:    LDA $0671,x                 ; $22:C546: BD 71 06    ;
-                CMP #$6E                    ; $22:C549: C9 6E       ;
-                BCC CODE_22C5B7             ; $22:C54B: 90 6A       ;
-                LDA $0801,y                 ; $22:C54D: B9 01 08    ;
-                CMP #$F0                    ; $22:C550: C9 F0       ;
-                BEQ CODE_22C5B7             ; $22:C552: F0 63       ;
-                SEC                         ; $22:C554: 38          ;
-                SBC #$08                    ; $22:C555: E9 08       ;
-                STA $07E1,y                 ; $22:C557: 99 E1 07    ;
-                CLC                         ; $22:C55A: 18          ;
-                ADC #$08                    ; $22:C55B: 69 08       ;
-                STA $07E5,y                 ; $22:C55D: 99 E5 07    ;
-                LDA #$CC                    ; $22:C560: A9 CC       ;
-                STA $00                     ; $22:C562: 85 00       ;
-                LDA $68,x                   ; $22:C564: B5 68       ;
-                ADC #$02                    ; $22:C566: 69 02       ;
-                AND #$04                    ; $22:C568: 29 04       ;
-                BEQ CODE_22C570             ; $22:C56A: F0 04       ;
-                LDA #$CE                    ; $22:C56C: A9 CE       ;
-                STA $00                     ; $22:C56E: 85 00       ;
-CODE_22C570:    LDA $00                     ; $22:C570: A5 00       ;
-                STA $07E2,y                 ; $22:C572: 99 E2 07    ;
-                INC A                       ; $22:C575: 1A          ;
-                STA $07E6,y                 ; $22:C576: 99 E6 07    ;
-                PHX                         ; $22:C579: DA          ;
-                TYX                         ; $22:C57A: BB          ;
-                LDA $01                     ; $22:C57B: A5 01       ;
-                AND #$40                    ; $22:C57D: 29 40       ;
-                BNE CODE_22C585             ; $22:C57F: D0 04       ;
-                INX                         ; $22:C581: E8          ;
-                INX                         ; $22:C582: E8          ;
-                INX                         ; $22:C583: E8          ;
-                INX                         ; $22:C584: E8          ;
-CODE_22C585:    LDA $0800,x                 ; $22:C585: BD 00 08    ;
-                STA $07E0,y                 ; $22:C588: 99 E0 07    ;
-                STA $07E4,y                 ; $22:C58B: 99 E4 07    ;
-                REP #$20                    ; $22:C58E: C2 20       ;
-                TXA                         ; $22:C590: 8A          ;
-                LSR A                       ; $22:C591: 4A          ;
-                LSR A                       ; $22:C592: 4A          ;
-                TAX                         ; $22:C593: AA          ;
-                SEP #$20                    ; $22:C594: E2 20       ;
-                LDA $0A20,x                 ; $22:C596: BD 20 0A    ;
-                STA $D8                     ; $22:C599: 85 D8       ;
-                PLX                         ; $22:C59B: FA          ;
-                LDA $0803,y                 ; $22:C59C: B9 03 08    ;
-                AND #$F9                    ; $22:C59F: 29 F9       ;
-                STA $07E3,y                 ; $22:C5A1: 99 E3 07    ;
-                STA $07E7,y                 ; $22:C5A4: 99 E7 07    ;
-                REP #$20                    ; $22:C5A7: C2 20       ;
-                TYA                         ; $22:C5A9: 98          ;
-                LSR A                       ; $22:C5AA: 4A          ;
-                LSR A                       ; $22:C5AB: 4A          ;
-                TAY                         ; $22:C5AC: A8          ;
-                SEP #$20                    ; $22:C5AD: E2 20       ;
-                LDA $D8                     ; $22:C5AF: A5 D8       ;
-                STA $0A18,y                 ; $22:C5B1: 99 18 0A    ;
-                STA $0A19,y                 ; $22:C5B4: 99 19 0A    ;
-CODE_22C5B7:    LDY $C6,x                   ; $22:C5B7: B4 C6       ;
-                LDA $0801,y                 ; $22:C5B9: B9 01 08    ;
-                CMP #$F0                    ; $22:C5BC: C9 F0       ;
-                BEQ CODE_22C5C6             ; $22:C5BE: F0 06       ;
-                CLC                         ; $22:C5C0: 18          ;
-                ADC #$10                    ; $22:C5C1: 69 10       ;
-                STA $07F9,y                 ; $22:C5C3: 99 F9 07    ;
-CODE_22C5C6:    LDA $0805,y                 ; $22:C5C6: B9 05 08    ;
-                CMP #$F0                    ; $22:C5C9: C9 F0       ;
-                BEQ CODE_22C5D3             ; $22:C5CB: F0 06       ;
-                CLC                         ; $22:C5CD: 18          ;
-                ADC #$10                    ; $22:C5CE: 69 10       ;
-                STA $07FD,y                 ; $22:C5D0: 99 FD 07    ;
-CODE_22C5D3:    LDA $0800,y                 ; $22:C5D3: B9 00 08    ;
-                STA $07F8,y                 ; $22:C5D6: 99 F8 07    ;
-                LDA $0804,y                 ; $22:C5D9: B9 04 08    ;
-                STA $07FC,y                 ; $22:C5DC: 99 FC 07    ;
-                LDA $0803,y                 ; $22:C5DF: B9 03 08    ;
-                AND #$F9                    ; $22:C5E2: 29 F9       ;
-                ORA #$06                    ; $22:C5E4: 09 06       ;
-                STA $07FB,y                 ; $22:C5E6: 99 FB 07    ;
-                STA $07FF,y                 ; $22:C5E9: 99 FF 07    ;
-                LDA $0669,x                 ; $22:C5EC: BD 69 06    ;
-                LDX #$0000                  ; $22:C5EF: A2 00 00    ;
-                LSR A                       ; $22:C5F2: 4A          ;
-                BCC CODE_22C5F8             ; $22:C5F3: 90 03       ;
-                INX                         ; $22:C5F5: E8          ;
-                INX                         ; $22:C5F6: E8          ;
-                INX                         ; $22:C5F7: E8          ;
-CODE_22C5F8:    LDA $01                     ; $22:C5F8: A5 01       ;
-                BEQ CODE_22C5FD             ; $22:C5FA: F0 01       ;
-                INX                         ; $22:C5FC: E8          ;
-CODE_22C5FD:    LDA.w DATA_21C476,x                 ; $22:C5FD: BD 76 C4    ;
-                STA $07FA,y                 ; $22:C600: 99 FA 07    ;
-                LDA.w DATA_21C476+1,x                   ; $22:C603: BD 77 C4    ;
-                STA $07FE,y                 ; $22:C606: 99 FE 07    ;
-                PHY                         ; $22:C609: 5A          ;
-                REP #$20                    ; $22:C60A: C2 20       ;
-                TYA                         ; $22:C60C: 98          ;
-                LSR A                       ; $22:C60D: 4A          ;
-                LSR A                       ; $22:C60E: 4A          ;
-                TAY                         ; $22:C60F: A8          ;
-                SEP #$20                    ; $22:C610: E2 20       ;
-                LDA $0A20,y                 ; $22:C612: B9 20 0A    ;
-                STA $0A1E,y                 ; $22:C615: 99 1E 0A    ;
-                LDA $0A21,y                 ; $22:C618: B9 21 0A    ;
-                STA $0A1F,y                 ; $22:C61B: 99 1F 0A    ;
-                PLY                         ; $22:C61E: 7A          ;
-                LDA $0425                   ; $22:C61F: AD 25 04    ;
-                BEQ CODE_22C661             ; $22:C622: F0 3D       ;
-                PHY                         ; $22:C624: 5A          ;
-                REP #$20                    ; $22:C625: C2 20       ;
-                TYA                         ; $22:C627: 98          ;
-                LSR A                       ; $22:C628: 4A          ;
-                LSR A                       ; $22:C629: 4A          ;
-                TAY                         ; $22:C62A: A8          ;
-                SEP #$20                    ; $22:C62B: E2 20       ;
-                LDA #$00                    ; $22:C62D: A9 00       ;
-                STA $0A20,y                 ; $22:C62F: 99 20 0A    ;
-                STA $0A22,y                 ; $22:C632: 99 22 0A    ;
-                STA $0A1E,y                 ; $22:C635: 99 1E 0A    ;
-                STA $0A21,y                 ; $22:C638: 99 21 0A    ;
-                STA $0A23,y                 ; $22:C63B: 99 23 0A    ;
-                STA $0A1F,y                 ; $22:C63E: 99 1F 0A    ;
-                STA $0A1A,y                 ; $22:C641: 99 1A 0A    ;
-                SEP #$10                    ; $22:C644: E2 10       ;
-                JSL CODE_27A19D             ; $22:C646: 22 9D A1 27 ;
-                REP #$10                    ; $22:C64A: C2 10       ;
-                PLY                         ; $22:C64C: 7A          ;
-                LDX #$0000                  ; $22:C64D: A2 00 00    ;
-                LDA $0800,y                 ; $22:C650: B9 00 08    ;
-                CMP #$F8                    ; $22:C653: C9 F8       ;
-                BCS CODE_22C664                     ; $22:C655: B0 0D       ;
-                LDX #$0004                  ; $22:C657: A2 04 00    ;
-                LDA $0804,y                 ; $22:C65A: B9 04 08    ;
-                CMP #$F8                    ; $22:C65D: C9 F8       ;
-                BCS CODE_22C664                     ; $22:C65F: B0 03       ;
-CODE_22C661:    BRL CODE_22C718             ; $22:C661: 82 B4 00    ;
+                INY                     ; $22:C343: C8          ;
 
-CODE_22C664:    STX $DC                     ; $22:C664: 86 DC       ;
-                REP #$20                    ; $22:C666: C2 20       ;
-                TYA                         ; $22:C668: 98          ;
-                STA $DA                     ; $22:C669: 85 DA       ;
-                CLC                         ; $22:C66B: 18          ;
-                ADC $DC                     ; $22:C66C: 65 DC       ;
-                TAY                         ; $22:C66E: A8          ;
-                LDA $D8                     ; $22:C66F: A5 D8       ;
-                CLC                         ; $22:C671: 18          ;
-                ADC #$0020                  ; $22:C672: 69 20 00    ;
-                STA $D8                     ; $22:C675: 85 D8       ;
-                CLC                         ; $22:C677: 18          ;
-                ADC $DC                     ; $22:C678: 65 DC       ;
-                TAX                         ; $22:C67A: AA          ;
-                SEP #$20                    ; $22:C67B: E2 20       ;
-                LDA $0800,y                 ; $22:C67D: B9 00 08    ;
-                STA $0800,x                 ; $22:C680: 9D 00 08    ;
-                STA $0808,x                 ; $22:C683: 9D 08 08    ;
-                STA $07F8,x                 ; $22:C686: 9D F8 07    ;
-                LDA $0801,y                 ; $22:C689: B9 01 08    ;
-                STA $0801,x                 ; $22:C68C: 9D 01 08    ;
-                LDA $0809,y                 ; $22:C68F: B9 09 08    ;
-                STA $0809,x                 ; $22:C692: 9D 09 08    ;
-                LDA $07F9,y                 ; $22:C695: B9 F9 07    ;
-                STA $07F9,x                 ; $22:C698: 9D F9 07    ;
-                LDA $0802,y                 ; $22:C69B: B9 02 08    ;
-                STA $0802,x                 ; $22:C69E: 9D 02 08    ;
-                LDA $080A,y                 ; $22:C6A1: B9 0A 08    ;
-                STA $080A,x                 ; $22:C6A4: 9D 0A 08    ;
-                LDA $07FA,y                 ; $22:C6A7: B9 FA 07    ;
-                STA $07FA,x                 ; $22:C6AA: 9D FA 07    ;
-                LDA $0803,y                 ; $22:C6AD: B9 03 08    ;
-                STA $0803,x                 ; $22:C6B0: 9D 03 08    ;
-                LDA $080B,y                 ; $22:C6B3: B9 0B 08    ;
-                STA $080B,x                 ; $22:C6B6: 9D 0B 08    ;
-                LDA $07FB,y                 ; $22:C6B9: B9 FB 07    ;
-                STA $07FB,x                 ; $22:C6BC: 9D FB 07    ;
-                REP #$20                    ; $22:C6BF: C2 20       ;
-                TXA                         ; $22:C6C1: 8A          ;
-                LSR A                       ; $22:C6C2: 4A          ;
-                LSR A                       ; $22:C6C3: 4A          ;
-                TAX                         ; $22:C6C4: AA          ;
-                TYA                         ; $22:C6C5: 98          ;
-                LSR A                       ; $22:C6C6: 4A          ;
-                LSR A                       ; $22:C6C7: 4A          ;
-                TAY                         ; $22:C6C8: A8          ;
-                SEP #$20                    ; $22:C6C9: E2 20       ;
-                LDA #$00                    ; $22:C6CB: A9 00       ;
-                STA $0A20,x                 ; $22:C6CD: 9D 20 0A    ;
-                STA $0A22,x                 ; $22:C6D0: 9D 22 0A    ;
-                STA $0A1E,x                 ; $22:C6D3: 9D 1E 0A    ;
-                INC A                       ; $22:C6D6: 1A          ;
-                STA $0A20,y                 ; $22:C6D7: 99 20 0A    ;
-                STA $0A22,y                 ; $22:C6DA: 99 22 0A    ;
-                STA $0A1E,y                 ; $22:C6DD: 99 1E 0A    ;
-                LDX $D8                     ; $22:C6E0: A6 D8       ;
-                LDY $DA                     ; $22:C6E2: A4 DA       ;
-                LDA $07E8,y                 ; $22:C6E4: B9 E8 07    ;
-                CMP #$F8                    ; $22:C6E7: C9 F8       ;
-                BCC CODE_22C718             ; $22:C6E9: 90 2D       ;
-                LDA $07E8,y                 ; $22:C6EB: B9 E8 07    ;
-                STA $07E8,x                 ; $22:C6EE: 9D E8 07    ;
-                LDA $07E9,y                 ; $22:C6F1: B9 E9 07    ;
-                STA $07E9,x                 ; $22:C6F4: 9D E9 07    ;
-                LDA $07EA,y                 ; $22:C6F7: B9 EA 07    ;
-                STA $07EA,x                 ; $22:C6FA: 9D EA 07    ;
-                LDA $07EB,y                 ; $22:C6FD: B9 EB 07    ;
-                STA $07EB,x                 ; $22:C700: 9D EB 07    ;
-                REP #$20                    ; $22:C703: C2 20       ;
-                TXA                         ; $22:C705: 8A          ;
-                LSR A                       ; $22:C706: 4A          ;
-                LSR A                       ; $22:C707: 4A          ;
-                TAX                         ; $22:C708: AA          ;
-                TYA                         ; $22:C709: 98          ;
-                LSR A                       ; $22:C70A: 4A          ;
-                LSR A                       ; $22:C70B: 4A          ;
-                TAY                         ; $22:C70C: A8          ;
-                SEP #$20                    ; $22:C70D: E2 20       ;
-                LDA #$00                    ; $22:C70F: A9 00       ;
-                STA $0A1A,x                 ; $22:C711: 9D 1A 0A    ;
-                INC A                       ; $22:C714: 1A          ;
-                STA $0A1A,y                 ; $22:C715: 99 1A 0A    ;
-CODE_22C718:    SEP #$10                    ; $22:C718: E2 10       ;
-                LDX $9B                     ; $22:C71A: A6 9B       ;
-                RTS                         ; $22:C71C: 60          ;
+                INY                     ; $22:C344: C8          ;
 
-CODE_22C71D:    LDA $0671,x                 ; $22:C71D: BD 71 06    ;
-                CMP #$7C                    ; $22:C720: C9 7C       ;
-                BNE CODE_22C741             ; $22:C722: D0 1D       ;
-                LDA $0679,x                 ; $22:C724: BD 79 06    ;
-                PHA                         ; $22:C727: 48          ;
-                AND #$BF                    ; $22:C728: 29 BF       ;
-                STA $00                     ; $22:C72A: 85 00       ;
-                LDA $68,x                   ; $22:C72C: B5 68       ;
-                AND #$04                    ; $22:C72E: 29 04       ;
-                ASL A                       ; $22:C730: 0A          ;
-                ASL A                       ; $22:C731: 0A          ;
-                ASL A                       ; $22:C732: 0A          ;
-                ASL A                       ; $22:C733: 0A          ;
-                ORA $00                     ; $22:C734: 05 00       ;
-                STA $0679,x                 ; $22:C736: 9D 79 06    ;
-                JSR CODE_22C741             ; $22:C739: 20 41 C7    ;
-                PLA                         ; $22:C73C: 68          ;
-                STA $0679,x                 ; $22:C73D: 9D 79 06    ;
-                RTS                         ; $22:C740: 60          ;
+                CMP #$FE                ; $22:C345: C9 FE       ;
 
-CODE_22C741:    LDA $5F,x                   ; $22:C741: B5 5F       ;
-                PHA                         ; $22:C743: 48          ;
-                LDA $44,x                   ; $22:C744: B5 44       ;
-                PHA                         ; $22:C746: 48          ;
-                LDA $71,x                   ; $22:C747: B5 71       ;
-                PHA                         ; $22:C749: 48          ;
-                CLC                         ; $22:C74A: 18          ;
-                LDY $0679,x                 ; $22:C74B: BC 79 06    ;
-                BMI CODE_22C752             ; $22:C74E: 30 02       ;
-                ADC #$08                    ; $22:C750: 69 08       ;
-CODE_22C752:    STA $71,x                   ; $22:C752: 95 71       ;
-                LDA $56,x                   ; $22:C754: B5 56       ;
-                PHA                         ; $22:C756: 48          ;
-                ADC #$00                    ; $22:C757: 69 00       ;
-                STA $56,x                   ; $22:C759: 95 56       ;
-                LDA $0651,x                 ; $22:C75B: BD 51 06    ;
-                STA $1CEF                   ; $22:C75E: 8D EF 1C    ;
-                LDA $0679,x                 ; $22:C761: BD 79 06    ;
-                AND #$40                    ; $22:C764: 29 40       ;
-                BEQ CODE_22C778             ; $22:C766: F0 10       ;
-                ASL $0651,x                 ; $22:C768: 1E 51 06    ;
-                LDA $5F,x                   ; $22:C76B: B5 5F       ;
-                CLC                         ; $22:C76D: 18          ;
-                ADC #$08                    ; $22:C76E: 69 08       ;
-                STA $5F,x                   ; $22:C770: 95 5F       ;
-                LDA $44,x                   ; $22:C772: B5 44       ;
-                ADC #$00                    ; $22:C774: 69 00       ;
-                STA $44,x                   ; $22:C776: 95 44       ;
-CODE_22C778:    JSL CODE_279F51             ; $22:C778: 22 51 9F 27 ;
-                PLA                         ; $22:C77C: 68          ;
-                STA $56,x                   ; $22:C77D: 95 56       ;
-                PLA                         ; $22:C77F: 68          ;
-                STA $71,x                   ; $22:C780: 95 71       ;
-                PLA                         ; $22:C782: 68          ;
-                STA $44,x                   ; $22:C783: 95 44       ;
-                PLA                         ; $22:C785: 68          ;
-                STA $5F,x                   ; $22:C786: 95 5F       ;
-                JSL CODE_279DC2             ; $22:C788: 22 C2 9D 27 ;
-                LDY #$00                    ; $22:C78C: A0 00       ;
-                LDA $0679,x                 ; $22:C78E: BD 79 06    ;
-                AND #$40                    ; $22:C791: 29 40       ;
-                BEQ CODE_22C796             ; $22:C793: F0 01       ;
-                INY                         ; $22:C795: C8          ;
-CODE_22C796:    SEC                         ; $22:C796: 38          ;
-                LDA $06AB,x                 ; $22:C797: BD AB 06    ;
-                BEQ CODE_22C79D             ; $22:C79A: F0 01       ;
-                LSR A                       ; $22:C79C: 4A          ;
-CODE_22C79D:    LDA $7A,x                   ; $22:C79D: B5 7A       ;
-                SBC #$00                    ; $22:C79F: E9 00       ;
-                CLC                         ; $22:C7A1: 18          ;
-                ADC.w DATA_21C43A,y                 ; $22:C7A2: 79 3A C4    ;
-                STA $01                     ; $22:C7A5: 85 01       ;
-                REP #$10                    ; $22:C7A7: C2 10       ;
-                LDY $C6,x                   ; $22:C7A9: B4 C6       ;
-                LDA $01                     ; $22:C7AB: A5 01       ;
-                STA $0810,y                 ; $22:C7AD: 99 10 08    ;
-                STA $0814,y                 ; $22:C7B0: 99 14 08    ;
-                STA $0818,y                 ; $22:C7B3: 99 18 08    ;
-                STA $081C,y                 ; $22:C7B6: 99 1C 08    ;
-                LDA $0681,x                 ; $22:C7B9: BD 81 06    ;
-                STA $00                     ; $22:C7BC: 85 00       ;
-                LDA $83,x                   ; $22:C7BE: B5 83       ;
-                CLC                         ; $22:C7C0: 18          ;
-                ADC #$08                    ; $22:C7C1: 69 08       ;
-                LSR $00                     ; $22:C7C3: 46 00       ;
-                BCS CODE_22C7D0                     ; $22:C7C5: B0 09       ;
-                STA $0811,y                 ; $22:C7C7: 99 11 08    ;
-                CLC                         ; $22:C7CA: 18          ;
-                ADC #$08                    ; $22:C7CB: 69 08       ;
-                STA $0819,y                 ; $22:C7CD: 99 19 08    ;
-CODE_22C7D0:    LSR $00                     ; $22:C7D0: 46 00       ;
-                BCS CODE_22C7DF                     ; $22:C7D2: B0 0B       ;
-                ADC #$08                    ; $22:C7D4: 69 08       ;
-                STA $0815,y                 ; $22:C7D6: 99 15 08    ;
-                CLC                         ; $22:C7D9: 18          ;
-                ADC #$08                    ; $22:C7DA: 69 08       ;
-                STA $081D,y                 ; $22:C7DC: 99 1D 08    ;
-CODE_22C7DF:    LDA $0803,y                 ; $22:C7DF: B9 03 08    ;
-                STA $0813,y                 ; $22:C7E2: 99 13 08    ;
-                STA $0817,y                 ; $22:C7E5: 99 17 08    ;
-                STA $081B,y                 ; $22:C7E8: 99 1B 08    ;
-                STA $081F,y                 ; $22:C7EB: 99 1F 08    ;
-                LDA $0679,x                 ; $22:C7EE: BD 79 06    ;
-                BPL CODE_22C814             ; $22:C7F1: 10 21       ;
-                LDA $0811,y                 ; $22:C7F3: B9 11 08    ;
-                CMP #$F0                    ; $22:C7F6: C9 F0       ;
-                BEQ CODE_22C814             ; $22:C7F8: F0 1A       ;
-                LDA $0811,y                 ; $22:C7FA: B9 11 08    ;
-                PHA                         ; $22:C7FD: 48          ;
-                SEC                         ; $22:C7FE: 38          ;
-                SBC #$08                    ; $22:C7FF: E9 08       ;
-                STA $081D,y                 ; $22:C801: 99 1D 08    ;
-                PLA                         ; $22:C804: 68          ;
-                STA $0815,y                 ; $22:C805: 99 15 08    ;
-                CLC                         ; $22:C808: 18          ;
-                ADC #$08                    ; $22:C809: 69 08       ;
-                STA $0819,y                 ; $22:C80B: 99 19 08    ;
-                CLC                         ; $22:C80E: 18          ;
-                ADC #$08                    ; $22:C80F: 69 08       ;
-                STA $0811,y                 ; $22:C811: 99 11 08    ;
-CODE_22C814:    PHY                         ; $22:C814: 5A          ;
-                REP #$20                    ; $22:C815: C2 20       ;
-                TYA                         ; $22:C817: 98          ;
-                LSR A                       ; $22:C818: 4A          ;
-                LSR A                       ; $22:C819: 4A          ;
-                TAY                         ; $22:C81A: A8          ;
-                SEP #$20                    ; $22:C81B: E2 20       ;
-                LDA $0679,x                 ; $22:C81D: BD 79 06    ;
-                AND #$40                    ; $22:C820: 29 40       ;
-                BEQ CODE_22C82B             ; $22:C822: F0 07       ;
-                LDA $1CEF                   ; $22:C824: AD EF 1C    ;
-                ROL A                       ; $22:C827: 2A          ;
-                ROL A                       ; $22:C828: 2A          ;
-                BRA CODE_22C832             ; $22:C829: 80 07       ;
+                BNE CODE_22C34B         ; $22:C347: D0 02       ;
 
-CODE_22C82B:    LDA $1CEF                   ; $22:C82B: AD EF 1C    ;
-                ROL A                       ; $22:C82E: 2A          ;
-                ROL A                       ; $22:C82F: 2A          ;
-                ROL A                       ; $22:C830: 2A          ;
-                ROL A                       ; $22:C831: 2A          ;
-CODE_22C832:    AND #$01                    ; $22:C832: 29 01       ;
-                STA $0A24,y                 ; $22:C834: 99 24 0A    ;
-                STA $0A25,y                 ; $22:C837: 99 25 0A    ;
-                STA $0A26,y                 ; $22:C83A: 99 26 0A    ;
-                STA $0A27,y                 ; $22:C83D: 99 27 0A    ;
-                PLY                         ; $22:C840: 7A          ;
-                REP #$10                    ; $22:C841: C2 10       ;
-                LDA $0671,x                 ; $22:C843: BD 71 06    ;
-                CMP #$7C                    ; $22:C846: C9 7C       ;
-                BNE CODE_22C84D             ; $22:C848: D0 03       ;
-                JMP CODE_22C902             ; $22:C84A: 4C 02 C9    ;
+                INY                     ; $22:C349: C8          ;
 
-CODE_22C84D:    LDA $0661,x                 ; $22:C84D: BD 61 06    ;
-                CMP #$02                    ; $22:C850: C9 02       ;
-                BEQ CODE_22C857             ; $22:C852: F0 03       ;
-                JMP CODE_22C93E             ; $22:C854: 4C 3E C9    ;
+                INY                     ; $22:C34A: C8          ;
 
-CODE_22C857:    LDY #$0000                  ; $22:C857: A0 00 00    ;
-                LDA $0679,x                 ; $22:C85A: BD 79 06    ;
-                AND #$40                    ; $22:C85D: 29 40       ;
-                BEQ CODE_22C864             ; $22:C85F: F0 03       ;
-                LDY #$0004                  ; $22:C861: A0 04 00    ;
-CODE_22C864:    STY $03                     ; $22:C864: 84 03       ;
-                REP #$20                    ; $22:C866: C2 20       ;
-                TYA                         ; $22:C868: 98          ;
-                CLC                         ; $22:C869: 18          ;
-                ADC $C6,x                   ; $22:C86A: 75 C6       ;
-                SEC                         ; $22:C86C: 38          ;
-                SBC #$0010                  ; $22:C86D: E9 10 00    ;
-                TAY                         ; $22:C870: A8          ;
-                SEP #$20                    ; $22:C871: E2 20       ;
-                LDA $0801,y                 ; $22:C873: B9 01 08    ;
-                CMP #$F0                    ; $22:C876: C9 F0       ;
-                BEQ CODE_22C883             ; $22:C878: F0 09       ;
-                STA $0809,y                 ; $22:C87A: 99 09 08    ;
-                SEC                         ; $22:C87D: 38          ;
-                SBC #$08                    ; $22:C87E: E9 08       ;
-                STA $0801,y                 ; $22:C880: 99 01 08    ;
-CODE_22C883:    LDA $0811,y                 ; $22:C883: B9 11 08    ;
-                CMP #$F0                    ; $22:C886: C9 F0       ;
-                BEQ CODE_22C893             ; $22:C888: F0 09       ;
-                STA $0819,y                 ; $22:C88A: 99 19 08    ;
-                SEC                         ; $22:C88D: 38          ;
-                SBC #$08                    ; $22:C88E: E9 08       ;
-                STA $0811,y                 ; $22:C890: 99 11 08    ;
-CODE_22C893:    LDA $0803,y                 ; $22:C893: B9 03 08    ;
-                ORA #$06                    ; $22:C896: 09 06       ;
-                STA $0803,y                 ; $22:C898: 99 03 08    ;
-                STA $080B,y                 ; $22:C89B: 99 0B 08    ;
-                STA $0813,y                 ; $22:C89E: 99 13 08    ;
-                STA $081B,y                 ; $22:C8A1: 99 1B 08    ;
-                REP #$20                    ; $22:C8A4: C2 20       ;
-                LDA $03                     ; $22:C8A6: A5 03       ;
-                AND #$00FF                  ; $22:C8A8: 29 FF 00    ;
-                EOR #$0004                  ; $22:C8AB: 49 04 00    ;
-                CLC                         ; $22:C8AE: 18          ;
-                ADC $C6,x                   ; $22:C8AF: 75 C6       ;
-                SEC                         ; $22:C8B1: 38          ;
-                SBC #$0010                  ; $22:C8B2: E9 10 00    ;
-                TAY                         ; $22:C8B5: A8          ;
-                SEP #$20                    ; $22:C8B6: E2 20       ;
-                LDA $0813,y                 ; $22:C8B8: B9 13 08    ;
-                ORA #$06                    ; $22:C8BB: 09 06       ;
-                STA $0813,y                 ; $22:C8BD: 99 13 08    ;
-                LDY $C6,x                   ; $22:C8C0: B4 C6       ;
-                LDA #$90                    ; $22:C8C2: A9 90       ;
-                STA $0812,y                 ; $22:C8C4: 99 12 08    ;
-                INC A                       ; $22:C8C7: 1A          ;
-                STA $081A,y                 ; $22:C8C8: 99 1A 08    ;
-                LDA $0669,x                 ; $22:C8CB: BD 69 06    ;
-                LSR A                       ; $22:C8CE: 4A          ;
-                LDA #$9E                    ; $22:C8CF: A9 9E       ;
-                BCS CODE_22C8D5                     ; $22:C8D1: B0 02       ;
-                LDA #$96                    ; $22:C8D3: A9 96       ;
-CODE_22C8D5:    STA $0816,y                 ; $22:C8D5: 99 16 08    ;
-                INC A                       ; $22:C8D8: 1A          ;
-                STA $081E,y                 ; $22:C8D9: 99 1E 08    ;
-                LDA $0671,x                 ; $22:C8DC: BD 71 06    ;
-                CMP #$7E                    ; $22:C8DF: C9 7E       ;
-                BCC CODE_22C8F4             ; $22:C8E1: 90 11       ;
-                LDA $0669,x                 ; $22:C8E3: BD 69 06    ;
-                LSR A                       ; $22:C8E6: 4A          ;
-                LDA #$B8                    ; $22:C8E7: A9 B8       ;
-                BCC CODE_22C8ED             ; $22:C8E9: 90 02       ;
-                LDA #$BA                    ; $22:C8EB: A9 BA       ;
-CODE_22C8ED:    STA $0812,y                 ; $22:C8ED: 99 12 08    ;
-                INC A                       ; $22:C8F0: 1A          ;
-                STA $081A,y                 ; $22:C8F1: 99 1A 08    ;
-CODE_22C8F4:    LDA $0817,y                 ; $22:C8F4: B9 17 08    ;
-                ORA #$06                    ; $22:C8F7: 09 06       ;
-                STA $0817,y                 ; $22:C8F9: 99 17 08    ;
-                STA $081F,y                 ; $22:C8FC: 99 1F 08    ;
-                SEP #$10                    ; $22:C8FF: E2 10       ;
-                RTS                         ; $22:C901: 60          ;
+CODE_22C34B:    LDA.w DATA_21C468,y     ; $22:C34B: B9 68 C4    ;
 
-CODE_22C902:    LDA $0661,x                 ; $22:C902: BD 61 06    ;
-                CMP #$07                    ; $22:C905: C9 07       ;
-                BEQ CODE_22C91E             ; $22:C907: F0 15       ;
-                LDA #$84                    ; $22:C909: A9 84       ;
-                STA $0812,y                 ; $22:C90B: 99 12 08    ;
-                INC A                       ; $22:C90E: 1A          ;
-                STA $081A,y                 ; $22:C90F: 99 1A 08    ;
-                LDA #$8A                    ; $22:C912: A9 8A       ;
-                STA $0816,y                 ; $22:C914: 99 16 08    ;
-                INC A                       ; $22:C917: 1A          ;
-                STA $081E,y                 ; $22:C918: 99 1E 08    ;
-                SEP #$10                    ; $22:C91B: E2 10       ;
-                RTS                         ; $22:C91D: 60          ;
+                STA $8C,x               ; $22:C34E: 95 8C       ;
 
-CODE_22C91E:    LDA #$70                    ; $22:C91E: A9 70       ;
-                STA $0812,y                 ; $22:C920: 99 12 08    ;
-                INC A                       ; $22:C923: 1A          ;
-                STA $081A,y                 ; $22:C924: 99 1A 08    ;
-                LDA #$BC                    ; $22:C927: A9 BC       ;
-                STA $0816,y                 ; $22:C929: 99 16 08    ;
-                INC A                       ; $22:C92C: 1A          ;
-                STA $081E,y                 ; $22:C92D: 99 1E 08    ;
-                LDA $0817,y                 ; $22:C930: B9 17 08    ;
-                EOR #$40                    ; $22:C933: 49 40       ;
-                STA $0817,y                 ; $22:C935: 99 17 08    ;
-                STA $081F,y                 ; $22:C938: 99 1F 08    ;
-                SEP #$10                    ; $22:C93B: E2 10       ;
-                RTS                         ; $22:C93D: 60          ;
+                LDA $68,x               ; $22:C350: B5 68       ;
 
-CODE_22C93E:    LDA #$A8                    ; $22:C93E: A9 A8       ;
-                STA $0812,y                 ; $22:C940: 99 12 08    ;
-                INC A                       ; $22:C943: 1A          ;
-                STA $081A,y                 ; $22:C944: 99 1A 08    ;
-                LDA #$AC                    ; $22:C947: A9 AC       ;
-                STA $0816,y                 ; $22:C949: 99 16 08    ;
-                INC A                       ; $22:C94C: 1A          ;
-                STA $081E,y                 ; $22:C94D: 99 1E 08    ;
-                LDA $0813,y                 ; $22:C950: B9 13 08    ;
-                EOR #$40                    ; $22:C953: 49 40       ;
-                STA $0813,y                 ; $22:C955: 99 13 08    ;
-                STA $0817,y                 ; $22:C958: 99 17 08    ;
-                STA $081B,y                 ; $22:C95B: 99 1B 08    ;
-                STA $081F,y                 ; $22:C95E: 99 1F 08    ;
-                SEP #$10                    ; $22:C961: E2 10       ;
-                RTS                         ; $22:C963: 60          ;
+                LSR A                   ; $22:C352: 4A          ;
 
-CODE_22C964:    JSR CODE_22C71D             ; $22:C964: 20 1D C7    ;
-                RTL                         ; $22:C967: 6B          ;
+                LSR A                   ; $22:C353: 4A          ;
 
-CODE_22C968:    LDA #$04                    ; $22:C968: A9 04       ;
-                BNE CODE_22C96E             ; $22:C96A: D0 02       ;
-CODE_22C96C:    LDA #$0C                    ; $22:C96C: A9 0C       ;
-CODE_22C96E:    CLC                         ; $22:C96E: 18          ;
-                ADC $5F,x                   ; $22:C96F: 75 5F       ;
-                STA $5F,x                   ; $22:C971: 95 5F       ;
-                LDY #$21                    ; $22:C973: A0 21       ;
-                LDA $71,x                   ; $22:C975: B5 71       ;
-                STA $68,x                   ; $22:C977: 95 68       ;
-                TYA                         ; $22:C979: 98          ;
-                STA $077B,x                 ; $22:C97A: 9D 7B 07    ;
-                LDA $56,x                   ; $22:C97D: B5 56       ;
-                STA $1021,x                 ; $22:C97F: 9D 21 10    ;
-                LDA #$20                    ; $22:C982: A9 20       ;
-                STA $0679,x                 ; $22:C984: 9D 79 06    ;
-                INC $1FF9,x                 ; $22:C987: FE F9 1F    ;
-                RTL                         ; $22:C98A: 6B          ;
+                AND #$01                ; $22:C354: 29 01       ;
+
+                STA $0669,x             ; $22:C356: 9D 69 06    ;
+
+                LDA $0689,x             ; $22:C359: BD 89 06    ;
+
+                BEQ CODE_22C38A         ; $22:C35C: F0 2C       ;
+
+                DEC $0689,x             ; $22:C35E: DE 89 06    ;
+
+                JSL CODE_27A7EF         ; $22:C361: 22 EF A7 27 ;
+
+                JSL CODE_27A27C         ; $22:C365: 22 7C A2 27 ;
+
+                INC $68,x               ; $22:C369: F6 68       ;
+
+                LDA $44,x               ; $22:C36B: B5 44       ;
+
+                XBA                     ; $22:C36D: EB          ;
+
+                LDA $5F,x               ; $22:C36E: B5 5F       ;
+
+                REP #$20                ; $22:C370: C2 20       ;
+
+                SEC                     ; $22:C372: 38          ;
+
+                SBC $0210               ; $22:C373: ED 10 02    ;
+
+                SEP #$20                ; $22:C376: E2 20       ;
+
+                XBA                     ; $22:C378: EB          ;
+
+                BPL CODE_22C37E         ; $22:C379: 10 03       ;
+
+                EOR #$FF                ; $22:C37B: 49 FF       ;
+
+                INC A                   ; $22:C37D: 1A          ;
+
+CODE_22C37E:    CMP #$02                ; $22:C37E: C9 02       ;
+
+                BCS CODE_22C389         ; $22:C380: B0 07       ;
+
+                JSR CODE_22C48B         ; $22:C382: 20 8B C4    ;
+
+                JSL CODE_279B6F         ; $22:C385: 22 6F 9B 27 ;
+
+CODE_22C389:    RTL                     ; $22:C389: 6B          ;
+
+CODE_22C38A:    JSR CODE_22C48B         ; $22:C38A: 20 8B C4    ;
+
+                JSL CODE_27983B         ; $22:C38D: 22 3B 98 27 ;
+
+                LDA $07B5               ; $22:C391: AD B5 07    ;
+
+                STA $0776,x             ; $22:C394: 9D 76 07    ;
+
+                JSR CODE_22C3F9         ; $22:C397: 20 F9 C3    ;
+
+                LDY $07B5               ; $22:C39A: AC B5 07    ;
+
+                INY                     ; $22:C39D: C8          ;
+
+                INY                     ; $22:C39E: C8          ;
+
+                LDA $1021,x             ; $22:C39F: BD 21 10    ;
+
+                CLC                     ; $22:C3A2: 18          ;
+
+                ADC.w DATA_21C463,y     ; $22:C3A3: 79 63 C4    ;
+
+                STA $1021,x             ; $22:C3A6: 9D 21 10    ;
+
+                BCC CODE_22C3AD         ; $22:C3A9: 90 02       ;
+
+                INC $68,x               ; $22:C3AB: F6 68       ;
+
+CODE_22C3AD:    LDA $A7,x               ; $22:C3AD: B5 A7       ;
+
+                AND #$04                ; $22:C3AF: 29 04       ;
+
+                BNE CODE_22C3D0         ; $22:C3B1: D0 1D       ;
+
+                LDA $A7,x               ; $22:C3B3: B5 A7       ;
+
+                AND #$08                ; $22:C3B5: 29 08       ;
+
+                BEQ CODE_22C3BD         ; $22:C3B7: F0 04       ;
+
+                LDA #$01                ; $22:C3B9: A9 01       ;
+
+                STA $9E,x               ; $22:C3BB: 95 9E       ;
+
+CODE_22C3BD:    LDY $0671,x             ; $22:C3BD: BC 71 06    ;
+
+                CPY #$6E                ; $22:C3C0: C0 6E       ;
+
+                BEQ CODE_22C3CC         ; $22:C3C2: F0 08       ;
+
+                CPY #$7E                ; $22:C3C4: C0 7E       ;
+
+                BEQ CODE_22C3CC         ; $22:C3C6: F0 04       ;
+
+                STA $68,x               ; $22:C3C8: 95 68       ;
+
+                BRA CODE_22C3EA         ; $22:C3CA: 80 1E       ;
+
+CODE_22C3CC:    DEC $9E,x               ; $22:C3CC: D6 9E       ;
+
+                BRA CODE_22C3EA         ; $22:C3CE: 80 1A       ;
+
+CODE_22C3D0:    JSL CODE_278B67         ; $22:C3D0: 22 67 8B 27 ;
+
+                LDA $0671,x             ; $22:C3D4: BD 71 06    ;
+
+                CMP #$7E                ; $22:C3D7: C9 7E       ;
+
+                BEQ CODE_22C3DF         ; $22:C3D9: F0 04       ;
+
+                CMP #$6E                ; $22:C3DB: C9 6E       ;
+
+                BNE CODE_22C3EA         ; $22:C3DD: D0 0B       ;
+
+CODE_22C3DF:    LDA #$D0                ; $22:C3DF: A9 D0       ;
+
+                LDY $06B7,x             ; $22:C3E1: BC B7 06    ;
+
+                BEQ CODE_22C3E8         ; $22:C3E4: F0 02       ;
+
+                LDA #$E8                ; $22:C3E6: A9 E8       ;
+
+CODE_22C3E8:    STA $9E,x               ; $22:C3E8: 95 9E       ;
+
+CODE_22C3EA:    LDA $A7,x               ; $22:C3EA: B5 A7       ;
+
+                AND #$03                ; $22:C3EC: 29 03       ;
+
+                BEQ CODE_22C3F4         ; $22:C3EE: F0 04       ;
+
+                JSL CODE_27990D         ; $22:C3F0: 22 0D 99 27 ;
+
+CODE_22C3F4:    JSL CODE_279B6B         ; $22:C3F4: 22 6B 9B 27 ;
+
+                RTL                     ; $22:C3F8: 6B          ;
+
+CODE_22C3F9:    TXA                     ; $22:C3F9: 8A          ;
+
+                CLC                     ; $22:C3FA: 18          ;
+
+                ADC $15                 ; $22:C3FB: 65 15       ;
+
+                LSR A                   ; $22:C3FD: 4A          ;
+
+                BCS CODE_22C401         ; $22:C3FE: B0 01       ;
+
+CODE_22C400:    RTS                     ; $22:C400: 60          ;
+
+CODE_22C401:    LDA $0681,x             ; $22:C401: BD 81 06    ;
+
+                BNE CODE_22C400         ; $22:C404: D0 FA       ;
+
+                LDA $0651,x             ; $22:C406: BD 51 06    ;
+
+                AND #$C0                ; $22:C409: 29 C0       ;
+
+                CMP #$C0                ; $22:C40B: C9 C0       ;
+
+                BEQ CODE_22C48A         ; $22:C40D: F0 7B       ;
+
+                JSL CODE_27A439         ; $22:C40F: 22 39 A4 27 ;
+
+                TXA                     ; $22:C413: 8A          ;
+
+                BEQ CODE_22C48A         ; $22:C414: F0 74       ;
+
+                DEX                     ; $22:C416: CA          ;
+
+CODE_22C417:    LDA $0661,x             ; $22:C417: BD 61 06    ;
+
+                CMP #$02                ; $22:C41A: C9 02       ;
+
+                BEQ CODE_22C422         ; $22:C41C: F0 04       ;
+
+                CMP #$03                ; $22:C41E: C9 03       ;
+
+                BNE CODE_22C485         ; $22:C420: D0 63       ;
+
+CODE_22C422:    LDY $0671,x             ; $22:C422: BC 71 06    ;
+
+                LDA.w DATA_21AE78,y     ; $22:C425: B9 78 AE    ;
+
+                AND #$10                ; $22:C428: 29 10       ;
+
+                BEQ CODE_22C485         ; $22:C42A: F0 59       ;
+
+                LDA $0689,x             ; $22:C42C: BD 89 06    ;
+
+                BNE CODE_22C485         ; $22:C42F: D0 54       ;
+
+                LDA $0681,x             ; $22:C431: BD 81 06    ;
+
+                BNE CODE_22C485         ; $22:C434: D0 4F       ;
+
+                LDA $0651,x             ; $22:C436: BD 51 06    ;
+
+                AND #$C0                ; $22:C439: 29 C0       ;
+
+                CMP #$C0                ; $22:C43B: C9 C0       ;
+
+                BEQ CODE_22C485         ; $22:C43D: F0 46       ;
+
+                JSL CODE_279DC2         ; $22:C43F: 22 C2 9D 27 ;
+
+                JSL CODE_27A413         ; $22:C443: 22 13 A4 27 ;
+
+                JSL CODE_27A45F         ; $22:C447: 22 5F A4 27 ;
+
+                BCC CODE_22C485         ; $22:C44B: 90 38       ;
+
+                LDY $9B                 ; $22:C44D: A4 9B       ;
+
+                LDA $5F,x               ; $22:C44F: B5 5F       ;
+
+                SBC $005F,y             ; $22:C451: F9 5F 00    ;
+
+                PHA                     ; $22:C454: 48          ;
+
+                LDA $44,x               ; $22:C455: B5 44       ;
+
+                SBC $0044,y             ; $22:C457: F9 44 00    ;
+
+                STA $00                 ; $22:C45A: 85 00       ;
+
+                ROL $01                 ; $22:C45C: 26 01       ;
+
+                PLA                     ; $22:C45E: 68          ;
+
+                ADC #$80                ; $22:C45F: 69 80       ;
+
+                LDA $00                 ; $22:C461: A5 00       ;
+
+                ADC #$00                ; $22:C463: 69 00       ;
+
+                BNE CODE_22C485         ; $22:C465: D0 1E       ;
+
+                LSR $01                 ; $22:C467: 46 01       ;
+
+                LDY #$00                ; $22:C469: A0 00       ;
+
+                BCS CODE_22C46F         ; $22:C46B: B0 02       ;
+
+                LDY #$40                ; $22:C46D: A0 40       ;
+
+CODE_22C46F:    TYA                     ; $22:C46F: 98          ;
+
+                STA $00                 ; $22:C470: 85 00       ;
+
+                LDY $9B                 ; $22:C472: A4 9B       ;
+
+                STA $0679,y             ; $22:C474: 99 79 06    ;
+
+                LDA $0661,x             ; $22:C477: BD 61 06    ;
+
+                CMP #$02                ; $22:C47A: C9 02       ;
+
+                BNE CODE_22C485         ; $22:C47C: D0 07       ;
+
+                LDA $00                 ; $22:C47E: A5 00       ;
+
+                EOR #$40                ; $22:C480: 49 40       ;
+
+                STA $0679,x             ; $22:C482: 9D 79 06    ;
+
+CODE_22C485:    DEX                     ; $22:C485: CA          ;
+
+                BPL CODE_22C417         ; $22:C486: 10 8F       ;
+
+                LDX $9B                 ; $22:C488: A6 9B       ;
+
+CODE_22C48A:    RTS                     ; $22:C48A: 60          ;
+
+CODE_22C48B:    LDA $0671,x             ; $22:C48B: BD 71 06    ;
+
+                CMP #$70                ; $22:C48E: C9 70       ;
+
+                BCC CODE_22C4BF         ; $22:C490: 90 2D       ;
+
+                CMP #$7A                ; $22:C492: C9 7A       ;
+
+                BCC CODE_22C499         ; $22:C494: 90 03       ;
+
+                JMP CODE_22C71D         ; $22:C496: 4C 1D C7    ;
+
+CODE_22C499:    LDY $0689,x             ; $22:C499: BC 89 06    ;
+
+                BEQ CODE_22C4AF         ; $22:C49C: F0 11       ;
+
+                LDA $0679,x             ; $22:C49E: BD 79 06    ;
+
+                PHA                     ; $22:C4A1: 48          ;
+
+                ORA #$10                ; $22:C4A2: 09 10       ;
+
+                STA $0679,x             ; $22:C4A4: 9D 79 06    ;
+
+                JSR CODE_22CBA0         ; $22:C4A7: 20 A0 CB    ;
+
+                PLA                     ; $22:C4AA: 68          ;
+
+                STA $0679,x             ; $22:C4AB: 9D 79 06    ;
+
+                RTS                     ; $22:C4AE: 60          ;
+
+CODE_22C4AF:    LDY $0418               ; $22:C4AF: AC 18 04    ;
+
+                LDA.w DATA_21C383,y     ; $22:C4B2: B9 83 C3    ;
+
+                AND #$10                ; $22:C4B5: 29 10       ;
+
+                BNE CODE_22C4BC         ; $22:C4B7: D0 03       ;
+
+                JMP CODE_22CBA6         ; $22:C4B9: 4C A6 CB    ;
+
+CODE_22C4BC:    JMP CODE_22CBA0         ; $22:C4BC: 4C A0 CB    ;
+
+CODE_22C4BF:    REP #$20                ; $22:C4BF: C2 20       ;
+
+                LDA $C6,x               ; $22:C4C1: B5 C6       ;
+
+                CLC                     ; $22:C4C3: 18          ;
+
+                ADC #$0020              ; $22:C4C4: 69 20 00    ;
+
+                STA $C6,x               ; $22:C4C7: 95 C6       ;
+
+                SEP #$20                ; $22:C4C9: E2 20       ;
+
+                LDY $0669,x             ; $22:C4CB: BC 69 06    ;
+
+                LDA.w DATA_21C474,y     ; $22:C4CE: B9 74 C4    ;
+
+                TAY                     ; $22:C4D1: A8          ;
+
+                JSR CODE_22CBA8         ; $22:C4D2: 20 A8 CB    ;
+
+                REP #$10                ; $22:C4D5: C2 10       ;
+
+                LDY $C6,x               ; $22:C4D7: B4 C6       ;
+
+                LDA $0679,x             ; $22:C4D9: BD 79 06    ;
+
+                STA $01                 ; $22:C4DC: 85 01       ;
+
+                LDA $0651,x             ; $22:C4DE: BD 51 06    ;
+
+                STA $02                 ; $22:C4E1: 85 02       ;
+
+                LDA $0801,y             ; $22:C4E3: B9 01 08    ;
+
+                CMP #$F0                ; $22:C4E6: C9 F0       ;
+
+                BEQ CODE_22C546         ; $22:C4E8: F0 5C       ;
+
+                SEC                     ; $22:C4EA: 38          ;
+
+                SBC #$08                ; $22:C4EB: E9 08       ;
+
+                STA $07E9,y             ; $22:C4ED: 99 E9 07    ;
+
+                LDA #$C1                ; $22:C4F0: A9 C1       ;
+
+                STA $07EA,y             ; $22:C4F2: 99 EA 07    ;
+
+                PHX                     ; $22:C4F5: DA          ;
+
+                TYX                     ; $22:C4F6: BB          ;
+
+                LDA $01                 ; $22:C4F7: A5 01       ;
+
+                AND #$40                ; $22:C4F9: 29 40       ;
+
+                BEQ CODE_22C501         ; $22:C4FB: F0 04       ;
+
+                INX                     ; $22:C4FD: E8          ;
+
+                INX                     ; $22:C4FE: E8          ;
+
+                INX                     ; $22:C4FF: E8          ;
+
+                INX                     ; $22:C500: E8          ;
+
+CODE_22C501:    LDA $0800,x             ; $22:C501: BD 00 08    ;
+
+                STA $07E8,y             ; $22:C504: 99 E8 07    ;
+
+                REP #$20                ; $22:C507: C2 20       ;
+
+                TXA                     ; $22:C509: 8A          ;
+
+                LSR A                   ; $22:C50A: 4A          ;
+
+                LSR A                   ; $22:C50B: 4A          ;
+
+                TAX                     ; $22:C50C: AA          ;
+
+                SEP #$20                ; $22:C50D: E2 20       ;
+
+                LDA $0A20,x             ; $22:C50F: BD 20 0A    ;
+
+                STA $D8                 ; $22:C512: 85 D8       ;
+
+                PLX                     ; $22:C514: FA          ;
+
+                LDA $0803,y             ; $22:C515: B9 03 08    ;
+
+                AND #$F9                ; $22:C518: 29 F9       ;
+
+                ORA #$06                ; $22:C51A: 09 06       ;
+
+                STA $07EB,y             ; $22:C51C: 99 EB 07    ;
+
+                AND #$40                ; $22:C51F: 29 40       ;
+
+                BNE CODE_22C52E         ; $22:C521: D0 0B       ;
+
+                LDA $07EB,y             ; $22:C523: B9 EB 07    ;
+
+                STA $0803,y             ; $22:C526: 99 03 08    ;
+
+                STA $080B,y             ; $22:C529: 99 0B 08    ;
+
+                BRA CODE_22C537         ; $22:C52C: 80 09       ;
+
+CODE_22C52E:    LDA $07EB,y             ; $22:C52E: B9 EB 07    ;
+
+                STA $0807,y             ; $22:C531: 99 07 08    ;
+
+                STA $080F,y             ; $22:C534: 99 0F 08    ;
+
+CODE_22C537:    PHY                     ; $22:C537: 5A          ;
+
+                REP #$20                ; $22:C538: C2 20       ;
+
+                TYA                     ; $22:C53A: 98          ;
+
+                LSR A                   ; $22:C53B: 4A          ;
+
+                LSR A                   ; $22:C53C: 4A          ;
+
+                TAY                     ; $22:C53D: A8          ;
+
+                SEP #$20                ; $22:C53E: E2 20       ;
+
+                LDA $D8                 ; $22:C540: A5 D8       ;
+
+                STA $0A1A,y             ; $22:C542: 99 1A 0A    ;
+
+                PLY                     ; $22:C545: 7A          ;
+
+CODE_22C546:    LDA $0671,x             ; $22:C546: BD 71 06    ;
+
+                CMP #$6E                ; $22:C549: C9 6E       ;
+
+                BCC CODE_22C5B7         ; $22:C54B: 90 6A       ;
+
+                LDA $0801,y             ; $22:C54D: B9 01 08    ;
+
+                CMP #$F0                ; $22:C550: C9 F0       ;
+
+                BEQ CODE_22C5B7         ; $22:C552: F0 63       ;
+
+                SEC                     ; $22:C554: 38          ;
+
+                SBC #$08                ; $22:C555: E9 08       ;
+
+                STA $07E1,y             ; $22:C557: 99 E1 07    ;
+
+                CLC                     ; $22:C55A: 18          ;
+
+                ADC #$08                ; $22:C55B: 69 08       ;
+
+                STA $07E5,y             ; $22:C55D: 99 E5 07    ;
+
+                LDA #$CC                ; $22:C560: A9 CC       ;
+
+                STA $00                 ; $22:C562: 85 00       ;
+
+                LDA $68,x               ; $22:C564: B5 68       ;
+
+                ADC #$02                ; $22:C566: 69 02       ;
+
+                AND #$04                ; $22:C568: 29 04       ;
+
+                BEQ CODE_22C570         ; $22:C56A: F0 04       ;
+
+                LDA #$CE                ; $22:C56C: A9 CE       ;
+
+                STA $00                 ; $22:C56E: 85 00       ;
+
+CODE_22C570:    LDA $00                 ; $22:C570: A5 00       ;
+
+                STA $07E2,y             ; $22:C572: 99 E2 07    ;
+
+                INC A                   ; $22:C575: 1A          ;
+
+                STA $07E6,y             ; $22:C576: 99 E6 07    ;
+
+                PHX                     ; $22:C579: DA          ;
+
+                TYX                     ; $22:C57A: BB          ;
+
+                LDA $01                 ; $22:C57B: A5 01       ;
+
+                AND #$40                ; $22:C57D: 29 40       ;
+
+                BNE CODE_22C585         ; $22:C57F: D0 04       ;
+
+                INX                     ; $22:C581: E8          ;
+
+                INX                     ; $22:C582: E8          ;
+
+                INX                     ; $22:C583: E8          ;
+
+                INX                     ; $22:C584: E8          ;
+
+CODE_22C585:    LDA $0800,x             ; $22:C585: BD 00 08    ;
+
+                STA $07E0,y             ; $22:C588: 99 E0 07    ;
+
+                STA $07E4,y             ; $22:C58B: 99 E4 07    ;
+
+                REP #$20                ; $22:C58E: C2 20       ;
+
+                TXA                     ; $22:C590: 8A          ;
+
+                LSR A                   ; $22:C591: 4A          ;
+
+                LSR A                   ; $22:C592: 4A          ;
+
+                TAX                     ; $22:C593: AA          ;
+
+                SEP #$20                ; $22:C594: E2 20       ;
+
+                LDA $0A20,x             ; $22:C596: BD 20 0A    ;
+
+                STA $D8                 ; $22:C599: 85 D8       ;
+
+                PLX                     ; $22:C59B: FA          ;
+
+                LDA $0803,y             ; $22:C59C: B9 03 08    ;
+
+                AND #$F9                ; $22:C59F: 29 F9       ;
+
+                STA $07E3,y             ; $22:C5A1: 99 E3 07    ;
+
+                STA $07E7,y             ; $22:C5A4: 99 E7 07    ;
+
+                REP #$20                ; $22:C5A7: C2 20       ;
+
+                TYA                     ; $22:C5A9: 98          ;
+
+                LSR A                   ; $22:C5AA: 4A          ;
+
+                LSR A                   ; $22:C5AB: 4A          ;
+
+                TAY                     ; $22:C5AC: A8          ;
+
+                SEP #$20                ; $22:C5AD: E2 20       ;
+
+                LDA $D8                 ; $22:C5AF: A5 D8       ;
+
+                STA $0A18,y             ; $22:C5B1: 99 18 0A    ;
+
+                STA $0A19,y             ; $22:C5B4: 99 19 0A    ;
+
+CODE_22C5B7:    LDY $C6,x               ; $22:C5B7: B4 C6       ;
+
+                LDA $0801,y             ; $22:C5B9: B9 01 08    ;
+
+                CMP #$F0                ; $22:C5BC: C9 F0       ;
+
+                BEQ CODE_22C5C6         ; $22:C5BE: F0 06       ;
+
+                CLC                     ; $22:C5C0: 18          ;
+
+                ADC #$10                ; $22:C5C1: 69 10       ;
+
+                STA $07F9,y             ; $22:C5C3: 99 F9 07    ;
+
+CODE_22C5C6:    LDA $0805,y             ; $22:C5C6: B9 05 08    ;
+
+                CMP #$F0                ; $22:C5C9: C9 F0       ;
+
+                BEQ CODE_22C5D3         ; $22:C5CB: F0 06       ;
+
+                CLC                     ; $22:C5CD: 18          ;
+
+                ADC #$10                ; $22:C5CE: 69 10       ;
+
+                STA $07FD,y             ; $22:C5D0: 99 FD 07    ;
+
+CODE_22C5D3:    LDA $0800,y             ; $22:C5D3: B9 00 08    ;
+
+                STA $07F8,y             ; $22:C5D6: 99 F8 07    ;
+
+                LDA $0804,y             ; $22:C5D9: B9 04 08    ;
+
+                STA $07FC,y             ; $22:C5DC: 99 FC 07    ;
+
+                LDA $0803,y             ; $22:C5DF: B9 03 08    ;
+
+                AND #$F9                ; $22:C5E2: 29 F9       ;
+
+                ORA #$06                ; $22:C5E4: 09 06       ;
+
+                STA $07FB,y             ; $22:C5E6: 99 FB 07    ;
+
+                STA $07FF,y             ; $22:C5E9: 99 FF 07    ;
+
+                LDA $0669,x             ; $22:C5EC: BD 69 06    ;
+
+                LDX #$0000              ; $22:C5EF: A2 00 00    ;
+
+                LSR A                   ; $22:C5F2: 4A          ;
+
+                BCC CODE_22C5F8         ; $22:C5F3: 90 03       ;
+
+                INX                     ; $22:C5F5: E8          ;
+
+                INX                     ; $22:C5F6: E8          ;
+
+                INX                     ; $22:C5F7: E8          ;
+
+CODE_22C5F8:    LDA $01                 ; $22:C5F8: A5 01       ;
+
+                BEQ CODE_22C5FD         ; $22:C5FA: F0 01       ;
+
+                INX                     ; $22:C5FC: E8          ;
+
+CODE_22C5FD:    LDA.w DATA_21C476,x     ; $22:C5FD: BD 76 C4    ;
+
+                STA $07FA,y             ; $22:C600: 99 FA 07    ;
+
+                LDA.w DATA_21C476+1,x   ; $22:C603: BD 77 C4    ;
+
+                STA $07FE,y             ; $22:C606: 99 FE 07    ;
+
+                PHY                     ; $22:C609: 5A          ;
+
+                REP #$20                ; $22:C60A: C2 20       ;
+
+                TYA                     ; $22:C60C: 98          ;
+
+                LSR A                   ; $22:C60D: 4A          ;
+
+                LSR A                   ; $22:C60E: 4A          ;
+
+                TAY                     ; $22:C60F: A8          ;
+
+                SEP #$20                ; $22:C610: E2 20       ;
+
+                LDA $0A20,y             ; $22:C612: B9 20 0A    ;
+
+                STA $0A1E,y             ; $22:C615: 99 1E 0A    ;
+
+                LDA $0A21,y             ; $22:C618: B9 21 0A    ;
+
+                STA $0A1F,y             ; $22:C61B: 99 1F 0A    ;
+
+                PLY                     ; $22:C61E: 7A          ;
+
+                LDA $0425               ; $22:C61F: AD 25 04    ;
+
+                BEQ CODE_22C661         ; $22:C622: F0 3D       ;
+
+                PHY                     ; $22:C624: 5A          ;
+
+                REP #$20                ; $22:C625: C2 20       ;
+
+                TYA                     ; $22:C627: 98          ;
+
+                LSR A                   ; $22:C628: 4A          ;
+
+                LSR A                   ; $22:C629: 4A          ;
+
+                TAY                     ; $22:C62A: A8          ;
+
+                SEP #$20                ; $22:C62B: E2 20       ;
+
+                LDA #$00                ; $22:C62D: A9 00       ;
+
+                STA $0A20,y             ; $22:C62F: 99 20 0A    ;
+
+                STA $0A22,y             ; $22:C632: 99 22 0A    ;
+
+                STA $0A1E,y             ; $22:C635: 99 1E 0A    ;
+
+                STA $0A21,y             ; $22:C638: 99 21 0A    ;
+
+                STA $0A23,y             ; $22:C63B: 99 23 0A    ;
+
+                STA $0A1F,y             ; $22:C63E: 99 1F 0A    ;
+
+                STA $0A1A,y             ; $22:C641: 99 1A 0A    ;
+
+                SEP #$10                ; $22:C644: E2 10       ;
+
+                JSL CODE_27A19D         ; $22:C646: 22 9D A1 27 ;
+
+                REP #$10                ; $22:C64A: C2 10       ;
+
+                PLY                     ; $22:C64C: 7A          ;
+
+                LDX #$0000              ; $22:C64D: A2 00 00    ;
+
+                LDA $0800,y             ; $22:C650: B9 00 08    ;
+
+                CMP #$F8                ; $22:C653: C9 F8       ;
+
+                BCS CODE_22C664         ; $22:C655: B0 0D       ;
+
+                LDX #$0004              ; $22:C657: A2 04 00    ;
+
+                LDA $0804,y             ; $22:C65A: B9 04 08    ;
+
+                CMP #$F8                ; $22:C65D: C9 F8       ;
+
+                BCS CODE_22C664         ; $22:C65F: B0 03       ;
+
+CODE_22C661:    BRL CODE_22C718         ; $22:C661: 82 B4 00    ;
+
+CODE_22C664:    STX $DC                 ; $22:C664: 86 DC       ;
+
+                REP #$20                ; $22:C666: C2 20       ;
+
+                TYA                     ; $22:C668: 98          ;
+
+                STA $DA                 ; $22:C669: 85 DA       ;
+
+                CLC                     ; $22:C66B: 18          ;
+
+                ADC $DC                 ; $22:C66C: 65 DC       ;
+
+                TAY                     ; $22:C66E: A8          ;
+
+                LDA $D8                 ; $22:C66F: A5 D8       ;
+
+                CLC                     ; $22:C671: 18          ;
+
+                ADC #$0020              ; $22:C672: 69 20 00    ;
+
+                STA $D8                 ; $22:C675: 85 D8       ;
+
+                CLC                     ; $22:C677: 18          ;
+
+                ADC $DC                 ; $22:C678: 65 DC       ;
+
+                TAX                     ; $22:C67A: AA          ;
+
+                SEP #$20                ; $22:C67B: E2 20       ;
+
+                LDA $0800,y             ; $22:C67D: B9 00 08    ;
+
+                STA $0800,x             ; $22:C680: 9D 00 08    ;
+
+                STA $0808,x             ; $22:C683: 9D 08 08    ;
+
+                STA $07F8,x             ; $22:C686: 9D F8 07    ;
+
+                LDA $0801,y             ; $22:C689: B9 01 08    ;
+
+                STA $0801,x             ; $22:C68C: 9D 01 08    ;
+
+                LDA $0809,y             ; $22:C68F: B9 09 08    ;
+
+                STA $0809,x             ; $22:C692: 9D 09 08    ;
+
+                LDA $07F9,y             ; $22:C695: B9 F9 07    ;
+
+                STA $07F9,x             ; $22:C698: 9D F9 07    ;
+
+                LDA $0802,y             ; $22:C69B: B9 02 08    ;
+
+                STA $0802,x             ; $22:C69E: 9D 02 08    ;
+
+                LDA $080A,y             ; $22:C6A1: B9 0A 08    ;
+
+                STA $080A,x             ; $22:C6A4: 9D 0A 08    ;
+
+                LDA $07FA,y             ; $22:C6A7: B9 FA 07    ;
+
+                STA $07FA,x             ; $22:C6AA: 9D FA 07    ;
+
+                LDA $0803,y             ; $22:C6AD: B9 03 08    ;
+
+                STA $0803,x             ; $22:C6B0: 9D 03 08    ;
+
+                LDA $080B,y             ; $22:C6B3: B9 0B 08    ;
+
+                STA $080B,x             ; $22:C6B6: 9D 0B 08    ;
+
+                LDA $07FB,y             ; $22:C6B9: B9 FB 07    ;
+
+                STA $07FB,x             ; $22:C6BC: 9D FB 07    ;
+
+                REP #$20                ; $22:C6BF: C2 20       ;
+
+                TXA                     ; $22:C6C1: 8A          ;
+
+                LSR A                   ; $22:C6C2: 4A          ;
+
+                LSR A                   ; $22:C6C3: 4A          ;
+
+                TAX                     ; $22:C6C4: AA          ;
+
+                TYA                     ; $22:C6C5: 98          ;
+
+                LSR A                   ; $22:C6C6: 4A          ;
+
+                LSR A                   ; $22:C6C7: 4A          ;
+
+                TAY                     ; $22:C6C8: A8          ;
+
+                SEP #$20                ; $22:C6C9: E2 20       ;
+
+                LDA #$00                ; $22:C6CB: A9 00       ;
+
+                STA $0A20,x             ; $22:C6CD: 9D 20 0A    ;
+
+                STA $0A22,x             ; $22:C6D0: 9D 22 0A    ;
+
+                STA $0A1E,x             ; $22:C6D3: 9D 1E 0A    ;
+
+                INC A                   ; $22:C6D6: 1A          ;
+
+                STA $0A20,y             ; $22:C6D7: 99 20 0A    ;
+
+                STA $0A22,y             ; $22:C6DA: 99 22 0A    ;
+
+                STA $0A1E,y             ; $22:C6DD: 99 1E 0A    ;
+
+                LDX $D8                 ; $22:C6E0: A6 D8       ;
+
+                LDY $DA                 ; $22:C6E2: A4 DA       ;
+
+                LDA $07E8,y             ; $22:C6E4: B9 E8 07    ;
+
+                CMP #$F8                ; $22:C6E7: C9 F8       ;
+
+                BCC CODE_22C718         ; $22:C6E9: 90 2D       ;
+
+                LDA $07E8,y             ; $22:C6EB: B9 E8 07    ;
+
+                STA $07E8,x             ; $22:C6EE: 9D E8 07    ;
+
+                LDA $07E9,y             ; $22:C6F1: B9 E9 07    ;
+
+                STA $07E9,x             ; $22:C6F4: 9D E9 07    ;
+
+                LDA $07EA,y             ; $22:C6F7: B9 EA 07    ;
+
+                STA $07EA,x             ; $22:C6FA: 9D EA 07    ;
+
+                LDA $07EB,y             ; $22:C6FD: B9 EB 07    ;
+
+                STA $07EB,x             ; $22:C700: 9D EB 07    ;
+
+                REP #$20                ; $22:C703: C2 20       ;
+
+                TXA                     ; $22:C705: 8A          ;
+
+                LSR A                   ; $22:C706: 4A          ;
+
+                LSR A                   ; $22:C707: 4A          ;
+
+                TAX                     ; $22:C708: AA          ;
+
+                TYA                     ; $22:C709: 98          ;
+
+                LSR A                   ; $22:C70A: 4A          ;
+
+                LSR A                   ; $22:C70B: 4A          ;
+
+                TAY                     ; $22:C70C: A8          ;
+
+                SEP #$20                ; $22:C70D: E2 20       ;
+
+                LDA #$00                ; $22:C70F: A9 00       ;
+
+                STA $0A1A,x             ; $22:C711: 9D 1A 0A    ;
+
+                INC A                   ; $22:C714: 1A          ;
+
+                STA $0A1A,y             ; $22:C715: 99 1A 0A    ;
+
+CODE_22C718:    SEP #$10                ; $22:C718: E2 10       ;
+
+                LDX $9B                 ; $22:C71A: A6 9B       ;
+
+                RTS                     ; $22:C71C: 60          ;
+
+CODE_22C71D:    LDA $0671,x             ; $22:C71D: BD 71 06    ;
+
+                CMP #$7C                ; $22:C720: C9 7C       ;
+
+                BNE CODE_22C741         ; $22:C722: D0 1D       ;
+
+                LDA $0679,x             ; $22:C724: BD 79 06    ;
+
+                PHA                     ; $22:C727: 48          ;
+
+                AND #$BF                ; $22:C728: 29 BF       ;
+
+                STA $00                 ; $22:C72A: 85 00       ;
+
+                LDA $68,x               ; $22:C72C: B5 68       ;
+
+                AND #$04                ; $22:C72E: 29 04       ;
+
+                ASL A                   ; $22:C730: 0A          ;
+
+                ASL A                   ; $22:C731: 0A          ;
+
+                ASL A                   ; $22:C732: 0A          ;
+
+                ASL A                   ; $22:C733: 0A          ;
+
+                ORA $00                 ; $22:C734: 05 00       ;
+
+                STA $0679,x             ; $22:C736: 9D 79 06    ;
+
+                JSR CODE_22C741         ; $22:C739: 20 41 C7    ;
+
+                PLA                     ; $22:C73C: 68          ;
+
+                STA $0679,x             ; $22:C73D: 9D 79 06    ;
+
+                RTS                     ; $22:C740: 60          ;
+
+CODE_22C741:    LDA $5F,x               ; $22:C741: B5 5F       ;
+
+                PHA                     ; $22:C743: 48          ;
+
+                LDA $44,x               ; $22:C744: B5 44       ;
+
+                PHA                     ; $22:C746: 48          ;
+
+                LDA $71,x               ; $22:C747: B5 71       ;
+
+                PHA                     ; $22:C749: 48          ;
+
+                CLC                     ; $22:C74A: 18          ;
+
+                LDY $0679,x             ; $22:C74B: BC 79 06    ;
+
+                BMI CODE_22C752         ; $22:C74E: 30 02       ;
+
+                ADC #$08                ; $22:C750: 69 08       ;
+
+CODE_22C752:    STA $71,x               ; $22:C752: 95 71       ;
+
+                LDA $56,x               ; $22:C754: B5 56       ;
+
+                PHA                     ; $22:C756: 48          ;
+
+                ADC #$00                ; $22:C757: 69 00       ;
+
+                STA $56,x               ; $22:C759: 95 56       ;
+
+                LDA $0651,x             ; $22:C75B: BD 51 06    ;
+
+                STA $1CEF               ; $22:C75E: 8D EF 1C    ;
+
+                LDA $0679,x             ; $22:C761: BD 79 06    ;
+
+                AND #$40                ; $22:C764: 29 40       ;
+
+                BEQ CODE_22C778         ; $22:C766: F0 10       ;
+
+                ASL $0651,x             ; $22:C768: 1E 51 06    ;
+
+                LDA $5F,x               ; $22:C76B: B5 5F       ;
+
+                CLC                     ; $22:C76D: 18          ;
+
+                ADC #$08                ; $22:C76E: 69 08       ;
+
+                STA $5F,x               ; $22:C770: 95 5F       ;
+
+                LDA $44,x               ; $22:C772: B5 44       ;
+
+                ADC #$00                ; $22:C774: 69 00       ;
+
+                STA $44,x               ; $22:C776: 95 44       ;
+
+CODE_22C778:    JSL CODE_279F51         ; $22:C778: 22 51 9F 27 ;
+
+                PLA                     ; $22:C77C: 68          ;
+
+                STA $56,x               ; $22:C77D: 95 56       ;
+
+                PLA                     ; $22:C77F: 68          ;
+
+                STA $71,x               ; $22:C780: 95 71       ;
+
+                PLA                     ; $22:C782: 68          ;
+
+                STA $44,x               ; $22:C783: 95 44       ;
+
+                PLA                     ; $22:C785: 68          ;
+
+                STA $5F,x               ; $22:C786: 95 5F       ;
+
+                JSL CODE_279DC2         ; $22:C788: 22 C2 9D 27 ;
+
+                LDY #$00                ; $22:C78C: A0 00       ;
+
+                LDA $0679,x             ; $22:C78E: BD 79 06    ;
+
+                AND #$40                ; $22:C791: 29 40       ;
+
+                BEQ CODE_22C796         ; $22:C793: F0 01       ;
+
+                INY                     ; $22:C795: C8          ;
+
+CODE_22C796:    SEC                     ; $22:C796: 38          ;
+
+                LDA $06AB,x             ; $22:C797: BD AB 06    ;
+
+                BEQ CODE_22C79D         ; $22:C79A: F0 01       ;
+
+                LSR A                   ; $22:C79C: 4A          ;
+
+CODE_22C79D:    LDA $7A,x               ; $22:C79D: B5 7A       ;
+
+                SBC #$00                ; $22:C79F: E9 00       ;
+
+                CLC                     ; $22:C7A1: 18          ;
+
+                ADC.w DATA_21C43A,y     ; $22:C7A2: 79 3A C4    ;
+
+                STA $01                 ; $22:C7A5: 85 01       ;
+
+                REP #$10                ; $22:C7A7: C2 10       ;
+
+                LDY $C6,x               ; $22:C7A9: B4 C6       ;
+
+                LDA $01                 ; $22:C7AB: A5 01       ;
+
+                STA $0810,y             ; $22:C7AD: 99 10 08    ;
+
+                STA $0814,y             ; $22:C7B0: 99 14 08    ;
+
+                STA $0818,y             ; $22:C7B3: 99 18 08    ;
+
+                STA $081C,y             ; $22:C7B6: 99 1C 08    ;
+
+                LDA $0681,x             ; $22:C7B9: BD 81 06    ;
+
+                STA $00                 ; $22:C7BC: 85 00       ;
+
+                LDA $83,x               ; $22:C7BE: B5 83       ;
+
+                CLC                     ; $22:C7C0: 18          ;
+
+                ADC #$08                ; $22:C7C1: 69 08       ;
+
+                LSR $00                 ; $22:C7C3: 46 00       ;
+
+                BCS CODE_22C7D0         ; $22:C7C5: B0 09       ;
+
+                STA $0811,y             ; $22:C7C7: 99 11 08    ;
+
+                CLC                     ; $22:C7CA: 18          ;
+
+                ADC #$08                ; $22:C7CB: 69 08       ;
+
+                STA $0819,y             ; $22:C7CD: 99 19 08    ;
+
+CODE_22C7D0:    LSR $00                 ; $22:C7D0: 46 00       ;
+
+                BCS CODE_22C7DF         ; $22:C7D2: B0 0B       ;
+
+                ADC #$08                ; $22:C7D4: 69 08       ;
+
+                STA $0815,y             ; $22:C7D6: 99 15 08    ;
+
+                CLC                     ; $22:C7D9: 18          ;
+
+                ADC #$08                ; $22:C7DA: 69 08       ;
+
+                STA $081D,y             ; $22:C7DC: 99 1D 08    ;
+
+CODE_22C7DF:    LDA $0803,y             ; $22:C7DF: B9 03 08    ;
+
+                STA $0813,y             ; $22:C7E2: 99 13 08    ;
+
+                STA $0817,y             ; $22:C7E5: 99 17 08    ;
+
+                STA $081B,y             ; $22:C7E8: 99 1B 08    ;
+
+                STA $081F,y             ; $22:C7EB: 99 1F 08    ;
+
+                LDA $0679,x             ; $22:C7EE: BD 79 06    ;
+
+                BPL CODE_22C814         ; $22:C7F1: 10 21       ;
+
+                LDA $0811,y             ; $22:C7F3: B9 11 08    ;
+
+                CMP #$F0                ; $22:C7F6: C9 F0       ;
+
+                BEQ CODE_22C814         ; $22:C7F8: F0 1A       ;
+
+                LDA $0811,y             ; $22:C7FA: B9 11 08    ;
+
+                PHA                     ; $22:C7FD: 48          ;
+
+                SEC                     ; $22:C7FE: 38          ;
+
+                SBC #$08                ; $22:C7FF: E9 08       ;
+
+                STA $081D,y             ; $22:C801: 99 1D 08    ;
+
+                PLA                     ; $22:C804: 68          ;
+
+                STA $0815,y             ; $22:C805: 99 15 08    ;
+
+                CLC                     ; $22:C808: 18          ;
+
+                ADC #$08                ; $22:C809: 69 08       ;
+
+                STA $0819,y             ; $22:C80B: 99 19 08    ;
+
+                CLC                     ; $22:C80E: 18          ;
+
+                ADC #$08                ; $22:C80F: 69 08       ;
+
+                STA $0811,y             ; $22:C811: 99 11 08    ;
+
+CODE_22C814:    PHY                     ; $22:C814: 5A          ;
+
+                REP #$20                ; $22:C815: C2 20       ;
+
+                TYA                     ; $22:C817: 98          ;
+
+                LSR A                   ; $22:C818: 4A          ;
+
+                LSR A                   ; $22:C819: 4A          ;
+
+                TAY                     ; $22:C81A: A8          ;
+
+                SEP #$20                ; $22:C81B: E2 20       ;
+
+                LDA $0679,x             ; $22:C81D: BD 79 06    ;
+
+                AND #$40                ; $22:C820: 29 40       ;
+
+                BEQ CODE_22C82B         ; $22:C822: F0 07       ;
+
+                LDA $1CEF               ; $22:C824: AD EF 1C    ;
+
+                ROL A                   ; $22:C827: 2A          ;
+
+                ROL A                   ; $22:C828: 2A          ;
+
+                BRA CODE_22C832         ; $22:C829: 80 07       ;
+
+CODE_22C82B:    LDA $1CEF               ; $22:C82B: AD EF 1C    ;
+
+                ROL A                   ; $22:C82E: 2A          ;
+
+                ROL A                   ; $22:C82F: 2A          ;
+
+                ROL A                   ; $22:C830: 2A          ;
+
+                ROL A                   ; $22:C831: 2A          ;
+
+CODE_22C832:    AND #$01                ; $22:C832: 29 01       ;
+
+                STA $0A24,y             ; $22:C834: 99 24 0A    ;
+
+                STA $0A25,y             ; $22:C837: 99 25 0A    ;
+
+                STA $0A26,y             ; $22:C83A: 99 26 0A    ;
+
+                STA $0A27,y             ; $22:C83D: 99 27 0A    ;
+
+                PLY                     ; $22:C840: 7A          ;
+
+                REP #$10                ; $22:C841: C2 10       ;
+
+                LDA $0671,x             ; $22:C843: BD 71 06    ;
+
+                CMP #$7C                ; $22:C846: C9 7C       ;
+
+                BNE CODE_22C84D         ; $22:C848: D0 03       ;
+
+                JMP CODE_22C902         ; $22:C84A: 4C 02 C9    ;
+
+CODE_22C84D:    LDA $0661,x             ; $22:C84D: BD 61 06    ;
+
+                CMP #$02                ; $22:C850: C9 02       ;
+
+                BEQ CODE_22C857         ; $22:C852: F0 03       ;
+
+                JMP CODE_22C93E         ; $22:C854: 4C 3E C9    ;
+
+CODE_22C857:    LDY #$0000              ; $22:C857: A0 00 00    ;
+
+                LDA $0679,x             ; $22:C85A: BD 79 06    ;
+
+                AND #$40                ; $22:C85D: 29 40       ;
+
+                BEQ CODE_22C864         ; $22:C85F: F0 03       ;
+
+                LDY #$0004              ; $22:C861: A0 04 00    ;
+
+CODE_22C864:    STY $03                 ; $22:C864: 84 03       ;
+
+                REP #$20                ; $22:C866: C2 20       ;
+
+                TYA                     ; $22:C868: 98          ;
+
+                CLC                     ; $22:C869: 18          ;
+
+                ADC $C6,x               ; $22:C86A: 75 C6       ;
+
+                SEC                     ; $22:C86C: 38          ;
+
+                SBC #$0010              ; $22:C86D: E9 10 00    ;
+
+                TAY                     ; $22:C870: A8          ;
+
+                SEP #$20                ; $22:C871: E2 20       ;
+
+                LDA $0801,y             ; $22:C873: B9 01 08    ;
+
+                CMP #$F0                ; $22:C876: C9 F0       ;
+
+                BEQ CODE_22C883         ; $22:C878: F0 09       ;
+
+                STA $0809,y             ; $22:C87A: 99 09 08    ;
+
+                SEC                     ; $22:C87D: 38          ;
+
+                SBC #$08                ; $22:C87E: E9 08       ;
+
+                STA $0801,y             ; $22:C880: 99 01 08    ;
+
+CODE_22C883:    LDA $0811,y             ; $22:C883: B9 11 08    ;
+
+                CMP #$F0                ; $22:C886: C9 F0       ;
+
+                BEQ CODE_22C893         ; $22:C888: F0 09       ;
+
+                STA $0819,y             ; $22:C88A: 99 19 08    ;
+
+                SEC                     ; $22:C88D: 38          ;
+
+                SBC #$08                ; $22:C88E: E9 08       ;
+
+                STA $0811,y             ; $22:C890: 99 11 08    ;
+
+CODE_22C893:    LDA $0803,y             ; $22:C893: B9 03 08    ;
+
+                ORA #$06                ; $22:C896: 09 06       ;
+
+                STA $0803,y             ; $22:C898: 99 03 08    ;
+
+                STA $080B,y             ; $22:C89B: 99 0B 08    ;
+
+                STA $0813,y             ; $22:C89E: 99 13 08    ;
+
+                STA $081B,y             ; $22:C8A1: 99 1B 08    ;
+
+                REP #$20                ; $22:C8A4: C2 20       ;
+
+                LDA $03                 ; $22:C8A6: A5 03       ;
+
+                AND #$00FF              ; $22:C8A8: 29 FF 00    ;
+
+                EOR #$0004              ; $22:C8AB: 49 04 00    ;
+
+                CLC                     ; $22:C8AE: 18          ;
+
+                ADC $C6,x               ; $22:C8AF: 75 C6       ;
+
+                SEC                     ; $22:C8B1: 38          ;
+
+                SBC #$0010              ; $22:C8B2: E9 10 00    ;
+
+                TAY                     ; $22:C8B5: A8          ;
+
+                SEP #$20                ; $22:C8B6: E2 20       ;
+
+                LDA $0813,y             ; $22:C8B8: B9 13 08    ;
+
+                ORA #$06                ; $22:C8BB: 09 06       ;
+
+                STA $0813,y             ; $22:C8BD: 99 13 08    ;
+
+                LDY $C6,x               ; $22:C8C0: B4 C6       ;
+
+                LDA #$90                ; $22:C8C2: A9 90       ;
+
+                STA $0812,y             ; $22:C8C4: 99 12 08    ;
+
+                INC A                   ; $22:C8C7: 1A          ;
+
+                STA $081A,y             ; $22:C8C8: 99 1A 08    ;
+
+                LDA $0669,x             ; $22:C8CB: BD 69 06    ;
+
+                LSR A                   ; $22:C8CE: 4A          ;
+
+                LDA #$9E                ; $22:C8CF: A9 9E       ;
+
+                BCS CODE_22C8D5         ; $22:C8D1: B0 02       ;
+
+                LDA #$96                ; $22:C8D3: A9 96       ;
+
+CODE_22C8D5:    STA $0816,y             ; $22:C8D5: 99 16 08    ;
+
+                INC A                   ; $22:C8D8: 1A          ;
+
+                STA $081E,y             ; $22:C8D9: 99 1E 08    ;
+
+                LDA $0671,x             ; $22:C8DC: BD 71 06    ;
+
+                CMP #$7E                ; $22:C8DF: C9 7E       ;
+
+                BCC CODE_22C8F4         ; $22:C8E1: 90 11       ;
+
+                LDA $0669,x             ; $22:C8E3: BD 69 06    ;
+
+                LSR A                   ; $22:C8E6: 4A          ;
+
+                LDA #$B8                ; $22:C8E7: A9 B8       ;
+
+                BCC CODE_22C8ED         ; $22:C8E9: 90 02       ;
+
+                LDA #$BA                ; $22:C8EB: A9 BA       ;
+
+CODE_22C8ED:    STA $0812,y             ; $22:C8ED: 99 12 08    ;
+
+                INC A                   ; $22:C8F0: 1A          ;
+
+                STA $081A,y             ; $22:C8F1: 99 1A 08    ;
+
+CODE_22C8F4:    LDA $0817,y             ; $22:C8F4: B9 17 08    ;
+
+                ORA #$06                ; $22:C8F7: 09 06       ;
+
+                STA $0817,y             ; $22:C8F9: 99 17 08    ;
+
+                STA $081F,y             ; $22:C8FC: 99 1F 08    ;
+
+                SEP #$10                ; $22:C8FF: E2 10       ;
+
+                RTS                     ; $22:C901: 60          ;
+
+CODE_22C902:    LDA $0661,x             ; $22:C902: BD 61 06    ;
+
+                CMP #$07                ; $22:C905: C9 07       ;
+
+                BEQ CODE_22C91E         ; $22:C907: F0 15       ;
+
+                LDA #$84                ; $22:C909: A9 84       ;
+
+                STA $0812,y             ; $22:C90B: 99 12 08    ;
+
+                INC A                   ; $22:C90E: 1A          ;
+
+                STA $081A,y             ; $22:C90F: 99 1A 08    ;
+
+                LDA #$8A                ; $22:C912: A9 8A       ;
+
+                STA $0816,y             ; $22:C914: 99 16 08    ;
+
+                INC A                   ; $22:C917: 1A          ;
+
+                STA $081E,y             ; $22:C918: 99 1E 08    ;
+
+                SEP #$10                ; $22:C91B: E2 10       ;
+
+                RTS                     ; $22:C91D: 60          ;
+
+CODE_22C91E:    LDA #$70                ; $22:C91E: A9 70       ;
+
+                STA $0812,y             ; $22:C920: 99 12 08    ;
+
+                INC A                   ; $22:C923: 1A          ;
+
+                STA $081A,y             ; $22:C924: 99 1A 08    ;
+
+                LDA #$BC                ; $22:C927: A9 BC       ;
+
+                STA $0816,y             ; $22:C929: 99 16 08    ;
+
+                INC A                   ; $22:C92C: 1A          ;
+
+                STA $081E,y             ; $22:C92D: 99 1E 08    ;
+
+                LDA $0817,y             ; $22:C930: B9 17 08    ;
+
+                EOR #$40                ; $22:C933: 49 40       ;
+
+                STA $0817,y             ; $22:C935: 99 17 08    ;
+
+                STA $081F,y             ; $22:C938: 99 1F 08    ;
+
+                SEP #$10                ; $22:C93B: E2 10       ;
+
+                RTS                     ; $22:C93D: 60          ;
+
+CODE_22C93E:    LDA #$A8                ; $22:C93E: A9 A8       ;
+
+                STA $0812,y             ; $22:C940: 99 12 08    ;
+
+                INC A                   ; $22:C943: 1A          ;
+
+                STA $081A,y             ; $22:C944: 99 1A 08    ;
+
+                LDA #$AC                ; $22:C947: A9 AC       ;
+
+                STA $0816,y             ; $22:C949: 99 16 08    ;
+
+                INC A                   ; $22:C94C: 1A          ;
+
+                STA $081E,y             ; $22:C94D: 99 1E 08    ;
+
+                LDA $0813,y             ; $22:C950: B9 13 08    ;
+
+                EOR #$40                ; $22:C953: 49 40       ;
+
+                STA $0813,y             ; $22:C955: 99 13 08    ;
+
+                STA $0817,y             ; $22:C958: 99 17 08    ;
+
+                STA $081B,y             ; $22:C95B: 99 1B 08    ;
+
+                STA $081F,y             ; $22:C95E: 99 1F 08    ;
+
+                SEP #$10                ; $22:C961: E2 10       ;
+
+                RTS                     ; $22:C963: 60          ;
+
+CODE_22C964:    JSR CODE_22C71D         ; $22:C964: 20 1D C7    ;
+
+                RTL                     ; $22:C967: 6B          ;
+
+CODE_22C968:    LDA #$04                ; $22:C968: A9 04       ;
+
+                BNE CODE_22C96E         ; $22:C96A: D0 02       ;
+
+CODE_22C96C:    LDA #$0C                ; $22:C96C: A9 0C       ;
+
+CODE_22C96E:    CLC                     ; $22:C96E: 18          ;
+
+                ADC $5F,x               ; $22:C96F: 75 5F       ;
+
+                STA $5F,x               ; $22:C971: 95 5F       ;
+
+                LDY #$21                ; $22:C973: A0 21       ;
+
+                LDA $71,x               ; $22:C975: B5 71       ;
+
+                STA $68,x               ; $22:C977: 95 68       ;
+
+                TYA                     ; $22:C979: 98          ;
+
+                STA $077B,x             ; $22:C97A: 9D 7B 07    ;
+
+                LDA $56,x               ; $22:C97D: B5 56       ;
+
+                STA $1021,x             ; $22:C97F: 9D 21 10    ;
+
+                LDA #$20                ; $22:C982: A9 20       ;
+
+                STA $0679,x             ; $22:C984: 9D 79 06    ;
+
+                INC $1FF9,x             ; $22:C987: FE F9 1F    ;
+
+                RTL                     ; $22:C98A: 6B          ;
 
 CODE_22C98B:    JSL CODE_279BC3         ; $22:C98B: 22 C3 9B 27 ; Subroutine: Remove if offscreen
-                LDA $4D,x                   ; $22:C98F: B5 4D       ;
-                AND #$03                    ; $22:C991: 29 03       ;
-                BNE CODE_22C99E             ; $22:C993: D0 09       ;
-                LDA #$FF                    ; $22:C995: A9 FF       ;
-                STA $0651,x                 ; $22:C997: 9D 51 06    ;
-                JSR CODE_22C9B4             ; $22:C99A: 20 B4 C9    ;
-                RTL                         ; $22:C99D: 6B          ;
+                LDA $4D,x               ; $22:C98F: B5 4D       ;
 
-CODE_22C99E:    LDA $0565                   ; $22:C99E: AD 65 05    ;
-                LSR A                       ; $22:C9A1: 4A          ;
-                LSR A                       ; $22:C9A2: 4A          ;
-                LSR A                       ; $22:C9A3: 4A          ;
-                AND #$01                    ; $22:C9A4: 29 01       ;
-                STA $0669,x                 ; $22:C9A6: 9D 69 06    ;
-                JSR CODE_22CA2C             ; $22:C9A9: 20 2C CA    ;
-                JSL CODE_279B6F             ; $22:C9AC: 22 6F 9B 27 ;
-                JSR CODE_22C9B4             ; $22:C9B0: 20 B4 C9    ;
-                RTL                         ; $22:C9B3: 6B          ;
+                AND #$03                ; $22:C991: 29 03       ;
 
-CODE_22C9B4:    LDA $9C                     ; $22:C9B4: A5 9C       ;
-                BEQ CODE_22C9B9             ; $22:C9B6: F0 01       ;
-                RTS                         ; $22:C9B8: 60          ;
+                BNE CODE_22C99E         ; $22:C993: D0 09       ;
 
-CODE_22C9B9:    INC $1FD2,x                 ; $22:C9B9: FE D2 1F    ;
-                LDA $4D,x                   ; $22:C9BC: B5 4D       ;
-                AND #$03                    ; $22:C9BE: 29 03       ;
+                LDA #$FF                ; $22:C995: A9 FF       ;
+
+                STA $0651,x             ; $22:C997: 9D 51 06    ;
+
+                JSR CODE_22C9B4         ; $22:C99A: 20 B4 C9    ;
+
+                RTL                     ; $22:C99D: 6B          ;
+
+CODE_22C99E:    LDA $0565               ; $22:C99E: AD 65 05    ;
+
+                LSR A                   ; $22:C9A1: 4A          ;
+
+                LSR A                   ; $22:C9A2: 4A          ;
+
+                LSR A                   ; $22:C9A3: 4A          ;
+
+                AND #$01                ; $22:C9A4: 29 01       ;
+
+                STA $0669,x             ; $22:C9A6: 9D 69 06    ;
+
+                JSR CODE_22CA2C         ; $22:C9A9: 20 2C CA    ;
+
+                JSL CODE_279B6F         ; $22:C9AC: 22 6F 9B 27 ;
+
+                JSR CODE_22C9B4         ; $22:C9B0: 20 B4 C9    ;
+
+                RTL                     ; $22:C9B3: 6B          ;
+
+CODE_22C9B4:    LDA $9C                 ; $22:C9B4: A5 9C       ;
+
+                BEQ CODE_22C9B9         ; $22:C9B6: F0 01       ;
+
+                RTS                     ; $22:C9B8: 60          ;
+
+CODE_22C9B9:    INC $1FD2,x             ; $22:C9B9: FE D2 1F    ;
+
+                LDA $4D,x               ; $22:C9BC: B5 4D       ;
+
+                AND #$03                ; $22:C9BE: 29 03       ;
+
                 JSL CODE_20FB1F         ; $22:C9C0: 22 1F FB 20 ; ExecutePtrShort
 
                 dw CODE_22CA19                                  ;
@@ -3912,1492 +6652,2898 @@ CODE_22C9B9:    INC $1FD2,x                 ; $22:C9B9: FE D2 1F    ;
                 dw CODE_22CA06                                  ;
                 dw CODE_22C9E7                                  ;
 
-CODE_22C9CC:    LDA $68,x                   ; $22:C9CC: B5 68       ;
-                SEC                         ; $22:C9CE: 38          ;
-                SBC $077B,x                 ; $22:C9CF: FD 7B 07    ;
-                PHA                         ; $22:C9D2: 48          ;
-                LDA $1021,x                 ; $22:C9D3: BD 21 10    ;
-                SBC #$00                    ; $22:C9D6: E9 00       ;
-                STA $00                     ; $22:C9D8: 85 00       ;
-                PLA                         ; $22:C9DA: 68          ;
-                CMP $71,x                   ; $22:C9DB: D5 71       ;
-                LDA $00                     ; $22:C9DD: A5 00       ;
-                SBC $56,x                   ; $22:C9DF: F5 56       ;
-                BCS CODE_22CA0B                     ; $22:C9E1: B0 28       ;
-                LDA #$F0                    ; $22:C9E3: A9 F0       ;
-                BNE CODE_22C9FF             ; $22:C9E5: D0 18       ;
-CODE_22C9E7:    LDA $71,x                   ; $22:C9E7: B5 71       ;
-                CLC                         ; $22:C9E9: 18          ;
-                ADC #$01                    ; $22:C9EA: 69 01       ;
-                PHA                         ; $22:C9EC: 48          ;
-                LDA $56,x                   ; $22:C9ED: B5 56       ;
-                ADC #$00                    ; $22:C9EF: 69 00       ;
-                STA $00                     ; $22:C9F1: 85 00       ;
-                PLA                         ; $22:C9F3: 68          ;
-                CMP $68,x                   ; $22:C9F4: D5 68       ;
-                LDA $00                     ; $22:C9F6: A5 00       ;
-                SBC $1021,x                 ; $22:C9F8: FD 21 10    ;
-                BCS CODE_22CA0B                     ; $22:C9FB: B0 0E       ;
-                LDA #$10                    ; $22:C9FD: A9 10       ;
-CODE_22C9FF:    STA $9E,x                   ; $22:C9FF: 95 9E       ;
-                JSL CODE_27A7E4             ; $22:CA01: 22 E4 A7 27 ;
-                RTS                         ; $22:CA05: 60          ;
+CODE_22C9CC:    LDA $68,x               ; $22:C9CC: B5 68       ;
 
-CODE_22CA06:    LDA $0518,x                 ; $22:CA06: BD 18 05    ;
-                BNE CODE_22CA2B             ; $22:CA09: D0 20       ;
-CODE_22CA0B:    INC $4D,x                   ; $22:CA0B: F6 4D       ;
-                LDA $4D,x                   ; $22:CA0D: B5 4D       ;
-                AND #$03                    ; $22:CA0F: 29 03       ;
-                TAY                         ; $22:CA11: A8          ;
-                LDA.w DATA_21C47C,y                 ; $22:CA12: B9 7C C4    ;
-                STA $0518,x                 ; $22:CA15: 9D 18 05    ;
-                RTS                         ; $22:CA18: 60          ;
+                SEC                     ; $22:C9CE: 38          ;
 
-CODE_22CA19:    LDA $0518,x                 ; $22:CA19: BD 18 05    ;
-                BNE CODE_22CA2B             ; $22:CA1C: D0 0D       ;
+                SBC $077B,x             ; $22:C9CF: FD 7B 07    ;
+
+                PHA                     ; $22:C9D2: 48          ;
+
+                LDA $1021,x             ; $22:C9D3: BD 21 10    ;
+
+                SBC #$00                ; $22:C9D6: E9 00       ;
+
+                STA $00                 ; $22:C9D8: 85 00       ;
+
+                PLA                     ; $22:C9DA: 68          ;
+
+                CMP $71,x               ; $22:C9DB: D5 71       ;
+
+                LDA $00                 ; $22:C9DD: A5 00       ;
+
+                SBC $56,x               ; $22:C9DF: F5 56       ;
+
+                BCS CODE_22CA0B         ; $22:C9E1: B0 28       ;
+
+                LDA #$F0                ; $22:C9E3: A9 F0       ;
+
+                BNE CODE_22C9FF         ; $22:C9E5: D0 18       ;
+
+CODE_22C9E7:    LDA $71,x               ; $22:C9E7: B5 71       ;
+
+                CLC                     ; $22:C9E9: 18          ;
+
+                ADC #$01                ; $22:C9EA: 69 01       ;
+
+                PHA                     ; $22:C9EC: 48          ;
+
+                LDA $56,x               ; $22:C9ED: B5 56       ;
+
+                ADC #$00                ; $22:C9EF: 69 00       ;
+
+                STA $00                 ; $22:C9F1: 85 00       ;
+
+                PLA                     ; $22:C9F3: 68          ;
+
+                CMP $68,x               ; $22:C9F4: D5 68       ;
+
+                LDA $00                 ; $22:C9F6: A5 00       ;
+
+                SBC $1021,x             ; $22:C9F8: FD 21 10    ;
+
+                BCS CODE_22CA0B         ; $22:C9FB: B0 0E       ;
+
+                LDA #$10                ; $22:C9FD: A9 10       ;
+
+CODE_22C9FF:    STA $9E,x               ; $22:C9FF: 95 9E       ;
+
+                JSL CODE_27A7E4         ; $22:CA01: 22 E4 A7 27 ;
+
+                RTS                     ; $22:CA05: 60          ;
+
+CODE_22CA06:    LDA $0518,x             ; $22:CA06: BD 18 05    ;
+
+                BNE CODE_22CA2B         ; $22:CA09: D0 20       ;
+
+CODE_22CA0B:    INC $4D,x               ; $22:CA0B: F6 4D       ;
+
+                LDA $4D,x               ; $22:CA0D: B5 4D       ;
+
+                AND #$03                ; $22:CA0F: 29 03       ;
+
+                TAY                     ; $22:CA11: A8          ;
+
+                LDA.w DATA_21C47C,y     ; $22:CA12: B9 7C C4    ;
+
+                STA $0518,x             ; $22:CA15: 9D 18 05    ;
+
+                RTS                     ; $22:CA18: 60          ;
+
+CODE_22CA19:    LDA $0518,x             ; $22:CA19: BD 18 05    ;
+
+                BNE CODE_22CA2B         ; $22:CA1C: D0 0D       ;
+
                 JSL CODE_27A837         ; $22:CA1E: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA $0F                     ; $22:CA22: A5 0F       ;
-                CLC                         ; $22:CA24: 18          ;
-                ADC #$18                    ; $22:CA25: 69 18       ;
-                CMP #$31                    ; $22:CA27: C9 31       ;
-                BCS CODE_22CA0B                     ; $22:CA29: B0 E0       ;
-CODE_22CA2B:    RTS                         ; $22:CA2B: 60          ;
+                LDA $0F                 ; $22:CA22: A5 0F       ;
 
-CODE_22CA2C:    LDA $5F,x                   ; $22:CA2C: B5 5F       ;
-                PHA                         ; $22:CA2E: 48          ;
-                LDA $44,x                   ; $22:CA2F: B5 44       ;
-                PHA                         ; $22:CA31: 48          ;
-                LDA $0651,x                 ; $22:CA32: BD 51 06    ;
-                STA $1CEF                   ; $22:CA35: 8D EF 1C    ;
-                LDA $0679,x                 ; $22:CA38: BD 79 06    ;
-                AND #$40                    ; $22:CA3B: 29 40       ;
-                BEQ CODE_22CA4F             ; $22:CA3D: F0 10       ;
-                ASL $0651,x                 ; $22:CA3F: 1E 51 06    ;
-                LDA $5F,x                   ; $22:CA42: B5 5F       ;
-                CLC                         ; $22:CA44: 18          ;
-                ADC #$08                    ; $22:CA45: 69 08       ;
-                STA $5F,x                   ; $22:CA47: 95 5F       ;
-                LDA $44,x                   ; $22:CA49: B5 44       ;
-                ADC #$00                    ; $22:CA4B: 69 00       ;
-                STA $44,x                   ; $22:CA4D: 95 44       ;
-CODE_22CA4F:    LDA $0679,x                 ; $22:CA4F: BD 79 06    ;
-                AND #$CF                    ; $22:CA52: 29 CF       ;
-                ORA #$20                    ; $22:CA54: 09 20       ;
-                STA $0679,x                 ; $22:CA56: 9D 79 06    ;
-                JSR CODE_22D35C             ; $22:CA59: 20 5C D3    ;
-                PLA                         ; $22:CA5C: 68          ;
-                STA $44,x                   ; $22:CA5D: 95 44       ;
-                PLA                         ; $22:CA5F: 68          ;
-                STA $5F,x                   ; $22:CA60: 95 5F       ;
-                JSL CODE_279DC2             ; $22:CA62: 22 C2 9D 27 ;
-                RTS                         ; $22:CA66: 60          ;
+                CLC                     ; $22:CA24: 18          ;
 
-                LDY #$00                    ; $22:CA67: A0 00       ;
-                LDA $0679,x                 ; $22:CA69: BD 79 06    ;
-                AND #$40                    ; $22:CA6C: 29 40       ;
-                BEQ CODE_22CA71             ; $22:CA6E: F0 01       ;
-                INY                         ; $22:CA70: C8          ;
-CODE_22CA71:    LDA $7A,x                   ; $22:CA71: B5 7A       ;
-                CLC                         ; $22:CA73: 18          ;
-                ADC.w DATA_21C43A,y                 ; $22:CA74: 79 3A C4    ;
-                STA $01                     ; $22:CA77: 85 01       ;
-                REP #$10                    ; $22:CA79: C2 10       ;
-                LDY $C6,x                   ; $22:CA7B: B4 C6       ;
-                LDA $01                     ; $22:CA7D: A5 01       ;
-                STA $0810,y                 ; $22:CA7F: 99 10 08    ;
-                STA $0814,y                 ; $22:CA82: 99 14 08    ;
-                STA $0818,y                 ; $22:CA85: 99 18 08    ;
-                STA $081C,y                 ; $22:CA88: 99 1C 08    ;
-                LDA $0681,x                 ; $22:CA8B: BD 81 06    ;
-                STA $00                     ; $22:CA8E: 85 00       ;
-                LDA $83,x                   ; $22:CA90: B5 83       ;
-                LSR $00                     ; $22:CA92: 46 00       ;
-                BCS CODE_22CA9F                     ; $22:CA94: B0 09       ;
-                STA $0811,y                 ; $22:CA96: 99 11 08    ;
-                CLC                         ; $22:CA99: 18          ;
-                ADC #$08                    ; $22:CA9A: 69 08       ;
-                STA $0815,y                 ; $22:CA9C: 99 15 08    ;
-CODE_22CA9F:    LSR $00                     ; $22:CA9F: 46 00       ;
-                BCS CODE_22CAAF                     ; $22:CAA1: B0 0C       ;
-                CLC                         ; $22:CAA3: 18          ;
-                ADC #$08                    ; $22:CAA4: 69 08       ;
-                STA $0819,y                 ; $22:CAA6: 99 19 08    ;
-                CLC                         ; $22:CAA9: 18          ;
-                ADC #$08                    ; $22:CAAA: 69 08       ;
-                STA $081D,y                 ; $22:CAAC: 99 1D 08    ;
-CODE_22CAAF:    LDA $0803,y                 ; $22:CAAF: B9 03 08    ;
-                EOR #$40                    ; $22:CAB2: 49 40       ;
-                STA $0813,y                 ; $22:CAB4: 99 13 08    ;
-                STA $0817,y                 ; $22:CAB7: 99 17 08    ;
-                STA $081B,y                 ; $22:CABA: 99 1B 08    ;
-                STA $081F,y                 ; $22:CABD: 99 1F 08    ;
-                LDA $0669,x                 ; $22:CAC0: BD 69 06    ;
-                LSR A                       ; $22:CAC3: 4A          ;
-                LDA #$A0                    ; $22:CAC4: A9 A0       ;
-                BCC CODE_22CACA             ; $22:CAC6: 90 02       ;
-                LDA #$A8                    ; $22:CAC8: A9 A8       ;
-CODE_22CACA:    STA $0812,y                 ; $22:CACA: 99 12 08    ;
-                INC A                       ; $22:CACD: 1A          ;
-                STA $0816,y                 ; $22:CACE: 99 16 08    ;
-                LDA #$A4                    ; $22:CAD1: A9 A4       ;
-                BCC CODE_22CAD7             ; $22:CAD3: 90 02       ;
-                LDA #$AC                    ; $22:CAD5: A9 AC       ;
-CODE_22CAD7:    STA $081A,y                 ; $22:CAD7: 99 1A 08    ;
-                INC A                       ; $22:CADA: 1A          ;
-                STA $081E,y                 ; $22:CADB: 99 1E 08    ;
-                LDA $0679,x                 ; $22:CADE: BD 79 06    ;
-                BPL CODE_22CAFF             ; $22:CAE1: 10 1C       ;
-                LDA $0811,y                 ; $22:CAE3: B9 11 08    ;
-                PHA                         ; $22:CAE6: 48          ;
-                LDA $0815,y                 ; $22:CAE7: B9 15 08    ;
-                PHA                         ; $22:CAEA: 48          ;
-                LDA $0819,y                 ; $22:CAEB: B9 19 08    ;
-                STA $0811,y                 ; $22:CAEE: 99 11 08    ;
-                LDA $081D,y                 ; $22:CAF1: B9 1D 08    ;
-                STA $0815,y                 ; $22:CAF4: 99 15 08    ;
-                PLA                         ; $22:CAF7: 68          ;
-                STA $081D,y                 ; $22:CAF8: 99 1D 08    ;
-                PLA                         ; $22:CAFB: 68          ;
-                STA $0819,y                 ; $22:CAFC: 99 19 08    ;
-CODE_22CAFF:    REP #$20                    ; $22:CAFF: C2 20       ;
-                TYA                         ; $22:CB01: 98          ;
-                LSR A                       ; $22:CB02: 4A          ;
-                LSR A                       ; $22:CB03: 4A          ;
-                TAY                         ; $22:CB04: A8          ;
-                SEP #$20                    ; $22:CB05: E2 20       ;
-                LDA $0651,x                 ; $22:CB07: BD 51 06    ;
-                ROL A                       ; $22:CB0A: 2A          ;
-                ROL A                       ; $22:CB0B: 2A          ;
-                ROL A                       ; $22:CB0C: 2A          ;
-                ROL A                       ; $22:CB0D: 2A          ;
-                AND #$01                    ; $22:CB0E: 29 01       ;
-                STA $0A24,y                 ; $22:CB10: 99 24 0A    ;
-                STA $0A25,y                 ; $22:CB13: 99 25 0A    ;
-                STA $0A26,y                 ; $22:CB16: 99 26 0A    ;
-                STA $0A27,y                 ; $22:CB19: 99 27 0A    ;
-                SEP #$10                    ; $22:CB1C: E2 10       ;
-                RTS                         ; $22:CB1E: 60          ;
+                ADC #$18                ; $22:CA25: 69 18       ;
 
-                STA $01                     ; $22:CB1F: 85 01       ;
-                TXA                         ; $22:CB21: 8A          ;
-                PHA                         ; $22:CB22: 48          ;
-                TYA                         ; $22:CB23: 98          ;
-                PHA                         ; $22:CB24: 48          ;
-                JSL CODE_27A848             ; $22:CB25: 22 48 A8 27 ;
-                STY $02                     ; $22:CB29: 84 02       ;
-                LDA $0F                     ; $22:CB2B: A5 0F       ;
-                BPL CODE_22CB34             ; $22:CB2D: 10 05       ;
-                EOR #$FF                    ; $22:CB2F: 49 FF       ;
-                CLC                         ; $22:CB31: 18          ;
-                ADC #$01                    ; $22:CB32: 69 01       ;
-CODE_22CB34:    STA $0C                     ; $22:CB34: 85 0C       ;
+                CMP #$31                ; $22:CA27: C9 31       ;
+
+                BCS CODE_22CA0B         ; $22:CA29: B0 E0       ;
+
+CODE_22CA2B:    RTS                     ; $22:CA2B: 60          ;
+
+CODE_22CA2C:    LDA $5F,x               ; $22:CA2C: B5 5F       ;
+
+                PHA                     ; $22:CA2E: 48          ;
+
+                LDA $44,x               ; $22:CA2F: B5 44       ;
+
+                PHA                     ; $22:CA31: 48          ;
+
+                LDA $0651,x             ; $22:CA32: BD 51 06    ;
+
+                STA $1CEF               ; $22:CA35: 8D EF 1C    ;
+
+                LDA $0679,x             ; $22:CA38: BD 79 06    ;
+
+                AND #$40                ; $22:CA3B: 29 40       ;
+
+                BEQ CODE_22CA4F         ; $22:CA3D: F0 10       ;
+
+                ASL $0651,x             ; $22:CA3F: 1E 51 06    ;
+
+                LDA $5F,x               ; $22:CA42: B5 5F       ;
+
+                CLC                     ; $22:CA44: 18          ;
+
+                ADC #$08                ; $22:CA45: 69 08       ;
+
+                STA $5F,x               ; $22:CA47: 95 5F       ;
+
+                LDA $44,x               ; $22:CA49: B5 44       ;
+
+                ADC #$00                ; $22:CA4B: 69 00       ;
+
+                STA $44,x               ; $22:CA4D: 95 44       ;
+
+CODE_22CA4F:    LDA $0679,x             ; $22:CA4F: BD 79 06    ;
+
+                AND #$CF                ; $22:CA52: 29 CF       ;
+
+                ORA #$20                ; $22:CA54: 09 20       ;
+
+                STA $0679,x             ; $22:CA56: 9D 79 06    ;
+
+                JSR CODE_22D35C         ; $22:CA59: 20 5C D3    ;
+
+                PLA                     ; $22:CA5C: 68          ;
+
+                STA $44,x               ; $22:CA5D: 95 44       ;
+
+                PLA                     ; $22:CA5F: 68          ;
+
+                STA $5F,x               ; $22:CA60: 95 5F       ;
+
+                JSL CODE_279DC2         ; $22:CA62: 22 C2 9D 27 ;
+
+                RTS                     ; $22:CA66: 60          ;
+
+                LDY #$00                ; $22:CA67: A0 00       ;
+
+                LDA $0679,x             ; $22:CA69: BD 79 06    ;
+
+                AND #$40                ; $22:CA6C: 29 40       ;
+
+                BEQ CODE_22CA71         ; $22:CA6E: F0 01       ;
+
+                INY                     ; $22:CA70: C8          ;
+
+CODE_22CA71:    LDA $7A,x               ; $22:CA71: B5 7A       ;
+
+                CLC                     ; $22:CA73: 18          ;
+
+                ADC.w DATA_21C43A,y     ; $22:CA74: 79 3A C4    ;
+
+                STA $01                 ; $22:CA77: 85 01       ;
+
+                REP #$10                ; $22:CA79: C2 10       ;
+
+                LDY $C6,x               ; $22:CA7B: B4 C6       ;
+
+                LDA $01                 ; $22:CA7D: A5 01       ;
+
+                STA $0810,y             ; $22:CA7F: 99 10 08    ;
+
+                STA $0814,y             ; $22:CA82: 99 14 08    ;
+
+                STA $0818,y             ; $22:CA85: 99 18 08    ;
+
+                STA $081C,y             ; $22:CA88: 99 1C 08    ;
+
+                LDA $0681,x             ; $22:CA8B: BD 81 06    ;
+
+                STA $00                 ; $22:CA8E: 85 00       ;
+
+                LDA $83,x               ; $22:CA90: B5 83       ;
+
+                LSR $00                 ; $22:CA92: 46 00       ;
+
+                BCS CODE_22CA9F         ; $22:CA94: B0 09       ;
+
+                STA $0811,y             ; $22:CA96: 99 11 08    ;
+
+                CLC                     ; $22:CA99: 18          ;
+
+                ADC #$08                ; $22:CA9A: 69 08       ;
+
+                STA $0815,y             ; $22:CA9C: 99 15 08    ;
+
+CODE_22CA9F:    LSR $00                 ; $22:CA9F: 46 00       ;
+
+                BCS CODE_22CAAF         ; $22:CAA1: B0 0C       ;
+
+                CLC                     ; $22:CAA3: 18          ;
+
+                ADC #$08                ; $22:CAA4: 69 08       ;
+
+                STA $0819,y             ; $22:CAA6: 99 19 08    ;
+
+                CLC                     ; $22:CAA9: 18          ;
+
+                ADC #$08                ; $22:CAAA: 69 08       ;
+
+                STA $081D,y             ; $22:CAAC: 99 1D 08    ;
+
+CODE_22CAAF:    LDA $0803,y             ; $22:CAAF: B9 03 08    ;
+
+                EOR #$40                ; $22:CAB2: 49 40       ;
+
+                STA $0813,y             ; $22:CAB4: 99 13 08    ;
+
+                STA $0817,y             ; $22:CAB7: 99 17 08    ;
+
+                STA $081B,y             ; $22:CABA: 99 1B 08    ;
+
+                STA $081F,y             ; $22:CABD: 99 1F 08    ;
+
+                LDA $0669,x             ; $22:CAC0: BD 69 06    ;
+
+                LSR A                   ; $22:CAC3: 4A          ;
+
+                LDA #$A0                ; $22:CAC4: A9 A0       ;
+
+                BCC CODE_22CACA         ; $22:CAC6: 90 02       ;
+
+                LDA #$A8                ; $22:CAC8: A9 A8       ;
+
+CODE_22CACA:    STA $0812,y             ; $22:CACA: 99 12 08    ;
+
+                INC A                   ; $22:CACD: 1A          ;
+
+                STA $0816,y             ; $22:CACE: 99 16 08    ;
+
+                LDA #$A4                ; $22:CAD1: A9 A4       ;
+
+                BCC CODE_22CAD7         ; $22:CAD3: 90 02       ;
+
+                LDA #$AC                ; $22:CAD5: A9 AC       ;
+
+CODE_22CAD7:    STA $081A,y             ; $22:CAD7: 99 1A 08    ;
+
+                INC A                   ; $22:CADA: 1A          ;
+
+                STA $081E,y             ; $22:CADB: 99 1E 08    ;
+
+                LDA $0679,x             ; $22:CADE: BD 79 06    ;
+
+                BPL CODE_22CAFF         ; $22:CAE1: 10 1C       ;
+
+                LDA $0811,y             ; $22:CAE3: B9 11 08    ;
+
+                PHA                     ; $22:CAE6: 48          ;
+
+                LDA $0815,y             ; $22:CAE7: B9 15 08    ;
+
+                PHA                     ; $22:CAEA: 48          ;
+
+                LDA $0819,y             ; $22:CAEB: B9 19 08    ;
+
+                STA $0811,y             ; $22:CAEE: 99 11 08    ;
+
+                LDA $081D,y             ; $22:CAF1: B9 1D 08    ;
+
+                STA $0815,y             ; $22:CAF4: 99 15 08    ;
+
+                PLA                     ; $22:CAF7: 68          ;
+
+                STA $081D,y             ; $22:CAF8: 99 1D 08    ;
+
+                PLA                     ; $22:CAFB: 68          ;
+
+                STA $0819,y             ; $22:CAFC: 99 19 08    ;
+
+CODE_22CAFF:    REP #$20                ; $22:CAFF: C2 20       ;
+
+                TYA                     ; $22:CB01: 98          ;
+
+                LSR A                   ; $22:CB02: 4A          ;
+
+                LSR A                   ; $22:CB03: 4A          ;
+
+                TAY                     ; $22:CB04: A8          ;
+
+                SEP #$20                ; $22:CB05: E2 20       ;
+
+                LDA $0651,x             ; $22:CB07: BD 51 06    ;
+
+                ROL A                   ; $22:CB0A: 2A          ;
+
+                ROL A                   ; $22:CB0B: 2A          ;
+
+                ROL A                   ; $22:CB0C: 2A          ;
+
+                ROL A                   ; $22:CB0D: 2A          ;
+
+                AND #$01                ; $22:CB0E: 29 01       ;
+
+                STA $0A24,y             ; $22:CB10: 99 24 0A    ;
+
+                STA $0A25,y             ; $22:CB13: 99 25 0A    ;
+
+                STA $0A26,y             ; $22:CB16: 99 26 0A    ;
+
+                STA $0A27,y             ; $22:CB19: 99 27 0A    ;
+
+                SEP #$10                ; $22:CB1C: E2 10       ;
+
+                RTS                     ; $22:CB1E: 60          ;
+
+                STA $01                 ; $22:CB1F: 85 01       ;
+
+                TXA                     ; $22:CB21: 8A          ;
+
+                PHA                     ; $22:CB22: 48          ;
+
+                TYA                     ; $22:CB23: 98          ;
+
+                PHA                     ; $22:CB24: 48          ;
+
+                JSL CODE_27A848         ; $22:CB25: 22 48 A8 27 ;
+
+                STY $02                 ; $22:CB29: 84 02       ;
+
+                LDA $0F                 ; $22:CB2B: A5 0F       ;
+
+                BPL CODE_22CB34         ; $22:CB2D: 10 05       ;
+
+                EOR #$FF                ; $22:CB2F: 49 FF       ;
+
+                CLC                     ; $22:CB31: 18          ;
+
+                ADC #$01                ; $22:CB32: 69 01       ;
+
+CODE_22CB34:    STA $0C                 ; $22:CB34: 85 0C       ;
+
                 JSL CODE_27A837         ; $22:CB36: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                STY $03                     ; $22:CB3A: 84 03       ;
-                LDA $0F                     ; $22:CB3C: A5 0F       ;
-                BPL CODE_22CB45             ; $22:CB3E: 10 05       ;
-                EOR #$FF                    ; $22:CB40: 49 FF       ;
-                CLC                         ; $22:CB42: 18          ;
-                ADC #$01                    ; $22:CB43: 69 01       ;
-CODE_22CB45:    STA $0D                     ; $22:CB45: 85 0D       ;
-                LDY #$00                    ; $22:CB47: A0 00       ;
-                LDA $0D                     ; $22:CB49: A5 0D       ;
-                CMP $0C                     ; $22:CB4B: C5 0C       ;
-                BCS CODE_22CB58                 ; $22:CB4D: B0 09       ;
-                INY                         ; $22:CB4F: C8          ;
-                PHA                         ; $22:CB50: 48          ;
-                LDA $0C                     ; $22:CB51: A5 0C       ;
-                STA $0D                     ; $22:CB53: 85 0D       ;
-                PLA                         ; $22:CB55: 68          ;
-                STA $0C                     ; $22:CB56: 85 0C       ;
-CODE_22CB58:    LDA #$00                    ; $22:CB58: A9 00       ;
-                STA $0B                     ; $22:CB5A: 85 0B       ;
-                STA $00                     ; $22:CB5C: 85 00       ;
-                LDX $01                     ; $22:CB5E: A6 01       ;
-CODE_22CB60:    LDA $0B                     ; $22:CB60: A5 0B       ;
-                CLC                         ; $22:CB62: 18          ;
-                ADC $0C                     ; $22:CB63: 65 0C       ;
-                CMP $0D                     ; $22:CB65: C5 0D       ;
-                BCC CODE_22CB6D             ; $22:CB67: 90 04       ;
-                SBC $0D                     ; $22:CB69: E5 0D       ;
-                INC $00                     ; $22:CB6B: E6 00       ;
-CODE_22CB6D:    STA $0B                     ; $22:CB6D: 85 0B       ;
-                DEX                         ; $22:CB6F: CA          ;
-                BNE CODE_22CB60             ; $22:CB70: D0 EE       ;
-                TYA                         ; $22:CB72: 98          ;
-                BEQ CODE_22CB7F             ; $22:CB73: F0 0A       ;
-                LDA $00                     ; $22:CB75: A5 00       ;
-                PHA                         ; $22:CB77: 48          ;
-                LDA $01                     ; $22:CB78: A5 01       ;
-                STA $00                     ; $22:CB7A: 85 00       ;
-                PLA                         ; $22:CB7C: 68          ;
-                STA $01                     ; $22:CB7D: 85 01       ;
-CODE_22CB7F:    LDA $00                     ; $22:CB7F: A5 00       ;
-                LDY $02                     ; $22:CB81: A4 02       ;
-                BEQ CODE_22CB8C             ; $22:CB83: F0 07       ;
-                EOR #$FF                    ; $22:CB85: 49 FF       ;
-                CLC                         ; $22:CB87: 18          ;
-                ADC #$01                    ; $22:CB88: 69 01       ;
-                STA $00                     ; $22:CB8A: 85 00       ;
-CODE_22CB8C:    LDA $01                     ; $22:CB8C: A5 01       ;
-                LDY $03                     ; $22:CB8E: A4 03       ;
-                BEQ CODE_22CB99             ; $22:CB90: F0 07       ;
-                EOR #$FF                    ; $22:CB92: 49 FF       ;
-                CLC                         ; $22:CB94: 18          ;
-                ADC #$01                    ; $22:CB95: 69 01       ;
-                STA $01                     ; $22:CB97: 85 01       ;
-CODE_22CB99:    PLA                         ; $22:CB99: 68          ;
-                TAY                         ; $22:CB9A: A8          ;
-                PLA                         ; $22:CB9B: 68          ;
-                TAX                         ; $22:CB9C: AA          ;
-CODE_22CB9D:    SEP #$10                    ; $22:CB9D: E2 10       ;
-                RTS                         ; $22:CB9F: 60          ;
+                STY $03                 ; $22:CB3A: 84 03       ;
 
-CODE_22CBA0:    LDY #$00                    ; $22:CBA0: A0 00       ;
-                LDA #$80                    ; $22:CBA2: A9 80       ;
-                BNE CODE_22CBAA             ; $22:CBA4: D0 04       ;
-CODE_22CBA6:    LDY #$00                    ; $22:CBA6: A0 00       ;
-CODE_22CBA8:    LDA #$00                    ; $22:CBA8: A9 00       ;
-CODE_22CBAA:    STA $08                     ; $22:CBAA: 85 08       ;
-                STY $00                     ; $22:CBAC: 84 00       ;
-                JSL CODE_279DC2             ; $22:CBAE: 22 C2 9D 27 ;
-                REP #$10                    ; $22:CBB2: C2 10       ;
-                LDY $C6,x                   ; $22:CBB4: B4 C6       ;
-                LDA $0681,x                 ; $22:CBB6: BD 81 06    ;
-                LSR A                       ; $22:CBB9: 4A          ;
-                BCS CODE_22CB9D                     ; $22:CBBA: B0 E1       ;
-                LDA $0651,x                 ; $22:CBBC: BD 51 06    ;
-                STA $02                     ; $22:CBBF: 85 02       ;
-                LDA $83,x                   ; $22:CBC1: B5 83       ;
-                SEC                         ; $22:CBC3: 38          ;
-                SBC $00                     ; $22:CBC4: E5 00       ;
-                STA $0801,y                 ; $22:CBC6: 99 01 08    ;
-                STA $0805,y                 ; $22:CBC9: 99 05 08    ;
-                CLC                         ; $22:CBCC: 18          ;
-                ADC #$08                    ; $22:CBCD: 69 08       ;
-                STA $0809,y                 ; $22:CBCF: 99 09 08    ;
-                STA $080D,y                 ; $22:CBD2: 99 0D 08    ;
-                SEC                         ; $22:CBD5: 38          ;
-                LDA $06AB,x                 ; $22:CBD6: BD AB 06    ;
-                BEQ CODE_22CBE2             ; $22:CBD9: F0 07       ;
-                CMP #$40                    ; $22:CBDB: C9 40       ;
-                BCC CODE_22CBE1             ; $22:CBDD: 90 02       ;
-                LSR A                       ; $22:CBDF: 4A          ;
-                LSR A                       ; $22:CBE0: 4A          ;
-CODE_22CBE1:    LSR A                       ; $22:CBE1: 4A          ;
-CODE_22CBE2:    LDA $7A,x                   ; $22:CBE2: B5 7A       ;
-                STA $0800,y                 ; $22:CBE4: 99 00 08    ;
-                STA $0808,y                 ; $22:CBE7: 99 08 08    ;
-                CLC                         ; $22:CBEA: 18          ;
-                ADC #$08                    ; $22:CBEB: 69 08       ;
-                STA $0804,y                 ; $22:CBED: 99 04 08    ;
-                STA $080C,y                 ; $22:CBF0: 99 0C 08    ;
-                LDA $0679,x                 ; $22:CBF3: BD 79 06    ;
-                STA $00                     ; $22:CBF6: 85 00       ;
-                AND #$10                    ; $22:CBF8: 29 10       ;
-                BNE CODE_22CC05             ; $22:CBFA: D0 09       ;
-                LDA $0679,x                 ; $22:CBFC: BD 79 06    ;
-                AND #$CF                    ; $22:CBFF: 29 CF       ;
-                ORA #$20                    ; $22:CC01: 09 20       ;
-                STA $00                     ; $22:CC03: 85 00       ;
-CODE_22CC05:    STZ $D8                     ; $22:CC05: 64 D8       ;
-                LDA $0671,x                 ; $22:CC07: BD 71 06    ;
-                CMP #$71                    ; $22:CC0A: C9 71       ;
-                BEQ CODE_22CC1A             ; $22:CC0C: F0 0C       ;
-                CMP #$83                    ; $22:CC0E: C9 83       ;
-                BEQ CODE_22CC1A             ; $22:CC10: F0 08       ;
-                CMP #$84                    ; $22:CC12: C9 84       ;
-                BEQ CODE_22CC1A             ; $22:CC14: F0 04       ;
-                CMP #$85                    ; $22:CC16: C9 85       ;
-                BNE CODE_22CC1C             ; $22:CC18: D0 02       ;
-CODE_22CC1A:    INC $D8                     ; $22:CC1A: E6 D8       ;
-CODE_22CC1C:    LDA $1FE9,x                 ; $22:CC1C: BD E9 1F    ;
-                ASL A                       ; $22:CC1F: 0A          ;
-                ORA $00                     ; $22:CC20: 05 00       ;
-                ASL $08                     ; $22:CC22: 06 08       ;
-                BCC CODE_22CC28             ; $22:CC24: 90 02       ;
-                AND #$BF                    ; $22:CC26: 29 BF       ;
-CODE_22CC28:    ORA $D8                     ; $22:CC28: 05 D8       ;
-                STA $0803,y                 ; $22:CC2A: 99 03 08    ;
-                STA $080B,y                 ; $22:CC2D: 99 0B 08    ;
-                BCC CODE_22CC34             ; $22:CC30: 90 02       ;
-                ORA #$40                    ; $22:CC32: 09 40       ;
-CODE_22CC34:    STA $0807,y                 ; $22:CC34: 99 07 08    ;
-                STA $080F,y                 ; $22:CC37: 99 0F 08    ;
-                LDA #$00                    ; $22:CC3A: A9 00       ;
-                XBA                         ; $22:CC3C: EB          ;
-                LDA $0669,x                 ; $22:CC3D: BD 69 06    ;
-                PHA                         ; $22:CC40: 48          ;
-                LDA $0418                   ; $22:CC41: AD 18 04    ;
-                TAX                         ; $22:CC44: AA          ;
-                PLA                         ; $22:CC45: 68          ;
-                ASL A                       ; $22:CC46: 0A          ;
-                CLC                         ; $22:CC47: 18          ;
-                ADC.w DATA_21B509,x                 ; $22:CC48: 7D 09 B5    ;
-                TAX                         ; $22:CC4B: AA          ;
-                LDA.w DATA_21B744,x                 ; $22:CC4C: BD 44 B7    ;
-                BIT $00                     ; $22:CC4F: 24 00       ;
-                BVS CODE_22CC66             ; $22:CC51: 70 13       ;
-                STA $0802,y                 ; $22:CC53: 99 02 08    ;
-                INC A                       ; $22:CC56: 1A          ;
-                STA $080A,y                 ; $22:CC57: 99 0A 08    ;
-                LDA.w DATA_21B744+1,x                   ; $22:CC5A: BD 45 B7    ;
-                STA $0806,y                 ; $22:CC5D: 99 06 08    ;
-                INC A                       ; $22:CC60: 1A          ;
-                STA $080E,y                 ; $22:CC61: 99 0E 08    ;
-                BRA CODE_22CC77             ; $22:CC64: 80 11       ;
+                LDA $0F                 ; $22:CB3C: A5 0F       ;
 
-CODE_22CC66:    STA $0806,y                 ; $22:CC66: 99 06 08    ;
-                INC A                       ; $22:CC69: 1A          ;
-                STA $080E,y                 ; $22:CC6A: 99 0E 08    ;
-                LDA.w DATA_21B744+1,x                   ; $22:CC6D: BD 45 B7    ;
-                STA $0802,y                 ; $22:CC70: 99 02 08    ;
-                INC A                       ; $22:CC73: 1A          ;
-                STA $080A,y                 ; $22:CC74: 99 0A 08    ;
-CODE_22CC77:    LDA $0803,y                 ; $22:CC77: B9 03 08    ;
-                AND #$80                    ; $22:CC7A: 29 80       ;
-                BEQ CODE_22CC9A             ; $22:CC7C: F0 1C       ;
-                LDA $0802,y                 ; $22:CC7E: B9 02 08    ;
-                PHA                         ; $22:CC81: 48          ;
-                LDA $080A,y                 ; $22:CC82: B9 0A 08    ;
-                STA $0802,y                 ; $22:CC85: 99 02 08    ;
-                PLA                         ; $22:CC88: 68          ;
-                STA $080A,y                 ; $22:CC89: 99 0A 08    ;
-                LDA $0806,y                 ; $22:CC8C: B9 06 08    ;
-                PHA                         ; $22:CC8F: 48          ;
-                LDA $080E,y                 ; $22:CC90: B9 0E 08    ;
-                STA $0806,y                 ; $22:CC93: 99 06 08    ;
-                PLA                         ; $22:CC96: 68          ;
-                STA $080E,y                 ; $22:CC97: 99 0E 08    ;
-CODE_22CC9A:    REP #$20                    ; $22:CC9A: C2 20       ;
-                TYA                         ; $22:CC9C: 98          ;
-                LSR A                       ; $22:CC9D: 4A          ;
-                LSR A                       ; $22:CC9E: 4A          ;
-                TAY                         ; $22:CC9F: A8          ;
-                SEP #$20                    ; $22:CCA0: E2 20       ;
-                LDA $02                     ; $22:CCA2: A5 02       ;
-                ROL A                       ; $22:CCA4: 2A          ;
-                ROL A                       ; $22:CCA5: 2A          ;
-                PHP                         ; $22:CCA6: 08          ;
-                AND #$01                    ; $22:CCA7: 29 01       ;
-                STA $0A20,y                 ; $22:CCA9: 99 20 0A    ;
-                STA $0A22,y                 ; $22:CCAC: 99 22 0A    ;
-                PLP                         ; $22:CCAF: 28          ;
-                ROL A                       ; $22:CCB0: 2A          ;
-                AND #$01                    ; $22:CCB1: 29 01       ;
-                STA $0A21,y                 ; $22:CCB3: 99 21 0A    ;
-                STA $0A23,y                 ; $22:CCB6: 99 23 0A    ;
-                SEP #$10                    ; $22:CCB9: E2 10       ;
-                LDX $9B                     ; $22:CCBB: A6 9B       ;
-                RTS                         ; $22:CCBD: 60          ;
+                BPL CODE_22CB45         ; $22:CB3E: 10 05       ;
 
-CODE_22CCBE:    LDA $44,x                   ; $22:CCBE: B5 44       ;
-                STA $0256,x                 ; $22:CCC0: 9D 56 02    ;
-                STA $025B,x                 ; $22:CCC3: 9D 5B 02    ;
-                STA $0260,x                 ; $22:CCC6: 9D 60 02    ;
-                STA $0265,x                 ; $22:CCC9: 9D 65 02    ;
-                LDA $5F,x                   ; $22:CCCC: B5 5F       ;
-                STA $1CD7,x                 ; $22:CCCE: 9D D7 1C    ;
-                STA $1CA0,x                 ; $22:CCD1: 9D A0 1C    ;
-                STA $1CA5,x                 ; $22:CCD4: 9D A5 1C    ;
-                STA $1CAA,x                 ; $22:CCD7: 9D AA 1C    ;
-                STA $1CAF,x                 ; $22:CCDA: 9D AF 1C    ;
-                SEC                         ; $22:CCDD: 38          ;
-                SBC #$2C                    ; $22:CCDE: E9 2C       ;
-                STA $1CC8,x                 ; $22:CCE0: 9D C8 1C    ;
-                CLC                         ; $22:CCE3: 18          ;
-                ADC #$58                    ; $22:CCE4: 69 58       ;
-                STA $1CCD,x                 ; $22:CCE6: 9D CD 1C    ;
-                LDA $56,x                   ; $22:CCE9: B5 56       ;
-                STA $026A,x                 ; $22:CCEB: 9D 6A 02    ;
-                STA $026F,x                 ; $22:CCEE: 9D 6F 02    ;
-                STA $0274,x                 ; $22:CCF1: 9D 74 02    ;
-                STA $0279,x                 ; $22:CCF4: 9D 79 02    ;
-                LDA $71,x                   ; $22:CCF7: B5 71       ;
-                STA $1CDC,x                 ; $22:CCF9: 9D DC 1C    ;
-                STA $1CB4,x                 ; $22:CCFC: 9D B4 1C    ;
-                STA $1CB9,x                 ; $22:CCFF: 9D B9 1C    ;
-                STA $1CBE,x                 ; $22:CD02: 9D BE 1C    ;
-                STA $1CC3,x                 ; $22:CD05: 9D C3 1C    ;
-                SEC                         ; $22:CD08: 38          ;
-                SBC #$38                    ; $22:CD09: E9 38       ;
-                STA $1CD2,x                 ; $22:CD0B: 9D D2 1C    ;
-                LDA $56,x                   ; $22:CD0E: B5 56       ;
-                SBC #$00                    ; $22:CD10: E9 00       ;
-                STA $1021,x                 ; $22:CD12: 9D 21 10    ;
-                RTL                         ; $22:CD15: 6B          ;
+                EOR #$FF                ; $22:CB40: 49 FF       ;
 
-CODE_22CD16:    LDY #$01                    ; $22:CD16: A0 01       ;
-CODE_22CD18:    LDA $06B4,y                 ; $22:CD18: B9 B4 06    ;
-                BEQ CODE_22CD21             ; $22:CD1B: F0 04       ;
-                DEY                         ; $22:CD1D: 88          ;
-                BPL CODE_22CD18             ; $22:CD1E: 10 F8       ;
-                RTS                         ; $22:CD20: 60          ;
+                CLC                     ; $22:CB42: 18          ;
 
-CODE_22CD21:    LDA #$4F                    ; $22:CD21: A9 4F       ;
-                STA $0671,x                 ; $22:CD23: 9D 71 06    ;
-                LDA #$04                    ; $22:CD26: A9 04       ;
-                STA $1021,x                 ; $22:CD28: 9D 21 10    ;
-                LDA #$01                    ; $22:CD2B: A9 01       ;
-                STA $06B4,y                 ; $22:CD2D: 99 B4 06    ;
-                JSL CODE_279DC2             ; $22:CD30: 22 C2 9D 27 ;
-                LDA $83,x                   ; $22:CD34: B5 83       ;
-                STA $00                     ; $22:CD36: 85 00       ;
-                LDA $7A,x                   ; $22:CD38: B5 7A       ;
-                STA $01                     ; $22:CD3A: 85 01       ;
-                TYA                         ; $22:CD3C: 98          ;
-                STA $0771,x                 ; $22:CD3D: 9D 71 07    ;
-                LSR A                       ; $22:CD40: 4A          ;
-                ROR A                       ; $22:CD41: 6A          ;
-                LSR A                       ; $22:CD42: 4A          ;
-                LSR A                       ; $22:CD43: 4A          ;
-                TAX                         ; $22:CD44: AA          ;
-                LDY #$1F                    ; $22:CD45: A0 1F       ;
-CODE_22CD47:    LDA $00                     ; $22:CD47: A5 00       ;
-                STA $1C60,x                 ; $22:CD49: 9D 60 1C    ;
-                LDA $01                     ; $22:CD4C: A5 01       ;
-                STA $1C20,x                 ; $22:CD4E: 9D 20 1C    ;
-                INX                         ; $22:CD51: E8          ;
-                DEY                         ; $22:CD52: 88          ;
-                BPL CODE_22CD47             ; $22:CD53: 10 F2       ;
-                LDX $9B                     ; $22:CD55: A6 9B       ;
-                LDA #$00                    ; $22:CD57: A9 00       ;
-                STA $0518,x                 ; $22:CD59: 9D 18 05    ;
-                RTS                         ; $22:CD5C: 60          ;
+                ADC #$01                ; $22:CB43: 69 01       ;
 
-CODE_22CD5D:    JSR CODE_22D00D             ; $22:CD5D: 20 0D D0    ;
-                LDA $9C                     ; $22:CD60: A5 9C       ;
-                BNE CODE_22CD81             ; $22:CD62: D0 1D       ;
-                JSL CODE_279B6F             ; $22:CD64: 22 6F 9B 27 ;
-                JSL CODE_279BCB             ; $22:CD68: 22 CB 9B 27 ;
-                JSR CODE_22D34B             ; $22:CD6C: 20 4B D3    ;
-                INC $1FD2,x                 ; $22:CD6F: FE D2 1F    ;
-                INC $4D,x                   ; $22:CD72: F6 4D       ;
-                LDA $4D,x                   ; $22:CD74: B5 4D       ;
-                LSR A                       ; $22:CD76: 4A          ;
-                LSR A                       ; $22:CD77: 4A          ;
-                LSR A                       ; $22:CD78: 4A          ;
-                AND #$01                    ; $22:CD79: 29 01       ;
-                STA $0669,x                 ; $22:CD7B: 9D 69 06    ;
-                JSR CODE_22CD82             ; $22:CD7E: 20 82 CD    ;
-CODE_22CD81:    RTL                         ; $22:CD81: 6B          ;
+CODE_22CB45:    STA $0D                 ; $22:CB45: 85 0D       ;
 
-CODE_22CD82:    LDA $68,x                   ; $22:CD82: B5 68       ;
+                LDY #$00                ; $22:CB47: A0 00       ;
+
+                LDA $0D                 ; $22:CB49: A5 0D       ;
+
+                CMP $0C                 ; $22:CB4B: C5 0C       ;
+
+                BCS CODE_22CB58         ; $22:CB4D: B0 09       ;
+
+                INY                     ; $22:CB4F: C8          ;
+
+                PHA                     ; $22:CB50: 48          ;
+
+                LDA $0C                 ; $22:CB51: A5 0C       ;
+
+                STA $0D                 ; $22:CB53: 85 0D       ;
+
+                PLA                     ; $22:CB55: 68          ;
+
+                STA $0C                 ; $22:CB56: 85 0C       ;
+
+CODE_22CB58:    LDA #$00                ; $22:CB58: A9 00       ;
+
+                STA $0B                 ; $22:CB5A: 85 0B       ;
+
+                STA $00                 ; $22:CB5C: 85 00       ;
+
+                LDX $01                 ; $22:CB5E: A6 01       ;
+
+CODE_22CB60:    LDA $0B                 ; $22:CB60: A5 0B       ;
+
+                CLC                     ; $22:CB62: 18          ;
+
+                ADC $0C                 ; $22:CB63: 65 0C       ;
+
+                CMP $0D                 ; $22:CB65: C5 0D       ;
+
+                BCC CODE_22CB6D         ; $22:CB67: 90 04       ;
+
+                SBC $0D                 ; $22:CB69: E5 0D       ;
+
+                INC $00                 ; $22:CB6B: E6 00       ;
+
+CODE_22CB6D:    STA $0B                 ; $22:CB6D: 85 0B       ;
+
+                DEX                     ; $22:CB6F: CA          ;
+
+                BNE CODE_22CB60         ; $22:CB70: D0 EE       ;
+
+                TYA                     ; $22:CB72: 98          ;
+
+                BEQ CODE_22CB7F         ; $22:CB73: F0 0A       ;
+
+                LDA $00                 ; $22:CB75: A5 00       ;
+
+                PHA                     ; $22:CB77: 48          ;
+
+                LDA $01                 ; $22:CB78: A5 01       ;
+
+                STA $00                 ; $22:CB7A: 85 00       ;
+
+                PLA                     ; $22:CB7C: 68          ;
+
+                STA $01                 ; $22:CB7D: 85 01       ;
+
+CODE_22CB7F:    LDA $00                 ; $22:CB7F: A5 00       ;
+
+                LDY $02                 ; $22:CB81: A4 02       ;
+
+                BEQ CODE_22CB8C         ; $22:CB83: F0 07       ;
+
+                EOR #$FF                ; $22:CB85: 49 FF       ;
+
+                CLC                     ; $22:CB87: 18          ;
+
+                ADC #$01                ; $22:CB88: 69 01       ;
+
+                STA $00                 ; $22:CB8A: 85 00       ;
+
+CODE_22CB8C:    LDA $01                 ; $22:CB8C: A5 01       ;
+
+                LDY $03                 ; $22:CB8E: A4 03       ;
+
+                BEQ CODE_22CB99         ; $22:CB90: F0 07       ;
+
+                EOR #$FF                ; $22:CB92: 49 FF       ;
+
+                CLC                     ; $22:CB94: 18          ;
+
+                ADC #$01                ; $22:CB95: 69 01       ;
+
+                STA $01                 ; $22:CB97: 85 01       ;
+
+CODE_22CB99:    PLA                     ; $22:CB99: 68          ;
+
+                TAY                     ; $22:CB9A: A8          ;
+
+                PLA                     ; $22:CB9B: 68          ;
+
+                TAX                     ; $22:CB9C: AA          ;
+
+CODE_22CB9D:    SEP #$10                ; $22:CB9D: E2 10       ;
+
+                RTS                     ; $22:CB9F: 60          ;
+
+CODE_22CBA0:    LDY #$00                ; $22:CBA0: A0 00       ;
+
+                LDA #$80                ; $22:CBA2: A9 80       ;
+
+                BNE CODE_22CBAA         ; $22:CBA4: D0 04       ;
+
+CODE_22CBA6:    LDY #$00                ; $22:CBA6: A0 00       ;
+
+CODE_22CBA8:    LDA #$00                ; $22:CBA8: A9 00       ;
+
+CODE_22CBAA:    STA $08                 ; $22:CBAA: 85 08       ;
+
+                STY $00                 ; $22:CBAC: 84 00       ;
+
+                JSL CODE_279DC2         ; $22:CBAE: 22 C2 9D 27 ;
+
+                REP #$10                ; $22:CBB2: C2 10       ;
+
+                LDY $C6,x               ; $22:CBB4: B4 C6       ;
+
+                LDA $0681,x             ; $22:CBB6: BD 81 06    ;
+
+                LSR A                   ; $22:CBB9: 4A          ;
+
+                BCS CODE_22CB9D         ; $22:CBBA: B0 E1       ;
+
+                LDA $0651,x             ; $22:CBBC: BD 51 06    ;
+
+                STA $02                 ; $22:CBBF: 85 02       ;
+
+                LDA $83,x               ; $22:CBC1: B5 83       ;
+
+                SEC                     ; $22:CBC3: 38          ;
+
+                SBC $00                 ; $22:CBC4: E5 00       ;
+
+                STA $0801,y             ; $22:CBC6: 99 01 08    ;
+
+                STA $0805,y             ; $22:CBC9: 99 05 08    ;
+
+                CLC                     ; $22:CBCC: 18          ;
+
+                ADC #$08                ; $22:CBCD: 69 08       ;
+
+                STA $0809,y             ; $22:CBCF: 99 09 08    ;
+
+                STA $080D,y             ; $22:CBD2: 99 0D 08    ;
+
+                SEC                     ; $22:CBD5: 38          ;
+
+                LDA $06AB,x             ; $22:CBD6: BD AB 06    ;
+
+                BEQ CODE_22CBE2         ; $22:CBD9: F0 07       ;
+
+                CMP #$40                ; $22:CBDB: C9 40       ;
+
+                BCC CODE_22CBE1         ; $22:CBDD: 90 02       ;
+
+                LSR A                   ; $22:CBDF: 4A          ;
+
+                LSR A                   ; $22:CBE0: 4A          ;
+
+CODE_22CBE1:    LSR A                   ; $22:CBE1: 4A          ;
+
+CODE_22CBE2:    LDA $7A,x               ; $22:CBE2: B5 7A       ;
+
+                STA $0800,y             ; $22:CBE4: 99 00 08    ;
+
+                STA $0808,y             ; $22:CBE7: 99 08 08    ;
+
+                CLC                     ; $22:CBEA: 18          ;
+
+                ADC #$08                ; $22:CBEB: 69 08       ;
+
+                STA $0804,y             ; $22:CBED: 99 04 08    ;
+
+                STA $080C,y             ; $22:CBF0: 99 0C 08    ;
+
+                LDA $0679,x             ; $22:CBF3: BD 79 06    ;
+
+                STA $00                 ; $22:CBF6: 85 00       ;
+
+                AND #$10                ; $22:CBF8: 29 10       ;
+
+                BNE CODE_22CC05         ; $22:CBFA: D0 09       ;
+
+                LDA $0679,x             ; $22:CBFC: BD 79 06    ;
+
+                AND #$CF                ; $22:CBFF: 29 CF       ;
+
+                ORA #$20                ; $22:CC01: 09 20       ;
+
+                STA $00                 ; $22:CC03: 85 00       ;
+
+CODE_22CC05:    STZ $D8                 ; $22:CC05: 64 D8       ;
+
+                LDA $0671,x             ; $22:CC07: BD 71 06    ;
+
+                CMP #$71                ; $22:CC0A: C9 71       ;
+
+                BEQ CODE_22CC1A         ; $22:CC0C: F0 0C       ;
+
+                CMP #$83                ; $22:CC0E: C9 83       ;
+
+                BEQ CODE_22CC1A         ; $22:CC10: F0 08       ;
+
+                CMP #$84                ; $22:CC12: C9 84       ;
+
+                BEQ CODE_22CC1A         ; $22:CC14: F0 04       ;
+
+                CMP #$85                ; $22:CC16: C9 85       ;
+
+                BNE CODE_22CC1C         ; $22:CC18: D0 02       ;
+
+CODE_22CC1A:    INC $D8                 ; $22:CC1A: E6 D8       ;
+
+CODE_22CC1C:    LDA $1FE9,x             ; $22:CC1C: BD E9 1F    ;
+
+                ASL A                   ; $22:CC1F: 0A          ;
+
+                ORA $00                 ; $22:CC20: 05 00       ;
+
+                ASL $08                 ; $22:CC22: 06 08       ;
+
+                BCC CODE_22CC28         ; $22:CC24: 90 02       ;
+
+                AND #$BF                ; $22:CC26: 29 BF       ;
+
+CODE_22CC28:    ORA $D8                 ; $22:CC28: 05 D8       ;
+
+                STA $0803,y             ; $22:CC2A: 99 03 08    ;
+
+                STA $080B,y             ; $22:CC2D: 99 0B 08    ;
+
+                BCC CODE_22CC34         ; $22:CC30: 90 02       ;
+
+                ORA #$40                ; $22:CC32: 09 40       ;
+
+CODE_22CC34:    STA $0807,y             ; $22:CC34: 99 07 08    ;
+
+                STA $080F,y             ; $22:CC37: 99 0F 08    ;
+
+                LDA #$00                ; $22:CC3A: A9 00       ;
+
+                XBA                     ; $22:CC3C: EB          ;
+
+                LDA $0669,x             ; $22:CC3D: BD 69 06    ;
+
+                PHA                     ; $22:CC40: 48          ;
+
+                LDA $0418               ; $22:CC41: AD 18 04    ;
+
+                TAX                     ; $22:CC44: AA          ;
+
+                PLA                     ; $22:CC45: 68          ;
+
+                ASL A                   ; $22:CC46: 0A          ;
+
+                CLC                     ; $22:CC47: 18          ;
+
+                ADC.w DATA_21B509,x     ; $22:CC48: 7D 09 B5    ;
+
+                TAX                     ; $22:CC4B: AA          ;
+
+                LDA.w DATA_21B744,x     ; $22:CC4C: BD 44 B7    ;
+
+                BIT $00                 ; $22:CC4F: 24 00       ;
+
+                BVS CODE_22CC66         ; $22:CC51: 70 13       ;
+
+                STA $0802,y             ; $22:CC53: 99 02 08    ;
+
+                INC A                   ; $22:CC56: 1A          ;
+
+                STA $080A,y             ; $22:CC57: 99 0A 08    ;
+
+                LDA.w DATA_21B744+1,x   ; $22:CC5A: BD 45 B7    ;
+
+                STA $0806,y             ; $22:CC5D: 99 06 08    ;
+
+                INC A                   ; $22:CC60: 1A          ;
+
+                STA $080E,y             ; $22:CC61: 99 0E 08    ;
+
+                BRA CODE_22CC77         ; $22:CC64: 80 11       ;
+
+CODE_22CC66:    STA $0806,y             ; $22:CC66: 99 06 08    ;
+
+                INC A                   ; $22:CC69: 1A          ;
+
+                STA $080E,y             ; $22:CC6A: 99 0E 08    ;
+
+                LDA.w DATA_21B744+1,x   ; $22:CC6D: BD 45 B7    ;
+
+                STA $0802,y             ; $22:CC70: 99 02 08    ;
+
+                INC A                   ; $22:CC73: 1A          ;
+
+                STA $080A,y             ; $22:CC74: 99 0A 08    ;
+
+CODE_22CC77:    LDA $0803,y             ; $22:CC77: B9 03 08    ;
+
+                AND #$80                ; $22:CC7A: 29 80       ;
+
+                BEQ CODE_22CC9A         ; $22:CC7C: F0 1C       ;
+
+                LDA $0802,y             ; $22:CC7E: B9 02 08    ;
+
+                PHA                     ; $22:CC81: 48          ;
+
+                LDA $080A,y             ; $22:CC82: B9 0A 08    ;
+
+                STA $0802,y             ; $22:CC85: 99 02 08    ;
+
+                PLA                     ; $22:CC88: 68          ;
+
+                STA $080A,y             ; $22:CC89: 99 0A 08    ;
+
+                LDA $0806,y             ; $22:CC8C: B9 06 08    ;
+
+                PHA                     ; $22:CC8F: 48          ;
+
+                LDA $080E,y             ; $22:CC90: B9 0E 08    ;
+
+                STA $0806,y             ; $22:CC93: 99 06 08    ;
+
+                PLA                     ; $22:CC96: 68          ;
+
+                STA $080E,y             ; $22:CC97: 99 0E 08    ;
+
+CODE_22CC9A:    REP #$20                ; $22:CC9A: C2 20       ;
+
+                TYA                     ; $22:CC9C: 98          ;
+
+                LSR A                   ; $22:CC9D: 4A          ;
+
+                LSR A                   ; $22:CC9E: 4A          ;
+
+                TAY                     ; $22:CC9F: A8          ;
+
+                SEP #$20                ; $22:CCA0: E2 20       ;
+
+                LDA $02                 ; $22:CCA2: A5 02       ;
+
+                ROL A                   ; $22:CCA4: 2A          ;
+
+                ROL A                   ; $22:CCA5: 2A          ;
+
+                PHP                     ; $22:CCA6: 08          ;
+
+                AND #$01                ; $22:CCA7: 29 01       ;
+
+                STA $0A20,y             ; $22:CCA9: 99 20 0A    ;
+
+                STA $0A22,y             ; $22:CCAC: 99 22 0A    ;
+
+                PLP                     ; $22:CCAF: 28          ;
+
+                ROL A                   ; $22:CCB0: 2A          ;
+
+                AND #$01                ; $22:CCB1: 29 01       ;
+
+                STA $0A21,y             ; $22:CCB3: 99 21 0A    ;
+
+                STA $0A23,y             ; $22:CCB6: 99 23 0A    ;
+
+                SEP #$10                ; $22:CCB9: E2 10       ;
+
+                LDX $9B                 ; $22:CCBB: A6 9B       ;
+
+                RTS                     ; $22:CCBD: 60          ;
+
+CODE_22CCBE:    LDA $44,x               ; $22:CCBE: B5 44       ;
+
+                STA $0256,x             ; $22:CCC0: 9D 56 02    ;
+
+                STA $025B,x             ; $22:CCC3: 9D 5B 02    ;
+
+                STA $0260,x             ; $22:CCC6: 9D 60 02    ;
+
+                STA $0265,x             ; $22:CCC9: 9D 65 02    ;
+
+                LDA $5F,x               ; $22:CCCC: B5 5F       ;
+
+                STA $1CD7,x             ; $22:CCCE: 9D D7 1C    ;
+
+                STA $1CA0,x             ; $22:CCD1: 9D A0 1C    ;
+
+                STA $1CA5,x             ; $22:CCD4: 9D A5 1C    ;
+
+                STA $1CAA,x             ; $22:CCD7: 9D AA 1C    ;
+
+                STA $1CAF,x             ; $22:CCDA: 9D AF 1C    ;
+
+                SEC                     ; $22:CCDD: 38          ;
+
+                SBC #$2C                ; $22:CCDE: E9 2C       ;
+
+                STA $1CC8,x             ; $22:CCE0: 9D C8 1C    ;
+
+                CLC                     ; $22:CCE3: 18          ;
+
+                ADC #$58                ; $22:CCE4: 69 58       ;
+
+                STA $1CCD,x             ; $22:CCE6: 9D CD 1C    ;
+
+                LDA $56,x               ; $22:CCE9: B5 56       ;
+
+                STA $026A,x             ; $22:CCEB: 9D 6A 02    ;
+
+                STA $026F,x             ; $22:CCEE: 9D 6F 02    ;
+
+                STA $0274,x             ; $22:CCF1: 9D 74 02    ;
+
+                STA $0279,x             ; $22:CCF4: 9D 79 02    ;
+
+                LDA $71,x               ; $22:CCF7: B5 71       ;
+
+                STA $1CDC,x             ; $22:CCF9: 9D DC 1C    ;
+
+                STA $1CB4,x             ; $22:CCFC: 9D B4 1C    ;
+
+                STA $1CB9,x             ; $22:CCFF: 9D B9 1C    ;
+
+                STA $1CBE,x             ; $22:CD02: 9D BE 1C    ;
+
+                STA $1CC3,x             ; $22:CD05: 9D C3 1C    ;
+
+                SEC                     ; $22:CD08: 38          ;
+
+                SBC #$38                ; $22:CD09: E9 38       ;
+
+                STA $1CD2,x             ; $22:CD0B: 9D D2 1C    ;
+
+                LDA $56,x               ; $22:CD0E: B5 56       ;
+
+                SBC #$00                ; $22:CD10: E9 00       ;
+
+                STA $1021,x             ; $22:CD12: 9D 21 10    ;
+
+                RTL                     ; $22:CD15: 6B          ;
+
+CODE_22CD16:    LDY #$01                ; $22:CD16: A0 01       ;
+
+CODE_22CD18:    LDA $06B4,y             ; $22:CD18: B9 B4 06    ;
+
+                BEQ CODE_22CD21         ; $22:CD1B: F0 04       ;
+
+                DEY                     ; $22:CD1D: 88          ;
+
+                BPL CODE_22CD18         ; $22:CD1E: 10 F8       ;
+
+                RTS                     ; $22:CD20: 60          ;
+
+CODE_22CD21:    LDA #$4F                ; $22:CD21: A9 4F       ;
+
+                STA $0671,x             ; $22:CD23: 9D 71 06    ;
+
+                LDA #$04                ; $22:CD26: A9 04       ;
+
+                STA $1021,x             ; $22:CD28: 9D 21 10    ;
+
+                LDA #$01                ; $22:CD2B: A9 01       ;
+
+                STA $06B4,y             ; $22:CD2D: 99 B4 06    ;
+
+                JSL CODE_279DC2         ; $22:CD30: 22 C2 9D 27 ;
+
+                LDA $83,x               ; $22:CD34: B5 83       ;
+
+                STA $00                 ; $22:CD36: 85 00       ;
+
+                LDA $7A,x               ; $22:CD38: B5 7A       ;
+
+                STA $01                 ; $22:CD3A: 85 01       ;
+
+                TYA                     ; $22:CD3C: 98          ;
+
+                STA $0771,x             ; $22:CD3D: 9D 71 07    ;
+
+                LSR A                   ; $22:CD40: 4A          ;
+
+                ROR A                   ; $22:CD41: 6A          ;
+
+                LSR A                   ; $22:CD42: 4A          ;
+
+                LSR A                   ; $22:CD43: 4A          ;
+
+                TAX                     ; $22:CD44: AA          ;
+
+                LDY #$1F                ; $22:CD45: A0 1F       ;
+
+CODE_22CD47:    LDA $00                 ; $22:CD47: A5 00       ;
+
+                STA $1C60,x             ; $22:CD49: 9D 60 1C    ;
+
+                LDA $01                 ; $22:CD4C: A5 01       ;
+
+                STA $1C20,x             ; $22:CD4E: 9D 20 1C    ;
+
+                INX                     ; $22:CD51: E8          ;
+
+                DEY                     ; $22:CD52: 88          ;
+
+                BPL CODE_22CD47         ; $22:CD53: 10 F2       ;
+
+                LDX $9B                 ; $22:CD55: A6 9B       ;
+
+                LDA #$00                ; $22:CD57: A9 00       ;
+
+                STA $0518,x             ; $22:CD59: 9D 18 05    ;
+
+                RTS                     ; $22:CD5C: 60          ;
+
+CODE_22CD5D:    JSR CODE_22D00D         ; $22:CD5D: 20 0D D0    ;
+
+                LDA $9C                 ; $22:CD60: A5 9C       ;
+
+                BNE CODE_22CD81         ; $22:CD62: D0 1D       ;
+
+                JSL CODE_279B6F         ; $22:CD64: 22 6F 9B 27 ;
+
+                JSL CODE_279BCB         ; $22:CD68: 22 CB 9B 27 ;
+
+                JSR CODE_22D34B         ; $22:CD6C: 20 4B D3    ;
+
+                INC $1FD2,x             ; $22:CD6F: FE D2 1F    ;
+
+                INC $4D,x               ; $22:CD72: F6 4D       ;
+
+                LDA $4D,x               ; $22:CD74: B5 4D       ;
+
+                LSR A                   ; $22:CD76: 4A          ;
+
+                LSR A                   ; $22:CD77: 4A          ;
+
+                LSR A                   ; $22:CD78: 4A          ;
+
+                AND #$01                ; $22:CD79: 29 01       ;
+
+                STA $0669,x             ; $22:CD7B: 9D 69 06    ;
+
+                JSR CODE_22CD82         ; $22:CD7E: 20 82 CD    ;
+
+CODE_22CD81:    RTL                     ; $22:CD81: 6B          ;
+
+CODE_22CD82:    LDA $68,x               ; $22:CD82: B5 68       ;
+
                 JSL CODE_20FB1F         ; $22:CD84: 22 1F FB 20 ; ExecutePtrShort
 
                 dw CODE_22CD8E                                  ;
                 dw CODE_22CDE0                                  ;
                 dw CODE_22CF3A                                  ;
 
-CODE_22CD8E:    LDA $0518,x                 ; $22:CD8E: BD 18 05    ;
-                BNE CODE_22CDDF             ; $22:CD91: D0 4C       ;
-                LDA $0783,x                 ; $22:CD93: BD 83 07    ;
-                AND #$03                    ; $22:CD96: 29 03       ;
+CODE_22CD8E:    LDA $0518,x             ; $22:CD8E: BD 18 05    ;
+
+                BNE CODE_22CDDF         ; $22:CD91: D0 4C       ;
+
+                LDA $0783,x             ; $22:CD93: BD 83 07    ;
+
+                AND #$03                ; $22:CD96: 29 03       ;
+
                 JSL CODE_27A837         ; $22:CD98: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA $0F                     ; $22:CD9C: A5 0F       ;
-                PHP                         ; $22:CD9E: 08          ;
-                BPL CODE_22CDA3             ; $22:CD9F: 10 02       ;
-                EOR #$FF                    ; $22:CDA1: 49 FF       ;
-CODE_22CDA3:    CMP #$40                    ; $22:CDA3: C9 40       ;
-                BCC CODE_22CDAE             ; $22:CDA5: 90 07       ;
-                LDA $0783,x                 ; $22:CDA7: BD 83 07    ;
-                AND #$03                    ; $22:CDAA: 29 03       ;
-                BRA CODE_22CDB5             ; $22:CDAC: 80 07       ;
+                LDA $0F                 ; $22:CD9C: A5 0F       ;
 
-CODE_22CDAE:    LSR A                       ; $22:CDAE: 4A          ;
-                LSR A                       ; $22:CDAF: 4A          ;
-                LSR A                       ; $22:CDB0: 4A          ;
-                LSR A                       ; $22:CDB1: 4A          ;
-                NOP                         ; $22:CDB2: EA          ;
-                NOP                         ; $22:CDB3: EA          ;
-                NOP                         ; $22:CDB4: EA          ;
-CODE_22CDB5:    STA $0776,x                 ; $22:CDB5: 9D 76 07    ;
-                TAY                         ; $22:CDB8: A8          ;
-                LDA.w DATA_21C480,y                 ; $22:CDB9: B9 80 C4    ;
-                STA $9E,x                   ; $22:CDBC: 95 9E       ;
-                LDA.w DATA_21C484,y                 ; $22:CDBE: B9 84 C4    ;
-                PLP                         ; $22:CDC1: 28          ;
-                BPL CODE_22CDC9             ; $22:CDC2: 10 05       ;
-                EOR #$FF                    ; $22:CDC4: 49 FF       ;
-                CLC                         ; $22:CDC6: 18          ;
-                ADC #$01                    ; $22:CDC7: 69 01       ;
-CODE_22CDC9:    STA $8C,x                   ; $22:CDC9: 95 8C       ;
-                LDA #$28                    ; $22:CDCB: A9 28       ;
-                STA $0518,x                 ; $22:CDCD: 9D 18 05    ;
-                INC $68,x                   ; $22:CDD0: F6 68       ;
-                INC $0689,x                 ; $22:CDD2: FE 89 06    ;
-                LDA $0689,x                 ; $22:CDD5: BD 89 06    ;
+                PHP                     ; $22:CD9E: 08          ;
+
+                BPL CODE_22CDA3         ; $22:CD9F: 10 02       ;
+
+                EOR #$FF                ; $22:CDA1: 49 FF       ;
+
+CODE_22CDA3:    CMP #$40                ; $22:CDA3: C9 40       ;
+
+                BCC CODE_22CDAE         ; $22:CDA5: 90 07       ;
+
+                LDA $0783,x             ; $22:CDA7: BD 83 07    ;
+
+                AND #$03                ; $22:CDAA: 29 03       ;
+
+                BRA CODE_22CDB5         ; $22:CDAC: 80 07       ;
+
+CODE_22CDAE:    LSR A                   ; $22:CDAE: 4A          ;
+
+                LSR A                   ; $22:CDAF: 4A          ;
+
+                LSR A                   ; $22:CDB0: 4A          ;
+
+                LSR A                   ; $22:CDB1: 4A          ;
+
+                NOP                     ; $22:CDB2: EA          ;
+
+                NOP                     ; $22:CDB3: EA          ;
+
+                NOP                     ; $22:CDB4: EA          ;
+
+CODE_22CDB5:    STA $0776,x             ; $22:CDB5: 9D 76 07    ;
+
+                TAY                     ; $22:CDB8: A8          ;
+
+                LDA.w DATA_21C480,y     ; $22:CDB9: B9 80 C4    ;
+
+                STA $9E,x               ; $22:CDBC: 95 9E       ;
+
+                LDA.w DATA_21C484,y     ; $22:CDBE: B9 84 C4    ;
+
+                PLP                     ; $22:CDC1: 28          ;
+
+                BPL CODE_22CDC9         ; $22:CDC2: 10 05       ;
+
+                EOR #$FF                ; $22:CDC4: 49 FF       ;
+
+                CLC                     ; $22:CDC6: 18          ;
+
+                ADC #$01                ; $22:CDC7: 69 01       ;
+
+CODE_22CDC9:    STA $8C,x               ; $22:CDC9: 95 8C       ;
+
+                LDA #$28                ; $22:CDCB: A9 28       ;
+
+                STA $0518,x             ; $22:CDCD: 9D 18 05    ;
+
+                INC $68,x               ; $22:CDD0: F6 68       ;
+
+                INC $0689,x             ; $22:CDD2: FE 89 06    ;
+
+                LDA $0689,x             ; $22:CDD5: BD 89 06    ;
+
                 CMP #$32                ; $22:CDD8: C9 32       ; The amount of times the Chain Chomp tugs on its chain before it breaks free.
-                BNE CODE_22CDDF             ; $22:CDDA: D0 03       ;
-                JSR CODE_22CD16             ; $22:CDDC: 20 16 CD    ;
-CODE_22CDDF:    RTS                         ; $22:CDDF: 60          ;
+                BNE CODE_22CDDF         ; $22:CDDA: D0 03       ;
 
-CODE_22CDE0:    LDA $0518,x                 ; $22:CDE0: BD 18 05    ;
-                BNE CODE_22CE03             ; $22:CDE3: D0 1E       ;
-                LDA $0783,x                 ; $22:CDE5: BD 83 07    ;
-                AND #$3F                    ; $22:CDE8: 29 3F       ;
-                ORA #$20                    ; $22:CDEA: 09 20       ;
-                STA $0518,x                 ; $22:CDEC: 9D 18 05    ;
-                INC $68,x                   ; $22:CDEF: F6 68       ;
-                LDA #$00                    ; $22:CDF1: A9 00       ;
-                STA $9E,x                   ; $22:CDF3: 95 9E       ;
-                LDY #$08                    ; $22:CDF5: A0 08       ;
-                LDA $5F,x                   ; $22:CDF7: B5 5F       ;
-                CMP $1CD7,x                 ; $22:CDF9: DD D7 1C    ;
-                BCC CODE_22CE00             ; $22:CDFC: 90 02       ;
-                LDY #$F8                    ; $22:CDFE: A0 F8       ;
-CODE_22CE00:    STY $8C,x                   ; $22:CE00: 94 8C       ;
-                RTS                         ; $22:CE02: 60          ;
+                JSR CODE_22CD16         ; $22:CDDC: 20 16 CD    ;
 
-CODE_22CE03:    LDA $5F,x                   ; $22:CE03: B5 5F       ;
-                CMP $1CC8,x                 ; $22:CE05: DD C8 1C    ;
-                BCC CODE_22CE1E             ; $22:CE08: 90 14       ;
-                CMP $1CCD,x                 ; $22:CE0A: DD CD 1C    ;
-                BCS CODE_22CE1E                     ; $22:CE0D: B0 0F       ;
-                LDA $71,x                   ; $22:CE0F: B5 71       ;
-                CMP $1CD2,x                 ; $22:CE11: DD D2 1C    ;
-                LDA $56,x                   ; $22:CE14: B5 56       ;
-                SBC $1021,x                 ; $22:CE16: FD 21 10    ;
-                BCC CODE_22CE1E             ; $22:CE19: 90 03       ;
-                JMP CODE_22D10B             ; $22:CE1B: 4C 0B D1    ;
+CODE_22CDDF:    RTS                     ; $22:CDDF: 60          ;
 
-CODE_22CE1E:    INC $004D,x                 ; $22:CE1E: FE 4D 00    ;
-                INC $004D,x                 ; $22:CE21: FE 4D 00    ;
-                LDA #$04                    ; $22:CE24: A9 04       ;
-                STA $03                     ; $22:CE26: 85 03       ;
-                LDA $1CD7,x                 ; $22:CE28: BD D7 1C    ;
-                SEC                         ; $22:CE2B: 38          ;
-                SBC $5F,x                   ; $22:CE2C: F5 5F       ;
-                JSR CODE_22CF1F             ; $22:CE2E: 20 1F CF    ;
-                STZ $01                     ; $22:CE31: 64 01       ;
-                LDA $00                     ; $22:CE33: A5 00       ;
-                CMP #$80                    ; $22:CE35: C9 80       ;
-                BCC CODE_22CE3B             ; $22:CE37: 90 02       ;
-                DEC $01                     ; $22:CE39: C6 01       ;
-CODE_22CE3B:    LDA $44,x                   ; $22:CE3B: B5 44       ;
-                XBA                         ; $22:CE3D: EB          ;
-                LDA $5F,x                   ; $22:CE3E: B5 5F       ;
-                REP #$20                    ; $22:CE40: C2 20       ;
-                CLC                         ; $22:CE42: 18          ;
-                ADC $00                     ; $22:CE43: 65 00       ;
-                STA $D8                     ; $22:CE45: 85 D8       ;
-                ADC $00                     ; $22:CE47: 65 00       ;
-                STA $DA                     ; $22:CE49: 85 DA       ;
-                ADC $00                     ; $22:CE4B: 65 00       ;
-                STA $DC                     ; $22:CE4D: 85 DC       ;
-                ADC $00                     ; $22:CE4F: 65 00       ;
-                STA $00                     ; $22:CE51: 85 00       ;
-                SEP #$20                    ; $22:CE53: E2 20       ;
-                LDA $D8                     ; $22:CE55: A5 D8       ;
-                STA $1CA0,x                 ; $22:CE57: 9D A0 1C    ;
-                LDA $D9                     ; $22:CE5A: A5 D9       ;
-                STA $0256,x                 ; $22:CE5C: 9D 56 02    ;
-                LDA $DA                     ; $22:CE5F: A5 DA       ;
-                STA $1CA5,x                 ; $22:CE61: 9D A5 1C    ;
-                LDA $DB                     ; $22:CE64: A5 DB       ;
-                STA $025B,x                 ; $22:CE66: 9D 5B 02    ;
-                LDA $DC                     ; $22:CE69: A5 DC       ;
-                STA $1CAA,x                 ; $22:CE6B: 9D AA 1C    ;
-                LDA $DD                     ; $22:CE6E: A5 DD       ;
-                STA $0260,x                 ; $22:CE70: 9D 60 02    ;
-                LDA $00                     ; $22:CE73: A5 00       ;
-                STA $1CAF,x                 ; $22:CE75: 9D AF 1C    ;
-                LDA $01                     ; $22:CE78: A5 01       ;
-                STA $0265,x                 ; $22:CE7A: 9D 65 02    ;
-                LDA #$05                    ; $22:CE7D: A9 05       ;
-                STA $03                     ; $22:CE7F: 85 03       ;
-                LDA $1CDC,x                 ; $22:CE81: BD DC 1C    ;
-                SEC                         ; $22:CE84: 38          ;
-                SBC $71,x                   ; $22:CE85: F5 71       ;
-                JSR CODE_22CF1F             ; $22:CE87: 20 1F CF    ;
-                STZ $01                     ; $22:CE8A: 64 01       ;
-                LDA $00                     ; $22:CE8C: A5 00       ;
-                CMP #$80                    ; $22:CE8E: C9 80       ;
-                BCC CODE_22CE94             ; $22:CE90: 90 02       ;
-                DEC $01                     ; $22:CE92: C6 01       ;
-CODE_22CE94:    LDA $56,x                   ; $22:CE94: B5 56       ;
-                XBA                         ; $22:CE96: EB          ;
-                LDA $71,x                   ; $22:CE97: B5 71       ;
-                REP #$20                    ; $22:CE99: C2 20       ;
-                CLC                         ; $22:CE9B: 18          ;
-                ADC $00                     ; $22:CE9C: 65 00       ;
-                STA $D8                     ; $22:CE9E: 85 D8       ;
-                ADC $00                     ; $22:CEA0: 65 00       ;
-                STA $DA                     ; $22:CEA2: 85 DA       ;
-                ADC $00                     ; $22:CEA4: 65 00       ;
-                STA $DC                     ; $22:CEA6: 85 DC       ;
-                ADC $00                     ; $22:CEA8: 65 00       ;
-                STA $00                     ; $22:CEAA: 85 00       ;
-                SEP #$20                    ; $22:CEAC: E2 20       ;
-                LDA $D8                     ; $22:CEAE: A5 D8       ;
-                STA $1CB4,x                 ; $22:CEB0: 9D B4 1C    ;
-                LDA $D9                     ; $22:CEB3: A5 D9       ;
-                STA $026A,x                 ; $22:CEB5: 9D 6A 02    ;
-                LDA $DA                     ; $22:CEB8: A5 DA       ;
-                STA $1CB9,x                 ; $22:CEBA: 9D B9 1C    ;
-                LDA $DB                     ; $22:CEBD: A5 DB       ;
-                STA $026F,x                 ; $22:CEBF: 9D 6F 02    ;
-                LDA $DC                     ; $22:CEC2: A5 DC       ;
-                STA $1CBE,x                 ; $22:CEC4: 9D BE 1C    ;
-                LDA $DD                     ; $22:CEC7: A5 DD       ;
-                STA $0274,x                 ; $22:CEC9: 9D 74 02    ;
-                LDA $00                     ; $22:CECC: A5 00       ;
-                STA $1CC3,x                 ; $22:CECE: 9D C3 1C    ;
-                LDA $01                     ; $22:CED1: A5 01       ;
-                STA $0279,x                 ; $22:CED3: 9D 79 02    ;
-                REP #$30                    ; $22:CED6: C2 30       ;
-                LDA $C6,x                   ; $22:CED8: B5 C6       ;
-                STA $C6,x                   ; $22:CEDA: 95 C6       ;
-                PHA                         ; $22:CEDC: 48          ;
-                LDA $9E,x                   ; $22:CEDD: B5 9E       ;
-                AND #$00FF                  ; $22:CEDF: 29 FF 00    ;
-                TAY                         ; $22:CEE2: A8          ;
-                PLA                         ; $22:CEE3: 68          ;
-                TAX                         ; $22:CEE4: AA          ;
-                SEP #$20                    ; $22:CEE5: E2 20       ;
-                CPY #$00D0                  ; $22:CEE7: C0 D0 00    ;
-                BCC CODE_22CEED             ; $22:CEEA: 90 01       ;
-                INX                         ; $22:CEEC: E8          ;
-CODE_22CEED:    LDY #$0003                  ; $22:CEED: A0 03 00    ;
-                LDA $15                     ; $22:CEF0: A5 15       ;
-                LSR A                       ; $22:CEF2: 4A          ;
-                LSR A                       ; $22:CEF3: 4A          ;
-CODE_22CEF4:    BCC CODE_22CF13             ; $22:CEF4: 90 1D       ;
-                LDA $0800,x                 ; $22:CEF6: BD 00 08    ;
-                CLC                         ; $22:CEF9: 18          ;
-                ADC #$01                    ; $22:CEFA: 69 01       ;
-                STA $0800,x                 ; $22:CEFC: 9D 00 08    ;
-                PHX                         ; $22:CEFF: DA          ;
-                PHP                         ; $22:CF00: 08          ;
-                REP #$20                    ; $22:CF01: C2 20       ;
-                TXA                         ; $22:CF03: 8A          ;
-                LSR A                       ; $22:CF04: 4A          ;
-                LSR A                       ; $22:CF05: 4A          ;
-                TAX                         ; $22:CF06: AA          ;
-                SEP #$20                    ; $22:CF07: E2 20       ;
-                PLP                         ; $22:CF09: 28          ;
-                LDA $0A20,x                 ; $22:CF0A: BD 20 0A    ;
-                ADC #$00                    ; $22:CF0D: 69 00       ;
-                STA $0A20,x                 ; $22:CF0F: 9D 20 0A    ;
-                PLX                         ; $22:CF12: FA          ;
-CODE_22CF13:    INX                         ; $22:CF13: E8          ;
-                INX                         ; $22:CF14: E8          ;
-                INX                         ; $22:CF15: E8          ;
-                INX                         ; $22:CF16: E8          ;
-                DEY                         ; $22:CF17: 88          ;
-                BPL CODE_22CEF4             ; $22:CF18: 10 DA       ;
-                SEP #$10                    ; $22:CF1A: E2 10       ;
-                LDX $9B                     ; $22:CF1C: A6 9B       ;
-                RTS                         ; $22:CF1E: 60          ;
+CODE_22CDE0:    LDA $0518,x             ; $22:CDE0: BD 18 05    ;
 
-CODE_22CF1F:    PHP                         ; $22:CF1F: 08          ;
-                BPL CODE_22CF27             ; $22:CF20: 10 05       ;
-                EOR #$FF                    ; $22:CF22: 49 FF       ;
-                CLC                         ; $22:CF24: 18          ;
-                ADC #$01                    ; $22:CF25: 69 01       ;
-CODE_22CF27:    LDY #$FF                    ; $22:CF27: A0 FF       ;
-CODE_22CF29:    SBC $03                     ; $22:CF29: E5 03       ;
-                INY                         ; $22:CF2B: C8          ;
-                BCS CODE_22CF29                     ; $22:CF2C: B0 FB       ;
-                TYA                         ; $22:CF2E: 98          ;
-                PLP                         ; $22:CF2F: 28          ;
-                BPL CODE_22CF37             ; $22:CF30: 10 05       ;
-                EOR #$FF                    ; $22:CF32: 49 FF       ;
-                CLC                         ; $22:CF34: 18          ;
-                ADC #$01                    ; $22:CF35: 69 01       ;
-CODE_22CF37:    STA $00                     ; $22:CF37: 85 00       ;
-                RTS                         ; $22:CF39: 60          ;
+                BNE CODE_22CE03         ; $22:CDE3: D0 1E       ;
+
+                LDA $0783,x             ; $22:CDE5: BD 83 07    ;
+
+                AND #$3F                ; $22:CDE8: 29 3F       ;
+
+                ORA #$20                ; $22:CDEA: 09 20       ;
+
+                STA $0518,x             ; $22:CDEC: 9D 18 05    ;
+
+                INC $68,x               ; $22:CDEF: F6 68       ;
+
+                LDA #$00                ; $22:CDF1: A9 00       ;
+
+                STA $9E,x               ; $22:CDF3: 95 9E       ;
+
+                LDY #$08                ; $22:CDF5: A0 08       ;
+
+                LDA $5F,x               ; $22:CDF7: B5 5F       ;
+
+                CMP $1CD7,x             ; $22:CDF9: DD D7 1C    ;
+
+                BCC CODE_22CE00         ; $22:CDFC: 90 02       ;
+
+                LDY #$F8                ; $22:CDFE: A0 F8       ;
+
+CODE_22CE00:    STY $8C,x               ; $22:CE00: 94 8C       ;
+
+                RTS                     ; $22:CE02: 60          ;
+
+CODE_22CE03:    LDA $5F,x               ; $22:CE03: B5 5F       ;
+
+                CMP $1CC8,x             ; $22:CE05: DD C8 1C    ;
+
+                BCC CODE_22CE1E         ; $22:CE08: 90 14       ;
+
+                CMP $1CCD,x             ; $22:CE0A: DD CD 1C    ;
+
+                BCS CODE_22CE1E         ; $22:CE0D: B0 0F       ;
+
+                LDA $71,x               ; $22:CE0F: B5 71       ;
+
+                CMP $1CD2,x             ; $22:CE11: DD D2 1C    ;
+
+                LDA $56,x               ; $22:CE14: B5 56       ;
+
+                SBC $1021,x             ; $22:CE16: FD 21 10    ;
+
+                BCC CODE_22CE1E         ; $22:CE19: 90 03       ;
+
+                JMP CODE_22D10B         ; $22:CE1B: 4C 0B D1    ;
+
+CODE_22CE1E:    INC $004D,x             ; $22:CE1E: FE 4D 00    ;
+
+                INC $004D,x             ; $22:CE21: FE 4D 00    ;
+
+                LDA #$04                ; $22:CE24: A9 04       ;
+
+                STA $03                 ; $22:CE26: 85 03       ;
+
+                LDA $1CD7,x             ; $22:CE28: BD D7 1C    ;
+
+                SEC                     ; $22:CE2B: 38          ;
+
+                SBC $5F,x               ; $22:CE2C: F5 5F       ;
+
+                JSR CODE_22CF1F         ; $22:CE2E: 20 1F CF    ;
+
+                STZ $01                 ; $22:CE31: 64 01       ;
+
+                LDA $00                 ; $22:CE33: A5 00       ;
+
+                CMP #$80                ; $22:CE35: C9 80       ;
+
+                BCC CODE_22CE3B         ; $22:CE37: 90 02       ;
+
+                DEC $01                 ; $22:CE39: C6 01       ;
+
+CODE_22CE3B:    LDA $44,x               ; $22:CE3B: B5 44       ;
+
+                XBA                     ; $22:CE3D: EB          ;
+
+                LDA $5F,x               ; $22:CE3E: B5 5F       ;
+
+                REP #$20                ; $22:CE40: C2 20       ;
+
+                CLC                     ; $22:CE42: 18          ;
+
+                ADC $00                 ; $22:CE43: 65 00       ;
+
+                STA $D8                 ; $22:CE45: 85 D8       ;
+
+                ADC $00                 ; $22:CE47: 65 00       ;
+
+                STA $DA                 ; $22:CE49: 85 DA       ;
+
+                ADC $00                 ; $22:CE4B: 65 00       ;
+
+                STA $DC                 ; $22:CE4D: 85 DC       ;
+
+                ADC $00                 ; $22:CE4F: 65 00       ;
+
+                STA $00                 ; $22:CE51: 85 00       ;
+
+                SEP #$20                ; $22:CE53: E2 20       ;
+
+                LDA $D8                 ; $22:CE55: A5 D8       ;
+
+                STA $1CA0,x             ; $22:CE57: 9D A0 1C    ;
+
+                LDA $D9                 ; $22:CE5A: A5 D9       ;
+
+                STA $0256,x             ; $22:CE5C: 9D 56 02    ;
+
+                LDA $DA                 ; $22:CE5F: A5 DA       ;
+
+                STA $1CA5,x             ; $22:CE61: 9D A5 1C    ;
+
+                LDA $DB                 ; $22:CE64: A5 DB       ;
+
+                STA $025B,x             ; $22:CE66: 9D 5B 02    ;
+
+                LDA $DC                 ; $22:CE69: A5 DC       ;
+
+                STA $1CAA,x             ; $22:CE6B: 9D AA 1C    ;
+
+                LDA $DD                 ; $22:CE6E: A5 DD       ;
+
+                STA $0260,x             ; $22:CE70: 9D 60 02    ;
+
+                LDA $00                 ; $22:CE73: A5 00       ;
+
+                STA $1CAF,x             ; $22:CE75: 9D AF 1C    ;
+
+                LDA $01                 ; $22:CE78: A5 01       ;
+
+                STA $0265,x             ; $22:CE7A: 9D 65 02    ;
+
+                LDA #$05                ; $22:CE7D: A9 05       ;
+
+                STA $03                 ; $22:CE7F: 85 03       ;
+
+                LDA $1CDC,x             ; $22:CE81: BD DC 1C    ;
+
+                SEC                     ; $22:CE84: 38          ;
+
+                SBC $71,x               ; $22:CE85: F5 71       ;
+
+                JSR CODE_22CF1F         ; $22:CE87: 20 1F CF    ;
+
+                STZ $01                 ; $22:CE8A: 64 01       ;
+
+                LDA $00                 ; $22:CE8C: A5 00       ;
+
+                CMP #$80                ; $22:CE8E: C9 80       ;
+
+                BCC CODE_22CE94         ; $22:CE90: 90 02       ;
+
+                DEC $01                 ; $22:CE92: C6 01       ;
+
+CODE_22CE94:    LDA $56,x               ; $22:CE94: B5 56       ;
+
+                XBA                     ; $22:CE96: EB          ;
+
+                LDA $71,x               ; $22:CE97: B5 71       ;
+
+                REP #$20                ; $22:CE99: C2 20       ;
+
+                CLC                     ; $22:CE9B: 18          ;
+
+                ADC $00                 ; $22:CE9C: 65 00       ;
+
+                STA $D8                 ; $22:CE9E: 85 D8       ;
+
+                ADC $00                 ; $22:CEA0: 65 00       ;
+
+                STA $DA                 ; $22:CEA2: 85 DA       ;
+
+                ADC $00                 ; $22:CEA4: 65 00       ;
+
+                STA $DC                 ; $22:CEA6: 85 DC       ;
+
+                ADC $00                 ; $22:CEA8: 65 00       ;
+
+                STA $00                 ; $22:CEAA: 85 00       ;
+
+                SEP #$20                ; $22:CEAC: E2 20       ;
+
+                LDA $D8                 ; $22:CEAE: A5 D8       ;
+
+                STA $1CB4,x             ; $22:CEB0: 9D B4 1C    ;
+
+                LDA $D9                 ; $22:CEB3: A5 D9       ;
+
+                STA $026A,x             ; $22:CEB5: 9D 6A 02    ;
+
+                LDA $DA                 ; $22:CEB8: A5 DA       ;
+
+                STA $1CB9,x             ; $22:CEBA: 9D B9 1C    ;
+
+                LDA $DB                 ; $22:CEBD: A5 DB       ;
+
+                STA $026F,x             ; $22:CEBF: 9D 6F 02    ;
+
+                LDA $DC                 ; $22:CEC2: A5 DC       ;
+
+                STA $1CBE,x             ; $22:CEC4: 9D BE 1C    ;
+
+                LDA $DD                 ; $22:CEC7: A5 DD       ;
+
+                STA $0274,x             ; $22:CEC9: 9D 74 02    ;
+
+                LDA $00                 ; $22:CECC: A5 00       ;
+
+                STA $1CC3,x             ; $22:CECE: 9D C3 1C    ;
+
+                LDA $01                 ; $22:CED1: A5 01       ;
+
+                STA $0279,x             ; $22:CED3: 9D 79 02    ;
+
+                REP #$30                ; $22:CED6: C2 30       ;
+
+                LDA $C6,x               ; $22:CED8: B5 C6       ;
+
+                STA $C6,x               ; $22:CEDA: 95 C6       ;
+
+                PHA                     ; $22:CEDC: 48          ;
+
+                LDA $9E,x               ; $22:CEDD: B5 9E       ;
+
+                AND #$00FF              ; $22:CEDF: 29 FF 00    ;
+
+                TAY                     ; $22:CEE2: A8          ;
+
+                PLA                     ; $22:CEE3: 68          ;
+
+                TAX                     ; $22:CEE4: AA          ;
+
+                SEP #$20                ; $22:CEE5: E2 20       ;
+
+                CPY #$00D0              ; $22:CEE7: C0 D0 00    ;
+
+                BCC CODE_22CEED         ; $22:CEEA: 90 01       ;
+
+                INX                     ; $22:CEEC: E8          ;
+
+CODE_22CEED:    LDY #$0003              ; $22:CEED: A0 03 00    ;
+
+                LDA $15                 ; $22:CEF0: A5 15       ;
+
+                LSR A                   ; $22:CEF2: 4A          ;
+
+                LSR A                   ; $22:CEF3: 4A          ;
+
+CODE_22CEF4:    BCC CODE_22CF13         ; $22:CEF4: 90 1D       ;
+
+                LDA $0800,x             ; $22:CEF6: BD 00 08    ;
+
+                CLC                     ; $22:CEF9: 18          ;
+
+                ADC #$01                ; $22:CEFA: 69 01       ;
+
+                STA $0800,x             ; $22:CEFC: 9D 00 08    ;
+
+                PHX                     ; $22:CEFF: DA          ;
+
+                PHP                     ; $22:CF00: 08          ;
+
+                REP #$20                ; $22:CF01: C2 20       ;
+
+                TXA                     ; $22:CF03: 8A          ;
+
+                LSR A                   ; $22:CF04: 4A          ;
+
+                LSR A                   ; $22:CF05: 4A          ;
+
+                TAX                     ; $22:CF06: AA          ;
+
+                SEP #$20                ; $22:CF07: E2 20       ;
+
+                PLP                     ; $22:CF09: 28          ;
+
+                LDA $0A20,x             ; $22:CF0A: BD 20 0A    ;
+
+                ADC #$00                ; $22:CF0D: 69 00       ;
+
+                STA $0A20,x             ; $22:CF0F: 9D 20 0A    ;
+
+                PLX                     ; $22:CF12: FA          ;
+
+CODE_22CF13:    INX                     ; $22:CF13: E8          ;
+
+                INX                     ; $22:CF14: E8          ;
+
+                INX                     ; $22:CF15: E8          ;
+
+                INX                     ; $22:CF16: E8          ;
+
+                DEY                     ; $22:CF17: 88          ;
+
+                BPL CODE_22CEF4         ; $22:CF18: 10 DA       ;
+
+                SEP #$10                ; $22:CF1A: E2 10       ;
+
+                LDX $9B                 ; $22:CF1C: A6 9B       ;
+
+                RTS                     ; $22:CF1E: 60          ;
+
+CODE_22CF1F:    PHP                     ; $22:CF1F: 08          ;
+
+                BPL CODE_22CF27         ; $22:CF20: 10 05       ;
+
+                EOR #$FF                ; $22:CF22: 49 FF       ;
+
+                CLC                     ; $22:CF24: 18          ;
+
+                ADC #$01                ; $22:CF25: 69 01       ;
+
+CODE_22CF27:    LDY #$FF                ; $22:CF27: A0 FF       ;
+
+CODE_22CF29:    SBC $03                 ; $22:CF29: E5 03       ;
+
+                INY                     ; $22:CF2B: C8          ;
+
+                BCS CODE_22CF29         ; $22:CF2C: B0 FB       ;
+
+                TYA                     ; $22:CF2E: 98          ;
+
+                PLP                     ; $22:CF2F: 28          ;
+
+                BPL CODE_22CF37         ; $22:CF30: 10 05       ;
+
+                EOR #$FF                ; $22:CF32: 49 FF       ;
+
+                CLC                     ; $22:CF34: 18          ;
+
+                ADC #$01                ; $22:CF35: 69 01       ;
+
+CODE_22CF37:    STA $00                 ; $22:CF37: 85 00       ;
+
+                RTS                     ; $22:CF39: 60          ;
 
 CODE_22CF3A:    JSL CODE_27A837         ; $22:CF3A: 22 37 A8 27 ;Subroutine: Player X Position relative to sprite
-                LDA $0F                     ; $22:CF3E: A5 0F       ;
-                ADC #$60                    ; $22:CF40: 69 60       ;
-                CMP #$C0                    ; $22:CF42: C9 C0       ;
-                LDY #$00                    ; $22:CF44: A0 00       ;
-                BCS CODE_22CF5B                     ; $22:CF46: B0 13       ;
-                INC $4D,x                   ; $22:CF48: F6 4D       ;
-                LDA $0518,x                 ; $22:CF4A: BD 18 05    ;
-                BNE CODE_22CF5A             ; $22:CF4D: D0 0B       ;
-                LDA #$00                    ; $22:CF4F: A9 00       ;
-                STA $0518,x                 ; $22:CF51: 9D 18 05    ;
-                STA $68,x                   ; $22:CF54: 95 68       ;
-                STA $077B,x                 ; $22:CF56: 9D 7B 07    ;
-                RTS                         ; $22:CF59: 60          ;
+                LDA $0F                 ; $22:CF3E: A5 0F       ;
 
-CODE_22CF5A:    INY                         ; $22:CF5A: C8          ;
-CODE_22CF5B:    STY $0F                     ; $22:CF5B: 84 0F       ;
-                JSR CODE_22D10B             ; $22:CF5D: 20 0B D1    ;
-                INC $9E,x                   ; $22:CF60: F6 9E       ;
-                INC $9E,x                   ; $22:CF62: F6 9E       ;
-                INC $9E,x                   ; $22:CF64: F6 9E       ;
-                LDA $077B,x                 ; $22:CF66: BD 7B 07    ;
-                BEQ CODE_22CF95             ; $22:CF69: F0 2A       ;
-                LDA $1CDC,x                 ; $22:CF6B: BD DC 1C    ;
-                STA $00                     ; $22:CF6E: 85 00       ;
-                LDY #$03                    ; $22:CF70: A0 03       ;
-CODE_22CF72:    LDA $026A,x                 ; $22:CF72: BD 6A 02    ;
-                XBA                         ; $22:CF75: EB          ;
-                LDA $1CB4,x                 ; $22:CF76: BD B4 1C    ;
-                CMP $00                     ; $22:CF79: C5 00       ;
-                BCS CODE_22CF8B                     ; $22:CF7B: B0 0E       ;
-                REP #$20                    ; $22:CF7D: C2 20       ;
-                ADC #$0002                  ; $22:CF7F: 69 02 00    ;
-                SEP #$20                    ; $22:CF82: E2 20       ;
-                STA $1CB4,x                 ; $22:CF84: 9D B4 1C    ;
-                XBA                         ; $22:CF87: EB          ;
-                STA $026A,x                 ; $22:CF88: 9D 6A 02    ;
-CODE_22CF8B:    INX                         ; $22:CF8B: E8          ;
-                INX                         ; $22:CF8C: E8          ;
-                INX                         ; $22:CF8D: E8          ;
-                INX                         ; $22:CF8E: E8          ;
-                INX                         ; $22:CF8F: E8          ;
-                DEY                         ; $22:CF90: 88          ;
-                BPL CODE_22CF72             ; $22:CF91: 10 DF       ;
-                LDX $9B                     ; $22:CF93: A6 9B       ;
-CODE_22CF95:    LDA $71,x                   ; $22:CF95: B5 71       ;
-                CMP $1CDC,x                 ; $22:CF97: DD DC 1C    ;
-                BCC CODE_22D00C             ; $22:CF9A: 90 70       ;
-                LDA #$01                    ; $22:CF9C: A9 01       ;
-                STA $077B,x                 ; $22:CF9E: 9D 7B 07    ;
-                LDA $9E,x                   ; $22:CFA1: B5 9E       ;
-                PHA                         ; $22:CFA3: 48          ;
-                JSL CODE_278B67             ; $22:CFA4: 22 67 8B 27 ;
-                PLA                         ; $22:CFA8: 68          ;
-                CMP #$28                    ; $22:CFA9: C9 28       ;
-                BCC CODE_22CFB6             ; $22:CFAB: 90 09       ;
-                LDA #$E8                    ; $22:CFAD: A9 E8       ;
-                STA $9E,x                   ; $22:CFAF: 95 9E       ;
-                LDA #$00                    ; $22:CFB1: A9 00       ;
-                STA $1FD2,x                 ; $22:CFB3: 9D D2 1F    ;
-CODE_22CFB6:    LDA #$03                    ; $22:CFB6: A9 03       ;
-                LDY $0F                     ; $22:CFB8: A4 0F       ;
-                BEQ CODE_22CFBE             ; $22:CFBA: F0 02       ;
-                LDA #$00                    ; $22:CFBC: A9 00       ;
-CODE_22CFBE:    STA $0776,x                 ; $22:CFBE: 9D 76 07    ;
-                LDA $1FD2,x                 ; $22:CFC1: BD D2 1F    ;
-                AND.w DATA_21C490,y                 ; $22:CFC4: 39 90 C4    ;
-                BNE CODE_22CFDD             ; $22:CFC7: D0 14       ;
-                LDA.w DATA_21C492,y                 ; $22:CFC9: B9 92 C4    ;
-                PHA                         ; $22:CFCC: 48          ;
-                LDA $1CD7,x                 ; $22:CFCD: BD D7 1C    ;
-                CMP $5F,x                   ; $22:CFD0: D5 5F       ;
-                BCS CODE_22CFDA                     ; $22:CFD2: B0 06       ;
-                PLA                         ; $22:CFD4: 68          ;
-                EOR #$FF                    ; $22:CFD5: 49 FF       ;
-                ADC #$01                    ; $22:CFD7: 69 01       ;
-                PHA                         ; $22:CFD9: 48          ;
-CODE_22CFDA:    PLA                         ; $22:CFDA: 68          ;
-                STA $8C,x                   ; $22:CFDB: 95 8C       ;
-CODE_22CFDD:    LDA $0783,x                 ; $22:CFDD: BD 83 07    ;
-                AND #$D5                    ; $22:CFE0: 29 D5       ;
-                BNE CODE_22CFE8             ; $22:CFE2: D0 04       ;
-                LDA #$00                    ; $22:CFE4: A9 00       ;
-                STA $8C,x                   ; $22:CFE6: 95 8C       ;
-CODE_22CFE8:    LDA $5F,x                   ; $22:CFE8: B5 5F       ;
-                LDY $0679,x                 ; $22:CFEA: BC 79 06    ;
-                BNE CODE_22CFF6             ; $22:CFED: D0 07       ;
-                CMP $1CC8,x                 ; $22:CFEF: DD C8 1C    ;
-                BCC CODE_22CFFB             ; $22:CFF2: 90 07       ;
-                BCS CODE_22D00C                     ; $22:CFF4: B0 16       ;
-CODE_22CFF6:    CMP $1CCD,x                 ; $22:CFF6: DD CD 1C    ;
-                BCC CODE_22D00C             ; $22:CFF9: 90 11       ;
-CODE_22CFFB:    LDY $0F                     ; $22:CFFB: A4 0F       ;
-                LDA.w DATA_21C492,y                 ; $22:CFFD: B9 92 C4    ;
-                BCC CODE_22D007             ; $22:D000: 90 05       ;
-                EOR #$FF                    ; $22:D002: 49 FF       ;
-                CLC                         ; $22:D004: 18          ;
-                ADC #$01                    ; $22:D005: 69 01       ;
-CODE_22D007:    STA $8C,x                   ; $22:D007: 95 8C       ;
-                JSR CODE_22D10B             ; $22:D009: 20 0B D1    ;
-CODE_22D00C:    RTS                         ; $22:D00C: 60          ;
+                ADC #$60                ; $22:CF40: 69 60       ;
 
-CODE_22D00D:    JSR CODE_22CBA6             ; $22:D00D: 20 A6 CB    ;
-                LDA $0543                   ; $22:D010: AD 43 05    ;
-                STA $D8                     ; $22:D013: 85 D8       ;
-                LDA $0542                   ; $22:D015: AD 42 05    ;
-                STA $D9                     ; $22:D018: 85 D9       ;
-                LDA $56,x                   ; $22:D01A: B5 56       ;
-                XBA                         ; $22:D01C: EB          ;
-                LDA $71,x                   ; $22:D01D: B5 71       ;
-                REP #$20                    ; $22:D01F: C2 20       ;
-                SEC                         ; $22:D021: 38          ;
-                SBC $D8                     ; $22:D022: E5 D8       ;
-                PHA                         ; $22:D024: 48          ;
-                LDA $C6,x                   ; $22:D025: B5 C6       ;
-                CLC                         ; $22:D027: 18          ;
-                ADC #$0030                  ; $22:D028: 69 30 00    ;
-                STA $C6,x                   ; $22:D02B: 95 C6       ;
-                PLA                         ; $22:D02D: 68          ;
-                CMP #$00C0                  ; $22:D02E: C9 C0 00    ;
-                BCC CODE_22D03B             ; $22:D031: 90 08       ;
-                CMP #$FFC0                  ; $22:D033: C9 C0 FF    ;
-                BCS CODE_22D03B                     ; $22:D036: B0 03       ;
-                SEP #$20                    ; $22:D038: E2 20       ;
-                RTS                         ; $22:D03A: 60          ;
+                CMP #$C0                ; $22:CF42: C9 C0       ;
 
-CODE_22D03B:    SEP #$20                    ; $22:D03B: E2 20       ;
-                LDA #$03                    ; $22:D03D: A9 03       ;
-                STA $0F                     ; $22:D03F: 85 0F       ;
-CODE_22D041:    LDA $0F                     ; $22:D041: A5 0F       ;
-                ASL A                       ; $22:D043: 0A          ;
-                ASL A                       ; $22:D044: 0A          ;
-                ADC $0F                     ; $22:D045: 65 0F       ;
-                ADC $9B                     ; $22:D047: 65 9B       ;
-                TAY                         ; $22:D049: A8          ;
-                LDA $0542                   ; $22:D04A: AD 42 05    ;
-                STA $DB                     ; $22:D04D: 85 DB       ;
-                LDA $0543                   ; $22:D04F: AD 43 05    ;
-                STA $DA                     ; $22:D052: 85 DA       ;
-                LDA $026A,y                 ; $22:D054: B9 6A 02    ;
-                XBA                         ; $22:D057: EB          ;
-                LDA $1CB4,y                 ; $22:D058: B9 B4 1C    ;
-                REP #$20                    ; $22:D05B: C2 20       ;
-                SEC                         ; $22:D05D: 38          ;
-                SBC $DA                     ; $22:D05E: E5 DA       ;
-                CLC                         ; $22:D060: 18          ;
-                ADC #$0004                  ; $22:D061: 69 04 00    ;
-                STA $DA                     ; $22:D064: 85 DA       ;
-                CLC                         ; $22:D066: 18          ;
-                ADC #$0008                  ; $22:D067: 69 08 00    ;
-                STA $DC                     ; $22:D06A: 85 DC       ;
-                SEP #$20                    ; $22:D06C: E2 20       ;
-                STA $00                     ; $22:D06E: 85 00       ;
-                LDA $0256,y                 ; $22:D070: B9 56 02    ;
-                XBA                         ; $22:D073: EB          ;
-                LDA $1CA0,y                 ; $22:D074: B9 A0 1C    ;
-                REP #$20                    ; $22:D077: C2 20       ;
-                CLC                         ; $22:D079: 18          ;
-                ADC #$0004                  ; $22:D07A: 69 04 00    ;
-                SEC                         ; $22:D07D: 38          ;
-                SBC $0210                   ; $22:D07E: ED 10 02    ;
-                STA $D8                     ; $22:D081: 85 D8       ;
-                SEP #$20                    ; $22:D083: E2 20       ;
-                STA $01                     ; $22:D085: 85 01       ;
-                REP #$30                    ; $22:D087: C2 30       ;
-                LDA $C6,x                   ; $22:D089: B5 C6       ;
-                SEC                         ; $22:D08B: 38          ;
-                SBC #$0008                  ; $22:D08C: E9 08 00    ;
-                STA $C6,x                   ; $22:D08F: 95 C6       ;
-                TAY                         ; $22:D091: A8          ;
-                SEP #$20                    ; $22:D092: E2 20       ;
-                REP #$20                    ; $22:D094: C2 20       ;
-                LDA $DA                     ; $22:D096: A5 DA       ;
-                CMP #$00C0                  ; $22:D098: C9 C0 00    ;
-                BCC CODE_22D0A4             ; $22:D09B: 90 07       ;
-                CMP #$FFE0                  ; $22:D09D: C9 E0 FF    ;
-                BCS CODE_22D0A4                     ; $22:D0A0: B0 02       ;
-                BRA CODE_22D0AB             ; $22:D0A2: 80 07       ;
+                LDY #$00                ; $22:CF44: A0 00       ;
 
-CODE_22D0A4:    SEP #$20                    ; $22:D0A4: E2 20       ;
-                LDA $DA                     ; $22:D0A6: A5 DA       ;
-                STA $0801,y                 ; $22:D0A8: 99 01 08    ;
-CODE_22D0AB:    REP #$20                    ; $22:D0AB: C2 20       ;
-                LDA $DC                     ; $22:D0AD: A5 DC       ;
-                CMP #$00C0                  ; $22:D0AF: C9 C0 00    ;
-                BCC CODE_22D0BB             ; $22:D0B2: 90 07       ;
-                CMP #$FFE0                  ; $22:D0B4: C9 E0 FF    ;
-                BCS CODE_22D0BB                     ; $22:D0B7: B0 02       ;
-                BRA CODE_22D0C2             ; $22:D0B9: 80 07       ;
+                BCS CODE_22CF5B         ; $22:CF46: B0 13       ;
 
-CODE_22D0BB:    SEP #$20                    ; $22:D0BB: E2 20       ;
-                LDA $DC                     ; $22:D0BD: A5 DC       ;
-                STA $0805,y                 ; $22:D0BF: 99 05 08    ;
-CODE_22D0C2:    SEP #$20                    ; $22:D0C2: E2 20       ;
-                LDA $01                     ; $22:D0C4: A5 01       ;
-                STA $0800,y                 ; $22:D0C6: 99 00 08    ;
-                STA $0804,y                 ; $22:D0C9: 99 04 08    ;
-                LDA #$9A                    ; $22:D0CC: A9 9A       ;
-                STA $0802,y                 ; $22:D0CE: 99 02 08    ;
-                INC A                       ; $22:D0D1: 1A          ;
-                STA $0806,y                 ; $22:D0D2: 99 06 08    ;
-                LDA $0689,x                 ; $22:D0D5: BD 89 06    ;
-                CMP #$2F                    ; $22:D0D8: C9 2F       ;
-                LDA #$05                    ; $22:D0DA: A9 05       ;
-                BCC CODE_22D0E4             ; $22:D0DC: 90 06       ;
-                LDA $0565                   ; $22:D0DE: AD 65 05    ;
-                LSR A                       ; $22:D0E1: 4A          ;
-                AND #$03                    ; $22:D0E2: 29 03       ;
-CODE_22D0E4:    ASL A                       ; $22:D0E4: 0A          ;
-                ORA #$20                    ; $22:D0E5: 09 20       ;
-                STA $0803,y                 ; $22:D0E7: 99 03 08    ;
-                STA $0807,y                 ; $22:D0EA: 99 07 08    ;
-                REP #$20                    ; $22:D0ED: C2 20       ;
-                TYA                         ; $22:D0EF: 98          ;
-                LSR A                       ; $22:D0F0: 4A          ;
-                LSR A                       ; $22:D0F1: 4A          ;
-                TAY                         ; $22:D0F2: A8          ;
-                SEP #$20                    ; $22:D0F3: E2 20       ;
-                LDA $D9                     ; $22:D0F5: A5 D9       ;
-                AND #$01                    ; $22:D0F7: 29 01       ;
-                STA $0A20,y                 ; $22:D0F9: 99 20 0A    ;
-                STA $0A21,y                 ; $22:D0FC: 99 21 0A    ;
-                SEP #$10                    ; $22:D0FF: E2 10       ;
-                DEC $0F                     ; $22:D101: C6 0F       ;
-                BMI CODE_22D108             ; $22:D103: 30 03       ;
-                BRL CODE_22D041             ; $22:D105: 82 39 FF    ;
+                INC $4D,x               ; $22:CF48: F6 4D       ;
 
-CODE_22D108:    LDX $9B                     ; $22:D108: A6 9B       ;
-                RTS                         ; $22:D10A: 60          ;
+                LDA $0518,x             ; $22:CF4A: BD 18 05    ;
 
-CODE_22D10B:    JSL CODE_27A7E4             ; $22:D10B: 22 E4 A7 27 ;
-                STA $00                     ; $22:D10F: 85 00       ;
-                JSL CODE_27A7EF             ; $22:D111: 22 EF A7 27 ;
-                STA $01                     ; $22:D115: 85 01       ;
-                STZ $02                     ; $22:D117: 64 02       ;
-                CMP #$80                    ; $22:D119: C9 80       ;
-                BCC CODE_22D11F             ; $22:D11B: 90 02       ;
-                DEC $02                     ; $22:D11D: C6 02       ;
-CODE_22D11F:    LDY $0776,x                 ; $22:D11F: BC 76 07    ;
-                LDA $8C,x                   ; $22:D122: B5 8C       ;
-                BPL CODE_22D129             ; $22:D124: 10 03       ;
-                BRL CODE_22D1AF             ; $22:D126: 82 86 00    ;
+                BNE CODE_22CF5A         ; $22:CF4D: D0 0B       ;
 
-CODE_22D129:    LDA $1CA0,x                 ; $22:D129: BD A0 1C    ;
-                CLC                         ; $22:D12C: 18          ;
-                ADC.w DATA_21C48C,y                 ; $22:D12D: 79 8C C4    ;
-                CMP $5F,x                   ; $22:D130: D5 5F       ;
-                BCS CODE_22D1AC                     ; $22:D132: B0 78       ;
-                LDA $0256,x                 ; $22:D134: BD 56 02    ;
-                XBA                         ; $22:D137: EB          ;
-                LDA $1CA0,x                 ; $22:D138: BD A0 1C    ;
-                REP #$20                    ; $22:D13B: C2 20       ;
-                CLC                         ; $22:D13D: 18          ;
-                ADC $01                     ; $22:D13E: 65 01       ;
-                SEP #$20                    ; $22:D140: E2 20       ;
-                STA $1CA0,x                 ; $22:D142: 9D A0 1C    ;
-                XBA                         ; $22:D145: EB          ;
-                STA $0256,x                 ; $22:D146: 9D 56 02    ;
-                LDA $1CA5,x                 ; $22:D149: BD A5 1C    ;
-                CLC                         ; $22:D14C: 18          ;
-                ADC.w DATA_21C48C,y                 ; $22:D14D: 79 8C C4    ;
-                CMP $1CA0,x                 ; $22:D150: DD A0 1C    ;
-                BCS CODE_22D1AC                     ; $22:D153: B0 57       ;
-                LDA $025B,x                 ; $22:D155: BD 5B 02    ;
-                XBA                         ; $22:D158: EB          ;
-                LDA $1CA5,x                 ; $22:D159: BD A5 1C    ;
-                REP #$20                    ; $22:D15C: C2 20       ;
-                CLC                         ; $22:D15E: 18          ;
-                ADC $01                     ; $22:D15F: 65 01       ;
-                SEP #$20                    ; $22:D161: E2 20       ;
-                STA $1CA5,x                 ; $22:D163: 9D A5 1C    ;
-                XBA                         ; $22:D166: EB          ;
-                STA $025B,x                 ; $22:D167: 9D 5B 02    ;
-                LDA $1CAA,x                 ; $22:D16A: BD AA 1C    ;
-                CLC                         ; $22:D16D: 18          ;
-                ADC.w DATA_21C48C,y                 ; $22:D16E: 79 8C C4    ;
-                CMP $1CA5,x                 ; $22:D171: DD A5 1C    ;
-                BCS CODE_22D1AC                     ; $22:D174: B0 36       ;
-                LDA $0260,x                 ; $22:D176: BD 60 02    ;
-                XBA                         ; $22:D179: EB          ;
-                LDA $1CAA,x                 ; $22:D17A: BD AA 1C    ;
-                REP #$20                    ; $22:D17D: C2 20       ;
-                CLC                         ; $22:D17F: 18          ;
-                ADC $01                     ; $22:D180: 65 01       ;
-                SEP #$20                    ; $22:D182: E2 20       ;
-                STA $1CAA,x                 ; $22:D184: 9D AA 1C    ;
-                XBA                         ; $22:D187: EB          ;
-                STA $0260,x                 ; $22:D188: 9D 60 02    ;
-                LDA $1CAF,x                 ; $22:D18B: BD AF 1C    ;
-                CLC                         ; $22:D18E: 18          ;
-                ADC.w DATA_21C48C,y                 ; $22:D18F: 79 8C C4    ;
-                CMP $1CAA,x                 ; $22:D192: DD AA 1C    ;
-                BCS CODE_22D1AC                     ; $22:D195: B0 15       ;
-                LDA $0265,x                 ; $22:D197: BD 65 02    ;
-                XBA                         ; $22:D19A: EB          ;
-                LDA $1CAF,x                 ; $22:D19B: BD AF 1C    ;
-                REP #$20                    ; $22:D19E: C2 20       ;
-                CLC                         ; $22:D1A0: 18          ;
-                ADC $01                     ; $22:D1A1: 65 01       ;
-                SEP #$20                    ; $22:D1A3: E2 20       ;
-                STA $1CAF,x                 ; $22:D1A5: 9D AF 1C    ;
-                XBA                         ; $22:D1A8: EB          ;
-                STA $0265,x                 ; $22:D1A9: 9D 65 02    ;
-CODE_22D1AC:    JMP CODE_22D232             ; $22:D1AC: 4C 32 D2    ;
+                LDA #$00                ; $22:CF4F: A9 00       ;
 
-CODE_22D1AF:    LDA $1CA0,x                 ; $22:D1AF: BD A0 1C    ;
-                SEC                         ; $22:D1B2: 38          ;
-                SBC.w DATA_21C48C,y                 ; $22:D1B3: F9 8C C4    ;
-                CMP $5F,x                   ; $22:D1B6: D5 5F       ;
-                BCC CODE_22D232             ; $22:D1B8: 90 78       ;
-                LDA $0256,x                 ; $22:D1BA: BD 56 02    ;
-                XBA                         ; $22:D1BD: EB          ;
-                LDA $1CA0,x                 ; $22:D1BE: BD A0 1C    ;
-                REP #$20                    ; $22:D1C1: C2 20       ;
-                CLC                         ; $22:D1C3: 18          ;
-                ADC $01                     ; $22:D1C4: 65 01       ;
-                SEP #$20                    ; $22:D1C6: E2 20       ;
-                STA $1CA0,x                 ; $22:D1C8: 9D A0 1C    ;
-                XBA                         ; $22:D1CB: EB          ;
-                STA $0256,x                 ; $22:D1CC: 9D 56 02    ;
-                LDA $1CA5,x                 ; $22:D1CF: BD A5 1C    ;
-                SEC                         ; $22:D1D2: 38          ;
-                SBC.w DATA_21C48C,y                 ; $22:D1D3: F9 8C C4    ;
-                CMP $1CA0,x                 ; $22:D1D6: DD A0 1C    ;
-                BCC CODE_22D232             ; $22:D1D9: 90 57       ;
-                LDA $025B,x                 ; $22:D1DB: BD 5B 02    ;
-                XBA                         ; $22:D1DE: EB          ;
-                LDA $1CA5,x                 ; $22:D1DF: BD A5 1C    ;
-                REP #$20                    ; $22:D1E2: C2 20       ;
-                CLC                         ; $22:D1E4: 18          ;
-                ADC $01                     ; $22:D1E5: 65 01       ;
-                SEP #$20                    ; $22:D1E7: E2 20       ;
-                STA $1CA5,x                 ; $22:D1E9: 9D A5 1C    ;
-                XBA                         ; $22:D1EC: EB          ;
-                STA $025B,x                 ; $22:D1ED: 9D 5B 02    ;
-                LDA $1CAA,x                 ; $22:D1F0: BD AA 1C    ;
-                SEC                         ; $22:D1F3: 38          ;
-                SBC.w DATA_21C48C,y                 ; $22:D1F4: F9 8C C4    ;
-                CMP $1CA5,x                 ; $22:D1F7: DD A5 1C    ;
-                BCC CODE_22D232             ; $22:D1FA: 90 36       ;
-                LDA $0260,x                 ; $22:D1FC: BD 60 02    ;
-                XBA                         ; $22:D1FF: EB          ;
-                LDA $1CAA,x                 ; $22:D200: BD AA 1C    ;
-                REP #$20                    ; $22:D203: C2 20       ;
-                CLC                         ; $22:D205: 18          ;
-                ADC $01                     ; $22:D206: 65 01       ;
-                SEP #$20                    ; $22:D208: E2 20       ;
-                STA $1CAA,x                 ; $22:D20A: 9D AA 1C    ;
-                XBA                         ; $22:D20D: EB          ;
-                STA $0260,x                 ; $22:D20E: 9D 60 02    ;
-                LDA $1CAF,x                 ; $22:D211: BD AF 1C    ;
-                SEC                         ; $22:D214: 38          ;
-                SBC.w DATA_21C48C,y                 ; $22:D215: F9 8C C4    ;
-                CMP $1CAA,x                 ; $22:D218: DD AA 1C    ;
-                BCC CODE_22D232             ; $22:D21B: 90 15       ;
-                LDA $0265,x                 ; $22:D21D: BD 65 02    ;
-                XBA                         ; $22:D220: EB          ;
-                LDA $1CAF,x                 ; $22:D221: BD AF 1C    ;
-                REP #$20                    ; $22:D224: C2 20       ;
-                CLC                         ; $22:D226: 18          ;
-                ADC $01                     ; $22:D227: 65 01       ;
-                SEP #$20                    ; $22:D229: E2 20       ;
-                STA $1CAF,x                 ; $22:D22B: 9D AF 1C    ;
-                XBA                         ; $22:D22E: EB          ;
-                STA $0265,x                 ; $22:D22F: 9D 65 02    ;
-CODE_22D232:    STZ $01                     ; $22:D232: 64 01       ;
-                LDA $00                     ; $22:D234: A5 00       ;
-                CMP #$80                    ; $22:D236: C9 80       ;
-                BCC CODE_22D23C             ; $22:D238: 90 02       ;
-                DEC $01                     ; $22:D23A: C6 01       ;
-CODE_22D23C:    LDA $9E,x                   ; $22:D23C: B5 9E       ;
-                BPL CODE_22D243             ; $22:D23E: 10 03       ;
-                BRL CODE_22D2C7             ; $22:D240: 82 84 00    ;
+                STA $0518,x             ; $22:CF51: 9D 18 05    ;
 
-CODE_22D243:    LDA $1CB4,x                 ; $22:D243: BD B4 1C    ;
-                CLC                         ; $22:D246: 18          ;
-                ADC.w DATA_21C488,y                 ; $22:D247: 79 88 C4    ;
-                CMP $71,x                   ; $22:D24A: D5 71       ;
-                BCS CODE_22D2C6                     ; $22:D24C: B0 78       ;
-                LDA $026A,x                 ; $22:D24E: BD 6A 02    ;
-                XBA                         ; $22:D251: EB          ;
-                LDA $1CB4,x                 ; $22:D252: BD B4 1C    ;
-                REP #$20                    ; $22:D255: C2 20       ;
-                CLC                         ; $22:D257: 18          ;
-                ADC $00                     ; $22:D258: 65 00       ;
-                SEP #$20                    ; $22:D25A: E2 20       ;
-                STA $1CB4,x                 ; $22:D25C: 9D B4 1C    ;
-                XBA                         ; $22:D25F: EB          ;
-                STA $026A,x                 ; $22:D260: 9D 6A 02    ;
-                LDA $1CB9,x                 ; $22:D263: BD B9 1C    ;
-                CLC                         ; $22:D266: 18          ;
-                ADC.w DATA_21C488,y                 ; $22:D267: 79 88 C4    ;
-                CMP $1CB4,x                 ; $22:D26A: DD B4 1C    ;
-                BCS CODE_22D2C6                     ; $22:D26D: B0 57       ;
-                LDA $026F,x                 ; $22:D26F: BD 6F 02    ;
-                XBA                         ; $22:D272: EB          ;
-                LDA $1CB9,x                 ; $22:D273: BD B9 1C    ;
-                REP #$20                    ; $22:D276: C2 20       ;
-                CLC                         ; $22:D278: 18          ;
-                ADC $00                     ; $22:D279: 65 00       ;
-                SEP #$20                    ; $22:D27B: E2 20       ;
-                STA $1CB9,x                 ; $22:D27D: 9D B9 1C    ;
-                XBA                         ; $22:D280: EB          ;
-                STA $026F,x                 ; $22:D281: 9D 6F 02    ;
-                LDA $1CBE,x                 ; $22:D284: BD BE 1C    ;
-                CLC                         ; $22:D287: 18          ;
-                ADC.w DATA_21C488,y                 ; $22:D288: 79 88 C4    ;
-                CMP $1CB9,x                 ; $22:D28B: DD B9 1C    ;
-                BCS CODE_22D2C6                     ; $22:D28E: B0 36       ;
-                LDA $0274,x                 ; $22:D290: BD 74 02    ;
-                XBA                         ; $22:D293: EB          ;
-                LDA $1CBE,x                 ; $22:D294: BD BE 1C    ;
-                REP #$20                    ; $22:D297: C2 20       ;
-                CLC                         ; $22:D299: 18          ;
-                ADC $00                     ; $22:D29A: 65 00       ;
-                SEP #$20                    ; $22:D29C: E2 20       ;
-                STA $1CBE,x                 ; $22:D29E: 9D BE 1C    ;
-                XBA                         ; $22:D2A1: EB          ;
-                STA $0274,x                 ; $22:D2A2: 9D 74 02    ;
-                LDA $1CC3,x                 ; $22:D2A5: BD C3 1C    ;
-                CLC                         ; $22:D2A8: 18          ;
-                ADC.w DATA_21C488,y                 ; $22:D2A9: 79 88 C4    ;
-                CMP $1CBE,x                 ; $22:D2AC: DD BE 1C    ;
-                BCS CODE_22D2C6                     ; $22:D2AF: B0 15       ;
-                LDA $0279,x                 ; $22:D2B1: BD 79 02    ;
-                XBA                         ; $22:D2B4: EB          ;
-                LDA $1CC3,x                 ; $22:D2B5: BD C3 1C    ;
-                REP #$20                    ; $22:D2B8: C2 20       ;
-                CLC                         ; $22:D2BA: 18          ;
-                ADC $00                     ; $22:D2BB: 65 00       ;
-                SEP #$20                    ; $22:D2BD: E2 20       ;
-                STA $1CC3,x                 ; $22:D2BF: 9D C3 1C    ;
-                XBA                         ; $22:D2C2: EB          ;
-                STA $0279,x                 ; $22:D2C3: 9D 79 02    ;
-CODE_22D2C6:    RTS                         ; $22:D2C6: 60          ;
+                STA $68,x               ; $22:CF54: 95 68       ;
 
-CODE_22D2C7:    LDA $1CB4,x                 ; $22:D2C7: BD B4 1C    ;
-                SEC                         ; $22:D2CA: 38          ;
-                SBC.w DATA_21C488,y                 ; $22:D2CB: F9 88 C4    ;
-                CMP $71,x                   ; $22:D2CE: D5 71       ;
-                BCC CODE_22D34A             ; $22:D2D0: 90 78       ;
-                LDA $026A,x                 ; $22:D2D2: BD 6A 02    ;
-                XBA                         ; $22:D2D5: EB          ;
-                LDA $1CB4,x                 ; $22:D2D6: BD B4 1C    ;
-                REP #$20                    ; $22:D2D9: C2 20       ;
-                CLC                         ; $22:D2DB: 18          ;
-                ADC $00                     ; $22:D2DC: 65 00       ;
-                SEP #$20                    ; $22:D2DE: E2 20       ;
-                STA $1CB4,x                 ; $22:D2E0: 9D B4 1C    ;
-                XBA                         ; $22:D2E3: EB          ;
-                STA $026A,x                 ; $22:D2E4: 9D 6A 02    ;
-                LDA $1CB9,x                 ; $22:D2E7: BD B9 1C    ;
-                SEC                         ; $22:D2EA: 38          ;
-                SBC.w DATA_21C488,y                 ; $22:D2EB: F9 88 C4    ;
-                CMP $1CB4,x                 ; $22:D2EE: DD B4 1C    ;
-                BCC CODE_22D34A             ; $22:D2F1: 90 57       ;
-                LDA $026F,x                 ; $22:D2F3: BD 6F 02    ;
-                XBA                         ; $22:D2F6: EB          ;
-                LDA $1CB9,x                 ; $22:D2F7: BD B9 1C    ;
-                REP #$20                    ; $22:D2FA: C2 20       ;
-                CLC                         ; $22:D2FC: 18          ;
-                ADC $00                     ; $22:D2FD: 65 00       ;
-                SEP #$20                    ; $22:D2FF: E2 20       ;
-                STA $1CB9,x                 ; $22:D301: 9D B9 1C    ;
-                XBA                         ; $22:D304: EB          ;
-                STA $026F,x                 ; $22:D305: 9D 6F 02    ;
-                LDA $1CBE,x                 ; $22:D308: BD BE 1C    ;
-                SEC                         ; $22:D30B: 38          ;
-                SBC.w DATA_21C488,y                 ; $22:D30C: F9 88 C4    ;
-                CMP $1CB9,x                 ; $22:D30F: DD B9 1C    ;
-                BCC CODE_22D34A             ; $22:D312: 90 36       ;
-                LDA $0274,x                 ; $22:D314: BD 74 02    ;
-                XBA                         ; $22:D317: EB          ;
-                LDA $1CBE,x                 ; $22:D318: BD BE 1C    ;
-                REP #$20                    ; $22:D31B: C2 20       ;
-                CLC                         ; $22:D31D: 18          ;
-                ADC $00                     ; $22:D31E: 65 00       ;
-                SEP #$20                    ; $22:D320: E2 20       ;
-                STA $1CBE,x                 ; $22:D322: 9D BE 1C    ;
-                XBA                         ; $22:D325: EB          ;
-                STA $0274,x                 ; $22:D326: 9D 74 02    ;
-                LDA $1CC3,x                 ; $22:D329: BD C3 1C    ;
-                SEC                         ; $22:D32C: 38          ;
-                SBC.w DATA_21C488,y                 ; $22:D32D: F9 88 C4    ;
-                CMP $1CBE,x                 ; $22:D330: DD BE 1C    ;
-                BCC CODE_22D34A             ; $22:D333: 90 15       ;
-                LDA $0279,x                 ; $22:D335: BD 79 02    ;
-                XBA                         ; $22:D338: EB          ;
-                LDA $1CC3,x                 ; $22:D339: BD C3 1C    ;
-                REP #$20                    ; $22:D33C: C2 20       ;
-                CLC                         ; $22:D33E: 18          ;
-                ADC $00                     ; $22:D33F: 65 00       ;
-                SEP #$20                    ; $22:D341: E2 20       ;
-                STA $1CC3,x                 ; $22:D343: 9D C3 1C    ;
-                XBA                         ; $22:D346: EB          ;
-                STA $0279,x                 ; $22:D347: 9D 79 02    ;
-CODE_22D34A:    RTS                         ; $22:D34A: 60          ;
+                STA $077B,x             ; $22:CF56: 9D 7B 07    ;
 
-CODE_22D34B:    LDA $0679,x                 ; $22:D34B: BD 79 06    ;
-                AND #$BF                    ; $22:D34E: 29 BF       ;
-                LDY $8C,x                   ; $22:D350: B4 8C       ;
-                BEQ CODE_22D35B             ; $22:D352: F0 07       ;
-                BMI CODE_22D358             ; $22:D354: 30 02       ;
-                ORA #$40                    ; $22:D356: 09 40       ;
-CODE_22D358:    STA $0679,x                 ; $22:D358: 9D 79 06    ;
-CODE_22D35B:    RTS                         ; $22:D35B: 60          ;
+                RTS                     ; $22:CF59: 60          ;
 
-CODE_22D35C:    REP #$10                    ; $22:D35C: C2 10       ;
-                LDY $00C6,x                 ; $22:D35E: BC C6 00    ;
-                LDA $44,x                   ; $22:D361: B5 44       ;
-                XBA                         ; $22:D363: EB          ;
-                LDA $5F,x                   ; $22:D364: B5 5F       ;
-                REP #$20                    ; $22:D366: C2 20       ;
-                SEC                         ; $22:D368: 38          ;
-                SBC $0210                   ; $22:D369: ED 10 02    ;
-                STA $00                     ; $22:D36C: 85 00       ;
-                CLC                         ; $22:D36E: 18          ;
-                ADC #$0008                  ; $22:D36F: 69 08 00    ;
-                STA $02                     ; $22:D372: 85 02       ;
-                SEP #$20                    ; $22:D374: E2 20       ;
-                LDA $00                     ; $22:D376: A5 00       ;
-                STA $0810,y                 ; $22:D378: 99 10 08    ;
-                STA $0818,y                 ; $22:D37B: 99 18 08    ;
-                STA $0800,y                 ; $22:D37E: 99 00 08    ;
-                STA $0808,y                 ; $22:D381: 99 08 08    ;
-                LDA $02                     ; $22:D384: A5 02       ;
-                STA $0814,y                 ; $22:D386: 99 14 08    ;
-                STA $081C,y                 ; $22:D389: 99 1C 08    ;
-                STA $0804,y                 ; $22:D38C: 99 04 08    ;
-                STA $080C,y                 ; $22:D38F: 99 0C 08    ;
-                LDA $71,x                   ; $22:D392: B5 71       ;
-                SEC                         ; $22:D394: 38          ;
-                SBC $0216                   ; $22:D395: ED 16 02    ;
-                STA $0811,y                 ; $22:D398: 99 11 08    ;
-                STA $0815,y                 ; $22:D39B: 99 15 08    ;
-                CLC                         ; $22:D39E: 18          ;
-                ADC #$10                    ; $22:D39F: 69 10       ;
-                STA $0819,y                 ; $22:D3A1: 99 19 08    ;
-                STA $081D,y                 ; $22:D3A4: 99 1D 08    ;
-                LDA $0691,x                 ; $22:D3A7: BD 91 06    ;
-                DEC A                       ; $22:D3AA: 3A          ;
-                SEC                         ; $22:D3AB: 38          ;
-                SBC $0216                   ; $22:D3AC: ED 16 02    ;
-                STA $0801,y                 ; $22:D3AF: 99 01 08    ;
-                STA $0805,y                 ; $22:D3B2: 99 05 08    ;
-                CLC                         ; $22:D3B5: 18          ;
-                ADC #$10                    ; $22:D3B6: 69 10       ;
-                STA $0809,y                 ; $22:D3B8: 99 09 08    ;
-                STA $080D,y                 ; $22:D3BB: 99 0D 08    ;
-                LDA #$28                    ; $22:D3BE: A9 28       ;
-                STA $0802,y                 ; $22:D3C0: 99 02 08    ;
-                STA $0806,y                 ; $22:D3C3: 99 06 08    ;
-                STA $080A,y                 ; $22:D3C6: 99 0A 08    ;
-                STA $080E,y                 ; $22:D3C9: 99 0E 08    ;
-                LDA #$12                    ; $22:D3CC: A9 12       ;
-                STA $0803,y                 ; $22:D3CE: 99 03 08    ;
-                STA $0807,y                 ; $22:D3D1: 99 07 08    ;
-                STA $080B,y                 ; $22:D3D4: 99 0B 08    ;
-                STA $080F,y                 ; $22:D3D7: 99 0F 08    ;
-                LDA $0669,x                 ; $22:D3DA: BD 69 06    ;
-                ASL A                       ; $22:D3DD: 0A          ;
-                ASL A                       ; $22:D3DE: 0A          ;
-                ORA #$A0                    ; $22:D3DF: 09 A0       ;
-                STA $0812,y                 ; $22:D3E1: 99 12 08    ;
-                STA $0816,y                 ; $22:D3E4: 99 16 08    ;
-                INC A                       ; $22:D3E7: 1A          ;
-                INC A                       ; $22:D3E8: 1A          ;
-                STA $081A,y                 ; $22:D3E9: 99 1A 08    ;
-                STA $081E,y                 ; $22:D3EC: 99 1E 08    ;
-                LDA #$24                    ; $22:D3EF: A9 24       ;
-                STA $0813,y                 ; $22:D3F1: 99 13 08    ;
-                STA $081B,y                 ; $22:D3F4: 99 1B 08    ;
-                LDA #$64                    ; $22:D3F7: A9 64       ;
-                STA $0817,y                 ; $22:D3F9: 99 17 08    ;
-                STA $081F,y                 ; $22:D3FC: 99 1F 08    ;
-                PHY                         ; $22:D3FF: 5A          ;
-                REP #$20                    ; $22:D400: C2 20       ;
-                TYA                         ; $22:D402: 98          ;
-                LSR A                       ; $22:D403: 4A          ;
-                LSR A                       ; $22:D404: 4A          ;
-                TAY                         ; $22:D405: A8          ;
-                SEP #$20                    ; $22:D406: E2 20       ;
-                LDA $01                     ; $22:D408: A5 01       ;
-                BEQ CODE_22D40E             ; $22:D40A: F0 02       ;
-                LDA #$01                    ; $22:D40C: A9 01       ;
-CODE_22D40E:    ORA #$02                    ; $22:D40E: 09 02       ;
-                STA $0A20,y                 ; $22:D410: 99 20 0A    ;
-                STA $0A22,y                 ; $22:D413: 99 22 0A    ;
-                STA $0A24,y                 ; $22:D416: 99 24 0A    ;
-                STA $0A26,y                 ; $22:D419: 99 26 0A    ;
-                LDA $03                     ; $22:D41C: A5 03       ;
-                BEQ CODE_22D422             ; $22:D41E: F0 02       ;
-                LDA #$01                    ; $22:D420: A9 01       ;
-CODE_22D422:    ORA #$02                    ; $22:D422: 09 02       ;
-                STA $0A21,y                 ; $22:D424: 99 21 0A    ;
-                STA $0A23,y                 ; $22:D427: 99 23 0A    ;
-                STA $0A25,y                 ; $22:D42A: 99 25 0A    ;
-                STA $0A27,y                 ; $22:D42D: 99 27 0A    ;
-                PLY                         ; $22:D430: 7A          ;
-                LDA $56,x                   ; $22:D431: B5 56       ;
-                XBA                         ; $22:D433: EB          ;
-                LDA $71,x                   ; $22:D434: B5 71       ;
-                REP #$20                    ; $22:D436: C2 20       ;
-                SEC                         ; $22:D438: 38          ;
-                SBC $0216                   ; $22:D439: ED 16 02    ;
-                STA $00                     ; $22:D43C: 85 00       ;
-                CLC                         ; $22:D43E: 18          ;
-                ADC #$0010                  ; $22:D43F: 69 10 00    ;
-                STA $02                     ; $22:D442: 85 02       ;
-                SEP #$20                    ; $22:D444: E2 20       ;
-                LDA $00                     ; $22:D446: A5 00       ;
-                CMP #$EF                    ; $22:D448: C9 EF       ;
-                BCS CODE_22D450                     ; $22:D44A: B0 04       ;
-                LDA $01                     ; $22:D44C: A5 01       ;
-                BEQ CODE_22D458             ; $22:D44E: F0 08       ;
-CODE_22D450:    LDA #$F0                    ; $22:D450: A9 F0       ;
-                STA $0811,y                 ; $22:D452: 99 11 08    ;
-                STA $0815,y                 ; $22:D455: 99 15 08    ;
-CODE_22D458:    LDA $02                     ; $22:D458: A5 02       ;
-                CMP #$EF                    ; $22:D45A: C9 EF       ;
-                BCS CODE_22D462                     ; $22:D45C: B0 04       ;
-                LDA $03                     ; $22:D45E: A5 03       ;
-                BEQ CODE_22D46A             ; $22:D460: F0 08       ;
-CODE_22D462:    LDA #$F0                    ; $22:D462: A9 F0       ;
-                STA $0819,y                 ; $22:D464: 99 19 08    ;
-                STA $081D,y                 ; $22:D467: 99 1D 08    ;
-CODE_22D46A:    LDA $56,x                   ; $22:D46A: B5 56       ;
-                XBA                         ; $22:D46C: EB          ;
-                LDA $0691,x                 ; $22:D46D: BD 91 06    ;
-                REP #$20                    ; $22:D470: C2 20       ;
-                SEC                         ; $22:D472: 38          ;
-                SBC $0216                   ; $22:D473: ED 16 02    ;
-                STA $00                     ; $22:D476: 85 00       ;
-                CLC                         ; $22:D478: 18          ;
-                ADC #$0010                  ; $22:D479: 69 10 00    ;
-                STA $02                     ; $22:D47C: 85 02       ;
-                SEP #$20                    ; $22:D47E: E2 20       ;
-                LDA $00                     ; $22:D480: A5 00       ;
-                CMP #$EF                    ; $22:D482: C9 EF       ;
-                BCS CODE_22D48A                     ; $22:D484: B0 04       ;
-                LDA $01                     ; $22:D486: A5 01       ;
-                BEQ CODE_22D492             ; $22:D488: F0 08       ;
-CODE_22D48A:    LDA #$F0                    ; $22:D48A: A9 F0       ;
-                STA $0801,y                 ; $22:D48C: 99 01 08    ;
-                STA $0805,y                 ; $22:D48F: 99 05 08    ;
-CODE_22D492:    LDA $02                     ; $22:D492: A5 02       ;
-                CMP #$EF                    ; $22:D494: C9 EF       ;
-                BCS CODE_22D49C                     ; $22:D496: B0 04       ;
-                LDA $03                     ; $22:D498: A5 03       ;
-                BEQ CODE_22D4A4             ; $22:D49A: F0 08       ;
-CODE_22D49C:    LDA #$F0                    ; $22:D49C: A9 F0       ;
-                STA $0809,y                 ; $22:D49E: 99 09 08    ;
-                STA $080D,y                 ; $22:D4A1: 99 0D 08    ;
-CODE_22D4A4:    SEP #$10                    ; $22:D4A4: E2 10       ;
-                RTS                         ; $22:D4A6: 60          ;
+CODE_22CF5A:    INY                     ; $22:CF5A: C8          ;
+
+CODE_22CF5B:    STY $0F                 ; $22:CF5B: 84 0F       ;
+
+                JSR CODE_22D10B         ; $22:CF5D: 20 0B D1    ;
+
+                INC $9E,x               ; $22:CF60: F6 9E       ;
+
+                INC $9E,x               ; $22:CF62: F6 9E       ;
+
+                INC $9E,x               ; $22:CF64: F6 9E       ;
+
+                LDA $077B,x             ; $22:CF66: BD 7B 07    ;
+
+                BEQ CODE_22CF95         ; $22:CF69: F0 2A       ;
+
+                LDA $1CDC,x             ; $22:CF6B: BD DC 1C    ;
+
+                STA $00                 ; $22:CF6E: 85 00       ;
+
+                LDY #$03                ; $22:CF70: A0 03       ;
+
+CODE_22CF72:    LDA $026A,x             ; $22:CF72: BD 6A 02    ;
+
+                XBA                     ; $22:CF75: EB          ;
+
+                LDA $1CB4,x             ; $22:CF76: BD B4 1C    ;
+
+                CMP $00                 ; $22:CF79: C5 00       ;
+
+                BCS CODE_22CF8B         ; $22:CF7B: B0 0E       ;
+
+                REP #$20                ; $22:CF7D: C2 20       ;
+
+                ADC #$0002              ; $22:CF7F: 69 02 00    ;
+
+                SEP #$20                ; $22:CF82: E2 20       ;
+
+                STA $1CB4,x             ; $22:CF84: 9D B4 1C    ;
+
+                XBA                     ; $22:CF87: EB          ;
+
+                STA $026A,x             ; $22:CF88: 9D 6A 02    ;
+
+CODE_22CF8B:    INX                     ; $22:CF8B: E8          ;
+
+                INX                     ; $22:CF8C: E8          ;
+
+                INX                     ; $22:CF8D: E8          ;
+
+                INX                     ; $22:CF8E: E8          ;
+
+                INX                     ; $22:CF8F: E8          ;
+
+                DEY                     ; $22:CF90: 88          ;
+
+                BPL CODE_22CF72         ; $22:CF91: 10 DF       ;
+
+                LDX $9B                 ; $22:CF93: A6 9B       ;
+
+CODE_22CF95:    LDA $71,x               ; $22:CF95: B5 71       ;
+
+                CMP $1CDC,x             ; $22:CF97: DD DC 1C    ;
+
+                BCC CODE_22D00C         ; $22:CF9A: 90 70       ;
+
+                LDA #$01                ; $22:CF9C: A9 01       ;
+
+                STA $077B,x             ; $22:CF9E: 9D 7B 07    ;
+
+                LDA $9E,x               ; $22:CFA1: B5 9E       ;
+
+                PHA                     ; $22:CFA3: 48          ;
+
+                JSL CODE_278B67         ; $22:CFA4: 22 67 8B 27 ;
+
+                PLA                     ; $22:CFA8: 68          ;
+
+                CMP #$28                ; $22:CFA9: C9 28       ;
+
+                BCC CODE_22CFB6         ; $22:CFAB: 90 09       ;
+
+                LDA #$E8                ; $22:CFAD: A9 E8       ;
+
+                STA $9E,x               ; $22:CFAF: 95 9E       ;
+
+                LDA #$00                ; $22:CFB1: A9 00       ;
+
+                STA $1FD2,x             ; $22:CFB3: 9D D2 1F    ;
+
+CODE_22CFB6:    LDA #$03                ; $22:CFB6: A9 03       ;
+
+                LDY $0F                 ; $22:CFB8: A4 0F       ;
+
+                BEQ CODE_22CFBE         ; $22:CFBA: F0 02       ;
+
+                LDA #$00                ; $22:CFBC: A9 00       ;
+
+CODE_22CFBE:    STA $0776,x             ; $22:CFBE: 9D 76 07    ;
+
+                LDA $1FD2,x             ; $22:CFC1: BD D2 1F    ;
+
+                AND.w DATA_21C490,y     ; $22:CFC4: 39 90 C4    ;
+
+                BNE CODE_22CFDD         ; $22:CFC7: D0 14       ;
+
+                LDA.w DATA_21C492,y     ; $22:CFC9: B9 92 C4    ;
+
+                PHA                     ; $22:CFCC: 48          ;
+
+                LDA $1CD7,x             ; $22:CFCD: BD D7 1C    ;
+
+                CMP $5F,x               ; $22:CFD0: D5 5F       ;
+
+                BCS CODE_22CFDA         ; $22:CFD2: B0 06       ;
+
+                PLA                     ; $22:CFD4: 68          ;
+
+                EOR #$FF                ; $22:CFD5: 49 FF       ;
+
+                ADC #$01                ; $22:CFD7: 69 01       ;
+
+                PHA                     ; $22:CFD9: 48          ;
+
+CODE_22CFDA:    PLA                     ; $22:CFDA: 68          ;
+
+                STA $8C,x               ; $22:CFDB: 95 8C       ;
+
+CODE_22CFDD:    LDA $0783,x             ; $22:CFDD: BD 83 07    ;
+
+                AND #$D5                ; $22:CFE0: 29 D5       ;
+
+                BNE CODE_22CFE8         ; $22:CFE2: D0 04       ;
+
+                LDA #$00                ; $22:CFE4: A9 00       ;
+
+                STA $8C,x               ; $22:CFE6: 95 8C       ;
+
+CODE_22CFE8:    LDA $5F,x               ; $22:CFE8: B5 5F       ;
+
+                LDY $0679,x             ; $22:CFEA: BC 79 06    ;
+
+                BNE CODE_22CFF6         ; $22:CFED: D0 07       ;
+
+                CMP $1CC8,x             ; $22:CFEF: DD C8 1C    ;
+
+                BCC CODE_22CFFB         ; $22:CFF2: 90 07       ;
+
+                BCS CODE_22D00C         ; $22:CFF4: B0 16       ;
+
+CODE_22CFF6:    CMP $1CCD,x             ; $22:CFF6: DD CD 1C    ;
+
+                BCC CODE_22D00C         ; $22:CFF9: 90 11       ;
+
+CODE_22CFFB:    LDY $0F                 ; $22:CFFB: A4 0F       ;
+
+                LDA.w DATA_21C492,y     ; $22:CFFD: B9 92 C4    ;
+
+                BCC CODE_22D007         ; $22:D000: 90 05       ;
+
+                EOR #$FF                ; $22:D002: 49 FF       ;
+
+                CLC                     ; $22:D004: 18          ;
+
+                ADC #$01                ; $22:D005: 69 01       ;
+
+CODE_22D007:    STA $8C,x               ; $22:D007: 95 8C       ;
+
+                JSR CODE_22D10B         ; $22:D009: 20 0B D1    ;
+
+CODE_22D00C:    RTS                     ; $22:D00C: 60          ;
+
+CODE_22D00D:    JSR CODE_22CBA6         ; $22:D00D: 20 A6 CB    ;
+
+                LDA $0543               ; $22:D010: AD 43 05    ;
+
+                STA $D8                 ; $22:D013: 85 D8       ;
+
+                LDA $0542               ; $22:D015: AD 42 05    ;
+
+                STA $D9                 ; $22:D018: 85 D9       ;
+
+                LDA $56,x               ; $22:D01A: B5 56       ;
+
+                XBA                     ; $22:D01C: EB          ;
+
+                LDA $71,x               ; $22:D01D: B5 71       ;
+
+                REP #$20                ; $22:D01F: C2 20       ;
+
+                SEC                     ; $22:D021: 38          ;
+
+                SBC $D8                 ; $22:D022: E5 D8       ;
+
+                PHA                     ; $22:D024: 48          ;
+
+                LDA $C6,x               ; $22:D025: B5 C6       ;
+
+                CLC                     ; $22:D027: 18          ;
+
+                ADC #$0030              ; $22:D028: 69 30 00    ;
+
+                STA $C6,x               ; $22:D02B: 95 C6       ;
+
+                PLA                     ; $22:D02D: 68          ;
+
+                CMP #$00C0              ; $22:D02E: C9 C0 00    ;
+
+                BCC CODE_22D03B         ; $22:D031: 90 08       ;
+
+                CMP #$FFC0              ; $22:D033: C9 C0 FF    ;
+
+                BCS CODE_22D03B         ; $22:D036: B0 03       ;
+
+                SEP #$20                ; $22:D038: E2 20       ;
+
+                RTS                     ; $22:D03A: 60          ;
+
+CODE_22D03B:    SEP #$20                ; $22:D03B: E2 20       ;
+
+                LDA #$03                ; $22:D03D: A9 03       ;
+
+                STA $0F                 ; $22:D03F: 85 0F       ;
+
+CODE_22D041:    LDA $0F                 ; $22:D041: A5 0F       ;
+
+                ASL A                   ; $22:D043: 0A          ;
+
+                ASL A                   ; $22:D044: 0A          ;
+
+                ADC $0F                 ; $22:D045: 65 0F       ;
+
+                ADC $9B                 ; $22:D047: 65 9B       ;
+
+                TAY                     ; $22:D049: A8          ;
+
+                LDA $0542               ; $22:D04A: AD 42 05    ;
+
+                STA $DB                 ; $22:D04D: 85 DB       ;
+
+                LDA $0543               ; $22:D04F: AD 43 05    ;
+
+                STA $DA                 ; $22:D052: 85 DA       ;
+
+                LDA $026A,y             ; $22:D054: B9 6A 02    ;
+
+                XBA                     ; $22:D057: EB          ;
+
+                LDA $1CB4,y             ; $22:D058: B9 B4 1C    ;
+
+                REP #$20                ; $22:D05B: C2 20       ;
+
+                SEC                     ; $22:D05D: 38          ;
+
+                SBC $DA                 ; $22:D05E: E5 DA       ;
+
+                CLC                     ; $22:D060: 18          ;
+
+                ADC #$0004              ; $22:D061: 69 04 00    ;
+
+                STA $DA                 ; $22:D064: 85 DA       ;
+
+                CLC                     ; $22:D066: 18          ;
+
+                ADC #$0008              ; $22:D067: 69 08 00    ;
+
+                STA $DC                 ; $22:D06A: 85 DC       ;
+
+                SEP #$20                ; $22:D06C: E2 20       ;
+
+                STA $00                 ; $22:D06E: 85 00       ;
+
+                LDA $0256,y             ; $22:D070: B9 56 02    ;
+
+                XBA                     ; $22:D073: EB          ;
+
+                LDA $1CA0,y             ; $22:D074: B9 A0 1C    ;
+
+                REP #$20                ; $22:D077: C2 20       ;
+
+                CLC                     ; $22:D079: 18          ;
+
+                ADC #$0004              ; $22:D07A: 69 04 00    ;
+
+                SEC                     ; $22:D07D: 38          ;
+
+                SBC $0210               ; $22:D07E: ED 10 02    ;
+
+                STA $D8                 ; $22:D081: 85 D8       ;
+
+                SEP #$20                ; $22:D083: E2 20       ;
+
+                STA $01                 ; $22:D085: 85 01       ;
+
+                REP #$30                ; $22:D087: C2 30       ;
+
+                LDA $C6,x               ; $22:D089: B5 C6       ;
+
+                SEC                     ; $22:D08B: 38          ;
+
+                SBC #$0008              ; $22:D08C: E9 08 00    ;
+
+                STA $C6,x               ; $22:D08F: 95 C6       ;
+
+                TAY                     ; $22:D091: A8          ;
+
+                SEP #$20                ; $22:D092: E2 20       ;
+
+                REP #$20                ; $22:D094: C2 20       ;
+
+                LDA $DA                 ; $22:D096: A5 DA       ;
+
+                CMP #$00C0              ; $22:D098: C9 C0 00    ;
+
+                BCC CODE_22D0A4         ; $22:D09B: 90 07       ;
+
+                CMP #$FFE0              ; $22:D09D: C9 E0 FF    ;
+
+                BCS CODE_22D0A4         ; $22:D0A0: B0 02       ;
+
+                BRA CODE_22D0AB         ; $22:D0A2: 80 07       ;
+
+CODE_22D0A4:    SEP #$20                ; $22:D0A4: E2 20       ;
+
+                LDA $DA                 ; $22:D0A6: A5 DA       ;
+
+                STA $0801,y             ; $22:D0A8: 99 01 08    ;
+
+CODE_22D0AB:    REP #$20                ; $22:D0AB: C2 20       ;
+
+                LDA $DC                 ; $22:D0AD: A5 DC       ;
+
+                CMP #$00C0              ; $22:D0AF: C9 C0 00    ;
+
+                BCC CODE_22D0BB         ; $22:D0B2: 90 07       ;
+
+                CMP #$FFE0              ; $22:D0B4: C9 E0 FF    ;
+
+                BCS CODE_22D0BB         ; $22:D0B7: B0 02       ;
+
+                BRA CODE_22D0C2         ; $22:D0B9: 80 07       ;
+
+CODE_22D0BB:    SEP #$20                ; $22:D0BB: E2 20       ;
+
+                LDA $DC                 ; $22:D0BD: A5 DC       ;
+
+                STA $0805,y             ; $22:D0BF: 99 05 08    ;
+
+CODE_22D0C2:    SEP #$20                ; $22:D0C2: E2 20       ;
+
+                LDA $01                 ; $22:D0C4: A5 01       ;
+
+                STA $0800,y             ; $22:D0C6: 99 00 08    ;
+
+                STA $0804,y             ; $22:D0C9: 99 04 08    ;
+
+                LDA #$9A                ; $22:D0CC: A9 9A       ;
+
+                STA $0802,y             ; $22:D0CE: 99 02 08    ;
+
+                INC A                   ; $22:D0D1: 1A          ;
+
+                STA $0806,y             ; $22:D0D2: 99 06 08    ;
+
+                LDA $0689,x             ; $22:D0D5: BD 89 06    ;
+
+                CMP #$2F                ; $22:D0D8: C9 2F       ;
+
+                LDA #$05                ; $22:D0DA: A9 05       ;
+
+                BCC CODE_22D0E4         ; $22:D0DC: 90 06       ;
+
+                LDA $0565               ; $22:D0DE: AD 65 05    ;
+
+                LSR A                   ; $22:D0E1: 4A          ;
+
+                AND #$03                ; $22:D0E2: 29 03       ;
+
+CODE_22D0E4:    ASL A                   ; $22:D0E4: 0A          ;
+
+                ORA #$20                ; $22:D0E5: 09 20       ;
+
+                STA $0803,y             ; $22:D0E7: 99 03 08    ;
+
+                STA $0807,y             ; $22:D0EA: 99 07 08    ;
+
+                REP #$20                ; $22:D0ED: C2 20       ;
+
+                TYA                     ; $22:D0EF: 98          ;
+
+                LSR A                   ; $22:D0F0: 4A          ;
+
+                LSR A                   ; $22:D0F1: 4A          ;
+
+                TAY                     ; $22:D0F2: A8          ;
+
+                SEP #$20                ; $22:D0F3: E2 20       ;
+
+                LDA $D9                 ; $22:D0F5: A5 D9       ;
+
+                AND #$01                ; $22:D0F7: 29 01       ;
+
+                STA $0A20,y             ; $22:D0F9: 99 20 0A    ;
+
+                STA $0A21,y             ; $22:D0FC: 99 21 0A    ;
+
+                SEP #$10                ; $22:D0FF: E2 10       ;
+
+                DEC $0F                 ; $22:D101: C6 0F       ;
+
+                BMI CODE_22D108         ; $22:D103: 30 03       ;
+
+                BRL CODE_22D041         ; $22:D105: 82 39 FF    ;
+
+CODE_22D108:    LDX $9B                 ; $22:D108: A6 9B       ;
+
+                RTS                     ; $22:D10A: 60          ;
+
+CODE_22D10B:    JSL CODE_27A7E4         ; $22:D10B: 22 E4 A7 27 ;
+
+                STA $00                 ; $22:D10F: 85 00       ;
+
+                JSL CODE_27A7EF         ; $22:D111: 22 EF A7 27 ;
+
+                STA $01                 ; $22:D115: 85 01       ;
+
+                STZ $02                 ; $22:D117: 64 02       ;
+
+                CMP #$80                ; $22:D119: C9 80       ;
+
+                BCC CODE_22D11F         ; $22:D11B: 90 02       ;
+
+                DEC $02                 ; $22:D11D: C6 02       ;
+
+CODE_22D11F:    LDY $0776,x             ; $22:D11F: BC 76 07    ;
+
+                LDA $8C,x               ; $22:D122: B5 8C       ;
+
+                BPL CODE_22D129         ; $22:D124: 10 03       ;
+
+                BRL CODE_22D1AF         ; $22:D126: 82 86 00    ;
+
+CODE_22D129:    LDA $1CA0,x             ; $22:D129: BD A0 1C    ;
+
+                CLC                     ; $22:D12C: 18          ;
+
+                ADC.w DATA_21C48C,y     ; $22:D12D: 79 8C C4    ;
+
+                CMP $5F,x               ; $22:D130: D5 5F       ;
+
+                BCS CODE_22D1AC         ; $22:D132: B0 78       ;
+
+                LDA $0256,x             ; $22:D134: BD 56 02    ;
+
+                XBA                     ; $22:D137: EB          ;
+
+                LDA $1CA0,x             ; $22:D138: BD A0 1C    ;
+
+                REP #$20                ; $22:D13B: C2 20       ;
+
+                CLC                     ; $22:D13D: 18          ;
+
+                ADC $01                 ; $22:D13E: 65 01       ;
+
+                SEP #$20                ; $22:D140: E2 20       ;
+
+                STA $1CA0,x             ; $22:D142: 9D A0 1C    ;
+
+                XBA                     ; $22:D145: EB          ;
+
+                STA $0256,x             ; $22:D146: 9D 56 02    ;
+
+                LDA $1CA5,x             ; $22:D149: BD A5 1C    ;
+
+                CLC                     ; $22:D14C: 18          ;
+
+                ADC.w DATA_21C48C,y     ; $22:D14D: 79 8C C4    ;
+
+                CMP $1CA0,x             ; $22:D150: DD A0 1C    ;
+
+                BCS CODE_22D1AC         ; $22:D153: B0 57       ;
+
+                LDA $025B,x             ; $22:D155: BD 5B 02    ;
+
+                XBA                     ; $22:D158: EB          ;
+
+                LDA $1CA5,x             ; $22:D159: BD A5 1C    ;
+
+                REP #$20                ; $22:D15C: C2 20       ;
+
+                CLC                     ; $22:D15E: 18          ;
+
+                ADC $01                 ; $22:D15F: 65 01       ;
+
+                SEP #$20                ; $22:D161: E2 20       ;
+
+                STA $1CA5,x             ; $22:D163: 9D A5 1C    ;
+
+                XBA                     ; $22:D166: EB          ;
+
+                STA $025B,x             ; $22:D167: 9D 5B 02    ;
+
+                LDA $1CAA,x             ; $22:D16A: BD AA 1C    ;
+
+                CLC                     ; $22:D16D: 18          ;
+
+                ADC.w DATA_21C48C,y     ; $22:D16E: 79 8C C4    ;
+
+                CMP $1CA5,x             ; $22:D171: DD A5 1C    ;
+
+                BCS CODE_22D1AC         ; $22:D174: B0 36       ;
+
+                LDA $0260,x             ; $22:D176: BD 60 02    ;
+
+                XBA                     ; $22:D179: EB          ;
+
+                LDA $1CAA,x             ; $22:D17A: BD AA 1C    ;
+
+                REP #$20                ; $22:D17D: C2 20       ;
+
+                CLC                     ; $22:D17F: 18          ;
+
+                ADC $01                 ; $22:D180: 65 01       ;
+
+                SEP #$20                ; $22:D182: E2 20       ;
+
+                STA $1CAA,x             ; $22:D184: 9D AA 1C    ;
+
+                XBA                     ; $22:D187: EB          ;
+
+                STA $0260,x             ; $22:D188: 9D 60 02    ;
+
+                LDA $1CAF,x             ; $22:D18B: BD AF 1C    ;
+
+                CLC                     ; $22:D18E: 18          ;
+
+                ADC.w DATA_21C48C,y     ; $22:D18F: 79 8C C4    ;
+
+                CMP $1CAA,x             ; $22:D192: DD AA 1C    ;
+
+                BCS CODE_22D1AC         ; $22:D195: B0 15       ;
+
+                LDA $0265,x             ; $22:D197: BD 65 02    ;
+
+                XBA                     ; $22:D19A: EB          ;
+
+                LDA $1CAF,x             ; $22:D19B: BD AF 1C    ;
+
+                REP #$20                ; $22:D19E: C2 20       ;
+
+                CLC                     ; $22:D1A0: 18          ;
+
+                ADC $01                 ; $22:D1A1: 65 01       ;
+
+                SEP #$20                ; $22:D1A3: E2 20       ;
+
+                STA $1CAF,x             ; $22:D1A5: 9D AF 1C    ;
+
+                XBA                     ; $22:D1A8: EB          ;
+
+                STA $0265,x             ; $22:D1A9: 9D 65 02    ;
+
+CODE_22D1AC:    JMP CODE_22D232         ; $22:D1AC: 4C 32 D2    ;
+
+CODE_22D1AF:    LDA $1CA0,x             ; $22:D1AF: BD A0 1C    ;
+
+                SEC                     ; $22:D1B2: 38          ;
+
+                SBC.w DATA_21C48C,y     ; $22:D1B3: F9 8C C4    ;
+
+                CMP $5F,x               ; $22:D1B6: D5 5F       ;
+
+                BCC CODE_22D232         ; $22:D1B8: 90 78       ;
+
+                LDA $0256,x             ; $22:D1BA: BD 56 02    ;
+
+                XBA                     ; $22:D1BD: EB          ;
+
+                LDA $1CA0,x             ; $22:D1BE: BD A0 1C    ;
+
+                REP #$20                ; $22:D1C1: C2 20       ;
+
+                CLC                     ; $22:D1C3: 18          ;
+
+                ADC $01                 ; $22:D1C4: 65 01       ;
+
+                SEP #$20                ; $22:D1C6: E2 20       ;
+
+                STA $1CA0,x             ; $22:D1C8: 9D A0 1C    ;
+
+                XBA                     ; $22:D1CB: EB          ;
+
+                STA $0256,x             ; $22:D1CC: 9D 56 02    ;
+
+                LDA $1CA5,x             ; $22:D1CF: BD A5 1C    ;
+
+                SEC                     ; $22:D1D2: 38          ;
+
+                SBC.w DATA_21C48C,y     ; $22:D1D3: F9 8C C4    ;
+
+                CMP $1CA0,x             ; $22:D1D6: DD A0 1C    ;
+
+                BCC CODE_22D232         ; $22:D1D9: 90 57       ;
+
+                LDA $025B,x             ; $22:D1DB: BD 5B 02    ;
+
+                XBA                     ; $22:D1DE: EB          ;
+
+                LDA $1CA5,x             ; $22:D1DF: BD A5 1C    ;
+
+                REP #$20                ; $22:D1E2: C2 20       ;
+
+                CLC                     ; $22:D1E4: 18          ;
+
+                ADC $01                 ; $22:D1E5: 65 01       ;
+
+                SEP #$20                ; $22:D1E7: E2 20       ;
+
+                STA $1CA5,x             ; $22:D1E9: 9D A5 1C    ;
+
+                XBA                     ; $22:D1EC: EB          ;
+
+                STA $025B,x             ; $22:D1ED: 9D 5B 02    ;
+
+                LDA $1CAA,x             ; $22:D1F0: BD AA 1C    ;
+
+                SEC                     ; $22:D1F3: 38          ;
+
+                SBC.w DATA_21C48C,y     ; $22:D1F4: F9 8C C4    ;
+
+                CMP $1CA5,x             ; $22:D1F7: DD A5 1C    ;
+
+                BCC CODE_22D232         ; $22:D1FA: 90 36       ;
+
+                LDA $0260,x             ; $22:D1FC: BD 60 02    ;
+
+                XBA                     ; $22:D1FF: EB          ;
+
+                LDA $1CAA,x             ; $22:D200: BD AA 1C    ;
+
+                REP #$20                ; $22:D203: C2 20       ;
+
+                CLC                     ; $22:D205: 18          ;
+
+                ADC $01                 ; $22:D206: 65 01       ;
+
+                SEP #$20                ; $22:D208: E2 20       ;
+
+                STA $1CAA,x             ; $22:D20A: 9D AA 1C    ;
+
+                XBA                     ; $22:D20D: EB          ;
+
+                STA $0260,x             ; $22:D20E: 9D 60 02    ;
+
+                LDA $1CAF,x             ; $22:D211: BD AF 1C    ;
+
+                SEC                     ; $22:D214: 38          ;
+
+                SBC.w DATA_21C48C,y     ; $22:D215: F9 8C C4    ;
+
+                CMP $1CAA,x             ; $22:D218: DD AA 1C    ;
+
+                BCC CODE_22D232         ; $22:D21B: 90 15       ;
+
+                LDA $0265,x             ; $22:D21D: BD 65 02    ;
+
+                XBA                     ; $22:D220: EB          ;
+
+                LDA $1CAF,x             ; $22:D221: BD AF 1C    ;
+
+                REP #$20                ; $22:D224: C2 20       ;
+
+                CLC                     ; $22:D226: 18          ;
+
+                ADC $01                 ; $22:D227: 65 01       ;
+
+                SEP #$20                ; $22:D229: E2 20       ;
+
+                STA $1CAF,x             ; $22:D22B: 9D AF 1C    ;
+
+                XBA                     ; $22:D22E: EB          ;
+
+                STA $0265,x             ; $22:D22F: 9D 65 02    ;
+
+CODE_22D232:    STZ $01                 ; $22:D232: 64 01       ;
+
+                LDA $00                 ; $22:D234: A5 00       ;
+
+                CMP #$80                ; $22:D236: C9 80       ;
+
+                BCC CODE_22D23C         ; $22:D238: 90 02       ;
+
+                DEC $01                 ; $22:D23A: C6 01       ;
+
+CODE_22D23C:    LDA $9E,x               ; $22:D23C: B5 9E       ;
+
+                BPL CODE_22D243         ; $22:D23E: 10 03       ;
+
+                BRL CODE_22D2C7         ; $22:D240: 82 84 00    ;
+
+CODE_22D243:    LDA $1CB4,x             ; $22:D243: BD B4 1C    ;
+
+                CLC                     ; $22:D246: 18          ;
+
+                ADC.w DATA_21C488,y     ; $22:D247: 79 88 C4    ;
+
+                CMP $71,x               ; $22:D24A: D5 71       ;
+
+                BCS CODE_22D2C6         ; $22:D24C: B0 78       ;
+
+                LDA $026A,x             ; $22:D24E: BD 6A 02    ;
+
+                XBA                     ; $22:D251: EB          ;
+
+                LDA $1CB4,x             ; $22:D252: BD B4 1C    ;
+
+                REP #$20                ; $22:D255: C2 20       ;
+
+                CLC                     ; $22:D257: 18          ;
+
+                ADC $00                 ; $22:D258: 65 00       ;
+
+                SEP #$20                ; $22:D25A: E2 20       ;
+
+                STA $1CB4,x             ; $22:D25C: 9D B4 1C    ;
+
+                XBA                     ; $22:D25F: EB          ;
+
+                STA $026A,x             ; $22:D260: 9D 6A 02    ;
+
+                LDA $1CB9,x             ; $22:D263: BD B9 1C    ;
+
+                CLC                     ; $22:D266: 18          ;
+
+                ADC.w DATA_21C488,y     ; $22:D267: 79 88 C4    ;
+
+                CMP $1CB4,x             ; $22:D26A: DD B4 1C    ;
+
+                BCS CODE_22D2C6         ; $22:D26D: B0 57       ;
+
+                LDA $026F,x             ; $22:D26F: BD 6F 02    ;
+
+                XBA                     ; $22:D272: EB          ;
+
+                LDA $1CB9,x             ; $22:D273: BD B9 1C    ;
+
+                REP #$20                ; $22:D276: C2 20       ;
+
+                CLC                     ; $22:D278: 18          ;
+
+                ADC $00                 ; $22:D279: 65 00       ;
+
+                SEP #$20                ; $22:D27B: E2 20       ;
+
+                STA $1CB9,x             ; $22:D27D: 9D B9 1C    ;
+
+                XBA                     ; $22:D280: EB          ;
+
+                STA $026F,x             ; $22:D281: 9D 6F 02    ;
+
+                LDA $1CBE,x             ; $22:D284: BD BE 1C    ;
+
+                CLC                     ; $22:D287: 18          ;
+
+                ADC.w DATA_21C488,y     ; $22:D288: 79 88 C4    ;
+
+                CMP $1CB9,x             ; $22:D28B: DD B9 1C    ;
+
+                BCS CODE_22D2C6         ; $22:D28E: B0 36       ;
+
+                LDA $0274,x             ; $22:D290: BD 74 02    ;
+
+                XBA                     ; $22:D293: EB          ;
+
+                LDA $1CBE,x             ; $22:D294: BD BE 1C    ;
+
+                REP #$20                ; $22:D297: C2 20       ;
+
+                CLC                     ; $22:D299: 18          ;
+
+                ADC $00                 ; $22:D29A: 65 00       ;
+
+                SEP #$20                ; $22:D29C: E2 20       ;
+
+                STA $1CBE,x             ; $22:D29E: 9D BE 1C    ;
+
+                XBA                     ; $22:D2A1: EB          ;
+
+                STA $0274,x             ; $22:D2A2: 9D 74 02    ;
+
+                LDA $1CC3,x             ; $22:D2A5: BD C3 1C    ;
+
+                CLC                     ; $22:D2A8: 18          ;
+
+                ADC.w DATA_21C488,y     ; $22:D2A9: 79 88 C4    ;
+
+                CMP $1CBE,x             ; $22:D2AC: DD BE 1C    ;
+
+                BCS CODE_22D2C6         ; $22:D2AF: B0 15       ;
+
+                LDA $0279,x             ; $22:D2B1: BD 79 02    ;
+
+                XBA                     ; $22:D2B4: EB          ;
+
+                LDA $1CC3,x             ; $22:D2B5: BD C3 1C    ;
+
+                REP #$20                ; $22:D2B8: C2 20       ;
+
+                CLC                     ; $22:D2BA: 18          ;
+
+                ADC $00                 ; $22:D2BB: 65 00       ;
+
+                SEP #$20                ; $22:D2BD: E2 20       ;
+
+                STA $1CC3,x             ; $22:D2BF: 9D C3 1C    ;
+
+                XBA                     ; $22:D2C2: EB          ;
+
+                STA $0279,x             ; $22:D2C3: 9D 79 02    ;
+
+CODE_22D2C6:    RTS                     ; $22:D2C6: 60          ;
+
+CODE_22D2C7:    LDA $1CB4,x             ; $22:D2C7: BD B4 1C    ;
+
+                SEC                     ; $22:D2CA: 38          ;
+
+                SBC.w DATA_21C488,y     ; $22:D2CB: F9 88 C4    ;
+
+                CMP $71,x               ; $22:D2CE: D5 71       ;
+
+                BCC CODE_22D34A         ; $22:D2D0: 90 78       ;
+
+                LDA $026A,x             ; $22:D2D2: BD 6A 02    ;
+
+                XBA                     ; $22:D2D5: EB          ;
+
+                LDA $1CB4,x             ; $22:D2D6: BD B4 1C    ;
+
+                REP #$20                ; $22:D2D9: C2 20       ;
+
+                CLC                     ; $22:D2DB: 18          ;
+
+                ADC $00                 ; $22:D2DC: 65 00       ;
+
+                SEP #$20                ; $22:D2DE: E2 20       ;
+
+                STA $1CB4,x             ; $22:D2E0: 9D B4 1C    ;
+
+                XBA                     ; $22:D2E3: EB          ;
+
+                STA $026A,x             ; $22:D2E4: 9D 6A 02    ;
+
+                LDA $1CB9,x             ; $22:D2E7: BD B9 1C    ;
+
+                SEC                     ; $22:D2EA: 38          ;
+
+                SBC.w DATA_21C488,y     ; $22:D2EB: F9 88 C4    ;
+
+                CMP $1CB4,x             ; $22:D2EE: DD B4 1C    ;
+
+                BCC CODE_22D34A         ; $22:D2F1: 90 57       ;
+
+                LDA $026F,x             ; $22:D2F3: BD 6F 02    ;
+
+                XBA                     ; $22:D2F6: EB          ;
+
+                LDA $1CB9,x             ; $22:D2F7: BD B9 1C    ;
+
+                REP #$20                ; $22:D2FA: C2 20       ;
+
+                CLC                     ; $22:D2FC: 18          ;
+
+                ADC $00                 ; $22:D2FD: 65 00       ;
+
+                SEP #$20                ; $22:D2FF: E2 20       ;
+
+                STA $1CB9,x             ; $22:D301: 9D B9 1C    ;
+
+                XBA                     ; $22:D304: EB          ;
+
+                STA $026F,x             ; $22:D305: 9D 6F 02    ;
+
+                LDA $1CBE,x             ; $22:D308: BD BE 1C    ;
+
+                SEC                     ; $22:D30B: 38          ;
+
+                SBC.w DATA_21C488,y     ; $22:D30C: F9 88 C4    ;
+
+                CMP $1CB9,x             ; $22:D30F: DD B9 1C    ;
+
+                BCC CODE_22D34A         ; $22:D312: 90 36       ;
+
+                LDA $0274,x             ; $22:D314: BD 74 02    ;
+
+                XBA                     ; $22:D317: EB          ;
+
+                LDA $1CBE,x             ; $22:D318: BD BE 1C    ;
+
+                REP #$20                ; $22:D31B: C2 20       ;
+
+                CLC                     ; $22:D31D: 18          ;
+
+                ADC $00                 ; $22:D31E: 65 00       ;
+
+                SEP #$20                ; $22:D320: E2 20       ;
+
+                STA $1CBE,x             ; $22:D322: 9D BE 1C    ;
+
+                XBA                     ; $22:D325: EB          ;
+
+                STA $0274,x             ; $22:D326: 9D 74 02    ;
+
+                LDA $1CC3,x             ; $22:D329: BD C3 1C    ;
+
+                SEC                     ; $22:D32C: 38          ;
+
+                SBC.w DATA_21C488,y     ; $22:D32D: F9 88 C4    ;
+
+                CMP $1CBE,x             ; $22:D330: DD BE 1C    ;
+
+                BCC CODE_22D34A         ; $22:D333: 90 15       ;
+
+                LDA $0279,x             ; $22:D335: BD 79 02    ;
+
+                XBA                     ; $22:D338: EB          ;
+
+                LDA $1CC3,x             ; $22:D339: BD C3 1C    ;
+
+                REP #$20                ; $22:D33C: C2 20       ;
+
+                CLC                     ; $22:D33E: 18          ;
+
+                ADC $00                 ; $22:D33F: 65 00       ;
+
+                SEP #$20                ; $22:D341: E2 20       ;
+
+                STA $1CC3,x             ; $22:D343: 9D C3 1C    ;
+
+                XBA                     ; $22:D346: EB          ;
+
+                STA $0279,x             ; $22:D347: 9D 79 02    ;
+
+CODE_22D34A:    RTS                     ; $22:D34A: 60          ;
+
+CODE_22D34B:    LDA $0679,x             ; $22:D34B: BD 79 06    ;
+
+                AND #$BF                ; $22:D34E: 29 BF       ;
+
+                LDY $8C,x               ; $22:D350: B4 8C       ;
+
+                BEQ CODE_22D35B         ; $22:D352: F0 07       ;
+
+                BMI CODE_22D358         ; $22:D354: 30 02       ;
+
+                ORA #$40                ; $22:D356: 09 40       ;
+
+CODE_22D358:    STA $0679,x             ; $22:D358: 9D 79 06    ;
+
+CODE_22D35B:    RTS                     ; $22:D35B: 60          ;
+
+CODE_22D35C:    REP #$10                ; $22:D35C: C2 10       ;
+
+                LDY $00C6,x             ; $22:D35E: BC C6 00    ;
+
+                LDA $44,x               ; $22:D361: B5 44       ;
+
+                XBA                     ; $22:D363: EB          ;
+
+                LDA $5F,x               ; $22:D364: B5 5F       ;
+
+                REP #$20                ; $22:D366: C2 20       ;
+
+                SEC                     ; $22:D368: 38          ;
+
+                SBC $0210               ; $22:D369: ED 10 02    ;
+
+                STA $00                 ; $22:D36C: 85 00       ;
+
+                CLC                     ; $22:D36E: 18          ;
+
+                ADC #$0008              ; $22:D36F: 69 08 00    ;
+
+                STA $02                 ; $22:D372: 85 02       ;
+
+                SEP #$20                ; $22:D374: E2 20       ;
+
+                LDA $00                 ; $22:D376: A5 00       ;
+
+                STA $0810,y             ; $22:D378: 99 10 08    ;
+
+                STA $0818,y             ; $22:D37B: 99 18 08    ;
+
+                STA $0800,y             ; $22:D37E: 99 00 08    ;
+
+                STA $0808,y             ; $22:D381: 99 08 08    ;
+
+                LDA $02                 ; $22:D384: A5 02       ;
+
+                STA $0814,y             ; $22:D386: 99 14 08    ;
+
+                STA $081C,y             ; $22:D389: 99 1C 08    ;
+
+                STA $0804,y             ; $22:D38C: 99 04 08    ;
+
+                STA $080C,y             ; $22:D38F: 99 0C 08    ;
+
+                LDA $71,x               ; $22:D392: B5 71       ;
+
+                SEC                     ; $22:D394: 38          ;
+
+                SBC $0216               ; $22:D395: ED 16 02    ;
+
+                STA $0811,y             ; $22:D398: 99 11 08    ;
+
+                STA $0815,y             ; $22:D39B: 99 15 08    ;
+
+                CLC                     ; $22:D39E: 18          ;
+
+                ADC #$10                ; $22:D39F: 69 10       ;
+
+                STA $0819,y             ; $22:D3A1: 99 19 08    ;
+
+                STA $081D,y             ; $22:D3A4: 99 1D 08    ;
+
+                LDA $0691,x             ; $22:D3A7: BD 91 06    ;
+
+                DEC A                   ; $22:D3AA: 3A          ;
+
+                SEC                     ; $22:D3AB: 38          ;
+
+                SBC $0216               ; $22:D3AC: ED 16 02    ;
+
+                STA $0801,y             ; $22:D3AF: 99 01 08    ;
+
+                STA $0805,y             ; $22:D3B2: 99 05 08    ;
+
+                CLC                     ; $22:D3B5: 18          ;
+
+                ADC #$10                ; $22:D3B6: 69 10       ;
+
+                STA $0809,y             ; $22:D3B8: 99 09 08    ;
+
+                STA $080D,y             ; $22:D3BB: 99 0D 08    ;
+
+                LDA #$28                ; $22:D3BE: A9 28       ;
+
+                STA $0802,y             ; $22:D3C0: 99 02 08    ;
+
+                STA $0806,y             ; $22:D3C3: 99 06 08    ;
+
+                STA $080A,y             ; $22:D3C6: 99 0A 08    ;
+
+                STA $080E,y             ; $22:D3C9: 99 0E 08    ;
+
+                LDA #$12                ; $22:D3CC: A9 12       ;
+
+                STA $0803,y             ; $22:D3CE: 99 03 08    ;
+
+                STA $0807,y             ; $22:D3D1: 99 07 08    ;
+
+                STA $080B,y             ; $22:D3D4: 99 0B 08    ;
+
+                STA $080F,y             ; $22:D3D7: 99 0F 08    ;
+
+                LDA $0669,x             ; $22:D3DA: BD 69 06    ;
+
+                ASL A                   ; $22:D3DD: 0A          ;
+
+                ASL A                   ; $22:D3DE: 0A          ;
+
+                ORA #$A0                ; $22:D3DF: 09 A0       ;
+
+                STA $0812,y             ; $22:D3E1: 99 12 08    ;
+
+                STA $0816,y             ; $22:D3E4: 99 16 08    ;
+
+                INC A                   ; $22:D3E7: 1A          ;
+
+                INC A                   ; $22:D3E8: 1A          ;
+
+                STA $081A,y             ; $22:D3E9: 99 1A 08    ;
+
+                STA $081E,y             ; $22:D3EC: 99 1E 08    ;
+
+                LDA #$24                ; $22:D3EF: A9 24       ;
+
+                STA $0813,y             ; $22:D3F1: 99 13 08    ;
+
+                STA $081B,y             ; $22:D3F4: 99 1B 08    ;
+
+                LDA #$64                ; $22:D3F7: A9 64       ;
+
+                STA $0817,y             ; $22:D3F9: 99 17 08    ;
+
+                STA $081F,y             ; $22:D3FC: 99 1F 08    ;
+
+                PHY                     ; $22:D3FF: 5A          ;
+
+                REP #$20                ; $22:D400: C2 20       ;
+
+                TYA                     ; $22:D402: 98          ;
+
+                LSR A                   ; $22:D403: 4A          ;
+
+                LSR A                   ; $22:D404: 4A          ;
+
+                TAY                     ; $22:D405: A8          ;
+
+                SEP #$20                ; $22:D406: E2 20       ;
+
+                LDA $01                 ; $22:D408: A5 01       ;
+
+                BEQ CODE_22D40E         ; $22:D40A: F0 02       ;
+
+                LDA #$01                ; $22:D40C: A9 01       ;
+
+CODE_22D40E:    ORA #$02                ; $22:D40E: 09 02       ;
+
+                STA $0A20,y             ; $22:D410: 99 20 0A    ;
+
+                STA $0A22,y             ; $22:D413: 99 22 0A    ;
+
+                STA $0A24,y             ; $22:D416: 99 24 0A    ;
+
+                STA $0A26,y             ; $22:D419: 99 26 0A    ;
+
+                LDA $03                 ; $22:D41C: A5 03       ;
+
+                BEQ CODE_22D422         ; $22:D41E: F0 02       ;
+
+                LDA #$01                ; $22:D420: A9 01       ;
+
+CODE_22D422:    ORA #$02                ; $22:D422: 09 02       ;
+
+                STA $0A21,y             ; $22:D424: 99 21 0A    ;
+
+                STA $0A23,y             ; $22:D427: 99 23 0A    ;
+
+                STA $0A25,y             ; $22:D42A: 99 25 0A    ;
+
+                STA $0A27,y             ; $22:D42D: 99 27 0A    ;
+
+                PLY                     ; $22:D430: 7A          ;
+
+                LDA $56,x               ; $22:D431: B5 56       ;
+
+                XBA                     ; $22:D433: EB          ;
+
+                LDA $71,x               ; $22:D434: B5 71       ;
+
+                REP #$20                ; $22:D436: C2 20       ;
+
+                SEC                     ; $22:D438: 38          ;
+
+                SBC $0216               ; $22:D439: ED 16 02    ;
+
+                STA $00                 ; $22:D43C: 85 00       ;
+
+                CLC                     ; $22:D43E: 18          ;
+
+                ADC #$0010              ; $22:D43F: 69 10 00    ;
+
+                STA $02                 ; $22:D442: 85 02       ;
+
+                SEP #$20                ; $22:D444: E2 20       ;
+
+                LDA $00                 ; $22:D446: A5 00       ;
+
+                CMP #$EF                ; $22:D448: C9 EF       ;
+
+                BCS CODE_22D450         ; $22:D44A: B0 04       ;
+
+                LDA $01                 ; $22:D44C: A5 01       ;
+
+                BEQ CODE_22D458         ; $22:D44E: F0 08       ;
+
+CODE_22D450:    LDA #$F0                ; $22:D450: A9 F0       ;
+
+                STA $0811,y             ; $22:D452: 99 11 08    ;
+
+                STA $0815,y             ; $22:D455: 99 15 08    ;
+
+CODE_22D458:    LDA $02                 ; $22:D458: A5 02       ;
+
+                CMP #$EF                ; $22:D45A: C9 EF       ;
+
+                BCS CODE_22D462         ; $22:D45C: B0 04       ;
+
+                LDA $03                 ; $22:D45E: A5 03       ;
+
+                BEQ CODE_22D46A         ; $22:D460: F0 08       ;
+
+CODE_22D462:    LDA #$F0                ; $22:D462: A9 F0       ;
+
+                STA $0819,y             ; $22:D464: 99 19 08    ;
+
+                STA $081D,y             ; $22:D467: 99 1D 08    ;
+
+CODE_22D46A:    LDA $56,x               ; $22:D46A: B5 56       ;
+
+                XBA                     ; $22:D46C: EB          ;
+
+                LDA $0691,x             ; $22:D46D: BD 91 06    ;
+
+                REP #$20                ; $22:D470: C2 20       ;
+
+                SEC                     ; $22:D472: 38          ;
+
+                SBC $0216               ; $22:D473: ED 16 02    ;
+
+                STA $00                 ; $22:D476: 85 00       ;
+
+                CLC                     ; $22:D478: 18          ;
+
+                ADC #$0010              ; $22:D479: 69 10 00    ;
+
+                STA $02                 ; $22:D47C: 85 02       ;
+
+                SEP #$20                ; $22:D47E: E2 20       ;
+
+                LDA $00                 ; $22:D480: A5 00       ;
+
+                CMP #$EF                ; $22:D482: C9 EF       ;
+
+                BCS CODE_22D48A         ; $22:D484: B0 04       ;
+
+                LDA $01                 ; $22:D486: A5 01       ;
+
+                BEQ CODE_22D492         ; $22:D488: F0 08       ;
+
+CODE_22D48A:    LDA #$F0                ; $22:D48A: A9 F0       ;
+
+                STA $0801,y             ; $22:D48C: 99 01 08    ;
+
+                STA $0805,y             ; $22:D48F: 99 05 08    ;
+
+CODE_22D492:    LDA $02                 ; $22:D492: A5 02       ;
+
+                CMP #$EF                ; $22:D494: C9 EF       ;
+
+                BCS CODE_22D49C         ; $22:D496: B0 04       ;
+
+                LDA $03                 ; $22:D498: A5 03       ;
+
+                BEQ CODE_22D4A4         ; $22:D49A: F0 08       ;
+
+CODE_22D49C:    LDA #$F0                ; $22:D49C: A9 F0       ;
+
+                STA $0809,y             ; $22:D49E: 99 09 08    ;
+
+                STA $080D,y             ; $22:D4A1: 99 0D 08    ;
+
+CODE_22D4A4:    SEP #$10                ; $22:D4A4: E2 10       ;
+
+                RTS                     ; $22:D4A6: 60          ;
 
 ORG $22E000
 CODE_22E000:    LDA $0726               ; $22:E000: AD 26 07    ;
-                BEQ CODE_22E007             ; $22:E003: F0 02       ;
-                LDA #$09                    ; $22:E005: A9 09       ;
-CODE_22E007:    STA $04                     ; $22:E007: 85 04       ;
-                LDA $BC                     ; $22:E009: A5 BC       ;
-                LSR A                       ; $22:E00B: 4A          ;
-                TAX                         ; $22:E00C: AA          ;
-                LDA.w DATA_21896F,x                 ; $22:E00D: BD 6F 89    ;
-                LDX $BB                     ; $22:E010: A6 BB       ;
-                CMP #$20                    ; $22:E012: C9 20       ;
-                BCC CODE_22E01D             ; $22:E014: 90 07       ;
-                LDX #$07                    ; $22:E016: A2 07       ;
-                CMP #$48                    ; $22:E018: C9 48       ;
-                BEQ CODE_22E01D             ; $22:E01A: F0 01       ;
-                INX                         ; $22:E01C: E8          ;
-CODE_22E01D:    TAY                         ; $22:E01D: A8          ;
-                TXA                         ; $22:E01E: 8A          ;
-                CLC                         ; $22:E01F: 18          ;
-                ADC $04                     ; $22:E020: 65 04       ;
-                TAX                         ; $22:E022: AA          ;
-                TYA                         ; $22:E023: 98          ;
-                CLC                         ; $22:E024: 18          ;
-                ADC.w DATA_2189C3,x                 ; $22:E025: 7D C3 89    ;
-                STA $01                     ; $22:E028: 85 01       ;
-                STZ $00                     ; $22:E02A: 64 00       ;
-                LDA.w DATA_2189D5,x                 ; $22:E02C: BD D5 89    ;
-                STA $0238                   ; $22:E02F: 8D 38 02    ;
-                LDA #$21                    ; $22:E032: A9 21       ;
-                STA $06                     ; $22:E034: 85 06       ;
-                REP #$30                    ; $22:E036: C2 30       ;
-                LDA #$8777                  ; $22:E038: A9 77 87    ;
-                STA $04                     ; $22:E03B: 85 04       ;
-                LDA $BC                     ; $22:E03D: A5 BC       ;
-                AND #$00FF                  ; $22:E03F: 29 FF 00    ;
-                TAX                         ; $22:E042: AA          ;
-                LDA.w DATA_2186CF,x                 ; $22:E043: BD CF 86    ;
-                TAY                         ; $22:E046: A8          ;
-                LDA [$04],y                 ; $22:E047: B7 04       ;
-                AND #$00FF                  ; $22:E049: 29 FF 00    ;
-                TAX                         ; $22:E04C: AA          ;
-                LDA.w DATA_2189E7,x                 ; $22:E04D: BD E7 89    ;
-                CLC                         ; $22:E050: 18          ;
-                ADC $00                     ; $22:E051: 65 00       ;
-                STA $0220                   ; $22:E053: 8D 20 02    ;
-                INY                         ; $22:E056: C8          ;
-                LDA [$04],y                 ; $22:E057: B7 04       ;
-                AND #$00FF                  ; $22:E059: 29 FF 00    ;
-                TAX                         ; $22:E05C: AA          ;
-                LDA.w DATA_2189E7,x                 ; $22:E05D: BD E7 89    ;
-                CLC                         ; $22:E060: 18          ;
-                ADC $00                     ; $22:E061: 65 00       ;
-                STA $0222                   ; $22:E063: 8D 22 02    ;
-                INY                         ; $22:E066: C8          ;
-                LDA [$04],y                 ; $22:E067: B7 04       ;
-                AND #$00FF                  ; $22:E069: 29 FF 00    ;
-                TAX                         ; $22:E06C: AA          ;
-                LDA.w DATA_2189E7,x                 ; $22:E06D: BD E7 89    ;
-                CLC                         ; $22:E070: 18          ;
-                ADC $00                     ; $22:E071: 65 00       ;
-                STA $0224                   ; $22:E073: 8D 24 02    ;
-                INY                         ; $22:E076: C8          ;
-                LDA [$04],y                 ; $22:E077: B7 04       ;
-                AND #$00FF                  ; $22:E079: 29 FF 00    ;
-                TAX                         ; $22:E07C: AA          ;
-                LDA.w DATA_2189E7,x                 ; $22:E07D: BD E7 89    ;
-                CLC                         ; $22:E080: 18          ;
-                ADC $00                     ; $22:E081: 65 00       ;
-                STA $0226                   ; $22:E083: 8D 26 02    ;
-                INY                         ; $22:E086: C8          ;
-                LDA [$04],y                 ; $22:E087: B7 04       ;
-                AND #$00FF                  ; $22:E089: 29 FF 00    ;
-                TAX                         ; $22:E08C: AA          ;
-                LDA.w DATA_2189E7,x                 ; $22:E08D: BD E7 89    ;
-                CLC                         ; $22:E090: 18          ;
-                ADC $00                     ; $22:E091: 65 00       ;
-                STA $0228                   ; $22:E093: 8D 28 02    ;
-                INY                         ; $22:E096: C8          ;
-                LDA [$04],y                 ; $22:E097: B7 04       ;
-                AND #$00FF                  ; $22:E099: 29 FF 00    ;
-                TAX                         ; $22:E09C: AA          ;
-                LDA.w DATA_2189E7,x                 ; $22:E09D: BD E7 89    ;
-                CLC                         ; $22:E0A0: 18          ;
-                ADC $00                     ; $22:E0A1: 65 00       ;
-                STA $022A                   ; $22:E0A3: 8D 2A 02    ;
-                SEP #$30                    ; $22:E0A6: E2 30       ;
-                RTL                         ; $22:E0A8: 6B          ;
+                BEQ CODE_22E007         ; $22:E003: F0 02       ;
 
-CODE_22E0A9:    PHD                         ; $22:E0A9: 0B          ;
-                REP #$30                    ; $22:E0AA: C2 30       ;
-                LDA #$0800                  ; $22:E0AC: A9 00 08    ;
-                TCD                         ; $22:E0AF: 5B          ;
-                LDY #$F000                  ; $22:E0B0: A0 00 F0    ;
-                LDX #$0180                  ; $22:E0B3: A2 80 01    ;
-CODE_22E0B6:    TYA                         ; $22:E0B6: 98          ;
-                STA $00,x                   ; $22:E0B7: 95 00       ;
-                STA $04,x                   ; $22:E0B9: 95 04       ;
-                STA $08,x                   ; $22:E0BB: 95 08       ;
-                STA $0C,x                   ; $22:E0BD: 95 0C       ;
-                STA $10,x                   ; $22:E0BF: 95 10       ;
-                STA $14,x                   ; $22:E0C1: 95 14       ;
-                STA $18,x                   ; $22:E0C3: 95 18       ;
-                STA $1C,x                   ; $22:E0C5: 95 1C       ;
-                STA $20,x                   ; $22:E0C7: 95 20       ;
-                STA $24,x                   ; $22:E0C9: 95 24       ;
-                STA $28,x                   ; $22:E0CB: 95 28       ;
-                STA $2C,x                   ; $22:E0CD: 95 2C       ;
-                STA $30,x                   ; $22:E0CF: 95 30       ;
-                STA $34,x                   ; $22:E0D1: 95 34       ;
-                STA $38,x                   ; $22:E0D3: 95 38       ;
-                STA $3C,x                   ; $22:E0D5: 95 3C       ;
-                STA $40,x                   ; $22:E0D7: 95 40       ;
-                STA $44,x                   ; $22:E0D9: 95 44       ;
-                STA $48,x                   ; $22:E0DB: 95 48       ;
-                STA $4C,x                   ; $22:E0DD: 95 4C       ;
-                STA $50,x                   ; $22:E0DF: 95 50       ;
-                STA $54,x                   ; $22:E0E1: 95 54       ;
-                STA $58,x                   ; $22:E0E3: 95 58       ;
-                STA $5C,x                   ; $22:E0E5: 95 5C       ;
-                STA $60,x                   ; $22:E0E7: 95 60       ;
-                STA $64,x                   ; $22:E0E9: 95 64       ;
-                STA $68,x                   ; $22:E0EB: 95 68       ;
-                STA $6C,x                   ; $22:E0ED: 95 6C       ;
-                STA $70,x                   ; $22:E0EF: 95 70       ;
-                STA $74,x                   ; $22:E0F1: 95 74       ;
-                STA $78,x                   ; $22:E0F3: 95 78       ;
-                STA $7C,x                   ; $22:E0F5: 95 7C       ;
-                TXA                         ; $22:E0F7: 8A          ;
-                SEC                         ; $22:E0F8: 38          ;
-                SBC #$0080                  ; $22:E0F9: E9 80 00    ;
-                TAX                         ; $22:E0FC: AA          ;
-                BPL CODE_22E0B6             ; $22:E0FD: 10 B7       ;
-                SEP #$30                    ; $22:E0FF: E2 30       ;
-                PLD                         ; $22:E101: 2B          ;
-                RTL                         ; $22:E102: 6B          ;
+                LDA #$09                ; $22:E005: A9 09       ;
+
+CODE_22E007:    STA $04                 ; $22:E007: 85 04       ;
+
+                LDA $BC                 ; $22:E009: A5 BC       ;
+
+                LSR A                   ; $22:E00B: 4A          ;
+
+                TAX                     ; $22:E00C: AA          ;
+
+                LDA.w DATA_21896F,x     ; $22:E00D: BD 6F 89    ;
+
+                LDX $BB                 ; $22:E010: A6 BB       ;
+
+                CMP #$20                ; $22:E012: C9 20       ;
+
+                BCC CODE_22E01D         ; $22:E014: 90 07       ;
+
+                LDX #$07                ; $22:E016: A2 07       ;
+
+                CMP #$48                ; $22:E018: C9 48       ;
+
+                BEQ CODE_22E01D         ; $22:E01A: F0 01       ;
+
+                INX                     ; $22:E01C: E8          ;
+
+CODE_22E01D:    TAY                     ; $22:E01D: A8          ;
+
+                TXA                     ; $22:E01E: 8A          ;
+
+                CLC                     ; $22:E01F: 18          ;
+
+                ADC $04                 ; $22:E020: 65 04       ;
+
+                TAX                     ; $22:E022: AA          ;
+
+                TYA                     ; $22:E023: 98          ;
+
+                CLC                     ; $22:E024: 18          ;
+
+                ADC.w DATA_2189C3,x     ; $22:E025: 7D C3 89    ;
+
+                STA $01                 ; $22:E028: 85 01       ;
+
+                STZ $00                 ; $22:E02A: 64 00       ;
+
+                LDA.w DATA_2189D5,x     ; $22:E02C: BD D5 89    ;
+
+                STA $0238               ; $22:E02F: 8D 38 02    ;
+
+                LDA #$21                ; $22:E032: A9 21       ;
+
+                STA $06                 ; $22:E034: 85 06       ;
+
+                REP #$30                ; $22:E036: C2 30       ;
+
+                LDA #$8777              ; $22:E038: A9 77 87    ;
+
+                STA $04                 ; $22:E03B: 85 04       ;
+
+                LDA $BC                 ; $22:E03D: A5 BC       ;
+
+                AND #$00FF              ; $22:E03F: 29 FF 00    ;
+
+                TAX                     ; $22:E042: AA          ;
+
+                LDA.w DATA_2186CF,x     ; $22:E043: BD CF 86    ;
+
+                TAY                     ; $22:E046: A8          ;
+
+                LDA [$04],y             ; $22:E047: B7 04       ;
+
+                AND #$00FF              ; $22:E049: 29 FF 00    ;
+
+                TAX                     ; $22:E04C: AA          ;
+
+                LDA.w DATA_2189E7,x     ; $22:E04D: BD E7 89    ;
+
+                CLC                     ; $22:E050: 18          ;
+
+                ADC $00                 ; $22:E051: 65 00       ;
+
+                STA $0220               ; $22:E053: 8D 20 02    ;
+
+                INY                     ; $22:E056: C8          ;
+
+                LDA [$04],y             ; $22:E057: B7 04       ;
+
+                AND #$00FF              ; $22:E059: 29 FF 00    ;
+
+                TAX                     ; $22:E05C: AA          ;
+
+                LDA.w DATA_2189E7,x     ; $22:E05D: BD E7 89    ;
+
+                CLC                     ; $22:E060: 18          ;
+
+                ADC $00                 ; $22:E061: 65 00       ;
+
+                STA $0222               ; $22:E063: 8D 22 02    ;
+
+                INY                     ; $22:E066: C8          ;
+
+                LDA [$04],y             ; $22:E067: B7 04       ;
+
+                AND #$00FF              ; $22:E069: 29 FF 00    ;
+
+                TAX                     ; $22:E06C: AA          ;
+
+                LDA.w DATA_2189E7,x     ; $22:E06D: BD E7 89    ;
+
+                CLC                     ; $22:E070: 18          ;
+
+                ADC $00                 ; $22:E071: 65 00       ;
+
+                STA $0224               ; $22:E073: 8D 24 02    ;
+
+                INY                     ; $22:E076: C8          ;
+
+                LDA [$04],y             ; $22:E077: B7 04       ;
+
+                AND #$00FF              ; $22:E079: 29 FF 00    ;
+
+                TAX                     ; $22:E07C: AA          ;
+
+                LDA.w DATA_2189E7,x     ; $22:E07D: BD E7 89    ;
+
+                CLC                     ; $22:E080: 18          ;
+
+                ADC $00                 ; $22:E081: 65 00       ;
+
+                STA $0226               ; $22:E083: 8D 26 02    ;
+
+                INY                     ; $22:E086: C8          ;
+
+                LDA [$04],y             ; $22:E087: B7 04       ;
+
+                AND #$00FF              ; $22:E089: 29 FF 00    ;
+
+                TAX                     ; $22:E08C: AA          ;
+
+                LDA.w DATA_2189E7,x     ; $22:E08D: BD E7 89    ;
+
+                CLC                     ; $22:E090: 18          ;
+
+                ADC $00                 ; $22:E091: 65 00       ;
+
+                STA $0228               ; $22:E093: 8D 28 02    ;
+
+                INY                     ; $22:E096: C8          ;
+
+                LDA [$04],y             ; $22:E097: B7 04       ;
+
+                AND #$00FF              ; $22:E099: 29 FF 00    ;
+
+                TAX                     ; $22:E09C: AA          ;
+
+                LDA.w DATA_2189E7,x     ; $22:E09D: BD E7 89    ;
+
+                CLC                     ; $22:E0A0: 18          ;
+
+                ADC $00                 ; $22:E0A1: 65 00       ;
+
+                STA $022A               ; $22:E0A3: 8D 2A 02    ;
+
+                SEP #$30                ; $22:E0A6: E2 30       ;
+
+                RTL                     ; $22:E0A8: 6B          ;
+
+CODE_22E0A9:    PHD                     ; $22:E0A9: 0B          ;
+
+                REP #$30                ; $22:E0AA: C2 30       ;
+
+                LDA #$0800              ; $22:E0AC: A9 00 08    ;
+
+                TCD                     ; $22:E0AF: 5B          ;
+
+                LDY #$F000              ; $22:E0B0: A0 00 F0    ;
+
+                LDX #$0180              ; $22:E0B3: A2 80 01    ;
+
+CODE_22E0B6:    TYA                     ; $22:E0B6: 98          ;
+
+                STA $00,x               ; $22:E0B7: 95 00       ;
+
+                STA $04,x               ; $22:E0B9: 95 04       ;
+
+                STA $08,x               ; $22:E0BB: 95 08       ;
+
+                STA $0C,x               ; $22:E0BD: 95 0C       ;
+
+                STA $10,x               ; $22:E0BF: 95 10       ;
+
+                STA $14,x               ; $22:E0C1: 95 14       ;
+
+                STA $18,x               ; $22:E0C3: 95 18       ;
+
+                STA $1C,x               ; $22:E0C5: 95 1C       ;
+
+                STA $20,x               ; $22:E0C7: 95 20       ;
+
+                STA $24,x               ; $22:E0C9: 95 24       ;
+
+                STA $28,x               ; $22:E0CB: 95 28       ;
+
+                STA $2C,x               ; $22:E0CD: 95 2C       ;
+
+                STA $30,x               ; $22:E0CF: 95 30       ;
+
+                STA $34,x               ; $22:E0D1: 95 34       ;
+
+                STA $38,x               ; $22:E0D3: 95 38       ;
+
+                STA $3C,x               ; $22:E0D5: 95 3C       ;
+
+                STA $40,x               ; $22:E0D7: 95 40       ;
+
+                STA $44,x               ; $22:E0D9: 95 44       ;
+
+                STA $48,x               ; $22:E0DB: 95 48       ;
+
+                STA $4C,x               ; $22:E0DD: 95 4C       ;
+
+                STA $50,x               ; $22:E0DF: 95 50       ;
+
+                STA $54,x               ; $22:E0E1: 95 54       ;
+
+                STA $58,x               ; $22:E0E3: 95 58       ;
+
+                STA $5C,x               ; $22:E0E5: 95 5C       ;
+
+                STA $60,x               ; $22:E0E7: 95 60       ;
+
+                STA $64,x               ; $22:E0E9: 95 64       ;
+
+                STA $68,x               ; $22:E0EB: 95 68       ;
+
+                STA $6C,x               ; $22:E0ED: 95 6C       ;
+
+                STA $70,x               ; $22:E0EF: 95 70       ;
+
+                STA $74,x               ; $22:E0F1: 95 74       ;
+
+                STA $78,x               ; $22:E0F3: 95 78       ;
+
+                STA $7C,x               ; $22:E0F5: 95 7C       ;
+
+                TXA                     ; $22:E0F7: 8A          ;
+
+                SEC                     ; $22:E0F8: 38          ;
+
+                SBC #$0080              ; $22:E0F9: E9 80 00    ;
+
+                TAX                     ; $22:E0FC: AA          ;
+
+                BPL CODE_22E0B6         ; $22:E0FD: 10 B7       ;
+
+                SEP #$30                ; $22:E0FF: E2 30       ;
+
+                PLD                     ; $22:E101: 2B          ;
+
+                RTL                     ; $22:E102: 6B          ;
 
 ;Random number generation-related. Uses LFSR principle. A = ($0783&#$02) ^ ($0784&#$02), so either 02 or 00.
 CODE_22E103:    LDA $0782               ; $22:E103: AD 82 07    ;\
@@ -5410,1165 +9556,2236 @@ CODE_22E103:    LDA $0782               ; $22:E103: AD 82 07    ;\
                 BEQ CODE_22E115         ; $22:E112: F0 01       ; |
                 SEC                     ; $22:E114: 38          ;/
 CODE_22E115:    ROR $0782               ; $22:E115: 6E 82 07    ;Then rotate these addresses with carry.
-                ROR $0783                   ; $22:E118: 6E 83 07    ;
-                ROR $0784                   ; $22:E11B: 6E 84 07    ;
-                ROR $0785                   ; $22:E11E: 6E 85 07    ;
-                ROR $0786                   ; $22:E121: 6E 86 07    ;
-                ROR $0787                   ; $22:E124: 6E 87 07    ;
-                ROR $0788                   ; $22:E127: 6E 88 07    ;
-                ROR $0789                   ; $22:E12A: 6E 89 07    ;
-                ROR $078A                   ; $22:E12D: 6E 8A 07    ;
-                ROR $078B                   ; $22:E130: 6E 8B 07    ;
-                RTL                         ; $22:E133: 6B          ;
+                ROR $0783               ; $22:E118: 6E 83 07    ;
 
-CODE_22E134:    REP #$20                    ; $22:E134: C2 20       ;
-                LDY #$00                    ; $22:E136: A0 00       ;
-                LDX $1EBD                   ; $22:E138: AE BD 1E    ;
-                LDA $1EBB                   ; $22:E13B: AD BB 1E    ;
-                CPX #$25                    ; $22:E13E: E0 25       ;
-                BNE CODE_22E173             ; $22:E140: D0 31       ;
-                CMP #$9789                  ; $22:E142: C9 89 97    ;
-                BNE CODE_22E149             ; $22:E145: D0 02       ;
-                LDY #$04                    ; $22:E147: A0 04       ;
-CODE_22E149:    CMP #$94C8                  ; $22:E149: C9 C8 94    ;
-                BNE CODE_22E150             ; $22:E14C: D0 02       ;
-                LDY #$14                    ; $22:E14E: A0 14       ;
-CODE_22E150:    CMP #$9904                  ; $22:E150: C9 04 99    ;
-                BNE CODE_22E157             ; $22:E153: D0 02       ;
-                LDY #$1C                    ; $22:E155: A0 1C       ;
-CODE_22E157:    CMP #$922A                  ; $22:E157: C9 2A 92    ;
-                BNE CODE_22E15E             ; $22:E15A: D0 02       ;
-                LDY #$04                    ; $22:E15C: A0 04       ;
-CODE_22E15E:    CMP #$BB3A                  ; $22:E15E: C9 3A BB    ;
-                BNE CODE_22E165             ; $22:E161: D0 02       ;
-                LDY #$34                    ; $22:E163: A0 34       ;
-CODE_22E165:    CMP #$BCFA                  ; $22:E165: C9 FA BC    ;
-                BNE CODE_22E16C             ; $22:E168: D0 02       ;
-                LDY #$18                    ; $22:E16A: A0 18       ;
-CODE_22E16C:    CMP #$C2A0                  ; $22:E16C: C9 A0 C2    ;
-                BNE CODE_22E1C2             ; $22:E16F: D0 51       ;
-                LDY #$24                    ; $22:E171: A0 24       ;
-CODE_22E173:    CPX #$26                    ; $22:E173: E0 26       ;
-                BNE CODE_22E1A2             ; $22:E175: D0 2B       ;
-                CMP #$90B5                  ; $22:E177: C9 B5 90    ;
-                BNE CODE_22E189             ; $22:E17A: D0 0D       ;
-                LDY #$2A                    ; $22:E17C: A0 2A       ;
-                LDA $0210                   ; $22:E17E: AD 10 02    ;
-                CMP #$0580                  ; $22:E181: C9 80 05    ;
-                BCC CODE_22E1C2             ; $22:E184: 90 3C       ;
-                JMP CODE_22E29D             ; $22:E186: 4C 9D E2    ;
+                ROR $0784               ; $22:E11B: 6E 84 07    ;
 
-CODE_22E189:    CMP #$8EE9                  ; $22:E189: C9 E9 8E    ;
-                BNE CODE_22E190             ; $22:E18C: D0 02       ;
-                LDY #$0E                    ; $22:E18E: A0 0E       ;
-CODE_22E190:    CMP #$8F7C                  ; $22:E190: C9 7C 8F    ;
-                BNE CODE_22E1C2             ; $22:E193: D0 2D       ;
-                LDY #$03                    ; $22:E195: A0 03       ;
-                LDA $0210                   ; $22:E197: AD 10 02    ;
-                CMP #$0380                  ; $22:E19A: C9 80 03    ;
-                BCC CODE_22E1C2             ; $22:E19D: 90 23       ;
-                JMP CODE_22E29D             ; $22:E19F: 4C 9D E2    ;
+                ROR $0785               ; $22:E11E: 6E 85 07    ;
 
-CODE_22E1A2:    CPX #$24                    ; $22:E1A2: E0 24       ;
-                BNE CODE_22E1C2             ; $22:E1A4: D0 1C       ;
-                CMP #$EAA8                  ; $22:E1A6: C9 A8 EA    ;
-                BNE CODE_22E1AD             ; $22:E1A9: D0 02       ;
-                LDY #$34                    ; $22:E1AB: A0 34       ;
-CODE_22E1AD:    CMP #$9562                  ; $22:E1AD: C9 62 95    ;
-                BNE CODE_22E1B4             ; $22:E1B0: D0 02       ;
-                LDY #$1E                    ; $22:E1B2: A0 1E       ;
-CODE_22E1B4:    CMP #$A222                  ; $22:E1B4: C9 22 A2    ;
-                BNE CODE_22E1BB             ; $22:E1B7: D0 02       ;
-                LDY #$34                    ; $22:E1B9: A0 34       ;
-CODE_22E1BB:    CMP #$CBCA                  ; $22:E1BB: C9 CA CB    ;
-                BNE CODE_22E1C2             ; $22:E1BE: D0 02       ;
-                LDY #$34                    ; $22:E1C0: A0 34       ;
-CODE_22E1C2:    STY $02C1                   ; $22:E1C2: 8C C1 02    ;
-CODE_22E1C5:    REP #$10                    ; $22:E1C5: C2 10       ;
-                LDX #$0FFE                  ; $22:E1C7: A2 FE 0F    ;
-                LDA #$31FF                  ; $22:E1CA: A9 FF 31    ;
-CODE_22E1CD:    STA $7FA500,x               ; $22:E1CD: 9F 00 A5 7F ;
-                STA $7FB500,x               ; $22:E1D1: 9F 00 B5 7F ;
-                DEX                         ; $22:E1D5: CA          ;
-                DEX                         ; $22:E1D6: CA          ;
-                BPL CODE_22E1CD             ; $22:E1D7: 10 F4       ;
-                LDA $02C1                   ; $22:E1D9: AD C1 02    ;
-                AND #$00FF                  ; $22:E1DC: 29 FF 00    ;
-                ASL A                       ; $22:E1DF: 0A          ;
-                ASL A                       ; $22:E1E0: 0A          ;
-                ASL A                       ; $22:E1E1: 0A          ;
-                ASL A                       ; $22:E1E2: 0A          ;
-                ASL A                       ; $22:E1E3: 0A          ;
-                ASL A                       ; $22:E1E4: 0A          ;
-                TAX                         ; $22:E1E5: AA          ;
-                CPX #$0800                  ; $22:E1E6: E0 00 08    ;
-                BCC CODE_22E1F0             ; $22:E1E9: 90 05       ;
-                CLC                         ; $22:E1EB: 18          ;
-                ADC #$0800                  ; $22:E1EC: 69 00 08    ;
-                TAX                         ; $22:E1EF: AA          ;
-CODE_22E1F0:    LDY #$0000                  ; $22:E1F0: A0 00 00    ;
-                LDA #$0005                  ; $22:E1F3: A9 05 00    ;
-                STA $02                     ; $22:E1F6: 85 02       ;
-CODE_22E1F8:    LDA #$0010                  ; $22:E1F8: A9 10 00    ;
-                STA $04                     ; $22:E1FB: 85 04       ;
-CODE_22E1FD:    LDA.w DATA_21CA50,y                 ; $22:E1FD: B9 50 CA    ;
-                STA $7FA500,x               ; $22:E200: 9F 00 A5 7F ;
-                STA $7FAD00,x               ; $22:E204: 9F 00 AD 7F ;
-                INX                         ; $22:E208: E8          ;
-                INX                         ; $22:E209: E8          ;
-                INY                         ; $22:E20A: C8          ;
-                INY                         ; $22:E20B: C8          ;
-                LDA.w DATA_21CA50,y                 ; $22:E20C: B9 50 CA    ;
-                STA $7FA500,x               ; $22:E20F: 9F 00 A5 7F ;
-                STA $7FAD00,x               ; $22:E213: 9F 00 AD 7F ;
-                INX                         ; $22:E217: E8          ;
-                INX                         ; $22:E218: E8          ;
-                CPX #$0800                  ; $22:E219: E0 00 08    ;
-                BNE CODE_22E221             ; $22:E21C: D0 03       ;
-                LDX #$1000                  ; $22:E21E: A2 00 10    ;
-CODE_22E221:    CPX #$1800                  ; $22:E221: E0 00 18    ;
-                BEQ CODE_22E250             ; $22:E224: F0 2A       ;
-                DEC $04                     ; $22:E226: C6 04       ;
-                BEQ CODE_22E22E             ; $22:E228: F0 04       ;
-                DEY                         ; $22:E22A: 88          ;
-                DEY                         ; $22:E22B: 88          ;
-                BRA CODE_22E1FD             ; $22:E22C: 80 CF       ;
-CODE_22E22E:    DEC $02                     ; $22:E22E: C6 02       ;
-                BEQ CODE_22E236             ; $22:E230: F0 04       ;
-                INY                         ; $22:E232: C8          ;
-                INY                         ; $22:E233: C8          ;
-                BRA CODE_22E1F8             ; $22:E234: 80 C2       ;
+                ROR $0786               ; $22:E121: 6E 86 07    ;
 
-CODE_22E236:    LDA #$2D9F                  ; $22:E236: A9 9F 2D    ;
-CODE_22E239:    STA $7FA500,x               ; $22:E239: 9F 00 A5 7F ;
-                STA $7FAD00,x               ; $22:E23D: 9F 00 AD 7F ;
-                INX                         ; $22:E241: E8          ;
-                INX                         ; $22:E242: E8          ;
-                CPX #$0800                  ; $22:E243: E0 00 08    ;
-                BNE CODE_22E24B             ; $22:E246: D0 03       ;
-                LDX #$1000                  ; $22:E248: A2 00 10    ;
-CODE_22E24B:    CPX #$1800                  ; $22:E24B: E0 00 18    ;
-                BNE CODE_22E239             ; $22:E24E: D0 E9       ;
-CODE_22E250:    SEP #$30                    ; $22:E250: E2 30       ;
-                LDA #$52                    ; $22:E252: A9 52       ;
-                STA $2109                   ; $22:E254: 8D 09 21    ;
-                LDA $020C                   ; $22:E257: AD 0C 02    ;
-                ORA #$08                    ; $22:E25A: 09 08       ;
-                STA $020C                   ; $22:E25C: 8D 0C 02    ;
-                JMP CODE_22E262             ; $22:E25F: 4C 62 E2    ;
+                ROR $0787               ; $22:E124: 6E 87 07    ;
 
-CODE_22E262:    REP #$20                    ; $22:E262: C2 20       ;
-                LDX #$80                    ; $22:E264: A2 80       ;
-                STX $2115                   ; $22:E266: 8E 15 21    ;
-                LDA #$1801                  ; $22:E269: A9 01 18    ;
-                STA $4300                   ; $22:E26C: 8D 00 43    ;
-                LDA #$A500                  ; $22:E26F: A9 00 A5    ;
-                STA $4302                   ; $22:E272: 8D 02 43    ;
-                LDX #$7F                    ; $22:E275: A2 7F       ;
-                STX $4304                   ; $22:E277: 8E 04 43    ;
-                LDA #$5000                  ; $22:E27A: A9 00 50    ;
-                STA $2116                   ; $22:E27D: 8D 16 21    ;
-                LDA #$0800                  ; $22:E280: A9 00 08    ;
-                STA $4305                   ; $22:E283: 8D 05 43    ;
-                LDX #$01                    ; $22:E286: A2 01       ;
-                STX $420B                   ; $22:E288: 8E 0B 42    ;
-                STA $4305                   ; $22:E28B: 8D 05 43    ;
-                LDA #$5400                  ; $22:E28E: A9 00 54    ;
-                STA $2116                   ; $22:E291: 8D 16 21    ;
-                LDA #$B500                  ; $22:E294: A9 00 B5    ;
-                STA $4302                   ; $22:E297: 8D 02 43    ;
-                STX $420B                   ; $22:E29A: 8E 0B 42    ;
-CODE_22E29D:    SEP #$20                    ; $22:E29D: E2 20       ;
-                RTL                         ; $22:E29F: 6B          ;
+                ROR $0788               ; $22:E127: 6E 88 07    ;
 
-CODE_22E2A0:    REP #$20                    ; $22:E2A0: C2 20       ;
-                LDY #$80                    ; $22:E2A2: A0 80       ;
-                STY $2115                   ; $22:E2A4: 8C 15 21    ;
-                LDA #$1801                  ; $22:E2A7: A9 01 18    ;
-                STA $4300                   ; $22:E2AA: 8D 00 43    ;
-                LDA #$A500                  ; $22:E2AD: A9 00 A5    ;
-                CLC                         ; $22:E2B0: 18          ;
-                ADC $00                     ; $22:E2B1: 65 00       ;
-                STA $4302                   ; $22:E2B3: 8D 02 43    ;
-                LDY #$7F                    ; $22:E2B6: A0 7F       ;
-                STY $4304                   ; $22:E2B8: 8C 04 43    ;
-                LDA #$5000                  ; $22:E2BB: A9 00 50    ;
-                STA $2116                   ; $22:E2BE: 8D 16 21    ;
-                LDA #$0800                  ; $22:E2C1: A9 00 08    ;
-                STA $4305                   ; $22:E2C4: 8D 05 43    ;
-                LDY #$01                    ; $22:E2C7: A0 01       ;
-                STY $420B                   ; $22:E2C9: 8C 0B 42    ;
-                STA $4305                   ; $22:E2CC: 8D 05 43    ;
-                LDA #$5400                  ; $22:E2CF: A9 00 54    ;
-                STA $2116                   ; $22:E2D2: 8D 16 21    ;
-                LDA #$AD00                  ; $22:E2D5: A9 00 AD    ;
-                CLC                         ; $22:E2D8: 18          ;
-                ADC $00                     ; $22:E2D9: 65 00       ;
-                STA $4302                   ; $22:E2DB: 8D 02 43    ;
-                STY $420B                   ; $22:E2DE: 8C 0B 42    ;
-                SEP #$20                    ; $22:E2E1: E2 20       ;
-                RTL                         ; $22:E2E3: 6B          ;
+                ROR $0789               ; $22:E12A: 6E 89 07    ;
 
-CODE_22E2E4:    LDA #$00                    ; $22:E2E4: A9 00       ;
-                LDX #$EA                    ; $22:E2E6: A2 EA       ;
-                LDY #$3C                    ; $22:E2E8: A0 3C       ;
-                JSL CODE_20A1BE             ; $22:E2EA: 22 BE A1 20 ;
-                LDA #$52                    ; $22:E2EE: A9 52       ;
-                STA $2109                   ; $22:E2F0: 8D 09 21    ;
-                LDA $020C                   ; $22:E2F3: AD 0C 02    ;
-                ORA #$08                    ; $22:E2F6: 09 08       ;
-                STA $020C                   ; $22:E2F8: 8D 0C 02    ;
-                JMP CODE_22E262             ; $22:E2FB: 4C 62 E2    ;
+                ROR $078A               ; $22:E12D: 6E 8A 07    ;
 
-CODE_22E2FE:    LDA $7F2000                 ; $22:E2FE: AF 00 20 7F ;
-                BMI CODE_22E337             ; $22:E302: 30 33       ;
-                REP #$20                    ; $22:E304: C2 20       ;
-                LDA $7F2000                 ; $22:E306: AF 00 20 7F ;
-                XBA                         ; $22:E30A: EB          ;
-                STA $2116                   ; $22:E30B: 8D 16 21    ;
-                LDX #$81                    ; $22:E30E: A2 81       ;
-                STX $2115                   ; $22:E310: 8E 15 21    ;
-                LDA #$1801                  ; $22:E313: A9 01 18    ;
-                STA $4300                   ; $22:E316: 8D 00 43    ;
-                LDA #$2002                  ; $22:E319: A9 02 20    ;
-                STA $4302                   ; $22:E31C: 8D 02 43    ;
-                LDX #$7F                    ; $22:E31F: A2 7F       ;
-                STX $4304                   ; $22:E321: 8E 04 43    ;
-                LDA #$0040                  ; $22:E324: A9 40 00    ;
-                STA $4305                   ; $22:E327: 8D 05 43    ;
-                LDX #$01                    ; $22:E32A: A2 01       ;
-                STX $420B                   ; $22:E32C: 8E 0B 42    ;
-                SEP #$20                    ; $22:E32F: E2 20       ;
-                LDA #$FF                    ; $22:E331: A9 FF       ;
-                STA $7F2000                 ; $22:E333: 8F 00 20 7F ;
-CODE_22E337:    RTL                         ; $22:E337: 6B          ;
+                ROR $078B               ; $22:E130: 6E 8B 07    ;
 
-CODE_22E338:    REP #$30                    ; $22:E338: C2 30       ;
-                LDX #$0FFE                  ; $22:E33A: A2 FE 0F    ;
-                LDA #$20FF                  ; $22:E33D: A9 FF 20    ;
-CODE_22E340:    STA $7F2000,x               ; $22:E340: 9F 00 20 7F ;
-                STA $7F3000,x               ; $22:E344: 9F 00 30 7F ;
-                DEX                         ; $22:E348: CA          ;
-                DEX                         ; $22:E349: CA          ;
-                BPL CODE_22E340             ; $22:E34A: 10 F4       ;
-                LDX #$069A                  ; $22:E34C: A2 9A 06    ;
-                LDA #$25D1                  ; $22:E34F: A9 D1 25    ;
-CODE_22E352:    STA $7F2000,x               ; $22:E352: 9F 00 20 7F ;
-                INX                         ; $22:E356: E8          ;
-                INX                         ; $22:E357: E8          ;
-                CPX #$0800                  ; $22:E358: E0 00 08    ;
-                BNE CODE_22E352             ; $22:E35B: D0 F5       ;
-                LDX #$0EDA                  ; $22:E35D: A2 DA 0E    ;
-CODE_22E360:    STA $7F2000,x               ; $22:E360: 9F 00 20 7F ;
-                INX                         ; $22:E364: E8          ;
-                INX                         ; $22:E365: E8          ;
-                CPX #$1000                  ; $22:E366: E0 00 10    ;
-                BNE CODE_22E360             ; $22:E369: D0 F5       ;
-                STZ $00                     ; $22:E36B: 64 00       ;
-                STZ $02                     ; $22:E36D: 64 02       ;
-CODE_22E36F:    LDY $00                     ; $22:E36F: A4 00       ;
-                CPY #$0013                  ; $22:E371: C0 13 00    ;
-                BEQ CODE_22E3A3             ; $22:E374: F0 2D       ;
-                LDA.w DATA_21CBA2,y                 ; $22:E376: B9 A2 CB    ;
-                AND #$00FF                  ; $22:E379: 29 FF 00    ;
-                STA $04                     ; $22:E37C: 85 04       ;
-                STA $06                     ; $22:E37E: 85 06       ;
-                TYA                         ; $22:E380: 98          ;
-                ASL A                       ; $22:E381: 0A          ;
-                TAY                         ; $22:E382: A8          ;
-                LDX.w DATA_21CBB5,y                 ; $22:E383: BE B5 CB    ;
-                LDY $02                     ; $22:E386: A4 02       ;
-CODE_22E388:    LDA.w DATA_21CA64,y                 ; $22:E388: B9 64 CA    ;
-                STA $7F2000,x               ; $22:E38B: 9F 00 20 7F ;
-                INX                         ; $22:E38F: E8          ;
-                INX                         ; $22:E390: E8          ;
-                INY                         ; $22:E391: C8          ;
-                INY                         ; $22:E392: C8          ;
-                DEC $04                     ; $22:E393: C6 04       ;
-                BNE CODE_22E388             ; $22:E395: D0 F1       ;
-                LDA $06                     ; $22:E397: A5 06       ;
-                ASL A                       ; $22:E399: 0A          ;
-                CLC                         ; $22:E39A: 18          ;
-                ADC $02                     ; $22:E39B: 65 02       ;
-                STA $02                     ; $22:E39D: 85 02       ;
-                INC $00                     ; $22:E39F: E6 00       ;
-                BRA CODE_22E36F             ; $22:E3A1: 80 CC       ;
-CODE_22E3A3:    LDA $0350                   ; $22:E3A3: AD 50 03    ;
-                AND #$00FF                  ; $22:E3A6: 29 FF 00    ;
-                CMP #$0002                  ; $22:E3A9: C9 02 00    ;
-                BEQ CODE_22E3B3             ; $22:E3AC: F0 05       ;
-                CMP #$0023                  ; $22:E3AE: C9 23 00    ;
-                BNE CODE_22E3B9             ; $22:E3B1: D0 06       ;
-CODE_22E3B3:    LDA #$0040                  ; $22:E3B3: A9 40 00    ;
-                STA $0218                   ; $22:E3B6: 8D 18 02    ;
-CODE_22E3B9:    SEP #$10                    ; $22:E3B9: E2 10       ;
-                LDX #$80                    ; $22:E3BB: A2 80       ;
-                STX $2115                   ; $22:E3BD: 8E 15 21    ;
-                LDA #$1801                  ; $22:E3C0: A9 01 18    ;
-                STA $4300                   ; $22:E3C3: 8D 00 43    ;
-                LDA #$2000                  ; $22:E3C6: A9 00 20    ;
-                STA $4305                   ; $22:E3C9: 8D 05 43    ;
-                LDA #$2000                  ; $22:E3CC: A9 00 20    ;
-                STA $4302                   ; $22:E3CF: 8D 02 43    ;
-                LDX #$7F                    ; $22:E3D2: A2 7F       ;
-                STX $4304                   ; $22:E3D4: 8E 04 43    ;
-                LDA #$1000                  ; $22:E3D7: A9 00 10    ;
-                STA $2116                   ; $22:E3DA: 8D 16 21    ;
-                LDX #$01                    ; $22:E3DD: A2 01       ;
-                STX $420B                   ; $22:E3DF: 8E 0B 42    ;
-                SEP #$20                    ; $22:E3E2: E2 20       ;
-                RTL                         ; $22:E3E4: 6B          ;
+                RTL                     ; $22:E133: 6B          ;
 
-CODE_22E3E5:    REP #$30                    ; $22:E3E5: C2 30       ;
-                LDX #$0FFE                  ; $22:E3E7: A2 FE 0F    ;
-                LDA #$05FF                  ; $22:E3EA: A9 FF 05    ;
-CODE_22E3ED:    STA $7FA500,x               ; $22:E3ED: 9F 00 A5 7F ;
-                DEX                         ; $22:E3F1: CA          ;
-                DEX                         ; $22:E3F2: CA          ;
-                BPL CODE_22E3ED             ; $22:E3F3: 10 F8       ;
-                LDX #$0FFE                  ; $22:E3F5: A2 FE 0F    ;
-                LDA #$8900                  ; $22:E3F8: A9 00 89    ;
-CODE_22E3FB:    STA $7FB500,x               ; $22:E3FB: 9F 00 B5 7F ;
-                DEX                         ; $22:E3FF: CA          ;
-                DEX                         ; $22:E400: CA          ;
-                BPL CODE_22E3FB             ; $22:E401: 10 F8       ;
-                STZ $00                     ; $22:E403: 64 00       ;
-CODE_22E405:    LDY $00                     ; $22:E405: A4 00       ;
-                LDX.w DATA_21CDB9,y                 ; $22:E407: BE B9 CD    ;
-                LDY #$0000                  ; $22:E40A: A0 00 00    ;
-                LDA #$0011                  ; $22:E40D: A9 11 00    ;
-                STA $04                     ; $22:E410: 85 04       ;
-CODE_22E412:    LDA #$0008                  ; $22:E412: A9 08 00    ;
-                STA $06                     ; $22:E415: 85 06       ;
-CODE_22E417:    LDA.w DATA_21CC11,y                 ; $22:E417: B9 11 CC    ;
-                STA $7FB500,x               ; $22:E41A: 9F 00 B5 7F ;
-                STA $7FBD00,x               ; $22:E41E: 9F 00 BD 7F ;
-                INX                         ; $22:E422: E8          ;
-                INX                         ; $22:E423: E8          ;
-                INY                         ; $22:E424: C8          ;
-                INY                         ; $22:E425: C8          ;
-                DEC $06                     ; $22:E426: C6 06       ;
-                BNE CODE_22E417             ; $22:E428: D0 ED       ;
-                TXA                         ; $22:E42A: 8A          ;
-                CLC                         ; $22:E42B: 18          ;
-                ADC #$0030                  ; $22:E42C: 69 30 00    ;
-                TAX                         ; $22:E42F: AA          ;
-                DEC $04                     ; $22:E430: C6 04       ;
-                BNE CODE_22E412             ; $22:E432: D0 DE       ;
-                LDA $00                     ; $22:E434: A5 00       ;
-                INC A                       ; $22:E436: 1A          ;
-                INC A                       ; $22:E437: 1A          ;
-                STA $00                     ; $22:E438: 85 00       ;
-                CMP #$0006                  ; $22:E43A: C9 06 00    ;
-                BNE CODE_22E405             ; $22:E43D: D0 C6       ;
-CODE_22E43F:    LDY $00                     ; $22:E43F: A4 00       ;
-                LDX.w DATA_21CDB9,y                 ; $22:E441: BE B9 CD    ;
-                LDY #$0000                  ; $22:E444: A0 00 00    ;
-                LDA #$0011                  ; $22:E447: A9 11 00    ;
-                STA $04                     ; $22:E44A: 85 04       ;
-CODE_22E44C:    LDA #$0004                  ; $22:E44C: A9 04 00    ;
-                STA $06                     ; $22:E44F: 85 06       ;
-CODE_22E451:    LDA.w DATA_21CD31,y                 ; $22:E451: B9 31 CD    ;
-                STA $7FB500,x               ; $22:E454: 9F 00 B5 7F ;
-                STA $7FBD00,x               ; $22:E458: 9F 00 BD 7F ;
-                INX                         ; $22:E45C: E8          ;
-                INX                         ; $22:E45D: E8          ;
-                INY                         ; $22:E45E: C8          ;
-                INY                         ; $22:E45F: C8          ;
-                DEC $06                     ; $22:E460: C6 06       ;
-                BNE CODE_22E451             ; $22:E462: D0 ED       ;
-                TXA                         ; $22:E464: 8A          ;
-                CLC                         ; $22:E465: 18          ;
-                ADC #$0038                  ; $22:E466: 69 38 00    ;
-                TAX                         ; $22:E469: AA          ;
-                DEC $04                     ; $22:E46A: C6 04       ;
-                BNE CODE_22E44C             ; $22:E46C: D0 DE       ;
-                LDA $00                     ; $22:E46E: A5 00       ;
-                INC A                       ; $22:E470: 1A          ;
-                INC A                       ; $22:E471: 1A          ;
-                STA $00                     ; $22:E472: 85 00       ;
-                CMP #$000A                  ; $22:E474: C9 0A 00    ;
-                BNE CODE_22E43F             ; $22:E477: D0 C6       ;
-                SEP #$30                    ; $22:E479: E2 30       ;
-                LDA #$52                    ; $22:E47B: A9 52       ;
-                STA $2109                   ; $22:E47D: 8D 09 21    ;
-                JMP CODE_22E262             ; $22:E480: 4C 62 E2    ;
+CODE_22E134:    REP #$20                ; $22:E134: C2 20       ;
 
-CODE_22E483:    LDA #$00                    ; $22:E483: A9 00       ;
-                LDX #$ED                    ; $22:E485: A2 ED       ;
-                LDY #$3C                    ; $22:E487: A0 3C       ;
-                JSL CODE_20A1BE             ; $22:E489: 22 BE A1 20 ;
-                LDA #$51                    ; $22:E48D: A9 51       ;
-                STA $2109                   ; $22:E48F: 8D 09 21    ;
-                STZ $00                     ; $22:E492: 64 00       ;
-                STZ $01                     ; $22:E494: 64 01       ;
-                JMP CODE_22E2A0             ; $22:E496: 4C A0 E2    ;
+                LDY #$00                ; $22:E136: A0 00       ;
 
-CODE_22E499:    LDA #$00                    ; $22:E499: A9 00       ;
-                LDX #$ED                    ; $22:E49B: A2 ED       ;
-                LDY #$3C                    ; $22:E49D: A0 3C       ;
-                JSL CODE_20A1BE             ; $22:E49F: 22 BE A1 20 ;
-                LDA #$51                    ; $22:E4A3: A9 51       ;
-                STA $2109                   ; $22:E4A5: 8D 09 21    ;
-                STZ $00                     ; $22:E4A8: 64 00       ;
-                LDA #$10                    ; $22:E4AA: A9 10       ;
-                STA $01                     ; $22:E4AC: 85 01       ;
-                JMP CODE_22E2A0             ; $22:E4AE: 4C A0 E2    ;
+                LDX $1EBD               ; $22:E138: AE BD 1E    ;
 
-CODE_22E4B1:    LDA #$00                    ; $22:E4B1: A9 00       ;
-                LDX #$EF                    ; $22:E4B3: A2 EF       ;
-                LDY #$3C                    ; $22:E4B5: A0 3C       ;
-                JSL CODE_20A1BE             ; $22:E4B7: 22 BE A1 20 ;
-                LDA #$00                    ; $22:E4BB: A9 00       ;
-                STA $7FC522                 ; $22:E4BD: 8F 22 C5 7F ;
-                STA $7FC523                 ; $22:E4C1: 8F 23 C5 7F ;
-                LDA #$51                    ; $22:E4C5: A9 51       ;
-                STA $2109                   ; $22:E4C7: 8D 09 21    ;
-                STZ $00                     ; $22:E4CA: 64 00       ;
-                STZ $01                     ; $22:E4CC: 64 01       ;
-                JMP CODE_22E2A0             ; $22:E4CE: 4C A0 E2    ;
+                LDA $1EBB               ; $22:E13B: AD BB 1E    ;
 
-CODE_22E4D1:    LDA #$00                    ; $22:E4D1: A9 00       ;
-                LDX #$EF                    ; $22:E4D3: A2 EF       ;
-                LDY #$3C                    ; $22:E4D5: A0 3C       ;
-                JSL CODE_20A1BE             ; $22:E4D7: 22 BE A1 20 ;
-                REP #$30                    ; $22:E4DB: C2 30       ;
-                LDX #$0FFE                  ; $22:E4DD: A2 FE 0F    ;
-                LDA #$05FF                  ; $22:E4E0: A9 FF 05    ;
-CODE_22E4E3:    STA $7FA500,x               ; $22:E4E3: 9F 00 A5 7F ;
-                DEX                         ; $22:E4E7: CA          ;
-                DEX                         ; $22:E4E8: CA          ;
-                BPL CODE_22E4E3             ; $22:E4E9: 10 F8       ;
-                SEP #$30                    ; $22:E4EB: E2 30       ;
-                LDA #$52                    ; $22:E4ED: A9 52       ;
-                STA $2109                   ; $22:E4EF: 8D 09 21    ;
-                JMP CODE_22E262             ; $22:E4F2: 4C 62 E2    ;
+                CPX #$25                ; $22:E13E: E0 25       ;
 
-CODE_22E4F5:    LDA #$00                    ; $22:E4F5: A9 00       ;
-                LDX #$E1                    ; $22:E4F7: A2 E1       ;
-                LDY #$3C                    ; $22:E4F9: A0 3C       ;
-                JSL CODE_20A1BE             ; $22:E4FB: 22 BE A1 20 ;
-                LDA #$03                    ; $22:E4FF: A9 03       ;
-                STA $0351                   ; $22:E501: 8D 51 03    ;
-                LDA #$51                    ; $22:E504: A9 51       ;
-                STA $2109                   ; $22:E506: 8D 09 21    ;
-                STZ $00                     ; $22:E509: 64 00       ;
-                STZ $01                     ; $22:E50B: 64 01       ;
-                LDA $020C                   ; $22:E50D: AD 0C 02    ;
-                ORA #$08                    ; $22:E510: 09 08       ;
-                STA $020C                   ; $22:E512: 8D 0C 02    ;
-                JMP CODE_22E2A0             ; $22:E515: 4C A0 E2    ;
+                BNE CODE_22E173         ; $22:E140: D0 31       ;
 
-CODE_22E518:    REP #$30                    ; $22:E518: C2 30       ;
-                LDX #$0FFE                  ; $22:E51A: A2 FE 0F    ;
-                LDA #$21FF                  ; $22:E51D: A9 FF 21    ;
-CODE_22E520:    STA $7FA500,x               ; $22:E520: 9F 00 A5 7F ;
-                STA $7FB500,x               ; $22:E524: 9F 00 B5 7F ;
-                DEX                         ; $22:E528: CA          ;
-                DEX                         ; $22:E529: CA          ;
-                BPL CODE_22E520             ; $22:E52A: 10 F4       ;
-                LDX #$1500                  ; $22:E52C: A2 00 15    ;
-                LDY #$0000                  ; $22:E52F: A0 00 00    ;
-CODE_22E532:    LDA #$0010                  ; $22:E532: A9 10 00    ;
-                STA $04                     ; $22:E535: 85 04       ;
-CODE_22E537:    LDA.w DATA_21CDC3,y                 ; $22:E537: B9 C3 CD    ;
-                STA $7FA500,x               ; $22:E53A: 9F 00 A5 7F ;
-                STA $7FAD00,x               ; $22:E53E: 9F 00 AD 7F ;
-                INX                         ; $22:E542: E8          ;
-                INX                         ; $22:E543: E8          ;
-                INY                         ; $22:E544: C8          ;
-                INY                         ; $22:E545: C8          ;
-                LDA.w DATA_21CDC3,y                 ; $22:E546: B9 C3 CD    ;
-                STA $7FA500,x               ; $22:E549: 9F 00 A5 7F ;
-                STA $7FAD00,x               ; $22:E54D: 9F 00 AD 7F ;
-                INX                         ; $22:E551: E8          ;
-                INX                         ; $22:E552: E8          ;
-                CPX #$1680                  ; $22:E553: E0 80 16    ;
-                BEQ CODE_22E564             ; $22:E556: F0 0C       ;
-                DEC $04                     ; $22:E558: C6 04       ;
-                BEQ CODE_22E560             ; $22:E55A: F0 04       ;
-                DEY                         ; $22:E55C: 88          ;
-                DEY                         ; $22:E55D: 88          ;
-                BRA CODE_22E537             ; $22:E55E: 80 D7       ;
+                CMP #$9789              ; $22:E142: C9 89 97    ;
 
-CODE_22E560:    INY                         ; $22:E560: C8          ;
-                INY                         ; $22:E561: C8          ;
-                BRA CODE_22E532             ; $22:E562: 80 CE       ;
+                BNE CODE_22E149         ; $22:E145: D0 02       ;
 
-CODE_22E564:    SEP #$30                    ; $22:E564: E2 30       ;
-                LDA #$52                    ; $22:E566: A9 52       ;
-                STA $2109                   ; $22:E568: 8D 09 21    ;
-                LDA $020C                   ; $22:E56B: AD 0C 02    ;
-                ORA #$08                    ; $22:E56E: 09 08       ;
-                STA $020C                   ; $22:E570: 8D 0C 02    ;
-                JMP CODE_22E262             ; $22:E573: 4C 62 E2    ;
-CODE_22E576:    LDA #$00                    ; $22:E576: A9 00       ;
-                LDX #$D8                    ; $22:E578: A2 D8       ;
-                LDY #$3C                    ; $22:E57A: A0 3C       ;
-                JSL CODE_20A1BE             ; $22:E57C: 22 BE A1 20 ;
-                REP #$20                    ; $22:E580: C2 20       ;
-                LDX #$80                    ; $22:E582: A2 80       ;
-                STX $2115                   ; $22:E584: 8E 15 21    ;
-                LDA #$1801                  ; $22:E587: A9 01 18    ;
-                STA $4300                   ; $22:E58A: 8D 00 43    ;
-                LDA #$2000                  ; $22:E58D: A9 00 20    ;
-                STA $4305                   ; $22:E590: 8D 05 43    ;
-                LDA #$A500                  ; $22:E593: A9 00 A5    ;
-                STA $4302                   ; $22:E596: 8D 02 43    ;
-                LDX #$7F                    ; $22:E599: A2 7F       ;
-                STX $4304                   ; $22:E59B: 8E 04 43    ;
-                LDA #$1000                  ; $22:E59E: A9 00 10    ;
-                STA $2116                   ; $22:E5A1: 8D 16 21    ;
-                LDX #$01                    ; $22:E5A4: A2 01       ;
-                STX $420B                   ; $22:E5A6: 8E 0B 42    ;
-                SEP #$20                    ; $22:E5A9: E2 20       ;
-                RTL                         ; $22:E5AB: 6B          ;
+                LDY #$04                ; $22:E147: A0 04       ;
 
-CODE_22E5AC:    REP #$30                    ; $22:E5AC: C2 30       ;
-                LDX #$0FFE                  ; $22:E5AE: A2 FE 0F    ;
-                LDA #$21FF                  ; $22:E5B1: A9 FF 21    ;
-CODE_22E5B4:    STA $7FA500,x               ; $22:E5B4: 9F 00 A5 7F ;
-                STA $7FB500,x               ; $22:E5B8: 9F 00 B5 7F ;
-                DEX                         ; $22:E5BC: CA          ;
-                DEX                         ; $22:E5BD: CA          ;
-                BPL CODE_22E5B4             ; $22:E5BE: 10 F4       ;
-                LDX #$00BE                  ; $22:E5C0: A2 BE 00    ;
-CODE_22E5C3:    LDA #$09FC                  ; $22:E5C3: A9 FC 09    ;
-                STA $7FA500,x               ; $22:E5C6: 9F 00 A5 7F ;
-                STA $7FAD00,x               ; $22:E5CA: 9F 00 AD 7F ;
-                DEX                         ; $22:E5CE: CA          ;
-                DEX                         ; $22:E5CF: CA          ;
-                BPL CODE_22E5C3             ; $22:E5D0: 10 F1       ;
-                LDX #$00C0                  ; $22:E5D2: A2 C0 00    ;
-                STZ $00                     ; $22:E5D5: 64 00       ;
-                LDA #$0008                  ; $22:E5D7: A9 08 00    ;
-                STA $02                     ; $22:E5DA: 85 02       ;
-                STZ $06                     ; $22:E5DC: 64 06       ;
-CODE_22E5DE:    LDY $06                     ; $22:E5DE: A4 06       ;
-                LDA.w DATA_21CC0B,y                 ; $22:E5E0: B9 0B CC    ;
-                XBA                         ; $22:E5E3: EB          ;
-                AND #$FF00                  ; $22:E5E4: 29 00 FF    ;
-                STA $08                     ; $22:E5E7: 85 08       ;
-                LDA #$0008                  ; $22:E5E9: A9 08 00    ;
-                STA $04                     ; $22:E5EC: 85 04       ;
-CODE_22E5EE:    LDA #$0004                  ; $22:E5EE: A9 04 00    ;
-                STA $0A                     ; $22:E5F1: 85 0A       ;
-                LDY $00                     ; $22:E5F3: A4 00       ;
-                ASL $08                     ; $22:E5F5: 06 08       ;
-                BCC CODE_22E5FB             ; $22:E5F7: 90 02       ;
-                LDY $02                     ; $22:E5F9: A4 02       ;
-CODE_22E5FB:    LDA.w DATA_21CBDB,y                 ; $22:E5FB: B9 DB CB    ;
-                STA $7FA500,x               ; $22:E5FE: 9F 00 A5 7F ;
-                INY                         ; $22:E602: C8          ;
-                INY                         ; $22:E603: C8          ;
-                INX                         ; $22:E604: E8          ;
-                INX                         ; $22:E605: E8          ;
-                DEC $0A                     ; $22:E606: C6 0A       ;
-                BNE CODE_22E5FB             ; $22:E608: D0 F1       ;
-                DEC $04                     ; $22:E60A: C6 04       ;
-                BNE CODE_22E5EE             ; $22:E60C: D0 E0       ;
-                TXA                         ; $22:E60E: 8A          ;
-                CLC                         ; $22:E60F: 18          ;
-                ADC #$07C0                  ; $22:E610: 69 C0 07    ;
-                TAX                         ; $22:E613: AA          ;
-                LDA $06                     ; $22:E614: A5 06       ;
-                INC A                       ; $22:E616: 1A          ;
-                STA $06                     ; $22:E617: 85 06       ;
-                CMP #$0006                  ; $22:E619: C9 06 00    ;
-                BEQ CODE_22E63B             ; $22:E61C: F0 1D       ;
-                AND #$0001                  ; $22:E61E: 29 01 00    ;
-                BNE CODE_22E5DE             ; $22:E621: D0 BB       ;
-                TXA                         ; $22:E623: 8A          ;
-                SEC                         ; $22:E624: 38          ;
-                SBC #$0FC0                  ; $22:E625: E9 C0 0F    ;
-                TAX                         ; $22:E628: AA          ;
-                LDA $00                     ; $22:E629: A5 00       ;
-                CLC                         ; $22:E62B: 18          ;
-                ADC #$0010                  ; $22:E62C: 69 10 00    ;
-                STA $00                     ; $22:E62F: 85 00       ;
-                LDA $02                     ; $22:E631: A5 02       ;
-                CLC                         ; $22:E633: 18          ;
-                ADC #$0010                  ; $22:E634: 69 10 00    ;
-                STA $02                     ; $22:E637: 85 02       ;
-                BRA CODE_22E5DE             ; $22:E639: 80 A3       ;
-CODE_22E63B:    SEP #$30                    ; $22:E63B: E2 30       ;
-                LDA #$52                    ; $22:E63D: A9 52       ;
-                STA $2109                   ; $22:E63F: 8D 09 21    ;
-                LDA $020C                   ; $22:E642: AD 0C 02    ;
-                ORA #$08                    ; $22:E645: 09 08       ;
-                STA $020C                   ; $22:E647: 8D 0C 02    ;
-                JMP CODE_22E262             ; $22:E64A: 4C 62 E2    ;
+CODE_22E149:    CMP #$94C8              ; $22:E149: C9 C8 94    ;
 
-CODE_22E64D:    LDA #$00                    ; $22:E64D: A9 00       ;
-                LDX #$E6                    ; $22:E64F: A2 E6       ;
-                LDY #$3C                    ; $22:E651: A0 3C       ;
-                JSL CODE_20A1BE             ; $22:E653: 22 BE A1 20 ;
-                LDA #$52                    ; $22:E657: A9 52       ;
-                STA $2109                   ; $22:E659: 8D 09 21    ;
-                JMP CODE_22E262             ; $22:E65C: 4C 62 E2    ;
+                BNE CODE_22E150         ; $22:E14C: D0 02       ;
 
-CODE_22E65F:    REP #$30                    ; $22:E65F: C2 30       ;
-                PHB                         ; $22:E661: 8B          ;
-                LDX.w #DATA_3CA400                  ; $22:E662: A2 00 A4    ;
-                LDY #$1300                  ; $22:E665: A0 00 13    ;
-                LDA #$00FF                  ; $22:E668: A9 FF 00    ;
-                MVN $00,DATA_3CA400>>16                    ; $22:E66B: 54 00 3C    ;
-                PLB                         ; $22:E66E: AB          ;
-                SEP #$30                    ; $22:E66F: E2 30       ;
-                LDA #$01                    ; $22:E671: A9 01       ;
-                STA $1500                   ; $22:E673: 8D 00 15    ;
-                RTL                         ; $22:E676: 6B          ;
+                LDY #$14                ; $22:E14E: A0 14       ;
 
-CODE_22E677:    LDA $1200                   ; $22:E677: AD 00 12    ;
-                BNE CODE_22E690             ; $22:E67A: D0 14       ;
-                LDA $2140                   ; $22:E67C: AD 40 21    ;
-                CMP $1204                   ; $22:E67F: CD 04 12    ;
-                BEQ CODE_22E68E             ; $22:E682: F0 0A       ;
-                INC $120A                   ; $22:E684: EE 0A 12    ;
-                LDA $120A                   ; $22:E687: AD 0A 12    ;
-                CMP #$03                    ; $22:E68A: C9 03       ;
-                BCC CODE_22E699             ; $22:E68C: 90 0B       ;
-CODE_22E68E:    LDA #$00                    ; $22:E68E: A9 00       ;
-CODE_22E690:    STA $2140                   ; $22:E690: 8D 40 21    ;
-                STA $1204                   ; $22:E693: 8D 04 12    ;
-                STZ $120A                   ; $22:E696: 9C 0A 12    ;
-CODE_22E699:    LDA $1201                   ; $22:E699: AD 01 12    ;
-                BNE CODE_22E6B4             ; $22:E69C: D0 16       ;
-                LDA $2141                   ; $22:E69E: AD 41 21    ;
-                AND #$0F                    ; $22:E6A1: 29 0F       ;
-                CMP $1205                   ; $22:E6A3: CD 05 12    ;
-                BEQ CODE_22E6B2             ; $22:E6A6: F0 0A       ;
-                INC $120B                   ; $22:E6A8: EE 0B 12    ;
-                LDA $120B                   ; $22:E6AB: AD 0B 12    ;
-                CMP #$03                    ; $22:E6AE: C9 03       ;
-                BCC CODE_22E6BF             ; $22:E6B0: 90 0D       ;
-CODE_22E6B2:    LDA #$00                    ; $22:E6B2: A9 00       ;
-CODE_22E6B4:    STA $2141                   ; $22:E6B4: 8D 41 21    ;
-                AND #$0F                    ; $22:E6B7: 29 0F       ;
-                STA $1205                   ; $22:E6B9: 8D 05 12    ;
-                STZ $120B                   ; $22:E6BC: 9C 0B 12    ;
-CODE_22E6BF:    LDA $1202                   ; $22:E6BF: AD 02 12    ;
-                BEQ CODE_22E73A             ; $22:E6C2: F0 76       ;
-                LDY #$04                    ; $22:E6C4: A0 04       ;
-                STY $120C                   ; $22:E6C6: 8C 0C 12    ;
-                STA $2142                   ; $22:E6C9: 8D 42 21    ;
-                CMP #$F0                    ; $22:E6CC: C9 F0       ;
-                BCS CODE_22E6D3                     ; $22:E6CE: B0 03       ;
-                STA $1206                   ; $22:E6D0: 8D 06 12    ;
-CODE_22E6D3:    LDA $1203                   ; $22:E6D3: AD 03 12    ;
-                BNE CODE_22E6F9             ; $22:E6D6: D0 21       ;
-                LDA $2143                   ; $22:E6D8: AD 43 21    ;
-                AND #$7F                    ; $22:E6DB: 29 7F       ;
-                CMP $1207                   ; $22:E6DD: CD 07 12    ;
-                BEQ CODE_22E6EC             ; $22:E6E0: F0 0A       ;
-                INC $120D                   ; $22:E6E2: EE 0D 12    ;
-                LDA $120D                   ; $22:E6E5: AD 0D 12    ;
-                CMP #$03                    ; $22:E6E8: C9 03       ;
-                BCC CODE_22E71D             ; $22:E6EA: 90 31       ;
-CODE_22E6EC:    LDA #$00                    ; $22:E6EC: A9 00       ;
-                STA $2143                   ; $22:E6EE: 8D 43 21    ;
-                STA $1207                   ; $22:E6F1: 8D 07 12    ;
-                STZ $120D                   ; $22:E6F4: 9C 0D 12    ;
-                BRA CODE_22E71D             ; $22:E6F7: 80 24       ;
+CODE_22E150:    CMP #$9904              ; $22:E150: C9 04 99    ;
 
-CODE_22E6F9:    STA $1207                   ; $22:E6F9: 8D 07 12    ;
-                CMP #$01                    ; $22:E6FC: C9 01       ;
-                BEQ CODE_22E70C             ; $22:E6FE: F0 0C       ;
-                CMP #$05                    ; $22:E700: C9 05       ;
-                BEQ CODE_22E70C             ; $22:E702: F0 08       ;
-                CMP #$06                    ; $22:E704: C9 06       ;
-                BEQ CODE_22E70C             ; $22:E706: F0 04       ;
-                CMP #$4A                    ; $22:E708: C9 4A       ;
-                BNE CODE_22E72A             ; $22:E70A: D0 1E       ;
-CODE_22E70C:    ORA $120F                   ; $22:E70C: 0D 0F 12    ;
-                STA $2143                   ; $22:E70F: 8D 43 21    ;
-                LDA $120F                   ; $22:E712: AD 0F 12    ;
-                EOR #$80                    ; $22:E715: 49 80       ;
-                STA $120F                   ; $22:E717: 8D 0F 12    ;
-                STZ $120D                   ; $22:E71A: 9C 0D 12    ;
-CODE_22E71D:    STZ $1200                   ; $22:E71D: 9C 00 12    ;
-                STZ $1201                   ; $22:E720: 9C 01 12    ;
-                STZ $1202                   ; $22:E723: 9C 02 12    ;
-                STZ $1203                   ; $22:E726: 9C 03 12    ;
-                RTL                         ; $22:E729: 6B          ;
+                BNE CODE_22E157         ; $22:E153: D0 02       ;
 
-CODE_22E72A:    STA $2143                   ; $22:E72A: 8D 43 21    ;
-                STZ $1200                   ; $22:E72D: 9C 00 12    ;
-                STZ $1201                   ; $22:E730: 9C 01 12    ;
-                STZ $1202                   ; $22:E733: 9C 02 12    ;
-                STZ $1203                   ; $22:E736: 9C 03 12    ;
-                RTL                         ; $22:E739: 6B          ;
+                LDY #$1C                ; $22:E155: A0 1C       ;
 
-CODE_22E73A:    LDY $2142                   ; $22:E73A: AC 42 21    ;
-                CPY $1206                   ; $22:E73D: CC 06 12    ;
-                BNE CODE_22E6D3             ; $22:E740: D0 91       ;
-                DEC $120C                   ; $22:E742: CE 0C 12    ;
-                LDA $120C                   ; $22:E745: AD 0C 12    ;
-                BNE CODE_22E6D3             ; $22:E748: D0 89       ;
-                INC $120C                   ; $22:E74A: EE 0C 12    ;
-                STA $2142                   ; $22:E74D: 8D 42 21    ;
-                BRA CODE_22E6D3             ; $22:E750: 80 81       ;
+CODE_22E157:    CMP #$922A              ; $22:E157: C9 2A 92    ;
+
+                BNE CODE_22E15E         ; $22:E15A: D0 02       ;
+
+                LDY #$04                ; $22:E15C: A0 04       ;
+
+CODE_22E15E:    CMP #$BB3A              ; $22:E15E: C9 3A BB    ;
+
+                BNE CODE_22E165         ; $22:E161: D0 02       ;
+
+                LDY #$34                ; $22:E163: A0 34       ;
+
+CODE_22E165:    CMP #$BCFA              ; $22:E165: C9 FA BC    ;
+
+                BNE CODE_22E16C         ; $22:E168: D0 02       ;
+
+                LDY #$18                ; $22:E16A: A0 18       ;
+
+CODE_22E16C:    CMP #$C2A0              ; $22:E16C: C9 A0 C2    ;
+
+                BNE CODE_22E1C2         ; $22:E16F: D0 51       ;
+
+                LDY #$24                ; $22:E171: A0 24       ;
+
+CODE_22E173:    CPX #$26                ; $22:E173: E0 26       ;
+
+                BNE CODE_22E1A2         ; $22:E175: D0 2B       ;
+
+                CMP #$90B5              ; $22:E177: C9 B5 90    ;
+
+                BNE CODE_22E189         ; $22:E17A: D0 0D       ;
+
+                LDY #$2A                ; $22:E17C: A0 2A       ;
+
+                LDA $0210               ; $22:E17E: AD 10 02    ;
+
+                CMP #$0580              ; $22:E181: C9 80 05    ;
+
+                BCC CODE_22E1C2         ; $22:E184: 90 3C       ;
+
+                JMP CODE_22E29D         ; $22:E186: 4C 9D E2    ;
+
+CODE_22E189:    CMP #$8EE9              ; $22:E189: C9 E9 8E    ;
+
+                BNE CODE_22E190         ; $22:E18C: D0 02       ;
+
+                LDY #$0E                ; $22:E18E: A0 0E       ;
+
+CODE_22E190:    CMP #$8F7C              ; $22:E190: C9 7C 8F    ;
+
+                BNE CODE_22E1C2         ; $22:E193: D0 2D       ;
+
+                LDY #$03                ; $22:E195: A0 03       ;
+
+                LDA $0210               ; $22:E197: AD 10 02    ;
+
+                CMP #$0380              ; $22:E19A: C9 80 03    ;
+
+                BCC CODE_22E1C2         ; $22:E19D: 90 23       ;
+
+                JMP CODE_22E29D         ; $22:E19F: 4C 9D E2    ;
+
+CODE_22E1A2:    CPX #$24                ; $22:E1A2: E0 24       ;
+
+                BNE CODE_22E1C2         ; $22:E1A4: D0 1C       ;
+
+                CMP #$EAA8              ; $22:E1A6: C9 A8 EA    ;
+
+                BNE CODE_22E1AD         ; $22:E1A9: D0 02       ;
+
+                LDY #$34                ; $22:E1AB: A0 34       ;
+
+CODE_22E1AD:    CMP #$9562              ; $22:E1AD: C9 62 95    ;
+
+                BNE CODE_22E1B4         ; $22:E1B0: D0 02       ;
+
+                LDY #$1E                ; $22:E1B2: A0 1E       ;
+
+CODE_22E1B4:    CMP #$A222              ; $22:E1B4: C9 22 A2    ;
+
+                BNE CODE_22E1BB         ; $22:E1B7: D0 02       ;
+
+                LDY #$34                ; $22:E1B9: A0 34       ;
+
+CODE_22E1BB:    CMP #$CBCA              ; $22:E1BB: C9 CA CB    ;
+
+                BNE CODE_22E1C2         ; $22:E1BE: D0 02       ;
+
+                LDY #$34                ; $22:E1C0: A0 34       ;
+
+CODE_22E1C2:    STY $02C1               ; $22:E1C2: 8C C1 02    ;
+
+CODE_22E1C5:    REP #$10                ; $22:E1C5: C2 10       ;
+
+                LDX #$0FFE              ; $22:E1C7: A2 FE 0F    ;
+
+                LDA #$31FF              ; $22:E1CA: A9 FF 31    ;
+
+CODE_22E1CD:    STA $7FA500,x           ; $22:E1CD: 9F 00 A5 7F ;
+
+                STA $7FB500,x           ; $22:E1D1: 9F 00 B5 7F ;
+
+                DEX                     ; $22:E1D5: CA          ;
+
+                DEX                     ; $22:E1D6: CA          ;
+
+                BPL CODE_22E1CD         ; $22:E1D7: 10 F4       ;
+
+                LDA $02C1               ; $22:E1D9: AD C1 02    ;
+
+                AND #$00FF              ; $22:E1DC: 29 FF 00    ;
+
+                ASL A                   ; $22:E1DF: 0A          ;
+
+                ASL A                   ; $22:E1E0: 0A          ;
+
+                ASL A                   ; $22:E1E1: 0A          ;
+
+                ASL A                   ; $22:E1E2: 0A          ;
+
+                ASL A                   ; $22:E1E3: 0A          ;
+
+                ASL A                   ; $22:E1E4: 0A          ;
+
+                TAX                     ; $22:E1E5: AA          ;
+
+                CPX #$0800              ; $22:E1E6: E0 00 08    ;
+
+                BCC CODE_22E1F0         ; $22:E1E9: 90 05       ;
+
+                CLC                     ; $22:E1EB: 18          ;
+
+                ADC #$0800              ; $22:E1EC: 69 00 08    ;
+
+                TAX                     ; $22:E1EF: AA          ;
+
+CODE_22E1F0:    LDY #$0000              ; $22:E1F0: A0 00 00    ;
+
+                LDA #$0005              ; $22:E1F3: A9 05 00    ;
+
+                STA $02                 ; $22:E1F6: 85 02       ;
+
+CODE_22E1F8:    LDA #$0010              ; $22:E1F8: A9 10 00    ;
+
+                STA $04                 ; $22:E1FB: 85 04       ;
+
+CODE_22E1FD:    LDA.w DATA_21CA50,y     ; $22:E1FD: B9 50 CA    ;
+
+                STA $7FA500,x           ; $22:E200: 9F 00 A5 7F ;
+
+                STA $7FAD00,x           ; $22:E204: 9F 00 AD 7F ;
+
+                INX                     ; $22:E208: E8          ;
+
+                INX                     ; $22:E209: E8          ;
+
+                INY                     ; $22:E20A: C8          ;
+
+                INY                     ; $22:E20B: C8          ;
+
+                LDA.w DATA_21CA50,y     ; $22:E20C: B9 50 CA    ;
+
+                STA $7FA500,x           ; $22:E20F: 9F 00 A5 7F ;
+
+                STA $7FAD00,x           ; $22:E213: 9F 00 AD 7F ;
+
+                INX                     ; $22:E217: E8          ;
+
+                INX                     ; $22:E218: E8          ;
+
+                CPX #$0800              ; $22:E219: E0 00 08    ;
+
+                BNE CODE_22E221         ; $22:E21C: D0 03       ;
+
+                LDX #$1000              ; $22:E21E: A2 00 10    ;
+
+CODE_22E221:    CPX #$1800              ; $22:E221: E0 00 18    ;
+
+                BEQ CODE_22E250         ; $22:E224: F0 2A       ;
+
+                DEC $04                 ; $22:E226: C6 04       ;
+
+                BEQ CODE_22E22E         ; $22:E228: F0 04       ;
+
+                DEY                     ; $22:E22A: 88          ;
+
+                DEY                     ; $22:E22B: 88          ;
+
+                BRA CODE_22E1FD         ; $22:E22C: 80 CF       ;
+
+CODE_22E22E:    DEC $02                 ; $22:E22E: C6 02       ;
+
+                BEQ CODE_22E236         ; $22:E230: F0 04       ;
+
+                INY                     ; $22:E232: C8          ;
+
+                INY                     ; $22:E233: C8          ;
+
+                BRA CODE_22E1F8         ; $22:E234: 80 C2       ;
+
+CODE_22E236:    LDA #$2D9F              ; $22:E236: A9 9F 2D    ;
+
+CODE_22E239:    STA $7FA500,x           ; $22:E239: 9F 00 A5 7F ;
+
+                STA $7FAD00,x           ; $22:E23D: 9F 00 AD 7F ;
+
+                INX                     ; $22:E241: E8          ;
+
+                INX                     ; $22:E242: E8          ;
+
+                CPX #$0800              ; $22:E243: E0 00 08    ;
+
+                BNE CODE_22E24B         ; $22:E246: D0 03       ;
+
+                LDX #$1000              ; $22:E248: A2 00 10    ;
+
+CODE_22E24B:    CPX #$1800              ; $22:E24B: E0 00 18    ;
+
+                BNE CODE_22E239         ; $22:E24E: D0 E9       ;
+
+CODE_22E250:    SEP #$30                ; $22:E250: E2 30       ;
+
+                LDA #$52                ; $22:E252: A9 52       ;
+
+                STA $2109               ; $22:E254: 8D 09 21    ;
+
+                LDA $020C               ; $22:E257: AD 0C 02    ;
+
+                ORA #$08                ; $22:E25A: 09 08       ;
+
+                STA $020C               ; $22:E25C: 8D 0C 02    ;
+
+                JMP CODE_22E262         ; $22:E25F: 4C 62 E2    ;
+
+CODE_22E262:    REP #$20                ; $22:E262: C2 20       ;
+
+                LDX #$80                ; $22:E264: A2 80       ;
+
+                STX $2115               ; $22:E266: 8E 15 21    ;
+
+                LDA #$1801              ; $22:E269: A9 01 18    ;
+
+                STA $4300               ; $22:E26C: 8D 00 43    ;
+
+                LDA #$A500              ; $22:E26F: A9 00 A5    ;
+
+                STA $4302               ; $22:E272: 8D 02 43    ;
+
+                LDX #$7F                ; $22:E275: A2 7F       ;
+
+                STX $4304               ; $22:E277: 8E 04 43    ;
+
+                LDA #$5000              ; $22:E27A: A9 00 50    ;
+
+                STA $2116               ; $22:E27D: 8D 16 21    ;
+
+                LDA #$0800              ; $22:E280: A9 00 08    ;
+
+                STA $4305               ; $22:E283: 8D 05 43    ;
+
+                LDX #$01                ; $22:E286: A2 01       ;
+
+                STX $420B               ; $22:E288: 8E 0B 42    ;
+
+                STA $4305               ; $22:E28B: 8D 05 43    ;
+
+                LDA #$5400              ; $22:E28E: A9 00 54    ;
+
+                STA $2116               ; $22:E291: 8D 16 21    ;
+
+                LDA #$B500              ; $22:E294: A9 00 B5    ;
+
+                STA $4302               ; $22:E297: 8D 02 43    ;
+
+                STX $420B               ; $22:E29A: 8E 0B 42    ;
+
+CODE_22E29D:    SEP #$20                ; $22:E29D: E2 20       ;
+
+                RTL                     ; $22:E29F: 6B          ;
+
+CODE_22E2A0:    REP #$20                ; $22:E2A0: C2 20       ;
+
+                LDY #$80                ; $22:E2A2: A0 80       ;
+
+                STY $2115               ; $22:E2A4: 8C 15 21    ;
+
+                LDA #$1801              ; $22:E2A7: A9 01 18    ;
+
+                STA $4300               ; $22:E2AA: 8D 00 43    ;
+
+                LDA #$A500              ; $22:E2AD: A9 00 A5    ;
+
+                CLC                     ; $22:E2B0: 18          ;
+
+                ADC $00                 ; $22:E2B1: 65 00       ;
+
+                STA $4302               ; $22:E2B3: 8D 02 43    ;
+
+                LDY #$7F                ; $22:E2B6: A0 7F       ;
+
+                STY $4304               ; $22:E2B8: 8C 04 43    ;
+
+                LDA #$5000              ; $22:E2BB: A9 00 50    ;
+
+                STA $2116               ; $22:E2BE: 8D 16 21    ;
+
+                LDA #$0800              ; $22:E2C1: A9 00 08    ;
+
+                STA $4305               ; $22:E2C4: 8D 05 43    ;
+
+                LDY #$01                ; $22:E2C7: A0 01       ;
+
+                STY $420B               ; $22:E2C9: 8C 0B 42    ;
+
+                STA $4305               ; $22:E2CC: 8D 05 43    ;
+
+                LDA #$5400              ; $22:E2CF: A9 00 54    ;
+
+                STA $2116               ; $22:E2D2: 8D 16 21    ;
+
+                LDA #$AD00              ; $22:E2D5: A9 00 AD    ;
+
+                CLC                     ; $22:E2D8: 18          ;
+
+                ADC $00                 ; $22:E2D9: 65 00       ;
+
+                STA $4302               ; $22:E2DB: 8D 02 43    ;
+
+                STY $420B               ; $22:E2DE: 8C 0B 42    ;
+
+                SEP #$20                ; $22:E2E1: E2 20       ;
+
+                RTL                     ; $22:E2E3: 6B          ;
+
+CODE_22E2E4:    LDA #$00                ; $22:E2E4: A9 00       ;
+
+                LDX #$EA                ; $22:E2E6: A2 EA       ;
+
+                LDY #$3C                ; $22:E2E8: A0 3C       ;
+
+                JSL CODE_20A1BE         ; $22:E2EA: 22 BE A1 20 ;
+
+                LDA #$52                ; $22:E2EE: A9 52       ;
+
+                STA $2109               ; $22:E2F0: 8D 09 21    ;
+
+                LDA $020C               ; $22:E2F3: AD 0C 02    ;
+
+                ORA #$08                ; $22:E2F6: 09 08       ;
+
+                STA $020C               ; $22:E2F8: 8D 0C 02    ;
+
+                JMP CODE_22E262         ; $22:E2FB: 4C 62 E2    ;
+
+CODE_22E2FE:    LDA $7F2000             ; $22:E2FE: AF 00 20 7F ;
+
+                BMI CODE_22E337         ; $22:E302: 30 33       ;
+
+                REP #$20                ; $22:E304: C2 20       ;
+
+                LDA $7F2000             ; $22:E306: AF 00 20 7F ;
+
+                XBA                     ; $22:E30A: EB          ;
+
+                STA $2116               ; $22:E30B: 8D 16 21    ;
+
+                LDX #$81                ; $22:E30E: A2 81       ;
+
+                STX $2115               ; $22:E310: 8E 15 21    ;
+
+                LDA #$1801              ; $22:E313: A9 01 18    ;
+
+                STA $4300               ; $22:E316: 8D 00 43    ;
+
+                LDA #$2002              ; $22:E319: A9 02 20    ;
+
+                STA $4302               ; $22:E31C: 8D 02 43    ;
+
+                LDX #$7F                ; $22:E31F: A2 7F       ;
+
+                STX $4304               ; $22:E321: 8E 04 43    ;
+
+                LDA #$0040              ; $22:E324: A9 40 00    ;
+
+                STA $4305               ; $22:E327: 8D 05 43    ;
+
+                LDX #$01                ; $22:E32A: A2 01       ;
+
+                STX $420B               ; $22:E32C: 8E 0B 42    ;
+
+                SEP #$20                ; $22:E32F: E2 20       ;
+
+                LDA #$FF                ; $22:E331: A9 FF       ;
+
+                STA $7F2000             ; $22:E333: 8F 00 20 7F ;
+
+CODE_22E337:    RTL                     ; $22:E337: 6B          ;
+
+CODE_22E338:    REP #$30                ; $22:E338: C2 30       ;
+
+                LDX #$0FFE              ; $22:E33A: A2 FE 0F    ;
+
+                LDA #$20FF              ; $22:E33D: A9 FF 20    ;
+
+CODE_22E340:    STA $7F2000,x           ; $22:E340: 9F 00 20 7F ;
+
+                STA $7F3000,x           ; $22:E344: 9F 00 30 7F ;
+
+                DEX                     ; $22:E348: CA          ;
+
+                DEX                     ; $22:E349: CA          ;
+
+                BPL CODE_22E340         ; $22:E34A: 10 F4       ;
+
+                LDX #$069A              ; $22:E34C: A2 9A 06    ;
+
+                LDA #$25D1              ; $22:E34F: A9 D1 25    ;
+
+CODE_22E352:    STA $7F2000,x           ; $22:E352: 9F 00 20 7F ;
+
+                INX                     ; $22:E356: E8          ;
+
+                INX                     ; $22:E357: E8          ;
+
+                CPX #$0800              ; $22:E358: E0 00 08    ;
+
+                BNE CODE_22E352         ; $22:E35B: D0 F5       ;
+
+                LDX #$0EDA              ; $22:E35D: A2 DA 0E    ;
+
+CODE_22E360:    STA $7F2000,x           ; $22:E360: 9F 00 20 7F ;
+
+                INX                     ; $22:E364: E8          ;
+
+                INX                     ; $22:E365: E8          ;
+
+                CPX #$1000              ; $22:E366: E0 00 10    ;
+
+                BNE CODE_22E360         ; $22:E369: D0 F5       ;
+
+                STZ $00                 ; $22:E36B: 64 00       ;
+
+                STZ $02                 ; $22:E36D: 64 02       ;
+
+CODE_22E36F:    LDY $00                 ; $22:E36F: A4 00       ;
+
+                CPY #$0013              ; $22:E371: C0 13 00    ;
+
+                BEQ CODE_22E3A3         ; $22:E374: F0 2D       ;
+
+                LDA.w DATA_21CBA2,y     ; $22:E376: B9 A2 CB    ;
+
+                AND #$00FF              ; $22:E379: 29 FF 00    ;
+
+                STA $04                 ; $22:E37C: 85 04       ;
+
+                STA $06                 ; $22:E37E: 85 06       ;
+
+                TYA                     ; $22:E380: 98          ;
+
+                ASL A                   ; $22:E381: 0A          ;
+
+                TAY                     ; $22:E382: A8          ;
+
+                LDX.w DATA_21CBB5,y     ; $22:E383: BE B5 CB    ;
+
+                LDY $02                 ; $22:E386: A4 02       ;
+
+CODE_22E388:    LDA.w DATA_21CA64,y     ; $22:E388: B9 64 CA    ;
+
+                STA $7F2000,x           ; $22:E38B: 9F 00 20 7F ;
+
+                INX                     ; $22:E38F: E8          ;
+
+                INX                     ; $22:E390: E8          ;
+
+                INY                     ; $22:E391: C8          ;
+
+                INY                     ; $22:E392: C8          ;
+
+                DEC $04                 ; $22:E393: C6 04       ;
+
+                BNE CODE_22E388         ; $22:E395: D0 F1       ;
+
+                LDA $06                 ; $22:E397: A5 06       ;
+
+                ASL A                   ; $22:E399: 0A          ;
+
+                CLC                     ; $22:E39A: 18          ;
+
+                ADC $02                 ; $22:E39B: 65 02       ;
+
+                STA $02                 ; $22:E39D: 85 02       ;
+
+                INC $00                 ; $22:E39F: E6 00       ;
+
+                BRA CODE_22E36F         ; $22:E3A1: 80 CC       ;
+
+CODE_22E3A3:    LDA $0350               ; $22:E3A3: AD 50 03    ;
+
+                AND #$00FF              ; $22:E3A6: 29 FF 00    ;
+
+                CMP #$0002              ; $22:E3A9: C9 02 00    ;
+
+                BEQ CODE_22E3B3         ; $22:E3AC: F0 05       ;
+
+                CMP #$0023              ; $22:E3AE: C9 23 00    ;
+
+                BNE CODE_22E3B9         ; $22:E3B1: D0 06       ;
+
+CODE_22E3B3:    LDA #$0040              ; $22:E3B3: A9 40 00    ;
+
+                STA $0218               ; $22:E3B6: 8D 18 02    ;
+
+CODE_22E3B9:    SEP #$10                ; $22:E3B9: E2 10       ;
+
+                LDX #$80                ; $22:E3BB: A2 80       ;
+
+                STX $2115               ; $22:E3BD: 8E 15 21    ;
+
+                LDA #$1801              ; $22:E3C0: A9 01 18    ;
+
+                STA $4300               ; $22:E3C3: 8D 00 43    ;
+
+                LDA #$2000              ; $22:E3C6: A9 00 20    ;
+
+                STA $4305               ; $22:E3C9: 8D 05 43    ;
+
+                LDA #$2000              ; $22:E3CC: A9 00 20    ;
+
+                STA $4302               ; $22:E3CF: 8D 02 43    ;
+
+                LDX #$7F                ; $22:E3D2: A2 7F       ;
+
+                STX $4304               ; $22:E3D4: 8E 04 43    ;
+
+                LDA #$1000              ; $22:E3D7: A9 00 10    ;
+
+                STA $2116               ; $22:E3DA: 8D 16 21    ;
+
+                LDX #$01                ; $22:E3DD: A2 01       ;
+
+                STX $420B               ; $22:E3DF: 8E 0B 42    ;
+
+                SEP #$20                ; $22:E3E2: E2 20       ;
+
+                RTL                     ; $22:E3E4: 6B          ;
+
+CODE_22E3E5:    REP #$30                ; $22:E3E5: C2 30       ;
+
+                LDX #$0FFE              ; $22:E3E7: A2 FE 0F    ;
+
+                LDA #$05FF              ; $22:E3EA: A9 FF 05    ;
+
+CODE_22E3ED:    STA $7FA500,x           ; $22:E3ED: 9F 00 A5 7F ;
+
+                DEX                     ; $22:E3F1: CA          ;
+
+                DEX                     ; $22:E3F2: CA          ;
+
+                BPL CODE_22E3ED         ; $22:E3F3: 10 F8       ;
+
+                LDX #$0FFE              ; $22:E3F5: A2 FE 0F    ;
+
+                LDA #$8900              ; $22:E3F8: A9 00 89    ;
+
+CODE_22E3FB:    STA $7FB500,x           ; $22:E3FB: 9F 00 B5 7F ;
+
+                DEX                     ; $22:E3FF: CA          ;
+
+                DEX                     ; $22:E400: CA          ;
+
+                BPL CODE_22E3FB         ; $22:E401: 10 F8       ;
+
+                STZ $00                 ; $22:E403: 64 00       ;
+
+CODE_22E405:    LDY $00                 ; $22:E405: A4 00       ;
+
+                LDX.w DATA_21CDB9,y     ; $22:E407: BE B9 CD    ;
+
+                LDY #$0000              ; $22:E40A: A0 00 00    ;
+
+                LDA #$0011              ; $22:E40D: A9 11 00    ;
+
+                STA $04                 ; $22:E410: 85 04       ;
+
+CODE_22E412:    LDA #$0008              ; $22:E412: A9 08 00    ;
+
+                STA $06                 ; $22:E415: 85 06       ;
+
+CODE_22E417:    LDA.w DATA_21CC11,y     ; $22:E417: B9 11 CC    ;
+
+                STA $7FB500,x           ; $22:E41A: 9F 00 B5 7F ;
+
+                STA $7FBD00,x           ; $22:E41E: 9F 00 BD 7F ;
+
+                INX                     ; $22:E422: E8          ;
+
+                INX                     ; $22:E423: E8          ;
+
+                INY                     ; $22:E424: C8          ;
+
+                INY                     ; $22:E425: C8          ;
+
+                DEC $06                 ; $22:E426: C6 06       ;
+
+                BNE CODE_22E417         ; $22:E428: D0 ED       ;
+
+                TXA                     ; $22:E42A: 8A          ;
+
+                CLC                     ; $22:E42B: 18          ;
+
+                ADC #$0030              ; $22:E42C: 69 30 00    ;
+
+                TAX                     ; $22:E42F: AA          ;
+
+                DEC $04                 ; $22:E430: C6 04       ;
+
+                BNE CODE_22E412         ; $22:E432: D0 DE       ;
+
+                LDA $00                 ; $22:E434: A5 00       ;
+
+                INC A                   ; $22:E436: 1A          ;
+
+                INC A                   ; $22:E437: 1A          ;
+
+                STA $00                 ; $22:E438: 85 00       ;
+
+                CMP #$0006              ; $22:E43A: C9 06 00    ;
+
+                BNE CODE_22E405         ; $22:E43D: D0 C6       ;
+
+CODE_22E43F:    LDY $00                 ; $22:E43F: A4 00       ;
+
+                LDX.w DATA_21CDB9,y     ; $22:E441: BE B9 CD    ;
+
+                LDY #$0000              ; $22:E444: A0 00 00    ;
+
+                LDA #$0011              ; $22:E447: A9 11 00    ;
+
+                STA $04                 ; $22:E44A: 85 04       ;
+
+CODE_22E44C:    LDA #$0004              ; $22:E44C: A9 04 00    ;
+
+                STA $06                 ; $22:E44F: 85 06       ;
+
+CODE_22E451:    LDA.w DATA_21CD31,y     ; $22:E451: B9 31 CD    ;
+
+                STA $7FB500,x           ; $22:E454: 9F 00 B5 7F ;
+
+                STA $7FBD00,x           ; $22:E458: 9F 00 BD 7F ;
+
+                INX                     ; $22:E45C: E8          ;
+
+                INX                     ; $22:E45D: E8          ;
+
+                INY                     ; $22:E45E: C8          ;
+
+                INY                     ; $22:E45F: C8          ;
+
+                DEC $06                 ; $22:E460: C6 06       ;
+
+                BNE CODE_22E451         ; $22:E462: D0 ED       ;
+
+                TXA                     ; $22:E464: 8A          ;
+
+                CLC                     ; $22:E465: 18          ;
+
+                ADC #$0038              ; $22:E466: 69 38 00    ;
+
+                TAX                     ; $22:E469: AA          ;
+
+                DEC $04                 ; $22:E46A: C6 04       ;
+
+                BNE CODE_22E44C         ; $22:E46C: D0 DE       ;
+
+                LDA $00                 ; $22:E46E: A5 00       ;
+
+                INC A                   ; $22:E470: 1A          ;
+
+                INC A                   ; $22:E471: 1A          ;
+
+                STA $00                 ; $22:E472: 85 00       ;
+
+                CMP #$000A              ; $22:E474: C9 0A 00    ;
+
+                BNE CODE_22E43F         ; $22:E477: D0 C6       ;
+
+                SEP #$30                ; $22:E479: E2 30       ;
+
+                LDA #$52                ; $22:E47B: A9 52       ;
+
+                STA $2109               ; $22:E47D: 8D 09 21    ;
+
+                JMP CODE_22E262         ; $22:E480: 4C 62 E2    ;
+
+CODE_22E483:    LDA #$00                ; $22:E483: A9 00       ;
+
+                LDX #$ED                ; $22:E485: A2 ED       ;
+
+                LDY #$3C                ; $22:E487: A0 3C       ;
+
+                JSL CODE_20A1BE         ; $22:E489: 22 BE A1 20 ;
+
+                LDA #$51                ; $22:E48D: A9 51       ;
+
+                STA $2109               ; $22:E48F: 8D 09 21    ;
+
+                STZ $00                 ; $22:E492: 64 00       ;
+
+                STZ $01                 ; $22:E494: 64 01       ;
+
+                JMP CODE_22E2A0         ; $22:E496: 4C A0 E2    ;
+
+CODE_22E499:    LDA #$00                ; $22:E499: A9 00       ;
+
+                LDX #$ED                ; $22:E49B: A2 ED       ;
+
+                LDY #$3C                ; $22:E49D: A0 3C       ;
+
+                JSL CODE_20A1BE         ; $22:E49F: 22 BE A1 20 ;
+
+                LDA #$51                ; $22:E4A3: A9 51       ;
+
+                STA $2109               ; $22:E4A5: 8D 09 21    ;
+
+                STZ $00                 ; $22:E4A8: 64 00       ;
+
+                LDA #$10                ; $22:E4AA: A9 10       ;
+
+                STA $01                 ; $22:E4AC: 85 01       ;
+
+                JMP CODE_22E2A0         ; $22:E4AE: 4C A0 E2    ;
+
+CODE_22E4B1:    LDA #$00                ; $22:E4B1: A9 00       ;
+
+                LDX #$EF                ; $22:E4B3: A2 EF       ;
+
+                LDY #$3C                ; $22:E4B5: A0 3C       ;
+
+                JSL CODE_20A1BE         ; $22:E4B7: 22 BE A1 20 ;
+
+                LDA #$00                ; $22:E4BB: A9 00       ;
+
+                STA $7FC522             ; $22:E4BD: 8F 22 C5 7F ;
+
+                STA $7FC523             ; $22:E4C1: 8F 23 C5 7F ;
+
+                LDA #$51                ; $22:E4C5: A9 51       ;
+
+                STA $2109               ; $22:E4C7: 8D 09 21    ;
+
+                STZ $00                 ; $22:E4CA: 64 00       ;
+
+                STZ $01                 ; $22:E4CC: 64 01       ;
+
+                JMP CODE_22E2A0         ; $22:E4CE: 4C A0 E2    ;
+
+CODE_22E4D1:    LDA #$00                ; $22:E4D1: A9 00       ;
+
+                LDX #$EF                ; $22:E4D3: A2 EF       ;
+
+                LDY #$3C                ; $22:E4D5: A0 3C       ;
+
+                JSL CODE_20A1BE         ; $22:E4D7: 22 BE A1 20 ;
+
+                REP #$30                ; $22:E4DB: C2 30       ;
+
+                LDX #$0FFE              ; $22:E4DD: A2 FE 0F    ;
+
+                LDA #$05FF              ; $22:E4E0: A9 FF 05    ;
+
+CODE_22E4E3:    STA $7FA500,x           ; $22:E4E3: 9F 00 A5 7F ;
+
+                DEX                     ; $22:E4E7: CA          ;
+
+                DEX                     ; $22:E4E8: CA          ;
+
+                BPL CODE_22E4E3         ; $22:E4E9: 10 F8       ;
+
+                SEP #$30                ; $22:E4EB: E2 30       ;
+
+                LDA #$52                ; $22:E4ED: A9 52       ;
+
+                STA $2109               ; $22:E4EF: 8D 09 21    ;
+
+                JMP CODE_22E262         ; $22:E4F2: 4C 62 E2    ;
+
+CODE_22E4F5:    LDA #$00                ; $22:E4F5: A9 00       ;
+
+                LDX #$E1                ; $22:E4F7: A2 E1       ;
+
+                LDY #$3C                ; $22:E4F9: A0 3C       ;
+
+                JSL CODE_20A1BE         ; $22:E4FB: 22 BE A1 20 ;
+
+                LDA #$03                ; $22:E4FF: A9 03       ;
+
+                STA $0351               ; $22:E501: 8D 51 03    ;
+
+                LDA #$51                ; $22:E504: A9 51       ;
+
+                STA $2109               ; $22:E506: 8D 09 21    ;
+
+                STZ $00                 ; $22:E509: 64 00       ;
+
+                STZ $01                 ; $22:E50B: 64 01       ;
+
+                LDA $020C               ; $22:E50D: AD 0C 02    ;
+
+                ORA #$08                ; $22:E510: 09 08       ;
+
+                STA $020C               ; $22:E512: 8D 0C 02    ;
+
+                JMP CODE_22E2A0         ; $22:E515: 4C A0 E2    ;
+
+CODE_22E518:    REP #$30                ; $22:E518: C2 30       ;
+
+                LDX #$0FFE              ; $22:E51A: A2 FE 0F    ;
+
+                LDA #$21FF              ; $22:E51D: A9 FF 21    ;
+
+CODE_22E520:    STA $7FA500,x           ; $22:E520: 9F 00 A5 7F ;
+
+                STA $7FB500,x           ; $22:E524: 9F 00 B5 7F ;
+
+                DEX                     ; $22:E528: CA          ;
+
+                DEX                     ; $22:E529: CA          ;
+
+                BPL CODE_22E520         ; $22:E52A: 10 F4       ;
+
+                LDX #$1500              ; $22:E52C: A2 00 15    ;
+
+                LDY #$0000              ; $22:E52F: A0 00 00    ;
+
+CODE_22E532:    LDA #$0010              ; $22:E532: A9 10 00    ;
+
+                STA $04                 ; $22:E535: 85 04       ;
+
+CODE_22E537:    LDA.w DATA_21CDC3,y     ; $22:E537: B9 C3 CD    ;
+
+                STA $7FA500,x           ; $22:E53A: 9F 00 A5 7F ;
+
+                STA $7FAD00,x           ; $22:E53E: 9F 00 AD 7F ;
+
+                INX                     ; $22:E542: E8          ;
+
+                INX                     ; $22:E543: E8          ;
+
+                INY                     ; $22:E544: C8          ;
+
+                INY                     ; $22:E545: C8          ;
+
+                LDA.w DATA_21CDC3,y     ; $22:E546: B9 C3 CD    ;
+
+                STA $7FA500,x           ; $22:E549: 9F 00 A5 7F ;
+
+                STA $7FAD00,x           ; $22:E54D: 9F 00 AD 7F ;
+
+                INX                     ; $22:E551: E8          ;
+
+                INX                     ; $22:E552: E8          ;
+
+                CPX #$1680              ; $22:E553: E0 80 16    ;
+
+                BEQ CODE_22E564         ; $22:E556: F0 0C       ;
+
+                DEC $04                 ; $22:E558: C6 04       ;
+
+                BEQ CODE_22E560         ; $22:E55A: F0 04       ;
+
+                DEY                     ; $22:E55C: 88          ;
+
+                DEY                     ; $22:E55D: 88          ;
+
+                BRA CODE_22E537         ; $22:E55E: 80 D7       ;
+
+CODE_22E560:    INY                     ; $22:E560: C8          ;
+
+                INY                     ; $22:E561: C8          ;
+
+                BRA CODE_22E532         ; $22:E562: 80 CE       ;
+
+CODE_22E564:    SEP #$30                ; $22:E564: E2 30       ;
+
+                LDA #$52                ; $22:E566: A9 52       ;
+
+                STA $2109               ; $22:E568: 8D 09 21    ;
+
+                LDA $020C               ; $22:E56B: AD 0C 02    ;
+
+                ORA #$08                ; $22:E56E: 09 08       ;
+
+                STA $020C               ; $22:E570: 8D 0C 02    ;
+
+                JMP CODE_22E262         ; $22:E573: 4C 62 E2    ;
+
+CODE_22E576:    LDA #$00                ; $22:E576: A9 00       ;
+
+                LDX #$D8                ; $22:E578: A2 D8       ;
+
+                LDY #$3C                ; $22:E57A: A0 3C       ;
+
+                JSL CODE_20A1BE         ; $22:E57C: 22 BE A1 20 ;
+
+                REP #$20                ; $22:E580: C2 20       ;
+
+                LDX #$80                ; $22:E582: A2 80       ;
+
+                STX $2115               ; $22:E584: 8E 15 21    ;
+
+                LDA #$1801              ; $22:E587: A9 01 18    ;
+
+                STA $4300               ; $22:E58A: 8D 00 43    ;
+
+                LDA #$2000              ; $22:E58D: A9 00 20    ;
+
+                STA $4305               ; $22:E590: 8D 05 43    ;
+
+                LDA #$A500              ; $22:E593: A9 00 A5    ;
+
+                STA $4302               ; $22:E596: 8D 02 43    ;
+
+                LDX #$7F                ; $22:E599: A2 7F       ;
+
+                STX $4304               ; $22:E59B: 8E 04 43    ;
+
+                LDA #$1000              ; $22:E59E: A9 00 10    ;
+
+                STA $2116               ; $22:E5A1: 8D 16 21    ;
+
+                LDX #$01                ; $22:E5A4: A2 01       ;
+
+                STX $420B               ; $22:E5A6: 8E 0B 42    ;
+
+                SEP #$20                ; $22:E5A9: E2 20       ;
+
+                RTL                     ; $22:E5AB: 6B          ;
+
+CODE_22E5AC:    REP #$30                ; $22:E5AC: C2 30       ;
+
+                LDX #$0FFE              ; $22:E5AE: A2 FE 0F    ;
+
+                LDA #$21FF              ; $22:E5B1: A9 FF 21    ;
+
+CODE_22E5B4:    STA $7FA500,x           ; $22:E5B4: 9F 00 A5 7F ;
+
+                STA $7FB500,x           ; $22:E5B8: 9F 00 B5 7F ;
+
+                DEX                     ; $22:E5BC: CA          ;
+
+                DEX                     ; $22:E5BD: CA          ;
+
+                BPL CODE_22E5B4         ; $22:E5BE: 10 F4       ;
+
+                LDX #$00BE              ; $22:E5C0: A2 BE 00    ;
+
+CODE_22E5C3:    LDA #$09FC              ; $22:E5C3: A9 FC 09    ;
+
+                STA $7FA500,x           ; $22:E5C6: 9F 00 A5 7F ;
+
+                STA $7FAD00,x           ; $22:E5CA: 9F 00 AD 7F ;
+
+                DEX                     ; $22:E5CE: CA          ;
+
+                DEX                     ; $22:E5CF: CA          ;
+
+                BPL CODE_22E5C3         ; $22:E5D0: 10 F1       ;
+
+                LDX #$00C0              ; $22:E5D2: A2 C0 00    ;
+
+                STZ $00                 ; $22:E5D5: 64 00       ;
+
+                LDA #$0008              ; $22:E5D7: A9 08 00    ;
+
+                STA $02                 ; $22:E5DA: 85 02       ;
+
+                STZ $06                 ; $22:E5DC: 64 06       ;
+
+CODE_22E5DE:    LDY $06                 ; $22:E5DE: A4 06       ;
+
+                LDA.w DATA_21CC0B,y     ; $22:E5E0: B9 0B CC    ;
+
+                XBA                     ; $22:E5E3: EB          ;
+
+                AND #$FF00              ; $22:E5E4: 29 00 FF    ;
+
+                STA $08                 ; $22:E5E7: 85 08       ;
+
+                LDA #$0008              ; $22:E5E9: A9 08 00    ;
+
+                STA $04                 ; $22:E5EC: 85 04       ;
+
+CODE_22E5EE:    LDA #$0004              ; $22:E5EE: A9 04 00    ;
+
+                STA $0A                 ; $22:E5F1: 85 0A       ;
+
+                LDY $00                 ; $22:E5F3: A4 00       ;
+
+                ASL $08                 ; $22:E5F5: 06 08       ;
+
+                BCC CODE_22E5FB         ; $22:E5F7: 90 02       ;
+
+                LDY $02                 ; $22:E5F9: A4 02       ;
+
+CODE_22E5FB:    LDA.w DATA_21CBDB,y     ; $22:E5FB: B9 DB CB    ;
+
+                STA $7FA500,x           ; $22:E5FE: 9F 00 A5 7F ;
+
+                INY                     ; $22:E602: C8          ;
+
+                INY                     ; $22:E603: C8          ;
+
+                INX                     ; $22:E604: E8          ;
+
+                INX                     ; $22:E605: E8          ;
+
+                DEC $0A                 ; $22:E606: C6 0A       ;
+
+                BNE CODE_22E5FB         ; $22:E608: D0 F1       ;
+
+                DEC $04                 ; $22:E60A: C6 04       ;
+
+                BNE CODE_22E5EE         ; $22:E60C: D0 E0       ;
+
+                TXA                     ; $22:E60E: 8A          ;
+
+                CLC                     ; $22:E60F: 18          ;
+
+                ADC #$07C0              ; $22:E610: 69 C0 07    ;
+
+                TAX                     ; $22:E613: AA          ;
+
+                LDA $06                 ; $22:E614: A5 06       ;
+
+                INC A                   ; $22:E616: 1A          ;
+
+                STA $06                 ; $22:E617: 85 06       ;
+
+                CMP #$0006              ; $22:E619: C9 06 00    ;
+
+                BEQ CODE_22E63B         ; $22:E61C: F0 1D       ;
+
+                AND #$0001              ; $22:E61E: 29 01 00    ;
+
+                BNE CODE_22E5DE         ; $22:E621: D0 BB       ;
+
+                TXA                     ; $22:E623: 8A          ;
+
+                SEC                     ; $22:E624: 38          ;
+
+                SBC #$0FC0              ; $22:E625: E9 C0 0F    ;
+
+                TAX                     ; $22:E628: AA          ;
+
+                LDA $00                 ; $22:E629: A5 00       ;
+
+                CLC                     ; $22:E62B: 18          ;
+
+                ADC #$0010              ; $22:E62C: 69 10 00    ;
+
+                STA $00                 ; $22:E62F: 85 00       ;
+
+                LDA $02                 ; $22:E631: A5 02       ;
+
+                CLC                     ; $22:E633: 18          ;
+
+                ADC #$0010              ; $22:E634: 69 10 00    ;
+
+                STA $02                 ; $22:E637: 85 02       ;
+
+                BRA CODE_22E5DE         ; $22:E639: 80 A3       ;
+
+CODE_22E63B:    SEP #$30                ; $22:E63B: E2 30       ;
+
+                LDA #$52                ; $22:E63D: A9 52       ;
+
+                STA $2109               ; $22:E63F: 8D 09 21    ;
+
+                LDA $020C               ; $22:E642: AD 0C 02    ;
+
+                ORA #$08                ; $22:E645: 09 08       ;
+
+                STA $020C               ; $22:E647: 8D 0C 02    ;
+
+                JMP CODE_22E262         ; $22:E64A: 4C 62 E2    ;
+
+CODE_22E64D:    LDA #$00                ; $22:E64D: A9 00       ;
+
+                LDX #$E6                ; $22:E64F: A2 E6       ;
+
+                LDY #$3C                ; $22:E651: A0 3C       ;
+
+                JSL CODE_20A1BE         ; $22:E653: 22 BE A1 20 ;
+
+                LDA #$52                ; $22:E657: A9 52       ;
+
+                STA $2109               ; $22:E659: 8D 09 21    ;
+
+                JMP CODE_22E262         ; $22:E65C: 4C 62 E2    ;
+
+CODE_22E65F:    REP #$30                ; $22:E65F: C2 30       ;
+
+                PHB                     ; $22:E661: 8B          ;
+
+                LDX.w #DATA_3CA400      ; $22:E662: A2 00 A4    ;
+
+                LDY #$1300              ; $22:E665: A0 00 13    ;
+
+                LDA #$00FF              ; $22:E668: A9 FF 00    ;
+
+                MVN $00,DATA_3CA400>>16 ; $22:E66B: 54 00 3C    ;
+                PLB                     ; $22:E66E: AB          ;
+
+                SEP #$30                ; $22:E66F: E2 30       ;
+
+                LDA #$01                ; $22:E671: A9 01       ;
+
+                STA $1500               ; $22:E673: 8D 00 15    ;
+
+                RTL                     ; $22:E676: 6B          ;
+
+CODE_22E677:    LDA $1200               ; $22:E677: AD 00 12    ;
+
+                BNE CODE_22E690         ; $22:E67A: D0 14       ;
+
+                LDA $2140               ; $22:E67C: AD 40 21    ;
+
+                CMP $1204               ; $22:E67F: CD 04 12    ;
+
+                BEQ CODE_22E68E         ; $22:E682: F0 0A       ;
+
+                INC $120A               ; $22:E684: EE 0A 12    ;
+
+                LDA $120A               ; $22:E687: AD 0A 12    ;
+
+                CMP #$03                ; $22:E68A: C9 03       ;
+
+                BCC CODE_22E699         ; $22:E68C: 90 0B       ;
+
+CODE_22E68E:    LDA #$00                ; $22:E68E: A9 00       ;
+
+CODE_22E690:    STA $2140               ; $22:E690: 8D 40 21    ;
+
+                STA $1204               ; $22:E693: 8D 04 12    ;
+
+                STZ $120A               ; $22:E696: 9C 0A 12    ;
+
+CODE_22E699:    LDA $1201               ; $22:E699: AD 01 12    ;
+
+                BNE CODE_22E6B4         ; $22:E69C: D0 16       ;
+
+                LDA $2141               ; $22:E69E: AD 41 21    ;
+
+                AND #$0F                ; $22:E6A1: 29 0F       ;
+
+                CMP $1205               ; $22:E6A3: CD 05 12    ;
+
+                BEQ CODE_22E6B2         ; $22:E6A6: F0 0A       ;
+
+                INC $120B               ; $22:E6A8: EE 0B 12    ;
+
+                LDA $120B               ; $22:E6AB: AD 0B 12    ;
+
+                CMP #$03                ; $22:E6AE: C9 03       ;
+
+                BCC CODE_22E6BF         ; $22:E6B0: 90 0D       ;
+
+CODE_22E6B2:    LDA #$00                ; $22:E6B2: A9 00       ;
+
+CODE_22E6B4:    STA $2141               ; $22:E6B4: 8D 41 21    ;
+
+                AND #$0F                ; $22:E6B7: 29 0F       ;
+
+                STA $1205               ; $22:E6B9: 8D 05 12    ;
+
+                STZ $120B               ; $22:E6BC: 9C 0B 12    ;
+
+CODE_22E6BF:    LDA $1202               ; $22:E6BF: AD 02 12    ;
+
+                BEQ CODE_22E73A         ; $22:E6C2: F0 76       ;
+
+                LDY #$04                ; $22:E6C4: A0 04       ;
+
+                STY $120C               ; $22:E6C6: 8C 0C 12    ;
+
+                STA $2142               ; $22:E6C9: 8D 42 21    ;
+
+                CMP #$F0                ; $22:E6CC: C9 F0       ;
+
+                BCS CODE_22E6D3         ; $22:E6CE: B0 03       ;
+
+                STA $1206               ; $22:E6D0: 8D 06 12    ;
+
+CODE_22E6D3:    LDA $1203               ; $22:E6D3: AD 03 12    ;
+
+                BNE CODE_22E6F9         ; $22:E6D6: D0 21       ;
+
+                LDA $2143               ; $22:E6D8: AD 43 21    ;
+
+                AND #$7F                ; $22:E6DB: 29 7F       ;
+
+                CMP $1207               ; $22:E6DD: CD 07 12    ;
+
+                BEQ CODE_22E6EC         ; $22:E6E0: F0 0A       ;
+
+                INC $120D               ; $22:E6E2: EE 0D 12    ;
+
+                LDA $120D               ; $22:E6E5: AD 0D 12    ;
+
+                CMP #$03                ; $22:E6E8: C9 03       ;
+
+                BCC CODE_22E71D         ; $22:E6EA: 90 31       ;
+
+CODE_22E6EC:    LDA #$00                ; $22:E6EC: A9 00       ;
+
+                STA $2143               ; $22:E6EE: 8D 43 21    ;
+
+                STA $1207               ; $22:E6F1: 8D 07 12    ;
+
+                STZ $120D               ; $22:E6F4: 9C 0D 12    ;
+
+                BRA CODE_22E71D         ; $22:E6F7: 80 24       ;
+
+CODE_22E6F9:    STA $1207               ; $22:E6F9: 8D 07 12    ;
+
+                CMP #$01                ; $22:E6FC: C9 01       ;
+
+                BEQ CODE_22E70C         ; $22:E6FE: F0 0C       ;
+
+                CMP #$05                ; $22:E700: C9 05       ;
+
+                BEQ CODE_22E70C         ; $22:E702: F0 08       ;
+
+                CMP #$06                ; $22:E704: C9 06       ;
+
+                BEQ CODE_22E70C         ; $22:E706: F0 04       ;
+
+                CMP #$4A                ; $22:E708: C9 4A       ;
+
+                BNE CODE_22E72A         ; $22:E70A: D0 1E       ;
+
+CODE_22E70C:    ORA $120F               ; $22:E70C: 0D 0F 12    ;
+
+                STA $2143               ; $22:E70F: 8D 43 21    ;
+
+                LDA $120F               ; $22:E712: AD 0F 12    ;
+
+                EOR #$80                ; $22:E715: 49 80       ;
+
+                STA $120F               ; $22:E717: 8D 0F 12    ;
+
+                STZ $120D               ; $22:E71A: 9C 0D 12    ;
+
+CODE_22E71D:    STZ $1200               ; $22:E71D: 9C 00 12    ;
+
+                STZ $1201               ; $22:E720: 9C 01 12    ;
+
+                STZ $1202               ; $22:E723: 9C 02 12    ;
+
+                STZ $1203               ; $22:E726: 9C 03 12    ;
+
+                RTL                     ; $22:E729: 6B          ;
+
+CODE_22E72A:    STA $2143               ; $22:E72A: 8D 43 21    ;
+
+                STZ $1200               ; $22:E72D: 9C 00 12    ;
+
+                STZ $1201               ; $22:E730: 9C 01 12    ;
+
+                STZ $1202               ; $22:E733: 9C 02 12    ;
+
+                STZ $1203               ; $22:E736: 9C 03 12    ;
+
+                RTL                     ; $22:E739: 6B          ;
+
+CODE_22E73A:    LDY $2142               ; $22:E73A: AC 42 21    ;
+
+                CPY $1206               ; $22:E73D: CC 06 12    ;
+
+                BNE CODE_22E6D3         ; $22:E740: D0 91       ;
+
+                DEC $120C               ; $22:E742: CE 0C 12    ;
+
+                LDA $120C               ; $22:E745: AD 0C 12    ;
+
+                BNE CODE_22E6D3         ; $22:E748: D0 89       ;
+
+                INC $120C               ; $22:E74A: EE 0C 12    ;
+
+                STA $2142               ; $22:E74D: 8D 42 21    ;
+
+                BRA CODE_22E6D3         ; $22:E750: 80 81       ;
 
 ORG $22F000
 CODE_22F000:    JSR CODE_22F004         ; $22:F000: 20 04 F0    ;
                 RTL                     ; $22:F003: 6B          ;
 
-CODE_22F004:    LDA $05FD                   ; $22:F004: AD FD 05    ;
-                LSR A                       ; $22:F007: 4A          ;
-                BNE CODE_22F068             ; $22:F008: D0 5E       ;
-                LDX #$00                    ; $22:F00A: A2 00       ;
-                JSL CODE_279C96             ; $22:F00C: 22 96 9C 27 ;
-                LDA #$81                    ; $22:F010: A9 81       ;
-                STA $05F3                   ; $22:F012: 8D F3 05    ;
-                LDA #$20                    ; $22:F015: A9 20       ;
-                STA $A2                     ; $22:F017: 85 A2       ;
-                LDA #$50                    ; $22:F019: A9 50       ;
-                STA $070B                   ; $22:F01B: 8D 0B 07    ;
-                LDA #$64                    ; $22:F01E: A9 64       ;
-                STA $070C                   ; $22:F020: 8D 0C 07    ;
-                STZ $02D4                   ; $22:F023: 9C D4 02    ;
-                LDA #$A8                    ; $22:F026: A9 A8       ;
-                STA $5F                     ; $22:F028: 85 5F       ;
-                STZ $02E2                   ; $22:F02A: 9C E2 02    ;
-                LDA #$00                    ; $22:F02D: A9 00       ;
-                LDY $0727                   ; $22:F02F: AC 27 07    ;
-                CPY #$01                    ; $22:F032: C0 01       ;
-                BNE CODE_22F037             ; $22:F034: D0 01       ;
-                DEC A                       ; $22:F036: 3A          ;
-CODE_22F037:    STA $077B                   ; $22:F037: 8D 7B 07    ;
-                STZ $02E1                   ; $22:F03A: 9C E1 02    ;
-                LDY $0727                   ; $22:F03D: AC 27 07    ;
-                LDA.w DATA_21FC0E,y                 ; $22:F040: B9 0E FC    ;
-                STA $1021                   ; $22:F043: 8D 21 10    ;
-                LDX #$02                    ; $22:F046: A2 02       ;
-                LDA #$D8                    ; $22:F048: A9 D8       ;
-                STA $8C,x                   ; $22:F04A: 95 8C       ;
-                STZ $4F,x                   ; $22:F04C: 74 4F       ;
-                STZ $5F,x                   ; $22:F04E: 74 5F       ;
-                STZ $0669                   ; $22:F050: 9C 69 06    ;
-                LDA #$07                    ; $22:F053: A9 07       ;
-                STA $0518,x                 ; $22:F055: 9D 18 05    ;
-                DEX                         ; $22:F058: CA          ;
-                LDA #$F0                    ; $22:F059: A9 F0       ;
-                STA $8C,x                   ; $22:F05B: 95 8C       ;
-                STZ $4F,x                   ; $22:F05D: 74 4F       ;
-                STZ $5F,x                   ; $22:F05F: 74 5F       ;
-                STZ $0669,x                 ; $22:F061: 9E 69 06    ;
-                INC $05FD                   ; $22:F064: EE FD 05    ;
-                RTS                         ; $22:F067: 60          ;
+CODE_22F004:    LDA $05FD               ; $22:F004: AD FD 05    ;
 
-CODE_22F068:    STZ $1CE1                   ; $22:F068: 9C E1 1C    ;
-                STZ $1CE2                   ; $22:F06B: 9C E2 1C    ;
-                DEC $A2                     ; $22:F06E: C6 A2       ;
-                LDA $A2                     ; $22:F070: A5 A2       ;
-                BPL CODE_22F076             ; $22:F072: 10 02       ;
-                STZ $A2                     ; $22:F074: 64 A2       ;
-CODE_22F076:    LDA #$02                    ; $22:F076: A9 02       ;
-                STA $0556                   ; $22:F078: 8D 56 05    ;
-                LDA $009C                   ; $22:F07B: AD 9C 00    ;
-                BNE CODE_22F086             ; $22:F07E: D0 06       ;
-                JSR CODE_22F371             ; $22:F080: 20 71 F3    ;
-                JSR CODE_22F089             ; $22:F083: 20 89 F0    ;
-CODE_22F086:    JMP CODE_22F1C2             ; $22:F086: 4C C2 F1    ;
+                LSR A                   ; $22:F007: 4A          ;
 
-CODE_22F089:    LDA $4D                     ; $22:F089: A5 4D       ;
+                BNE CODE_22F068         ; $22:F008: D0 5E       ;
+
+                LDX #$00                ; $22:F00A: A2 00       ;
+
+                JSL CODE_279C96         ; $22:F00C: 22 96 9C 27 ;
+
+                LDA #$81                ; $22:F010: A9 81       ;
+
+                STA $05F3               ; $22:F012: 8D F3 05    ;
+
+                LDA #$20                ; $22:F015: A9 20       ;
+
+                STA $A2                 ; $22:F017: 85 A2       ;
+
+                LDA #$50                ; $22:F019: A9 50       ;
+
+                STA $070B               ; $22:F01B: 8D 0B 07    ;
+
+                LDA #$64                ; $22:F01E: A9 64       ;
+
+                STA $070C               ; $22:F020: 8D 0C 07    ;
+
+                STZ $02D4               ; $22:F023: 9C D4 02    ;
+
+                LDA #$A8                ; $22:F026: A9 A8       ;
+
+                STA $5F                 ; $22:F028: 85 5F       ;
+
+                STZ $02E2               ; $22:F02A: 9C E2 02    ;
+
+                LDA #$00                ; $22:F02D: A9 00       ;
+
+                LDY $0727               ; $22:F02F: AC 27 07    ;
+
+                CPY #$01                ; $22:F032: C0 01       ;
+
+                BNE CODE_22F037         ; $22:F034: D0 01       ;
+
+                DEC A                   ; $22:F036: 3A          ;
+
+CODE_22F037:    STA $077B               ; $22:F037: 8D 7B 07    ;
+
+                STZ $02E1               ; $22:F03A: 9C E1 02    ;
+
+                LDY $0727               ; $22:F03D: AC 27 07    ;
+
+                LDA.w DATA_21FC0E,y     ; $22:F040: B9 0E FC    ;
+
+                STA $1021               ; $22:F043: 8D 21 10    ;
+
+                LDX #$02                ; $22:F046: A2 02       ;
+
+                LDA #$D8                ; $22:F048: A9 D8       ;
+
+                STA $8C,x               ; $22:F04A: 95 8C       ;
+
+                STZ $4F,x               ; $22:F04C: 74 4F       ;
+
+                STZ $5F,x               ; $22:F04E: 74 5F       ;
+
+                STZ $0669               ; $22:F050: 9C 69 06    ;
+
+                LDA #$07                ; $22:F053: A9 07       ;
+
+                STA $0518,x             ; $22:F055: 9D 18 05    ;
+
+                DEX                     ; $22:F058: CA          ;
+
+                LDA #$F0                ; $22:F059: A9 F0       ;
+
+                STA $8C,x               ; $22:F05B: 95 8C       ;
+
+                STZ $4F,x               ; $22:F05D: 74 4F       ;
+
+                STZ $5F,x               ; $22:F05F: 74 5F       ;
+
+                STZ $0669,x             ; $22:F061: 9E 69 06    ;
+
+                INC $05FD               ; $22:F064: EE FD 05    ;
+
+                RTS                     ; $22:F067: 60          ;
+
+CODE_22F068:    STZ $1CE1               ; $22:F068: 9C E1 1C    ;
+
+                STZ $1CE2               ; $22:F06B: 9C E2 1C    ;
+
+                DEC $A2                 ; $22:F06E: C6 A2       ;
+
+                LDA $A2                 ; $22:F070: A5 A2       ;
+
+                BPL CODE_22F076         ; $22:F072: 10 02       ;
+
+                STZ $A2                 ; $22:F074: 64 A2       ;
+
+CODE_22F076:    LDA #$02                ; $22:F076: A9 02       ;
+
+                STA $0556               ; $22:F078: 8D 56 05    ;
+
+                LDA $009C               ; $22:F07B: AD 9C 00    ;
+
+                BNE CODE_22F086         ; $22:F07E: D0 06       ;
+
+                JSR CODE_22F371         ; $22:F080: 20 71 F3    ;
+
+                JSR CODE_22F089         ; $22:F083: 20 89 F0    ;
+
+CODE_22F086:    JMP CODE_22F1C2         ; $22:F086: 4C C2 F1    ;
+
+CODE_22F089:    LDA $4D                 ; $22:F089: A5 4D       ;
+
                 JSL CODE_20FB1F         ; $22:F08B: 22 1F FB 20 ; ExecutePtrShort
 
                 dw CODE_22F095                                  ;
                 dw CODE_22F113                                  ;
                 dw CODE_22F197                                  ;
 
-CODE_22F095:    LDA $A2                     ; $22:F095: A5 A2       ;
-                BNE CODE_22F09E             ; $22:F097: D0 05       ;
-                LDA $077B                   ; $22:F099: AD 7B 07    ;
-                BPL CODE_22F09F             ; $22:F09C: 10 01       ;
-CODE_22F09E:    RTS                         ; $22:F09E: 60          ;
+CODE_22F095:    LDA $A2                 ; $22:F095: A5 A2       ;
 
-CODE_22F09F:    LDX $1600                   ; $22:F09F: AE 00 16    ;
-                LDA $070B                   ; $22:F0A2: AD 0B 07    ;
-                STA $1602,x                 ; $22:F0A5: 9D 02 16    ;
-                LDA $070C                   ; $22:F0A8: AD 0C 07    ;
-                STA $1603,x                 ; $22:F0AB: 9D 03 16    ;
-                CLC                         ; $22:F0AE: 18          ;
-                ADC #$20                    ; $22:F0AF: 69 20       ;
-                STA $070C                   ; $22:F0B1: 8D 0C 07    ;
-                BCC CODE_22F0B9             ; $22:F0B4: 90 03       ;
-                INC $070B                   ; $22:F0B6: EE 0B 07    ;
-CODE_22F0B9:    LDA #$00                    ; $22:F0B9: A9 00       ;
-                STA $1604,x                 ; $22:F0BB: 9D 04 16    ;
-                LDA #$2F                    ; $22:F0BE: A9 2F       ;
-                STA $1605,x                 ; $22:F0C0: 9D 05 16    ;
-                INC A                       ; $22:F0C3: 1A          ;
-                LSR A                       ; $22:F0C4: 4A          ;
-                STA $00                     ; $22:F0C5: 85 00       ;
-                LDY $02D4                   ; $22:F0C7: AC D4 02    ;
-                LDA.w DATA_21FAD1,y                 ; $22:F0CA: B9 D1 FA    ;
-                TAY                         ; $22:F0CD: A8          ;
-CODE_22F0CE:    REP #$20                    ; $22:F0CE: C2 20       ;
-                LDA.w DATA_21FA41,y                 ; $22:F0D0: B9 41 FA    ;
-                STA $1606,x                 ; $22:F0D3: 9D 06 16    ;
-                SEP #$20                    ; $22:F0D6: E2 20       ;
-                INY                         ; $22:F0D8: C8          ;
-                INY                         ; $22:F0D9: C8          ;
-                INX                         ; $22:F0DA: E8          ;
-                INX                         ; $22:F0DB: E8          ;
-                DEC $00                     ; $22:F0DC: C6 00       ;
-                BNE CODE_22F0CE             ; $22:F0DE: D0 EE       ;
-                LDA #$FF                    ; $22:F0E0: A9 FF       ;
-                STA $1606,x                 ; $22:F0E2: 9D 06 16    ;
-                INX                         ; $22:F0E5: E8          ;
-                INX                         ; $22:F0E6: E8          ;
-                INX                         ; $22:F0E7: E8          ;
-                INX                         ; $22:F0E8: E8          ;
-                STX $1600                   ; $22:F0E9: 8E 00 16    ;
-                INC $02D4                   ; $22:F0EC: EE D4 02    ;
-                LDA $02D4                   ; $22:F0EF: AD D4 02    ;
-                CMP #$08                    ; $22:F0F2: C9 08       ;
-                BCC CODE_22F112             ; $22:F0F4: 90 1C       ;
-                LDA #$00                    ; $22:F0F6: A9 00       ;
-                LDY $1F17                   ; $22:F0F8: AC 17 1F    ;
-                BNE CODE_22F0FF             ; $22:F0FB: D0 02       ;
-                LDA #$84                    ; $22:F0FD: A9 84       ;
-CODE_22F0FF:    STA $02D4                   ; $22:F0FF: 8D D4 02    ;
-                LDA #$50                    ; $22:F102: A9 50       ;
-                STA $070B                   ; $22:F104: 8D 0B 07    ;
-                LDA #$85                    ; $22:F107: A9 85       ;
-                STA $070C                   ; $22:F109: 8D 0C 07    ;
-                LDA #$10                    ; $22:F10C: A9 10       ;
-                STA $A2                     ; $22:F10E: 85 A2       ;
-                INC $4D                     ; $22:F110: E6 4D       ;
-CODE_22F112:    RTS                         ; $22:F112: 60          ;
+                BNE CODE_22F09E         ; $22:F097: D0 05       ;
 
-CODE_22F113:    LDA $A2                     ; $22:F113: A5 A2       ;
-                BEQ CODE_22F11A             ; $22:F115: F0 03       ;
-                JMP CODE_22F196             ; $22:F117: 4C 96 F1    ;
+                LDA $077B               ; $22:F099: AD 7B 07    ;
 
-CODE_22F11A:    REP #$10                    ; $22:F11A: C2 10       ;
-                LDX $02D4                   ; $22:F11C: AE D4 02    ;
+                BPL CODE_22F09F         ; $22:F09C: 10 01       ;
+
+CODE_22F09E:    RTS                     ; $22:F09E: 60          ;
+
+CODE_22F09F:    LDX $1600               ; $22:F09F: AE 00 16    ;
+
+                LDA $070B               ; $22:F0A2: AD 0B 07    ;
+
+                STA $1602,x             ; $22:F0A5: 9D 02 16    ;
+
+                LDA $070C               ; $22:F0A8: AD 0C 07    ;
+
+                STA $1603,x             ; $22:F0AB: 9D 03 16    ;
+
+                CLC                     ; $22:F0AE: 18          ;
+
+                ADC #$20                ; $22:F0AF: 69 20       ;
+
+                STA $070C               ; $22:F0B1: 8D 0C 07    ;
+
+                BCC CODE_22F0B9         ; $22:F0B4: 90 03       ;
+
+                INC $070B               ; $22:F0B6: EE 0B 07    ;
+
+CODE_22F0B9:    LDA #$00                ; $22:F0B9: A9 00       ;
+
+                STA $1604,x             ; $22:F0BB: 9D 04 16    ;
+
+                LDA #$2F                ; $22:F0BE: A9 2F       ;
+
+                STA $1605,x             ; $22:F0C0: 9D 05 16    ;
+
+                INC A                   ; $22:F0C3: 1A          ;
+
+                LSR A                   ; $22:F0C4: 4A          ;
+
+                STA $00                 ; $22:F0C5: 85 00       ;
+
+                LDY $02D4               ; $22:F0C7: AC D4 02    ;
+
+                LDA.w DATA_21FAD1,y     ; $22:F0CA: B9 D1 FA    ;
+
+                TAY                     ; $22:F0CD: A8          ;
+
+CODE_22F0CE:    REP #$20                ; $22:F0CE: C2 20       ;
+
+                LDA.w DATA_21FA41,y     ; $22:F0D0: B9 41 FA    ;
+
+                STA $1606,x             ; $22:F0D3: 9D 06 16    ;
+
+                SEP #$20                ; $22:F0D6: E2 20       ;
+
+                INY                     ; $22:F0D8: C8          ;
+
+                INY                     ; $22:F0D9: C8          ;
+
+                INX                     ; $22:F0DA: E8          ;
+
+                INX                     ; $22:F0DB: E8          ;
+
+                DEC $00                 ; $22:F0DC: C6 00       ;
+
+                BNE CODE_22F0CE         ; $22:F0DE: D0 EE       ;
+
+                LDA #$FF                ; $22:F0E0: A9 FF       ;
+
+                STA $1606,x             ; $22:F0E2: 9D 06 16    ;
+
+                INX                     ; $22:F0E5: E8          ;
+
+                INX                     ; $22:F0E6: E8          ;
+
+                INX                     ; $22:F0E7: E8          ;
+
+                INX                     ; $22:F0E8: E8          ;
+
+                STX $1600               ; $22:F0E9: 8E 00 16    ;
+
+                INC $02D4               ; $22:F0EC: EE D4 02    ;
+
+                LDA $02D4               ; $22:F0EF: AD D4 02    ;
+
+                CMP #$08                ; $22:F0F2: C9 08       ;
+
+                BCC CODE_22F112         ; $22:F0F4: 90 1C       ;
+
+                LDA #$00                ; $22:F0F6: A9 00       ;
+
+                LDY $1F17               ; $22:F0F8: AC 17 1F    ;
+
+                BNE CODE_22F0FF         ; $22:F0FB: D0 02       ;
+
+                LDA #$84                ; $22:F0FD: A9 84       ;
+
+CODE_22F0FF:    STA $02D4               ; $22:F0FF: 8D D4 02    ;
+
+                LDA #$50                ; $22:F102: A9 50       ;
+
+                STA $070B               ; $22:F104: 8D 0B 07    ;
+
+                LDA #$85                ; $22:F107: A9 85       ;
+
+                STA $070C               ; $22:F109: 8D 0C 07    ;
+
+                LDA #$10                ; $22:F10C: A9 10       ;
+
+                STA $A2                 ; $22:F10E: 85 A2       ;
+
+                INC $4D                 ; $22:F110: E6 4D       ;
+
+CODE_22F112:    RTS                     ; $22:F112: 60          ;
+
+CODE_22F113:    LDA $A2                 ; $22:F113: A5 A2       ;
+
+                BEQ CODE_22F11A         ; $22:F115: F0 03       ;
+
+                JMP CODE_22F196         ; $22:F117: 4C 96 F1    ;
+
+CODE_22F11A:    REP #$10                ; $22:F11A: C2 10       ;
+
+                LDX $02D4               ; $22:F11C: AE D4 02    ;
+
                 LDA.w DATA_21FAD9,x     ; $22:F11F: BD D9 FA    ;King has been transformed text.
-                STA $00                     ; $22:F122: 85 00       ;
-                SEP #$10                    ; $22:F124: E2 10       ;
-                LDY $1600                   ; $22:F126: AC 00 16    ;
-                STA $1606,y                 ; $22:F129: 99 06 16    ;
-                LDA #$21                    ; $22:F12C: A9 21       ;
-                STA $1607,y                 ; $22:F12E: 99 07 16    ;
-                LDA $070B                   ; $22:F131: AD 0B 07    ;
-                STA $1602,y                 ; $22:F134: 99 02 16    ;
-                LDA #$00                    ; $22:F137: A9 00       ;
-                STA $1604,y                 ; $22:F139: 99 04 16    ;
-                LDA #$01                    ; $22:F13C: A9 01       ;
-                STA $1605,y                 ; $22:F13E: 99 05 16    ;
-                LDA #$FF                    ; $22:F141: A9 FF       ;
-                STA $1608,y                 ; $22:F143: 99 08 16    ;
-                TYA                         ; $22:F146: 98          ;
-                CLC                         ; $22:F147: 18          ;
-                ADC #$06                    ; $22:F148: 69 06       ;
-                STA $1600                   ; $22:F14A: 8D 00 16    ;
-                LDA $070C                   ; $22:F14D: AD 0C 07    ;
-                STA $1603,y                 ; $22:F150: 99 03 16    ;
-                REP #$20                    ; $22:F153: C2 20       ;
-                INC $02D4                   ; $22:F155: EE D4 02    ;
-                SEP #$20                    ; $22:F158: E2 20       ;
-                INC $070C                   ; $22:F15A: EE 0C 07    ;
-                LDA $070C                   ; $22:F15D: AD 0C 07    ;
-                AND #$1F                    ; $22:F160: 29 1F       ;
-                CMP #$1B                    ; $22:F162: C9 1B       ;
-                BNE CODE_22F179             ; $22:F164: D0 13       ;
-                LDA $070C                   ; $22:F166: AD 0C 07    ;
-                ADC #$09                    ; $22:F169: 69 09       ;
-                STA $070C                   ; $22:F16B: 8D 0C 07    ;
-                BCC CODE_22F173             ; $22:F16E: 90 03       ;
-                INC $070B                   ; $22:F170: EE 0B 07    ;
-CODE_22F173:    CMP #$45                    ; $22:F173: C9 45       ;
-                BNE CODE_22F179             ; $22:F175: D0 02       ;
-                INC $4D                     ; $22:F177: E6 4D       ;
-CODE_22F179:    LDA $1F17                   ; $22:F179: AD 17 1F    ;
-                BNE CODE_22F18A             ; $22:F17C: D0 0C       ;
-                LDY $0726                   ; $22:F17E: AC 26 07    ;
-                LDA $00F8,y                 ; $22:F181: B9 F8 00    ;
-                ORA $18                     ; $22:F184: 05 18       ;
-                AND #$80                    ; $22:F186: 29 80       ;
-                BNE CODE_22F1A3             ; $22:F188: D0 19       ;
-CODE_22F18A:    LDY #$04                    ; $22:F18A: A0 04       ;
-                LDA $00                     ; $22:F18C: A5 00       ;
-                CMP #$FE                    ; $22:F18E: C9 FE       ;
-                BNE CODE_22F194             ; $22:F190: D0 02       ;
-                LDY #$01                    ; $22:F192: A0 01       ;
-CODE_22F194:    STY $A2                     ; $22:F194: 84 A2       ;
-CODE_22F196:    RTS                         ; $22:F196: 60          ;
+                STA $00                 ; $22:F122: 85 00       ;
 
-CODE_22F197:    LDY $0726                   ; $22:F197: AC 26 07    ;
-                LDA $00F8,y                 ; $22:F19A: B9 F8 00    ;
-                ORA $18                     ; $22:F19D: 05 18       ;
-                AND #$80                    ; $22:F19F: 29 80       ;
-                BEQ CODE_22F1C1             ; $22:F1A1: F0 1E       ;
-CODE_22F1A3:    STZ $02D4                   ; $22:F1A3: 9C D4 02    ;
-                STZ $02D5                   ; $22:F1A6: 9C D5 02    ;
-                LDA $1F17                   ; $22:F1A9: AD 17 1F    ;
-                BEQ CODE_22F1BB             ; $22:F1AC: F0 0D       ;
-                LDA #$02                    ; $22:F1AE: A9 02       ;
-                STA $1F18                   ; $22:F1B0: 8D 18 1F    ;
-                INC A                       ; $22:F1B3: 1A          ;
-                STA $0414                   ; $22:F1B4: 8D 14 04    ;
-                STZ $1F17                   ; $22:F1B7: 9C 17 1F    ;
-                RTS                         ; $22:F1BA: 60          ;
+                SEP #$10                ; $22:F124: E2 10       ;
 
-CODE_22F1BB:    STZ $0713                   ; $22:F1BB: 9C 13 07    ;
-                INC $0014                   ; $22:F1BE: EE 14 00    ;
-CODE_22F1C1:    RTS                         ; $22:F1C1: 60          ;
+                LDY $1600               ; $22:F126: AC 00 16    ;
 
-CODE_22F1C2:    LDY #$0E                    ; $22:F1C2: A0 0E       ;
-                REP #$20                    ; $22:F1C4: C2 20       ;
-CODE_22F1C6:    LDA.w DATA_21FBE1,y                 ; $22:F1C6: B9 E1 FB    ;
-                STA $0880,y                 ; $22:F1C9: 99 80 08    ;
-                DEY                         ; $22:F1CC: 88          ;
-                DEY                         ; $22:F1CD: 88          ;
-                BPL CODE_22F1C6             ; $22:F1CE: 10 F6       ;
-                SEP #$20                    ; $22:F1D0: E2 20       ;
-                LDX #$00                    ; $22:F1D2: A2 00       ;
-                LDY #$0C                    ; $22:F1D4: A0 0C       ;
-CODE_22F1D6:    LDA $0881,y                 ; $22:F1D6: B9 81 08    ;
-                CLC                         ; $22:F1D9: 18          ;
-                ADC $5F,x                   ; $22:F1DA: 75 5F       ;
-                STA $0881,y                 ; $22:F1DC: 99 81 08    ;
-                DEY                         ; $22:F1DF: 88          ;
-                DEY                         ; $22:F1E0: 88          ;
-                DEY                         ; $22:F1E1: 88          ;
-                DEY                         ; $22:F1E2: 88          ;
-                BPL CODE_22F1D6             ; $22:F1E3: 10 F1       ;
-                LDY $0669,x                 ; $22:F1E5: BC 69 06    ;
-                LDX.w DATA_21FBFD,y                 ; $22:F1E8: BE FD FB    ;
-                LDY #$0C                    ; $22:F1EB: A0 0C       ;
-CODE_22F1ED:    LDA.w DATA_21FBF1,x                 ; $22:F1ED: BD F1 FB    ;
-                STA $0882,y                 ; $22:F1F0: 99 82 08    ;
-                INX                         ; $22:F1F3: E8          ;
-                DEY                         ; $22:F1F4: 88          ;
-                DEY                         ; $22:F1F5: 88          ;
-                DEY                         ; $22:F1F6: 88          ;
-                DEY                         ; $22:F1F7: 88          ;
-                BPL CODE_22F1ED             ; $22:F1F8: 10 F3       ;
-                LDX #$03                    ; $22:F1FA: A2 03       ;
-                LDA #$02                    ; $22:F1FC: A9 02       ;
-CODE_22F1FE:    STA $0A40,x                 ; $22:F1FE: 9D 40 0A    ;
-                DEX                         ; $22:F201: CA          ;
-                BPL CODE_22F1FE             ; $22:F202: 10 FA       ;
-                LDY #$00                    ; $22:F204: A0 00       ;
-                LDA $0727                   ; $22:F206: AD 27 07    ;
-                CMP #$01                    ; $22:F209: C9 01       ;
-                BEQ CODE_22F216             ; $22:F20B: F0 09       ;
-                LDX #$01                    ; $22:F20D: A2 01       ;
-                LDA $0669,x                 ; $22:F20F: BD 69 06    ;
-                BEQ CODE_22F216             ; $22:F212: F0 02       ;
-                LDY #$10                    ; $22:F214: A0 10       ;
-CODE_22F216:    STY $06                     ; $22:F216: 84 06       ;
-                LDA #$10                    ; $22:F218: A9 10       ;
-                STA $03                     ; $22:F21A: 85 03       ;
-                LDX #$00                    ; $22:F21C: A2 00       ;
-                LDY #$B4                    ; $22:F21E: A0 B4       ;
-CODE_22F220:    LDA.w DATA_21FCC5,x                 ; $22:F220: BD C5 FC    ;
-                STA $0800,y                 ; $22:F223: 99 00 08    ;
-                INY                         ; $22:F226: C8          ;
-                INX                         ; $22:F227: E8          ;
-                DEC $03                     ; $22:F228: C6 03       ;
-                BNE CODE_22F220             ; $22:F22A: D0 F4       ;
-                LDX #$03                    ; $22:F22C: A2 03       ;
-                LDA #$02                    ; $22:F22E: A9 02       ;
-CODE_22F230:    STA $0A4D,x                 ; $22:F230: 9D 4D 0A    ;
-                DEX                         ; $22:F233: CA          ;
-                BPL CODE_22F230             ; $22:F234: 10 FA       ;
-                LDA #$03                    ; $22:F236: A9 03       ;
-                STA $03                     ; $22:F238: 85 03       ;
-                STA $04                     ; $22:F23A: 85 04       ;
-                LDY $0727                   ; $22:F23C: AC 27 07    ;
-                LDX #$B4                    ; $22:F23F: A2 B4       ;
-CODE_22F241:    LDA $0800,x                 ; $22:F241: BD 00 08    ;
-                CLC                         ; $22:F244: 18          ;
-                ADC.w DATA_21FC00,y                 ; $22:F245: 79 00 FC    ;
-                PHX                         ; $22:F248: DA          ;
-                LDX #$01                    ; $22:F249: A2 01       ;
-                CLC                         ; $22:F24B: 18          ;
-                ADC $5F,x                   ; $22:F24C: 75 5F       ;
-                PLX                         ; $22:F24E: FA          ;
-                STA $0800,x                 ; $22:F24F: 9D 00 08    ;
-                LDA $0801,x                 ; $22:F252: BD 01 08    ;
-                CLC                         ; $22:F255: 18          ;
-                ADC.w DATA_21FC07,y                 ; $22:F256: 79 07 FC    ;
-                CLC                         ; $22:F259: 18          ;
-                ADC $02E2                   ; $22:F25A: 6D E2 02    ;
-                STA $0801,x                 ; $22:F25D: 9D 01 08    ;
-                INX                         ; $22:F260: E8          ;
-                INX                         ; $22:F261: E8          ;
-                INX                         ; $22:F262: E8          ;
-                INX                         ; $22:F263: E8          ;
-                DEC $03                     ; $22:F264: C6 03       ;
-                BPL CODE_22F241             ; $22:F266: 10 D9       ;
-                LDY $0727                   ; $22:F268: AC 27 07    ;
-                LDA.w DATA_21FC0E,y                 ; $22:F26B: B9 0E FC    ;
-                STA $05                     ; $22:F26E: 85 05       ;
-                LDY $1021                   ; $22:F270: AC 21 10    ;
-                LDA $02E1                   ; $22:F273: AD E1 02    ;
-                BNE CODE_22F28C             ; $22:F276: D0 14       ;
-                DEY                         ; $22:F278: 88          ;
-                CPY $05                     ; $22:F279: C4 05       ;
-                BPL CODE_22F283             ; $22:F27B: 10 06       ;
-                LDA $05                     ; $22:F27D: A5 05       ;
-                CLC                         ; $22:F27F: 18          ;
-                ADC #$07                    ; $22:F280: 69 07       ;
-                TAY                         ; $22:F282: A8          ;
-CODE_22F283:    STY $1021                   ; $22:F283: 8C 21 10    ;
-                LDA.w DATA_21FD0D,y                 ; $22:F286: B9 0D FD    ;
-                STA $02E1                   ; $22:F289: 8D E1 02    ;
-CODE_22F28C:    LDA.w DATA_21FCD5,y                 ; $22:F28C: B9 D5 FC    ;
-                CLC                         ; $22:F28F: 18          ;
-                ADC $06                     ; $22:F290: 65 06       ;
-                STA $03                     ; $22:F292: 85 03       ;
-                TAX                         ; $22:F294: AA          ;
-                LDY #$B4                    ; $22:F295: A0 B4       ;
-CODE_22F297:    LDA.w DATA_21FC15,x                 ; $22:F297: BD 15 FC    ;
-                BNE CODE_22F2A3             ; $22:F29A: D0 07       ;
-                LDA #$F0                    ; $22:F29C: A9 F0       ;
-                STA $0801,y                 ; $22:F29E: 99 01 08    ;
-                BRA CODE_22F2AC             ; $22:F2A1: 80 09       ;
+                STA $1606,y             ; $22:F129: 99 06 16    ;
 
-CODE_22F2A3:    STA $0802,y                 ; $22:F2A3: 99 02 08    ;
-                LDA.w DATA_21FC6D,x                 ; $22:F2A6: BD 6D FC    ;
-                STA $0803,y                 ; $22:F2A9: 99 03 08    ;
-CODE_22F2AC:    INX                         ; $22:F2AC: E8          ;
-                INY                         ; $22:F2AD: C8          ;
-                INY                         ; $22:F2AE: C8          ;
-                INY                         ; $22:F2AF: C8          ;
-                INY                         ; $22:F2B0: C8          ;
-                DEC $04                     ; $22:F2B1: C6 04       ;
-                BPL CODE_22F297             ; $22:F2B3: 10 E2       ;
-                DEC $02E1                   ; $22:F2B5: CE E1 02    ;
-                LDA $03                     ; $22:F2B8: A5 03       ;
-                LSR A                       ; $22:F2BA: 4A          ;
-                LSR A                       ; $22:F2BB: 4A          ;
-                TAY                         ; $22:F2BC: A8          ;
-                LDA #$00                    ; $22:F2BD: A9 00       ;
-                CPY #$02                    ; $22:F2BF: C0 02       ;
-                BEQ CODE_22F2CB             ; $22:F2C1: F0 08       ;
-                CPY #$03                    ; $22:F2C3: C0 03       ;
-                BEQ CODE_22F2CB             ; $22:F2C5: F0 04       ;
-                CPY #$12                    ; $22:F2C7: C0 12       ;
-                BCC CODE_22F2CD             ; $22:F2C9: 90 02       ;
-CODE_22F2CB:    LDA #$40                    ; $22:F2CB: A9 40       ;
-CODE_22F2CD:    STA $02                     ; $22:F2CD: 85 02       ;
-                LDX #$B4                    ; $22:F2CF: A2 B4       ;
-                LDA $0800,x                 ; $22:F2D1: BD 00 08    ;
-                STA $00                     ; $22:F2D4: 85 00       ;
-                LDA $0801,x                 ; $22:F2D6: BD 01 08    ;
-                STA $01                     ; $22:F2D9: 85 01       ;
-                LDX #$C4                    ; $22:F2DB: A2 C4       ;
-                LDA $0727                   ; $22:F2DD: AD 27 07    ;
-                CMP #$01                    ; $22:F2E0: C9 01       ;
-                BEQ CODE_22F2EC             ; $22:F2E2: F0 08       ;
-                CMP #$06                    ; $22:F2E4: C9 06       ;
-                BEQ CODE_22F2EE             ; $22:F2E6: F0 06       ;
-                CMP #$03                    ; $22:F2E8: C9 03       ;
-                BCC CODE_22F2EE             ; $22:F2EA: 90 02       ;
-CODE_22F2EC:    LDX #$B0                    ; $22:F2EC: A2 B0       ;
-CODE_22F2EE:    LDA $00                     ; $22:F2EE: A5 00       ;
-                CLC                         ; $22:F2F0: 18          ;
-                ADC.w DATA_21FD5B,y                 ; $22:F2F1: 79 5B FD    ;
-                STA $0800,x                 ; $22:F2F4: 9D 00 08    ;
-                LDA $01                     ; $22:F2F7: A5 01       ;
-                CLC                         ; $22:F2F9: 18          ;
-                ADC.w DATA_21FD45,y                 ; $22:F2FA: 79 45 FD    ;
-                STA $0801,x                 ; $22:F2FD: 9D 01 08    ;
-                LDA #$8E                    ; $22:F300: A9 8E       ;
-                CPY #$07                    ; $22:F302: C0 07       ;
-                BNE CODE_22F307             ; $22:F304: D0 01       ;
-                DEC A                       ; $22:F306: 3A          ;
-CODE_22F307:    STA $0802,x                 ; $22:F307: 9D 02 08    ;
-                LDA #$23                    ; $22:F30A: A9 23       ;
-                ORA $02                     ; $22:F30C: 05 02       ;
-                STA $0803,x                 ; $22:F30E: 9D 03 08    ;
-                TXA                         ; $22:F311: 8A          ;
-                LSR A                       ; $22:F312: 4A          ;
-                LSR A                       ; $22:F313: 4A          ;
-                TAY                         ; $22:F314: A8          ;
-                LDA #$02                    ; $22:F315: A9 02       ;
-                STA $0A20,y                 ; $22:F317: 99 20 0A    ;
-                LDA $0727                   ; $22:F31A: AD 27 07    ;
-                CMP #$01                    ; $22:F31D: C9 01       ;
-                BEQ CODE_22F322             ; $22:F31F: F0 01       ;
-                RTS                         ; $22:F321: 60          ;
+                LDA #$21                ; $22:F12C: A9 21       ;
 
-CODE_22F322:    LDA #$10                    ; $22:F322: A9 10       ;
-                STA $02                     ; $22:F324: 85 02       ;
-                LDA #$6E                    ; $22:F326: A9 6E       ;
-                STA $01                     ; $22:F328: 85 01       ;
-                LDA #$2D                    ; $22:F32A: A9 2D       ;
-                STA $03                     ; $22:F32C: 85 03       ;
-                LDA #$3C                    ; $22:F32E: A9 3C       ;
-                STA $04                     ; $22:F330: 85 04       ;
-                LDY #$40                    ; $22:F332: A0 40       ;
-CODE_22F334:    LDA #$C8                    ; $22:F334: A9 C8       ;
-                STA $08B0,y                 ; $22:F336: 99 B0 08    ;
-                LDA $02                     ; $22:F339: A5 02       ;
-                STA $08B1,y                 ; $22:F33B: 99 B1 08    ;
-                LDA $01                     ; $22:F33E: A5 01       ;
-                STA $08B2,y                 ; $22:F340: 99 B2 08    ;
-                LDA $03                     ; $22:F343: A5 03       ;
-                STA $08B3,y                 ; $22:F345: 99 B3 08    ;
-                PHY                         ; $22:F348: 5A          ;
-                LDY $04                     ; $22:F349: A4 04       ;
-                LDA #$02                    ; $22:F34B: A9 02       ;
-                STA $0A20,y                 ; $22:F34D: 99 20 0A    ;
-                INC $04                     ; $22:F350: E6 04       ;
-                PLY                         ; $22:F352: 7A          ;
-                INY                         ; $22:F353: C8          ;
-                INY                         ; $22:F354: C8          ;
-                INY                         ; $22:F355: C8          ;
-                INY                         ; $22:F356: C8          ;
-                LDA $02                     ; $22:F357: A5 02       ;
-                CLC                         ; $22:F359: 18          ;
-                ADC #$10                    ; $22:F35A: 69 10       ;
-                STA $02                     ; $22:F35C: 85 02       ;
-                CMP #$50                    ; $22:F35E: C9 50       ;
-                BCC CODE_22F334             ; $22:F360: 90 D2       ;
-                CMP #$60                    ; $22:F362: C9 60       ;
-                BEQ CODE_22F370             ; $22:F364: F0 0A       ;
-                LDA #$2E                    ; $22:F366: A9 2E       ;
-                STA $01                     ; $22:F368: 85 01       ;
-                LDA #$2C                    ; $22:F36A: A9 2C       ;
-                STA $03                     ; $22:F36C: 85 03       ;
-                BRA CODE_22F334             ; $22:F36E: 80 C4       ;
+                STA $1607,y             ; $22:F12E: 99 07 16    ;
 
-CODE_22F370:    RTS                         ; $22:F370: 60          ;
-CODE_22F371:    LDX #$00                    ; $22:F371: A2 00       ;
-                LDA $0669                   ; $22:F373: AD 69 06    ;
-                CMP #$01                    ; $22:F376: C9 01       ;
-                BEQ CODE_22F397             ; $22:F378: F0 1D       ;
-                LDA $0518,x                 ; $22:F37A: BD 18 05    ;
-                BNE CODE_22F3B6             ; $22:F37D: D0 37       ;
-                LDA $0669                   ; $22:F37F: AD 69 06    ;
-                BEQ CODE_22F38E             ; $22:F382: F0 0A       ;
-                STZ $0669                   ; $22:F384: 9C 69 06    ;
-                LDA #$07                    ; $22:F387: A9 07       ;
-                STA $0518,x                 ; $22:F389: 9D 18 05    ;
-                BRA CODE_22F3B6             ; $22:F38C: 80 28       ;
+                LDA $070B               ; $22:F131: AD 0B 07    ;
 
-CODE_22F38E:    INC $0669                   ; $22:F38E: EE 69 06    ;
-                LDA #$D8                    ; $22:F391: A9 D8       ;
-                STA $8C,x                   ; $22:F393: 95 8C       ;
-                STZ $5F,x                   ; $22:F395: 74 5F       ;
-CODE_22F397:    STX $9B                     ; $22:F397: 86 9B       ;
-                LDA $8C,x                   ; $22:F399: B5 8C       ;
-                CLC                         ; $22:F39B: 18          ;
-                ADC #$04                    ; $22:F39C: 69 04       ;
-                STA $8C,x                   ; $22:F39E: 95 8C       ;
-                JSL CODE_27A7EF             ; $22:F3A0: 22 EF A7 27 ;
-                LDA $5F,x                   ; $22:F3A4: B5 5F       ;
-                BNE CODE_22F3B6             ; $22:F3A6: D0 0E       ;
-                STZ $8C,x                   ; $22:F3A8: 74 8C       ;
-                STZ $4F,x                   ; $22:F3AA: 74 4F       ;
-                LDA #$02                    ; $22:F3AC: A9 02       ;
-                STA $0669                   ; $22:F3AE: 8D 69 06    ;
-                LDA #$07                    ; $22:F3B1: A9 07       ;
-                STA $0518,x                 ; $22:F3B3: 9D 18 05    ;
-CODE_22F3B6:    LDA $0727                   ; $22:F3B6: AD 27 07    ;
+                STA $1602,y             ; $22:F134: 99 02 16    ;
+
+                LDA #$00                ; $22:F137: A9 00       ;
+
+                STA $1604,y             ; $22:F139: 99 04 16    ;
+
+                LDA #$01                ; $22:F13C: A9 01       ;
+
+                STA $1605,y             ; $22:F13E: 99 05 16    ;
+
+                LDA #$FF                ; $22:F141: A9 FF       ;
+
+                STA $1608,y             ; $22:F143: 99 08 16    ;
+
+                TYA                     ; $22:F146: 98          ;
+
+                CLC                     ; $22:F147: 18          ;
+
+                ADC #$06                ; $22:F148: 69 06       ;
+
+                STA $1600               ; $22:F14A: 8D 00 16    ;
+
+                LDA $070C               ; $22:F14D: AD 0C 07    ;
+
+                STA $1603,y             ; $22:F150: 99 03 16    ;
+
+                REP #$20                ; $22:F153: C2 20       ;
+
+                INC $02D4               ; $22:F155: EE D4 02    ;
+
+                SEP #$20                ; $22:F158: E2 20       ;
+
+                INC $070C               ; $22:F15A: EE 0C 07    ;
+
+                LDA $070C               ; $22:F15D: AD 0C 07    ;
+
+                AND #$1F                ; $22:F160: 29 1F       ;
+
+                CMP #$1B                ; $22:F162: C9 1B       ;
+
+                BNE CODE_22F179         ; $22:F164: D0 13       ;
+
+                LDA $070C               ; $22:F166: AD 0C 07    ;
+
+                ADC #$09                ; $22:F169: 69 09       ;
+
+                STA $070C               ; $22:F16B: 8D 0C 07    ;
+
+                BCC CODE_22F173         ; $22:F16E: 90 03       ;
+
+                INC $070B               ; $22:F170: EE 0B 07    ;
+
+CODE_22F173:    CMP #$45                ; $22:F173: C9 45       ;
+
+                BNE CODE_22F179         ; $22:F175: D0 02       ;
+
+                INC $4D                 ; $22:F177: E6 4D       ;
+
+CODE_22F179:    LDA $1F17               ; $22:F179: AD 17 1F    ;
+
+                BNE CODE_22F18A         ; $22:F17C: D0 0C       ;
+
+                LDY $0726               ; $22:F17E: AC 26 07    ;
+
+                LDA $00F8,y             ; $22:F181: B9 F8 00    ;
+
+                ORA $18                 ; $22:F184: 05 18       ;
+
+                AND #$80                ; $22:F186: 29 80       ;
+
+                BNE CODE_22F1A3         ; $22:F188: D0 19       ;
+
+CODE_22F18A:    LDY #$04                ; $22:F18A: A0 04       ;
+
+                LDA $00                 ; $22:F18C: A5 00       ;
+
+                CMP #$FE                ; $22:F18E: C9 FE       ;
+
+                BNE CODE_22F194         ; $22:F190: D0 02       ;
+
+                LDY #$01                ; $22:F192: A0 01       ;
+
+CODE_22F194:    STY $A2                 ; $22:F194: 84 A2       ;
+
+CODE_22F196:    RTS                     ; $22:F196: 60          ;
+
+CODE_22F197:    LDY $0726               ; $22:F197: AC 26 07    ;
+
+                LDA $00F8,y             ; $22:F19A: B9 F8 00    ;
+
+                ORA $18                 ; $22:F19D: 05 18       ;
+
+                AND #$80                ; $22:F19F: 29 80       ;
+
+                BEQ CODE_22F1C1         ; $22:F1A1: F0 1E       ;
+
+CODE_22F1A3:    STZ $02D4               ; $22:F1A3: 9C D4 02    ;
+
+                STZ $02D5               ; $22:F1A6: 9C D5 02    ;
+
+                LDA $1F17               ; $22:F1A9: AD 17 1F    ;
+
+                BEQ CODE_22F1BB         ; $22:F1AC: F0 0D       ;
+
+                LDA #$02                ; $22:F1AE: A9 02       ;
+
+                STA $1F18               ; $22:F1B0: 8D 18 1F    ;
+
+                INC A                   ; $22:F1B3: 1A          ;
+
+                STA $0414               ; $22:F1B4: 8D 14 04    ;
+
+                STZ $1F17               ; $22:F1B7: 9C 17 1F    ;
+
+                RTS                     ; $22:F1BA: 60          ;
+
+CODE_22F1BB:    STZ $0713               ; $22:F1BB: 9C 13 07    ;
+
+                INC $0014               ; $22:F1BE: EE 14 00    ;
+
+CODE_22F1C1:    RTS                     ; $22:F1C1: 60          ;
+
+CODE_22F1C2:    LDY #$0E                ; $22:F1C2: A0 0E       ;
+
+                REP #$20                ; $22:F1C4: C2 20       ;
+
+CODE_22F1C6:    LDA.w DATA_21FBE1,y     ; $22:F1C6: B9 E1 FB    ;
+
+                STA $0880,y             ; $22:F1C9: 99 80 08    ;
+
+                DEY                     ; $22:F1CC: 88          ;
+
+                DEY                     ; $22:F1CD: 88          ;
+
+                BPL CODE_22F1C6         ; $22:F1CE: 10 F6       ;
+
+                SEP #$20                ; $22:F1D0: E2 20       ;
+
+                LDX #$00                ; $22:F1D2: A2 00       ;
+
+                LDY #$0C                ; $22:F1D4: A0 0C       ;
+
+CODE_22F1D6:    LDA $0881,y             ; $22:F1D6: B9 81 08    ;
+
+                CLC                     ; $22:F1D9: 18          ;
+
+                ADC $5F,x               ; $22:F1DA: 75 5F       ;
+
+                STA $0881,y             ; $22:F1DC: 99 81 08    ;
+
+                DEY                     ; $22:F1DF: 88          ;
+
+                DEY                     ; $22:F1E0: 88          ;
+
+                DEY                     ; $22:F1E1: 88          ;
+
+                DEY                     ; $22:F1E2: 88          ;
+
+                BPL CODE_22F1D6         ; $22:F1E3: 10 F1       ;
+
+                LDY $0669,x             ; $22:F1E5: BC 69 06    ;
+
+                LDX.w DATA_21FBFD,y     ; $22:F1E8: BE FD FB    ;
+
+                LDY #$0C                ; $22:F1EB: A0 0C       ;
+
+CODE_22F1ED:    LDA.w DATA_21FBF1,x     ; $22:F1ED: BD F1 FB    ;
+
+                STA $0882,y             ; $22:F1F0: 99 82 08    ;
+
+                INX                     ; $22:F1F3: E8          ;
+
+                DEY                     ; $22:F1F4: 88          ;
+
+                DEY                     ; $22:F1F5: 88          ;
+
+                DEY                     ; $22:F1F6: 88          ;
+
+                DEY                     ; $22:F1F7: 88          ;
+
+                BPL CODE_22F1ED         ; $22:F1F8: 10 F3       ;
+
+                LDX #$03                ; $22:F1FA: A2 03       ;
+
+                LDA #$02                ; $22:F1FC: A9 02       ;
+
+CODE_22F1FE:    STA $0A40,x             ; $22:F1FE: 9D 40 0A    ;
+
+                DEX                     ; $22:F201: CA          ;
+
+                BPL CODE_22F1FE         ; $22:F202: 10 FA       ;
+
+                LDY #$00                ; $22:F204: A0 00       ;
+
+                LDA $0727               ; $22:F206: AD 27 07    ;
+
+                CMP #$01                ; $22:F209: C9 01       ;
+
+                BEQ CODE_22F216         ; $22:F20B: F0 09       ;
+
+                LDX #$01                ; $22:F20D: A2 01       ;
+
+                LDA $0669,x             ; $22:F20F: BD 69 06    ;
+
+                BEQ CODE_22F216         ; $22:F212: F0 02       ;
+
+                LDY #$10                ; $22:F214: A0 10       ;
+
+CODE_22F216:    STY $06                 ; $22:F216: 84 06       ;
+
+                LDA #$10                ; $22:F218: A9 10       ;
+
+                STA $03                 ; $22:F21A: 85 03       ;
+
+                LDX #$00                ; $22:F21C: A2 00       ;
+
+                LDY #$B4                ; $22:F21E: A0 B4       ;
+
+CODE_22F220:    LDA.w DATA_21FCC5,x     ; $22:F220: BD C5 FC    ;
+
+                STA $0800,y             ; $22:F223: 99 00 08    ;
+
+                INY                     ; $22:F226: C8          ;
+
+                INX                     ; $22:F227: E8          ;
+
+                DEC $03                 ; $22:F228: C6 03       ;
+
+                BNE CODE_22F220         ; $22:F22A: D0 F4       ;
+
+                LDX #$03                ; $22:F22C: A2 03       ;
+
+                LDA #$02                ; $22:F22E: A9 02       ;
+
+CODE_22F230:    STA $0A4D,x             ; $22:F230: 9D 4D 0A    ;
+
+                DEX                     ; $22:F233: CA          ;
+
+                BPL CODE_22F230         ; $22:F234: 10 FA       ;
+
+                LDA #$03                ; $22:F236: A9 03       ;
+
+                STA $03                 ; $22:F238: 85 03       ;
+
+                STA $04                 ; $22:F23A: 85 04       ;
+
+                LDY $0727               ; $22:F23C: AC 27 07    ;
+
+                LDX #$B4                ; $22:F23F: A2 B4       ;
+
+CODE_22F241:    LDA $0800,x             ; $22:F241: BD 00 08    ;
+
+                CLC                     ; $22:F244: 18          ;
+
+                ADC.w DATA_21FC00,y     ; $22:F245: 79 00 FC    ;
+
+                PHX                     ; $22:F248: DA          ;
+
+                LDX #$01                ; $22:F249: A2 01       ;
+
+                CLC                     ; $22:F24B: 18          ;
+
+                ADC $5F,x               ; $22:F24C: 75 5F       ;
+
+                PLX                     ; $22:F24E: FA          ;
+
+                STA $0800,x             ; $22:F24F: 9D 00 08    ;
+
+                LDA $0801,x             ; $22:F252: BD 01 08    ;
+
+                CLC                     ; $22:F255: 18          ;
+
+                ADC.w DATA_21FC07,y     ; $22:F256: 79 07 FC    ;
+
+                CLC                     ; $22:F259: 18          ;
+
+                ADC $02E2               ; $22:F25A: 6D E2 02    ;
+
+                STA $0801,x             ; $22:F25D: 9D 01 08    ;
+
+                INX                     ; $22:F260: E8          ;
+
+                INX                     ; $22:F261: E8          ;
+
+                INX                     ; $22:F262: E8          ;
+
+                INX                     ; $22:F263: E8          ;
+
+                DEC $03                 ; $22:F264: C6 03       ;
+
+                BPL CODE_22F241         ; $22:F266: 10 D9       ;
+
+                LDY $0727               ; $22:F268: AC 27 07    ;
+
+                LDA.w DATA_21FC0E,y     ; $22:F26B: B9 0E FC    ;
+
+                STA $05                 ; $22:F26E: 85 05       ;
+
+                LDY $1021               ; $22:F270: AC 21 10    ;
+
+                LDA $02E1               ; $22:F273: AD E1 02    ;
+
+                BNE CODE_22F28C         ; $22:F276: D0 14       ;
+
+                DEY                     ; $22:F278: 88          ;
+
+                CPY $05                 ; $22:F279: C4 05       ;
+
+                BPL CODE_22F283         ; $22:F27B: 10 06       ;
+
+                LDA $05                 ; $22:F27D: A5 05       ;
+
+                CLC                     ; $22:F27F: 18          ;
+
+                ADC #$07                ; $22:F280: 69 07       ;
+
+                TAY                     ; $22:F282: A8          ;
+
+CODE_22F283:    STY $1021               ; $22:F283: 8C 21 10    ;
+
+                LDA.w DATA_21FD0D,y     ; $22:F286: B9 0D FD    ;
+
+                STA $02E1               ; $22:F289: 8D E1 02    ;
+
+CODE_22F28C:    LDA.w DATA_21FCD5,y     ; $22:F28C: B9 D5 FC    ;
+
+                CLC                     ; $22:F28F: 18          ;
+
+                ADC $06                 ; $22:F290: 65 06       ;
+
+                STA $03                 ; $22:F292: 85 03       ;
+
+                TAX                     ; $22:F294: AA          ;
+
+                LDY #$B4                ; $22:F295: A0 B4       ;
+
+CODE_22F297:    LDA.w DATA_21FC15,x     ; $22:F297: BD 15 FC    ;
+
+                BNE CODE_22F2A3         ; $22:F29A: D0 07       ;
+
+                LDA #$F0                ; $22:F29C: A9 F0       ;
+
+                STA $0801,y             ; $22:F29E: 99 01 08    ;
+
+                BRA CODE_22F2AC         ; $22:F2A1: 80 09       ;
+
+CODE_22F2A3:    STA $0802,y             ; $22:F2A3: 99 02 08    ;
+
+                LDA.w DATA_21FC6D,x     ; $22:F2A6: BD 6D FC    ;
+
+                STA $0803,y             ; $22:F2A9: 99 03 08    ;
+
+CODE_22F2AC:    INX                     ; $22:F2AC: E8          ;
+
+                INY                     ; $22:F2AD: C8          ;
+
+                INY                     ; $22:F2AE: C8          ;
+
+                INY                     ; $22:F2AF: C8          ;
+
+                INY                     ; $22:F2B0: C8          ;
+
+                DEC $04                 ; $22:F2B1: C6 04       ;
+
+                BPL CODE_22F297         ; $22:F2B3: 10 E2       ;
+
+                DEC $02E1               ; $22:F2B5: CE E1 02    ;
+
+                LDA $03                 ; $22:F2B8: A5 03       ;
+
+                LSR A                   ; $22:F2BA: 4A          ;
+
+                LSR A                   ; $22:F2BB: 4A          ;
+
+                TAY                     ; $22:F2BC: A8          ;
+
+                LDA #$00                ; $22:F2BD: A9 00       ;
+
+                CPY #$02                ; $22:F2BF: C0 02       ;
+
+                BEQ CODE_22F2CB         ; $22:F2C1: F0 08       ;
+
+                CPY #$03                ; $22:F2C3: C0 03       ;
+
+                BEQ CODE_22F2CB         ; $22:F2C5: F0 04       ;
+
+                CPY #$12                ; $22:F2C7: C0 12       ;
+
+                BCC CODE_22F2CD         ; $22:F2C9: 90 02       ;
+
+CODE_22F2CB:    LDA #$40                ; $22:F2CB: A9 40       ;
+
+CODE_22F2CD:    STA $02                 ; $22:F2CD: 85 02       ;
+
+                LDX #$B4                ; $22:F2CF: A2 B4       ;
+
+                LDA $0800,x             ; $22:F2D1: BD 00 08    ;
+
+                STA $00                 ; $22:F2D4: 85 00       ;
+
+                LDA $0801,x             ; $22:F2D6: BD 01 08    ;
+
+                STA $01                 ; $22:F2D9: 85 01       ;
+
+                LDX #$C4                ; $22:F2DB: A2 C4       ;
+
+                LDA $0727               ; $22:F2DD: AD 27 07    ;
+
+                CMP #$01                ; $22:F2E0: C9 01       ;
+
+                BEQ CODE_22F2EC         ; $22:F2E2: F0 08       ;
+
+                CMP #$06                ; $22:F2E4: C9 06       ;
+
+                BEQ CODE_22F2EE         ; $22:F2E6: F0 06       ;
+
+                CMP #$03                ; $22:F2E8: C9 03       ;
+
+                BCC CODE_22F2EE         ; $22:F2EA: 90 02       ;
+
+CODE_22F2EC:    LDX #$B0                ; $22:F2EC: A2 B0       ;
+
+CODE_22F2EE:    LDA $00                 ; $22:F2EE: A5 00       ;
+
+                CLC                     ; $22:F2F0: 18          ;
+
+                ADC.w DATA_21FD5B,y     ; $22:F2F1: 79 5B FD    ;
+
+                STA $0800,x             ; $22:F2F4: 9D 00 08    ;
+
+                LDA $01                 ; $22:F2F7: A5 01       ;
+
+                CLC                     ; $22:F2F9: 18          ;
+
+                ADC.w DATA_21FD45,y     ; $22:F2FA: 79 45 FD    ;
+
+                STA $0801,x             ; $22:F2FD: 9D 01 08    ;
+
+                LDA #$8E                ; $22:F300: A9 8E       ;
+
+                CPY #$07                ; $22:F302: C0 07       ;
+
+                BNE CODE_22F307         ; $22:F304: D0 01       ;
+
+                DEC A                   ; $22:F306: 3A          ;
+
+CODE_22F307:    STA $0802,x             ; $22:F307: 9D 02 08    ;
+
+                LDA #$23                ; $22:F30A: A9 23       ;
+
+                ORA $02                 ; $22:F30C: 05 02       ;
+
+                STA $0803,x             ; $22:F30E: 9D 03 08    ;
+
+                TXA                     ; $22:F311: 8A          ;
+
+                LSR A                   ; $22:F312: 4A          ;
+
+                LSR A                   ; $22:F313: 4A          ;
+
+                TAY                     ; $22:F314: A8          ;
+
+                LDA #$02                ; $22:F315: A9 02       ;
+
+                STA $0A20,y             ; $22:F317: 99 20 0A    ;
+
+                LDA $0727               ; $22:F31A: AD 27 07    ;
+
+                CMP #$01                ; $22:F31D: C9 01       ;
+
+                BEQ CODE_22F322         ; $22:F31F: F0 01       ;
+
+                RTS                     ; $22:F321: 60          ;
+
+CODE_22F322:    LDA #$10                ; $22:F322: A9 10       ;
+
+                STA $02                 ; $22:F324: 85 02       ;
+
+                LDA #$6E                ; $22:F326: A9 6E       ;
+
+                STA $01                 ; $22:F328: 85 01       ;
+
+                LDA #$2D                ; $22:F32A: A9 2D       ;
+
+                STA $03                 ; $22:F32C: 85 03       ;
+
+                LDA #$3C                ; $22:F32E: A9 3C       ;
+
+                STA $04                 ; $22:F330: 85 04       ;
+
+                LDY #$40                ; $22:F332: A0 40       ;
+
+CODE_22F334:    LDA #$C8                ; $22:F334: A9 C8       ;
+
+                STA $08B0,y             ; $22:F336: 99 B0 08    ;
+
+                LDA $02                 ; $22:F339: A5 02       ;
+
+                STA $08B1,y             ; $22:F33B: 99 B1 08    ;
+
+                LDA $01                 ; $22:F33E: A5 01       ;
+
+                STA $08B2,y             ; $22:F340: 99 B2 08    ;
+
+                LDA $03                 ; $22:F343: A5 03       ;
+
+                STA $08B3,y             ; $22:F345: 99 B3 08    ;
+
+                PHY                     ; $22:F348: 5A          ;
+
+                LDY $04                 ; $22:F349: A4 04       ;
+
+                LDA #$02                ; $22:F34B: A9 02       ;
+
+                STA $0A20,y             ; $22:F34D: 99 20 0A    ;
+
+                INC $04                 ; $22:F350: E6 04       ;
+
+                PLY                     ; $22:F352: 7A          ;
+
+                INY                     ; $22:F353: C8          ;
+
+                INY                     ; $22:F354: C8          ;
+
+                INY                     ; $22:F355: C8          ;
+
+                INY                     ; $22:F356: C8          ;
+
+                LDA $02                 ; $22:F357: A5 02       ;
+
+                CLC                     ; $22:F359: 18          ;
+
+                ADC #$10                ; $22:F35A: 69 10       ;
+
+                STA $02                 ; $22:F35C: 85 02       ;
+
+                CMP #$50                ; $22:F35E: C9 50       ;
+
+                BCC CODE_22F334         ; $22:F360: 90 D2       ;
+
+                CMP #$60                ; $22:F362: C9 60       ;
+
+                BEQ CODE_22F370         ; $22:F364: F0 0A       ;
+
+                LDA #$2E                ; $22:F366: A9 2E       ;
+
+                STA $01                 ; $22:F368: 85 01       ;
+
+                LDA #$2C                ; $22:F36A: A9 2C       ;
+
+                STA $03                 ; $22:F36C: 85 03       ;
+
+                BRA CODE_22F334         ; $22:F36E: 80 C4       ;
+
+CODE_22F370:    RTS                     ; $22:F370: 60          ;
+
+CODE_22F371:    LDX #$00                ; $22:F371: A2 00       ;
+
+                LDA $0669               ; $22:F373: AD 69 06    ;
+
+                CMP #$01                ; $22:F376: C9 01       ;
+
+                BEQ CODE_22F397         ; $22:F378: F0 1D       ;
+
+                LDA $0518,x             ; $22:F37A: BD 18 05    ;
+
+                BNE CODE_22F3B6         ; $22:F37D: D0 37       ;
+
+                LDA $0669               ; $22:F37F: AD 69 06    ;
+
+                BEQ CODE_22F38E         ; $22:F382: F0 0A       ;
+
+                STZ $0669               ; $22:F384: 9C 69 06    ;
+
+                LDA #$07                ; $22:F387: A9 07       ;
+
+                STA $0518,x             ; $22:F389: 9D 18 05    ;
+
+                BRA CODE_22F3B6         ; $22:F38C: 80 28       ;
+
+CODE_22F38E:    INC $0669               ; $22:F38E: EE 69 06    ;
+
+                LDA #$D8                ; $22:F391: A9 D8       ;
+
+                STA $8C,x               ; $22:F393: 95 8C       ;
+
+                STZ $5F,x               ; $22:F395: 74 5F       ;
+
+CODE_22F397:    STX $9B                 ; $22:F397: 86 9B       ;
+
+                LDA $8C,x               ; $22:F399: B5 8C       ;
+
+                CLC                     ; $22:F39B: 18          ;
+
+                ADC #$04                ; $22:F39C: 69 04       ;
+
+                STA $8C,x               ; $22:F39E: 95 8C       ;
+
+                JSL CODE_27A7EF         ; $22:F3A0: 22 EF A7 27 ;
+
+                LDA $5F,x               ; $22:F3A4: B5 5F       ;
+
+                BNE CODE_22F3B6         ; $22:F3A6: D0 0E       ;
+
+                STZ $8C,x               ; $22:F3A8: 74 8C       ;
+
+                STZ $4F,x               ; $22:F3AA: 74 4F       ;
+
+                LDA #$02                ; $22:F3AC: A9 02       ;
+
+                STA $0669               ; $22:F3AE: 8D 69 06    ;
+
+                LDA #$07                ; $22:F3B1: A9 07       ;
+
+                STA $0518,x             ; $22:F3B3: 9D 18 05    ;
+
+CODE_22F3B6:    LDA $0727               ; $22:F3B6: AD 27 07    ;
+
                 JSL CODE_20FB1F         ; $22:F3B9: 22 1F FB 20 ; ExecutePtrShort
 
                 dw CODE_22F421                                  ;
@@ -6583,60 +11800,110 @@ CODE_22F3B6:    LDA $0727                   ; $22:F3B6: AD 27 07    ;
 
 DATA_22F3CC:    db $00,$F4,$F8,$F8,$F8                          ;
 
-CODE_22F3D1:    LDX #$01                    ; $22:F3D1: A2 01       ;
-                LDA $077B                   ; $22:F3D3: AD 7B 07    ;
-                BEQ CODE_22F420             ; $22:F3D6: F0 48       ;
-                LDA $02E2                   ; $22:F3D8: AD E2 02    ;
-                CMP #$30                    ; $22:F3DB: C9 30       ;
-                BCS CODE_22F3F0                     ; $22:F3DD: B0 11       ;
-                INC $02E2                   ; $22:F3DF: EE E2 02    ;
-                LDA $02E2                   ; $22:F3E2: AD E2 02    ;
-                STA $71,x                   ; $22:F3E5: 95 71       ;
-                STZ $9E,x                   ; $22:F3E7: 74 9E       ;
-                STZ $0761,x                 ; $22:F3E9: 9E 61 07    ;
-                STZ $0669,x                 ; $22:F3EC: 9E 69 06    ;
-                RTS                         ; $22:F3EF: 60          ;
+CODE_22F3D1:    LDX #$01                ; $22:F3D1: A2 01       ;
 
-CODE_22F3F0:    STX $9B                     ; $22:F3F0: 86 9B       ;
-                LDA $9E,x                   ; $22:F3F2: B5 9E       ;
-                CLC                         ; $22:F3F4: 18          ;
-                ADC #$01                    ; $22:F3F5: 69 01       ;
-                STA $9E,x                   ; $22:F3F7: 95 9E       ;
-                JSL CODE_27A7E4             ; $22:F3F9: 22 E4 A7 27 ;
-                LDA $0071,x                 ; $22:F3FD: BD 71 00    ;
-                STA $02E2                   ; $22:F400: 8D E2 02    ;
-                CMP #$60                    ; $22:F403: C9 60       ;
-                BCC CODE_22F420             ; $22:F405: 90 19       ;
-                INC $0669,x                 ; $22:F407: FE 69 06    ;
-                LDA $0669,x                 ; $22:F40A: BD 69 06    ;
-                TAX                         ; $22:F40D: AA          ;
-                PHX                         ; $22:F40E: DA          ;
-                LDA.l DATA_22F3CC,x                 ; $22:F40F: BF CC F3 22 ;
-                LDX $9B                     ; $22:F413: A6 9B       ;
-                STA $009E,x                 ; $22:F415: 9D 9E 00    ;
-                PLX                         ; $22:F418: FA          ;
-                CPX #$04                    ; $22:F419: E0 04       ;
-                BNE CODE_22F420             ; $22:F41B: D0 03       ;
-                INC $077B                   ; $22:F41D: EE 7B 07    ;
-CODE_22F420:    RTS                         ; $22:F420: 60          ;
+                LDA $077B               ; $22:F3D3: AD 7B 07    ;
 
-CODE_22F421:    LDX #$01                    ; $22:F421: A2 01       ;
-                STX $9B                     ; $22:F423: 86 9B       ;
-                JSL CODE_27A7EF             ; $22:F425: 22 EF A7 27 ;
-                LDA $5F,x                   ; $22:F429: B5 5F       ;
-                CMP #$E0                    ; $22:F42B: C9 E0       ;
-                BNE CODE_22F43C             ; $22:F42D: D0 0D       ;
-                LDA #$10                    ; $22:F42F: A9 10       ;
-                STA $8C,x                   ; $22:F431: 95 8C       ;
-                STZ $4F,x                   ; $22:F433: 74 4F       ;
-                LDA #$01                    ; $22:F435: A9 01       ;
-                STA $0669,x                 ; $22:F437: 9D 69 06    ;
-                BRA CODE_22F449             ; $22:F43A: 80 0D       ;
+                BEQ CODE_22F420         ; $22:F3D6: F0 48       ;
 
-CODE_22F43C:    CMP #$00                    ; $22:F43C: C9 00       ;
-                BNE CODE_22F449             ; $22:F43E: D0 09       ;
-                LDA #$F0                    ; $22:F440: A9 F0       ;
-                STA $8C,x                   ; $22:F442: 95 8C       ;
-                STZ $4F,x                   ; $22:F444: 74 4F       ;
-                STZ $0669,x                 ; $22:F446: 9E 69 06    ;
-CODE_22F449:    RTS                         ; $22:F449: 60          ;
+                LDA $02E2               ; $22:F3D8: AD E2 02    ;
+
+                CMP #$30                ; $22:F3DB: C9 30       ;
+
+                BCS CODE_22F3F0         ; $22:F3DD: B0 11       ;
+
+                INC $02E2               ; $22:F3DF: EE E2 02    ;
+
+                LDA $02E2               ; $22:F3E2: AD E2 02    ;
+
+                STA $71,x               ; $22:F3E5: 95 71       ;
+
+                STZ $9E,x               ; $22:F3E7: 74 9E       ;
+
+                STZ $0761,x             ; $22:F3E9: 9E 61 07    ;
+
+                STZ $0669,x             ; $22:F3EC: 9E 69 06    ;
+
+                RTS                     ; $22:F3EF: 60          ;
+
+CODE_22F3F0:    STX $9B                 ; $22:F3F0: 86 9B       ;
+
+                LDA $9E,x               ; $22:F3F2: B5 9E       ;
+
+                CLC                     ; $22:F3F4: 18          ;
+
+                ADC #$01                ; $22:F3F5: 69 01       ;
+
+                STA $9E,x               ; $22:F3F7: 95 9E       ;
+
+                JSL CODE_27A7E4         ; $22:F3F9: 22 E4 A7 27 ;
+
+                LDA $0071,x             ; $22:F3FD: BD 71 00    ;
+
+                STA $02E2               ; $22:F400: 8D E2 02    ;
+
+                CMP #$60                ; $22:F403: C9 60       ;
+
+                BCC CODE_22F420         ; $22:F405: 90 19       ;
+
+                INC $0669,x             ; $22:F407: FE 69 06    ;
+
+                LDA $0669,x             ; $22:F40A: BD 69 06    ;
+
+                TAX                     ; $22:F40D: AA          ;
+
+                PHX                     ; $22:F40E: DA          ;
+
+                LDA.l DATA_22F3CC,x     ; $22:F40F: BF CC F3 22 ;
+
+                LDX $9B                 ; $22:F413: A6 9B       ;
+
+                STA $009E,x             ; $22:F415: 9D 9E 00    ;
+
+                PLX                     ; $22:F418: FA          ;
+
+                CPX #$04                ; $22:F419: E0 04       ;
+
+                BNE CODE_22F420         ; $22:F41B: D0 03       ;
+
+                INC $077B               ; $22:F41D: EE 7B 07    ;
+
+CODE_22F420:    RTS                     ; $22:F420: 60          ;
+
+CODE_22F421:    LDX #$01                ; $22:F421: A2 01       ;
+
+                STX $9B                 ; $22:F423: 86 9B       ;
+
+                JSL CODE_27A7EF         ; $22:F425: 22 EF A7 27 ;
+
+                LDA $5F,x               ; $22:F429: B5 5F       ;
+
+                CMP #$E0                ; $22:F42B: C9 E0       ;
+
+                BNE CODE_22F43C         ; $22:F42D: D0 0D       ;
+
+                LDA #$10                ; $22:F42F: A9 10       ;
+
+                STA $8C,x               ; $22:F431: 95 8C       ;
+
+                STZ $4F,x               ; $22:F433: 74 4F       ;
+
+                LDA #$01                ; $22:F435: A9 01       ;
+
+                STA $0669,x             ; $22:F437: 9D 69 06    ;
+
+                BRA CODE_22F449         ; $22:F43A: 80 0D       ;
+
+CODE_22F43C:    CMP #$00                ; $22:F43C: C9 00       ;
+
+                BNE CODE_22F449         ; $22:F43E: D0 09       ;
+
+                LDA #$F0                ; $22:F440: A9 F0       ;
+
+                STA $8C,x               ; $22:F442: 95 8C       ;
+
+                STZ $4F,x               ; $22:F444: 74 4F       ;
+
+                STZ $0669,x             ; $22:F446: 9E 69 06    ;
+
+CODE_22F449:    RTS                     ; $22:F449: 60          ;
