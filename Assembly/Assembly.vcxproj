@@ -60,6 +60,7 @@
     <None Include="SMAS\data\b02\DATA_02CA00-0200.bin" />
     <None Include="SMAS\data\b02\DATA_02F000-1000.bin" />
     <None Include="SMAS\data\b02\_b02.asm" />
+    <None Include="SMB1\code\b03\ParseAreaData.asm" />
     <None Include="SMB1\code\b03\_b03.asm" />
     <None Include="SMB1\code\b04\_b04.asm" />
     <None Include="SMB1\code\b05\_b05.asm" />
