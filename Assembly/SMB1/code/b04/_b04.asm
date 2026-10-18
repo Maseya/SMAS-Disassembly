@@ -1822,7 +1822,6 @@ PLB                     ; $04:8ED4: AB
 RTL                     ; $04:8ED5: 6B
 
 ; small castle/top of big castle map16 tilemap
-
 DATA_048ED6:
 db $00,$00,$00,$DF,$C6,$C5,$DE,$00
 db $00,$00,$00,$00,$00,$D4,$DB,$DA
@@ -1830,14 +1829,8 @@ db $D0,$00,$00,$00,$00,$00,$E3,$E2
 db $C7,$C4,$E1,$E0,$00,$00,$00,$00
 db $D4,$D3,$CD,$CC,$D1,$D0,$00,$00
 db $E6,$00,$D9,$D8,$DD,$DC,$D6,$D5
-
-; bottom of big castle tilemap.
 db $E5,$E4,$CB,$CA,$C9,$C8,$C7,$C4
-
-; first 2 bytes are for the leftmost flag, which
 db $C3,$C2,$C1,$C0,$D4,$D3,$D2,$CD
-
-; belongs to the top.
 db $CC,$CD,$CC,$D2,$D1,$D0,$D9,$D8
 db $D7,$DD,$DC,$DD,$DC,$D7,$D6,$D5
 db $D9,$D8,$D7,$D7,$D7,$D7,$D7,$D7
@@ -1966,20 +1959,18 @@ CODE_049007:
 PLB                     ; $04:9007: AB
 RTL                     ; $04:9008: 6B
 
-; Height of the 'cement block stairs' segments.
 
 DATA_049009:
-db $07,$07,$06,$05,$04,$03,$02,$01
-
+; Height of the 'cement block stairs' segments.
 ; Each number defines the amount of cement blocks
+db $07,$07,$06,$05,$04,$03,$02,$01
 db $00
 
-; Y-placement of the cement block stair blocks
 
 DATA_049012:
-db $03,$03,$04,$05,$06,$07,$08,$09
-
+; Y-placement of the cement block stair blocks
 ; The higher the number, the lower the placement
+db $03,$03,$04,$05,$06,$07,$08,$09
 db $0A
 
 ; Stone Stairs object
