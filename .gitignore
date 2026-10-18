@@ -6,6 +6,10 @@
 *.oops
 *.zst
 
+# Ignore emulator files
+*.bp
+*.sym
+
 # Ignore binary files
 *.bin
 
