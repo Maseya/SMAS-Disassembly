@@ -3,6 +3,14 @@ This is a project where I disassemble and document Super Mario All-Stars.
 
 There are plans to make this disassembly assemble-able in either xkas or asar. The assemble-able version is in the "Assembly" directory, however, it is not perfect and adding/removing code may break the ROM entirely.
 
+## HOW TO BUILD
+
+The assembly code can be built in asar (Windows EXE provided in Assembly folder). A
+Visual Studio solution and VS code build tasks are both provided as simplified ways to
+build the ROM. You can also run the ROM in an emulator, but you either need to change
+the program path in launch.json, or set the environment variable
+`DEFAULT_DEBUG_SNES_EMU_PATH` to the full path of the emulator you want to use.
+
 ## TAGS
 There are a few 'tags' used throughout the disassembly:
 - "TODO": Code which should be looked into in terms of documenting and/or correct disassembling
@@ -32,5 +40,5 @@ Game codes are located in the following banks:
 
 ## Helpful links
 The following links are links to the NES disassemblies of Super Mario Bros. 1 and Super Mario Bros. 2J. The code used within these games are pretty similar to the code used in SMAS, so these could be used as a reference when documenting code.
-[SMBDis](https://www.romhacking.net/documents/344/) - 
-[smb2jdis](https://www.romhacking.net/documents/653/) - 
+[SMBDis](https://www.romhacking.net/documents/344/) -
+[smb2jdis](https://www.romhacking.net/documents/653/) -

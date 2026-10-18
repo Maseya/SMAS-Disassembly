@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Build and Launch",
+            "type": "clr",
+            "request": "launch",
+            "program": "${env:DEFAULT_DEBUG_SNES_EMU_PATH}",
+            "args": [
+                "${workspaceFolder}/SMAS.sfc",
+            ],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Assemble ROM",
+            "console": "integratedTerminal"
+        }
+    ]
+}
